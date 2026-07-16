@@ -1,6 +1,6 @@
-﻿# LeetCode 1250 - Check If It Is a Good Array
-# https://leetcode.com/problems/check-if-it-is-a-good-array/
+from math import gcd
+from functools import reduce
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def isGoodArray(self, nums: list[int]) -> bool:
+        return reduce(gcd, nums) == 1

@@ -24,7 +24,10 @@
           8
         ]
       },
-      "expected": "[1,5]\n**"
+      "expected": [
+        1,
+        5
+      ]
     },
     {
       "args": {
@@ -50,7 +53,7 @@
           1764
         ]
       },
-      "expected": "[]\n**Constraints:**\n- `1 <= arr1.length, arr2.length, arr3.length <= 1000`\n- `1 <= arr1[i], arr2[i], arr3[i] <= 2000`\n---"
+      "expected": []
     }
   ]
 }

@@ -3,7 +3,33 @@
     {
       "args": {
         "region1": "Quebec",
-        "region2": "New York"
+        "region2": "New York",
+        "regions": [
+          [
+            "Earth",
+            "North America",
+            "South America"
+          ],
+          [
+            "North America",
+            "United States",
+            "Canada"
+          ],
+          [
+            "United States",
+            "New York",
+            "Boston"
+          ],
+          [
+            "Canada",
+            "Ontario",
+            "Quebec"
+          ],
+          [
+            "South America",
+            "Brazil"
+          ]
+        ]
       },
       "expected": "North America"
     },

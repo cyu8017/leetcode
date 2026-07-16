@@ -1,6 +1,10 @@
-﻿# LeetCode 1249 - Minimum Remove to Make Valid Parentheses
-# https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minRemoveToMakeValid(self, s: str) -> str:
+        chars, opens = list(s), []
+        for i, ch in enumerate(chars):
+            if ch == '(': opens.append(i)
+            elif ch == ')':
+                if opens: opens.pop()
+                else: chars[i] = ''
+        for i in opens: chars[i] = ''
+        return ''.join(chars)

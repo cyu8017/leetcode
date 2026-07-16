@@ -1,6 +1,7 @@
-﻿# LeetCode 1221 - Split a String in Balanced Strings
-# https://leetcode.com/problems/split-a-string-in-balanced-strings/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def balancedStringSplit(self, s: str) -> int:
+        balance = answer = 0
+        for ch in s:
+            balance += 1 if ch == 'L' else -1
+            answer += balance == 0
+        return answer

@@ -1,6 +1,11 @@
-﻿# LeetCode 1277 - Count Square Submatrices with All Ones
-# https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        answer = 0
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if matrix[r][c] and r and c:
+                    matrix[r][c] += min(matrix[r-1][c], matrix[r][c-1], matrix[r-1][c-1])
+                answer += matrix[r][c]
+        return answer

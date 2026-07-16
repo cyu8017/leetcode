@@ -1,6 +1,9 @@
-﻿# LeetCode 1269 - Number of Ways to Stay in the Same Place After Some Steps
-# https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numWays(self, steps: int, arrLen: int) -> int:
+        mod = 1_000_000_007
+        width = min(arrLen, steps // 2 + 1)
+        dp = [1] + [0] * (width - 1)
+        for _ in range(steps):
+            dp = [(dp[i] + (dp[i - 1] if i else 0) + (dp[i + 1] if i + 1 < width else 0)) % mod
+                  for i in range(width)]
+        return dp[0]

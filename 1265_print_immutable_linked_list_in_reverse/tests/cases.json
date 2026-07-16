@@ -45,7 +45,14 @@
           -6
         ]
       },
-      "expected": "[-6,4,4,6,0,-2]\n**Constraints:**\n- The length of the linked list is between `[1, 1000]`.\n- The value of each node in the linked list is between `[-1000, 1000]`.\n**Follow up:**\nCould you solve this problem in:\n- Constant space complexity?\n- Linear time complexity and less than linear space complexity?\n---"
+      "expected": [
+        -6,
+        4,
+        4,
+        6,
+        0,
+        -2
+      ]
     }
   ]
 }

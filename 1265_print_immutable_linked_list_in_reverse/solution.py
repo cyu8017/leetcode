@@ -1,6 +1,10 @@
-﻿# LeetCode 1265 - Print Immutable Linked List in Reverse
-# https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
+class ImmutableListNode:
+    def printValue(self) -> None: ...
+    def getNext(self) -> "ImmutableListNode": ...
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def printLinkedListInReverse(self, head: "ImmutableListNode") -> None:
+        if head is None:
+            return
+        self.printLinkedListInReverse(head.getNext())
+        head.printValue()

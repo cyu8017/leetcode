@@ -1,6 +1,3 @@
-﻿# LeetCode 1256 - Encode Number
-# https://leetcode.com/problems/encode-number/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def encode(self, num: int) -> str:
+        return bin(num + 1)[3:]

@@ -1,6 +1,6 @@
-﻿# LeetCode 1233 - Remove Sub-Folders from the Filesystem
-# https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeSubfolders(self, folder: list[str]) -> list[str]:
+        answer = []
+        for path in sorted(folder):
+            if not answer or not path.startswith(answer[-1] + '/'): answer.append(path)
+        return answer

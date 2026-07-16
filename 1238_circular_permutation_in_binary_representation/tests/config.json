@@ -5,8 +5,6 @@
     "n",
     "start"
   ],
-  "types": {
-    "return": "integer[]"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "types": null,
+  "description": "Python implementation and runner metadata."
 }

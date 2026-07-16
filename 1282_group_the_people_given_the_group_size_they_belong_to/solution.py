@@ -1,6 +1,12 @@
-﻿# LeetCode 1282 - Group the People Given the Group Size They Belong To
-# https://leetcode.com/problems/group-the-people-given-the-group-size-they-belong-to/
+from collections import defaultdict
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        pending, answer = defaultdict(list), []
+        for person, size in enumerate(groupSizes):
+            pending[size].append(person)
+            if len(pending[size]) == size:
+                answer.append(pending[size])
+                pending[size] = []
+        return sorted(answer, key=lambda group: (len(group), group))

@@ -1,11 +1,6 @@
 {
-  "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "cars",
-    "directions",
-    "arrivalTimes"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "class": "TrafficLight",
+  "method": "carArrived",
+  "paramOrder": ["cars", "directions", "arrivalTimes"],
+  "types": null
 }

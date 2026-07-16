@@ -1,6 +1,9 @@
 {
   "class": "Leaderboard",
-  "description": "Update method name and add cases to cases.json when implementing the solution.",
-  "kind": "design",
-  "runnable": true
+  "method": "top",
+  "paramOrder": [
+    "K"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
 }

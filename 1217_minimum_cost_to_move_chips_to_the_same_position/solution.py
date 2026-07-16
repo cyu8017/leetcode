@@ -1,6 +1,4 @@
-﻿# LeetCode 1217 - Minimum Cost to Move Chips to The Same Position
-# https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minCostToMoveChips(self, position: list[int]) -> int:
+        odd = sum(x & 1 for x in position)
+        return min(odd, len(position) - odd)

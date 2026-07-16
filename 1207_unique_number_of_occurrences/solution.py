@@ -1,6 +1,6 @@
-﻿# LeetCode 1207 - Unique Number of Occurrences
-# https://leetcode.com/problems/unique-number-of-occurrences/
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def uniqueOccurrences(self, arr: list[int]) -> bool:
+        counts = Counter(arr).values()
+        return len(counts) == len(set(counts))

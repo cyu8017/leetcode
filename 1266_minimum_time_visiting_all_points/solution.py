@@ -1,6 +1,5 @@
-﻿# LeetCode 1266 - Minimum Time Visiting All Points
-# https://leetcode.com/problems/minimum-time-visiting-all-points/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+        return sum(max(abs(a[0] - b[0]), abs(a[1] - b[1])) for a, b in zip(points, points[1:]))

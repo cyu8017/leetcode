@@ -59,6 +59,8 @@ def main() -> int:
         "ZeroEvenOdd",
         "H2O",
         "FizzBuzz",
+        "DiningPhilosophers",
+        "TrafficLight",
     }:
         print(f"Python tests: {problem_dir.name} :: {config['class']}")
         passed, total = run_cases(None, config, cases_doc, module)

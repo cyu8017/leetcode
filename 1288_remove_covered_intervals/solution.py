@@ -1,6 +1,12 @@
-﻿# LeetCode 1288 - Remove Covered Intervals
-# https://leetcode.com/problems/remove-covered-intervals/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=lambda x: (x[0], -x[1]))
+        answer = 0
+        farthest = -1
+        for _, end in intervals:
+            if end > farthest:
+                answer += 1
+                farthest = end
+        return answer

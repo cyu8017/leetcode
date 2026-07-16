@@ -1,6 +1,8 @@
-﻿# LeetCode 1281 - Subtract the Product and Sum of Digits of an Integer
-# https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def subtractProductAndSum(self, n: int) -> int:
+        product, total = 1, 0
+        while n:
+            n, digit = divmod(n, 10)
+            product *= digit
+            total += digit
+        return product - total

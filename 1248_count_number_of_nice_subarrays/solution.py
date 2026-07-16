@@ -1,6 +1,10 @@
-﻿# LeetCode 1248 - Count Number of Nice Subarrays
-# https://leetcode.com/problems/count-number-of-nice-subarrays/
+from collections import defaultdict
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numberOfSubarrays(self, nums: list[int], k: int) -> int:
+        frequency, odd, answer = defaultdict(int, {0: 1}), 0, 0
+        for x in nums:
+            odd += x & 1
+            answer += frequency[odd - k]
+            frequency[odd] += 1
+        return answer

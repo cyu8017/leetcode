@@ -1,6 +1,9 @@
-﻿# LeetCode 1287 - Element Appearing More Than 25% In Sorted Array
-# https://leetcode.com/problems/element-appearing-more-than-25-in-sorted-array/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        n = len(arr)
+        for value in (arr[n // 4], arr[n // 2], arr[3 * n // 4]):
+            if arr.count(value) > n // 4:
+                return value
+        return arr[0]

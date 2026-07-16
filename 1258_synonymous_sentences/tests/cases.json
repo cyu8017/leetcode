@@ -41,7 +41,10 @@
         ],
         "text": "I am happy today but was sad yesterday"
       },
-      "expected": "[\"I am happy today but was sad yesterday\",\"I am joy today but was sad yesterday\"]\n**Constraints:**\n- `0 <= synonyms.length <= 10`\n- `synonyms[i].length == 2`\n- `1 <= s_{i}.length,_{ }t_{i}.length <= 10`\n- `s_{i} != t_{i}`\n- `text` consists of at most `10` words.\n- All the pairs of `synonyms` are **unique**.\n- The words of `text` are separated by single spaces.\n---"
+      "expected": [
+        "I am happy today but was sad yesterday",
+        "I am joy today but was sad yesterday"
+      ]
     }
   ]
 }

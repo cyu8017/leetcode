@@ -1,6 +1,5 @@
-﻿# LeetCode 1247 - Minimum Swaps to Make Strings Equal
-# https://leetcode.com/problems/minimum-swaps-to-make-strings-equal/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        xy = sum(a == 'x' and b == 'y' for a, b in zip(s1, s2))
+        yx = sum(a == 'y' and b == 'x' for a, b in zip(s1, s2))
+        return -1 if (xy + yx) % 2 else xy // 2 + yx // 2 + 2 * (xy % 2)

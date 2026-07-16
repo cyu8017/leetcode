@@ -7014,6 +7014,606 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "1201_ugly_number_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1202_smallest_string_with_swaps",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1203_sort_items_by_groups_respecting_dependencies",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1204_last_person_to_fit_in_the_bus",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1205_monthly_transactions_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1206_design_skiplist",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1207_unique_number_of_occurrences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1208_get_equal_substrings_within_budget",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1209_remove_all_adjacent_duplicates_in_string_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1210_minimum_moves_to_reach_target_with_rotations",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1211_queries_quality_and_percentage",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1212_team_scores_in_football_tournament",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1213_intersection_of_three_sorted_arrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1214_two_sum_bsts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1215_stepping_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1216_valid_palindrome_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1217_minimum_cost_to_move_chips_to_the_same_position",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1218_longest_arithmetic_subsequence_of_given_difference",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1219_path_with_maximum_gold",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1220_count_vowels_permutation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1221_split_a_string_in_balanced_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1222_queens_that_can_attack_the_king",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1223_dice_roll_simulation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1224_maximum_equal_frequency",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1225_report_contiguous_dates",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1226_the_dining_philosophers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1227_airplane_seat_assignment_probability",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1228_missing_number_in_arithmetic_progression",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1229_meeting_scheduler",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1230_toss_strange_coins",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1231_divide_chocolate",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1232_check_if_it_is_a_straight_line",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1233_remove_sub_folders_from_the_filesystem",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1234_replace_the_substring_for_balanced_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1235_maximum_profit_in_job_scheduling",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1236_web_crawler",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1237_find_positive_integer_solution_for_a_given_equation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1238_circular_permutation_in_binary_representation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1239_maximum_length_of_a_concatenated_string_with_unique_characters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1240_tiling_a_rectangle_with_the_fewest_squares",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1241_number_of_comments_per_post",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1242_web_crawler_multithreaded",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1243_array_transformation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1244_design_a_leaderboard",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1245_tree_diameter",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1246_palindrome_removal",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1247_minimum_swaps_to_make_strings_equal",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1248_count_number_of_nice_subarrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1249_minimum_remove_to_make_valid_parentheses",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1250_check_if_it_is_a_good_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1251_average_selling_price",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1252_cells_with_odd_values_in_a_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1253_reconstruct_a_2_row_binary_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1254_number_of_closed_islands",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1255_maximum_score_words_formed_by_letters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1256_encode_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1257_smallest_common_region",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1258_synonymous_sentences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1259_handshakes_that_dont_cross",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1260_shift_2d_grid",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1261_find_elements_in_a_contaminated_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1262_greatest_sum_divisible_by_three",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1263_minimum_moves_to_move_a_box_to_their_target_location",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1264_page_recommendations",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1265_print_immutable_linked_list_in_reverse",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1266_minimum_time_visiting_all_points",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1267_count_servers_that_communicate",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1268_search_suggestions_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1269_number_of_ways_to_stay_in_the_same_place_after_some_steps",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1270_all_people_report_to_the_given_manager",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1271_hexspeak",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1272_remove_interval",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1273_delete_tree_nodes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1274_number_of_ships_in_a_rectangle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1275_find_winner_on_a_tic_tac_toe_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1276_number_of_burgers_with_no_waste_of_ingredients",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1277_count_square_submatrices_with_all_ones",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1278_palindrome_partitioning_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1279_traffic_light_controlled_intersection",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1280_students_and_examinations",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1281_subtract_the_product_and_sum_of_digits_of_an_integer",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1282_group_the_people_given_the_group_size_they_belong_to",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1283_find_the_smallest_divisor_given_a_threshold",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1284_minimum_number_of_flips_to_convert_binary_matrix_to_zero_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1285_find_the_start_and_end_number_of_continuous_ranges",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1286_iterator_for_combination",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1287_element_appearing_more_than_25_in_sorted_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1288_remove_covered_intervals",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1289_minimum_falling_path_sum_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1290_convert_binary_number_in_a_linked_list_to_integer",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1291_sequential_digits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1292_maximum_side_length_of_a_square_with_sum_less_than_or_equal_to_threshold",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1293_shortest_path_in_a_grid_with_obstacles_elimination",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1294_weather_type_in_each_country",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1295_find_numbers_with_even_number_of_digits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1296_divide_array_in_sets_of_k_consecutive_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1297_maximum_number_of_occurrences_of_a_substring",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1298_maximum_candies_you_can_get_from_boxes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1299_replace_elements_with_greatest_element_on_right_side",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1300_sum_of_mutated_array_closest_to_target",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

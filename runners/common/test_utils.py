@@ -774,6 +774,8 @@ def run_design_case(module: Any, case: dict[str, Any]) -> tuple[bool, list[Any],
                 call_args = [json_to_nested_list(call_args[0])]
             if operation == "CBTInserter" and call_args and isinstance(call_args[0], list):
                 call_args = [list_to_tree(call_args[0])]
+            if operation == "FindElements" and call_args and isinstance(call_args[0], list):
+                call_args = [list_to_tree(call_args[0])]
             instance = cls(*call_args) if call_args else cls()
             result = None
         else:
@@ -1039,6 +1041,204 @@ def run_fizz_buzz(module: Any, n: int) -> list[Any]:
     return results
 
 
+class MockHtmlParser:
+    def __init__(self, urls: list[str], edges: list[list[int]]):
+        self.graph: dict[str, list[str]] = {url: [] for url in urls}
+        for src, dst in edges:
+            self.graph[urls[src]].append(urls[dst])
+
+    def getUrls(self, url: str) -> list[str]:
+        return list(self.graph.get(url, []))
+
+
+class MockCustomFunction:
+    def __init__(self, function_id: int):
+        self.function_id = function_id
+
+    def f(self, x: int, y: int) -> int:
+        if self.function_id == 1:
+            return x + y
+        return x * y
+
+
+class MockImmutableListNode:
+    def __init__(self, val: int, next_node: "MockImmutableListNode | None" = None):
+        self.val = val
+        self._next = next_node
+        self._printed: list[int] | None = None
+
+    def printValue(self) -> None:
+        if self._printed is not None:
+            self._printed.append(self.val)
+
+    def getNext(self) -> "MockImmutableListNode | None":
+        return self._next
+
+
+def list_to_immutable_list(values: list[int], sink: list[int]) -> MockImmutableListNode | None:
+    head: MockImmutableListNode | None = None
+    for value in reversed(values):
+        head = MockImmutableListNode(value, head)
+    node = head
+    while node:
+        node._printed = sink
+        node = node._next
+    return head
+
+
+class MockSea:
+    def __init__(self, ships: list[list[int]]):
+        self.ships = {tuple(ship) for ship in ships}
+
+    def hasShips(self, topRight: list[int], bottomLeft: list[int]) -> bool:
+        tx, ty = topRight
+        bx, by = bottomLeft
+        return any(bx <= x <= tx and by <= y <= ty for x, y in self.ships)
+
+
+def run_dining_philosophers(module: Any, n: int) -> list[list[int]]:
+    dp = module.DiningPhilosophers()
+    events: list[list[int]] = []
+    lock = threading.Lock()
+
+    def make_callbacks(philosopher: int):
+        left = philosopher
+        right = (philosopher + 1) % 5
+
+        def pick_left() -> None:
+            with lock:
+                events.append([philosopher, 1, 1])
+
+        def pick_right() -> None:
+            with lock:
+                events.append([philosopher, 2, 1])
+
+        def eat() -> None:
+            with lock:
+                events.append([philosopher, 0, 3])
+
+        def put_left() -> None:
+            with lock:
+                events.append([philosopher, 1, 2])
+
+        def put_right() -> None:
+            with lock:
+                events.append([philosopher, 2, 2])
+
+        return pick_left, pick_right, eat, put_left, put_right
+
+    for _ in range(n):
+        threads = []
+        for philosopher in range(5):
+            callbacks = make_callbacks(philosopher)
+            threads.append(
+                threading.Thread(
+                    target=dp.wantsToEat,
+                    args=(philosopher, *callbacks),
+                )
+            )
+        for thread in threads:
+            thread.start()
+        for thread in threads:
+            thread.join(timeout=5)
+    return events
+
+
+def is_valid_dining_events(events: list[list[int]], n: int) -> bool:
+    if len(events) != 25 * n:
+        return False
+    eats = [0] * 5
+    for philosopher, fork, action in events:
+        if philosopher < 0 or philosopher > 4:
+            return False
+        if action == 3:
+            eats[philosopher] += 1
+        elif fork not in (1, 2) or action not in (1, 2):
+            return False
+    return eats == [n] * 5
+
+
+def run_traffic_light(module: Any, cars: list[int], directions: list[int], arrival_times: list[int]) -> list[str]:
+    light = module.TrafficLight()
+    messages: list[str] = []
+    # Process in arrival order; for equal times, keep input order.
+    order = sorted(range(len(cars)), key=lambda i: (arrival_times[i], i))
+    for idx in order:
+        car_id = cars[idx]
+        direction = directions[idx]
+        road_id = 1 if direction in (1, 2) else 2
+        road_name = "A" if road_id == 1 else "B"
+
+        def turn_green(rid=road_id, name=road_name) -> None:
+            messages.append(f"Traffic Light On Road {name} Is Green")
+
+        def cross_car(cid=car_id, name=road_name, direction=direction) -> None:
+            messages.append(f"Car {cid} Has Passed Road {name} In Direction {direction}")
+
+        light.carArrived(car_id, road_id, direction, turn_green, cross_car)
+    return messages
+
+
+def is_valid_sort_items(order: list[int], n: int, group: list[int], before_items: list[list[int]]) -> bool:
+    if not order:
+        return False
+    if sorted(order) != list(range(n)):
+        return False
+    position = {item: i for i, item in enumerate(order)}
+    for item, befores in enumerate(before_items):
+        for pre in befores:
+            if position[pre] >= position[item]:
+                return False
+    # Items in the same real group must be contiguous.
+    seen_groups: list[int] = []
+    current = None
+    active: set[int] = set()
+    for item in order:
+        g = group[item]
+        if g == -1:
+            continue
+        if g != current:
+            if g in active:
+                return False
+            active.add(g)
+            current = g
+    return True
+
+
+def is_valid_gray_code(order: list[int], n: int, start: int) -> bool:
+    if sorted(order) != list(range(1 << n)):
+        return False
+    if order[0] != start:
+        return False
+    for i in range(len(order)):
+        a = order[i]
+        b = order[(i + 1) % len(order)]
+        if bin(a ^ b).count("1") != 1:
+            return False
+    return True
+
+
+def is_valid_traffic_light(messages: list[str], cars: list[int], directions: list[int]) -> bool:
+    expected_pass = set()
+    for car, direction in zip(cars, directions):
+        road = "A" if direction in (1, 2) else "B"
+        expected_pass.add(f"Car {car} Has Passed Road {road} In Direction {direction}")
+    green = "A"
+    seen_pass = set()
+    for msg in messages:
+        if msg.startswith("Traffic Light On Road"):
+            green = msg.split()[4]
+        elif msg.startswith("Car "):
+            parts = msg.split()
+            road = parts[5]
+            if road != green:
+                return False
+            seen_pass.add(msg)
+        else:
+            return False
+    return seen_pass == expected_pass
+
+
 def is_valid_max_depth_split(seq: str, bits: list[int]) -> bool:
     if len(bits) != len(seq):
         return False
@@ -1254,6 +1454,36 @@ def run_cases(
             actual = run_h2o(module, args["water"])
         elif module is not None and config.get("class") == "FizzBuzz" and "n" in args:
             actual = run_fizz_buzz(module, args["n"])
+        elif module is not None and config.get("class") == "DiningPhilosophers" and "n" in args:
+            actual = run_dining_philosophers(module, args["n"])
+        elif (
+            module is not None
+            and config.get("class") == "TrafficLight"
+            and "cars" in args
+            and "directions" in args
+            and "arrivalTimes" in args
+        ):
+            actual = run_traffic_light(
+                module, args["cars"], args["directions"], args["arrivalTimes"]
+            )
+        elif args and method_name == "crawl" and "urls" in args and "edges" in args:
+            method = getattr(solution, method_name)
+            parser = MockHtmlParser(args["urls"], args["edges"])
+            actual = method(args["startUrl"], parser)
+        elif args and method_name == "findSolution" and "function_id" in args:
+            method = getattr(solution, method_name)
+            custom = MockCustomFunction(args["function_id"])
+            actual = method(custom, args["z"])
+        elif args and method_name == "countShips" and "ans" in args:
+            method = getattr(solution, method_name)
+            sea = MockSea(args["ans"])
+            actual = method(sea, args["topRight"], args["bottomLeft"])
+        elif args and method_name == "printLinkedListInReverse" and "head" in args:
+            method = getattr(solution, method_name)
+            printed: list[int] = []
+            head = list_to_immutable_list(args["head"], printed)
+            method(head)
+            actual = printed
         elif (
             args
             and config.get("class") == "Codec"
@@ -1348,6 +1578,18 @@ def run_cases(
             ok = start == sorted(start)
         elif config.get("class") == "H2O" and isinstance(actual, str):
             ok = is_valid_h2o_output(actual, args.get("water", ""))
+        elif config.get("class") == "DiningPhilosophers" and isinstance(actual, list):
+            ok = is_valid_dining_events(actual, args.get("n", 1))
+        elif config.get("class") == "TrafficLight" and isinstance(actual, list):
+            ok = is_valid_traffic_light(actual, args.get("cars", []), args.get("directions", []))
+        elif method_name == "crawl" and isinstance(actual, list) and isinstance(expected, list):
+            ok = sorted(actual) == sorted(expected)
+        elif method_name == "sortItems" and isinstance(actual, list):
+            ok = is_valid_sort_items(
+                actual, args.get("n", 0), args.get("group", []), args.get("beforeItems", [])
+            ) if expected else actual == expected
+        elif method_name == "circularPermutation" and isinstance(actual, list):
+            ok = is_valid_gray_code(actual, args.get("n", 0), args.get("start", 0))
         elif method_name == "maxDepthAfterSplit" and isinstance(actual, list):
             ok = is_valid_max_depth_split(args.get("seq", ""), actual)
         elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:

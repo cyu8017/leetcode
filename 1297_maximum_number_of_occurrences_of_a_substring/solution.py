@@ -1,6 +1,7 @@
-﻿# LeetCode 1297 - Maximum Number of Occurrences of a Substring
-# https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:
+        counts = Counter(s[i:i + minSize] for i in range(len(s) - minSize + 1)
+                         if len(set(s[i:i + minSize])) <= maxLetters)
+        return max(counts.values(), default=0)
