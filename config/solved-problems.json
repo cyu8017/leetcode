@@ -3600,6 +3600,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0601_human_traffic_of_stadium",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0602_friend_requests_ii_who_has_the_most_friends",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0603_consecutive_available_seats",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0604_design_compressed_string_iterator",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0605_can_place_flowers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0606_construct_string_from_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0607_sales_person",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0608_tree_node",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0609_find_duplicate_file_in_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0610_triangle_judgement",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
