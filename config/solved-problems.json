@@ -4440,6 +4440,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0741_cherry_pickup",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0742_closest_leaf_in_a_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0743_network_delay_time",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0744_find_smallest_letter_greater_than_target",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0745_prefix_and_suffix_search",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0746_min_cost_climbing_stairs",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0747_largest_number_at_least_twice_of_others",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0748_shortest_completing_word",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0749_contain_virus",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0750_number_of_corner_rectangles",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
