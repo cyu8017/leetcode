@@ -4020,6 +4020,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0671_second_minimum_node_in_a_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0672_bulb_switcher_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0673_number_of_longest_increasing_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0674_longest_continuous_increasing_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0675_cut_off_trees_for_golf_event",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0676_implement_magic_dictionary",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0677_map_sum_pairs",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0678_valid_parenthesis_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0679_24_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0680_valid_palindrome_ii",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
