@@ -1,6 +1,5 @@
-﻿# LeetCode 1527 - Patients With a Condition
-# https://leetcode.com/problems/patients-with-a-condition/
+# LeetCode 1527
 
-class Solution:
-    def solve(self) -> None:
-        pass
+QUERY = """SELECT patient_id, patient_name, conditions
+FROM Patients
+WHERE CONCAT(' ', conditions, ' ') LIKE '% DIAB1%'"""

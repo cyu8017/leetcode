@@ -1,6 +1,10 @@
-﻿# LeetCode 1518 - Water Bottles
-# https://leetcode.com/problems/water-bottles/
+# LeetCode 1518
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numWaterBottles(self, numBottles, numExchange):
+        total = numBottles
+        while numBottles >= numExchange:
+            new, remainder = divmod(numBottles, numExchange)
+            total += new
+            numBottles = new + remainder
+        return total

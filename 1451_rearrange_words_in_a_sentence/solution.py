@@ -1,6 +1,7 @@
-﻿# LeetCode 1451 - Rearrange Words in a Sentence
-# https://leetcode.com/problems/rearrange-words-in-a-sentence/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def arrangeWords(self, text: str) -> str:
+        words = text.lower().split()
+        words.sort(key=len)
+        return " ".join(words).capitalize()

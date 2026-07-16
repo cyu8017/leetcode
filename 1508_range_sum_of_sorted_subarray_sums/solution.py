@@ -1,6 +1,12 @@
-﻿# LeetCode 1508 - Range Sum of Sorted Subarray Sums
-# https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
+# LeetCode 1508
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def rangeSum(self, nums, n, left, right):
+        values = []
+        for i in range(n):
+            total = 0
+            for j in range(i, n):
+                total += nums[j]
+                values.append(total)
+        values.sort()
+        return sum(values[left - 1:right]) % 1000000007

@@ -1,6 +1,5 @@
-﻿# LeetCode 1503 - Last Moment Before All Ants Fall Out of a Plank
-# https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/
+# LeetCode 1503
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getLastMoment(self, n, left, right):
+        return max(max(left, default=0), n - min(right, default=n))

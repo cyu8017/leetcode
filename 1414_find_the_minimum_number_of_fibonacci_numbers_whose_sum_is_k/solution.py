@@ -1,6 +1,11 @@
-﻿# LeetCode 1414 - Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
-# https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findMinFibonacciNumbers(self, k):
+        fib = [1, 1]
+        while fib[-1] < k:
+            fib.append(fib[-1] + fib[-2])
+        answer = 0
+        for value in reversed(fib):
+            if value <= k:
+                k -= value
+                answer += 1
+        return answer

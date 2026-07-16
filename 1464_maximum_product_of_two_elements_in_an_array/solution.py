@@ -1,6 +1,6 @@
-﻿# LeetCode 1464 - Maximum Product of Two Elements in an Array
-# https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxProduct(self, nums: List[int]) -> int:
+        a, b = sorted(nums)[-2:]
+        return (a - 1) * (b - 1)

@@ -1,13 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "head",
-    "m",
-    "n"
-  ],
+  "method": "deleteNodes",
+  "paramOrder": ["head", "m", "n"],
   "types": {
-    "head": "listnode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+    "head": "listnode",
+    "return": "listnode"
+  }
 }

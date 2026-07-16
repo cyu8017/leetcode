@@ -1,6 +1,8 @@
-﻿# LeetCode 1528 - Shuffle String
-# https://leetcode.com/problems/shuffle-string/
+# LeetCode 1528
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def restoreString(self, s, indices):
+        answer = [""] * len(s)
+        for ch, index in zip(s, indices):
+            answer[index] = ch
+        return "".join(answer)

@@ -1,6 +1,8 @@
-﻿# LeetCode 1509 - Minimum Difference Between Largest and Smallest Value in Three Moves
-# https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
+# LeetCode 1509
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minDifference(self, nums):
+        if len(nums) <= 4:
+            return 0
+        nums.sort()
+        return min(nums[-4+i] - nums[i] for i in range(4))

@@ -4,19 +4,57 @@
       "args": {
         "s": "3*4-2*5"
       },
-      "expected": "[-,*,*,3,4,2,5]"
+      "expected": [
+        "-",
+        "*",
+        "*",
+        "3",
+        "4",
+        "2",
+        "5"
+      ]
     },
     {
       "args": {
         "s": "2-3/(5*2)+1"
       },
-      "expected": "[+,-,1,2,/,null,null,null,null,3,*,null,null,5,2]"
+      "expected": [
+        "+",
+        "-",
+        "1",
+        "2",
+        "/",
+        null,
+        null,
+        null,
+        null,
+        "3",
+        "*",
+        null,
+        null,
+        "5",
+        "2"
+      ]
     },
     {
       "args": {
         "s": "1+2+3+4+5"
       },
-      "expected": "[+,+,5,+,4,null,null,+,3,null,null,1,2]"
+      "expected": [
+        "+",
+        "+",
+        "5",
+        "+",
+        "4",
+        null,
+        null,
+        "+",
+        "3",
+        null,
+        null,
+        "1",
+        "2"
+      ]
     }
   ]
 }

@@ -1,6 +1,7 @@
-﻿# LeetCode 1413 - Minimum Value to Get Positive Step by Step Sum
-# https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minStartValue(self, nums):
+        prefix = lowest = 0
+        for value in nums:
+            prefix += value
+            lowest = min(lowest, prefix)
+        return 1 - lowest

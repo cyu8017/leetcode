@@ -1,6 +1,13 @@
-﻿# LeetCode 1430 - Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree
-# https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val, self.left, self.right = val, left, right
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def isValidSequence(self, root, arr):
+        def visit(node, index):
+            if not node or index == len(arr) or node.val != arr[index]:
+                return False
+            if not node.left and not node.right:
+                return index == len(arr) - 1
+            return visit(node.left, index + 1) or visit(node.right, index + 1)
+        return visit(root, 0)

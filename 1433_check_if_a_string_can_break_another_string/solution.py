@@ -1,6 +1,4 @@
-﻿# LeetCode 1433 - Check If a String Can Break Another String
-# https://leetcode.com/problems/check-if-a-string-can-break-another-string/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkIfCanBreak(self, s1, s2):
+        a, b = sorted(s1), sorted(s2)
+        return all(x >= y for x, y in zip(a, b)) or all(x <= y for x, y in zip(a, b))

@@ -1,6 +1,24 @@
-﻿# LeetCode 1586 - Binary Search Tree Iterator II
-# https://leetcode.com/problems/binary-search-tree-iterator-ii/
+from typing import List
 
-class Solution:
-    def solve(self) -> None:
-        pass
+class BSTIterator:
+    def __init__(self, root):
+        self.values = []
+        stack = []
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            self.values.append(root.val)
+            root = root.right
+        self.index = -1
+    def hasNext(self) -> bool:
+        return self.index + 1 < len(self.values)
+    def next(self) -> int:
+        self.index += 1
+        return self.values[self.index]
+    def hasPrev(self) -> bool:
+        return self.index > 0
+    def prev(self) -> int:
+        self.index -= 1
+        return self.values[self.index]

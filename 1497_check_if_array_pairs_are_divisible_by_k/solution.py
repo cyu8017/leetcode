@@ -1,6 +1,10 @@
-﻿# LeetCode 1497 - Check If Array Pairs Are Divisible by k
-# https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/
+from typing import List, Optional
+
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canArrange(self, arr: List[int], k: int) -> bool:
+        count = Counter(x % k for x in arr)
+        if count[0] % 2:
+            return False
+        return all(count[r] == count[k-r] for r in range(1, k))

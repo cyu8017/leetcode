@@ -1,6 +1,11 @@
-﻿# LeetCode 1493 - Longest Subarray of 1's After Deleting One Element
-# https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def longestSubarray(self, nums: List[int]) -> int:
+        left = zeros = ans = 0
+        for right, x in enumerate(nums):
+            zeros += x == 0
+            while zeros > 1:
+                zeros -= nums[left] == 0; left += 1
+            ans = max(ans, right - left)
+        return ans

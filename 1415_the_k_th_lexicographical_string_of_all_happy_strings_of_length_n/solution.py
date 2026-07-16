@@ -1,6 +1,12 @@
-﻿# LeetCode 1415 - The k-th Lexicographical String of All Happy Strings of Length n
-# https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getHappyString(self, n, k):
+        answer = []
+        def build(path):
+            if len(path) == n:
+                answer.append(path)
+                return
+            for char in "abc":
+                if not path or path[-1] != char:
+                    build(path + char)
+        build("")
+        return answer[k - 1] if k <= len(answer) else ""

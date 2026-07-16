@@ -1,6 +1,8 @@
-﻿# LeetCode 1486 - XOR Operation in an Array
-# https://leetcode.com/problems/xor-operation-in-an-array/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def xorOperation(self, n: int, start: int) -> int:
+        ans = 0
+        for i in range(n):
+            ans ^= start + 2*i
+        return ans

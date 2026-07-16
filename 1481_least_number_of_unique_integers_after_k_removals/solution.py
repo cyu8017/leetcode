@@ -1,6 +1,13 @@
-﻿# LeetCode 1481 - Least Number of Unique Integers after K Removals
-# https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/
+from typing import List, Optional
+
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
+        counts = sorted(Counter(arr).values())
+        removed = 0
+        for count in counts:
+            if k < count:
+                break
+            k -= count; removed += 1
+        return len(counts) - removed

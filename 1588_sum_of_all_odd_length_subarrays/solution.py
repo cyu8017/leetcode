@@ -1,6 +1,6 @@
-﻿# LeetCode 1588 - Sum of All Odd Length Subarrays
-# https://leetcode.com/problems/sum-of-all-odd-length-subarrays/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def sumOddLengthSubarrays(self, arr: List[int]) -> int:
+        n = len(arr)
+        return sum(x * (((i + 1) * (n - i) + 1) // 2) for i, x in enumerate(arr))

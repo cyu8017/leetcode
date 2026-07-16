@@ -1,6 +1,7 @@
-﻿# LeetCode 1460 - Make Two Arrays Equal by Reversing Subarrays
-# https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/
+from typing import List, Optional
+
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        return Counter(target) == Counter(arr)

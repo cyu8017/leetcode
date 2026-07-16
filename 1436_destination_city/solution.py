@@ -1,6 +1,4 @@
-﻿# LeetCode 1436 - Destination City
-# https://leetcode.com/problems/destination-city/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def destCity(self, paths):
+        starts = {start for start, _ in paths}
+        return next(end for _, end in paths if end not in starts)

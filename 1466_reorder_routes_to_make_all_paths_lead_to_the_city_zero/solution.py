@@ -1,6 +1,15 @@
-﻿# LeetCode 1466 - Reorder Routes to Make All Paths Lead to the City Zero
-# https://leetcode.com/problems/reorder-routes-to-make-all-paths-lead-to-the-city-zero/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minReorder(self, n: int, connections: List[List[int]]) -> int:
+        graph = [[] for _ in range(n)]
+        for a, b in connections:
+            graph[a].append((b, 1))
+            graph[b].append((a, 0))
+        ans, stack, seen = 0, [0], {0}
+        while stack:
+            node = stack.pop()
+            for nei, cost in graph[node]:
+                if nei not in seen:
+                    seen.add(nei); stack.append(nei); ans += cost
+        return ans

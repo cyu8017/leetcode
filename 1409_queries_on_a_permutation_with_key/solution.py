@@ -1,6 +1,9 @@
-﻿# LeetCode 1409 - Queries on a Permutation With Key
-# https://leetcode.com/problems/queries-on-a-permutation-with-key/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def processQueries(self, queries, m):
+        values = list(range(1, m + 1))
+        answer = []
+        for query in queries:
+            index = values.index(query)
+            answer.append(index)
+            values.insert(0, values.pop(index))
+        return answer

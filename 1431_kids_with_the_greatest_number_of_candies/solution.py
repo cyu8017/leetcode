@@ -1,6 +1,4 @@
-﻿# LeetCode 1431 - Kids With the Greatest Number of Candies
-# https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def kidsWithCandies(self, candies, extraCandies):
+        maximum = max(candies)
+        return [value + extraCandies >= maximum for value in candies]

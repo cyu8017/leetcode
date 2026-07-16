@@ -1,11 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "root"
-  ],
+  "method": "copyRandomBinaryTree",
+  "paramOrder": ["root"],
   "types": {
-    "root": "treenode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+    "root": "randombinarynode",
+    "return": "randombinarynode"
+  }
 }

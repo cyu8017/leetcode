@@ -1,6 +1,10 @@
-﻿# LeetCode 1566 - Detect Pattern of Length M Repeated K or More Times
-# https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def containsPattern(self, arr: List[int], m: int, k: int) -> bool:
+        run = 0
+        for i in range(m, len(arr)):
+            run = run + 1 if arr[i] == arr[i - m] else 0
+            if run >= m * (k - 1):
+                return True
+        return False

@@ -1,6 +1,17 @@
-﻿# LeetCode 1472 - Design Browser History
-# https://leetcode.com/problems/design-browser-history/
+class BrowserHistory:
+    def __init__(self, homepage: str):
+        self.history = [homepage]
+        self.index = 0
 
-class Solution:
-    def solve(self) -> None:
-        pass
+    def visit(self, url: str) -> None:
+        del self.history[self.index + 1:]
+        self.history.append(url)
+        self.index += 1
+
+    def back(self, steps: int) -> str:
+        self.index = max(0, self.index - steps)
+        return self.history[self.index]
+
+    def forward(self, steps: int) -> str:
+        self.index = min(len(self.history) - 1, self.index + steps)
+        return self.history[self.index]

@@ -2,7 +2,7 @@
   "cases": [
     {
       "args": {
-        "mat": [
+        "binaryMatrix": [
           [
             0,
             0
@@ -17,7 +17,7 @@
     },
     {
       "args": {
-        "mat": [
+        "binaryMatrix": [
           [
             0,
             0
@@ -32,7 +32,7 @@
     },
     {
       "args": {
-        "mat": [
+        "binaryMatrix": [
           [
             0,
             0

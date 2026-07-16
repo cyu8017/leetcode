@@ -1,6 +1,10 @@
-﻿# LeetCode 1442 - Count Triplets That Can Form Two Arrays of Equal XOR
-# https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countTriplets(self, arr):
+        answer = 0
+        for i in range(len(arr)):
+            value = 0
+            for k in range(i, len(arr)):
+                value ^= arr[k]
+                if value == 0:
+                    answer += k - i
+        return answer

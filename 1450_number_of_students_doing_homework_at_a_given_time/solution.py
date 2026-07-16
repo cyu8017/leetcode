@@ -1,6 +1,3 @@
-﻿# LeetCode 1450 - Number of Students Doing Homework at a Given Time
-# https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def busyStudent(self, startTime, endTime, queryTime):
+        return sum(start <= queryTime <= end for start, end in zip(startTime, endTime))

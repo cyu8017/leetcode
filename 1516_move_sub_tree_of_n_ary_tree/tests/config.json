@@ -1,13 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "root",
-    "p",
-    "q"
-  ],
+  "method": "moveSubTree",
+  "paramOrder": ["root", "p", "q"],
   "types": {
-    "root": "treenode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+    "root": "narynode",
+    "return": "narynode"
+  }
 }

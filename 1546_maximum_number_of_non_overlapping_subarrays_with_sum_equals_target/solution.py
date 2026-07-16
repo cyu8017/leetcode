@@ -1,6 +1,15 @@
-﻿# LeetCode 1546 - Maximum Number of Non-Overlapping Subarrays With Sum Equals Target
-# https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
+# LeetCode 1546
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxNonOverlapping(self, nums, target):
+        seen = {0}
+        prefix = answer = 0
+        for value in nums:
+            prefix += value
+            if prefix - target in seen:
+                answer += 1
+                prefix = 0
+                seen = {0}
+            else:
+                seen.add(prefix)
+        return answer

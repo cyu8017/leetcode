@@ -1,6 +1,11 @@
-﻿# LeetCode 1423 - Maximum Points You Can Obtain from Cards
-# https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxScore(self, cardPoints, k):
+        if k == len(cardPoints):
+            return sum(cardPoints)
+        window = len(cardPoints) - k
+        current = sum(cardPoints[:window])
+        smallest = current
+        for i in range(window, len(cardPoints)):
+            current += cardPoints[i] - cardPoints[i - window]
+            smallest = min(smallest, current)
+        return sum(cardPoints) - smallest

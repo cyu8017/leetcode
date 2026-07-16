@@ -1,6 +1,4 @@
-﻿# LeetCode 1408 - String Matching in an Array
-# https://leetcode.com/problems/string-matching-in-an-array/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def stringMatching(self, words):
+        return [word for i, word in enumerate(words)
+                if any(i != j and word in other for j, other in enumerate(words))]

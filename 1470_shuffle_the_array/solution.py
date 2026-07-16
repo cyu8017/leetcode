@@ -1,6 +1,5 @@
-﻿# LeetCode 1470 - Shuffle the Array
-# https://leetcode.com/problems/shuffle-the-array/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def shuffle(self, nums: List[int], n: int) -> List[int]:
+        return [v for pair in zip(nums[:n], nums[n:]) for v in pair]

@@ -1,6 +1,10 @@
-﻿# LeetCode 1475 - Final Prices With a Special Discount in a Shop
-# https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        ans, stack = prices[:], []
+        for i, price in enumerate(prices):
+            while stack and prices[stack[-1]] >= price:
+                j = stack.pop(); ans[j] -= price
+            stack.append(i)
+        return ans

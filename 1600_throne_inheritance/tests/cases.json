@@ -42,15 +42,11 @@
           "bob",
           "asha"
         ],
-        [
-          null
-        ],
+        [],
         [
           "bob"
         ],
-        [
-          null
-        ]
+        []
       ],
       "expected": [
         null,

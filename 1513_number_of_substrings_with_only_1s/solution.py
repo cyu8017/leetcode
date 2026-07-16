@@ -1,6 +1,9 @@
-﻿# LeetCode 1513 - Number of Substrings With Only 1s
-# https://leetcode.com/problems/number-of-substrings-with-only-1s/
+# LeetCode 1513
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numSub(self, s):
+        ans = run = 0
+        for ch in s:
+            run = run + 1 if ch == "1" else 0
+            ans += run
+        return ans % 1000000007

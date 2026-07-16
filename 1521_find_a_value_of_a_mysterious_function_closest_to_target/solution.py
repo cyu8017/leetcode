@@ -1,6 +1,10 @@
-﻿# LeetCode 1521 - Find a Value of a Mysterious Function Closest to Target
-# https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
+# LeetCode 1521
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def closestToTarget(self, arr, target):
+        answer = float("inf")
+        current = set()
+        for value in arr:
+            current = {value} | {value & previous for previous in current}
+            answer = min(answer, min(abs(candidate - target) for candidate in current))
+        return answer

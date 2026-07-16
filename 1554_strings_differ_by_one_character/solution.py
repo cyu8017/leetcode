@@ -1,6 +1,12 @@
-﻿# LeetCode 1554 - Strings Differ by One Character
-# https://leetcode.com/problems/strings-differ-by-one-character/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def differByOne(self, dict: List[str]) -> bool:
+        seen = set()
+        for word in dict:
+            for i in range(len(word)):
+                pattern = word[:i] + "*" + word[i + 1:]
+                if pattern in seen:
+                    return True
+                seen.add(pattern)
+        return False

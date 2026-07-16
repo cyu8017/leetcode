@@ -1,6 +1,8 @@
-﻿# LeetCode 1465 - Maximum Area of a Piece of Cake After Horizontal and Vertical Cuts
-# https://leetcode.com/problems/maximum-area-of-a-piece-of-cake-after-horizontal-and-vertical-cuts/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxArea(self, h: int, w: int, horizontalCuts: List[int],
+                verticalCuts: List[int]) -> int:
+        hs = sorted([0, h] + horizontalCuts)
+        vs = sorted([0, w] + verticalCuts)
+        return max(b-a for a, b in zip(hs, hs[1:])) * max(b-a for a, b in zip(vs, vs[1:])) % 1_000_000_007

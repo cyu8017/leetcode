@@ -1,6 +1,8 @@
-﻿# LeetCode 1471 - The k Strongest Values in an Array
-# https://leetcode.com/problems/the-k-strongest-values-in-an-array/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getStrongest(self, arr: List[int], k: int) -> List[int]:
+        arr.sort()
+        median = arr[(len(arr)-1)//2]
+        arr.sort(key=lambda x: (abs(x-median), x), reverse=True)
+        return arr[:k]

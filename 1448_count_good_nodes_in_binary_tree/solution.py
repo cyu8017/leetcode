@@ -1,6 +1,13 @@
-﻿# LeetCode 1448 - Count Good Nodes in Binary Tree
-# https://leetcode.com/problems/count-good-nodes-in-binary-tree/
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val, self.left, self.right = val, left, right
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def goodNodes(self, root):
+        def visit(node, maximum):
+            if not node:
+                return 0
+            good = node.val >= maximum
+            maximum = max(maximum, node.val)
+            return good + visit(node.left, maximum) + visit(node.right, maximum)
+        return visit(root, float("-inf"))

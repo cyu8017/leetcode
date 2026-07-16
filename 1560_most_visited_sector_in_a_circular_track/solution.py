@@ -1,6 +1,6 @@
-﻿# LeetCode 1560 - Most Visited Sector in  a Circular Track
-# https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def mostVisited(self, n: int, rounds: List[int]) -> List[int]:
+        start, end = rounds[0], rounds[-1]
+        return list(range(start, end + 1)) if start <= end else list(range(1, end + 1)) + list(range(start, n + 1))

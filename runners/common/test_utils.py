@@ -594,7 +594,95 @@ def randomlist_to_list(head: RandomListNode | None) -> list[Any]:
     return result
 
 
+class RandomBinaryNode:
+    """Binary tree node with a random pointer (problem 1485)."""
+
+    def __init__(
+        self,
+        val: int = 0,
+        left: "RandomBinaryNode | None" = None,
+        right: "RandomBinaryNode | None" = None,
+        random: "RandomBinaryNode | None" = None,
+    ):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.random = random
+
+
+def list_to_random_binary(data: list[Any] | None) -> RandomBinaryNode | None:
+    if not data:
+        return None
+    nodes: list[RandomBinaryNode | None] = [
+        None if item is None else RandomBinaryNode(item[0]) for item in data
+    ]
+    for i, item in enumerate(data):
+        if item is not None and item[1] is not None:
+            nodes[i].random = nodes[item[1]]
+    from collections import deque
+
+    root = nodes[0]
+    if root is None:
+        return None
+    queue: deque[RandomBinaryNode] = deque([root])
+    i = 1
+    while queue and i < len(nodes):
+        current = queue.popleft()
+        if i < len(nodes):
+            current.left = nodes[i]
+            if nodes[i] is not None:
+                queue.append(nodes[i])
+            i += 1
+        if i < len(nodes):
+            current.right = nodes[i]
+            if nodes[i] is not None:
+                queue.append(nodes[i])
+            i += 1
+    return root
+
+
+def random_binary_to_list(root: RandomBinaryNode | None) -> list[Any]:
+    if root is None:
+        return []
+    from collections import deque
+
+    nodes: list[RandomBinaryNode | None] = []
+    queue: deque[RandomBinaryNode | None] = deque([root])
+    while queue:
+        node = queue.popleft()
+        nodes.append(node)
+        if node is not None:
+            queue.append(node.left)
+            queue.append(node.right)
+    while nodes and nodes[-1] is None:
+        nodes.pop()
+    index = {id(node): i for i, node in enumerate(nodes) if node is not None}
+    result: list[Any] = []
+    for node in nodes:
+        if node is None:
+            result.append(None)
+        else:
+            random_index = index[id(node.random)] if node.random is not None else None
+            result.append([node.val, random_index])
+    return result
+
+
+class BinaryMatrix:
+    """Local adapter for LeetCode's read-only BinaryMatrix API."""
+
+    def __init__(self, mat: list[list[int]]):
+        self._mat = mat
+
+    def get(self, row: int, col: int) -> int:
+        return self._mat[row][col]
+
+    def dimensions(self) -> list[int]:
+        return [len(self._mat), len(self._mat[0]) if self._mat else 0]
+
+
 def convert_arg(value: Any, type_name: str | None) -> Any:
+    if type_name == "binarymatrix":
+        return BinaryMatrix(value)
     if type_name == "listnode":
         return list_to_listnode(value)
     if type_name == "listnode[]":
@@ -607,6 +695,8 @@ def convert_arg(value: Any, type_name: str | None) -> Any:
         return list_to_graph(value)
     if type_name == "randomlistnode":
         return list_to_randomlist(value)
+    if type_name == "randombinarynode":
+        return list_to_random_binary(value)
     if type_name == "nestedinteger[]":
         return json_to_nested_list(value)
     if type_name == "narynode":
@@ -686,6 +776,8 @@ def convert_result(value: Any, type_name: str | None) -> Any:
         return graph_to_list(value)
     if type_name == "randomlistnode":
         return randomlist_to_list(value)
+    if type_name == "randombinarynode":
+        return random_binary_to_list(value)
     if type_name == "nestedinteger":
         return nested_integer_to_value(value)
     if type_name == "narynode":
@@ -1363,6 +1455,29 @@ def run_cases(
         elif args and "root" in args and method_name == "levelOrder" and arg_types.get("root") == "narynode":
             method = getattr(solution, method_name)
             actual = method(list_to_nary(args["root"]))
+        elif args and method_name == "findRoot" and "tree" in args:
+            method = getattr(solution, method_name)
+            root = list_to_nary(args["tree"])
+            nodes: list[Any] = []
+            stack = [root] if root is not None else []
+            while stack:
+                node = stack.pop()
+                nodes.append(node)
+                stack.extend(node.children)
+            actual = nary_to_list(method(nodes))
+        elif args and method_name == "moveSubTree" and "root" in args:
+            method = getattr(solution, method_name)
+            root = list_to_nary(args["root"])
+            by_val: dict[Any, Any] = {}
+            stack = [root] if root is not None else []
+            while stack:
+                node = stack.pop()
+                by_val[node.val] = node
+                stack.extend(node.children)
+            actual = nary_to_list(method(root, by_val[args["p"]], by_val[args["q"]]))
+        elif args and method_name == "diameter" and "root" in args and arg_types.get("root") == "narynode":
+            method = getattr(solution, method_name)
+            actual = method(list_to_nary(args["root"]))
         elif args and "head" in args and method_name == "flatten" and arg_types.get("head") == "multilevelnode":
             method = getattr(solution, method_name)
             head = list_to_multilevel(args["head"])
@@ -1582,8 +1697,16 @@ def run_cases(
             ok = is_valid_dining_events(actual, args.get("n", 1))
         elif config.get("class") == "TrafficLight" and isinstance(actual, list):
             ok = is_valid_traffic_light(actual, args.get("cars", []), args.get("directions", []))
-        elif method_name == "crawl" and isinstance(actual, list) and isinstance(expected, list):
+        elif method_name == "getLonelyNodes" and isinstance(actual, list) and isinstance(expected, list):
             ok = sorted(actual) == sorted(expected)
+        elif method_name == "findCriticalAndPseudoCriticalEdges" and isinstance(actual, list):
+            ok = (
+                isinstance(expected, list)
+                and len(actual) == 2
+                and len(expected) == 2
+                and sorted(actual[0]) == sorted(expected[0])
+                and sorted(actual[1]) == sorted(expected[1])
+            )
         elif method_name == "sortItems" and isinstance(actual, list):
             ok = is_valid_sort_items(
                 actual, args.get("n", 0), args.get("group", []), args.get("beforeItems", [])

@@ -1,6 +1,5 @@
-﻿# LeetCode 1529 - Minimum Suffix Flips
-# https://leetcode.com/problems/minimum-suffix-flips/
+# LeetCode 1529
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minFlips(self, target):
+        return sum(a != b for a, b in zip("0" + target, target))

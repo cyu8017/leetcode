@@ -1,6 +1,10 @@
-﻿# LeetCode 1592 - Rearrange Spaces Between Words
-# https://leetcode.com/problems/rearrange-spaces-between-words/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def reorderSpaces(self, text: str) -> str:
+        words = text.split()
+        spaces = text.count(" ")
+        if len(words) == 1:
+            return words[0] + " " * spaces
+        between, trailing = divmod(spaces, len(words) - 1)
+        return (" " * between).join(words) + " " * trailing

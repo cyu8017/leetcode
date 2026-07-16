@@ -1,6 +1,7 @@
-﻿# LeetCode 1452 - People Whose List of Favorite Companies Is Not a Subset of Another List
-# https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/
+from typing import List, Optional
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def peopleIndexes(self, favoriteCompanies: List[List[str]]) -> List[int]:
+        sets = [set(x) for x in favoriteCompanies]
+        return [i for i, s in enumerate(sets)
+                if not any(i != j and s <= t for j, t in enumerate(sets))]

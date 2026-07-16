@@ -1,6 +1,5 @@
-﻿# LeetCode 1526 - Minimum Number of Increments on Subarrays to Form a Target Array
-# https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/
+# LeetCode 1526
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minNumberOperations(self, target):
+        return target[0] + sum(max(0, target[i] - target[i - 1]) for i in range(1, len(target)))

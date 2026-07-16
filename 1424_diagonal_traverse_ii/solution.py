@@ -1,6 +1,7 @@
-﻿# LeetCode 1424 - Diagonal Traverse II
-# https://leetcode.com/problems/diagonal-traverse-ii/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findDiagonalOrder(self, nums):
+        diagonals = {}
+        for row, values in enumerate(nums):
+            for col, value in enumerate(values):
+                diagonals.setdefault(row + col, []).append(value)
+        return [value for key in sorted(diagonals) for value in reversed(diagonals[key])]

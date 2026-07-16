@@ -1,6 +1,12 @@
-﻿# LeetCode 1539 - Kth Missing Positive Number
-# https://leetcode.com/problems/kth-missing-positive-number/
+# LeetCode 1539
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findKthPositive(self, arr, k):
+        left, right = 0, len(arr)
+        while left < right:
+            middle = (left + right) // 2
+            if arr[middle] - middle - 1 < k:
+                left = middle + 1
+            else:
+                right = middle
+        return left + k

@@ -1,6 +1,8 @@
-﻿# LeetCode 1403 - Minimum Subsequence in Non-Increasing Order
-# https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minSubsequence(self, nums):
+        answer, chosen, total = [], 0, sum(nums)
+        for value in sorted(nums, reverse=True):
+            answer.append(value)
+            chosen += value
+            if chosen > total - chosen:
+                return answer

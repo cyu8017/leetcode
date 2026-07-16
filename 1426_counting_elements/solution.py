@@ -1,6 +1,4 @@
-﻿# LeetCode 1426 - Counting Elements
-# https://leetcode.com/problems/counting-elements/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countElements(self, arr):
+        values = set(arr)
+        return sum(value + 1 in values for value in arr)

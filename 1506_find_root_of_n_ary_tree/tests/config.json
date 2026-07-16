@@ -1,9 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "tree"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "method": "findRoot",
+  "paramOrder": ["tree"],
+  "types": {
+    "tree": "narynode",
+    "return": "narynode"
+  }
 }

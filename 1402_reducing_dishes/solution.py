@@ -1,6 +1,9 @@
-﻿# LeetCode 1402 - Reducing Dishes
-# https://leetcode.com/problems/reducing-dishes/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxSatisfaction(self, satisfaction):
+        total = answer = 0
+        for value in sorted(satisfaction, reverse=True):
+            if total + value <= 0:
+                break
+            total += value
+            answer += total
+        return answer
