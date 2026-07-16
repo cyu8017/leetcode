@@ -3780,6 +3780,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0631_design_excel_sum_formula",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0632_smallest_range_covering_elements_from_k_lists",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0633_sum_of_square_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0634_find_the_derangement_of_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0635_design_log_storage_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0636_exclusive_time_of_functions",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0637_average_of_levels_in_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0638_shopping_offers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0639_decode_ways_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0640_solve_the_equation",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
