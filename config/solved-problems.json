@@ -3720,6 +3720,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0621_task_scheduler",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0622_design_circular_queue",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0623_add_one_row_to_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0624_maximum_distance_in_arrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0625_minimum_factorization",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0626_exchange_seats",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0627_swap_sex_of_employees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0628_maximum_product_of_three_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0629_k_inverse_pairs_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0630_course_schedule_iii",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
