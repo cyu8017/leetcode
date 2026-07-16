@@ -1002,6 +1002,41 @@ class MockMountainArray:
         return len(self._values)
 
 
+class MockGridMaster:
+    """Simulates LeetCode's GridMaster API for problem 1778."""
+
+    _DELTA = {"U": (-1, 0), "D": (1, 0), "L": (0, -1), "R": (0, 1)}
+
+    def __init__(self, grid: list[list[int]]):
+        self.grid = grid
+        self.rows = len(grid)
+        self.cols = len(grid[0]) if grid else 0
+        self.row = 0
+        self.col = 0
+        for r, row in enumerate(grid):
+            for c, cell in enumerate(row):
+                if cell == -1:
+                    self.row, self.col = r, c
+                    return
+
+    def canMove(self, direction: str) -> bool:
+        dr, dc = self._DELTA[direction]
+        nr, nc = self.row + dr, self.col + dc
+        if not (0 <= nr < self.rows and 0 <= nc < self.cols):
+            return False
+        return self.grid[nr][nc] != 0
+
+    def move(self, direction: str) -> None:
+        if not self.canMove(direction):
+            return
+        dr, dc = self._DELTA[direction]
+        self.row += dr
+        self.col += dc
+
+    def isTarget(self) -> bool:
+        return self.grid[self.row][self.col] == 2
+
+
 class _PrintCapture:
     def __init__(self) -> None:
         self.parts: list[str] = []
@@ -1600,6 +1635,10 @@ def run_cases(
             method = getattr(solution, method_name)
             mountain = MockMountainArray(args["mountainArr"])
             actual = method(args["target"], mountain)
+        elif args and "grid" in args and method_name == "findShortestPath":
+            method = getattr(solution, method_name)
+            master = MockGridMaster(args["grid"])
+            actual = method(master)
         elif module is not None and config.get("class") == "Foo" and "nums" in args:
             actual = run_print_in_order(module, args["nums"])
         elif module is not None and config.get("class") == "FooBar" and "n" in args:

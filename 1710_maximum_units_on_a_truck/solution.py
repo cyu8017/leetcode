@@ -1,6 +1,13 @@
-﻿# LeetCode 1710 - Maximum Units on a Truck
-# https://leetcode.com/problems/maximum-units-on-a-truck/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        total = 0
+        for count, units in sorted(boxTypes, key=lambda item: -item[1]):
+            take = min(count, truckSize)
+            total += take * units
+            truckSize -= take
+            if truckSize == 0:
+                break
+        return total

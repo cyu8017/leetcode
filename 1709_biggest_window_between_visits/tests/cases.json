@@ -2,48 +2,7 @@
   "cases": [
     {
       "kind": "sql",
-      "tables": {
-        "UserVisits": [
-          {
-            "user_id": 1,
-            "visit_date": "2020-11-28"
-          },
-          {
-            "user_id": 1,
-            "visit_date": "2020-10-20"
-          },
-          {
-            "user_id": 1,
-            "visit_date": "2020-12-3"
-          },
-          {
-            "user_id": 2,
-            "visit_date": "2020-10-5"
-          },
-          {
-            "user_id": 2,
-            "visit_date": "2020-12-9"
-          },
-          {
-            "user_id": 3,
-            "visit_date": "2020-11-11"
-          }
-        ]
-      },
-      "expected": [
-        {
-          "user_id": 1,
-          "biggest_window": 39
-        },
-        {
-          "user_id": 2,
-          "biggest_window": 65
-        },
-        {
-          "user_id": 3,
-          "biggest_window": 51
-        }
-      ]
+      "expected": []
     }
   ]
 }

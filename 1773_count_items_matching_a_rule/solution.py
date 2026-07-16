@@ -1,6 +1,4 @@
-﻿# LeetCode 1773 - Count Items Matching a Rule
-# https://leetcode.com/problems/count-items-matching-a-rule/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countMatches(self, items, ruleKey, ruleValue):
+        idx = {"type": 0, "color": 1, "name": 2}[ruleKey]
+        return sum(item[idx] == ruleValue for item in items)

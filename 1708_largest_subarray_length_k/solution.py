@@ -1,6 +1,7 @@
-﻿# LeetCode 1708 - Largest Subarray Length K
-# https://leetcode.com/problems/largest-subarray-length-k/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def largestSubarray(self, nums: List[int], k: int) -> List[int]:
+        start = max(range(len(nums) - k + 1), key=nums.__getitem__)
+        return nums[start:start + k]

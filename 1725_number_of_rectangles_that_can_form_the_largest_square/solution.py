@@ -1,6 +1,8 @@
-﻿# LeetCode 1725 - Number Of Rectangles That Can Form The Largest Square
-# https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countGoodRectangles(self, rectangles: List[List[int]]) -> int:
+        sides = [min(a, b) for a, b in rectangles]
+        best = max(sides)
+        return sides.count(best)

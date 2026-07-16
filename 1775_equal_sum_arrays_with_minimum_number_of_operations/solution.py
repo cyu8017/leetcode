@@ -1,6 +1,14 @@
-﻿# LeetCode 1775 - Equal Sum Arrays With Minimum Number of Operations
-# https://leetcode.com/problems/equal-sum-arrays-with-minimum-number-of-operations/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minOperations(self, nums1, nums2):
+        n, m = len(nums1), len(nums2)
+        if n < m:
+            nums1, nums2 = nums2, nums1
+            n, m = m, n
+        total = sum(nums1) + sum(nums2)
+        if total % n:
+            return -1
+        target = total // n
+        diff = [target - x for x in nums2 if x <= target]
+        if len(diff) != m:
+            return -1
+        return sum(diff)

@@ -1,6 +1,8 @@
 {
   "class": "AuthenticationManager",
-  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "method": "",
+  "paramOrder": [],
+  "types": null,
   "kind": "design",
   "runnable": true
 }

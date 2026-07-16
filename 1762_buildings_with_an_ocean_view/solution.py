@@ -1,6 +1,9 @@
-﻿# LeetCode 1762 - Buildings With an Ocean View
-# https://leetcode.com/problems/buildings-with-an-ocean-view/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findBuildings(self, heights):
+        ans = []
+        tallest = 0
+        for i in range(len(heights) - 1, -1, -1):
+            if heights[i] > tallest:
+                ans.append(i)
+                tallest = heights[i]
+        return ans[::-1]

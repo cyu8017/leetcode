@@ -1,6 +1,13 @@
-﻿# LeetCode 1772 - Sort Features by Popularity
-# https://leetcode.com/problems/sort-features-by-popularity/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def sortFeatures(self, features, responses):
+        from collections import Counter
+        count = Counter()
+        feature_set = set(features)
+        for response in responses:
+            seen = set()
+            for word in response.split():
+                if word in feature_set:
+                    seen.add(word)
+            for word in seen:
+                count[word] += 1
+        return sorted(features, key=lambda f: (-count[f], f))

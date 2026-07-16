@@ -1,6 +1,11 @@
-﻿# LeetCode 1701 - Average Waiting Time
-# https://leetcode.com/problems/average-waiting-time/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def averageWaitingTime(self, customers: List[List[int]]) -> float:
+        current = 0
+        total = 0
+        for arrival, cook in customers:
+            current = max(current, arrival) + cook
+            total += current - arrival
+        return total / len(customers)

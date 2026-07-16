@@ -1,6 +1,4 @@
-﻿# LeetCode 1785 - Minimum Elements to Add to Form a Given Sum
-# https://leetcode.com/problems/minimum-elements-to-add-to-form-a-given-sum/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minElements(self, nums, limit, goal):
+        diff = abs(sum(nums) - goal)
+        return (diff + limit - 1) // limit

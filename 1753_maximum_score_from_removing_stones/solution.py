@@ -1,6 +1,10 @@
-﻿# LeetCode 1753 - Maximum Score From Removing Stones
-# https://leetcode.com/problems/maximum-score-from-removing-stones/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumScore(self, a, b, c):
+        stones = sorted([a, b, c], reverse=True)
+        score = 0
+        while stones[0] > 0 and stones[1] > 0:
+            stones[0] -= 1
+            stones[1] -= 1
+            score += 1
+            stones.sort(reverse=True)
+        return score

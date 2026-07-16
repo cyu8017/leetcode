@@ -34,19 +34,6 @@
         2,
         3
       ]
-    },
-    {
-      "args": {
-        "nums": [
-          1,
-          4,
-          5,
-          2,
-          3
-        ],
-        "k": 1
-      },
-      "expected": "[5]\n**Constraints:**\n- `1 <= k <= nums.length <= 10^{5}`\n- `1 <= nums[i] <= 10^{9}`\n- All the integers of `nums` are **unique**.\n**Follow up:** What if the integers in `nums` are not distinct?\n---"
     }
   ]
 }

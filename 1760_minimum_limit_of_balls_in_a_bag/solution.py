@@ -1,6 +1,11 @@
-﻿# LeetCode 1760 - Minimum Limit of Balls in a Bag
-# https://leetcode.com/problems/minimum-limit-of-balls-in-a-bag/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimumSize(self, nums, maxOperations):
+        lo, hi = 1, max(nums)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            ops = sum((x - 1) // mid for x in nums)
+            if ops <= maxOperations:
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo

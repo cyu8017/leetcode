@@ -1,6 +1,17 @@
-﻿# LeetCode 1706 - Where Will the Ball Fall
-# https://leetcode.com/problems/where-will-the-ball-fall/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findBall(self, grid: List[List[int]]) -> List[int]:
+        m, n = len(grid), len(grid[0])
+        ans = []
+        for start in range(n):
+            col = start
+            for row in range(m):
+                nxt = col + grid[row][col]
+                if nxt < 0 or nxt == n or grid[row][nxt] != grid[row][col]:
+                    col = -1
+                    break
+                col = nxt
+            ans.append(col)
+        return ans

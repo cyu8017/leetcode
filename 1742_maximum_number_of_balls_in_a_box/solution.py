@@ -1,6 +1,7 @@
-﻿# LeetCode 1742 - Maximum Number of Balls in a Box
-# https://leetcode.com/problems/maximum-number-of-balls-in-a-box/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countBalls(self, lowLimit: int, highLimit: int) -> int:
+        counts = {}
+        for value in range(lowLimit, highLimit + 1):
+            box = sum(map(int, str(value)))
+            counts[box] = counts.get(box, 0) + 1
+        return max(counts.values())

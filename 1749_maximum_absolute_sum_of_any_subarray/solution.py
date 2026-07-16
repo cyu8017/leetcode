@@ -1,6 +1,12 @@
-﻿# LeetCode 1749 - Maximum Absolute Sum of Any Subarray
-# https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxAbsoluteSum(self, nums: List[int]) -> int:
+        prefix = 0
+        low = high = 0
+        for value in nums:
+            prefix += value
+            low = min(low, prefix)
+            high = max(high, prefix)
+        return high - low

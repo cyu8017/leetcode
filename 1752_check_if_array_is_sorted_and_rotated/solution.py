@@ -1,6 +1,4 @@
-﻿# LeetCode 1752 - Check if Array Is Sorted and Rotated
-# https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def check(self, nums):
+        drops = sum(nums[i] > nums[(i + 1) % len(nums)] for i in range(len(nums)))
+        return drops <= 1

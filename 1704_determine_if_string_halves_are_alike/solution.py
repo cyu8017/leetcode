@@ -1,6 +1,5 @@
-﻿# LeetCode 1704 - Determine if String Halves Are Alike
-# https://leetcode.com/problems/determine-if-string-halves-are-alike/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def halvesAreAlike(self, s: str) -> bool:
+        vowels = set("aeiouAEIOU")
+        mid = len(s) // 2
+        return sum(ch in vowels for ch in s[:mid]) == sum(ch in vowels for ch in s[mid:])

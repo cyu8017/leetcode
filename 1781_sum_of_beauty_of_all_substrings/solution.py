@@ -1,6 +1,11 @@
-﻿# LeetCode 1781 - Sum of Beauty of All Substrings
-# https://leetcode.com/problems/sum-of-beauty-of-all-substrings/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def beautySum(self, s):
+        ans = 0
+        for i in range(len(s)):
+            freq = [0] * 26
+            for j in range(i, len(s)):
+                freq[ord(s[j]) - 97] += 1
+                lo = min(x for x in freq if x)
+                hi = max(freq)
+                ans += hi - lo
+        return ans

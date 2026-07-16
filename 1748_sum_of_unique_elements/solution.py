@@ -1,6 +1,8 @@
-﻿# LeetCode 1748 - Sum of Unique Elements
-# https://leetcode.com/problems/sum-of-unique-elements/
+from collections import Counter
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def sumOfUnique(self, nums: List[int]) -> int:
+        counts = Counter(nums)
+        return sum(value for value, count in counts.items() if count == 1)

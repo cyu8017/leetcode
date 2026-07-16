@@ -1,6 +1,4 @@
-﻿# LeetCode 1790 - Check if One String Swap Can Make Strings Equal
-# https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def areAlmostEqual(self, s1, s2):
+        diff = [(a, b) for a, b in zip(s1, s2) if a != b]
+        return not diff or (len(diff) == 2 and diff[0] == diff[1][::-1])

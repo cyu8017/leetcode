@@ -1,6 +1,10 @@
-﻿# LeetCode 1732 - Find the Highest Altitude
-# https://leetcode.com/problems/find-the-highest-altitude/
+from typing import List
+
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def largestAltitude(self, gain: List[int]) -> int:
+        altitude = best = 0
+        for change in gain:
+            altitude += change
+            best = max(best, altitude)
+        return best
