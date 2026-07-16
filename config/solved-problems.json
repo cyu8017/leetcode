@@ -5400,6 +5400,246 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0901_online_stock_span",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0902_numbers_at_most_n_given_digit_set",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0903_valid_permutations_for_di_sequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0904_fruit_into_baskets",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0905_sort_array_by_parity",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0906_super_palindromes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0907_sum_of_subarray_minimums",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0908_smallest_range_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0909_snakes_and_ladders",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0910_smallest_range_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0911_online_election",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0912_sort_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0913_cat_and_mouse",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0914_x_of_a_kind_in_a_deck_of_cards",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0915_partition_array_into_disjoint_intervals",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0916_word_subsets",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0917_reverse_only_letters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0918_maximum_sum_circular_subarray",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0919_complete_binary_tree_inserter",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0920_number_of_music_playlists",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0921_minimum_add_to_make_parentheses_valid",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0922_sort_array_by_parity_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0923_3sum_with_multiplicity",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0924_minimize_malware_spread",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0925_long_pressed_name",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0926_flip_string_to_monotone_increasing",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0927_three_equal_parts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0928_minimize_malware_spread_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0929_unique_email_addresses",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0930_binary_subarrays_with_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0931_minimum_falling_path_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0932_beautiful_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0933_number_of_recent_calls",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0934_shortest_bridge",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0935_knight_dialer",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0936_stamping_the_sequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0937_reorder_data_in_log_files",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0938_range_sum_of_bst",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0939_minimum_area_rectangle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0940_distinct_subsequences_ii",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

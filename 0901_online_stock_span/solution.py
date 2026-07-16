@@ -1,6 +1,13 @@
-﻿# LeetCode 0901 - Online Stock Span
+# LeetCode 0901 - Online Stock Span
 # https://leetcode.com/problems/online-stock-span/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+class StockSpanner:
+    def __init__(self):
+        self.stack: list[tuple[int, int]] = []
+
+    def next(self, price: int) -> int:
+        span = 1
+        while self.stack and self.stack[-1][0] <= price:
+            span += self.stack.pop()[1]
+        self.stack.append((price, span))
+        return span

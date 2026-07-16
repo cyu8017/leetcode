@@ -1,6 +1,15 @@
-﻿# LeetCode 0933 - Number of Recent Calls
+# LeetCode 0933 - Number of Recent Calls
 # https://leetcode.com/problems/number-of-recent-calls/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+from collections import deque
+
+
+class RecentCounter:
+    def __init__(self):
+        self.q: deque[int] = deque()
+
+    def ping(self, t: int) -> int:
+        self.q.append(t)
+        while self.q[0] < t - 3000:
+            self.q.popleft()
+        return len(self.q)

@@ -768,6 +768,8 @@ def run_design_case(module: Any, case: dict[str, Any]) -> tuple[bool, list[Any],
                 call_args = [ListIterator(call_args[0])]
             if operation == "NestedIterator" and call_args and isinstance(call_args[0], list):
                 call_args = [json_to_nested_list(call_args[0])]
+            if operation == "CBTInserter" and call_args and isinstance(call_args[0], list):
+                call_args = [list_to_tree(call_args[0])]
             instance = cls(*call_args) if call_args else cls()
             result = None
         else:
@@ -775,6 +777,8 @@ def run_design_case(module: Any, case: dict[str, Any]) -> tuple[bool, list[Any],
                 raise RuntimeError(f"Design case missing constructor before operation {operation!r}")
             method = getattr(instance, operation)
             result = method(*call_args) if call_args else method()
+            if operation == "get_root":
+                result = tree_to_list(result)
 
         actual_outputs.append(result)
         if not deep_equal(result, expected[index]):
