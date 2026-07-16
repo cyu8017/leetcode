@@ -3840,6 +3840,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0641_design_circular_deque",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0642_design_search_autocomplete_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0643_maximum_average_subarray_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0644_maximum_average_subarray_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0645_set_mismatch",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0646_maximum_length_of_pair_chain",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0647_palindromic_substrings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0648_replace_words",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0649_dota2_senate",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0650_2_keys_keyboard",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
