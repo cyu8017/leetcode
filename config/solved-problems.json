@@ -4080,6 +4080,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0681_next_closest_time",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0682_baseball_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0683_k_empty_slots",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0684_redundant_connection",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0685_redundant_connection_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0686_repeated_string_match",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0687_longest_univalue_path",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0688_knight_probability_in_chessboard",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0689_maximum_sum_of_3_non_overlapping_subarrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0690_employee_importance",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

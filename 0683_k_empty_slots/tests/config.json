@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "kEmptySlots",
   "paramOrder": [
     "bulbs",
     "k"
