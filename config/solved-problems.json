@@ -4320,6 +4320,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0721_accounts_merge",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0722_remove_comments",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0723_candy_crush",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0724_find_pivot_index",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0725_split_linked_list_in_parts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0726_number_of_atoms",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0727_minimum_window_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0728_self_dividing_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0729_my_calendar_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0730_count_different_palindromic_subsequences",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

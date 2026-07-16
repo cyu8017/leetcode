@@ -666,6 +666,10 @@ def void_mutation_result(keys: list[str], values: list[Any]) -> Any:
 def convert_result(value: Any, type_name: str | None) -> Any:
     if type_name == "listnode":
         return listnode_to_list(value)
+    if type_name == "listnode[]":
+        if value is None:
+            return []
+        return [listnode_to_list(item) for item in value]
     if type_name == "treenode":
         return tree_to_list(value)
     if type_name == "treenode[]":
