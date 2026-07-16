@@ -3660,6 +3660,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0611_valid_triangle_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0612_shortest_distance_in_a_plane",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0613_shortest_distance_in_a_line",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0614_second_degree_follower",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0615_average_salary_departments_vs_company",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0616_add_bold_tag_in_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0617_merge_two_binary_trees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0618_students_report_by_geography",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0619_biggest_single_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0620_not_boring_movies",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

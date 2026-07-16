@@ -3,22 +3,16 @@
     {
       "args": {
         "s": "abcxyz123",
-        "words": [
-          "abc",
-          "123"
-        ]
+        "words": ["abc", "123"]
       },
-      "expected": "**abc**xyz**123**"
+      "expected": "<b>abc</b>xyz<b>123</b>"
     },
     {
       "args": {
         "s": "aaabbb",
-        "words": [
-          "aa",
-          "b"
-        ]
+        "words": ["aa", "b"]
       },
-      "expected": "**aaabbb**"
+      "expected": "<b>aaabbb</b>"
     }
   ]
 }
