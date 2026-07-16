@@ -1,11 +1,11 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "constructMaximumBinaryTree",
   "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
+    "nums"
   ],
-  "types": null,
+  "types": {
+    "return": "treenode"
+  },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

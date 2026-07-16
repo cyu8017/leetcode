@@ -1,10 +1,9 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "findTarget",
   "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
+    "root",
+    "k"
   ],
   "types": {
     "root": "treenode"

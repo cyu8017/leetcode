@@ -1,13 +1,14 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "trimBST",
   "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
+    "root",
+    "low",
+    "high"
   ],
   "types": {
-    "root": "treenode"
+    "root": "treenode",
+    "return": "treenode"
   },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }
