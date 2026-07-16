@@ -4500,6 +4500,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0751_ip_to_cidr",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0752_open_the_lock",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0753_cracking_the_safe",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0754_reach_a_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0755_pour_water",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0756_pyramid_transition_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0757_set_intersection_size_at_least_two",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0758_bold_words_in_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0759_employee_free_time",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0760_find_anagram_mappings",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
