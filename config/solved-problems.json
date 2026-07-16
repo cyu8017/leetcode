@@ -10614,6 +10614,12 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "3991_sort_array_using_prefix_reversals",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

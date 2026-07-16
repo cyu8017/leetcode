@@ -1,7 +1,12 @@
 {
-    "class":  "Solution",
-    "method":  "solve",
-    "paramOrder":  null,
-    "types":  null,
-    "description":  "Update method name and add cases to cases.json when implementing the solution."
+  "class": "Solution",
+  "method": "sortArray",
+  "paramOrder": [
+    "nums",
+    "pre"
+  ],
+  "types": {
+    "return": "integer"
+  },
+  "description": null
 }
