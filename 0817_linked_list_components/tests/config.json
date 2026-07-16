@@ -1,9 +1,9 @@
 {
-  "class": "ListNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "numComponents",
   "paramOrder": [
-    "val=0",
-    "next=None"
+    "head",
+    "nums"
   ],
   "types": {
     "head": "listnode"

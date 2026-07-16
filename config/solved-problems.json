@@ -4860,6 +4860,126 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0811_subdomain_visit_count",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0812_largest_triangle_area",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0813_largest_sum_of_averages",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0814_binary_tree_pruning",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0815_bus_routes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0816_ambiguous_coordinates",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0817_linked_list_components",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0818_race_car",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0819_most_common_word",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0820_short_encoding_of_words",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0821_shortest_distance_to_a_character",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0822_card_flipping_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0823_binary_trees_with_factors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0824_goat_latin",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0825_friends_of_appropriate_ages",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0826_most_profit_assigning_work",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0827_making_a_large_island",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0828_count_unique_characters_of_all_substrings_of_a_given_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0829_consecutive_numbers_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0830_positions_of_large_groups",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

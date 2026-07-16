@@ -1,6 +1,13 @@
 ﻿# LeetCode 0820 - Short Encoding of Words
 # https://leetcode.com/problems/short-encoding-of-words/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimumLengthEncoding(self, words: List[str]) -> int:
+        good = set(words)
+        for word in words:
+            for i in range(1, len(word)):
+                good.discard(word[i:])
+        return sum(len(word) + 1 for word in good)
