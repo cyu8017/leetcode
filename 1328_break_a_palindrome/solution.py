@@ -1,6 +1,13 @@
-﻿# LeetCode 1328 - Break a Palindrome
-# https://leetcode.com/problems/break-a-palindrome/
+# LeetCode 1328 - Break A Palindrome
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def breakPalindrome(self, palindrome: str) -> str:
+        if len(palindrome) == 1:
+            return ""
+        chars = list(palindrome)
+        for i in range(len(chars) // 2):
+            if chars[i] != "a":
+                chars[i] = "a"
+                return "".join(chars)
+        chars[-1] = "b"
+        return "".join(chars)

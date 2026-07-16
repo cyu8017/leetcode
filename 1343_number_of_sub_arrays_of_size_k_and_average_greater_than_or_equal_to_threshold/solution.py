@@ -1,6 +1,12 @@
-﻿# LeetCode 1343 - Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
-# https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/
+# LeetCode 1343 - Number Of Sub Arrays Of Size K And Average Greater Than Or Equal To Threshold
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numOfSubarrays(self, arr: List[int], k: int, threshold: int) -> int:
+        window = sum(arr[:k])
+        answer = int(window >= k * threshold)
+        for i in range(k, len(arr)):
+            window += arr[i] - arr[i-k]
+            answer += window >= k * threshold
+        return answer

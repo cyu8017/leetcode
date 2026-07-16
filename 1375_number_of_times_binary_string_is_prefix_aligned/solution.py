@@ -1,6 +1,6 @@
-﻿# LeetCode 1375 - Number of Times Binary String Is Prefix-Aligned
-# https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numTimesAllBlue(self, flips):
+        ans=mx=0
+        for i,x in enumerate(flips,1):
+            mx=max(mx,x);ans+=mx==i
+        return ans

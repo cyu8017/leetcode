@@ -1,6 +1,10 @@
-﻿# LeetCode 1372 - Longest ZigZag Path in a Binary Tree
-# https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def longestZigZag(self, root):
+        ans=0
+        def dfs(node):
+            nonlocal ans
+            if not node:return (-1,-1)
+            l=dfs(node.left);r=dfs(node.right)
+            a=l[1]+1;b=r[0]+1;ans=max(ans,a,b)
+            return a,b
+        dfs(root);return ans

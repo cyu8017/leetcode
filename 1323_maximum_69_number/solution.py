@@ -1,6 +1,5 @@
-﻿# LeetCode 1323 - Maximum 69 Number
-# https://leetcode.com/problems/maximum-69-number/
+# LeetCode 1323 - Maximum 69 Number
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximum69Number(self, num: int) -> int:
+        return int(str(num).replace("6", "9", 1))

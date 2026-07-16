@@ -1,6 +1,4 @@
-﻿# LeetCode 1365 - How Many Numbers Are Smaller Than the Current Number
-# https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def smallerNumbersThanCurrent(self, nums):
+        rank={x:i for i,x in enumerate(sorted(nums)) if x not in locals().get('rank',{})}
+        return [sorted(nums).index(x) for x in nums]

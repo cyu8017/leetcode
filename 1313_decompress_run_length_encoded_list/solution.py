@@ -1,6 +1,7 @@
-﻿# LeetCode 1313 - Decompress Run-Length Encoded List
-# https://leetcode.com/problems/decompress-run-length-encoded-list/
+# LeetCode 1313 - Decompress Run Length Encoded List
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def decompressRLElist(self, nums: List[int]) -> List[int]:
+        return [value for i in range(0, len(nums), 2) for value in [nums[i + 1]] * nums[i]]

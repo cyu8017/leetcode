@@ -1,6 +1,9 @@
-﻿# LeetCode 1383 - Maximum Performance of a Team
-# https://leetcode.com/problems/maximum-performance-of-a-team/
-
+import heapq
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxPerformance(self, n, speed, efficiency, k):
+        h=[];total=ans=0
+        for e,s in sorted(zip(efficiency,speed),reverse=True):
+            heapq.heappush(h,s);total+=s
+            if len(h)>k:total-=heapq.heappop(h)
+            ans=max(ans,total*e)
+        return ans%1_000_000_007

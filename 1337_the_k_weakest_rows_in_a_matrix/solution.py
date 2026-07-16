@@ -1,6 +1,7 @@
-﻿# LeetCode 1337 - The K Weakest Rows in a Matrix
-# https://leetcode.com/problems/the-k-weakest-rows-in-a-matrix/
+# LeetCode 1337 - The K Weakest Rows In A Matrix
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def kWeakestRows(self, mat: List[List[int]], k: int) -> List[int]:
+        return sorted(range(len(mat)), key=lambda i: (sum(mat[i]), i))[:k]

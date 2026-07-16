@@ -7614,6 +7614,606 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "1301_number_of_paths_with_max_score",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1302_deepest_leaves_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1303_find_the_team_size",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1304_find_n_unique_integers_sum_up_to_zero",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1305_all_elements_in_two_binary_search_trees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1306_jump_game_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1307_verbal_arithmetic_puzzle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1308_running_total_for_different_genders",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1309_decrypt_string_from_alphabet_to_integer_mapping",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1310_xor_queries_of_a_subarray",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1311_get_watched_videos_by_your_friends",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1312_minimum_insertion_steps_to_make_a_string_palindrome",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1313_decompress_run_length_encoded_list",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1314_matrix_block_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1315_sum_of_nodes_with_even_valued_grandparent",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1316_distinct_echo_substrings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1317_convert_integer_to_the_sum_of_two_no_zero_integers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1318_minimum_flips_to_make_a_or_b_equal_to_c",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1319_number_of_operations_to_make_network_connected",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1320_minimum_distance_to_type_a_word_using_two_fingers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1321_restaurant_growth",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1322_ads_performance",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1323_maximum_69_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1324_print_words_vertically",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1325_delete_leaves_with_a_given_value",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1326_minimum_number_of_taps_to_open_to_water_a_garden",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1327_list_the_products_ordered_in_a_period",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1328_break_a_palindrome",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1329_sort_the_matrix_diagonally",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1330_reverse_subarray_to_maximize_array_value",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1331_rank_transform_of_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1332_remove_palindromic_subsequences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1333_filter_restaurants_by_vegan_friendly_price_and_distance",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1334_find_the_city_with_the_smallest_number_of_neighbors_at_a_threshold_distance",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1335_minimum_difficulty_of_a_job_schedule",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1336_number_of_transactions_per_visit",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1337_the_k_weakest_rows_in_a_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1338_reduce_array_size_to_the_half",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1339_maximum_product_of_splitted_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1340_jump_game_v",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1341_movie_rating",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1342_number_of_steps_to_reduce_a_number_to_zero",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1343_number_of_sub_arrays_of_size_k_and_average_greater_than_or_equal_to_threshold",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1344_angle_between_hands_of_a_clock",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1345_jump_game_iv",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1346_check_if_n_and_its_double_exist",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1347_minimum_number_of_steps_to_make_two_strings_anagram",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1348_tweet_counts_per_frequency",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1349_maximum_students_taking_exam",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1350_students_with_invalid_departments",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1351_count_negative_numbers_in_a_sorted_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1352_product_of_the_last_k_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1353_maximum_number_of_events_that_can_be_attended",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1354_construct_target_array_with_multiple_sums",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1355_activity_participants",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1356_sort_integers_by_the_number_of_1_bits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1357_apply_discount_every_n_orders",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1358_number_of_substrings_containing_all_three_characters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1359_count_all_valid_pickup_and_delivery_options",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1360_number_of_days_between_two_dates",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1361_validate_binary_tree_nodes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1362_closest_divisors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1363_largest_multiple_of_three",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1364_number_of_trusted_contacts_of_a_customer",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1365_how_many_numbers_are_smaller_than_the_current_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1366_rank_teams_by_votes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1367_linked_list_in_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1368_minimum_cost_to_make_at_least_one_valid_path_in_a_grid",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1369_get_the_second_most_recent_activity",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1370_increasing_decreasing_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1371_find_the_longest_substring_containing_vowels_in_even_counts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1372_longest_zigzag_path_in_a_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1373_maximum_sum_bst_in_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1374_generate_a_string_with_characters_that_have_odd_counts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1375_number_of_times_binary_string_is_prefix_aligned",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1376_time_needed_to_inform_all_employees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1377_frog_position_after_t_seconds",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1378_replace_employee_id_with_the_unique_identifier",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1379_find_a_corresponding_node_of_a_binary_tree_in_a_clone_of_that_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1380_lucky_numbers_in_a_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1381_design_a_stack_with_increment_operation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1382_balance_a_binary_search_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1383_maximum_performance_of_a_team",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1384_total_sales_amount_by_year",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1385_find_the_distance_value_between_two_arrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1386_cinema_seat_allocation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1387_sort_integers_by_the_power_value",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1388_pizza_with_3n_slices",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1389_create_target_array_in_the_given_order",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1390_four_divisors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1391_check_if_there_is_a_valid_path_in_a_grid",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1392_longest_happy_prefix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1393_capital_gainloss",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1394_find_lucky_integer_in_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1395_count_number_of_teams",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1396_design_underground_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1397_find_all_good_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1398_customers_who_bought_products_a_and_b_but_not_c",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1399_count_largest_group",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1400_construct_k_palindrome_strings",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

@@ -1,6 +1,7 @@
-﻿# LeetCode 1376 - Time Needed to Inform All Employees
-# https://leetcode.com/problems/time-needed-to-inform-all-employees/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numOfMinutes(self, n, headID, manager, informTime):
+        children=[[] for _ in range(n)]
+        for i,p in enumerate(manager):
+            if p!=-1:children[p].append(i)
+        def dfs(u):return informTime[u]+max((dfs(v) for v in children[u]),default=0)
+        return dfs(headID)

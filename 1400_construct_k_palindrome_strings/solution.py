@@ -1,6 +1,4 @@
-﻿# LeetCode 1400 - Construct K Palindrome Strings
-# https://leetcode.com/problems/construct-k-palindrome-strings/
-
+from collections import Counter
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canConstruct(self, s, k):
+        return sum(v%2 for v in Counter(s).values())<=k<=len(s)

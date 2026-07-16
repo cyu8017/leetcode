@@ -1,6 +1,3 @@
-﻿# LeetCode 1351 - Count Negative Numbers in a Sorted Matrix
-# https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countNegatives(self, grid):
+        return sum(len(row) - next((i for i, x in enumerate(row) if x < 0), len(row)) for row in grid)

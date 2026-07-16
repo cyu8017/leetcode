@@ -1,6 +1,6 @@
-﻿# LeetCode 1387 - Sort Integers by The Power Value
-# https://leetcode.com/problems/sort-integers-by-the-power-value/
-
+from functools import lru_cache
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getKth(self, lo, hi, k):
+        @lru_cache(None)
+        def power(x):return 0 if x==1 else 1+power(x//2 if x%2==0 else 3*x+1)
+        return sorted(range(lo,hi+1),key=lambda x:(power(x),x))[k-1]

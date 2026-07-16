@@ -2,7 +2,8 @@
   "cases": [
     {
       "args": {
-        "tree": [
+        "target": 3,
+        "original": [
           7,
           4,
           3,
@@ -11,22 +12,34 @@
           6,
           19
         ],
-        "target": 3
+        "cloned": [
+          7,
+          4,
+          3,
+          null,
+          null,
+          6,
+          19
+        ]
       },
       "expected": 3
     },
     {
       "args": {
-        "tree": [
+        "target": 7,
+        "original": [
           7
         ],
-        "target": 7
+        "cloned": [
+          7
+        ]
       },
       "expected": 7
     },
     {
       "args": {
-        "tree": [
+        "target": 4,
+        "original": [
           8,
           null,
           6,
@@ -41,7 +54,21 @@
           null,
           1
         ],
-        "target": 4
+        "cloned": [
+          8,
+          null,
+          6,
+          null,
+          5,
+          null,
+          4,
+          null,
+          3,
+          null,
+          2,
+          null,
+          1
+        ]
       },
       "expected": 4
     }

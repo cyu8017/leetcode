@@ -1,6 +1,5 @@
-﻿# LeetCode 1389 - Create Target Array in the Given Order
-# https://leetcode.com/problems/create-target-array-in-the-given-order/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def createTargetArray(self, nums, index):
+        out=[]
+        for x,i in zip(nums,index):out.insert(i,x)
+        return out

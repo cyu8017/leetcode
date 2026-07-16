@@ -1,6 +1,10 @@
-﻿# LeetCode 1310 - XOR Queries of a Subarray
-# https://leetcode.com/problems/xor-queries-of-a-subarray/
+# LeetCode 1310 - Xor Queries Of A Subarray
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def xorQueries(self, arr: List[int], queries: List[List[int]]) -> List[int]:
+        prefix = [0]
+        for value in arr:
+            prefix.append(prefix[-1] ^ value)
+        return [prefix[right + 1] ^ prefix[left] for left, right in queries]

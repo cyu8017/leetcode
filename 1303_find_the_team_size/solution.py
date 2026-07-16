@@ -1,6 +1,6 @@
-﻿# LeetCode 1303 - Find the Team Size
-# https://leetcode.com/problems/find-the-team-size/
+# LeetCode 1303 - Find The Team Size
 
-class Solution:
-    def solve(self) -> None:
-        pass
+QUERY = """
+SELECT employee_id, COUNT(*) OVER (PARTITION BY team_id) AS team_size
+FROM Employee
+"""

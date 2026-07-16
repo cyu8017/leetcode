@@ -1592,6 +1592,26 @@ def run_cases(
             ok = is_valid_gray_code(actual, args.get("n", 0), args.get("start", 0))
         elif method_name == "maxDepthAfterSplit" and isinstance(actual, list):
             ok = is_valid_max_depth_split(args.get("seq", ""), actual)
+        elif method_name == "generateTheString" and isinstance(actual, str):
+            counts = {char: actual.count(char) for char in set(actual)}
+            ok = len(actual) == args.get("n") and all(count % 2 == 1 for count in counts.values())
+        elif method_name == "balanceBST" and isinstance(actual, list):
+            tree = list_to_tree(actual)
+
+            def balanced_height(node: TreeNode | None) -> int:
+                if node is None:
+                    return 0
+                left_height = balanced_height(node.left)
+                right_height = balanced_height(node.right)
+                if left_height < 0 or right_height < 0 or abs(left_height - right_height) > 1:
+                    return -1
+                return max(left_height, right_height) + 1
+
+            original_values = sorted(value for value in args.get("root", []) if value is not None)
+            actual_values = sorted(value for value in actual if value is not None)
+            ok = original_values == actual_values and balanced_height(tree) >= 0
+        elif method_name == "closestDivisors" and isinstance(actual, list):
+            ok = sorted(actual) == sorted(expected)
         elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:
             ok = trees_equal_any_order(actual, expected)
         elif nary_tree_compare:

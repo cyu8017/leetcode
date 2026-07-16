@@ -1,6 +1,4 @@
-﻿# LeetCode 1380 - Lucky Numbers in a Matrix
-# https://leetcode.com/problems/lucky-numbers-in-a-matrix/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def luckyNumbers(self, matrix):
+        mins={min(r) for r in matrix}; maxs={max(c) for c in zip(*matrix)}
+        return list(mins&maxs)

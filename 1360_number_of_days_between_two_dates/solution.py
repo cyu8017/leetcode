@@ -1,6 +1,4 @@
-﻿# LeetCode 1360 - Number of Days Between Two Dates
-# https://leetcode.com/problems/number-of-days-between-two-dates/
-
+from datetime import date
 class Solution:
-    def solve(self) -> None:
-        pass
+    def daysBetweenDates(self, date1, date2):
+        return abs((date.fromisoformat(date1)-date.fromisoformat(date2)).days)

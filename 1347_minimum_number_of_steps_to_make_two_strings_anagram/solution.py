@@ -1,6 +1,8 @@
-﻿# LeetCode 1347 - Minimum Number of Steps to Make Two Strings Anagram
-# https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
+# LeetCode 1347 - Minimum Number Of Steps To Make Two Strings Anagram
+
+from collections import Counter
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minSteps(self, s: str, t: str) -> int:
+        difference = Counter(s) - Counter(t)
+        return sum(difference.values())

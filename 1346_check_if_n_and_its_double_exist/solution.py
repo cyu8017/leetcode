@@ -1,6 +1,12 @@
-﻿# LeetCode 1346 - Check If N and Its Double Exist
-# https://leetcode.com/problems/check-if-n-and-its-double-exist/
+# LeetCode 1346 - Check If N And Its Double Exist
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkIfExist(self, arr: List[int]) -> bool:
+        seen = set()
+        for value in arr:
+            if 2 * value in seen or (value % 2 == 0 and value // 2 in seen):
+                return True
+            seen.add(value)
+        return False

@@ -1,6 +1,12 @@
-﻿# LeetCode 1317 - Convert Integer to the Sum of Two No-Zero Integers
-# https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
+# LeetCode 1317 - Convert Integer To The Sum Of Two No Zero Integers
+
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getNoZeroIntegers(self, n: int) -> List[int]:
+        def valid(value):
+            return "0" not in str(value)
+        for first in range(1, n):
+            if valid(first) and valid(n - first):
+                return [first, n - first]
+        return []
