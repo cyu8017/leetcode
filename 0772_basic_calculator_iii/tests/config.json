@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "calculate",
   "paramOrder": [
     "s"
   ],

@@ -1,12 +1,13 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "splitBST",
   "paramOrder": [
     "root",
     "target"
   ],
   "types": {
-    "root": "treenode"
+    "root": "treenode",
+    "return": "treenode[]"
   },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

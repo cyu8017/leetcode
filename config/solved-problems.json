@@ -4620,6 +4620,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0771_jewels_and_stones",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0772_basic_calculator_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0773_sliding_puzzle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0774_minimize_max_distance_to_gas_station",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0775_global_and_local_inversions",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0776_split_bst",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0777_swap_adjacent_in_lr_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0778_swim_in_rising_water",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0779_k_th_symbol_in_grammar",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0780_reaching_points",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
