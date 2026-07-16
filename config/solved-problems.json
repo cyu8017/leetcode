@@ -4200,6 +4200,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0701_insert_into_a_binary_search_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0702_search_in_a_sorted_array_of_unknown_size",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0703_kth_largest_element_in_a_stream",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0704_binary_search",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0705_design_hashset",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0706_design_hashmap",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0707_design_linked_list",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0708_insert_into_a_sorted_circular_linked_list",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0709_to_lower_case",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0710_random_pick_with_blacklist",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

@@ -2,37 +2,24 @@
   "cases": [
     {
       "args": {
-        "head": [
-          3,
-          4,
-          1
-        ],
+        "head": [3, 4, 1],
         "insertVal": 2
       },
-      "expected": [
-        3,
-        4,
-        1,
-        2
-      ]
+      "expected": [3, 4, 1, 2]
     },
     {
       "args": {
         "head": [],
         "insertVal": 1
       },
-      "expected": [
-        1
-      ]
+      "expected": [1]
     },
     {
       "args": {
-        "head": [
-          1
-        ],
+        "head": [1],
         "insertVal": 0
       },
-      "expected": "[1,0]\n**Constraints:**\n- The number of nodes in the list is in the range `[0, 5 * 10^{4}]`.\n- `-10^{6} <= Node.val, insertVal <= 10^{6}`\n---"
+      "expected": [1, 0]
     }
   ]
 }
