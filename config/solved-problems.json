@@ -4680,6 +4680,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0781_rabbits_in_forest",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0782_transform_to_chessboard",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0783_minimum_distance_between_bst_nodes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0784_letter_case_permutation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0785_is_graph_bipartite",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0786_k_th_smallest_prime_fraction",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0787_cheapest_flights_within_k_stops",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0788_rotated_digits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0789_escape_the_ghosts",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0790_domino_and_tromino_tiling",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
