@@ -1143,6 +1143,13 @@ def run_cases(
             ok = True
         elif method_name == "shortestSuperstring" and isinstance(actual, str):
             ok = len(actual) == len(expected) and all(w in actual for w in args.get("words", []))
+        elif method_name == "strWithout3a3b" and isinstance(actual, str):
+            ok = (
+                actual.count("a") == args.get("a")
+                and actual.count("b") == args.get("b")
+                and "aaa" not in actual
+                and "bbb" not in actual
+            )
         elif method_name == "pancakeSort" and isinstance(actual, list):
             # Use a fresh copy; solution may also leave args untouched.
             start = list(cases_doc["cases"][index - 1]["args"]["arr"])

@@ -1,12 +1,11 @@
 {
-  "class": "ListNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "nextLargerNodes",
   "paramOrder": [
-    "val=0",
-    "next=None"
+    "head"
   ],
   "types": {
-    "head": "listnode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+    "head": "listnode",
+    "return": "integer[]"
+  }
 }

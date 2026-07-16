@@ -1,6 +1,8 @@
-﻿# LeetCode 1030 - Matrix Cells in Distance Order
+# LeetCode 1030 - Matrix Cells in Distance Order
 # https://leetcode.com/problems/matrix-cells-in-distance-order/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def allCellsDistOrder(self, rows: int, cols: int, rCenter: int, cCenter: int) -> list[list[int]]:
+        cells = [[r, c] for r in range(rows) for c in range(cols)]
+        cells.sort(key=lambda rc: abs(rc[0] - rCenter) + abs(rc[1] - cCenter))
+        return cells

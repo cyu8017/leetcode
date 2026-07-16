@@ -1,6 +1,12 @@
-﻿# LeetCode 1047 - Remove All Adjacent Duplicates In String
+# LeetCode 1047 - Remove All Adjacent Duplicates In String
 # https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeDuplicates(self, s: str) -> str:
+        stack: list[str] = []
+        for ch in s:
+            if stack and stack[-1] == ch:
+                stack.pop()
+            else:
+                stack.append(ch)
+        return "".join(stack)

@@ -1,6 +1,6 @@
-﻿# LeetCode 1051 - Height Checker
+# LeetCode 1051 - Height Checker
 # https://leetcode.com/problems/height-checker/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def heightChecker(self, heights: list[int]) -> int:
+        return sum(a != b for a, b in zip(heights, sorted(heights)))
