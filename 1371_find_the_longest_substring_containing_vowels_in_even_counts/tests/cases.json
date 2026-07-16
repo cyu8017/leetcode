@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "eleetminicoworoep"
+      },
+      "expected": 13
+    },
+    {
+      "args": {
+        "s": "leetcodeisgreat"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "s": "bcbcbc"
+      },
+      "expected": 6
+    }
+  ]
+}

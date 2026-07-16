@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "numWays",
+  "paramOrder": ["n", "k"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "buildTree",
+  "paramOrder": ["preorder", "inorder"],
+  "types": { "return": "treenode" },
+  "description": null
+}

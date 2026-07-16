@@ -1,0 +1,1 @@
+struct ListNode{int val;ListNode*next;};class Solution{public:void reorderList(ListNode*h){if(!h||!h->next)return;ListNode*s=h,*f=h;while(f->next&&f->next->next)s=s->next,f=f->next->next;ListNode*p=0,*q=s->next;s->next=0;while(q){auto*n=q->next;q->next=p;p=q;q=n;}while(p){auto*a=h->next,*b=p->next;h->next=p;p->next=a;h=a;p=b;}}};

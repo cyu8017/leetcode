@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Visits": [
+          {
+            "user_id": 1,
+            "visit_date": "2020-01-01"
+          },
+          {
+            "user_id": 2,
+            "visit_date": "2020-01-02"
+          },
+          {
+            "user_id": 12,
+            "visit_date": "2020-01-01"
+          },
+          {
+            "user_id": 19,
+            "visit_date": "2020-01-03"
+          },
+          {
+            "user_id": 1,
+            "visit_date": "2020-01-02"
+          },
+          {
+            "user_id": 2,
+            "visit_date": "2020-01-03"
+          },
+          {
+            "user_id": 1,
+            "visit_date": "2020-01-04"
+          },
+          {
+            "user_id": 7,
+            "visit_date": "2020-01-11"
+          },
+          {
+            "user_id": 9,
+            "visit_date": "2020-01-25"
+          },
+          {
+            "user_id": 8,
+            "visit_date": "2020-01-28"
+          }
+        ],
+        "Transactions": [
+          {
+            "user_id": 1,
+            "transaction_date": "2020-01-02",
+            "amount": 120
+          },
+          {
+            "user_id": 2,
+            "transaction_date": "2020-01-03",
+            "amount": 22
+          },
+          {
+            "user_id": 7,
+            "transaction_date": "2020-01-11",
+            "amount": 232
+          },
+          {
+            "user_id": 1,
+            "transaction_date": "2020-01-04",
+            "amount": 7
+          },
+          {
+            "user_id": 9,
+            "transaction_date": "2020-01-25",
+            "amount": 33
+          },
+          {
+            "user_id": 9,
+            "transaction_date": "2020-01-25",
+            "amount": 66
+          },
+          {
+            "user_id": 8,
+            "transaction_date": "2020-01-28",
+            "amount": 1
+          },
+          {
+            "user_id": 9,
+            "transaction_date": "2020-01-25",
+            "amount": 99
+          }
+        ]
+      },
+      "expected": [
+        {
+          "transactions_count": 0,
+          "visits_count": 4
+        },
+        {
+          "transactions_count": 1,
+          "visits_count": 5
+        },
+        {
+          "transactions_count": 2,
+          "visits_count": 0
+        },
+        {
+          "transactions_count": 3,
+          "visits_count": 1
+        }
+      ]
+    }
+  ]
+}

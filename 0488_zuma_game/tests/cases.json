@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "board": "WRRBBW",
+        "hand": "RB"
+      },
+      "expected": -1
+    },
+    {
+      "args": {
+        "board": "WWRRBBWW",
+        "hand": "WRBRW"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "board": "G",
+        "hand": "GGGGG"
+      },
+      "expected": 2
+    }
+  ]
+}

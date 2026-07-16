@@ -1,0 +1,52 @@
+﻿{
+    "syncedAt":  "2026-07-14T14:24:38.0735971Z",
+    "sourceUrl":  "https://raw.githubusercontent.com/bunnyxt/lcid/main/problems_all.json",
+    "remoteCount":  3991,
+    "localFolderCount":  3991,
+    "created":  6,
+    "skipped":  3985,
+    "newProblems":  [
+                        {
+                            "Number":  3986,
+                            "Title":  "Number of Elapsed Seconds Between Two Times",
+                            "TitleSlug":  "number-of-elapsed-seconds-between-two-times",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "3986_number_of_elapsed_seconds_between_two_times"
+                        },
+                        {
+                            "Number":  3987,
+                            "Title":  "Minimum Total Cost to Process All Elements",
+                            "TitleSlug":  "minimum-total-cost-to-process-all-elements",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3987_minimum_total_cost_to_process_all_elements"
+                        },
+                        {
+                            "Number":  3988,
+                            "Title":  "Create Grid With Exactly K Paths I",
+                            "TitleSlug":  "create-grid-with-exactly-k-paths-i",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3988_create_grid_with_exactly_k_paths_i"
+                        },
+                        {
+                            "Number":  3989,
+                            "Title":  "Maximum Consistent Columns in a Grid",
+                            "TitleSlug":  "maximum-consistent-columns-in-a-grid",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "3989_maximum_consistent_columns_in_a_grid"
+                        },
+                        {
+                            "Number":  3990,
+                            "Title":  "Create Grid With Exactly K Paths II",
+                            "TitleSlug":  "create-grid-with-exactly-k-paths-ii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "3990_create_grid_with_exactly_k_paths_ii"
+                        },
+                        {
+                            "Number":  3991,
+                            "Title":  "Sort Array Using Prefix Reversals",
+                            "TitleSlug":  "sort-array-using-prefix-reversals",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3991_sort_array_using_prefix_reversals"
+                        }
+                    ]
+}

@@ -1,0 +1,215 @@
+# Test harness for 1499_max_value_of_equation
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1499_max_value_of_equation -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1499_max_value_of_equation --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1499_max_value_of_equation --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1499_max_value_of_equation --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1499_max_value_of_equation --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1499_max_value_of_equation --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1499_max_value_of_equation --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1499_max_value_of_equation --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1499_max_value_of_equation --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1499_max_value_of_equation --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1499_max_value_of_equation --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1499_max_value_of_equation --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1499_max_value_of_equation --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1499_max_value_of_equation --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1499_max_value_of_equation --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1499_max_value_of_equation --language python
+./scripts/test.sh --folder 1499_max_value_of_equation --language javascript
+./scripts/test.sh --folder 1499_max_value_of_equation --language typescript
+./scripts/test.sh --folder 1499_max_value_of_equation --language java
+./scripts/test.sh --folder 1499_max_value_of_equation --language cpp
+./scripts/test.sh --folder 1499_max_value_of_equation --language c
+./scripts/test.sh --folder 1499_max_value_of_equation --language go
+./scripts/test.sh --folder 1499_max_value_of_equation --language rust
+./scripts/test.sh --folder 1499_max_value_of_equation --language kotlin
+./scripts/test.sh --folder 1499_max_value_of_equation --language swift
+./scripts/test.sh --folder 1499_max_value_of_equation --language ruby
+./scripts/test.sh --folder 1499_max_value_of_equation --language csharp
+./scripts/test.sh --folder 1499_max_value_of_equation --language scala
+./scripts/test.sh --folder 1499_max_value_of_equation --language php
+./scripts/test.sh --folder 1499_max_value_of_equation --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1499_max_value_of_equation --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1499_max_value_of_equation --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1499_max_value_of_equation --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1499_max_value_of_equation --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1499_max_value_of_equation --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1499_max_value_of_equation --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1499_max_value_of_equation --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1499_max_value_of_equation --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1499_max_value_of_equation --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1499_max_value_of_equation --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1499_max_value_of_equation --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1499_max_value_of_equation --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1499_max_value_of_equation --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1499_max_value_of_equation --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm java java 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm c c 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm go go 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm rust rust 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm swift swift 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm scala scala 1499_max_value_of_equation
+docker compose -f docker/docker-compose.yml run --rm php php 1499_max_value_of_equation
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1499_max_value_of_equation` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1499_max_value_of_equation` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1499_max_value_of_equation` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1499_max_value_of_equation` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1499_max_value_of_equation` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1499_max_value_of_equation` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1499_max_value_of_equation` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1499_max_value_of_equation` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1499_max_value_of_equation` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1499_max_value_of_equation` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1499_max_value_of_equation` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1499_max_value_of_equation` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1499_max_value_of_equation` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1499_max_value_of_equation` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1499_max_value_of_equation -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1499_max_value_of_equation --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1499_max_value_of_equation --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

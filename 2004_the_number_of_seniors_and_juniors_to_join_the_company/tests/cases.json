@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "employee_id": 1,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 9,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 2,
+            "experience": "Senior",
+            "salary": 20000
+          },
+          {
+            "employee_id": 11,
+            "experience": "Senior",
+            "salary": 20000
+          },
+          {
+            "employee_id": 13,
+            "experience": "Senior",
+            "salary": 50000
+          },
+          {
+            "employee_id": 4,
+            "experience": "Junior",
+            "salary": 40000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "experience": "Senior",
+          "accepted_candidates": 2
+        },
+        {
+          "experience": "Junior",
+          "accepted_candidates": 2
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "employee_id": 1,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 9,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 2,
+            "experience": "Senior",
+            "salary": 80000
+          },
+          {
+            "employee_id": 11,
+            "experience": "Senior",
+            "salary": 80000
+          },
+          {
+            "employee_id": 13,
+            "experience": "Senior",
+            "salary": 80000
+          },
+          {
+            "employee_id": 4,
+            "experience": "Junior",
+            "salary": 40000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "experience": "Senior",
+          "accepted_candidates": 0
+        },
+        {
+          "experience": "Junior",
+          "accepted_candidates": 3
+        }
+      ]
+    }
+  ]
+}

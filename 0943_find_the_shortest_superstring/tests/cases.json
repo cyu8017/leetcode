@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "alex",
+          "loves",
+          "leetcode"
+        ]
+      },
+      "expected": "alexlovesleetcode"
+    },
+    {
+      "args": {
+        "words": [
+          "catg",
+          "ctaagt",
+          "gcta",
+          "ttca",
+          "atgcatc"
+        ]
+      },
+      "expected": "gctaagttcatgcatc"
+    }
+  ]
+}

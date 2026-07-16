@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "blocks": [
+          1
+        ],
+        "split": 1
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "blocks": [
+          1,
+          2
+        ],
+        "split": 5
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "blocks": [
+          1,
+          2,
+          3
+        ],
+        "split": 1
+      },
+      "expected": 4
+    }
+  ]
+}

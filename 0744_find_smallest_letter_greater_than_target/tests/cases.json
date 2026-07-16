@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "letters": [
+          "c",
+          "f",
+          "j"
+        ],
+        "target": "a"
+      },
+      "expected": "c"
+    },
+    {
+      "args": {
+        "letters": [
+          "c",
+          "f",
+          "j"
+        ],
+        "target": "c"
+      },
+      "expected": "f"
+    },
+    {
+      "args": {
+        "letters": [
+          "x",
+          "x",
+          "y",
+          "y"
+        ],
+        "target": "z"
+      },
+      "expected": "x"
+    }
+  ]
+}

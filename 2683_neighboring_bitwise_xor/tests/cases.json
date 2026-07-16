@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "derived": [
+          1,
+          1,
+          0
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "derived": [
+          1,
+          1
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "derived": [
+          1,
+          0
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

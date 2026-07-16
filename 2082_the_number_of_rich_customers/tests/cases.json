@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Store": [
+          {
+            "bill_id": 6,
+            "customer_id": 1,
+            "amount": 549
+          },
+          {
+            "bill_id": 8,
+            "customer_id": 1,
+            "amount": 834
+          },
+          {
+            "bill_id": 4,
+            "customer_id": 2,
+            "amount": 394
+          },
+          {
+            "bill_id": 11,
+            "customer_id": 3,
+            "amount": 657
+          },
+          {
+            "bill_id": 13,
+            "customer_id": 3,
+            "amount": 257
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rich_count": 2
+        }
+      ]
+    }
+  ]
+}

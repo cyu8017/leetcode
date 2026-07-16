@@ -1,0 +1,7 @@
+﻿// LeetCode 1635 - Hopper Company Queries I
+// https://leetcode.com/problems/hopper-company-queries-i/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

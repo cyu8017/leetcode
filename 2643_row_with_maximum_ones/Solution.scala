@@ -1,0 +1,6 @@
+﻿// LeetCode 2643 - Row With Maximum Ones
+// https://leetcode.com/problems/row-with-maximum-ones/
+
+object Solution {
+  def solve(): Unit = {}
+}

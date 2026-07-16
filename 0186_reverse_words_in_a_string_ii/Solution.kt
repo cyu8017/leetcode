@@ -1,0 +1,1 @@
+class Solution { fun reverseWords(s: CharArray) { reverse(s, 0, s.lastIndex); var start = 0; for (end in 0..s.size) if (end == s.size || s[end] == ' ') { reverse(s, start, end - 1); start = end + 1 } } private fun reverse(s: CharArray, left: Int, right: Int) { var l = left; var r = right; while (l < r) { val t = s[l]; s[l++] = s[r]; s[r--] = t } } }

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Loans": [
+          {
+            "loan_id": 683,
+            "user_id": 101,
+            "loan_type": "Mortgage"
+          },
+          {
+            "loan_id": 218,
+            "user_id": 101,
+            "loan_type": "AutoLoan"
+          },
+          {
+            "loan_id": 802,
+            "user_id": 101,
+            "loan_type": "Inschool"
+          },
+          {
+            "loan_id": 593,
+            "user_id": 102,
+            "loan_type": "Mortgage"
+          },
+          {
+            "loan_id": 138,
+            "user_id": 102,
+            "loan_type": "Refinance"
+          },
+          {
+            "loan_id": 294,
+            "user_id": 102,
+            "loan_type": "Inschool"
+          },
+          {
+            "loan_id": 308,
+            "user_id": 103,
+            "loan_type": "Refinance"
+          },
+          {
+            "loan_id": 389,
+            "user_id": 104,
+            "loan_type": "Mortgage"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 102
+        }
+      ]
+    }
+  ]
+}

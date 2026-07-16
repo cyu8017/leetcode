@@ -1,0 +1,6 @@
+﻿# LeetCode 2278 - Percentage of Letter in String
+# https://leetcode.com/problems/percentage-of-letter-in-string/
+
+class Solution:
+    def solve(self) -> None:
+        pass

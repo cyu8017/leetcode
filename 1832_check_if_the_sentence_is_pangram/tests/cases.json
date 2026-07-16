@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": "thequickbrownfoxjumpsoverthelazydog"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence": "leetcode"
+      },
+      "expected": false
+    }
+  ]
+}

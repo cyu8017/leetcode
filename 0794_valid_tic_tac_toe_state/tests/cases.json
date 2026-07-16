@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "board": [
+          "O  ",
+          "   ",
+          "   "
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "board": [
+          "XOX",
+          " X ",
+          "   "
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "board": [
+          "XOX",
+          "O O",
+          "XOX"
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

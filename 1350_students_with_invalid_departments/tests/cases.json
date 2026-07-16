@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Departments": [
+          {
+            "id": 1,
+            "name": "Electrical Engineering"
+          },
+          {
+            "id": 7,
+            "name": "Computer Engineering"
+          },
+          {
+            "id": 13,
+            "name": "Bussiness Administration"
+          }
+        ],
+        "Students": [
+          {
+            "id": 23,
+            "name": "Alice",
+            "department_id": 1
+          },
+          {
+            "id": 1,
+            "name": "Bob",
+            "department_id": 7
+          },
+          {
+            "id": 5,
+            "name": "Jennifer",
+            "department_id": 13
+          },
+          {
+            "id": 2,
+            "name": "John",
+            "department_id": 14
+          },
+          {
+            "id": 4,
+            "name": "Jasmine",
+            "department_id": 77
+          },
+          {
+            "id": 3,
+            "name": "Steve",
+            "department_id": 74
+          },
+          {
+            "id": 6,
+            "name": "Luis",
+            "department_id": 1
+          },
+          {
+            "id": 8,
+            "name": "Jonathan",
+            "department_id": 7
+          },
+          {
+            "id": 7,
+            "name": "Daiana",
+            "department_id": 33
+          },
+          {
+            "id": 11,
+            "name": "Madelynn",
+            "department_id": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 2,
+          "name": "John"
+        },
+        {
+          "id": 7,
+          "name": "Daiana"
+        },
+        {
+          "id": 4,
+          "name": "Jasmine"
+        },
+        {
+          "id": 3,
+          "name": "Steve"
+        }
+      ]
+    }
+  ]
+}

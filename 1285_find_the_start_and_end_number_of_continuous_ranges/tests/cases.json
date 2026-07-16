@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Logs": [
+          {
+            "log_id": 1
+          },
+          {
+            "log_id": 2
+          },
+          {
+            "log_id": 3
+          },
+          {
+            "log_id": 7
+          },
+          {
+            "log_id": 8
+          },
+          {
+            "log_id": 10
+          }
+        ]
+      },
+      "expected": [
+        {
+          "start_id": 1,
+          "end_id": 3
+        },
+        {
+          "start_id": 7,
+          "end_id": 8
+        },
+        {
+          "start_id": 10,
+          "end_id": 10
+        }
+      ]
+    }
+  ]
+}

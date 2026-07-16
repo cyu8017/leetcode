@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customers": [
+          {
+            "customer_id": 1,
+            "name": "Winston",
+            "country": "USA"
+          },
+          {
+            "customer_id": 2,
+            "name": "Jonathan",
+            "country": "Peru"
+          },
+          {
+            "customer_id": 3,
+            "name": "Moustafa",
+            "country": "Egypt"
+          }
+        ],
+        "Product": [
+          {
+            "product_id": 10,
+            "description": "LC Phone",
+            "price": 300
+          },
+          {
+            "product_id": 20,
+            "description": "LC T-Shirt",
+            "price": 10
+          },
+          {
+            "product_id": 30,
+            "description": "LC Book",
+            "price": 45
+          },
+          {
+            "product_id": 40,
+            "description": "LC Keychain",
+            "price": 2
+          }
+        ],
+        "Orders": [
+          {
+            "order_id": 1,
+            "customer_id": 1,
+            "product_id": 10,
+            "order_date": "2020-06-10",
+            "quantity": 1
+          },
+          {
+            "order_id": 2,
+            "customer_id": 1,
+            "product_id": 20,
+            "order_date": "2020-07-01",
+            "quantity": 1
+          },
+          {
+            "order_id": 3,
+            "customer_id": 1,
+            "product_id": 30,
+            "order_date": "2020-07-08",
+            "quantity": 2
+          },
+          {
+            "order_id": 4,
+            "customer_id": 2,
+            "product_id": 10,
+            "order_date": "2020-06-15",
+            "quantity": 2
+          },
+          {
+            "order_id": 5,
+            "customer_id": 2,
+            "product_id": 40,
+            "order_date": "2020-07-01",
+            "quantity": 10
+          },
+          {
+            "order_id": 6,
+            "customer_id": 3,
+            "product_id": 20,
+            "order_date": "2020-06-24",
+            "quantity": 2
+          },
+          {
+            "order_id": 7,
+            "customer_id": 3,
+            "product_id": 30,
+            "order_date": "2020-06-25",
+            "quantity": 2
+          },
+          {
+            "order_id": 9,
+            "customer_id": 3,
+            "product_id": 30,
+            "order_date": "2020-05-08",
+            "quantity": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 1,
+          "name": "Winston"
+        }
+      ]
+    }
+  ]
+}

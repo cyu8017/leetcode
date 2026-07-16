@@ -1,0 +1,17 @@
+{
+  "description": "Representative problems for CI smoke tests. All entries must pass locally.",
+  "entries": [
+    {
+      "folder": "0001_two_sum",
+      "languages": ["python"]
+    },
+    {
+      "folder": "0002_add_two_numbers",
+      "languages": ["python"]
+    },
+    {
+      "folder": "0244_shortest_word_distance_ii",
+      "languages": ["python"]
+    }
+  ]
+}

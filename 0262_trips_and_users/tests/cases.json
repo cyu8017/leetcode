@@ -1,0 +1,147 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Trips": [
+          {
+            "id": 1,
+            "client_id": 1,
+            "driver_id": 10,
+            "city_id": 1,
+            "status": "completed",
+            "request_at": "2013-10-01"
+          },
+          {
+            "id": 2,
+            "client_id": 2,
+            "driver_id": 11,
+            "city_id": 1,
+            "status": "cancelled_by_driver",
+            "request_at": "2013-10-01"
+          },
+          {
+            "id": 3,
+            "client_id": 3,
+            "driver_id": 12,
+            "city_id": 6,
+            "status": "completed",
+            "request_at": "2013-10-01"
+          },
+          {
+            "id": 4,
+            "client_id": 4,
+            "driver_id": 13,
+            "city_id": 6,
+            "status": "cancelled_by_client",
+            "request_at": "2013-10-01"
+          },
+          {
+            "id": 5,
+            "client_id": 1,
+            "driver_id": 10,
+            "city_id": 1,
+            "status": "completed",
+            "request_at": "2013-10-02"
+          },
+          {
+            "id": 6,
+            "client_id": 2,
+            "driver_id": 11,
+            "city_id": 6,
+            "status": "completed",
+            "request_at": "2013-10-02"
+          },
+          {
+            "id": 7,
+            "client_id": 3,
+            "driver_id": 12,
+            "city_id": 6,
+            "status": "completed",
+            "request_at": "2013-10-02"
+          },
+          {
+            "id": 8,
+            "client_id": 2,
+            "driver_id": 12,
+            "city_id": 12,
+            "status": "completed",
+            "request_at": "2013-10-03"
+          },
+          {
+            "id": 9,
+            "client_id": 3,
+            "driver_id": 10,
+            "city_id": 12,
+            "status": "completed",
+            "request_at": "2013-10-03"
+          },
+          {
+            "id": 10,
+            "client_id": 4,
+            "driver_id": 13,
+            "city_id": 12,
+            "status": "cancelled_by_driver",
+            "request_at": "2013-10-03"
+          }
+        ],
+        "Users": [
+          {
+            "users_id": 1,
+            "banned": "No",
+            "role": "client"
+          },
+          {
+            "users_id": 2,
+            "banned": "Yes",
+            "role": "client"
+          },
+          {
+            "users_id": 3,
+            "banned": "No",
+            "role": "client"
+          },
+          {
+            "users_id": 4,
+            "banned": "No",
+            "role": "client"
+          },
+          {
+            "users_id": 10,
+            "banned": "No",
+            "role": "driver"
+          },
+          {
+            "users_id": 11,
+            "banned": "No",
+            "role": "driver"
+          },
+          {
+            "users_id": 12,
+            "banned": "No",
+            "role": "driver"
+          },
+          {
+            "users_id": 13,
+            "banned": "No",
+            "role": "driver"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "Day": "2013-10-01",
+          "Cancellation Rate": 0.33
+        },
+        {
+          "Day": "2013-10-02",
+          "Cancellation Rate": 0.0
+        },
+        {
+          "Day": "2013-10-03",
+          "Cancellation Rate": 0.5
+        }
+      ]
+    }
+  ]
+}

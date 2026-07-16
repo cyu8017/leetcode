@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tweets": [
+          {
+            "user_id": 135,
+            "tweet_id": 13,
+            "tweet": "Enjoying a great start to the day! #HappyDay",
+            "tweet_date": "2024-02-01"
+          },
+          {
+            "user_id": 136,
+            "tweet_id": 14,
+            "tweet": "Another #HappyDay with good vibes!",
+            "tweet_date": "2024-02-03"
+          },
+          {
+            "user_id": 137,
+            "tweet_id": 15,
+            "tweet": "Productivity peaks! #WorkLife",
+            "tweet_date": "2024-02-04"
+          },
+          {
+            "user_id": 138,
+            "tweet_id": 16,
+            "tweet": "Exploring new tech frontiers. #TechLife",
+            "tweet_date": "2024-02-04"
+          },
+          {
+            "user_id": 139,
+            "tweet_id": 17,
+            "tweet": "Gratitude for today's moments. #HappyDay",
+            "tweet_date": "2024-02-05"
+          },
+          {
+            "user_id": 140,
+            "tweet_id": 18,
+            "tweet": "Innovation drives us. #TechLife",
+            "tweet_date": "2024-02-07"
+          },
+          {
+            "user_id": 141,
+            "tweet_id": 19,
+            "tweet": "Connecting with nature's serenity. #Nature",
+            "tweet_date": "2024-02-09"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "hashtag": "#HappyDay",
+          "hashtag_count": 3
+        },
+        {
+          "hashtag": "#TechLife",
+          "hashtag_count": 2
+        },
+        {
+          "hashtag": "#WorkLife",
+          "hashtag_count": 1
+        }
+      ]
+    }
+  ]
+}

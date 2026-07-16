@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcd",
+        "t": "bcdf",
+        "maxCost": 3
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "abcd",
+        "t": "cdef",
+        "maxCost": 3
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "abcd",
+        "t": "acde",
+        "maxCost": 0
+      },
+      "expected": 1
+    }
+  ]
+}

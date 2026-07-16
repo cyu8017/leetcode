@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "args": {
+        "digitSum": [
+          25,
+          1
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "digitSum": [
+          1
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "digitSum": [
+          2,
+          49,
+          23
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

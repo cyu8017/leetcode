@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "solveSudoku",
+  "paramOrder": [
+    "board"
+  ],
+  "types": {
+    "return": "void"
+  },
+  "description": null
+}

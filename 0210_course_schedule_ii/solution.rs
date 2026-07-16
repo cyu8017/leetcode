@@ -1,0 +1,3 @@
+// LeetCode 0210 - Course Schedule II
+use std::collections::VecDeque;
+impl Solution { pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> { let count = num_courses as usize; let mut graph = vec![Vec::new(); count]; let mut indegree = vec![0; count]; for edge in prerequisites { let course = edge[0] as usize; let pre = edge[1] as usize; graph[pre].push(course); indegree[course] += 1; } let mut queue: VecDeque<usize> = (0..count).filter(|&i| indegree[i] == 0).collect(); let mut order = Vec::with_capacity(count); while let Some(course) = queue.pop_front() { order.push(course as i32); for &next in &graph[course] { indegree[next] -= 1; if indegree[next] == 0 { queue.push_back(next); } } } if order.len() == count { order } else { Vec::new() } } }

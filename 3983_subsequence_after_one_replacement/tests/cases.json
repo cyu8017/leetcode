@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "cat",
+        "t": "chat"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "plane",
+        "t": "apple"
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "args": {
+        "strs": [
+          "babca",
+          "bbazb"
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "strs": [
+          "edcba"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "strs": [
+          "ghi",
+          "def",
+          "abc"
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "isInterleave",
+  "paramOrder": [
+    "s1",
+    "s2",
+    "s3"
+  ],
+  "types": null,
+  "description": null
+}

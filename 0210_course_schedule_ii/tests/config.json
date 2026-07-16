@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "findOrder",
+  "paramOrder": ["numCourses", "prerequisites"],
+  "types": { "return": "integer[]" },
+  "description": null
+}

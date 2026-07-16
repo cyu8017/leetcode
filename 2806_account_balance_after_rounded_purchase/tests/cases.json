@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "purchaseAmount": 9
+      },
+      "expected": 90
+    },
+    {
+      "args": {
+        "purchaseAmount": 15
+      },
+      "expected": 80
+    },
+    {
+      "args": {
+        "purchaseAmount": 10
+      },
+      "expected": 90
+    }
+  ]
+}

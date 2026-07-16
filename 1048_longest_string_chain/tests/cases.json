@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "a",
+          "b",
+          "ba",
+          "bca",
+          "bda",
+          "bdca"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "words": [
+          "xbc",
+          "pcxbcf",
+          "xb",
+          "cxbc",
+          "pcxbc"
+        ]
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "words": [
+          "abcd",
+          "dbqca"
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

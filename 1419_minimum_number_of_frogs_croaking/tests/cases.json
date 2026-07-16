@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "croakOfFrogs": "croakcroak"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "croakOfFrogs": "crcoakroak"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "croakOfFrogs": "croakcrook"
+      },
+      "expected": -1
+    }
+  ]
+}

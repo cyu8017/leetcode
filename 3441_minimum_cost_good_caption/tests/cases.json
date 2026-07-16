@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "caption": "cdcd"
+      },
+      "expected": "cccc"
+    },
+    {
+      "args": {
+        "caption": "aca"
+      },
+      "expected": "aaa"
+    },
+    {
+      "args": {
+        "caption": "bc"
+      },
+      "expected": ""
+    }
+  ]
+}

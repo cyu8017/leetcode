@@ -1,0 +1,7 @@
+﻿// LeetCode 3103 - Find Trending Hashtags II 
+// https://leetcode.com/problems/find-trending-hashtags-ii/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

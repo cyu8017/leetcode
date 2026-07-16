@@ -1,0 +1,57 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          3,
+          2,
+          1
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        3,
+        2,
+        1
+      ]
+    },
+    {
+      "args": {
+        "head": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "expected": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "args": {
+        "head": [
+          3,
+          2,
+          3,
+          2,
+          3,
+          2
+        ]
+      },
+      "expected": "[3,2,3,2,3,2]\n**Constraints:**\n- The number of nodes in the given list is in the range `[1, 50]`.\n- `1 <= Node.val <= 50`\n---"
+    }
+  ]
+}

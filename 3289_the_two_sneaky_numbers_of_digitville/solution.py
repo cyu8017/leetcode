@@ -1,0 +1,6 @@
+﻿# LeetCode 3289 - The Two Sneaky Numbers of Digitville
+# https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/
+
+class Solution:
+    def solve(self) -> None:
+        pass

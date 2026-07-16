@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "RandomizedCollection",
+        "insert",
+        "insert",
+        "insert",
+        "getRandom",
+        "remove",
+        "getRandom"
+      ],
+      "arguments": [
+        [],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [],
+        [
+          1
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        true,
+        false,
+        true,
+        2,
+        true,
+        1
+      ]
+    }
+  ]
+}

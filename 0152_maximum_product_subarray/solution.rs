@@ -1,0 +1,1 @@
+impl Solution{pub fn max_product(a:Vec<i32>)->i32{let(mut b,mut h,mut l)=(a[0],a[0],a[0]);for x in a.into_iter().skip(1){let(oh,ol)=(h,l);h=x.max((oh*x).max(ol*x));l=x.min((oh*x).min(ol*x));b=b.max(h)}b}}

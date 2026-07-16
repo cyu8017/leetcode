@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "heeellooo",
+        "words": [
+          "hello",
+          "hi",
+          "helo"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "zzzzzyyyyy",
+        "words": [
+          "zzyy",
+          "zy",
+          "zyy"
+        ]
+      },
+      "expected": 3
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "obj": {
+          "val": 10
+        },
+        "mutators": "[ proxy => { proxy.val += 1; }, proxy => { proxy.val -= 1; } ]"
+      },
+      "expected": [
+        {
+          "val": 11
+        },
+        {
+          "val": 9
+        }
+      ]
+    },
+    {
+      "args": {
+        "obj": "{\"arr\": [1, 2, 3]} mutators = [ proxy => { proxy.arr[0] = 5; proxy.newVal = proxy.arr[0] + proxy.arr[1]; } ]"
+      },
+      "expected": "[\n{\"arr\": [5, 2, 3], \"newVal\": 7 }\n]\n**"
+    },
+    {
+      "args": {
+        "obj": "{\"obj\": {\"val\": {\"x\": 10, \"y\": 20}}} mutators = [ proxy => { let data = proxy.obj.val; let temp = data.x; data.x = data.y; data.y = temp; } ]"
+      },
+      "expected": [
+        {
+          "obj": {
+            "val": {
+              "x": 20,
+              "y": 10
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

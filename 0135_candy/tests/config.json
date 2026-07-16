@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "candy",
+  "paramOrder": ["ratings"],
+  "types": null,
+  "description": null
+}

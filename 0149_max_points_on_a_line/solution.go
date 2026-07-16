@@ -1,0 +1,1 @@
+func gcd(a,b int)int{if a<0{a=-a};if b<0{b=-b};for b>0{a,b=b,a%b};return a};func maxPoints(p [][]int)int{z:=0;for i:=range p{m:=map[[2]int]int{};for j:=i+1;j<len(p);j++{x,y:=p[j][0]-p[i][0],p[j][1]-p[i][1];g:=gcd(x,y);x,y=x/g,y/g;if x<0||(x==0&&y<0){x,y=-x,-y};m[[2]int{x,y}]++;if m[[2]int{x,y}]+1>z{z=m[[2]int{x,y}]+1}}};return z}

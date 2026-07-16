@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "partition",
+  "paramOrder": [
+    "head",
+    "x"
+  ],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

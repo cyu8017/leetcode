@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "args": {
+        "power": 4,
+        "damage": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "health": [
+          4,
+          5,
+          6,
+          8
+        ]
+      },
+      "expected": 39
+    },
+    {
+      "args": {
+        "power": 1,
+        "damage": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "health": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": 20
+    },
+    {
+      "args": {
+        "power": 8,
+        "damage": [
+          40
+        ],
+        "health": [
+          59
+        ]
+      },
+      "expected": 320
+    }
+  ]
+}

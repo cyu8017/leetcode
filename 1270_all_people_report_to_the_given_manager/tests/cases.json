@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 1,
+            "employee_name": "Boss",
+            "manager_id": 1
+          },
+          {
+            "employee_id": 3,
+            "employee_name": "Alice",
+            "manager_id": 3
+          },
+          {
+            "employee_id": 2,
+            "employee_name": "Bob",
+            "manager_id": 1
+          },
+          {
+            "employee_id": 4,
+            "employee_name": "Daniel",
+            "manager_id": 2
+          },
+          {
+            "employee_id": 7,
+            "employee_name": "Luis",
+            "manager_id": 4
+          },
+          {
+            "employee_id": 8,
+            "employee_name": "Jhon",
+            "manager_id": 3
+          },
+          {
+            "employee_id": 9,
+            "employee_name": "Angela",
+            "manager_id": 8
+          },
+          {
+            "employee_id": 77,
+            "employee_name": "Robert",
+            "manager_id": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 2
+        },
+        {
+          "employee_id": 77
+        },
+        {
+          "employee_id": 4
+        },
+        {
+          "employee_id": 7
+        }
+      ]
+    }
+  ]
+}

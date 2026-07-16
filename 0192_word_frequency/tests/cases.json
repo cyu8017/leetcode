@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "kind": "shell",
+      "file": "words.txt",
+      "input": "the day is sunny the the\nthe sunny is is",
+      "expected": "the 4\nis 3\nsunny 2\nday 1"
+    }
+  ]
+}

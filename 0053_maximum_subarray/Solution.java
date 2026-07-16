@@ -1,0 +1,16 @@
+﻿// LeetCode 0053 - Maximum Subarray
+// https://leetcode.com/problems/maximum-subarray/
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int best = nums[0];
+        int current = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            current = Math.max(nums[i], current + nums[i]);
+            best = Math.max(best, current);
+        }
+
+        return best;
+    }
+}

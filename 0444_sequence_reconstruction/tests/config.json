@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "sequenceReconstruction",
+  "paramOrder": [
+    "nums",
+    "sequences"
+  ],
+  "types": null,
+  "description": "Check whether org is the unique topological order implied by sequences."
+}

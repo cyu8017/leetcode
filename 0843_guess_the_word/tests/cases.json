@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "secret": "acckzz",
+        "words": [
+          "acckzz",
+          "ccbazz",
+          "eiowzz",
+          "abcczz"
+        ],
+        "allowedGuesses": 10
+      },
+      "expected": "You guessed the secret word correctly."
+    },
+    {
+      "args": {
+        "secret": "hamada",
+        "words": [
+          "hamada",
+          "khaled"
+        ],
+        "allowedGuesses": 10
+      },
+      "expected": "You guessed the secret word correctly."
+    }
+  ]
+}

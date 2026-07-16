@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Toppings": [
+          {
+            "topping_name": "Pepperoni",
+            "cost": 0.5
+          },
+          {
+            "topping_name": "Sausage",
+            "cost": 0.7
+          },
+          {
+            "topping_name": "Chicken",
+            "cost": 0.55
+          },
+          {
+            "topping_name": "Extra Cheese",
+            "cost": 0.4
+          }
+        ]
+      },
+      "expected": [
+        {
+          "pizza": "Chicken,Pepperoni,Sausage",
+          "total_cost": 1.75
+        },
+        {
+          "pizza": "Chicken,Extra Cheese,Sausage",
+          "total_cost": 1.65
+        },
+        {
+          "pizza": "Extra Cheese,Pepperoni,Sausage",
+          "total_cost": 1.6
+        },
+        {
+          "pizza": "Chicken,Extra Cheese,Pepperoni",
+          "total_cost": 1.45
+        }
+      ]
+    }
+  ]
+}

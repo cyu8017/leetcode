@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leetcode",
+        "t": "coats"
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "s": "night",
+        "t": "thing"
+      },
+      "expected": 0
+    }
+  ]
+}

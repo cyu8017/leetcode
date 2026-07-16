@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "votes": [
+          "ABC",
+          "ACB",
+          "ABC",
+          "ACB",
+          "ACB"
+        ]
+      },
+      "expected": "ACB"
+    },
+    {
+      "args": {
+        "votes": [
+          "WXYZ",
+          "XYZW"
+        ]
+      },
+      "expected": "XWYZ"
+    },
+    {
+      "args": {
+        "votes": [
+          "ZMNAGUEDSJYLBOPHRQICWFXTVK"
+        ]
+      },
+      "expected": "ZMNAGUEDSJYLBOPHRQICWFXTVK"
+    }
+  ]
+}

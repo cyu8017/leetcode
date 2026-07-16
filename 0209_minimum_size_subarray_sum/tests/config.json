@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "minSubArrayLen",
+  "paramOrder": ["target", "nums"],
+  "types": null,
+  "description": null
+}

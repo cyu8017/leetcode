@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "buckets": [
+          1,
+          2,
+          7
+        ],
+        "loss": 80
+      },
+      "expected": 2.0
+    },
+    {
+      "args": {
+        "buckets": [
+          2,
+          4,
+          6
+        ],
+        "loss": 50
+      },
+      "expected": 3.5
+    },
+    {
+      "args": {
+        "buckets": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "loss": 40
+      },
+      "expected": 3.0
+    }
+  ]
+}

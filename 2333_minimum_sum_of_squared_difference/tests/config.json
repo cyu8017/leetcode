@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "minSumSquareDiff",
+  "paramOrder": [
+    "nums1",
+    "nums2",
+    "k1",
+    "k2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

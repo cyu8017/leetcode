@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "message": [
+          "hello",
+          "world",
+          "leetcode"
+        ],
+        "bannedWords": [
+          "world",
+          "hello"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "message": [
+          "hello",
+          "programming",
+          "fun"
+        ],
+        "bannedWords": [
+          "world",
+          "programming",
+          "leetcode"
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

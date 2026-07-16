@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "corridor": "SSPPSPS"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "corridor": "PPSPSP"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "corridor": "S"
+      },
+      "expected": 0
+    }
+  ]
+}

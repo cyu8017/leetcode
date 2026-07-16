@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 3,
+        "startPos": [
+          0,
+          1
+        ],
+        "s": "RRDDLU"
+      },
+      "expected": [
+        1,
+        5,
+        4,
+        3,
+        1,
+        0
+      ]
+    },
+    {
+      "args": {
+        "n": 2,
+        "startPos": [
+          1,
+          1
+        ],
+        "s": "LURD"
+      },
+      "expected": [
+        4,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "args": {
+        "n": 1,
+        "startPos": [
+          0,
+          0
+        ],
+        "s": "LRUD"
+      },
+      "expected": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "oddCells",
+  "paramOrder": [
+    "m",
+    "n",
+    "indices"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

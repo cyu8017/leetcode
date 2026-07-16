@@ -1,0 +1,6 @@
+﻿# LeetCode 0970 - Powerful Integers
+# https://leetcode.com/problems/powerful-integers/
+
+class Solution:
+    def solve(self) -> None:
+        pass

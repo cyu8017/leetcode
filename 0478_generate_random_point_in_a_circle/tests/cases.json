@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Solution",
+        "randPoint",
+        "randPoint",
+        "randPoint"
+      ],
+      "arguments": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        [
+          -0.02493,
+          -0.38077
+        ],
+        [
+          0.82314,
+          0.38945
+        ],
+        [
+          0.36572,
+          0.17248
+        ]
+      ],
+      "randomUniformSequence": [
+        -0.02493,
+        -0.38077,
+        0.82314,
+        0.38945,
+        0.36572,
+        0.17248
+      ]
+    }
+  ]
+}

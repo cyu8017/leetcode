@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "x": 3,
+        "target": 19
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "x": 5,
+        "target": 501
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "x": 100,
+        "target": 100000000
+      },
+      "expected": 3
+    }
+  ]
+}

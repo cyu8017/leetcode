@@ -1,0 +1,1 @@
+use std::collections::HashMap;impl Solution{pub fn length_of_longest_substring_two_distinct(s:String)->i32{let a=s.as_bytes();let mut m=HashMap::new();let(mut l,mut b)=(0,0);for r in 0..a.len(){*m.entry(a[r]).or_insert(0)+=1;while m.len()>2{*m.get_mut(&a[l]).unwrap()-=1;if m[&a[l]]==0{m.remove(&a[l]);}l+=1}b=b.max(r-l+1)}b as i32}}

@@ -1,0 +1,6 @@
+﻿// LeetCode 1109 - Corporate Flight Bookings
+// https://leetcode.com/problems/corporate-flight-bookings/
+
+function solve(input: unknown): unknown {
+    return null;
+}

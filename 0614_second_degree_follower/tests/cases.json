@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Follow": [
+          {
+            "followee": "Alice",
+            "follower": "Bob"
+          },
+          {
+            "followee": "Bob",
+            "follower": "Cena"
+          },
+          {
+            "followee": "Bob",
+            "follower": "Donald"
+          },
+          {
+            "followee": "Donald",
+            "follower": "Edward"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "follower": "Bob",
+          "num": 2
+        },
+        {
+          "follower": "Donald",
+          "num": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "coordinates": "a1"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "coordinates": "h3"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "coordinates": "c7"
+      },
+      "expected": false
+    }
+  ]
+}

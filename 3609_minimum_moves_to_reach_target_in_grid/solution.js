@@ -1,0 +1,9 @@
+﻿// LeetCode 3609 - Minimum Moves to Reach Target in Grid
+// https://leetcode.com/problems/minimum-moves-to-reach-target-in-grid/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

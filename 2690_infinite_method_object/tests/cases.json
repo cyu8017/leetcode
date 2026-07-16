@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "method": "abc123"
+      },
+      "expected": "abc123"
+    },
+    {
+      "args": {
+        "method": ".-qw73n|^2It"
+      },
+      "expected": ".-qw73n|^2It"
+    }
+  ]
+}

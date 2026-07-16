@@ -1,0 +1,7 @@
+﻿// LeetCode 3986 - Number of Elapsed Seconds Between Two Times
+// https://leetcode.com/problems/number-of-elapsed-seconds-between-two-times/
+
+public class Solution {
+    public void Solve() {
+    }
+}

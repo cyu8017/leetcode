@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "reverseKGroup",
+  "paramOrder": [
+    "head",
+    "k"
+  ],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

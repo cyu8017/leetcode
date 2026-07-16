@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "total": 20,
+        "cost1": 10,
+        "cost2": 5
+      },
+      "expected": 9
+    },
+    {
+      "args": {
+        "total": 5,
+        "cost1": 10,
+        "cost2": 10
+      },
+      "expected": 1
+    }
+  ]
+}

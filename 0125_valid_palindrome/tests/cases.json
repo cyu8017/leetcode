@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "A man, a plan, a canal: Panama"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "race a car"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": " "
+      },
+      "expected": true
+    }
+  ]
+}

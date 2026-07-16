@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "colors": "AAABABB"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "colors": "AA"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "colors": "ABBBBBBBAAA"
+      },
+      "expected": false
+    }
+  ]
+}

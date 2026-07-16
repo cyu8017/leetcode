@@ -1,0 +1,148 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_id": 1,
+            "customer_id": 1,
+            "order_date": "2020-06-01",
+            "item_id": 1,
+            "quantity": 10
+          },
+          {
+            "order_id": 2,
+            "customer_id": 1,
+            "order_date": "2020-06-08",
+            "item_id": 2,
+            "quantity": 10
+          },
+          {
+            "order_id": 3,
+            "customer_id": 2,
+            "order_date": "2020-06-02",
+            "item_id": 1,
+            "quantity": 5
+          },
+          {
+            "order_id": 4,
+            "customer_id": 3,
+            "order_date": "2020-06-03",
+            "item_id": 3,
+            "quantity": 5
+          },
+          {
+            "order_id": 5,
+            "customer_id": 4,
+            "order_date": "2020-06-04",
+            "item_id": 4,
+            "quantity": 1
+          },
+          {
+            "order_id": 6,
+            "customer_id": 4,
+            "order_date": "2020-06-05",
+            "item_id": 5,
+            "quantity": 5
+          },
+          {
+            "order_id": 7,
+            "customer_id": 5,
+            "order_date": "2020-06-05",
+            "item_id": 1,
+            "quantity": 10
+          },
+          {
+            "order_id": 8,
+            "customer_id": 5,
+            "order_date": "2020-06-14",
+            "item_id": 4,
+            "quantity": 5
+          },
+          {
+            "order_id": 9,
+            "customer_id": 5,
+            "order_date": "2020-06-21",
+            "item_id": 3,
+            "quantity": 5
+          }
+        ],
+        "Items": [
+          {
+            "item_id": 1,
+            "item_name": "LC Alg. Book",
+            "item_category": "Book"
+          },
+          {
+            "item_id": 2,
+            "item_name": "LC DB. Book",
+            "item_category": "Book"
+          },
+          {
+            "item_id": 3,
+            "item_name": "LC SmarthPhone",
+            "item_category": "Phone"
+          },
+          {
+            "item_id": 4,
+            "item_name": "LC Phone 2020",
+            "item_category": "Phone"
+          },
+          {
+            "item_id": 5,
+            "item_name": "LC SmartGlass",
+            "item_category": "Glasses"
+          },
+          {
+            "item_id": 6,
+            "item_name": "LC T-Shirt XL",
+            "item_category": "T-Shirt"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "Category": "Book",
+          "Monday": 20,
+          "Tuesday": 5,
+          "Wednesday": 0,
+          "Thursday": 0,
+          "Friday": 10,
+          "Saturday": 0,
+          "Sunday": 0
+        },
+        {
+          "Category": "Glasses",
+          "Monday": 0,
+          "Tuesday": 0,
+          "Wednesday": 0,
+          "Thursday": 0,
+          "Friday": 5,
+          "Saturday": 0,
+          "Sunday": 0
+        },
+        {
+          "Category": "Phone",
+          "Monday": 0,
+          "Tuesday": 0,
+          "Wednesday": 5,
+          "Thursday": 1,
+          "Friday": 0,
+          "Saturday": 0,
+          "Sunday": 10
+        },
+        {
+          "Category": "T-Shirt",
+          "Monday": 0,
+          "Tuesday": 0,
+          "Wednesday": 0,
+          "Thursday": 0,
+          "Friday": 0,
+          "Saturday": 0,
+          "Sunday": 0
+        }
+      ]
+    }
+  ]
+}

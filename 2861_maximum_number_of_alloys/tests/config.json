@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "maxNumberOfAlloys",
+  "paramOrder": [
+    "n",
+    "k",
+    "budget",
+    "composition",
+    "stock",
+    "cost"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "copyRandomList",
+  "paramOrder": ["head"],
+  "types": { "head": "randomlistnode", "return": "randomlistnode" },
+  "description": null
+}

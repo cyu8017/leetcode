@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "times": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            6
+          ]
+        ],
+        "targetFriend": 1
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "times": [
+          [
+            3,
+            10
+          ],
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ]
+        ],
+        "targetFriend": 0
+      },
+      "expected": 2
+    }
+  ]
+}

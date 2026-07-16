@@ -1,0 +1,148 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "UserActivity": [
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-01",
+            "activity_type": "free_trial",
+            "activity_duration": 45
+          },
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-02",
+            "activity_type": "free_trial",
+            "activity_duration": 30
+          },
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-05",
+            "activity_type": "free_trial",
+            "activity_duration": 60
+          },
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-10",
+            "activity_type": "paid",
+            "activity_duration": 75
+          },
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-12",
+            "activity_type": "paid",
+            "activity_duration": 90
+          },
+          {
+            "user_id": 1,
+            "activity_date": "2023-01-15",
+            "activity_type": "paid",
+            "activity_duration": 65
+          },
+          {
+            "user_id": 2,
+            "activity_date": "2023-02-01",
+            "activity_type": "free_trial",
+            "activity_duration": 55
+          },
+          {
+            "user_id": 2,
+            "activity_date": "2023-02-03",
+            "activity_type": "free_trial",
+            "activity_duration": 25
+          },
+          {
+            "user_id": 2,
+            "activity_date": "2023-02-07",
+            "activity_type": "free_trial",
+            "activity_duration": 50
+          },
+          {
+            "user_id": 2,
+            "activity_date": "2023-02-10",
+            "activity_type": "cancelled",
+            "activity_duration": 0
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-05",
+            "activity_type": "free_trial",
+            "activity_duration": 70
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-06",
+            "activity_type": "free_trial",
+            "activity_duration": 60
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-08",
+            "activity_type": "free_trial",
+            "activity_duration": 80
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-12",
+            "activity_type": "paid",
+            "activity_duration": 50
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-15",
+            "activity_type": "paid",
+            "activity_duration": 55
+          },
+          {
+            "user_id": 3,
+            "activity_date": "2023-03-20",
+            "activity_type": "paid",
+            "activity_duration": 85
+          },
+          {
+            "user_id": 4,
+            "activity_date": "2023-04-01",
+            "activity_type": "free_trial",
+            "activity_duration": 40
+          },
+          {
+            "user_id": 4,
+            "activity_date": "2023-04-03",
+            "activity_type": "free_trial",
+            "activity_duration": 35
+          },
+          {
+            "user_id": 4,
+            "activity_date": "2023-04-05",
+            "activity_type": "paid",
+            "activity_duration": 45
+          },
+          {
+            "user_id": 4,
+            "activity_date": "2023-04-07",
+            "activity_type": "cancelled",
+            "activity_duration": 0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "trial_avg_duration": 45.0,
+          "paid_avg_duration": 76.67
+        },
+        {
+          "user_id": 3,
+          "trial_avg_duration": 70.0,
+          "paid_avg_duration": 63.33
+        },
+        {
+          "user_id": 4,
+          "trial_avg_duration": 37.5,
+          "paid_avg_duration": 45.0
+        }
+      ]
+    }
+  ]
+}

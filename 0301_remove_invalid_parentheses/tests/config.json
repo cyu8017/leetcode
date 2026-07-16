@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "removeInvalidParentheses",
+  "paramOrder": [
+    "s"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

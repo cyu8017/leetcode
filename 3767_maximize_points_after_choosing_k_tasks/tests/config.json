@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "technique1",
+    "technique2",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

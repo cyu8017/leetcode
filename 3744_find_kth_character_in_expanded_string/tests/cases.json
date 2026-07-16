@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "hello world",
+        "k": 0
+      },
+      "expected": "h"
+    },
+    {
+      "args": {
+        "s": "hello world",
+        "k": 15
+      },
+      "expected": " "
+    }
+  ]
+}

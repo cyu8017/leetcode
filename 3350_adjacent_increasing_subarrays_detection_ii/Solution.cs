@@ -1,0 +1,7 @@
+﻿// LeetCode 3350 - Adjacent Increasing Subarrays Detection II
+// https://leetcode.com/problems/adjacent-increasing-subarrays-detection-ii/
+
+public class Solution {
+    public void Solve() {
+    }
+}

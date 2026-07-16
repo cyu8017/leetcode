@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nextVisit": [
+          0,
+          0
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "nextVisit": [
+          0,
+          0,
+          2
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "nextVisit": [
+          0,
+          1,
+          2,
+          0
+        ]
+      },
+      "expected": 6
+    }
+  ]
+}

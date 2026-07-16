@@ -1,0 +1,6 @@
+﻿// LeetCode 3325 - Count Substrings With K-Frequency Characters I
+// https://leetcode.com/problems/count-substrings-with-k-frequency-characters-i/
+
+function solve(input: unknown): unknown {
+    return null;
+}

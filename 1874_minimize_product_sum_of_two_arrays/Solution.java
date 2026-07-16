@@ -1,0 +1,7 @@
+﻿// LeetCode 1874 - Minimize Product Sum of Two Arrays
+// https://leetcode.com/problems/minimize-product-sum-of-two-arrays/
+
+class Solution {
+    public void solve() {
+    }
+}

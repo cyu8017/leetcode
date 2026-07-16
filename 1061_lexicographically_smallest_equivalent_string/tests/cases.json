@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "parker",
+        "s2": "morris",
+        "baseStr": "parser"
+      },
+      "expected": "makkek"
+    },
+    {
+      "args": {
+        "s1": "hello",
+        "s2": "world",
+        "baseStr": "hold"
+      },
+      "expected": "hdld"
+    },
+    {
+      "args": {
+        "s1": "leetcode",
+        "s2": "programs",
+        "baseStr": "sourcecode"
+      },
+      "expected": "aauaaaaada"
+    }
+  ]
+}

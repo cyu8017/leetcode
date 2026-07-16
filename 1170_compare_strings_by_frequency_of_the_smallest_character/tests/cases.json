@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "queries": [
+          "cbd"
+        ],
+        "words": [
+          "zaaaz"
+        ]
+      },
+      "expected": [
+        1
+      ]
+    },
+    {
+      "args": {
+        "queries": [
+          "bbb",
+          "cc"
+        ],
+        "words": [
+          "a",
+          "aa",
+          "aaa",
+          "aaaa"
+        ]
+      },
+      "expected": [
+        1,
+        2
+      ]
+    }
+  ]
+}

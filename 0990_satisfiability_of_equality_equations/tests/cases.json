@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "equations": [
+          "a==b",
+          "b!=a"
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "equations": [
+          "b==a",
+          "a==b"
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "ab#c",
+        "t": "ad#c"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "ab##",
+        "t": "c#d#"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "a#c",
+        "t": "b"
+      },
+      "expected": false
+    }
+  ]
+}

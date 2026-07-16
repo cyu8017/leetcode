@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "args": {
+        "expression": "e + 8 - a + 5",
+        "evalvars": [
+          "e"
+        ],
+        "evalints": [
+          1
+        ]
+      },
+      "expected": [
+        "-1*a",
+        "14"
+      ]
+    },
+    {
+      "args": {
+        "expression": "e - 8 + temperature - pressure",
+        "evalvars": [
+          "e",
+          "temperature"
+        ],
+        "evalints": [
+          1,
+          12
+        ]
+      },
+      "expected": [
+        "-1*pressure",
+        "5"
+      ]
+    },
+    {
+      "args": {
+        "expression": "(e + 8) * (e - 8)",
+        "evalvars": [],
+        "evalints": []
+      },
+      "expected": [
+        "1*e*e",
+        "-64"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Activities": [
+          {
+            "sell_date": "2020-05-30",
+            "product": "Headphone"
+          },
+          {
+            "sell_date": "2020-06-01",
+            "product": "Pencil"
+          },
+          {
+            "sell_date": "2020-06-02",
+            "product": "Mask"
+          },
+          {
+            "sell_date": "2020-05-30",
+            "product": "Basketball"
+          },
+          {
+            "sell_date": "2020-06-01",
+            "product": "Bible"
+          },
+          {
+            "sell_date": "2020-06-02",
+            "product": "Mask"
+          },
+          {
+            "sell_date": "2020-05-30",
+            "product": "T-Shirt"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "sell_date": "2020-05-30",
+          "num_sold": 3,
+          "products": "Basketball,Headphone,T-shirt"
+        },
+        {
+          "sell_date": "2020-06-01",
+          "num_sold": 2,
+          "products": "Bible,Pencil"
+        },
+        {
+          "sell_date": "2020-06-02",
+          "num_sold": 1,
+          "products": "Mask"
+        }
+      ]
+    }
+  ]
+}

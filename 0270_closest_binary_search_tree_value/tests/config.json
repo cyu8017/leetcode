@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "closestValue",
+  "paramOrder": ["root", "target"],
+  "types": { "root": "treenode" },
+  "description": null
+}

@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "transactions": [
+          {
+            "transaction_id": 1,
+            "amount": 150,
+            "transaction_date": "2024-07-01"
+          },
+          {
+            "transaction_id": 2,
+            "amount": 200,
+            "transaction_date": "2024-07-01"
+          },
+          {
+            "transaction_id": 3,
+            "amount": 75,
+            "transaction_date": "2024-07-01"
+          },
+          {
+            "transaction_id": 4,
+            "amount": 300,
+            "transaction_date": "2024-07-02"
+          },
+          {
+            "transaction_id": 5,
+            "amount": 50,
+            "transaction_date": "2024-07-02"
+          },
+          {
+            "transaction_id": 6,
+            "amount": 120,
+            "transaction_date": "2024-07-03"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "transaction_date": "2024-07-01",
+          "odd_sum": 75,
+          "even_sum": 350
+        },
+        {
+          "transaction_date": "2024-07-02",
+          "odd_sum": 0,
+          "even_sum": 350
+        },
+        {
+          "transaction_date": "2024-07-03",
+          "odd_sum": 0,
+          "even_sum": 120
+        }
+      ]
+    }
+  ]
+}

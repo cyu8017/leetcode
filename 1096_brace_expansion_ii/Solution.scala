@@ -1,0 +1,6 @@
+﻿// LeetCode 1096 - Brace Expansion II
+// https://leetcode.com/problems/brace-expansion-ii/
+
+object Solution {
+  def solve(): Unit = {}
+}

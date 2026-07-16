@@ -1,0 +1,12 @@
+﻿// LeetCode 0126 - Word Ladder II
+// https://leetcode.com/problems/word-ladder-ii/
+
+#include <stdlib.h>
+#include <string.h>
+static char **ladderWords, **ladderPath, ***ladderResult; static int *ladderDist, *ladderCols, ladderCount, ladderEnd, ladderSize, ladderCap;
+static int differsByOne(const char *a,const char *b){int diff=0;for(;*a;a++)if(*a!=*b&&++diff>1)return 0;return diff==1;}
+static void ladderDfs(int node,int depth){ladderPath[depth]=ladderWords[node];if(node==ladderEnd){if(ladderSize==ladderCap){ladderCap=ladderCap?ladderCap*2:8;ladderResult=realloc(ladderResult,ladderCap*sizeof(char**));ladderCols=realloc(ladderCols,ladderCap*sizeof(int));}ladderResult[ladderSize]=malloc((depth+1)*sizeof(char*));for(int i=0;i<=depth;i++){ladderResult[ladderSize][i]=malloc(strlen(ladderPath[i])+1);strcpy(ladderResult[ladderSize][i],ladderPath[i]);}ladderCols[ladderSize++]=depth+1;return;}for(int i=0;i<ladderCount;i++)if(ladderDist[i]==ladderDist[node]+1&&differsByOne(ladderWords[node],ladderWords[i]))ladderDfs(i,depth+1);}
+char*** findLadders(char* beginWord, char* endWord, char** wordList, int wordListSize, int* returnSize, int** returnColumnSizes) {
+    ladderCount=wordListSize+1;ladderWords=malloc(ladderCount*sizeof(char*));for(int i=0;i<wordListSize;i++)ladderWords[i]=wordList[i];ladderWords[wordListSize]=beginWord;ladderEnd=-1;for(int i=0;i<wordListSize;i++)if(!strcmp(wordList[i],endWord))ladderEnd=i;*returnSize=0;*returnColumnSizes=NULL;if(ladderEnd<0)return NULL;
+    ladderDist=malloc(ladderCount*sizeof(int));int *queue=malloc(ladderCount*sizeof(int)),front=0,back=0;for(int i=0;i<ladderCount;i++)ladderDist[i]=-1;ladderDist[wordListSize]=0;queue[back++]=wordListSize;while(front<back){int node=queue[front++];for(int i=0;i<ladderCount;i++)if(ladderDist[i]<0&&differsByOne(ladderWords[node],ladderWords[i])){ladderDist[i]=ladderDist[node]+1;queue[back++]=i;}}free(queue);if(ladderDist[ladderEnd]<0){free(ladderDist);return NULL;}ladderPath=malloc((ladderDist[ladderEnd]+1)*sizeof(char*));ladderResult=NULL;ladderCols=NULL;ladderSize=ladderCap=0;ladderDfs(wordListSize,0);free(ladderDist);free(ladderPath);free(ladderWords);*returnSize=ladderSize;*returnColumnSizes=ladderCols;return ladderResult;
+}

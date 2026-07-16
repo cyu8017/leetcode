@@ -1,0 +1,7 @@
+﻿// LeetCode 3640 - Trionic Array II
+// https://leetcode.com/problems/trionic-array-ii/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

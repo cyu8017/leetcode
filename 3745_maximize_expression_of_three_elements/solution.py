@@ -1,0 +1,6 @@
+﻿# LeetCode 3745 - Maximize Expression of Three Elements
+# https://leetcode.com/problems/maximize-expression-of-three-elements/
+
+class Solution:
+    def solve(self) -> None:
+        pass

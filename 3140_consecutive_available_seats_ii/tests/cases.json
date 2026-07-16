@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Cinema": [
+          {
+            "seat_id": 1,
+            "free": 1
+          },
+          {
+            "seat_id": 2,
+            "free": 0
+          },
+          {
+            "seat_id": 3,
+            "free": 1
+          },
+          {
+            "seat_id": 4,
+            "free": 1
+          },
+          {
+            "seat_id": 5,
+            "free": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "first_seat_id": 3,
+          "last_seat_id": 5,
+          "consecutive_seats_len": 3
+        }
+      ]
+    }
+  ]
+}

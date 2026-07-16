@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": "[1,2,3,4] fn = function sum(accum, curr) { return accum + curr; } init = 0"
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "nums": "[1,2,3,4] fn = function sum(accum, curr) { return accum + curr * curr; } init = 100"
+      },
+      "expected": 130
+    },
+    {
+      "args": {
+        "nums": "[] fn = function sum(accum, curr) { return 0; } init = 25"
+      },
+      "expected": 25
+    }
+  ]
+}

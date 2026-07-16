@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Weather": [
+          {
+            "city_id": 1,
+            "day": "2022-01-07",
+            "degree": -12
+          },
+          {
+            "city_id": 1,
+            "day": "2022-03-07",
+            "degree": 5
+          },
+          {
+            "city_id": 1,
+            "day": "2022-07-07",
+            "degree": 24
+          },
+          {
+            "city_id": 2,
+            "day": "2022-08-07",
+            "degree": 37
+          },
+          {
+            "city_id": 2,
+            "day": "2022-08-17",
+            "degree": 37
+          },
+          {
+            "city_id": 3,
+            "day": "2022-02-07",
+            "degree": -7
+          },
+          {
+            "city_id": 3,
+            "day": "2022-12-07",
+            "degree": -6
+          }
+        ]
+      },
+      "expected": [
+        {
+          "city_id": 1,
+          "day": "2022-07-07",
+          "degree": 24
+        },
+        {
+          "city_id": 2,
+          "day": "2022-08-07",
+          "degree": 37
+        },
+        {
+          "city_id": 3,
+          "day": "2022-12-07",
+          "degree": -6
+        }
+      ]
+    }
+  ]
+}

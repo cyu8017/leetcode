@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "levelOrder",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "narynode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

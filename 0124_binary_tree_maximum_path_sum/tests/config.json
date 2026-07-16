@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "maxPathSum",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode" },
+  "description": null
+}

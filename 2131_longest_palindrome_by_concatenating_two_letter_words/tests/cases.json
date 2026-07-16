@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "lc",
+          "cl",
+          "gg"
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "words": [
+          "ab",
+          "ty",
+          "yt",
+          "lc",
+          "cl",
+          "ab"
+        ]
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "words": [
+          "cc",
+          "ll",
+          "xx"
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

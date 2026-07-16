@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "RLEIterator",
+        "next",
+        "next",
+        "next",
+        "next"
+      ],
+      "arguments": [
+        [
+          [
+            3,
+            8,
+            0,
+            9,
+            2,
+            5
+          ]
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        8,
+        8,
+        5,
+        -1
+      ]
+    }
+  ]
+}

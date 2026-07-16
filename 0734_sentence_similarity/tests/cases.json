@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence1": [
+          "great",
+          "acting",
+          "skills"
+        ],
+        "sentence2": [
+          "fine",
+          "drama",
+          "talent"
+        ],
+        "similarPairs": [
+          [
+            "great",
+            "fine"
+          ],
+          [
+            "drama",
+            "acting"
+          ],
+          [
+            "skills",
+            "talent"
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence1": [
+          "great"
+        ],
+        "sentence2": [
+          "great"
+        ],
+        "similarPairs": []
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence1": [
+          "great"
+        ],
+        "sentence2": [
+          "doubleplus",
+          "good"
+        ],
+        "similarPairs": [
+          [
+            "great",
+            "doubleplus"
+          ]
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

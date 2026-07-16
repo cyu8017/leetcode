@@ -1,0 +1,111 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Samples": [
+          {
+            "sample_id": 1,
+            "dna_sequence": "ATGCTAGCTAGCTAA",
+            "species": "Human"
+          },
+          {
+            "sample_id": 2,
+            "dna_sequence": "GGGTCAATCATC",
+            "species": "Human"
+          },
+          {
+            "sample_id": 3,
+            "dna_sequence": "ATATATCGTAGCTA",
+            "species": "Human"
+          },
+          {
+            "sample_id": 4,
+            "dna_sequence": "ATGGGGTCATCATAA",
+            "species": "Mouse"
+          },
+          {
+            "sample_id": 5,
+            "dna_sequence": "TCAGTCAGTCAG",
+            "species": "Mouse"
+          },
+          {
+            "sample_id": 6,
+            "dna_sequence": "ATATCGCGCTAG",
+            "species": "Zebrafish"
+          },
+          {
+            "sample_id": 7,
+            "dna_sequence": "CGTATGCGTCGTA",
+            "species": "Zebrafish"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "sample_id": 1,
+          "dna_sequence": "ATGCTAGCTAGCTAA",
+          "species": "Human",
+          "has_start": 1,
+          "has_stop": 1,
+          "has_atat": 0,
+          "has_ggg": 0
+        },
+        {
+          "sample_id": 2,
+          "dna_sequence": "GGGTCAATCATC",
+          "species": "Human",
+          "has_start": 0,
+          "has_stop": 0,
+          "has_atat": 0,
+          "has_ggg": 1
+        },
+        {
+          "sample_id": 3,
+          "dna_sequence": "ATATATCGTAGCTA",
+          "species": "Human",
+          "has_start": 0,
+          "has_stop": 0,
+          "has_atat": 1,
+          "has_ggg": 0
+        },
+        {
+          "sample_id": 4,
+          "dna_sequence": "ATGGGGTCATCATAA",
+          "species": "Mouse",
+          "has_start": 1,
+          "has_stop": 1,
+          "has_atat": 0,
+          "has_ggg": 1
+        },
+        {
+          "sample_id": 5,
+          "dna_sequence": "TCAGTCAGTCAG",
+          "species": "Mouse",
+          "has_start": 0,
+          "has_stop": 0,
+          "has_atat": 0,
+          "has_ggg": 0
+        },
+        {
+          "sample_id": 6,
+          "dna_sequence": "ATATCGCGCTAG",
+          "species": "Zebrafish",
+          "has_start": 0,
+          "has_stop": 1,
+          "has_atat": 1,
+          "has_ggg": 0
+        },
+        {
+          "sample_id": 7,
+          "dna_sequence": "CGTATGCGTCGTA",
+          "species": "Zebrafish",
+          "has_start": 0,
+          "has_stop": 0,
+          "has_atat": 0,
+          "has_ggg": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+# Pin toolchains so every contributor gets the same compiler/runtime versions.
+# Only Docker is required on the host — no local Python, Java, Node, etc.
+
+name: leetcode-solutions
+
+x-common: &common
+  working_dir: /workspace
+  volumes:
+    - ..:/workspace
+  entrypoint: ["/bin/bash", "/workspace/docker/entrypoint.sh"]
+
+services:
+  python:
+    <<: *common
+    image: python:3.12.4-bookworm
+    command: ["python"]
+
+  javascript:
+    <<: *common
+    build:
+      context: .
+      dockerfile: node.Dockerfile
+    command: ["javascript"]
+
+  typescript:
+    <<: *common
+    build:
+      context: .
+      dockerfile: node.Dockerfile
+    command: ["typescript"]
+
+  java:
+    <<: *common
+    build:
+      context: .
+      dockerfile: java.Dockerfile
+    command: ["java"]
+
+  ruby:
+    <<: *common
+    image: ruby:3.3.4-bookworm
+    command: ["ruby"]
+
+  php:
+    <<: *common
+    image: php:8.3.9-cli-bookworm
+    command: ["php"]
+
+  cpp:
+    <<: *common
+    build:
+      context: .
+      dockerfile: gcc.Dockerfile
+    command: ["cpp"]
+
+  c:
+    <<: *common
+    build:
+      context: .
+      dockerfile: gcc.Dockerfile
+    command: ["c"]
+
+  go:
+    <<: *common
+    build:
+      context: .
+      dockerfile: go.Dockerfile
+    command: ["go"]
+
+  rust:
+    <<: *common
+    build:
+      context: .
+      dockerfile: rust.Dockerfile
+    command: ["rust"]
+
+  csharp:
+    <<: *common
+    build:
+      context: .
+      dockerfile: dotnet.Dockerfile
+    command: ["csharp"]
+
+  kotlin:
+    <<: *common
+    build:
+      context: .
+      dockerfile: java.Dockerfile
+    command: ["kotlin"]
+
+  scala:
+    <<: *common
+    build:
+      context: .
+      dockerfile: java.Dockerfile
+    command: ["scala"]
+
+  swift:
+    <<: *common
+    image: swift:5.10.1-jammy
+    command: ["swift"]

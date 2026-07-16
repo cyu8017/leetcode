@@ -1,0 +1,215 @@
+# Test harness for 1637_widest_vertical_area_between_two_points_containing_no_points
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language python
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language javascript
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language typescript
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language java
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language cpp
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language c
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language go
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language rust
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language kotlin
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language swift
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language ruby
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language csharp
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language scala
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language php
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm java java 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm c c 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm go go 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm rust rust 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm swift swift 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm scala scala 1637_widest_vertical_area_between_two_points_containing_no_points
+docker compose -f docker/docker-compose.yml run --rm php php 1637_widest_vertical_area_between_two_points_containing_no_points
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1637_widest_vertical_area_between_two_points_containing_no_points` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1637_widest_vertical_area_between_two_points_containing_no_points` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1637_widest_vertical_area_between_two_points_containing_no_points -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1637_widest_vertical_area_between_two_points_containing_no_points --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

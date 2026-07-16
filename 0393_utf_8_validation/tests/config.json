@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "validUtf8",
+  "paramOrder": [
+    "data"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

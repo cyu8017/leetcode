@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "mergeTwoLists",
+  "paramOrder": [
+    "list1",
+    "list2"
+  ],
+  "types": {
+    "list1": "listnode",
+    "list2": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

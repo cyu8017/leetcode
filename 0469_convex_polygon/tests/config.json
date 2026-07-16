@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "isConvex",
+  "paramOrder": [
+    "points"
+  ],
+  "types": null,
+  "description": "Determine whether a polygon is convex."
+}

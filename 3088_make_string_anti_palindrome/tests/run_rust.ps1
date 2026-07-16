@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$problemDir = Split-Path -Parent $PSScriptRoot
+& "C:\Users\Charlie Yu\Documents\Bitbucket - cyuconsulting\leetcode-solutions\scripts\test-problem.ps1" -Folder "3088_make_string_anti_palindrome" -Language "rust"

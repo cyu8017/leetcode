@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "shortestCompletingWord",
+  "paramOrder": [
+    "licensePlate",
+    "words"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

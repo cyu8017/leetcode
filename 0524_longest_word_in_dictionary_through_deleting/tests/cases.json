@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abpcplea",
+        "dictionary": [
+          "ale",
+          "apple",
+          "monkey",
+          "plea"
+        ]
+      },
+      "expected": "apple"
+    },
+    {
+      "args": {
+        "s": "abpcplea",
+        "dictionary": [
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": "a"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿# LeetCode 2235 - Add Two Integers
+# https://leetcode.com/problems/add-two-integers/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Books": [
+          {
+            "book_id": 1,
+            "name": "\"Kalila And Demna\"",
+            "available_from": "2010-01-01"
+          },
+          {
+            "book_id": 2,
+            "name": "\"28 Letters\"",
+            "available_from": "2012-05-12"
+          },
+          {
+            "book_id": 3,
+            "name": "\"The Hobbit\"",
+            "available_from": "2019-06-10"
+          },
+          {
+            "book_id": 4,
+            "name": "\"13 Reasons Why\"",
+            "available_from": "2019-06-01"
+          },
+          {
+            "book_id": 5,
+            "name": "\"The Hunger Games\"",
+            "available_from": "2008-09-21"
+          }
+        ],
+        "Orders": [
+          {
+            "order_id": 1,
+            "book_id": 1,
+            "quantity": 2,
+            "dispatch_date": "2018-07-26"
+          },
+          {
+            "order_id": 2,
+            "book_id": 1,
+            "quantity": 1,
+            "dispatch_date": "2018-11-05"
+          },
+          {
+            "order_id": 3,
+            "book_id": 3,
+            "quantity": 8,
+            "dispatch_date": "2019-06-11"
+          },
+          {
+            "order_id": 4,
+            "book_id": 4,
+            "quantity": 6,
+            "dispatch_date": "2019-06-05"
+          },
+          {
+            "order_id": 5,
+            "book_id": 4,
+            "quantity": 5,
+            "dispatch_date": "2019-06-20"
+          },
+          {
+            "order_id": 6,
+            "book_id": 5,
+            "quantity": 9,
+            "dispatch_date": "2009-02-02"
+          },
+          {
+            "order_id": 7,
+            "book_id": 5,
+            "quantity": 8,
+            "dispatch_date": "2010-04-13"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "book_id": 1,
+          "name": "\"Kalila And Demna\""
+        },
+        {
+          "book_id": 2,
+          "name": "\"28 Letters\""
+        },
+        {
+          "book_id": 5,
+          "name": "\"The Hunger Games\""
+        }
+      ]
+    }
+  ]
+}

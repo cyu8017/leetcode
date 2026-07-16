@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tasks": [
+          {
+            "task_id": 1,
+            "assignee_id": 1,
+            "submit_date": "2022-06-13"
+          },
+          {
+            "task_id": 2,
+            "assignee_id": 6,
+            "submit_date": "2022-06-14"
+          },
+          {
+            "task_id": 3,
+            "assignee_id": 6,
+            "submit_date": "2022-06-15"
+          },
+          {
+            "task_id": 4,
+            "assignee_id": 3,
+            "submit_date": "2022-06-18"
+          },
+          {
+            "task_id": 5,
+            "assignee_id": 5,
+            "submit_date": "2022-06-19"
+          },
+          {
+            "task_id": 6,
+            "assignee_id": 7,
+            "submit_date": "2022-06-19"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "weekend_cnt": 3,
+          "working_cnt": 3
+        }
+      ]
+    }
+  ]
+}

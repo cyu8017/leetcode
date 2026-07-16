@@ -1,0 +1,6 @@
+﻿# LeetCode 2871 - Split Array Into Maximum Number of Subarrays
+# https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays/
+
+class Solution:
+    def solve(self) -> None:
+        pass

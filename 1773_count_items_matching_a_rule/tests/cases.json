@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "args": {
+        "items": [
+          [
+            "phone",
+            "blue",
+            "pixel"
+          ],
+          [
+            "computer",
+            "silver",
+            "lenovo"
+          ],
+          [
+            "phone",
+            "gold",
+            "iphone"
+          ]
+        ],
+        "ruleKey": "color",
+        "ruleValue": "silver"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "items": [
+          [
+            "phone",
+            "blue",
+            "pixel"
+          ],
+          [
+            "computer",
+            "silver",
+            "phone"
+          ],
+          [
+            "phone",
+            "gold",
+            "iphone"
+          ]
+        ],
+        "ruleKey": "type",
+        "ruleValue": "phone"
+      },
+      "expected": 2
+    }
+  ]
+}

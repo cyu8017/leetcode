@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "floor": "10110101",
+        "numCarpets": 2,
+        "carpetLen": 2
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "floor": "11111",
+        "numCarpets": 2,
+        "carpetLen": 3
+      },
+      "expected": 0
+    }
+  ]
+}

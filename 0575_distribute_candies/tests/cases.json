@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "candyType": [
+          1,
+          1,
+          2,
+          2,
+          3,
+          3
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "candyType": [
+          1,
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "candyType": [
+          6,
+          6,
+          6,
+          6
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

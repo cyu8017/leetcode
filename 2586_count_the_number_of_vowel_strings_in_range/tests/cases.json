@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "are",
+          "amy",
+          "u"
+        ],
+        "left": 0,
+        "right": 2
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "hey",
+          "aeo",
+          "mu",
+          "ooo",
+          "artro"
+        ],
+        "left": 1,
+        "right": 4
+      },
+      "expected": 3
+    }
+  ]
+}

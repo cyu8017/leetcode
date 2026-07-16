@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "aabca"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "adc"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "bbcbaba"
+      },
+      "expected": 4
+    }
+  ]
+}

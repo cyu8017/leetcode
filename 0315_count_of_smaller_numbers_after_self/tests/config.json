@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "countSmaller",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

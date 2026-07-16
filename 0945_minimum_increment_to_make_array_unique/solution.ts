@@ -1,0 +1,6 @@
+﻿// LeetCode 0945 - Minimum Increment to Make Array Unique
+// https://leetcode.com/problems/minimum-increment-to-make-array-unique/
+
+function solve(input: unknown): unknown {
+    return null;
+}

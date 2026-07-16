@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "isReachableAtTime",
+  "paramOrder": [
+    "sx",
+    "sy",
+    "fx",
+    "fy",
+    "t"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

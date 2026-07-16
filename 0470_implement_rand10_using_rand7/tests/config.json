@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "rand10",
+  "paramOrder": [
+    "n"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Call rand10 n times with a deterministic mocked rand7 per test case."
+}

@@ -1,0 +1,31 @@
+﻿// LeetCode 0063 - Unique Paths II
+// https://leetcode.com/problems/unique-paths-ii/
+
+class Solution {
+    fun uniquePathsWithObstacles(obstacleGrid: Array<IntArray>): Int {
+        if (obstacleGrid[0][0] == 1) {
+            return 0
+        }
+
+        val rows = obstacleGrid.size
+        val cols = obstacleGrid[0].size
+        val row = IntArray(cols)
+        row[0] = 1
+
+        for (i in 0 until rows) {
+            if (obstacleGrid[i][0] == 1) {
+                row[0] = 0
+            }
+
+            for (j in 1 until cols) {
+                if (obstacleGrid[i][j] == 1) {
+                    row[j] = 0
+                } else {
+                    row[j] += row[j - 1]
+                }
+            }
+        }
+
+        return row[cols - 1]
+    }
+}

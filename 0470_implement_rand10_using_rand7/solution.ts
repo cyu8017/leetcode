@@ -1,0 +1,19 @@
+﻿// LeetCode 0470 - Implement Rand10() Using Rand7()
+// https://leetcode.com/problems/implement-rand10-using-rand7/
+
+declare function rand7(): number;
+
+export class Solution {
+    rand10(): number {
+        while (true) {
+            const num = (rand7() - 1) * 7 + rand7();
+            if (num <= 40) return ((num - 1) % 10) + 1;
+        }
+    }
+}
+
+function rand7(): number {
+    throw new Error("rand7 must be provided by the test harness");
+}
+
+export { rand7 };

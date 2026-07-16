@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MagicDictionary",
+        "buildDict",
+        "search",
+        "search",
+        "search",
+        "search"
+      ],
+      "arguments": [
+        [],
+        [
+          [
+            "hello",
+            "leetcode"
+          ]
+        ],
+        [
+          "hello"
+        ],
+        [
+          "hhllo"
+        ],
+        [
+          "hell"
+        ],
+        [
+          "leetcoded"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        false,
+        true,
+        false,
+        false
+      ]
+    }
+  ]
+}

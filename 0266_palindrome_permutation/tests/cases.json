@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "code"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "aab"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "carerac"
+      },
+      "expected": true
+    }
+  ]
+}

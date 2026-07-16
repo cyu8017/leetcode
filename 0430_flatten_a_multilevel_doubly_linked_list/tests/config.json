@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "flatten",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "multilevelnode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

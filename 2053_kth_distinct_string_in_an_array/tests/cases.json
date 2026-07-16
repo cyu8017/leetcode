@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "arr": [
+          "d",
+          "b",
+          "c",
+          "b",
+          "c",
+          "a"
+        ],
+        "k": 2
+      },
+      "expected": "a"
+    },
+    {
+      "args": {
+        "arr": [
+          "aaa",
+          "aa",
+          "a"
+        ],
+        "k": 1
+      },
+      "expected": "aaa"
+    },
+    {
+      "args": {
+        "arr": [
+          "a",
+          "b",
+          "a"
+        ],
+        "k": 3
+      },
+      "expected": ""
+    }
+  ]
+}

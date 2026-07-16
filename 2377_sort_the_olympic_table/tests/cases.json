@@ -1,0 +1,73 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Olympic": [
+          {
+            "country": "China",
+            "gold_medals": 10,
+            "silver_medals": 10,
+            "bronze_medals": 20
+          },
+          {
+            "country": "South Sudan",
+            "gold_medals": 0,
+            "silver_medals": 0,
+            "bronze_medals": 1
+          },
+          {
+            "country": "USA",
+            "gold_medals": 10,
+            "silver_medals": 10,
+            "bronze_medals": 20
+          },
+          {
+            "country": "Israel",
+            "gold_medals": 2,
+            "silver_medals": 2,
+            "bronze_medals": 3
+          },
+          {
+            "country": "Egypt",
+            "gold_medals": 2,
+            "silver_medals": 2,
+            "bronze_medals": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "country": "China",
+          "gold_medals": 10,
+          "silver_medals": 10,
+          "bronze_medals": 20
+        },
+        {
+          "country": "USA",
+          "gold_medals": 10,
+          "silver_medals": 10,
+          "bronze_medals": 20
+        },
+        {
+          "country": "Israel",
+          "gold_medals": 2,
+          "silver_medals": 2,
+          "bronze_medals": 3
+        },
+        {
+          "country": "Egypt",
+          "gold_medals": 2,
+          "silver_medals": 2,
+          "bronze_medals": 2
+        },
+        {
+          "country": "South Sudan",
+          "gold_medals": 0,
+          "silver_medals": 0,
+          "bronze_medals": 1
+        }
+      ]
+    }
+  ]
+}

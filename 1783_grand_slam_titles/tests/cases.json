@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Players": [
+          {
+            "player_id": 1,
+            "player_name": "Nadal"
+          },
+          {
+            "player_id": 2,
+            "player_name": "Federer"
+          },
+          {
+            "player_id": 3,
+            "player_name": "Novak"
+          }
+        ],
+        "Championships": [
+          {
+            "year": 2018,
+            "Wimbledon": 1,
+            "Fr_open": 1,
+            "US_open": 1,
+            "Au_open": 1
+          },
+          {
+            "year": 2019,
+            "Wimbledon": 1,
+            "Fr_open": 1,
+            "US_open": 2,
+            "Au_open": 2
+          },
+          {
+            "year": 2020,
+            "Wimbledon": 2,
+            "Fr_open": 1,
+            "US_open": 2,
+            "Au_open": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "player_id": 2,
+          "player_name": "Federer",
+          "grand_slams_count": 5
+        },
+        {
+          "player_id": 1,
+          "player_name": "Nadal",
+          "grand_slams_count": 7
+        }
+      ]
+    }
+  ]
+}

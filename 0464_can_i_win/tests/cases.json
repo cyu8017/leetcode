@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "maxChoosableInteger": 10,
+        "desiredTotal": 11
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "maxChoosableInteger": 10,
+        "desiredTotal": 0
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "maxChoosableInteger": 10,
+        "desiredTotal": 1
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word1": "ac",
+        "word2": "b"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "word1": "abcc",
+        "word2": "aab"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "word1": "abcde",
+        "word2": "fghij"
+      },
+      "expected": true
+    }
+  ]
+}

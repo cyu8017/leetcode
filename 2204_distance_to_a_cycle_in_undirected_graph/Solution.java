@@ -1,0 +1,7 @@
+﻿// LeetCode 2204 - Distance to a Cycle in Undirected Graph
+// https://leetcode.com/problems/distance-to-a-cycle-in-undirected-graph/
+
+class Solution {
+    public void solve() {
+    }
+}

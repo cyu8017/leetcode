@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "dictionary": [
+          "cat",
+          "bat",
+          "rat"
+        ],
+        "sentence": "the cattle was rattled by the battery"
+      },
+      "expected": "the cat was rat by the bat"
+    },
+    {
+      "args": {
+        "dictionary": [
+          "a",
+          "b",
+          "c"
+        ],
+        "sentence": "aadsfasf absbs bbab cadsfafs"
+      },
+      "expected": "a a b c"
+    }
+  ]
+}

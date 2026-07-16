@@ -1,0 +1,26 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-json
+        exclude: ^config/(questions-full|neenza-problems|doocs-premium-cache)\.json$
+      - id: check-yaml
+      - id: end-of-file-fixer
+        exclude: ^config/(questions-full|neenza-problems|doocs-premium-cache)\.json$
+      - id: trailing-whitespace
+        exclude: ^config/(questions-full|neenza-problems|doocs-premium-cache)\.json$
+
+  - repo: local
+    hooks:
+      - id: block-leetcode-env
+        name: block .leetcode.env commits
+        entry: python scripts/hooks/block-secrets.py
+        language: python
+        pass_filenames: true
+        files: ^\.leetcode\.env$|^\.env$
+      - id: validate-changed-tests
+        name: validate changed problem tests
+        entry: python scripts/hooks/validate-changed-tests.py
+        language: python
+        pass_filenames: false
+        files: ^[^/]+/tests/(cases|config)\.json$

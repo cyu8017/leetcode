@@ -1,0 +1,7 @@
+﻿# LeetCode 3662 - Filter Characters by Frequency
+# https://leetcode.com/problems/filter-characters-by-frequency/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

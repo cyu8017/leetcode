@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "havefunonleetcode",
+        "k": 5
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "s": "home",
+        "k": 5
+      },
+      "expected": 0
+    }
+  ]
+}

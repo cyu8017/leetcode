@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "abc",
+          "deq",
+          "mee",
+          "aqq",
+          "dkd",
+          "ccc"
+        ],
+        "pattern": "abb"
+      },
+      "expected": [
+        "mee",
+        "aqq"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "a",
+          "b",
+          "c"
+        ],
+        "pattern": "a"
+      },
+      "expected": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  ]
+}

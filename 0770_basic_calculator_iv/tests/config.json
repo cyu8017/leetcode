@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "basicCalculatorIV",
+  "paramOrder": [
+    "expression",
+    "evalvars",
+    "evalints"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

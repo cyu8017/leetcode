@@ -1,0 +1,7 @@
+﻿# LeetCode 1545 - Find Kth Bit in Nth Binary String
+# https://leetcode.com/problems/find-kth-bit-in-nth-binary-string/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

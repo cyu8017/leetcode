@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "palindrome": "abccba"
+      },
+      "expected": "aaccba"
+    },
+    {
+      "args": {
+        "palindrome": "a"
+      },
+      "expected": ""
+    }
+  ]
+}

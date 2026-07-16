@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "text": "nlaebolko"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "text": "loonbalxballpoon"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "text": "leetcode"
+      },
+      "expected": 0
+    }
+  ]
+}

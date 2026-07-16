@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "maxProfit",
+  "paramOrder": ["prices"],
+  "types": null,
+  "description": null
+}

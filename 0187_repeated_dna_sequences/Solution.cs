@@ -1,0 +1,1 @@
+using System.Collections.Generic; public class Solution { public IList<string> FindRepeatedDnaSequences(string s) { var seen = new HashSet<string>(); var repeated = new HashSet<string>(); for (int i = 0; i + 10 <= s.Length; i++) { string x = s.Substring(i, 10); if (!seen.Add(x)) repeated.Add(x); } return new List<string>(repeated); } }

@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "piles": [
+          5,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "piles": [
+          3,
+          7,
+          2,
+          3
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": "leetcode exercises sound delightful"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence": "eetcode"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence": "Leetcode is cool"
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "findMissingRanges",
+  "paramOrder": ["nums", "lower", "upper"],
+  "types": null,
+  "description": null
+}

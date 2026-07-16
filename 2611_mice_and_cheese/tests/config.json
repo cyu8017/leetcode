@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "miceAndCheese",
+  "paramOrder": [
+    "reward1",
+    "reward2",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "NewYork": [
+          {
+            "student_id": 1,
+            "score": 90
+          },
+          {
+            "student_id": 2,
+            "score": 87
+          }
+        ],
+        "California": [
+          {
+            "student_id": 2,
+            "score": 89
+          },
+          {
+            "student_id": 3,
+            "score": 88
+          }
+        ]
+      },
+      "expected": [
+        {
+          "winner": "New York University"
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "NewYork": [
+          {
+            "student_id": 1,
+            "score": 89
+          },
+          {
+            "student_id": 2,
+            "score": 88
+          }
+        ],
+        "California": [
+          {
+            "student_id": 2,
+            "score": 90
+          },
+          {
+            "student_id": 3,
+            "score": 87
+          }
+        ]
+      },
+      "expected": [
+        {
+          "winner": "California University"
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "NewYork": [
+          {
+            "student_id": 1,
+            "score": 89
+          },
+          {
+            "student_id": 2,
+            "score": 90
+          }
+        ],
+        "California": [
+          {
+            "student_id": 2,
+            "score": 87
+          },
+          {
+            "student_id": 3,
+            "score": 99
+          }
+        ]
+      },
+      "expected": [
+        {
+          "winner": "No Winner"
+        }
+      ]
+    }
+  ]
+}

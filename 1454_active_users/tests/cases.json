@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Accounts": [
+          {
+            "id": 1,
+            "name": "Winston"
+          },
+          {
+            "id": 7,
+            "name": "Jonathan"
+          }
+        ],
+        "Logins": [
+          {
+            "id": 7,
+            "login_date": "2020-05-30"
+          },
+          {
+            "id": 1,
+            "login_date": "2020-05-30"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-05-31"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-06-01"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-06-02"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-06-02"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-06-03"
+          },
+          {
+            "id": 1,
+            "login_date": "2020-06-07"
+          },
+          {
+            "id": 7,
+            "login_date": "2020-06-10"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 7,
+          "name": "Jonathan"
+        }
+      ]
+    }
+  ]
+}

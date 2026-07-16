@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "minimumWeight",
+  "paramOrder": [
+    "n",
+    "edges",
+    "src1",
+    "src2",
+    "dest"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

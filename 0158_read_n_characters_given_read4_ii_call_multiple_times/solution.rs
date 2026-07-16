@@ -1,0 +1,1 @@
+pub struct Solution{b:[char;4],z:usize,i:usize}impl Solution{pub fn new()->Self{Self{b:['\0';4],z:0,i:0}}pub fn read(&mut self,b:&mut Vec<char>,n:i32)->i32{let mut k=0;while k<n as usize{if self.i==self.z{self.z=read4(&mut self.b)as usize;self.i=0;if self.z==0{break}}while k<n as usize&&self.i<self.z{b[k]=self.b[self.i];k+=1;self.i+=1}}k as i32}}

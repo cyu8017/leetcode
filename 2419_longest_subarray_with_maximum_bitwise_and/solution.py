@@ -1,0 +1,6 @@
+﻿# LeetCode 2419 - Longest Subarray With Maximum Bitwise AND
+# https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and/
+
+class Solution:
+    def solve(self) -> None:
+        pass

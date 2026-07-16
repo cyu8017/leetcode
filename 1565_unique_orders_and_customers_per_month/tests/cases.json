@@ -1,0 +1,93 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_id": 1,
+            "order_date": "2020-09-15",
+            "customer_id": 1,
+            "invoice": 30
+          },
+          {
+            "order_id": 2,
+            "order_date": "2020-09-17",
+            "customer_id": 2,
+            "invoice": 90
+          },
+          {
+            "order_id": 3,
+            "order_date": "2020-10-06",
+            "customer_id": 3,
+            "invoice": 20
+          },
+          {
+            "order_id": 4,
+            "order_date": "2020-10-20",
+            "customer_id": 3,
+            "invoice": 21
+          },
+          {
+            "order_id": 5,
+            "order_date": "2020-11-10",
+            "customer_id": 1,
+            "invoice": 10
+          },
+          {
+            "order_id": 6,
+            "order_date": "2020-11-21",
+            "customer_id": 2,
+            "invoice": 15
+          },
+          {
+            "order_id": 7,
+            "order_date": "2020-12-01",
+            "customer_id": 4,
+            "invoice": 55
+          },
+          {
+            "order_id": 8,
+            "order_date": "2020-12-03",
+            "customer_id": 4,
+            "invoice": 77
+          },
+          {
+            "order_id": 9,
+            "order_date": "2021-01-07",
+            "customer_id": 3,
+            "invoice": 31
+          },
+          {
+            "order_id": 10,
+            "order_date": "2021-01-15",
+            "customer_id": 2,
+            "invoice": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "month": "2020-09",
+          "order_count": 2,
+          "customer_count": 2
+        },
+        {
+          "month": "2020-10",
+          "order_count": 1,
+          "customer_count": 1
+        },
+        {
+          "month": "2020-12",
+          "order_count": 2,
+          "customer_count": 1
+        },
+        {
+          "month": "2021-01",
+          "order_count": 1,
+          "customer_count": 1
+        }
+      ]
+    }
+  ]
+}

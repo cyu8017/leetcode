@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "id": 1,
+            "month": 1,
+            "salary": 20
+          },
+          {
+            "id": 2,
+            "month": 1,
+            "salary": 20
+          },
+          {
+            "id": 1,
+            "month": 2,
+            "salary": 30
+          },
+          {
+            "id": 2,
+            "month": 2,
+            "salary": 30
+          },
+          {
+            "id": 3,
+            "month": 2,
+            "salary": 40
+          },
+          {
+            "id": 1,
+            "month": 3,
+            "salary": 40
+          },
+          {
+            "id": 3,
+            "month": 3,
+            "salary": 60
+          },
+          {
+            "id": 1,
+            "month": 4,
+            "salary": 60
+          },
+          {
+            "id": 3,
+            "month": 4,
+            "salary": 70
+          },
+          {
+            "id": 1,
+            "month": 7,
+            "salary": 90
+          },
+          {
+            "id": 1,
+            "month": 8,
+            "salary": 90
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 1,
+          "month": 7,
+          "Salary": 90
+        },
+        {
+          "id": 1,
+          "month": 4,
+          "Salary": 130
+        },
+        {
+          "id": 1,
+          "month": 3,
+          "Salary": 90
+        },
+        {
+          "id": 1,
+          "month": 2,
+          "Salary": 50
+        },
+        {
+          "id": 1,
+          "month": 1,
+          "Salary": 20
+        },
+        {
+          "id": 2,
+          "month": 1,
+          "Salary": 20
+        },
+        {
+          "id": 3,
+          "month": 3,
+          "Salary": 100
+        },
+        {
+          "id": 3,
+          "month": 2,
+          "Salary": 40
+        }
+      ]
+    }
+  ]
+}

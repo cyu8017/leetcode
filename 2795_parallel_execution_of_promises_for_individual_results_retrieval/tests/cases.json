@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "functions": "[ () => new Promise(resolve => setTimeout(() => resolve(15), 100)) ] **"
+      },
+      "expected": "**{\"t\":100,\"values\":[{\"status\":\"fulfilled\",\"value\":15}]}"
+    },
+    {
+      "args": {
+        "functions": "[ () => new Promise(resolve => setTimeout(() => resolve(20), 100)), () => new Promise(resolve => setTimeout(() => resolve(15), 100)) ] **"
+      },
+      "expected": "**{"
+    },
+    {
+      "args": {
+        "functions": "[ () => new Promise(resolve => setTimeout(() => resolve(30), 200)), () => new Promise((resolve, reject) => setTimeout(() => reject(\"Error\"), 100)) ]"
+      },
+      "expected": "{"
+    }
+  ]
+}

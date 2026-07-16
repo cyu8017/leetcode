@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Events": [
+          {
+            "business_id": 1,
+            "event_type": "reviews",
+            "occurrences": 7
+          },
+          {
+            "business_id": 3,
+            "event_type": "reviews",
+            "occurrences": 3
+          },
+          {
+            "business_id": 1,
+            "event_type": "ads",
+            "occurrences": 11
+          },
+          {
+            "business_id": 2,
+            "event_type": "ads",
+            "occurrences": 7
+          },
+          {
+            "business_id": 3,
+            "event_type": "ads",
+            "occurrences": 6
+          },
+          {
+            "business_id": 1,
+            "event_type": "page views",
+            "occurrences": 3
+          },
+          {
+            "business_id": 2,
+            "event_type": "page views",
+            "occurrences": 12
+          }
+        ]
+      },
+      "expected": [
+        {
+          "business_id": 1
+        }
+      ]
+    }
+  ]
+}

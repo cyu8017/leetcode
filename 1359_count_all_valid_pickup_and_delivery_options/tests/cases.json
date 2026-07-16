@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 1
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "n": 2
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "n": 3
+      },
+      "expected": 90
+    }
+  ]
+}

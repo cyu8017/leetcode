@@ -1,0 +1,143 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "employees": [
+          {
+            "employee_id": 1,
+            "employee_name": "Alice Johnson",
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 2,
+            "employee_name": "Bob Smith",
+            "department": "Marketing"
+          },
+          {
+            "employee_id": 3,
+            "employee_name": "Carol Davis",
+            "department": "Sales"
+          },
+          {
+            "employee_id": 4,
+            "employee_name": "David Wilson",
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 5,
+            "employee_name": "Emma Brown",
+            "department": "HR"
+          }
+        ],
+        "meetings": [
+          {
+            "meeting_id": 1,
+            "employee_id": 1,
+            "meeting_date": "2023-06-05",
+            "meeting_type": "Team",
+            "duration_hours": 8.0
+          },
+          {
+            "meeting_id": 2,
+            "employee_id": 1,
+            "meeting_date": "2023-06-06",
+            "meeting_type": "Client",
+            "duration_hours": 6.0
+          },
+          {
+            "meeting_id": 3,
+            "employee_id": 1,
+            "meeting_date": "2023-06-07",
+            "meeting_type": "Training",
+            "duration_hours": 7.0
+          },
+          {
+            "meeting_id": 4,
+            "employee_id": 1,
+            "meeting_date": "2023-06-12",
+            "meeting_type": "Team",
+            "duration_hours": 12.0
+          },
+          {
+            "meeting_id": 5,
+            "employee_id": 1,
+            "meeting_date": "2023-06-13",
+            "meeting_type": "Client",
+            "duration_hours": 9.0
+          },
+          {
+            "meeting_id": 6,
+            "employee_id": 2,
+            "meeting_date": "2023-06-05",
+            "meeting_type": "Team",
+            "duration_hours": 15.0
+          },
+          {
+            "meeting_id": 7,
+            "employee_id": 2,
+            "meeting_date": "2023-06-06",
+            "meeting_type": "Client",
+            "duration_hours": 8.0
+          },
+          {
+            "meeting_id": 8,
+            "employee_id": 2,
+            "meeting_date": "2023-06-12",
+            "meeting_type": "Training",
+            "duration_hours": 10.0
+          },
+          {
+            "meeting_id": 9,
+            "employee_id": 3,
+            "meeting_date": "2023-06-05",
+            "meeting_type": "Team",
+            "duration_hours": 4.0
+          },
+          {
+            "meeting_id": 10,
+            "employee_id": 3,
+            "meeting_date": "2023-06-06",
+            "meeting_type": "Client",
+            "duration_hours": 3.0
+          },
+          {
+            "meeting_id": 11,
+            "employee_id": 4,
+            "meeting_date": "2023-06-05",
+            "meeting_type": "Team",
+            "duration_hours": 25.0
+          },
+          {
+            "meeting_id": 12,
+            "employee_id": 4,
+            "meeting_date": "2023-06-19",
+            "meeting_type": "Client",
+            "duration_hours": 22.0
+          },
+          {
+            "meeting_id": 13,
+            "employee_id": 5,
+            "meeting_date": "2023-06-05",
+            "meeting_type": "Training",
+            "duration_hours": 2.0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1,
+          "employee_name": "Alice Johnson",
+          "department": "Engineering",
+          "meeting_heavy_weeks": 2
+        },
+        {
+          "employee_id": 4,
+          "employee_name": "David Wilson",
+          "department": "Engineering",
+          "meeting_heavy_weeks": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "HOW ARE YOU"
+      },
+      "expected": [
+        "HAY",
+        "ORO",
+        "WEU"
+      ]
+    },
+    {
+      "args": {
+        "s": "TO BE OR NOT TO BE"
+      },
+      "expected": [
+        "TBONTB",
+        "OEROOE",
+        "   T"
+      ]
+    },
+    {
+      "args": {
+        "s": "CONTEST IS COMING"
+      },
+      "expected": [
+        "CIC",
+        "OSO",
+        "N M",
+        "T I",
+        "E N",
+        "S G",
+        "T"
+      ]
+    }
+  ]
+}

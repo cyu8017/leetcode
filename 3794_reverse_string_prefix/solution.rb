@@ -1,0 +1,7 @@
+﻿# LeetCode 3794 - Reverse String Prefix
+# https://leetcode.com/problems/reverse-string-prefix/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

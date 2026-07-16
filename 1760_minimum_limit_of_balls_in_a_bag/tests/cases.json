@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": [
+          9
+        ],
+        "maxOperations": 2
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "nums": [
+          2,
+          4,
+          8,
+          2
+        ],
+        "maxOperations": 4
+      },
+      "expected": 2
+    }
+  ]
+}

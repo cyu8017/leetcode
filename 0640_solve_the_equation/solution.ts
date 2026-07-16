@@ -1,0 +1,6 @@
+﻿// LeetCode 0640 - Solve the Equation
+// https://leetcode.com/problems/solve-the-equation/
+
+function solve(input: unknown): unknown {
+    return null;
+}

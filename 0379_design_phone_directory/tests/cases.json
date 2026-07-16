@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "PhoneDirectory",
+        "get",
+        "get",
+        "check",
+        "get",
+        "check",
+        "release",
+        "check"
+      ],
+      "arguments": [
+        [
+          3
+        ],
+        [],
+        [],
+        [
+          2
+        ],
+        [],
+        [
+          2
+        ],
+        [
+          2
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        0,
+        1,
+        true,
+        2,
+        false,
+        null,
+        true
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "wallsAndGates",
+  "paramOrder": ["rooms"],
+  "types": { "return": "void" },
+  "description": null
+}

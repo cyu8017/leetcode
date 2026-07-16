@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fn": "function sum(a, b, c) { return a + b + c; } inputs = [[1],[2],[3]]"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "fn": "function sum(a, b, c) { return a + b + c; } inputs = [[1,2],[3]]"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "fn": "function sum(a, b, c) { return a + b + c; } inputs = [[],[],[1,2,3]]"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "fn": "function life() { return 42; } inputs = [[]]"
+      },
+      "expected": 42
+    }
+  ]
+}

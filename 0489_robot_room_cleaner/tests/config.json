@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "cleanRoom",
+  "paramOrder": [
+    "robot"
+  ],
+  "types": null,
+  "description": "Interactive robot cleaner; runner supplies mock Robot from room/row/col args."
+}

@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "aabcc",
+        "s2": "dbbca",
+        "s3": "aadbbcbcac"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s1": "aabcc",
+        "s2": "dbbca",
+        "s3": "aadbbbaccc"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s1": "",
+        "s2": "",
+        "s3": ""
+      },
+      "expected": true
+    }
+  ]
+}

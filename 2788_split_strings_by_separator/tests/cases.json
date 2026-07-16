@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "one.two.three",
+          "four.five",
+          "six"
+        ],
+        "separator": "."
+      },
+      "expected": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five",
+        "six"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "$easy$",
+          "$problem$"
+        ],
+        "separator": "$"
+      },
+      "expected": [
+        "easy",
+        "problem"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "|||"
+        ],
+        "separator": "|"
+      },
+      "expected": []
+    }
+  ]
+}

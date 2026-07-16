@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "FindElements",
+        "find",
+        "find"
+      ],
+      "arguments": [
+        [
+          [
+            -1,
+            null,
+            -1
+          ]
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        true
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FindElements",
+        "find",
+        "find",
+        "find"
+      ],
+      "arguments": [
+        [
+          [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ]
+        ],
+        [
+          1
+        ],
+        [
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FindElements",
+        "find",
+        "find",
+        "find",
+        "find"
+      ],
+      "arguments": [
+        [
+          [
+            -1,
+            null,
+            -1,
+            -1,
+            null,
+            -1
+          ]
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        false,
+        false,
+        true
+      ]
+    }
+  ]
+}

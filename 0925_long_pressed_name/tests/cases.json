@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "name": "alex",
+        "typed": "aaleex"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "name": "saeed",
+        "typed": "ssaaedd"
+      },
+      "expected": false
+    }
+  ]
+}

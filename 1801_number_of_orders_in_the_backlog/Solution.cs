@@ -1,0 +1,7 @@
+﻿// LeetCode 1801 - Number of Orders in the Backlog
+// https://leetcode.com/problems/number-of-orders-in-the-backlog/
+
+public class Solution {
+    public void Solve() {
+    }
+}

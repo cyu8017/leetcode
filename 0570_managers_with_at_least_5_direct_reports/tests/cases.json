@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "id": 101,
+            "name": "John",
+            "department": "A",
+            "managerId": null
+          },
+          {
+            "id": 102,
+            "name": "Dan",
+            "department": "A",
+            "managerId": 101
+          },
+          {
+            "id": 103,
+            "name": "James",
+            "department": "A",
+            "managerId": 101
+          },
+          {
+            "id": 104,
+            "name": "Amy",
+            "department": "A",
+            "managerId": 101
+          },
+          {
+            "id": 105,
+            "name": "Anne",
+            "department": "A",
+            "managerId": 101
+          },
+          {
+            "id": 106,
+            "name": "Ron",
+            "department": "B",
+            "managerId": 101
+          }
+        ]
+      },
+      "expected": [
+        {
+          "name": "John"
+        }
+      ]
+    }
+  ]
+}

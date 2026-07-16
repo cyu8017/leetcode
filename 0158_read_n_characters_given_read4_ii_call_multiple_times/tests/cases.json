@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "file": "abc",
+        "queries": [
+          1,
+          2,
+          1
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "args": {
+        "file": "abc",
+        "queries": [
+          4,
+          1
+        ]
+      },
+      "expected": [
+        3,
+        0
+      ]
+    }
+  ]
+}

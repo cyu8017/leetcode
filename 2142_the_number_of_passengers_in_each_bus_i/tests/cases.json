@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Buses": [
+          {
+            "bus_id": 1,
+            "arrival_time": 2
+          },
+          {
+            "bus_id": 2,
+            "arrival_time": 4
+          },
+          {
+            "bus_id": 3,
+            "arrival_time": 7
+          }
+        ],
+        "Passengers": [
+          {
+            "passenger_id": 11,
+            "arrival_time": 1
+          },
+          {
+            "passenger_id": 12,
+            "arrival_time": 5
+          },
+          {
+            "passenger_id": 13,
+            "arrival_time": 6
+          },
+          {
+            "passenger_id": 14,
+            "arrival_time": 7
+          }
+        ]
+      },
+      "expected": [
+        {
+          "bus_id": 1,
+          "passengers_cnt": 1
+        },
+        {
+          "bus_id": 2,
+          "passengers_cnt": 0
+        },
+        {
+          "bus_id": 3,
+          "passengers_cnt": 3
+        }
+      ]
+    }
+  ]
+}

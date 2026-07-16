@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "cat",
+          "cats",
+          "catsdogcats",
+          "dog",
+          "dogcatsdog",
+          "hippopotamuses",
+          "rat",
+          "ratcatdogcat"
+        ]
+      },
+      "expected": [
+        "catsdogcats",
+        "dogcatsdog",
+        "ratcatdogcat"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "cat",
+          "dog",
+          "catdog"
+        ]
+      },
+      "expected": [
+        "catdog"
+      ]
+    }
+  ]
+}

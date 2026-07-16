@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Rides": [
+          {
+            "ride_id": 1,
+            "driver_id": 7,
+            "passenger_id": 1
+          },
+          {
+            "ride_id": 2,
+            "driver_id": 7,
+            "passenger_id": 2
+          },
+          {
+            "ride_id": 3,
+            "driver_id": 11,
+            "passenger_id": 1
+          },
+          {
+            "ride_id": 4,
+            "driver_id": 11,
+            "passenger_id": 7
+          },
+          {
+            "ride_id": 5,
+            "driver_id": 11,
+            "passenger_id": 7
+          },
+          {
+            "ride_id": 6,
+            "driver_id": 11,
+            "passenger_id": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "driver_id": 7,
+          "cnt": 2
+        },
+        {
+          "driver_id": 11,
+          "cnt": 0
+        }
+      ]
+    }
+  ]
+}

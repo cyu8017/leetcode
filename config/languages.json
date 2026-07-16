@@ -1,0 +1,86 @@
+[
+  {
+    "id": "python",
+    "file": "solution.py",
+    "leetcodeSlug": "python3",
+    "comment": "#"
+  },
+  {
+    "id": "java",
+    "file": "Solution.java",
+    "leetcodeSlug": "java",
+    "comment": "//"
+  },
+  {
+    "id": "javascript",
+    "file": "solution.js",
+    "leetcodeSlug": "javascript",
+    "comment": "//"
+  },
+  {
+    "id": "typescript",
+    "file": "solution.ts",
+    "leetcodeSlug": "typescript",
+    "comment": "//"
+  },
+  {
+    "id": "cpp",
+    "file": "solution.cpp",
+    "leetcodeSlug": "cpp",
+    "comment": "//"
+  },
+  {
+    "id": "c",
+    "file": "solution.c",
+    "leetcodeSlug": "c",
+    "comment": "//"
+  },
+  {
+    "id": "go",
+    "file": "solution.go",
+    "leetcodeSlug": "golang",
+    "comment": "//"
+  },
+  {
+    "id": "rust",
+    "file": "solution.rs",
+    "leetcodeSlug": "rust",
+    "comment": "//"
+  },
+  {
+    "id": "kotlin",
+    "file": "Solution.kt",
+    "leetcodeSlug": "kotlin",
+    "comment": "//"
+  },
+  {
+    "id": "swift",
+    "file": "Solution.swift",
+    "leetcodeSlug": "swift",
+    "comment": "//"
+  },
+  {
+    "id": "ruby",
+    "file": "solution.rb",
+    "leetcodeSlug": "ruby",
+    "comment": "#"
+  },
+  {
+    "id": "csharp",
+    "file": "Solution.cs",
+    "leetcodeSlug": "csharp",
+    "comment": "//"
+  },
+  {
+    "id": "scala",
+    "file": "Solution.scala",
+    "leetcodeSlug": "scala",
+    "comment": "//"
+  },
+  {
+    "id": "php",
+    "file": "solution.php",
+    "leetcodeSlug": "php",
+    "comment": "//"
+  }
+]

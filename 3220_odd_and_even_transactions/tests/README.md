@@ -1,0 +1,215 @@
+# Test harness for 3220_odd_and_even_transactions
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language python
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language javascript
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language typescript
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language java
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language cpp
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language c
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language go
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language rust
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language kotlin
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language swift
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language ruby
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language csharp
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language scala
+./scripts/test.sh --folder 3220_odd_and_even_transactions --language php
+./scripts/test.sh --folder 3220_odd_and_even_transactions --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 3220_odd_and_even_transactions --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm java java 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm c c 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm go go 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm rust rust 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm swift swift 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm scala scala 3220_odd_and_even_transactions
+docker compose -f docker/docker-compose.yml run --rm php php 3220_odd_and_even_transactions
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 3220_odd_and_even_transactions` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 3220_odd_and_even_transactions` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 3220_odd_and_even_transactions` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 3220_odd_and_even_transactions` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 3220_odd_and_even_transactions` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 3220_odd_and_even_transactions` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 3220_odd_and_even_transactions` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 3220_odd_and_even_transactions` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 3220_odd_and_even_transactions` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 3220_odd_and_even_transactions` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 3220_odd_and_even_transactions` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 3220_odd_and_even_transactions` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 3220_odd_and_even_transactions` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 3220_odd_and_even_transactions` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 3220_odd_and_even_transactions -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 3220_odd_and_even_transactions --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 3220_odd_and_even_transactions --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

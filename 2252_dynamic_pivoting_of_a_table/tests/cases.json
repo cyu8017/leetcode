@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Products": [
+          {
+            "product_id": 1,
+            "store": "Shop",
+            "price": 110
+          },
+          {
+            "product_id": 1,
+            "store": "LC_Store",
+            "price": 100
+          },
+          {
+            "product_id": 2,
+            "store": "Nozama",
+            "price": 200
+          },
+          {
+            "product_id": 2,
+            "store": "Souq",
+            "price": 190
+          },
+          {
+            "product_id": 3,
+            "store": "Shop",
+            "price": 1000
+          },
+          {
+            "product_id": 3,
+            "store": "Souq",
+            "price": 1900
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1,
+          "LC_Store": 100,
+          "Nozama": null,
+          "Shop": 110,
+          "Souq": null
+        },
+        {
+          "product_id": 2,
+          "LC_Store": null,
+          "Nozama": 200,
+          "Shop": null,
+          "Souq": 190
+        },
+        {
+          "product_id": 3,
+          "LC_Store": null,
+          "Nozama": null,
+          "Shop": 1000,
+          "Souq": 1900
+        }
+      ]
+    }
+  ]
+}

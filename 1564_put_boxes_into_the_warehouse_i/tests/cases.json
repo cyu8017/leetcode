@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "args": {
+        "boxes": [
+          4,
+          3,
+          4,
+          1
+        ],
+        "warehouse": [
+          5,
+          3,
+          3,
+          4,
+          1
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "boxes": [
+          1,
+          2,
+          2,
+          3,
+          4
+        ],
+        "warehouse": [
+          3,
+          4,
+          1,
+          2
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "boxes": [
+          1,
+          2,
+          3
+        ],
+        "warehouse": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "book"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "textbook"
+      },
+      "expected": false
+    }
+  ]
+}

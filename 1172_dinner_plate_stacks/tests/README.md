@@ -1,0 +1,215 @@
+# Test harness for 1172_dinner_plate_stacks
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language python
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language javascript
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language typescript
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language java
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language cpp
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language c
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language go
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language rust
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language kotlin
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language swift
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language ruby
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language csharp
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language scala
+./scripts/test.sh --folder 1172_dinner_plate_stacks --language php
+./scripts/test.sh --folder 1172_dinner_plate_stacks --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1172_dinner_plate_stacks --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm java java 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm c c 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm go go 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm rust rust 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm swift swift 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm scala scala 1172_dinner_plate_stacks
+docker compose -f docker/docker-compose.yml run --rm php php 1172_dinner_plate_stacks
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1172_dinner_plate_stacks` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1172_dinner_plate_stacks` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1172_dinner_plate_stacks` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1172_dinner_plate_stacks` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1172_dinner_plate_stacks` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1172_dinner_plate_stacks` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1172_dinner_plate_stacks` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1172_dinner_plate_stacks` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1172_dinner_plate_stacks` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1172_dinner_plate_stacks` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1172_dinner_plate_stacks` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1172_dinner_plate_stacks` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1172_dinner_plate_stacks` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1172_dinner_plate_stacks` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1172_dinner_plate_stacks -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1172_dinner_plate_stacks --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1172_dinner_plate_stacks --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

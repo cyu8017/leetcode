@@ -1,0 +1,113 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Drivers": [
+          {
+            "driver_id": 1,
+            "name": "Alice",
+            "age": 34,
+            "experience": 10,
+            "accidents": 1
+          },
+          {
+            "driver_id": 2,
+            "name": "Bob",
+            "age": 45,
+            "experience": 20,
+            "accidents": 3
+          },
+          {
+            "driver_id": 3,
+            "name": "Charlie",
+            "age": 28,
+            "experience": 5,
+            "accidents": 0
+          }
+        ],
+        "Vehicles": [
+          {
+            "vehicle_id": 100,
+            "driver_id": 1,
+            "model": "Sedan",
+            "fuel_type": "Gasoline",
+            "mileage": 20000
+          },
+          {
+            "vehicle_id": 101,
+            "driver_id": 2,
+            "model": "SUV",
+            "fuel_type": "Electric",
+            "mileage": 30000
+          },
+          {
+            "vehicle_id": 102,
+            "driver_id": 3,
+            "model": "Coupe",
+            "fuel_type": "Gasoline",
+            "mileage": 15000
+          }
+        ],
+        "Trips": [
+          {
+            "trip_id": 201,
+            "vehicle_id": 100,
+            "distance": 50,
+            "duration": 30,
+            "rating": 5
+          },
+          {
+            "trip_id": 202,
+            "vehicle_id": 100,
+            "distance": 30,
+            "duration": 20,
+            "rating": 4
+          },
+          {
+            "trip_id": 203,
+            "vehicle_id": 101,
+            "distance": 100,
+            "duration": 60,
+            "rating": 4
+          },
+          {
+            "trip_id": 204,
+            "vehicle_id": 101,
+            "distance": 80,
+            "duration": 50,
+            "rating": 5
+          },
+          {
+            "trip_id": 205,
+            "vehicle_id": 102,
+            "distance": 40,
+            "duration": 30,
+            "rating": 5
+          },
+          {
+            "trip_id": 206,
+            "vehicle_id": 102,
+            "distance": 60,
+            "duration": 40,
+            "rating": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "fuel_type": "Electric",
+          "driver_id": 2,
+          "rating": 4.5,
+          "distance": 180
+        },
+        {
+          "fuel_type": "Gasoline",
+          "driver_id": 3,
+          "rating": 5.0,
+          "distance": 100
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "height": 5,
+        "positions": [
+          2,
+          5
+        ],
+        "directions": "UD"
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "height": 6,
+        "positions": [
+          0,
+          0,
+          6,
+          3
+        ],
+        "directions": "UUDU"
+      },
+      "expected": 15
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 4,
+        "index": 2,
+        "maxSum": 6
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "n": 6,
+        "index": 1,
+        "maxSum": 10
+      },
+      "expected": 3
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "findPeakElement",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

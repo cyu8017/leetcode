@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "CombinationIterator",
+        "next",
+        "hasNext",
+        "next",
+        "hasNext",
+        "next",
+        "hasNext"
+      ],
+      "arguments": [
+        [
+          "abc",
+          2
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        "ab",
+        true,
+        "ac",
+        true,
+        "bc",
+        false
+      ]
+    }
+  ]
+}

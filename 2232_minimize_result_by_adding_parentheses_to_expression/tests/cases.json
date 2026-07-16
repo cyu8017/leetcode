@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "expression": "247+38"
+      },
+      "expected": "2(47+38)"
+    },
+    {
+      "args": {
+        "expression": "12+34"
+      },
+      "expected": "1(2+3)4"
+    },
+    {
+      "args": {
+        "expression": "999+999"
+      },
+      "expected": "(999+999)"
+    }
+  ]
+}

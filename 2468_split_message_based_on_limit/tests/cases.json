@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "message": "this is really a very awesome message",
+        "limit": 9
+      },
+      "expected": [
+        "thi",
+        "s i",
+        "s r",
+        "eal",
+        "ly ",
+        "a v",
+        "ery",
+        " aw",
+        "eso",
+        "me",
+        " m",
+        "es",
+        "sa",
+        "ge"
+      ]
+    },
+    {
+      "args": {
+        "message": "short message",
+        "limit": 15
+      },
+      "expected": [
+        "short mess",
+        "age"
+      ]
+    }
+  ]
+}

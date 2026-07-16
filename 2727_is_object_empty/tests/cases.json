@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "obj": {
+          "x": 5,
+          "y": 42
+        }
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "obj": {}
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "obj": [
+          null,
+          false,
+          0
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

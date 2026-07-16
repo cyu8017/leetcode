@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "majorityElement",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

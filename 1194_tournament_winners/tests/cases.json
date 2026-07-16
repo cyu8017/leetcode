@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Players": [
+          {
+            "player_id": 15,
+            "group_id": 1
+          },
+          {
+            "player_id": 25,
+            "group_id": 1
+          },
+          {
+            "player_id": 30,
+            "group_id": 1
+          },
+          {
+            "player_id": 45,
+            "group_id": 1
+          },
+          {
+            "player_id": 10,
+            "group_id": 2
+          },
+          {
+            "player_id": 35,
+            "group_id": 2
+          },
+          {
+            "player_id": 50,
+            "group_id": 2
+          },
+          {
+            "player_id": 20,
+            "group_id": 3
+          },
+          {
+            "player_id": 40,
+            "group_id": 3
+          }
+        ],
+        "Matches": [
+          {
+            "match_id": 1,
+            "first_player": 15,
+            "second_player": 45,
+            "first_score": 3,
+            "second_score": 0
+          },
+          {
+            "match_id": 2,
+            "first_player": 30,
+            "second_player": 25,
+            "first_score": 1,
+            "second_score": 2
+          },
+          {
+            "match_id": 3,
+            "first_player": 30,
+            "second_player": 15,
+            "first_score": 2,
+            "second_score": 0
+          },
+          {
+            "match_id": 4,
+            "first_player": 40,
+            "second_player": 20,
+            "first_score": 5,
+            "second_score": 2
+          },
+          {
+            "match_id": 5,
+            "first_player": 35,
+            "second_player": 50,
+            "first_score": 1,
+            "second_score": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "group_id": 1,
+          "player_id": 15
+        },
+        {
+          "group_id": 2,
+          "player_id": 35
+        },
+        {
+          "group_id": 3,
+          "player_id": 40
+        }
+      ]
+    }
+  ]
+}

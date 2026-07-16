@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Sales": [
+          {
+            "sale_id": 1,
+            "product_id": 1,
+            "user_id": 101,
+            "quantity": 10
+          },
+          {
+            "sale_id": 2,
+            "product_id": 3,
+            "user_id": 101,
+            "quantity": 7
+          },
+          {
+            "sale_id": 3,
+            "product_id": 1,
+            "user_id": 102,
+            "quantity": 9
+          },
+          {
+            "sale_id": 4,
+            "product_id": 2,
+            "user_id": 102,
+            "quantity": 6
+          },
+          {
+            "sale_id": 5,
+            "product_id": 3,
+            "user_id": 102,
+            "quantity": 10
+          },
+          {
+            "sale_id": 6,
+            "product_id": 1,
+            "user_id": 102,
+            "quantity": 6
+          }
+        ],
+        "Product": [
+          {
+            "product_id": 1,
+            "price": 10
+          },
+          {
+            "product_id": 2,
+            "price": 25
+          },
+          {
+            "product_id": 3,
+            "price": 15
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 101,
+          "product_id": 3
+        },
+        {
+          "user_id": 102,
+          "product_id": 1
+        },
+        {
+          "user_id": 102,
+          "product_id": 2
+        },
+        {
+          "user_id": 102,
+          "product_id": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+public class Solution { public void Rotate(int[] a, int k) { if (a.Length == 0) return; k %= a.Length; Reverse(a, 0, a.Length - 1); Reverse(a, 0, k - 1); Reverse(a, k, a.Length - 1); } private void Reverse(int[] a, int l, int r) { while (l < r) { (a[l], a[r]) = (a[r], a[l]); l++; r--; } } }

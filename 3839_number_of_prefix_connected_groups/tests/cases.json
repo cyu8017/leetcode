@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "apple",
+          "apply",
+          "banana",
+          "bandit"
+        ],
+        "k": 2
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "car",
+          "cat",
+          "cartoon"
+        ],
+        "k": 3
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "words": [
+          "bat",
+          "dog",
+          "dog",
+          "doggy",
+          "bat"
+        ],
+        "k": 3
+      },
+      "expected": 2
+    }
+  ]
+}

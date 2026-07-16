@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Activity": [
+          {
+            "machine_id": 0,
+            "process_id": 0,
+            "activity_type": "start",
+            "timestamp": 0.712
+          },
+          {
+            "machine_id": 0,
+            "process_id": 0,
+            "activity_type": "end",
+            "timestamp": 1.52
+          },
+          {
+            "machine_id": 0,
+            "process_id": 1,
+            "activity_type": "start",
+            "timestamp": 3.14
+          },
+          {
+            "machine_id": 0,
+            "process_id": 1,
+            "activity_type": "end",
+            "timestamp": 4.12
+          },
+          {
+            "machine_id": 1,
+            "process_id": 0,
+            "activity_type": "start",
+            "timestamp": 0.55
+          },
+          {
+            "machine_id": 1,
+            "process_id": 0,
+            "activity_type": "end",
+            "timestamp": 1.55
+          },
+          {
+            "machine_id": 1,
+            "process_id": 1,
+            "activity_type": "start",
+            "timestamp": 0.43
+          },
+          {
+            "machine_id": 1,
+            "process_id": 1,
+            "activity_type": "end",
+            "timestamp": 1.42
+          },
+          {
+            "machine_id": 2,
+            "process_id": 0,
+            "activity_type": "start",
+            "timestamp": 4.1
+          },
+          {
+            "machine_id": 2,
+            "process_id": 0,
+            "activity_type": "end",
+            "timestamp": 4.512
+          },
+          {
+            "machine_id": 2,
+            "process_id": 1,
+            "activity_type": "start",
+            "timestamp": 2.5
+          },
+          {
+            "machine_id": 2,
+            "process_id": 1,
+            "activity_type": "end",
+            "timestamp": 5.0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "machine_id": 0,
+          "processing_time": 0.894
+        },
+        {
+          "machine_id": 1,
+          "processing_time": 0.995
+        },
+        {
+          "machine_id": 2,
+          "processing_time": 1.456
+        }
+      ]
+    }
+  ]
+}

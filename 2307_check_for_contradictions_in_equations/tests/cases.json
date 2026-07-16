@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "args": {
+        "equations": [
+          [
+            "a",
+            "b"
+          ],
+          [
+            "b",
+            "c"
+          ],
+          [
+            "a",
+            "c"
+          ]
+        ],
+        "values": [
+          3,
+          0.5,
+          1.5
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "equations": [
+          [
+            "le",
+            "et"
+          ],
+          [
+            "le",
+            "code"
+          ],
+          [
+            "code",
+            "et"
+          ]
+        ],
+        "values": [
+          2,
+          5,
+          0.5
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

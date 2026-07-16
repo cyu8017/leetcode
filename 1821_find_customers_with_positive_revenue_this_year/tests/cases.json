@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customers": [
+          {
+            "customer_id": 1,
+            "year": 2018,
+            "revenue": 50
+          },
+          {
+            "customer_id": 1,
+            "year": 2021,
+            "revenue": 30
+          },
+          {
+            "customer_id": 1,
+            "year": 2020,
+            "revenue": 70
+          },
+          {
+            "customer_id": 2,
+            "year": 2021,
+            "revenue": -50
+          },
+          {
+            "customer_id": 3,
+            "year": 2018,
+            "revenue": 10
+          },
+          {
+            "customer_id": 3,
+            "year": 2016,
+            "revenue": 50
+          },
+          {
+            "customer_id": 4,
+            "year": 2021,
+            "revenue": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 1
+        },
+        {
+          "customer_id": 4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "0"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "e"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "."
+      },
+      "expected": false
+    }
+  ]
+}

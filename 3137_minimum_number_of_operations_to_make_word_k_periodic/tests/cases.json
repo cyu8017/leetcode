@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "leetcodeleet",
+        "k": 4
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "word": " leetcoleet ",
+        "k": 2
+      },
+      "expected": 3
+    }
+  ]
+}

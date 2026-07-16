@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "xx",
+        "s2": "yy"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s1": "xy",
+        "s2": "yx"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s1": "xx",
+        "s2": "xy"
+      },
+      "expected": -1
+    }
+  ]
+}

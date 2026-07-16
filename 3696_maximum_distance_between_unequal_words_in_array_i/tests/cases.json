@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "leetcode",
+          "leetcode",
+          "codeforces"
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "words": [
+          "a",
+          "b",
+          "c",
+          "a",
+          "a"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "words": [
+          "z",
+          "z",
+          "z"
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

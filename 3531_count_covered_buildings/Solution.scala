@@ -1,0 +1,6 @@
+﻿// LeetCode 3531 - Count Covered Buildings
+// https://leetcode.com/problems/count-covered-buildings/
+
+object Solution {
+  def solve(): Unit = {}
+}

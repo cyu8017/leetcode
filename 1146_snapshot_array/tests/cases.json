@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "SnapshotArray",
+        "set",
+        "snap",
+        "set",
+        "get"
+      ],
+      "arguments": [
+        [
+          3
+        ],
+        [
+          0,
+          5
+        ],
+        [],
+        [
+          0,
+          6
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        0,
+        null,
+        5
+      ]
+    }
+  ]
+}

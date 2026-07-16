@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "password": "aA1!"
+      },
+      "expected": 11
+    },
+    {
+      "args": {
+        "password": "bbB11#"
+      },
+      "expected": 11
+    }
+  ]
+}

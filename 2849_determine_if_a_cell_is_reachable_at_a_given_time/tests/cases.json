@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sx": 2,
+        "sy": 4,
+        "fx": 7,
+        "fy": 7,
+        "t": 6
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sx": 3,
+        "sy": 1,
+        "fx": 7,
+        "fy": 3,
+        "t": 3
+      },
+      "expected": false
+    }
+  ]
+}

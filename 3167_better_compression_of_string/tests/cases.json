@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "compressed": "a3c9b2c1"
+      },
+      "expected": "a3b2c10"
+    },
+    {
+      "args": {
+        "compressed": "c2b3a1"
+      },
+      "expected": "a1b3c2"
+    },
+    {
+      "args": {
+        "compressed": "a2b4c1"
+      },
+      "expected": "a2b4c1"
+    }
+  ]
+}

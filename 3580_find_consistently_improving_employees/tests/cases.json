@@ -1,0 +1,152 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "employees": [
+          {
+            "employee_id": 1,
+            "name": "Alice Johnson"
+          },
+          {
+            "employee_id": 2,
+            "name": "Bob Smith"
+          },
+          {
+            "employee_id": 3,
+            "name": "Carol Davis"
+          },
+          {
+            "employee_id": 4,
+            "name": "David Wilson"
+          },
+          {
+            "employee_id": 5,
+            "name": "Emma Brown"
+          }
+        ],
+        "performance_reviews": [
+          {
+            "review_id": 1,
+            "employee_id": 1,
+            "review_date": "2023-01-15",
+            "rating": 2
+          },
+          {
+            "review_id": 2,
+            "employee_id": 1,
+            "review_date": "2023-04-15",
+            "rating": 3
+          },
+          {
+            "review_id": 3,
+            "employee_id": 1,
+            "review_date": "2023-07-15",
+            "rating": 4
+          },
+          {
+            "review_id": 4,
+            "employee_id": 1,
+            "review_date": "2023-10-15",
+            "rating": 5
+          },
+          {
+            "review_id": 5,
+            "employee_id": 2,
+            "review_date": "2023-02-01",
+            "rating": 3
+          },
+          {
+            "review_id": 6,
+            "employee_id": 2,
+            "review_date": "2023-05-01",
+            "rating": 2
+          },
+          {
+            "review_id": 7,
+            "employee_id": 2,
+            "review_date": "2023-08-01",
+            "rating": 4
+          },
+          {
+            "review_id": 8,
+            "employee_id": 2,
+            "review_date": "2023-11-01",
+            "rating": 5
+          },
+          {
+            "review_id": 9,
+            "employee_id": 3,
+            "review_date": "2023-03-10",
+            "rating": 1
+          },
+          {
+            "review_id": 10,
+            "employee_id": 3,
+            "review_date": "2023-06-10",
+            "rating": 2
+          },
+          {
+            "review_id": 11,
+            "employee_id": 3,
+            "review_date": "2023-09-10",
+            "rating": 3
+          },
+          {
+            "review_id": 12,
+            "employee_id": 3,
+            "review_date": "2023-12-10",
+            "rating": 4
+          },
+          {
+            "review_id": 13,
+            "employee_id": 4,
+            "review_date": "2023-01-20",
+            "rating": 4
+          },
+          {
+            "review_id": 14,
+            "employee_id": 4,
+            "review_date": "2023-04-20",
+            "rating": 4
+          },
+          {
+            "review_id": 15,
+            "employee_id": 4,
+            "review_date": "2023-07-20",
+            "rating": 4
+          },
+          {
+            "review_id": 16,
+            "employee_id": 5,
+            "review_date": "2023-02-15",
+            "rating": 3
+          },
+          {
+            "review_id": 17,
+            "employee_id": 5,
+            "review_date": "2023-05-15",
+            "rating": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 2,
+          "name": "Bob Smith",
+          "improvement_score": 3
+        },
+        {
+          "employee_id": 1,
+          "name": "Alice Johnson",
+          "improvement_score": 2
+        },
+        {
+          "employee_id": 3,
+          "name": "Carol Davis",
+          "improvement_score": 2
+        }
+      ]
+    }
+  ]
+}

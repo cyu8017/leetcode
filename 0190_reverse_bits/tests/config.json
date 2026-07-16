@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "reverseBits",
+  "paramOrder": ["n"],
+  "types": null,
+  "description": null
+}

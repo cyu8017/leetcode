@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "pos": 1
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "head": [
+          1,
+          2
+        ],
+        "pos": 0
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "head": [
+          1
+        ],
+        "pos": -1
+      },
+      "expected": false
+    }
+  ]
+}

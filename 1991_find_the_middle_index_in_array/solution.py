@@ -1,0 +1,6 @@
+﻿# LeetCode 1991 - Find the Middle Index in Array
+# https://leetcode.com/problems/find-the-middle-index-in-array/
+
+class Solution:
+    def solve(self) -> None:
+        pass

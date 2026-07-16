@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "args": []
+      },
+      "expected": "Hello World"
+    },
+    {
+      "args": {
+        "args": [
+          {},
+          null,
+          42
+        ]
+      },
+      "expected": "Hello World"
+    }
+  ]
+}

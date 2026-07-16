@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fn": "function f(multiplier) { return this.x * multiplier; } obj = {\"x\": 10} inputs = [5]"
+      },
+      "expected": 50
+    },
+    {
+      "args": {
+        "fn": "function speak() { return \"My name is \" + this.name; } obj = {\"name\": \"Kathy\"} inputs = []"
+      },
+      "expected": "My name is Kathy"
+    }
+  ]
+}

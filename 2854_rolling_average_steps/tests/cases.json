@@ -1,0 +1,123 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Steps": [
+          {
+            "user_id": 1,
+            "steps_count": 687,
+            "steps_date": "2021-09-02"
+          },
+          {
+            "user_id": 1,
+            "steps_count": 395,
+            "steps_date": "2021-09-04"
+          },
+          {
+            "user_id": 1,
+            "steps_count": 499,
+            "steps_date": "2021-09-05"
+          },
+          {
+            "user_id": 1,
+            "steps_count": 712,
+            "steps_date": "2021-09-06"
+          },
+          {
+            "user_id": 1,
+            "steps_count": 576,
+            "steps_date": "2021-09-07"
+          },
+          {
+            "user_id": 2,
+            "steps_count": 153,
+            "steps_date": "2021-09-06"
+          },
+          {
+            "user_id": 2,
+            "steps_count": 171,
+            "steps_date": "2021-09-07"
+          },
+          {
+            "user_id": 2,
+            "steps_count": 530,
+            "steps_date": "2021-09-08"
+          },
+          {
+            "user_id": 3,
+            "steps_count": 945,
+            "steps_date": "2021-09-04"
+          },
+          {
+            "user_id": 3,
+            "steps_count": 120,
+            "steps_date": "2021-09-07"
+          },
+          {
+            "user_id": 3,
+            "steps_count": 557,
+            "steps_date": "2021-09-08"
+          },
+          {
+            "user_id": 3,
+            "steps_count": 840,
+            "steps_date": "2021-09-09"
+          },
+          {
+            "user_id": 3,
+            "steps_count": 627,
+            "steps_date": "2021-09-10"
+          },
+          {
+            "user_id": 5,
+            "steps_count": 382,
+            "steps_date": "2021-09-05"
+          },
+          {
+            "user_id": 6,
+            "steps_count": 480,
+            "steps_date": "2021-09-01"
+          },
+          {
+            "user_id": 6,
+            "steps_count": 191,
+            "steps_date": "2021-09-02"
+          },
+          {
+            "user_id": 6,
+            "steps_count": 303,
+            "steps_date": "2021-09-05"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "steps_date": "2021-09-06",
+          "rolling_average": 535.33
+        },
+        {
+          "user_id": 1,
+          "steps_date": "2021-09-07",
+          "rolling_average": 595.67
+        },
+        {
+          "user_id": 2,
+          "steps_date": "2021-09-08",
+          "rolling_average": 284.67
+        },
+        {
+          "user_id": 3,
+          "steps_date": "2021-09-09",
+          "rolling_average": 505.67
+        },
+        {
+          "user_id": 3,
+          "steps_date": "2021-09-10",
+          "rolling_average": 674.67
+        }
+      ]
+    }
+  ]
+}

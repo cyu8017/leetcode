@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "beautifulPartitions",
+  "paramOrder": [
+    "s",
+    "k",
+    "minLength"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

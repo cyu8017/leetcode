@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 3,
+        "goal": 3,
+        "k": 1
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "n": 2,
+        "goal": 3,
+        "k": 0
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "n": 2,
+        "goal": 3,
+        "k": 1
+      },
+      "expected": 2
+    }
+  ]
+}

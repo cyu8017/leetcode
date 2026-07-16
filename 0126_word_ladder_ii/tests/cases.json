@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "args": {
+        "beginWord": "hit",
+        "endWord": "cog",
+        "wordList": [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log",
+          "cog"
+        ]
+      },
+      "expected": [
+        [
+          "hit",
+          "hot",
+          "dot",
+          "dog",
+          "cog"
+        ],
+        [
+          "hit",
+          "hot",
+          "lot",
+          "log",
+          "cog"
+        ]
+      ]
+    },
+    {
+      "args": {
+        "beginWord": "hit",
+        "endWord": "cog",
+        "wordList": [
+          "hot",
+          "dot",
+          "dog",
+          "lot",
+          "log"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

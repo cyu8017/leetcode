@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "timer": 60
+      },
+      "expected": "Red"
+    },
+    {
+      "args": {
+        "timer": 5
+      },
+      "expected": "Invalid"
+    }
+  ]
+}

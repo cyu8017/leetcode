@@ -1,0 +1,1 @@
+object Solution { def compareVersion(version1: String, version2: String): Int = { val a = version1.split("\\."); val b = version2.split("\\."); for (i <- 0 until math.max(a.length, b.length)) { val x = if (i < a.length) a(i).toInt else 0; val y = if (i < b.length) b(i).toInt else 0; if (x != y) return if (x < y) -1 else 1 }; 0 } }

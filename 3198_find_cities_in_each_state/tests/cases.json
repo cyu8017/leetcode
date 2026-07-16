@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "cities": [
+          {
+            "state": "California",
+            "city": "Los Angeles"
+          },
+          {
+            "state": "California",
+            "city": "San Francisco"
+          },
+          {
+            "state": "California",
+            "city": "San Diego"
+          },
+          {
+            "state": "Texas",
+            "city": "Houston"
+          },
+          {
+            "state": "Texas",
+            "city": "Austin"
+          },
+          {
+            "state": "Texas",
+            "city": "Dallas"
+          },
+          {
+            "state": "New York",
+            "city": "New York City"
+          },
+          {
+            "state": "New York",
+            "city": "Buffalo"
+          },
+          {
+            "state": "New York",
+            "city": "Rochester"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "state": "California",
+          "cities": "Los Angeles, San Diego, San Francisco"
+        },
+        {
+          "state": "New York",
+          "cities": "Buffalo, New York City, Rochester"
+        },
+        {
+          "state": "Texas",
+          "cities": "Austin, Dallas, Houston"
+        }
+      ]
+    }
+  ]
+}

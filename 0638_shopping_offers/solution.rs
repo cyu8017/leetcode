@@ -1,0 +1,7 @@
+﻿// LeetCode 0638 - Shopping Offers
+// https://leetcode.com/problems/shopping-offers/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

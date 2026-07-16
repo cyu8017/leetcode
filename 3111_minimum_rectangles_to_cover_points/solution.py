@@ -1,0 +1,6 @@
+﻿# LeetCode 3111 - Minimum Rectangles to Cover Points
+# https://leetcode.com/problems/minimum-rectangles-to-cover-points/
+
+class Solution:
+    def solve(self) -> None:
+        pass

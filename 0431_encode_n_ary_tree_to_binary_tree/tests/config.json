@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "encodeNaryTree",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "narynode"
+  },
+  "description": "Round-trip encode/decode compared on the original N-ary tree."
+}

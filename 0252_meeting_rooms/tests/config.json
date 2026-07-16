@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "canAttendMeetings",
+  "paramOrder": ["intervals"],
+  "types": null,
+  "description": null
+}

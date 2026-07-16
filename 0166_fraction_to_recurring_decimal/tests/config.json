@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "fractionToDecimal",
+  "paramOrder": ["numerator", "denominator"],
+  "types": null,
+  "description": null
+}

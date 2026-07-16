@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Emails": [
+          {
+            "id": 336,
+            "email": "hwkiy@test.edu"
+          },
+          {
+            "id": 489,
+            "email": "adcmaf@outlook.com"
+          },
+          {
+            "id": 449,
+            "email": "vrzmwyum@yahoo.com"
+          },
+          {
+            "id": 95,
+            "email": "tof@test.edu"
+          },
+          {
+            "id": 320,
+            "email": "jxhbagkpm@example.org"
+          },
+          {
+            "id": 411,
+            "email": "zxcf@outlook.com"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "email_domain": "outlook.com",
+          "count": 2
+        },
+        {
+          "email_domain": "yahoo.com",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

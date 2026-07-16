@@ -1,0 +1,7 @@
+﻿# LeetCode 2546 - Apply Bitwise Operations to Make Strings Equal
+# https://leetcode.com/problems/apply-bitwise-operations-to-make-strings-equal/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "cloneGraph",
+  "paramOrder": ["adjList"],
+  "types": { "adjList": "graphnode", "return": "graphnode" },
+  "description": null
+}

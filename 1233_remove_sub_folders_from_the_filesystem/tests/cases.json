@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "args": {
+        "folder": [
+          "/a",
+          "/a/b",
+          "/c/d",
+          "/c/d/e",
+          "/c/f"
+        ]
+      },
+      "expected": [
+        "/a",
+        "/c/d",
+        "/c/f"
+      ]
+    },
+    {
+      "args": {
+        "folder": [
+          "/a",
+          "/a/b/c",
+          "/a/b/d"
+        ]
+      },
+      "expected": [
+        "/a"
+      ]
+    },
+    {
+      "args": {
+        "folder": [
+          "/a/b/c",
+          "/a/b/ca",
+          "/a/b/d"
+        ]
+      },
+      "expected": [
+        "/a/b/c",
+        "/a/b/ca",
+        "/a/b/d"
+      ]
+    }
+  ]
+}

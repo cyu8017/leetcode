@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "args": {
+        "robots": [
+          4
+        ],
+        "distance": [
+          3
+        ],
+        "walls": [
+          1,
+          10
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "robots": [
+          10,
+          2
+        ],
+        "distance": [
+          5,
+          1
+        ],
+        "walls": [
+          5,
+          2,
+          7
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "robots": [
+          1,
+          2
+        ],
+        "distance": [
+          100,
+          1
+        ],
+        "walls": [
+          10
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

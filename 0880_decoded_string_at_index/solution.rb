@@ -1,0 +1,7 @@
+﻿# LeetCode 0880 - Decoded String at Index
+# https://leetcode.com/problems/decoded-string-at-index/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

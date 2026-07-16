@@ -1,0 +1,7 @@
+﻿// LeetCode 2189 - Number of Ways to Build House of Cards
+// https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/
+
+public class Solution {
+    public void Solve() {
+    }
+}

@@ -1,0 +1,215 @@
+# Test harness for 1809_ad_free_sessions
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1809_ad_free_sessions -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1809_ad_free_sessions --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1809_ad_free_sessions --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1809_ad_free_sessions --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1809_ad_free_sessions --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1809_ad_free_sessions --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1809_ad_free_sessions --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1809_ad_free_sessions --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1809_ad_free_sessions --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1809_ad_free_sessions --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1809_ad_free_sessions --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1809_ad_free_sessions --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1809_ad_free_sessions --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1809_ad_free_sessions --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1809_ad_free_sessions --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1809_ad_free_sessions --language python
+./scripts/test.sh --folder 1809_ad_free_sessions --language javascript
+./scripts/test.sh --folder 1809_ad_free_sessions --language typescript
+./scripts/test.sh --folder 1809_ad_free_sessions --language java
+./scripts/test.sh --folder 1809_ad_free_sessions --language cpp
+./scripts/test.sh --folder 1809_ad_free_sessions --language c
+./scripts/test.sh --folder 1809_ad_free_sessions --language go
+./scripts/test.sh --folder 1809_ad_free_sessions --language rust
+./scripts/test.sh --folder 1809_ad_free_sessions --language kotlin
+./scripts/test.sh --folder 1809_ad_free_sessions --language swift
+./scripts/test.sh --folder 1809_ad_free_sessions --language ruby
+./scripts/test.sh --folder 1809_ad_free_sessions --language csharp
+./scripts/test.sh --folder 1809_ad_free_sessions --language scala
+./scripts/test.sh --folder 1809_ad_free_sessions --language php
+./scripts/test.sh --folder 1809_ad_free_sessions --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1809_ad_free_sessions --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1809_ad_free_sessions --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1809_ad_free_sessions --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1809_ad_free_sessions --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1809_ad_free_sessions --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1809_ad_free_sessions --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1809_ad_free_sessions --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1809_ad_free_sessions --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1809_ad_free_sessions --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1809_ad_free_sessions --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1809_ad_free_sessions --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1809_ad_free_sessions --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1809_ad_free_sessions --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1809_ad_free_sessions --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm java java 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm c c 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm go go 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm rust rust 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm swift swift 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm scala scala 1809_ad_free_sessions
+docker compose -f docker/docker-compose.yml run --rm php php 1809_ad_free_sessions
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1809_ad_free_sessions` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1809_ad_free_sessions` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1809_ad_free_sessions` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1809_ad_free_sessions` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1809_ad_free_sessions` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1809_ad_free_sessions` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1809_ad_free_sessions` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1809_ad_free_sessions` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1809_ad_free_sessions` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1809_ad_free_sessions` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1809_ad_free_sessions` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1809_ad_free_sessions` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1809_ad_free_sessions` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1809_ad_free_sessions` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1809_ad_free_sessions -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1809_ad_free_sessions --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1809_ad_free_sessions --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

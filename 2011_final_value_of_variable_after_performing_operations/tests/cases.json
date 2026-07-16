@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "--X",
+        "X++",
+        "X++"
+      ],
+      "arguments": [],
+      "expected": 1
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "++X",
+        "++X",
+        "X++"
+      ],
+      "arguments": [],
+      "expected": 3
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "X++",
+        "++X",
+        "--X",
+        "X--"
+      ],
+      "arguments": [],
+      "expected": 0
+    }
+  ]
+}

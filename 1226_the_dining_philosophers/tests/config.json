@@ -1,0 +1,19 @@
+{
+  "class": "DiningPhilosophers",
+  "method": "wantsToEat",
+  "paramOrder": [
+    "philosopher",
+    "pickLeftFork",
+    "None]'",
+    "pickRightFork",
+    "None]'",
+    "eat",
+    "None]'",
+    "putLeftFork",
+    "None]'",
+    "putRightFork",
+    "None]'"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

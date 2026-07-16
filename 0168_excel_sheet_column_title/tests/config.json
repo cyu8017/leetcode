@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "convertToTitle",
+  "paramOrder": ["columnNumber"],
+  "types": null,
+  "description": null
+}

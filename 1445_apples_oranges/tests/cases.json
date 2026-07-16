@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Sales": [
+          {
+            "sale_date": "2020-05-01",
+            "fruit": "apples",
+            "sold_num": 10
+          },
+          {
+            "sale_date": "2020-05-01",
+            "fruit": "oranges",
+            "sold_num": 8
+          },
+          {
+            "sale_date": "2020-05-02",
+            "fruit": "apples",
+            "sold_num": 15
+          },
+          {
+            "sale_date": "2020-05-02",
+            "fruit": "oranges",
+            "sold_num": 15
+          },
+          {
+            "sale_date": "2020-05-03",
+            "fruit": "apples",
+            "sold_num": 20
+          },
+          {
+            "sale_date": "2020-05-03",
+            "fruit": "oranges",
+            "sold_num": 0
+          },
+          {
+            "sale_date": "2020-05-04",
+            "fruit": "apples",
+            "sold_num": 15
+          },
+          {
+            "sale_date": "2020-05-04",
+            "fruit": "oranges",
+            "sold_num": 16
+          }
+        ]
+      },
+      "expected": [
+        {
+          "sale_date": "2020-05-01",
+          "diff": 2
+        },
+        {
+          "sale_date": "2020-05-02",
+          "diff": 0
+        },
+        {
+          "sale_date": "2020-05-03",
+          "diff": 20
+        },
+        {
+          "sale_date": "2020-05-04",
+          "diff": -1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Teams": [
+          {
+            "player_id": 1,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 2,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 3,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 4,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 5,
+            "team_name": "Chelsea"
+          },
+          {
+            "player_id": 6,
+            "team_name": "Chelsea"
+          },
+          {
+            "player_id": 7,
+            "team_name": "Chelsea"
+          },
+          {
+            "player_id": 8,
+            "team_name": "Chelsea"
+          }
+        ],
+        "Passes": [
+          {
+            "pass_from": 1,
+            "time_stamp": "00:05",
+            "pass_to": 2
+          },
+          {
+            "pass_from": 2,
+            "time_stamp": "00:07",
+            "pass_to": 3
+          },
+          {
+            "pass_from": 3,
+            "time_stamp": "00:08",
+            "pass_to": 4
+          },
+          {
+            "pass_from": 4,
+            "time_stamp": "00:10",
+            "pass_to": 5
+          },
+          {
+            "pass_from": 6,
+            "time_stamp": "00:15",
+            "pass_to": 7
+          },
+          {
+            "pass_from": 7,
+            "time_stamp": "00:17",
+            "pass_to": 8
+          },
+          {
+            "pass_from": 8,
+            "time_stamp": "00:20",
+            "pass_to": 6
+          },
+          {
+            "pass_from": 6,
+            "time_stamp": "00:22",
+            "pass_to": 5
+          },
+          {
+            "pass_from": 1,
+            "time_stamp": "00:25",
+            "pass_to": 2
+          },
+          {
+            "pass_from": 2,
+            "time_stamp": "00:27",
+            "pass_to": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_name": "Arsenal",
+          "longest_streak": 3
+        },
+        {
+          "team_name": "Chelsea",
+          "longest_streak": 4
+        }
+      ]
+    }
+  ]
+}

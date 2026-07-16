@@ -1,0 +1,103 @@
+# 3278. Find Candidates for Data Scientist Position II
+
+- **Difficulty:** Medium
+- **LeetCode:** [https://leetcode.com/problems/find-candidates-for-data-scientist-position-ii/](https://leetcode.com/problems/find-candidates-for-data-scientist-position-ii/)
+- **Premium:** Yes
+- **Tags:** database
+
+## Problem
+
+Table: `Candidates`
+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| candidate_id | int     |
+| skill        | varchar |
+| proficiency  | int     |
++--------------+---------+
+(candidate_id, skill) is the unique key for this table.
+Each row includes candidate_id, skill, and proficiency level (1-5).
+
+Table: `Projects`
+
++--------------+---------+
+| Column Name  | Type    |
++--------------+---------+
+| project_id   | int     |
+| skill        | varchar |
+| importance   | int     |
++--------------+---------+
+(project_id, skill) is the primary key for this table.
+Each row includes project_id, required skill, and its importance (1-5) for the project.
+
+Leetcode is staffing for multiple data science projects. Write a solution to find the **best candidate** for** each project** based on the following criteria:
+
+	- Candidates must have **all** the skills required for a project.
+
+	- Calculate a **score** for each candidate-project pair as follows:
+
+
+		- **Start** with `100` points
+
+		- **Add** `10` points for each skill where **proficiency > importance**
+
+		- **Subtract** `5` points for each skill where **proficiency
+
+**Input:**
+
+`Candidates` table:
+
++--------------+-----------+-------------+
+| candidate_id | skill     | proficiency |
++--------------+-----------+-------------+
+| 101          | Python    | 5           |
+| 101          | Tableau   | 3           |
+| 101          | PostgreSQL| 4           |
+| 101          | TensorFlow| 2           |
+| 102          | Python    | 4           |
+| 102          | Tableau   | 5           |
+| 102          | PostgreSQL| 4           |
+| 102          | R         | 4           |
+| 103          | Python    | 3           |
+| 103          | Tableau   | 5           |
+| 103          | PostgreSQL| 5           |
+| 103          | Spark     | 4           |
++--------------+-----------+-------------+
+
+`Projects` table:
+
++-------------+-----------+------------+
+| project_id  | skill     | importance |
++-------------+-----------+------------+
+| 501         | Python    | 4          |
+| 501         | Tableau   | 3          |
+| 501         | PostgreSQL| 5          |
+| 502         | Python    | 3          |
+| 502         | Tableau   | 4          |
+| 502         | R         | 2          |
++-------------+-----------+------------+
+
+**Output:**
+
++-------------+--------------+-------+
+| project_id  | candidate_id | score |
++-------------+--------------+-------+
+| 501         | 101          | 105   |
+| 502         | 102          | 130   |
++-------------+--------------+-------+
+
+**Explanation:**
+
+	- For Project 501, Candidate 101 has the highest score of 105. All other candidates have the same score but Candidate 101 has the lowest candidate_id among them.
+
+	- For Project 502, Candidate 102 has the highest score of 130.
+
+The output table is ordered by project_id in ascending order.
+
+---
+_Problem text from the [doocs/leetcode](https://github.com/doocs/leetcode) community mirror (LeetCode Premium)._
+
+## Approach
+
+<!-- Describe your solution approach here -->

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "isPalindrome",
+  "paramOrder": ["s"],
+  "types": null,
+  "description": null
+}

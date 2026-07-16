@@ -1,0 +1,194 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "students": [
+          {
+            "student_id": 1,
+            "student_name": "Alice Chen",
+            "major": "Computer Science"
+          },
+          {
+            "student_id": 2,
+            "student_name": "Bob Johnson",
+            "major": "Mathematics"
+          },
+          {
+            "student_id": 3,
+            "student_name": "Carol Davis",
+            "major": "Physics"
+          },
+          {
+            "student_id": 4,
+            "student_name": "David Wilson",
+            "major": "Chemistry"
+          },
+          {
+            "student_id": 5,
+            "student_name": "Emma Brown",
+            "major": "Biology"
+          }
+        ],
+        "study_sessions": [
+          {
+            "session_id": 1,
+            "student_id": 1,
+            "subject": "Math",
+            "session_date": "2023-10-01",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 2,
+            "student_id": 1,
+            "subject": "Physics",
+            "session_date": "2023-10-02",
+            "hours_studied": 3.0
+          },
+          {
+            "session_id": 3,
+            "student_id": 1,
+            "subject": "Chemistry",
+            "session_date": "2023-10-03",
+            "hours_studied": 2.0
+          },
+          {
+            "session_id": 4,
+            "student_id": 1,
+            "subject": "Math",
+            "session_date": "2023-10-04",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 5,
+            "student_id": 1,
+            "subject": "Physics",
+            "session_date": "2023-10-05",
+            "hours_studied": 3.0
+          },
+          {
+            "session_id": 6,
+            "student_id": 1,
+            "subject": "Chemistry",
+            "session_date": "2023-10-06",
+            "hours_studied": 2.0
+          },
+          {
+            "session_id": 7,
+            "student_id": 2,
+            "subject": "Algebra",
+            "session_date": "2023-10-01",
+            "hours_studied": 4.0
+          },
+          {
+            "session_id": 8,
+            "student_id": 2,
+            "subject": "Calculus",
+            "session_date": "2023-10-02",
+            "hours_studied": 3.5
+          },
+          {
+            "session_id": 9,
+            "student_id": 2,
+            "subject": "Statistics",
+            "session_date": "2023-10-03",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 10,
+            "student_id": 2,
+            "subject": "Geometry",
+            "session_date": "2023-10-04",
+            "hours_studied": 3.0
+          },
+          {
+            "session_id": 11,
+            "student_id": 2,
+            "subject": "Algebra",
+            "session_date": "2023-10-05",
+            "hours_studied": 4.0
+          },
+          {
+            "session_id": 12,
+            "student_id": 2,
+            "subject": "Calculus",
+            "session_date": "2023-10-06",
+            "hours_studied": 3.5
+          },
+          {
+            "session_id": 13,
+            "student_id": 2,
+            "subject": "Statistics",
+            "session_date": "2023-10-07",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 14,
+            "student_id": 2,
+            "subject": "Geometry",
+            "session_date": "2023-10-08",
+            "hours_studied": 3.0
+          },
+          {
+            "session_id": 15,
+            "student_id": 3,
+            "subject": "Biology",
+            "session_date": "2023-10-01",
+            "hours_studied": 2.0
+          },
+          {
+            "session_id": 16,
+            "student_id": 3,
+            "subject": "Chemistry",
+            "session_date": "2023-10-02",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 17,
+            "student_id": 3,
+            "subject": "Biology",
+            "session_date": "2023-10-03",
+            "hours_studied": 2.0
+          },
+          {
+            "session_id": 18,
+            "student_id": 3,
+            "subject": "Chemistry",
+            "session_date": "2023-10-04",
+            "hours_studied": 2.5
+          },
+          {
+            "session_id": 19,
+            "student_id": 4,
+            "subject": "Organic",
+            "session_date": "2023-10-01",
+            "hours_studied": 3.0
+          },
+          {
+            "session_id": 20,
+            "student_id": 4,
+            "subject": "Physical",
+            "session_date": "2023-10-05",
+            "hours_studied": 2.5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "student_id": 2,
+          "student_name": "Bob Johnson",
+          "major": "Mathematics",
+          "cycle_length": 4,
+          "total_study_hours": 26.0
+        },
+        {
+          "student_id": 1,
+          "student_name": "Alice Chen",
+          "major": "Computer Science",
+          "cycle_length": 3,
+          "total_study_hours": 15.0
+        }
+      ]
+    }
+  ]
+}

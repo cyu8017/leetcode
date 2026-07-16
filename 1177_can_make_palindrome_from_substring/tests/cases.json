@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcda",
+        "queries": [
+          [
+            3,
+            3,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            1
+          ],
+          [
+            0,
+            3,
+            2
+          ],
+          [
+            0,
+            4,
+            1
+          ]
+        ]
+      },
+      "expected": [
+        true,
+        false,
+        false,
+        true,
+        true
+      ]
+    },
+    {
+      "args": {
+        "s": "lyb",
+        "queries": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            2,
+            2,
+            1
+          ]
+        ]
+      },
+      "expected": [
+        false,
+        true
+      ]
+    }
+  ]
+}

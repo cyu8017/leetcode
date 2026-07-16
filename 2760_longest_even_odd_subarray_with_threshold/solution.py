@@ -1,0 +1,6 @@
+﻿# LeetCode 2760 - Longest Even Odd Subarray With Threshold
+# https://leetcode.com/problems/longest-even-odd-subarray-with-threshold/
+
+class Solution:
+    def solve(self) -> None:
+        pass

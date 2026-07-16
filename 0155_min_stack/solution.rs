@@ -1,0 +1,1 @@
+pub struct MinStack{a:Vec<i32>,m:Vec<i32>}impl MinStack{pub fn new()->Self{Self{a:vec![],m:vec![]}}pub fn push(&mut self,x:i32){self.a.push(x);self.m.push(self.m.last().copied().map_or(x,|v|v.min(x)))}pub fn pop(&mut self){self.a.pop();self.m.pop();}pub fn top(&self)->i32{*self.a.last().unwrap()}pub fn get_min(&self)->i32{*self.m.last().unwrap()}}

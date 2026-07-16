@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Products": [
+          {
+            "product_id": 1,
+            "price": 100
+          },
+          {
+            "product_id": 2,
+            "price": 200
+          }
+        ],
+        "Purchases": [
+          {
+            "invoice_id": 1,
+            "product_id": 1,
+            "quantity": 2
+          },
+          {
+            "invoice_id": 3,
+            "product_id": 2,
+            "quantity": 1
+          },
+          {
+            "invoice_id": 2,
+            "product_id": 2,
+            "quantity": 3
+          },
+          {
+            "invoice_id": 2,
+            "product_id": 1,
+            "quantity": 4
+          },
+          {
+            "invoice_id": 4,
+            "product_id": 1,
+            "quantity": 10
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 2,
+          "quantity": 3,
+          "price": 600
+        },
+        {
+          "product_id": 1,
+          "quantity": 4,
+          "price": 400
+        }
+      ]
+    }
+  ]
+}

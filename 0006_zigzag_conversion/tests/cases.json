@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "PAYPALISHIRING",
+        "numRows": 3
+      },
+      "expected": "PAHNAPLSIIGYIR"
+    },
+    {
+      "args": {
+        "s": "PAYPALISHIRING",
+        "numRows": 4
+      },
+      "expected": "PINALSIGYAHRPI"
+    },
+    {
+      "args": {
+        "s": "A",
+        "numRows": 1
+      },
+      "expected": "A"
+    }
+  ]
+}

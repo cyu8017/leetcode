@@ -1,0 +1,1 @@
+type TreeNode struct{Val int;Left,Right *TreeNode};func preorderTraversal(r *TreeNode)(a []int){if r==nil{return};s:=[]*TreeNode{r};for len(s)>0{n:=s[len(s)-1];s=s[:len(s)-1];a=append(a,n.Val);if n.Right!=nil{s=append(s,n.Right)};if n.Left!=nil{s=append(s,n.Left)}};return}

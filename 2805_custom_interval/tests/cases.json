@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "delay": 50,
+        "period": 20,
+        "cancelTime": 225
+      },
+      "expected": [
+        50,
+        120,
+        210
+      ]
+    },
+    {
+      "args": {
+        "delay": 20,
+        "period": 20,
+        "cancelTime": 150
+      },
+      "expected": [
+        20,
+        60,
+        120
+      ]
+    },
+    {
+      "args": {
+        "delay": 100,
+        "period": 200,
+        "cancelTime": 500
+      },
+      "expected": [
+        100,
+        400
+      ]
+    }
+  ]
+}

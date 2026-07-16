@@ -1,0 +1,9 @@
+﻿// LeetCode 1352 - Product of the Last K Numbers
+// https://leetcode.com/problems/product-of-the-last-k-numbers/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

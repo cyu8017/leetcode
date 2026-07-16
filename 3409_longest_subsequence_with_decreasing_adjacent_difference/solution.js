@@ -1,0 +1,9 @@
+﻿// LeetCode 3409 - Longest Subsequence With Decreasing Adjacent Difference
+// https://leetcode.com/problems/longest-subsequence-with-decreasing-adjacent-difference/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

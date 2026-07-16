@@ -1,0 +1,6 @@
+﻿// LeetCode 1848 - Minimum Distance to the Target Element
+// https://leetcode.com/problems/minimum-distance-to-the-target-element/
+
+function solve(input: unknown): unknown {
+    return null;
+}

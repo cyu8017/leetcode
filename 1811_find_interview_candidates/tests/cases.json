@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Contests": [
+          {
+            "contest_id": 190,
+            "gold_medal": 1,
+            "silver_medal": 5,
+            "bronze_medal": 2
+          },
+          {
+            "contest_id": 191,
+            "gold_medal": 2,
+            "silver_medal": 3,
+            "bronze_medal": 5
+          },
+          {
+            "contest_id": 192,
+            "gold_medal": 5,
+            "silver_medal": 2,
+            "bronze_medal": 3
+          },
+          {
+            "contest_id": 193,
+            "gold_medal": 1,
+            "silver_medal": 3,
+            "bronze_medal": 5
+          },
+          {
+            "contest_id": 194,
+            "gold_medal": 4,
+            "silver_medal": 5,
+            "bronze_medal": 2
+          },
+          {
+            "contest_id": 195,
+            "gold_medal": 4,
+            "silver_medal": 2,
+            "bronze_medal": 1
+          },
+          {
+            "contest_id": 196,
+            "gold_medal": 1,
+            "silver_medal": 5,
+            "bronze_medal": 2
+          }
+        ],
+        "Users": [
+          {
+            "user_id": 1,
+            "mail": "sarah@leetcode.com",
+            "name": "Sarah"
+          },
+          {
+            "user_id": 2,
+            "mail": "bob@leetcode.com",
+            "name": "Bob"
+          },
+          {
+            "user_id": 3,
+            "mail": "alice@leetcode.com",
+            "name": "Alice"
+          },
+          {
+            "user_id": 4,
+            "mail": "hercy@leetcode.com",
+            "name": "Hercy"
+          },
+          {
+            "user_id": 5,
+            "mail": "quarz@leetcode.com",
+            "name": "Quarz"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "name": "Sarah",
+          "mail": "sarah@leetcode.com"
+        },
+        {
+          "name": "Bob",
+          "mail": "bob@leetcode.com"
+        },
+        {
+          "name": "Alice",
+          "mail": "alice@leetcode.com"
+        },
+        {
+          "name": "Quarz",
+          "mail": "quarz@leetcode.com"
+        }
+      ]
+    }
+  ]
+}

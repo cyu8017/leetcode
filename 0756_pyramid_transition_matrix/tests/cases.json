@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "bottom": "BCD",
+        "allowed": [
+          "BCC",
+          "CDE",
+          "CEA",
+          "FFF"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "bottom": "AAAA",
+        "allowed": [
+          "AAB",
+          "AAC",
+          "BCD",
+          "BBE",
+          "DEF"
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

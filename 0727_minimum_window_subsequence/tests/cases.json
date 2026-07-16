@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "abcdebdde",
+        "s2": "bde"
+      },
+      "expected": "bcde"
+    },
+    {
+      "args": {
+        "s1": "jmeqksfrsdcmsiwvaovztaqenprpvnbstl",
+        "s2": "u"
+      },
+      "expected": ""
+    }
+  ]
+}

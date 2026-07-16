@@ -1,0 +1,9 @@
+﻿// LeetCode 1989 - Maximum Number of People That Can Be Caught in Tag
+// https://leetcode.com/problems/maximum-number-of-people-that-can-be-caught-in-tag/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

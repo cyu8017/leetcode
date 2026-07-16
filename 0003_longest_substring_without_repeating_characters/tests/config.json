@@ -1,0 +1,9 @@
+﻿{
+    "class":  "Solution",
+    "method":  "lengthOfLongestSubstring",
+    "paramOrder":  [
+                       "s"
+                   ],
+    "types":  null,
+    "description":  null
+}

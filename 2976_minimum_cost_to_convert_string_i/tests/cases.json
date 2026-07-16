@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "args": {
+        "source": "abcd",
+        "target": "acbe",
+        "original": [
+          "a",
+          "b",
+          "c",
+          "c",
+          "e",
+          "d"
+        ],
+        "changed": [
+          "b",
+          "c",
+          "b",
+          "e",
+          "b",
+          "e"
+        ],
+        "cost": [
+          2,
+          5,
+          5,
+          1,
+          2,
+          20
+        ]
+      },
+      "expected": 28
+    },
+    {
+      "args": {
+        "source": "aaaa",
+        "target": "bbbb",
+        "original": [
+          "a",
+          "c"
+        ],
+        "changed": [
+          "c",
+          "b"
+        ],
+        "cost": [
+          1,
+          2
+        ]
+      },
+      "expected": 12
+    },
+    {
+      "args": {
+        "source": "abcd",
+        "target": "abce",
+        "original": [
+          "a"
+        ],
+        "changed": [
+          "e"
+        ],
+        "cost": [
+          10000
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

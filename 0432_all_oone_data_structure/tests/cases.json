@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "AllOne",
+        "inc",
+        "inc",
+        "getMaxKey",
+        "getMinKey",
+        "inc",
+        "getMaxKey",
+        "getMinKey"
+      ],
+      "arguments": [
+        [],
+        [
+          "hello"
+        ],
+        [
+          "hello"
+        ],
+        [],
+        [],
+        [
+          "leet"
+        ],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        "hello",
+        "hello",
+        null,
+        "hello",
+        "leet"
+      ]
+    }
+  ]
+}

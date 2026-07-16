@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "args": {
+        "source": "abbaa",
+        "pattern": "aba",
+        "targetIndices": [
+          0,
+          1,
+          2
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "source": "bcda",
+        "pattern": "d",
+        "targetIndices": [
+          0,
+          3
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "source": "dda",
+        "pattern": "dda",
+        "targetIndices": [
+          0,
+          1,
+          2
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "source": "yeyeykyded",
+        "pattern": "yeyyd",
+        "targetIndices": [
+          0,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿// LeetCode 3653 - XOR After Range Multiplication Queries I
+// https://leetcode.com/problems/xor-after-range-multiplication-queries-i/
+
+public class Solution {
+    public void Solve() {
+    }
+}

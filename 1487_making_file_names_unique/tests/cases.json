@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "args": {
+        "names": [
+          "pes",
+          "fifa",
+          "gta",
+          "pes(2019)"
+        ]
+      },
+      "expected": [
+        "pes",
+        "fifa",
+        "gta",
+        "pes(2019)"
+      ]
+    },
+    {
+      "args": {
+        "names": [
+          "gta",
+          "gta(1)",
+          "gta",
+          "avalon"
+        ]
+      },
+      "expected": [
+        "gta",
+        "gta(1)",
+        "gta(2)",
+        "avalon"
+      ]
+    },
+    {
+      "args": {
+        "names": [
+          "onepiece",
+          "onepiece(1)",
+          "onepiece(2)",
+          "onepiece(3)",
+          "onepiece"
+        ]
+      },
+      "expected": [
+        "onepiece",
+        "onepiece(1)",
+        "onepiece(2)",
+        "onepiece(3)",
+        "onepiece(4)"
+      ]
+    }
+  ]
+}

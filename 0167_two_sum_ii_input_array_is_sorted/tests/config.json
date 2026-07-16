@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["numbers", "target"],
+  "types": { "return": "integer[]" },
+  "description": null
+}

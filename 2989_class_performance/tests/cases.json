@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Scores": [
+          {
+            "student_id": 309,
+            "student_name": "Owen",
+            "assignment1": 88,
+            "assignment2": 47,
+            "assignment3": 87
+          },
+          {
+            "student_id": 321,
+            "student_name": "Claire",
+            "assignment1": 98,
+            "assignment2": 95,
+            "assignment3": 37
+          },
+          {
+            "student_id": 338,
+            "student_name": "Julian",
+            "assignment1": 100,
+            "assignment2": 64,
+            "assignment3": 43
+          },
+          {
+            "student_id": 423,
+            "student_name": "Peyton",
+            "assignment1": 60,
+            "assignment2": 44,
+            "assignment3": 47
+          },
+          {
+            "student_id": 896,
+            "student_name": "David",
+            "assignment1": 32,
+            "assignment2": 37,
+            "assignment3": 50
+          },
+          {
+            "student_id": 235,
+            "student_name": "Camila",
+            "assignment1": 31,
+            "assignment2": 53,
+            "assignment3": 69
+          }
+        ]
+      },
+      "expected": [
+        {
+          "difference_in_score": 111
+        }
+      ]
+    }
+  ]
+}

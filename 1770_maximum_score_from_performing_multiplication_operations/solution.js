@@ -1,0 +1,9 @@
+﻿// LeetCode 1770 - Maximum Score from Performing Multiplication Operations
+// https://leetcode.com/problems/maximum-score-from-performing-multiplication-operations/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

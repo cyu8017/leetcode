@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "features": [
+          "cooler",
+          "lock",
+          "touch"
+        ],
+        "responses": [
+          "i like cooler cooler",
+          "lock touch cool",
+          "locker like touch"
+        ]
+      },
+      "expected": [
+        "touch",
+        "cooler",
+        "lock"
+      ]
+    },
+    {
+      "args": {
+        "features": [
+          "a",
+          "aa",
+          "b",
+          "c"
+        ],
+        "responses": [
+          "a",
+          "a aa",
+          "a a a a a",
+          "b a"
+        ]
+      },
+      "expected": "[\"a\",\"aa\",\"b\",\"c\"]\n**Constraints:**\n- `1 <= features.length <= 10^{4}`\n- `1 <= features[i].length <= 10`\n- `features` contains no duplicates.\n- `features[i]` consists of lowercase letters.\n- `1 <= responses.length <= 10^{2}`\n- `1 <= responses[i].length <= 10^{3}`\n- `responses[i]` consists of lowercase letters and spaces.\n- `responses[i]` contains no two consecutive spaces.\n- `responses[i]` has no leading or trailing spaces.\n---"
+    }
+  ]
+}

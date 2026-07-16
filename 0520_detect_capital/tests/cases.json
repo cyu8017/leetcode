@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "USA"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "word": "FlaG"
+      },
+      "expected": false
+    }
+  ]
+}

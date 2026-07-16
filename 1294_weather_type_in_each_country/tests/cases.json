@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Countries": [
+          {
+            "country_id": 2,
+            "country_name": "USA"
+          },
+          {
+            "country_id": 3,
+            "country_name": "Australia"
+          },
+          {
+            "country_id": 7,
+            "country_name": "Peru"
+          },
+          {
+            "country_id": 5,
+            "country_name": "China"
+          },
+          {
+            "country_id": 8,
+            "country_name": "Morocco"
+          },
+          {
+            "country_id": 9,
+            "country_name": "Spain"
+          }
+        ],
+        "Weather": [
+          {
+            "country_id": 2,
+            "weather_state": 15,
+            "day": "2019-11-01"
+          },
+          {
+            "country_id": 2,
+            "weather_state": 12,
+            "day": "2019-10-28"
+          },
+          {
+            "country_id": 2,
+            "weather_state": 12,
+            "day": "2019-10-27"
+          },
+          {
+            "country_id": 3,
+            "weather_state": -2,
+            "day": "2019-11-10"
+          },
+          {
+            "country_id": 3,
+            "weather_state": 0,
+            "day": "2019-11-11"
+          },
+          {
+            "country_id": 3,
+            "weather_state": 3,
+            "day": "2019-11-12"
+          },
+          {
+            "country_id": 5,
+            "weather_state": 16,
+            "day": "2019-11-07"
+          },
+          {
+            "country_id": 5,
+            "weather_state": 18,
+            "day": "2019-11-09"
+          },
+          {
+            "country_id": 5,
+            "weather_state": 21,
+            "day": "2019-11-23"
+          },
+          {
+            "country_id": 7,
+            "weather_state": 25,
+            "day": "2019-11-28"
+          },
+          {
+            "country_id": 7,
+            "weather_state": 22,
+            "day": "2019-12-01"
+          },
+          {
+            "country_id": 7,
+            "weather_state": 20,
+            "day": "2019-12-02"
+          },
+          {
+            "country_id": 8,
+            "weather_state": 25,
+            "day": "2019-11-05"
+          },
+          {
+            "country_id": 8,
+            "weather_state": 27,
+            "day": "2019-11-15"
+          },
+          {
+            "country_id": 8,
+            "weather_state": 31,
+            "day": "2019-11-25"
+          },
+          {
+            "country_id": 9,
+            "weather_state": 7,
+            "day": "2019-10-23"
+          },
+          {
+            "country_id": 9,
+            "weather_state": 3,
+            "day": "2019-12-23"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "country_name": "USA",
+          "weather_type": "Cold"
+        },
+        {
+          "country_name": "Australia",
+          "weather_type": "Cold"
+        },
+        {
+          "country_name": "Peru",
+          "weather_type": "Hot"
+        },
+        {
+          "country_name": "Morocco",
+          "weather_type": "Hot"
+        },
+        {
+          "country_name": "China",
+          "weather_type": "Warm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "stones": [
+          2,
+          1
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "stones": [
+          2
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "stones": [
+          5,
+          1,
+          2,
+          4,
+          3
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

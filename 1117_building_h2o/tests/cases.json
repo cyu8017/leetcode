@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "water": "HOH"
+      },
+      "expected": "HHO"
+    },
+    {
+      "args": {
+        "water": "OOHHHH"
+      },
+      "expected": "HHOHHO"
+    }
+  ]
+}

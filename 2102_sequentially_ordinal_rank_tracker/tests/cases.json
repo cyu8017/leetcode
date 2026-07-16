@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "SORTracker",
+        "add",
+        "add",
+        "get",
+        "add",
+        "get",
+        "add",
+        "get",
+        "add",
+        "get",
+        "add",
+        "get",
+        "get"
+      ],
+      "arguments": [
+        [],
+        [
+          "bradford",
+          2
+        ],
+        [
+          "branford",
+          3
+        ],
+        [],
+        [
+          "alps",
+          2
+        ],
+        [],
+        [
+          "orland",
+          2
+        ],
+        [],
+        [
+          "orlando",
+          3
+        ],
+        [],
+        [
+          "alpine",
+          2
+        ],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        "branford",
+        null,
+        "alps",
+        null,
+        "bradford",
+        null,
+        "bradford",
+        null,
+        "bradford",
+        "orland"
+      ]
+    }
+  ]
+}

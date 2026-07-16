@@ -1,0 +1,6 @@
+﻿class Solution {
+    public static final String SCRIPT = """
+#!/bin/bash
+sed -n '10p' file.txt
+""";
+}

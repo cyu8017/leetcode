@@ -1,0 +1,1 @@
+class Solution { fun rotate(a: IntArray, k: Int) { if (a.isEmpty()) return; val steps = k % a.size; reverse(a, 0, a.lastIndex); reverse(a, 0, steps - 1); reverse(a, steps, a.lastIndex) } private fun reverse(a: IntArray, left: Int, right: Int) { var l = left; var r = right; while (l < r) { val t = a[l]; a[l++] = a[r]; a[r--] = t } } }

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "findHighAccessEmployees",
+  "paramOrder": [
+    "access_times"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

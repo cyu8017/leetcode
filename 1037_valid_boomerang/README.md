@@ -1,0 +1,41 @@
+# 1037. Valid Boomerang
+
+- **Difficulty:** Easy
+- **LeetCode:** [https://leetcode.com/problems/valid-boomerang/](https://leetcode.com/problems/valid-boomerang/)
+- **Tags:** array, math, geometry
+
+## Problem
+
+Given an array `points` where `points[i] = [x_{i}, y_{i}]` represents a point on the **X-Y** plane, return `true` *if these points are a **boomerang**.
+
+A **boomerang** is a set of three points that are **all distinct** and **not in a straight line**.
+
+**Example 1:**
+
+```
+**Input:** points = [[1,1],[2,3],[3,2]]
+**Output:** true
+```
+
+**Example 2:**
+
+```
+**Input:** points = [[1,1],[2,2],[3,3]]
+**Output:** false
+```
+
+**Constraints:**
+
+- `points.length == 3`
+
+	- `points[i].length == 2`
+
+	- `0 <= x_{i}, y_{i} <= 100`
+
+### Hints
+
+1. 3 points form a boomerang if and only if the triangle formed from them has non-zero area.
+
+## Approach
+
+<!-- Describe your solution approach here -->

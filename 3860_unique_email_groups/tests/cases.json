@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "emails": [
+          "test.email+alex@leetcode.com",
+          "test.e.mail+bob.cathy@leetcode.com",
+          "testemail+david@lee.tcode.com"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "emails": [
+          "A@B.com",
+          "a@b.com",
+          "ab+xy@b.com",
+          "a.b@b.com"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "emails": [
+          "a.b+c.d+e@DoMain.com",
+          "ab+xyz@domain.com",
+          "ab@domain.com"
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

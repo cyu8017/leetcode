@@ -1,0 +1,6 @@
+﻿// LeetCode 3251 - Find the Count of Monotonic Pairs II
+// https://leetcode.com/problems/find-the-count-of-monotonic-pairs-ii/
+
+object Solution {
+  def solve(): Unit = {}
+}

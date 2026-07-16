@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "caption": "Leetcode daily streak achieved"
+      },
+      "expected": "#leetcodeDailyStreakAchieved"
+    },
+    {
+      "args": {
+        "caption": "can I Go There"
+      },
+      "expected": "#canIGoThere"
+    },
+    {
+      "args": {
+        "caption": "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+      },
+      "expected": "#hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    }
+  ]
+}

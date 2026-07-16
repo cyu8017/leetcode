@@ -1,0 +1,6 @@
+﻿# LeetCode 2370 - Longest Ideal Subsequence
+# https://leetcode.com/problems/longest-ideal-subsequence/
+
+class Solution:
+    def solve(self) -> None:
+        pass

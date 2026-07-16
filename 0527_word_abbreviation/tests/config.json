@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "wordsAbbreviation",
+  "paramOrder": [
+    "words"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Return minimal unique abbreviations for distinct words."
+}

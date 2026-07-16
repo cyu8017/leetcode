@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Trie",
+        "insert",
+        "insert",
+        "countWordsEqualTo",
+        "countWordsStartingWith",
+        "erase",
+        "countWordsEqualTo",
+        "countWordsStartingWith",
+        "erase",
+        "countWordsStartingWith"
+      ],
+      "arguments": [
+        [],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ],
+        [
+          "apple"
+        ],
+        [
+          "app"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        2,
+        2,
+        null,
+        1,
+        1,
+        null,
+        0
+      ]
+    }
+  ]
+}

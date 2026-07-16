@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "minimumDiameterAfterMerge",
+  "paramOrder": [
+    "edges1",
+    "edges2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

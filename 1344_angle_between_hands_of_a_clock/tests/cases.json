@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "hour": 12,
+        "minutes": 30
+      },
+      "expected": 165
+    },
+    {
+      "args": {
+        "hour": 3,
+        "minutes": 30
+      },
+      "expected": 75
+    },
+    {
+      "args": {
+        "hour": 3,
+        "minutes": 15
+      },
+      "expected": 7.5
+    }
+  ]
+}

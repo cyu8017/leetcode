@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "args": {
+        "hours": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "target": 2
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "hours": [
+          5,
+          1,
+          4,
+          2,
+          2
+        ],
+        "target": 6
+      },
+      "expected": 0
+    }
+  ]
+}

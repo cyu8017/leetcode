@@ -1,0 +1,6 @@
+﻿// LeetCode 3775 - Reverse Words With Same Vowel Count
+// https://leetcode.com/problems/reverse-words-with-same-vowel-count/
+
+function solve(input: unknown): unknown {
+    return null;
+}

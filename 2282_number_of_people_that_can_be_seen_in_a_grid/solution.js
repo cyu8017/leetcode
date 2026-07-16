@@ -1,0 +1,9 @@
+﻿// LeetCode 2282 - Number of People That Can Be Seen in a Grid
+// https://leetcode.com/problems/number-of-people-that-can-be-seen-in-a-grid/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

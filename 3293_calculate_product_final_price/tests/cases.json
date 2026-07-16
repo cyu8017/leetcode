@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Products": [
+          {
+            "product_id": 1,
+            "category": "Electronics",
+            "price": 1000
+          },
+          {
+            "product_id": 2,
+            "category": "Clothing",
+            "price": 50
+          },
+          {
+            "product_id": 3,
+            "category": "Electronics",
+            "price": 1200
+          },
+          {
+            "product_id": 4,
+            "category": "Home",
+            "price": 500
+          }
+        ],
+        "Discounts": [
+          {
+            "category": "Electronics",
+            "discount": 10
+          },
+          {
+            "category": "Clothing",
+            "discount": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1,
+          "final_price": 900,
+          "category": "Electronics"
+        },
+        {
+          "product_id": 2,
+          "final_price": 40,
+          "category": "Clothing"
+        },
+        {
+          "product_id": 3,
+          "final_price": 1080,
+          "category": "Electronics"
+        },
+        {
+          "product_id": 4,
+          "final_price": 500,
+          "category": "Home"
+        }
+      ]
+    }
+  ]
+}

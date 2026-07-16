@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "id": 1,
+            "salary": 100
+          },
+          {
+            "id": 2,
+            "salary": 200
+          },
+          {
+            "id": 3,
+            "salary": 300
+          }
+        ]
+      },
+      "expected": [
+        {
+          "SecondHighestSalary": 200
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "id": 1,
+            "salary": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "SecondHighestSalary": null
+        }
+      ]
+    }
+  ]
+}

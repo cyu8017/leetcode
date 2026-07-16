@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "canPermutePalindrome",
+  "paramOrder": ["s"],
+  "types": null,
+  "description": null
+}

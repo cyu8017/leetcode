@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "promise1",
+    "promise2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

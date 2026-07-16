@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Calls": [
+          {
+            "caller_id": 8,
+            "recipient_id": 4,
+            "call_time": "2021-08-24 17:46:07"
+          },
+          {
+            "caller_id": 4,
+            "recipient_id": 8,
+            "call_time": "2021-08-24 19:57:13"
+          },
+          {
+            "caller_id": 5,
+            "recipient_id": 1,
+            "call_time": "2021-08-11 05:28:44"
+          },
+          {
+            "caller_id": 8,
+            "recipient_id": 3,
+            "call_time": "2021-08-17 04:04:15"
+          },
+          {
+            "caller_id": 11,
+            "recipient_id": 3,
+            "call_time": "2021-08-17 13:07:00"
+          },
+          {
+            "caller_id": 8,
+            "recipient_id": 11,
+            "call_time": "2021-08-17 22:22:22"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1
+        },
+        {
+          "user_id": 4
+        },
+        {
+          "user_id": 5
+        },
+        {
+          "user_id": 8
+        }
+      ]
+    }
+  ]
+}

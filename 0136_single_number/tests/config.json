@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "singleNumber",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

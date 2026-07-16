@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "abc",
+          "aaaaa",
+          "bcdef"
+        ],
+        "target": "aabcdabc"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "words": [
+          "abababab",
+          "ab"
+        ],
+        "target": "ababaababa"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "abcdef"
+        ],
+        "target": "xyz"
+      },
+      "expected": -1
+    }
+  ]
+}

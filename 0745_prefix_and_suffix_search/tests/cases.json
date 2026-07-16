@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "WordFilter",
+        "f"
+      ],
+      "arguments": [
+        [
+          [
+            "apple"
+          ]
+        ],
+        [
+          "a",
+          "e"
+        ]
+      ],
+      "expected": [
+        null,
+        0
+      ]
+    }
+  ]
+}

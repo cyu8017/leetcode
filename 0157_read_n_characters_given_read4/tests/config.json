@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "read",
+  "paramOrder": ["file", "n"],
+  "types": null,
+  "description": null
+}

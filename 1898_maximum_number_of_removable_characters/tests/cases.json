@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcacb",
+        "p": "ab",
+        "removable": [
+          3,
+          1,
+          0
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "abcbddddd",
+        "p": "abcd",
+        "removable": [
+          3,
+          2,
+          1,
+          4,
+          5,
+          6
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "abcab",
+        "p": "abc",
+        "removable": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

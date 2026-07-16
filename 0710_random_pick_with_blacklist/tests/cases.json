@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Solution",
+        "pick",
+        "pick",
+        "pick",
+        "pick",
+        "pick",
+        "pick",
+        "pick"
+      ],
+      "arguments": [
+        [
+          7,
+          [
+            2,
+            3,
+            5
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        0,
+        4,
+        1,
+        6,
+        1,
+        0,
+        4
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "OrderedStream",
+        "insert",
+        "insert",
+        "insert",
+        "insert",
+        "insert"
+      ],
+      "arguments": [
+        [
+          5
+        ],
+        [
+          3,
+          "ccccc"
+        ],
+        [
+          1,
+          "aaaaa"
+        ],
+        [
+          2,
+          "bbbbb"
+        ],
+        [
+          5,
+          "eeeee"
+        ],
+        [
+          4,
+          "ddddd"
+        ]
+      ],
+      "expected": [
+        null,
+        [],
+        [
+          "aaaaa"
+        ],
+        [
+          "bbbbb",
+          "ccccc"
+        ],
+        [],
+        [
+          "ddddd",
+          "eeeee"
+        ]
+      ]
+    }
+  ]
+}

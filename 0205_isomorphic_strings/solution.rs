@@ -1,0 +1,2 @@
+// LeetCode 0205 - Isomorphic Strings
+impl Solution { pub fn is_isomorphic(s: String, t: String) -> bool { if s.len() != t.len() { return false; } let mut map_s = [-1i16; 256]; let mut map_t = [-1i16; 256]; for (a, b) in s.bytes().zip(t.bytes()) { if (map_s[a as usize] != -1 && map_s[a as usize] != b as i16) || (map_t[b as usize] != -1 && map_t[b as usize] != a as i16) { return false; } map_s[a as usize] = b as i16; map_t[b as usize] = a as i16; } true } }

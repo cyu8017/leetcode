@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "connect",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "nextnode",
+    "return": "nextnode"
+  },
+  "description": null
+}

@@ -1,0 +1,9 @@
+﻿// LeetCode 3991 - Sort Array Using Prefix Reversals
+// https://leetcode.com/problems/sort-array-using-prefix-reversals/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

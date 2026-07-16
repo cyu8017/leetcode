@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "levelOrder",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode", "return": "integer[][]" },
+  "description": null
+}

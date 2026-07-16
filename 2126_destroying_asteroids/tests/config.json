@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "asteroidsDestroyed",
+  "paramOrder": [
+    "mass",
+    "asteroids"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

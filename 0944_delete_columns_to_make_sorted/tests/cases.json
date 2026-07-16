@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "strs": [
+          "cba",
+          "daf",
+          "ghi"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "strs": [
+          "a",
+          "b"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "strs": [
+          "zyx",
+          "wvu",
+          "tsr"
+        ]
+      },
+      "expected": 3
+    }
+  ]
+}

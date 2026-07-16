@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_number": 1,
+            "customer_number": 1
+          },
+          {
+            "order_number": 2,
+            "customer_number": 2
+          },
+          {
+            "order_number": 3,
+            "customer_number": 3
+          },
+          {
+            "order_number": 4,
+            "customer_number": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_number": 3
+        }
+      ]
+    }
+  ]
+}

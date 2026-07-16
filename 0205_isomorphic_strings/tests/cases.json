@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "egg",
+        "t": "add"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "foo",
+        "t": "bar"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "paper",
+        "t": "title"
+      },
+      "expected": true
+    }
+  ]
+}

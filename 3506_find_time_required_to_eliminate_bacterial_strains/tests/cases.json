@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "timeReq": [
+          10,
+          4,
+          5
+        ],
+        "splitTime": 2
+      },
+      "expected": 12
+    },
+    {
+      "args": {
+        "timeReq": [
+          10,
+          4
+        ],
+        "splitTime": 5
+      },
+      "expected": 15
+    }
+  ]
+}

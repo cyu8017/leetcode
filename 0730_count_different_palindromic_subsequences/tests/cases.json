@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "bccb"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "s": "abcdabcdabcdabcdabcdabcdabcdabcddcbadcbadcbadcbadcbadcbadcbadcba"
+      },
+      "expected": 104860361
+    }
+  ]
+}

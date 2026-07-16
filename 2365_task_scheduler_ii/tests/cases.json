@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "args": {
+        "tasks": [
+          1,
+          2,
+          1,
+          2,
+          3,
+          1
+        ],
+        "space": 3
+      },
+      "expected": 9
+    },
+    {
+      "args": {
+        "tasks": [
+          5,
+          8,
+          8,
+          5
+        ],
+        "space": 2
+      },
+      "expected": 6
+    }
+  ]
+}

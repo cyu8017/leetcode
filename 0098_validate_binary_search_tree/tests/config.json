@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "isValidBST",
+  "paramOrder": ["root"],
+  "types": {
+    "root": "treenode",
+    "return": "boolean"
+  },
+  "description": null
+}

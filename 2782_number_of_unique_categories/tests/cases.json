@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 6,
+        "categoryHandler": [
+          1,
+          1,
+          2,
+          2,
+          3,
+          3
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "n": 5,
+        "categoryHandler": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "n": 3,
+        "categoryHandler": [
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

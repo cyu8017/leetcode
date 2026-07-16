@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "encode",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Encode string with shortest length using k[encoded_string] repetition."
+}

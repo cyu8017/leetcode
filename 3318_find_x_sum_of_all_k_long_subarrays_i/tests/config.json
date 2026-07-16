@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "findXSum",
+  "paramOrder": [
+    "nums",
+    "k",
+    "x"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

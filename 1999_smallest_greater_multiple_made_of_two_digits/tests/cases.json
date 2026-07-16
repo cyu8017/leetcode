@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "k": 2,
+        "digit1": 0,
+        "digit2": 2
+      },
+      "expected": 20
+    },
+    {
+      "args": {
+        "k": 3,
+        "digit1": 4,
+        "digit2": 2
+      },
+      "expected": 24
+    },
+    {
+      "args": {
+        "k": 2,
+        "digit1": 0,
+        "digit2": 0
+      },
+      "expected": -1
+    }
+  ]
+}

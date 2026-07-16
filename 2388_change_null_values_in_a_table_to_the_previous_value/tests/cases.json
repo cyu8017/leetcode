@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "CoffeeShop": [
+          {
+            "id": 9,
+            "drink": "Rum and Coke"
+          },
+          {
+            "id": 6,
+            "drink": null
+          },
+          {
+            "id": 7,
+            "drink": null
+          },
+          {
+            "id": 3,
+            "drink": "St Germain Spritz"
+          },
+          {
+            "id": 1,
+            "drink": "Orange Margarita"
+          },
+          {
+            "id": 2,
+            "drink": null
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 9,
+          "drink": "Rum and Coke"
+        },
+        {
+          "id": 6,
+          "drink": "Rum and Coke"
+        },
+        {
+          "id": 7,
+          "drink": "Rum and Coke"
+        },
+        {
+          "id": 3,
+          "drink": "St Germain Spritz"
+        },
+        {
+          "id": 1,
+          "drink": "Orange Margarita"
+        },
+        {
+          "id": 2,
+          "drink": "Orange Margarita"
+        }
+      ]
+    }
+  ]
+}

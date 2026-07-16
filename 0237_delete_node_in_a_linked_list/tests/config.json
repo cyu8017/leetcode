@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "deleteNode",
+  "paramOrder": [],
+  "types": { "head": "listnode" },
+  "description": null
+}

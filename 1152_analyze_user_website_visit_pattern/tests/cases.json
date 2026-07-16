@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "args": {
+        "username": [
+          "joe",
+          "joe",
+          "joe",
+          "james",
+          "james",
+          "james",
+          "james",
+          "mary",
+          "mary",
+          "mary"
+        ],
+        "timestamp": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "website": [
+          "home",
+          "about",
+          "career",
+          "home",
+          "cart",
+          "maps",
+          "home",
+          "home",
+          "about",
+          "career"
+        ]
+      },
+      "expected": [
+        "home",
+        "about",
+        "career"
+      ]
+    },
+    {
+      "args": {
+        "username": [
+          "ua",
+          "ua",
+          "ua",
+          "ub",
+          "ub",
+          "ub"
+        ],
+        "timestamp": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "website": [
+          "a",
+          "b",
+          "a",
+          "a",
+          "b",
+          "c"
+        ]
+      },
+      "expected": "[\"a\",\"b\",\"a\"]\n**Constraints:**\n- `3 <= username.length <= 50`\n- `1 <= username[i].length <= 10`\n- `timestamp.length == username.length`\n- `1 <= timestamp[i] <= 10^{9}`\n- `website.length == username.length`\n- `1 <= website[i].length <= 10`\n- `username[i]` and `website[i]` consist of lowercase English letters.\n- It is guaranteed that there is at least one user who visited at least three websites.\n- All the tuples `[username[i], timestamp[i], website[i]]` are **unique**.\n---"
+    }
+  ]
+}

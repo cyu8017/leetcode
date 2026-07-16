@@ -1,0 +1,9 @@
+﻿// LeetCode 1246 - Palindrome Removal
+// https://leetcode.com/problems/palindrome-removal/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

@@ -1,0 +1,9 @@
+﻿// LeetCode 3626 - Find Stores with Inventory Imbalance
+// https://leetcode.com/problems/find-stores-with-inventory-imbalance/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

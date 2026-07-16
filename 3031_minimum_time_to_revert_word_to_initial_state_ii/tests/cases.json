@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "abacaba",
+        "k": 3
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word": "abacaba",
+        "k": 4
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "word": "abcbabcd",
+        "k": 2
+      },
+      "expected": 4
+    }
+  ]
+}

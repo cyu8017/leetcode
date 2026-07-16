@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "findBlackPixel",
+  "paramOrder": [
+    "picture",
+    "target"
+  ],
+  "types": null,
+  "description": "Count lonely black pixels where row and column each have exactly target black pixels."
+}

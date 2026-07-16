@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "banned": [
+          1,
+          4,
+          6
+        ],
+        "n": 6,
+        "maxSum": 4
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "banned": [
+          4,
+          3,
+          5,
+          6
+        ],
+        "n": 7,
+        "maxSum": 18
+      },
+      "expected": 3
+    }
+  ]
+}

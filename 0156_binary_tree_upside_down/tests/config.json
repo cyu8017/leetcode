@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "upsideDownBinaryTree",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode", "return": "treenode" },
+  "description": null
+}

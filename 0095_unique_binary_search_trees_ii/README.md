@@ -1,0 +1,31 @@
+# 0095. Unique Binary Search Trees II
+
+- **Difficulty:** Medium
+- **LeetCode:** [https://leetcode.com/problems/unique-binary-search-trees-ii/](https://leetcode.com/problems/unique-binary-search-trees-ii/)
+- **Tags:** dynamic-programming, backtracking, tree, binary-search-tree, binary-tree
+
+## Problem
+
+Given an integer `n`, return *all the structurally unique **BST'**s (binary search trees), which has exactly *`n`* nodes of unique values from* `1` *to* `n`. Return the answer in **any order**.
+
+**Example 1:**
+
+```
+**Input:** n = 3
+**Output:** [[1,null,2,null,3],[1,null,3,2],[2,1,3],[3,1,null,null,2],[3,2,null,1]]
+```
+
+**Example 2:**
+
+```
+**Input:** n = 1
+**Output:** [[1]]
+```
+
+**Constraints:**
+
+- `1 <= n <= 8`
+
+## Approach
+
+<!-- Describe your solution approach here -->

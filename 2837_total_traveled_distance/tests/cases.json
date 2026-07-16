@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Users": [
+          {
+            "user_id": 17,
+            "name": "Addison"
+          },
+          {
+            "user_id": 14,
+            "name": "Ethan"
+          },
+          {
+            "user_id": 4,
+            "name": "Michael"
+          },
+          {
+            "user_id": 2,
+            "name": "Avery"
+          },
+          {
+            "user_id": 10,
+            "name": "Eleanor"
+          }
+        ],
+        "Rides": [
+          {
+            "ride_id": 72,
+            "user_id": 17,
+            "distance": 160
+          },
+          {
+            "ride_id": 42,
+            "user_id": 14,
+            "distance": 161
+          },
+          {
+            "ride_id": 45,
+            "user_id": 4,
+            "distance": 59
+          },
+          {
+            "ride_id": 32,
+            "user_id": 2,
+            "distance": 197
+          },
+          {
+            "ride_id": 15,
+            "user_id": 4,
+            "distance": 357
+          },
+          {
+            "ride_id": 56,
+            "user_id": 2,
+            "distance": 196
+          },
+          {
+            "ride_id": 10,
+            "user_id": 14,
+            "distance": 25
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 2,
+          "name": "Avery",
+          "traveled distance": 393
+        },
+        {
+          "user_id": 4,
+          "name": "Michael",
+          "traveled distance": 416
+        },
+        {
+          "user_id": 10,
+          "name": "Eleanor",
+          "traveled distance": 0
+        },
+        {
+          "user_id": 14,
+          "name": "Ethan",
+          "traveled distance": 186
+        },
+        {
+          "user_id": 17,
+          "name": "Addison",
+          "traveled distance": 160
+        }
+      ]
+    }
+  ]
+}

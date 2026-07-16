@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "aeiouu"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word": "unicornarihan"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "word": "cuaieuouac"
+      },
+      "expected": 7
+    }
+  ]
+}

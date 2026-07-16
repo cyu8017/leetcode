@@ -1,0 +1,7 @@
+﻿# LeetCode 3324 - Find the Sequence of Strings Appeared on the Screen
+# https://leetcode.com/problems/find-the-sequence-of-strings-appeared-on-the-screen/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

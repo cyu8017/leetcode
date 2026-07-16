@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "args": {
+        "names": [
+          "Mary",
+          "John",
+          "Emma"
+        ],
+        "heights": [
+          180,
+          165,
+          170
+        ]
+      },
+      "expected": [
+        "Mary",
+        "Emma",
+        "John"
+      ]
+    },
+    {
+      "args": {
+        "names": [
+          "Alice",
+          "Bob",
+          "Bob"
+        ],
+        "heights": [
+          155,
+          185,
+          150
+        ]
+      },
+      "expected": [
+        "Bob",
+        "Alice",
+        "Bob"
+      ]
+    }
+  ]
+}

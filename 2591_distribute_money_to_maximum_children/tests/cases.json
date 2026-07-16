@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "money": 20,
+        "children": 3
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "money": 16,
+        "children": 2
+      },
+      "expected": 2
+    }
+  ]
+}

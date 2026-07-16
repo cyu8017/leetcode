@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_id": 10,
+            "item_count": 1,
+            "order_occurrences": 500
+          },
+          {
+            "order_id": 11,
+            "item_count": 2,
+            "order_occurrences": 1000
+          },
+          {
+            "order_id": 12,
+            "item_count": 3,
+            "order_occurrences": 800
+          },
+          {
+            "order_id": 13,
+            "item_count": 4,
+            "order_occurrences": 1000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "average_items_per_order": 2.7
+        }
+      ]
+    }
+  ]
+}

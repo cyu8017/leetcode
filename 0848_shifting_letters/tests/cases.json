@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abc",
+        "shifts": [
+          3,
+          5,
+          9
+        ]
+      },
+      "expected": "rpl"
+    },
+    {
+      "args": {
+        "s": "aaa",
+        "shifts": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": "gfd"
+    }
+  ]
+}

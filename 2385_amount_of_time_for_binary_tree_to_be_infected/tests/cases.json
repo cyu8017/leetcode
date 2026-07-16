@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "args": {
+        "root": [
+          1,
+          5,
+          3,
+          null,
+          4,
+          10,
+          6,
+          9,
+          2
+        ],
+        "start": 3
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "root": [
+          1
+        ],
+        "start": 1
+      },
+      "expected": 0
+    }
+  ]
+}

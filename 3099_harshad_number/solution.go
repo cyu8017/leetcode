@@ -1,0 +1,5 @@
+﻿// LeetCode 3099 - Harshad Number
+// https://leetcode.com/problems/harshad-number/
+
+func solve() {
+}

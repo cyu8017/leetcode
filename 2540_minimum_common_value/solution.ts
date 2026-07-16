@@ -1,0 +1,6 @@
+﻿// LeetCode 2540 - Minimum Common Value
+// https://leetcode.com/problems/minimum-common-value/
+
+function solve(input: unknown): unknown {
+    return null;
+}

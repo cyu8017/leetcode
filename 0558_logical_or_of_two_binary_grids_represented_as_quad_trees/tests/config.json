@@ -1,0 +1,14 @@
+{
+  "class": "Node",
+  "method": "__init__",
+  "paramOrder": [
+    "val",
+    "isLeaf",
+    "topLeft",
+    "topRight",
+    "bottomLeft",
+    "bottomRight"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

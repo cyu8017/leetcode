@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "args": {
+        "arr": [
+          1,
+          2,
+          3
+        ],
+        "callback": "(val, i, arr) => arr[i] = val * 2",
+        "context": {
+          "context": true
+        }
+      },
+      "expected": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "args": {
+        "arr": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "callback": "(val, i, arr) => arr[i] = this",
+        "context": {
+          "context": false
+        }
+      },
+      "expected": [
+        {
+          "context": false
+        },
+        {
+          "context": false
+        },
+        {
+          "context": false
+        },
+        {
+          "context": false
+        }
+      ]
+    },
+    {
+      "args": {
+        "arr": [
+          true,
+          true,
+          false,
+          false
+        ],
+        "callback": "(val, i, arr) => arr[i] = !val",
+        "context": {
+          "context": 5
+        }
+      },
+      "expected": "[false,false,true,true]\n**Constraints:**\n- `arr` is a valid JSON array\n- `context` is a valid JSON object\n- `fn` is a function\n- `0 <= arr.length <= 10^{5}`\n---"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "code": "This is the first line ]]>"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "code": ">>  ![cdata[]] ]>]]>]]>>]"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "code": "      "
+      },
+      "expected": false
+    }
+  ]
+}

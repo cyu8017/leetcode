@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "arr": [
+          "cab",
+          "ad",
+          "bad",
+          "c"
+        ]
+      },
+      "expected": [
+        "ab",
+        "",
+        "ba",
+        ""
+      ]
+    },
+    {
+      "args": {
+        "arr": [
+          "abc",
+          "bcd",
+          "abcd"
+        ]
+      },
+      "expected": [
+        "",
+        "",
+        "abcd"
+      ]
+    }
+  ]
+}

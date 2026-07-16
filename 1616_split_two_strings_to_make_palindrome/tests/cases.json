@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "a": "x",
+        "b": "y"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "a": "xbdef",
+        "b": "xecab"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "a": "ulacfd",
+        "b": "jizalu"
+      },
+      "expected": true
+    }
+  ]
+}

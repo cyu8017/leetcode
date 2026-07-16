@@ -1,0 +1,6 @@
+﻿// LeetCode 2878 - Get the Size of a DataFrame
+// https://leetcode.com/problems/get-the-size-of-a-dataframe/
+
+function solve(input: unknown): unknown {
+    return null;
+}

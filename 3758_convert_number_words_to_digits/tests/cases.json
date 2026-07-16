@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "onefourthree"
+      },
+      "expected": "143"
+    },
+    {
+      "args": {
+        "s": "ninexsix"
+      },
+      "expected": "96"
+    },
+    {
+      "args": {
+        "s": "zeero"
+      },
+      "expected": ""
+    },
+    {
+      "args": {
+        "s": "tw"
+      },
+      "expected": ""
+    }
+  ]
+}

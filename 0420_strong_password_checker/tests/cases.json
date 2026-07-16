@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "password": "a"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "password": "aA1"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "password": "1337C0d3"
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "cards": [
+          "aa",
+          "ab",
+          "ba",
+          "ac"
+        ],
+        "x": "a"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "cards": [
+          "aa",
+          "ab",
+          "ba"
+        ],
+        "x": "a"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "cards": [
+          "aa",
+          "ab",
+          "ba",
+          "ac"
+        ],
+        "x": "b"
+      },
+      "expected": 0
+    }
+  ]
+}

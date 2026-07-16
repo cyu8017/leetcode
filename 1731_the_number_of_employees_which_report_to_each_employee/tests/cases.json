@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 9,
+            "name": "Hercy",
+            "reports_to": null,
+            "age": 43
+          },
+          {
+            "employee_id": 6,
+            "name": "Alice",
+            "reports_to": 9,
+            "age": 41
+          },
+          {
+            "employee_id": 4,
+            "name": "Bob",
+            "reports_to": 9,
+            "age": 36
+          },
+          {
+            "employee_id": 2,
+            "name": "Winston",
+            "reports_to": null,
+            "age": 37
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 9,
+          "name": "Hercy",
+          "reports_count": 2,
+          "average_age": 39
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 1,
+            "name": "Michael",
+            "reports_to": null,
+            "age": 45
+          },
+          {
+            "employee_id": 2,
+            "name": "Alice",
+            "reports_to": 1,
+            "age": 38
+          },
+          {
+            "employee_id": 3,
+            "name": "Bob",
+            "reports_to": 1,
+            "age": 42
+          },
+          {
+            "employee_id": 4,
+            "name": "Charlie",
+            "reports_to": 2,
+            "age": 34
+          },
+          {
+            "employee_id": 5,
+            "name": "David",
+            "reports_to": 2,
+            "age": 40
+          },
+          {
+            "employee_id": 6,
+            "name": "Eve",
+            "reports_to": 3,
+            "age": 37
+          },
+          {
+            "employee_id": 7,
+            "name": "Frank",
+            "reports_to": null,
+            "age": 50
+          },
+          {
+            "employee_id": 8,
+            "name": "Grace",
+            "reports_to": null,
+            "age": 48
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1,
+          "name": "Michael",
+          "reports_count": 2,
+          "average_age": 40
+        },
+        {
+          "employee_id": 2,
+          "name": "Alice",
+          "reports_count": 2,
+          "average_age": 37
+        },
+        {
+          "employee_id": 3,
+          "name": "Bob",
+          "reports_count": 1,
+          "average_age": 37
+        }
+      ]
+    }
+  ]
+}

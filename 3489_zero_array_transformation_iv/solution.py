@@ -1,0 +1,6 @@
+﻿# LeetCode 3489 - Zero Array Transformation IV
+# https://leetcode.com/problems/zero-array-transformation-iv/
+
+class Solution:
+    def solve(self) -> None:
+        pass

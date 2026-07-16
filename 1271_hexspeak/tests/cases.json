@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "num": "257"
+      },
+      "expected": "IOI"
+    },
+    {
+      "args": {
+        "num": "3"
+      },
+      "expected": "ERROR"
+    }
+  ]
+}

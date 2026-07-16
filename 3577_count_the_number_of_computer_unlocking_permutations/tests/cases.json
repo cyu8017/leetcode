@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "args": {
+        "complexity": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "complexity": [
+          3,
+          3,
+          3,
+          4,
+          4,
+          4
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

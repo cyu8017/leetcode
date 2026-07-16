@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "empId": 3,
+            "name": "Brad",
+            "supervisor": null,
+            "salary": 4000
+          },
+          {
+            "empId": 1,
+            "name": "John",
+            "supervisor": 3,
+            "salary": 1000
+          },
+          {
+            "empId": 2,
+            "name": "Dan",
+            "supervisor": 3,
+            "salary": 2000
+          },
+          {
+            "empId": 4,
+            "name": "Thomas",
+            "supervisor": 3,
+            "salary": 4000
+          }
+        ],
+        "Bonus": [
+          {
+            "empId": 2,
+            "bonus": 500
+          },
+          {
+            "empId": 4,
+            "bonus": 2000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "name": "Brad",
+          "bonus": null
+        },
+        {
+          "name": "John",
+          "bonus": null
+        },
+        {
+          "name": "Dan",
+          "bonus": 500
+        }
+      ]
+    }
+  ]
+}

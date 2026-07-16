@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "prevRoom": [
+          -1,
+          0,
+          1
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "prevRoom": [
+          -1,
+          0,
+          0,
+          1,
+          2
+        ]
+      },
+      "expected": 6
+    }
+  ]
+}

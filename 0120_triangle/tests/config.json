@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "minimumTotal",
+  "paramOrder": [
+    "triangle"
+  ],
+  "types": null,
+  "description": null
+}

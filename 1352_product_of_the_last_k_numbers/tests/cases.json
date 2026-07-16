@@ -1,0 +1,66 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "ProductOfNumbers",
+        "add",
+        "add",
+        "add",
+        "add",
+        "add",
+        "getProduct",
+        "getProduct",
+        "getProduct",
+        "add",
+        "getProduct"
+      ],
+      "arguments": [
+        [],
+        [
+          3
+        ],
+        [
+          0
+        ],
+        [
+          2
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [
+          8
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        20,
+        40,
+        0,
+        null,
+        32
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿# LeetCode 2734 - Lexicographically Smallest String After Substring Operation
+# https://leetcode.com/problems/lexicographically-smallest-string-after-substring-operation/
+
+class Solution:
+    def solve(self) -> None:
+        pass

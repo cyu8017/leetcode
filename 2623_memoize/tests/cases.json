@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fnName": "\"sum\" actions = [\"call\",\"call\",\"getCallCount\",\"call\",\"getCallCount\"] values = [[2,2],[2,2],[],[1,2],[]]"
+      },
+      "expected": [
+        4,
+        4,
+        1,
+        3,
+        2
+      ]
+    },
+    {
+      "args": {
+        "fnName": "\"factorial\" actions = [\"call\",\"call\",\"call\",\"getCallCount\",\"call\",\"getCallCount\"] values = [[2],[3],[2],[],[3],[]]"
+      },
+      "expected": [
+        2,
+        6,
+        2,
+        2,
+        6,
+        2
+      ]
+    },
+    {
+      "args": {
+        "fnName": "\"fib\" actions = [\"call\",\"getCallCount\"] values = [[5],[]]"
+      },
+      "expected": [
+        8,
+        1
+      ]
+    }
+  ]
+}

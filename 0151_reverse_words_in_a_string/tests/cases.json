@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "the sky is blue"
+      },
+      "expected": "blue is sky the"
+    },
+    {
+      "args": {
+        "s": "  hello world  "
+      },
+      "expected": "world hello"
+    },
+    {
+      "args": {
+        "s": "a good   example"
+      },
+      "expected": "example good a"
+    }
+  ]
+}

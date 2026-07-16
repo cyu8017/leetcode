@@ -1,0 +1,47 @@
+{
+  "cases": [
+    {
+      "args": {
+        "plantTime": [
+          1,
+          4,
+          3
+        ],
+        "growTime": [
+          2,
+          3,
+          1
+        ]
+      },
+      "expected": 9
+    },
+    {
+      "args": {
+        "plantTime": [
+          1,
+          2,
+          3,
+          2
+        ],
+        "growTime": [
+          2,
+          1,
+          2,
+          1
+        ]
+      },
+      "expected": 9
+    },
+    {
+      "args": {
+        "plantTime": [
+          1
+        ],
+        "growTime": [
+          1
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MovingAverage",
+        "next",
+        "next",
+        "next",
+        "next"
+      ],
+      "arguments": [
+        [
+          3
+        ],
+        [
+          1
+        ],
+        [
+          10
+        ],
+        [
+          3
+        ],
+        [
+          5
+        ]
+      ],
+      "expected": [
+        null,
+        1.0,
+        5.5,
+        4.66667,
+        6.0
+      ]
+    }
+  ]
+}

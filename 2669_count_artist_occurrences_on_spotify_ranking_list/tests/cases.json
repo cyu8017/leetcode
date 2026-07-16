@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Spotify": [
+          {
+            "id": 303651,
+            "track_name": "Heart Won't Forget",
+            "artist": "Sia"
+          },
+          {
+            "id": 1046089,
+            "track_name": "Shape of you",
+            "artist": "Ed Sheeran"
+          },
+          {
+            "id": 33445,
+            "track_name": "I'm the one",
+            "artist": "DJ Khalid"
+          },
+          {
+            "id": 811266,
+            "track_name": "Young Dumb & Broke",
+            "artist": "DJ Khalid"
+          },
+          {
+            "id": 505727,
+            "track_name": "Happier",
+            "artist": "Ed Sheeran"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "artist": "DJ Khalid",
+          "occurrences": 2
+        },
+        {
+          "artist": "Ed Sheeran",
+          "occurrences": 2
+        },
+        {
+          "artist": "Sia",
+          "occurrences": 1
+        }
+      ]
+    }
+  ]
+}

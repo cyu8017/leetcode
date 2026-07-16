@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "minLength": 2,
+        "maxLength": 3,
+        "oneGroup": 1,
+        "zeroGroup": 2
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "minLength": 4,
+        "maxLength": 4,
+        "oneGroup": 4,
+        "zeroGroup": 3
+      },
+      "expected": 1
+    }
+  ]
+}

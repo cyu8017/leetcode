@@ -1,0 +1,6 @@
+﻿# LeetCode 1865 - Finding Pairs With a Certain Sum
+# https://leetcode.com/problems/finding-pairs-with-a-certain-sum/
+
+class Solution:
+    def solve(self) -> None:
+        pass

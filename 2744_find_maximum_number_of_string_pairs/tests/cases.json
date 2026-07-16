@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "cd",
+          "ac",
+          "dc",
+          "ca",
+          "zz"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "ab",
+          "ba",
+          "cc"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "words": [
+          "aa",
+          "ab"
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

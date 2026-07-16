@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 6,
+        "quantities": [
+          11,
+          6
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "n": 7,
+        "quantities": [
+          15,
+          10,
+          10
+        ]
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "n": 1,
+        "quantities": [
+          100000
+        ]
+      },
+      "expected": 100000
+    }
+  ]
+}

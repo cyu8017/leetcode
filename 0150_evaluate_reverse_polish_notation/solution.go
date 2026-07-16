@@ -1,0 +1,1 @@
+import "strconv";func evalRPN(t []string)int{s:=[]int{};for _,x:=range t{if x=="+"||x=="-"||x=="*"||x=="/"{b,a:=s[len(s)-1],s[len(s)-2];s=s[:len(s)-2];if x=="+"{s=append(s,a+b)}else if x=="-"{s=append(s,a-b)}else if x=="*"{s=append(s,a*b)}else{s=append(s,a/b)}}else{n,_:=strconv.Atoi(x);s=append(s,n)}};return s[0]}

@@ -1,0 +1,96 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Sessions": [
+          {
+            "user_id": 101,
+            "session_start": "2023-11-01 08:00:00",
+            "session_end": "2023-11-01 09:00:00",
+            "session_id": 1,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 101,
+            "session_start": "2023-11-01 10:00:00",
+            "session_end": "2023-11-01 11:00:00",
+            "session_id": 2,
+            "session_type": "Streamer"
+          },
+          {
+            "user_id": 102,
+            "session_start": "2023-11-01 13:00:00",
+            "session_end": "2023-11-01 14:00:00",
+            "session_id": 3,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 102,
+            "session_start": "2023-11-01 15:00:00",
+            "session_end": "2023-11-01 16:00:00",
+            "session_id": 4,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 101,
+            "session_start": "2023-11-02 09:00:00",
+            "session_end": "2023-11-02 10:00:00",
+            "session_id": 5,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 102,
+            "session_start": "2023-11-02 12:00:00",
+            "session_end": "2023-11-02 13:00:00",
+            "session_id": 6,
+            "session_type": "Streamer"
+          },
+          {
+            "user_id": 101,
+            "session_start": "2023-11-02 13:00:00",
+            "session_end": "2023-11-02 14:00:00",
+            "session_id": 7,
+            "session_type": "Streamer"
+          },
+          {
+            "user_id": 102,
+            "session_start": "2023-11-02 16:00:00",
+            "session_end": "2023-11-02 17:00:00",
+            "session_id": 8,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 103,
+            "session_start": "2023-11-01 08:00:00",
+            "session_end": "2023-11-01 09:00:00",
+            "session_id": 9,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 103,
+            "session_start": "2023-11-02 20:00:00",
+            "session_end": "2023-11-02 23:00:00",
+            "session_id": 10,
+            "session_type": "Viewer"
+          },
+          {
+            "user_id": 103,
+            "session_start": "2023-11-03 09:00:00",
+            "session_end": "2023-11-03 10:00:00",
+            "session_id": 11,
+            "session_type": "Viewer"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 102
+        },
+        {
+          "user_id": 103
+        }
+      ]
+    }
+  ]
+}

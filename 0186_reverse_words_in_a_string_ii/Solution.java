@@ -1,0 +1,1 @@
+class Solution { public void reverseWords(char[] s) { r(s, 0, s.length - 1); int start = 0; for (int end = 0; end <= s.length; end++) if (end == s.length || s[end] == ' ') { r(s, start, end - 1); start = end + 1; } } private void r(char[] s, int l, int r) { while (l < r) { char t = s[l]; s[l++] = s[r]; s[r--] = t; } } }

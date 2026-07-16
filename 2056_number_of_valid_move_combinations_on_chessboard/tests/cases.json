@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "args": {
+        "pieces": [
+          "rook"
+        ],
+        "positions": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 15
+    },
+    {
+      "args": {
+        "pieces": [
+          "queen"
+        ],
+        "positions": [
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 22
+    },
+    {
+      "args": {
+        "pieces": [
+          "bishop"
+        ],
+        "positions": [
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      "expected": 12
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abbcccaa"
+      },
+      "expected": 13
+    },
+    {
+      "args": {
+        "s": "xy"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "zzzzz"
+      },
+      "expected": 15
+    }
+  ]
+}

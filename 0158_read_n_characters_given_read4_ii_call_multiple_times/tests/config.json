@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "read",
+  "paramOrder": ["file", "queries"],
+  "types": null,
+  "description": null
+}

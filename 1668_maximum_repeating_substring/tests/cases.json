@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sequence": "ababc",
+        "word": "ab"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "sequence": "ababc",
+        "word": "ba"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "sequence": "ababc",
+        "word": "ac"
+      },
+      "expected": 0
+    }
+  ]
+}

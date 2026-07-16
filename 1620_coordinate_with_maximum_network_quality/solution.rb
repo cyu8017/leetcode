@@ -1,0 +1,7 @@
+﻿# LeetCode 1620 - Coordinate With Maximum Network Quality
+# https://leetcode.com/problems/coordinate-with-maximum-network-quality/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

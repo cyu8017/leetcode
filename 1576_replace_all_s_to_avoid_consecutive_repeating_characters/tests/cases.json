@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "?zs"
+      },
+      "expected": "azs"
+    },
+    {
+      "args": {
+        "s": "ubv?w"
+      },
+      "expected": "ubvaw"
+    }
+  ]
+}

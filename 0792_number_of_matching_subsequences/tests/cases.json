@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcde",
+        "words": [
+          "a",
+          "bb",
+          "acd",
+          "ace"
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "dsahjpjauf",
+        "words": [
+          "ahjpjau",
+          "ja",
+          "ahbwzgqnuk",
+          "tnmlanowax"
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

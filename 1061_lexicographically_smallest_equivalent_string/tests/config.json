@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "smallestEquivalentString",
+  "paramOrder": [
+    "s1",
+    "s2",
+    "baseStr"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

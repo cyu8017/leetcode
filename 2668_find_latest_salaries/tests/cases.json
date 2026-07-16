@@ -1,0 +1,125 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Salary": [
+          {
+            "emp_id": 1,
+            "firstname": "Todd",
+            "lastname": "Wilson",
+            "salary": 110000,
+            "department_id": "D1006"
+          },
+          {
+            "emp_id": 1,
+            "firstname": "Todd",
+            "lastname": "Wilson",
+            "salary": 106119,
+            "department_id": "D1006"
+          },
+          {
+            "emp_id": 2,
+            "firstname": "Justin",
+            "lastname": "Simon",
+            "salary": 128922,
+            "department_id": "D1005"
+          },
+          {
+            "emp_id": 2,
+            "firstname": "Justin",
+            "lastname": "Simon",
+            "salary": 130000,
+            "department_id": "D1005"
+          },
+          {
+            "emp_id": 3,
+            "firstname": "Kelly",
+            "lastname": "Rosario",
+            "salary": 42689,
+            "department_id": "D1002"
+          },
+          {
+            "emp_id": 4,
+            "firstname": "Patricia",
+            "lastname": "Powell",
+            "salary": 162825,
+            "department_id": "D1004"
+          },
+          {
+            "emp_id": 4,
+            "firstname": "Patricia",
+            "lastname": "Powell",
+            "salary": 170000,
+            "department_id": "D1004"
+          },
+          {
+            "emp_id": 5,
+            "firstname": "Sherry",
+            "lastname": "Golden",
+            "salary": 44101,
+            "department_id": "D1002"
+          },
+          {
+            "emp_id": 6,
+            "firstname": "Natasha",
+            "lastname": "Swanson",
+            "salary": 79632,
+            "department_id": "D1005"
+          },
+          {
+            "emp_id": 6,
+            "firstname": "Natasha",
+            "lastname": "Swanson",
+            "salary": 90000,
+            "department_id": "D1005"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "emp_id": 1,
+          "firstname": "Todd",
+          "lastname": "Wilson",
+          "salary": 110000,
+          "department_id": "D1006"
+        },
+        {
+          "emp_id": 2,
+          "firstname": "Justin",
+          "lastname": "Simon",
+          "salary": 130000,
+          "department_id": "D1005"
+        },
+        {
+          "emp_id": 3,
+          "firstname": "Kelly",
+          "lastname": "Rosario",
+          "salary": 42689,
+          "department_id": "D1002"
+        },
+        {
+          "emp_id": 4,
+          "firstname": "Patricia",
+          "lastname": "Powell",
+          "salary": 170000,
+          "department_id": "D1004"
+        },
+        {
+          "emp_id": 5,
+          "firstname": "Sherry",
+          "lastname": "Golden",
+          "salary": 44101,
+          "department_id": "D1002"
+        },
+        {
+          "emp_id": 6,
+          "firstname": "Natasha",
+          "lastname": "Swanson",
+          "salary": 90000,
+          "department_id": "D1005"
+        }
+      ]
+    }
+  ]
+}

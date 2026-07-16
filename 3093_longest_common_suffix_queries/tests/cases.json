@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "args": {
+        "wordsContainer": [
+          "abcd",
+          "bcd",
+          "xbcd"
+        ],
+        "wordsQuery": [
+          "cd",
+          "bcd",
+          "xyz"
+        ]
+      },
+      "expected": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "args": {
+        "wordsContainer": [
+          "abcdefgh",
+          "poiuygh",
+          "ghghgh"
+        ],
+        "wordsQuery": [
+          "gh",
+          "acbfgh",
+          "acbfegh"
+        ]
+      },
+      "expected": [
+        2,
+        0,
+        2
+      ]
+    }
+  ]
+}

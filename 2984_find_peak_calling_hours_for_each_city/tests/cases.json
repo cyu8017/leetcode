@@ -1,0 +1,64 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Calls": [
+          {
+            "caller_id": 8,
+            "recipient_id": 4,
+            "call_time": "2021-08-24 22:46:07",
+            "city": "Houston"
+          },
+          {
+            "caller_id": 4,
+            "recipient_id": 8,
+            "call_time": "2021-08-24 22:57:13",
+            "city": "Houston"
+          },
+          {
+            "caller_id": 5,
+            "recipient_id": 1,
+            "call_time": "2021-08-11 21:28:44",
+            "city": "Houston"
+          },
+          {
+            "caller_id": 8,
+            "recipient_id": 3,
+            "call_time": "2021-08-17 22:04:15",
+            "city": "Houston"
+          },
+          {
+            "caller_id": 11,
+            "recipient_id": 3,
+            "call_time": "2021-08-17 13:07:00",
+            "city": "New York"
+          },
+          {
+            "caller_id": 8,
+            "recipient_id": 11,
+            "call_time": "2021-08-17 14:22:22",
+            "city": "New York"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "city": "Houston",
+          "peak_calling_hour": 22,
+          "number_of_calls": 3
+        },
+        {
+          "city": "New York",
+          "peak_calling_hour": 14,
+          "number_of_calls": 1
+        },
+        {
+          "city": "New York",
+          "peak_calling_hour": 13,
+          "number_of_calls": 1
+        }
+      ]
+    }
+  ]
+}

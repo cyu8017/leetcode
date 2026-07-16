@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "findCelebrity",
+  "paramOrder": ["graph"],
+  "types": null,
+  "description": null
+}

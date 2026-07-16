@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "start": "_L__R__R_",
+        "target": "L______RR"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "start": "R_L_",
+        "target": "__LR"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "start": "_R",
+        "target": "R_"
+      },
+      "expected": false
+    }
+  ]
+}

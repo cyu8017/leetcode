@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "millis": 100
+      },
+      "expected": 100
+    },
+    {
+      "args": {
+        "millis": 200
+      },
+      "expected": 200
+    }
+  ]
+}

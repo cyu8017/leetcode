@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "foobar",
+        "letter": "o"
+      },
+      "expected": 33
+    },
+    {
+      "args": {
+        "s": "jjjj",
+        "letter": "k"
+      },
+      "expected": 0
+    }
+  ]
+}

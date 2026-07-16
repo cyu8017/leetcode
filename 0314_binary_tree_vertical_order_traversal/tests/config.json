@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "verticalOrder",
+  "paramOrder": ["root"],
+  "types": {
+    "root": "treenode"
+  },
+  "description": null
+}

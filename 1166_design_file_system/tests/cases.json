@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "FileSystem",
+        "createPath",
+        "get"
+      ],
+      "arguments": [
+        [],
+        [
+          "/a",
+          1
+        ],
+        [
+          "/a"
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        1
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FileSystem",
+        "createPath",
+        "createPath",
+        "get",
+        "createPath",
+        "get"
+      ],
+      "arguments": [
+        [],
+        [
+          "/leet",
+          1
+        ],
+        [
+          "/leet/code",
+          2
+        ],
+        [
+          "/leet/code"
+        ],
+        [
+          "/c/d",
+          1
+        ],
+        [
+          "/c"
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        true,
+        2,
+        false,
+        -1
+      ]
+    }
+  ]
+}

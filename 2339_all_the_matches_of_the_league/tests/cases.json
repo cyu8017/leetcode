@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Teams": [
+          {
+            "team_name": "Leetcode FC"
+          },
+          {
+            "team_name": "Ahly SC"
+          },
+          {
+            "team_name": "Real Madrid"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "home_team": "Real Madrid",
+          "away_team": "Leetcode FC"
+        },
+        {
+          "home_team": "Real Madrid",
+          "away_team": "Ahly SC"
+        },
+        {
+          "home_team": "Leetcode FC",
+          "away_team": "Real Madrid"
+        },
+        {
+          "home_team": "Leetcode FC",
+          "away_team": "Ahly SC"
+        },
+        {
+          "home_team": "Ahly SC",
+          "away_team": "Real Madrid"
+        },
+        {
+          "home_team": "Ahly SC",
+          "away_team": "Leetcode FC"
+        }
+      ]
+    }
+  ]
+}

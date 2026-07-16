@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "this apple is sweet",
+        "s2": "this apple is sour"
+      },
+      "expected": [
+        "sweet",
+        "sour"
+      ]
+    },
+    {
+      "args": {
+        "s1": "apple apple",
+        "s2": "banana"
+      },
+      "expected": [
+        "banana"
+      ]
+    }
+  ]
+}

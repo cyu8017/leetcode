@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "transaction_id": 1,
+            "customer_id": 101,
+            "product_id": 1,
+            "transaction_date": "2023-01-01",
+            "amount": 100.0
+          },
+          {
+            "transaction_id": 2,
+            "customer_id": 101,
+            "product_id": 2,
+            "transaction_date": "2023-01-15",
+            "amount": 150.0
+          },
+          {
+            "transaction_id": 3,
+            "customer_id": 102,
+            "product_id": 1,
+            "transaction_date": "2023-01-01",
+            "amount": 100.0
+          },
+          {
+            "transaction_id": 4,
+            "customer_id": 102,
+            "product_id": 3,
+            "transaction_date": "2023-01-22",
+            "amount": 200.0
+          },
+          {
+            "transaction_id": 5,
+            "customer_id": 101,
+            "product_id": 3,
+            "transaction_date": "2023-02-10",
+            "amount": 200.0
+          }
+        ],
+        "Products": [
+          {
+            "product_id": 1,
+            "category": "A",
+            "price": 100.0
+          },
+          {
+            "product_id": 2,
+            "category": "B",
+            "price": 150.0
+          },
+          {
+            "product_id": 3,
+            "category": "C",
+            "price": 200.0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 101,
+          "total_amount": 450.0,
+          "transaction_count": 3,
+          "unique_categories": 3,
+          "avg_transaction_amount": 150.0,
+          "top_category": "C",
+          "loyalty_score": 34.5
+        },
+        {
+          "customer_id": 102,
+          "total_amount": 300.0,
+          "transaction_count": 2,
+          "unique_categories": 2,
+          "avg_transaction_amount": 150.0,
+          "top_category": "C",
+          "loyalty_score": 23.0
+        }
+      ]
+    }
+  ]
+}

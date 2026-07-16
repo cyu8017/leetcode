@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Signups": [
+          {
+            "user_id": 3,
+            "time_stamp": "2020-03-21 10:16:13"
+          },
+          {
+            "user_id": 7,
+            "time_stamp": "2020-01-04 13:57:59"
+          },
+          {
+            "user_id": 2,
+            "time_stamp": "2020-07-29 23:09:44"
+          },
+          {
+            "user_id": 6,
+            "time_stamp": "2020-12-09 10:39:37"
+          }
+        ],
+        "Confirmations": [
+          {
+            "user_id": 3,
+            "time_stamp": "2021-01-06 03:30:46",
+            "action": "timeout"
+          },
+          {
+            "user_id": 3,
+            "time_stamp": "2021-07-14 14:00:00",
+            "action": "timeout"
+          },
+          {
+            "user_id": 7,
+            "time_stamp": "2021-06-12 11:57:29",
+            "action": "confirmed"
+          },
+          {
+            "user_id": 7,
+            "time_stamp": "2021-06-13 12:58:28",
+            "action": "confirmed"
+          },
+          {
+            "user_id": 7,
+            "time_stamp": "2021-06-14 13:59:27",
+            "action": "confirmed"
+          },
+          {
+            "user_id": 2,
+            "time_stamp": "2021-01-22 00:00:00",
+            "action": "confirmed"
+          },
+          {
+            "user_id": 2,
+            "time_stamp": "2021-02-28 23:59:59",
+            "action": "timeout"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 6,
+          "confirmation_rate": 0.0
+        },
+        {
+          "user_id": 3,
+          "confirmation_rate": 0.0
+        },
+        {
+          "user_id": 7,
+          "confirmation_rate": 1.0
+        },
+        {
+          "user_id": 2,
+          "confirmation_rate": 0.5
+        }
+      ]
+    }
+  ]
+}

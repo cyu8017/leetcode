@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "points": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

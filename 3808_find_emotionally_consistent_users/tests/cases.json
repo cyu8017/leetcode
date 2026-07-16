@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "reactions": [
+          {
+            "user_id": 1,
+            "content_id": 101,
+            "reaction": "like"
+          },
+          {
+            "user_id": 1,
+            "content_id": 102,
+            "reaction": "like"
+          },
+          {
+            "user_id": 1,
+            "content_id": 103,
+            "reaction": "like"
+          },
+          {
+            "user_id": 1,
+            "content_id": 104,
+            "reaction": "wow"
+          },
+          {
+            "user_id": 1,
+            "content_id": 105,
+            "reaction": "like"
+          },
+          {
+            "user_id": 2,
+            "content_id": 201,
+            "reaction": "like"
+          },
+          {
+            "user_id": 2,
+            "content_id": 202,
+            "reaction": "wow"
+          },
+          {
+            "user_id": 2,
+            "content_id": 203,
+            "reaction": "sad"
+          },
+          {
+            "user_id": 2,
+            "content_id": 204,
+            "reaction": "like"
+          },
+          {
+            "user_id": 2,
+            "content_id": 205,
+            "reaction": "wow"
+          },
+          {
+            "user_id": 3,
+            "content_id": 301,
+            "reaction": "love"
+          },
+          {
+            "user_id": 3,
+            "content_id": 302,
+            "reaction": "love"
+          },
+          {
+            "user_id": 3,
+            "content_id": 303,
+            "reaction": "love"
+          },
+          {
+            "user_id": 3,
+            "content_id": 304,
+            "reaction": "love"
+          },
+          {
+            "user_id": 3,
+            "content_id": 305,
+            "reaction": "love"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 3,
+          "dominant_reaction": "love",
+          "reaction_ratio": 1.0
+        },
+        {
+          "user_id": 1,
+          "dominant_reaction": "like",
+          "reaction_ratio": 0.8
+        }
+      ]
+    }
+  ]
+}

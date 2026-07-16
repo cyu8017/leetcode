@@ -1,0 +1,9 @@
+﻿// LeetCode 2202 - Maximize the Topmost Element After K Moves
+// https://leetcode.com/problems/maximize-the-topmost-element-after-k-moves/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

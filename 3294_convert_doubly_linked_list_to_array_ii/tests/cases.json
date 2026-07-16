@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "node": 5
+      },
+      "expected": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "args": {
+        "head": [
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "node": 8
+      },
+      "expected": "[4,5,6,7,8]\n**Constraints:**\n- The number of nodes in the given list is in the range `[1, 500]`.\n- `1 <= Node.val <= 1000`\n- All nodes have unique `Node.val`.\n---"
+    }
+  ]
+}

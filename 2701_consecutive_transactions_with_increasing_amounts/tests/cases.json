@@ -1,0 +1,106 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "transaction_id": 1,
+            "customer_id": 101,
+            "transaction_date": "2023-05-01",
+            "amount": 100
+          },
+          {
+            "transaction_id": 2,
+            "customer_id": 101,
+            "transaction_date": "2023-05-02",
+            "amount": 150
+          },
+          {
+            "transaction_id": 3,
+            "customer_id": 101,
+            "transaction_date": "2023-05-03",
+            "amount": 200
+          },
+          {
+            "transaction_id": 4,
+            "customer_id": 102,
+            "transaction_date": "2023-05-01",
+            "amount": 50
+          },
+          {
+            "transaction_id": 5,
+            "customer_id": 102,
+            "transaction_date": "2023-05-03",
+            "amount": 100
+          },
+          {
+            "transaction_id": 6,
+            "customer_id": 102,
+            "transaction_date": "2023-05-04",
+            "amount": 200
+          },
+          {
+            "transaction_id": 7,
+            "customer_id": 105,
+            "transaction_date": "2023-05-01",
+            "amount": 100
+          },
+          {
+            "transaction_id": 8,
+            "customer_id": 105,
+            "transaction_date": "2023-05-02",
+            "amount": 150
+          },
+          {
+            "transaction_id": 9,
+            "customer_id": 105,
+            "transaction_date": "2023-05-03",
+            "amount": 200
+          },
+          {
+            "transaction_id": 10,
+            "customer_id": 105,
+            "transaction_date": "2023-05-04",
+            "amount": 300
+          },
+          {
+            "transaction_id": 11,
+            "customer_id": 105,
+            "transaction_date": "2023-05-12",
+            "amount": 250
+          },
+          {
+            "transaction_id": 12,
+            "customer_id": 105,
+            "transaction_date": "2023-05-13",
+            "amount": 260
+          },
+          {
+            "transaction_id": 13,
+            "customer_id": 105,
+            "transaction_date": "2023-05-14",
+            "amount": 270
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 101,
+          "consecutive_start": "2023-05-01",
+          "consecutive_end": "2023-05-03"
+        },
+        {
+          "customer_id": 105,
+          "consecutive_start": "2023-05-01",
+          "consecutive_end": "2023-05-04"
+        },
+        {
+          "customer_id": 105,
+          "consecutive_start": "2023-05-12",
+          "consecutive_end": "2023-05-14"
+        }
+      ]
+    }
+  ]
+}

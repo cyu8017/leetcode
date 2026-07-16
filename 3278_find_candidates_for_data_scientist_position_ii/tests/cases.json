@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "candidate_id": 101,
+            "skill": "Python",
+            "proficiency": 5
+          },
+          {
+            "candidate_id": 101,
+            "skill": "Tableau",
+            "proficiency": 3
+          },
+          {
+            "candidate_id": 101,
+            "skill": "PostgreSQL",
+            "proficiency": 4
+          },
+          {
+            "candidate_id": 101,
+            "skill": "TensorFlow",
+            "proficiency": 2
+          },
+          {
+            "candidate_id": 102,
+            "skill": "Python",
+            "proficiency": 4
+          },
+          {
+            "candidate_id": 102,
+            "skill": "Tableau",
+            "proficiency": 5
+          },
+          {
+            "candidate_id": 102,
+            "skill": "PostgreSQL",
+            "proficiency": 4
+          },
+          {
+            "candidate_id": 102,
+            "skill": "R",
+            "proficiency": 4
+          },
+          {
+            "candidate_id": 103,
+            "skill": "Python",
+            "proficiency": 3
+          },
+          {
+            "candidate_id": 103,
+            "skill": "Tableau",
+            "proficiency": 5
+          },
+          {
+            "candidate_id": 103,
+            "skill": "PostgreSQL",
+            "proficiency": 5
+          },
+          {
+            "candidate_id": 103,
+            "skill": "Spark",
+            "proficiency": 4
+          }
+        ],
+        "Projects": [
+          {
+            "project_id": 501,
+            "skill": "Python",
+            "importance": 4
+          },
+          {
+            "project_id": 501,
+            "skill": "Tableau",
+            "importance": 3
+          },
+          {
+            "project_id": 501,
+            "skill": "PostgreSQL",
+            "importance": 5
+          },
+          {
+            "project_id": 502,
+            "skill": "Python",
+            "importance": 3
+          },
+          {
+            "project_id": 502,
+            "skill": "Tableau",
+            "importance": 4
+          },
+          {
+            "project_id": 502,
+            "skill": "R",
+            "importance": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "project_id": 501,
+          "candidate_id": 101,
+          "score": 105
+        },
+        {
+          "project_id": 502,
+          "candidate_id": 102,
+          "score": 130
+        }
+      ]
+    }
+  ]
+}

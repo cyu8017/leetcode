@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leetcode",
+        "p": "ee*e"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "car",
+        "p": "c*v"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "luck",
+        "p": "u*"
+      },
+      "expected": true
+    }
+  ]
+}

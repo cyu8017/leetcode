@@ -1,0 +1,1 @@
+type ListNode struct{Val int;Next *ListNode};func insertionSortList(h *ListNode)*ListNode{d:=&ListNode{};for h!=nil{n,p:=h.Next,d;for p.Next!=nil&&p.Next.Val<h.Val{p=p.Next};h.Next=p.Next;p.Next=h;h=n};return d.Next}

@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "args": {
+        "actions": [
+          "Calculator",
+          "add",
+          "subtract",
+          "getResult"
+        ],
+        "values": [
+          10,
+          5,
+          7
+        ]
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "actions": [
+          "Calculator",
+          "multiply",
+          "power",
+          "getResult"
+        ],
+        "values": [
+          2,
+          5,
+          2
+        ]
+      },
+      "expected": 100
+    },
+    {
+      "args": {
+        "actions": [
+          "Calculator",
+          "divide",
+          "getResult"
+        ],
+        "values": [
+          20,
+          0
+        ]
+      },
+      "expected": "Division by zero is not allowed"
+    }
+  ]
+}

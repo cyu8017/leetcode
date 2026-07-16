@@ -1,0 +1,139 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customers": [
+          {
+            "customer_id": 1,
+            "customer_name": "Alice",
+            "email": "alice@leetcode.com"
+          },
+          {
+            "customer_id": 2,
+            "customer_name": "Bob",
+            "email": "bob@leetcode.com"
+          },
+          {
+            "customer_id": 13,
+            "customer_name": "John",
+            "email": "john@leetcode.com"
+          },
+          {
+            "customer_id": 6,
+            "customer_name": "Alex",
+            "email": "alex@leetcode.com"
+          }
+        ],
+        "Contacts": [
+          {
+            "user_id": 1,
+            "contact_name": "Bob",
+            "contact_email": "bob@leetcode.com"
+          },
+          {
+            "user_id": 1,
+            "contact_name": "John",
+            "contact_email": "john@leetcode.com"
+          },
+          {
+            "user_id": 1,
+            "contact_name": "Jal",
+            "contact_email": "jal@leetcode.com"
+          },
+          {
+            "user_id": 2,
+            "contact_name": "Omar",
+            "contact_email": "omar@leetcode.com"
+          },
+          {
+            "user_id": 2,
+            "contact_name": "Meir",
+            "contact_email": "meir@leetcode.com"
+          },
+          {
+            "user_id": 6,
+            "contact_name": "Alice",
+            "contact_email": "alice@leetcode.com"
+          }
+        ],
+        "Invoices": [
+          {
+            "invoice_id": 77,
+            "price": 100,
+            "user_id": 1
+          },
+          {
+            "invoice_id": 88,
+            "price": 200,
+            "user_id": 1
+          },
+          {
+            "invoice_id": 99,
+            "price": 300,
+            "user_id": 2
+          },
+          {
+            "invoice_id": 66,
+            "price": 400,
+            "user_id": 2
+          },
+          {
+            "invoice_id": 55,
+            "price": 500,
+            "user_id": 13
+          },
+          {
+            "invoice_id": 44,
+            "price": 60,
+            "user_id": 6
+          }
+        ]
+      },
+      "expected": [
+        {
+          "invoice_id": 44,
+          "customer_name": "Alex",
+          "price": 60,
+          "contacts_cnt": 1,
+          "trusted_contacts_cnt": 1
+        },
+        {
+          "invoice_id": 55,
+          "customer_name": "John",
+          "price": 500,
+          "contacts_cnt": 0,
+          "trusted_contacts_cnt": 0
+        },
+        {
+          "invoice_id": 66,
+          "customer_name": "Bob",
+          "price": 400,
+          "contacts_cnt": 2,
+          "trusted_contacts_cnt": 0
+        },
+        {
+          "invoice_id": 77,
+          "customer_name": "Alice",
+          "price": 100,
+          "contacts_cnt": 3,
+          "trusted_contacts_cnt": 2
+        },
+        {
+          "invoice_id": 88,
+          "customer_name": "Alice",
+          "price": 200,
+          "contacts_cnt": 3,
+          "trusted_contacts_cnt": 2
+        },
+        {
+          "invoice_id": 99,
+          "customer_name": "Bob",
+          "price": 300,
+          "contacts_cnt": 2,
+          "trusted_contacts_cnt": 0
+        }
+      ]
+    }
+  ]
+}

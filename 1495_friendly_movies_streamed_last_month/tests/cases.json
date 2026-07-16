@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "TVProgram": [
+          {
+            "program_date": "2020-06-10 08:00",
+            "content_id": 1,
+            "channel": "LC-Channel"
+          },
+          {
+            "program_date": "2020-05-11 12:00",
+            "content_id": 2,
+            "channel": "LC-Channel"
+          },
+          {
+            "program_date": "2020-05-12 12:00",
+            "content_id": 3,
+            "channel": "LC-Channel"
+          },
+          {
+            "program_date": "2020-05-13 14:00",
+            "content_id": 4,
+            "channel": "Disney Ch"
+          },
+          {
+            "program_date": "2020-06-18 14:00",
+            "content_id": 4,
+            "channel": "Disney Ch"
+          },
+          {
+            "program_date": "2020-07-15 16:00",
+            "content_id": 5,
+            "channel": "Disney Ch"
+          }
+        ],
+        "Content": [
+          {
+            "content_id": 1,
+            "title": "Leetcode Movie",
+            "Kids_content": "N",
+            "content_type": "Movies"
+          },
+          {
+            "content_id": 2,
+            "title": "Alg. for Kids",
+            "Kids_content": "Y",
+            "content_type": "Series"
+          },
+          {
+            "content_id": 3,
+            "title": "Database Sols",
+            "Kids_content": "N",
+            "content_type": "Series"
+          },
+          {
+            "content_id": 4,
+            "title": "Aladdin",
+            "Kids_content": "Y",
+            "content_type": "Movies"
+          },
+          {
+            "content_id": 5,
+            "title": "Cinderella",
+            "Kids_content": "Y",
+            "content_type": "Movies"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "title": "Aladdin"
+        }
+      ]
+    }
+  ]
+}

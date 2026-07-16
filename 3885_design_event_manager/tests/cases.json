@@ -1,0 +1,78 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "EventManager",
+        "pollHighest",
+        "updatePriority",
+        "pollHighest",
+        "pollHighest"
+      ],
+      "arguments": [
+        [
+          [
+            [
+              5,
+              7
+            ],
+            [
+              2,
+              7
+            ],
+            [
+              9,
+              4
+            ]
+          ]
+        ],
+        [],
+        [
+          9,
+          7
+        ],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        2,
+        null,
+        5,
+        9
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "EventManager",
+        "pollHighest",
+        "pollHighest",
+        "pollHighest"
+      ],
+      "arguments": [
+        [
+          [
+            [
+              4,
+              1
+            ],
+            [
+              7,
+              2
+            ]
+          ]
+        ],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        7,
+        4,
+        -1
+      ]
+    }
+  ]
+}

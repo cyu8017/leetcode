@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "longestConsecutive",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "alice",
+          "bob",
+          "charlie"
+        ],
+        "s": "abc"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "words": [
+          "an",
+          "apple"
+        ],
+        "s": "a"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "words": [
+          "never",
+          "gonna",
+          "give",
+          "up",
+          "on",
+          "you"
+        ],
+        "s": "ngguoy"
+      },
+      "expected": true
+    }
+  ]
+}

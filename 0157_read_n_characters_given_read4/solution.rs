@@ -1,0 +1,1 @@
+impl Solution{pub fn read(b:&mut Vec<char>,n:i32)->i32{let(mut k,mut t)=(0,['\0';4]);while k<n as usize{let c=read4(&mut t)as usize;if c==0{break}for i in 0..c{if k==n as usize{break}b[k]=t[i];k+=1}}k as i32}}

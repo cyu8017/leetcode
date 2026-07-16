@@ -1,0 +1,12 @@
+﻿# LeetCode 0183 - Customers Who Never Order
+# https://leetcode.com/problems/customers-who-never-order/
+
+# Write your MySQL query statement below
+QUERY = """
+SELECT name AS Customers
+FROM Customers
+WHERE id NOT IN (
+    SELECT customerId
+    FROM Orders
+)
+"""

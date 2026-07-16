@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "QWER"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "QQWE"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "QQQW"
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿// LeetCode 3652 - Best Time to Buy and Sell Stock using Strategy
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-using-strategy/
+
+function solve(input: unknown): unknown {
+    return null;
+}

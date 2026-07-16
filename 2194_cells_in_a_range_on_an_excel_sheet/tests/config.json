@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "cellsInRange",
+  "paramOrder": [
+    "s"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

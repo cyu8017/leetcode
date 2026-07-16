@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "generate",
+  "paramOrder": [
+    "numRows"
+  ],
+  "types": {
+    "return": "integer[][]"
+  },
+  "description": null
+}

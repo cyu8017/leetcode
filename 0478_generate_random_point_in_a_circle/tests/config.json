@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "randPoint",
+  "paramOrder": [],
+  "types": {
+    "return": "double[]"
+  },
+  "kind": "design",
+  "description": "Design Solution with randPoint; tests use deterministic uniform sequence."
+}

@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "enemyEnergies": [
+          3,
+          2,
+          2
+        ],
+        "currentEnergy": 2
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "enemyEnergies": [
+          2
+        ],
+        "currentEnergy": 10
+      },
+      "expected": 5
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MyCircularDeque",
+        "insertLast",
+        "insertLast",
+        "insertFront",
+        "insertFront",
+        "getRear",
+        "isFull",
+        "deleteLast",
+        "insertFront",
+        "getFront"
+      ],
+      "arguments": [
+        [
+          3
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        [],
+        [
+          4
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        true,
+        true,
+        true,
+        false,
+        2,
+        true,
+        true,
+        true,
+        4
+      ]
+    }
+  ]
+}

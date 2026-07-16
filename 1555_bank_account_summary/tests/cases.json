@@ -1,0 +1,80 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Users": [
+          {
+            "user_id": 1,
+            "user_name": "Moustafa",
+            "credit": 100
+          },
+          {
+            "user_id": 2,
+            "user_name": "Jonathan",
+            "credit": 200
+          },
+          {
+            "user_id": 3,
+            "user_name": "Winston",
+            "credit": 10000
+          },
+          {
+            "user_id": 4,
+            "user_name": "Luis",
+            "credit": 800
+          }
+        ],
+        "Transactions": [
+          {
+            "trans_id": 1,
+            "paid_by": 1,
+            "paid_to": 3,
+            "amount": 400,
+            "transacted_on": "2020-08-01"
+          },
+          {
+            "trans_id": 2,
+            "paid_by": 3,
+            "paid_to": 2,
+            "amount": 500,
+            "transacted_on": "2020-08-02"
+          },
+          {
+            "trans_id": 3,
+            "paid_by": 2,
+            "paid_to": 1,
+            "amount": 200,
+            "transacted_on": "2020-08-03"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "user_name": "Moustafa",
+          "credit": -100,
+          "credit_limit_breached": "Yes"
+        },
+        {
+          "user_id": 2,
+          "user_name": "Jonathan",
+          "credit": 500,
+          "credit_limit_breached": "No"
+        },
+        {
+          "user_id": 3,
+          "user_name": "Winston",
+          "credit": 9900,
+          "credit_limit_breached": "No"
+        },
+        {
+          "user_id": 4,
+          "user_name": "Luis",
+          "credit": 800,
+          "credit_limit_breached": "No"
+        }
+      ]
+    }
+  ]
+}

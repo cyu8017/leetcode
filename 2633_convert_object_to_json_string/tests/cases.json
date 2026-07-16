@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "args": {
+        "object": {
+          "y": 1,
+          "x": 2
+        }
+      },
+      "expected": {
+        "y": 1,
+        "x": 2
+      }
+    },
+    {
+      "args": {
+        "object": {
+          "a": "str",
+          "b": -12,
+          "c": true,
+          "d": null
+        }
+      },
+      "expected": {
+        "a": "str",
+        "b": -12,
+        "c": true,
+        "d": null
+      }
+    },
+    {
+      "args": {
+        "object": {
+          "key": {
+            "a": 1,
+            "b": [
+              {},
+              null,
+              "Hello"
+            ]
+          }
+        }
+      },
+      "expected": {
+        "key": {
+          "a": 1,
+          "b": [
+            {},
+            null,
+            "Hello"
+          ]
+        }
+      }
+    },
+    {
+      "args": {
+        "object": true
+      },
+      "expected": true
+    }
+  ]
+}

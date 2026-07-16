@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "LMCT"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "LCCT"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "L"
+      },
+      "expected": 0
+    }
+  ]
+}

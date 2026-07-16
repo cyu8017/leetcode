@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "getIntersectionNode",
+  "paramOrder": ["listA", "listB"],
+  "types": null,
+  "description": null
+}

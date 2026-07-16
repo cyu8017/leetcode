@@ -1,0 +1,7 @@
+﻿// LeetCode 3187 - Peaks in Array
+// https://leetcode.com/problems/peaks-in-array/
+
+class Solution {
+    func solve() {
+    }
+}

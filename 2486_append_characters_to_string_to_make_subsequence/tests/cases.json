@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "coaching",
+        "t": "coding"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "abcde",
+        "t": "a"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "z",
+        "t": "abcde"
+      },
+      "expected": 5
+    }
+  ]
+}

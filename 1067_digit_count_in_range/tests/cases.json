@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "d": 1,
+        "low": 1,
+        "high": 13
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "d": 3,
+        "low": 100,
+        "high": 250
+      },
+      "expected": 35
+    }
+  ]
+}

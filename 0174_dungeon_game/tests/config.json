@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "calculateMinimumHP",
+  "paramOrder": ["dungeon"],
+  "types": null,
+  "description": null
+}

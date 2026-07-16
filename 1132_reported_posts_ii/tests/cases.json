@@ -1,0 +1,117 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Actions": [
+          {
+            "user_id": 1,
+            "post_id": 1,
+            "action_date": "2019-07-01",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 1,
+            "post_id": 1,
+            "action_date": "2019-07-01",
+            "action": "like",
+            "extra": null
+          },
+          {
+            "user_id": 1,
+            "post_id": 1,
+            "action_date": "2019-07-01",
+            "action": "share",
+            "extra": null
+          },
+          {
+            "user_id": 2,
+            "post_id": 2,
+            "action_date": "2019-07-04",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 2,
+            "post_id": 2,
+            "action_date": "2019-07-04",
+            "action": "report",
+            "extra": "spam"
+          },
+          {
+            "user_id": 3,
+            "post_id": 4,
+            "action_date": "2019-07-04",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 3,
+            "post_id": 4,
+            "action_date": "2019-07-04",
+            "action": "report",
+            "extra": "spam"
+          },
+          {
+            "user_id": 4,
+            "post_id": 3,
+            "action_date": "2019-07-02",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 4,
+            "post_id": 3,
+            "action_date": "2019-07-02",
+            "action": "report",
+            "extra": "spam"
+          },
+          {
+            "user_id": 5,
+            "post_id": 2,
+            "action_date": "2019-07-03",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 5,
+            "post_id": 2,
+            "action_date": "2019-07-03",
+            "action": "report",
+            "extra": "racism"
+          },
+          {
+            "user_id": 5,
+            "post_id": 5,
+            "action_date": "2019-07-03",
+            "action": "view",
+            "extra": null
+          },
+          {
+            "user_id": 5,
+            "post_id": 5,
+            "action_date": "2019-07-03",
+            "action": "report",
+            "extra": "racism"
+          }
+        ],
+        "Removals": [
+          {
+            "post_id": 2,
+            "remove_date": "2019-07-20"
+          },
+          {
+            "post_id": 3,
+            "remove_date": "2019-07-18"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "average_daily_percent": 75.0
+        }
+      ]
+    }
+  ]
+}

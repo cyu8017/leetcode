@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Project": [
+          {
+            "project_id": 1,
+            "employee_id": 1,
+            "workload": 45
+          },
+          {
+            "project_id": 1,
+            "employee_id": 2,
+            "workload": 90
+          },
+          {
+            "project_id": 2,
+            "employee_id": 3,
+            "workload": 12
+          },
+          {
+            "project_id": 2,
+            "employee_id": 4,
+            "workload": 68
+          }
+        ],
+        "Employees": [
+          {
+            "employee_id": 1,
+            "name": "Khaled",
+            "team": "A"
+          },
+          {
+            "employee_id": 2,
+            "name": "Ali",
+            "team": "B"
+          },
+          {
+            "employee_id": 3,
+            "name": "John",
+            "team": "B"
+          },
+          {
+            "employee_id": 4,
+            "name": "Doe",
+            "team": "A"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 2,
+          "project_id": 1,
+          "employee_name": "Ali",
+          "project_workload": 90
+        },
+        {
+          "employee_id": 4,
+          "project_id": 2,
+          "employee_name": "Doe",
+          "project_workload": 68
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Salaries": [
+          {
+            "company_id": 1,
+            "employee_id": 1,
+            "employee_name": "Tony",
+            "salary": 2000
+          },
+          {
+            "company_id": 1,
+            "employee_id": 2,
+            "employee_name": "Pronub",
+            "salary": 21300
+          },
+          {
+            "company_id": 1,
+            "employee_id": 3,
+            "employee_name": "Tyrrox",
+            "salary": 10800
+          },
+          {
+            "company_id": 2,
+            "employee_id": 1,
+            "employee_name": "Pam",
+            "salary": 300
+          },
+          {
+            "company_id": 2,
+            "employee_id": 7,
+            "employee_name": "Bassem",
+            "salary": 450
+          },
+          {
+            "company_id": 2,
+            "employee_id": 9,
+            "employee_name": "Hermione",
+            "salary": 700
+          },
+          {
+            "company_id": 3,
+            "employee_id": 7,
+            "employee_name": "Bocaben",
+            "salary": 100
+          },
+          {
+            "company_id": 3,
+            "employee_id": 2,
+            "employee_name": "Ognjen",
+            "salary": 2200
+          },
+          {
+            "company_id": 3,
+            "employee_id": 13,
+            "employee_name": "Nyancat",
+            "salary": 3300
+          },
+          {
+            "company_id": 3,
+            "employee_id": 15,
+            "employee_name": "Morninngcat",
+            "salary": 7777
+          }
+        ]
+      },
+      "expected": [
+        {
+          "company_id": 1,
+          "employee_id": 1,
+          "employee_name": "Tony",
+          "salary": 1020
+        },
+        {
+          "company_id": 1,
+          "employee_id": 2,
+          "employee_name": "Pronub",
+          "salary": 10863
+        },
+        {
+          "company_id": 1,
+          "employee_id": 3,
+          "employee_name": "Tyrrox",
+          "salary": 5508
+        },
+        {
+          "company_id": 2,
+          "employee_id": 1,
+          "employee_name": "Pam",
+          "salary": 300
+        },
+        {
+          "company_id": 2,
+          "employee_id": 7,
+          "employee_name": "Bassem",
+          "salary": 450
+        },
+        {
+          "company_id": 2,
+          "employee_id": 9,
+          "employee_name": "Hermione",
+          "salary": 700
+        },
+        {
+          "company_id": 3,
+          "employee_id": 7,
+          "employee_name": "Bocaben",
+          "salary": 76
+        },
+        {
+          "company_id": 3,
+          "employee_id": 2,
+          "employee_name": "Ognjen",
+          "salary": 1672
+        },
+        {
+          "company_id": 3,
+          "employee_id": 13,
+          "employee_name": "Nyancat",
+          "salary": 2508
+        },
+        {
+          "company_id": 3,
+          "employee_id": 15,
+          "employee_name": "Morninngcat",
+          "salary": 5911
+        }
+      ]
+    }
+  ]
+}

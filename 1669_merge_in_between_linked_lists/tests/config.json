@@ -1,0 +1,10 @@
+{
+  "class": "ListNode",
+  "method": "__init__",
+  "paramOrder": [
+    "val=0",
+    "next=None"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

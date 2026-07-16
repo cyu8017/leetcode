@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "bank",
+        "s2": "kanb"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s1": "attack",
+        "s2": "defend"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s1": "kelb",
+        "s2": "kelb"
+      },
+      "expected": true
+    }
+  ]
+}

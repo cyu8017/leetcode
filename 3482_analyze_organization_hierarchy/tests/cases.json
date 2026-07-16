@@ -1,0 +1,153 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 1,
+            "employee_name": "Alice",
+            "manager_id": null,
+            "salary": 12000,
+            "department": "Executive"
+          },
+          {
+            "employee_id": 2,
+            "employee_name": "Bob",
+            "manager_id": 1,
+            "salary": 10000,
+            "department": "Sales"
+          },
+          {
+            "employee_id": 3,
+            "employee_name": "Charlie",
+            "manager_id": 1,
+            "salary": 10000,
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 4,
+            "employee_name": "David",
+            "manager_id": 2,
+            "salary": 7500,
+            "department": "Sales"
+          },
+          {
+            "employee_id": 5,
+            "employee_name": "Eva",
+            "manager_id": 2,
+            "salary": 7500,
+            "department": "Sales"
+          },
+          {
+            "employee_id": 6,
+            "employee_name": "Frank",
+            "manager_id": 3,
+            "salary": 9000,
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 7,
+            "employee_name": "Grace",
+            "manager_id": 3,
+            "salary": 8500,
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 8,
+            "employee_name": "Hank",
+            "manager_id": 4,
+            "salary": 6000,
+            "department": "Sales"
+          },
+          {
+            "employee_id": 9,
+            "employee_name": "Ivy",
+            "manager_id": 6,
+            "salary": 7000,
+            "department": "Engineering"
+          },
+          {
+            "employee_id": 10,
+            "employee_name": "Judy",
+            "manager_id": 6,
+            "salary": 7000,
+            "department": "Engineering"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1,
+          "employee_name": "Alice",
+          "level": 1,
+          "team_size": 9,
+          "budget": 84500
+        },
+        {
+          "employee_id": 3,
+          "employee_name": "Charlie",
+          "level": 2,
+          "team_size": 4,
+          "budget": 41500
+        },
+        {
+          "employee_id": 2,
+          "employee_name": "Bob",
+          "level": 2,
+          "team_size": 3,
+          "budget": 31000
+        },
+        {
+          "employee_id": 6,
+          "employee_name": "Frank",
+          "level": 3,
+          "team_size": 2,
+          "budget": 23000
+        },
+        {
+          "employee_id": 4,
+          "employee_name": "David",
+          "level": 3,
+          "team_size": 1,
+          "budget": 13500
+        },
+        {
+          "employee_id": 7,
+          "employee_name": "Grace",
+          "level": 3,
+          "team_size": 0,
+          "budget": 8500
+        },
+        {
+          "employee_id": 5,
+          "employee_name": "Eva",
+          "level": 3,
+          "team_size": 0,
+          "budget": 7500
+        },
+        {
+          "employee_id": 9,
+          "employee_name": "Ivy",
+          "level": 4,
+          "team_size": 0,
+          "budget": 7000
+        },
+        {
+          "employee_id": 10,
+          "employee_name": "Judy",
+          "level": 4,
+          "team_size": 0,
+          "budget": 7000
+        },
+        {
+          "employee_id": 8,
+          "employee_name": "Hank",
+          "level": 4,
+          "team_size": 0,
+          "budget": 6000
+        }
+      ]
+    }
+  ]
+}

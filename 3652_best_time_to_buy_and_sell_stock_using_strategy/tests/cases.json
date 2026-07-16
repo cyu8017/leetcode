@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "prices": [
+          4,
+          2,
+          8
+        ],
+        "strategy": [
+          -1,
+          0,
+          1
+        ],
+        "k": 2
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "prices": [
+          5,
+          4,
+          3
+        ],
+        "strategy": [
+          1,
+          1,
+          0
+        ],
+        "k": 2
+      },
+      "expected": 9
+    }
+  ]
+}

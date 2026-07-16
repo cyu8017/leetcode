@@ -1,0 +1,6 @@
+﻿# LeetCode 3757 - Number of Effective Subsequences
+# https://leetcode.com/problems/number-of-effective-subsequences/
+
+class Solution:
+    def solve(self) -> None:
+        pass

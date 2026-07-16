@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "DataStream",
+        "consec",
+        "consec",
+        "consec",
+        "consec"
+      ],
+      "arguments": [
+        [
+          4,
+          3
+        ],
+        [
+          4
+        ],
+        [
+          4
+        ],
+        [
+          4
+        ],
+        [
+          3
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false,
+        true,
+        false
+      ]
+    }
+  ]
+}

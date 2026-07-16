@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MaxStack",
+        "push",
+        "push",
+        "push",
+        "top",
+        "popMax",
+        "top",
+        "peekMax",
+        "pop",
+        "top"
+      ],
+      "arguments": [
+        [],
+        [
+          5
+        ],
+        [
+          1
+        ],
+        [
+          5
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        5,
+        5,
+        1,
+        5,
+        1,
+        5
+      ]
+    }
+  ]
+}

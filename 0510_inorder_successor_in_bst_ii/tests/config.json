@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "inorderSuccessor",
+  "paramOrder": [
+    "node"
+  ],
+  "types": null,
+  "description": "Inorder successor using Node with parent pointers; runner builds tree from tree/node args."
+}

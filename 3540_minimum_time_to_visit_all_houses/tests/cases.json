@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "args": {
+        "forward": [
+          1,
+          4,
+          4
+        ],
+        "backward": [
+          4,
+          1,
+          2
+        ],
+        "queries": [
+          1,
+          2,
+          0,
+          2
+        ]
+      },
+      "expected": 12
+    },
+    {
+      "args": {
+        "forward": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "backward": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "queries": [
+          1,
+          2,
+          3,
+          0
+        ]
+      },
+      "expected": 4
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "prompts": [
+          {
+            "user_id": 1,
+            "prompt": "Write a blog outline",
+            "tokens": 120
+          },
+          {
+            "user_id": 1,
+            "prompt": "Generate SQL query",
+            "tokens": 80
+          },
+          {
+            "user_id": 1,
+            "prompt": "Summarize an article",
+            "tokens": 200
+          },
+          {
+            "user_id": 2,
+            "prompt": "Create resume bullet",
+            "tokens": 60
+          },
+          {
+            "user_id": 2,
+            "prompt": "Improve LinkedIn bio",
+            "tokens": 70
+          },
+          {
+            "user_id": 3,
+            "prompt": "Explain neural networks",
+            "tokens": 300
+          },
+          {
+            "user_id": 3,
+            "prompt": "Generate interview Q&A",
+            "tokens": 250
+          },
+          {
+            "user_id": 3,
+            "prompt": "Write cover letter",
+            "tokens": 180
+          },
+          {
+            "user_id": 3,
+            "prompt": "Optimize Python code",
+            "tokens": 220
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 3,
+          "prompt_count": 4,
+          "avg_tokens": 237.5
+        },
+        {
+          "user_id": 1,
+          "prompt_count": 3,
+          "avg_tokens": 133.33
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence1": [
+          "great",
+          "acting",
+          "skills"
+        ],
+        "sentence2": [
+          "fine",
+          "drama",
+          "talent"
+        ],
+        "similarPairs": [
+          [
+            "great",
+            "good"
+          ],
+          [
+            "fine",
+            "good"
+          ],
+          [
+            "drama",
+            "acting"
+          ],
+          [
+            "skills",
+            "talent"
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence1": [
+          "I",
+          "love",
+          "leetcode"
+        ],
+        "sentence2": [
+          "I",
+          "love",
+          "onepiece"
+        ],
+        "similarPairs": [
+          [
+            "manga",
+            "onepiece"
+          ],
+          [
+            "platform",
+            "anime"
+          ],
+          [
+            "leetcode",
+            "platform"
+          ],
+          [
+            "anime",
+            "manga"
+          ]
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence1": [
+          "I",
+          "love",
+          "leetcode"
+        ],
+        "sentence2": [
+          "I",
+          "love",
+          "onepiece"
+        ],
+        "similarPairs": [
+          [
+            "manga",
+            "hunterXhunter"
+          ],
+          [
+            "platform",
+            "anime"
+          ],
+          [
+            "leetcode",
+            "platform"
+          ],
+          [
+            "anime",
+            "manga"
+          ]
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "grid": [
+          "####F",
+          "#C...",
+          "M...."
+        ],
+        "catJump": 1,
+        "mouseJump": 2
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "grid": [
+          "M.C...F"
+        ],
+        "catJump": 1,
+        "mouseJump": 4
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "grid": [
+          "M.C...F"
+        ],
+        "catJump": 1,
+        "mouseJump": 3
+      },
+      "expected": false
+    }
+  ]
+}

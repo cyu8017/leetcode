@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "remainingMethods",
+  "paramOrder": [
+    "n",
+    "k",
+    "invocations"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

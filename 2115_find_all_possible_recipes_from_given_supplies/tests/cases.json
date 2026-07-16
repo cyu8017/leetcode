@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "args": {
+        "recipes": [
+          "bread"
+        ],
+        "ingredients": [
+          [
+            "yeast",
+            "flour"
+          ]
+        ],
+        "supplies": [
+          "yeast",
+          "flour",
+          "corn"
+        ]
+      },
+      "expected": [
+        "bread"
+      ]
+    },
+    {
+      "args": {
+        "recipes": [
+          "bread",
+          "sandwich"
+        ],
+        "ingredients": [
+          [
+            "yeast",
+            "flour"
+          ],
+          [
+            "bread",
+            "meat"
+          ]
+        ],
+        "supplies": [
+          "yeast",
+          "flour",
+          "meat"
+        ]
+      },
+      "expected": [
+        "bread",
+        "sandwich"
+      ]
+    },
+    {
+      "args": {
+        "recipes": [
+          "bread",
+          "sandwich",
+          "burger"
+        ],
+        "ingredients": [
+          [
+            "yeast",
+            "flour"
+          ],
+          [
+            "bread",
+            "meat"
+          ],
+          [
+            "sandwich",
+            "meat",
+            "bread"
+          ]
+        ],
+        "supplies": [
+          "yeast",
+          "flour",
+          "meat"
+        ]
+      },
+      "expected": [
+        "bread",
+        "sandwich",
+        "burger"
+      ]
+    }
+  ]
+}

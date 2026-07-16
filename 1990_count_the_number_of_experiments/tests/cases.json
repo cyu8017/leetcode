@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Experiments": [
+          {
+            "experiment_id": 4,
+            "platform": "IOS",
+            "experiment_name": "Programming"
+          },
+          {
+            "experiment_id": 13,
+            "platform": "IOS",
+            "experiment_name": "Sports"
+          },
+          {
+            "experiment_id": 14,
+            "platform": "Android",
+            "experiment_name": "Reading"
+          },
+          {
+            "experiment_id": 8,
+            "platform": "Web",
+            "experiment_name": "Reading"
+          },
+          {
+            "experiment_id": 12,
+            "platform": "Web",
+            "experiment_name": "Reading"
+          },
+          {
+            "experiment_id": 18,
+            "platform": "Web",
+            "experiment_name": "Programming"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "platform": "Android",
+          "experiment_name": "Reading",
+          "num_experiments": 1
+        },
+        {
+          "platform": "Android",
+          "experiment_name": "Sports",
+          "num_experiments": 0
+        },
+        {
+          "platform": "Android",
+          "experiment_name": "Programming",
+          "num_experiments": 0
+        },
+        {
+          "platform": "IOS",
+          "experiment_name": "Reading",
+          "num_experiments": 0
+        },
+        {
+          "platform": "IOS",
+          "experiment_name": "Sports",
+          "num_experiments": 1
+        },
+        {
+          "platform": "IOS",
+          "experiment_name": "Programming",
+          "num_experiments": 1
+        },
+        {
+          "platform": "Web",
+          "experiment_name": "Reading",
+          "num_experiments": 2
+        },
+        {
+          "platform": "Web",
+          "experiment_name": "Sports",
+          "num_experiments": 0
+        },
+        {
+          "platform": "Web",
+          "experiment_name": "Programming",
+          "num_experiments": 1
+        }
+      ]
+    }
+  ]
+}

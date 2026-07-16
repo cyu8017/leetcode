@@ -1,0 +1,7 @@
+{
+  "class": "ZigzagIterator",
+  "method": "next",
+  "paramOrder": ["v1", "v2"],
+  "types": null,
+  "description": null
+}

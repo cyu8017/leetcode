@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Spending": [
+          {
+            "user_id": 1,
+            "spend_date": "2019-07-01",
+            "platform": "mobile",
+            "amount": 100
+          },
+          {
+            "user_id": 1,
+            "spend_date": "2019-07-01",
+            "platform": "desktop",
+            "amount": 100
+          },
+          {
+            "user_id": 2,
+            "spend_date": "2019-07-01",
+            "platform": "mobile",
+            "amount": 100
+          },
+          {
+            "user_id": 2,
+            "spend_date": "2019-07-02",
+            "platform": "mobile",
+            "amount": 100
+          },
+          {
+            "user_id": 3,
+            "spend_date": "2019-07-01",
+            "platform": "desktop",
+            "amount": 100
+          },
+          {
+            "user_id": 3,
+            "spend_date": "2019-07-02",
+            "platform": "desktop",
+            "amount": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "spend_date": "2019-07-01",
+          "platform": "desktop",
+          "total_amount": 100,
+          "total_users": 1
+        },
+        {
+          "spend_date": "2019-07-01",
+          "platform": "mobile",
+          "total_amount": 100,
+          "total_users": 1
+        },
+        {
+          "spend_date": "2019-07-01",
+          "platform": "both",
+          "total_amount": 200,
+          "total_users": 1
+        },
+        {
+          "spend_date": "2019-07-02",
+          "platform": "desktop",
+          "total_amount": 100,
+          "total_users": 1
+        },
+        {
+          "spend_date": "2019-07-02",
+          "platform": "mobile",
+          "total_amount": 100,
+          "total_users": 1
+        },
+        {
+          "spend_date": "2019-07-02",
+          "platform": "both",
+          "total_amount": 0,
+          "total_users": 0
+        }
+      ]
+    }
+  ]
+}

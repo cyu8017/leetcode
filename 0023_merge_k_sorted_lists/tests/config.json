@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "mergeKLists",
+  "paramOrder": [
+    "lists"
+  ],
+  "types": {
+    "lists": "listnode[]",
+    "return": "listnode"
+  },
+  "description": null
+}

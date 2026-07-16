@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word1": "sea",
+        "word2": "eat"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word1": "leetcode",
+        "word2": "etco"
+      },
+      "expected": 4
+    }
+  ]
+}

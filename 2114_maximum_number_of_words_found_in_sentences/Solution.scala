@@ -1,0 +1,6 @@
+﻿// LeetCode 2114 - Maximum Number of Words Found in Sentences
+// https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+
+object Solution {
+  def solve(): Unit = {}
+}

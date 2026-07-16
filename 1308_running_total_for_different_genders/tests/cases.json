@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Scores": [
+          {
+            "player_name": "Aron",
+            "gender": "F",
+            "day": "2020-01-01",
+            "score_points": 17
+          },
+          {
+            "player_name": "Alice",
+            "gender": "F",
+            "day": "2020-01-07",
+            "score_points": 23
+          },
+          {
+            "player_name": "Bajrang",
+            "gender": "M",
+            "day": "2020-01-07",
+            "score_points": 7
+          },
+          {
+            "player_name": "Khali",
+            "gender": "M",
+            "day": "2019-12-25",
+            "score_points": 11
+          },
+          {
+            "player_name": "Slaman",
+            "gender": "M",
+            "day": "2019-12-30",
+            "score_points": 13
+          },
+          {
+            "player_name": "Joe",
+            "gender": "M",
+            "day": "2019-12-31",
+            "score_points": 3
+          },
+          {
+            "player_name": "Jose",
+            "gender": "M",
+            "day": "2019-12-18",
+            "score_points": 2
+          },
+          {
+            "player_name": "Priya",
+            "gender": "F",
+            "day": "2019-12-31",
+            "score_points": 23
+          },
+          {
+            "player_name": "Priyanka",
+            "gender": "F",
+            "day": "2019-12-30",
+            "score_points": 17
+          }
+        ]
+      },
+      "expected": [
+        {
+          "gender": "F",
+          "day": "2019-12-30",
+          "total": 17
+        },
+        {
+          "gender": "F",
+          "day": "2019-12-31",
+          "total": 40
+        },
+        {
+          "gender": "F",
+          "day": "2020-01-01",
+          "total": 57
+        },
+        {
+          "gender": "F",
+          "day": "2020-01-07",
+          "total": 80
+        },
+        {
+          "gender": "M",
+          "day": "2019-12-18",
+          "total": 2
+        },
+        {
+          "gender": "M",
+          "day": "2019-12-25",
+          "total": 13
+        },
+        {
+          "gender": "M",
+          "day": "2019-12-30",
+          "total": 26
+        },
+        {
+          "gender": "M",
+          "day": "2019-12-31",
+          "total": 29
+        },
+        {
+          "gender": "M",
+          "day": "2020-01-07",
+          "total": 36
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "canCompleteCircuit",
+  "paramOrder": ["gas", "cost"],
+  "types": null,
+  "description": null
+}

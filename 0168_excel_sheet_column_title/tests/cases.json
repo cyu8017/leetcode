@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "columnNumber": 1
+      },
+      "expected": "A"
+    },
+    {
+      "args": {
+        "columnNumber": 28
+      },
+      "expected": "AB"
+    },
+    {
+      "args": {
+        "columnNumber": 701
+      },
+      "expected": "ZY"
+    }
+  ]
+}

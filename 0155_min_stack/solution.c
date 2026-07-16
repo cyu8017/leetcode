@@ -1,0 +1,2 @@
+#include <stdlib.h>
+typedef struct{int*a,*m,n,c;}MinStack;MinStack* minStackCreate(){MinStack*s=malloc(sizeof(*s));s->n=0;s->c=16;s->a=malloc(64);s->m=malloc(64);return s;}void minStackPush(MinStack*s,int x){if(s->n==s->c){s->c*=2;s->a=realloc(s->a,s->c*4);s->m=realloc(s->m,s->c*4);}s->a[s->n]=x;s->m[s->n]=s->n?(x<s->m[s->n-1]?x:s->m[s->n-1]):x;s->n++;}void minStackPop(MinStack*s){s->n--;}int minStackTop(MinStack*s){return s->a[s->n-1];}int minStackGetMin(MinStack*s){return s->m[s->n-1];}void minStackFree(MinStack*s){free(s->a);free(s->m);free(s);}

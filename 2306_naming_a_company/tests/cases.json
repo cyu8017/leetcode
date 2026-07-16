@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "ideas": [
+          "coffee",
+          "donuts",
+          "time",
+          "toffee"
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "ideas": [
+          "lack",
+          "back"
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

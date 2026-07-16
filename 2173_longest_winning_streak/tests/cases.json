@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Matches": [
+          {
+            "player_id": 1,
+            "match_day": "2022-01-17",
+            "result": "Win"
+          },
+          {
+            "player_id": 1,
+            "match_day": "2022-01-18",
+            "result": "Win"
+          },
+          {
+            "player_id": 1,
+            "match_day": "2022-01-25",
+            "result": "Win"
+          },
+          {
+            "player_id": 1,
+            "match_day": "2022-01-31",
+            "result": "Draw"
+          },
+          {
+            "player_id": 1,
+            "match_day": "2022-02-08",
+            "result": "Win"
+          },
+          {
+            "player_id": 2,
+            "match_day": "2022-02-06",
+            "result": "Lose"
+          },
+          {
+            "player_id": 2,
+            "match_day": "2022-02-08",
+            "result": "Lose"
+          },
+          {
+            "player_id": 3,
+            "match_day": "2022-03-30",
+            "result": "Win"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "player_id": 1,
+          "longest_streak": 3
+        },
+        {
+          "player_id": 2,
+          "longest_streak": 0
+        },
+        {
+          "player_id": 3,
+          "longest_streak": 1
+        }
+      ]
+    }
+  ]
+}

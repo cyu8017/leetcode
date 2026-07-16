@@ -1,0 +1,6 @@
+﻿# LeetCode 1115 - Print FooBar Alternately
+# https://leetcode.com/problems/print-foobar-alternately/
+
+class Solution:
+    def solve(self) -> None:
+        pass

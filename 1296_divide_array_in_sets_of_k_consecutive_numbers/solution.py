@@ -1,0 +1,6 @@
+﻿# LeetCode 1296 - Divide Array in Sets of K Consecutive Numbers
+# https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
+
+class Solution:
+    def solve(self) -> None:
+        pass

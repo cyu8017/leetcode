@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "validTree",
+  "paramOrder": ["n", "edges"],
+  "types": null,
+  "description": null
+}

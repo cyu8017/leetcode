@@ -1,0 +1,90 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Activities": [
+          {
+            "activity_id": 7274,
+            "user_id": 123,
+            "activity_type": "open",
+            "time_spent": 4.5
+          },
+          {
+            "activity_id": 2425,
+            "user_id": 123,
+            "activity_type": "send",
+            "time_spent": 3.5
+          },
+          {
+            "activity_id": 1413,
+            "user_id": 456,
+            "activity_type": "send",
+            "time_spent": 5.67
+          },
+          {
+            "activity_id": 2536,
+            "user_id": 456,
+            "activity_type": "open",
+            "time_spent": 3.0
+          },
+          {
+            "activity_id": 8564,
+            "user_id": 456,
+            "activity_type": "send",
+            "time_spent": 8.24
+          },
+          {
+            "activity_id": 5235,
+            "user_id": 789,
+            "activity_type": "send",
+            "time_spent": 6.24
+          },
+          {
+            "activity_id": 4251,
+            "user_id": 123,
+            "activity_type": "open",
+            "time_spent": 1.25
+          },
+          {
+            "activity_id": 1435,
+            "user_id": 789,
+            "activity_type": "open",
+            "time_spent": 5.25
+          }
+        ],
+        "Age": [
+          {
+            "user_id": 123,
+            "age_bucket": "31-35"
+          },
+          {
+            "user_id": 789,
+            "age_bucket": "21-25"
+          },
+          {
+            "user_id": 456,
+            "age_bucket": "26-30"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "age_bucket": "31-35",
+          "send_perc": 37.84,
+          "open_perc": 62.16
+        },
+        {
+          "age_bucket": "26-30",
+          "send_perc": 82.26,
+          "open_perc": 17.74
+        },
+        {
+          "age_bucket": "21-25",
+          "send_perc": 54.31,
+          "open_perc": 45.69
+        }
+      ]
+    }
+  ]
+}

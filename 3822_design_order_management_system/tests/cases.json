@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "OrderManagementSystem",
+        "addOrder",
+        "addOrder",
+        "addOrder",
+        "getOrdersAtPrice",
+        "modifyOrder",
+        "modifyOrder",
+        "getOrdersAtPrice",
+        "cancelOrder",
+        "cancelOrder",
+        "getOrdersAtPrice"
+      ],
+      "arguments": [
+        [],
+        [
+          1,
+          "buy",
+          1
+        ],
+        [
+          2,
+          "buy",
+          1
+        ],
+        [
+          3,
+          "sell",
+          2
+        ],
+        [
+          "buy",
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          "buy",
+          1
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          "buy",
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        [
+          2,
+          1
+        ],
+        null,
+        null,
+        [
+          2
+        ],
+        null,
+        null,
+        []
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "startWords": [
+          "ant",
+          "act",
+          "tack"
+        ],
+        "targetWords": [
+          "tack",
+          "act",
+          "acti"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "startWords": [
+          "ab",
+          "a"
+        ],
+        "targetWords": [
+          "abc",
+          "abcd"
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "minCost",
+  "paramOrder": [
+    "houses",
+    "cost",
+    "m",
+    "n",
+    "target"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

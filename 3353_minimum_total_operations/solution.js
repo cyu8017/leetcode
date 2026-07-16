@@ -1,0 +1,9 @@
+﻿// LeetCode 3353 - Minimum Total Operations
+// https://leetcode.com/problems/minimum-total-operations/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

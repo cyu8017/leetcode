@@ -1,0 +1,6 @@
+﻿# LeetCode 0662 - Maximum Width of Binary Tree
+# https://leetcode.com/problems/maximum-width-of-binary-tree/
+
+class Solution:
+    def solve(self) -> None:
+        pass

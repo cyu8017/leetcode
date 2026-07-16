@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "m": 2,
+        "n": 2,
+        "maxMove": 2,
+        "startRow": 0,
+        "startColumn": 0
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "m": 1,
+        "n": 3,
+        "maxMove": 3,
+        "startRow": 0,
+        "startColumn": 1
+      },
+      "expected": 12
+    }
+  ]
+}

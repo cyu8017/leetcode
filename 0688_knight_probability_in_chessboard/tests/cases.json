@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 3,
+        "k": 2,
+        "row": 0,
+        "column": 0
+      },
+      "expected": 0.0625
+    },
+    {
+      "args": {
+        "n": 1,
+        "k": 0,
+        "row": 0,
+        "column": 0
+      },
+      "expected": 1.0
+    }
+  ]
+}

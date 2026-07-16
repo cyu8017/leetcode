@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "keyboard": "abcdefghijklmnopqrstuvwxyz",
+        "word": "cba"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "keyboard": "pqrstuvwxyzabcdefghijklmno",
+        "word": "leetcode"
+      },
+      "expected": 73
+    }
+  ]
+}

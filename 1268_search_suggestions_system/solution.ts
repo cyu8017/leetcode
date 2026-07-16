@@ -1,0 +1,6 @@
+﻿// LeetCode 1268 - Search Suggestions System
+// https://leetcode.com/problems/search-suggestions-system/
+
+function solve(input: unknown): unknown {
+    return null;
+}

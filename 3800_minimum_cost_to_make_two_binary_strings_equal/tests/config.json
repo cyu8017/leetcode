@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "s",
+    "t",
+    "flipCost",
+    "swapCost",
+    "crossCost"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "tiles": "AAB"
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "tiles": "AAABBC"
+      },
+      "expected": 188
+    },
+    {
+      "args": {
+        "tiles": "V"
+      },
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "closestKValues",
+  "paramOrder": ["root", "target", "k"],
+  "types": { "root": "treenode", "return": "integer[]" },
+  "description": null
+}

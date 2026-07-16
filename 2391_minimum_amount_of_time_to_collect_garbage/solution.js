@@ -1,0 +1,9 @@
+﻿// LeetCode 2391 - Minimum Amount of Time to Collect Garbage
+// https://leetcode.com/problems/minimum-amount-of-time-to-collect-garbage/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

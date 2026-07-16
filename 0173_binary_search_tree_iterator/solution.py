@@ -1,0 +1,30 @@
+﻿# LeetCode 0173 - Binary Search Tree Iterator
+# https://leetcode.com/problems/binary-search-tree-iterator/
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class BSTIterator:
+    def __init__(self, root: Optional[TreeNode]):
+        self.stack: list[TreeNode] = []
+        self._push_left(root)
+
+    def _push_left(self, node: Optional[TreeNode]) -> None:
+        while node:
+            self.stack.append(node)
+            node = node.left
+
+    def next(self) -> int:
+        node = self.stack.pop()
+        self._push_left(node.right)
+        return node.val
+
+    def hasNext(self) -> bool:
+        return bool(self.stack)

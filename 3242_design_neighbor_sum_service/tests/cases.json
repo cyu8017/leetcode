@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "NeighborSum",
+        "adjacentSum",
+        "adjacentSum",
+        "diagonalSum",
+        "diagonalSum"
+      ],
+      "arguments": [
+        [
+          [
+            [
+              0,
+              1,
+              2
+            ],
+            [
+              3,
+              4,
+              5
+            ],
+            [
+              6,
+              7,
+              8
+            ]
+          ]
+        ],
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          4
+        ],
+        [
+          8
+        ]
+      ],
+      "expected": [
+        null,
+        6,
+        16,
+        16,
+        4
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "NeighborSum",
+        "adjacentSum",
+        "diagonalSum"
+      ],
+      "arguments": [
+        [
+          [
+            [
+              1,
+              2,
+              0,
+              3
+            ],
+            [
+              4,
+              7,
+              15,
+              6
+            ],
+            [
+              8,
+              9,
+              10,
+              11
+            ],
+            [
+              12,
+              13,
+              14,
+              5
+            ]
+          ]
+        ],
+        [
+          15
+        ],
+        [
+          9
+        ]
+      ],
+      "expected": [
+        null,
+        23,
+        45
+      ]
+    }
+  ]
+}

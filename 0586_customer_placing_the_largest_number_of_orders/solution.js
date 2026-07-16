@@ -1,0 +1,9 @@
+﻿// LeetCode 0586 - Customer Placing the Largest Number of Orders
+// https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

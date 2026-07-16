@@ -1,0 +1,84 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Elements": [
+          {
+            "symbol": "He",
+            "type": "Noble",
+            "electrons": 0
+          },
+          {
+            "symbol": "Na",
+            "type": "Metal",
+            "electrons": 1
+          },
+          {
+            "symbol": "Ca",
+            "type": "Metal",
+            "electrons": 2
+          },
+          {
+            "symbol": "La",
+            "type": "Metal",
+            "electrons": 3
+          },
+          {
+            "symbol": "Cl",
+            "type": "Nonmetal",
+            "electrons": 1
+          },
+          {
+            "symbol": "O",
+            "type": "Nonmetal",
+            "electrons": 2
+          },
+          {
+            "symbol": "N",
+            "type": "Nonmetal",
+            "electrons": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "metal": "La",
+          "nonmetal": "Cl"
+        },
+        {
+          "metal": "Ca",
+          "nonmetal": "Cl"
+        },
+        {
+          "metal": "Na",
+          "nonmetal": "Cl"
+        },
+        {
+          "metal": "La",
+          "nonmetal": "O"
+        },
+        {
+          "metal": "Ca",
+          "nonmetal": "O"
+        },
+        {
+          "metal": "Na",
+          "nonmetal": "O"
+        },
+        {
+          "metal": "La",
+          "nonmetal": "N"
+        },
+        {
+          "metal": "Ca",
+          "nonmetal": "N"
+        },
+        {
+          "metal": "Na",
+          "nonmetal": "N"
+        }
+      ]
+    }
+  ]
+}

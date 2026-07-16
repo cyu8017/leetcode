@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "LUPrefix",
+        "upload",
+        "longest",
+        "upload",
+        "longest",
+        "upload",
+        "longest"
+      ],
+      "arguments": [
+        [
+          4
+        ],
+        [
+          3
+        ],
+        [],
+        [
+          1
+        ],
+        [],
+        [
+          2
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        0,
+        null,
+        1,
+        null,
+        3
+      ]
+    }
+  ]
+}

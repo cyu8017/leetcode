@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "year": 1992,
+        "month": 7
+      },
+      "expected": 31
+    },
+    {
+      "args": {
+        "year": 2000,
+        "month": 2
+      },
+      "expected": 29
+    },
+    {
+      "args": {
+        "year": 1900,
+        "month": 2
+      },
+      "expected": 28
+    }
+  ]
+}

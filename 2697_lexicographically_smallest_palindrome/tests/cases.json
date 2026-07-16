@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "egcfe"
+      },
+      "expected": "efcfe"
+    },
+    {
+      "args": {
+        "s": "abcd"
+      },
+      "expected": "abba"
+    },
+    {
+      "args": {
+        "s": "seven"
+      },
+      "expected": "neven"
+    }
+  ]
+}

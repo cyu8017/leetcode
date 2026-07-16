@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "a": "aba",
+        "b": "cdc"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "a": "aaa",
+        "b": "bbb"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "a": "aaa",
+        "b": "aaa"
+      },
+      "expected": -1
+    }
+  ]
+}

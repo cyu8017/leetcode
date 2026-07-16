@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "command": "G()(al)"
+      },
+      "expected": "Goal"
+    },
+    {
+      "args": {
+        "command": "G()()()()(al)"
+      },
+      "expected": "Gooooal"
+    },
+    {
+      "args": {
+        "command": "(al)G(al)()()G"
+      },
+      "expected": "alGalooG"
+    }
+  ]
+}

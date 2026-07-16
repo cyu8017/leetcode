@@ -1,0 +1,9 @@
+﻿// LeetCode 1503 - Last Moment Before All Ants Fall Out of a Plank
+// https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

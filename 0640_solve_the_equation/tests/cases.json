@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "equation": "x+5-3+x=6+x-2"
+      },
+      "expected": "x=2"
+    },
+    {
+      "args": {
+        "equation": "x=x"
+      },
+      "expected": "Infinite solutions"
+    },
+    {
+      "args": {
+        "equation": "2x=x"
+      },
+      "expected": "x=0"
+    }
+  ]
+}

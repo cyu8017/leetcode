@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "args": {
+        "chunks": [
+          "hello wor",
+          "ld hello"
+        ],
+        "queries": [
+          "hello",
+          "world",
+          "wor"
+        ]
+      },
+      "expected": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "args": {
+        "chunks": [
+          "a-b a--b ",
+          "a-",
+          "b"
+        ],
+        "queries": [
+          "a-b",
+          "a",
+          "b"
+        ]
+      },
+      "expected": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "args": {
+        "chunks": [
+          "-cat dog- mouse"
+        ],
+        "queries": [
+          "cat",
+          "dog",
+          "mouse",
+          "cat-dog"
+        ]
+      },
+      "expected": [
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ]
+}

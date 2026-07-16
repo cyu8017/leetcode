@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Friendship": [
+          {
+            "user1_id": 1,
+            "user2_id": 2
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 3
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 3
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 4
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 4
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 5
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 5
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 7
+          },
+          {
+            "user1_id": 3,
+            "user2_id": 7
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 6
+          },
+          {
+            "user1_id": 3,
+            "user2_id": 6
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 6
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user1_id": 1,
+          "user2_id": 2,
+          "common_friend": 4
+        },
+        {
+          "user1_id": 1,
+          "user2_id": 3,
+          "common_friend": 3
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿# LeetCode 3986 - Number of Elapsed Seconds Between Two Times
+# https://leetcode.com/problems/number-of-elapsed-seconds-between-two-times/
+
+class Solution:
+    def solve(self) -> None:
+        pass

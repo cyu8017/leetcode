@@ -1,0 +1,1 @@
+class Solution { fun convertToTitle(columnNumber0: Int): String { var columnNumber = columnNumber0; val result = StringBuilder(); while (columnNumber > 0) { columnNumber--; result.append(('A'.code + columnNumber % 26).toChar()); columnNumber /= 26 }; return result.reverse().toString() } }

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "diameterOfBinaryTree",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Return the length of the diameter of the binary tree."
+}

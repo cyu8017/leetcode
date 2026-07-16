@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "expression": "&(|(f))"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "expression": "|(f,f,f,t)"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "expression": "!(&(f,t))"
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Drivers": [
+          {
+            "driver_id": 10,
+            "join_date": "2019-12-10"
+          },
+          {
+            "driver_id": 8,
+            "join_date": "2020-1-13"
+          },
+          {
+            "driver_id": 5,
+            "join_date": "2020-2-16"
+          },
+          {
+            "driver_id": 7,
+            "join_date": "2020-3-8"
+          },
+          {
+            "driver_id": 4,
+            "join_date": "2020-5-17"
+          },
+          {
+            "driver_id": 1,
+            "join_date": "2020-10-24"
+          },
+          {
+            "driver_id": 6,
+            "join_date": "2021-1-5"
+          }
+        ],
+        "Rides": [
+          {
+            "ride_id": 6,
+            "user_id": 75,
+            "requested_at": "2019-12-9"
+          },
+          {
+            "ride_id": 1,
+            "user_id": 54,
+            "requested_at": "2020-2-9"
+          },
+          {
+            "ride_id": 10,
+            "user_id": 63,
+            "requested_at": "2020-3-4"
+          },
+          {
+            "ride_id": 19,
+            "user_id": 39,
+            "requested_at": "2020-4-6"
+          },
+          {
+            "ride_id": 3,
+            "user_id": 41,
+            "requested_at": "2020-6-3"
+          },
+          {
+            "ride_id": 13,
+            "user_id": 52,
+            "requested_at": "2020-6-22"
+          },
+          {
+            "ride_id": 7,
+            "user_id": 69,
+            "requested_at": "2020-7-16"
+          },
+          {
+            "ride_id": 17,
+            "user_id": 70,
+            "requested_at": "2020-8-25"
+          },
+          {
+            "ride_id": 20,
+            "user_id": 81,
+            "requested_at": "2020-11-2"
+          },
+          {
+            "ride_id": 5,
+            "user_id": 57,
+            "requested_at": "2020-11-9"
+          },
+          {
+            "ride_id": 2,
+            "user_id": 42,
+            "requested_at": "2020-12-9"
+          },
+          {
+            "ride_id": 11,
+            "user_id": 68,
+            "requested_at": "2021-1-11"
+          },
+          {
+            "ride_id": 15,
+            "user_id": 32,
+            "requested_at": "2021-1-17"
+          },
+          {
+            "ride_id": 12,
+            "user_id": 11,
+            "requested_at": "2021-1-19"
+          },
+          {
+            "ride_id": 14,
+            "user_id": 18,
+            "requested_at": "2021-1-27"
+          }
+        ],
+        "AcceptedRides": [
+          {
+            "ride_id": 10,
+            "driver_id": 10,
+            "ride_distance": 63,
+            "ride_duration": 38
+          },
+          {
+            "ride_id": 13,
+            "driver_id": 10,
+            "ride_distance": 73,
+            "ride_duration": 96
+          },
+          {
+            "ride_id": 7,
+            "driver_id": 8,
+            "ride_distance": 100,
+            "ride_duration": 28
+          },
+          {
+            "ride_id": 17,
+            "driver_id": 7,
+            "ride_distance": 119,
+            "ride_duration": 68
+          },
+          {
+            "ride_id": 20,
+            "driver_id": 1,
+            "ride_distance": 121,
+            "ride_duration": 92
+          },
+          {
+            "ride_id": 5,
+            "driver_id": 7,
+            "ride_distance": 42,
+            "ride_duration": 101
+          },
+          {
+            "ride_id": 2,
+            "driver_id": 4,
+            "ride_distance": 6,
+            "ride_duration": 38
+          },
+          {
+            "ride_id": 11,
+            "driver_id": 8,
+            "ride_distance": 37,
+            "ride_duration": 43
+          },
+          {
+            "ride_id": 15,
+            "driver_id": 8,
+            "ride_distance": 108,
+            "ride_duration": 82
+          },
+          {
+            "ride_id": 12,
+            "driver_id": 8,
+            "ride_distance": 38,
+            "ride_duration": 34
+          },
+          {
+            "ride_id": 14,
+            "driver_id": 1,
+            "ride_distance": 90,
+            "ride_duration": 74
+          }
+        ]
+      },
+      "expected": [
+        {
+          "month": 1,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 2,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 3,
+          "working_percentage": 25.0
+        },
+        {
+          "month": 4,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 5,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 6,
+          "working_percentage": 20.0
+        },
+        {
+          "month": 7,
+          "working_percentage": 20.0
+        },
+        {
+          "month": 8,
+          "working_percentage": 20.0
+        },
+        {
+          "month": 9,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 10,
+          "working_percentage": 0.0
+        },
+        {
+          "month": 11,
+          "working_percentage": 33.33
+        },
+        {
+          "month": 12,
+          "working_percentage": 16.67
+        }
+      ]
+    }
+  ]
+}

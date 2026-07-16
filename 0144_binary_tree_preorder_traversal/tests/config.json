@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "preorderTraversal",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode" },
+  "description": null
+}

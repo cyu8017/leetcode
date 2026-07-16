@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "targetX": 6,
+        "targetY": 9
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "targetX": 4,
+        "targetY": 7
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "args": {
+        "days": 10,
+        "meetings": [
+          [
+            5,
+            7
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            9,
+            10
+          ]
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "days": 5,
+        "meetings": [
+          [
+            2,
+            4
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "days": 6,
+        "meetings": [
+          [
+            1,
+            6
+          ]
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

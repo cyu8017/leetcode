@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "region1": "Quebec",
+        "region2": "New York"
+      },
+      "expected": "North America"
+    },
+    {
+      "args": {
+        "regions": [
+          [
+            "Earth",
+            "North America",
+            "South America"
+          ],
+          [
+            "North America",
+            "United States",
+            "Canada"
+          ],
+          [
+            "United States",
+            "New York",
+            "Boston"
+          ],
+          [
+            "Canada",
+            "Ontario",
+            "Quebec"
+          ],
+          [
+            "South America",
+            "Brazil"
+          ]
+        ],
+        "region1": "Canada",
+        "region2": "South America"
+      },
+      "expected": "Earth"
+    }
+  ]
+}

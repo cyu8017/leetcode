@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "b"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word": "aaa"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "word": "abc"
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Playback": [
+          {
+            "session_id": 1,
+            "customer_id": 1,
+            "start_time": 1,
+            "end_time": 5
+          },
+          {
+            "session_id": 2,
+            "customer_id": 1,
+            "start_time": 15,
+            "end_time": 23
+          },
+          {
+            "session_id": 3,
+            "customer_id": 2,
+            "start_time": 10,
+            "end_time": 12
+          },
+          {
+            "session_id": 4,
+            "customer_id": 2,
+            "start_time": 17,
+            "end_time": 28
+          },
+          {
+            "session_id": 5,
+            "customer_id": 2,
+            "start_time": 2,
+            "end_time": 8
+          }
+        ],
+        "Ads": [
+          {
+            "ad_id": 1,
+            "customer_id": 1,
+            "timestamp": 5
+          },
+          {
+            "ad_id": 2,
+            "customer_id": 2,
+            "timestamp": 17
+          },
+          {
+            "ad_id": 3,
+            "customer_id": 2,
+            "timestamp": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "session_id": 2
+        },
+        {
+          "session_id": 3
+        },
+        {
+          "session_id": 5
+        }
+      ]
+    }
+  ]
+}

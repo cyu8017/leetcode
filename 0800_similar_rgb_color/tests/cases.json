@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "color": "#09f166"
+      },
+      "expected": "#11ee66"
+    },
+    {
+      "args": {
+        "color": "#4e3fe1"
+      },
+      "expected": "#5544dd"
+    }
+  ]
+}

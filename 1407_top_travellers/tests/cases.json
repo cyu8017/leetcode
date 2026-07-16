@@ -1,0 +1,116 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Users": [
+          {
+            "id": 1,
+            "name": "Alice"
+          },
+          {
+            "id": 2,
+            "name": "Bob"
+          },
+          {
+            "id": 3,
+            "name": "Alex"
+          },
+          {
+            "id": 4,
+            "name": "Donald"
+          },
+          {
+            "id": 7,
+            "name": "Lee"
+          },
+          {
+            "id": 13,
+            "name": "Jonathan"
+          },
+          {
+            "id": 19,
+            "name": "Elvis"
+          }
+        ],
+        "Rides": [
+          {
+            "id": 1,
+            "user_id": 1,
+            "distance": 120
+          },
+          {
+            "id": 2,
+            "user_id": 2,
+            "distance": 317
+          },
+          {
+            "id": 3,
+            "user_id": 3,
+            "distance": 222
+          },
+          {
+            "id": 4,
+            "user_id": 7,
+            "distance": 100
+          },
+          {
+            "id": 5,
+            "user_id": 13,
+            "distance": 312
+          },
+          {
+            "id": 6,
+            "user_id": 19,
+            "distance": 50
+          },
+          {
+            "id": 7,
+            "user_id": 7,
+            "distance": 120
+          },
+          {
+            "id": 8,
+            "user_id": 19,
+            "distance": 400
+          },
+          {
+            "id": 9,
+            "user_id": 7,
+            "distance": 230
+          }
+        ]
+      },
+      "expected": [
+        {
+          "name": "Elvis",
+          "travelled_distance": 450
+        },
+        {
+          "name": "Lee",
+          "travelled_distance": 450
+        },
+        {
+          "name": "Bob",
+          "travelled_distance": 317
+        },
+        {
+          "name": "Jonathan",
+          "travelled_distance": 312
+        },
+        {
+          "name": "Alex",
+          "travelled_distance": 222
+        },
+        {
+          "name": "Alice",
+          "travelled_distance": 120
+        },
+        {
+          "name": "Donald",
+          "travelled_distance": 0
+        }
+      ]
+    }
+  ]
+}

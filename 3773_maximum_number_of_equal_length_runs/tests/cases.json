@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "hello"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "aaabaaa"
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿# LeetCode 0775 - Global and Local Inversions
+# https://leetcode.com/problems/global-and-local-inversions/
+
+class Solution:
+    def solve(self) -> None:
+        pass

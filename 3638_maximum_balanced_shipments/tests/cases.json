@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "weight": [
+          2,
+          5,
+          1,
+          4,
+          3
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "weight": [
+          4,
+          4
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

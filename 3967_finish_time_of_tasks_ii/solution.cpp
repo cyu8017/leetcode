@@ -1,0 +1,8 @@
+﻿// LeetCode 3967 - Finish Time of Tasks II
+// https://leetcode.com/problems/finish-time-of-tasks-ii/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

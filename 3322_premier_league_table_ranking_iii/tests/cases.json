@@ -1,0 +1,203 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "SeasonStats": [
+          {
+            "season_id": 2021,
+            "team_id": 1,
+            "team_name": "Manchester City",
+            "matches_played": 38,
+            "wins": 29,
+            "draws": 6,
+            "losses": 3,
+            "goals_for": 99,
+            "goals_against": 26
+          },
+          {
+            "season_id": 2021,
+            "team_id": 2,
+            "team_name": "Liverpool",
+            "matches_played": 38,
+            "wins": 28,
+            "draws": 8,
+            "losses": 2,
+            "goals_for": 94,
+            "goals_against": 26
+          },
+          {
+            "season_id": 2021,
+            "team_id": 3,
+            "team_name": "Chelsea",
+            "matches_played": 38,
+            "wins": 21,
+            "draws": 11,
+            "losses": 6,
+            "goals_for": 76,
+            "goals_against": 33
+          },
+          {
+            "season_id": 2021,
+            "team_id": 4,
+            "team_name": "Tottenham",
+            "matches_played": 38,
+            "wins": 22,
+            "draws": 5,
+            "losses": 11,
+            "goals_for": 69,
+            "goals_against": 40
+          },
+          {
+            "season_id": 2021,
+            "team_id": 5,
+            "team_name": "Arsenal",
+            "matches_played": 38,
+            "wins": 22,
+            "draws": 3,
+            "losses": 13,
+            "goals_for": 61,
+            "goals_against": 48
+          },
+          {
+            "season_id": 2022,
+            "team_id": 1,
+            "team_name": "Manchester City",
+            "matches_played": 38,
+            "wins": 28,
+            "draws": 5,
+            "losses": 5,
+            "goals_for": 94,
+            "goals_against": 33
+          },
+          {
+            "season_id": 2022,
+            "team_id": 2,
+            "team_name": "Arsenal",
+            "matches_played": 38,
+            "wins": 26,
+            "draws": 6,
+            "losses": 6,
+            "goals_for": 88,
+            "goals_against": 43
+          },
+          {
+            "season_id": 2022,
+            "team_id": 3,
+            "team_name": "Manchester United",
+            "matches_played": 38,
+            "wins": 23,
+            "draws": 6,
+            "losses": 9,
+            "goals_for": 58,
+            "goals_against": 43
+          },
+          {
+            "season_id": 2022,
+            "team_id": 4,
+            "team_name": "Newcastle",
+            "matches_played": 38,
+            "wins": 19,
+            "draws": 14,
+            "losses": 5,
+            "goals_for": 68,
+            "goals_against": 33
+          },
+          {
+            "season_id": 2022,
+            "team_id": 5,
+            "team_name": "Liverpool",
+            "matches_played": 38,
+            "wins": 19,
+            "draws": 10,
+            "losses": 9,
+            "goals_for": 75,
+            "goals_against": 47
+          }
+        ]
+      },
+      "expected": [
+        {
+          "season_id": 2021,
+          "team_id": 1,
+          "team_name": "Manchester City",
+          "points": 93,
+          "goal_difference": 73,
+          "position": 1
+        },
+        {
+          "season_id": 2021,
+          "team_id": 2,
+          "team_name": "Liverpool",
+          "points": 92,
+          "goal_difference": 68,
+          "position": 2
+        },
+        {
+          "season_id": 2021,
+          "team_id": 3,
+          "team_name": "Chelsea",
+          "points": 74,
+          "goal_difference": 43,
+          "position": 3
+        },
+        {
+          "season_id": 2021,
+          "team_id": 4,
+          "team_name": "Tottenham",
+          "points": 71,
+          "goal_difference": 29,
+          "position": 4
+        },
+        {
+          "season_id": 2021,
+          "team_id": 5,
+          "team_name": "Arsenal",
+          "points": 69,
+          "goal_difference": 13,
+          "position": 5
+        },
+        {
+          "season_id": 2022,
+          "team_id": 1,
+          "team_name": "Manchester City",
+          "points": 89,
+          "goal_difference": 61,
+          "position": 1
+        },
+        {
+          "season_id": 2022,
+          "team_id": 2,
+          "team_name": "Arsenal",
+          "points": 84,
+          "goal_difference": 45,
+          "position": 2
+        },
+        {
+          "season_id": 2022,
+          "team_id": 3,
+          "team_name": "Manchester United",
+          "points": 75,
+          "goal_difference": 15,
+          "position": 3
+        },
+        {
+          "season_id": 2022,
+          "team_id": 4,
+          "team_name": "Newcastle",
+          "points": 71,
+          "goal_difference": 35,
+          "position": 4
+        },
+        {
+          "season_id": 2022,
+          "team_id": 5,
+          "team_name": "Liverpool",
+          "points": 67,
+          "goal_difference": 28,
+          "position": 5
+        }
+      ]
+    }
+  ]
+}

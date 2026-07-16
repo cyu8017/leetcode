@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "args": {
+        "o1": {
+          "x": 1,
+          "y": 2
+        },
+        "o2": {
+          "x": 1,
+          "y": 2
+        }
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "o1": {
+          "y": 2,
+          "x": 1
+        },
+        "o2": {
+          "x": 1,
+          "y": 2
+        }
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "o1": {
+          "x": null,
+          "L": [
+            1,
+            2,
+            3
+          ]
+        },
+        "o2": {
+          "x": null,
+          "L": [
+            "1",
+            "2",
+            "3"
+          ]
+        }
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "o1": true,
+        "o2": false
+      },
+      "expected": false
+    }
+  ]
+}

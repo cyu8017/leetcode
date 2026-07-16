@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "tree"
+      },
+      "expected": "eert"
+    },
+    {
+      "args": {
+        "s": "cccaaa"
+      },
+      "expected": "aaaccc"
+    },
+    {
+      "args": {
+        "s": "Aabb"
+      },
+      "expected": "bbAa"
+    }
+  ]
+}

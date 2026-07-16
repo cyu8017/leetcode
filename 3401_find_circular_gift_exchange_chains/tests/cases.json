@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "SecretSanta": [
+          {
+            "giver_id": 1,
+            "receiver_id": 2,
+            "gift_value": 20
+          },
+          {
+            "giver_id": 2,
+            "receiver_id": 3,
+            "gift_value": 30
+          },
+          {
+            "giver_id": 3,
+            "receiver_id": 1,
+            "gift_value": 40
+          },
+          {
+            "giver_id": 4,
+            "receiver_id": 5,
+            "gift_value": 25
+          },
+          {
+            "giver_id": 5,
+            "receiver_id": 4,
+            "gift_value": 35
+          }
+        ]
+      },
+      "expected": [
+        {
+          "chain_id": 1,
+          "chain_length": 3,
+          "total_gift_value": 90
+        },
+        {
+          "chain_id": 2,
+          "chain_length": 2,
+          "total_gift_value": 60
+        }
+      ]
+    }
+  ]
+}

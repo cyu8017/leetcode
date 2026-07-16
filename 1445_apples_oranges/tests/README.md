@@ -1,0 +1,215 @@
+# Test harness for 1445_apples_oranges
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1445_apples_oranges -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1445_apples_oranges --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1445_apples_oranges --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1445_apples_oranges --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1445_apples_oranges --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1445_apples_oranges --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1445_apples_oranges --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1445_apples_oranges --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1445_apples_oranges --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1445_apples_oranges --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1445_apples_oranges --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1445_apples_oranges --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1445_apples_oranges --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1445_apples_oranges --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1445_apples_oranges --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1445_apples_oranges --language python
+./scripts/test.sh --folder 1445_apples_oranges --language javascript
+./scripts/test.sh --folder 1445_apples_oranges --language typescript
+./scripts/test.sh --folder 1445_apples_oranges --language java
+./scripts/test.sh --folder 1445_apples_oranges --language cpp
+./scripts/test.sh --folder 1445_apples_oranges --language c
+./scripts/test.sh --folder 1445_apples_oranges --language go
+./scripts/test.sh --folder 1445_apples_oranges --language rust
+./scripts/test.sh --folder 1445_apples_oranges --language kotlin
+./scripts/test.sh --folder 1445_apples_oranges --language swift
+./scripts/test.sh --folder 1445_apples_oranges --language ruby
+./scripts/test.sh --folder 1445_apples_oranges --language csharp
+./scripts/test.sh --folder 1445_apples_oranges --language scala
+./scripts/test.sh --folder 1445_apples_oranges --language php
+./scripts/test.sh --folder 1445_apples_oranges --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1445_apples_oranges --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1445_apples_oranges --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1445_apples_oranges --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1445_apples_oranges --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1445_apples_oranges --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1445_apples_oranges --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1445_apples_oranges --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1445_apples_oranges --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1445_apples_oranges --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1445_apples_oranges --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1445_apples_oranges --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1445_apples_oranges --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1445_apples_oranges --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1445_apples_oranges --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm java java 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm c c 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm go go 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm rust rust 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm swift swift 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm scala scala 1445_apples_oranges
+docker compose -f docker/docker-compose.yml run --rm php php 1445_apples_oranges
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1445_apples_oranges` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1445_apples_oranges` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1445_apples_oranges` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1445_apples_oranges` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1445_apples_oranges` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1445_apples_oranges` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1445_apples_oranges` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1445_apples_oranges` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1445_apples_oranges` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1445_apples_oranges` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1445_apples_oranges` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1445_apples_oranges` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1445_apples_oranges` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1445_apples_oranges` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1445_apples_oranges -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1445_apples_oranges --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1445_apples_oranges --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

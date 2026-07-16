@@ -1,0 +1,7 @@
+﻿# LeetCode 3609 - Minimum Moves to Reach Target in Grid
+# https://leetcode.com/problems/minimum-moves-to-reach-target-in-grid/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

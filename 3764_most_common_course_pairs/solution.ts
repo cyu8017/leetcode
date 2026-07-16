@@ -1,0 +1,6 @@
+﻿// LeetCode 3764 - Most Common Course Pairs
+// https://leetcode.com/problems/most-common-course-pairs/
+
+function solve(input: unknown): unknown {
+    return null;
+}

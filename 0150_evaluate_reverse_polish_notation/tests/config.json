@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "evalRPN",
+  "paramOrder": ["tokens"],
+  "types": null,
+  "description": null
+}

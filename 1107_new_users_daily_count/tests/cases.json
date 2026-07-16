@@ -1,0 +1,96 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Traffic": [
+          {
+            "user_id": 1,
+            "activity": "login",
+            "activity_date": "2019-05-01"
+          },
+          {
+            "user_id": 1,
+            "activity": "homepage",
+            "activity_date": "2019-05-01"
+          },
+          {
+            "user_id": 1,
+            "activity": "logout",
+            "activity_date": "2019-05-01"
+          },
+          {
+            "user_id": 2,
+            "activity": "login",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 2,
+            "activity": "logout",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 3,
+            "activity": "login",
+            "activity_date": "2019-01-01"
+          },
+          {
+            "user_id": 3,
+            "activity": "jobs",
+            "activity_date": "2019-01-01"
+          },
+          {
+            "user_id": 3,
+            "activity": "logout",
+            "activity_date": "2019-01-01"
+          },
+          {
+            "user_id": 4,
+            "activity": "login",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 4,
+            "activity": "groups",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 4,
+            "activity": "logout",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 5,
+            "activity": "login",
+            "activity_date": "2019-03-01"
+          },
+          {
+            "user_id": 5,
+            "activity": "logout",
+            "activity_date": "2019-03-01"
+          },
+          {
+            "user_id": 5,
+            "activity": "login",
+            "activity_date": "2019-06-21"
+          },
+          {
+            "user_id": 5,
+            "activity": "logout",
+            "activity_date": "2019-06-21"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "login_date": "2019-05-01",
+          "user_count": 1
+        },
+        {
+          "login_date": "2019-06-21",
+          "user_count": 2
+        }
+      ]
+    }
+  ]
+}

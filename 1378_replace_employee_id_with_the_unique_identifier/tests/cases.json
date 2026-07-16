@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "id": 1,
+            "name": "Alice"
+          },
+          {
+            "id": 7,
+            "name": "Bob"
+          },
+          {
+            "id": 11,
+            "name": "Meir"
+          },
+          {
+            "id": 90,
+            "name": "Winston"
+          },
+          {
+            "id": 3,
+            "name": "Jonathan"
+          }
+        ],
+        "EmployeeUNI": [
+          {
+            "id": 3,
+            "unique_id": 1
+          },
+          {
+            "id": 11,
+            "unique_id": 2
+          },
+          {
+            "id": 90,
+            "unique_id": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "unique_id": null,
+          "name": "Alice"
+        },
+        {
+          "unique_id": null,
+          "name": "Bob"
+        },
+        {
+          "unique_id": 2,
+          "name": "Meir"
+        },
+        {
+          "unique_id": 3,
+          "name": "Winston"
+        },
+        {
+          "unique_id": 1,
+          "name": "Jonathan"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Skiplist",
+        "add",
+        "add",
+        "add",
+        "search",
+        "add",
+        "search",
+        "erase",
+        "erase",
+        "search"
+      ],
+      "arguments": [
+        [],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          0
+        ],
+        [
+          4
+        ],
+        [
+          1
+        ],
+        [
+          0
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        false,
+        null,
+        true,
+        false,
+        true,
+        false
+      ]
+    }
+  ]
+}

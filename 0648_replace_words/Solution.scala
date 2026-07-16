@@ -1,0 +1,6 @@
+﻿// LeetCode 0648 - Replace Words
+// https://leetcode.com/problems/replace-words/
+
+object Solution {
+  def solve(): Unit = {}
+}

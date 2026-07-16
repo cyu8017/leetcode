@@ -1,0 +1,6 @@
+﻿// LeetCode 2132 - Stamping the Grid
+// https://leetcode.com/problems/stamping-the-grid/
+
+function solve(input: unknown): unknown {
+    return null;
+}

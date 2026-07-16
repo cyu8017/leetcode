@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "mainTank": 5,
+        "additionalTank": 10
+      },
+      "expected": 60
+    },
+    {
+      "args": {
+        "mainTank": 1,
+        "additionalTank": 2
+      },
+      "expected": 10
+    }
+  ]
+}

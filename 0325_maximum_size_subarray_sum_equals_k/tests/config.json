@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "maxSubArrayLen",
+  "paramOrder": ["nums", "k"],
+  "types": null,
+  "description": null
+}

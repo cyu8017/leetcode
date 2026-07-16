@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "args": {
+        "allowed": "ab",
+        "words": [
+          "ad",
+          "bd",
+          "aaab",
+          "baa",
+          "badab"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "allowed": "abc",
+        "words": [
+          "a",
+          "b",
+          "c",
+          "ab",
+          "ac",
+          "bc",
+          "abc"
+        ]
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "allowed": "cad",
+        "words": [
+          "cc",
+          "acd",
+          "b",
+          "ba",
+          "bac",
+          "bad",
+          "ac",
+          "d"
+        ]
+      },
+      "expected": 4
+    }
+  ]
+}

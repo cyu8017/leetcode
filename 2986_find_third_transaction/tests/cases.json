@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "user_id": 1,
+            "spend": 65.56,
+            "transaction_date": "2023-11-18 13:49:42"
+          },
+          {
+            "user_id": 1,
+            "spend": 96.0,
+            "transaction_date": "2023-11-30 02:47:26"
+          },
+          {
+            "user_id": 1,
+            "spend": 7.44,
+            "transaction_date": "2023-11-02 12:15:23"
+          },
+          {
+            "user_id": 1,
+            "spend": 49.78,
+            "transaction_date": "2023-11-12 00:13:46"
+          },
+          {
+            "user_id": 2,
+            "spend": 40.89,
+            "transaction_date": "2023-11-21 04:39:15"
+          },
+          {
+            "user_id": 2,
+            "spend": 100.44,
+            "transaction_date": "2023-11-20 07:39:34"
+          },
+          {
+            "user_id": 3,
+            "spend": 37.33,
+            "transaction_date": "2023-11-03 06:22:02"
+          },
+          {
+            "user_id": 3,
+            "spend": 13.89,
+            "transaction_date": "2023-11-11 16:00:14"
+          },
+          {
+            "user_id": 3,
+            "spend": 7.0,
+            "transaction_date": "2023-11-29 22:32:36"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "third_transaction_spend": 65.56,
+          "third_transaction_date": "2023-11-18 13:49:42"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "rings": "B0B6G0R6R0R6G9"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "rings": "B0R0G0R9R0B0G0"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "rings": "G4"
+      },
+      "expected": 0
+    }
+  ]
+}

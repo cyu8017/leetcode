@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "secret": "1807",
+        "guess": "7810"
+      },
+      "expected": "1A3B"
+    },
+    {
+      "args": {
+        "secret": "1123",
+        "guess": "0111"
+      },
+      "expected": "1A1B"
+    }
+  ]
+}

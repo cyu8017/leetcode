@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums1": [
+          12,
+          28,
+          46,
+          32,
+          50
+        ],
+        "nums2": [
+          50,
+          12,
+          32,
+          46,
+          28
+        ]
+      },
+      "expected": [
+        1,
+        4,
+        3,
+        2,
+        0
+      ]
+    },
+    {
+      "args": {
+        "nums1": [
+          84,
+          46
+        ],
+        "nums2": [
+          84,
+          46
+        ]
+      },
+      "expected": "[0,1]\n**Constraints:**\n- `1 <= nums1.length <= 100`\n- `nums2.length == nums1.length`\n- `0 <= nums1[i], nums2[i] <= 10^{5}`\n- `nums2` is an anagram of `nums1`.\n---"
+    }
+  ]
+}

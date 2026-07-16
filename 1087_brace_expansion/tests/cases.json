@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "{a,b}c{d,e}f"
+      },
+      "expected": [
+        "acdf",
+        "acef",
+        "bcdf",
+        "bcef"
+      ]
+    },
+    {
+      "args": {
+        "s": "abcd"
+      },
+      "expected": "[\"abcd\"]\n**Constraints:**\n- `1 <= s.length <= 50`\n- `s` consists of curly brackets `'{}'`, commas `','`, and lowercase English letters.\n- `s` is guaranteed to be a valid input.\n- There are no nested curly brackets.\n- All characters inside a pair of consecutive opening and ending curly brackets are different.\n---"
+    }
+  ]
+}

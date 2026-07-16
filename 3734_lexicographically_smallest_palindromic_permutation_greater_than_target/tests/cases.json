@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "baba",
+        "target": "abba"
+      },
+      "expected": "baab"
+    },
+    {
+      "args": {
+        "s": "baba",
+        "target": "bbaa"
+      },
+      "expected": ""
+    },
+    {
+      "args": {
+        "s": "abc",
+        "target": "abb"
+      },
+      "expected": ""
+    },
+    {
+      "args": {
+        "s": "aac",
+        "target": "abb"
+      },
+      "expected": "aca"
+    }
+  ]
+}

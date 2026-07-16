@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Encrypter",
+        "encrypt",
+        "decrypt"
+      ],
+      "arguments": [
+        [
+          [
+            "a",
+            "b",
+            "c",
+            "d"
+          ],
+          [
+            "ei",
+            "zf",
+            "ei",
+            "am"
+          ],
+          [
+            "abcd",
+            "acbd",
+            "adbc",
+            "badc",
+            "dacb",
+            "cadb",
+            "cbda",
+            "abad"
+          ]
+        ],
+        [
+          "abcd"
+        ],
+        [
+          "eizfeiam"
+        ]
+      ],
+      "expected": [
+        null,
+        "eizfeiam",
+        2
+      ]
+    }
+  ]
+}

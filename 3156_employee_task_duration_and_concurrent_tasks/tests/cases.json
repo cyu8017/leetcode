@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tasks": [
+          {
+            "task_id": 1,
+            "employee_id": 1001,
+            "start_time": "2023-05-01 08:00:00",
+            "end_time": "2023-05-01 09:00:00"
+          },
+          {
+            "task_id": 2,
+            "employee_id": 1001,
+            "start_time": "2023-05-01 08:30:00",
+            "end_time": "2023-05-01 10:30:00"
+          },
+          {
+            "task_id": 3,
+            "employee_id": 1001,
+            "start_time": "2023-05-01 11:00:00",
+            "end_time": "2023-05-01 12:00:00"
+          },
+          {
+            "task_id": 7,
+            "employee_id": 1001,
+            "start_time": "2023-05-01 13:00:00",
+            "end_time": "2023-05-01 15:30:00"
+          },
+          {
+            "task_id": 4,
+            "employee_id": 1002,
+            "start_time": "2023-05-01 09:00:00",
+            "end_time": "2023-05-01 10:00:00"
+          },
+          {
+            "task_id": 5,
+            "employee_id": 1002,
+            "start_time": "2023-05-01 09:30:00",
+            "end_time": "2023-05-01 11:30:00"
+          },
+          {
+            "task_id": 6,
+            "employee_id": 1003,
+            "start_time": "2023-05-01 14:00:00",
+            "end_time": "2023-05-01 16:00:00"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1001,
+          "total_task_hours": 6,
+          "max_concurrent_tasks": 2
+        },
+        {
+          "employee_id": 1002,
+          "total_task_hours": 2,
+          "max_concurrent_tasks": 2
+        },
+        {
+          "employee_id": 1003,
+          "total_task_hours": 2,
+          "max_concurrent_tasks": 1
+        }
+      ]
+    }
+  ]
+}

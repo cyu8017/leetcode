@@ -1,0 +1,6 @@
+﻿// LeetCode 1844 - Replace All Digits with Characters
+// https://leetcode.com/problems/replace-all-digits-with-characters/
+
+function solve(input: unknown): unknown {
+    return null;
+}

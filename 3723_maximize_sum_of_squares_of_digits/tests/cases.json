@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "num": 2,
+        "sum": 3
+      },
+      "expected": "30"
+    },
+    {
+      "args": {
+        "num": 2,
+        "sum": 17
+      },
+      "expected": "98"
+    },
+    {
+      "args": {
+        "num": 1,
+        "sum": 10
+      },
+      "expected": ""
+    }
+  ]
+}

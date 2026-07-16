@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "maximumGap",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tasks": [
+          {
+            "task_id": 1,
+            "subtasks_count": 3
+          },
+          {
+            "task_id": 2,
+            "subtasks_count": 2
+          },
+          {
+            "task_id": 3,
+            "subtasks_count": 4
+          }
+        ],
+        "Executed": [
+          {
+            "task_id": 1,
+            "subtask_id": 2
+          },
+          {
+            "task_id": 3,
+            "subtask_id": 1
+          },
+          {
+            "task_id": 3,
+            "subtask_id": 2
+          },
+          {
+            "task_id": 3,
+            "subtask_id": 3
+          },
+          {
+            "task_id": 3,
+            "subtask_id": 4
+          }
+        ]
+      },
+      "expected": [
+        {
+          "task_id": 1,
+          "subtask_id": 1
+        },
+        {
+          "task_id": 1,
+          "subtask_id": 3
+        },
+        {
+          "task_id": 2,
+          "subtask_id": 1
+        },
+        {
+          "task_id": 2,
+          "subtask_id": 2
+        }
+      ]
+    }
+  ]
+}

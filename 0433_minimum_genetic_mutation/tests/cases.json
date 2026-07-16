@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "startGene": "AACCGGTT",
+        "endGene": "AACCGGTA",
+        "bank": [
+          "AACCGGTA"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "startGene": "AACCGGTT",
+        "endGene": "AAACGGTA",
+        "bank": [
+          "AACCGGTA",
+          "AACCGCTA",
+          "AAACGGTA"
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

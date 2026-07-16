@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "cooear"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "axeyizou"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "au 123"
+      },
+      "expected": 0
+    }
+  ]
+}

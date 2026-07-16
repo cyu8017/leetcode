@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "ring": "godding",
+        "key": "gd"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "ring": "godding",
+        "key": "godding"
+      },
+      "expected": 13
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+﻿// LeetCode 2954 - Count the Number of Infection Sequences
+// https://leetcode.com/problems/count-the-number-of-infection-sequences/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

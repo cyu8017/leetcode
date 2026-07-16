@@ -1,0 +1,7 @@
+﻿// LeetCode 1189 - Maximum Number of Balloons
+// https://leetcode.com/problems/maximum-number-of-balloons/
+
+class Solution {
+    func solve() {
+    }
+}

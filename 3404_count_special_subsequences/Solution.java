@@ -1,0 +1,7 @@
+﻿// LeetCode 3404 - Count Special Subsequences
+// https://leetcode.com/problems/count-special-subsequences/
+
+class Solution {
+    public void solve() {
+    }
+}

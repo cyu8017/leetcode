@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "releaseTimes": [
+          9,
+          29,
+          49,
+          50
+        ],
+        "keysPressed": "cbcd"
+      },
+      "expected": "c"
+    },
+    {
+      "args": {
+        "releaseTimes": [
+          12,
+          23,
+          36,
+          46,
+          62
+        ],
+        "keysPressed": "spuda"
+      },
+      "expected": "a"
+    }
+  ]
+}

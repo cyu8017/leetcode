@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "LeetCode@LeetCode.com"
+      },
+      "expected": "l*****e@leetcode.com"
+    },
+    {
+      "args": {
+        "s": "AB@qq.com"
+      },
+      "expected": "a*****b@qq.com"
+    },
+    {
+      "args": {
+        "s": "1(234)567-890"
+      },
+      "expected": "***-***-7890"
+    }
+  ]
+}

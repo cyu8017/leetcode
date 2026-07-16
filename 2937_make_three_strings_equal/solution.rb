@@ -1,0 +1,7 @@
+﻿# LeetCode 2937 - Make Three Strings Equal
+# https://leetcode.com/problems/make-three-strings-equal/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

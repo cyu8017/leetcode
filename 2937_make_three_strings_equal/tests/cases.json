@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "abc",
+        "s2": "abb",
+        "s3": "ab"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s1": "dac",
+        "s2": "bac",
+        "s3": "cac"
+      },
+      "expected": -1
+    }
+  ]
+}

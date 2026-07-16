@@ -1,0 +1,87 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "emp_id": 156,
+            "emp_name": "Michael",
+            "dep_id": 107,
+            "position": "Manager"
+          },
+          {
+            "emp_id": 112,
+            "emp_name": "Lucas",
+            "dep_id": 107,
+            "position": "Consultant"
+          },
+          {
+            "emp_id": 8,
+            "emp_name": "Isabella",
+            "dep_id": 101,
+            "position": "Manager"
+          },
+          {
+            "emp_id": 160,
+            "emp_name": "Joseph",
+            "dep_id": 100,
+            "position": "Manager"
+          },
+          {
+            "emp_id": 80,
+            "emp_name": "Aiden",
+            "dep_id": 100,
+            "position": "Engineer"
+          },
+          {
+            "emp_id": 190,
+            "emp_name": "Skylar",
+            "dep_id": 100,
+            "position": "Freelancer"
+          },
+          {
+            "emp_id": 196,
+            "emp_name": "Stella",
+            "dep_id": 101,
+            "position": "Coordinator"
+          },
+          {
+            "emp_id": 167,
+            "emp_name": "Audrey",
+            "dep_id": 100,
+            "position": "Consultant"
+          },
+          {
+            "emp_id": 97,
+            "emp_name": "Nathan",
+            "dep_id": 101,
+            "position": "Supervisor"
+          },
+          {
+            "emp_id": 128,
+            "emp_name": "Ian",
+            "dep_id": 101,
+            "position": "Administrator"
+          },
+          {
+            "emp_id": 81,
+            "emp_name": "Ethan",
+            "dep_id": 107,
+            "position": "Administrator"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "manager_name": "Joseph",
+          "dep_id": 100
+        },
+        {
+          "manager_name": "Isabella",
+          "dep_id": 101
+        }
+      ]
+    }
+  ]
+}

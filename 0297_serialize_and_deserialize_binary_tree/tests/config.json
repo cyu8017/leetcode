@@ -1,0 +1,10 @@
+{
+  "class": "Codec",
+  "method": "serialize",
+  "paramOrder": ["root"],
+  "types": {
+    "root": "treenode",
+    "return": "treenode"
+  },
+  "description": null
+}

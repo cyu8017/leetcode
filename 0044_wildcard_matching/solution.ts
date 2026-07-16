@@ -1,0 +1,27 @@
+﻿// LeetCode 0044 - Wildcard Matching
+// https://leetcode.com/problems/wildcard-matching/
+
+export function isMatch(s: string, p: string): boolean {
+    const m = s.length;
+    const n = p.length;
+    const dp = Array.from({ length: m + 1 }, () => new Array<boolean>(n + 1).fill(false));
+    dp[0][0] = true;
+
+    for (let j = 1; j <= n; j += 1) {
+        if (p[j - 1] === "*") {
+            dp[0][j] = dp[0][j - 1];
+        }
+    }
+
+    for (let i = 1; i <= m; i += 1) {
+        for (let j = 1; j <= n; j += 1) {
+            if (p[j - 1] === "*") {
+                dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
+            } else if (p[j - 1] === "?" || p[j - 1] === s[i - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            }
+        }
+    }
+
+    return dp[m][n];
+}

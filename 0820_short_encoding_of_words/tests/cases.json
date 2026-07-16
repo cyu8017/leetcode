@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "time",
+          "me",
+          "bell"
+        ]
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "words": [
+          "t"
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

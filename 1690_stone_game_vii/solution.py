@@ -1,0 +1,6 @@
+﻿# LeetCode 1690 - Stone Game VII
+# https://leetcode.com/problems/stone-game-vii/
+
+class Solution:
+    def solve(self) -> None:
+        pass

@@ -1,0 +1,9 @@
+﻿// LeetCode 3188 - Find Top Scoring Students II
+// https://leetcode.com/problems/find-top-scoring-students-ii/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

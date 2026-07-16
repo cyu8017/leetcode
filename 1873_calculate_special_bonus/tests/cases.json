@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 2,
+            "name": "Meir",
+            "salary": 3000
+          },
+          {
+            "employee_id": 3,
+            "name": "Michael",
+            "salary": 3800
+          },
+          {
+            "employee_id": 7,
+            "name": "Addilyn",
+            "salary": 7400
+          },
+          {
+            "employee_id": 8,
+            "name": "Juan",
+            "salary": 6100
+          },
+          {
+            "employee_id": 9,
+            "name": "Kannon",
+            "salary": 7700
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 2,
+          "bonus": 0
+        },
+        {
+          "employee_id": 3,
+          "bonus": 0
+        },
+        {
+          "employee_id": 7,
+          "bonus": 7400
+        },
+        {
+          "employee_id": 8,
+          "bonus": 0
+        },
+        {
+          "employee_id": 9,
+          "bonus": 7700
+        }
+      ]
+    }
+  ]
+}

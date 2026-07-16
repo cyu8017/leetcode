@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "jewels": "aA",
+        "stones": "aAAbbbb"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "jewels": "z",
+        "stones": "ZZ"
+      },
+      "expected": 0
+    }
+  ]
+}

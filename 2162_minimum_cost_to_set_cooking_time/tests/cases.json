@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "startAt": 1,
+        "moveCost": 2,
+        "pushCost": 1,
+        "targetSeconds": 600
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "startAt": 0,
+        "moveCost": 1,
+        "pushCost": 2,
+        "targetSeconds": 76
+      },
+      "expected": 6
+    }
+  ]
+}

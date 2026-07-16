@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Products": [
+          {
+            "product_id": 0,
+            "store1": 95,
+            "store2": 100,
+            "store3": 105
+          },
+          {
+            "product_id": 1,
+            "store1": 70,
+            "store2": null,
+            "store3": 80
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 0,
+          "store": "store1",
+          "price": 95
+        },
+        {
+          "product_id": 0,
+          "store": "store2",
+          "price": 100
+        },
+        {
+          "product_id": 0,
+          "store": "store3",
+          "price": 105
+        },
+        {
+          "product_id": 1,
+          "store": "store1",
+          "price": 70
+        },
+        {
+          "product_id": 1,
+          "store": "store3",
+          "price": 80
+        }
+      ]
+    }
+  ]
+}

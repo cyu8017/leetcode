@@ -1,0 +1,80 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customers": [
+          {
+            "customer_id": 1,
+            "customer_name": "Daniel"
+          },
+          {
+            "customer_id": 2,
+            "customer_name": "Diana"
+          },
+          {
+            "customer_id": 3,
+            "customer_name": "Elizabeth"
+          },
+          {
+            "customer_id": 4,
+            "customer_name": "Jhon"
+          }
+        ],
+        "Orders": [
+          {
+            "order_id": 10,
+            "customer_id": 1,
+            "product_name": "A"
+          },
+          {
+            "order_id": 20,
+            "customer_id": 1,
+            "product_name": "B"
+          },
+          {
+            "order_id": 30,
+            "customer_id": 1,
+            "product_name": "D"
+          },
+          {
+            "order_id": 40,
+            "customer_id": 1,
+            "product_name": "C"
+          },
+          {
+            "order_id": 50,
+            "customer_id": 2,
+            "product_name": "A"
+          },
+          {
+            "order_id": 60,
+            "customer_id": 3,
+            "product_name": "A"
+          },
+          {
+            "order_id": 70,
+            "customer_id": 3,
+            "product_name": "B"
+          },
+          {
+            "order_id": 80,
+            "customer_id": 3,
+            "product_name": "D"
+          },
+          {
+            "order_id": 90,
+            "customer_id": 4,
+            "product_name": "C"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 3,
+          "customer_name": "Elizabeth"
+        }
+      ]
+    }
+  ]
+}

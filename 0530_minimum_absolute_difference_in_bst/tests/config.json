@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "getMinimumDifference",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Return minimum absolute difference between BST nodes."
+}

@@ -1,0 +1,89 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Variables": [
+          {
+            "name": "x",
+            "value": 66
+          },
+          {
+            "name": "y",
+            "value": 77
+          }
+        ],
+        "Expressions": [
+          {
+            "left_operand": "x",
+            "operator": ">",
+            "right_operand": "y"
+          },
+          {
+            "left_operand": "x",
+            "operator": "<",
+            "right_operand": "y"
+          },
+          {
+            "left_operand": "x",
+            "operator": "=",
+            "right_operand": "y"
+          },
+          {
+            "left_operand": "y",
+            "operator": ">",
+            "right_operand": "x"
+          },
+          {
+            "left_operand": "y",
+            "operator": "<",
+            "right_operand": "x"
+          },
+          {
+            "left_operand": "x",
+            "operator": "=",
+            "right_operand": "x"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "left_operand": "x",
+          "operator": ">",
+          "right_operand": "y",
+          "value": "false"
+        },
+        {
+          "left_operand": "x",
+          "operator": "<",
+          "right_operand": "y",
+          "value": "true"
+        },
+        {
+          "left_operand": "x",
+          "operator": "=",
+          "right_operand": "y",
+          "value": "false"
+        },
+        {
+          "left_operand": "y",
+          "operator": ">",
+          "right_operand": "x",
+          "value": "true"
+        },
+        {
+          "left_operand": "y",
+          "operator": "<",
+          "right_operand": "x",
+          "value": "false"
+        },
+        {
+          "left_operand": "x",
+          "operator": "=",
+          "right_operand": "x",
+          "value": "true"
+        }
+      ]
+    }
+  ]
+}

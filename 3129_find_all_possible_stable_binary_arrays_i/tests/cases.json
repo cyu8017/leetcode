@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "zero": 1,
+        "one": 1,
+        "limit": 2
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "zero": 1,
+        "one": 2,
+        "limit": 1
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "zero": 3,
+        "one": 3,
+        "limit": 2
+      },
+      "expected": 14
+    }
+  ]
+}

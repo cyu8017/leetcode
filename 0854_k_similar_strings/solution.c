@@ -1,0 +1,5 @@
+﻿// LeetCode 0854 - K-Similar Strings
+// https://leetcode.com/problems/k-similar-strings/
+
+void solve() {
+}

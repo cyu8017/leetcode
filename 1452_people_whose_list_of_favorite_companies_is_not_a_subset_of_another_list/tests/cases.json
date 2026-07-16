@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "args": {
+        "favoriteCompanies": [
+          [
+            "leetcode",
+            "google",
+            "facebook"
+          ],
+          [
+            "google",
+            "microsoft"
+          ],
+          [
+            "google",
+            "facebook"
+          ],
+          [
+            "google"
+          ],
+          [
+            "amazon"
+          ]
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "args": {
+        "favoriteCompanies": [
+          [
+            "leetcode",
+            "google",
+            "facebook"
+          ],
+          [
+            "leetcode",
+            "amazon"
+          ],
+          [
+            "facebook",
+            "google"
+          ]
+        ]
+      },
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "args": {
+        "favoriteCompanies": [
+          [
+            "leetcode"
+          ],
+          [
+            "google"
+          ],
+          [
+            "facebook"
+          ],
+          [
+            "amazon"
+          ]
+        ]
+      },
+      "expected": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ]
+}

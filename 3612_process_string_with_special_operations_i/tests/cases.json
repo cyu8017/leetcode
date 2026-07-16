@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "a#b%*"
+      },
+      "expected": "ba"
+    },
+    {
+      "args": {
+        "s": "z*#"
+      },
+      "expected": ""
+    }
+  ]
+}

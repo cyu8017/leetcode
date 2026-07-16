@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "tokens": [
+          100
+        ],
+        "power": 50
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "tokens": [
+          200,
+          100
+        ],
+        "power": 150
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "tokens": [
+          100,
+          200,
+          300,
+          400
+        ],
+        "power": 200
+      },
+      "expected": 2
+    }
+  ]
+}

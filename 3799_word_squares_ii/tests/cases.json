@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "able",
+          "area",
+          "echo",
+          "also"
+        ]
+      },
+      "expected": [
+        [
+          "able",
+          "area",
+          "echo",
+          "also"
+        ],
+        [
+          "area",
+          "able",
+          "also",
+          "echo"
+        ]
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "code",
+          "cafe",
+          "eden",
+          "edge"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

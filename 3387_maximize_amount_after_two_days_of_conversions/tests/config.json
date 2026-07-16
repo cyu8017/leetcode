@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "maxAmount",
+  "paramOrder": [
+    "initialCurrency",
+    "pairs1",
+    "rates1",
+    "pairs2",
+    "rates2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

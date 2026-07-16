@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 1,
+            "employee_name": "Alice",
+            "manager_id": null,
+            "salary": 150000
+          },
+          {
+            "employee_id": 2,
+            "employee_name": "Bob",
+            "manager_id": 1,
+            "salary": 120000
+          },
+          {
+            "employee_id": 3,
+            "employee_name": "Charlie",
+            "manager_id": 1,
+            "salary": 110000
+          },
+          {
+            "employee_id": 4,
+            "employee_name": "David",
+            "manager_id": 2,
+            "salary": 105000
+          },
+          {
+            "employee_id": 5,
+            "employee_name": "Eve",
+            "manager_id": 2,
+            "salary": 100000
+          },
+          {
+            "employee_id": 6,
+            "employee_name": "Frank",
+            "manager_id": 3,
+            "salary": 95000
+          },
+          {
+            "employee_id": 7,
+            "employee_name": "Grace",
+            "manager_id": 3,
+            "salary": 98000
+          },
+          {
+            "employee_id": 8,
+            "employee_name": "Helen",
+            "manager_id": 5,
+            "salary": 90000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "subordinate_id": 2,
+          "subordinate_name": "Bob",
+          "hierarchy_level": 1,
+          "salary_difference": -30000
+        },
+        {
+          "subordinate_id": 3,
+          "subordinate_name": "Charlie",
+          "hierarchy_level": 1,
+          "salary_difference": -40000
+        },
+        {
+          "subordinate_id": 4,
+          "subordinate_name": "David",
+          "hierarchy_level": 2,
+          "salary_difference": -45000
+        },
+        {
+          "subordinate_id": 5,
+          "subordinate_name": "Eve",
+          "hierarchy_level": 2,
+          "salary_difference": -50000
+        },
+        {
+          "subordinate_id": 6,
+          "subordinate_name": "Frank",
+          "hierarchy_level": 2,
+          "salary_difference": -55000
+        },
+        {
+          "subordinate_id": 7,
+          "subordinate_name": "Grace",
+          "hierarchy_level": 2,
+          "salary_difference": -52000
+        },
+        {
+          "subordinate_id": 8,
+          "subordinate_name": "Helen",
+          "hierarchy_level": 3,
+          "salary_difference": -60000
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Warehouse": [
+          {
+            "name": "LCHouse1",
+            "product_id": 1,
+            "units": 1
+          },
+          {
+            "name": "LCHouse1",
+            "product_id": 2,
+            "units": 10
+          },
+          {
+            "name": "LCHouse1",
+            "product_id": 3,
+            "units": 5
+          },
+          {
+            "name": "LCHouse2",
+            "product_id": 1,
+            "units": 2
+          },
+          {
+            "name": "LCHouse2",
+            "product_id": 2,
+            "units": 2
+          },
+          {
+            "name": "LCHouse3",
+            "product_id": 4,
+            "units": 1
+          }
+        ],
+        "Products": [
+          {
+            "product_id": 1,
+            "product_name": "LC-TV",
+            "Width": 5,
+            "Length": 50,
+            "Height": 40
+          },
+          {
+            "product_id": 2,
+            "product_name": "LC-KeyChain",
+            "Width": 5,
+            "Length": 5,
+            "Height": 5
+          },
+          {
+            "product_id": 3,
+            "product_name": "LC-Phone",
+            "Width": 2,
+            "Length": 10,
+            "Height": 10
+          },
+          {
+            "product_id": 4,
+            "product_name": "LC-T-Shirt",
+            "Width": 4,
+            "Length": 10,
+            "Height": 20
+          }
+        ]
+      },
+      "expected": [
+        {
+          "warehouse_name": "LCHouse1",
+          "volume": 12250
+        },
+        {
+          "warehouse_name": "LCHouse2",
+          "volume": 20250
+        },
+        {
+          "warehouse_name": "LCHouse3",
+          "volume": 800
+        }
+      ]
+    }
+  ]
+}

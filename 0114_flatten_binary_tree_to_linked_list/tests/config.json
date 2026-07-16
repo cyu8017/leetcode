@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "flatten",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "void"
+  },
+  "description": null
+}

@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "maxScoreSightseeingPair",
+  "paramOrder": [
+    "values"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

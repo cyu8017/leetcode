@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "loginTime": "09:31",
+        "logoutTime": "10:14"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "loginTime": "21:30",
+        "logoutTime": "03:00"
+      },
+      "expected": 22
+    }
+  ]
+}

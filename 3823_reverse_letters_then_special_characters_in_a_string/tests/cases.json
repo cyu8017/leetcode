@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": ")ebc#da@f("
+      },
+      "expected": "(fad@cb#e)"
+    },
+    {
+      "args": {
+        "s": "z"
+      },
+      "expected": "z"
+    },
+    {
+      "args": {
+        "s": "!@#$%^&*()"
+      },
+      "expected": ")(*&^%$#@!"
+    }
+  ]
+}

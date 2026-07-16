@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "ab",
+        "goal": "ba"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "ab",
+        "goal": "ab"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "aa",
+        "goal": "aa"
+      },
+      "expected": true
+    }
+  ]
+}

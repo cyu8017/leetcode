@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Ads": [
+          {
+            "ad_id": 1,
+            "user_id": 1,
+            "action": "Clicked"
+          },
+          {
+            "ad_id": 2,
+            "user_id": 2,
+            "action": "Clicked"
+          },
+          {
+            "ad_id": 3,
+            "user_id": 3,
+            "action": "Viewed"
+          },
+          {
+            "ad_id": 5,
+            "user_id": 5,
+            "action": "Ignored"
+          },
+          {
+            "ad_id": 1,
+            "user_id": 7,
+            "action": "Ignored"
+          },
+          {
+            "ad_id": 2,
+            "user_id": 7,
+            "action": "Viewed"
+          },
+          {
+            "ad_id": 3,
+            "user_id": 5,
+            "action": "Clicked"
+          },
+          {
+            "ad_id": 1,
+            "user_id": 4,
+            "action": "Viewed"
+          },
+          {
+            "ad_id": 2,
+            "user_id": 11,
+            "action": "Viewed"
+          },
+          {
+            "ad_id": 1,
+            "user_id": 2,
+            "action": "Clicked"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "ad_id": 1,
+          "ctr": 66.67
+        },
+        {
+          "ad_id": 3,
+          "ctr": 50.0
+        },
+        {
+          "ad_id": 2,
+          "ctr": 33.33
+        },
+        {
+          "ad_id": 5,
+          "ctr": 0.0
+        }
+      ]
+    }
+  ]
+}

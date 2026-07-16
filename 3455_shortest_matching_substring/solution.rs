@@ -1,0 +1,7 @@
+﻿// LeetCode 3455 - Shortest Matching Substring
+// https://leetcode.com/problems/shortest-matching-substring/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

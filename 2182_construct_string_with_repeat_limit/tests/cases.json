@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "cczazcc",
+        "repeatLimit": 3
+      },
+      "expected": "zzcccac"
+    },
+    {
+      "args": {
+        "s": "aababab",
+        "repeatLimit": 2
+      },
+      "expected": "bbabaa"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "generatePossibleNextMoves",
+  "paramOrder": ["currentState"],
+  "types": {
+    "return": "string[]"
+  },
+  "description": null
+}

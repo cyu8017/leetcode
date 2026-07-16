@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "args": {
+        "ghosts": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "target": [
+          0,
+          1
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "ghosts": [
+          [
+            1,
+            0
+          ]
+        ],
+        "target": [
+          2,
+          0
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "ghosts": [
+          [
+            2,
+            0
+          ]
+        ],
+        "target": [
+          1,
+          0
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

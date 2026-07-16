@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "splitArray",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Return whether the array can be split into four equal-sum parts."
+}

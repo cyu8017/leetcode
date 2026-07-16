@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customers": [
+          {
+            "customer_id": 1,
+            "customer_name": "Alice"
+          },
+          {
+            "customer_id": 4,
+            "customer_name": "Bob"
+          },
+          {
+            "customer_id": 5,
+            "customer_name": "Charlie"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "ids": 2
+        },
+        {
+          "ids": 3
+        }
+      ]
+    }
+  ]
+}

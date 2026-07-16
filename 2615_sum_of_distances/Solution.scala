@@ -1,0 +1,6 @@
+﻿// LeetCode 2615 - Sum of Distances
+// https://leetcode.com/problems/sum-of-distances/
+
+object Solution {
+  def solve(): Unit = {}
+}

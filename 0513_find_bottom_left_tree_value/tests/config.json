@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "findBottomLeftValue",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Return the bottom-leftmost tree node value."
+}

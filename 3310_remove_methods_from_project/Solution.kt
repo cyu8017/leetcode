@@ -1,0 +1,7 @@
+﻿// LeetCode 3310 - Remove Methods From Project
+// https://leetcode.com/problems/remove-methods-from-project/
+
+class Solution {
+    fun solve() {
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcdefg",
+        "k": 2
+      },
+      "expected": "bacdfeg"
+    },
+    {
+      "args": {
+        "s": "abcd",
+        "k": 2
+      },
+      "expected": "bacd"
+    }
+  ]
+}

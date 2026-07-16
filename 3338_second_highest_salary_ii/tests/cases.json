@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "employees": [
+          {
+            "emp_id": 1,
+            "salary": 70000,
+            "dept": "Sales"
+          },
+          {
+            "emp_id": 2,
+            "salary": 80000,
+            "dept": "Sales"
+          },
+          {
+            "emp_id": 3,
+            "salary": 80000,
+            "dept": "Sales"
+          },
+          {
+            "emp_id": 4,
+            "salary": 90000,
+            "dept": "Sales"
+          },
+          {
+            "emp_id": 5,
+            "salary": 55000,
+            "dept": "IT"
+          },
+          {
+            "emp_id": 6,
+            "salary": 65000,
+            "dept": "IT"
+          },
+          {
+            "emp_id": 7,
+            "salary": 65000,
+            "dept": "IT"
+          },
+          {
+            "emp_id": 8,
+            "salary": 50000,
+            "dept": "Marketing"
+          },
+          {
+            "emp_id": 9,
+            "salary": 55000,
+            "dept": "Marketing"
+          },
+          {
+            "emp_id": 10,
+            "salary": 55000,
+            "dept": "HR"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "emp_id": 2,
+          "dept": "Sales"
+        },
+        {
+          "emp_id": 3,
+          "dept": "Sales"
+        },
+        {
+          "emp_id": 5,
+          "dept": "IT"
+        },
+        {
+          "emp_id": 8,
+          "dept": "Marketing"
+        }
+      ]
+    }
+  ]
+}

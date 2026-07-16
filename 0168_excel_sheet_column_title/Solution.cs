@@ -1,0 +1,2 @@
+using System.Text;
+public class Solution { public string ConvertToTitle(int columnNumber) { var result = new StringBuilder(); while (columnNumber > 0) { columnNumber--; result.Append((char)('A' + columnNumber % 26)); columnNumber /= 26; } var chars = result.ToString().ToCharArray(); System.Array.Reverse(chars); return new string(chars); } }

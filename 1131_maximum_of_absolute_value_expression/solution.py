@@ -1,0 +1,6 @@
+﻿# LeetCode 1131 - Maximum of Absolute Value Expression
+# https://leetcode.com/problems/maximum-of-absolute-value-expression/
+
+class Solution:
+    def solve(self) -> None:
+        pass

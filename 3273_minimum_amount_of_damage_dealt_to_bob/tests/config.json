@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "minDamage",
+  "paramOrder": [
+    "power",
+    "damage",
+    "health"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,55 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customer": [
+          {
+            "id": 1,
+            "name": "Will",
+            "referee_id": null
+          },
+          {
+            "id": 2,
+            "name": "Jane",
+            "referee_id": null
+          },
+          {
+            "id": 3,
+            "name": "Alex",
+            "referee_id": 2
+          },
+          {
+            "id": 4,
+            "name": "Bill",
+            "referee_id": null
+          },
+          {
+            "id": 5,
+            "name": "Zack",
+            "referee_id": 1
+          },
+          {
+            "id": 6,
+            "name": "Mark",
+            "referee_id": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "name": "Will"
+        },
+        {
+          "name": "Jane"
+        },
+        {
+          "name": "Bill"
+        },
+        {
+          "name": "Zack"
+        }
+      ]
+    }
+  ]
+}

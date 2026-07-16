@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "lowestCommonAncestor",
+  "paramOrder": ["root", "p", "q"],
+  "types": { "root": "treenode" },
+  "description": null
+}

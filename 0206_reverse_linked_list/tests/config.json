@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "reverseList",
+  "paramOrder": ["head"],
+  "types": { "head": "listnode", "return": "listnode" },
+  "description": null
+}

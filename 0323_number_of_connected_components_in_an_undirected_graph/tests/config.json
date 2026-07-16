@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "countComponents",
+  "paramOrder": ["n", "edges"],
+  "types": null,
+  "description": null
+}

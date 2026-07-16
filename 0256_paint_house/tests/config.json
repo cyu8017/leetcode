@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "minCost",
+  "paramOrder": ["costs"],
+  "types": null,
+  "description": null
+}

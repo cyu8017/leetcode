@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "largestBSTSubtree",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

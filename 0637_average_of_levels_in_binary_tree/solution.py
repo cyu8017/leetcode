@@ -1,0 +1,6 @@
+﻿# LeetCode 0637 - Average of Levels in Binary Tree
+# https://leetcode.com/problems/average-of-levels-in-binary-tree/
+
+class Solution:
+    def solve(self) -> None:
+        pass

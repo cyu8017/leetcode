@@ -1,0 +1,7 @@
+﻿# LeetCode 1476 - Subrectangle Queries
+# https://leetcode.com/problems/subrectangle-queries/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abciiidef",
+        "k": 3
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "aeiou",
+        "k": 2
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "leetcode",
+        "k": 3
+      },
+      "expected": 2
+    }
+  ]
+}

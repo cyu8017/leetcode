@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 2,
+        "w": 3,
+        "maxWeight": 15
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "n": 3,
+        "w": 5,
+        "maxWeight": 20
+      },
+      "expected": 4
+    }
+  ]
+}

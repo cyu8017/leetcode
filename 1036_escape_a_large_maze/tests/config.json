@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "isEscapePossible",
+  "paramOrder": [
+    "blocked",
+    "source",
+    "target"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

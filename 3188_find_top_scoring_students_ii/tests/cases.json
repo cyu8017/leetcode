@@ -1,0 +1,183 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "students": [
+          {
+            "student_id": 1,
+            "name": "Alice",
+            "major": "Computer Science"
+          },
+          {
+            "student_id": 2,
+            "name": "Bob",
+            "major": "Computer Science"
+          },
+          {
+            "student_id": 3,
+            "name": "Charlie",
+            "major": "Mathematics"
+          },
+          {
+            "student_id": 4,
+            "name": "David",
+            "major": "Mathematics"
+          }
+        ],
+        "courses": [
+          {
+            "course_id": 101,
+            "name": "Algorithms",
+            "credits": 3,
+            "major": "Computer Science",
+            "mandatory": "yes"
+          },
+          {
+            "course_id": 102,
+            "name": "Data Structures",
+            "credits": 3,
+            "major": "Computer Science",
+            "mandatory": "yes"
+          },
+          {
+            "course_id": 103,
+            "name": "Calculus",
+            "credits": 4,
+            "major": "Mathematics",
+            "mandatory": "yes"
+          },
+          {
+            "course_id": 104,
+            "name": "Linear Algebra",
+            "credits": 4,
+            "major": "Mathematics",
+            "mandatory": "yes"
+          },
+          {
+            "course_id": 105,
+            "name": "Machine Learning",
+            "credits": 3,
+            "major": "Computer Science",
+            "mandatory": "no"
+          },
+          {
+            "course_id": 106,
+            "name": "Probability",
+            "credits": 3,
+            "major": "Mathematics",
+            "mandatory": "no"
+          },
+          {
+            "course_id": 107,
+            "name": "Operating Systems",
+            "credits": 3,
+            "major": "Computer Science",
+            "mandatory": "no"
+          },
+          {
+            "course_id": 108,
+            "name": "Statistics",
+            "credits": 3,
+            "major": "Mathematics",
+            "mandatory": "no"
+          }
+        ],
+        "enrollments": [
+          {
+            "student_id": 1,
+            "course_id": 101,
+            "semester": "Fall 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 1,
+            "course_id": 102,
+            "semester": "Spring 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 1,
+            "course_id": 105,
+            "semester": "Spring 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 1,
+            "course_id": 107,
+            "semester": "Fall 2023",
+            "grade": "B",
+            "GPA": 3.5
+          },
+          {
+            "student_id": 2,
+            "course_id": 101,
+            "semester": "Fall 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 2,
+            "course_id": 102,
+            "semester": "Spring 2023",
+            "grade": "B",
+            "GPA": 3.0
+          },
+          {
+            "student_id": 3,
+            "course_id": 103,
+            "semester": "Fall 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 3,
+            "course_id": 104,
+            "semester": "Spring 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 3,
+            "course_id": 106,
+            "semester": "Spring 2023",
+            "grade": "A",
+            "GPA": 4.0
+          },
+          {
+            "student_id": 3,
+            "course_id": 108,
+            "semester": "Fall 2023",
+            "grade": "B",
+            "GPA": 3.5
+          },
+          {
+            "student_id": 4,
+            "course_id": 103,
+            "semester": "Fall 2023",
+            "grade": "B",
+            "GPA": 3.0
+          },
+          {
+            "student_id": 4,
+            "course_id": 104,
+            "semester": "Spring 2023",
+            "grade": "B",
+            "GPA": 3.0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "student_id": 1
+        },
+        {
+          "student_id": 3
+        }
+      ]
+    }
+  ]
+}

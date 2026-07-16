@@ -1,0 +1,9 @@
+﻿// LeetCode 1040 - Moving Stones Until Consecutive II
+// https://leetcode.com/problems/moving-stones-until-consecutive-ii/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

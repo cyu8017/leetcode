@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "time": "?5:00"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "time": "0?:0?"
+      },
+      "expected": 100
+    },
+    {
+      "args": {
+        "time": "??:??"
+      },
+      "expected": 1440
+    }
+  ]
+}

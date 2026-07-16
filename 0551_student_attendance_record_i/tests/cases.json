@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "PPALLP"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "PPALLL"
+      },
+      "expected": false
+    }
+  ]
+}

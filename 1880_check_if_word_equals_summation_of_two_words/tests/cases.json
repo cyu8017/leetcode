@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "firstWord": "acb",
+        "secondWord": "cba",
+        "targetWord": "cdb"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "firstWord": "aaa",
+        "secondWord": "a",
+        "targetWord": "aab"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "firstWord": "aaa",
+        "secondWord": "a",
+        "targetWord": "aaaa"
+      },
+      "expected": true
+    }
+  ]
+}

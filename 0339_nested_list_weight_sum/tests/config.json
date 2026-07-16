@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "depthSum",
+  "paramOrder": [
+    "nestedList"
+  ],
+  "types": {
+    "nestedList": "nestedinteger[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

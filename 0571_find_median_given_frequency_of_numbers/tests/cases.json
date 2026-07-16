@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Numbers": [
+          {
+            "num": 0,
+            "frequency": 7
+          },
+          {
+            "num": 1,
+            "frequency": 1
+          },
+          {
+            "num": 2,
+            "frequency": 3
+          },
+          {
+            "num": 3,
+            "frequency": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "median": 0.0
+        }
+      ]
+    }
+  ]
+}

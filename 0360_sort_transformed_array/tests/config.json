@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "sortTransformedArray",
+  "paramOrder": [
+    "nums",
+    "a",
+    "b",
+    "c"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

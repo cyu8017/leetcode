@@ -1,0 +1,8 @@
+﻿// LeetCode 3515 - Shortest Path in a Weighted Tree
+// https://leetcode.com/problems/shortest-path-in-a-weighted-tree/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

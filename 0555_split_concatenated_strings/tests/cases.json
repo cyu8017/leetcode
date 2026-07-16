@@ -1,0 +1,21 @@
+{
+  "cases": [
+    {
+      "args": {
+        "strs": [
+          "abc",
+          "xyz"
+        ]
+      },
+      "expected": "zyxcba"
+    },
+    {
+      "args": {
+        "strs": [
+          "abc"
+        ]
+      },
+      "expected": "cba"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "func": "() => expect(5).toBe(5)"
+      },
+      "expected": {
+        "value": true
+      }
+    },
+    {
+      "args": {
+        "func": "() => expect(5).toBe(null)"
+      },
+      "expected": {
+        "error": "Not Equal"
+      }
+    },
+    {
+      "args": {
+        "func": "() => expect(5).notToBe(null)"
+      },
+      "expected": {
+        "value": true
+      }
+    }
+  ]
+}

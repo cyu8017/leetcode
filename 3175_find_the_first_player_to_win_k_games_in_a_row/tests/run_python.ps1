@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$problemDir = Split-Path -Parent $PSScriptRoot
+& "C:\Users\Charlie Yu\Documents\Bitbucket - cyuconsulting\leetcode-solutions\scripts\test-problem.ps1" -Folder "3175_find_the_first_player_to_win_k_games_in_a_row" -Language "python"

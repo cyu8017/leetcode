@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          2,
+          1
+        ]
+      },
+      "expected": "Even"
+    },
+    {
+      "args": {
+        "head": [
+          2,
+          5,
+          4,
+          7,
+          20,
+          5
+        ]
+      },
+      "expected": "Odd"
+    },
+    {
+      "args": {
+        "head": [
+          4,
+          5,
+          2,
+          1
+        ]
+      },
+      "expected": "Tie"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿# LeetCode 1943 - Describe the Painting
+# https://leetcode.com/problems/describe-the-painting/
+
+class Solution:
+    def solve(self) -> None:
+        pass

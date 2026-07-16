@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "bits": [
+          1,
+          0,
+          0
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "bits": [
+          1,
+          1,
+          1,
+          0
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

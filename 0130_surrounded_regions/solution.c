@@ -1,0 +1,5 @@
+﻿// LeetCode 0130 - Surrounded Regions
+// https://leetcode.com/problems/surrounded-regions/
+
+static void mark(char** board,int rows,int* cols,int row,int col){if(row<0||row==rows||col<0||col==cols[row]||board[row][col]!='O')return;board[row][col]='E';mark(board,rows,cols,row+1,col);mark(board,rows,cols,row-1,col);mark(board,rows,cols,row,col+1);mark(board,rows,cols,row,col-1);}
+void solve(char** board, int boardSize, int* boardColSize) { if(!boardSize||!boardColSize[0])return;for(int r=0;r<boardSize;r++){mark(board,boardSize,boardColSize,r,0);mark(board,boardSize,boardColSize,r,boardColSize[r]-1);}for(int c=0;c<boardColSize[0];c++){mark(board,boardSize,boardColSize,0,c);mark(board,boardSize,boardColSize,boardSize-1,c);}for(int r=0;r<boardSize;r++)for(int c=0;c<boardColSize[r];c++)board[r][c]=board[r][c]=='O'?'X':board[r][c]=='E'?'O':board[r][c]; }

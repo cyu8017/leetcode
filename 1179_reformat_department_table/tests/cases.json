@@ -1,0 +1,62 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Department": [
+          {
+            "id": 1,
+            "revenue": 8000,
+            "month": "Jan"
+          },
+          {
+            "id": 2,
+            "revenue": 9000,
+            "month": "Jan"
+          },
+          {
+            "id": 3,
+            "revenue": 10000,
+            "month": "Feb"
+          },
+          {
+            "id": 1,
+            "revenue": 7000,
+            "month": "Feb"
+          },
+          {
+            "id": 1,
+            "revenue": 6000,
+            "month": "Mar"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 1,
+          "Jan_Revenue": 8000,
+          "Feb_Revenue": 7000,
+          "Mar_Revenue": 6000,
+          "...": "...",
+          "Dec_Revenue": null
+        },
+        {
+          "id": 2,
+          "Jan_Revenue": 9000,
+          "Feb_Revenue": null,
+          "Mar_Revenue": null,
+          "...": "...",
+          "Dec_Revenue": null
+        },
+        {
+          "id": 3,
+          "Jan_Revenue": null,
+          "Feb_Revenue": 10000,
+          "Mar_Revenue": null,
+          "...": "...",
+          "Dec_Revenue": null
+        }
+      ]
+    }
+  ]
+}

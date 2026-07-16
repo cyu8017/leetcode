@@ -1,0 +1,9 @@
+﻿// LeetCode 3567 - Minimum Absolute Difference in Sliding Submatrix
+// https://leetcode.com/problems/minimum-absolute-difference-in-sliding-submatrix/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

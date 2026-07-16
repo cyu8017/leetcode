@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "aababcaab",
+        "maxLetters": 2,
+        "minSize": 3,
+        "maxSize": 4
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "aaaa",
+        "maxLetters": 1,
+        "minSize": 3,
+        "maxSize": 3
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "watchedVideosByFriends",
+  "paramOrder": [
+    "watchedVideos",
+    "friends",
+    "id",
+    "level"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

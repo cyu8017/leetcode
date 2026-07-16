@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "groupStrings",
+  "paramOrder": ["strings"],
+  "types": { "return": "string[][]" },
+  "description": null
+}

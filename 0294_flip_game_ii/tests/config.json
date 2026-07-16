@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "canWin",
+  "paramOrder": ["currentState"],
+  "types": null,
+  "description": null
+}

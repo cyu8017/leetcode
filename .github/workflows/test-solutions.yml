@@ -1,0 +1,56 @@
+name: Test Solutions
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: test-solutions-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate repo structure and test JSON
+        run: python scripts/validate-repo.py
+
+      - name: Parser unit tests
+        run: python -m unittest discover -s scripts/tests -p "test_*.py"
+
+  smoke-tests:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: docker compose version
+
+      - name: Build test images
+        run: docker compose -f docker/docker-compose.yml build
+
+      - name: Run smoke tests
+        run: python scripts/run-smoke.py
+
+  solved-problems:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Compose
+        run: docker compose version
+
+      - name: Build test images
+        run: docker compose -f docker/docker-compose.yml build
+
+      - name: Run solved problem tests
+        run: python scripts/run-solved.py

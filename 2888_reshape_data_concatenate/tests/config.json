@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "concatenateTables",
+  "paramOrder": [
+    "df1",
+    "df2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "binary": "001"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "binary": "11"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "binary": "101"
+      },
+      "expected": 5
+    }
+  ]
+}

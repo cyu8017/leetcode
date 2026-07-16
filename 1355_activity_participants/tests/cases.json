@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Friends": [
+          {
+            "id": 1,
+            "name": "Jonathan D.",
+            "activity": "Eating"
+          },
+          {
+            "id": 2,
+            "name": "Jade W.",
+            "activity": "Singing"
+          },
+          {
+            "id": 3,
+            "name": "Victor J.",
+            "activity": "Singing"
+          },
+          {
+            "id": 4,
+            "name": "Elvis Q.",
+            "activity": "Eating"
+          },
+          {
+            "id": 5,
+            "name": "Daniel A.",
+            "activity": "Eating"
+          },
+          {
+            "id": 6,
+            "name": "Bob B.",
+            "activity": "Horse Riding"
+          }
+        ],
+        "Activities": [
+          {
+            "id": 1,
+            "name": "Eating"
+          },
+          {
+            "id": 2,
+            "name": "Singing"
+          },
+          {
+            "id": 3,
+            "name": "Horse Riding"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "activity": "Singing"
+        }
+      ]
+    }
+  ]
+}

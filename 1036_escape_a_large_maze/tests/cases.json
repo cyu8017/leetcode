@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "blocked": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "source": [
+          0,
+          0
+        ],
+        "target": [
+          0,
+          2
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "blocked": [],
+        "source": [
+          0,
+          0
+        ],
+        "target": [
+          999999,
+          999999
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

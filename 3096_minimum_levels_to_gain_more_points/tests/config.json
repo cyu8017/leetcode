@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "minimumLevels",
+  "paramOrder": [
+    "possible"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          3,
+          2,
+          0,
+          -4
+        ],
+        "pos": 1
+      },
+      "expected": "tail connects to node index 1"
+    },
+    {
+      "args": {
+        "head": [
+          1,
+          2
+        ],
+        "pos": 0
+      },
+      "expected": "tail connects to node index 0"
+    },
+    {
+      "args": {
+        "head": [
+          1
+        ],
+        "pos": -1
+      },
+      "expected": "no cycle"
+    }
+  ]
+}

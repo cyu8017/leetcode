@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "))()))",
+        "locked": "010100"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "()()",
+        "locked": "0000"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": ")",
+        "locked": "0"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "(((())(((())",
+        "locked": "111111010111"
+      },
+      "expected": true
+    }
+  ]
+}

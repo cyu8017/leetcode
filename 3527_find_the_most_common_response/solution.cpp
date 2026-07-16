@@ -1,0 +1,8 @@
+﻿// LeetCode 3527 - Find the Most Common Response
+// https://leetcode.com/problems/find-the-most-common-response/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

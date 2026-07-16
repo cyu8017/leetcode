@@ -1,0 +1,6 @@
+﻿# LeetCode 1895 - Largest Magic Square
+# https://leetcode.com/problems/largest-magic-square/
+
+class Solution:
+    def solve(self) -> None:
+        pass

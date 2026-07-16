@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "pattern": "abba",
+        "s": "dog cat cat dog"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "pattern": "abba",
+        "s": "dog cat cat fish"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "pattern": "aaaa",
+        "s": "dog cat cat dog"
+      },
+      "expected": false
+    }
+  ]
+}

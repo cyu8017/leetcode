@@ -1,0 +1,2 @@
+using System.Collections.Generic;
+public class TwoSum { private readonly Dictionary<int, int> counts = new(); public void Add(int number) { counts[number] = counts.TryGetValue(number, out int count) ? count + 1 : 1; } public bool Find(int value) { foreach (var pair in counts) { int complement = value - pair.Key; if (complement == pair.Key ? pair.Value >= 2 : counts.ContainsKey(complement)) return true; } return false; } }

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "threeSumSmaller",
+  "paramOrder": ["nums", "target"],
+  "types": null,
+  "description": null
+}

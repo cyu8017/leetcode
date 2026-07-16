@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "minimumTeachings",
+  "paramOrder": [
+    "n",
+    "languages",
+    "friendships"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

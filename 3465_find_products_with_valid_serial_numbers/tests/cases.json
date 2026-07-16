@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "products": [
+          {
+            "product_id": 1,
+            "product_name": "Widget A",
+            "description": "This is a sample product with SN1234-5678"
+          },
+          {
+            "product_id": 2,
+            "product_name": "Widget B",
+            "description": "A product with serial SN9876-1234 in the description"
+          },
+          {
+            "product_id": 3,
+            "product_name": "Widget C",
+            "description": "Product SN1234-56789 is available now"
+          },
+          {
+            "product_id": 4,
+            "product_name": "Widget D",
+            "description": "No serial number here"
+          },
+          {
+            "product_id": 5,
+            "product_name": "Widget E",
+            "description": "Check out SN4321-8765 in this description"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1,
+          "product_name": "Widget A",
+          "description": "This is a sample product with SN1234-5678"
+        },
+        {
+          "product_id": 2,
+          "product_name": "Widget B",
+          "description": "A product with serial SN9876-1234 in the description"
+        },
+        {
+          "product_id": 5,
+          "product_name": "Widget E",
+          "description": "Check out SN4321-8765 in this description"
+        }
+      ]
+    }
+  ]
+}

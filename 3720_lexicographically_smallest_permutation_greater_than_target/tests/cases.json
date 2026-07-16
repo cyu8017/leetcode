@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abc",
+        "target": "bba"
+      },
+      "expected": "bca"
+    },
+    {
+      "args": {
+        "s": "leet",
+        "target": "code"
+      },
+      "expected": "eelt"
+    },
+    {
+      "args": {
+        "s": "baba",
+        "target": "bbaa"
+      },
+      "expected": ""
+    }
+  ]
+}

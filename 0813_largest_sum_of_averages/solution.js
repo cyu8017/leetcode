@@ -1,0 +1,9 @@
+﻿// LeetCode 0813 - Largest Sum of Averages
+// https://leetcode.com/problems/largest-sum-of-averages/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

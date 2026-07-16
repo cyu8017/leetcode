@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Allocator",
+        "allocate",
+        "allocate",
+        "allocate",
+        "freeMemory",
+        "allocate",
+        "allocate",
+        "allocate",
+        "freeMemory",
+        "allocate",
+        "freeMemory"
+      ],
+      "arguments": [
+        [
+          10
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          1
+        ],
+        [
+          1
+        ],
+        [
+          10,
+          2
+        ],
+        [
+          7
+        ]
+      ],
+      "expected": [
+        null,
+        0,
+        1,
+        2,
+        1,
+        3,
+        1,
+        6,
+        3,
+        -1,
+        0
+      ]
+    }
+  ]
+}

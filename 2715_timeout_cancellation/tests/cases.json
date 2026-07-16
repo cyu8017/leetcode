@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fn": "(x) => x * 5",
+        "args": [
+          2
+        ],
+        "t": 20
+      },
+      "expected": [
+        {
+          "time": 20,
+          "returned": 10
+        }
+      ]
+    },
+    {
+      "args": {
+        "fn": "(x) => x**2",
+        "args": [
+          2
+        ],
+        "t": 100
+      },
+      "expected": []
+    },
+    {
+      "args": {
+        "fn": "(x1, x2) => x1 * x2",
+        "args": [
+          2,
+          4
+        ],
+        "t": 30
+      },
+      "expected": [
+        {
+          "time": 30,
+          "returned": 8
+        }
+      ]
+    }
+  ]
+}

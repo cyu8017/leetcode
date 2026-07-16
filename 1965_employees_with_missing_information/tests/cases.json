@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employees": [
+          {
+            "employee_id": 2,
+            "name": "Crew"
+          },
+          {
+            "employee_id": 4,
+            "name": "Haven"
+          },
+          {
+            "employee_id": 5,
+            "name": "Kristian"
+          }
+        ],
+        "Salaries": [
+          {
+            "employee_id": 5,
+            "salary": 76071
+          },
+          {
+            "employee_id": 1,
+            "salary": 22517
+          },
+          {
+            "employee_id": 4,
+            "salary": 63539
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1
+        },
+        {
+          "employee_id": 2
+        }
+      ]
+    }
+  ]
+}

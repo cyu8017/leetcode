@@ -1,0 +1,108 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "RideSharingSystem",
+        "addRider",
+        "addDriver",
+        "addRider",
+        "matchDriverWithRider",
+        "addDriver",
+        "cancelRider",
+        "matchDriverWithRider",
+        "matchDriverWithRider"
+      ],
+      "arguments": [
+        [],
+        [
+          3
+        ],
+        [
+          2
+        ],
+        [
+          1
+        ],
+        [],
+        [
+          5
+        ],
+        [
+          3
+        ],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        [
+          2,
+          3
+        ],
+        null,
+        null,
+        [
+          5,
+          1
+        ],
+        [
+          -1,
+          -1
+        ]
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "RideSharingSystem",
+        "addRider",
+        "addDriver",
+        "addDriver",
+        "matchDriverWithRider",
+        "addRider",
+        "cancelRider",
+        "matchDriverWithRider"
+      ],
+      "arguments": [
+        [],
+        [
+          8
+        ],
+        [
+          8
+        ],
+        [
+          6
+        ],
+        [],
+        [
+          2
+        ],
+        [
+          2
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        null,
+        [
+          8,
+          8
+        ],
+        null,
+        null,
+        [
+          -1,
+          -1
+        ]
+      ]
+    }
+  ]
+}

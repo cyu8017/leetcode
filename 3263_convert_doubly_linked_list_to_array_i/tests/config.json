@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "listnode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

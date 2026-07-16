@@ -1,0 +1,208 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "books": [
+          {
+            "book_id": 1,
+            "title": "The Great Gatsby",
+            "author": "F. Scott",
+            "genre": "Fiction",
+            "pages": 180
+          },
+          {
+            "book_id": 2,
+            "title": "To Kill a Mockingbird",
+            "author": "Harper Lee",
+            "genre": "Fiction",
+            "pages": 281
+          },
+          {
+            "book_id": 3,
+            "title": 1984,
+            "author": "George Orwell",
+            "genre": "Dystopian",
+            "pages": 328
+          },
+          {
+            "book_id": 4,
+            "title": "Pride and Prejudice",
+            "author": "Jane Austen",
+            "genre": "Romance",
+            "pages": 432
+          },
+          {
+            "book_id": 5,
+            "title": "The Catcher in the Rye",
+            "author": "J.D. Salinger",
+            "genre": "Fiction",
+            "pages": 277
+          }
+        ],
+        "reading_sessions": [
+          {
+            "session_id": 1,
+            "book_id": 1,
+            "reader_name": "Alice",
+            "pages_read": 50,
+            "session_rating": 5
+          },
+          {
+            "session_id": 2,
+            "book_id": 1,
+            "reader_name": "Bob",
+            "pages_read": 60,
+            "session_rating": 1
+          },
+          {
+            "session_id": 3,
+            "book_id": 1,
+            "reader_name": "Carol",
+            "pages_read": 40,
+            "session_rating": 4
+          },
+          {
+            "session_id": 4,
+            "book_id": 1,
+            "reader_name": "David",
+            "pages_read": 30,
+            "session_rating": 2
+          },
+          {
+            "session_id": 5,
+            "book_id": 1,
+            "reader_name": "Emma",
+            "pages_read": 45,
+            "session_rating": 5
+          },
+          {
+            "session_id": 6,
+            "book_id": 2,
+            "reader_name": "Frank",
+            "pages_read": 80,
+            "session_rating": 4
+          },
+          {
+            "session_id": 7,
+            "book_id": 2,
+            "reader_name": "Grace",
+            "pages_read": 70,
+            "session_rating": 4
+          },
+          {
+            "session_id": 8,
+            "book_id": 2,
+            "reader_name": "Henry",
+            "pages_read": 90,
+            "session_rating": 5
+          },
+          {
+            "session_id": 9,
+            "book_id": 2,
+            "reader_name": "Ivy",
+            "pages_read": 60,
+            "session_rating": 4
+          },
+          {
+            "session_id": 10,
+            "book_id": 2,
+            "reader_name": "Jack",
+            "pages_read": 75,
+            "session_rating": 4
+          },
+          {
+            "session_id": 11,
+            "book_id": 3,
+            "reader_name": "Kate",
+            "pages_read": 100,
+            "session_rating": 2
+          },
+          {
+            "session_id": 12,
+            "book_id": 3,
+            "reader_name": "Liam",
+            "pages_read": 120,
+            "session_rating": 1
+          },
+          {
+            "session_id": 13,
+            "book_id": 3,
+            "reader_name": "Mia",
+            "pages_read": 80,
+            "session_rating": 2
+          },
+          {
+            "session_id": 14,
+            "book_id": 3,
+            "reader_name": "Noah",
+            "pages_read": 90,
+            "session_rating": 1
+          },
+          {
+            "session_id": 15,
+            "book_id": 3,
+            "reader_name": "Olivia",
+            "pages_read": 110,
+            "session_rating": 4
+          },
+          {
+            "session_id": 16,
+            "book_id": 3,
+            "reader_name": "Paul",
+            "pages_read": 95,
+            "session_rating": 5
+          },
+          {
+            "session_id": 17,
+            "book_id": 4,
+            "reader_name": "Quinn",
+            "pages_read": 150,
+            "session_rating": 3
+          },
+          {
+            "session_id": 18,
+            "book_id": 4,
+            "reader_name": "Ruby",
+            "pages_read": 140,
+            "session_rating": 3
+          },
+          {
+            "session_id": 19,
+            "book_id": 5,
+            "reader_name": "Sam",
+            "pages_read": 80,
+            "session_rating": 1
+          },
+          {
+            "session_id": 20,
+            "book_id": 5,
+            "reader_name": "Tara",
+            "pages_read": 70,
+            "session_rating": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "book_id": 1,
+          "title": "The Great Gatsby",
+          "author": "F. Scott",
+          "genre": "Fiction",
+          "pages": 180,
+          "rating_spread": 4,
+          "polarization_score": 1.0
+        },
+        {
+          "book_id": 3,
+          "title": 1984,
+          "author": "George Orwell",
+          "genre": "Dystopian",
+          "pages": 328,
+          "rating_spread": 4,
+          "polarization_score": 1.0
+        }
+      ]
+    }
+  ]
+}

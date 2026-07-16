@@ -1,0 +1,6 @@
+﻿// LeetCode 2603 - Collect Coins in a Tree
+// https://leetcode.com/problems/collect-coins-in-a-tree/
+
+function solve(input: unknown): unknown {
+    return null;
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "countNodes",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode" },
+  "description": null
+}

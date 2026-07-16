@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "minTransfers",
+  "paramOrder": [
+    "transactions"
+  ],
+  "types": null,
+  "description": "Minimum transfers to settle account balances."
+}

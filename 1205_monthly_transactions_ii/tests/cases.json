@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "id": 101,
+            "country": "US",
+            "state": "approved",
+            "amount": 1000,
+            "trans_date": "2019-05-18"
+          },
+          {
+            "id": 102,
+            "country": "US",
+            "state": "declined",
+            "amount": 2000,
+            "trans_date": "2019-05-19"
+          },
+          {
+            "id": 103,
+            "country": "US",
+            "state": "approved",
+            "amount": 3000,
+            "trans_date": "2019-06-10"
+          },
+          {
+            "id": 104,
+            "country": "US",
+            "state": "declined",
+            "amount": 4000,
+            "trans_date": "2019-06-13"
+          },
+          {
+            "id": 105,
+            "country": "US",
+            "state": "approved",
+            "amount": 5000,
+            "trans_date": "2019-06-15"
+          }
+        ],
+        "Chargebacks": [
+          {
+            "trans_id": 102,
+            "trans_date": "2019-05-29"
+          },
+          {
+            "trans_id": 101,
+            "trans_date": "2019-06-30"
+          },
+          {
+            "trans_id": 105,
+            "trans_date": "2019-09-18"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "month": "2019-05",
+          "country": "US",
+          "approved_count": 1,
+          "approved_amount": 1000,
+          "chargeback_count": 1,
+          "chargeback_amount": 2000
+        },
+        {
+          "month": "2019-06",
+          "country": "US",
+          "approved_count": 2,
+          "approved_amount": 8000,
+          "chargeback_count": 1,
+          "chargeback_amount": 1000
+        },
+        {
+          "month": "2019-09",
+          "country": "US",
+          "approved_count": 0,
+          "approved_amount": 0,
+          "chargeback_count": 1,
+          "chargeback_amount": 5000
+        }
+      ]
+    }
+  ]
+}

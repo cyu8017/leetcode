@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "user_permissions": [
+          {
+            "user_id": 1,
+            "permissions": 5
+          },
+          {
+            "user_id": 2,
+            "permissions": 12
+          },
+          {
+            "user_id": 3,
+            "permissions": 7
+          },
+          {
+            "user_id": 4,
+            "permissions": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "common_perms": 0,
+          "any_perms": 15
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tweets": [
+          {
+            "tweet_id": 1,
+            "content": "Let us Code"
+          },
+          {
+            "tweet_id": 2,
+            "content": "More than fifteen chars are here!"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "tweet_id": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "lEetcOde"
+      },
+      "expected": "lEOtcede"
+    },
+    {
+      "args": {
+        "s": "lYmpH"
+      },
+      "expected": "lYmpH"
+    }
+  ]
+}

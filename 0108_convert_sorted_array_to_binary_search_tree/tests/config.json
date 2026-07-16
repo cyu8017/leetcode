@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "sortedArrayToBST",
+  "paramOrder": ["nums"],
+  "types": { "return": "treenode" },
+  "description": null
+}

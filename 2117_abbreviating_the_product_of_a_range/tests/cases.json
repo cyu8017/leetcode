@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "left": 1,
+        "right": 4
+      },
+      "expected": "24e0"
+    },
+    {
+      "args": {
+        "left": 2,
+        "right": 11
+      },
+      "expected": "399168e2"
+    },
+    {
+      "args": {
+        "left": 371,
+        "right": 375
+      },
+      "expected": "7219856259e3"
+    }
+  ]
+}

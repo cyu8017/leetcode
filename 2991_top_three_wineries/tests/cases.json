@@ -1,0 +1,91 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Wineries": [
+          {
+            "id": 103,
+            "country": "Australia",
+            "points": 84,
+            "winery": "WhisperingPines"
+          },
+          {
+            "id": 737,
+            "country": "Australia",
+            "points": 85,
+            "winery": "GrapesGalore"
+          },
+          {
+            "id": 848,
+            "country": "Australia",
+            "points": 100,
+            "winery": "HarmonyHill"
+          },
+          {
+            "id": 222,
+            "country": "Hungary",
+            "points": 60,
+            "winery": "MoonlitCellars"
+          },
+          {
+            "id": 116,
+            "country": "USA",
+            "points": 47,
+            "winery": "RoyalVines"
+          },
+          {
+            "id": 124,
+            "country": "USA",
+            "points": 45,
+            "winery": "Eagle'sNest"
+          },
+          {
+            "id": 648,
+            "country": "India",
+            "points": 69,
+            "winery": "SunsetVines"
+          },
+          {
+            "id": 894,
+            "country": "USA",
+            "points": 39,
+            "winery": "RoyalVines"
+          },
+          {
+            "id": 677,
+            "country": "USA",
+            "points": 9,
+            "winery": "PacificCrest"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "country": "Australia",
+          "top_winery": "HarmonyHill (100)",
+          "second_winery": "GrapesGalore (85)",
+          "third_winery": "WhisperingPines (84)"
+        },
+        {
+          "country": "Hungary",
+          "top_winery": "MoonlitCellars (60)",
+          "second_winery": "No second winery",
+          "third_winery": "No third winery"
+        },
+        {
+          "country": "India",
+          "top_winery": "SunsetVines (69)",
+          "second_winery": "No second winery",
+          "third_winery": "No third winery"
+        },
+        {
+          "country": "USA",
+          "top_winery": "RoyalVines (86)",
+          "second_winery": "Eagle'sNest (45)",
+          "third_winery": "PacificCrest (9)"
+        }
+      ]
+    }
+  ]
+}

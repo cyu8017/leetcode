@@ -1,0 +1,6 @@
+﻿# LeetCode 1813 - Sentence Similarity III
+# https://leetcode.com/problems/sentence-similarity-iii/
+
+class Solution:
+    def solve(self) -> None:
+        pass

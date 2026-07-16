@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "PeekingIterator",
+        "next",
+        "peek",
+        "next",
+        "next",
+        "hasNext"
+      ],
+      "arguments": [
+        [
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        1,
+        2,
+        2,
+        3,
+        false
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Users": [
+          {
+            "user_id": 6,
+            "user_name": "Alice"
+          },
+          {
+            "user_id": 2,
+            "user_name": "Bob"
+          },
+          {
+            "user_id": 7,
+            "user_name": "Alex"
+          }
+        ],
+        "Register": [
+          {
+            "contest_id": 215,
+            "user_id": 6
+          },
+          {
+            "contest_id": 209,
+            "user_id": 2
+          },
+          {
+            "contest_id": 208,
+            "user_id": 2
+          },
+          {
+            "contest_id": 210,
+            "user_id": 6
+          },
+          {
+            "contest_id": 208,
+            "user_id": 6
+          },
+          {
+            "contest_id": 209,
+            "user_id": 7
+          },
+          {
+            "contest_id": 209,
+            "user_id": 6
+          },
+          {
+            "contest_id": 215,
+            "user_id": 7
+          },
+          {
+            "contest_id": 208,
+            "user_id": 7
+          },
+          {
+            "contest_id": 210,
+            "user_id": 2
+          },
+          {
+            "contest_id": 207,
+            "user_id": 2
+          },
+          {
+            "contest_id": 210,
+            "user_id": 7
+          }
+        ]
+      },
+      "expected": [
+        {
+          "contest_id": 208,
+          "percentage": 100.0
+        },
+        {
+          "contest_id": 209,
+          "percentage": 100.0
+        },
+        {
+          "contest_id": 210,
+          "percentage": 100.0
+        },
+        {
+          "contest_id": 215,
+          "percentage": 66.67
+        },
+        {
+          "contest_id": 207,
+          "percentage": 33.33
+        }
+      ]
+    }
+  ]
+}

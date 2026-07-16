@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Files": [
+          {
+            "file_name": "draft1.txt",
+            "content": "The stock exchange predicts a bull market which would make many investors happy."
+          },
+          {
+            "file_name": "draft2.txt",
+            "content": "The stock exchange predicts a bull market which would make many investors happy,"
+          },
+          {
+            "file_name": null,
+            "content": "but analysts warn of possibility of too much optimism and that in fact we are"
+          },
+          {
+            "file_name": null,
+            "content": "awaiting a bear market."
+          },
+          {
+            "file_name": "draft3.txt",
+            "content": "The stock exchange predicts a bull market which would make many investors happy,"
+          },
+          {
+            "file_name": null,
+            "content": "but analysts warn of possibility of too much optimism and that in fact we are"
+          },
+          {
+            "file_name": null,
+            "content": "awaiting a bear market. As always predicting the future market is an uncertain"
+          },
+          {
+            "file_name": null,
+            "content": "game and all investors should follow their instincts and best practices."
+          }
+        ]
+      },
+      "expected": [
+        {
+          "word": "bull",
+          "count": 3
+        },
+        {
+          "word": "bear",
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

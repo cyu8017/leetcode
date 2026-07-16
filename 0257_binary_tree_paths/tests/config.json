@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "binaryTreePaths",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode", "return": "string[]" },
+  "description": null
+}

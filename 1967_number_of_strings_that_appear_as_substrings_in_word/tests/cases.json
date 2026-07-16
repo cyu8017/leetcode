@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "patterns": [
+          "a",
+          "abc",
+          "bc",
+          "d"
+        ],
+        "word": "abc"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "patterns": [
+          "a",
+          "b",
+          "c"
+        ],
+        "word": "aaaaabbbbb"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "patterns": [
+          "a",
+          "a",
+          "a"
+        ],
+        "word": "ab"
+      },
+      "expected": 3
+    }
+  ]
+}

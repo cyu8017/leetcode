@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "user_transactions": [
+          {
+            "transaction_id": 1341,
+            "product_id": 123424,
+            "spend": 1500.6,
+            "transaction_date": "2019-12-31 12:00:00"
+          },
+          {
+            "transaction_id": 1423,
+            "product_id": 123424,
+            "spend": 1000.2,
+            "transaction_date": "2020-12-31 12:00:00"
+          },
+          {
+            "transaction_id": 1623,
+            "product_id": 123424,
+            "spend": 1246.44,
+            "transaction_date": "2021-12-31 12:00:00"
+          },
+          {
+            "transaction_id": 1322,
+            "product_id": 123424,
+            "spend": 2145.32,
+            "transaction_date": "2022-12-31 12:00:00"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "year": 2019,
+          "product_id": 123424,
+          "curr_year_spend": 1500.6,
+          "prev_year_spend": null,
+          "yoy_rate": null
+        },
+        {
+          "year": 2020,
+          "product_id": 123424,
+          "curr_year_spend": 1000.2,
+          "prev_year_spend": 1500.6,
+          "yoy_rate": -33.35
+        },
+        {
+          "year": 2021,
+          "product_id": 123424,
+          "curr_year_spend": 1246.44,
+          "prev_year_spend": 1000.2,
+          "yoy_rate": 24.62
+        },
+        {
+          "year": 2022,
+          "product_id": 123424,
+          "curr_year_spend": 2145.32,
+          "prev_year_spend": 1246.44,
+          "yoy_rate": 72.12
+        }
+      ]
+    }
+  ]
+}

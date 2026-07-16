@@ -1,0 +1,75 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Teams": [
+          {
+            "team_id": 1,
+            "team_name": "Ajax"
+          },
+          {
+            "team_id": 4,
+            "team_name": "Dortmund"
+          },
+          {
+            "team_id": 6,
+            "team_name": "Arsenal"
+          }
+        ],
+        "Matches": [
+          {
+            "home_team_id": 1,
+            "away_team_id": 4,
+            "home_team_goals": 0,
+            "away_team_goals": 1
+          },
+          {
+            "home_team_id": 1,
+            "away_team_id": 6,
+            "home_team_goals": 3,
+            "away_team_goals": 3
+          },
+          {
+            "home_team_id": 4,
+            "away_team_id": 1,
+            "home_team_goals": 5,
+            "away_team_goals": 2
+          },
+          {
+            "home_team_id": 6,
+            "away_team_id": 1,
+            "home_team_goals": 0,
+            "away_team_goals": 0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_name": "Dortmund",
+          "matches_played": 2,
+          "points": 6,
+          "goal_for": 6,
+          "goal_against": 2,
+          "goal_diff": 4
+        },
+        {
+          "team_name": "Arsenal",
+          "matches_played": 2,
+          "points": 2,
+          "goal_for": 3,
+          "goal_against": 3,
+          "goal_diff": 0
+        },
+        {
+          "team_name": "Ajax",
+          "matches_played": 4,
+          "points": 2,
+          "goal_for": 5,
+          "goal_against": 9,
+          "goal_diff": -4
+        }
+      ]
+    }
+  ]
+}

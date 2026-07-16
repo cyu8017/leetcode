@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "target": [
+          9,
+          3,
+          5
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "target": [
+          1,
+          1,
+          1,
+          2
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "target": [
+          8,
+          5
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "FrequencyTracker",
+        "add",
+        "add",
+        "hasFrequency"
+      ],
+      "arguments": [
+        [],
+        [
+          3
+        ],
+        [
+          3
+        ],
+        [
+          2
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FrequencyTracker",
+        "add",
+        "deleteOne",
+        "hasFrequency"
+      ],
+      "arguments": [
+        [],
+        [
+          1
+        ],
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        false
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FrequencyTracker",
+        "hasFrequency",
+        "add",
+        "hasFrequency"
+      ],
+      "arguments": [
+        [],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        null,
+        true
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿// LeetCode 3864 - Minimum Cost to Partition a Binary String
+// https://leetcode.com/problems/minimum-cost-to-partition-a-binary-string/
+
+object Solution {
+  def solve(): Unit = {}
+}

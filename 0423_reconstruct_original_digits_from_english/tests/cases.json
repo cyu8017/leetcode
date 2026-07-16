@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "owoztneoer"
+      },
+      "expected": "012"
+    },
+    {
+      "args": {
+        "s": "fviefuro"
+      },
+      "expected": "45"
+    }
+  ]
+}

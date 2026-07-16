@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "TeamPoints": [
+          {
+            "team_id": 3,
+            "name": "Algeria",
+            "points": 1431
+          },
+          {
+            "team_id": 1,
+            "name": "Senegal",
+            "points": 2132
+          },
+          {
+            "team_id": 2,
+            "name": "New Zealand",
+            "points": 1402
+          },
+          {
+            "team_id": 4,
+            "name": "Croatia",
+            "points": 1817
+          }
+        ],
+        "PointsChange": [
+          {
+            "team_id": 3,
+            "points_change": 399
+          },
+          {
+            "team_id": 2,
+            "points_change": 0
+          },
+          {
+            "team_id": 4,
+            "points_change": 13
+          },
+          {
+            "team_id": 1,
+            "points_change": -22
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_id": 1,
+          "name": "Senegal",
+          "rank_diff": 0
+        },
+        {
+          "team_id": 4,
+          "name": "Croatia",
+          "rank_diff": -1
+        },
+        {
+          "team_id": 3,
+          "name": "Algeria",
+          "rank_diff": 1
+        },
+        {
+          "team_id": 2,
+          "name": "New Zealand",
+          "rank_diff": 0
+        }
+      ]
+    }
+  ]
+}

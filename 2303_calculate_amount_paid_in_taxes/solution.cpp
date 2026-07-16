@@ -1,0 +1,8 @@
+﻿// LeetCode 2303 - Calculate Amount Paid in Taxes
+// https://leetcode.com/problems/calculate-amount-paid-in-taxes/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

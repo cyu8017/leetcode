@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "III"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "LVIII"
+      },
+      "expected": 58
+    },
+    {
+      "args": {
+        "s": "MCMXCIV"
+      },
+      "expected": 1994
+    }
+  ]
+}

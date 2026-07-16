@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_id": 1,
+            "customer_id": 1,
+            "order_type": 0
+          },
+          {
+            "order_id": 2,
+            "customer_id": 1,
+            "order_type": 0
+          },
+          {
+            "order_id": 11,
+            "customer_id": 2,
+            "order_type": 0
+          },
+          {
+            "order_id": 12,
+            "customer_id": 2,
+            "order_type": 1
+          },
+          {
+            "order_id": 21,
+            "customer_id": 3,
+            "order_type": 1
+          },
+          {
+            "order_id": 22,
+            "customer_id": 3,
+            "order_type": 0
+          },
+          {
+            "order_id": 31,
+            "customer_id": 4,
+            "order_type": 1
+          },
+          {
+            "order_id": 32,
+            "customer_id": 4,
+            "order_type": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "order_id": 31,
+          "customer_id": 4,
+          "order_type": 1
+        },
+        {
+          "order_id": 32,
+          "customer_id": 4,
+          "order_type": 1
+        },
+        {
+          "order_id": 1,
+          "customer_id": 1,
+          "order_type": 0
+        },
+        {
+          "order_id": 2,
+          "customer_id": 1,
+          "order_type": 0
+        },
+        {
+          "order_id": 11,
+          "customer_id": 2,
+          "order_type": 0
+        },
+        {
+          "order_id": 22,
+          "customer_id": 3,
+          "order_type": 0
+        }
+      ]
+    }
+  ]
+}

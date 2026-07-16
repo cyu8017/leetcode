@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "path": "/home/"
+      },
+      "expected": "/home"
+    },
+    {
+      "args": {
+        "path": "/home//foo/"
+      },
+      "expected": "/home/foo"
+    },
+    {
+      "args": {
+        "path": "/home/user/Documents/../Pictures"
+      },
+      "expected": "/home/user/Pictures"
+    },
+    {
+      "args": {
+        "path": "/../"
+      },
+      "expected": "/"
+    },
+    {
+      "args": {
+        "path": "/.../a/../b/c/../d/./"
+      },
+      "expected": "/.../b/d"
+    }
+  ]
+}

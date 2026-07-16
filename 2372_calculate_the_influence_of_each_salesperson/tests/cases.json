@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Salesperson": [
+          {
+            "salesperson_id": 1,
+            "name": "Alice"
+          },
+          {
+            "salesperson_id": 2,
+            "name": "Bob"
+          },
+          {
+            "salesperson_id": 3,
+            "name": "Jerry"
+          }
+        ],
+        "Customer": [
+          {
+            "customer_id": 1,
+            "salesperson_id": 1
+          },
+          {
+            "customer_id": 2,
+            "salesperson_id": 1
+          },
+          {
+            "customer_id": 3,
+            "salesperson_id": 2
+          }
+        ],
+        "Sales": [
+          {
+            "sale_id": 1,
+            "customer_id": 2,
+            "price": 892
+          },
+          {
+            "sale_id": 2,
+            "customer_id": 1,
+            "price": 354
+          },
+          {
+            "sale_id": 3,
+            "customer_id": 3,
+            "price": 988
+          },
+          {
+            "sale_id": 4,
+            "customer_id": 3,
+            "price": 856
+          }
+        ]
+      },
+      "expected": [
+        {
+          "salesperson_id": 1,
+          "name": "Alice",
+          "total": 1246
+        },
+        {
+          "salesperson_id": 2,
+          "name": "Bob",
+          "total": 1844
+        },
+        {
+          "salesperson_id": 3,
+          "name": "Jerry",
+          "total": 0
+        }
+      ]
+    }
+  ]
+}

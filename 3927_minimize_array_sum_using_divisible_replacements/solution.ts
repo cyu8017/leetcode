@@ -1,0 +1,6 @@
+﻿// LeetCode 3927 - Minimize Array Sum Using Divisible Replacements
+// https://leetcode.com/problems/minimize-array-sum-using-divisible-replacements/
+
+function solve(input: unknown): unknown {
+    return null;
+}

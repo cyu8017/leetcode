@@ -1,0 +1,1109 @@
+#!/usr/bin/env python3
+"""Shared test utilities for LeetCode solution runners."""
+
+from __future__ import annotations
+
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: "ListNode | None" = None):
+        self.val = val
+        self.next = next
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: "TreeNode | None" = None, right: "TreeNode | None" = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class ParentNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: "ParentNode | None" = None,
+        right: "ParentNode | None" = None,
+        parent: "ParentNode | None" = None,
+    ):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.parent = parent
+
+
+class NextNode:
+    def __init__(
+        self,
+        val: int = 0,
+        left: "NextNode | None" = None,
+        right: "NextNode | None" = None,
+        next: "NextNode | None" = None,
+    ):
+        self.val = val
+        self.left = left
+        self.right = right
+        self.next = next
+
+
+class GraphNode:
+    def __init__(self, val: int = 0, neighbors: list["GraphNode"] | None = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
+class RandomListNode:
+    def __init__(
+        self,
+        val: int = 0,
+        next: "RandomListNode | None" = None,
+        random: "RandomListNode | None" = None,
+    ):
+        self.val = val
+        self.next = next
+        self.random = random
+
+
+class NestedInteger:
+    def __init__(self, value: int | None = None):
+        self._integer = value
+        self._list: list["NestedInteger"] = []
+
+    def isInteger(self) -> bool:
+        return self._integer is not None
+
+    def getInteger(self) -> int:
+        return self._integer if self._integer is not None else 0
+
+    def getList(self) -> list["NestedInteger"]:
+        return self._list
+
+
+def json_to_nested_integer(value: Any) -> NestedInteger:
+    if isinstance(value, int):
+        return NestedInteger(value)
+    item = NestedInteger()
+    item._list = [json_to_nested_integer(entry) for entry in value]
+    return item
+
+
+def json_to_nested_list(values: list[Any]) -> list[NestedInteger]:
+    return [json_to_nested_integer(value) for value in values]
+
+
+def nested_integer_to_value(item: NestedInteger) -> int | list[Any]:
+    if item.isInteger():
+        return item.getInteger()
+    return [nested_integer_to_value(entry) for entry in item.getList()]
+
+
+class NaryNode:
+    def __init__(self, val: int | None = None, children: list["NaryNode"] | None = None):
+        self.val = val
+        self.children = children if children is not None else []
+
+
+class QuadNode:
+    def __init__(
+        self,
+        val: bool = False,
+        isLeaf: bool = False,
+        topLeft: "QuadNode | None" = None,
+        topRight: "QuadNode | None" = None,
+        bottomLeft: "QuadNode | None" = None,
+        bottomRight: "QuadNode | None" = None,
+    ):
+        self.val = val
+        self.isLeaf = isLeaf
+        self.topLeft = topLeft
+        self.topRight = topRight
+        self.bottomLeft = bottomLeft
+        self.bottomRight = bottomRight
+
+
+class MultilevelNode:
+    def __init__(
+        self,
+        val: int = 0,
+        prev: "MultilevelNode | None" = None,
+        next: "MultilevelNode | None" = None,
+        child: "MultilevelNode | None" = None,
+    ):
+        self.val = val
+        self.prev = prev
+        self.next = next
+        self.child = child
+
+
+def list_to_nary(values: list[Any]) -> NaryNode | None:
+    if not values:
+        return None
+    root = NaryNode(values[0], [])
+    parents: list[NaryNode] = [root]
+    index = 1
+    if index < len(values) and values[index] is None:
+        index += 1
+
+    while parents:
+        next_parents: list[NaryNode] = []
+        parent_index = 0
+        while index < len(values) and values[index] is None:
+            index += 1
+        while parent_index < len(parents) and index < len(values):
+            parent = parents[parent_index]
+            segment: list[int] = []
+            while index < len(values) and values[index] is not None:
+                segment.append(values[index])
+                index += 1
+            for value in segment:
+                child = NaryNode(value, [])
+                parent.children.append(child)
+                next_parents.append(child)
+            parent_index += 1
+            if index < len(values) and values[index] is None:
+                index += 1
+                if index < len(values) and values[index] is None:
+                    index += 1
+                    parent_index = len(parents)
+                    break
+        parents = next_parents
+
+    return root
+
+
+def nary_to_list(root: NaryNode | None) -> list[Any]:
+    if root is None:
+        return []
+    result: list[Any] = [root.val]
+    parents: list[NaryNode] = [root]
+    while parents:
+        next_parents: list[NaryNode] = []
+        segments: list[list[int]] = []
+        for parent in parents:
+            segments.append([child.val for child in parent.children])
+            next_parents.extend(parent.children)
+        if not next_parents:
+            break
+        padding = 0
+        for segment in segments:
+            if not segment:
+                padding += 1
+            else:
+                break
+        result.extend([None] * padding)
+        for segment_index, segment in enumerate(segments):
+            if segment_index < padding:
+                continue
+            if segment:
+                result.extend(segment)
+            if segment_index < len(segments) - 1:
+                result.append(None)
+        parents = next_parents
+    return result
+
+
+def quad_tree_to_list(root: QuadNode | None) -> list[Any]:
+    if root is None:
+        return []
+    result: list[Any] = []
+    queue: list[QuadNode | None] = [root]
+    while queue:
+        node = queue.pop(0)
+        if node is None:
+            result.append(None)
+            continue
+        result.append([int(node.isLeaf), int(node.val)])
+        if node.isLeaf:
+            queue.extend([None, None, None, None])
+        else:
+            queue.extend([node.topLeft, node.topRight, node.bottomLeft, node.bottomRight])
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
+
+def nary_trees_equal(left: Any, right: Any) -> bool:
+    if left is None and right is None:
+        return True
+    if left is None or right is None:
+        return False
+    if left.val != right.val or len(left.children) != len(right.children):
+        return False
+    return all(nary_trees_equal(a, b) for a, b in zip(left.children, right.children))
+
+
+def split_multilevel_rows(values: list[Any]) -> list[list[int]]:
+    rows: list[list[int]] = []
+    index = 0
+    length = len(values)
+    while index < length:
+        row: list[int] = []
+        while index < length and values[index] is not None:
+            row.append(index)
+            index += 1
+        if row:
+            rows.append(row)
+        if index < length and values[index] is None:
+            index += 1
+        while index < length and values[index] is None:
+            index += 1
+    return rows
+
+
+def list_to_multilevel(values: list[Any]) -> MultilevelNode | None:
+    if not values:
+        return None
+    nodes: dict[int, MultilevelNode] = {}
+    for index, value in enumerate(values):
+        if value is not None:
+            nodes[index] = MultilevelNode(value)
+    rows = split_multilevel_rows(values)
+    for row in rows:
+        for position, node_index in enumerate(row):
+            node = nodes[node_index]
+            if position > 0:
+                previous_index = row[position - 1]
+                node.prev = nodes[previous_index]
+                nodes[previous_index].next = node
+    for row_index in range(len(rows) - 1):
+        parent_row = rows[row_index]
+        child_row = rows[row_index + 1]
+        padding = child_row[0] - parent_row[-1] - 2
+        if padding < 0:
+            padding = 0
+        if padding < len(parent_row):
+            nodes[parent_row[padding]].child = nodes[child_row[0]]
+    return nodes[rows[0][0]]
+
+
+def multilevel_to_list(head: MultilevelNode | None) -> list[int]:
+    result: list[int] = []
+    current = head
+    while current:
+        result.append(current.val)
+        current = current.next
+    return result
+
+
+def doubly_tree_node_to_list(head: TreeNode | None) -> list[int]:
+    if head is None:
+        return []
+    result: list[int] = []
+    node = head
+    start = head
+    while True:
+        result.append(node.val)
+        if node.right is None or node.right is start:
+            break
+        node = node.right
+    return result
+
+
+def load_problem_tests(problem_dir: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+    tests_dir = problem_dir / "tests"
+    config = json.loads((tests_dir / "config.json").read_text(encoding="utf-8-sig"))
+    cases_doc = json.loads((tests_dir / "cases.json").read_text(encoding="utf-8-sig"))
+    return config, cases_doc
+
+
+def list_to_listnode(values: list[int] | None) -> ListNode | None:
+    if not values:
+        return None
+    head = ListNode(values[0])
+    current = head
+    for value in values[1:]:
+        current.next = ListNode(value)
+        current = current.next
+    return head
+
+
+def list_to_cyclelist(values: list[int] | None, pos: int = -1) -> ListNode | None:
+    if not values:
+        return None
+    nodes = [ListNode(value) for value in values]
+    for i in range(len(nodes) - 1):
+        nodes[i].next = nodes[i + 1]
+    if 0 <= pos < len(nodes):
+        nodes[-1].next = nodes[pos]
+    return nodes[0]
+
+
+def listnode_to_list(node: ListNode | None) -> list[int]:
+    result: list[int] = []
+    seen: set[int] = set()
+    while node and id(node) not in seen:
+        seen.add(id(node))
+        result.append(node.val)
+        node = node.next
+    return result
+
+
+def cycleentry_to_string(node: ListNode | None, head: ListNode | None) -> str:
+    if node is None:
+        return "no cycle"
+    index = 0
+    current = head
+    seen: set[int] = set()
+    while current and id(current) not in seen:
+        if current is node:
+            return f"tail connects to node index {index}"
+        seen.add(id(current))
+        current = current.next
+        index += 1
+    return "no cycle"
+
+
+def build_intersection_lists(args: dict[str, Any]) -> tuple[ListNode | None, ListNode | None]:
+    list_a = args.get("listA") or []
+    list_b = args.get("listB") or []
+    skip_a = int(args.get("skipA", 0))
+    skip_b = int(args.get("skipB", 0))
+    intersect_val = int(args.get("intersectVal", 0))
+
+    if not list_a and not list_b:
+        return None, None
+
+    nodes_a = [ListNode(value) for value in list_a]
+    for i in range(len(nodes_a) - 1):
+        nodes_a[i].next = nodes_a[i + 1]
+
+    if intersect_val == 0 or skip_a >= len(nodes_a):
+        nodes_b = [ListNode(value) for value in list_b]
+        for i in range(len(nodes_b) - 1):
+            nodes_b[i].next = nodes_b[i + 1]
+        return (nodes_a[0] if nodes_a else None), (nodes_b[0] if nodes_b else None)
+
+    nodes_b = [ListNode(value) for value in list_b[:skip_b]]
+    for i in range(len(nodes_b) - 1):
+        nodes_b[i].next = nodes_b[i + 1]
+    if nodes_b:
+        nodes_b[-1].next = nodes_a[skip_a]
+    else:
+        nodes_b = [nodes_a[skip_a]]
+    return nodes_a[0], nodes_b[0]
+
+
+def intersectnode_to_string(node: ListNode | None) -> str:
+    if node is None:
+        return "No intersection"
+    return f"Intersected at '{node.val}'"
+
+
+def find_tree_node(root: TreeNode | None, val: int) -> TreeNode | None:
+    if not root:
+        return None
+    if root.val == val:
+        return root
+    left = find_tree_node(root.left, val)
+    if left:
+        return left
+    return find_tree_node(root.right, val)
+
+
+def list_to_parent_tree(values: list[Any]) -> ParentNode | None:
+    if not values:
+        return None
+    root = ParentNode(values[0])
+    queue: list[ParentNode] = [root]
+    index = 1
+    while queue and index < len(values):
+        node = queue.pop(0)
+        if index < len(values):
+            if values[index] is not None:
+                node.left = ParentNode(values[index])
+                node.left.parent = node
+                queue.append(node.left)
+            index += 1
+        if index < len(values):
+            if values[index] is not None:
+                node.right = ParentNode(values[index])
+                node.right.parent = node
+                queue.append(node.right)
+            index += 1
+    return root
+
+
+def find_parent_node(root: ParentNode | None, val: int) -> ParentNode | None:
+    if not root:
+        return None
+    if root.val == val:
+        return root
+    left = find_parent_node(root.left, val)
+    if left:
+        return left
+    return find_parent_node(root.right, val)
+
+
+def find_list_node(head: ListNode | None, val: int) -> ListNode | None:
+    while head:
+        if head.val == val:
+            return head
+        head = head.next
+    return None
+
+
+def list_to_tree(values: list[Any]) -> TreeNode | None:
+    if not values:
+        return None
+    root = TreeNode(values[0])
+    queue: list[TreeNode] = [root]
+    i = 1
+    while queue and i < len(values):
+        node = queue.pop(0)
+        if i < len(values):
+            if values[i] is not None:
+                node.left = TreeNode(values[i])
+                queue.append(node.left)
+            i += 1
+        if i < len(values):
+            if values[i] is not None:
+                node.right = TreeNode(values[i])
+                queue.append(node.right)
+            i += 1
+    return root
+
+
+def tree_to_list(root: TreeNode | None) -> list[Any]:
+    if root is None:
+        return []
+    result: list[Any] = []
+    queue: list[TreeNode | None] = [root]
+    while queue:
+        node = queue.pop(0)
+        if node is None:
+            result.append(None)
+            continue
+        result.append(node.val)
+        queue.append(node.left)
+        queue.append(node.right)
+    while result and result[-1] is None:
+        result.pop()
+    return result
+
+
+def list_to_nextnode(values: list[Any]) -> NextNode | None:
+    if not values:
+        return None
+    root = NextNode(values[0])
+    queue: list[NextNode] = [root]
+    i = 1
+    while queue and i < len(values):
+        node = queue.pop(0)
+        if i < len(values):
+            if values[i] is not None:
+                node.left = NextNode(values[i])
+                queue.append(node.left)
+            i += 1
+        if i < len(values):
+            if values[i] is not None:
+                node.right = NextNode(values[i])
+                queue.append(node.right)
+            i += 1
+    return root
+
+
+def nextnode_to_serialized(root: NextNode | None) -> Any:
+    if root is None:
+        return []
+    parts: list[str] = []
+    level: NextNode | None = root
+    while level:
+        current: NextNode | None = level
+        while current:
+            parts.append(str(current.val))
+            current = current.next
+        parts.append("#")
+        current = level
+        next_level = None
+        while current:
+            if current.left:
+                next_level = current.left
+                break
+            if current.right:
+                next_level = current.right
+                break
+            current = current.next
+        level = next_level
+    return "[" + ",".join(parts) + "]"
+
+
+def list_to_graph(adj_list: list[Any] | None) -> GraphNode | None:
+    if not adj_list:
+        return None
+    nodes = [GraphNode(i + 1) for i in range(len(adj_list))]
+    for i, neighbors in enumerate(adj_list):
+        nodes[i].neighbors = [nodes[n - 1] for n in neighbors]
+    return nodes[0]
+
+
+def graph_to_list(node: GraphNode | None) -> list[Any]:
+    if node is None:
+        return []
+    ordered: list[GraphNode] = []
+    index: dict[int, int] = {}
+    queue = [node]
+    index[id(node)] = 0
+    ordered.append(node)
+    while queue:
+        current = queue.pop(0)
+        for neighbor in current.neighbors:
+            if id(neighbor) not in index:
+                index[id(neighbor)] = len(ordered)
+                ordered.append(neighbor)
+                queue.append(neighbor)
+    ordered.sort(key=lambda item: item.val)
+    result: list[list[int]] = [[] for _ in ordered]
+    val_to_pos = {item.val: i for i, item in enumerate(ordered)}
+    for item in ordered:
+        result[val_to_pos[item.val]] = [neighbor.val for neighbor in item.neighbors]
+    return result
+
+
+def list_to_randomlist(pairs: list[Any] | None) -> RandomListNode | None:
+    if not pairs:
+        return None
+    nodes = [RandomListNode(pair[0]) for pair in pairs]
+    for i, pair in enumerate(pairs):
+        if i + 1 < len(nodes):
+            nodes[i].next = nodes[i + 1]
+        if pair[1] is not None:
+            nodes[i].random = nodes[pair[1]]
+    return nodes[0]
+
+
+def randomlist_to_list(head: RandomListNode | None) -> list[Any]:
+    if head is None:
+        return []
+    nodes: list[RandomListNode] = []
+    index: dict[int, int] = {}
+    current: RandomListNode | None = head
+    while current:
+        index[id(current)] = len(nodes)
+        nodes.append(current)
+        current = current.next
+    result: list[list[Any]] = []
+    for node in nodes:
+        random_index = index[id(node.random)] if node.random is not None else None
+        result.append([node.val, random_index])
+    return result
+
+
+def convert_arg(value: Any, type_name: str | None) -> Any:
+    if type_name == "listnode":
+        return list_to_listnode(value)
+    if type_name == "listnode[]":
+        return [list_to_listnode(item) if item else None for item in value]
+    if type_name == "treenode":
+        return list_to_tree(value)
+    if type_name == "nextnode":
+        return list_to_nextnode(value)
+    if type_name == "graphnode":
+        return list_to_graph(value)
+    if type_name == "randomlistnode":
+        return list_to_randomlist(value)
+    if type_name == "nestedinteger[]":
+        return json_to_nested_list(value)
+    if type_name == "narynode":
+        return list_to_nary(value)
+    if type_name == "multilevelnode":
+        return list_to_multilevel(value)
+    return value
+
+
+def parse_inplace_expected(expected: str) -> tuple[int, list[Any]] | None:
+    match = re.match(r"(\d+),\s*(nums|chars)\s*=\s*\[(.*)\]", expected.strip())
+    if not match:
+        return None
+    count = int(match.group(1))
+    field = match.group(2)
+    raw = match.group(3)
+    if field == "chars":
+        prefix = [
+            token.strip().strip('"').strip("'")
+            for token in re.findall(r'"[^"]*"|\'[^\']*\'|[^,\s]+', raw)
+            if token.strip()
+        ]
+        return count, prefix
+    prefix = [
+        int(token.strip())
+        for token in raw.split(",")
+        if token.strip() and token.strip() != "_"
+    ]
+    return count, prefix
+
+
+def is_inplace_expected(expected: Any) -> bool:
+    return isinstance(expected, str) and (
+        ", nums = [" in expected or ", chars = [" in expected
+    )
+
+
+def void_mutation_result(keys: list[str], values: list[Any]) -> Any:
+    if "nums" in keys:
+        return values[keys.index("nums")]
+    if "nums1" in keys:
+        return values[keys.index("nums1")]
+    if "board" in keys:
+        return values[keys.index("board")]
+    if "rooms" in keys:
+        return values[keys.index("rooms")]
+    if "matrix" in keys:
+        return values[keys.index("matrix")]
+    if "s" in keys:
+        return values[keys.index("s")]
+    if "root" in keys:
+        return tree_to_list(values[keys.index("root")])
+    if "head" in keys:
+        return listnode_to_list(values[keys.index("head")])
+    return None
+
+def convert_result(value: Any, type_name: str | None) -> Any:
+    if type_name == "listnode":
+        return listnode_to_list(value)
+    if type_name == "treenode":
+        return tree_to_list(value)
+    if type_name == "treenode[]":
+        if value is None:
+            return []
+        return [tree_to_list(item) for item in value]
+    if type_name == "nextnode":
+        return nextnode_to_serialized(value)
+    if type_name == "graphnode":
+        return graph_to_list(value)
+    if type_name == "randomlistnode":
+        return randomlist_to_list(value)
+    if type_name == "nestedinteger":
+        return nested_integer_to_value(value)
+    if type_name == "narynode":
+        return nary_to_list(value)
+    if type_name == "quadnode":
+        return quad_tree_to_list(value)
+    if type_name == "multilevelnode":
+        return multilevel_to_list(value)
+    if type_name == "doublytreenode":
+        return doubly_tree_node_to_list(value)
+    return value
+
+
+def deep_equal(actual: Any, expected: Any) -> bool:
+    if isinstance(actual, list) and isinstance(expected, list):
+        if len(actual) != len(expected):
+            return False
+        return all(deep_equal(a, e) for a, e in zip(actual, expected))
+    if isinstance(actual, float) or isinstance(expected, float):
+        return abs(float(actual) - float(expected)) < 1e-5
+    return actual == expected
+
+
+def trees_equal_any_order(actual: list[Any], expected: list[Any]) -> bool:
+    return sorted(actual, key=lambda x: str(x)) == sorted(expected, key=lambda x: str(x))
+
+
+def is_design_case(case: dict[str, Any]) -> bool:
+    return case.get("kind") == "design"
+
+
+def uses_design_cases(cases_doc: dict[str, Any]) -> bool:
+    return any(is_design_case(case) for case in cases_doc.get("cases", []))
+
+
+def _design_call_args(raw_args: Any) -> list[Any]:
+    if raw_args is None:
+        return []
+    if isinstance(raw_args, list):
+        return raw_args
+    return [raw_args]
+
+
+class ListIterator:
+    def __init__(self, values: list[Any]) -> None:
+        self.values = values
+        self.index = 0
+
+    def next(self) -> Any:
+        value = self.values[self.index]
+        self.index += 1
+        return value
+
+    def hasNext(self) -> bool:
+        return self.index < len(self.values)
+
+
+def run_design_case(module: Any, case: dict[str, Any]) -> tuple[bool, list[Any], list[Any]]:
+    operations = case["operations"]
+    arguments = case["arguments"]
+    expected = case["expected"]
+    instance = None
+    actual_outputs: list[Any] = []
+
+    uniform_sequence = case.get("randomUniformSequence")
+    if uniform_sequence is not None:
+        uniform_iter = iter(uniform_sequence)
+
+        def mock_uniform(_a: float, _b: float) -> float:
+            return next(uniform_iter)
+
+        if hasattr(module, "set_uniform"):
+            module.set_uniform(mock_uniform)
+        else:
+            module.uniform = mock_uniform
+
+    for index, operation in enumerate(operations):
+        call_args = _design_call_args(arguments[index] if index < len(arguments) else [])
+        if index == 0:
+            cls = getattr(module, operation)
+            if operation == "BSTIterator" and call_args and isinstance(call_args[0], list):
+                call_args = [list_to_tree(call_args[0])]
+            if operation == "PeekingIterator" and call_args and isinstance(call_args[0], list):
+                call_args = [ListIterator(call_args[0])]
+            if operation == "NestedIterator" and call_args and isinstance(call_args[0], list):
+                call_args = [json_to_nested_list(call_args[0])]
+            instance = cls(*call_args) if call_args else cls()
+            result = None
+        else:
+            if instance is None:
+                raise RuntimeError(f"Design case missing constructor before operation {operation!r}")
+            method = getattr(instance, operation)
+            result = method(*call_args) if call_args else method()
+
+        actual_outputs.append(result)
+        if not deep_equal(result, expected[index]):
+            return False, actual_outputs, expected
+
+    return True, actual_outputs, expected
+
+
+def run_design_cases(module: Any, cases_doc: dict[str, Any]) -> tuple[int, int]:
+    passed = 0
+    total = len(cases_doc.get("cases", []))
+
+    for index, case in enumerate(cases_doc.get("cases", []), start=1):
+        if not is_design_case(case):
+            print(f"  SKIP case {index}: expected kind=design")
+            continue
+
+        try:
+            ok, actual_outputs, expected = run_design_case(module, case)
+        except Exception as exc:
+            print(f"  FAIL case {index}: {exc}")
+            continue
+
+        if ok:
+            passed += 1
+            print(f"  PASS case {index}")
+        else:
+            step = next(
+                (step_index for step_index, (actual, exp) in enumerate(zip(actual_outputs, expected)) if not deep_equal(actual, exp)),
+                len(actual_outputs) - 1,
+            )
+            print(
+                f"  FAIL case {index} step {step + 1}: "
+                f"expected {expected[step]!r}, got {actual_outputs[step]!r}"
+            )
+
+    return passed, total
+
+
+def is_wiggle(nums: list[int]) -> bool:
+    for index in range(len(nums) - 1):
+        if index % 2 == 0:
+            if nums[index] >= nums[index + 1]:
+                return False
+        elif nums[index] <= nums[index + 1]:
+            return False
+    return True
+
+
+class MockRobot:
+    """Simulates LeetCode's Robot API for problem 0489."""
+
+    _DIRS = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+
+    def __init__(self, room: list[list[int]], row: int, col: int):
+        self.room = room
+        self.row = row
+        self.col = col
+        self.direction = 0
+        self.cleaned: set[tuple[int, int]] = set()
+
+    def move(self) -> bool:
+        dr, dc = self._DIRS[self.direction]
+        nr, nc = self.row + dr, self.col + dc
+        if 0 <= nr < len(self.room) and 0 <= nc < len(self.room[0]) and self.room[nr][nc] == 1:
+            self.row, self.col = nr, nc
+            return True
+        return False
+
+    def turnLeft(self) -> None:
+        self.direction = (self.direction + 3) % 4
+
+    def turnRight(self) -> None:
+        self.direction = (self.direction + 1) % 4
+
+    def clean(self) -> None:
+        self.cleaned.add((self.row, self.col))
+
+
+def robot_cleaned_all(robot: MockRobot) -> bool:
+    for r, row in enumerate(robot.room):
+        for c, cell in enumerate(row):
+            if cell == 1 and (r, c) not in robot.cleaned:
+                return False
+    return True
+
+
+def run_cases(
+    solution: Any, config: dict[str, Any], cases_doc: dict[str, Any], module: Any | None = None
+) -> tuple[int, int]:
+    method_name = config["method"]
+    arg_types = config.get("types") or {}
+    return_type = arg_types.get("return")
+    passed = 0
+    total = len(cases_doc.get("cases", []))
+
+    for index, case in enumerate(cases_doc.get("cases", []), start=1):
+        if is_design_case(case):
+            print(f"  SKIP case {index}: use design test runner")
+            continue
+
+        args = case.get("args", {})
+        positional = case.get("input")
+        expected = case["expected"]
+        keys: list[str] = []
+        values: list[Any] = []
+        nary_tree_compare = False
+
+        cycle_head = None
+        if args and "listA" in args and "listB" in args and method_name == "getIntersectionNode":
+            method = getattr(solution, method_name)
+            head_a, head_b = build_intersection_lists(args)
+            actual = method(head_a, head_b)
+            actual = intersectnode_to_string(actual)
+        elif args and "root" in args and "p" in args and "q" in args and method_name == "lowestCommonAncestor":
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            p_node = find_tree_node(root, args["p"])
+            q_node = find_tree_node(root, args["q"])
+            result = method(root, p_node, q_node)
+            actual = result.val if result else None
+        elif args and "head" in args and "node" in args and method_name == "deleteNode":
+            method = getattr(solution, method_name)
+            head = list_to_listnode(args["head"])
+            target = find_list_node(head, args["node"])
+            method(target)
+            actual = listnode_to_list(head)
+        elif args and "dummy_input" in args:
+            encoded = solution.encode(args["dummy_input"])
+            actual = solution.decode(encoded)
+        elif method_name == "rand10" and module is not None and "n" in args:
+            sequence = case.get("rand7Sequence", [])
+            iterator = iter(sequence)
+
+            def rand7() -> int:
+                return next(iterator)
+
+            module.rand7 = rand7
+            actual = [solution.rand10() for _ in range(args["n"])]
+        elif (
+            args
+            and "root" in args
+            and method_name == "encodeNaryTree"
+            and arg_types.get("root") == "narynode"
+        ):
+            root = list_to_nary(args["root"])
+            binary = solution.encodeNaryTree(root)
+            actual = solution.decodeBinaryTree(binary)
+            expected = root
+            nary_tree_compare = True
+        elif (
+            args
+            and "root" in args
+            and config.get("class") == "Codec"
+            and arg_types.get("root") == "narynode"
+            and module is not None
+        ):
+            codec = module.Codec()
+            root = list_to_nary(args["root"])
+            actual = codec.deserialize(codec.encode(root))
+            expected = root
+            nary_tree_compare = True
+        elif (
+            args
+            and "root" in args
+            and config.get("class") == "Codec"
+            and "p" not in args
+            and "q" not in args
+        ):
+            root = list_to_tree(args["root"])
+            actual = tree_to_list(solution.deserialize(solution.serialize(root)))
+        elif args and "root" in args and method_name == "treeToDoublyList":
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            actual = doubly_tree_node_to_list(method(root))
+        elif args and "grid" in args and method_name == "construct":
+            method = getattr(solution, method_name)
+            actual = quad_tree_to_list(method(args["grid"]))
+        elif args and "root" in args and method_name == "levelOrder" and arg_types.get("root") == "narynode":
+            method = getattr(solution, method_name)
+            actual = method(list_to_nary(args["root"]))
+        elif args and "head" in args and method_name == "flatten" and arg_types.get("head") == "multilevelnode":
+            method = getattr(solution, method_name)
+            head = list_to_multilevel(args["head"])
+            actual = multilevel_to_list(method(head))
+        elif args and "v1" in args and "v2" in args and config.get("class") == "ZigzagIterator" and module is not None:
+            iterator = module.ZigzagIterator(args["v1"], args["v2"])
+            actual = []
+            while iterator.hasNext():
+                actual.append(iterator.next())
+        elif (
+            args
+            and "nestedList" in args
+            and config.get("class") == "NestedIterator"
+            and module is not None
+        ):
+            iterator = module.NestedIterator(json_to_nested_list(args["nestedList"]))
+            actual = []
+            while iterator.hasNext():
+                actual.append(iterator.next())
+        elif args and "root" in args and "p" in args and method_name == "inorderSuccessor":
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            p_node = find_tree_node(root, args["p"])
+            result = method(root, p_node)
+            actual = result.val if result else None
+        elif args and "tree" in args and "node" in args and method_name == "inorderSuccessor":
+            method = getattr(solution, method_name)
+            root = list_to_parent_tree(args["tree"])
+            target = find_parent_node(root, args["node"])
+            result = method(target)
+            actual = result.val if result else None
+        elif args and "pick" in args and method_name == "guessNumber" and module is not None:
+            method = getattr(solution, method_name)
+            pick = args["pick"]
+
+            def guess(num: int) -> int:
+                if num > pick:
+                    return -1
+                if num < pick:
+                    return 1
+                return 0
+
+            module.guess = guess
+            actual = method(args["n"])
+        elif args and "bad" in args and method_name == "firstBadVersion" and module is not None:
+            method = getattr(solution, method_name)
+            bad = args["bad"]
+
+            def is_bad_version(version: int) -> bool:
+                return version >= bad
+
+            module.isBadVersion = is_bad_version
+            actual = method(args["n"])
+        elif args and "graph" in args and method_name == "findCelebrity" and module is not None:
+            method = getattr(solution, method_name)
+            graph = args["graph"]
+
+            def knows(person_a: int, person_b: int) -> bool:
+                return graph[person_a][person_b] == 1
+
+            module.knows = knows
+            actual = method(len(graph))
+        elif args and "room" in args and method_name == "cleanRoom":
+            method = getattr(solution, method_name)
+            robot = MockRobot(args["room"], args["row"], args["col"])
+            method(robot)
+            actual = "Robot cleaned all rooms." if robot_cleaned_all(robot) else "Robot missed rooms."
+        elif (
+            args
+            and config.get("class") == "Codec"
+            and ("url" in args or "longUrl" in args)
+            and module is not None
+        ):
+            long_url = args.get("url") or args.get("longUrl")
+            codec = module.Codec()
+            actual = codec.decode(codec.encode(long_url))
+        elif args:
+            method = getattr(solution, method_name)
+            keys = [key for key in (config.get("paramOrder") or list(args.keys())) if key != "pos"]
+            values = []
+            for key in keys:
+                if arg_types.get(key) == "cyclelistnode":
+                    cycle_head = list_to_cyclelist(args[key], args.get("pos", -1))
+                    values.append(cycle_head)
+                else:
+                    values.append(convert_arg(args[key], arg_types.get(key)))
+            if "nums" in keys and (is_inplace_expected(expected) or return_type == "void"):
+                nums_index = keys.index("nums")
+                values[nums_index] = list(values[nums_index])
+            if "chars" in keys and is_inplace_expected(expected):
+                chars_index = keys.index("chars")
+                values[chars_index] = list(values[chars_index])
+            if "s" in keys and return_type == "void" and isinstance(args.get("s"), list):
+                s_index = keys.index("s")
+                values[s_index] = list(values[s_index])
+            if "nums1" in keys and return_type == "void":
+                nums1_index = keys.index("nums1")
+                values[nums1_index] = list(values[nums1_index])
+            if "board" in keys and return_type == "void":
+                board_index = keys.index("board")
+                values[board_index] = [row[:] for row in values[board_index]]
+            if "rooms" in keys and return_type == "void":
+                rooms_index = keys.index("rooms")
+                values[rooms_index] = [row[:] for row in values[rooms_index]]
+            if "matrix" in keys and return_type == "void":
+                matrix_index = keys.index("matrix")
+                values[matrix_index] = [row[:] for row in values[matrix_index]]
+            actual = method(*values)
+            if return_type == "void" and args:
+                actual = void_mutation_result(keys, values)
+            elif return_type == "cycleentry":
+                actual = cycleentry_to_string(actual, cycle_head)
+            else:
+                actual = convert_result(actual, return_type)
+        elif positional is not None:
+            method = getattr(solution, method_name)
+            actual = method(*positional)
+            actual = convert_result(actual, return_type)
+        else:
+            method = getattr(solution, method_name)
+            actual = method()
+            actual = convert_result(actual, return_type)
+
+        if is_inplace_expected(expected):
+            parsed = parse_inplace_expected(expected)
+            if parsed is None:
+                print(f"  FAIL case {index}: unable to parse inplace expected {expected!r}")
+                continue
+            expected_count, expected_prefix = parsed
+            nums_index = keys.index("nums") if args and "nums" in keys else None
+            chars_index = keys.index("chars") if args and "chars" in keys else None
+            nums_after = values[nums_index] if nums_index is not None else None
+            chars_after = values[chars_index] if chars_index is not None else None
+            mutated = nums_after if nums_after is not None else chars_after
+            ok = (
+                actual == expected_count
+                and mutated is not None
+                and mutated[:expected_count] == expected_prefix
+            )
+        elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:
+            ok = trees_equal_any_order(actual, expected)
+        elif method_name == "wiggleSort" and isinstance(actual, list) and is_wiggle(actual):
+            ok = True
+        elif nary_tree_compare:
+            ok = nary_trees_equal(actual, expected)
+        elif deep_equal(actual, expected):
+            ok = True
+        else:
+            ok = False
+
+        if ok:
+            passed += 1
+            print(f"  PASS case {index}")
+        else:
+            print(f"  FAIL case {index}: expected {expected!r}, got {actual!r}")
+
+    return passed, total

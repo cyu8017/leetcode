@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "validateCoupons",
+  "paramOrder": [
+    "code",
+    "businessLine",
+    "isActive"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

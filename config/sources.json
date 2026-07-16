@@ -1,0 +1,4 @@
+{
+  "leetcodeProblemsUrl": "https://raw.githubusercontent.com/bunnyxt/lcid/main/problems_all.json",
+  "description": "Daily-updated mirror of LeetCode's full problem list. Used by sync-new-problems.ps1."
+}

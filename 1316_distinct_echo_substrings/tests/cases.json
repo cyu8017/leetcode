@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "text": "abcabcabc"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "text": "leetcodeleetcode"
+      },
+      "expected": 2
+    }
+  ]
+}

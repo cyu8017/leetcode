@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcxyz123",
+        "words": [
+          "abc",
+          "123"
+        ]
+      },
+      "expected": "**abc**xyz**123**"
+    },
+    {
+      "args": {
+        "s": "aaabbb",
+        "words": [
+          "aa",
+          "b"
+        ]
+      },
+      "expected": "**aaabbb**"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "args": {
+        "m": 4,
+        "n": 3,
+        "hFences": [
+          2,
+          3
+        ],
+        "vFences": [
+          2
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "m": 6,
+        "n": 7,
+        "hFences": [
+          2
+        ],
+        "vFences": [
+          4
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "run",
+  "paramOrder": null,
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "shell",
+  "file": "file.txt",
+  "runnable": false
+}

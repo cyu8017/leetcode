@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Flights": [
+          {
+            "flight_id": 1,
+            "capacity": 2
+          },
+          {
+            "flight_id": 2,
+            "capacity": 2
+          },
+          {
+            "flight_id": 3,
+            "capacity": 1
+          }
+        ],
+        "Passengers": [
+          {
+            "passenger_id": 101,
+            "flight_id": 1
+          },
+          {
+            "passenger_id": 102,
+            "flight_id": 1
+          },
+          {
+            "passenger_id": 103,
+            "flight_id": 1
+          },
+          {
+            "passenger_id": 104,
+            "flight_id": 2
+          },
+          {
+            "passenger_id": 105,
+            "flight_id": 2
+          },
+          {
+            "passenger_id": 106,
+            "flight_id": 3
+          },
+          {
+            "passenger_id": 107,
+            "flight_id": 3
+          }
+        ]
+      },
+      "expected": [
+        {
+          "flight_id": 1,
+          "booked_cnt": 2,
+          "waitlist_cnt": 1
+        },
+        {
+          "flight_id": 2,
+          "booked_cnt": 2,
+          "waitlist_cnt": 0
+        },
+        {
+          "flight_id": 3,
+          "booked_cnt": 1,
+          "waitlist_cnt": 1
+        }
+      ]
+    }
+  ]
+}

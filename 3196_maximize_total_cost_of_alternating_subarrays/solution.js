@@ -1,0 +1,9 @@
+﻿// LeetCode 3196 - Maximize Total Cost of Alternating Subarrays
+// https://leetcode.com/problems/maximize-total-cost-of-alternating-subarrays/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

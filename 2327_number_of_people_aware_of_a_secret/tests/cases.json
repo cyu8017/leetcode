@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 6,
+        "delay": 2,
+        "forget": 4
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "n": 4,
+        "delay": 1,
+        "forget": 3
+      },
+      "expected": 6
+    }
+  ]
+}

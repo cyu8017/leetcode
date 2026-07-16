@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "hp": 11,
+        "damage": [
+          3,
+          6,
+          7
+        ],
+        "requirement": [
+          4,
+          2,
+          5
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "hp": 2,
+        "damage": [
+          10000,
+          1
+        ],
+        "requirement": [
+          1,
+          1
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

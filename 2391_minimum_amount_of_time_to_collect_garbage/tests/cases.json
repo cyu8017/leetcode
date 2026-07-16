@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "garbage": [
+          "G",
+          "P",
+          "GP",
+          "GG"
+        ],
+        "travel": [
+          2,
+          4,
+          3
+        ]
+      },
+      "expected": 21
+    },
+    {
+      "args": {
+        "garbage": [
+          "MMM",
+          "PGM",
+          "GP"
+        ],
+        "travel": [
+          3,
+          10
+        ]
+      },
+      "expected": 37
+    }
+  ]
+}

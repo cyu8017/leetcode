@@ -1,0 +1,6 @@
+﻿# LeetCode 0822 - Card Flipping Game
+# https://leetcode.com/problems/card-flipping-game/
+
+class Solution:
+    def solve(self) -> None:
+        pass

@@ -1,0 +1,215 @@
+# Test harness for 3228_maximum_number_of_operations_to_move_ones_to_the_end
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language python
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language javascript
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language typescript
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language java
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language cpp
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language c
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language go
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language rust
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language kotlin
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language swift
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language ruby
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language csharp
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language scala
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language php
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm java java 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm c c 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm go go 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm rust rust 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm swift swift 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm scala scala 3228_maximum_number_of_operations_to_move_ones_to_the_end
+docker compose -f docker/docker-compose.yml run --rm php php 3228_maximum_number_of_operations_to_move_ones_to_the_end
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 3228_maximum_number_of_operations_to_move_ones_to_the_end` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 3228_maximum_number_of_operations_to_move_ones_to_the_end -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 3228_maximum_number_of_operations_to_move_ones_to_the_end --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

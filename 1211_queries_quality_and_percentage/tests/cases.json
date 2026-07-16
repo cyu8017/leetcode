@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Queries": [
+          {
+            "query_name": "Dog",
+            "result": "Golden Retriever",
+            "position": 1,
+            "rating": 5
+          },
+          {
+            "query_name": "Dog",
+            "result": "German Shepherd",
+            "position": 2,
+            "rating": 5
+          },
+          {
+            "query_name": "Dog",
+            "result": "Mule",
+            "position": 200,
+            "rating": 1
+          },
+          {
+            "query_name": "Cat",
+            "result": "Shirazi",
+            "position": 5,
+            "rating": 2
+          },
+          {
+            "query_name": "Cat",
+            "result": "Siamese",
+            "position": 3,
+            "rating": 3
+          },
+          {
+            "query_name": "Cat",
+            "result": "Sphynx",
+            "position": 7,
+            "rating": 4
+          }
+        ]
+      },
+      "expected": [
+        {
+          "query_name": "Dog",
+          "quality": 2.5,
+          "poor_query_percentage": 33.33
+        },
+        {
+          "query_name": "Cat",
+          "quality": 0.66,
+          "poor_query_percentage": 33.33
+        }
+      ]
+    }
+  ]
+}

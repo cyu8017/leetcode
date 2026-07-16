@@ -1,0 +1,1 @@
+class TwoSum { private val counts = mutableMapOf<Int, Int>(); fun add(number: Int) { counts[number] = (counts[number] ?: 0) + 1 }; fun find(value: Int): Boolean { for ((number, count) in counts) { val complement = value - number; if (if (complement == number) count >= 2 else counts.containsKey(complement)) return true }; return false } }

@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "wiggleSort",
+  "paramOrder": ["nums"],
+  "types": {
+    "return": "void"
+  },
+  "description": null
+}

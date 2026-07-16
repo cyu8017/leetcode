@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "maximumBeauty",
+  "paramOrder": [
+    "flowers",
+    "newFlowers",
+    "target",
+    "full",
+    "partial"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

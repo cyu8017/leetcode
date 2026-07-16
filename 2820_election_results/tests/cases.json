@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Votes": [
+          {
+            "voter": "Kathy",
+            "candidate": null
+          },
+          {
+            "voter": "Charles",
+            "candidate": "Ryan"
+          },
+          {
+            "voter": "Charles",
+            "candidate": "Christine"
+          },
+          {
+            "voter": "Charles",
+            "candidate": "Kathy"
+          },
+          {
+            "voter": "Benjamin",
+            "candidate": "Christine"
+          },
+          {
+            "voter": "Anthony",
+            "candidate": "Ryan"
+          },
+          {
+            "voter": "Edward",
+            "candidate": "Ryan"
+          },
+          {
+            "voter": "Terry",
+            "candidate": null
+          },
+          {
+            "voter": "Evelyn",
+            "candidate": "Kathy"
+          },
+          {
+            "voter": "Arthur",
+            "candidate": "Christine"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "candidate": "Christine"
+        },
+        {
+          "candidate": "Ryan"
+        }
+      ]
+    }
+  ]
+}

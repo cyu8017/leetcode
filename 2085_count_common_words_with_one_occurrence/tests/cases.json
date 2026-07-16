@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words1": [
+          "leetcode",
+          "is",
+          "amazing",
+          "as",
+          "is"
+        ],
+        "words2": [
+          "amazing",
+          "leetcode",
+          "is"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words1": [
+          "b",
+          "bb",
+          "bbb"
+        ],
+        "words2": [
+          "a",
+          "aa",
+          "aaa"
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "words1": [
+          "a",
+          "ab"
+        ],
+        "words2": [
+          "a",
+          "a",
+          "a",
+          "ab"
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

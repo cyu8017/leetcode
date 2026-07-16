@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "password": "IloveLe3tcode!"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "password": "Me+You--IsMyDream"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "password": "1aB!"
+      },
+      "expected": false
+    }
+  ]
+}

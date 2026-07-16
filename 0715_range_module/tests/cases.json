@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "RangeModule",
+        "addRange",
+        "removeRange",
+        "queryRange",
+        "queryRange",
+        "queryRange"
+      ],
+      "arguments": [
+        [],
+        [
+          10,
+          20
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          10,
+          14
+        ],
+        [
+          13,
+          15
+        ],
+        [
+          16,
+          17
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        true,
+        false,
+        true
+      ]
+    }
+  ]
+}

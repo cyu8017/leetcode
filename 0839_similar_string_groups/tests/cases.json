@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "strs": [
+          "tars",
+          "rats",
+          "arts",
+          "star"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "strs": [
+          "omv",
+          "ovm"
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

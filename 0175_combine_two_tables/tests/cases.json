@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Person": [
+          {
+            "personId": 1,
+            "lastName": "Wang",
+            "firstName": "Allen"
+          },
+          {
+            "personId": 2,
+            "lastName": "Alice",
+            "firstName": "Bob"
+          }
+        ],
+        "Address": [
+          {
+            "addressId": 1,
+            "personId": 2,
+            "city": "New York City",
+            "state": "New York"
+          },
+          {
+            "addressId": 2,
+            "personId": 3,
+            "city": "Leetcode",
+            "state": "California"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "firstName": "Allen",
+          "lastName": "Wang",
+          "city": null,
+          "state": null
+        },
+        {
+          "firstName": "Bob",
+          "lastName": "Alice",
+          "city": "New York City",
+          "state": "New York"
+        }
+      ]
+    }
+  ]
+}

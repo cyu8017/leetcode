@@ -1,0 +1,7 @@
+﻿# LeetCode 1187 - Make Array Strictly Increasing
+# https://leetcode.com/problems/make-array-strictly-increasing/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "zigzagLevelOrder",
+  "paramOrder": ["root"],
+  "types": { "root": "treenode", "return": "integer[][]" },
+  "description": null
+}

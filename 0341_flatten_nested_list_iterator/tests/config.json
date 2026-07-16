@@ -1,0 +1,11 @@
+{
+  "class": "NestedIterator",
+  "method": "next",
+  "paramOrder": [
+    "nestedList"
+  ],
+  "types": {
+    "nestedList": "nestedinteger[]"
+  },
+  "description": "Flatten NestedIterator by calling next/hasNext until exhausted."
+}

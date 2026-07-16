@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "convertBST",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "void"
+  },
+  "description": "Replace each node value with the sum of all greater node values."
+}

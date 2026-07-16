@@ -1,0 +1,12 @@
+{
+  "class": "Codec",
+  "method": "encode",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "narynode",
+    "return": "narynode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

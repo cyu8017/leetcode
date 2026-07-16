@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "n": 13
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "n": 0
+      },
+      "expected": 0
+    }
+  ]
+}

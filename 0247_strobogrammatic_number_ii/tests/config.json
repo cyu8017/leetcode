@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "findStrobogrammatic",
+  "paramOrder": ["n"],
+  "types": { "return": "string[]" },
+  "description": null
+}

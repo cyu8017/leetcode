@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "mass",
+          "as",
+          "hero",
+          "superhero"
+        ]
+      },
+      "expected": [
+        "as",
+        "hero"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "leetcode",
+          "et",
+          "code"
+        ]
+      },
+      "expected": [
+        "et",
+        "code"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "blue",
+          "green",
+          "bu"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

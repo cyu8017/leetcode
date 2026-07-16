@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "args": {
+        "favorite": [
+          2,
+          2,
+          1,
+          2
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "favorite": [
+          1,
+          2,
+          0
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "favorite": [
+          3,
+          0,
+          1,
+          4,
+          1
+        ]
+      },
+      "expected": 4
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Accounts": [
+          {
+            "account_id": 3,
+            "max_income": 21000
+          },
+          {
+            "account_id": 4,
+            "max_income": 10400
+          }
+        ],
+        "Transactions": [
+          {
+            "transaction_id": 2,
+            "account_id": 3,
+            "type": "Creditor",
+            "amount": 107100,
+            "day": "2021-06-02 11:38:14"
+          },
+          {
+            "transaction_id": 4,
+            "account_id": 4,
+            "type": "Creditor",
+            "amount": 10400,
+            "day": "2021-06-20 12:39:18"
+          },
+          {
+            "transaction_id": 11,
+            "account_id": 4,
+            "type": "Debtor",
+            "amount": 58800,
+            "day": "2021-07-23 12:41:55"
+          },
+          {
+            "transaction_id": 1,
+            "account_id": 4,
+            "type": "Creditor",
+            "amount": 49300,
+            "day": "2021-05-03 16:11:04"
+          },
+          {
+            "transaction_id": 15,
+            "account_id": 3,
+            "type": "Debtor",
+            "amount": 75500,
+            "day": "2021-05-23 14:40:20"
+          },
+          {
+            "transaction_id": 10,
+            "account_id": 3,
+            "type": "Creditor",
+            "amount": 102100,
+            "day": "2021-06-15 10:37:16"
+          },
+          {
+            "transaction_id": 14,
+            "account_id": 4,
+            "type": "Creditor",
+            "amount": 56300,
+            "day": "2021-07-21 12:12:25"
+          },
+          {
+            "transaction_id": 19,
+            "account_id": 4,
+            "type": "Debtor",
+            "amount": 101100,
+            "day": "2021-05-09 15:21:49"
+          },
+          {
+            "transaction_id": 8,
+            "account_id": 3,
+            "type": "Creditor",
+            "amount": 64900,
+            "day": "2021-07-26 15:09:56"
+          },
+          {
+            "transaction_id": 7,
+            "account_id": 3,
+            "type": "Creditor",
+            "amount": 90900,
+            "day": "2021-06-14 11:23:07"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "account_id": 3
+        }
+      ]
+    }
+  ]
+}

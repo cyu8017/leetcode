@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "args": {
+        "list1": [
+          "Shogun",
+          "Tapioca Express",
+          "Burger King",
+          "KFC"
+        ],
+        "list2": [
+          "Piatti",
+          "The Grill at Torrey Pines",
+          "Hungry Hunter Steakhouse",
+          "Shogun"
+        ]
+      },
+      "expected": [
+        "Shogun"
+      ]
+    },
+    {
+      "args": {
+        "list1": [
+          "Shogun",
+          "Tapioca Express",
+          "Burger King",
+          "KFC"
+        ],
+        "list2": [
+          "KFC",
+          "Shogun",
+          "Burger King"
+        ]
+      },
+      "expected": [
+        "Shogun"
+      ]
+    },
+    {
+      "args": {
+        "list1": [
+          "happy",
+          "sad",
+          "good"
+        ],
+        "list2": [
+          "sad",
+          "happy",
+          "good"
+        ]
+      },
+      "expected": [
+        "sad",
+        "happy"
+      ]
+    }
+  ]
+}

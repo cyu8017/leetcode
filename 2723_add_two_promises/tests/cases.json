@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "promise1": "new Promise(resolve => setTimeout(() => resolve(2), 20))",
+        "promise2": "new Promise(resolve => setTimeout(() => resolve(5), 60))"
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "promise1": "new Promise(resolve => setTimeout(() => resolve(10), 50))",
+        "promise2": "new Promise(resolve => setTimeout(() => resolve(-12), 30))"
+      },
+      "expected": -2
+    }
+  ]
+}

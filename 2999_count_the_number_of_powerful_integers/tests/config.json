@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "numberOfPowerfulInt",
+  "paramOrder": [
+    "start",
+    "finish",
+    "limit",
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "ParkingSystem",
+        "addCar",
+        "addCar",
+        "addCar",
+        "addCar"
+      ],
+      "arguments": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          1
+        ],
+        [
+          2
+        ],
+        [
+          3
+        ],
+        [
+          1
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        true,
+        false,
+        false
+      ]
+    }
+  ]
+}

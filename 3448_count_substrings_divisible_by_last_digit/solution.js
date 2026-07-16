@@ -1,0 +1,9 @@
+﻿// LeetCode 3448 - Count Substrings Divisible By Last Digit
+// https://leetcode.com/problems/count-substrings-divisible-by-last-digit/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

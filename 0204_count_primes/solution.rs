@@ -1,0 +1,2 @@
+// LeetCode 0204 - Count Primes
+impl Solution { pub fn count_primes(n: i32) -> i32 { if n <= 2 { return 0; } let mut prime = vec![true; n as usize]; prime[0] = false; prime[1] = false; let mut p = 2; while p * p < n { if prime[p as usize] { let mut multiple = p * p; while multiple < n { prime[multiple as usize] = false; multiple += p; } } p += 1; } prime.iter().filter(|&&value| value).count() as i32 } }

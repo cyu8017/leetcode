@@ -1,0 +1,43 @@
+{
+  "cases": [
+    {
+      "args": {
+        "obj": "{ \"x\": 5 } fn = (obj) => { obj.x = 5; return obj.x; }"
+      },
+      "expected": {
+        "value": null,
+        "error": "Error Modifying: x"
+      }
+    },
+    {
+      "args": {
+        "obj": "[1, 2, 3] fn = (arr) => { arr[1] = {}; return arr[2]; }"
+      },
+      "expected": {
+        "value": null,
+        "error": "Error Modifying Index: 1"
+      }
+    },
+    {
+      "args": {
+        "obj": "{ \"arr\": [1, 2, 3] } fn = (obj) => { obj.arr.push(4); return 42; }"
+      },
+      "expected": {
+        "value": null,
+        "error": "Error Calling Method: push"
+      }
+    },
+    {
+      "args": {
+        "obj": "{ \"x\": 2, \"y\": 2 } fn = (obj) => { return Object.keys(obj); }"
+      },
+      "expected": {
+        "value": [
+          "x",
+          "y"
+        ],
+        "error": null
+      }
+    }
+  ]
+}

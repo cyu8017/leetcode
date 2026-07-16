@@ -1,0 +1,7 @@
+{
+  "class": "Codec",
+  "method": "encode",
+  "paramOrder": ["dummy_input"],
+  "types": null,
+  "description": null
+}

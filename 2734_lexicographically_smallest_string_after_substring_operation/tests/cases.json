@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "cbabc"
+      },
+      "expected": "baabc"
+    },
+    {
+      "args": {
+        "s": "aa"
+      },
+      "expected": "az"
+    },
+    {
+      "args": {
+        "s": "acbbc"
+      },
+      "expected": "abaab"
+    },
+    {
+      "args": {
+        "s": "leetcode"
+      },
+      "expected": "kddsbncd"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+﻿# LeetCode 1120 - Maximum Average Subtree
+# https://leetcode.com/problems/maximum-average-subtree/
+
+# @param {Object} input
+# @return {Object}
+def solve(input)
+end

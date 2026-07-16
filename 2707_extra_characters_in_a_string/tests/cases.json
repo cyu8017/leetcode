@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leetscode",
+        "dictionary": [
+          "leet",
+          "code",
+          "leetcode"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "sayhelloworld",
+        "dictionary": [
+          "hello",
+          "world"
+        ]
+      },
+      "expected": 3
+    }
+  ]
+}

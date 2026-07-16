@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "iloveleetcode",
+        "words": [
+          "i",
+          "love",
+          "leetcode",
+          "apples"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "iloveleetcode",
+        "words": [
+          "apples",
+          "i",
+          "love",
+          "leetcode"
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

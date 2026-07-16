@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "senate": "RD"
+      },
+      "expected": "Radiant"
+    },
+    {
+      "args": {
+        "senate": "RDD"
+      },
+      "expected": "Dire"
+    }
+  ]
+}

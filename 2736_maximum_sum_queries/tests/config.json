@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "maximumSumQueries",
+  "paramOrder": [
+    "nums1",
+    "nums2",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

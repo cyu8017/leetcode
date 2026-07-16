@@ -1,0 +1,1 @@
+class TwoSum { private val counts = scala.collection.mutable.Map[Int, Int]().withDefaultValue(0); def add(number: Int): Unit = counts(number) = counts(number) + 1; def find(value: Int): Boolean = counts.exists { case (number, count) => val complement = value - number; if (complement == number) count >= 2 else counts.contains(complement) } }

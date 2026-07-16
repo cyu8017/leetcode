@@ -1,0 +1,112 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "activity": [
+          {
+            "user_id": 1,
+            "action_date": "2024-01-01",
+            "action": "login"
+          },
+          {
+            "user_id": 1,
+            "action_date": "2024-01-02",
+            "action": "login"
+          },
+          {
+            "user_id": 1,
+            "action_date": "2024-01-03",
+            "action": "login"
+          },
+          {
+            "user_id": 1,
+            "action_date": "2024-01-04",
+            "action": "login"
+          },
+          {
+            "user_id": 1,
+            "action_date": "2024-01-05",
+            "action": "login"
+          },
+          {
+            "user_id": 1,
+            "action_date": "2024-01-06",
+            "action": "logout"
+          },
+          {
+            "user_id": 2,
+            "action_date": "2024-01-01",
+            "action": "click"
+          },
+          {
+            "user_id": 2,
+            "action_date": "2024-01-02",
+            "action": "click"
+          },
+          {
+            "user_id": 2,
+            "action_date": "2024-01-03",
+            "action": "click"
+          },
+          {
+            "user_id": 2,
+            "action_date": "2024-01-04",
+            "action": "click"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-01",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-02",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-03",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-04",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-05",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-06",
+            "action": "view"
+          },
+          {
+            "user_id": 3,
+            "action_date": "2024-01-07",
+            "action": "view"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 3,
+          "action": "view",
+          "streak_length": 7,
+          "start_date": "2024-01-01",
+          "end_date": "2024-01-07"
+        },
+        {
+          "user_id": 1,
+          "action": "login",
+          "streak_length": 5,
+          "start_date": "2024-01-01",
+          "end_date": "2024-01-05"
+        }
+      ]
+    }
+  ]
+}

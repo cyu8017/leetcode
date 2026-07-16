@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "detectCycle",
+  "paramOrder": ["head"],
+  "types": { "head": "cyclelistnode", "return": "cycleentry" },
+  "description": null
+}

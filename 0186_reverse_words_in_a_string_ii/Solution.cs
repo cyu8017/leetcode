@@ -1,0 +1,1 @@
+public class Solution { public void ReverseWords(char[] s) { Reverse(s, 0, s.Length - 1); int start = 0; for (int end = 0; end <= s.Length; end++) if (end == s.Length || s[end] == ' ') { Reverse(s, start, end - 1); start = end + 1; } } private void Reverse(char[] s, int l, int r) { while (l < r) { (s[l], s[r]) = (s[r], s[l]); l++; r--; } } }

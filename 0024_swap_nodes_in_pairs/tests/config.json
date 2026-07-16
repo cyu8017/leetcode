@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "swapPairs",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

@@ -1,0 +1,7 @@
+﻿// LeetCode 1536 - Minimum Swaps to Arrange a Binary Grid
+// https://leetcode.com/problems/minimum-swaps-to-arrange-a-binary-grid/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

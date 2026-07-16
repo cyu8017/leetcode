@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "ABC"
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "s": "ABA"
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "s": "LEETCODE"
+      },
+      "expected": 92
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "numDistinct",
+  "paramOrder": [
+    "s",
+    "t"
+  ],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "findPeaks",
+  "paramOrder": [
+    "mountain"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

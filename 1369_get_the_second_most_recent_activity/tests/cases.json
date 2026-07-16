@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "UserActivity": [
+          {
+            "username": "Alice",
+            "activity": "Travel",
+            "startDate": "2020-02-12",
+            "endDate": "2020-02-20"
+          },
+          {
+            "username": "Alice",
+            "activity": "Dancing",
+            "startDate": "2020-02-21",
+            "endDate": "2020-02-23"
+          },
+          {
+            "username": "Alice",
+            "activity": "Travel",
+            "startDate": "2020-02-24",
+            "endDate": "2020-02-28"
+          },
+          {
+            "username": "Bob",
+            "activity": "Travel",
+            "startDate": "2020-02-11",
+            "endDate": "2020-02-18"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "username": "Alice",
+          "activity": "Dancing",
+          "startDate": "2020-02-21",
+          "endDate": "2020-02-23"
+        },
+        {
+          "username": "Bob",
+          "activity": "Travel",
+          "startDate": "2020-02-11",
+          "endDate": "2020-02-18"
+        }
+      ]
+    }
+  ]
+}

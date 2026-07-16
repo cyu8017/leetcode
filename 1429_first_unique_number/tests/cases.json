@@ -1,0 +1,128 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "FirstUnique",
+        "showFirstUnique",
+        "add",
+        "showFirstUnique",
+        "add",
+        "showFirstUnique",
+        "add",
+        "showFirstUnique"
+      ],
+      "arguments": [
+        [
+          [
+            2,
+            3,
+            5
+          ]
+        ],
+        [],
+        [
+          5
+        ],
+        [],
+        [
+          2
+        ],
+        [],
+        [
+          3
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        2,
+        null,
+        2,
+        null,
+        3,
+        null,
+        -1
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FirstUnique",
+        "showFirstUnique",
+        "add",
+        "add",
+        "add",
+        "add",
+        "add",
+        "showFirstUnique"
+      ],
+      "arguments": [
+        [
+          [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ]
+        ],
+        [],
+        [
+          7
+        ],
+        [
+          3
+        ],
+        [
+          3
+        ],
+        [
+          7
+        ],
+        [
+          17
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        -1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        17
+      ]
+    },
+    {
+      "kind": "design",
+      "operations": [
+        "FirstUnique",
+        "showFirstUnique",
+        "add",
+        "showFirstUnique"
+      ],
+      "arguments": [
+        [
+          [
+            809
+          ]
+        ],
+        [],
+        [
+          809
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        809,
+        null,
+        -1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "gameOfLife",
+  "paramOrder": ["board"],
+  "types": { "return": "void" },
+  "description": null
+}

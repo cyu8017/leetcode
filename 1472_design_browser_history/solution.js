@@ -1,0 +1,9 @@
+﻿// LeetCode 1472 - Design Browser History
+// https://leetcode.com/problems/design-browser-history/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

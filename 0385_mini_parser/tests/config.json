@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "deserialize",
+  "paramOrder": [
+    "s"
+  ],
+  "types": {
+    "return": "nestedinteger"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

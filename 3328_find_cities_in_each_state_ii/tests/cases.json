@@ -1,0 +1,88 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "cities": [
+          {
+            "state": "New York",
+            "city": "New York City"
+          },
+          {
+            "state": "New York",
+            "city": "Newark"
+          },
+          {
+            "state": "New York",
+            "city": "Buffalo"
+          },
+          {
+            "state": "New York",
+            "city": "Rochester"
+          },
+          {
+            "state": "California",
+            "city": "San Francisco"
+          },
+          {
+            "state": "California",
+            "city": "Sacramento"
+          },
+          {
+            "state": "California",
+            "city": "San Diego"
+          },
+          {
+            "state": "California",
+            "city": "Los Angeles"
+          },
+          {
+            "state": "Texas",
+            "city": "Tyler"
+          },
+          {
+            "state": "Texas",
+            "city": "Temple"
+          },
+          {
+            "state": "Texas",
+            "city": "Taylor"
+          },
+          {
+            "state": "Texas",
+            "city": "Dallas"
+          },
+          {
+            "state": "Pennsylvania",
+            "city": "Philadelphia"
+          },
+          {
+            "state": "Pennsylvania",
+            "city": "Pittsburgh"
+          },
+          {
+            "state": "Pennsylvania",
+            "city": "Pottstown"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "state": "Pennsylvania",
+          "cities": "Philadelphia, Pittsburgh, Pottstown",
+          "matching_letter_count": 3
+        },
+        {
+          "state": "Texas",
+          "cities": "Dallas, Taylor, Temple, Tyler",
+          "matching_letter_count": 3
+        },
+        {
+          "state": "New York",
+          "cities": "Buffalo, Newark, New York City, Rochester",
+          "matching_letter_count": 2
+        }
+      ]
+    }
+  ]
+}

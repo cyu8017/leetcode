@@ -1,0 +1,79 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Customer": [
+          {
+            "customer_id": 101,
+            "customer_name": "Alice"
+          },
+          {
+            "customer_id": 102,
+            "customer_name": "Bob"
+          },
+          {
+            "customer_id": 103,
+            "customer_name": "Charlie"
+          }
+        ],
+        "Orders": [
+          {
+            "order_id": 1,
+            "sale_date": "2020-03-01",
+            "order_cost": 1500,
+            "customer_id": 101,
+            "seller_id": 1
+          },
+          {
+            "order_id": 2,
+            "sale_date": "2020-05-25",
+            "order_cost": 2400,
+            "customer_id": 102,
+            "seller_id": 2
+          },
+          {
+            "order_id": 3,
+            "sale_date": "2019-05-25",
+            "order_cost": 800,
+            "customer_id": 101,
+            "seller_id": 3
+          },
+          {
+            "order_id": 4,
+            "sale_date": "2020-09-13",
+            "order_cost": 1000,
+            "customer_id": 103,
+            "seller_id": 2
+          },
+          {
+            "order_id": 5,
+            "sale_date": "2019-02-11",
+            "order_cost": 700,
+            "customer_id": 101,
+            "seller_id": 2
+          }
+        ],
+        "Seller": [
+          {
+            "seller_id": 1,
+            "seller_name": "Daniel"
+          },
+          {
+            "seller_id": 2,
+            "seller_name": "Elizabeth"
+          },
+          {
+            "seller_id": 3,
+            "seller_name": "Frank"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "seller_name": "Frank"
+        }
+      ]
+    }
+  ]
+}

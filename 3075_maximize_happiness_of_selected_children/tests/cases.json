@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "happiness": [
+          1,
+          2,
+          3
+        ],
+        "k": 2
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "happiness": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "k": 2
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "happiness": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "k": 1
+      },
+      "expected": 5
+    }
+  ]
+}

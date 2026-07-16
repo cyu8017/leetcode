@@ -1,0 +1,8 @@
+﻿// LeetCode 2315 - Count Asterisks
+// https://leetcode.com/problems/count-asterisks/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "getFactors",
+  "paramOrder": ["n"],
+  "types": { "return": "integer[][]" },
+  "description": null
+}

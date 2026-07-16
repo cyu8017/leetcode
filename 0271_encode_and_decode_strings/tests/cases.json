@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "dummy_input": [
+          "Hello",
+          "World"
+        ]
+      },
+      "expected": [
+        "Hello",
+        "World"
+      ]
+    },
+    {
+      "args": {
+        "dummy_input": [
+          ""
+        ]
+      },
+      "expected": [
+        ""
+      ]
+    }
+  ]
+}

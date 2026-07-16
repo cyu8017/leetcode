@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "str1": "abac",
+        "str2": "cab"
+      },
+      "expected": "cabac"
+    },
+    {
+      "args": {
+        "str1": "aaaaaaaa",
+        "str2": "aaaaaaaa"
+      },
+      "expected": "aaaaaaaa"
+    }
+  ]
+}

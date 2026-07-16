@@ -1,0 +1,80 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Visits": [
+          {
+            "visit_id": 1,
+            "customer_id": 23
+          },
+          {
+            "visit_id": 2,
+            "customer_id": 9
+          },
+          {
+            "visit_id": 4,
+            "customer_id": 30
+          },
+          {
+            "visit_id": 5,
+            "customer_id": 54
+          },
+          {
+            "visit_id": 6,
+            "customer_id": 96
+          },
+          {
+            "visit_id": 7,
+            "customer_id": 54
+          },
+          {
+            "visit_id": 8,
+            "customer_id": 54
+          }
+        ],
+        "Transactions": [
+          {
+            "transaction_id": 2,
+            "visit_id": 5,
+            "amount": 310
+          },
+          {
+            "transaction_id": 3,
+            "visit_id": 5,
+            "amount": 300
+          },
+          {
+            "transaction_id": 9,
+            "visit_id": 5,
+            "amount": 200
+          },
+          {
+            "transaction_id": 12,
+            "visit_id": 1,
+            "amount": 910
+          },
+          {
+            "transaction_id": 13,
+            "visit_id": 2,
+            "amount": 970
+          }
+        ]
+      },
+      "expected": [
+        {
+          "customer_id": 54,
+          "count_no_trans": 2
+        },
+        {
+          "customer_id": 30,
+          "count_no_trans": 1
+        },
+        {
+          "customer_id": 96,
+          "count_no_trans": 1
+        }
+      ]
+    }
+  ]
+}

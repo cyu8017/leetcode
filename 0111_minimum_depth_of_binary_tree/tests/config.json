@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "minDepth",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": null
+}

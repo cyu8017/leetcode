@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "numIslands",
+  "paramOrder": ["grid"],
+  "types": null,
+  "description": null
+}

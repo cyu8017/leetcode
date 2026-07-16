@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "directions": "RLRSLL"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "directions": "LLRR"
+      },
+      "expected": 0
+    }
+  ]
+}

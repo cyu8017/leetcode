@@ -1,0 +1,9 @@
+﻿// LeetCode 3642 - Find Books with Polarized Opinions
+// https://leetcode.com/problems/find-books-with-polarized-opinions/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

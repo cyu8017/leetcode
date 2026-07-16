@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Weather": [
+          {
+            "id": 1,
+            "recordDate": "2015-01-01",
+            "temperature": 10
+          },
+          {
+            "id": 2,
+            "recordDate": "2015-01-02",
+            "temperature": 25
+          },
+          {
+            "id": 3,
+            "recordDate": "2015-01-03",
+            "temperature": 20
+          },
+          {
+            "id": 4,
+            "recordDate": "2015-01-04",
+            "temperature": 30
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 2
+        },
+        {
+          "id": 4
+        }
+      ]
+    }
+  ]
+}

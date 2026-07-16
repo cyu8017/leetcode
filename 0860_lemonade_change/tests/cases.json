@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "bills": [
+          5,
+          5,
+          5,
+          10,
+          20
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "bills": [
+          5,
+          5,
+          10,
+          10,
+          20
+        ]
+      },
+      "expected": false
+    }
+  ]
+}

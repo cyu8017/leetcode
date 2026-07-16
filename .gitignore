@@ -1,0 +1,28 @@
+# Build artifacts
+__pycache__/
+*.pyc
+*.class
+*.o
+*.exe
+*.dll
+*.so
+*.dylib
+target/
+Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# LeetCode session (never commit)
+.env
+.leetcode.env
+config/last-leetcode-import.json
+config/leetcode-solved.json
+config/last-validation.json

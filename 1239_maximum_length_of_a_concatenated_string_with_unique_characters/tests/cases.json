@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "arr": [
+          "un",
+          "iq",
+          "ue"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "arr": [
+          "cha",
+          "r",
+          "act",
+          "ers"
+        ]
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "arr": [
+          "abcdefghijklmnopqrstuvwxyz"
+        ]
+      },
+      "expected": 26
+    }
+  ]
+}

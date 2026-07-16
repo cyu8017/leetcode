@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "hamsters": "H..H"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "hamsters": ".H.H."
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "hamsters": ".HHH."
+      },
+      "expected": -1
+    }
+  ]
+}

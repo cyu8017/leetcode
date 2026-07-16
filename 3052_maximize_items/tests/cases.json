@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Inventory": [
+          {
+            "item_id": 1374,
+            "item_type": "prime_eligible",
+            "item_category": "Watches",
+            "square_footage": 68.0
+          },
+          {
+            "item_id": 4245,
+            "item_type": "not_prime",
+            "item_category": "Art",
+            "square_footage": 26.4
+          },
+          {
+            "item_id": 5743,
+            "item_type": "prime_eligible",
+            "item_category": "Software",
+            "square_footage": 325.0
+          },
+          {
+            "item_id": 8543,
+            "item_type": "not_prime",
+            "item_category": "Clothing",
+            "square_footage": 64.5
+          },
+          {
+            "item_id": 2556,
+            "item_type": "not_prime",
+            "item_category": "Shoes",
+            "square_footage": 15.0
+          },
+          {
+            "item_id": 2452,
+            "item_type": "prime_eligible",
+            "item_category": "Scientific",
+            "square_footage": 85.0
+          },
+          {
+            "item_id": 3255,
+            "item_type": "not_prime",
+            "item_category": "Furniture",
+            "square_footage": 22.6
+          },
+          {
+            "item_id": 1672,
+            "item_type": "prime_eligible",
+            "item_category": "Beauty",
+            "square_footage": 8.5
+          },
+          {
+            "item_id": 4256,
+            "item_type": "prime_eligible",
+            "item_category": "Furniture",
+            "square_footage": 55.5
+          },
+          {
+            "item_id": 6325,
+            "item_type": "prime_eligible",
+            "item_category": "Food",
+            "square_footage": 13.2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "item_type": "prime_eligible",
+          "item_count": 5400
+        },
+        {
+          "item_type": "not_prime",
+          "item_count": 8
+        }
+      ]
+    }
+  ]
+}

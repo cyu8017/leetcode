@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "k",
+          "ki",
+          "kir",
+          "kira",
+          "kiran"
+        ]
+      },
+      "expected": "kiran"
+    },
+    {
+      "args": {
+        "words": [
+          "a",
+          "banana",
+          "app",
+          "appl",
+          "ap",
+          "apply",
+          "apple"
+        ]
+      },
+      "expected": "apple"
+    },
+    {
+      "args": {
+        "words": [
+          "abc",
+          "bc",
+          "ab",
+          "qwe"
+        ]
+      },
+      "expected": ""
+    }
+  ]
+}

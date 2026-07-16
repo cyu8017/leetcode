@@ -1,0 +1,1 @@
+int maxProduct(int*a,int n){int b=a[0],h=b,l=b;for(int i=1;i<n;i++){int x=a[i],oh=h,ol=l;h=x>oh*x?(x>ol*x?x:ol*x):(oh*x>ol*x?oh*x:ol*x);l=x<oh*x?(x<ol*x?x:ol*x):(oh*x<ol*x?oh*x:ol*x);if(h>b)b=h;}return b;}

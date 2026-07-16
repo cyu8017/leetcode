@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "findFrequentTreeSum",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "integer[]"
+  },
+  "description": "Return subtree sums with highest frequency."
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leetcodecom"
+      },
+      "expected": 9
+    },
+    {
+      "args": {
+        "s": "bb"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "accbcaxxcxx"
+      },
+      "expected": 25
+    }
+  ]
+}

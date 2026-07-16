@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "numBottles": 13,
+        "numExchange": 6
+      },
+      "expected": 15
+    },
+    {
+      "args": {
+        "numBottles": 10,
+        "numExchange": 3
+      },
+      "expected": 13
+    }
+  ]
+}

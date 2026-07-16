@@ -1,0 +1,2 @@
+using System.Collections.Generic;
+public class Solution { public IList<IList<int>> FindMissingRanges(int[] nums, int lower, int upper) { var result = new List<IList<int>>(); long previous = (long)lower - 1; for (int i = 0; i <= nums.Length; i++) { long current = i == nums.Length ? (long)upper + 1 : nums[i]; if (current - previous >= 2) result.Add(new List<int> { (int)(previous + 1), (int)(current - 1) }); previous = current; } return result; } }

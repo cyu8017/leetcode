@@ -1,0 +1,66 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Salaries": [
+          {
+            "emp_name": "Kathy",
+            "department": "Engineering",
+            "salary": 50000
+          },
+          {
+            "emp_name": "Roy",
+            "department": "Marketing",
+            "salary": 30000
+          },
+          {
+            "emp_name": "Charles",
+            "department": "Engineering",
+            "salary": 45000
+          },
+          {
+            "emp_name": "Jack",
+            "department": "Engineering",
+            "salary": 85000
+          },
+          {
+            "emp_name": "Benjamin",
+            "department": "Marketing",
+            "salary": 34000
+          },
+          {
+            "emp_name": "Anthony",
+            "department": "Marketing",
+            "salary": 42000
+          },
+          {
+            "emp_name": "Edward",
+            "department": "Engineering",
+            "salary": 102000
+          },
+          {
+            "emp_name": "Terry",
+            "department": "Engineering",
+            "salary": 44000
+          },
+          {
+            "emp_name": "Evelyn",
+            "department": "Marketing",
+            "salary": 53000
+          },
+          {
+            "emp_name": "Arthur",
+            "department": "Engineering",
+            "salary": 32000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "salary_difference": 49000
+        }
+      ]
+    }
+  ]
+}

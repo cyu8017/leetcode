@@ -1,0 +1,6 @@
+﻿# LeetCode 0823 - Binary Trees With Factors
+# https://leetcode.com/problems/binary-trees-with-factors/
+
+class Solution:
+    def solve(self) -> None:
+        pass

@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "str1": "aabcc",
+        "str2": "ccdee"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "str1": "leetcode",
+        "str2": "codeleet"
+      },
+      "expected": false
+    }
+  ]
+}

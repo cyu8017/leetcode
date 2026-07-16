@@ -1,0 +1,70 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tree": [
+          {
+            "id": 1,
+            "p_id": null
+          },
+          {
+            "id": 2,
+            "p_id": 1
+          },
+          {
+            "id": 3,
+            "p_id": 1
+          },
+          {
+            "id": 4,
+            "p_id": 2
+          },
+          {
+            "id": 5,
+            "p_id": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 1,
+          "type": "Root"
+        },
+        {
+          "id": 2,
+          "type": "Inner"
+        },
+        {
+          "id": 3,
+          "type": "Leaf"
+        },
+        {
+          "id": 4,
+          "type": "Leaf"
+        },
+        {
+          "id": 5,
+          "type": "Leaf"
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Tree": [
+          {
+            "id": 1,
+            "p_id": null
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 1,
+          "type": "Root"
+        }
+      ]
+    }
+  ]
+}

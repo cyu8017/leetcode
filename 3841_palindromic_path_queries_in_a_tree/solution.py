@@ -1,0 +1,6 @@
+﻿# LeetCode 3841 - Palindromic Path Queries in a Tree
+# https://leetcode.com/problems/palindromic-path-queries-in-a-tree/
+
+class Solution:
+    def solve(self) -> None:
+        pass

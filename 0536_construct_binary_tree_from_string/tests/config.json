@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "str2tree",
+  "paramOrder": [
+    "s"
+  ],
+  "types": {
+    "return": "treenode"
+  },
+  "description": "Build a binary tree from its parenthesis representation."
+}

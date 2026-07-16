@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abaacbaecebce",
+        "p": "ba*c*ce"
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "s": "baccbaadbc",
+        "p": "cc*baa*adb"
+      },
+      "expected": -1
+    },
+    {
+      "args": {
+        "s": "a",
+        "p": "**"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "madlogic",
+        "p": "*adlogi*"
+      },
+      "expected": 6
+    }
+  ]
+}

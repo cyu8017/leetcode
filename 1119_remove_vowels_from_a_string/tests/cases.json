@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leetcodeisacommunityforcoders"
+      },
+      "expected": "ltcdscmmntyfrcdrs"
+    },
+    {
+      "args": {
+        "s": "aeiou"
+      },
+      "expected": ""
+    }
+  ]
+}

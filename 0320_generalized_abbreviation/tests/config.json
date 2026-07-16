@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "generateAbbreviations",
+  "paramOrder": ["word"],
+  "types": {
+    "return": "string[]"
+  },
+  "description": null
+}

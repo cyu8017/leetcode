@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "hasCycle",
+  "paramOrder": ["head"],
+  "types": { "head": "cyclelistnode" },
+  "description": null
+}

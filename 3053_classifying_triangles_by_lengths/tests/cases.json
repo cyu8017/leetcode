@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Triangles": [
+          {
+            "A": 20,
+            "B": 20,
+            "C": 23
+          },
+          {
+            "A": 20,
+            "B": 20,
+            "C": 20
+          },
+          {
+            "A": 20,
+            "B": 21,
+            "C": 22
+          },
+          {
+            "A": 13,
+            "B": 14,
+            "C": 30
+          }
+        ]
+      },
+      "expected": [
+        {
+          "triangle_type": "Isosceles"
+        },
+        {
+          "triangle_type": "Equilateral"
+        },
+        {
+          "triangle_type": "Scalene"
+        },
+        {
+          "triangle_type": "Not A Triangle"
+        }
+      ]
+    }
+  ]
+}

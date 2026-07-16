@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "LUL",
+        "k": 1
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "UDLR",
+        "k": 4
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "UU",
+        "k": 1
+      },
+      "expected": 1
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+// LeetCode 0207 - Course Schedule
+use std::collections::VecDeque;
+impl Solution { pub fn can_finish(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> bool { let count = num_courses as usize; let mut graph = vec![Vec::new(); count]; let mut indegree = vec![0; count]; for edge in prerequisites { let course = edge[0] as usize; let pre = edge[1] as usize; graph[pre].push(course); indegree[course] += 1; } let mut queue: VecDeque<usize> = (0..count).filter(|&i| indegree[i] == 0).collect(); let mut taken = 0; while let Some(course) = queue.pop_front() { taken += 1; for &next in &graph[course] { indegree[next] -= 1; if indegree[next] == 0 { queue.push_back(next); } } } taken == count } }

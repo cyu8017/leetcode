@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcd",
+        "indices": [
+          0,
+          2
+        ],
+        "sources": [
+          "a",
+          "cd"
+        ],
+        "targets": [
+          "eee",
+          "ffff"
+        ]
+      },
+      "expected": "eeebffff"
+    },
+    {
+      "args": {
+        "s": "abcd",
+        "indices": [
+          0,
+          2
+        ],
+        "sources": [
+          "ab",
+          "ec"
+        ],
+        "targets": [
+          "eee",
+          "ffff"
+        ]
+      },
+      "expected": "eeecd"
+    }
+  ]
+}

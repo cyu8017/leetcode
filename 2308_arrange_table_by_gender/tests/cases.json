@@ -1,0 +1,85 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Genders": [
+          {
+            "user_id": 4,
+            "gender": "male"
+          },
+          {
+            "user_id": 7,
+            "gender": "female"
+          },
+          {
+            "user_id": 2,
+            "gender": "other"
+          },
+          {
+            "user_id": 5,
+            "gender": "male"
+          },
+          {
+            "user_id": 3,
+            "gender": "female"
+          },
+          {
+            "user_id": 8,
+            "gender": "male"
+          },
+          {
+            "user_id": 6,
+            "gender": "other"
+          },
+          {
+            "user_id": 1,
+            "gender": "other"
+          },
+          {
+            "user_id": 9,
+            "gender": "female"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 3,
+          "gender": "female"
+        },
+        {
+          "user_id": 1,
+          "gender": "other"
+        },
+        {
+          "user_id": 4,
+          "gender": "male"
+        },
+        {
+          "user_id": 7,
+          "gender": "female"
+        },
+        {
+          "user_id": 2,
+          "gender": "other"
+        },
+        {
+          "user_id": 5,
+          "gender": "male"
+        },
+        {
+          "user_id": 9,
+          "gender": "female"
+        },
+        {
+          "user_id": 6,
+          "gender": "other"
+        },
+        {
+          "user_id": 8,
+          "gender": "male"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "string"
+      },
+      "expected": "rtsng"
+    },
+    {
+      "args": {
+        "s": "poiinter"
+      },
+      "expected": "ponter"
+    }
+  ]
+}

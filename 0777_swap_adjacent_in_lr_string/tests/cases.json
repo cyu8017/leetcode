@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "start": "RXXLRXRXL",
+        "result": "XRLXXRRLX"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "start": "X",
+        "result": "L"
+      },
+      "expected": false
+    }
+  ]
+}

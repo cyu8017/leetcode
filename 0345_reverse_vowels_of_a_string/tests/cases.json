@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "IceCreAm"
+      },
+      "expected": "AceCreIm"
+    },
+    {
+      "args": {
+        "s": "leetcode"
+      },
+      "expected": "leotcede"
+    }
+  ]
+}

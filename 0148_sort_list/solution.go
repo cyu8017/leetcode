@@ -1,0 +1,1 @@
+type ListNode struct{Val int;Next *ListNode};func sortList(h *ListNode)*ListNode{if h==nil||h.Next==nil{return h};s,f:=h,h.Next;for f!=nil&&f.Next!=nil{s,f=s.Next,f.Next.Next};b:=s.Next;s.Next=nil;a:=sortList(h);b=sortList(b);d:=&ListNode{};for t:=d;a!=nil||b!=nil;t=t.Next{if b==nil||(a!=nil&&a.Val<b.Val){t.Next,a=a,a.Next}else{t.Next,b=b,b.Next}};return d.Next}

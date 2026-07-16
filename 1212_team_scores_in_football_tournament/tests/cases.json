@@ -1,0 +1,95 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Teams": [
+          {
+            "team_id": 10,
+            "team_name": "Leetcode FC"
+          },
+          {
+            "team_id": 20,
+            "team_name": "NewYork FC"
+          },
+          {
+            "team_id": 30,
+            "team_name": "Atlanta FC"
+          },
+          {
+            "team_id": 40,
+            "team_name": "Chicago FC"
+          },
+          {
+            "team_id": 50,
+            "team_name": "Toronto FC"
+          }
+        ],
+        "Matches": [
+          {
+            "match_id": 1,
+            "host_team": 10,
+            "guest_team": 20,
+            "host_goals": 3,
+            "guest_goals": 0
+          },
+          {
+            "match_id": 2,
+            "host_team": 30,
+            "guest_team": 10,
+            "host_goals": 2,
+            "guest_goals": 2
+          },
+          {
+            "match_id": 3,
+            "host_team": 10,
+            "guest_team": 50,
+            "host_goals": 5,
+            "guest_goals": 1
+          },
+          {
+            "match_id": 4,
+            "host_team": 20,
+            "guest_team": 30,
+            "host_goals": 1,
+            "guest_goals": 0
+          },
+          {
+            "match_id": 5,
+            "host_team": 50,
+            "guest_team": 30,
+            "host_goals": 1,
+            "guest_goals": 0
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_id": 10,
+          "team_name": "Leetcode FC",
+          "num_points": 7
+        },
+        {
+          "team_id": 20,
+          "team_name": "NewYork FC",
+          "num_points": 3
+        },
+        {
+          "team_id": 50,
+          "team_name": "Toronto FC",
+          "num_points": 3
+        },
+        {
+          "team_id": 30,
+          "team_name": "Atlanta FC",
+          "num_points": 1
+        },
+        {
+          "team_id": 40,
+          "team_name": "Chicago FC",
+          "num_points": 0
+        }
+      ]
+    }
+  ]
+}

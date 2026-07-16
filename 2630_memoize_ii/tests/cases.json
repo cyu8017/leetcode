@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "args": {
+        "getInputs": "() => [[2,2],[2,2],[1,2]] fn = function (a, b) { return a + b; }"
+      },
+      "expected": [
+        {
+          "val": 4,
+          "calls": 1
+        },
+        {
+          "val": 4,
+          "calls": 1
+        },
+        {
+          "val": 3,
+          "calls": 2
+        }
+      ]
+    },
+    {
+      "args": {
+        "getInputs": "() => [[{},{}],[{},{}],[{},{}]] fn = function (a, b) { return ({...a, ...b}); }"
+      },
+      "expected": [
+        {
+          "val": {},
+          "calls": 1
+        },
+        {
+          "val": {},
+          "calls": 2
+        },
+        {
+          "val": {},
+          "calls": 3
+        }
+      ]
+    },
+    {
+      "args": {
+        "getInputs": "() => { const o = {}; return [[o,o],[o,o],[o,o]]; } fn = function (a, b) { return ({...a, ...b}); }"
+      },
+      "expected": [
+        {
+          "val": {},
+          "calls": 1
+        },
+        {
+          "val": {},
+          "calls": 1
+        },
+        {
+          "val": {},
+          "calls": 1
+        }
+      ]
+    }
+  ]
+}

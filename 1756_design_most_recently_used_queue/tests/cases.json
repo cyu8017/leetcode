@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MRUQueue",
+        "fetch",
+        "fetch",
+        "fetch",
+        "fetch"
+      ],
+      "arguments": [
+        [
+          8
+        ],
+        [
+          3
+        ],
+        [
+          5
+        ],
+        [
+          2
+        ],
+        [
+          8
+        ]
+      ],
+      "expected": [
+        null,
+        3,
+        6,
+        2,
+        2
+      ]
+    }
+  ]
+}

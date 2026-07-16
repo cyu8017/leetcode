@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "lowLimit": 1,
+        "highLimit": 10
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "lowLimit": 5,
+        "highLimit": 15
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "lowLimit": 19,
+        "highLimit": 28
+      },
+      "expected": 2
+    }
+  ]
+}

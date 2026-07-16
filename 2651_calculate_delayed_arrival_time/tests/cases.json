@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "arrivalTime": 15,
+        "delayedTime": 5
+      },
+      "expected": 20
+    },
+    {
+      "args": {
+        "arrivalTime": 13,
+        "delayedTime": 11
+      },
+      "expected": 0
+    }
+  ]
+}

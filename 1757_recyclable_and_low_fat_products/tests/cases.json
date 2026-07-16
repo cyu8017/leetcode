@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Products": [
+          {
+            "product_id": 0,
+            "low_fats": "Y",
+            "recyclable": "N"
+          },
+          {
+            "product_id": 1,
+            "low_fats": "Y",
+            "recyclable": "Y"
+          },
+          {
+            "product_id": 2,
+            "low_fats": "N",
+            "recyclable": "Y"
+          },
+          {
+            "product_id": 3,
+            "low_fats": "Y",
+            "recyclable": "Y"
+          },
+          {
+            "product_id": 4,
+            "low_fats": "N",
+            "recyclable": "N"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1
+        },
+        {
+          "product_id": 3
+        }
+      ]
+    }
+  ]
+}

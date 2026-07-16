@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "recoverTree",
+  "paramOrder": ["root"],
+  "types": {
+    "root": "treenode",
+    "return": "void"
+  },
+  "description": null
+}

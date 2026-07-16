@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "a",
+        "t": "a"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "abc",
+        "t": "def"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "b",
+        "t": "aaaa"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "abcde",
+        "t": "ecdba"
+      },
+      "expected": 5
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿// LeetCode 3420 - Count Non-Decreasing Subarrays After K Operations
+// https://leetcode.com/problems/count-non-decreasing-subarrays-after-k-operations/
+
+object Solution {
+  def solve(): Unit = {}
+}

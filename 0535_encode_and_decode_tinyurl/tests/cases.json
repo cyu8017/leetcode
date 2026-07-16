@@ -1,0 +1,10 @@
+{
+  "cases": [
+    {
+      "args": {
+        "url": "https://leetcode.com/problems/design-tinyurl"
+      },
+      "expected": "https://leetcode.com/problems/design-tinyurl"
+    }
+  ]
+}

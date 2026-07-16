@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "internationalization",
+        "abbr": "i12iz4n"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "word": "apple",
+        "abbr": "a2e"
+      },
+      "expected": false
+    }
+  ]
+}

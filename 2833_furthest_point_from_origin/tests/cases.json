@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "moves": "L_RL__R"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "moves": "_R__LL_"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "moves": "_______"
+      },
+      "expected": 7
+    }
+  ]
+}

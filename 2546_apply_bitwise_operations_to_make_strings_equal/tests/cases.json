@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "1010",
+        "target": "0110"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "11",
+        "target": "00"
+      },
+      "expected": false
+    }
+  ]
+}

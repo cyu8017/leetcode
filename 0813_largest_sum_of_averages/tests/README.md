@@ -1,0 +1,215 @@
+# Test harness for 0813_largest_sum_of_averages
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language python
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language javascript
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language typescript
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language java
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language cpp
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language c
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language go
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language rust
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language kotlin
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language swift
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language ruby
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language csharp
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language scala
+./scripts/test.sh --folder 0813_largest_sum_of_averages --language php
+./scripts/test.sh --folder 0813_largest_sum_of_averages --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 0813_largest_sum_of_averages --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm java java 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm c c 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm go go 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm rust rust 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm swift swift 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm scala scala 0813_largest_sum_of_averages
+docker compose -f docker/docker-compose.yml run --rm php php 0813_largest_sum_of_averages
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 0813_largest_sum_of_averages` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 0813_largest_sum_of_averages` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 0813_largest_sum_of_averages` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 0813_largest_sum_of_averages` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 0813_largest_sum_of_averages` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 0813_largest_sum_of_averages` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 0813_largest_sum_of_averages` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 0813_largest_sum_of_averages` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 0813_largest_sum_of_averages` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 0813_largest_sum_of_averages` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 0813_largest_sum_of_averages` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 0813_largest_sum_of_averages` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 0813_largest_sum_of_averages` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 0813_largest_sum_of_averages` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 0813_largest_sum_of_averages -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 0813_largest_sum_of_averages --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 0813_largest_sum_of_averages --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

@@ -1,0 +1,133 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "drivers": [
+          {
+            "driver_id": 1,
+            "driver_name": "Alice Johnson"
+          },
+          {
+            "driver_id": 2,
+            "driver_name": "Bob Smith"
+          },
+          {
+            "driver_id": 3,
+            "driver_name": "Carol Davis"
+          },
+          {
+            "driver_id": 4,
+            "driver_name": "David Wilson"
+          },
+          {
+            "driver_id": 5,
+            "driver_name": "Emma Brown"
+          }
+        ],
+        "trips": [
+          {
+            "trip_id": 1,
+            "driver_id": 1,
+            "trip_date": "2023-02-15",
+            "distance_km": 120.5,
+            "fuel_consumed": 10.2
+          },
+          {
+            "trip_id": 2,
+            "driver_id": 1,
+            "trip_date": "2023-03-20",
+            "distance_km": 200.0,
+            "fuel_consumed": 16.5
+          },
+          {
+            "trip_id": 3,
+            "driver_id": 1,
+            "trip_date": "2023-08-10",
+            "distance_km": 150.0,
+            "fuel_consumed": 11.0
+          },
+          {
+            "trip_id": 4,
+            "driver_id": 1,
+            "trip_date": "2023-09-25",
+            "distance_km": 180.0,
+            "fuel_consumed": 12.5
+          },
+          {
+            "trip_id": 5,
+            "driver_id": 2,
+            "trip_date": "2023-01-10",
+            "distance_km": 100.0,
+            "fuel_consumed": 9.0
+          },
+          {
+            "trip_id": 6,
+            "driver_id": 2,
+            "trip_date": "2023-04-15",
+            "distance_km": 250.0,
+            "fuel_consumed": 22.0
+          },
+          {
+            "trip_id": 7,
+            "driver_id": 2,
+            "trip_date": "2023-10-05",
+            "distance_km": 200.0,
+            "fuel_consumed": 15.0
+          },
+          {
+            "trip_id": 8,
+            "driver_id": 3,
+            "trip_date": "2023-03-12",
+            "distance_km": 80.0,
+            "fuel_consumed": 8.5
+          },
+          {
+            "trip_id": 9,
+            "driver_id": 3,
+            "trip_date": "2023-05-18",
+            "distance_km": 90.0,
+            "fuel_consumed": 9.2
+          },
+          {
+            "trip_id": 10,
+            "driver_id": 4,
+            "trip_date": "2023-07-22",
+            "distance_km": 160.0,
+            "fuel_consumed": 12.8
+          },
+          {
+            "trip_id": 11,
+            "driver_id": 4,
+            "trip_date": "2023-11-30",
+            "distance_km": 140.0,
+            "fuel_consumed": 11.0
+          },
+          {
+            "trip_id": 12,
+            "driver_id": 5,
+            "trip_date": "2023-02-28",
+            "distance_km": 110.0,
+            "fuel_consumed": 11.5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "driver_id": 2,
+          "driver_name": "Bob Smith",
+          "first_half_avg": 11.24,
+          "second_half_avg": 13.33,
+          "efficiency_improvement": 2.1
+        },
+        {
+          "driver_id": 1,
+          "driver_name": "Alice Johnson",
+          "first_half_avg": 11.97,
+          "second_half_avg": 14.02,
+          "efficiency_improvement": 2.05
+        }
+      ]
+    }
+  ]
+}

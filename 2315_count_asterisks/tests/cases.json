@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "l|*e*et|c**o|*de|"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "s": "iamprogrammer"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "yo|uar|e**|b|e***au|tifu|l"
+      },
+      "expected": 5
+    }
+  ]
+}

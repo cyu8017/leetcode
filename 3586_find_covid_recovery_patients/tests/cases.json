@@ -1,0 +1,130 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "patients": [
+          {
+            "patient_id": 1,
+            "patient_name": "Alice Smith",
+            "age": 28
+          },
+          {
+            "patient_id": 2,
+            "patient_name": "Bob Johnson",
+            "age": 35
+          },
+          {
+            "patient_id": 3,
+            "patient_name": "Carol Davis",
+            "age": 42
+          },
+          {
+            "patient_id": 4,
+            "patient_name": "David Wilson",
+            "age": 31
+          },
+          {
+            "patient_id": 5,
+            "patient_name": "Emma Brown",
+            "age": 29
+          }
+        ],
+        "covid_tests": [
+          {
+            "test_id": 1,
+            "patient_id": 1,
+            "test_date": "2023-01-15",
+            "result": "Positive"
+          },
+          {
+            "test_id": 2,
+            "patient_id": 1,
+            "test_date": "2023-01-25",
+            "result": "Negative"
+          },
+          {
+            "test_id": 3,
+            "patient_id": 2,
+            "test_date": "2023-02-01",
+            "result": "Positive"
+          },
+          {
+            "test_id": 4,
+            "patient_id": 2,
+            "test_date": "2023-02-05",
+            "result": "Inconclusive"
+          },
+          {
+            "test_id": 5,
+            "patient_id": 2,
+            "test_date": "2023-02-12",
+            "result": "Negative"
+          },
+          {
+            "test_id": 6,
+            "patient_id": 3,
+            "test_date": "2023-01-20",
+            "result": "Negative"
+          },
+          {
+            "test_id": 7,
+            "patient_id": 3,
+            "test_date": "2023-02-10",
+            "result": "Positive"
+          },
+          {
+            "test_id": 8,
+            "patient_id": 3,
+            "test_date": "2023-02-20",
+            "result": "Negative"
+          },
+          {
+            "test_id": 9,
+            "patient_id": 4,
+            "test_date": "2023-01-10",
+            "result": "Positive"
+          },
+          {
+            "test_id": 10,
+            "patient_id": 4,
+            "test_date": "2023-01-18",
+            "result": "Positive"
+          },
+          {
+            "test_id": 11,
+            "patient_id": 5,
+            "test_date": "2023-02-15",
+            "result": "Negative"
+          },
+          {
+            "test_id": 12,
+            "patient_id": 5,
+            "test_date": "2023-02-20",
+            "result": "Negative"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "patient_id": 1,
+          "patient_name": "Alice Smith",
+          "age": 28,
+          "recovery_time": 10
+        },
+        {
+          "patient_id": 3,
+          "patient_name": "Carol Davis",
+          "age": 42,
+          "recovery_time": 10
+        },
+        {
+          "patient_id": 2,
+          "patient_name": "Bob Johnson",
+          "age": 35,
+          "recovery_time": 11
+        }
+      ]
+    }
+  ]
+}

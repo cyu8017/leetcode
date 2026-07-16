@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "rangeBitwiseAnd",
+  "paramOrder": ["left", "right"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,7 @@
+﻿// LeetCode 2951 - Find the Peaks
+// https://leetcode.com/problems/find-the-peaks/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

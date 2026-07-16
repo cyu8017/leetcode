@@ -1,0 +1,6 @@
+﻿// LeetCode 3707 - Equal Score Substrings
+// https://leetcode.com/problems/equal-score-substrings/
+
+function solve(input: unknown): unknown {
+    return null;
+}

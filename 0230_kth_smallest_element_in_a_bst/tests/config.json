@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "kthSmallest",
+  "paramOrder": ["root", "k"],
+  "types": { "root": "treenode" },
+  "description": null
+}

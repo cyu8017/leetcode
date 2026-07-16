@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Activity": [
+          {
+            "player_id": 1,
+            "device_id": 2,
+            "event_date": "2016-03-01",
+            "games_played": 5
+          },
+          {
+            "player_id": 1,
+            "device_id": 2,
+            "event_date": "2016-03-02",
+            "games_played": 6
+          },
+          {
+            "player_id": 2,
+            "device_id": 3,
+            "event_date": "2017-06-25",
+            "games_played": 1
+          },
+          {
+            "player_id": 3,
+            "device_id": 1,
+            "event_date": "2016-03-01",
+            "games_played": 0
+          },
+          {
+            "player_id": 3,
+            "device_id": 4,
+            "event_date": "2016-07-03",
+            "games_played": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "install_dt": "2016-03-01",
+          "installs": 2,
+          "Day1_retention": 0.5
+        },
+        {
+          "install_dt": "2017-06-25",
+          "installs": 1,
+          "Day1_retention": 0.0
+        }
+      ]
+    }
+  ]
+}

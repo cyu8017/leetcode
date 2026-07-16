@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "checkArithmeticSubarrays",
+  "paramOrder": [
+    "nums",
+    "l",
+    "r"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

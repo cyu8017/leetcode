@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "boundaryOfBinaryTree",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "integer[]"
+  },
+  "description": "Return the anti-clockwise boundary values of the binary tree."
+}

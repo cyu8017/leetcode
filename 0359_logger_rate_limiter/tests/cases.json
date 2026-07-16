@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Logger",
+        "shouldPrintMessage",
+        "shouldPrintMessage",
+        "shouldPrintMessage",
+        "shouldPrintMessage",
+        "shouldPrintMessage",
+        "shouldPrintMessage"
+      ],
+      "arguments": [
+        [],
+        [
+          1,
+          "foo"
+        ],
+        [
+          2,
+          "bar"
+        ],
+        [
+          3,
+          "foo"
+        ],
+        [
+          8,
+          "bar"
+        ],
+        [
+          10,
+          "foo"
+        ],
+        [
+          11,
+          "foo"
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        true,
+        false,
+        false,
+        false,
+        true
+      ]
+    }
+  ]
+}

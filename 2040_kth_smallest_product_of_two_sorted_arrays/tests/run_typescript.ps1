@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$problemDir = Split-Path -Parent $PSScriptRoot
+& "C:\Users\Charlie Yu\Documents\Bitbucket - cyuconsulting\leetcode-solutions\scripts\test-problem.ps1" -Folder "2040_kth_smallest_product_of_two_sorted_arrays" -Language "typescript"

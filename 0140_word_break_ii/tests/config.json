@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "wordBreak",
+  "paramOrder": ["s", "wordDict"],
+  "types": { "return": "string[]" },
+  "description": null
+}

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "left": 5,
+        "right": 7
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "left": 0,
+        "right": 0
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "left": 1,
+        "right": 2147483647
+      },
+      "expected": 0
+    }
+  ]
+}

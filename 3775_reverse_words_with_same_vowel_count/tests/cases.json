@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "cat and mice"
+      },
+      "expected": "cat dna mice"
+    },
+    {
+      "args": {
+        "s": "book is nice"
+      },
+      "expected": "book is ecin"
+    },
+    {
+      "args": {
+        "s": "banana healthy"
+      },
+      "expected": "banana healthy"
+    }
+  ]
+}

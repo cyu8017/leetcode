@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fn": "(callback, a, b, c) => { callback(a * b * c); } args = [1, 2, 3]"
+      },
+      "expected": {
+        "resolved": 6
+      }
+    },
+    {
+      "args": {
+        "fn": "(callback, a, b, c) => { callback(a * b * c, \"Promise Rejected\"); } args = [4, 5, 6]"
+      },
+      "expected": {
+        "rejected": "Promise Rejected"
+      }
+    }
+  ]
+}

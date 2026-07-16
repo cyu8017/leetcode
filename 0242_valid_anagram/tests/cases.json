@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "anagram",
+        "t": "nagaram"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "rat",
+        "t": "car"
+      },
+      "expected": false
+    }
+  ]
+}

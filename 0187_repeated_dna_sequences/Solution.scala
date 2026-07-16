@@ -1,0 +1,1 @@
+import scala.collection.mutable; object Solution { def findRepeatedDnaSequences(s: String): List[String] = { val seen = mutable.HashSet[String](); val repeated = mutable.HashSet[String](); for (i <- 0 to s.length - 10) { val x = s.substring(i, i + 10); if (!seen.add(x)) repeated.add(x) }; repeated.toList } }

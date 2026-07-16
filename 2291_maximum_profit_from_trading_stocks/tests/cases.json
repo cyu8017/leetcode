@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "args": {
+        "present": [
+          5,
+          4,
+          6,
+          2,
+          3
+        ],
+        "future": [
+          8,
+          5,
+          4,
+          3,
+          5
+        ],
+        "budget": 10
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "present": [
+          2,
+          2,
+          5
+        ],
+        "future": [
+          3,
+          4,
+          10
+        ],
+        "budget": 6
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "present": [
+          3,
+          3,
+          12
+        ],
+        "future": [
+          0,
+          3,
+          15
+        ],
+        "budget": 10
+      },
+      "expected": 0
+    }
+  ]
+}

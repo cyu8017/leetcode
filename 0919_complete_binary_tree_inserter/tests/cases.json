@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "CBTInserter",
+        "insert",
+        "insert",
+        "get_root"
+      ],
+      "arguments": [
+        [
+          [
+            1,
+            2
+          ]
+        ],
+        [
+          3
+        ],
+        [
+          4
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        1,
+        2,
+        [
+          1,
+          2,
+          3,
+          4
+        ]
+      ]
+    }
+  ]
+}

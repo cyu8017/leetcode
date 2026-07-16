@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "largestNumber",
+  "paramOrder": ["nums"],
+  "types": null,
+  "description": null
+}

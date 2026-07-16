@@ -1,0 +1,170 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "ProductPurchases": [
+          {
+            "user_id": 1,
+            "product_id": 101,
+            "quantity": 2
+          },
+          {
+            "user_id": 1,
+            "product_id": 102,
+            "quantity": 1
+          },
+          {
+            "user_id": 1,
+            "product_id": 201,
+            "quantity": 3
+          },
+          {
+            "user_id": 1,
+            "product_id": 301,
+            "quantity": 1
+          },
+          {
+            "user_id": 2,
+            "product_id": 101,
+            "quantity": 1
+          },
+          {
+            "user_id": 2,
+            "product_id": 102,
+            "quantity": 2
+          },
+          {
+            "user_id": 2,
+            "product_id": 103,
+            "quantity": 1
+          },
+          {
+            "user_id": 2,
+            "product_id": 201,
+            "quantity": 5
+          },
+          {
+            "user_id": 3,
+            "product_id": 101,
+            "quantity": 2
+          },
+          {
+            "user_id": 3,
+            "product_id": 103,
+            "quantity": 1
+          },
+          {
+            "user_id": 3,
+            "product_id": 301,
+            "quantity": 4
+          },
+          {
+            "user_id": 3,
+            "product_id": 401,
+            "quantity": 2
+          },
+          {
+            "user_id": 4,
+            "product_id": 101,
+            "quantity": 1
+          },
+          {
+            "user_id": 4,
+            "product_id": 201,
+            "quantity": 3
+          },
+          {
+            "user_id": 4,
+            "product_id": 301,
+            "quantity": 1
+          },
+          {
+            "user_id": 4,
+            "product_id": 401,
+            "quantity": 2
+          },
+          {
+            "user_id": 5,
+            "product_id": 102,
+            "quantity": 2
+          },
+          {
+            "user_id": 5,
+            "product_id": 103,
+            "quantity": 1
+          },
+          {
+            "user_id": 5,
+            "product_id": 201,
+            "quantity": 2
+          },
+          {
+            "user_id": 5,
+            "product_id": 202,
+            "quantity": 3
+          }
+        ],
+        "ProductInfo": [
+          {
+            "product_id": 101,
+            "category": "Electronics",
+            "price": 100
+          },
+          {
+            "product_id": 102,
+            "category": "Books",
+            "price": 20
+          },
+          {
+            "product_id": 103,
+            "category": "Books",
+            "price": 35
+          },
+          {
+            "product_id": 201,
+            "category": "Clothing",
+            "price": 45
+          },
+          {
+            "product_id": 202,
+            "category": "Clothing",
+            "price": 60
+          },
+          {
+            "product_id": 301,
+            "category": "Sports",
+            "price": 75
+          },
+          {
+            "product_id": 401,
+            "category": "Kitchen",
+            "price": 50
+          }
+        ]
+      },
+      "expected": [
+        {
+          "category1": "Books",
+          "category2": "Clothing",
+          "customer_count": 3
+        },
+        {
+          "category1": "Books",
+          "category2": "Electronics",
+          "customer_count": 3
+        },
+        {
+          "category1": "Clothing",
+          "category2": "Electronics",
+          "customer_count": 3
+        },
+        {
+          "category1": "Electronics",
+          "category2": "Sports",
+          "customer_count": 3
+        }
+      ]
+    }
+  ]
+}

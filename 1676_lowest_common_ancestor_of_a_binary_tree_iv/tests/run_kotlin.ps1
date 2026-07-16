@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$problemDir = Split-Path -Parent $PSScriptRoot
+& "C:\Users\Charlie Yu\Documents\Bitbucket - cyuconsulting\leetcode-solutions\scripts\test-problem.ps1" -Folder "1676_lowest_common_ancestor_of_a_binary_tree_iv" -Language "kotlin"

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "args": {
+        "obj": [
+          null,
+          0,
+          false,
+          1
+        ]
+      },
+      "expected": [
+        1
+      ]
+    },
+    {
+      "args": {
+        "obj": {
+          "a": null,
+          "b": [
+            false,
+            1
+          ]
+        }
+      },
+      "expected": {
+        "b": [
+          1
+        ]
+      }
+    },
+    {
+      "args": {
+        "obj": [
+          null,
+          0,
+          5,
+          [
+            0
+          ],
+          [
+            false,
+            16
+          ]
+        ]
+      },
+      "expected": [
+        5,
+        [],
+        [
+          16
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "oddEvenList",
+  "paramOrder": ["head"],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

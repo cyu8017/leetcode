@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "a123bc34d8ef34"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "word": "leet1234code234"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word": "a1b01c001"
+      },
+      "expected": 1
+    }
+  ]
+}

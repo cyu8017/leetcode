@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "findContestMatch",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Return the contest match pairing string for n teams."
+}

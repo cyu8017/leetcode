@@ -1,0 +1,4 @@
+﻿$ErrorActionPreference = "Stop"
+$repoRoot = Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
+$problemDir = Split-Path -Parent $PSScriptRoot
+& "C:\Users\Charlie Yu\Documents\Bitbucket - cyuconsulting\leetcode-solutions\scripts\test-problem.ps1" -Folder "2239_find_closest_number_to_zero" -Language "c"

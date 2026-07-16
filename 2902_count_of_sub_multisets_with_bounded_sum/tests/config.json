@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "countSubMultisets",
+  "paramOrder": [
+    "nums",
+    "l",
+    "r"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

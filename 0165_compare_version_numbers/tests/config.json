@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "compareVersion",
+  "paramOrder": ["version1", "version2"],
+  "types": null,
+  "description": null
+}

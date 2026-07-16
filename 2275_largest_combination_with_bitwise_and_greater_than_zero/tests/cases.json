@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "args": {
+        "candidates": [
+          16,
+          17,
+          71,
+          62,
+          12,
+          24,
+          14
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "candidates": [
+          8,
+          8
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

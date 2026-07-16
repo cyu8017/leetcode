@@ -1,0 +1,6 @@
+﻿# LeetCode 2101 - Detonate the Maximum Bombs
+# https://leetcode.com/problems/detonate-the-maximum-bombs/
+
+class Solution:
+    def solve(self) -> None:
+        pass

@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word1": "abc",
+        "word2": "bac",
+        "target": "abc"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "word1": "cd",
+        "word2": "cd",
+        "target": "ccd"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "word1": "xy",
+        "word2": "xy",
+        "target": "xyxy"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "word1": "ab",
+        "word2": "cde",
+        "target": "ace"
+      },
+      "expected": 1
+    }
+  ]
+}

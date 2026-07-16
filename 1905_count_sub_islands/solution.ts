@@ -1,0 +1,6 @@
+﻿// LeetCode 1905 - Count Sub Islands
+// https://leetcode.com/problems/count-sub-islands/
+
+function solve(input: unknown): unknown {
+    return null;
+}

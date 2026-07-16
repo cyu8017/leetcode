@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "madxa",
+        "t": "madam"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "leetcode",
+        "t": "eetcode"
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "s": "one",
+        "t": "one"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "s": "a",
+        "t": "b"
+      },
+      "expected": 0
+    }
+  ]
+}

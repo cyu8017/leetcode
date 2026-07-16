@@ -1,0 +1,7 @@
+﻿// LeetCode 3633 - Earliest Finish Time for Land and Water Rides I
+// https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-i/
+
+public class Solution {
+    public void Solve() {
+    }
+}

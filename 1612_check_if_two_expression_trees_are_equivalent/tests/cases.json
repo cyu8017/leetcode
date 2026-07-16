@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "root1": "[x]",
+        "root2": "[x]"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "root1": "[+,a,+,null,null,b,c]",
+        "root2": "[+,+,a,b,c]"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "root1": "[+,a,+,null,null,b,c]",
+        "root2": "[+,+,a,b,d]"
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "items": [
+          [
+            50,
+            1
+          ],
+          [
+            10,
+            8
+          ]
+        ],
+        "capacity": 5
+      },
+      "expected": 55.0
+    },
+    {
+      "args": {
+        "items": [
+          [
+            100,
+            30
+          ]
+        ],
+        "capacity": 50
+      },
+      "expected": -1.0
+    }
+  ]
+}

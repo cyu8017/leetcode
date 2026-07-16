@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "earliestFinishTime",
+  "paramOrder": [
+    "landStartTime",
+    "landDuration",
+    "waterStartTime",
+    "waterDuration"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "mountain": [
+          2,
+          4,
+          4
+        ]
+      },
+      "expected": []
+    },
+    {
+      "args": {
+        "mountain": [
+          1,
+          4,
+          3,
+          8,
+          5
+        ]
+      },
+      "expected": [
+        1,
+        3
+      ]
+    }
+  ]
+}

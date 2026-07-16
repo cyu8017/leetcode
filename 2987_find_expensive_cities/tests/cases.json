@@ -1,0 +1,74 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Listings": [
+          {
+            "listing_id": 113,
+            "city": "LosAngeles",
+            "price": 7560386
+          },
+          {
+            "listing_id": 136,
+            "city": "SanFrancisco",
+            "price": 2380268
+          },
+          {
+            "listing_id": 92,
+            "city": "Chicago",
+            "price": 9833209
+          },
+          {
+            "listing_id": 60,
+            "city": "Chicago",
+            "price": 5147582
+          },
+          {
+            "listing_id": 8,
+            "city": "Chicago",
+            "price": 5274441
+          },
+          {
+            "listing_id": 79,
+            "city": "SanFrancisco",
+            "price": 8372065
+          },
+          {
+            "listing_id": 37,
+            "city": "Chicago",
+            "price": 7939595
+          },
+          {
+            "listing_id": 53,
+            "city": "LosAngeles",
+            "price": 4965123
+          },
+          {
+            "listing_id": 178,
+            "city": "SanFrancisco",
+            "price": 999207
+          },
+          {
+            "listing_id": 51,
+            "city": "NewYork",
+            "price": 5951718
+          },
+          {
+            "listing_id": 121,
+            "city": "NewYork",
+            "price": 2893760
+          }
+        ]
+      },
+      "expected": [
+        {
+          "city": "Chicago"
+        },
+        {
+          "city": "LosAngeles"
+        }
+      ]
+    }
+  ]
+}

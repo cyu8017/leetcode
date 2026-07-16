@@ -1,0 +1,1 @@
+type ListNode struct{Val int;Next *ListNode};func reorderList(h *ListNode){if h==nil{return};s,f:=h,h;for f.Next!=nil&&f.Next.Next!=nil{s,f=s.Next,f.Next.Next};var p *ListNode;q:=s.Next;s.Next=nil;for q!=nil{n:=q.Next;q.Next=p;p=q;q=n};for p!=nil{a,b:=h.Next,p.Next;h.Next=p;p.Next=a;h,p=a,b}}

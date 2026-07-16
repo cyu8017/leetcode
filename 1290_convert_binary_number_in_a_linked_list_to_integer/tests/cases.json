@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "head": [
+          1,
+          0,
+          1
+        ]
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "head": [
+          0
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

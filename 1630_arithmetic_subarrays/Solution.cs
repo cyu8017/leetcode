@@ -1,0 +1,7 @@
+﻿// LeetCode 1630 - Arithmetic Subarrays
+// https://leetcode.com/problems/arithmetic-subarrays/
+
+public class Solution {
+    public void Solve() {
+    }
+}

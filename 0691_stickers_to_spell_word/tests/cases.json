@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "stickers": [
+          "with",
+          "example",
+          "science"
+        ],
+        "target": "thehat"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "stickers": [
+          "notice",
+          "possible"
+        ],
+        "target": "basicbasic"
+      },
+      "expected": -1
+    }
+  ]
+}

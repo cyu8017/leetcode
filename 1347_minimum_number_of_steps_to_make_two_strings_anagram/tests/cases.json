@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "bab",
+        "t": "aba"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "leetcode",
+        "t": "practice"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "s": "anagram",
+        "t": "mangaar"
+      },
+      "expected": 0
+    }
+  ]
+}

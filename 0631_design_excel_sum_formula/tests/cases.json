@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "Excel",
+        "set",
+        "sum",
+        "set",
+        "get"
+      ],
+      "arguments": [
+        [
+          3,
+          "C"
+        ],
+        [
+          1,
+          "A",
+          2
+        ],
+        [
+          3,
+          "C",
+          [
+            "A1",
+            "A1:B2"
+          ]
+        ],
+        [
+          2,
+          "B",
+          2
+        ],
+        [
+          3,
+          "C"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        4,
+        null,
+        6
+      ]
+    }
+  ]
+}

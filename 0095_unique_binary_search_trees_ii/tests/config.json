@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "generateTrees",
+  "paramOrder": ["n"],
+  "types": {
+    "return": "treenode[]"
+  },
+  "description": null
+}

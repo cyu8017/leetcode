@@ -1,0 +1,7 @@
+﻿// LeetCode 0808 - Soup Servings
+// https://leetcode.com/problems/soup-servings/
+
+class Solution {
+    public void solve() {
+    }
+}

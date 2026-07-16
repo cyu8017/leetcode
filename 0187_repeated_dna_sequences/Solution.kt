@@ -1,0 +1,1 @@
+class Solution { fun findRepeatedDnaSequences(s: String): List<String> { val seen = mutableSetOf<String>(); val repeated = mutableSetOf<String>(); for (i in 0..s.length - 10) { val x = s.substring(i, i + 10); if (!seen.add(x)) repeated.add(x) }; return repeated.toList() } }

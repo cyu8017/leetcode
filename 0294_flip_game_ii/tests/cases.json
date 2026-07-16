@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "currentState": "++++"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "currentState": "+"
+      },
+      "expected": false
+    }
+  ]
+}

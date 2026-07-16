@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MapSum",
+        "insert",
+        "sum",
+        "insert",
+        "sum"
+      ],
+      "arguments": [
+        [],
+        [
+          "apple",
+          3
+        ],
+        [
+          "ap"
+        ],
+        [
+          "app",
+          2
+        ],
+        [
+          "ap"
+        ]
+      ],
+      "expected": [
+        null,
+        null,
+        3,
+        null,
+        5
+      ]
+    }
+  ]
+}

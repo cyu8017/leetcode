@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "minMovesToCaptureTheQueen",
+  "paramOrder": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

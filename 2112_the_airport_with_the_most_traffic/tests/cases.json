@@ -1,0 +1,77 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Flights": [
+          {
+            "departure_airport": 1,
+            "arrival_airport": 2,
+            "flights_count": 4
+          },
+          {
+            "departure_airport": 2,
+            "arrival_airport": 1,
+            "flights_count": 5
+          },
+          {
+            "departure_airport": 2,
+            "arrival_airport": 4,
+            "flights_count": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "airport_id": 2
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Flights": [
+          {
+            "departure_airport": 1,
+            "arrival_airport": 2,
+            "flights_count": 4
+          },
+          {
+            "departure_airport": 2,
+            "arrival_airport": 1,
+            "flights_count": 5
+          },
+          {
+            "departure_airport": 3,
+            "arrival_airport": 4,
+            "flights_count": 5
+          },
+          {
+            "departure_airport": 4,
+            "arrival_airport": 3,
+            "flights_count": 4
+          },
+          {
+            "departure_airport": 5,
+            "arrival_airport": 6,
+            "flights_count": 7
+          }
+        ]
+      },
+      "expected": [
+        {
+          "airport_id": 1
+        },
+        {
+          "airport_id": 2
+        },
+        {
+          "airport_id": 3
+        },
+        {
+          "airport_id": 4
+        }
+      ]
+    }
+  ]
+}

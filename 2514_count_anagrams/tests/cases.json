@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "too hot"
+      },
+      "expected": 18
+    },
+    {
+      "args": {
+        "s": "aa"
+      },
+      "expected": 1
+    }
+  ]
+}

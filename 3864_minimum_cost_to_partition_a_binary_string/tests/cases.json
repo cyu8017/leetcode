@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "1010",
+        "encCost": 2,
+        "flatCost": 1
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "s": "1010",
+        "encCost": 3,
+        "flatCost": 10
+      },
+      "expected": 12
+    },
+    {
+      "args": {
+        "s": "00",
+        "encCost": 1,
+        "flatCost": 2
+      },
+      "expected": 2
+    }
+  ]
+}

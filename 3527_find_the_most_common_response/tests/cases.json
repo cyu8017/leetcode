@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "args": {
+        "responses": [
+          [
+            "good",
+            "ok",
+            "good",
+            "ok"
+          ],
+          [
+            "ok",
+            "bad",
+            "good",
+            "ok",
+            "ok"
+          ],
+          [
+            "good"
+          ],
+          [
+            "bad"
+          ]
+        ]
+      },
+      "expected": "good"
+    },
+    {
+      "args": {
+        "responses": [
+          [
+            "good",
+            "ok",
+            "good"
+          ],
+          [
+            "ok",
+            "bad"
+          ],
+          [
+            "bad",
+            "notsure"
+          ],
+          [
+            "great",
+            "good"
+          ]
+        ]
+      },
+      "expected": "bad"
+    }
+  ]
+}

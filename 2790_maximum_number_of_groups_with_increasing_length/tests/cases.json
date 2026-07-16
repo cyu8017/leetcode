@@ -1,0 +1,33 @@
+{
+  "cases": [
+    {
+      "args": {
+        "usageLimits": [
+          1,
+          2,
+          5
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "usageLimits": [
+          2,
+          1,
+          2
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "usageLimits": [
+          1,
+          1
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

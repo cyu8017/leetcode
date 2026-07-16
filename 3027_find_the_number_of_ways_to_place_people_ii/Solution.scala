@@ -1,0 +1,6 @@
+﻿// LeetCode 3027 - Find the Number of Ways to Place People II
+// https://leetcode.com/problems/find-the-number-of-ways-to-place-people-ii/
+
+object Solution {
+  def solve(): Unit = {}
+}

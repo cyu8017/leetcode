@@ -1,0 +1,51 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "SchoolA": [
+          {
+            "student_id": 1,
+            "student_name": "Alice"
+          },
+          {
+            "student_id": 2,
+            "student_name": "Bob"
+          }
+        ],
+        "SchoolB": [
+          {
+            "student_id": 3,
+            "student_name": "Tom"
+          }
+        ],
+        "SchoolC": [
+          {
+            "student_id": 3,
+            "student_name": "Tom"
+          },
+          {
+            "student_id": 2,
+            "student_name": "Jerry"
+          },
+          {
+            "student_id": 10,
+            "student_name": "Alice"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "member_A": "Alice",
+          "member_B": "Tom",
+          "member_C": "Jerry"
+        },
+        {
+          "member_A": "Bob",
+          "member_B": "Tom",
+          "member_C": "Alice"
+        }
+      ]
+    }
+  ]
+}

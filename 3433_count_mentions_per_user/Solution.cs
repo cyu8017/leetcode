@@ -1,0 +1,7 @@
+﻿// LeetCode 3433 - Count Mentions Per User
+// https://leetcode.com/problems/count-mentions-per-user/
+
+public class Solution {
+    public void Solve() {
+    }
+}

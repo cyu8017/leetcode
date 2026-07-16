@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "operation": "Add"
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "nums": [
+          [
+            23,
+            98,
+            42,
+            70
+          ]
+        ],
+        "operation": "String"
+      },
+      "expected": "[23,98,42,70]"
+    },
+    {
+      "args": {
+        "nums": [
+          [],
+          []
+        ],
+        "operation": "Add"
+      },
+      "expected": 0
+    }
+  ]
+}

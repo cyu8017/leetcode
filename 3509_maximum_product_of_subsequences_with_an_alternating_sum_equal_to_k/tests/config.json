@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "maxProduct",
+  "paramOrder": [
+    "nums",
+    "k",
+    "limit"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

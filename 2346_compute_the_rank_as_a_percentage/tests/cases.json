@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Students": [
+          {
+            "student_id": 2,
+            "department_id": 2,
+            "mark": 650
+          },
+          {
+            "student_id": 8,
+            "department_id": 2,
+            "mark": 650
+          },
+          {
+            "student_id": 7,
+            "department_id": 1,
+            "mark": 920
+          },
+          {
+            "student_id": 1,
+            "department_id": 1,
+            "mark": 610
+          },
+          {
+            "student_id": 3,
+            "department_id": 1,
+            "mark": 530
+          }
+        ]
+      },
+      "expected": [
+        {
+          "student_id": 7,
+          "department_id": 1,
+          "percentage": 0.0
+        },
+        {
+          "student_id": 1,
+          "department_id": 1,
+          "percentage": 50.0
+        },
+        {
+          "student_id": 3,
+          "department_id": 1,
+          "percentage": 100.0
+        },
+        {
+          "student_id": 2,
+          "department_id": 2,
+          "percentage": 0.0
+        },
+        {
+          "student_id": 8,
+          "department_id": 2,
+          "percentage": 0.0
+        }
+      ]
+    }
+  ]
+}

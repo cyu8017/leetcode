@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "idea"
+      },
+      "expected": "id"
+    },
+    {
+      "args": {
+        "s": "day"
+      },
+      "expected": "day"
+    },
+    {
+      "args": {
+        "s": "aeiou"
+      },
+      "expected": ""
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+# 3939. Count Non Adjacent Subsets in a Rooted Tree
+
+- **Difficulty:** Hard
+- **LeetCode:** [https://leetcode.com/problems/count-non-adjacent-subsets-in-a-rooted-tree/](https://leetcode.com/problems/count-non-adjacent-subsets-in-a-rooted-tree/)
+- **Tags:** array, dynamic-programming, tree, depth-first-search
+
+## Problem
+
+You are given a rooted tree with n nodes labeled from 0 to n - 1, represented by an integer array parent of length n, where:
+
+parent[0] = -1 (node 0 is the root).
+
+	For each 1 , parent[i] is the parent of node i (0 ).
+
+You are also given an integer array nums of length n, where `nums[i]` is the value of node i, and an integer k.
+
+A non-empty subset of nodes is called **valid** if:
+
+The **sum** of the values of the selected nodes is **divisible** by k.
+
+	No **two** selected nodes are **adjacent** in the tree (no node and its direct parent are both included in the subset).
+
+Return the number of valid subsets modulo `10^{9} + 7`.
+
+**Example 1:**
+
+**Input:** parent = [-1,0,1], nums = [1,2,3], k = 3
+
+**Output:** 1
+
+**Explanation:**
+
+**​​​​​​​**
+
+The only valid subset is `{2}`. It contains node 2 with value 3, which is divisible by 3.
+
+**Example 2:**
+
+**Input:** parent = [-1,0,0,0], nums = [2,1,2,1], k = 3
+
+**Output:** 2
+
+**Explanation:**
+
+**​​​​​​​**​​​​​​​
+
+The valid subsets are:
+
+- `{1, 2}`: Nodes 1 and 2 are both children of node 0 and not directly connected to each other. Their values sum to `1 + 2 = 3`, which is divisible by 3.
+
+	- `{2, 3}`: Nodes 2 and 3 are also non-adjacent. Their values sum to `2 + 1 = 3`, which is divisible by 3.
+
+No other subset satisfies both conditions. Therefore, the answer is 2.
+
+**Constraints:**
+
+n == parent.length == nums.length
+
+	1
+
+	parent[0] == -1
+
+	For all 1 :
+
+0
+
+
+
+
+
+	1
+
+	1 ​​​​​​​​​​​​​​​​​​​​​
+
+	parent describes a valid rooted tree.
+
+### Hints
+
+1. Use tree DP. Let `dp0[u][r]` mean node `u` is not selected, and `dp1[u][r]` mean node `u` is selected, with subtree sum modulo `k` equal to `r`.
+2. Initialize `dp0[u][0] = 1` and `dp1[u][nums[u] % k] = 1`.
+When merging child `v`: if `u` is selected, merge only with `dp0[v]`; otherwise merge with `dp0[v] + dp1[v]`.
+3. Finally return `dp0[0][0] + dp1[0][0] - 1`, subtracting the empty subset.
+
+## Approach
+
+<!-- Describe your solution approach here -->

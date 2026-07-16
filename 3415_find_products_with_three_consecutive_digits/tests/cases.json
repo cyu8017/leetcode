@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "products": [
+          {
+            "product_id": 1,
+            "name": "ABC123XYZ"
+          },
+          {
+            "product_id": 2,
+            "name": "A12B34C"
+          },
+          {
+            "product_id": 3,
+            "name": "Product56789"
+          },
+          {
+            "product_id": 4,
+            "name": "NoDigitsHere"
+          },
+          {
+            "product_id": 5,
+            "name": "789Product"
+          },
+          {
+            "product_id": 6,
+            "name": "Item003Description"
+          },
+          {
+            "product_id": 7,
+            "name": "Product12X34"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1,
+          "name": "ABC123XYZ"
+        },
+        {
+          "product_id": 5,
+          "name": "789Product"
+        },
+        {
+          "product_id": 6,
+          "name": "Item003Description"
+        }
+      ]
+    }
+  ]
+}

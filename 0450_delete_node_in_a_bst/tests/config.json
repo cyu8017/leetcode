@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "deleteNode",
+  "paramOrder": [
+    "root",
+    "key"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "treenode"
+  },
+  "description": "Delete a node with the given key from a BST."
+}

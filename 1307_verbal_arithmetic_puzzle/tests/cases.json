@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "SEND",
+          "MORE"
+        ],
+        "result": "MONEY"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "words": [
+          "SIX",
+          "SEVEN",
+          "SEVEN"
+        ],
+        "result": "TWENTY"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "words": [
+          "LEET",
+          "CODE"
+        ],
+        "result": "POINT"
+      },
+      "expected": false
+    }
+  ]
+}

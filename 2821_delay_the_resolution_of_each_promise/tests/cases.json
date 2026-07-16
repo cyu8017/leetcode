@@ -1,0 +1,30 @@
+{
+  "cases": [
+    {
+      "args": {
+        "functions": "[ () => new Promise((resolve) => setTimeout(resolve, 30)) ]",
+        "ms": 50
+      },
+      "expected": [
+        80
+      ]
+    },
+    {
+      "args": {
+        "functions": "[ () => new Promise((resolve) => setTimeout(resolve, 50)), () => new Promise((resolve) => setTimeout(resolve, 80)) ]",
+        "ms": 70
+      },
+      "expected": [
+        120,
+        150
+      ]
+    },
+    {
+      "args": {
+        "functions": "[ () => new Promise((resolve, reject) => setTimeout(reject, 20)), () => new Promise((resolve, reject) => setTimeout(reject, 100)) ]",
+        "ms": "30 **"
+      },
+      "expected": "**[50,130]"
+    }
+  ]
+}

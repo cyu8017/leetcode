@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "getRow",
+  "paramOrder": [
+    "rowIndex"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": null
+}

@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "findLonelyPixel",
+  "paramOrder": [
+    "picture"
+  ],
+  "types": null,
+  "description": "Count black pixels whose row and column each contain no other black pixels."
+}

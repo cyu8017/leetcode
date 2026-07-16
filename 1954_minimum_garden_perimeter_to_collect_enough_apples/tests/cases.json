@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "neededApples": 1
+      },
+      "expected": 8
+    },
+    {
+      "args": {
+        "neededApples": 13
+      },
+      "expected": 16
+    },
+    {
+      "args": {
+        "neededApples": 1000000000
+      },
+      "expected": 5040
+    }
+  ]
+}

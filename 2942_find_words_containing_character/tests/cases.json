@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "leet",
+          "code"
+        ],
+        "x": "e"
+      },
+      "expected": [
+        0,
+        1
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "abc",
+          "bcd",
+          "aaaa",
+          "cbc"
+        ],
+        "x": "a"
+      },
+      "expected": [
+        0,
+        2
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "abc",
+          "bcd",
+          "aaaa",
+          "cbc"
+        ],
+        "x": "z"
+      },
+      "expected": []
+    }
+  ]
+}

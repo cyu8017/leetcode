@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "a": [
+          "avokado",
+          "dabar"
+        ],
+        "b": [
+          "brazil"
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "a": [
+          "ananas",
+          "atlas",
+          "banana"
+        ],
+        "b": [
+          "albatros",
+          "cikla",
+          "nogomet"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "a": [
+          "hrvatska",
+          "zastava"
+        ],
+        "b": [
+          "bijeli",
+          "galeb"
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

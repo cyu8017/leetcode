@@ -1,0 +1,6 @@
+﻿// LeetCode 3800 - Minimum Cost to Make Two Binary Strings Equal
+// https://leetcode.com/problems/minimum-cost-to-make-two-binary-strings-equal/
+
+object Solution {
+  def solve(): Unit = {}
+}

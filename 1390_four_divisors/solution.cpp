@@ -1,0 +1,8 @@
+﻿// LeetCode 1390 - Four Divisors
+// https://leetcode.com/problems/four-divisors/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

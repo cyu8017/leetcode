@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Schools": [
+          {
+            "school_id": 11,
+            "capacity": 151
+          },
+          {
+            "school_id": 5,
+            "capacity": 48
+          },
+          {
+            "school_id": 9,
+            "capacity": 9
+          },
+          {
+            "school_id": 10,
+            "capacity": 99
+          }
+        ],
+        "Exam": [
+          {
+            "score": 975,
+            "student_count": 10
+          },
+          {
+            "score": 966,
+            "student_count": 60
+          },
+          {
+            "score": 844,
+            "student_count": 76
+          },
+          {
+            "score": 749,
+            "student_count": 76
+          },
+          {
+            "score": 744,
+            "student_count": 100
+          }
+        ]
+      },
+      "expected": [
+        {
+          "school_id": 5,
+          "score": 975
+        },
+        {
+          "school_id": 9,
+          "score": -1
+        },
+        {
+          "school_id": 10,
+          "score": 749
+        },
+        {
+          "school_id": 11,
+          "score": 744
+        }
+      ]
+    }
+  ]
+}

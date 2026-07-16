@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "inorderTraversal",
+  "paramOrder": ["root"],
+  "types": {
+    "root": "treenode",
+    "return": "integer[]"
+  },
+  "description": null
+}

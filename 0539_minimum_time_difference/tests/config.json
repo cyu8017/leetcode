@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "findMinDifference",
+  "paramOrder": [
+    "timePoints"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

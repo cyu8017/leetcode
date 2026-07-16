@@ -1,0 +1,9 @@
+﻿// LeetCode 3686 - Number of Stable Subsequences
+// https://leetcode.com/problems/number-of-stable-subsequences/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

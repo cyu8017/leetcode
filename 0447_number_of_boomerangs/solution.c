@@ -1,0 +1,5 @@
+﻿// LeetCode 0447 - Number of Boomerangs
+// https://leetcode.com/problems/number-of-boomerangs/
+
+void solve() {
+}

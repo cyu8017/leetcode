@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "id": 121,
+            "country": "US",
+            "state": "approved",
+            "amount": 1000,
+            "trans_date": "2018-12-18"
+          },
+          {
+            "id": 122,
+            "country": "US",
+            "state": "declined",
+            "amount": 2000,
+            "trans_date": "2018-12-19"
+          },
+          {
+            "id": 123,
+            "country": "US",
+            "state": "approved",
+            "amount": 2000,
+            "trans_date": "2019-01-01"
+          },
+          {
+            "id": 124,
+            "country": "DE",
+            "state": "approved",
+            "amount": 2000,
+            "trans_date": "2019-01-07"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "month": "2018-12",
+          "country": "US",
+          "trans_count": 2,
+          "approved_count": 1,
+          "trans_total_amount": 3000,
+          "approved_total_amount": 1000
+        },
+        {
+          "month": "2019-01",
+          "country": "US",
+          "trans_count": 1,
+          "approved_count": 1,
+          "trans_total_amount": 2000,
+          "approved_total_amount": 2000
+        },
+        {
+          "month": "2019-01",
+          "country": "DE",
+          "trans_count": 1,
+          "approved_count": 1,
+          "trans_total_amount": 2000,
+          "approved_total_amount": 2000
+        }
+      ]
+    }
+  ]
+}

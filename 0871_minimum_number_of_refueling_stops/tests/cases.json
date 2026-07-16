@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "args": {
+        "target": 1,
+        "startFuel": 1,
+        "stations": []
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "target": 100,
+        "startFuel": 1,
+        "stations": [
+          [
+            10,
+            100
+          ]
+        ]
+      },
+      "expected": -1
+    },
+    {
+      "args": {
+        "target": 100,
+        "startFuel": 10,
+        "stations": [
+          [
+            10,
+            60
+          ],
+          [
+            20,
+            30
+          ],
+          [
+            30,
+            30
+          ],
+          [
+            60,
+            40
+          ]
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

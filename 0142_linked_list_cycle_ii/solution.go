@@ -1,0 +1,1 @@
+type ListNode struct{Val int;Next *ListNode};func detectCycle(h *ListNode)*ListNode{s,f:=h,h;for f!=nil&&f.Next!=nil{s,f=s.Next,f.Next.Next;if s==f{for s=h;s!=f;s,f=s.Next,f.Next{};return s}};return nil}

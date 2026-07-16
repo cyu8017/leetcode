@@ -1,0 +1,31 @@
+﻿// LeetCode 0423 - Reconstruct Original Digits from English
+// https://leetcode.com/problems/reconstruct-original-digits-from-english/
+
+using System.Text;
+
+public class Solution {
+    public string OriginalDigits(string s) {
+        int[] counts = new int[26];
+        foreach (char ch in s) {
+            counts[ch - 'a']++;
+        }
+
+        int[] digitCounts = new int[10];
+        digitCounts[0] = counts['z' - 'a'];
+        digitCounts[2] = counts['w' - 'a'];
+        digitCounts[4] = counts['u' - 'a'];
+        digitCounts[6] = counts['x' - 'a'];
+        digitCounts[8] = counts['g' - 'a'];
+        digitCounts[1] = counts['o' - 'a'] - digitCounts[0] - digitCounts[2] - digitCounts[4];
+        digitCounts[3] = counts['h' - 'a'] - digitCounts[8];
+        digitCounts[5] = counts['f' - 'a'] - digitCounts[4];
+        digitCounts[7] = counts['s' - 'a'] - digitCounts[6];
+        digitCounts[9] = counts['i' - 'a'] - digitCounts[5] - digitCounts[6] - digitCounts[8];
+
+        StringBuilder result = new();
+        for (int digit = 0; digit < 10; digit++) {
+            result.Append(new string((char)('0' + digit), digitCounts[digit]));
+        }
+        return result.ToString();
+    }
+}

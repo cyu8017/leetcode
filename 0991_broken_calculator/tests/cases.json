@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "startValue": 2,
+        "target": 3
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "startValue": 5,
+        "target": 8
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "startValue": 3,
+        "target": 10
+      },
+      "expected": 3
+    }
+  ]
+}

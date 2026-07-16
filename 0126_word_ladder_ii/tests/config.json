@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "findLadders",
+  "paramOrder": ["beginWord", "endWord", "wordList"],
+  "types": { "return": "string[][]" },
+  "description": null
+}

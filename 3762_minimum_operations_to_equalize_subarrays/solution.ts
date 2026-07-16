@@ -1,0 +1,6 @@
+﻿// LeetCode 3762 - Minimum Operations to Equalize Subarrays
+// https://leetcode.com/problems/minimum-operations-to-equalize-subarrays/
+
+function solve(input: unknown): unknown {
+    return null;
+}

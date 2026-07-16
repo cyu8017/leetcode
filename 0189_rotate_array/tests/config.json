@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "rotate",
+  "paramOrder": ["nums", "k"],
+  "types": { "return": "void" },
+  "description": null
+}

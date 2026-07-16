@@ -1,0 +1,8 @@
+﻿// LeetCode 3549 - Multiply Two Polynomials
+// https://leetcode.com/problems/multiply-two-polynomials/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

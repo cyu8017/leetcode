@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "init": 5,
+        "calls": [
+          "increment",
+          "reset",
+          "decrement"
+        ]
+      },
+      "expected": [
+        6,
+        5,
+        4
+      ]
+    },
+    {
+      "args": {
+        "init": 0,
+        "calls": [
+          "increment",
+          "increment",
+          "decrement",
+          "reset",
+          "reset"
+        ]
+      },
+      "expected": [
+        1,
+        2,
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

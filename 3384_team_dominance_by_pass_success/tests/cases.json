@@ -1,0 +1,99 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Teams": [
+          {
+            "player_id": 1,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 2,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 3,
+            "team_name": "Arsenal"
+          },
+          {
+            "player_id": 4,
+            "team_name": "Chelsea"
+          },
+          {
+            "player_id": 5,
+            "team_name": "Chelsea"
+          },
+          {
+            "player_id": 6,
+            "team_name": "Chelsea"
+          }
+        ],
+        "Passes": [
+          {
+            "pass_from": 1,
+            "time_stamp": "00:15",
+            "pass_to": 2
+          },
+          {
+            "pass_from": 2,
+            "time_stamp": "00:45",
+            "pass_to": 3
+          },
+          {
+            "pass_from": 3,
+            "time_stamp": "01:15",
+            "pass_to": 1
+          },
+          {
+            "pass_from": 4,
+            "time_stamp": "00:30",
+            "pass_to": 1
+          },
+          {
+            "pass_from": 2,
+            "time_stamp": "46:00",
+            "pass_to": 3
+          },
+          {
+            "pass_from": 3,
+            "time_stamp": "46:15",
+            "pass_to": 4
+          },
+          {
+            "pass_from": 1,
+            "time_stamp": "46:45",
+            "pass_to": 2
+          },
+          {
+            "pass_from": 5,
+            "time_stamp": "46:30",
+            "pass_to": 6
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_name": "Arsenal",
+          "half_number": 1,
+          "dominance": 3
+        },
+        {
+          "team_name": "Arsenal",
+          "half_number": 2,
+          "dominance": 1
+        },
+        {
+          "team_name": "Chelsea",
+          "half_number": 1,
+          "dominance": -1
+        },
+        {
+          "team_name": "Chelsea",
+          "half_number": 2,
+          "dominance": 1
+        }
+      ]
+    }
+  ]
+}

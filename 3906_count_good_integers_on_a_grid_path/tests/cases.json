@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "l": 8,
+        "r": 10,
+        "directions": "DDDRRR"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "l": 123456789,
+        "r": 123456790,
+        "directions": "DDRRDR"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "l": 1288561398769758,
+        "r": 1288561398769758,
+        "directions": "RRRDDD"
+      },
+      "expected": 0
+    }
+  ]
+}

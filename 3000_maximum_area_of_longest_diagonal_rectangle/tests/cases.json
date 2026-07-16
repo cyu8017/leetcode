@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "dimensions": [
+          [
+            9,
+            3
+          ],
+          [
+            8,
+            6
+          ]
+        ]
+      },
+      "expected": 48
+    },
+    {
+      "args": {
+        "dimensions": [
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      "expected": 12
+    }
+  ]
+}

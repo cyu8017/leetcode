@@ -1,0 +1,16 @@
+{
+  "class": "Solution",
+  "method": "computeArea",
+  "paramOrder": [
+    "ax1",
+    "ay1",
+    "ax2",
+    "ay2",
+    "bx1",
+    "by1",
+    "bx2",
+    "by2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

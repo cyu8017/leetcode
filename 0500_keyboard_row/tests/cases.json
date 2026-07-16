@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "Hello",
+          "Alaska",
+          "Dad",
+          "Peace"
+        ]
+      },
+      "expected": [
+        "Alaska",
+        "Dad"
+      ]
+    },
+    {
+      "args": {
+        "words": [
+          "omk"
+        ]
+      },
+      "expected": []
+    },
+    {
+      "args": {
+        "words": [
+          "adsdf",
+          "sfd"
+        ]
+      },
+      "expected": [
+        "adsdf",
+        "sfd"
+      ]
+    }
+  ]
+}

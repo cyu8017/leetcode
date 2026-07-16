@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "fusion",
+          "layout"
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "words": [
+          "ab",
+          "aa",
+          "za",
+          "aa"
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

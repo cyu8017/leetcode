@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "str": "hello",
+        "times": 2
+      },
+      "expected": "hellohello"
+    },
+    {
+      "args": {
+        "str": "code",
+        "times": 3
+      },
+      "expected": "codecodecode"
+    },
+    {
+      "args": {
+        "str": "js",
+        "times": 1
+      },
+      "expected": "js"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": [
+          "hello",
+          "world"
+        ],
+        "rows": 2,
+        "cols": 8
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "sentence": [
+          "a",
+          "bcd",
+          "e"
+        ],
+        "rows": 3,
+        "cols": 6
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "sentence": [
+          "i",
+          "had",
+          "apple",
+          "pie"
+        ],
+        "rows": 4,
+        "cols": 5
+      },
+      "expected": 1
+    }
+  ]
+}

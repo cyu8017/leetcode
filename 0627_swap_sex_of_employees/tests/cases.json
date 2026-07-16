@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Salary": [
+          {
+            "id": 1,
+            "name": "A",
+            "sex": "m",
+            "salary": 2500
+          },
+          {
+            "id": 2,
+            "name": "B",
+            "sex": "f",
+            "salary": 1500
+          },
+          {
+            "id": 3,
+            "name": "C",
+            "sex": "m",
+            "salary": 5500
+          },
+          {
+            "id": 4,
+            "name": "D",
+            "sex": "f",
+            "salary": 500
+          }
+        ]
+      },
+      "expected": [
+        {
+          "id": 1,
+          "name": "A",
+          "sex": "f",
+          "salary": 2500
+        },
+        {
+          "id": 2,
+          "name": "B",
+          "sex": "m",
+          "salary": 1500
+        },
+        {
+          "id": 3,
+          "name": "C",
+          "sex": "f",
+          "salary": 5500
+        },
+        {
+          "id": 4,
+          "name": "D",
+          "sex": "m",
+          "salary": 500
+        }
+      ]
+    }
+  ]
+}

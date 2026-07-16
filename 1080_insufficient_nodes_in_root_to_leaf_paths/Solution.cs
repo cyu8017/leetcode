@@ -1,0 +1,7 @@
+﻿// LeetCode 1080 - Insufficient Nodes in Root to Leaf Paths
+// https://leetcode.com/problems/insufficient-nodes-in-root-to-leaf-paths/
+
+public class Solution {
+    public void Solve() {
+    }
+}

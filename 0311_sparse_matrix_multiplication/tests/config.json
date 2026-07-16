@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "multiply",
+  "paramOrder": ["mat1", "mat2"],
+  "types": null,
+  "description": null
+}

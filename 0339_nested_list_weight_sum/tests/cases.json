@@ -1,0 +1,42 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nestedList": [
+          [
+            1,
+            1
+          ],
+          2,
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "nestedList": [
+          1,
+          [
+            4,
+            [
+              6
+            ]
+          ]
+        ]
+      },
+      "expected": 27
+    },
+    {
+      "args": {
+        "nestedList": [
+          0
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

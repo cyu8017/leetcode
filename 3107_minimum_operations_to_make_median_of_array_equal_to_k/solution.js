@@ -1,0 +1,9 @@
+﻿// LeetCode 3107 - Minimum Operations to Make Median of Array Equal to K
+// https://leetcode.com/problems/minimum-operations-to-make-median-of-array-equal-to-k/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

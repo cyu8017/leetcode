@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "capacity": [
+          9,
+          3,
+          3,
+          3,
+          9
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "capacity": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "capacity": [
+          -4,
+          4,
+          0,
+          0,
+          -8,
+          -4
+        ]
+      },
+      "expected": 1
+    }
+  ]
+}

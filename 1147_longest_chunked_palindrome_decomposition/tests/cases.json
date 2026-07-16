@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "text": "ghiabcdefhelloadamhelloabcdefghi"
+      },
+      "expected": 7
+    },
+    {
+      "args": {
+        "text": "merchant"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "text": "antaprezatepzapreanta"
+      },
+      "expected": 11
+    }
+  ]
+}

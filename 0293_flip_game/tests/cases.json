@@ -1,0 +1,20 @@
+{
+  "cases": [
+    {
+      "args": {
+        "currentState": "++++"
+      },
+      "expected": [
+        "--++",
+        "+--+",
+        "++--"
+      ]
+    },
+    {
+      "args": {
+        "currentState": "+"
+      },
+      "expected": []
+    }
+  ]
+}

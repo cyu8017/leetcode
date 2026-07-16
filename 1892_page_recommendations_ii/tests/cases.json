@@ -1,0 +1,159 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Friendship": [
+          {
+            "user1_id": 1,
+            "user2_id": 2
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 3
+          },
+          {
+            "user1_id": 1,
+            "user2_id": 4
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 3
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 4
+          },
+          {
+            "user1_id": 2,
+            "user2_id": 5
+          },
+          {
+            "user1_id": 6,
+            "user2_id": 1
+          }
+        ],
+        "Likes": [
+          {
+            "user_id": 1,
+            "page_id": 88
+          },
+          {
+            "user_id": 2,
+            "page_id": 23
+          },
+          {
+            "user_id": 3,
+            "page_id": 24
+          },
+          {
+            "user_id": 4,
+            "page_id": 56
+          },
+          {
+            "user_id": 5,
+            "page_id": 11
+          },
+          {
+            "user_id": 6,
+            "page_id": 33
+          },
+          {
+            "user_id": 2,
+            "page_id": 77
+          },
+          {
+            "user_id": 3,
+            "page_id": 77
+          },
+          {
+            "user_id": 6,
+            "page_id": 88
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "page_id": 77,
+          "friends_likes": 2
+        },
+        {
+          "user_id": 1,
+          "page_id": 23,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 1,
+          "page_id": 24,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 1,
+          "page_id": 56,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 1,
+          "page_id": 33,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 2,
+          "page_id": 24,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 2,
+          "page_id": 56,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 2,
+          "page_id": 11,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 2,
+          "page_id": 88,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 3,
+          "page_id": 88,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 3,
+          "page_id": 23,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 4,
+          "page_id": 88,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 4,
+          "page_id": 77,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 4,
+          "page_id": 23,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 5,
+          "page_id": 77,
+          "friends_likes": 1
+        },
+        {
+          "user_id": 5,
+          "page_id": 23,
+          "friends_likes": 1
+        }
+      ]
+    }
+  ]
+}

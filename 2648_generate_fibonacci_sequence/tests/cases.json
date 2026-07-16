@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "callCount": 5
+      },
+      "expected": [
+        0,
+        1,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "args": {
+        "callCount": 0
+      },
+      "expected": []
+    }
+  ]
+}

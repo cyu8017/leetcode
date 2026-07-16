@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "findRightInterval",
+  "paramOrder": [
+    "intervals"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Find right interval indices for each interval start."
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "expression": "1&(0|1)"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "expression": "(0&0)&(0&0&0)"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "expression": "(0|(1|0&1))"
+      },
+      "expected": 1
+    }
+  ]
+}

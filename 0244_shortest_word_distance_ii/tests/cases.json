@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "WordDistance",
+        "shortest",
+        "shortest"
+      ],
+      "arguments": [
+        [
+          [
+            "practice",
+            "makes",
+            "perfect",
+            "coding",
+            "makes"
+          ]
+        ],
+        [
+          "coding",
+          "practice"
+        ],
+        [
+          "makes",
+          "coding"
+        ]
+      ],
+      "expected": [
+        null,
+        3,
+        1
+      ]
+    }
+  ]
+}

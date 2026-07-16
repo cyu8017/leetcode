@@ -1,0 +1,8 @@
+﻿class Solution {
+    companion object {
+        const val SCRIPT = """
+#!/bin/bash
+grep -E '^([0-9]{3}-|\([0-9]{3}\) )[0-9]{3}-[0-9]{4}$' file.txt
+"""
+    }
+}

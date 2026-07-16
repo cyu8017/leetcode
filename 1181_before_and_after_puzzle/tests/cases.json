@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "args": {
+        "phrases": [
+          "writing code",
+          "code rocks"
+        ]
+      },
+      "expected": [
+        "writing code rocks"
+      ]
+    },
+    {
+      "args": {
+        "phrases": [
+          "mission statement",
+          "a quick bite to eat",
+          "a chip off the old block",
+          "chocolate bar",
+          "mission impossible",
+          "a man on a mission",
+          "block party",
+          "eat my words",
+          "bar of soap"
+        ]
+      },
+      "expected": [
+        "a chip off the old block party",
+        "a man on a mission impossible",
+        "a man on a mission statement",
+        "a quick bite to eat my words",
+        "chocolate bar of soap"
+      ]
+    },
+    {
+      "args": {
+        "phrases": [
+          "a",
+          "b",
+          "a"
+        ]
+      },
+      "expected": [
+        "a"
+      ]
+    },
+    {
+      "args": {
+        "phrases": [
+          "ab ba",
+          "ba ab",
+          "ab ba"
+        ]
+      },
+      "expected": "[\"ab ba ab\",\"ba ab ba\"]\n**Constraints:**\n- `1 <= phrases.length <= 100`\n- `1 <= phrases[i].length <= 100`\n---"
+    }
+  ]
+}

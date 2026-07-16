@@ -1,0 +1,7 @@
+﻿// LeetCode 2181 - Merge Nodes in Between Zeros
+// https://leetcode.com/problems/merge-nodes-in-between-zeros/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

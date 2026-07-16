@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Terms": [
+          {
+            "power": 2,
+            "factor": 1
+          },
+          {
+            "power": 1,
+            "factor": -4
+          },
+          {
+            "power": 0,
+            "factor": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "equation": "+1X^2-4X+2=0"
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Terms": [
+          {
+            "power": 4,
+            "factor": -4
+          },
+          {
+            "power": 2,
+            "factor": 1
+          },
+          {
+            "power": 1,
+            "factor": -1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "equation": "-4X^4+1X^2-1X=0"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "functions": "[x => x + 1, x => x * x, x => 2 * x]",
+        "x": 4
+      },
+      "expected": 65
+    },
+    {
+      "args": {
+        "functions": "[x => 10 * x, x => 10 * x, x => 10 * x]",
+        "x": 1
+      },
+      "expected": 1000
+    },
+    {
+      "args": {
+        "functions": [],
+        "x": 42
+      },
+      "expected": 42
+    }
+  ]
+}

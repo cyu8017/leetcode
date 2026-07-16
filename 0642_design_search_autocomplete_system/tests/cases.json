@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "AutocompleteSystem",
+        "input",
+        "input",
+        "input",
+        "input"
+      ],
+      "arguments": [
+        [
+          [
+            "i love you",
+            "island",
+            "iroman",
+            "i love leetcode"
+          ],
+          [
+            5,
+            3,
+            2,
+            2
+          ]
+        ],
+        [
+          "i"
+        ],
+        [
+          " "
+        ],
+        [
+          "a"
+        ],
+        [
+          "#"
+        ]
+      ],
+      "expected": [
+        null,
+        [
+          "i love you",
+          "island",
+          "i love leetcode"
+        ],
+        [
+          "i love you",
+          "i love leetcode"
+        ],
+        [],
+        []
+      ]
+    }
+  ]
+}

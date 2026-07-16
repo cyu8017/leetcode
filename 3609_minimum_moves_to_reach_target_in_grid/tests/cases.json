@@ -1,0 +1,31 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sx": 1,
+        "sy": 2,
+        "tx": 5,
+        "ty": 4
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "sx": 0,
+        "sy": 1,
+        "tx": 2,
+        "ty": 3
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "sx": 1,
+        "sy": 1,
+        "tx": 2,
+        "ty": 2
+      },
+      "expected": -1
+    }
+  ]
+}

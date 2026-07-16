@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "findRepeatedDnaSequences",
+  "paramOrder": ["s"],
+  "types": { "return": "string[]" },
+  "description": null
+}

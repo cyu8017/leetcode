@@ -1,0 +1,11 @@
+{
+  "class": "TreeNode",
+  "method": "__init__",
+  "paramOrder": [
+    "x"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

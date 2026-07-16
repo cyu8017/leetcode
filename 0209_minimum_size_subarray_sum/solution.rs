@@ -1,0 +1,2 @@
+// LeetCode 0209 - Minimum Size Subarray Sum
+impl Solution { pub fn min_sub_array_len(target: i32, nums: Vec<i32>) -> i32 { let mut left = 0; let mut total = 0; let mut best = nums.len() + 1; for (right, value) in nums.iter().enumerate() { total += value; while total >= target { best = best.min(right - left + 1); total -= nums[left]; left += 1; } } if best == nums.len() + 1 { 0 } else { best as i32 } } }

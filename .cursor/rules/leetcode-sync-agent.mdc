@@ -1,0 +1,25 @@
+---
+description: Sync new LeetCode problems into numbered problem folders
+alwaysApply: true
+---
+
+# LeetCode sync agent
+
+This repo tracks every LeetCode problem in `{number}_{title}/` folders.
+
+## On sync requests or repo maintenance
+
+Run:
+
+```powershell
+.\scripts\sync-new-problems.ps1
+```
+
+Then summarize results from `config/last-sync.json`.
+
+## Rules
+
+- Never delete or overwrite existing problem folders during sync
+- Only create missing folders for newly published LeetCode problems
+- Use `.\scripts\new-problem.ps1` for manual one-off scaffolding
+- Full agent workflow details are in `AGENTS.md`

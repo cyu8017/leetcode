@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "isSameTree",
+  "paramOrder": ["p", "q"],
+  "types": {
+    "p": "treenode",
+    "q": "treenode",
+    "return": "boolean"
+  },
+  "description": null
+}

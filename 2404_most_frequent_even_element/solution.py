@@ -1,0 +1,6 @@
+﻿# LeetCode 2404 - Most Frequent Even Element
+# https://leetcode.com/problems/most-frequent-even-element/
+
+class Solution:
+    def solve(self) -> None:
+        pass

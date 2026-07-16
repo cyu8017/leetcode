@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "adcb"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "bace"
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "FileSystem",
+        "ls",
+        "mkdir",
+        "addContentToFile",
+        "ls",
+        "readContentFromFile"
+      ],
+      "arguments": [
+        [],
+        [
+          "/"
+        ],
+        [
+          "/a/b/c"
+        ],
+        [
+          "/a/b/c/d",
+          "hello"
+        ],
+        [
+          "/"
+        ],
+        [
+          "/a/b/c/d"
+        ]
+      ],
+      "expected": [
+        null,
+        [],
+        null,
+        null,
+        [
+          "a"
+        ],
+        "hello"
+      ]
+    }
+  ]
+}

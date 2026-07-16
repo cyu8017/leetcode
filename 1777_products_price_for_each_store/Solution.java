@@ -1,0 +1,7 @@
+﻿// LeetCode 1777 - Product's Price for Each Store
+// https://leetcode.com/problems/products-price-for-each-store/
+
+class Solution {
+    public void solve() {
+    }
+}

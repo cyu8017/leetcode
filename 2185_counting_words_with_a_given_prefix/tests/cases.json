@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "pay",
+          "attention",
+          "practice",
+          "attend"
+        ],
+        "pref": "at"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "leetcode",
+          "win",
+          "loops",
+          "success"
+        ],
+        "pref": "code"
+      },
+      "expected": 0
+    }
+  ]
+}

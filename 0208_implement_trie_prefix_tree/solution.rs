@@ -1,0 +1,3 @@
+// LeetCode 0208 - Implement Trie (Prefix Tree)
+pub struct Trie { children: [Option<Box<Trie>>; 26], is_word: bool }
+impl Trie { pub fn new() -> Self { Self { children: std::array::from_fn(|_| None), is_word: false } } pub fn insert(&mut self, word: String) { let mut node = self; for byte in word.bytes() { node = node.children[(byte - b'a') as usize].get_or_insert_with(|| Box::new(Trie::new())); } node.is_word = true; } fn find(&self, text: &str) -> Option<&Trie> { let mut node = self; for byte in text.bytes() { node = node.children[(byte - b'a') as usize].as_deref()?; } Some(node) } pub fn search(&self, word: String) -> bool { self.find(&word).is_some_and(|node| node.is_word) } pub fn starts_with(&self, prefix: String) -> bool { self.find(&prefix).is_some() } }

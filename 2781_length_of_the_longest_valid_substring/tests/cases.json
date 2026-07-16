@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "cbaaaabc",
+        "forbidden": [
+          "aaa",
+          "cb"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "word": "leetcode",
+        "forbidden": [
+          "de",
+          "le",
+          "e"
+        ]
+      },
+      "expected": 4
+    }
+  ]
+}

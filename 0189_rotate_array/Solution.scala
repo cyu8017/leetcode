@@ -1,0 +1,1 @@
+object Solution { def rotate(a: Array[Int], k: Int): Unit = { if (a.isEmpty) return; val steps = k % a.length; reverse(a, 0, a.length - 1); reverse(a, 0, steps - 1); reverse(a, steps, a.length - 1) } private def reverse(a: Array[Int], left: Int, right: Int): Unit = { var l = left; var r = right; while (l < r) { val t = a(l); a(l) = a(r); a(r) = t; l += 1; r -= 1 } } }

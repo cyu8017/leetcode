@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "cat",
+          "bt",
+          "hat",
+          "tree"
+        ],
+        "chars": "atach"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "words": [
+          "hello",
+          "world",
+          "leetcode"
+        ],
+        "chars": "welldonehoneyr"
+      },
+      "expected": 10
+    }
+  ]
+}

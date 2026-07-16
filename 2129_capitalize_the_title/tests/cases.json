@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "title": "capiTalIze tHe titLe"
+      },
+      "expected": "Capitalize The Title"
+    },
+    {
+      "args": {
+        "title": "First leTTeR of EACH Word"
+      },
+      "expected": "First Letter of Each Word"
+    },
+    {
+      "args": {
+        "title": "i lOve leetcode"
+      },
+      "expected": "i Love Leetcode"
+    }
+  ]
+}

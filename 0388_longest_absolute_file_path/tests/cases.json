@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "input": "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
+      },
+      "expected": 20
+    },
+    {
+      "args": {
+        "input": "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+      },
+      "expected": 32
+    },
+    {
+      "args": {
+        "input": "a"
+      },
+      "expected": 0
+    }
+  ]
+}

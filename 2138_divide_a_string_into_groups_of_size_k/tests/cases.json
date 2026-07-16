@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcdefghi",
+        "k": 3,
+        "fill": "x"
+      },
+      "expected": [
+        "abc",
+        "def",
+        "ghi"
+      ]
+    },
+    {
+      "args": {
+        "s": "abcdefghij",
+        "k": 3,
+        "fill": "x"
+      },
+      "expected": [
+        "abc",
+        "def",
+        "ghi",
+        "jxx"
+      ]
+    }
+  ]
+}

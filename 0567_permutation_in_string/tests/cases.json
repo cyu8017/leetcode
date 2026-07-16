@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s1": "ab",
+        "s2": "eidbaooo"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s1": "ab",
+        "s2": "eidboaoo"
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "employee_id": 1,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 9,
+            "experience": "Junior",
+            "salary": 15000
+          },
+          {
+            "employee_id": 2,
+            "experience": "Senior",
+            "salary": 20000
+          },
+          {
+            "employee_id": 11,
+            "experience": "Senior",
+            "salary": 16000
+          },
+          {
+            "employee_id": 13,
+            "experience": "Senior",
+            "salary": 50000
+          },
+          {
+            "employee_id": 4,
+            "experience": "Junior",
+            "salary": 40000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 11
+        },
+        {
+          "employee_id": 2
+        },
+        {
+          "employee_id": 1
+        },
+        {
+          "employee_id": 9
+        }
+      ]
+    },
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "employee_id": 1,
+            "experience": "Junior",
+            "salary": 25000
+          },
+          {
+            "employee_id": 9,
+            "experience": "Junior",
+            "salary": 10000
+          },
+          {
+            "employee_id": 2,
+            "experience": "Senior",
+            "salary": 85000
+          },
+          {
+            "employee_id": 11,
+            "experience": "Senior",
+            "salary": 80000
+          },
+          {
+            "employee_id": 13,
+            "experience": "Senior",
+            "salary": 90000
+          },
+          {
+            "employee_id": 4,
+            "experience": "Junior",
+            "salary": 30000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 9
+        },
+        {
+          "employee_id": 1
+        },
+        {
+          "employee_id": 4
+        }
+      ]
+    }
+  ]
+}

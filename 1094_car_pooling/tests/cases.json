@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "trips": [
+          [
+            2,
+            1,
+            5
+          ],
+          [
+            3,
+            3,
+            7
+          ]
+        ],
+        "capacity": 4
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "trips": [
+          [
+            2,
+            1,
+            5
+          ],
+          [
+            3,
+            3,
+            7
+          ]
+        ],
+        "capacity": 5
+      },
+      "expected": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+.git
+**/.test-build
+**/__pycache__
+**/*.pyc

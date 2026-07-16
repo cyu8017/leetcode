@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "initial": "abcde",
+        "target": "cdef"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "initial": "axxy",
+        "target": "yabx"
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "initial": "xyz",
+        "target": "xyz"
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "width": 3,
+        "height": 3,
+        "sideLength": 2,
+        "maxOnes": 1
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "width": 3,
+        "height": 3,
+        "sideLength": 2,
+        "maxOnes": 2
+      },
+      "expected": 6
+    }
+  ]
+}

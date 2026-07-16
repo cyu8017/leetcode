@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "wordPatternMatch",
+  "paramOrder": ["pattern", "s"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,1 @@
+object Solution { def convertToTitle(columnNumber0: Int): String = { var columnNumber = columnNumber0; val result = new StringBuilder; while (columnNumber > 0) { columnNumber -= 1; result.append(('A'.toInt + columnNumber % 26).toChar); columnNumber /= 26 }; result.reverse.toString } }

@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "abc",
+          "car",
+          "ada",
+          "racecar",
+          "cool"
+        ]
+      },
+      "expected": "ada"
+    },
+    {
+      "args": {
+        "words": [
+          "notapalindrome",
+          "racecar"
+        ]
+      },
+      "expected": "racecar"
+    },
+    {
+      "args": {
+        "words": [
+          "def",
+          "ghi"
+        ]
+      },
+      "expected": ""
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "customers": "YYNY"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "customers": "NNNNN"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "customers": "YYYY"
+      },
+      "expected": 4
+    }
+  ]
+}

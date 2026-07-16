@@ -1,0 +1,6 @@
+﻿// LeetCode 3912 - Valid Elements in an Array
+// https://leetcode.com/problems/valid-elements-in-an-array/
+
+function solve(input: unknown): unknown {
+    return null;
+}

@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Candidates": [
+          {
+            "candidate_id": 123,
+            "skill": "Python"
+          },
+          {
+            "candidate_id": 234,
+            "skill": "R"
+          },
+          {
+            "candidate_id": 123,
+            "skill": "Tableau"
+          },
+          {
+            "candidate_id": 123,
+            "skill": "PostgreSQL"
+          },
+          {
+            "candidate_id": 234,
+            "skill": "PowerBI"
+          },
+          {
+            "candidate_id": 234,
+            "skill": "SQL Server"
+          },
+          {
+            "candidate_id": 147,
+            "skill": "Python"
+          },
+          {
+            "candidate_id": 147,
+            "skill": "Tableau"
+          },
+          {
+            "candidate_id": 147,
+            "skill": "Java"
+          },
+          {
+            "candidate_id": 147,
+            "skill": "PostgreSQL"
+          },
+          {
+            "candidate_id": 256,
+            "skill": "Tableau"
+          },
+          {
+            "candidate_id": 102,
+            "skill": "DataAnalysis"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "candidate_id": 123
+        },
+        {
+          "candidate_id": 147
+        }
+      ]
+    }
+  ]
+}

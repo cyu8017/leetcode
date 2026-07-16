@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "reverseBetween",
+  "paramOrder": ["head", "left", "right"],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

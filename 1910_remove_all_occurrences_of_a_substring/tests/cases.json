@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "daabcbaabcbc",
+        "part": "abc"
+      },
+      "expected": "dab"
+    },
+    {
+      "args": {
+        "s": "axxxxyyyyb",
+        "part": "xy"
+      },
+      "expected": "ab"
+    }
+  ]
+}

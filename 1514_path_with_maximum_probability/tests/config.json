@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "maxProbability",
+  "paramOrder": [
+    "n",
+    "edges",
+    "succProb",
+    "start_node",
+    "end_node"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

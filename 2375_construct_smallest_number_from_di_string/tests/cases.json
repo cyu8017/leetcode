@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "pattern": "IIIDIDDD"
+      },
+      "expected": "123549876"
+    },
+    {
+      "args": {
+        "pattern": "DDD"
+      },
+      "expected": "4321"
+    }
+  ]
+}

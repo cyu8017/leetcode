@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "power": [
+          3,
+          1,
+          4
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "power": [
+          1,
+          1,
+          4
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "power": [
+          1,
+          2,
+          4,
+          9
+        ]
+      },
+      "expected": 6
+    }
+  ]
+}

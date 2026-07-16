@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Tweets": [
+          {
+            "tweet_id": 1,
+            "content": "Traveling, exploring, and living my best life @JaneSmith @SaraJohnson @LisaTaylor"
+          },
+          {
+            "tweet_id": null,
+            "content": "@MikeBrown #Foodie #Fitness #Learning"
+          },
+          {
+            "tweet_id": 2,
+            "content": "Just had the best dinner with friends! #Foodie #Friends #Fun"
+          },
+          {
+            "tweet_id": 4,
+            "content": "Working hard on my new project #Work #Goals #Productivity #Fun"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "tweet_id": 1
+        },
+        {
+          "tweet_id": 4
+        }
+      ]
+    }
+  ]
+}

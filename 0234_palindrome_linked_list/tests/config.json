@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "isPalindrome",
+  "paramOrder": ["head"],
+  "types": { "head": "listnode" },
+  "description": null
+}

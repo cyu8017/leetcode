@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "leet**cod*e"
+      },
+      "expected": "lecoe"
+    },
+    {
+      "args": {
+        "s": "erase*****"
+      },
+      "expected": ""
+    }
+  ]
+}

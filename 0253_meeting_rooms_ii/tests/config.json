@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "minMeetingRooms",
+  "paramOrder": ["intervals"],
+  "types": null,
+  "description": null
+}

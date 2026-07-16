@@ -1,0 +1,27 @@
+{
+  "cases": [
+    {
+      "args": {
+        "k": 5,
+        "operations": [
+          0,
+          0,
+          0
+        ]
+      },
+      "expected": "a"
+    },
+    {
+      "args": {
+        "k": 10,
+        "operations": [
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      "expected": "b"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "findPaths",
+  "paramOrder": [
+    "m",
+    "n",
+    "maxMove",
+    "startRow",
+    "startColumn"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

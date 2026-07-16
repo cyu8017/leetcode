@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "dict": [
+          "abcd",
+          "acbd",
+          "aacd"
+        ]
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "dict": [
+          "ab",
+          "cd",
+          "yz"
+        ]
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "dict": [
+          "abcd",
+          "cccc",
+          "abyd",
+          "abab"
+        ]
+      },
+      "expected": true
+    }
+  ]
+}

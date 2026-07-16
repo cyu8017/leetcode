@@ -1,0 +1,26 @@
+﻿# LeetCode 0216 - Combination Sum III
+# https://leetcode.com/problems/combination-sum-iii/
+
+from typing import List
+
+
+class Solution:
+    def combinationSum3(self, k: int, n: int) -> List[List[int]]:
+        result: list[list[int]] = []
+
+        def backtrack(start: int, remaining: int, path: list[int]) -> None:
+            if len(path) == k:
+                if remaining == 0:
+                    result.append(path[:])
+                return
+            if remaining <= 0 or len(path) >= k:
+                return
+            for num in range(start, 10):
+                if num > remaining:
+                    break
+                path.append(num)
+                backtrack(num + 1, remaining - num, path)
+                path.pop()
+
+        backtrack(1, n, [])
+        return result

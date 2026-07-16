@@ -1,0 +1,6 @@
+﻿# LeetCode 0565 - Array Nesting
+# https://leetcode.com/problems/array-nesting/
+
+class Solution:
+    def solve(self) -> None:
+        pass

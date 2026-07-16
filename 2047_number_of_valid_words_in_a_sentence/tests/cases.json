@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": "cat and  dog"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "sentence": "!this  1-s b8d!"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "sentence": "alice and  bob are playing stone-game10"
+      },
+      "expected": 5
+    }
+  ]
+}

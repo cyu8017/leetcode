@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "hasPathSum",
+  "paramOrder": [
+    "root",
+    "targetSum"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": null
+}

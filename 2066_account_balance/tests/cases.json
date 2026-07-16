@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Transactions": [
+          {
+            "account_id": 1,
+            "day": "2021-11-07",
+            "type": "Deposit",
+            "amount": 2000
+          },
+          {
+            "account_id": 1,
+            "day": "2021-11-09",
+            "type": "Withdraw",
+            "amount": 1000
+          },
+          {
+            "account_id": 1,
+            "day": "2021-11-11",
+            "type": "Deposit",
+            "amount": 3000
+          },
+          {
+            "account_id": 2,
+            "day": "2021-12-07",
+            "type": "Deposit",
+            "amount": 7000
+          },
+          {
+            "account_id": 2,
+            "day": "2021-12-12",
+            "type": "Withdraw",
+            "amount": 7000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "account_id": 1,
+          "day": "2021-11-07",
+          "balance": 2000
+        },
+        {
+          "account_id": 1,
+          "day": "2021-11-09",
+          "balance": 1000
+        },
+        {
+          "account_id": 1,
+          "day": "2021-11-11",
+          "balance": 4000
+        },
+        {
+          "account_id": 2,
+          "day": "2021-12-07",
+          "balance": 7000
+        },
+        {
+          "account_id": 2,
+          "day": "2021-12-12",
+          "balance": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿// LeetCode 0334 - Increasing Triplet Subsequence
+// https://leetcode.com/problems/increasing-triplet-subsequence/
+
+#include <climits>
+#include <vector>
+
+class Solution {
+public:
+    bool increasingTriplet(std::vector<int>& nums) {
+        int first = INT_MAX;
+        int second = INT_MAX;
+        for (int num : nums) {
+            if (num <= first) {
+                first = num;
+            } else if (num <= second) {
+                second = num;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+};

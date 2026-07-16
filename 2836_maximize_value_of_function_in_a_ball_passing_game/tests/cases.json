@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "receiver": [
+          2,
+          0,
+          1
+        ],
+        "k": 4
+      },
+      "expected": 6
+    },
+    {
+      "args": {
+        "receiver": [
+          1,
+          1,
+          1,
+          2,
+          3
+        ],
+        "k": 3
+      },
+      "expected": 10
+    }
+  ]
+}

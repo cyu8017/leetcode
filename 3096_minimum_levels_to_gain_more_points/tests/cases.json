@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "possible": [
+          1,
+          0,
+          1,
+          0
+        ]
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "possible": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "possible": [
+          0,
+          0
+        ]
+      },
+      "expected": -1
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "formula": "H2O"
+      },
+      "expected": "H2O"
+    },
+    {
+      "args": {
+        "formula": "Mg(OH)2"
+      },
+      "expected": "H2MgO2"
+    },
+    {
+      "args": {
+        "formula": "K4(ON(SO3)2)2"
+      },
+      "expected": "K4N2O14S4"
+    }
+  ]
+}

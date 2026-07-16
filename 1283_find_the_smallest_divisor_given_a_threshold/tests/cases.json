@@ -1,0 +1,29 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": [
+          1,
+          2,
+          5,
+          9
+        ],
+        "threshold": 6
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "nums": [
+          44,
+          22,
+          33,
+          11,
+          1
+        ],
+        "threshold": 5
+      },
+      "expected": 44
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Listens": [
+          {
+            "user_id": 1,
+            "song_id": 10,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 1,
+            "song_id": 11,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 1,
+            "song_id": 12,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 2,
+            "song_id": 10,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 2,
+            "song_id": 11,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 2,
+            "song_id": 12,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 3,
+            "song_id": 10,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 3,
+            "song_id": 11,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 3,
+            "song_id": 12,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 4,
+            "song_id": 10,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 4,
+            "song_id": 11,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 4,
+            "song_id": 13,
+            "day": "2021-03-15"
+          },
+          {
+            "user_id": 5,
+            "song_id": 10,
+            "day": "2021-03-16"
+          },
+          {
+            "user_id": 5,
+            "song_id": 11,
+            "day": "2021-03-16"
+          },
+          {
+            "user_id": 5,
+            "song_id": 12,
+            "day": "2021-03-16"
+          }
+        ],
+        "Friendship": [
+          {
+            "user1_id": 1,
+            "user2_id": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 1,
+          "recommended_id": 3
+        },
+        {
+          "user_id": 2,
+          "recommended_id": 3
+        },
+        {
+          "user_id": 3,
+          "recommended_id": 1
+        },
+        {
+          "user_id": 3,
+          "recommended_id": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Data": [
+          {
+            "first_col": 4,
+            "second_col": 2
+          },
+          {
+            "first_col": 2,
+            "second_col": 3
+          },
+          {
+            "first_col": 3,
+            "second_col": 1
+          },
+          {
+            "first_col": 1,
+            "second_col": 4
+          }
+        ]
+      },
+      "expected": [
+        {
+          "first_col": 1,
+          "second_col": 4
+        },
+        {
+          "first_col": 2,
+          "second_col": 3
+        },
+        {
+          "first_col": 3,
+          "second_col": 2
+        },
+        {
+          "first_col": 4,
+          "second_col": 1
+        }
+      ]
+    }
+  ]
+}

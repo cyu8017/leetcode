@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "isStrobogrammatic",
+  "paramOrder": ["num"],
+  "types": null,
+  "description": null
+}

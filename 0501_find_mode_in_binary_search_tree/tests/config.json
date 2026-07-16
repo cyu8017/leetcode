@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "findMode",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "integer[]"
+  },
+  "description": "Find all modes in a BST."
+}

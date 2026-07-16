@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "strobogrammaticInRange",
+  "paramOrder": ["low", "high"],
+  "types": null,
+  "description": null
+}

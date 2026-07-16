@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "`\"aabbab\"`"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "`\"aaaa\"`"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "`\"aaabb\"`"
+      },
+      "expected": 1
+    }
+  ]
+}

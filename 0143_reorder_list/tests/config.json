@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "reorderList",
+  "paramOrder": ["head"],
+  "types": { "head": "listnode", "return": "void" },
+  "description": null
+}

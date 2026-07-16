@@ -1,0 +1,3 @@
+using System.Collections.Generic;
+using System.Text;
+public class Solution { public string FractionToDecimal(int numerator, int denominator) { if (numerator == 0) return "0"; var result = new StringBuilder(); long n = numerator, d = denominator; if ((n < 0) ^ (d < 0)) result.Append('-'); n = System.Math.Abs(n); d = System.Math.Abs(d); result.Append(n / d); long remainder = n % d; if (remainder == 0) return result.ToString(); result.Append('.'); var seen = new Dictionary<long, int>(); while (remainder != 0) { if (seen.TryGetValue(remainder, out int index)) { result.Insert(index, '('); result.Append(')'); break; } seen[remainder] = result.Length; remainder *= 10; result.Append(remainder / d); remainder %= d; } return result.ToString(); } }

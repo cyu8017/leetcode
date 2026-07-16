@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "ladderLength",
+  "paramOrder": ["beginWord", "endWord", "wordList"],
+  "types": null,
+  "description": null
+}

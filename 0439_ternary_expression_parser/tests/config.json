@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "parseTernary",
+  "paramOrder": [
+    "expression"
+  ],
+  "types": null,
+  "description": "Parse nested ternary expressions."
+}

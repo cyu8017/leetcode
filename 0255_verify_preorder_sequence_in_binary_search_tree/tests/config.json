@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "verifyPreorder",
+  "paramOrder": ["preorder"],
+  "types": null,
+  "description": null
+}

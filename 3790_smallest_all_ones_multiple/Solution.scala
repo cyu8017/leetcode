@@ -1,0 +1,6 @@
+﻿// LeetCode 3790 - Smallest All-Ones Multiple
+// https://leetcode.com/problems/smallest-all-ones-multiple/
+
+object Solution {
+  def solve(): Unit = {}
+}

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "longestConsecutive",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  },
+  "description": "Return the longest consecutive path length in the binary tree."
+}

@@ -1,0 +1,153 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "TeamStats": [
+          {
+            "team_id": 1,
+            "team_name": "Chelsea",
+            "matches_played": 22,
+            "wins": 13,
+            "draws": 2,
+            "losses": 7
+          },
+          {
+            "team_id": 2,
+            "team_name": "Nottingham Forest",
+            "matches_played": 27,
+            "wins": 6,
+            "draws": 6,
+            "losses": 15
+          },
+          {
+            "team_id": 3,
+            "team_name": "Liverpool",
+            "matches_played": 17,
+            "wins": 1,
+            "draws": 8,
+            "losses": 8
+          },
+          {
+            "team_id": 4,
+            "team_name": "Aston Villa",
+            "matches_played": 20,
+            "wins": 1,
+            "draws": 6,
+            "losses": 13
+          },
+          {
+            "team_id": 5,
+            "team_name": "Fulham",
+            "matches_played": 31,
+            "wins": 18,
+            "draws": 1,
+            "losses": 12
+          },
+          {
+            "team_id": 6,
+            "team_name": "Burnley",
+            "matches_played": 26,
+            "wins": 6,
+            "draws": 9,
+            "losses": 11
+          },
+          {
+            "team_id": 7,
+            "team_name": "Newcastle United",
+            "matches_played": 33,
+            "wins": 11,
+            "draws": 10,
+            "losses": 12
+          },
+          {
+            "team_id": 8,
+            "team_name": "Sheffield United",
+            "matches_played": 20,
+            "wins": 18,
+            "draws": 2,
+            "losses": 0
+          },
+          {
+            "team_id": 9,
+            "team_name": "Luton Town",
+            "matches_played": 5,
+            "wins": 4,
+            "draws": 0,
+            "losses": 1
+          },
+          {
+            "team_id": 10,
+            "team_name": "Everton",
+            "matches_played": 14,
+            "wins": 2,
+            "draws": 6,
+            "losses": 6
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_name": "Sheffield United",
+          "points": 56,
+          "position": 1,
+          "tier": "Tier 1"
+        },
+        {
+          "team_name": "Fulham",
+          "points": 55,
+          "position": 2,
+          "tier": "Tier 1"
+        },
+        {
+          "team_name": "Newcastle United",
+          "points": 43,
+          "position": 3,
+          "tier": "Tier 1"
+        },
+        {
+          "team_name": "Chelsea",
+          "points": 41,
+          "position": 4,
+          "tier": "Tier 1"
+        },
+        {
+          "team_name": "Burnley",
+          "points": 27,
+          "position": 5,
+          "tier": "Tier 2"
+        },
+        {
+          "team_name": "Nottingham Forest",
+          "points": 24,
+          "position": 6,
+          "tier": "Tier 2"
+        },
+        {
+          "team_name": "Everton",
+          "points": 12,
+          "position": 7,
+          "tier": "Tier 2"
+        },
+        {
+          "team_name": "Luton Town",
+          "points": 12,
+          "position": 7,
+          "tier": "Tier 2"
+        },
+        {
+          "team_name": "Liverpool",
+          "points": 11,
+          "position": 9,
+          "tier": "Tier 3"
+        },
+        {
+          "team_name": "Aston Villa",
+          "points": 9,
+          "position": 10,
+          "tier": "Tier 3"
+        }
+      ]
+    }
+  ]
+}

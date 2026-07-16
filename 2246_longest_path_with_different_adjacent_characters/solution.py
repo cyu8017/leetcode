@@ -1,0 +1,6 @@
+﻿# LeetCode 2246 - Longest Path With Different Adjacent Characters
+# https://leetcode.com/problems/longest-path-with-different-adjacent-characters/
+
+class Solution:
+    def solve(self) -> None:
+        pass

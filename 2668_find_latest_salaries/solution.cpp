@@ -1,0 +1,8 @@
+﻿// LeetCode 2668 - Find Latest Salaries
+// https://leetcode.com/problems/find-latest-salaries/
+
+class Solution {
+public:
+    void solve() {
+    }
+};

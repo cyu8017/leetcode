@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "Let's take LeetCode contest"
+      },
+      "expected": "s'teL ekat edoCteeL tsetnoc"
+    },
+    {
+      "args": {
+        "s": "Mr Ding"
+      },
+      "expected": "rM gniD"
+    }
+  ]
+}

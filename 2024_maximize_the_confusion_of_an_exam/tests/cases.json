@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "answerKey": "TTFF",
+        "k": 2
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "answerKey": "TFFT",
+        "k": 1
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "answerKey": "TTFTTFTT",
+        "k": 1
+      },
+      "expected": 5
+    }
+  ]
+}

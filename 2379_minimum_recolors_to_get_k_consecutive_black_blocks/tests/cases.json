@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "blocks": "WBBWWBBWBW",
+        "k": 7
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "blocks": "WBWBBBW",
+        "k": 2
+      },
+      "expected": 0
+    }
+  ]
+}

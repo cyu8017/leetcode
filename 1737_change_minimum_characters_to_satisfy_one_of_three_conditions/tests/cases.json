@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "a": "aba",
+        "b": "caa"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "a": "dabadd",
+        "b": "cda"
+      },
+      "expected": 3
+    }
+  ]
+}

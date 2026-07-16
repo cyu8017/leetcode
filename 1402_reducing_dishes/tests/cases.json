@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "args": {
+        "satisfaction": [
+          -1,
+          -8,
+          0,
+          5,
+          -9
+        ]
+      },
+      "expected": 14
+    },
+    {
+      "args": {
+        "satisfaction": [
+          4,
+          3,
+          2
+        ]
+      },
+      "expected": 20
+    },
+    {
+      "args": {
+        "satisfaction": [
+          -1,
+          -4,
+          -5
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

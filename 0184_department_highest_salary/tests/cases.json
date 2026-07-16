@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "id": 1,
+            "name": "Joe",
+            "salary": 70000,
+            "departmentId": 1
+          },
+          {
+            "id": 2,
+            "name": "Jim",
+            "salary": 90000,
+            "departmentId": 1
+          },
+          {
+            "id": 3,
+            "name": "Henry",
+            "salary": 80000,
+            "departmentId": 2
+          },
+          {
+            "id": 4,
+            "name": "Sam",
+            "salary": 60000,
+            "departmentId": 2
+          },
+          {
+            "id": 5,
+            "name": "Max",
+            "salary": 90000,
+            "departmentId": 1
+          }
+        ],
+        "Department": [
+          {
+            "id": 1,
+            "name": "IT"
+          },
+          {
+            "id": 2,
+            "name": "Sales"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "Department": "IT",
+          "Employee": "Jim",
+          "Salary": 90000
+        },
+        {
+          "Department": "Sales",
+          "Employee": "Henry",
+          "Salary": 80000
+        },
+        {
+          "Department": "IT",
+          "Employee": "Max",
+          "Salary": 90000
+        }
+      ]
+    }
+  ]
+}

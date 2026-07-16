@@ -1,0 +1,1 @@
+class Solution { fun compareVersion(version1: String, version2: String): Int { val a = version1.split('.'); val b = version2.split('.'); for (i in 0 until maxOf(a.size, b.size)) { val x = if (i < a.size) a[i].toInt() else 0; val y = if (i < b.size) b[i].toInt() else 0; if (x != y) return if (x < y) -1 else 1 }; return 0 } }

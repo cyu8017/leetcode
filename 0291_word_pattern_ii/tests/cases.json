@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "pattern": "abab",
+        "s": "redblueredblue"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "pattern": "aaaa",
+        "s": "asdasdasdasd"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "pattern": "aabb",
+        "s": "xyzabcxzyabc"
+      },
+      "expected": false
+    }
+  ]
+}

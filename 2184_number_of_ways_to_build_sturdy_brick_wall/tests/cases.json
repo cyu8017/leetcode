@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "height": 2,
+        "width": 3,
+        "bricks": [
+          1,
+          2
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "height": 1,
+        "width": 1,
+        "bricks": [
+          5
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

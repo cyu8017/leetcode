@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "args": {
+        "root1": [
+          2,
+          1,
+          4
+        ],
+        "root2": [
+          1,
+          0,
+          3
+        ],
+        "target": 5
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "root1": [
+          0,
+          -10,
+          10
+        ],
+        "root2": [
+          5,
+          1,
+          7,
+          0,
+          2
+        ],
+        "target": 18
+      },
+      "expected": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "inorderSuccessor",
+  "paramOrder": ["root", "p"],
+  "types": { "root": "treenode" },
+  "description": null
+}

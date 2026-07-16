@@ -1,0 +1,24 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": [
+          1,
+          2,
+          3
+        ]
+      },
+      "expected": "firstsecondthird"
+    },
+    {
+      "args": {
+        "nums": [
+          1,
+          3,
+          2
+        ]
+      },
+      "expected": "firstsecondthird"
+    }
+  ]
+}

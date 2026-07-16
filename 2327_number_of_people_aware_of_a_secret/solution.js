@@ -1,0 +1,9 @@
+﻿// LeetCode 2327 - Number of People Aware of a Secret
+// https://leetcode.com/problems/number-of-people-aware-of-a-secret/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

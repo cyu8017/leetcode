@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "(abcd)"
+      },
+      "expected": "dcba"
+    },
+    {
+      "args": {
+        "s": "(u(love)i)"
+      },
+      "expected": "iloveu"
+    },
+    {
+      "args": {
+        "s": "(ed(et(oc))el)"
+      },
+      "expected": "leetcode"
+    }
+  ]
+}

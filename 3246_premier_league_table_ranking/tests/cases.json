@@ -1,0 +1,83 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "TeamStats": [
+          {
+            "team_id": 1,
+            "team_name": "Manchester City",
+            "matches_played": 10,
+            "wins": 6,
+            "draws": 2,
+            "losses": 2
+          },
+          {
+            "team_id": 2,
+            "team_name": "Liverpool",
+            "matches_played": 10,
+            "wins": 6,
+            "draws": 2,
+            "losses": 2
+          },
+          {
+            "team_id": 3,
+            "team_name": "Chelsea",
+            "matches_played": 10,
+            "wins": 5,
+            "draws": 3,
+            "losses": 2
+          },
+          {
+            "team_id": 4,
+            "team_name": "Arsenal",
+            "matches_played": 10,
+            "wins": 4,
+            "draws": 4,
+            "losses": 2
+          },
+          {
+            "team_id": 5,
+            "team_name": "Tottenham",
+            "matches_played": 10,
+            "wins": 3,
+            "draws": 5,
+            "losses": 2
+          }
+        ]
+      },
+      "expected": [
+        {
+          "team_id": 2,
+          "team_name": "Liverpool",
+          "points": 20,
+          "position": 1
+        },
+        {
+          "team_id": 1,
+          "team_name": "Manchester City",
+          "points": 20,
+          "position": 1
+        },
+        {
+          "team_id": 3,
+          "team_name": "Chelsea",
+          "points": 18,
+          "position": 3
+        },
+        {
+          "team_id": 4,
+          "team_name": "Arsenal",
+          "points": 16,
+          "position": 4
+        },
+        {
+          "team_id": 5,
+          "team_name": "Tottenham",
+          "points": 14,
+          "position": 5
+        }
+      ]
+    }
+  ]
+}

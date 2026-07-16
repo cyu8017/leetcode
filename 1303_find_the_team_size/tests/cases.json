@@ -1,0 +1,61 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Employee": [
+          {
+            "employee_id": 1,
+            "team_id": 8
+          },
+          {
+            "employee_id": 2,
+            "team_id": 8
+          },
+          {
+            "employee_id": 3,
+            "team_id": 8
+          },
+          {
+            "employee_id": 4,
+            "team_id": 7
+          },
+          {
+            "employee_id": 5,
+            "team_id": 9
+          },
+          {
+            "employee_id": 6,
+            "team_id": 9
+          }
+        ]
+      },
+      "expected": [
+        {
+          "employee_id": 1,
+          "team_size": 3
+        },
+        {
+          "employee_id": 2,
+          "team_size": 3
+        },
+        {
+          "employee_id": 3,
+          "team_size": 3
+        },
+        {
+          "employee_id": 4,
+          "team_size": 1
+        },
+        {
+          "employee_id": 5,
+          "team_size": 2
+        },
+        {
+          "employee_id": 6,
+          "team_size": 2
+        }
+      ]
+    }
+  ]
+}

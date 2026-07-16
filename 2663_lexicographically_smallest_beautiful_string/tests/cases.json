@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcz",
+        "k": 26
+      },
+      "expected": "abda"
+    },
+    {
+      "args": {
+        "s": "dc",
+        "k": 4
+      },
+      "expected": ""
+    }
+  ]
+}

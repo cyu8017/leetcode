@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Person": [
+          {
+            "person_id": 1,
+            "name": "Alex",
+            "profession": "Singer"
+          },
+          {
+            "person_id": 3,
+            "name": "Alice",
+            "profession": "Actor"
+          },
+          {
+            "person_id": 2,
+            "name": "Bob",
+            "profession": "Player"
+          },
+          {
+            "person_id": 4,
+            "name": "Messi",
+            "profession": "Doctor"
+          },
+          {
+            "person_id": 6,
+            "name": "Tyson",
+            "profession": "Engineer"
+          },
+          {
+            "person_id": 5,
+            "name": "Meir",
+            "profession": "Lawyer"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "person_id": 6,
+          "name": "Tyson(E)"
+        },
+        {
+          "person_id": 5,
+          "name": "Meir(L)"
+        },
+        {
+          "person_id": 4,
+          "name": "Messi(D)"
+        },
+        {
+          "person_id": 3,
+          "name": "Alice(A)"
+        },
+        {
+          "person_id": 2,
+          "name": "Bob(P)"
+        },
+        {
+          "person_id": 1,
+          "name": "Alex(S)"
+        }
+      ]
+    }
+  ]
+}

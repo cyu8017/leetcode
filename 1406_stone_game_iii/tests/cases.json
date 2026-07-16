@@ -1,0 +1,37 @@
+{
+  "cases": [
+    {
+      "args": {
+        "stoneValue": [
+          1,
+          2,
+          3,
+          7
+        ]
+      },
+      "expected": "Bob"
+    },
+    {
+      "args": {
+        "stoneValue": [
+          1,
+          2,
+          3,
+          -9
+        ]
+      },
+      "expected": "Alice"
+    },
+    {
+      "args": {
+        "stoneValue": [
+          1,
+          2,
+          3,
+          6
+        ]
+      },
+      "expected": "Tie"
+    }
+  ]
+}

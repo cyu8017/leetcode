@@ -1,0 +1,7 @@
+﻿// LeetCode 2861 - Maximum Number of Alloys
+// https://leetcode.com/problems/maximum-number-of-alloys/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

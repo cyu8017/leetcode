@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "canFinish",
+  "paramOrder": ["numCourses", "prerequisites"],
+  "types": null,
+  "description": null
+}

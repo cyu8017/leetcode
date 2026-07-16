@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "subStrHash",
+  "paramOrder": [
+    "s",
+    "power",
+    "modulo",
+    "k",
+    "hashValue"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

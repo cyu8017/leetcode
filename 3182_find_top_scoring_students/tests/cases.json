@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "students": [
+          {
+            "student_id": 1,
+            "name": "Alice",
+            "major": "Computer Science"
+          },
+          {
+            "student_id": 2,
+            "name": "Bob",
+            "major": "Computer Science"
+          },
+          {
+            "student_id": 3,
+            "name": "Charlie",
+            "major": "Mathematics"
+          },
+          {
+            "student_id": 4,
+            "name": "David",
+            "major": "Mathematics"
+          }
+        ],
+        "courses": [
+          {
+            "course_id": 101,
+            "name": "Algorithms",
+            "credits": 3,
+            "major": "Computer Science"
+          },
+          {
+            "course_id": 102,
+            "name": "Data Structures",
+            "credits": 3,
+            "major": "Computer Science"
+          },
+          {
+            "course_id": 103,
+            "name": "Calculus",
+            "credits": 4,
+            "major": "Mathematics"
+          },
+          {
+            "course_id": 104,
+            "name": "Linear Algebra",
+            "credits": 4,
+            "major": "Mathematics"
+          }
+        ],
+        "enrollments": [
+          {
+            "student_id": 1,
+            "course_id": 101,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 1,
+            "course_id": 102,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 2,
+            "course_id": 101,
+            "semester": "Fall 2023",
+            "grade": "B"
+          },
+          {
+            "student_id": 2,
+            "course_id": 102,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 3,
+            "course_id": 103,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 3,
+            "course_id": 104,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 4,
+            "course_id": 103,
+            "semester": "Fall 2023",
+            "grade": "A"
+          },
+          {
+            "student_id": 4,
+            "course_id": 104,
+            "semester": "Fall 2023",
+            "grade": "B"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "student_id": 1
+        },
+        {
+          "student_id": 3
+        }
+      ]
+    }
+  ]
+}

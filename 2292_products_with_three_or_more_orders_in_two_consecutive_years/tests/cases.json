@@ -1,0 +1,58 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Orders": [
+          {
+            "order_id": 1,
+            "product_id": 1,
+            "quantity": 7,
+            "purchase_date": "2020-03-16"
+          },
+          {
+            "order_id": 2,
+            "product_id": 1,
+            "quantity": 4,
+            "purchase_date": "2020-12-02"
+          },
+          {
+            "order_id": 3,
+            "product_id": 1,
+            "quantity": 7,
+            "purchase_date": "2020-05-10"
+          },
+          {
+            "order_id": 4,
+            "product_id": 1,
+            "quantity": 6,
+            "purchase_date": "2021-12-23"
+          },
+          {
+            "order_id": 5,
+            "product_id": 1,
+            "quantity": 5,
+            "purchase_date": "2021-05-21"
+          },
+          {
+            "order_id": 6,
+            "product_id": 1,
+            "quantity": 6,
+            "purchase_date": "2021-10-11"
+          },
+          {
+            "order_id": 7,
+            "product_id": 2,
+            "quantity": 6,
+            "purchase_date": "2022-10-11"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1
+        }
+      ]
+    }
+  ]
+}

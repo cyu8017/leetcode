@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "text": "Leetcode is cool"
+      },
+      "expected": "Is cool leetcode"
+    },
+    {
+      "args": {
+        "text": "Keep calm and code on"
+      },
+      "expected": "On and keep calm code"
+    },
+    {
+      "args": {
+        "text": "To be or not to be"
+      },
+      "expected": "To be or to be not"
+    }
+  ]
+}

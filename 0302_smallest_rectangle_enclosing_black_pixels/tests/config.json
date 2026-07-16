@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "minArea",
+  "paramOrder": ["image", "x", "y"],
+  "types": null,
+  "description": null
+}

@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "nextPermutation",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": {
+    "return": "void"
+  },
+  "description": null
+}

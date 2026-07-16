@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "maxCandies",
+  "paramOrder": [
+    "status",
+    "candies",
+    "keys",
+    "containedBoxes",
+    "initialBoxes"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

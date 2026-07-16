@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "aaabbbccdddde"
+      },
+      "expected": "ab"
+    },
+    {
+      "args": {
+        "s": "abcd"
+      },
+      "expected": "abcd"
+    },
+    {
+      "args": {
+        "s": "pfpfgi"
+      },
+      "expected": "fp"
+    }
+  ]
+}

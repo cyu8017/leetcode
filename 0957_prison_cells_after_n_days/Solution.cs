@@ -1,0 +1,7 @@
+﻿// LeetCode 0957 - Prison Cells After N Days
+// https://leetcode.com/problems/prison-cells-after-n-days/
+
+public class Solution {
+    public void Solve() {
+    }
+}

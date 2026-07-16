@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Product": [
+          {
+            "product_id": 1,
+            "product_name": "LC Phone"
+          },
+          {
+            "product_id": 2,
+            "product_name": "LC T-Shirt"
+          },
+          {
+            "product_id": 3,
+            "product_name": "LC Keychain"
+          }
+        ],
+        "Sales": [
+          {
+            "product_id": 1,
+            "period_start": "2019-01-25",
+            "period_end": "2019-02-28",
+            "average_daily_sales": 100
+          },
+          {
+            "product_id": 2,
+            "period_start": "2018-12-01",
+            "period_end": "2020-01-01",
+            "average_daily_sales": 10
+          },
+          {
+            "product_id": 3,
+            "period_start": "2019-12-01",
+            "period_end": "2020-01-31",
+            "average_daily_sales": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "product_id": 1,
+          "product_name": "LC Phone",
+          "report_year": 2019,
+          "total_amount": 3500
+        },
+        {
+          "product_id": 2,
+          "product_name": "LC T-Shirt",
+          "report_year": 2018,
+          "total_amount": 310
+        },
+        {
+          "product_id": 2,
+          "product_name": "LC T-Shirt",
+          "report_year": 2019,
+          "total_amount": 3650
+        },
+        {
+          "product_id": 2,
+          "product_name": "LC T-Shirt",
+          "report_year": 2020,
+          "total_amount": 10
+        },
+        {
+          "product_id": 3,
+          "product_name": "LC Keychain",
+          "report_year": 2019,
+          "total_amount": 31
+        },
+        {
+          "product_id": 3,
+          "product_name": "LC Keychain",
+          "report_year": 2020,
+          "total_amount": 31
+        }
+      ]
+    }
+  ]
+}

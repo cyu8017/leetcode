@@ -1,0 +1,68 @@
+{
+  "cases": [
+    {
+      "args": {
+        "occupiedIntervals": [
+          [
+            2,
+            6
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            10,
+            10
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            14,
+            16
+          ]
+        ],
+        "freeStart": 7,
+        "freeEnd": 11
+      },
+      "expected": [
+        [
+          2,
+          6
+        ],
+        [
+          12,
+          12
+        ],
+        [
+          14,
+          16
+        ]
+      ]
+    },
+    {
+      "args": {
+        "occupiedIntervals": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            3
+          ]
+        ],
+        "freeStart": 3,
+        "freeEnd": 8
+      },
+      "expected": [
+        [
+          1,
+          2
+        ]
+      ]
+    }
+  ]
+}

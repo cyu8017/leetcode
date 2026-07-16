@@ -1,0 +1,82 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "StreamChecker",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query",
+        "query"
+      ],
+      "arguments": [
+        [
+          [
+            "cd",
+            "f",
+            "kl"
+          ]
+        ],
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "c"
+        ],
+        [
+          "d"
+        ],
+        [
+          "e"
+        ],
+        [
+          "f"
+        ],
+        [
+          "g"
+        ],
+        [
+          "h"
+        ],
+        [
+          "i"
+        ],
+        [
+          "j"
+        ],
+        [
+          "k"
+        ],
+        [
+          "l"
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        false,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true
+      ]
+    }
+  ]
+}

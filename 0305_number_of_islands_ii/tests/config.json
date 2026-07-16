@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "numIslands2",
+  "paramOrder": ["m", "n", "positions"],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": null
+}

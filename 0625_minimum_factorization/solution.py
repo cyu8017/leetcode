@@ -1,0 +1,6 @@
+﻿# LeetCode 0625 - Minimum Factorization
+# https://leetcode.com/problems/minimum-factorization/
+
+class Solution:
+    def solve(self) -> None:
+        pass

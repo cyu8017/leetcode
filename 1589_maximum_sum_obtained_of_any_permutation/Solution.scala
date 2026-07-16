@@ -1,0 +1,6 @@
+﻿// LeetCode 1589 - Maximum Sum Obtained of Any Permutation
+// https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation/
+
+object Solution {
+  def solve(): Unit = {}
+}

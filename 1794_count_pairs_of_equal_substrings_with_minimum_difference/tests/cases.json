@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "firstString": "abcd",
+        "secondString": "bccda"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "firstString": "ab",
+        "secondString": "cd"
+      },
+      "expected": 0
+    }
+  ]
+}

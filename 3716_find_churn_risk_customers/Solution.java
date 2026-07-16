@@ -1,0 +1,7 @@
+﻿// LeetCode 3716 - Find Churn Risk Customers
+// https://leetcode.com/problems/find-churn-risk-customers/
+
+class Solution {
+    public void solve() {
+    }
+}

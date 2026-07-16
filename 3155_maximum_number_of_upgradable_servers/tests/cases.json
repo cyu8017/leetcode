@@ -1,0 +1,45 @@
+{
+  "cases": [
+    {
+      "args": {
+        "count": [
+          4,
+          3
+        ],
+        "upgrade": [
+          3,
+          5
+        ],
+        "sell": [
+          4,
+          2
+        ],
+        "money": [
+          8,
+          9
+        ]
+      },
+      "expected": [
+        3,
+        2
+      ]
+    },
+    {
+      "args": {
+        "count": [
+          1
+        ],
+        "upgrade": [
+          2
+        ],
+        "sell": [
+          1
+        ],
+        "money": [
+          1
+        ]
+      },
+      "expected": "[0]\n**Constraints:**\n- `1 <= count.length == upgrade.length == sell.length == money.length <= 10^{5}`\n- `1 <= count[i], upgrade[i], sell[i], money[i] <= 10^{5}`\n---"
+    }
+  ]
+}

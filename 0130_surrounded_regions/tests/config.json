@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": ["board"],
+  "types": { "board": "string[][]", "return": "void" },
+  "description": null
+}

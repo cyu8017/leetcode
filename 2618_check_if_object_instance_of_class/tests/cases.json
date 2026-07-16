@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "func": "() => checkIfInstanceOf(new Date(), Date)"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "func": "() => { class Animal {}; class Dog extends Animal {}; return checkIfInstanceOf(new Dog(), Animal); }"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "func": "() => checkIfInstanceOf(Date, Date)"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "func": "() => checkIfInstanceOf(5, Number)"
+      },
+      "expected": true
+    }
+  ]
+}

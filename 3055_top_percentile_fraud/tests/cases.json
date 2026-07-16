@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Fraud": [
+          {
+            "policy_id": 1,
+            "state": "California",
+            "fraud_score": 0.92
+          },
+          {
+            "policy_id": 2,
+            "state": "California",
+            "fraud_score": 0.68
+          },
+          {
+            "policy_id": 3,
+            "state": "California",
+            "fraud_score": 0.17
+          },
+          {
+            "policy_id": 4,
+            "state": "New York",
+            "fraud_score": 0.94
+          },
+          {
+            "policy_id": 5,
+            "state": "New York",
+            "fraud_score": 0.81
+          },
+          {
+            "policy_id": 6,
+            "state": "New York",
+            "fraud_score": 0.77
+          },
+          {
+            "policy_id": 7,
+            "state": "Texas",
+            "fraud_score": 0.98
+          },
+          {
+            "policy_id": 8,
+            "state": "Texas",
+            "fraud_score": 0.97
+          },
+          {
+            "policy_id": 9,
+            "state": "Texas",
+            "fraud_score": 0.96
+          },
+          {
+            "policy_id": 10,
+            "state": "Florida",
+            "fraud_score": 0.97
+          },
+          {
+            "policy_id": 11,
+            "state": "Florida",
+            "fraud_score": 0.98
+          },
+          {
+            "policy_id": 12,
+            "state": "Florida",
+            "fraud_score": 0.78
+          },
+          {
+            "policy_id": 13,
+            "state": "Florida",
+            "fraud_score": 0.88
+          },
+          {
+            "policy_id": 14,
+            "state": "Florida",
+            "fraud_score": 0.66
+          }
+        ]
+      },
+      "expected": [
+        {
+          "policy_id": 1,
+          "state": "California",
+          "fraud_score": 0.92
+        },
+        {
+          "policy_id": 11,
+          "state": "Florida",
+          "fraud_score": 0.98
+        },
+        {
+          "policy_id": 4,
+          "state": "New York",
+          "fraud_score": 0.94
+        },
+        {
+          "policy_id": 7,
+          "state": "Texas",
+          "fraud_score": 0.98
+        }
+      ]
+    }
+  ]
+}

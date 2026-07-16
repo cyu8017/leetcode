@@ -1,0 +1,52 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "StockPrice",
+        "update",
+        "update",
+        "current",
+        "maximum",
+        "update",
+        "maximum",
+        "update",
+        "minimum"
+      ],
+      "arguments": [
+        [],
+        [
+          1,
+          10
+        ],
+        [
+          2,
+          5
+        ],
+        [],
+        [],
+        [
+          1,
+          3
+        ],
+        [],
+        [
+          4,
+          2
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        null,
+        5,
+        10,
+        null,
+        5,
+        null,
+        2
+      ]
+    }
+  ]
+}

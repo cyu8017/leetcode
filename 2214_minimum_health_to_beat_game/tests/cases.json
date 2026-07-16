@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "args": {
+        "damage": [
+          2,
+          7,
+          4,
+          3
+        ],
+        "armor": 4
+      },
+      "expected": 13
+    },
+    {
+      "args": {
+        "damage": [
+          2,
+          5,
+          3,
+          4
+        ],
+        "armor": 7
+      },
+      "expected": 10
+    },
+    {
+      "args": {
+        "damage": [
+          3,
+          3,
+          3
+        ],
+        "armor": 0
+      },
+      "expected": 10
+    }
+  ]
+}

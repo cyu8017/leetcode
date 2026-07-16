@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Purchases": [
+          {
+            "purchase_id": 4,
+            "user_id": 2,
+            "purchase_date": "2022-03-13"
+          },
+          {
+            "purchase_id": 1,
+            "user_id": 5,
+            "purchase_date": "2022-02-11"
+          },
+          {
+            "purchase_id": 3,
+            "user_id": 7,
+            "purchase_date": "2022-06-19"
+          },
+          {
+            "purchase_id": 6,
+            "user_id": 2,
+            "purchase_date": "2022-03-20"
+          },
+          {
+            "purchase_id": 5,
+            "user_id": 7,
+            "purchase_date": "2022-06-19"
+          },
+          {
+            "purchase_id": 2,
+            "user_id": 2,
+            "purchase_date": "2022-06-08"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user_id": 2
+        },
+        {
+          "user_id": 7
+        }
+      ]
+    }
+  ]
+}

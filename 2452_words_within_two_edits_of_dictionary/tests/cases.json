@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "queries": [
+          "word",
+          "note",
+          "ants",
+          "wood"
+        ],
+        "dictionary": [
+          "wood",
+          "joke",
+          "moat"
+        ]
+      },
+      "expected": [
+        "word",
+        "note",
+        "wood"
+      ]
+    },
+    {
+      "args": {
+        "queries": [
+          "yes"
+        ],
+        "dictionary": [
+          "not"
+        ]
+      },
+      "expected": []
+    }
+  ]
+}

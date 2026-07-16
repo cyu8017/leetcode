@@ -1,0 +1,9 @@
+{
+  "class": "Solution",
+  "method": "minimumCoins",
+  "paramOrder": [
+    "prices"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

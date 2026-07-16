@@ -1,0 +1,9 @@
+﻿// LeetCode 3915 - Maximum Sum of Alternating Subsequence With Distance at Least K
+// https://leetcode.com/problems/maximum-sum-of-alternating-subsequence-with-distance-at-least-k/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

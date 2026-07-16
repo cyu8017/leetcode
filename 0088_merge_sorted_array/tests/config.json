@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "merge",
+  "paramOrder": [
+    "nums1",
+    "m",
+    "nums2",
+    "n"
+  ],
+  "types": {
+    "return": "void"
+  },
+  "description": null
+}

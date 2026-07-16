@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "input",
+        "t": "ouput",
+        "k": 9
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "abc",
+        "t": "bcd",
+        "k": 10
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "s": "aab",
+        "t": "bbb",
+        "k": 27
+      },
+      "expected": true
+    }
+  ]
+}

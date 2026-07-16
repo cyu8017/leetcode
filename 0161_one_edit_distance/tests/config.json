@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "isOneEditDistance",
+  "paramOrder": ["s", "t"],
+  "types": null,
+  "description": null
+}

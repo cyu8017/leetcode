@@ -1,0 +1,6 @@
+﻿# LeetCode 2830 - Maximize the Profit as the Salesman
+# https://leetcode.com/problems/maximize-the-profit-as-the-salesman/
+
+class Solution:
+    def solve(self) -> None:
+        pass

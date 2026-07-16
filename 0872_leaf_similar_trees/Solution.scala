@@ -1,0 +1,6 @@
+﻿// LeetCode 0872 - Leaf-Similar Trees
+// https://leetcode.com/problems/leaf-similar-trees/
+
+object Solution {
+  def solve(): Unit = {}
+}

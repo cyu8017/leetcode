@@ -1,0 +1,7 @@
+﻿// LeetCode 3855 - Sum of K-Digit Numbers in a Range
+// https://leetcode.com/problems/sum-of-k-digit-numbers-in-a-range/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

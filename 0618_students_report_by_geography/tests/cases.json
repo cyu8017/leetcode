@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Student": [
+          {
+            "name": "Jane",
+            "continent": "America"
+          },
+          {
+            "name": "Pascal",
+            "continent": "Europe"
+          },
+          {
+            "name": "Xi",
+            "continent": "Asia"
+          },
+          {
+            "name": "Jack",
+            "continent": "America"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "America": "Jack",
+          "Asia": "Xi",
+          "Europe": "Pascal"
+        },
+        {
+          "America": "Jane",
+          "Asia": null,
+          "Europe": null
+        }
+      ]
+    }
+  ]
+}

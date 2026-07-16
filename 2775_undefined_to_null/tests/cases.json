@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "obj": "{\"a\": undefined, \"b\": 3}"
+      },
+      "expected": {
+        "a": null,
+        "b": 3
+      }
+    },
+    {
+      "args": {
+        "obj": "{\"a\": undefined, \"b\": [\"a\", undefined]}"
+      },
+      "expected": {
+        "a": null,
+        "b": [
+          "a",
+          null
+        ]
+      }
+    }
+  ]
+}

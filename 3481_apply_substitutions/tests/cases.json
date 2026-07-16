@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "replacements": [
+          [
+            "A",
+            "abc"
+          ],
+          [
+            "B",
+            "def"
+          ]
+        ],
+        "text": "%A%_%B%"
+      },
+      "expected": "abc_def"
+    },
+    {
+      "args": {
+        "replacements": [
+          [
+            "A",
+            "bce"
+          ],
+          [
+            "B",
+            "ace"
+          ],
+          [
+            "C",
+            "abc%B%"
+          ]
+        ],
+        "text": "%A%_%B%_%C%"
+      },
+      "expected": "bce_ace_abcace"
+    }
+  ]
+}

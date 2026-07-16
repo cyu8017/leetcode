@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "countPrimes",
+  "paramOrder": ["n"],
+  "types": null,
+  "description": null
+}

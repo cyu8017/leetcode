@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "removeNthFromEnd",
+  "paramOrder": [
+    "head",
+    "n"
+  ],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

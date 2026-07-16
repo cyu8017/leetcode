@@ -1,0 +1,14 @@
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "paramOrder": [
+    "l1",
+    "l2"
+  ],
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  },
+  "description": "Add two numbers represented as linked lists (most significant digit first)."
+}

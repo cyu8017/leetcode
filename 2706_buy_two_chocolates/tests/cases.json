@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "prices": [
+          1,
+          2,
+          2
+        ],
+        "money": 3
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "prices": [
+          3,
+          2,
+          3
+        ],
+        "money": 3
+      },
+      "expected": 3
+    }
+  ]
+}

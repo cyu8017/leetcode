@@ -1,0 +1,10 @@
+{
+  "class": "Solution",
+  "method": "flipLights",
+  "paramOrder": [
+    "n",
+    "presses"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

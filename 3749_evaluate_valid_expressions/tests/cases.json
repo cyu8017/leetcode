@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "expression": "add(2,3)"
+      },
+      "expected": 5
+    },
+    {
+      "args": {
+        "expression": "-42"
+      },
+      "expected": -42
+    },
+    {
+      "args": {
+        "expression": "div(mul(4,sub(9,5)),add(1,1))"
+      },
+      "expected": 8
+    }
+  ]
+}

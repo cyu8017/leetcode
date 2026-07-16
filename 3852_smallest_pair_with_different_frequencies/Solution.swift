@@ -1,0 +1,7 @@
+﻿// LeetCode 3852 - Smallest Pair With Different Frequencies
+// https://leetcode.com/problems/smallest-pair-with-different-frequencies/
+
+class Solution {
+    func solve() {
+    }
+}

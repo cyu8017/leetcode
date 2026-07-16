@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "grid",
+    "r1",
+    "c1",
+    "r2",
+    "c2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

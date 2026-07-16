@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "SmallestInfiniteSet",
+        "addBack",
+        "popSmallest",
+        "popSmallest",
+        "popSmallest",
+        "addBack",
+        "popSmallest",
+        "popSmallest",
+        "popSmallest"
+      ],
+      "arguments": [
+        [],
+        [
+          2
+        ],
+        [],
+        [],
+        [],
+        [
+          1
+        ],
+        [],
+        [],
+        []
+      ],
+      "expected": [
+        null,
+        null,
+        1,
+        2,
+        3,
+        null,
+        1,
+        4,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "class": "Solution",
+  "method": "checkOverlap",
+  "paramOrder": [
+    "radius",
+    "xCenter",
+    "yCenter",
+    "x1",
+    "y1",
+    "x2",
+    "y2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "00110110",
+        "k": 2
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "0110",
+        "k": 1
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "0110",
+        "k": 2
+      },
+      "expected": false
+    }
+  ]
+}

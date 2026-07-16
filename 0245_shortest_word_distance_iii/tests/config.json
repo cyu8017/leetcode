@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "shortestWordDistance",
+  "paramOrder": ["wordsDict", "word1", "word2"],
+  "types": null,
+  "description": null
+}

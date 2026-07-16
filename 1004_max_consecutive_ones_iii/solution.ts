@@ -1,0 +1,6 @@
+﻿// LeetCode 1004 - Max Consecutive Ones III
+// https://leetcode.com/problems/max-consecutive-ones-iii/
+
+function solve(input: unknown): unknown {
+    return null;
+}

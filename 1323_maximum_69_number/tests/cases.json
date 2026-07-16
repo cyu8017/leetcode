@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "num": 9669
+      },
+      "expected": 9969
+    },
+    {
+      "args": {
+        "num": 9996
+      },
+      "expected": 9999
+    },
+    {
+      "args": {
+        "num": 9999
+      },
+      "expected": 9999
+    }
+  ]
+}

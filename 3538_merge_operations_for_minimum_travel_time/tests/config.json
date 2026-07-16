@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "minTravelTime",
+  "paramOrder": [
+    "l",
+    "n",
+    "k",
+    "position",
+    "time"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

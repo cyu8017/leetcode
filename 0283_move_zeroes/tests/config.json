@@ -1,0 +1,7 @@
+{
+  "class": "Solution",
+  "method": "moveZeroes",
+  "paramOrder": ["nums"],
+  "types": { "return": "void" },
+  "description": null
+}

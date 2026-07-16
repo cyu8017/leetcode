@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "acab"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "wddw"
+      },
+      "expected": 0
+    },
+    {
+      "args": {
+        "s": "aaabc"
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "cases": [
+    {
+      "args": {
+        "root": [
+          1,
+          2,
+          3
+        ],
+        "fromNode": 2,
+        "toNode": 3
+      },
+      "expected": [
+        1,
+        null,
+        3
+      ]
+    },
+    {
+      "args": {
+        "root": [
+          8,
+          3,
+          1,
+          7,
+          null,
+          9,
+          4,
+          2,
+          null,
+          null,
+          null,
+          5,
+          6
+        ],
+        "fromNode": 7,
+        "toNode": 4
+      },
+      "expected": [
+        8,
+        3,
+        1,
+        null,
+        null,
+        9,
+        4,
+        null,
+        null,
+        5,
+        6
+      ]
+    }
+  ]
+}

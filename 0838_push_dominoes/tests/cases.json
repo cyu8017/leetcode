@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "dominoes": "RR.L"
+      },
+      "expected": "RR.L"
+    },
+    {
+      "args": {
+        "dominoes": ".L.R...LR..L.."
+      },
+      "expected": "LL.RR.LLRRLL.."
+    }
+  ]
+}

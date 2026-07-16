@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "(name)is(age)yearsold",
+        "knowledge": [
+          [
+            "name",
+            "bob"
+          ],
+          [
+            "age",
+            "two"
+          ]
+        ]
+      },
+      "expected": "bobistwoyearsold"
+    },
+    {
+      "args": {
+        "s": "hi(name)",
+        "knowledge": [
+          [
+            "a",
+            "b"
+          ]
+        ]
+      },
+      "expected": "hi?"
+    },
+    {
+      "args": {
+        "s": "(a)(a)(a)aaa",
+        "knowledge": [
+          [
+            "a",
+            "yes"
+          ]
+        ]
+      },
+      "expected": "yesyesyesaaa"
+    }
+  ]
+}

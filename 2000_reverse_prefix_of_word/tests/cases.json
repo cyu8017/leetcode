@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "abcdefd",
+        "ch": "d"
+      },
+      "expected": "dcbaefd"
+    },
+    {
+      "args": {
+        "word": "xyxzxe",
+        "ch": "z"
+      },
+      "expected": "zxyxxe"
+    },
+    {
+      "args": {
+        "word": "abcd",
+        "ch": "z"
+      },
+      "expected": "abcd"
+    }
+  ]
+}

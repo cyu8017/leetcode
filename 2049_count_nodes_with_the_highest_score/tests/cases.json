@@ -1,0 +1,26 @@
+{
+  "cases": [
+    {
+      "args": {
+        "parents": [
+          -1,
+          2,
+          0,
+          2,
+          0
+        ]
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "parents": [
+          -1,
+          2,
+          0
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

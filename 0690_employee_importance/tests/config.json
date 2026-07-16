@@ -1,0 +1,11 @@
+{
+  "class": "Employee",
+  "method": "__init__",
+  "paramOrder": [
+    "id",
+    "importance",
+    "subordinates"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

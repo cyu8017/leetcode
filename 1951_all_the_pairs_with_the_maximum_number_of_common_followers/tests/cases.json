@@ -1,0 +1,53 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Relations": [
+          {
+            "user_id": 1,
+            "follower_id": 3
+          },
+          {
+            "user_id": 2,
+            "follower_id": 3
+          },
+          {
+            "user_id": 7,
+            "follower_id": 3
+          },
+          {
+            "user_id": 1,
+            "follower_id": 4
+          },
+          {
+            "user_id": 2,
+            "follower_id": 4
+          },
+          {
+            "user_id": 7,
+            "follower_id": 4
+          },
+          {
+            "user_id": 1,
+            "follower_id": 5
+          },
+          {
+            "user_id": 2,
+            "follower_id": 6
+          },
+          {
+            "user_id": 7,
+            "follower_id": 5
+          }
+        ]
+      },
+      "expected": [
+        {
+          "user1_id": 1,
+          "user2_id": 7
+        }
+      ]
+    }
+  ]
+}

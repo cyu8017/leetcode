@@ -1,0 +1,34 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "MyCalendar",
+        "book",
+        "book",
+        "book"
+      ],
+      "arguments": [
+        [],
+        [
+          10,
+          20
+        ],
+        [
+          15,
+          25
+        ],
+        [
+          20,
+          30
+        ]
+      ],
+      "expected": [
+        null,
+        true,
+        false,
+        true
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "primeOne": 2,
+        "primeTwo": 5
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "primeOne": 5,
+        "primeTwo": 7
+      },
+      "expected": 23
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "cases": [
+    {
+      "args": {
+        "words": [
+          "a",
+          "aba",
+          "ababa",
+          "aa"
+        ]
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "words": [
+          "pa",
+          "papa",
+          "ma",
+          "mama"
+        ]
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "words": [
+          "abab",
+          "ab"
+        ]
+      },
+      "expected": 0
+    }
+  ]
+}

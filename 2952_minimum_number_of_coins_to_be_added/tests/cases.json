@@ -1,0 +1,40 @@
+{
+  "cases": [
+    {
+      "args": {
+        "coins": [
+          1,
+          4,
+          10
+        ],
+        "target": 19
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "coins": [
+          1,
+          4,
+          10,
+          5,
+          7,
+          19
+        ],
+        "target": 19
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "coins": [
+          1,
+          1,
+          1
+        ],
+        "target": 20
+      },
+      "expected": 3
+    }
+  ]
+}

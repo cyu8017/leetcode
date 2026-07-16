@@ -1,0 +1,32 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcdefg",
+        "pattern": "bcdffg"
+      },
+      "expected": 1
+    },
+    {
+      "args": {
+        "s": "ababbababa",
+        "pattern": "bacaba"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "s": "abcd",
+        "pattern": "dba"
+      },
+      "expected": -1
+    },
+    {
+      "args": {
+        "s": "dde",
+        "pattern": "d"
+      },
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "ExamRoom",
+        "seat",
+        "seat",
+        "seat",
+        "seat",
+        "leave",
+        "seat"
+      ],
+      "arguments": [
+        [
+          10
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
+          4
+        ],
+        []
+      ],
+      "expected": [
+        null,
+        0,
+        9,
+        4,
+        2,
+        null,
+        5
+      ]
+    }
+  ]
+}

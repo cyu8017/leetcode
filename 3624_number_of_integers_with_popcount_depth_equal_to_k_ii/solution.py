@@ -1,0 +1,6 @@
+﻿# LeetCode 3624 - Number of Integers With Popcount-Depth Equal to K II
+# https://leetcode.com/problems/number-of-integers-with-popcount-depth-equal-to-k-ii/
+
+class Solution:
+    def solve(self) -> None:
+        pass

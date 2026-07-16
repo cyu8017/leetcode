@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": "i love eating burger",
+        "searchWord": "burg"
+      },
+      "expected": 4
+    },
+    {
+      "args": {
+        "sentence": "this problem is an easy problem",
+        "searchWord": "pro"
+      },
+      "expected": 2
+    },
+    {
+      "args": {
+        "sentence": "i am tired",
+        "searchWord": "you"
+      },
+      "expected": -1
+    }
+  ]
+}

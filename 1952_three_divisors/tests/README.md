@@ -1,0 +1,215 @@
+# Test harness for 1952_three_divisors
+
+Run tests with **Docker only** — no local Python, Java, Node, or compilers required. Toolchain versions are pinned in `docker/docker-compose.yml`.
+
+## One-time setup (repository root)
+
+```powershell
+docker compose -f docker/docker-compose.yml build
+```
+
+```bash
+docker compose -f docker/docker-compose.yml build
+```
+
+```zsh
+docker compose -f docker/docker-compose.yml build
+```
+
+## Run by language (Docker)
+
+### Windows (`scripts/test.ps1`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language python` |
+| JavaScript | `solution.js` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language javascript` |
+| TypeScript | `solution.ts` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language typescript` |
+| Java | `Solution.java` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language java` |
+| C++ | `solution.cpp` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language cpp` |
+| C | `solution.c` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language c` |
+| Go | `solution.go` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language go` |
+| Rust | `solution.rs` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language rust` |
+| Kotlin | `Solution.kt` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language kotlin` |
+| Swift | `Solution.swift` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language swift` |
+| Ruby | `solution.rb` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language ruby` |
+| C# | `Solution.cs` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language csharp` |
+| Scala | `Solution.scala` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language scala` |
+| PHP | `solution.php` | `.\scripts\test.ps1 -Folder 1952_three_divisors -Language php` |
+
+### macOS / Linux (`scripts/test.sh`)
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1952_three_divisors --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1952_three_divisors --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1952_three_divisors --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1952_three_divisors --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1952_three_divisors --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1952_three_divisors --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1952_three_divisors --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1952_three_divisors --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1952_three_divisors --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1952_three_divisors --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1952_three_divisors --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1952_three_divisors --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1952_three_divisors --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1952_three_divisors --language php` |
+
+### zsh (macOS default shell)
+
+Run from the repository root:
+
+```zsh
+./scripts/test.sh --folder 1952_three_divisors --language python
+./scripts/test.sh --folder 1952_three_divisors --language javascript
+./scripts/test.sh --folder 1952_three_divisors --language typescript
+./scripts/test.sh --folder 1952_three_divisors --language java
+./scripts/test.sh --folder 1952_three_divisors --language cpp
+./scripts/test.sh --folder 1952_three_divisors --language c
+./scripts/test.sh --folder 1952_three_divisors --language go
+./scripts/test.sh --folder 1952_three_divisors --language rust
+./scripts/test.sh --folder 1952_three_divisors --language kotlin
+./scripts/test.sh --folder 1952_three_divisors --language swift
+./scripts/test.sh --folder 1952_three_divisors --language ruby
+./scripts/test.sh --folder 1952_three_divisors --language csharp
+./scripts/test.sh --folder 1952_three_divisors --language scala
+./scripts/test.sh --folder 1952_three_divisors --language php
+./scripts/test.sh --folder 1952_three_divisors --all-languages
+```
+
+| Language | Solution file | Command |
+|----------|---------------|---------|
+| Python | `solution.py` | `./scripts/test.sh --folder 1952_three_divisors --language python` |
+| JavaScript | `solution.js` | `./scripts/test.sh --folder 1952_three_divisors --language javascript` |
+| TypeScript | `solution.ts` | `./scripts/test.sh --folder 1952_three_divisors --language typescript` |
+| Java | `Solution.java` | `./scripts/test.sh --folder 1952_three_divisors --language java` |
+| C++ | `solution.cpp` | `./scripts/test.sh --folder 1952_three_divisors --language cpp` |
+| C | `solution.c` | `./scripts/test.sh --folder 1952_three_divisors --language c` |
+| Go | `solution.go` | `./scripts/test.sh --folder 1952_three_divisors --language go` |
+| Rust | `solution.rs` | `./scripts/test.sh --folder 1952_three_divisors --language rust` |
+| Kotlin | `Solution.kt` | `./scripts/test.sh --folder 1952_three_divisors --language kotlin` |
+| Swift | `Solution.swift` | `./scripts/test.sh --folder 1952_three_divisors --language swift` |
+| Ruby | `solution.rb` | `./scripts/test.sh --folder 1952_three_divisors --language ruby` |
+| C# | `Solution.cs` | `./scripts/test.sh --folder 1952_three_divisors --language csharp` |
+| Scala | `Solution.scala` | `./scripts/test.sh --folder 1952_three_divisors --language scala` |
+| PHP | `solution.php` | `./scripts/test.sh --folder 1952_three_divisors --language php` |
+
+Direct Docker Compose in zsh:
+
+```zsh
+docker compose -f docker/docker-compose.yml run --rm python python 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm javascript javascript 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm typescript typescript 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm java java 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm cpp cpp 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm c c 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm go go 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm rust rust 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm swift swift 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm ruby ruby 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm csharp csharp 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm scala scala 1952_three_divisors
+docker compose -f docker/docker-compose.yml run --rm php php 1952_three_divisors
+```
+
+### Direct Docker Compose (any OS)
+
+From the repository root:
+
+| Language | Command |
+|----------|---------|
+| Python | `docker compose -f docker/docker-compose.yml run --rm python python 1952_three_divisors` |
+| JavaScript | `docker compose -f docker/docker-compose.yml run --rm javascript javascript 1952_three_divisors` |
+| TypeScript | `docker compose -f docker/docker-compose.yml run --rm typescript typescript 1952_three_divisors` |
+| Java | `docker compose -f docker/docker-compose.yml run --rm java java 1952_three_divisors` |
+| C++ | `docker compose -f docker/docker-compose.yml run --rm cpp cpp 1952_three_divisors` |
+| C | `docker compose -f docker/docker-compose.yml run --rm c c 1952_three_divisors` |
+| Go | `docker compose -f docker/docker-compose.yml run --rm go go 1952_three_divisors` |
+| Rust | `docker compose -f docker/docker-compose.yml run --rm rust rust 1952_three_divisors` |
+| Kotlin | `docker compose -f docker/docker-compose.yml run --rm kotlin kotlin 1952_three_divisors` |
+| Swift | `docker compose -f docker/docker-compose.yml run --rm swift swift 1952_three_divisors` |
+| Ruby | `docker compose -f docker/docker-compose.yml run --rm ruby ruby 1952_three_divisors` |
+| C# | `docker compose -f docker/docker-compose.yml run --rm csharp csharp 1952_three_divisors` |
+| Scala | `docker compose -f docker/docker-compose.yml run --rm scala scala 1952_three_divisors` |
+| PHP | `docker compose -f docker/docker-compose.yml run --rm php php 1952_three_divisors` |
+
+## Run from this folder (shortcuts)
+
+Each `run_<language>.ps1` script in this directory calls Docker for you:
+
+```powershell
+.\run_python.ps1
+.\run_javascript.ps1
+.\run_java.ps1
+.\run_cpp.ps1
+# ... run_<language>.ps1 for all 14 languages
+```
+
+Run every language:
+
+```powershell
+.\run_all.ps1
+```
+
+Or from the repository root:
+
+```powershell
+.\scripts\test.ps1 -Folder 1952_three_divisors -AllLanguages
+```
+
+```bash
+./scripts/test.sh --folder 1952_three_divisors --all-languages
+```
+
+```zsh
+./scripts/test.sh --folder 1952_three_divisors --all-languages
+```
+
+## Files
+
+| File | Purpose |
+|------|---------|
+| `config.json` | Solution class and method name |
+| `cases.json` | Input/output test cases |
+| `run_<language>.ps1` | Docker test launcher for one language |
+
+## Add test cases
+
+Edit `cases.json`:
+
+```json
+{
+  "cases": [
+    {
+      "args": { "nums": [2, 7, 11, 15], "target": 9 },
+      "expected": [0, 1]
+    }
+  ]
+}
+```
+
+Update `config.json` with the correct LeetCode method name:
+
+```json
+{
+  "class": "Solution",
+  "method": "twoSum",
+  "paramOrder": ["nums", "target"]
+}
+```
+
+For linked lists and trees, use array notation and set types in `config.json`:
+
+```json
+{
+  "class": "Solution",
+  "method": "addTwoNumbers",
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  }
+}
+```

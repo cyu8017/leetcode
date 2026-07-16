@@ -1,0 +1,60 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Failed": [
+          {
+            "fail_date": "2018-12-28"
+          },
+          {
+            "fail_date": "2018-12-29"
+          },
+          {
+            "fail_date": "2019-01-04"
+          },
+          {
+            "fail_date": "2019-01-05"
+          }
+        ],
+        "Succeeded": [
+          {
+            "success_date": "2018-12-30"
+          },
+          {
+            "success_date": "2018-12-31"
+          },
+          {
+            "success_date": "2019-01-01"
+          },
+          {
+            "success_date": "2019-01-02"
+          },
+          {
+            "success_date": "2019-01-03"
+          },
+          {
+            "success_date": "2019-01-06"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "period_state": "succeeded",
+          "start_date": "2019-01-01",
+          "end_date": "2019-01-03"
+        },
+        {
+          "period_state": "failed",
+          "start_date": "2019-01-04",
+          "end_date": "2019-01-05"
+        },
+        {
+          "period_state": "succeeded",
+          "start_date": "2019-01-06",
+          "end_date": "2019-01-06"
+        }
+      ]
+    }
+  ]
+}

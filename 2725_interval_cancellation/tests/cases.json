@@ -1,0 +1,104 @@
+{
+  "cases": [
+    {
+      "args": {
+        "fn": "(x) => x * 2",
+        "args": [
+          4
+        ],
+        "t": 35
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 8
+        },
+        {
+          "time": 35,
+          "returned": 8
+        },
+        {
+          "time": 70,
+          "returned": 8
+        },
+        {
+          "time": 105,
+          "returned": 8
+        },
+        {
+          "time": 140,
+          "returned": 8
+        },
+        {
+          "time": 175,
+          "returned": 8
+        }
+      ]
+    },
+    {
+      "args": {
+        "fn": "(x1, x2) => (x1 * x2)",
+        "args": [
+          2,
+          5
+        ],
+        "t": 30
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 10
+        },
+        {
+          "time": 30,
+          "returned": 10
+        },
+        {
+          "time": 60,
+          "returned": 10
+        },
+        {
+          "time": 90,
+          "returned": 10
+        },
+        {
+          "time": 120,
+          "returned": 10
+        },
+        {
+          "time": 150,
+          "returned": 10
+        }
+      ]
+    },
+    {
+      "args": {
+        "fn": "(x1, x2, x3) => (x1 + x2 + x3)",
+        "args": [
+          5,
+          1,
+          3
+        ],
+        "t": 50
+      },
+      "expected": [
+        {
+          "time": 0,
+          "returned": 9
+        },
+        {
+          "time": 50,
+          "returned": 9
+        },
+        {
+          "time": 100,
+          "returned": 9
+        },
+        {
+          "time": 150,
+          "returned": 9
+        }
+      ]
+    }
+  ]
+}

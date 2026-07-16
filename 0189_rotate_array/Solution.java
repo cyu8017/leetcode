@@ -1,0 +1,1 @@
+class Solution { public void rotate(int[] a, int k) { if (a.length == 0) return; k %= a.length; r(a, 0, a.length - 1); r(a, 0, k - 1); r(a, k, a.length - 1); } private void r(int[] a, int l, int r) { while (l < r) { int t = a[l]; a[l++] = a[r]; a[r--] = t; } } }

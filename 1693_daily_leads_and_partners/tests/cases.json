@@ -1,0 +1,97 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "DailySales": [
+          {
+            "date_id": "2020-12-8",
+            "make_name": "toyota",
+            "lead_id": 0,
+            "partner_id": 1
+          },
+          {
+            "date_id": "2020-12-8",
+            "make_name": "toyota",
+            "lead_id": 1,
+            "partner_id": 0
+          },
+          {
+            "date_id": "2020-12-8",
+            "make_name": "toyota",
+            "lead_id": 1,
+            "partner_id": 2
+          },
+          {
+            "date_id": "2020-12-7",
+            "make_name": "toyota",
+            "lead_id": 0,
+            "partner_id": 2
+          },
+          {
+            "date_id": "2020-12-7",
+            "make_name": "toyota",
+            "lead_id": 0,
+            "partner_id": 1
+          },
+          {
+            "date_id": "2020-12-8",
+            "make_name": "honda",
+            "lead_id": 1,
+            "partner_id": 2
+          },
+          {
+            "date_id": "2020-12-8",
+            "make_name": "honda",
+            "lead_id": 2,
+            "partner_id": 1
+          },
+          {
+            "date_id": "2020-12-7",
+            "make_name": "honda",
+            "lead_id": 0,
+            "partner_id": 1
+          },
+          {
+            "date_id": "2020-12-7",
+            "make_name": "honda",
+            "lead_id": 1,
+            "partner_id": 2
+          },
+          {
+            "date_id": "2020-12-7",
+            "make_name": "honda",
+            "lead_id": 2,
+            "partner_id": 1
+          }
+        ]
+      },
+      "expected": [
+        {
+          "date_id": "2020-12-8",
+          "make_name": "toyota",
+          "unique_leads": 2,
+          "unique_partners": 3
+        },
+        {
+          "date_id": "2020-12-7",
+          "make_name": "toyota",
+          "unique_leads": 1,
+          "unique_partners": 2
+        },
+        {
+          "date_id": "2020-12-8",
+          "make_name": "honda",
+          "unique_leads": 2,
+          "unique_partners": 2
+        },
+        {
+          "date_id": "2020-12-7",
+          "make_name": "honda",
+          "unique_leads": 3,
+          "unique_partners": 2
+        }
+      ]
+    }
+  ]
+}

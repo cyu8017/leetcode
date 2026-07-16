@@ -1,0 +1,2 @@
+#[derive(Debug,PartialEq,Eq)] pub struct TreeNode{pub val:i32,pub left:Option<Rc<RefCell<TreeNode>>>,pub right:Option<Rc<RefCell<TreeNode>>>}
+use std::{rc::Rc,cell::RefCell};impl Solution{pub fn upside_down_binary_tree(r:Option<Rc<RefCell<TreeNode>>>)->Option<Rc<RefCell<TreeNode>>>{let(mut c,mut p,mut q)=(r,None,None);while let Some(n)=c{let(nx,rt)={let mut x=n.borrow_mut();let nx=x.left.take();let rt=x.right.take();x.left=q;x.right=p;(nx,rt)};q=rt;p=Some(n);c=nx}p}}

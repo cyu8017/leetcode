@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "word": "CAKE"
+      },
+      "expected": 3
+    },
+    {
+      "args": {
+        "word": "HAPPY"
+      },
+      "expected": 6
+    }
+  ]
+}

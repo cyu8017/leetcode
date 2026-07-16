@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "args": {
+        "root": [
+          10,
+          4,
+          "abcpoe",
+          "g",
+          "rta"
+        ],
+        "k": 6
+      },
+      "expected": "b"
+    },
+    {
+      "args": {
+        "root": [
+          12,
+          6,
+          6,
+          "abc",
+          "efg",
+          "hij",
+          "klm"
+        ],
+        "k": 3
+      },
+      "expected": "c"
+    },
+    {
+      "args": {
+        "root": [
+          "ropetree"
+        ],
+        "k": 8
+      },
+      "expected": "e"
+    }
+  ]
+}

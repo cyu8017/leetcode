@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "args": {
+        "queryMultiple": "async function(keys) { return keys.map(key => key + '!'); } t = 100 calls = [ {\"key\": \"a\", \"time\": 10}, {\"key\": \"b\", \"time\": 20}, {\"key\": \"c\", \"time\": 30} ]"
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 10
+        },
+        {
+          "resolved": "b!",
+          "time": 110
+        },
+        {
+          "resolved": "c!",
+          "time": 110
+        }
+      ]
+    },
+    {
+      "args": {
+        "queryMultiple": "async function(keys) { await new Promise(res => setTimeout(res, 100)); return keys.map(key => key + '!'); } t = 100 calls = [ {\"key\": \"a\", \"time\": 10}, {\"key\": \"b\", \"time\": 20}, {\"key\": \"c\", \"time\": 30} ]"
+      },
+      "expected": [
+        {
+          "resolved": "a!",
+          "time": 110
+        },
+        {
+          "resolved": "b!",
+          "time": 210
+        },
+        {
+          "resolved": "c!",
+          "time": 210
+        }
+      ]
+    },
+    {
+      "args": {
+        "queryMultiple": "async function(keys) { await new Promise(res => setTimeout(res, keys.length * 100)); return keys.map(key => key + '!'); } t = 100 calls = [ {\"key\": \"a\", \"time\": 10}, {\"key\": \"b\", \"time\": 20}, {\"key\": \"c\", \"time\": 30}, {\"key\": \"d\", \"time\": 40}, {\"key\": \"e\", \"time\": 250} {\"key\": \"f\", \"time\": 300} ]"
+      },
+      "expected": "[\n{\"resolved\":\"a!\",\"time\":110},\n{\"resolved\":\"e!\",\"time\":350},\n{\"resolved\":\"b!\",\"time\":410},\n{\"resolved\":\"c!\",\"time\":410},\n{\"resolved\":\"d!\",\"time\":410},\n{\"resolved\":\"f!\",\"time\":450}\n]\n**"
+    }
+  ]
+}

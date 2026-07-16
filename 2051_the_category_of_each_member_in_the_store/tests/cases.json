@@ -1,0 +1,109 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Members": [
+          {
+            "member_id": 9,
+            "name": "Alice"
+          },
+          {
+            "member_id": 11,
+            "name": "Bob"
+          },
+          {
+            "member_id": 3,
+            "name": "Winston"
+          },
+          {
+            "member_id": 8,
+            "name": "Hercy"
+          },
+          {
+            "member_id": 1,
+            "name": "Narihan"
+          }
+        ],
+        "Visits": [
+          {
+            "visit_id": 22,
+            "member_id": 11,
+            "visit_date": "2021-10-28"
+          },
+          {
+            "visit_id": 16,
+            "member_id": 11,
+            "visit_date": "2021-01-12"
+          },
+          {
+            "visit_id": 18,
+            "member_id": 9,
+            "visit_date": "2021-12-10"
+          },
+          {
+            "visit_id": 19,
+            "member_id": 3,
+            "visit_date": "2021-10-19"
+          },
+          {
+            "visit_id": 12,
+            "member_id": 11,
+            "visit_date": "2021-03-01"
+          },
+          {
+            "visit_id": 17,
+            "member_id": 8,
+            "visit_date": "2021-05-07"
+          },
+          {
+            "visit_id": 21,
+            "member_id": 9,
+            "visit_date": "2021-05-12"
+          }
+        ],
+        "Purchases": [
+          {
+            "visit_id": 12,
+            "charged_amount": 2000
+          },
+          {
+            "visit_id": 18,
+            "charged_amount": 9000
+          },
+          {
+            "visit_id": 17,
+            "charged_amount": 7000
+          }
+        ]
+      },
+      "expected": [
+        {
+          "member_id": 1,
+          "name": "Narihan",
+          "category": "Bronze"
+        },
+        {
+          "member_id": 3,
+          "name": "Winston",
+          "category": "Silver"
+        },
+        {
+          "member_id": 8,
+          "name": "Hercy",
+          "category": "Diamond"
+        },
+        {
+          "member_id": 9,
+          "name": "Alice",
+          "category": "Gold"
+        },
+        {
+          "member_id": 11,
+          "name": "Bob",
+          "category": "Silver"
+        }
+      ]
+    }
+  ]
+}

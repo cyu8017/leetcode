@@ -1,0 +1,11 @@
+{
+  "class": "Solution",
+  "method": "depthSum",
+  "paramOrder": [
+    "nestedList"
+  ],
+  "types": {
+    "nestedList": "nestedinteger[]"
+  },
+  "description": "Nested List Weight Sum II uses depth from the bottom."
+}

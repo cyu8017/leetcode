@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence": "i love leetcode",
+        "k": 12
+      },
+      "expected": 36
+    },
+    {
+      "args": {
+        "sentence": "apples and bananas taste great",
+        "k": 7
+      },
+      "expected": 21
+    },
+    {
+      "args": {
+        "sentence": "a",
+        "k": 5
+      },
+      "expected": 0
+    }
+  ]
+}

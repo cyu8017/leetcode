@@ -1,0 +1,63 @@
+{
+  "cases": [
+    {
+      "args": {
+        "nums": [
+          0,
+          1,
+          2
+        ],
+        "queries": [
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            5,
+            0
+          ]
+        ]
+      },
+      "expected": [
+        2,
+        2,
+        -1,
+        0
+      ]
+    },
+    {
+      "args": {
+        "nums": [
+          2
+        ],
+        "queries": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ]
+        ]
+      },
+      "expected": "[2,-1,2,-1]\nMinute 0: [2] - All elements are in the nums.\nMinute 1: []  - The leftmost element, 2, is removed.\nMinute 2: [2] - 2 is added to the end of nums.\nMinute 3: []  - The leftmost element, 2, is removed.\nAt minute 0, nums[0] is 2.\nAt minute 1, nums[0] does not exist.\nAt minute 2, nums[0] is 2.\nAt minute 3, nums[0] does not exist.\n**Constraints:**\n- `1 <= nums.length <= 100`\n- `0 <= nums[i] <= 100`\n- `n == queries.length`\n- `1 <= n <= 10^{5}`\n- `queries[j].length == 2`\n- `0 <= time_{j} <= 10^{5}`\n- `0 <= index_{j} < nums.length`\n---"
+    }
+  ]
+}

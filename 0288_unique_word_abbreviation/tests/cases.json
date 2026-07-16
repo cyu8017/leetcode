@@ -1,0 +1,48 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "ValidWordAbbr",
+        "isUnique",
+        "isUnique",
+        "isUnique",
+        "isUnique",
+        "isUnique"
+      ],
+      "arguments": [
+        [
+          [
+            "deer",
+            "door",
+            "cake",
+            "card"
+          ]
+        ],
+        [
+          "dear"
+        ],
+        [
+          "cart"
+        ],
+        [
+          "cane"
+        ],
+        [
+          "make"
+        ],
+        [
+          "cake"
+        ]
+      ],
+      "expected": [
+        null,
+        false,
+        true,
+        false,
+        true,
+        true
+      ]
+    }
+  ]
+}

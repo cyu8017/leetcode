@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Accounts": [
+          {
+            "account_id": 3,
+            "income": 108939
+          },
+          {
+            "account_id": 2,
+            "income": 12747
+          },
+          {
+            "account_id": 8,
+            "income": 87709
+          },
+          {
+            "account_id": 6,
+            "income": 91796
+          }
+        ]
+      },
+      "expected": [
+        {
+          "category": "Low Salary",
+          "accounts_count": 1
+        },
+        {
+          "category": "Average Salary",
+          "accounts_count": 0
+        },
+        {
+          "category": "High Salary",
+          "accounts_count": 3
+        }
+      ]
+    }
+  ]
+}

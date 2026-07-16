@@ -1,0 +1,7 @@
+﻿// LeetCode 1739 - Building Boxes
+// https://leetcode.com/problems/building-boxes/
+
+impl Solution {
+    pub fn solve() {
+    }
+}

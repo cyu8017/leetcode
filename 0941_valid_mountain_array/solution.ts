@@ -1,0 +1,6 @@
+﻿// LeetCode 0941 - Valid Mountain Array
+// https://leetcode.com/problems/valid-mountain-array/
+
+function solve(input: unknown): unknown {
+    return null;
+}

@@ -1,0 +1,6 @@
+﻿# LeetCode 0960 - Delete Columns to Make Sorted III
+# https://leetcode.com/problems/delete-columns-to-make-sorted-iii/
+
+class Solution:
+    def solve(self) -> None:
+        pass

@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "removeElements",
+  "paramOrder": ["head", "val"],
+  "types": { "head": "listnode", "return": "listnode" },
+  "description": null
+}

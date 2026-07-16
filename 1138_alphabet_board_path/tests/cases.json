@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "target": "leet"
+      },
+      "expected": "DDR!UURRR!!DDD!"
+    },
+    {
+      "args": {
+        "target": "code"
+      },
+      "expected": "RR!DDRR!UUL!R!"
+    }
+  ]
+}

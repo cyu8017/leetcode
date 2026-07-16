@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "kind": "design",
+      "operations": [
+        "SnakeGame",
+        "move",
+        "move",
+        "move",
+        "move",
+        "move",
+        "move"
+      ],
+      "arguments": [
+        [
+          3,
+          2,
+          [
+            [
+              1,
+              2
+            ],
+            [
+              0,
+              1
+            ]
+          ]
+        ],
+        [
+          "R"
+        ],
+        [
+          "D"
+        ],
+        [
+          "R"
+        ],
+        [
+          "U"
+        ],
+        [
+          "L"
+        ],
+        [
+          "U"
+        ]
+      ],
+      "expected": [
+        null,
+        0,
+        0,
+        1,
+        1,
+        2,
+        -1
+      ]
+    }
+  ]
+}

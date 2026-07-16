@@ -1,0 +1,14 @@
+{
+  "class": "ListNode",
+  "method": "__init__",
+  "paramOrder": [
+    "val=0",
+    "next=None"
+  ],
+  "types": {
+    "l1": "listnode",
+    "l2": "listnode",
+    "return": "listnode"
+  },
+  "description": null
+}

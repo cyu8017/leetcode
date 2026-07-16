@@ -1,0 +1,9 @@
+﻿// LeetCode 3670 - Maximum Product of Two Integers With No Common Bits
+// https://leetcode.com/problems/maximum-product-of-two-integers-with-no-common-bits/
+
+/**
+ * @param {any} input
+ * @return {any}
+ */
+var solve = function(input) {
+};

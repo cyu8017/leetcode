@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "is2 sentence4 This1 a3"
+      },
+      "expected": "This is a sentence"
+    },
+    {
+      "args": {
+        "s": "Myself2 Me1 I4 and3"
+      },
+      "expected": "Me Myself and I"
+    }
+  ]
+}

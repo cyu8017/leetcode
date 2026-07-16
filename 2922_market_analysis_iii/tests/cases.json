@@ -1,0 +1,86 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Users": [
+          {
+            "seller_id": 1,
+            "join_date": "2019-01-01",
+            "favorite_brand": "Lenovo"
+          },
+          {
+            "seller_id": 2,
+            "join_date": "2019-02-09",
+            "favorite_brand": "Samsung"
+          },
+          {
+            "seller_id": 3,
+            "join_date": "2019-01-19",
+            "favorite_brand": "LG"
+          }
+        ],
+        "Orders": [
+          {
+            "order_id": 1,
+            "order_date": "2019-08-01",
+            "item_id": 4,
+            "seller_id": 2
+          },
+          {
+            "order_id": 2,
+            "order_date": "2019-08-02",
+            "item_id": 2,
+            "seller_id": 3
+          },
+          {
+            "order_id": 3,
+            "order_date": "2019-08-03",
+            "item_id": 3,
+            "seller_id": 3
+          },
+          {
+            "order_id": 4,
+            "order_date": "2019-08-04",
+            "item_id": 1,
+            "seller_id": 2
+          },
+          {
+            "order_id": 5,
+            "order_date": "2019-08-04",
+            "item_id": 4,
+            "seller_id": 2
+          }
+        ],
+        "Items": [
+          {
+            "item_id": 1,
+            "item_brand": "Samsung"
+          },
+          {
+            "item_id": 2,
+            "item_brand": "Lenovo"
+          },
+          {
+            "item_id": 3,
+            "item_brand": "LG"
+          },
+          {
+            "item_id": 4,
+            "item_brand": "HP"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "seller_id": 2,
+          "num_items": 1
+        },
+        {
+          "seller_id": 3,
+          "num_items": 1
+        }
+      ]
+    }
+  ]
+}

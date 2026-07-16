@@ -1,0 +1,23 @@
+{
+  "cases": [
+    {
+      "args": {
+        "daysLate": [
+          5,
+          1,
+          7
+        ]
+      },
+      "expected": 32
+    },
+    {
+      "args": {
+        "daysLate": [
+          1,
+          1
+        ]
+      },
+      "expected": 2
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "class": "Solution",
+  "method": "gcdValues",
+  "paramOrder": [
+    "nums",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

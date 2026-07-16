@@ -1,0 +1,67 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "LogInfo": [
+          {
+            "account_id": 1,
+            "ip_address": 1,
+            "login": "2021-02-01 09:00:00",
+            "logout": "2021-02-01 09:30:00"
+          },
+          {
+            "account_id": 1,
+            "ip_address": 2,
+            "login": "2021-02-01 08:00:00",
+            "logout": "2021-02-01 11:30:00"
+          },
+          {
+            "account_id": 2,
+            "ip_address": 6,
+            "login": "2021-02-01 20:30:00",
+            "logout": "2021-02-01 22:00:00"
+          },
+          {
+            "account_id": 2,
+            "ip_address": 7,
+            "login": "2021-02-02 20:30:00",
+            "logout": "2021-02-02 22:00:00"
+          },
+          {
+            "account_id": 3,
+            "ip_address": 9,
+            "login": "2021-02-01 16:00:00",
+            "logout": "2021-02-01 16:59:59"
+          },
+          {
+            "account_id": 3,
+            "ip_address": 13,
+            "login": "2021-02-01 17:00:00",
+            "logout": "2021-02-01 17:59:59"
+          },
+          {
+            "account_id": 4,
+            "ip_address": 10,
+            "login": "2021-02-01 16:00:00",
+            "logout": "2021-02-01 17:00:00"
+          },
+          {
+            "account_id": 4,
+            "ip_address": 11,
+            "login": "2021-02-01 17:00:00",
+            "logout": "2021-02-01 17:59:59"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "account_id": 1
+        },
+        {
+          "account_id": 4
+        }
+      ]
+    }
+  ]
+}

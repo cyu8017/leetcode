@@ -1,0 +1,22 @@
+{
+  "cases": [
+    {
+      "args": {
+        "date": "20th Oct 2052"
+      },
+      "expected": "2052-10-20"
+    },
+    {
+      "args": {
+        "date": "6th Jun 1933"
+      },
+      "expected": "1933-06-06"
+    },
+    {
+      "args": {
+        "date": "26th May 1960"
+      },
+      "expected": "1960-05-26"
+    }
+  ]
+}

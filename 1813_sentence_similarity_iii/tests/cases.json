@@ -1,0 +1,25 @@
+{
+  "cases": [
+    {
+      "args": {
+        "sentence1": "My name is Haley",
+        "sentence2": "My Haley"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "sentence1": "of",
+        "sentence2": "A lot of words"
+      },
+      "expected": false
+    },
+    {
+      "args": {
+        "sentence1": "Eating right now",
+        "sentence2": "Eating"
+      },
+      "expected": true
+    }
+  ]
+}

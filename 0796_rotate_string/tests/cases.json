@@ -1,0 +1,18 @@
+{
+  "cases": [
+    {
+      "args": {
+        "s": "abcde",
+        "goal": "cdeab"
+      },
+      "expected": true
+    },
+    {
+      "args": {
+        "s": "abcde",
+        "goal": "abced"
+      },
+      "expected": false
+    }
+  ]
+}

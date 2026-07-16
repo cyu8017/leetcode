@@ -1,0 +1,158 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "Students": [
+          {
+            "student_id": 1,
+            "student_name": "Alice"
+          },
+          {
+            "student_id": 2,
+            "student_name": "Bob"
+          },
+          {
+            "student_id": 13,
+            "student_name": "John"
+          },
+          {
+            "student_id": 6,
+            "student_name": "Alex"
+          }
+        ],
+        "Subjects": [
+          {
+            "subject_name": "Math"
+          },
+          {
+            "subject_name": "Physics"
+          },
+          {
+            "subject_name": "Programming"
+          }
+        ],
+        "Examinations": [
+          {
+            "student_id": 1,
+            "subject_name": "Math"
+          },
+          {
+            "student_id": 1,
+            "subject_name": "Physics"
+          },
+          {
+            "student_id": 1,
+            "subject_name": "Programming"
+          },
+          {
+            "student_id": 2,
+            "subject_name": "Programming"
+          },
+          {
+            "student_id": 1,
+            "subject_name": "Physics"
+          },
+          {
+            "student_id": 1,
+            "subject_name": "Math"
+          },
+          {
+            "student_id": 13,
+            "subject_name": "Math"
+          },
+          {
+            "student_id": 13,
+            "subject_name": "Programming"
+          },
+          {
+            "student_id": 13,
+            "subject_name": "Physics"
+          },
+          {
+            "student_id": 2,
+            "subject_name": "Math"
+          },
+          {
+            "student_id": 1,
+            "subject_name": "Math"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "student_id": 1,
+          "student_name": "Alice",
+          "subject_name": "Math",
+          "attended_exams": 3
+        },
+        {
+          "student_id": 1,
+          "student_name": "Alice",
+          "subject_name": "Physics",
+          "attended_exams": 2
+        },
+        {
+          "student_id": 1,
+          "student_name": "Alice",
+          "subject_name": "Programming",
+          "attended_exams": 1
+        },
+        {
+          "student_id": 2,
+          "student_name": "Bob",
+          "subject_name": "Math",
+          "attended_exams": 1
+        },
+        {
+          "student_id": 2,
+          "student_name": "Bob",
+          "subject_name": "Physics",
+          "attended_exams": 0
+        },
+        {
+          "student_id": 2,
+          "student_name": "Bob",
+          "subject_name": "Programming",
+          "attended_exams": 1
+        },
+        {
+          "student_id": 6,
+          "student_name": "Alex",
+          "subject_name": "Math",
+          "attended_exams": 0
+        },
+        {
+          "student_id": 6,
+          "student_name": "Alex",
+          "subject_name": "Physics",
+          "attended_exams": 0
+        },
+        {
+          "student_id": 6,
+          "student_name": "Alex",
+          "subject_name": "Programming",
+          "attended_exams": 0
+        },
+        {
+          "student_id": 13,
+          "student_name": "John",
+          "subject_name": "Math",
+          "attended_exams": 1
+        },
+        {
+          "student_id": 13,
+          "student_name": "John",
+          "subject_name": "Physics",
+          "attended_exams": 1
+        },
+        {
+          "student_id": 13,
+          "student_name": "John",
+          "subject_name": "Programming",
+          "attended_exams": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "kind": "sql",
+      "tables": {
+        "user_content": [
+          {
+            "content_id": 1,
+            "content_text": "hello world of SQL"
+          },
+          {
+            "content_id": 2,
+            "content_text": "the QUICK-brown fox"
+          },
+          {
+            "content_id": 3,
+            "content_text": "modern-day DATA science"
+          },
+          {
+            "content_id": 4,
+            "content_text": "web-based FRONT-end development"
+          }
+        ]
+      },
+      "expected": [
+        {
+          "content_id": 1,
+          "original_text": "hello world of SQL",
+          "converted_text": "Hello World Of Sql"
+        },
+        {
+          "content_id": 2,
+          "original_text": "the QUICK-brown fox",
+          "converted_text": "The Quick-Brown Fox"
+        },
+        {
+          "content_id": 3,
+          "original_text": "modern-day DATA science",
+          "converted_text": "Modern-Day Data Science"
+        },
+        {
+          "content_id": 4,
+          "original_text": "web-based FRONT-end development",
+          "converted_text": "Web-Based Front-End Development"
+        }
+      ]
+    }
+  ]
+}

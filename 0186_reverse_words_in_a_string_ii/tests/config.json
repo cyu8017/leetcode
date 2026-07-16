@@ -1,0 +1,7 @@
+﻿{
+  "class": "Solution",
+  "method": "reverseWords",
+  "paramOrder": ["s"],
+  "types": { "return": "void" },
+  "description": null
+}
