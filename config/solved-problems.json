@@ -4380,6 +4380,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0731_my_calendar_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0732_my_calendar_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0733_flood_fill",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0734_sentence_similarity",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0735_asteroid_collision",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0736_parse_lisp_expression",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0737_sentence_similarity_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0738_monotone_increasing_digits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0739_daily_temperatures",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0740_delete_and_earn",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
