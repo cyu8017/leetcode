@@ -6348,6 +6348,180 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "1061_lexicographically_smallest_equivalent_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1062_longest_repeating_substring",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1063_number_of_valid_subarrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1064_fixed_point",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1065_index_pairs_of_a_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1066_campus_bikes_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1067_digit_count_in_range",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1071_greatest_common_divisor_of_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1072_flip_columns_for_maximum_number_of_equal_rows",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1073_adding_two_negabinary_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1074_number_of_submatrices_that_sum_to_target",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1078_occurrences_after_bigram",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1079_letter_tile_possibilities",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1080_insufficient_nodes_in_root_to_leaf_paths",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1081_smallest_subsequence_of_distinct_characters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1085_sum_of_digits_in_the_minimum_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1086_high_five",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1087_brace_expansion",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1088_confusing_number_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1089_duplicate_zeros",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1090_largest_values_from_labels",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1091_shortest_path_in_binary_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1092_shortest_common_supersequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1093_statistics_from_a_large_sample",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1094_car_pooling",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1095_find_in_mountain_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1096_brace_expansion_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1099_two_sum_less_than_k",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1100_find_k_length_substrings_with_no_repeated_characters",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

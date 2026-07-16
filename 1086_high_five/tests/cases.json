@@ -49,7 +49,16 @@
           ]
         ]
       },
-      "expected": "[[1,87],[2,88]]\n**"
+      "expected": [
+        [
+          1,
+          87
+        ],
+        [
+          2,
+          88
+        ]
+      ]
     },
     {
       "args": {
@@ -96,7 +105,16 @@
           ]
         ]
       },
-      "expected": "[[1,100],[7,100]]\n**Constraints:**\n- `1 <= items.length <= 1000`\n- `items[i].length == 2`\n- `1 <= ID_{i} <= 1000`\n- `0 <= score_{i} <= 100`\n- For each `ID_{i}`, there will be **at least** five scores.\n---"
+      "expected": [
+        [
+          1,
+          100
+        ],
+        [
+          7,
+          100
+        ]
+      ]
     }
   ]
 }

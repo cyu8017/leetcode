@@ -649,6 +649,8 @@ def void_mutation_result(keys: list[str], values: list[Any]) -> Any:
         return values[keys.index("nums")]
     if "nums1" in keys:
         return values[keys.index("nums1")]
+    if "arr" in keys:
+        return values[keys.index("arr")]
     if "board" in keys:
         return values[keys.index("board")]
     if "rooms" in keys:
@@ -891,6 +893,19 @@ class MockMaster:
         return "Either you took too many guesses, or you did not find the secret word."
 
 
+class MockMountainArray:
+    """Simulates LeetCode's MountainArray API for problem 1095."""
+
+    def __init__(self, values: list[int]):
+        self._values = values
+
+    def get(self, index: int) -> int:
+        return self._values[index]
+
+    def length(self) -> int:
+        return len(self._values)
+
+
 def run_cases(
     solution: Any, config: dict[str, Any], cases_doc: dict[str, Any], module: Any | None = None
 ) -> tuple[int, int]:
@@ -1067,6 +1082,10 @@ def run_cases(
             master = MockMaster(args["secret"], args["words"], args["allowedGuesses"])
             method(args["words"], master)
             actual = master.result_message()
+        elif args and "mountainArr" in args and method_name == "findInMountainArray":
+            method = getattr(solution, method_name)
+            mountain = MockMountainArray(args["mountainArr"])
+            actual = method(args["target"], mountain)
         elif (
             args
             and config.get("class") == "Codec"
@@ -1089,6 +1108,9 @@ def run_cases(
             if "nums" in keys and (is_inplace_expected(expected) or return_type == "void"):
                 nums_index = keys.index("nums")
                 values[nums_index] = list(values[nums_index])
+            if "arr" in keys and return_type == "void":
+                arr_index = keys.index("arr")
+                values[arr_index] = list(values[arr_index])
             if "chars" in keys and is_inplace_expected(expected):
                 chars_index = keys.index("chars")
                 values[chars_index] = list(values[chars_index])
