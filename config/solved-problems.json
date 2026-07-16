@@ -4140,6 +4140,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0691_stickers_to_spell_word",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0692_top_k_frequent_words",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0693_binary_number_with_alternating_bits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0694_number_of_distinct_islands",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0695_max_area_of_island",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0696_count_binary_substrings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0697_degree_of_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0698_partition_to_k_equal_sum_subsets",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0699_falling_squares",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0700_search_in_a_binary_search_tree",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
