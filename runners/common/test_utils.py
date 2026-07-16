@@ -5,6 +5,8 @@ from __future__ import annotations
 
 import json
 import re
+import threading
+from io import StringIO
 from pathlib import Path
 from typing import Any
 
@@ -906,6 +908,128 @@ class MockMountainArray:
         return len(self._values)
 
 
+class _PrintCapture:
+    def __init__(self) -> None:
+        self.parts: list[str] = []
+
+    def write(self, text: str) -> int:
+        self.parts.append(text)
+        return len(text)
+
+    def flush(self) -> None:
+        return None
+
+    def output(self) -> str:
+        return "".join(self.parts)
+
+
+def run_print_in_order(module: Any, nums: list[int]) -> str:
+    foo = module.Foo()
+    methods = {1: foo.first, 2: foo.second, 3: foo.third}
+    capture = _PrintCapture()
+    threads = []
+    for idx in nums:
+        thread = threading.Thread(target=methods[idx], args=(capture,))
+        threads.append(thread)
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=5)
+    return capture.output()
+
+
+def run_print_foobar(module: Any, n: int) -> str:
+    foobar = module.FooBar(n)
+    capture = _PrintCapture()
+    threads = [
+        threading.Thread(target=foobar.foo, args=(capture,)),
+        threading.Thread(target=foobar.bar, args=(capture,)),
+    ]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=5)
+    return capture.output()
+
+
+def run_zero_even_odd(module: Any, n: int) -> str:
+    zeo = module.ZeroEvenOdd(n)
+    capture = _PrintCapture()
+
+    def print_number(value: int) -> None:
+        capture.write(str(value))
+
+    threads = [
+        threading.Thread(target=zeo.zero, args=(print_number,)),
+        threading.Thread(target=zeo.even, args=(print_number,)),
+        threading.Thread(target=zeo.odd, args=(print_number,)),
+    ]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=5)
+    return capture.output()
+
+
+def run_h2o(module: Any, water: str) -> str:
+    h2o = module.H2O()
+    capture = _PrintCapture()
+
+    def release_hydrogen() -> None:
+        capture.write("H")
+
+    def release_oxygen() -> None:
+        capture.write("O")
+
+    threads = []
+    for ch in water:
+        if ch == "H":
+            threads.append(threading.Thread(target=h2o.hydrogen, args=(release_hydrogen,)))
+        else:
+            threads.append(threading.Thread(target=h2o.oxygen, args=(release_oxygen,)))
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=5)
+    return capture.output()
+
+
+def is_valid_h2o_output(actual: str, water: str) -> bool:
+    if len(actual) != len(water):
+        return False
+    if actual.count("H") != water.count("H") or actual.count("O") != water.count("O"):
+        return False
+    for i in range(0, len(actual), 3):
+        group = actual[i : i + 3]
+        if len(group) != 3 or group.count("H") != 2 or group.count("O") != 1:
+            return False
+    return True
+
+
+def is_valid_max_depth_split(seq: str, bits: list[int]) -> bool:
+    if len(bits) != len(seq):
+        return False
+
+    def depth_of(chars: str) -> int | None:
+        cur = 0
+        best = 0
+        for ch in chars:
+            cur += 1 if ch == "(" else -1
+            if cur < 0:
+                return None
+            best = max(best, cur)
+        return best if cur == 0 else None
+
+    a = "".join(ch for ch, bit in zip(seq, bits) if bit == 0)
+    b = "".join(ch for ch, bit in zip(seq, bits) if bit == 1)
+    da = depth_of(a)
+    db = depth_of(b)
+    total_depth = depth_of(seq)
+    if da is None or db is None or total_depth is None:
+        return False
+    optimal = (total_depth + 1) // 2
+    return max(da, db) == optimal
+
+
 def run_cases(
     solution: Any, config: dict[str, Any], cases_doc: dict[str, Any], module: Any | None = None
 ) -> tuple[int, int]:
@@ -1086,6 +1210,14 @@ def run_cases(
             method = getattr(solution, method_name)
             mountain = MockMountainArray(args["mountainArr"])
             actual = method(args["target"], mountain)
+        elif module is not None and config.get("class") == "Foo" and "nums" in args:
+            actual = run_print_in_order(module, args["nums"])
+        elif module is not None and config.get("class") == "FooBar" and "n" in args:
+            actual = run_print_foobar(module, args["n"])
+        elif module is not None and config.get("class") == "ZeroEvenOdd" and "n" in args:
+            actual = run_zero_even_odd(module, args["n"])
+        elif module is not None and config.get("class") == "H2O" and "water" in args:
+            actual = run_h2o(module, args["water"])
         elif (
             args
             and config.get("class") == "Codec"
@@ -1178,6 +1310,10 @@ def run_cases(
             for k in actual:
                 start[:k] = start[:k][::-1]
             ok = start == sorted(start)
+        elif config.get("class") == "H2O" and isinstance(actual, str):
+            ok = is_valid_h2o_output(actual, args.get("water", ""))
+        elif method_name == "maxDepthAfterSplit" and isinstance(actual, list):
+            ok = is_valid_max_depth_split(args.get("seq", ""), actual)
         elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:
             ok = trees_equal_any_order(actual, expected)
         elif nary_tree_compare:

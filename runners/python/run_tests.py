@@ -51,7 +51,7 @@ def main() -> int:
         print(f"Result: {passed}/{total} passed")
         return 0 if passed == total else 1
 
-    if config.get("class") in {"ZigzagIterator", "NestedIterator"}:
+    if config.get("class") in {"ZigzagIterator", "NestedIterator", "Foo", "FooBar", "ZeroEvenOdd", "H2O"}:
         print(f"Python tests: {problem_dir.name} :: {config['class']}")
         passed, total = run_cases(None, config, cases_doc, module)
     else:

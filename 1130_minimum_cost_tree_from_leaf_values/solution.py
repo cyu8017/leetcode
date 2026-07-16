@@ -1,6 +1,15 @@
-﻿# LeetCode 1130 - Minimum Cost Tree From Leaf Values
+# LeetCode 1130 - Minimum Cost Tree From Leaf Values
 # https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def mctFromLeafValues(self, arr: list[int]) -> int:
+        stack = [float("inf")]
+        ans = 0
+        for x in arr:
+            while stack[-1] <= x:
+                mid = stack.pop()
+                ans += mid * min(stack[-1], x)
+            stack.append(x)
+        while len(stack) > 2:
+            ans += stack.pop() * stack[-1]
+        return ans

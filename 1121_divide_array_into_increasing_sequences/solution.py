@@ -1,6 +1,9 @@
-﻿# LeetCode 1121 - Divide Array Into Increasing Sequences
+# LeetCode 1121 - Divide Array Into Increasing Sequences
 # https://leetcode.com/problems/divide-array-into-increasing-sequences/
 
+from collections import Counter
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canDivideIntoSubsequences(self, nums: list[int], k: int) -> bool:
+        return len(nums) >= k * max(Counter(nums).values())

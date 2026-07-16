@@ -6522,6 +6522,210 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "1101_the_earliest_moment_when_everyone_become_friends",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1102_path_with_maximum_minimum_value",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1103_distribute_candies_to_people",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1104_path_in_zigzag_labelled_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1105_filling_bookcase_shelves",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1106_parsing_a_boolean_expression",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1108_defanging_an_ip_address",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1109_corporate_flight_bookings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1110_delete_nodes_and_return_forest",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1111_maximum_nesting_depth_of_two_valid_parentheses_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1114_print_in_order",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1115_print_foobar_alternately",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1116_print_zero_even_odd",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1117_building_h2o",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1118_number_of_days_in_a_month",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1119_remove_vowels_from_a_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1120_maximum_average_subtree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1121_divide_array_into_increasing_sequences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1122_relative_sort_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1123_lowest_common_ancestor_of_deepest_leaves",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1124_longest_well_performing_interval",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1125_smallest_sufficient_team",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1128_number_of_equivalent_domino_pairs",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1129_shortest_path_with_alternating_colors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1130_minimum_cost_tree_from_leaf_values",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1131_maximum_of_absolute_value_expression",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1133_largest_unique_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1134_armstrong_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1135_connecting_cities_with_minimum_cost",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1136_parallel_courses",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1137_n_th_tribonacci_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1138_alphabet_board_path",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1139_largest_1_bordered_square",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1140_stone_game_ii",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
