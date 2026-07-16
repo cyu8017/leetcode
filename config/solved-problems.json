@@ -4560,6 +4560,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0761_special_binary_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0762_prime_number_of_set_bits_in_binary_representation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0763_partition_labels",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0764_largest_plus_sign",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0765_couples_holding_hands",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0766_toeplitz_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0767_reorganize_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0768_max_chunks_to_make_sorted_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0769_max_chunks_to_make_sorted",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0770_basic_calculator_iv",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

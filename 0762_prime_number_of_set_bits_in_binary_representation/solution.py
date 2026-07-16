@@ -1,6 +1,8 @@
 ﻿# LeetCode 0762 - Prime Number of Set Bits in Binary Representation
 # https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countPrimeSetBits(self, left: int, right: int) -> int:
+        primes = {2, 3, 5, 7, 11, 13, 17, 19}
+        return sum(num.bit_count() in primes for num in range(left, right + 1))
