@@ -1,13 +1,10 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "maxLevelSum",
   "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
+    "root"
   ],
   "types": {
     "root": "treenode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  }
 }

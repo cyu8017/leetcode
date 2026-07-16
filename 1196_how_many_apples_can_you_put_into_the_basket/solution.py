@@ -1,6 +1,12 @@
-﻿# LeetCode 1196 - How Many Apples Can You Put into the Basket
+# LeetCode 1196 - How Many Apples Can You Put into the Basket
 # https://leetcode.com/problems/how-many-apples-can-you-put-into-the-basket/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxNumberOfApples(self, weight: list[int]) -> int:
+        weight.sort()
+        total = 0
+        for i, w in enumerate(weight):
+            total += w
+            if total > 5000:
+                return i
+        return len(weight)

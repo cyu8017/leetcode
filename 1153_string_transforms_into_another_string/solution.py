@@ -1,6 +1,13 @@
-﻿# LeetCode 1153 - String Transforms Into Another String
+# LeetCode 1153 - String Transforms Into Another String
 # https://leetcode.com/problems/string-transforms-into-another-string/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canConvert(self, str1: str, str2: str) -> bool:
+        if str1 == str2:
+            return True
+        mapping: dict[str, str] = {}
+        for a, b in zip(str1, str2):
+            if a in mapping and mapping[a] != b:
+                return False
+            mapping[a] = b
+        return len(set(str2)) < 26

@@ -6726,6 +6726,294 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "1143_longest_common_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1144_decrease_elements_to_make_array_zigzag",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1145_binary_tree_coloring_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1146_snapshot_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1147_longest_chunked_palindrome_decomposition",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1150_check_if_a_number_is_majority_element_in_a_sorted_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1151_minimum_swaps_to_group_all_1s_together",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1152_analyze_user_website_visit_pattern",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1153_string_transforms_into_another_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1154_day_of_the_year",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1155_number_of_dice_rolls_with_target_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1156_swap_for_longest_repeated_character_substring",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1157_online_majority_element_in_subarray",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1160_find_words_that_can_be_formed_by_characters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1161_maximum_level_sum_of_a_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1162_as_far_from_land_as_possible",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1163_last_substring_in_lexicographical_order",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1165_single_row_keyboard",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1166_design_file_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1167_minimum_cost_to_connect_sticks",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1168_optimize_water_distribution_in_a_village",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1169_invalid_transactions",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1170_compare_strings_by_frequency_of_the_smallest_character",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1171_remove_zero_sum_consecutive_nodes_from_linked_list",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1172_dinner_plate_stacks",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1175_prime_arrangements",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1176_diet_plan_performance",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1177_can_make_palindrome_from_substring",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1178_number_of_valid_words_for_each_puzzle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1180_count_substrings_with_only_one_distinct_letter",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1181_before_and_after_puzzle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1182_shortest_distance_to_target_color",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1183_maximum_number_of_ones",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1184_distance_between_bus_stops",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1185_day_of_the_week",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1186_maximum_subarray_sum_with_one_deletion",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1187_make_array_strictly_increasing",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1188_design_bounded_blocking_queue",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1189_maximum_number_of_balloons",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1190_reverse_substrings_between_each_pair_of_parentheses",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1191_k_concatenation_maximum_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1192_critical_connections_in_a_network",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1195_fizz_buzz_multithreaded",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1196_how_many_apples_can_you_put_into_the_basket",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1197_minimum_knight_moves",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1198_find_smallest_common_element_in_all_rows",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1199_minimum_time_to_build_blocks",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1200_minimum_absolute_difference",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

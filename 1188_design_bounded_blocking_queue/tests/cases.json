@@ -5,13 +5,14 @@
       "operations": [
         "BoundedBlockingQueue",
         "enqueue",
+        "size",
         "dequeue",
+        "size",
+        "enqueue",
+        "enqueue",
+        "size",
         "dequeue",
-        "enqueue",
-        "enqueue",
-        "enqueue",
-        "enqueue",
-        "dequeue"
+        "size"
       ],
       "arguments": [
         [
@@ -22,25 +23,28 @@
         ],
         [],
         [],
+        [],
         [
           0
         ],
         [
           2
         ],
-        [
-          3
-        ],
-        [
-          4
-        ],
+        [],
+        [],
         []
       ],
       "expected": [
+        null,
+        null,
+        1,
         1,
         0,
+        null,
+        null,
         2,
-        2
+        0,
+        1
       ]
     },
     {
@@ -53,7 +57,8 @@
         "dequeue",
         "dequeue",
         "dequeue",
-        "enqueue"
+        "enqueue",
+        "size"
       ],
       "arguments": [
         [
@@ -73,12 +78,18 @@
         [],
         [
           3
-        ]
+        ],
+        []
       ],
       "expected": [
+        null,
+        null,
+        null,
+        null,
         1,
         0,
         2,
+        null,
         1
       ]
     }

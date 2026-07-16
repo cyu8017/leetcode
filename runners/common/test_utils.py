@@ -1005,6 +1005,40 @@ def is_valid_h2o_output(actual: str, water: str) -> bool:
     return True
 
 
+def run_fizz_buzz(module: Any, n: int) -> list[Any]:
+    fb = module.FizzBuzz(n)
+    results: list[Any] = []
+    lock = threading.Lock()
+
+    def print_fizz() -> None:
+        with lock:
+            results.append("fizz")
+
+    def print_buzz() -> None:
+        with lock:
+            results.append("buzz")
+
+    def print_fizzbuzz() -> None:
+        with lock:
+            results.append("fizzbuzz")
+
+    def print_number(value: int) -> None:
+        with lock:
+            results.append(value)
+
+    threads = [
+        threading.Thread(target=fb.fizz, args=(print_fizz,)),
+        threading.Thread(target=fb.buzz, args=(print_buzz,)),
+        threading.Thread(target=fb.fizzbuzz, args=(print_fizzbuzz,)),
+        threading.Thread(target=fb.number, args=(print_number,)),
+    ]
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join(timeout=5)
+    return results
+
+
 def is_valid_max_depth_split(seq: str, bits: list[int]) -> bool:
     if len(bits) != len(seq):
         return False
@@ -1218,6 +1252,8 @@ def run_cases(
             actual = run_zero_even_odd(module, args["n"])
         elif module is not None and config.get("class") == "H2O" and "water" in args:
             actual = run_h2o(module, args["water"])
+        elif module is not None and config.get("class") == "FizzBuzz" and "n" in args:
+            actual = run_fizz_buzz(module, args["n"])
         elif (
             args
             and config.get("class") == "Codec"

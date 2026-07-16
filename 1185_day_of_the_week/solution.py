@@ -1,6 +1,9 @@
-﻿# LeetCode 1185 - Day of the Week
+# LeetCode 1185 - Day of the Week
 # https://leetcode.com/problems/day-of-the-week/
 
+import datetime
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
+        return datetime.date(year, month, day).strftime("%A")
