@@ -1,6 +1,11 @@
-﻿# LeetCode 0961 - N-Repeated Element in Size 2N Array
+# LeetCode 0961 - N-Repeated Element in Size 2N Array
 # https://leetcode.com/problems/n-repeated-element-in-size-2n-array/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def repeatedNTimes(self, nums: list[int]) -> int:
+        seen = set()
+        for x in nums:
+            if x in seen:
+                return x
+            seen.add(x)
+        return -1

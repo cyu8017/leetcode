@@ -1139,10 +1139,18 @@ def run_cases(
                 and mutated is not None
                 and mutated[:expected_count] == expected_prefix
             )
-        elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:
-            ok = trees_equal_any_order(actual, expected)
         elif method_name == "wiggleSort" and isinstance(actual, list) and is_wiggle(actual):
             ok = True
+        elif method_name == "shortestSuperstring" and isinstance(actual, str):
+            ok = len(actual) == len(expected) and all(w in actual for w in args.get("words", []))
+        elif method_name == "pancakeSort" and isinstance(actual, list):
+            # Use a fresh copy; solution may also leave args untouched.
+            start = list(cases_doc["cases"][index - 1]["args"]["arr"])
+            for k in actual:
+                start[:k] = start[:k][::-1]
+            ok = start == sorted(start)
+        elif return_type in {"treenode[]", "string[][]", "string[]", "integer[][]", "integer[]"}:
+            ok = trees_equal_any_order(actual, expected)
         elif nary_tree_compare:
             ok = nary_trees_equal(actual, expected)
         elif deep_equal(actual, expected):

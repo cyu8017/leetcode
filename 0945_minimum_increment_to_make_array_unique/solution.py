@@ -1,6 +1,13 @@
-﻿# LeetCode 0945 - Minimum Increment to Make Array Unique
+# LeetCode 0945 - Minimum Increment to Make Array Unique
 # https://leetcode.com/problems/minimum-increment-to-make-array-unique/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minIncrementForUnique(self, nums: list[int]) -> int:
+        nums.sort()
+        ans = 0
+        for i in range(1, len(nums)):
+            if nums[i] <= nums[i - 1]:
+                need = nums[i - 1] + 1
+                ans += need - nums[i]
+                nums[i] = need
+        return ans

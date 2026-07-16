@@ -1,6 +1,16 @@
-﻿# LeetCode 0941 - Valid Mountain Array
+# LeetCode 0941 - Valid Mountain Array
 # https://leetcode.com/problems/valid-mountain-array/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def validMountainArray(self, arr: list[int]) -> bool:
+        n = len(arr)
+        if n < 3:
+            return False
+        i = 0
+        while i + 1 < n and arr[i] < arr[i + 1]:
+            i += 1
+        if i == 0 or i == n - 1:
+            return False
+        while i + 1 < n and arr[i] > arr[i + 1]:
+            i += 1
+        return i == n - 1
