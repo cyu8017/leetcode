@@ -1,14 +1,14 @@
 {
-  "class": "Node",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "intersect",
   "paramOrder": [
-    "val",
-    "isLeaf",
-    "topLeft",
-    "topRight",
-    "bottomLeft",
-    "bottomRight"
+    "quadTree1",
+    "quadTree2"
   ],
-  "types": null,
+  "types": {
+    "quadTree1": "quadnode",
+    "quadTree2": "quadnode",
+    "return": "quadnode"
+  },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

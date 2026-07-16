@@ -1,6 +1,10 @@
 ﻿# LeetCode 0561 - Array Partition
 # https://leetcode.com/problems/array-partition/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def arrayPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        return sum(nums[::2])

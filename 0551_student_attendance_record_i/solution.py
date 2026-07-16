@@ -1,6 +1,7 @@
 ﻿# LeetCode 0551 - Student Attendance Record I
 # https://leetcode.com/problems/student-attendance-record-i/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkRecord(self, s: str) -> bool:
+        return s.count("A") < 2 and "LLL" not in s

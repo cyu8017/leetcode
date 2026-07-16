@@ -1,13 +1,13 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
+  "class": "Solution",
+  "method": "isSubtree",
   "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
+    "root",
+    "subRoot"
   ],
   "types": {
-    "root": "treenode"
+    "root": "treenode",
+    "subRoot": "treenode"
   },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

@@ -143,67 +143,67 @@ def list_to_nary(values: list[Any]) -> NaryNode | None:
     if not values:
         return None
     root = NaryNode(values[0], [])
-    parents: list[NaryNode] = [root]
-    index = 1
-    if index < len(values) and values[index] is None:
-        index += 1
-
-    while parents:
-        next_parents: list[NaryNode] = []
-        parent_index = 0
-        while index < len(values) and values[index] is None:
+    queue: list[NaryNode] = [root]
+    # Format: [root, null, child-group, null, child-group, ...]
+    index = 2 if len(values) > 1 else 1
+    while queue and index < len(values):
+        node = queue.pop(0)
+        while index < len(values) and values[index] is not None:
+            child = NaryNode(values[index], [])
+            node.children.append(child)
+            queue.append(child)
             index += 1
-        while parent_index < len(parents) and index < len(values):
-            parent = parents[parent_index]
-            segment: list[int] = []
-            while index < len(values) and values[index] is not None:
-                segment.append(values[index])
-                index += 1
-            for value in segment:
-                child = NaryNode(value, [])
-                parent.children.append(child)
-                next_parents.append(child)
-            parent_index += 1
-            if index < len(values) and values[index] is None:
-                index += 1
-                if index < len(values) and values[index] is None:
-                    index += 1
-                    parent_index = len(parents)
-                    break
-        parents = next_parents
-
+        index += 1  # skip the null ending this node's children
     return root
 
 
 def nary_to_list(root: NaryNode | None) -> list[Any]:
     if root is None:
         return []
-    result: list[Any] = [root.val]
-    parents: list[NaryNode] = [root]
-    while parents:
-        next_parents: list[NaryNode] = []
-        segments: list[list[int]] = []
-        for parent in parents:
-            segments.append([child.val for child in parent.children])
-            next_parents.extend(parent.children)
-        if not next_parents:
-            break
-        padding = 0
-        for segment in segments:
-            if not segment:
-                padding += 1
-            else:
-                break
-        result.extend([None] * padding)
-        for segment_index, segment in enumerate(segments):
-            if segment_index < padding:
-                continue
-            if segment:
-                result.extend(segment)
-            if segment_index < len(segments) - 1:
-                result.append(None)
-        parents = next_parents
+    result: list[Any] = [root.val, None]
+    queue: list[NaryNode] = [root]
+    while queue:
+        node = queue.pop(0)
+        for child in node.children:
+            result.append(child.val)
+            queue.append(child)
+        result.append(None)
+    while result and result[-1] is None:
+        result.pop()
     return result
+
+
+def list_to_quad(values: list[Any]) -> QuadNode | None:
+    if not values:
+        return None
+
+    def parse(data: Any) -> QuadNode | None:
+        if data is None:
+            return None
+        return QuadNode(bool(data[1]), bool(data[0]))
+
+    root = parse(values[0])
+    if root is None:
+        return None
+
+    queue: list[QuadNode | None] = [root]
+    index = 1
+    while queue and index < len(values):
+        node = queue.pop(0)
+        if node is None:
+            continue
+        children: list[QuadNode | None] = []
+        for _ in range(4):
+            if index < len(values):
+                child = parse(values[index])
+                index += 1
+            else:
+                child = None
+            children.append(child)
+            queue.append(child)
+        if not node.isLeaf:
+            node.topLeft, node.topRight, node.bottomLeft, node.bottomRight = children
+    return root
 
 
 def quad_tree_to_list(root: QuadNode | None) -> list[Any]:
@@ -609,6 +609,8 @@ def convert_arg(value: Any, type_name: str | None) -> Any:
         return json_to_nested_list(value)
     if type_name == "narynode":
         return list_to_nary(value)
+    if type_name == "quadnode":
+        return list_to_quad(value)
     if type_name == "multilevelnode":
         return list_to_multilevel(value)
     return value
