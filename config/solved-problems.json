@@ -4980,6 +4980,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0831_masking_personal_information",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0832_flipping_an_image",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0833_find_and_replace_in_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0834_sum_of_distances_in_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0835_image_overlap",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0836_rectangle_overlap",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0837_new_21_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0838_push_dominoes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0839_similar_string_groups",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0840_magic_squares_in_grid",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }
