@@ -1,6 +1,7 @@
 ﻿# LeetCode 0796 - Rotate String
 # https://leetcode.com/problems/rotate-string/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def rotateString(self, s: str, goal: str) -> bool:
+        return len(s) == len(goal) and goal in s + s
