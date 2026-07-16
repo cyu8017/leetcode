@@ -2,19 +2,19 @@
   "cases": [
     {
       "args": {
-        "code": "This is the first line ]]>"
+        "code": "<DIV>This is the first line <![CDATA[<div>]]></DIV>"
       },
       "expected": true
     },
     {
       "args": {
-        "code": ">>  ![cdata[]] ]>]]>]]>>]"
+        "code": "<DIV>>>  ![cdata[]] <![CDATA[<div>]>]]>]]>>]</DIV>"
       },
       "expected": true
     },
     {
       "args": {
-        "code": "      "
+        "code": "<A>  <B> </A> </B>"
       },
       "expected": false
     }

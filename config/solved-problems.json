@@ -3540,6 +3540,66 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0591_tag_validator",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0592_fraction_addition_and_subtraction",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0593_valid_square",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0594_longest_harmonious_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0595_big_countries",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0596_classes_with_at_least_5_students",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0597_friend_requests_i_overall_acceptance_rate",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0598_range_addition_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0599_minimum_index_sum_of_two_lists",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0600_non_negative_integers_without_consecutive_ones",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

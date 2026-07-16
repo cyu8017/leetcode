@@ -1,6 +1,12 @@
 ﻿# LeetCode 0598 - Range Addition II
 # https://leetcode.com/problems/range-addition-ii/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        for a, b in ops:
+            m = min(m, a)
+            n = min(n, b)
+        return m * n
