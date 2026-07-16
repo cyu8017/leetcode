@@ -1,6 +1,6 @@
-﻿# LeetCode 1663 - Smallest String With A Given Numeric Value
-# https://leetcode.com/problems/smallest-string-with-a-given-numeric-value/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getSmallestString(self, n, k):
+        a=["a"]*n; k-=n
+        for i in range(n-1,-1,-1):
+            d=min(25,k);a[i]=chr(97+d);k-=d
+        return "".join(a)

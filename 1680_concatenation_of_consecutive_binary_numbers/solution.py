@@ -1,6 +1,7 @@
-﻿# LeetCode 1680 - Concatenation of Consecutive Binary Numbers
-# https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def concatenatedBinary(self, n):
+        ans=bits=0;mod=1000000007
+        for x in range(1,n+1):
+            if x&(x-1)==0:bits+=1
+            ans=((ans<<bits)+x)%mod
+        return ans

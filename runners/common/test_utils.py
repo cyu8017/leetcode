@@ -1390,6 +1390,47 @@ def run_cases(
             q_node = find_tree_node(root, args["q"])
             result = method(root, p_node, q_node)
             actual = result.val if result else None
+        elif args and "root" in args and "nodes" in args and method_name == "lowestCommonAncestor":
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            node_list = [find_tree_node(root, value) for value in args["nodes"]]
+            result = method(root, node_list)
+            actual = result.val if result else None
+        elif args and method_name == "correctBinaryTree" and "fromNode" in args and "toNode" in args:
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            from_node = find_tree_node(root, args["fromNode"])
+            to_node = find_tree_node(root, args["toNode"])
+            from_node.right = to_node
+            actual = tree_to_list(method(root))
+        elif args and method_name == "flipBinaryTree" and "leaf" in args:
+            method = getattr(solution, method_name)
+            # Build Node tree with parent pointers from level-order array.
+            values = args["root"]
+            if not values:
+                actual = []
+            else:
+                class _PNode:
+                    def __init__(self, val=0):
+                        self.val = val
+                        self.left = None
+                        self.right = None
+                        self.parent = None
+
+                nodes = [_PNode(v) if v is not None else None for v in values]
+                for i, node in enumerate(nodes):
+                    if node is None:
+                        continue
+                    left_i, right_i = 2 * i + 1, 2 * i + 2
+                    if left_i < len(nodes) and nodes[left_i] is not None:
+                        node.left = nodes[left_i]
+                        nodes[left_i].parent = node
+                    if right_i < len(nodes) and nodes[right_i] is not None:
+                        node.right = nodes[right_i]
+                        nodes[right_i].parent = node
+                root = nodes[0]
+                leaf = next(n for n in nodes if n is not None and n.val == args["leaf"])
+                actual = tree_to_list(method(root, leaf))
         elif args and "root" in args and "target" in args and method_name == "distanceK":
             method = getattr(solution, method_name)
             root = list_to_tree(args["root"])

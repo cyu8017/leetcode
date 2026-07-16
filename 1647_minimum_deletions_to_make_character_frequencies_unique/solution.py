@@ -1,6 +1,8 @@
-﻿# LeetCode 1647 - Minimum Deletions to Make Character Frequencies Unique
-# https://leetcode.com/problems/minimum-deletions-to-make-character-frequencies-unique/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minDeletions(self, s):
+        from collections import Counter
+        used=set(); ans=0
+        for x in Counter(s).values():
+            while x and x in used: x-=1; ans+=1
+            used.add(x)
+        return ans

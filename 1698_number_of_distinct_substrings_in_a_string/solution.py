@@ -1,6 +1,9 @@
-﻿# LeetCode 1698 - Number of Distinct Substrings in a String
-# https://leetcode.com/problems/number-of-distinct-substrings-in-a-string/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countDistinct(self, s):
+        root={};ans=0
+        for i in range(len(s)):
+            node=root
+            for c in s[i:]:
+                if c not in node:node[c]={};ans+=1
+                node=node[c]
+        return ans

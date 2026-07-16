@@ -1,6 +1,7 @@
-﻿# LeetCode 1653 - Minimum Deletions to Make String Balanced
-# https://leetcode.com/problems/minimum-deletions-to-make-string-balanced/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimumDeletions(self, s):
+        b=ans=0
+        for c in s:
+            if c=="b": b+=1
+            else: ans=min(ans+1,b)
+        return ans

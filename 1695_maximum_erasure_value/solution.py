@@ -1,6 +1,9 @@
-﻿# LeetCode 1695 - Maximum Erasure Value
-# https://leetcode.com/problems/maximum-erasure-value/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumUniqueSubarray(self, nums):
+        seen={};left=cur=best=0
+        for right,x in enumerate(nums):
+            if x in seen and seen[x]>=left:
+                stop=seen[x]
+                while left<=stop:cur-=nums[left];left+=1
+            seen[x]=right;cur+=x;best=max(best,cur)
+        return best

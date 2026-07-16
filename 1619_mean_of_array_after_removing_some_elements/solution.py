@@ -1,6 +1,4 @@
-﻿# LeetCode 1619 - Mean of Array After Removing Some Elements
-# https://leetcode.com/problems/mean-of-array-after-removing-some-elements/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def trimMean(self, arr):
+        arr.sort(); k = len(arr) // 20
+        return sum(arr[k:len(arr)-k]) / (len(arr) - 2*k)

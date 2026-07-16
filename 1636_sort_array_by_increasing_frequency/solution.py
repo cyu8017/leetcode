@@ -1,6 +1,5 @@
-﻿# LeetCode 1636 - Sort Array by Increasing Frequency
-# https://leetcode.com/problems/sort-array-by-increasing-frequency/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def frequencySort(self, nums):
+        from collections import Counter
+        count=Counter(nums)
+        return sorted(nums,key=lambda x:(count[x],-x))

@@ -1,6 +1,7 @@
-﻿# LeetCode 1603 - Design Parking System
-# https://leetcode.com/problems/design-parking-system/
-
-class Solution:
-    def solve(self) -> None:
-        pass
+class ParkingSystem:
+    def __init__(self, big, medium, small):
+        self.spaces = [0, big, medium, small]
+    def addCar(self, carType):
+        if self.spaces[carType] == 0: return False
+        self.spaces[carType] -= 1
+        return True

@@ -1,6 +1,5 @@
-﻿# LeetCode 1657 - Determine if Two Strings Are Close
-# https://leetcode.com/problems/determine-if-two-strings-are-close/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def closeStrings(self, word1, word2):
+        from collections import Counter
+        a,b=Counter(word1),Counter(word2)
+        return a.keys()==b.keys() and sorted(a.values())==sorted(b.values())

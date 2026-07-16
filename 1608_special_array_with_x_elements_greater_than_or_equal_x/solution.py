@@ -1,6 +1,3 @@
-﻿# LeetCode 1608 - Special Array With X Elements Greater Than or Equal X
-# https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def specialArray(self, nums):
+        return next((x for x in range(len(nums) + 1) if sum(v >= x for v in nums) == x), -1)

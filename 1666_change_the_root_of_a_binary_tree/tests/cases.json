@@ -2,57 +2,17 @@
   "cases": [
     {
       "args": {
-        "root": [
-          3,
-          5,
-          1,
-          6,
-          2,
-          0,
-          8,
-          null,
-          null,
-          7,
-          4
-        ],
+        "root": [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4],
         "leaf": 7
       },
-      "expected": [
-        7,
-        2,
-        null,
-        5,
-        4,
-        3,
-        6,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        0,
-        8
-      ]
+      "expected": [7, 2, null, 5, 4, 3, 6, null, null, null, 1, null, null, 0, 8]
     },
     {
       "args": {
-        "root": [
-          3,
-          5,
-          1,
-          6,
-          2,
-          0,
-          8,
-          null,
-          null,
-          7,
-          4
-        ],
+        "root": [3, 5, 1, 6, 2, 0, 8, null, null, 7, 4],
         "leaf": 0
       },
-      "expected": "[0,1,null,3,8,5,null,null,null,6,2,null,null,7,4]\n**Constraints:**\n- The number of nodes in the tree is in the range `[2, 100]`.\n- `-10^{9} <= Node.val <= 10^{9}`\n- All `Node.val` are **unique**.\n- `leaf` exist in the tree.\n---"
+      "expected": [0, 1, null, 3, 8, 5, null, null, null, 6, 2, null, null, 7, 4]
     }
   ]
 }

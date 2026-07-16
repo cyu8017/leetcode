@@ -1,6 +1,6 @@
-﻿# LeetCode 1685 - Sum of Absolute Differences in a Sorted Array
-# https://leetcode.com/problems/sum-of-absolute-differences-in-a-sorted-array/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getSumAbsoluteDifferences(self, nums):
+        total=sum(nums);left=0;n=len(nums);ans=[]
+        for i,x in enumerate(nums):
+            ans.append(x*i-left+(total-left-x)-x*(n-i-1));left+=x
+        return ans

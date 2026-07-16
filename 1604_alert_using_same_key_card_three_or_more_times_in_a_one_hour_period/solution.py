@@ -1,6 +1,11 @@
-﻿# LeetCode 1604 - Alert Using Same Key-Card Three or More Times in a One Hour Period
-# https://leetcode.com/problems/alert-using-same-key-card-three-or-more-times-in-a-one-hour-period/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def alertNames(self, keyName, keyTime):
+        from collections import defaultdict
+        times = defaultdict(list)
+        for name, t in zip(keyName, keyTime):
+            h, m = map(int, t.split(":")); times[name].append(h * 60 + m)
+        ans = []
+        for name, a in times.items():
+            a.sort()
+            if any(a[i + 2] - a[i] <= 60 for i in range(len(a) - 2)): ans.append(name)
+        return sorted(ans)

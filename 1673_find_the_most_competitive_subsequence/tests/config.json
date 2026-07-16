@@ -4,9 +4,5 @@
   "paramOrder": [
     "nums",
     "k"
-  ],
-  "types": {
-    "return": "integer[]"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  ]
 }

@@ -1,12 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "root",
-    "leaf"
-  ],
+  "method": "flipBinaryTree",
+  "paramOrder": ["root", "leaf"],
   "types": {
-    "root": "treenode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+    "root": "treenode",
+    "return": "treenode"
+  }
 }

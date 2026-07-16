@@ -1,6 +1,6 @@
-﻿# LeetCode 1646 - Get Maximum in Generated Array
-# https://leetcode.com/problems/get-maximum-in-generated-array/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getMaximumGenerated(self, n):
+        if n<2: return n
+        a=[0]*(n+1); a[1]=1
+        for i in range(2,n+1): a[i]=a[i//2] if i%2==0 else a[i//2]+a[i//2+1]
+        return max(a)

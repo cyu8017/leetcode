@@ -6,7 +6,5 @@
     "portsCount",
     "maxBoxes",
     "maxWeight"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  ]
 }

@@ -1,10 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "addPoly",
   "paramOrder": [
     "poly1",
     "poly2"
   ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "types": null
 }

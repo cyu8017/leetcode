@@ -1,13 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "lowestCommonAncestor",
   "paramOrder": [
-    "root",
     "p",
     "q"
   ],
-  "types": {
-    "root": "treenode"
-  },
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "types": null
 }

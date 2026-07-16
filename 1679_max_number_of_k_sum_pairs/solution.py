@@ -1,6 +1,8 @@
-﻿# LeetCode 1679 - Max Number of K-Sum Pairs
-# https://leetcode.com/problems/max-number-of-k-sum-pairs/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxOperations(self, nums, k):
+        from collections import Counter
+        c=Counter();ans=0
+        for x in nums:
+            if c[k-x]:c[k-x]-=1;ans+=1
+            else:c[x]+=1
+        return ans

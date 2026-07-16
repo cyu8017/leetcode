@@ -1,6 +1,7 @@
-﻿# LeetCode 1624 - Largest Substring Between Two Equal Characters
-# https://leetcode.com/problems/largest-substring-between-two-equal-characters/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxLengthBetweenEqualCharacters(self, s):
+        first = {}; ans = -1
+        for i, ch in enumerate(s):
+            if ch in first: ans = max(ans, i - first[ch] - 1)
+            else: first[ch] = i
+        return ans

@@ -1,6 +1,8 @@
-﻿# LeetCode 1700 - Number of Students Unable to Eat Lunch
-# https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countStudents(self, students, sandwiches):
+        from collections import Counter
+        c=Counter(students)
+        for i,x in enumerate(sandwiches):
+            if not c[x]:return len(students)-i
+            c[x]-=1
+        return 0

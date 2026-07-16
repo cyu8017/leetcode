@@ -1,6 +1,6 @@
-﻿# LeetCode 1630 - Arithmetic Subarrays
-# https://leetcode.com/problems/arithmetic-subarrays/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkArithmeticSubarrays(self, nums, l, r):
+        ans = []
+        for a, b in zip(l, r):
+            x = sorted(nums[a:b+1]); ans.append(len(x) < 3 or len(set(x[i+1]-x[i] for i in range(len(x)-1))) == 1)
+        return ans

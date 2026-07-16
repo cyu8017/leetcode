@@ -1,6 +1,5 @@
-﻿# LeetCode 1668 - Maximum Repeating Substring
-# https://leetcode.com/problems/maximum-repeating-substring/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxRepeating(self, sequence, word):
+        k=0
+        while word*(k+1) in sequence:k+=1
+        return k

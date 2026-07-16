@@ -1,6 +1,10 @@
-﻿# LeetCode 1642 - Furthest Building You Can Reach
-# https://leetcode.com/problems/furthest-building-you-can-reach/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def furthestBuilding(self, heights, bricks, ladders):
+        import heapq
+        climbs=[]
+        for i,d in enumerate(b-a for a,b in zip(heights,heights[1:])):
+            if d<=0: continue
+            heapq.heappush(climbs,d)
+            if len(climbs)>ladders: bricks-=heapq.heappop(climbs)
+            if bricks<0: return i
+        return len(heights)-1
