@@ -5160,6 +5160,246 @@
       "languages": [
         "python"
       ]
+    },
+    {
+      "folder": "0861_score_after_flipping_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0862_shortest_subarray_with_sum_at_least_k",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0863_all_nodes_distance_k_in_binary_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0864_shortest_path_to_get_all_keys",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0865_smallest_subtree_with_all_the_deepest_nodes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0866_prime_palindrome",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0867_transpose_matrix",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0868_binary_gap",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0869_reordered_power_of_2",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0870_advantage_shuffle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0871_minimum_number_of_refueling_stops",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0872_leaf_similar_trees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0873_length_of_longest_fibonacci_subsequence",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0874_walking_robot_simulation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0875_koko_eating_bananas",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0876_middle_of_the_linked_list",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0877_stone_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0878_nth_magical_number",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0879_profitable_schemes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0880_decoded_string_at_index",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0881_boats_to_save_people",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0882_reachable_nodes_in_subdivided_graph",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0883_projection_area_of_3d_shapes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0884_uncommon_words_from_two_sentences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0885_spiral_matrix_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0886_possible_bipartition",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0887_super_egg_drop",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0888_fair_candy_swap",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0889_construct_binary_tree_from_preorder_and_postorder_traversal",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0890_find_and_replace_pattern",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0891_sum_of_subsequence_widths",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0892_surface_area_of_3d_shapes",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0893_groups_of_special_equivalent_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0894_all_possible_full_binary_trees",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0895_maximum_frequency_stack",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0896_monotonic_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0897_increasing_order_search_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0898_bitwise_ors_of_subarrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0899_orderly_queue",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "0900_rle_iterator",
+      "languages": [
+        "python"
+      ]
     }
   ]
 }

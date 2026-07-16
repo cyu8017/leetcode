@@ -1,6 +1,14 @@
-﻿# LeetCode 0881 - Boats to Save People
+# LeetCode 0881 - Boats to Save People
 # https://leetcode.com/problems/boats-to-save-people/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def numRescueBoats(self, people: list[int], limit: int) -> int:
+        people.sort()
+        i, j = 0, len(people) - 1
+        boats = 0
+        while i <= j:
+            if people[i] + people[j] <= limit:
+                i += 1
+            j -= 1
+            boats += 1
+        return boats

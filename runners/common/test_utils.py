@@ -921,6 +921,11 @@ def run_cases(
             q_node = find_tree_node(root, args["q"])
             result = method(root, p_node, q_node)
             actual = result.val if result else None
+        elif args and "root" in args and "target" in args and method_name == "distanceK":
+            method = getattr(solution, method_name)
+            root = list_to_tree(args["root"])
+            target = find_tree_node(root, args["target"])
+            actual = method(root, target, args["k"])
         elif args and "head" in args and "node" in args and method_name == "deleteNode":
             method = getattr(solution, method_name)
             head = list_to_listnode(args["head"])

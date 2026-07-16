@@ -1,6 +1,13 @@
-﻿# LeetCode 0887 - Super Egg Drop
+# LeetCode 0887 - Super Egg Drop
 # https://leetcode.com/problems/super-egg-drop/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def superEggDrop(self, k: int, n: int) -> int:
+        # dp[moves][eggs] = max floors coverable
+        dp = [0] * (k + 1)
+        moves = 0
+        while dp[k] < n:
+            moves += 1
+            for eggs in range(k, 0, -1):
+                dp[eggs] = dp[eggs] + dp[eggs - 1] + 1
+        return moves
