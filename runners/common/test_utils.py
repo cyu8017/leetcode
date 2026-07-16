@@ -862,6 +862,31 @@ def robot_cleaned_all(robot: MockRobot) -> bool:
     return True
 
 
+class MockMaster:
+    """Simulates LeetCode's Master API for problem 0843."""
+
+    def __init__(self, secret: str, words: list[str], allowed_guesses: int):
+        self.secret = secret
+        self.words = set(words)
+        self.allowed_guesses = allowed_guesses
+        self.guesses = 0
+        self.found = False
+
+    def guess(self, word: str) -> int:
+        self.guesses += 1
+        if word not in self.words:
+            return -1
+        matches = sum(a == b for a, b in zip(word, self.secret))
+        if matches == len(self.secret):
+            self.found = True
+        return matches
+
+    def result_message(self) -> str:
+        if self.found and self.guesses <= self.allowed_guesses:
+            return "You guessed the secret word correctly."
+        return "Either you took too many guesses, or you did not find the secret word."
+
+
 def run_cases(
     solution: Any, config: dict[str, Any], cases_doc: dict[str, Any], module: Any | None = None
 ) -> tuple[int, int]:
@@ -1023,6 +1048,16 @@ def run_cases(
             robot = MockRobot(args["room"], args["row"], args["col"])
             method(robot)
             actual = "Robot cleaned all rooms." if robot_cleaned_all(robot) else "Robot missed rooms."
+        elif (
+            args
+            and "secret" in args
+            and "words" in args
+            and method_name == "findSecretWord"
+        ):
+            method = getattr(solution, method_name)
+            master = MockMaster(args["secret"], args["words"], args["allowedGuesses"])
+            method(args["words"], master)
+            actual = master.result_message()
         elif (
             args
             and config.get("class") == "Codec"
