@@ -2,8 +2,14 @@
 // https://leetcode.com/problems/decode-xored-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} encoded
+ * @param {number} first
+ * @return {number[]}
  */
-var solve = function(input) {
+var decode = function(encoded, first) {
+    const ans = [first];
+    for (const value of encoded) {
+        ans.push(ans[ans.length - 1] ^ value);
+    }
+    return ans;
 };

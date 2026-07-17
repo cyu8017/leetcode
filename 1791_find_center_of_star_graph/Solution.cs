@@ -2,6 +2,9 @@
 // https://leetcode.com/problems/find-center-of-star-graph/
 
 public class Solution {
-    public void Solve() {
+    public int FindCenter(int[][] edges) {
+        int a = edges[0][0], b = edges[0][1];
+        int c = edges[1][0], d = edges[1][1];
+        return (a == c || a == d) ? a : b;
     }
 }

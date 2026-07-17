@@ -36,6 +36,18 @@ def java_literal(value):
         if all(isinstance(item, str) for item in value):
             return "new String[] { " + ", ".join(java_literal(item) for item in value) + " }"
         if all(isinstance(item, list) for item in value):
+            if all(isinstance(cell, int) and not isinstance(cell, bool) for item in value for cell in item):
+                rows = ", ".join(
+                    "{ " + ", ".join(str(cell) for cell in item) + " }" if item else "{}"
+                    for item in value
+                )
+                return "new int[][] { " + rows + " }"
+            if all(isinstance(cell, str) for item in value for cell in item):
+                rows = ", ".join(
+                    "{ " + ", ".join(java_literal(cell) for cell in item) + " }" if item else "{}"
+                    for item in value
+                )
+                return "new String[][] { " + rows + " }"
             return "new Object[] { " + ", ".join(java_literal(item) for item in value) + " }"
         return "new Object[] { " + ", ".join(java_literal(item) for item in value) + " }"
     raise TypeError(f"Unsupported literal type: {type(value)!r}")
@@ -546,7 +558,8 @@ def main() -> int:
     temp_dir = Path(tempfile.mkdtemp())
     try:
         for java_file in problem_dir.glob("*.java"):
-            shutil.copy2(java_file, temp_dir / java_file.name)
+            text = java_file.read_text(encoding="utf-8-sig")
+            (temp_dir / java_file.name).write_text(text, encoding="utf-8")
         source = (
             build_design_test_source(config, cases_doc)
             if is_design

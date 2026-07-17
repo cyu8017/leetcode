@@ -2,6 +2,16 @@
 // https://leetcode.com/problems/maximum-subarray-sum-after-one-operation/
 
 class Solution {
-    public void solve() {
+    public int maxSumAfterOperation(int[] nums) {
+        long noSquare = 0;
+        long oneSquare = 0;
+        long best = Long.MIN_VALUE;
+        for (int value : nums) {
+            long v = value;
+            oneSquare = Math.max(Math.max(oneSquare + v, noSquare + v * v), v * v);
+            noSquare = Math.max(noSquare + v, v);
+            best = Math.max(best, oneSquare);
+        }
+        return (int) best;
     }
 }

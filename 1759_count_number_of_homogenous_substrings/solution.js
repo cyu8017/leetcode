@@ -2,8 +2,21 @@
 // https://leetcode.com/problems/count-number-of-homogenous-substrings/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number}
  */
-var solve = function(input) {
+var countHomogenous = function(s) {
+    const MOD = 1000000007;
+    let ans = 0;
+    let i = 0;
+    while (i < s.length) {
+        let j = i;
+        while (j < s.length && s[j] === s[i]) {
+            j++;
+        }
+        const length = j - i;
+        ans = (ans + (length * (length + 1)) / 2) % MOD;
+        i = j;
+    }
+    return ans;
 };

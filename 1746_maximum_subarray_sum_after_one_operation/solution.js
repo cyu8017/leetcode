@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/maximum-subarray-sum-after-one-operation/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var maxSumAfterOperation = function(nums) {
+    let noSquare = 0;
+    let oneSquare = 0;
+    let best = -Infinity;
+    for (const value of nums) {
+        oneSquare = Math.max(oneSquare + value, noSquare + value * value, value * value);
+        noSquare = Math.max(noSquare + value, value);
+        best = Math.max(best, oneSquare);
+    }
+    return best;
 };

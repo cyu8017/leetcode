@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/buildings-with-an-ocean-view/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} heights
+ * @return {number[]}
  */
-var solve = function(input) {
+var findBuildings = function(heights) {
+    const ans = [];
+    let tallest = 0;
+    for (let i = heights.length - 1; i >= 0; i--) {
+        if (heights[i] > tallest) {
+            ans.push(i);
+            tallest = heights[i];
+        }
+    }
+    return ans.reverse();
 };

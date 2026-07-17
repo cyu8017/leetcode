@@ -2,5 +2,13 @@
 // https://leetcode.com/problems/largest-subarray-length-k/
 
 object Solution {
-  def solve(): Unit = {}
+  def largestSubarray(nums: Array[Int], k: Int): Array[Int] = {
+    var start = 0
+    for (i <- 1 to nums.length - k) {
+      if (nums(i) > nums(start)) {
+        start = i
+      }
+    }
+    nums.slice(start, start + k)
+  }
 }

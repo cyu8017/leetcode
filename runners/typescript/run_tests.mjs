@@ -32,7 +32,7 @@ if (!check.canRun) {
   process.exit(check.exitCode);
 }
 
-const tsc = spawnSync("npx", ["--yes", "typescript", "--", "--target", "ES2020", "--module", "CommonJS", "--outDir", path.join(problemDir, ".test-build"), tsFile], {
+const tsc = spawnSync("npx", ["--yes", "--package", "typescript", "tsc", "--target", "ES2020", "--module", "CommonJS", "--outDir", path.join(problemDir, ".test-build"), tsFile], {
   cwd: problemDir,
   shell: true,
   stdio: "inherit",

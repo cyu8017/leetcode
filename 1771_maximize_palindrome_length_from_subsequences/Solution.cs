@@ -2,6 +2,25 @@
 // https://leetcode.com/problems/maximize-palindrome-length-from-subsequences/
 
 public class Solution {
-    public void Solve() {
+    public int LongestPalindrome(string word1, string word2) {
+        string s = word1 + word2;
+        int n = s.Length;
+        int n1 = word1.Length;
+        int[,] dp = new int[n, n];
+        int ans = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            dp[i, i] = 1;
+            for (int j = i + 1; j < n; j++) {
+                if (s[i] == s[j]) {
+                    dp[i, j] = (j == i + 1) ? 2 : dp[i + 1, j - 1] + 2;
+                    if (i < n1 && n1 <= j) {
+                        ans = System.Math.Max(ans, dp[i, j]);
+                    }
+                } else {
+                    dp[i, j] = System.Math.Max(dp[i + 1, j], dp[i, j - 1]);
+                }
+            }
+        }
+        return ans;
     }
 }

@@ -377,7 +377,7 @@ end
 
 def resolve_callable(config)
   method_name = config["method"]
-  snake_method = method_name.gsub(/([A-Z])/, "_\1").downcase.sub(/^_/, "")
+  snake_method = method_name.gsub(/([A-Z])/, '_\1').downcase.sub(/^_/, "")
   class_name = config["class"] || "Solution"
 
   if Object.const_defined?(class_name)

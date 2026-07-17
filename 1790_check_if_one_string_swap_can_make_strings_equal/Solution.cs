@@ -2,6 +2,14 @@
 // https://leetcode.com/problems/check-if-one-string-swap-can-make-strings-equal/
 
 public class Solution {
-    public void Solve() {
+    public bool AreAlmostEqual(string s1, string s2) {
+        var diff = new List<int>();
+        for (int i = 0; i < s1.Length; i++) {
+            if (s1[i] != s2[i]) diff.Add(i);
+        }
+        if (diff.Count == 0) return true;
+        return diff.Count == 2
+            && s1[diff[0]] == s2[diff[1]]
+            && s1[diff[1]] == s2[diff[0]];
     }
 }

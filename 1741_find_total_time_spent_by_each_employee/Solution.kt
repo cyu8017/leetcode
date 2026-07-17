@@ -2,6 +2,10 @@
 // https://leetcode.com/problems/find-total-time-spent-by-each-employee/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "SELECT event_day AS day, emp_id, SUM(out_time - in_time) AS total_time\n" +
+            "FROM Employees\n" +
+            "GROUP BY event_day, emp_id;\n" +
+            ""
     }
 }

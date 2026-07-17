@@ -2,8 +2,20 @@
 // https://leetcode.com/problems/number-of-rectangles-that-can-form-the-largest-square/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} rectangles
+ * @return {number}
  */
-var solve = function(input) {
+var countGoodRectangles = function(rectangles) {
+    let best = 0;
+    let count = 0;
+    for (const [a, b] of rectangles) {
+        const side = Math.min(a, b);
+        if (side > best) {
+            best = side;
+            count = 1;
+        } else if (side === best) {
+            count++;
+        }
+    }
+    return count;
 };

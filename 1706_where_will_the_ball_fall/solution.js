@@ -2,8 +2,24 @@
 // https://leetcode.com/problems/where-will-the-ball-fall/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} grid
+ * @return {number[]}
  */
-var solve = function(input) {
+var findBall = function(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+    const ans = [];
+    for (let start = 0; start < n; start++) {
+        let col = start;
+        for (let row = 0; row < m; row++) {
+            const next = col + grid[row][col];
+            if (next < 0 || next === n || grid[row][next] !== grid[row][col]) {
+                col = -1;
+                break;
+            }
+            col = next;
+        }
+        ans.push(col);
+    }
+    return ans;
 };

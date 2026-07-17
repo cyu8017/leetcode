@@ -2,5 +2,8 @@
 // https://leetcode.com/problems/recyclable-and-low-fat-products/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT product_id
+FROM Products
+WHERE low_fats = 'Y' AND recyclable = 'Y';
+"""
 }

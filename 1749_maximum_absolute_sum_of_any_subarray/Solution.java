@@ -2,6 +2,15 @@
 // https://leetcode.com/problems/maximum-absolute-sum-of-any-subarray/
 
 class Solution {
-    public void solve() {
+    public int maxAbsoluteSum(int[] nums) {
+        int prefix = 0;
+        int low = 0;
+        int high = 0;
+        for (int value : nums) {
+            prefix += value;
+            low = Math.min(low, prefix);
+            high = Math.max(high, prefix);
+        }
+        return high - low;
     }
 }

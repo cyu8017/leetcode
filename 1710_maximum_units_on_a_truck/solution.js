@@ -2,8 +2,20 @@
 // https://leetcode.com/problems/maximum-units-on-a-truck/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} boxTypes
+ * @param {number} truckSize
+ * @return {number}
  */
-var solve = function(input) {
+var maximumUnits = function(boxTypes, truckSize) {
+    boxTypes.sort((a, b) => b[1] - a[1]);
+    let total = 0;
+    for (const [count, units] of boxTypes) {
+        const take = Math.min(count, truckSize);
+        total += take * units;
+        truckSize -= take;
+        if (truckSize === 0) {
+            break;
+        }
+    }
+    return total;
 };

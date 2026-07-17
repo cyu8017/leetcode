@@ -2,6 +2,15 @@
 // https://leetcode.com/problems/determine-if-string-halves-are-alike/
 
 public class Solution {
-    public void Solve() {
+    public bool HalvesAreAlike(string s) {
+        const string vowels = "aeiouAEIOU";
+        int mid = s.Length / 2;
+        int balance = 0;
+        for (int i = 0; i < s.Length; i++) {
+            if (vowels.IndexOf(s[i]) >= 0) {
+                balance += i < mid ? 1 : -1;
+            }
+        }
+        return balance == 0;
     }
 }

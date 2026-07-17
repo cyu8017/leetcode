@@ -1,9 +1,16 @@
-﻿// LeetCode 1701 - Average Waiting Time
+// LeetCode 1701 - Average Waiting Time
 // https://leetcode.com/problems/average-waiting-time/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} customers
+ * @return {number}
  */
-var solve = function(input) {
+var averageWaitingTime = function(customers) {
+    let current = 0;
+    let total = 0;
+    for (const [arrival, cook] of customers) {
+        current = Math.max(current, arrival) + cook;
+        total += current - arrival;
+    }
+    return total / customers.length;
 };

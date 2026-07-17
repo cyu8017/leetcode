@@ -1,6 +1,17 @@
 ﻿// LeetCode 1738 - Find Kth Largest XOR Coordinate Value
 // https://leetcode.com/problems/find-kth-largest-xor-coordinate-value/
 
-function solve(input: unknown): unknown {
-    return null;
+function kthLargestValue(matrix: number[][], k: number): number {
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+    const pref: number[][] = Array.from({ length: rows + 1 }, () => new Array(cols + 1).fill(0));
+    const values: number[] = [];
+    for (let r = 1; r <= rows; r++) {
+        for (let c = 1; c <= cols; c++) {
+            pref[r][c] = pref[r - 1][c] ^ pref[r][c - 1] ^ pref[r - 1][c - 1] ^ matrix[r - 1][c - 1];
+            values.push(pref[r][c]);
+        }
+    }
+    values.sort((x, y) => y - x);
+    return values[k - 1];
 }

@@ -2,8 +2,25 @@
 // https://leetcode.com/problems/find-nearest-point-that-has-the-same-x-or-y-coordinate/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} x
+ * @param {number} y
+ * @param {number[][]} points
+ * @return {number}
  */
-var solve = function(input) {
+var nearestValidPoint = function(x, y, points) {
+    let best = Infinity;
+    let ans = -1;
+    for (let i = 0; i < points.length; i++) {
+        const px = points[i][0];
+        const py = points[i][1];
+        if (px !== x && py !== y) {
+            continue;
+        }
+        const dist = Math.abs(px - x) + Math.abs(py - y);
+        if (dist < best) {
+            best = dist;
+            ans = i;
+        }
+    }
+    return ans;
 };

@@ -2,8 +2,25 @@
 // https://leetcode.com/problems/sum-of-beauty-of-all-substrings/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number}
  */
-var solve = function(input) {
+var beautySum = function(s) {
+    let ans = 0;
+    for (let i = 0; i < s.length; i++) {
+        const freq = new Array(26).fill(0);
+        for (let j = i; j < s.length; j++) {
+            freq[s.charCodeAt(j) - 97]++;
+            let lo = Infinity;
+            let hi = 0;
+            for (const count of freq) {
+                if (count > 0) {
+                    if (count < lo) lo = count;
+                    if (count > hi) hi = count;
+                }
+            }
+            ans += hi - lo;
+        }
+    }
+    return ans;
 };

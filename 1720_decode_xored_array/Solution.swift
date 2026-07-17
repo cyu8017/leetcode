@@ -2,6 +2,12 @@
 // https://leetcode.com/problems/decode-xored-array/
 
 class Solution {
-    func solve() {
+    func decode(_ encoded: [Int], _ first: Int) -> [Int] {
+        var ans = [first]
+        ans.reserveCapacity(encoded.count + 1)
+        for value in encoded {
+            ans.append(ans[ans.count - 1] ^ value)
+        }
+        return ans
     }
 }

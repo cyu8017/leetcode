@@ -1,7 +1,25 @@
-﻿// LeetCode 1736 - Latest Time by Replacing Hidden Digits
+﻿<?php
+// LeetCode 1736 - Latest Time by Replacing Hidden Digits
 // https://leetcode.com/problems/latest-time-by-replacing-hidden-digits/
 
 class Solution {
-    function solve() {
+    /**
+     * @param String $time
+     * @return String
+     */
+    function maximumTime($time) {
+        if ($time[0] === '?') {
+            $time[0] = strpos('0123?', $time[1]) !== false ? '2' : '1';
+        }
+        if ($time[1] === '?') {
+            $time[1] = $time[0] === '2' ? '3' : '9';
+        }
+        if ($time[3] === '?') {
+            $time[3] = '5';
+        }
+        if ($time[4] === '?') {
+            $time[4] = '9';
+        }
+        return $time;
     }
 }

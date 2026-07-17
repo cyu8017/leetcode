@@ -2,6 +2,22 @@
 // https://leetcode.com/problems/where-will-the-ball-fall/
 
 class Solution {
-    public void solve() {
+    public int[] findBall(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+        int[] ans = new int[n];
+        for (int start = 0; start < n; start++) {
+            int col = start;
+            for (int row = 0; row < m; row++) {
+                int next = col + grid[row][col];
+                if (next < 0 || next == n || grid[row][next] != grid[row][col]) {
+                    col = -1;
+                    break;
+                }
+                col = next;
+            }
+            ans[start] = col;
+        }
+        return ans;
     }
 }

@@ -2,8 +2,48 @@
 // https://leetcode.com/problems/maximum-average-pass-ratio/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} classes
+ * @param {number} extraStudents
+ * @return {number}
  */
-var solve = function(input) {
+var maxAverageRatio = function(classes, extraStudents) {
+    const gain = (p, t) => (p + 1) / (t + 1) - p / t;
+    const heap = [];
+
+    const siftUp = (i) => {
+        while (i > 0) {
+            const parent = (i - 1) >> 1;
+            if (heap[parent][0] >= heap[i][0]) break;
+            [heap[parent], heap[i]] = [heap[i], heap[parent]];
+            i = parent;
+        }
+    };
+    const siftDown = (i) => {
+        const n = heap.length;
+        while (true) {
+            let largest = i;
+            const l = 2 * i + 1;
+            const r = 2 * i + 2;
+            if (l < n && heap[l][0] > heap[largest][0]) largest = l;
+            if (r < n && heap[r][0] > heap[largest][0]) largest = r;
+            if (largest === i) break;
+            [heap[largest], heap[i]] = [heap[i], heap[largest]];
+            i = largest;
+        }
+    };
+
+    for (const [p, t] of classes) {
+        heap.push([gain(p, t), p, t]);
+    }
+    for (let i = (heap.length >> 1) - 1; i >= 0; i--) siftDown(i);
+
+    for (let k = 0; k < extraStudents; k++) {
+        const [, p, t] = heap[0];
+        heap[0] = [gain(p + 1, t + 1), p + 1, t + 1];
+        siftDown(0);
+    }
+
+    let total = 0;
+    for (const [, p, t] of heap) total += p / t;
+    return total / heap.length;
 };

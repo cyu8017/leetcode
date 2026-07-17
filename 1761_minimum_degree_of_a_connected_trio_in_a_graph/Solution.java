@@ -2,6 +2,27 @@
 // https://leetcode.com/problems/minimum-degree-of-a-connected-trio-in-a-graph/
 
 class Solution {
-    public void solve() {
+    public int minTrioDegree(int n, int[][] edges) {
+        boolean[][] adj = new boolean[n][n];
+        int[] degree = new int[n];
+        for (int[] e : edges) {
+            int u = e[0] - 1;
+            int v = e[1] - 1;
+            adj[u][v] = true;
+            adj[v][u] = true;
+            degree[u]++;
+            degree[v]++;
+        }
+        int best = Integer.MAX_VALUE;
+        for (int[] e : edges) {
+            int u = e[0] - 1;
+            int v = e[1] - 1;
+            for (int k = 0; k < n; k++) {
+                if (adj[u][k] && adj[v][k]) {
+                    best = Math.min(best, degree[u] + degree[v] + degree[k] - 6);
+                }
+            }
+        }
+        return best == Integer.MAX_VALUE ? -1 : best;
     }
 }

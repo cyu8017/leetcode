@@ -2,6 +2,13 @@
 // https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/
 
 public class Solution {
-    public void Solve() {
+    public bool CheckPowersOfThree(int n) {
+        while (n > 0) {
+            if (n % 3 == 2) {
+                return false;
+            }
+            n /= 3;
+        }
+        return true;
     }
 }

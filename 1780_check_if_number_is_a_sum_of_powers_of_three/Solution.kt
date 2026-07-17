@@ -2,6 +2,14 @@
 // https://leetcode.com/problems/check-if-number-is-a-sum-of-powers-of-three/
 
 class Solution {
-    fun solve() {
+    fun checkPowersOfThree(n: Int): Boolean {
+        var value = n
+        while (value > 0) {
+            if (value % 3 == 2) {
+                return false
+            }
+            value /= 3
+        }
+        return true
     }
 }
