@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "countPairs",
   "paramOrder": [
     "nums1",
     "nums2"

@@ -1,11 +1,12 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "deleteDuplicatesUnsorted",
   "paramOrder": [
     "head"
   ],
   "types": {
-    "head": "listnode"
+    "head": "listnode",
+    "return": "listnode"
   },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

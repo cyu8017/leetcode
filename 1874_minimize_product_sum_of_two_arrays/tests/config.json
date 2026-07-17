@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "minProductSum",
   "paramOrder": [
     "nums1",
     "nums2"

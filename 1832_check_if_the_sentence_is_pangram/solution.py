@@ -1,6 +1,7 @@
 ﻿# LeetCode 1832 - Check if the Sentence Is Pangram
 # https://leetcode.com/problems/check-if-the-sentence-is-pangram/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkIfPangram(self, sentence: str) -> bool:
+        return len(set(sentence)) == 26

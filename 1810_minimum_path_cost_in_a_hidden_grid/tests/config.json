@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "findShortestPath",
   "paramOrder": [
     "grid",
     "r1",

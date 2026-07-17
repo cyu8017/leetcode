@@ -1003,16 +1003,26 @@ class MockMountainArray:
 
 
 class MockGridMaster:
-    """Simulates LeetCode's GridMaster API for problem 1778."""
+    """Simulates LeetCode's GridMaster API for problems 1778 and 1810."""
 
     _DELTA = {"U": (-1, 0), "D": (1, 0), "L": (0, -1), "R": (0, 1)}
 
-    def __init__(self, grid: list[list[int]]):
+    def __init__(
+        self,
+        grid: list[list[int]],
+        start: tuple[int, int] | None = None,
+        target: tuple[int, int] | None = None,
+    ):
         self.grid = grid
         self.rows = len(grid)
         self.cols = len(grid[0]) if grid else 0
         self.row = 0
         self.col = 0
+        self._target = target
+        self._costed = start is not None or target is not None
+        if start is not None:
+            self.row, self.col = start
+            return
         for r, row in enumerate(grid):
             for c, cell in enumerate(row):
                 if cell == -1:
@@ -1026,14 +1036,19 @@ class MockGridMaster:
             return False
         return self.grid[nr][nc] != 0
 
-    def move(self, direction: str) -> None:
+    def move(self, direction: str):
         if not self.canMove(direction):
-            return
+            return -1 if self._costed else None
         dr, dc = self._DELTA[direction]
         self.row += dr
         self.col += dc
+        if self._costed:
+            return self.grid[self.row][self.col]
+        return None
 
     def isTarget(self) -> bool:
+        if self._target is not None:
+            return (self.row, self.col) == self._target
         return self.grid[self.row][self.col] == 2
 
 
@@ -1637,7 +1652,14 @@ def run_cases(
             actual = method(args["target"], mountain)
         elif args and "grid" in args and method_name == "findShortestPath":
             method = getattr(solution, method_name)
-            master = MockGridMaster(args["grid"])
+            if all(key in args for key in ("r1", "c1", "r2", "c2")):
+                master = MockGridMaster(
+                    args["grid"],
+                    start=(args["r1"], args["c1"]),
+                    target=(args["r2"], args["c2"]),
+                )
+            else:
+                master = MockGridMaster(args["grid"])
             actual = method(master)
         elif module is not None and config.get("class") == "Foo" and "nums" in args:
             actual = run_print_in_order(module, args["nums"])

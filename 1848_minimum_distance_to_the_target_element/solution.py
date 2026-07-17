@@ -2,5 +2,9 @@
 # https://leetcode.com/problems/minimum-distance-to-the-target-element/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getMinDistance(self, nums: list[int], target: int, start: int) -> int:
+        best = len(nums)
+        for i, value in enumerate(nums):
+            if value == target:
+                best = min(best, abs(i - start))
+        return best

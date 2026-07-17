@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "badSensor",
   "paramOrder": [
     "sensor1",
     "sensor2"

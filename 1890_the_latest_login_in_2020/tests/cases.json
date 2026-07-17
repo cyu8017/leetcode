@@ -1,8 +1,7 @@
 {
   "cases": [
     {
-      "kind": "sql",
-      "tables": {
+      "args": {
         "Logins": [
           {
             "user_id": 6,
@@ -44,16 +43,16 @@
       },
       "expected": [
         {
+          "user_id": 2,
+          "last_stamp": "2020-01-16 02:49:50"
+        },
+        {
           "user_id": 6,
           "last_stamp": "2020-06-30 15:06:07"
         },
         {
           "user_id": 8,
           "last_stamp": "2020-12-30 00:46:50"
-        },
-        {
-          "user_id": 2,
-          "last_stamp": "2020-01-16 02:49:50"
         }
       ]
     }
