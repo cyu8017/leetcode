@@ -1,11 +1,17 @@
 class Solution:
     def longestPalindrome(self, word1, word2):
-        n1, n2 = len(word1), len(word2)
-        dp = [[0] * (n2 + 1) for _ in range(n1 + 1)]
-        best = 0
-        for i in range(1, n1 + 1):
-            for j in range(1, n2 + 1):
-                if word1[i - 1] == word2[j - 1]:
-                    dp[i][j] = dp[i - 1][j - 1] + 2
-                    best = max(best, dp[i][j])
-        return best
+        s = word1 + word2
+        n = len(s)
+        n1 = len(word1)
+        dp = [[0] * n for _ in range(n)]
+        ans = 0
+        for i in range(n - 1, -1, -1):
+            dp[i][i] = 1
+            for j in range(i + 1, n):
+                if s[i] == s[j]:
+                    dp[i][j] = 2 if j == i + 1 else dp[i + 1][j - 1] + 2
+                    if i < n1 <= j:
+                        ans = max(ans, dp[i][j])
+                else:
+                    dp[i][j] = max(dp[i + 1][j], dp[i][j - 1])
+        return ans

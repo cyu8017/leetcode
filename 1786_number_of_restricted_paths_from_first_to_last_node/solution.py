@@ -1,9 +1,12 @@
+import heapq
+from functools import lru_cache
+
 class Solution:
     def countRestrictedPaths(self, n, edges):
-        import heapq
         adj = [[] for _ in range(n + 1)]
         for a, b, w in edges:
-            adj[a].append((b, w)); adj[b].append((a, w))
+            adj[a].append((b, w))
+            adj[b].append((a, w))
         dist = [float("inf")] * (n + 1)
         dist[n] = 0
         heap = [(0, n)]
@@ -17,10 +20,15 @@ class Solution:
                     dist[v] = nd
                     heapq.heappush(heap, (nd, v))
         MOD = 1_000_000_007
-        dp = [0] * (n + 1)
-        dp[n] = 1
-        for u in sorted(range(1, n + 1), key=lambda x: dist[x]):
+
+        @lru_cache(None)
+        def dfs(u):
+            if u == n:
+                return 1
+            total = 0
             for v, _ in adj[u]:
-                if dist[v] < dist[u]:
-                    dp[v] = (dp[v] + dp[u]) % MOD
-        return dp[1]
+                if dist[u] > dist[v]:
+                    total = (total + dfs(v)) % MOD
+            return total
+
+        return dfs(1)
