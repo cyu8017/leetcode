@@ -46,6 +46,57 @@ class MockRobot {
     }
 }
 
+class MockGridMaster {
+    /** @var array<int, array<int, int>> */
+    public array $grid;
+    public int $row;
+    public int $col;
+    public int $targetRow;
+    public int $targetCol;
+    /** @var array<string, array{0: int, 1: int}> */
+    private array $delta = [
+        'U' => [-1, 0],
+        'D' => [1, 0],
+        'L' => [0, -1],
+        'R' => [0, 1],
+    ];
+
+    /**
+     * @param array<int, array<int, int>> $grid
+     */
+    public function __construct(array $grid, int $r1, int $c1, int $r2, int $c2) {
+        $this->grid = $grid;
+        $this->row = $r1;
+        $this->col = $c1;
+        $this->targetRow = $r2;
+        $this->targetCol = $c2;
+    }
+
+    public function canMove(string $direction): bool {
+        [$dr, $dc] = $this->delta[$direction];
+        $nr = $this->row + $dr;
+        $nc = $this->col + $dc;
+        if ($nr < 0 || $nr >= count($this->grid) || $nc < 0 || $nc >= count($this->grid[0])) {
+            return false;
+        }
+        return $this->grid[$nr][$nc] !== 0;
+    }
+
+    public function move(string $direction): int {
+        if (!$this->canMove($direction)) {
+            return -1;
+        }
+        [$dr, $dc] = $this->delta[$direction];
+        $this->row += $dr;
+        $this->col += $dc;
+        return $this->grid[$this->row][$this->col];
+    }
+
+    public function isTarget(): bool {
+        return $this->row === $this->targetRow && $this->col === $this->targetCol;
+    }
+}
+
 function robotCleanedAll(MockRobot $robot): bool {
     foreach ($robot->room as $r => $row) {
         foreach ($row as $c => $cell) {
@@ -632,6 +683,17 @@ foreach ($casesDoc['cases'] as $index => $case) {
         $solution = new Solution();
         $solution->cleanRoom($robot);
         $actual = robotCleanedAll($robot) ? 'Robot cleaned all rooms.' : 'Robot missed rooms.';
+    } elseif (isset($args['grid']) && $method === 'findShortestPath'
+        && isset($args['r1'], $args['c1'], $args['r2'], $args['c2'])) {
+        $master = new MockGridMaster(
+            $args['grid'],
+            $args['r1'],
+            $args['c1'],
+            $args['r2'],
+            $args['c2']
+        );
+        $solution = new Solution();
+        $actual = $solution->findShortestPath($master);
     } elseif ($method === 'rand10' && isset($args['n'])) {
         $GLOBALS['__rand7_sequence__'] = $case['rand7Sequence'] ?? [];
         $solution = new Solution();
