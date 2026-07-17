@@ -1,5 +1,9 @@
-﻿// LeetCode 1816 - Truncate Sentence
+// LeetCode 1816 - Truncate Sentence
 // https://leetcode.com/problems/truncate-sentence/
 
-func solve() {
+import "strings"
+
+func truncateSentence(s string, k int) string {
+	words := strings.Fields(s)
+	return strings.Join(words[:k], " ")
 }

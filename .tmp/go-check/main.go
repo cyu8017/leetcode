@@ -1,3 +1,4 @@
+package main
 // LeetCode 1900 - The Earliest and Latest Rounds Where Players Compete
 // https://leetcode.com/problems/the-earliest-and-latest-rounds-where-players-compete/
 
@@ -94,3 +95,4 @@ func earliestAndLatest(n int, firstPlayer int, secondPlayer int) []int {
 	result := dfs(players)
 	return []int{result[0], result[1]}
 }
+func main() {}
