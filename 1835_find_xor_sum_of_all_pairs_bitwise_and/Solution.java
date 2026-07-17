@@ -2,6 +2,15 @@
 // https://leetcode.com/problems/find-xor-sum-of-all-pairs-bitwise-and/
 
 class Solution {
-    public void solve() {
+    public int getXORSum(int[] arr1, int[] arr2) {
+        int xor1 = 0;
+        for (int value : arr1) {
+            xor1 ^= value;
+        }
+        int xor2 = 0;
+        for (int value : arr2) {
+            xor2 ^= value;
+        }
+        return xor1 & xor2;
     }
 }

@@ -71,6 +71,8 @@ def java_deep_equals_helpers() -> str:
             if (value instanceof int[]) return Arrays.toString((int[]) value);
             if (value instanceof double[]) return Arrays.toString((double[]) value);
             if (value instanceof boolean[]) return Arrays.toString((boolean[]) value);
+            if (value instanceof char[]) return Arrays.toString((char[]) value);
+            if (value instanceof char[][]) return Arrays.deepToString((char[][]) value);
             if (value instanceof Object[]) return Arrays.deepToString((Object[]) value);
             return String.valueOf(value);
         }
@@ -81,6 +83,12 @@ def java_deep_equals_helpers() -> str:
             }
             if (actual instanceof boolean[] && expected instanceof boolean[]) {
                 return Arrays.equals((boolean[]) actual, (boolean[]) expected);
+            }
+            if (actual instanceof char[] && expected instanceof char[]) {
+                return Arrays.equals((char[]) actual, (char[]) expected);
+            }
+            if (actual instanceof char[][] && expected instanceof char[][]) {
+                return Arrays.deepEquals((char[][]) actual, (char[][]) expected);
             }
             if (actual instanceof Object[] && expected instanceof int[]) {
                 return objectArrayIntArrayEquals((Object[]) actual, (int[]) expected);
@@ -137,6 +145,62 @@ def java_deep_equals_helpers() -> str:
                 if (actual[i] == null || ((Number) actual[i]).intValue() != expected[i]) return false;
             }
             return true;
+        }
+        """
+    ).strip()
+
+
+def java_mock_grid_master_helpers() -> str:
+    # GridMaster interface is defined in the problem's Solution.java (LeetCode style).
+    return textwrap.dedent(
+        """
+        static class MockGridMaster implements GridMaster {
+            final int[][] grid;
+            int row;
+            int col;
+            final int targetRow;
+            final int targetCol;
+            static final int[][] DELTA = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+            static final char[] DIRS = {'U', 'D', 'L', 'R'};
+
+            MockGridMaster(int[][] grid, int r1, int c1, int r2, int c2) {
+                this.grid = grid;
+                this.row = r1;
+                this.col = c1;
+                this.targetRow = r2;
+                this.targetCol = c2;
+            }
+
+            int dirIndex(char direction) {
+                for (int i = 0; i < DIRS.length; i++) {
+                    if (DIRS[i] == direction) return i;
+                }
+                return -1;
+            }
+
+            public boolean canMove(char direction) {
+                int idx = dirIndex(direction);
+                int nr = row + DELTA[idx][0];
+                int nc = col + DELTA[idx][1];
+                if (nr < 0 || nr >= grid.length || nc < 0 || nc >= grid[0].length) return false;
+                return grid[nr][nc] != 0;
+            }
+
+            public int move(char direction) {
+                if (!canMove(direction)) return -1;
+                int idx = dirIndex(direction);
+                row += DELTA[idx][0];
+                col += DELTA[idx][1];
+                return grid[row][col];
+            }
+
+            public boolean isTarget() {
+                return row == targetRow && col == targetCol;
+            }
+        }
+
+        static int runFindShortestPath(Solution solution, int[][] grid, int r1, int c1, int r2, int c2) {
+            return solution.findShortestPath(new MockGridMaster(grid, r1, c1, r2, c2));
         }
         """
     ).strip()
@@ -357,7 +421,10 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
     for index, case in enumerate(cases_doc.get("cases", []), start=1):
         args = case["args"]
         arg_exprs = []
-        if not (method_name == "cleanRoom" and "room" in args):
+        if not (
+            (method_name == "cleanRoom" and "room" in args)
+            or (method_name == "findShortestPath" and "grid" in args)
+        ):
             if class_name == "Codec" and ("url" in args or "longUrl" in args):
                 pass
             else:
@@ -387,6 +454,12 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
             expected_expr = java_literal(expected)
             root_expr = f"listToTree({java_literal(args['root'])})"
             actual_expr = f"runVoidTreeMutation(solution, {root_expr})"
+        elif method_name == "findShortestPath" and "grid" in args:
+            expected_expr = java_literal(expected)
+            actual_expr = (
+                f"runFindShortestPath(solution, {java_literal(args['grid'])}, "
+                f"{args['r1']}, {args['c1']}, {args['r2']}, {args['c2']})"
+            )
         else:
             expected_expr = java_literal(expected)
             actual_expr = f"solution.{method_name}({', '.join(arg_exprs)})"
@@ -443,6 +516,7 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
 
     cases_joined = "\n        ".join(case_blocks) if case_blocks else 'System.out.println("  SKIP no test cases defined in tests/cases.json");'
     mock_robot_helpers = java_mock_robot_helpers() if method_name == "cleanRoom" else ""
+    mock_grid_helpers = java_mock_grid_master_helpers() if method_name == "findShortestPath" else ""
     rand10_helpers = (
         textwrap.dedent(
             """
@@ -545,6 +619,8 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
             {rand10_helpers}
 
             {mock_robot_helpers}
+
+            {mock_grid_helpers}
 
             {tree_helpers}
 

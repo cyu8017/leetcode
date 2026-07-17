@@ -1,8 +1,7 @@
 {
   "class": "Solution",
   "method": "query",
-  "paramOrder": [
-    "Logins"
-  ],
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "description": "SQL problem \u2014 QUERY constant in solution files.",
+  "kind": "sql",
+  "runnable": false
 }

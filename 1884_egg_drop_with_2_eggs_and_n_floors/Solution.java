@@ -1,7 +1,14 @@
-﻿// LeetCode 1884 - Egg Drop With 2 Eggs and N Floors
+// LeetCode 1884 - Egg Drop With 2 Eggs and N Floors
 // https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 
 class Solution {
-    public void solve() {
+    public int twoEggDrop(int n) {
+        int moves = 0;
+        int covered = 0;
+        while (covered < n) {
+            moves++;
+            covered += moves;
+        }
+        return moves;
     }
 }

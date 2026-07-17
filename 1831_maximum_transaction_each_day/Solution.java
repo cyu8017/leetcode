@@ -2,6 +2,14 @@
 // https://leetcode.com/problems/maximum-transaction-each-day/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT transaction_id
+FROM Transactions t
+WHERE amount = (
+    SELECT MAX(amount)
+    FROM Transactions
+    WHERE DATE(day) = DATE(t.day)
+)
+ORDER BY transaction_id
+""";
 }

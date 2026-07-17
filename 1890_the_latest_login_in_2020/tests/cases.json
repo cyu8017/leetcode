@@ -1,7 +1,9 @@
 {
+  "kind": "sql",
   "cases": [
     {
-      "args": {
+      "kind": "sql",
+      "tables": {
         "Logins": [
           {
             "user_id": 6,

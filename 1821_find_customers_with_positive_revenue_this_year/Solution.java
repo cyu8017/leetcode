@@ -2,6 +2,9 @@
 // https://leetcode.com/problems/find-customers-with-positive-revenue-this-year/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT customer_id
+FROM Customers
+WHERE year = 2021 AND revenue > 0
+""";
 }
