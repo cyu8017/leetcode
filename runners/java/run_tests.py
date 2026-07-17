@@ -31,6 +31,8 @@ def java_literal(value):
     if isinstance(value, list):
         if not value:
             return "new int[0]"
+        if all(isinstance(item, bool) for item in value):
+            return "new boolean[] { " + ", ".join("true" if item else "false" for item in value) + " }"
         if all(isinstance(item, int) for item in value):
             return "new int[] { " + ", ".join(str(item) for item in value) + " }"
         if all(isinstance(item, str) for item in value):
@@ -42,6 +44,15 @@ def java_literal(value):
                     for item in value
                 )
                 return "new int[][] { " + rows + " }"
+            if value and any(value) and all(
+                isinstance(cell, str) and len(cell) == 1 for item in value for cell in item
+            ):
+                rows = ", ".join(
+                    "{ " + ", ".join("'" + cell.replace("\\", "\\\\").replace("'", "\\'") + "'" for cell in item) + " }"
+                    if item else "{}"
+                    for item in value
+                )
+                return "new char[][] { " + rows + " }"
             if all(isinstance(cell, str) for item in value for cell in item):
                 rows = ", ".join(
                     "{ " + ", ".join(java_literal(cell) for cell in item) + " }" if item else "{}"
@@ -59,6 +70,7 @@ def java_deep_equals_helpers() -> str:
         static String stringify(Object value) {
             if (value instanceof int[]) return Arrays.toString((int[]) value);
             if (value instanceof double[]) return Arrays.toString((double[]) value);
+            if (value instanceof boolean[]) return Arrays.toString((boolean[]) value);
             if (value instanceof Object[]) return Arrays.deepToString((Object[]) value);
             return String.valueOf(value);
         }
@@ -66,6 +78,9 @@ def java_deep_equals_helpers() -> str:
         static boolean valuesEqual(Object actual, Object expected) {
             if (actual instanceof int[] && expected instanceof int[]) {
                 return Arrays.equals((int[]) actual, (int[]) expected);
+            }
+            if (actual instanceof boolean[] && expected instanceof boolean[]) {
+                return Arrays.equals((boolean[]) actual, (boolean[]) expected);
             }
             if (actual instanceof Object[] && expected instanceof int[]) {
                 return objectArrayIntArrayEquals((Object[]) actual, (int[]) expected);
@@ -78,6 +93,10 @@ def java_deep_equals_helpers() -> str:
             }
             if (actual instanceof Object[] && expected instanceof Object[]) {
                 return objectArrayDeepEquals((Object[]) actual, (Object[]) expected);
+            }
+            if ((actual instanceof Integer || actual instanceof Long)
+                    && (expected instanceof Integer || expected instanceof Long)) {
+                return ((Number) actual).longValue() == ((Number) expected).longValue();
             }
             if (actual instanceof Double || expected instanceof Double) {
                 return Math.abs(((Number) actual).doubleValue() - ((Number) expected).doubleValue()) < 1e-5;
@@ -231,7 +250,8 @@ def java_tree_helpers() -> str:
     ).strip()
 
 
-def build_design_test_source(config: dict, cases_doc: dict) -> str:
+def build_design_test_source(config: dict, cases_doc: dict, void_methods: set[str] | None = None) -> str:
+    void_methods = void_methods or set()
     case_blocks = []
     for case_index, case in enumerate(cases_doc.get("cases", []), start=1):
         operations = case["operations"]
@@ -253,6 +273,11 @@ def build_design_test_source(config: dict, cases_doc: dict) -> str:
             if step_index == 0:
                 step_blocks.append(
                     f"instance = new {operation}({arg_list});"
+                    f"\n                    Object actual{step_index} = null;"
+                )
+            elif operation in void_methods:
+                step_blocks.append(
+                    f"(({class_name}) instance).{operation}({arg_list});"
                     f"\n                    Object actual{step_index} = null;"
                 )
             else:
@@ -321,7 +346,7 @@ def build_design_test_source(config: dict, cases_doc: dict) -> str:
     )
 
 
-def build_test_source(config: dict, cases_doc: dict) -> str:
+def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = True) -> str:
     method_name = config["method"]
     class_name = config.get("class", "Solution")
     param_order = config.get("paramOrder") or (list(cases_doc["cases"][0]["args"].keys()) if cases_doc.get("cases") else [])
@@ -448,17 +473,27 @@ def build_test_source(config: dict, cases_doc: dict) -> str:
             """
         ).strip()
 
+    listnode_decl = (
+        textwrap.dedent(
+            """
+            class ListNode {
+                int val;
+                ListNode next;
+                ListNode(int val) { this.val = val; }
+            }
+            """
+        ).strip()
+        if define_listnode
+        else ""
+    )
+
     return textwrap.dedent(
         f"""
         import java.util.*;
 
-        public class GeneratedTestRunner {{
-            static class ListNode {{
-                int val;
-                ListNode next;
-                ListNode(int val) {{ this.val = val; }}
-            }}
+        {listnode_decl}
 
+        public class GeneratedTestRunner {{
             static ListNode toListNode(int[] values) {{
                 if (values == null || values.length == 0) return null;
                 ListNode head = new ListNode(values[0]);
@@ -560,10 +595,21 @@ def main() -> int:
         for java_file in problem_dir.glob("*.java"):
             text = java_file.read_text(encoding="utf-8-sig")
             (temp_dir / java_file.name).write_text(text, encoding="utf-8")
+        solution_defines_listnode = any(
+            "class ListNode" in f.read_text(encoding="utf-8-sig")
+            for f in problem_dir.glob("*.java")
+        )
+        import re
+
+        void_methods = {
+            match.group(1)
+            for f in problem_dir.glob("*.java")
+            for match in re.finditer(r"\bvoid\s+(\w+)\s*\(", f.read_text(encoding="utf-8-sig"))
+        }
         source = (
-            build_design_test_source(config, cases_doc)
+            build_design_test_source(config, cases_doc, void_methods)
             if is_design
-            else build_test_source(config, cases_doc)
+            else build_test_source(config, cases_doc, define_listnode=not solution_defines_listnode)
         )
         (temp_dir / "GeneratedTestRunner.java").write_text(source, encoding="utf-8")
         java_sources = list(temp_dir.glob("*.java"))

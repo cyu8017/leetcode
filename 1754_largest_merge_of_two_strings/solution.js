@@ -2,8 +2,22 @@
 // https://leetcode.com/problems/largest-merge-of-two-strings/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} word1
+ * @param {string} word2
+ * @return {string}
  */
-var solve = function(input) {
+var largestMerge = function(word1, word2) {
+    let i = 0;
+    let j = 0;
+    const out = [];
+    while (i < word1.length && j < word2.length) {
+        if (word1.slice(i) > word2.slice(j)) {
+            out.push(word1[i]);
+            i++;
+        } else {
+            out.push(word2[j]);
+            j++;
+        }
+    }
+    return out.join("") + word1.slice(i) + word2.slice(j);
 };

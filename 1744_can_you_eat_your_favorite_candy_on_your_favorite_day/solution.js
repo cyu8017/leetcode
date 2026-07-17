@@ -2,8 +2,20 @@
 // https://leetcode.com/problems/can-you-eat-your-favorite-candy-on-your-favorite-day/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} candiesCount
+ * @param {number[][]} queries
+ * @return {boolean[]}
  */
-var solve = function(input) {
+var canEat = function(candiesCount, queries) {
+    const prefix = [0];
+    for (const count of candiesCount) {
+        prefix.push(prefix[prefix.length - 1] + count);
+    }
+    const ans = [];
+    for (const [candyType, day, cap] of queries) {
+        const minEaten = day + 1;
+        const maxEaten = (day + 1) * cap;
+        ans.push(maxEaten > prefix[candyType] && minEaten <= prefix[candyType + 1]);
+    }
+    return ans;
 };

@@ -679,7 +679,7 @@ foreach ($casesDoc['cases'] as $index => $case) {
                 && array_slice($mutated, 0, $expectedCount) === $expectedPrefix;
         }
     } else {
-        $ok = $actual == $expected;
+        $ok = deepEqualDesign($actual, $expected);
     }
     if ($ok) {
         $passed++;

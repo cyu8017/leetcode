@@ -10018,601 +10018,1901 @@
     {
       "folder": "1701_average_waiting_time",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1702_maximum_binary_string_after_change",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1703_minimum_adjacent_swaps_for_k_consecutive_ones",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1704_determine_if_string_halves_are_alike",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1705_maximum_number_of_eaten_apples",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1706_where_will_the_ball_fall",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1707_maximum_xor_with_an_element_from_array",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1708_largest_subarray_length_k",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1709_biggest_window_between_visits",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1710_maximum_units_on_a_truck",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1711_count_good_meals",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1712_ways_to_split_array_into_three_subarrays",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1713_minimum_operations_to_make_a_subsequence",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1714_sum_of_special_evenly_spaced_elements_in_array",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1715_count_apples_and_oranges",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1716_calculate_money_in_leetcode_bank",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1717_maximum_score_from_removing_substrings",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1718_construct_the_lexicographically_largest_valid_sequence",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1719_number_of_ways_to_reconstruct_a_tree",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1720_decode_xored_array",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1721_swapping_nodes_in_a_linked_list",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1722_minimize_hamming_distance_after_swap_operations",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1723_find_minimum_time_to_finish_all_jobs",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1724_checking_existence_of_edge_length_limited_paths_ii",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1725_number_of_rectangles_that_can_form_the_largest_square",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1726_tuple_with_same_product",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1727_largest_submatrix_with_rearrangements",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1728_cat_and_mouse_ii",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1729_find_followers_count",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1730_shortest_path_to_get_food",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1731_the_number_of_employees_which_report_to_each_employee",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1732_find_the_highest_altitude",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1733_minimum_number_of_people_to_teach",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1734_decode_xored_permutation",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1735_count_ways_to_make_array_with_product",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1736_latest_time_by_replacing_hidden_digits",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1737_change_minimum_characters_to_satisfy_one_of_three_conditions",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1738_find_kth_largest_xor_coordinate_value",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1739_building_boxes",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1740_find_distance_in_a_binary_tree",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1741_find_total_time_spent_by_each_employee",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1742_maximum_number_of_balls_in_a_box",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1743_restore_the_array_from_adjacent_pairs",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1744_can_you_eat_your_favorite_candy_on_your_favorite_day",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1745_palindrome_partitioning_iv",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1746_maximum_subarray_sum_after_one_operation",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1747_leetflex_banned_accounts",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1748_sum_of_unique_elements",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1749_maximum_absolute_sum_of_any_subarray",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1750_minimum_length_of_string_after_deleting_similar_ends",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1751_maximum_number_of_events_that_can_be_attended_ii",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1752_check_if_array_is_sorted_and_rotated",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1753_maximum_score_from_removing_stones",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1754_largest_merge_of_two_strings",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1755_closest_subsequence_sum",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1756_design_most_recently_used_queue",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1757_recyclable_and_low_fat_products",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1758_minimum_changes_to_make_alternating_binary_string",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1759_count_number_of_homogenous_substrings",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1760_minimum_limit_of_balls_in_a_bag",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1761_minimum_degree_of_a_connected_trio_in_a_graph",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1762_buildings_with_an_ocean_view",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1763_longest_nice_substring",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1764_form_array_by_concatenating_subarrays_of_another_array",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1765_map_of_highest_peak",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1766_tree_of_coprimes",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1767_find_the_subtasks_that_did_not_execute",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1768_merge_strings_alternately",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1769_minimum_number_of_operations_to_move_all_balls_to_each_box",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1770_maximum_score_from_performing_multiplication_operations",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1771_maximize_palindrome_length_from_subsequences",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1772_sort_features_by_popularity",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1773_count_items_matching_a_rule",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1774_closest_dessert_cost",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1775_equal_sum_arrays_with_minimum_number_of_operations",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1776_car_fleet_ii",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1777_products_price_for_each_store",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1778_shortest_path_in_a_hidden_grid",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1779_find_nearest_point_that_has_the_same_x_or_y_coordinate",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1780_check_if_number_is_a_sum_of_powers_of_three",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1781_sum_of_beauty_of_all_substrings",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1782_count_pairs_of_nodes",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1783_grand_slam_titles",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1784_check_if_binary_string_has_at_most_one_segment_of_ones",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1785_minimum_elements_to_add_to_form_a_given_sum",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1786_number_of_restricted_paths_from_first_to_last_node",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1787_make_the_xor_of_all_segments_equal_to_zero",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1788_maximize_the_beauty_of_the_garden",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1789_primary_department_for_each_employee",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1790_check_if_one_string_swap_can_make_strings_equal",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1791_find_center_of_star_graph",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1792_maximum_average_pass_ratio",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1793_maximum_score_of_a_good_subarray",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1794_count_pairs_of_equal_substrings_with_minimum_difference",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1795_rearrange_products_table",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1796_second_largest_digit_in_a_string",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1797_design_authentication_manager",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1798_maximum_number_of_consecutive_values_you_can_make",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1799_maximize_score_after_n_operations",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {
       "folder": "1800_maximum_ascending_subarray_sum",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     },
     {

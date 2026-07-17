@@ -14,9 +14,13 @@ class Solution {
             graph.computeIfAbsent(pair[1], key -> new ArrayList<>()).add(pair[0]);
         }
         int start = 0;
-        for (Map.Entry<Integer, List<Integer>> entry : graph.entrySet()) {
-            if (entry.getValue().size() == 1) {
-                start = entry.getKey();
+        for (int[] pair : adjacentPairs) {
+            if (graph.get(pair[0]).size() == 1) {
+                start = pair[0];
+                break;
+            }
+            if (graph.get(pair[1]).size() == 1) {
+                start = pair[1];
                 break;
             }
         }

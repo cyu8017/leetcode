@@ -31,9 +31,15 @@ def cpp_literal(value):
     if isinstance(value, list):
         if not value:
             return "std::vector<int>{}"
+        if all(isinstance(item, bool) for item in value):
+            items = ", ".join("true" if item else "false" for item in value)
+            return f"std::vector<bool>{{{items}}}"
         if all(isinstance(item, int) for item in value):
             items = ", ".join(str(item) for item in value)
             return f"std::vector<int>{{{items}}}"
+        if all(isinstance(item, (int, float)) for item in value):
+            items = ", ".join(str(float(item)) for item in value)
+            return f"std::vector<double>{{{items}}}"
         if all(isinstance(item, str) for item in value):
             items = ", ".join(cpp_literal(item) for item in value)
             return f"std::vector<std::string>{{{items}}}"
@@ -46,6 +52,9 @@ def cpp_literal(value):
                     for row in value
                 )
                 return f"std::vector<std::vector<char>>{{{rows}}}"
+            if all(isinstance(cell, str) for row in value for cell in row):
+                rows = ", ".join(cpp_literal(row) for row in value)
+                return f"std::vector<std::vector<std::string>>{{{rows}}}"
             rows = ", ".join(cpp_literal(row) for row in value)
             return f"std::vector<std::vector<int>>{{{rows}}}"
     raise TypeError(f"Unsupported C++ literal type: {type(value)!r}")
@@ -102,6 +111,14 @@ def build_check(
         elif arg_types.get("return") == "treenode":
             expected_expr = cpp_tree_literal(expected)
             check = f"tree_lists_equal(tree_to_list({call}), {expected_expr})"
+        elif isinstance(expected, float) or (
+            isinstance(expected, list)
+            and expected
+            and all(isinstance(item, (int, float)) and not isinstance(item, bool) for item in expected)
+            and any(isinstance(item, float) for item in expected)
+        ):
+            expected_expr = cpp_literal(expected)
+            check = f"approx_equal({call}, {expected_expr})"
         else:
             expected_expr = cpp_literal(expected)
             check = f"{call} == {expected_expr}"
@@ -327,6 +344,7 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
         #include <iostream>
         #include <vector>
         #include <string>
+        #include <cmath>
         {extra_includes}
 
         struct ListNode {{
@@ -359,6 +377,18 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
 
         bool vectors_equal(const std::vector<int>& a, const std::vector<int>& b) {{
             return a == b;
+        }}
+
+        bool approx_equal(double a, double b) {{
+            return std::fabs(a - b) < 1e-5;
+        }}
+
+        bool approx_equal(const std::vector<double>& a, const std::vector<double>& b) {{
+            if (a.size() != b.size()) return false;
+            for (size_t i = 0; i < a.size(); ++i) {{
+                if (std::fabs(a[i] - b[i]) >= 1e-5) return false;
+            }}
+            return true;
         }}
 
         {robot_helpers}

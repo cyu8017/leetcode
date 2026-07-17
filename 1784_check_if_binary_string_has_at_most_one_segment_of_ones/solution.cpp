@@ -1,8 +1,15 @@
-﻿// LeetCode 1784 - Check if Binary String Has at Most One Segment of Ones
+// LeetCode 1784 - Check if Binary String Has at Most One Segment of Ones
 // https://leetcode.com/problems/check-if-binary-string-has-at-most-one-segment-of-ones/
+
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    bool checkOnesSegment(std::string s) {
+        int start = 0;
+        int end = (int)s.size();
+        while (start < end && s[start] == '0') start++;
+        while (end > start && s[end - 1] == '0') end--;
+        return s.substr(start, end - start).find("01") == std::string::npos;
     }
 };

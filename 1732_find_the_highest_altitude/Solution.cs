@@ -2,6 +2,13 @@
 // https://leetcode.com/problems/find-the-highest-altitude/
 
 public class Solution {
-    public void Solve() {
+    public int LargestAltitude(int[] gain) {
+        int altitude = 0;
+        int best = 0;
+        foreach (int change in gain) {
+            altitude += change;
+            best = System.Math.Max(best, altitude);
+        }
+        return best;
     }
 }

@@ -2,8 +2,18 @@
 // https://leetcode.com/problems/count-items-matching-a-rule/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[][]} items
+ * @param {string} ruleKey
+ * @param {string} ruleValue
+ * @return {number}
  */
-var solve = function(input) {
+var countMatches = function(items, ruleKey, ruleValue) {
+    const idx = { type: 0, color: 1, name: 2 }[ruleKey];
+    let count = 0;
+    for (const item of items) {
+        if (item[idx] === ruleValue) {
+            count++;
+        }
+    }
+    return count;
 };

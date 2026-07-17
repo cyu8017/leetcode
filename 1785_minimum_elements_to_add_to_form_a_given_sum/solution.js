@@ -1,9 +1,21 @@
-﻿// LeetCode 1785 - Minimum Elements to Add to Form a Given Sum
+// LeetCode 1785 - Minimum Elements to Add to Form a Given Sum
 // https://leetcode.com/problems/minimum-elements-to-add-to-form-a-given-sum/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} limit
+ * @param {number} goal
+ * @return {number}
  */
-var solve = function(input) {
+var minElements = function(nums, limit, goal) {
+    let sum = 0;
+    for (const num of nums) {
+        sum += num;
+    }
+    const diff = Math.abs(sum - goal);
+    let count = Math.floor(diff / limit);
+    if (count * limit < diff) {
+        count++;
+    }
+    return count;
 };

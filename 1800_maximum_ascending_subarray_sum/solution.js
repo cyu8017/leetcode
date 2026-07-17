@@ -1,9 +1,20 @@
-﻿// LeetCode 1800 - Maximum Ascending Subarray Sum
+// LeetCode 1800 - Maximum Ascending Subarray Sum
 // https://leetcode.com/problems/maximum-ascending-subarray-sum/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var maxAscendingSum = function(nums) {
+    let best = nums[0];
+    let cur = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] > nums[i - 1]) {
+            cur += nums[i];
+        } else {
+            cur = nums[i];
+        }
+        best = Math.max(best, cur);
+    }
+    return best;
 };

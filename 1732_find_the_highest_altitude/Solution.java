@@ -2,6 +2,13 @@
 // https://leetcode.com/problems/find-the-highest-altitude/
 
 class Solution {
-    public void solve() {
+    public int largestAltitude(int[] gain) {
+        int altitude = 0;
+        int best = 0;
+        for (int change : gain) {
+            altitude += change;
+            best = Math.max(best, altitude);
+        }
+        return best;
     }
 }

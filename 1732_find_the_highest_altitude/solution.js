@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/find-the-highest-altitude/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} gain
+ * @return {number}
  */
-var solve = function(input) {
+var largestAltitude = function(gain) {
+    let altitude = 0;
+    let best = 0;
+    for (const change of gain) {
+        altitude += change;
+        best = Math.max(best, altitude);
+    }
+    return best;
 };

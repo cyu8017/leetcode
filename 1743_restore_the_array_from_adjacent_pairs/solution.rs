@@ -10,11 +10,17 @@ impl Solution {
             graph.entry(pair[0]).or_default().push(pair[1]);
             graph.entry(pair[1]).or_default().push(pair[0]);
         }
-        let start = *graph
-            .iter()
-            .find(|(_, neighbors)| neighbors.len() == 1)
-            .map(|(node, _)| node)
-            .unwrap();
+        let mut start = 0;
+        for pair in &adjacent_pairs {
+            if graph[&pair[0]].len() == 1 {
+                start = pair[0];
+                break;
+            }
+            if graph[&pair[1]].len() == 1 {
+                start = pair[1];
+                break;
+            }
+        }
         let n = graph.len();
         let mut ans = Vec::with_capacity(n);
         ans.push(start);

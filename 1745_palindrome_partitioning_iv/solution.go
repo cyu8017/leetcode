@@ -1,5 +1,23 @@
 ﻿// LeetCode 1745 - Palindrome Partitioning IV
 // https://leetcode.com/problems/palindrome-partitioning-iv/
 
-func solve() {
+func checkPartitioning(s string) bool {
+    n := len(s)
+    pal := make([][]bool, n)
+    for i := range pal {
+        pal[i] = make([]bool, n)
+    }
+    for i := n - 1; i >= 0; i-- {
+        for j := i; j < n; j++ {
+            pal[i][j] = s[i] == s[j] && (j-i < 2 || pal[i+1][j-1])
+        }
+    }
+    for i := 0; i < n-2; i++ {
+        for j := i + 1; j < n-1; j++ {
+            if pal[0][i] && pal[i+1][j] && pal[j+1][n-1] {
+                return true
+            }
+        }
+    }
+    return false
 }

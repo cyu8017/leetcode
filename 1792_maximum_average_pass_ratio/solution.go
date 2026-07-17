@@ -1,4 +1,4 @@
-﻿// LeetCode 1792 - Maximum Average Pass Ratio
+// LeetCode 1792 - Maximum Average Pass Ratio
 // https://leetcode.com/problems/maximum-average-pass-ratio/
 
 func maxAverageRatio(classes [][]int, extraStudents int) float64 {

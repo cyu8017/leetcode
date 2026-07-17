@@ -336,7 +336,12 @@ def run_design_cases(cases_doc)
         instance = call_args.empty? ? klass.new : klass.new(*call_args)
         result = nil
       else
-        result = call_args.empty? ? instance.public_send(operation) : instance.public_send(operation, *call_args)
+        method_sym = if instance.respond_to?(operation)
+                       operation
+                     else
+                       operation.gsub(/([A-Z])/) { "_#{Regexp.last_match(1).downcase}" }.sub(/^_/, "")
+                     end
+        result = call_args.empty? ? instance.public_send(method_sym) : instance.public_send(method_sym, *call_args)
       end
       actual_outputs << result
       unless deep_equal(result, expected[op_index])
@@ -556,7 +561,7 @@ cases_doc["cases"].each_with_index do |test_case, index|
            actual == expected_count && mutated && mutated.take(expected_count) == expected_prefix
          end
        else
-         actual == expected
+         deep_equal(actual, expected)
        end
 
   if ok

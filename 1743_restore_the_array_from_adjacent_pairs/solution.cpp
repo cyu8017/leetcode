@@ -13,9 +13,13 @@ public:
             graph[pair[1]].push_back(pair[0]);
         }
         int start = 0;
-        for (const auto& [node, neighbors] : graph) {
-            if (neighbors.size() == 1) {
-                start = node;
+        for (const auto& pair : adjacentPairs) {
+            if (graph[pair[0]].size() == 1) {
+                start = pair[0];
+                break;
+            }
+            if (graph[pair[1]].size() == 1) {
+                start = pair[1];
                 break;
             }
         }

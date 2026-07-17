@@ -9,9 +9,13 @@ func restoreArray(adjacentPairs [][]int) []int {
         graph[b] = append(graph[b], a)
     }
     start := 0
-    for node, neighbors := range graph {
-        if len(neighbors) == 1 {
-            start = node
+    for _, pair := range adjacentPairs {
+        if len(graph[pair[0]]) == 1 {
+            start = pair[0]
+            break
+        }
+        if len(graph[pair[1]]) == 1 {
+            start = pair[1]
             break
         }
     }
