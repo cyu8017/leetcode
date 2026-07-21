@@ -1,6 +1,9 @@
-﻿# LeetCode 1910 - Remove All Occurrences of a Substring
-# https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeOccurrences(self, s: str, part: str) -> str:
+        stack = []
+        m = len(part)
+        for ch in s:
+            stack.append(ch)
+            if len(stack) >= m and "".join(stack[-m:]) == part:
+                del stack[-m:]
+        return "".join(stack)

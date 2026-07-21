@@ -1,6 +1,7 @@
-﻿# LeetCode 1908 - Game of Nim
-# https://leetcode.com/problems/game-of-nim/
+from functools import reduce
+from operator import xor
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def nimGame(self, piles: List[int]) -> bool:
+        return reduce(xor, piles, 0) != 0

@@ -1,6 +1,16 @@
-﻿# LeetCode 1913 - Maximum Product Difference Between Two Pairs
-# https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxProductDifference(self, nums: List[int]) -> int:
+        a = b = 0
+        c = d = 10**5
+        for x in nums:
+            if x > a:
+                b, a = a, x
+            elif x > b:
+                b = x
+            if x < c:
+                d, c = c, x
+            elif x < d:
+                d = x
+        return a * b - c * d

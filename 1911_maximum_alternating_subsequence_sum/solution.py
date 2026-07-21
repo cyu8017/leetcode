@@ -1,6 +1,8 @@
-﻿# LeetCode 1911 - Maximum Alternating Subsequence Sum
-# https://leetcode.com/problems/maximum-alternating-subsequence-sum/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxAlternatingSum(self, nums: List[int]) -> int:
+        even = odd = 0
+        for x in nums:
+            even, odd = max(even, odd + x), max(odd, even - x)
+        return even
