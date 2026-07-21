@@ -1,8 +1,20 @@
-﻿// LeetCode 1822 - Sign of the Product of an Array
+// LeetCode 1822 - Sign of the Product of an Array
 // https://leetcode.com/problems/sign-of-the-product-of-an-array/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int arraySign(std::vector<int>& nums) {
+        int sign = 1;
+        for (int num : nums) {
+            if (num == 0) {
+                return 0;
+            }
+            if (num < 0) {
+                sign = -sign;
+            }
+        }
+        return sign;
     }
 };

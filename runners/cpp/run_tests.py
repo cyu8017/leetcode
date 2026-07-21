@@ -16,7 +16,23 @@ from test_utils import load_problem_tests, run_design_cases, uses_design_cases  
 from runner_policy import pre_run_check, print_skip  # noqa: E402
 
 
-def cpp_literal(value):
+def cpp_empty_vector(type_hint: str | None = None) -> str:
+    if type_hint in {"integer[][]", "int[][]"}:
+        return "std::vector<std::vector<int>>{}"
+    if type_hint in {"string[][]", "str[][]"}:
+        return "std::vector<std::vector<std::string>>{}"
+    if type_hint in {"character[][]", "char[][]"}:
+        return "std::vector<std::vector<char>>{}"
+    if type_hint in {"string[]", "str[]"}:
+        return "std::vector<std::string>{}"
+    if type_hint in {"double[]", "float[]"}:
+        return "std::vector<double>{}"
+    if type_hint in {"boolean[]", "bool[]"}:
+        return "std::vector<bool>{}"
+    return "std::vector<int>{}"
+
+
+def cpp_literal(value, type_hint: str | None = None):
     if value is None:
         return "nullptr"
     if isinstance(value, bool):
@@ -30,7 +46,23 @@ def cpp_literal(value):
         return f'"{escaped}"'
     if isinstance(value, list):
         if not value:
-            return "std::vector<int>{}"
+            return cpp_empty_vector(type_hint)
+        if type_hint in {"string[][]", "str[][]"} or (
+            type_hint is None
+            and all(isinstance(item, list) for item in value)
+            and all(isinstance(cell, str) for row in value for cell in row)
+            and any(len(cell) != 1 for row in value for cell in row)
+        ):
+            if all(isinstance(item, list) for item in value):
+                rows = ", ".join(cpp_literal(row, "string[]") for row in value)
+                return f"std::vector<std::vector<std::string>>{{{rows}}}"
+        if type_hint in {"integer[][]", "int[][]"}:
+            rows = ", ".join(cpp_literal(row, "integer[]") for row in value)
+            return f"std::vector<std::vector<int>>{{{rows}}}"
+        if type_hint in {"string[]", "str[]"} or all(isinstance(item, str) for item in value):
+            if all(isinstance(item, str) for item in value):
+                items = ", ".join(cpp_literal(item) for item in value)
+                return f"std::vector<std::string>{{{items}}}"
         if all(isinstance(item, bool) for item in value):
             items = ", ".join("true" if item else "false" for item in value)
             return f"std::vector<bool>{{{items}}}"
@@ -40,9 +72,6 @@ def cpp_literal(value):
         if all(isinstance(item, (int, float)) for item in value):
             items = ", ".join(str(float(item)) for item in value)
             return f"std::vector<double>{{{items}}}"
-        if all(isinstance(item, str) for item in value):
-            items = ", ".join(cpp_literal(item) for item in value)
-            return f"std::vector<std::string>{{{items}}}"
         if all(isinstance(item, list) for item in value):
             if value and all(
                 isinstance(cell, str) and len(cell) == 1 for row in value for cell in row
@@ -53,7 +82,7 @@ def cpp_literal(value):
                 )
                 return f"std::vector<std::vector<char>>{{{rows}}}"
             if all(isinstance(cell, str) for row in value for cell in row):
-                rows = ", ".join(cpp_literal(row) for row in value)
+                rows = ", ".join(cpp_literal(row, "string[]") for row in value)
                 return f"std::vector<std::vector<std::string>>{{{rows}}}"
             rows = ", ".join(cpp_literal(row) for row in value)
             return f"std::vector<std::vector<int>>{{{rows}}}"
@@ -137,7 +166,7 @@ def build_check(
     ).strip()
 
 
-def build_main_source(config: dict, cases_doc: dict) -> str:
+def build_main_source(config: dict, cases_doc: dict, define_listnode: bool = True) -> str:
     method_name = config["method"]
     class_name = config.get("class", "Solution")
     param_order = config.get("paramOrder") or (
@@ -168,7 +197,8 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
             elif arg_types.get(key) == "treenode":
                 expr = f"to_tree({cpp_tree_literal(value)})"
             else:
-                expr = cpp_literal(value)
+                expr = cpp_literal(value, arg_types.get(key))
+
             var_name = f"arg{index}_{key_index}"
             setup_lines.append(f"auto {var_name} = {expr};")
             arg_names.append(var_name)
@@ -339,6 +369,29 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
 
     instance_decl = "Codec codec;" if class_name == "Codec" else f"{class_name} solution;"
 
+    listnode_decl = (
+        textwrap.dedent(
+            """
+            struct ListNode {
+                int val;
+                ListNode *next;
+                ListNode(int x) : val(x), next(nullptr) {}
+            };
+            """
+        ).strip()
+        if define_listnode
+        else ""
+    )
+
+    # Ordering constraints:
+    # - Robot interface must exist before solution.cpp for cleanRoom problems.
+    # - ListNode must exist before helpers; either harness defines it or solution.cpp does.
+    solution_include = '#include "solution.cpp"'
+    if define_listnode:
+        preamble = f"{listnode_decl}\n\n        {robot_helpers}\n\n        {solution_include}"
+    else:
+        preamble = f"{robot_helpers}\n\n        {solution_include}"
+
     return textwrap.dedent(
         f"""
         #include <iostream>
@@ -347,11 +400,7 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
         #include <cmath>
         {extra_includes}
 
-        struct ListNode {{
-            int val;
-            ListNode *next;
-            ListNode(int x) : val(x), next(nullptr) {{}}
-        }};
+        {preamble}
 
         ListNode* to_listnode(const std::vector<int>& values) {{
             if (values.empty()) return nullptr;
@@ -390,10 +439,6 @@ def build_main_source(config: dict, cases_doc: dict) -> str:
             }}
             return true;
         }}
-
-        {robot_helpers}
-
-        #include "solution.cpp"
 
         {tree_helpers}
 
@@ -449,10 +494,16 @@ def main() -> int:
         print(f"Result: {passed}/{total} passed")
         return 0 if passed == total else 1
 
+    solution_text = (problem_dir / "solution.cpp").read_text(encoding="utf-8-sig")
+    define_listnode = "struct ListNode" not in solution_text and "class ListNode" not in solution_text
+
     temp_dir = Path(tempfile.mkdtemp())
     try:
         shutil.copy2(problem_dir / "solution.cpp", temp_dir / "solution.cpp")
-        (temp_dir / "main.cpp").write_text(build_main_source(config, cases_doc), encoding="utf-8")
+        (temp_dir / "main.cpp").write_text(
+            build_main_source(config, cases_doc, define_listnode=define_listnode),
+            encoding="utf-8",
+        )
         binary = temp_dir / "tests"
         subprocess.check_call(
             ["g++", "-std=c++17", "-O2", "-o", str(binary), str(temp_dir / "main.cpp")],

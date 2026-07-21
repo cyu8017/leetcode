@@ -5,6 +5,9 @@
     "s",
     "knowledge"
   ],
-  "types": null,
+  "types": {
+    "knowledge": "string[][]",
+    "return": "string"
+  },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

@@ -12085,92 +12085,100 @@
     {
       "folder": "1800_maximum_ascending_subarray_sum",
       "languages": [
-        "python",
-        "javascript",
-        "typescript",
-        "java",
-        "ruby",
-        "php",
-        "cpp",
         "c",
-        "go",
-        "rust",
+        "cpp",
         "csharp",
+        "go",
+        "java",
+        "javascript",
         "kotlin",
+        "php",
+        "python",
+        "ruby",
+        "rust",
         "scala",
-        "swift"
+        "swift",
+        "typescript"
       ]
     },
     {
       "folder": "1801_number_of_orders_in_the_backlog",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1802_maximum_value_at_a_given_index_in_a_bounded_array",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1803_count_pairs_with_xor_in_a_range",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1804_implement_trie_ii_prefix_tree",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1805_number_of_different_integers_in_a_string",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1806_minimum_number_of_operations_to_reinitialize_a_permutation",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1807_evaluate_the_bracket_pairs_of_a_string",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1808_maximize_number_of_nice_divisors",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12185,10 +12193,11 @@
     {
       "folder": "1810_minimum_path_cost_in_a_hidden_grid",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12203,82 +12212,91 @@
     {
       "folder": "1812_determine_color_of_a_chessboard_square",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1813_sentence_similarity_iii",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1814_count_nice_pairs_in_an_array",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1815_maximum_number_of_groups_getting_fresh_donuts",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1816_truncate_sentence",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1817_finding_the_users_active_minutes",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1818_minimum_absolute_sum_difference",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1819_number_of_different_subsequences_gcds",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1820_maximum_number_of_accepted_invitations",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12293,82 +12311,91 @@
     {
       "folder": "1822_sign_of_the_product_of_an_array",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1823_find_the_winner_of_the_circular_game",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1824_minimum_sideway_jumps",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1825_finding_mk_average",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1826_faulty_sensor",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1827_minimum_operations_to_make_the_array_increasing",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1828_queries_on_number_of_points_inside_a_circle",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1829_maximum_xor_for_each_query",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1830_minimum_number_of_operations_to_make_string_sorted",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12383,82 +12410,91 @@
     {
       "folder": "1832_check_if_the_sentence_is_pangram",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1833_maximum_ice_cream_bars",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1834_single_threaded_cpu",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1835_find_xor_sum_of_all_pairs_bitwise_and",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1836_remove_duplicates_from_an_unsorted_linked_list",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1837_sum_of_digits_in_base_k",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1838_frequency_of_the_most_frequent_element",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1839_longest_substring_of_all_vowels_in_order",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1840_maximum_building_height",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12473,10 +12509,11 @@
     {
       "folder": "1842_next_palindrome_using_same_digits",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12491,82 +12528,91 @@
     {
       "folder": "1844_replace_all_digits_with_characters",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1845_seat_reservation_manager",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1846_maximum_element_after_decreasing_and_rearranging",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1847_closest_room",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1848_minimum_distance_to_the_target_element",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1849_splitting_a_string_into_descending_consecutive_values",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1850_minimum_adjacent_swaps_to_reach_the_kth_smallest_number",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1851_minimum_interval_to_include_each_query",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1852_distinct_numbers_in_each_subarray",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12581,118 +12627,131 @@
     {
       "folder": "1854_maximum_population_year",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1855_maximum_distance_between_a_pair_of_values",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1856_maximum_subarray_min_product",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1857_largest_color_value_in_a_directed_graph",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1858_longest_word_with_all_prefixes",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1859_sorting_the_sentence",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1860_incremental_memory_leak",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1861_rotating_the_box",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1862_sum_of_floored_pairs",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1863_sum_of_all_subset_xor_totals",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1864_minimum_number_of_swaps_to_make_the_binary_string_alternating",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1865_finding_pairs_with_a_certain_sum",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1866_number_of_ways_to_rearrange_sticks_with_k_sticks_visible",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12707,46 +12766,51 @@
     {
       "folder": "1868_product_of_two_run_length_encoded_arrays",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1869_longer_contiguous_segments_of_ones_than_zeros",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1870_minimum_speed_to_arrive_on_time",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1871_jump_game_vii",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1872_stone_game_viii",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12761,10 +12825,11 @@
     {
       "folder": "1874_minimize_product_sum_of_two_arrays",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12779,127 +12844,141 @@
     {
       "folder": "1876_substrings_of_size_three_with_distinct_characters",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1877_minimize_maximum_pair_sum_in_array",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1878_get_biggest_three_rhombus_sums_in_a_grid",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1879_minimum_xor_sum_of_two_arrays",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1880_check_if_word_equals_summation_of_two_words",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1881_maximum_value_after_insertion",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1882_process_tasks_using_servers",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1883_minimum_skips_to_arrive_at_meeting_on_time",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1884_egg_drop_with_2_eggs_and_n_floors",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1885_count_pairs_in_two_arrays",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1886_determine_whether_matrix_can_be_obtained_by_rotation",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1887_reduction_operations_to_make_the_array_elements_equal",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1888_minimum_number_of_flips_to_make_the_binary_string_alternating",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1889_minimum_space_wasted_from_packaging",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12914,10 +12993,11 @@
     {
       "folder": "1891_cutting_ribbons",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
@@ -12932,73 +13012,81 @@
     {
       "folder": "1893_check_if_all_the_integers_in_a_range_are_covered",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1894_find_the_student_that_will_replace_the_chalk",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1895_largest_magic_square",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1896_minimum_cost_to_change_the_final_value_of_expression",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1897_redistribute_characters_to_make_all_strings_equal",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1898_maximum_number_of_removable_characters",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1899_merge_triplets_to_form_target_triplet",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
       "folder": "1900_the_earliest_and_latest_rounds_where_players_compete",
       "languages": [
-        "python",
+        "cpp",
         "go",
         "java",
-        "php"
+        "php",
+        "python"
       ]
     },
     {
