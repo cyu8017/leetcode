@@ -1,6 +1,10 @@
-﻿// LeetCode 1874 - Minimize Product Sum of Two Arrays
+// LeetCode 1874 - Minimize Product Sum of Two Arrays
 // https://leetcode.com/problems/minimize-product-sum-of-two-arrays/
 
-function solve(input: unknown): unknown {
-    return null;
+function minProductSum(nums1: number[], nums2: number[]): number {
+    nums1 = nums1.slice().sort((a, b) => a - b);
+    nums2 = nums2.slice().sort((a, b) => b - a);
+    let sum = 0;
+    for (let i = 0; i < nums1.length; i++) sum += nums1[i] * nums2[i];
+    return sum;
 }

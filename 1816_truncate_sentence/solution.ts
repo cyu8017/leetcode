@@ -1,6 +1,6 @@
 ﻿// LeetCode 1816 - Truncate Sentence
 // https://leetcode.com/problems/truncate-sentence/
 
-function solve(input: unknown): unknown {
-    return null;
+function truncateSentence(s: string, k: number): string {
+    return s.split(' ').slice(0, k).join(' ');
 }
