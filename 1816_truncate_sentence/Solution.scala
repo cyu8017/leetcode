@@ -1,6 +1,7 @@
-﻿// LeetCode 1816 - Truncate Sentence
+// LeetCode 1816 - Truncate Sentence
 // https://leetcode.com/problems/truncate-sentence/
 
 object Solution {
-  def solve(): Unit = {}
+  def truncateSentence(s: String, k: Int): String =
+    s.split(" ").take(k).mkString(" ")
 }
