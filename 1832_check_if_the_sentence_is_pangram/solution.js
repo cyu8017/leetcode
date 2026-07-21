@@ -1,9 +1,10 @@
-﻿// LeetCode 1832 - Check if the Sentence Is Pangram
+// LeetCode 1832 - Check if the Sentence Is Pangram
 // https://leetcode.com/problems/check-if-the-sentence-is-pangram/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} sentence
+ * @return {boolean}
  */
-var solve = function(input) {
+var checkIfPangram = function(sentence) {
+    return new Set(sentence).size === 26;
 };

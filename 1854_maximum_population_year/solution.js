@@ -2,8 +2,22 @@
 // https://leetcode.com/problems/maximum-population-year/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} logs
+ * @return {number}
  */
-var solve = function(input) {
+var maximumPopulation = function(logs) {
+    const diff = new Array(101).fill(0);
+    for (const [birth, death] of logs) {
+        diff[birth - 1950]++;
+        diff[death - 1950]--;
+    }
+    let bestYear = 1950, bestPop = 0, pop = 0;
+    for (let offset = 0; offset < 101; offset++) {
+        pop += diff[offset];
+        if (pop > bestPop) {
+            bestPop = pop;
+            bestYear = 1950 + offset;
+        }
+    }
+    return bestYear;
 };

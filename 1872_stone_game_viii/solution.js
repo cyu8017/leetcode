@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/stone-game-viii/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} stones
+ * @return {number}
  */
-var solve = function(input) {
+var stoneGameVIII = function(stones) {
+    const n = stones.length;
+    for (let i = 1; i < n; i++) stones[i] += stones[i - 1];
+    let score = stones[n - 1];
+    for (let i = n - 2; i > 0; i--) {
+        score = Math.max(stones[i] - score, score);
+    }
+    return score;
 };

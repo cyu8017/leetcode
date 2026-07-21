@@ -2,8 +2,14 @@
 // https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var twoEggDrop = function(n) {
+    let moves = 0, covered = 0;
+    while (covered < n) {
+        moves++;
+        covered += moves;
+    }
+    return moves;
 };

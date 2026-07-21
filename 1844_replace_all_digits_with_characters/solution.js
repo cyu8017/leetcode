@@ -1,9 +1,14 @@
-﻿// LeetCode 1844 - Replace All Digits with Characters
+// LeetCode 1844 - Replace All Digits with Characters
 // https://leetcode.com/problems/replace-all-digits-with-characters/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var replaceDigits = function(s) {
+    const chars = s.split('');
+    for (let i = 1; i < chars.length; i += 2) {
+        chars[i] = String.fromCharCode(chars[i - 1].charCodeAt(0) + Number(chars[i]));
+    }
+    return chars.join('');
 };

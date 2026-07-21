@@ -2,8 +2,14 @@
 // https://leetcode.com/problems/sorting-the-sentence/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var sortSentence = function(s) {
+    const tokens = s.split(" ");
+    const ordered = new Array(tokens.length);
+    for (const token of tokens) {
+        ordered[Number(token[token.length - 1]) - 1] = token.slice(0, -1);
+    }
+    return ordered.join(" ");
 };

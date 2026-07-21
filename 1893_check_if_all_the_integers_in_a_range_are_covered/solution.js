@@ -2,8 +2,18 @@
 // https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} ranges
+ * @param {number} left
+ * @param {number} right
+ * @return {boolean}
  */
-var solve = function(input) {
+var isCovered = function(ranges, left, right) {
+    const covered = new Array(51).fill(false);
+    for (const [start, end] of ranges) {
+        for (let v = start; v <= end; v++) covered[v] = true;
+    }
+    for (let v = left; v <= right; v++) {
+        if (!covered[v]) return false;
+    }
+    return true;
 };

@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/sum-of-all-subset-xor-totals/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var subsetXORSum = function(nums) {
+    let bits = 0;
+    for (const num of nums) bits |= num;
+    let total = 0;
+    for (let bit = 1; bit <= bits; bit <<= 1) {
+        if (bits & bit) total += bit;
+    }
+    return total << (nums.length - 1);
 };

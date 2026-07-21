@@ -1,9 +1,11 @@
-﻿// LeetCode 1816 - Truncate Sentence
+// LeetCode 1816 - Truncate Sentence
 // https://leetcode.com/problems/truncate-sentence/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
  */
-var solve = function(input) {
+var truncateSentence = function(s, k) {
+    return s.split(' ').slice(0, k).join(' ');
 };

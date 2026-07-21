@@ -2,8 +2,24 @@
 // https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number}
  */
-var solve = function(input) {
+var minSwaps = function(s) {
+    let zeros = 0;
+    for (const ch of s) if (ch === "0") zeros++;
+    const ones = s.length - zeros;
+    if (Math.abs(zeros - ones) > 1) return -1;
+
+    const mismatches = (pattern) => {
+        let count = 0;
+        for (let i = 0; i < s.length; i++) {
+            if (s[i] !== pattern[i % 2]) count++;
+        }
+        return count >> 1;
+    };
+
+    if (zeros === ones) return Math.min(mismatches("01"), mismatches("10"));
+    if (zeros > ones) return mismatches("01");
+    return mismatches("10");
 };

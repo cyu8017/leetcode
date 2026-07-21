@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
  */
-var solve = function(input) {
+var maxDistance = function(nums1, nums2) {
+    let answer = 0, j = 0;
+    for (let i = 0; i < nums1.length; i++) {
+        while (j < nums2.length && nums1[i] <= nums2[j]) j++;
+        answer = Math.max(answer, j - i - 1);
+    }
+    return answer;
 };

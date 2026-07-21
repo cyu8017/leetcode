@@ -2,8 +2,21 @@
 // https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {boolean}
  */
-var solve = function(input) {
+var checkZeroOnes = function(s) {
+    let maxZeros = 0, maxOnes = 0, zeros = 0, ones = 0;
+    for (const ch of s) {
+        if (ch === "0") {
+            zeros++;
+            ones = 0;
+            maxZeros = Math.max(maxZeros, zeros);
+        } else {
+            ones++;
+            zeros = 0;
+            maxOnes = Math.max(maxOnes, ones);
+        }
+    }
+    return maxOnes > maxZeros;
 };
