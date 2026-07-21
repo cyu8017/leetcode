@@ -1,11 +1,9 @@
 {
-  "class": "TreeNode",
-  "method": "__init__",
-  "paramOrder": [
-    "val=0",
-    "left=None",
-    "right=None"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "class": "Solution",
+  "method": "canMerge",
+  "paramOrder": ["trees"],
+  "types": {
+    "trees": "treenode[]",
+    "return": "treenode"
+  }
 }

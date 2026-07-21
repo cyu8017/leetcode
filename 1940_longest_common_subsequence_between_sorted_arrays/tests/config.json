@@ -1,9 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "arrays"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "method": "longestCommonSubsequence",
+  "paramOrder": ["arrays"],
+  "types": null
 }

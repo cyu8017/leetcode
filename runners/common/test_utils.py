@@ -689,6 +689,8 @@ def convert_arg(value: Any, type_name: str | None) -> Any:
         return [list_to_listnode(item) if item else None for item in value]
     if type_name == "treenode":
         return list_to_tree(value)
+    if type_name == "treenode[]":
+        return [list_to_tree(item) if item else None for item in value]
     if type_name == "nextnode":
         return list_to_nextnode(value)
     if type_name == "graphnode":

@@ -1,6 +1,6 @@
-﻿# LeetCode 1984 - Minimum Difference Between Highest and Lowest of K Scores
-# https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        return min(nums[i + k - 1] - nums[i] for i in range(len(nums) - k + 1))

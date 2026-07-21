@@ -1,6 +1,17 @@
-﻿# LeetCode 1944 - Number of Visible People in a Queue
-# https://leetcode.com/problems/number-of-visible-people-in-a-queue/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canSeePersonsCount(self, heights: List[int]) -> List[int]:
+        n = len(heights)
+        ans = [0] * n
+        stack = []  # decreasing heights to the right
+        for i in range(n - 1, -1, -1):
+            count = 0
+            while stack and heights[i] > stack[-1]:
+                stack.pop()
+                count += 1
+            if stack:
+                count += 1
+            ans[i] = count
+            stack.append(heights[i])
+        return ans

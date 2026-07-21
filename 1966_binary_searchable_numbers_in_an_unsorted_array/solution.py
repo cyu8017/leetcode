@@ -1,6 +1,18 @@
-﻿# LeetCode 1966 - Binary Searchable Numbers in an Unsorted Array
-# https://leetcode.com/problems/binary-searchable-numbers-in-an-unsorted-array/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def binarySearchableNumbers(self, nums: List[int]) -> int:
+        n = len(nums)
+        ok = [1] * n
+        mx, mi = float("-inf"), float("inf")
+        for i, x in enumerate(nums):
+            if x < mx:
+                ok[i] = 0
+            else:
+                mx = x
+        for i in range(n - 1, -1, -1):
+            if nums[i] > mi:
+                ok[i] = 0
+            else:
+                mi = nums[i]
+        return sum(ok)

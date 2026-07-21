@@ -1,6 +1,14 @@
-﻿# LeetCode 1955 - Count Number of Special Subsequences
-# https://leetcode.com/problems/count-number-of-special-subsequences/
+﻿from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countSpecialSubsequences(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+        a = b = c = 0
+        for x in nums:
+            if x == 0:
+                a = (a * 2 + 1) % MOD
+            elif x == 1:
+                b = (b * 2 + a) % MOD
+            else:
+                c = (c * 2 + b) % MOD
+        return c

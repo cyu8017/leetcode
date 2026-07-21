@@ -1,10 +1,9 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "widestPairOfIndices",
   "paramOrder": [
     "nums1",
     "nums2"
   ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "types": null
 }

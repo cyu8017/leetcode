@@ -1,9 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "s"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "method": "isDecomposable",
+  "paramOrder": ["s"],
+  "types": null
 }

@@ -1,6 +1,14 @@
-﻿# LeetCode 1989 - Maximum Number of People That Can Be Caught in Tag
-# https://leetcode.com/problems/maximum-number-of-people-that-can-be-caught-in-tag/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def catchMaximumAmountofPeople(self, team: List[int], dist: int) -> int:
+        ans = j = 0
+        n = len(team)
+        for i, x in enumerate(team):
+            if x:
+                while j < n and (team[j] or i - j > dist):
+                    j += 1
+                if j < n and abs(i - j) <= dist:
+                    ans += 1
+                    j += 1
+        return ans

@@ -1,6 +1,12 @@
-﻿# LeetCode 1936 - Add Minimum Number of Rungs
-# https://leetcode.com/problems/add-minimum-number-of-rungs/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def addRungs(self, rungs: List[int], dist: int) -> int:
+        prev = 0
+        ans = 0
+        for r in rungs:
+            gap = r - prev
+            if gap > dist:
+                ans += (gap - 1) // dist
+            prev = r
+        return ans

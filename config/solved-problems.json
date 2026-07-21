@@ -6266,6 +6266,12 @@
       ]
     },
     {
+      "folder": "1045_customers_who_bought_all_products",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1046_last_stone_weight",
       "languages": [
         "python"
@@ -6285,6 +6291,12 @@
     },
     {
       "folder": "1049_last_stone_weight_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1050_actors_and_directors_who_cooperated_at_least_three_times",
       "languages": [
         "python"
       ]
@@ -6392,6 +6404,24 @@
       ]
     },
     {
+      "folder": "1068_product_sales_analysis_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1069_product_sales_analysis_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1070_product_sales_analysis_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1071_greatest_common_divisor_of_strings",
       "languages": [
         "python"
@@ -6416,6 +6446,24 @@
       ]
     },
     {
+      "folder": "1075_project_employees_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1076_project_employees_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1077_project_employees_iii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1078_occurrences_after_bigram",
       "languages": [
         "python"
@@ -6435,6 +6483,24 @@
     },
     {
       "folder": "1081_smallest_subsequence_of_distinct_characters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1082_sales_analysis_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1083_sales_analysis_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1084_sales_analysis_iii",
       "languages": [
         "python"
       ]
@@ -6512,6 +6578,18 @@
       ]
     },
     {
+      "folder": "1097_game_play_analysis_v",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1098_unpopular_books",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1099_two_sum_less_than_k",
       "languages": [
         "python"
@@ -6560,6 +6638,12 @@
       ]
     },
     {
+      "folder": "1107_new_users_daily_count",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1108_defanging_an_ip_address",
       "languages": [
         "python"
@@ -6579,6 +6663,18 @@
     },
     {
       "folder": "1111_maximum_nesting_depth_of_two_valid_parentheses_strings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1112_highest_grade_for_each_student",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1113_reported_posts",
       "languages": [
         "python"
       ]
@@ -6656,6 +6752,18 @@
       ]
     },
     {
+      "folder": "1126_active_businesses",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1127_user_purchase_platform",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1128_number_of_equivalent_domino_pairs",
       "languages": [
         "python"
@@ -6675,6 +6783,12 @@
     },
     {
       "folder": "1131_maximum_of_absolute_value_expression",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1132_reported_posts_ii",
       "languages": [
         "python"
       ]
@@ -6728,6 +6842,18 @@
       ]
     },
     {
+      "folder": "1141_user_activity_for_the_past_30_days_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1142_user_activity_for_the_past_30_days_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1143_longest_common_subsequence",
       "languages": [
         "python"
@@ -6753,6 +6879,18 @@
     },
     {
       "folder": "1147_longest_chunked_palindrome_decomposition",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1148_article_views_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1149_article_views_ii",
       "languages": [
         "python"
       ]
@@ -6806,6 +6944,18 @@
       ]
     },
     {
+      "folder": "1158_market_analysis_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1159_market_analysis_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1160_find_words_that_can_be_formed_by_characters",
       "languages": [
         "python"
@@ -6825,6 +6975,12 @@
     },
     {
       "folder": "1163_last_substring_in_lexicographical_order",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1164_product_price_at_a_given_date",
       "languages": [
         "python"
       ]
@@ -6878,6 +7034,18 @@
       ]
     },
     {
+      "folder": "1173_immediate_food_delivery_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1174_immediate_food_delivery_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
       "folder": "1175_prime_arrangements",
       "languages": [
         "python"
@@ -6897,6 +7065,12 @@
     },
     {
       "folder": "1178_number_of_valid_words_for_each_puzzle",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1179_reformat_department_table",
       "languages": [
         "python"
       ]
@@ -6975,6 +7149,18 @@
     },
     {
       "folder": "1192_critical_connections_in_a_network",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1193_monthly_transactions_i",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1194_tournament_winners",
       "languages": [
         "python"
       ]
@@ -12931,6 +13117,486 @@
     },
     {
       "folder": "1920_build_array_from_permutation",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1921_eliminate_maximum_number_of_monsters",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1922_count_good_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1923_longest_common_subpath",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1924_erect_the_fence_ii",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1925_count_square_sum_triples",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1926_nearest_exit_from_entrance_in_maze",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1927_sum_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1928_minimum_cost_to_reach_destination_in_time",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1929_concatenation_of_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1930_unique_length_3_palindromic_subsequences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1931_painting_a_grid_with_three_different_colors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1932_merge_bsts_to_create_single_bst",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1933_check_if_string_is_decomposable_into_value_equal_substrings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1934_confirmation_rate",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1935_maximum_number_of_words_you_can_type",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1936_add_minimum_number_of_rungs",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1937_maximum_number_of_points_with_cost",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1938_maximum_genetic_difference_query",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1939_users_that_actively_request_confirmation_messages",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1940_longest_common_subsequence_between_sorted_arrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1941_check_if_all_characters_have_equal_number_of_occurrences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1942_the_number_of_the_smallest_unoccupied_chair",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1943_describe_the_painting",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1944_number_of_visible_people_in_a_queue",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1945_sum_of_digits_of_string_after_convert",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1946_largest_number_after_mutating_substring",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1947_maximum_compatibility_score_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1948_delete_duplicate_folders_in_system",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1949_strong_friendship",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1950_maximum_of_minimum_values_in_all_subarrays",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1951_all_the_pairs_with_the_maximum_number_of_common_followers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1952_three_divisors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1953_maximum_number_of_weeks_for_which_you_can_work",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1954_minimum_garden_perimeter_to_collect_enough_apples",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1955_count_number_of_special_subsequences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1956_minimum_time_for_k_virus_variants_to_spread",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1957_delete_characters_to_make_fancy_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1958_check_if_move_is_legal",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1959_minimum_total_space_wasted_with_k_resizing_operations",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1960_maximum_product_of_the_length_of_two_palindromic_substrings",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1961_check_if_string_is_a_prefix_of_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1962_remove_stones_to_minimize_the_total",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1963_minimum_number_of_swaps_to_make_the_string_balanced",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1964_find_the_longest_valid_obstacle_course_at_each_position",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1965_employees_with_missing_information",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1966_binary_searchable_numbers_in_an_unsorted_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1967_number_of_strings_that_appear_as_substrings_in_word",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1968_array_with_elements_not_equal_to_average_of_neighbors",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1969_minimum_non_zero_product_of_the_array_elements",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1970_last_day_where_you_can_still_cross",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1971_find_if_path_exists_in_graph",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1972_first_and_last_call_on_the_same_day",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1973_count_nodes_equal_to_sum_of_descendants",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1974_minimum_time_to_type_word_using_special_typewriter",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1975_maximum_matrix_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1976_number_of_ways_to_arrive_at_destination",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1977_number_of_ways_to_separate_numbers",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1978_employees_whose_manager_left_the_company",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1979_find_greatest_common_divisor_of_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1980_find_unique_binary_string",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1981_minimize_the_difference_between_target_and_chosen_elements",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1982_find_array_given_subset_sums",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1983_widest_pair_of_indices_with_equal_range_sum",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1984_minimum_difference_between_highest_and_lowest_of_k_scores",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1985_find_the_kth_largest_integer_in_the_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1986_minimum_number_of_work_sessions_to_finish_the_tasks",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1987_number_of_unique_good_subsequences",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1988_find_cutoff_score_for_each_school",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1989_maximum_number_of_people_that_can_be_caught_in_tag",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1990_count_the_number_of_experiments",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1991_find_the_middle_index_in_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1992_find_all_groups_of_farmland",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1993_operations_on_tree",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1994_the_number_of_good_subsets",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1995_count_special_quadruplets",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1996_the_number_of_weak_characters_in_the_game",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1997_first_day_where_you_have_been_in_all_the_rooms",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1998_gcd_sort_of_an_array",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "1999_smallest_greater_multiple_made_of_two_digits",
+      "languages": [
+        "python"
+      ]
+    },
+    {
+      "folder": "2000_reverse_prefix_of_word",
       "languages": [
         "python"
       ]

@@ -1,6 +1,5 @@
-﻿# LeetCode 1985 - Find the Kth Largest Integer in the Array
-# https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/
+from typing import List
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def kthLargestNumber(self, nums: List[str], k: int) -> str:
+        return sorted(nums, key=lambda x: (len(x), x), reverse=True)[k - 1]

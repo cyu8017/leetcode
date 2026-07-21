@@ -1,6 +1,4 @@
-﻿# LeetCode 1935 - Maximum Number of Words You Can Type
-# https://leetcode.com/problems/maximum-number-of-words-you-can-type/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def canBeTypedWords(self, text: str, brokenLetters: str) -> int:
+        broken = set(brokenLetters)
+        return sum(1 for w in text.split() if not broken.intersection(w))

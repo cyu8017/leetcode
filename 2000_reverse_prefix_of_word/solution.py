@@ -1,6 +1,6 @@
-﻿# LeetCode 2000 - Reverse Prefix of Word
-# https://leetcode.com/problems/reverse-prefix-of-word/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def reversePrefix(self, word: str, ch: str) -> str:
+        i = word.find(ch)
+        if i < 0:
+            return word
+        return word[: i + 1][::-1] + word[i + 1 :]

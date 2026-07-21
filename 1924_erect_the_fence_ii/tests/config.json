@@ -1,9 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
-  "paramOrder": [
-    "trees"
-  ],
-  "types": null,
-  "description": "Update method name and add cases to cases.json when implementing the solution."
+  "method": "outerTrees",
+  "paramOrder": ["trees"],
+  "types": null
 }

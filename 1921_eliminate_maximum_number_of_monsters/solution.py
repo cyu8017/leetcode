@@ -1,6 +1,10 @@
-﻿# LeetCode 1921 - Eliminate Maximum Number of Monsters
-# https://leetcode.com/problems/eliminate-maximum-number-of-monsters/
+from typing import List
+import math
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def eliminateMaximum(self, dist: List[int], speed: List[int]) -> int:
+        arrival = sorted(math.ceil(d / s) for d, s in zip(dist, speed))
+        for i, t in enumerate(arrival):
+            if t <= i:
+                return i
+        return len(arrival)

@@ -1,6 +1,13 @@
-﻿# LeetCode 1930 - Unique Length-3 Palindromic Subsequences
-# https://leetcode.com/problems/unique-length-3-palindromic-subsequences/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countPalindromicSubsequence(self, s: str) -> int:
+        first = {}
+        last = {}
+        for i, c in enumerate(s):
+            if c not in first:
+                first[c] = i
+            last[c] = i
+        ans = 0
+        for c in first:
+            if last[c] - first[c] > 1:
+                ans += len(set(s[first[c] + 1:last[c]]))
+        return ans

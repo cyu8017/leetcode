@@ -1,6 +1,9 @@
-﻿# LeetCode 1974 - Minimum Time to Type Word Using Special Typewriter
-# https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/
-
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minTimeToType(self, word: str) -> int:
+        cur = "a"
+        ans = 0
+        for ch in word:
+            d = abs(ord(ch) - ord(cur))
+            ans += min(d, 26 - d) + 1
+            cur = ch
+        return ans
