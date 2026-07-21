@@ -1,0 +1,1138 @@
+﻿===== 1851_minimum_interval_to_include_each_query =====
+# LeetCode 1851 - Minimum Interval to Include Each Query
+# https://leetcode.com/problems/minimum-interval-to-include-each-query/
+
+import heapq
+from typing import List
+
+
+class Solution:
+    def minInterval(self, intervals: List[List[int]], queries: List[int]) -> List[int]:
+        intervals.sort()
+        indexed_queries = sorted(enumerate(queries), key=lambda item: item[1])
+        heap: list[tuple[int, int]] = []
+        answer = [-1] * len(queries)
+        interval_idx = 0
+
+        for query_idx, query in indexed_queries:
+            while interval_idx < len(intervals) and intervals[interval_idx][0] <= query:
+                left, right = intervals[interval_idx]
+                heapq.heappush(heap, (right - left + 1, right))
+                interval_idx += 1
+
+            while heap and heap[0][1] < query:
+                heapq.heappop(heap)
+
+            if heap:
+                answer[query_idx] = heap[0][0]
+
+        return answer
+
+
+===== 1852_distinct_numbers_in_each_subarray =====
+# LeetCode 1852 - Distinct Numbers in Each Subarray
+# https://leetcode.com/problems/distinct-numbers-in-each-subarray/
+
+from collections import Counter
+from typing import List
+
+
+class Solution:
+    def distinctNumbers(self, nums: List[int], k: int) -> List[int]:
+        counts = Counter(nums[:k])
+        result = [len(counts)]
+        left = 0
+
+        for right in range(k, len(nums)):
+            counts[nums[right]] += 1
+            outgoing = nums[left]
+            counts[outgoing] -= 1
+            if counts[outgoing] == 0:
+                del counts[outgoing]
+            left += 1
+            result.append(len(counts))
+
+        return result
+
+
+===== 1854_maximum_population_year =====
+# LeetCode 1854 - Maximum Population Year
+# https://leetcode.com/problems/maximum-population-year/
+
+from typing import List
+
+
+class Solution:
+    def maximumPopulation(self, logs: List[List[int]]) -> int:
+        diff = [0] * 101
+
+        for birth, death in logs:
+            diff[birth - 1950] += 1
+            diff[death - 1950] -= 1
+
+        best_year = 1950
+        best_population = 0
+        population = 0
+
+        for offset in range(101):
+            population += diff[offset]
+            if population > best_population:
+                best_population = population
+                best_year = 1950 + offset
+
+        return best_year
+
+
+===== 1855_maximum_distance_between_a_pair_of_values =====
+# LeetCode 1855 - Maximum Distance Between a Pair of Values
+# https://leetcode.com/problems/maximum-distance-between-a-pair-of-values/
+
+from typing import List
+
+
+class Solution:
+    def maxDistance(self, nums1: List[int], nums2: List[int]) -> int:
+        answer = 0
+        j = 0
+
+        for i, value in enumerate(nums1):
+            while j < len(nums2) and value <= nums2[j]:
+                j += 1
+            answer = max(answer, j - i - 1)
+
+        return answer
+
+
+===== 1856_maximum_subarray_min_product =====
+# LeetCode 1856 - Maximum Subarray Min-Product
+# https://leetcode.com/problems/maximum-subarray-min-product/
+
+from typing import List
+
+
+class Solution:
+    def maxSumMinProduct(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        n = len(nums)
+        prefix = [0] * (n + 1)
+        for index, value in enumerate(nums):
+            prefix[index + 1] = prefix[index] + value
+
+        left_bound = [-1] * n
+        stack: list[int] = []
+        for index, value in enumerate(nums):
+            while stack and nums[stack[-1]] >= value:
+                stack.pop()
+            left_bound[index] = stack[-1] if stack else -1
+            stack.append(index)
+
+        right_bound = [n] * n
+        stack.clear()
+        for index in range(n - 1, -1, -1):
+            value = nums[index]
+            while stack and nums[stack[-1]] >= value:
+                stack.pop()
+            right_bound[index] = stack[-1] if stack else n
+            stack.append(index)
+
+        best = 0
+        for index, value in enumerate(nums):
+            total = prefix[right_bound[index]] - prefix[left_bound[index] + 1]
+            best = max(best, total * value)
+
+        return best % mod
+
+
+===== 1857_largest_color_value_in_a_directed_graph =====
+# LeetCode 1857 - Largest Color Value in a Directed Graph
+# https://leetcode.com/problems/largest-color-value-in-a-directed-graph/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        n = len(colors)
+        indegree = [0] * n
+        adjacency: list[list[int]] = [[] for _ in range(n)]
+
+        for from_node, to_node in edges:
+            adjacency[from_node].append(to_node)
+            indegree[to_node] += 1
+
+        queue = deque(node for node in range(n) if indegree[node] == 0)
+        dp = [[0] * 26 for _ in range(n)]
+        for node in range(n):
+            dp[node][ord(colors[node]) - ord("a")] = 1
+
+        processed = 0
+        answer = 0
+
+        while queue:
+            node = queue.popleft()
+            processed += 1
+            answer = max(answer, max(dp[node]))
+
+            for neighbor in adjacency[node]:
+                neighbor_color = ord(colors[neighbor]) - ord("a")
+                for color_index in range(26):
+                    candidate = dp[node][color_index]
+                    if color_index == neighbor_color:
+                        candidate += 1
+                    if candidate > dp[neighbor][color_index]:
+                        dp[neighbor][color_index] = candidate
+
+                indegree[neighbor] -= 1
+                if indegree[neighbor] == 0:
+                    queue.append(neighbor)
+
+        return answer if processed == n else -1
+
+
+===== 1858_longest_word_with_all_prefixes =====
+# LeetCode 1858 - Longest Word With All Prefixes
+# https://leetcode.com/problems/longest-word-with-all-prefixes/
+
+from typing import List
+
+
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        word_set = set(words)
+        best = ""
+
+        for word in words:
+            prefix = word
+            valid = True
+            while prefix:
+                if prefix not in word_set:
+                    valid = False
+                    break
+                prefix = prefix[:-1]
+
+            if valid and (len(word) > len(best) or (len(word) == len(best) and word < best)):
+                best = word
+
+        return best
+
+
+===== 1859_sorting_the_sentence =====
+# LeetCode 1859 - Sorting the Sentence
+# https://leetcode.com/problems/sorting-the-sentence/
+
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        tokens = s.split()
+        ordered = [""] * len(tokens)
+
+        for token in tokens:
+            position = int(token[-1]) - 1
+            ordered[position] = token[:-1]
+
+        return " ".join(ordered)
+
+
+===== 1860_incremental_memory_leak =====
+# LeetCode 1860 - Incremental Memory Leak
+# https://leetcode.com/problems/incremental-memory-leak/
+
+from typing import List
+
+
+class Solution:
+    def memLeak(self, memory1: int, memory2: int) -> List[int]:
+        second = 1
+
+        while memory1 >= second or memory2 >= second:
+            if memory1 >= memory2:
+                memory1 -= second
+            else:
+                memory2 -= second
+            second += 1
+
+        return [second, memory1, memory2]
+
+
+===== 1861_rotating_the_box =====
+# LeetCode 1861 - Rotating the Box
+# https://leetcode.com/problems/rotating-the-box/
+
+from typing import List
+
+
+class Solution:
+    def rotateTheBox(self, boxGrid: List[List[str]]) -> List[List[str]]:
+        m, n = len(boxGrid), len(boxGrid[0])
+        rotated = [["."] * m for _ in range(n)]
+
+        for i in range(n):
+            for j in range(m):
+                rotated[i][j] = boxGrid[m - 1 - j][i]
+
+        for col in range(m):
+            row = n - 1
+            for i in range(n - 1, -1, -1):
+                if rotated[i][col] == "*":
+                    row = i - 1
+                elif rotated[i][col] == "#":
+                    rotated[i][col] = "."
+                    rotated[row][col] = "#"
+                    row -= 1
+
+        return rotated
+
+
+===== 1862_sum_of_floored_pairs =====
+# LeetCode 1862 - Sum of Floored Pairs
+# https://leetcode.com/problems/sum-of-floored-pairs/
+
+from typing import List
+
+
+class Solution:
+    def sumOfFlooredPairs(self, nums: List[int]) -> int:
+        mod = 10**9 + 7
+        max_val = max(nums)
+        count = [0] * (max_val + 1)
+        for num in nums:
+            count[num] += 1
+
+        prefix = [0] * (max_val + 1)
+        prefix[0] = count[0]
+        for value in range(1, max_val + 1):
+            prefix[value] = prefix[value - 1] + count[value]
+
+        answer = 0
+        for divisor in range(1, max_val + 1):
+            if count[divisor] == 0:
+                continue
+            quotient = 1
+            while quotient * divisor <= max_val:
+                low = quotient * divisor
+                high = min((quotient + 1) * divisor - 1, max_val)
+                matches = prefix[high] - (prefix[low - 1] if low else 0)
+                answer = (answer + count[divisor] * matches * quotient) % mod
+                quotient += 1
+
+        return answer
+
+
+===== 1863_sum_of_all_subset_xor_totals =====
+# LeetCode 1863 - Sum of All Subset XOR Totals
+# https://leetcode.com/problems/sum-of-all-subset-xor-totals/
+
+from typing import List
+
+
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        bits = 0
+        for num in nums:
+            bits |= num
+
+        total = 0
+        bit = 1
+        while bit <= bits:
+            if bits & bit:
+                total += bit
+            bit <<= 1
+
+        return total << (len(nums) - 1)
+
+
+===== 1864_minimum_number_of_swaps_to_make_the_binary_string_alternating =====
+# LeetCode 1864 - Minimum Number of Swaps to Make the Binary String Alternating
+# https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-binary-string-alternating/
+
+class Solution:
+    def minSwaps(self, s: str) -> int:
+        zeros = s.count("0")
+        ones = len(s) - zeros
+        if abs(zeros - ones) > 1:
+            return -1
+
+        def mismatches(pattern: str) -> int:
+            return sum(ch != pattern[i % 2] for i, ch in enumerate(s)) // 2
+
+        if zeros == ones:
+            return min(mismatches("01"), mismatches("10"))
+        if zeros > ones:
+            return mismatches("01")
+        return mismatches("10")
+
+
+===== 1865_finding_pairs_with_a_certain_sum =====
+# LeetCode 1865 - Finding Pairs With a Certain Sum
+# https://leetcode.com/problems/finding-pairs-with-a-certain-sum/
+
+from collections import Counter
+from typing import List
+
+
+class FindSumPairs:
+    def __init__(self, nums1: List[int], nums2: List[int]):
+        self.nums1 = nums1
+        self.nums2 = nums2
+        self.counts = Counter(nums2)
+
+    def add(self, index: int, val: int) -> None:
+        self.counts[self.nums2[index]] -= 1
+        self.nums2[index] += val
+        self.counts[self.nums2[index]] += 1
+
+    def count(self, tot: int) -> int:
+        return sum(self.counts[tot - num] for num in self.nums1)
+
+
+===== 1866_number_of_ways_to_rearrange_sticks_with_k_sticks_visible =====
+# LeetCode 1866 - Number of Ways to Rearrange Sticks With K Sticks Visible
+# https://leetcode.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
+
+class Solution:
+    def rearrangeSticks(self, n: int, k: int) -> int:
+        mod = 10**9 + 7
+        if k == 0 or k > n:
+            return 0
+
+        dp = [[0] * (n + 1) for _ in range(n + 1)]
+        dp[1][1] = 1
+        for sticks in range(2, n + 1):
+            dp[sticks][1] = (sticks - 1) * dp[sticks - 1][1] % mod
+            for visible in range(2, sticks + 1):
+                dp[sticks][visible] = (
+                    dp[sticks - 1][visible - 1] + (sticks - 1) * dp[sticks - 1][visible]
+                ) % mod
+
+        return dp[n][k]
+
+
+===== 1868_product_of_two_run_length_encoded_arrays =====
+# LeetCode 1868 - Product of Two Run-Length Encoded Arrays
+# https://leetcode.com/problems/product-of-two-run-length-encoded-arrays/
+
+from typing import List
+
+
+class Solution:
+    def findRLEArray(
+        self, encoded1: List[List[int]], encoded2: List[List[int]]
+    ) -> List[List[int]]:
+        result: List[List[int]] = []
+        i = j = 0
+        rem1 = encoded1[0][1]
+        rem2 = encoded2[0][1]
+
+        while i < len(encoded1):
+            take = min(rem1, rem2)
+            value = encoded1[i][0] * encoded2[j][0]
+            if result and result[-1][0] == value:
+                result[-1][1] += take
+            else:
+                result.append([value, take])
+
+            rem1 -= take
+            rem2 -= take
+            if rem1 == 0:
+                i += 1
+                if i < len(encoded1):
+                    rem1 = encoded1[i][1]
+            if rem2 == 0:
+                j += 1
+                if j < len(encoded2):
+                    rem2 = encoded2[j][1]
+
+        return result
+
+
+===== 1869_longer_contiguous_segments_of_ones_than_zeros =====
+# LeetCode 1869 - Longer Contiguous Segments of Ones than Zeros
+# https://leetcode.com/problems/longer-contiguous-segments-of-ones-than-zeros/
+
+class Solution:
+    def checkZeroOnes(self, s: str) -> bool:
+        max_zeros = max_ones = 0
+        zeros = ones = 0
+
+        for ch in s:
+            if ch == "0":
+                zeros += 1
+                ones = 0
+                max_zeros = max(max_zeros, zeros)
+            else:
+                ones += 1
+                zeros = 0
+                max_ones = max(max_ones, ones)
+
+        return max_ones > max_zeros
+
+
+===== 1870_minimum_speed_to_arrive_on_time =====
+# LeetCode 1870 - Minimum Speed to Arrive on Time
+# https://leetcode.com/problems/minimum-speed-to-arrive-on-time/
+
+from typing import List
+
+
+class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        n = len(dist)
+        if n - 1 >= hour:
+            return -1
+
+        def can_arrive(speed: int) -> bool:
+            time = 0.0
+            for i in range(n - 1):
+                time += (dist[i] + speed - 1) // speed
+            time += dist[-1] / speed
+            return time <= hour
+
+        if not can_arrive(10**7):
+            return -1
+
+        lo, hi = 1, 10**7
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if can_arrive(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+
+===== 1871_jump_game_vii =====
+# LeetCode 1871 - Jump Game VII
+# https://leetcode.com/problems/jump-game-vii/
+
+class Solution:
+    def canReach(self, s: str, minJump: int, maxJump: int) -> bool:
+        n = len(s)
+        reachable = [False] * n
+        reachable[0] = True
+        prefix = [0] * (n + 1)
+
+        for i in range(n):
+            if i > 0 and s[i] == "0":
+                left = max(0, i - maxJump)
+                right = i - minJump
+                if right >= left and prefix[right + 1] - prefix[left] > 0:
+                    reachable[i] = True
+            prefix[i + 1] = prefix[i] + (1 if reachable[i] else 0)
+
+        return reachable[n - 1]
+
+
+===== 1872_stone_game_viii =====
+# LeetCode 1872 - Stone Game VIII
+# https://leetcode.com/problems/stone-game-viii/
+
+from typing import List
+
+
+class Solution:
+    def stoneGameVIII(self, stones: List[int]) -> int:
+        n = len(stones)
+        for i in range(1, n):
+            stones[i] += stones[i - 1]
+
+        score = stones[-1]
+        for i in range(n - 2, 0, -1):
+            score = max(stones[i] - score, score)
+        return score
+
+
+===== 1874_minimize_product_sum_of_two_arrays =====
+# LeetCode 1874 - Minimize Product Sum of Two Arrays
+# https://leetcode.com/problems/minimize-product-sum-of-two-arrays/
+
+from typing import List
+
+
+class Solution:
+    def minProductSum(self, nums1: List[int], nums2: List[int]) -> int:
+        nums1.sort()
+        nums2.sort(reverse=True)
+        return sum(a * b for a, b in zip(nums1, nums2))
+
+
+===== 1876_substrings_of_size_three_with_distinct_characters =====
+# LeetCode 1876 - Substrings of Size Three with Distinct Characters
+# https://leetcode.com/problems/substrings-of-size-three-with-distinct-characters/
+
+class Solution:
+    def countGoodSubstrings(self, s: str) -> int:
+        if len(s) < 3:
+            return 0
+
+        count = 0
+        for i in range(len(s) - 2):
+            window = s[i : i + 3]
+            if len(set(window)) == 3:
+                count += 1
+        return count
+
+
+===== 1877_minimize_maximum_pair_sum_in_array =====
+# LeetCode 1877 - Minimize Maximum Pair Sum in Array
+# https://leetcode.com/problems/minimize-maximum-pair-sum-in-array/
+
+from typing import List
+
+
+class Solution:
+    def minPairSum(self, nums: List[int]) -> int:
+        nums.sort()
+        return max(nums[i] + nums[-1 - i] for i in range(len(nums) // 2))
+
+
+===== 1878_get_biggest_three_rhombus_sums_in_a_grid =====
+# LeetCode 1878 - Get Biggest Three Rhombus Sums in a Grid
+# https://leetcode.com/problems/get-biggest-three-rhombus-sums-in-a-grid/
+
+from typing import List
+
+
+class Solution:
+    def getBiggestThree(self, grid: List[List[int]]) -> List[int]:
+        m, n = len(grid), len(grid[0])
+        s1 = [[0] * (n + 2) for _ in range(m + 1)]
+        s2 = [[0] * (n + 2) for _ in range(m + 1)]
+
+        for i, row in enumerate(grid, 1):
+            for j, value in enumerate(row, 1):
+                s1[i][j] = s1[i - 1][j - 1] + value
+                s2[i][j] = s2[i - 1][j + 1] + value
+
+        rhombus_sums = set()
+        for i, row in enumerate(grid, 1):
+            for j, value in enumerate(row, 1):
+                limit = min(i - 1, m - i, j - 1, n - j)
+                rhombus_sums.add(value)
+                for k in range(1, limit + 1):
+                    a = s1[i + k][j] - s1[i][j - k]
+                    b = s1[i][j + k] - s1[i - k][j]
+                    c = s2[i][j - k] - s2[i - k][j]
+                    d = s2[i + k][j] - s2[i][j + k]
+                    rhombus_sums.add(
+                        a + b + c + d - grid[i + k - 1][j - 1] + grid[i - k - 1][j - 1]
+                    )
+
+        return sorted(rhombus_sums, reverse=True)[:3]
+
+
+===== 1879_minimum_xor_sum_of_two_arrays =====
+# LeetCode 1879 - Minimum XOR Sum of Two Arrays
+# https://leetcode.com/problems/minimum-xor-sum-of-two-arrays/
+
+from typing import List
+
+
+class Solution:
+    def minimumXORSum(self, nums1: List[int], nums2: List[int]) -> int:
+        n = len(nums1)
+        dp = [float("inf")] * (1 << n)
+        dp[0] = 0
+
+        for mask in range(1 << n):
+            i = mask.bit_count()
+            if i >= n:
+                continue
+            for j in range(n):
+                if mask & (1 << j):
+                    continue
+                next_mask = mask | (1 << j)
+                cost = dp[mask] + (nums1[i] ^ nums2[j])
+                if cost < dp[next_mask]:
+                    dp[next_mask] = cost
+
+        return dp[(1 << n) - 1]
+
+
+===== 1880_check_if_word_equals_summation_of_two_words =====
+# LeetCode 1880 - Check if Word Equals Summation of Two Words
+# https://leetcode.com/problems/check-if-word-equals-summation-of-two-words/
+
+class Solution:
+    def _value(self, word: str) -> int:
+        return int("".join(str(ord(ch) - ord("a")) for ch in word))
+
+    def isSumEqual(self, firstWord: str, secondWord: str, targetWord: str) -> bool:
+        return self._value(firstWord) + self._value(secondWord) == self._value(targetWord)
+
+
+===== 1881_maximum_value_after_insertion =====
+# LeetCode 1881 - Maximum Value after Insertion
+# https://leetcode.com/problems/maximum-value-after-insertion/
+
+
+class Solution:
+    def maxValue(self, n: str, x: int) -> str:
+        neg = n[0] == "-"
+        start = 1 if neg else 0
+        for i in range(start, len(n)):
+            d = int(n[i])
+            if neg:
+                if d > x:
+                    return n[:i] + str(x) + n[i:]
+            elif d < x:
+                return n[:i] + str(x) + n[i:]
+        return n + str(x)
+
+
+===== 1882_process_tasks_using_servers =====
+# LeetCode 1882 - Process Tasks Using Servers
+# https://leetcode.com/problems/process-tasks-using-servers/
+
+import heapq
+from typing import List
+
+
+class Solution:
+    def assignTasks(self, servers: List[int], tasks: List[int]) -> List[int]:
+        available = [(weight, index) for index, weight in enumerate(servers)]
+        heapq.heapify(available)
+        busy: list[tuple[int, int, int]] = []
+        answer: List[int] = []
+        time = 0
+
+        for moment, task in enumerate(tasks):
+            time = max(time, moment)
+            while busy and busy[0][0] <= time:
+                finish_time, weight, index = heapq.heappop(busy)
+                heapq.heappush(available, (weight, index))
+
+            while not available:
+                time = busy[0][0]
+                while busy and busy[0][0] <= time:
+                    finish_time, weight, index = heapq.heappop(busy)
+                    heapq.heappush(available, (weight, index))
+
+            weight, index = heapq.heappop(available)
+            heapq.heappush(busy, (time + task, weight, index))
+            answer.append(index)
+
+        return answer
+
+
+===== 1883_minimum_skips_to_arrive_at_meeting_on_time =====
+# LeetCode 1883 - Minimum Skips to Arrive at Meeting On Time
+# https://leetcode.com/problems/minimum-skips-to-arrive-at-meeting-on-time/
+
+from typing import List
+
+
+class Solution:
+    def minSkips(self, dist: List[int], speed: int, hoursBefore: int) -> int:
+        limit = hoursBefore * speed
+        dp = [float("inf")] * (len(dist) + 1)
+        dp[0] = 0
+
+        for road in dist:
+            nxt = [float("inf")] * (len(dist) + 1)
+            for skips in range(len(dist)):
+                if dp[skips] == float("inf"):
+                    continue
+                nxt[skips] = min(
+                    nxt[skips],
+                    ((dp[skips] + road + speed - 1) // speed) * speed,
+                )
+                nxt[skips + 1] = min(nxt[skips + 1], dp[skips] + road)
+            dp = nxt
+
+        for skips, total in enumerate(dp):
+            if total <= limit:
+                return skips
+        return -1
+
+
+===== 1884_egg_drop_with_2_eggs_and_n_floors =====
+# LeetCode 1884 - Egg Drop With 2 Eggs and N Floors
+# https://leetcode.com/problems/egg-drop-with-2-eggs-and-n-floors/
+
+
+class Solution:
+    def twoEggDrop(self, n: int) -> int:
+        moves = 0
+        covered = 0
+        while covered < n:
+            moves += 1
+            covered += moves
+        return moves
+
+
+===== 1885_count_pairs_in_two_arrays =====
+# LeetCode 1885 - Count Pairs in Two Arrays
+# https://leetcode.com/problems/count-pairs-in-two-arrays/
+
+import bisect
+from typing import List
+
+
+class Solution:
+    def countPairs(self, nums1: List[int], nums2: List[int]) -> int:
+        diff = sorted(a - b for a, b in zip(nums1, nums2))
+        answer = 0
+        n = len(diff)
+
+        for i in range(n):
+            target = -diff[i]
+            answer += len(diff) - bisect.bisect_right(diff, target, lo=i + 1)
+
+        return answer
+
+
+===== 1886_determine_whether_matrix_can_be_obtained_by_rotation =====
+# LeetCode 1886 - Determine Whether Matrix Can Be Obtained By Rotation
+# https://leetcode.com/problems/determine-whether-matrix-can-be-obtained-by-rotation/
+
+from typing import List
+
+
+class Solution:
+    def findRotation(self, mat: List[List[int]], target: List[List[int]]) -> bool:
+        current = mat
+        for _ in range(4):
+            if current == target:
+                return True
+            n = len(current)
+            current = [[current[n - 1 - row][col] for row in range(n)] for col in range(n)]
+        return False
+
+
+===== 1887_reduction_operations_to_make_the_array_elements_equal =====
+# LeetCode 1887 - Reduction Operations to Make the Array Elements Equal
+# https://leetcode.com/problems/reduction-operations-to-make-the-array-elements-equal/
+
+from typing import List
+
+
+class Solution:
+    def reductionOperations(self, nums: List[int]) -> int:
+        nums.sort()
+        answer = 0
+        rank = 0
+
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i - 1]:
+                rank += 1
+            answer += rank
+
+        return answer
+
+
+===== 1888_minimum_number_of_flips_to_make_the_binary_string_alternating =====
+# LeetCode 1888 - Minimum Number of Flips to Make the Binary String Alternating
+# https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/
+
+
+class Solution:
+    def minFlips(self, s: str) -> int:
+        n = len(s)
+        doubled = s + s
+        alt0 = alt1 = 0
+
+        for i in range(n):
+            if doubled[i] != ("0" if i % 2 == 0 else "1"):
+                alt0 += 1
+            if doubled[i] != ("1" if i % 2 == 0 else "0"):
+                alt1 += 1
+
+        answer = min(alt0, alt1)
+        for i in range(n):
+            if doubled[i] != ("0" if i % 2 == 0 else "1"):
+                alt0 -= 1
+            if doubled[i + n] != ("0" if (i + n) % 2 == 0 else "1"):
+                alt0 += 1
+
+            if doubled[i] != ("1" if i % 2 == 0 else "0"):
+                alt1 -= 1
+            if doubled[i + n] != ("1" if (i + n) % 2 == 0 else "0"):
+                alt1 += 1
+
+            answer = min(answer, alt0, alt1)
+
+        return answer
+
+
+===== 1889_minimum_space_wasted_from_packaging =====
+# LeetCode 1889 - Minimum Space Wasted From Packaging
+# https://leetcode.com/problems/minimum-space-wasted-from-packaging/
+
+import bisect
+from itertools import accumulate
+from typing import List
+
+
+class Solution:
+    def minWastedSpace(self, packages: List[int], boxes: List[List[int]]) -> int:
+        packages.sort()
+        prefix = list(accumulate(packages))
+        answer = float("inf")
+
+        for supplier in boxes:
+            supplier.sort()
+            start = 0
+            wasted = 0
+
+            for box in supplier:
+                end = bisect.bisect_right(packages, box, lo=start)
+                if end == start:
+                    continue
+                package_sum = prefix[end - 1] - (prefix[start - 1] if start else 0)
+                wasted += box * (end - start) - package_sum
+                start = end
+
+            if start == len(packages):
+                answer = min(answer, wasted)
+
+        return -1 if answer == float("inf") else answer % 1_000_000_007
+
+
+===== 1891_cutting_ribbons =====
+# LeetCode 1891 - Cutting Ribbons
+# https://leetcode.com/problems/cutting-ribbons/
+
+class Solution:
+    def maxLength(self, ribbons: list[int], k: int) -> int:
+        def can(length: int) -> bool:
+            return sum(ribbon // length for ribbon in ribbons) >= k
+
+        lo, hi = 1, max(ribbons)
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if can(mid):
+                lo = mid
+            else:
+                hi = mid - 1
+        return lo if can(lo) else 0
+
+
+===== 1893_check_if_all_the_integers_in_a_range_are_covered =====
+# LeetCode 1893 - Check if All the Integers in a Range Are Covered
+# https://leetcode.com/problems/check-if-all-the-integers-in-a-range-are-covered/
+
+class Solution:
+    def isCovered(self, ranges: list[list[int]], left: int, right: int) -> bool:
+        covered = [False] * 51
+        for start, end in ranges:
+            for value in range(start, end + 1):
+                covered[value] = True
+        return all(covered[value] for value in range(left, right + 1))
+
+
+===== 1894_find_the_student_that_will_replace_the_chalk =====
+# LeetCode 1894 - Find the Student that Will Replace the Chalk
+# https://leetcode.com/problems/find-the-student-that-will-replace-the-chalk/
+
+class Solution:
+    def chalkReplacer(self, chalk: list[int], k: int) -> int:
+        k %= sum(chalk)
+        for index, need in enumerate(chalk):
+            if k < need:
+                return index
+            k -= need
+        return 0
+
+
+===== 1895_largest_magic_square =====
+# LeetCode 1895 - Largest Magic Square
+# https://leetcode.com/problems/largest-magic-square/
+
+class Solution:
+    def largestMagicSquare(self, grid: list[list[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        row_prefix = [[0] * (cols + 1) for _ in range(rows)]
+        col_prefix = [[0] * (rows + 1) for _ in range(cols)]
+
+        for i in range(rows):
+            for j in range(cols):
+                row_prefix[i][j + 1] = row_prefix[i][j] + grid[i][j]
+                col_prefix[j][i + 1] = col_prefix[j][i] + grid[i][j]
+
+        def row_sum(row: int, col_start: int, col_end: int) -> int:
+            return row_prefix[row][col_end + 1] - row_prefix[row][col_start]
+
+        def col_sum(col: int, row_start: int, row_end: int) -> int:
+            return col_prefix[col][row_end + 1] - col_prefix[col][row_start]
+
+        def is_magic(row_start: int, col_start: int, size: int) -> bool:
+            target = row_sum(row_start, col_start, col_start + size - 1)
+            for row in range(row_start, row_start + size):
+                if row_sum(row, col_start, col_start + size - 1) != target:
+                    return False
+            for col in range(col_start, col_start + size):
+                if col_sum(col, row_start, row_start + size - 1) != target:
+                    return False
+            diag1 = sum(grid[row_start + offset][col_start + offset] for offset in range(size))
+            diag2 = sum(
+                grid[row_start + offset][col_start + size - 1 - offset] for offset in range(size)
+            )
+            return diag1 == target and diag2 == target
+
+        for size in range(min(rows, cols), 0, -1):
+            for row_start in range(rows - size + 1):
+                for col_start in range(cols - size + 1):
+                    if is_magic(row_start, col_start, size):
+                        return size
+        return 1
+
+
+===== 1896_minimum_cost_to_change_the_final_value_of_expression =====
+# LeetCode 1896 - Minimum Cost to Change the Final Value of Expression
+# https://leetcode.com/problems/minimum-cost-to-change-the-final-value-of-expression/
+
+class Solution:
+    def minOperationsToFlip(self, expression: str) -> int:
+        def combine(left: list[int], op: str, right: list[int]) -> list[int]:
+            left_val, left_to_zero, left_to_one = left
+            right_val, right_to_zero, right_to_one = right
+            if op == "&":
+                and_val = left_val & right_val
+                and_to_zero = min(left_to_zero, left_to_one + right_to_zero)
+                and_to_one = left_to_one + right_to_one
+                or_to_zero = left_to_zero + right_to_zero
+                or_to_one = min(left_to_one, left_to_zero + right_to_one, right_to_zero + left_to_one)
+                val = and_val
+                to_zero = min(and_to_zero, 1 + or_to_zero)
+                to_one = min(and_to_one, 1 + or_to_one)
+            else:
+                or_val = left_val | right_val
+                or_to_zero = left_to_zero + right_to_zero
+                or_to_one = min(left_to_one, left_to_zero + right_to_one, right_to_zero + left_to_one)
+                and_to_zero = min(left_to_zero, left_to_one + right_to_zero)
+                and_to_one = left_to_one + right_to_one
+                val = or_val
+                to_zero = min(or_to_zero, 1 + and_to_zero)
+                to_one = min(or_to_one, 1 + and_to_one)
+            return [val, to_zero, to_one]
+
+        index = 0
+
+        def parse_expr() -> list[int]:
+            nonlocal index
+            node = parse_factor()
+            while index < len(expression) and expression[index] in "&|":
+                op = expression[index]
+                index += 1
+                node = combine(node, op, parse_factor())
+            return node
+
+        def parse_factor() -> list[int]:
+            nonlocal index
+            if expression[index] in "01":
+                value = int(expression[index])
+                index += 1
+                to_zero = 0 if value == 0 else 1
+                to_one = 1 if value == 0 else 0
+                return [value, to_zero, to_one]
+            index += 1
+            node = parse_expr()
+            index += 1
+            return node
+
+        value, to_zero, to_one = parse_expr()
+        return to_zero if value else to_one
+
+
+===== 1897_redistribute_characters_to_make_all_strings_equal =====
+# LeetCode 1897 - Redistribute Characters to Make All Strings Equal
+# https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/
+
+from collections import Counter
+
+
+class Solution:
+    def makeEqual(self, words: list[str]) -> bool:
+        counts = Counter("".join(words))
+        n = len(words)
+        return all(total % n == 0 for total in counts.values())
+
+
+===== 1898_maximum_number_of_removable_characters =====
+# LeetCode 1898 - Maximum Number of Removable Characters
+# https://leetcode.com/problems/maximum-number-of-removable-characters/
+
+class Solution:
+    def maximumRemovals(self, s: str, p: str, removable: list[int]) -> int:
+        def still_subsequence(k: int) -> bool:
+            removed = set(removable[:k])
+            index = 0
+            for position, char in enumerate(s):
+                if position in removed:
+                    continue
+                if index < len(p) and char == p[index]:
+                    index += 1
+            return index == len(p)
+
+        lo, hi = 0, len(removable)
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if still_subsequence(mid):
+                lo = mid
+            else:
+                hi = mid - 1
+        return lo
+
+
+===== 1899_merge_triplets_to_form_target_triplet =====
+# LeetCode 1899 - Merge Triplets to Form Target Triplet
+# https://leetcode.com/problems/merge-triplets-to-form-target-triplet/
+
+class Solution:
+    def mergeTriplets(self, triplets: list[list[int]], target: list[int]) -> bool:
+        merged = [0, 0, 0]
+        for a, b, c in triplets:
+            if a <= target[0] and b <= target[1] and c <= target[2]:
+                merged[0] = max(merged[0], a)
+                merged[1] = max(merged[1], b)
+                merged[2] = max(merged[2], c)
+        return merged == target
+
+
+===== 1900_the_earliest_and_latest_rounds_where_players_compete =====
+# LeetCode 1900 - The Earliest and Latest Rounds Where Players Compete
+# https://leetcode.com/problems/the-earliest-and-latest-rounds-where-players-compete/
+
+from functools import lru_cache
+from itertools import product
+
+
+class Solution:
+    def earliestAndLatest(self, n: int, firstPlayer: int, secondPlayer: int) -> list[int]:
+        first = firstPlayer
+        second = secondPlayer
+
+        @lru_cache(maxsize=None)
+        def dfs(players: tuple[int, ...]) -> tuple[int, int]:
+            count = len(players)
+            first_index = players.index(first)
+            second_index = players.index(second)
+            if first_index + second_index == count - 1:
+                return (1, 1)
+
+            choices: list[tuple[int, ...]] = []
+            for index in range(count // 2):
+                left = players[index]
+                right = players[count - 1 - index]
+                if left in (first, second):
+                    choices.append((left,))
+                elif right in (first, second):
+                    choices.append((right,))
+                else:
+                    choices.append((left, right))
+
+            if count % 2:
+                choices.append((players[count // 2],))
+
+            earliest = 10**9
+            latest = 0
+            for picks in product(*choices):
+                winners = tuple(sorted(picks))
+                early, late = dfs(winners)
+                earliest = min(earliest, early + 1)
+                latest = max(latest, late + 1)
+            return (earliest, latest)
+
+        return list(dfs(tuple(range(1, n + 1))))
+
+
