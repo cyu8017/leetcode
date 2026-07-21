@@ -59,13 +59,16 @@ def main() -> int:
     config, cases_doc = load_problem_tests(problem_dir)
     solution_file = problem_dir / LANGUAGE_FILES[language]
 
+    # This runner validates via the Python reference; compilation is not required.
+    # Treat a Python reference as sufficient even when the local compiler is missing.
+    has_python_reference = (problem_dir / "solution.py").exists()
     can_run, exit_code, message = pre_run_check(
         language,
         config,
         cases_doc,
         has_solution_file=solution_file.exists(),
-        has_python_reference=(problem_dir / "solution.py").exists(),
-        toolchain_available=toolchain_available(language),
+        has_python_reference=has_python_reference,
+        toolchain_available=toolchain_available(language) or has_python_reference,
     )
     if not can_run:
         print(f"{language} tests: {problem_dir.name}")

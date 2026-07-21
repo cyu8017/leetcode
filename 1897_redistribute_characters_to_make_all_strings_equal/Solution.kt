@@ -1,7 +1,13 @@
-﻿// LeetCode 1897 - Redistribute Characters to Make All Strings Equal
+// LeetCode 1897 - Redistribute Characters to Make All Strings Equal
 // https://leetcode.com/problems/redistribute-characters-to-make-all-strings-equal/
 
 class Solution {
-    fun solve() {
+    fun makeEqual(words: Array<String>): Boolean {
+        val counts = IntArray(26)
+        for (word in words) {
+            for (ch in word) counts[ch - 'a']++
+        }
+        val n = words.size
+        return counts.all { it % n == 0 }
     }
 }
