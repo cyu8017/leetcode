@@ -1,7 +1,12 @@
-﻿# LeetCode 1848 - Minimum Distance to the Target Element
-# https://leetcode.com/problems/minimum-distance-to-the-target-element/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @param {Integer} target
+# @param {Integer} start
+# @return {Integer}
+def get_min_distance(nums, target, start)
+  best = nums.length
+  nums.each_with_index do |value, i|
+    best = [best, (i - start).abs].min if value == target
+  end
+  best
 end

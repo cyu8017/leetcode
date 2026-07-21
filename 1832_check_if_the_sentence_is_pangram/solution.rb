@@ -1,7 +1,6 @@
-﻿# LeetCode 1832 - Check if the Sentence Is Pangram
-# https://leetcode.com/problems/check-if-the-sentence-is-pangram/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} sentence
+# @return {Boolean}
+def check_if_pangram(sentence)
+  sentence.chars.uniq.length == 26
 end

@@ -1,7 +1,17 @@
-﻿# LeetCode 1827 - Minimum Operations to Make the Array Increasing
-# https://leetcode.com/problems/minimum-operations-to-make-the-array-increasing/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @return {Integer}
+def min_operations(nums)
+  ops = 0
+  prev = nums[0]
+  nums[1..].each do |value|
+    if value <= prev
+      needed = prev + 1
+      ops += needed - value
+      prev = needed
+    else
+      prev = value
+    end
+  end
+  ops
 end

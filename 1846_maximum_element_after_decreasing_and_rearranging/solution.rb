@@ -1,7 +1,11 @@
-﻿# LeetCode 1846 - Maximum Element After Decreasing and Rearranging
-# https://leetcode.com/problems/maximum-element-after-decreasing-and-rearranging/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} arr
+# @return {Integer}
+def maximum_element_after_decrementing_and_rearranging(arr)
+  arr = arr.sort
+  arr[0] = 1
+  (1...arr.length).each do |i|
+    arr[i] = [arr[i], arr[i - 1] + 1].min
+  end
+  arr.max
 end

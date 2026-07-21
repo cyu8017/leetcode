@@ -1,7 +1,10 @@
-﻿# LeetCode 1828 - Queries on Number of Points Inside a Circle
-# https://leetcode.com/problems/queries-on-number-of-points-inside-a-circle/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[][]} points
+# @param {Integer[][]} queries
+# @return {Integer[]}
+def count_points(points, queries)
+  queries.map do |xq, yq, r|
+    radius_sq = r * r
+    points.count { |x, y| (x - xq)**2 + (y - yq)**2 <= radius_sq }
+  end
 end

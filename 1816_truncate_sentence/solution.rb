@@ -1,7 +1,7 @@
-﻿# LeetCode 1816 - Truncate Sentence
-# https://leetcode.com/problems/truncate-sentence/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} s
+# @param {Integer} k
+# @return {String}
+def truncate_sentence(s, k)
+  s.split.take(k).join(' ')
 end

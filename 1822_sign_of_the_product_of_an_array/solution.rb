@@ -1,7 +1,11 @@
-﻿# LeetCode 1822 - Sign of the Product of an Array
-# https://leetcode.com/problems/sign-of-the-product-of-an-array/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @return {Integer}
+def array_sign(nums)
+  sign = 1
+  nums.each do |num|
+    return 0 if num == 0
+    sign = -sign if num < 0
+  end
+  sign
 end
