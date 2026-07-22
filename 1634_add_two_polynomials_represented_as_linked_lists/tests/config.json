@@ -5,5 +5,7 @@
     "poly1",
     "poly2"
   ],
-  "types": null
+  "types": {
+    "return": "integer[][]"
+  }
 }

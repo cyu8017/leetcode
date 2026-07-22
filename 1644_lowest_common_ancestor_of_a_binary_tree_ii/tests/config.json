@@ -7,6 +7,7 @@
     "q"
   ],
   "types": {
-    "root": "treenode"
+    "root": "treenode",
+    "return": "treenode"
   }
 }

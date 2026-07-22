@@ -7,6 +7,6 @@
   ],
   "types": {
     "root": "treenode",
-    "return": null
+    "return": "treenode"
   }
 }

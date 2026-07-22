@@ -138,8 +138,16 @@ def build_check(
             actual_expr = f"to_vector(from_listnode({call}))"
             check = f"vectors_equal({actual_expr}, {expected_expr})"
         elif arg_types.get("return") == "treenode":
-            expected_expr = cpp_tree_literal(expected)
-            check = f"tree_lists_equal(tree_to_list({call}), {expected_expr})"
+            if isinstance(expected, int):
+                check = (
+                    f"[&](){{ auto* __got = {call}; "
+                    f"return __got && __got->val == {expected}; }}()"
+                )
+            elif expected is None:
+                check = f"({call}) == nullptr"
+            else:
+                expected_expr = cpp_tree_literal(expected)
+                check = f"tree_lists_equal(tree_to_list({call}), {expected_expr})"
         elif isinstance(expected, float) or (
             isinstance(expected, list)
             and expected
@@ -149,7 +157,7 @@ def build_check(
             expected_expr = cpp_literal(expected)
             check = f"approx_equal({call}, {expected_expr})"
         else:
-            expected_expr = cpp_literal(expected)
+            expected_expr = cpp_literal(expected, arg_types.get("return"))
             check = f"{call} == {expected_expr}"
     body = f"{prelude}\n            if ({check})" if prelude else f"if ({check})"
     return textwrap.dedent(
@@ -179,12 +187,47 @@ def build_main_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
     uses_tree = arg_types.get("return") in {"treenode", "void"} or any(
         arg_types.get(key) == "treenode" for key in param_order
     )
+    uses_parent_node = False
     for index, case in enumerate(cases_doc.get("cases", []), start=1):
         args = case["args"]
         if "room" in args:
             uses_robot = True
         if "root" in args or arg_types.get("return") == "treenode":
             uses_tree = True
+
+        # 1650-style: p embeds {tree,p,q} and uses Node with parent pointers.
+        nested_p = args.get("p")
+        if (
+            method_name == "lowestCommonAncestor"
+            and isinstance(nested_p, dict)
+            and "tree" in nested_p
+            and "p" in nested_p
+            and "q" in nested_p
+        ):
+            uses_parent_node = True
+            tree_lit = cpp_tree_literal(nested_p["tree"])
+            expected = case["expected"]
+            expected_expr = "nullptr" if expected is None else str(expected)
+            case_blocks.append(
+                textwrap.dedent(
+                    f"""
+                    {{
+                        Node* root = to_parent_tree({tree_lit});
+                        Node* p = find_parent_node(root, {nested_p["p"]});
+                        Node* q = find_parent_node(root, {nested_p["q"]});
+                        Node* got = solution.lowestCommonAncestor(p, q);
+                        if (got && got->val == {expected_expr}) {{
+                            ++passed;
+                            std::cout << "  PASS case {index}\\n";
+                        }} else {{
+                            std::cout << "  FAIL case {index}\\n";
+                        }}
+                    }}
+                    """
+                ).strip()
+            )
+            continue
+
         arg_exprs = []
         arg_names = []
         setup_lines = []
@@ -366,6 +409,57 @@ def build_main_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
             }
             """
         ).strip()
+
+    parent_helpers = ""
+    if uses_parent_node:
+        parent_helpers = textwrap.dedent(
+            """
+            #include <optional>
+            #include <queue>
+
+            Node* to_parent_tree(const std::vector<std::optional<int>>& values) {
+                if (values.empty() || !values[0].has_value()) {
+                    return nullptr;
+                }
+                Node* root = new Node(values[0].value());
+                std::queue<Node*> pending;
+                pending.push(root);
+                size_t index = 1;
+                while (!pending.empty() && index < values.size()) {
+                    Node* node = pending.front();
+                    pending.pop();
+                    if (index < values.size() && values[index].has_value()) {
+                        node->left = new Node(values[index].value());
+                        node->left->parent = node;
+                        pending.push(node->left);
+                    }
+                    ++index;
+                    if (index < values.size() && values[index].has_value()) {
+                        node->right = new Node(values[index].value());
+                        node->right->parent = node;
+                        pending.push(node->right);
+                    }
+                    ++index;
+                }
+                return root;
+            }
+
+            Node* find_parent_node(Node* root, int val) {
+                if (!root) {
+                    return nullptr;
+                }
+                if (root->val == val) {
+                    return root;
+                }
+                Node* left = find_parent_node(root->left, val);
+                return left ? left : find_parent_node(root->right, val);
+            }
+            """
+        ).strip()
+        if tree_helpers:
+            tree_helpers = tree_helpers + "\n\n            " + parent_helpers
+        else:
+            tree_helpers = parent_helpers
 
     instance_decl = "Codec codec;" if class_name == "Codec" else f"{class_name} solution;"
 
