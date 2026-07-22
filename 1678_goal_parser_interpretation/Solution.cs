@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/goal-parser-interpretation/
 
 public class Solution {
-    public void Solve() {
+    public string Interpret(string command) {
+        return command.Replace("()", "o").Replace("(al)", "al");
     }
 }

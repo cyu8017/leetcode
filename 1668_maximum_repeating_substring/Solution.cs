@@ -2,6 +2,13 @@
 // https://leetcode.com/problems/maximum-repeating-substring/
 
 public class Solution {
-    public void Solve() {
+    public int MaxRepeating(string sequence, string word) {
+        int k = 0;
+        string cur = word;
+        while (sequence.Contains(cur)) {
+            k++;
+            cur += word;
+        }
+        return k;
     }
 }

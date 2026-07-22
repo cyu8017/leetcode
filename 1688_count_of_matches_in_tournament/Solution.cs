@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/count-of-matches-in-tournament/
 
 public class Solution {
-    public void Solve() {
+    public int NumberOfMatches(int n) {
+        return n - 1;
     }
 }
