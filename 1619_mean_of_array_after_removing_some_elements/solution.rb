@@ -1,7 +1,11 @@
-﻿# LeetCode 1619 - Mean of Array After Removing Some Elements
+# LeetCode 1619 - Mean of Array After Removing Some Elements
 # https://leetcode.com/problems/mean-of-array-after-removing-some-elements/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} arr
+# @return {Float}
+def trim_mean(arr)
+  arr = arr.sort
+  k = arr.length / 20
+  slice = arr[k...(arr.length - k)]
+  slice.sum.to_f / slice.length
 end

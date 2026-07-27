@@ -482,6 +482,20 @@ cases_doc["cases"].each_with_index do |test_case, index|
     actual = quad_tree_to_list(callable.call(args["grid"]))
   elsif args.key?("root") && method_name == "levelOrder" && arg_types["root"] == "narynode"
     actual = callable.call(list_to_nary(args["root"]))
+  elsif method_name == "expTree" && (config["class"] || "") == "TreeBuilder"
+    builder = TreeBuilder.new
+    node = if builder.respond_to?(:expTree)
+             builder.expTree(args["postfix"])
+           else
+             builder.exp_tree(args["postfix"])
+           end
+    actual = node.respond_to?(:evaluate) ? node.evaluate : node
+  elsif args.key?("root") && args.key?("p") && args.key?("q") && method_name == "lowestCommonAncestor"
+    root = list_to_tree(args["root"])
+    p_node = find_parent_node(root, args["p"])
+    q_node = find_parent_node(root, args["q"])
+    result = callable.call(root, p_node, q_node)
+    actual = result ? result.val : nil
   elsif args.key?("root") && args.key?("p") && method_name == "inorderSuccessor"
     root = list_to_tree(args["root"])
     p_node = find_parent_node(root, args["p"])
