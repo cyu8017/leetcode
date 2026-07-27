@@ -496,6 +496,21 @@ cases_doc["cases"].each_with_index do |test_case, index|
     q_node = find_parent_node(root, args["q"])
     result = callable.call(root, p_node, q_node)
     actual = result ? result.val : nil
+  elsif args.key?("root") && args.key?("nodes") && method_name == "lowestCommonAncestor"
+    root = list_to_tree(args["root"])
+    node_list = args["nodes"].map { |value| find_parent_node(root, value) }
+    result = callable.call(root, node_list)
+    actual = result ? result.val : nil
+  elsif args.key?("root") && args.key?("fromNode") && args.key?("toNode") && method_name == "correctBinaryTree"
+    root = list_to_tree(args["root"])
+    from_node = find_parent_node(root, args["fromNode"])
+    to_node = find_parent_node(root, args["toNode"])
+    from_node.right = to_node
+    actual = tree_to_list(callable.call(root))
+  elsif args.key?("root") && args.key?("leaf") && method_name == "flipBinaryTree"
+    root = list_to_parent_tree(args["root"])
+    leaf = find_parent_node(root, args["leaf"])
+    actual = tree_to_list(callable.call(root, leaf))
   elsif args.key?("root") && args.key?("p") && method_name == "inorderSuccessor"
     root = list_to_tree(args["root"])
     p_node = find_parent_node(root, args["p"])

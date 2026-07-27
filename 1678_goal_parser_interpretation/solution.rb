@@ -1,7 +1,8 @@
-﻿# LeetCode 1678 - Goal Parser Interpretation
+# LeetCode 1678 - Goal Parser Interpretation
 # https://leetcode.com/problems/goal-parser-interpretation/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} command
+# @return {String}
+def interpret(command)
+  command.gsub("()", "o").gsub("(al)", "al")
 end

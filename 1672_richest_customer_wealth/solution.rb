@@ -1,7 +1,8 @@
-﻿# LeetCode 1672 - Richest Customer Wealth
+# LeetCode 1672 - Richest Customer Wealth
 # https://leetcode.com/problems/richest-customer-wealth/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[][]} accounts
+# @return {Integer}
+def maximum_wealth(accounts)
+  accounts.map(&:sum).max
 end
