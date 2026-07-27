@@ -6,6 +6,11 @@
     "source",
     "target"
   ],
-  "types": null,
+  "types": {
+    "blocked": "integer[][]",
+    "source": "integer[]",
+    "target": "integer[]",
+    "return": "boolean"
+  },
   "description": "Update method name and add cases to cases.json when implementing the solution."
 }

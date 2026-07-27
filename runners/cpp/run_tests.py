@@ -130,6 +130,29 @@ def build_check(
         )
         expected_expr = cpp_tree_literal(expected)
         check = f"tree_lists_equal(tree_to_list(root), {expected_expr})"
+    elif arg_types.get("return") == "void" and args:
+        # In-place mutation: call method, then compare the mutated primary argument.
+        mutable_key = next(
+            (
+                key
+                for key in ("arr", "nums", "s", "board", "matrix", "rooms", "nums1")
+                if key in args
+            ),
+            next(iter(args)),
+        )
+        setup_lines = []
+        call_names = []
+        for key, value in args.items():
+            type_hint = arg_types.get(key)
+            lit = cpp_literal(value, type_hint)
+            setup_lines.append(f"auto {key} = {lit};")
+            call_names.append(key)
+        prelude = (
+            "\n            ".join(setup_lines)
+            + f"\n            solution.{method_name}({', '.join(call_names)});"
+        )
+        expected_expr = cpp_literal(expected, arg_types.get(mutable_key))
+        check = f"{mutable_key} == {expected_expr}"
     else:
         call_args = ", ".join(arg_names)
         call = f"solution.{method_name}({call_args})"
@@ -184,7 +207,7 @@ def build_main_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
 
     case_blocks = []
     uses_robot = method_name == "cleanRoom"
-    uses_tree = arg_types.get("return") in {"treenode", "void"} or any(
+    uses_tree = arg_types.get("return") == "treenode" or any(
         arg_types.get(key) == "treenode" for key in param_order
     )
     uses_parent_node = False
@@ -261,7 +284,7 @@ def build_main_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
                 1,
             ) if prelude and not (
                 (class_name == "Codec" and ("url" in args or "longUrl" in args))
-                or (arg_types.get("return") == "void" and "root" in args)
+                or (arg_types.get("return") == "void")
                 or (method_name == "cleanRoom" and "room" in args)
             ) else build_check(
                 index,
