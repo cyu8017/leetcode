@@ -1,9 +1,11 @@
-﻿// LeetCode 1662 - Check If Two String Arrays are Equivalent
+// LeetCode 1662 - Check If Two String Arrays are Equivalent
 // https://leetcode.com/problems/check-if-two-string-arrays-are-equivalent/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[]} word1
+ * @param {string[]} word2
+ * @return {boolean}
  */
-var solve = function(input) {
+var arrayStringsAreEqual = function(word1, word2) {
+    return word1.join("") === word2.join("");
 };

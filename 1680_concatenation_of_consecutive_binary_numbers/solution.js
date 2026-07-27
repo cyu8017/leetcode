@@ -1,9 +1,16 @@
-﻿// LeetCode 1680 - Concatenation of Consecutive Binary Numbers
+// LeetCode 1680 - Concatenation of Consecutive Binary Numbers
 // https://leetcode.com/problems/concatenation-of-consecutive-binary-numbers/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var concatenatedBinary = function(n) {
+    let ans = 0n, bits = 0n;
+    const mod = 1000000007n;
+    for (let x = 1; x <= n; x++) {
+        if ((x & (x - 1)) === 0) bits++;
+        ans = ((ans << bits) + BigInt(x)) % mod;
+    }
+    return Number(ans);
 };

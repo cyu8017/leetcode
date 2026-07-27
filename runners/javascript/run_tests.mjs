@@ -689,6 +689,21 @@ async function main() {
       const qNode = findTreeNode(root, args.q);
       const result = fn(root, pNode, qNode);
       actual = result ? result.val : null;
+    } else if (args.root && args.nodes !== undefined && config.method === "lowestCommonAncestor") {
+      const root = listToTree(args.root);
+      const nodeList = args.nodes.map((value) => findTreeNode(root, value));
+      const result = fn(root, nodeList);
+      actual = result ? result.val : null;
+    } else if (args.root && args.fromNode !== undefined && args.toNode !== undefined && config.method === "correctBinaryTree") {
+      const root = listToTree(args.root);
+      const fromNode = findTreeNode(root, args.fromNode);
+      const toNode = findTreeNode(root, args.toNode);
+      fromNode.right = toNode;
+      actual = treeToList(fn(root));
+    } else if (args.root && args.leaf !== undefined && config.method === "flipBinaryTree") {
+      const root = listToParentTree(args.root);
+      const leaf = findParentNode(root, args.leaf);
+      actual = treeToList(fn(root, leaf));
     } else if (args.v1 !== undefined && args.v2 !== undefined && config.class === "ZigzagIterator") {
       const iterator = new exported.ZigzagIterator(args.v1, args.v2);
       actual = [];

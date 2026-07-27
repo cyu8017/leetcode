@@ -1,9 +1,15 @@
-﻿// LeetCode 1611 - Minimum One Bit Operations to Make Integers Zero
+// LeetCode 1611 - Minimum One Bit Operations to Make Integers Zero
 // https://leetcode.com/problems/minimum-one-bit-operations-to-make-integers-zero/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var minimumOneBitOperations = function(n) {
+    let ans = 0;
+    while (n) {
+        ans ^= n;
+        n >>= 1;
+    }
+    return ans;
 };

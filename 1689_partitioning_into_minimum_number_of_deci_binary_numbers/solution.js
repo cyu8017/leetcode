@@ -1,9 +1,10 @@
-﻿// LeetCode 1689 - Partitioning Into Minimum Number Of Deci-Binary Numbers
+// LeetCode 1689 - Partitioning Into Minimum Number Of Deci-Binary Numbers
 // https://leetcode.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} n
+ * @return {number}
  */
-var solve = function(input) {
+var minPartitions = function(n) {
+    return Math.max(...[...n].map(Number));
 };

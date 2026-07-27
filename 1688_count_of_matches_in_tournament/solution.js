@@ -1,9 +1,10 @@
-﻿// LeetCode 1688 - Count of Matches in Tournament
+// LeetCode 1688 - Count of Matches in Tournament
 // https://leetcode.com/problems/count-of-matches-in-tournament/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var numberOfMatches = function(n) {
+    return n - 1;
 };

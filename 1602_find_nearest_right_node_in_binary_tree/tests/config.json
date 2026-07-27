@@ -6,7 +6,6 @@
     "u"
   ],
   "types": {
-    "root": "treenode",
-    "return": "treenode"
+    "root": "treenode"
   }
 }
