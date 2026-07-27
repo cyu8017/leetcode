@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/count-of-matches-in-tournament/
 
 class Solution {
-    func solve() {
+    func numberOfMatches(_ n: Int) -> Int {
+        n - 1
     }
 }

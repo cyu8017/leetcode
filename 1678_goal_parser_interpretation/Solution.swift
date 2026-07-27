@@ -2,6 +2,8 @@
 // https://leetcode.com/problems/goal-parser-interpretation/
 
 class Solution {
-    func solve() {
+    func interpret(_ command: String) -> String {
+        command.replacingOccurrences(of: "()", with: "o")
+            .replacingOccurrences(of: "(al)", with: "al")
     }
 }
