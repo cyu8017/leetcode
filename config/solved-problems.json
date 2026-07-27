@@ -5998,270 +5998,315 @@
     {
       "folder": "1000_minimum_cost_to_merge_stones",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1001_grid_illumination",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1002_find_common_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1003_check_if_word_is_valid_after_substitutions",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1004_max_consecutive_ones_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1005_maximize_sum_of_array_after_k_negations",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1006_clumsy_factorial",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1007_minimum_domino_rotations_for_equal_row",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1008_construct_binary_search_tree_from_preorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1009_complement_of_base_10_integer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1010_pairs_of_songs_with_total_durations_divisible_by_60",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1011_capacity_to_ship_packages_within_d_days",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1012_numbers_with_repeated_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1013_partition_array_into_three_parts_with_equal_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1014_best_sightseeing_pair",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1015_smallest_integer_divisible_by_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1016_binary_string_with_substrings_representing_1_to_n",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1017_convert_to_base_2",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1018_binary_prefix_divisible_by_5",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1019_next_greater_node_in_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1020_number_of_enclaves",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1021_remove_outermost_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1022_sum_of_root_to_leaf_binary_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1023_camelcase_matching",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1024_video_stitching",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1025_divisor_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1026_maximum_difference_between_node_and_ancestor",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1027_longest_arithmetic_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1028_recover_a_tree_from_preorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1029_two_city_scheduling",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1030_matrix_cells_in_distance_order",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1031_maximum_sum_of_two_non_overlapping_subarrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1032_stream_of_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1033_moving_stones_until_consecutive",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1034_coloring_a_border",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1035_uncrossed_lines",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1036_escape_a_large_maze",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1037_valid_boomerang",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1038_binary_search_tree_to_greater_sum_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1039_minimum_score_triangulation_of_polygon",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1040_moving_stones_until_consecutive_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1041_robot_bounded_in_circle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1042_flower_planting_with_no_adjacent",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1043_partition_array_for_maximum_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1044_longest_duplicate_substring",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6274,24 +6319,28 @@
     {
       "folder": "1046_last_stone_weight",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1047_remove_all_adjacent_duplicates_in_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1048_longest_string_chain",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1049_last_stone_weight_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6304,102 +6353,119 @@
     {
       "folder": "1051_height_checker",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1052_grumpy_bookstore_owner",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1053_previous_permutation_with_one_swap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1054_distant_barcodes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1055_shortest_way_to_form_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1056_confusing_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1057_campus_bikes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1058_minimize_rounding_error_to_meet_target",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1059_all_paths_from_source_lead_to_destination",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1060_missing_element_in_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1061_lexicographically_smallest_equivalent_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1062_longest_repeating_substring",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1063_number_of_valid_subarrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1064_fixed_point",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1065_index_pairs_of_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1066_campus_bikes_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1067_digit_count_in_range",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6424,24 +6490,28 @@
     {
       "folder": "1071_greatest_common_divisor_of_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1072_flip_columns_for_maximum_number_of_equal_rows",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1073_adding_two_negabinary_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1074_number_of_submatrices_that_sum_to_target",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6466,24 +6536,28 @@
     {
       "folder": "1078_occurrences_after_bigram",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1079_letter_tile_possibilities",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1080_insufficient_nodes_in_root_to_leaf_paths",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1081_smallest_subsequence_of_distinct_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6508,72 +6582,84 @@
     {
       "folder": "1085_sum_of_digits_in_the_minimum_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1086_high_five",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1087_brace_expansion",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1088_confusing_number_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1089_duplicate_zeros",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1090_largest_values_from_labels",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1091_shortest_path_in_binary_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1092_shortest_common_supersequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1093_statistics_from_a_large_sample",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1094_car_pooling",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1095_find_in_mountain_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "1096_brace_expansion_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -6592,6 +6678,7 @@
     {
       "folder": "1099_two_sum_less_than_k",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -9610,6 +9697,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9628,6 +9716,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9646,6 +9735,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9664,6 +9754,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9682,6 +9773,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9700,6 +9792,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9718,6 +9811,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9742,6 +9836,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9760,6 +9855,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9778,6 +9874,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9796,6 +9893,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9814,6 +9912,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9838,6 +9937,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9856,6 +9956,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9874,6 +9975,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9892,6 +9994,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9910,6 +10013,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9928,6 +10032,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9946,6 +10051,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9964,6 +10070,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -9982,6 +10089,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10006,6 +10114,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10024,6 +10133,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10042,6 +10152,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10060,6 +10171,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10078,6 +10190,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10096,6 +10209,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10114,6 +10228,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10132,6 +10247,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10150,6 +10266,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10174,6 +10291,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10198,6 +10316,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10216,6 +10335,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10234,6 +10354,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10252,6 +10373,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10270,6 +10392,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10288,6 +10411,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10306,6 +10430,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10324,6 +10449,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10342,6 +10468,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10366,6 +10493,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10384,6 +10512,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10402,6 +10531,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10420,6 +10550,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10438,6 +10569,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10462,6 +10594,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10480,6 +10613,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10498,6 +10632,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10516,6 +10651,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10534,6 +10670,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10552,6 +10689,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10570,6 +10708,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10588,6 +10727,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10606,6 +10746,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10630,6 +10771,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10648,6 +10790,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10666,6 +10809,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10684,6 +10828,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10702,6 +10847,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10726,6 +10872,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10744,6 +10891,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10762,6 +10910,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10780,6 +10929,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10798,6 +10948,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10816,6 +10967,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10834,6 +10986,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10852,6 +11005,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10870,6 +11024,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10894,6 +11049,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10912,6 +11068,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10930,6 +11087,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10948,6 +11106,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10966,6 +11125,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -10990,6 +11150,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11008,6 +11169,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11026,6 +11188,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11044,6 +11207,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11062,6 +11226,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11080,6 +11245,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11098,6 +11264,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11116,6 +11283,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11134,6 +11302,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11158,6 +11327,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11176,6 +11346,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11194,6 +11365,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11212,6 +11384,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
@@ -11230,6 +11403,7 @@
         "ruby",
         "rust",
         "scala",
+        "swift",
         "typescript"
       ]
     },
