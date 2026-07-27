@@ -1,6 +1,6 @@
-﻿// LeetCode 1678 - Goal Parser Interpretation
+// LeetCode 1678 - Goal Parser Interpretation
 // https://leetcode.com/problems/goal-parser-interpretation/
 
-function solve(input: unknown): unknown {
-    return null;
+function interpret(command: string): string {
+    return command.replace(/\(\)/g, "o").replace(/\(al\)/g, "al");
 }
