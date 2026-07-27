@@ -669,6 +669,37 @@ foreach ($casesDoc['cases'] as $index => $case) {
         $pNode = findParentNode($root, $args['p']);
         $result = $solution->$method($root, $pNode);
         $actual = $result !== null ? $result->val : null;
+    } elseif (isset($args['root']) && isset($args['fromNode'], $args['toNode']) && $method === 'correctBinaryTree') {
+        $solution = new $className();
+        $root = listToTree($args['root']);
+        $fromNode = findParentNode($root, $args['fromNode']);
+        $toNode = findParentNode($root, $args['toNode']);
+        $fromNode->right = $toNode;
+        $actual = treeToList($solution->correctBinaryTree($root));
+    } elseif (isset($args['root']) && isset($args['leaf']) && $method === 'flipBinaryTree') {
+        $solution = new $className();
+        $root = listToParentTree($args['root']);
+        $leaf = findParentNode($root, $args['leaf']);
+        $actual = treeToList($solution->flipBinaryTree($root, $leaf));
+    } elseif (isset($args['root']) && isset($args['p'], $args['q']) && $method === 'lowestCommonAncestor') {
+        $solution = new $className();
+        $root = listToTree($args['root']);
+        $pNode = findParentNode($root, (int)$args['p']);
+        $qNode = findParentNode($root, (int)$args['q']);
+        $result = $solution->$method($root, $pNode, $qNode);
+        $actual = $result !== null ? $result->val : null;
+    } elseif (isset($args['root']) && isset($args['nodes']) && $method === 'lowestCommonAncestor') {
+        $solution = new $className();
+        $root = listToTree($args['root']);
+        $nodeList = [];
+        foreach ($args['nodes'] as $val) {
+            $nodeList[] = findParentNode($root, $val);
+        }
+        $result = $solution->lowestCommonAncestor($root, $nodeList);
+        $actual = $result !== null ? $result->val : null;
+    } elseif ($method === 'expTree' && $className === 'TreeBuilder') {
+        $solution = new TreeBuilder();
+        $actual = $solution->expTree($args['postfix'])->evaluate();
     } elseif (isset($args['tree']) && isset($args['node']) && $method === 'inorderSuccessor') {
         $solution = new $className();
         $root = listToParentTree($args['tree']);
