@@ -1,7 +1,16 @@
-﻿// LeetCode 1003 - Check If Word Is Valid After Substitutions
+// LeetCode 1003 - Check If Word Is Valid After Substitutions
 // https://leetcode.com/problems/check-if-word-is-valid-after-substitutions/
 
 class Solution {
-    public void solve() {
+    public boolean isValid(String s) {
+        StringBuilder stack = new StringBuilder();
+        for (char ch : s.toCharArray()) {
+            stack.append(ch);
+            int n = stack.length();
+            if (n >= 3 && stack.charAt(n - 3) == 'a' && stack.charAt(n - 2) == 'b' && stack.charAt(n - 1) == 'c') {
+                stack.setLength(n - 3);
+            }
+        }
+        return stack.length() == 0;
     }
 }

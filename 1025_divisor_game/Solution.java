@@ -1,7 +1,8 @@
-﻿// LeetCode 1025 - Divisor Game
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
 class Solution {
-    public void solve() {
+    public boolean divisorGame(int n) {
+        return n % 2 == 0;
     }
 }

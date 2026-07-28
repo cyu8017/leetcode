@@ -156,6 +156,29 @@ def java_deep_equals_helpers() -> str:
     ).strip()
 
 
+def java_mock_mountain_array_helpers() -> str:
+    # MountainArray interface is defined in the problem's Solution.java (LeetCode style).
+    return textwrap.dedent(
+        """
+        static class MockMountainArray implements MountainArray {
+            final int[] arr;
+
+            MockMountainArray(int[] arr) {
+                this.arr = arr;
+            }
+
+            public int get(int index) {
+                return arr[index];
+            }
+
+            public int length() {
+                return arr.length;
+            }
+        }
+        """
+    ).strip()
+
+
 def java_mock_grid_master_helpers() -> str:
     # GridMaster interface is defined in the problem's Solution.java (LeetCode style).
     return textwrap.dedent(
@@ -769,8 +792,20 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
                         arg_exprs.append(f"toListNode({java_literal(value)})")
                     elif arg_types.get(key) == "treenode":
                         arg_exprs.append(f"listToTree({java_literal(value)})")
+                    elif key == "mountainArr" and method_name == "findInMountainArray":
+                        arg_exprs.append(f"new MockMountainArray({java_literal(value)})")
                     else:
                         arg_exprs.append(java_literal(value))
+        void_inplace_key = None
+        if return_type == "void":
+            for key in ("arr", "nums", "chars", "s", "board", "matrix", "rooms"):
+                if key in args and arg_types.get(key) != "treenode":
+                    void_inplace_key = key
+                    break
+            if void_inplace_key is None and len(param_order) == 1 and param_order[0] in args:
+                key = param_order[0]
+                if arg_types.get(key) != "treenode" and arg_types.get(key) != "listnode":
+                    void_inplace_key = key
         if return_type == "listnode":
             expected_expr = f"fromListNode(toListNode({java_literal(expected)}))"
             actual_expr = f"fromListNode(solution.{method_name}({', '.join(arg_exprs)}))"
@@ -788,6 +823,9 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
             expected_expr = java_literal(expected)
             root_expr = f"listToTree({java_literal(args['root'])})"
             actual_expr = f"runVoidTreeMutation(solution, {root_expr})"
+        elif return_type == "void" and void_inplace_key is not None:
+            expected_expr = java_literal(expected)
+            actual_expr = void_inplace_key  # mutated in-place input variable
         elif method_name == "findShortestPath" and "grid" in args:
             expected_expr = java_literal(expected)
             actual_expr = (
@@ -830,27 +868,65 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
         else:
             solution_decl = f"{class_name} solution = new {class_name}();"
 
-        case_blocks.append(
-            textwrap.dedent(
-                f"""
-                {{
-                    {solution_decl}
-                    Object expected = {expected_expr};
-                    Object actual = {actual_expr};
-                    if (deepEquals(actual, expected)) {{
-                        passed++;
-                        System.out.println("  PASS case {index}");
-                    }} else {{
-                        System.out.println("  FAIL case {index}: expected " + stringify(expected) + ", got " + stringify(actual));
+        if return_type == "void" and void_inplace_key is not None and not (
+            "root" in args and arg_types.get("root") == "treenode"
+        ):
+            # Rebuild call args so the mutated input is a named local.
+            call_args = []
+            for key in param_order:
+                value = args[key]
+                if key == void_inplace_key:
+                    call_args.append(key)
+                elif arg_types.get(key) == "listnode":
+                    call_args.append(f"toListNode({java_literal(value)})")
+                elif arg_types.get(key) == "treenode":
+                    call_args.append(f"listToTree({java_literal(value)})")
+                else:
+                    call_args.append(java_literal(value))
+            case_blocks.append(
+                textwrap.dedent(
+                    f"""
+                    {{
+                        {solution_decl}
+                        var {void_inplace_key} = {java_literal(args[void_inplace_key])};
+                        solution.{method_name}({', '.join(call_args)});
+                        Object expected = {expected_expr};
+                        Object actual = {void_inplace_key};
+                        if (deepEquals(actual, expected)) {{
+                            passed++;
+                            System.out.println("  PASS case {index}");
+                        }} else {{
+                            System.out.println("  FAIL case {index}: expected " + stringify(expected) + ", got " + stringify(actual));
+                        }}
                     }}
-                }}
-                """
-            ).strip()
-        )
+                    """
+                ).strip()
+            )
+        else:
+            case_blocks.append(
+                textwrap.dedent(
+                    f"""
+                    {{
+                        {solution_decl}
+                        Object expected = {expected_expr};
+                        Object actual = {actual_expr};
+                        if (deepEquals(actual, expected)) {{
+                            passed++;
+                            System.out.println("  PASS case {index}");
+                        }} else {{
+                            System.out.println("  FAIL case {index}: expected " + stringify(expected) + ", got " + stringify(actual));
+                        }}
+                    }}
+                    """
+                ).strip()
+            )
 
     cases_joined = "\n        ".join(case_blocks) if case_blocks else 'System.out.println("  SKIP no test cases defined in tests/cases.json");'
     mock_robot_helpers = java_mock_robot_helpers() if method_name == "cleanRoom" else ""
     mock_grid_helpers = java_mock_grid_master_helpers() if method_name == "findShortestPath" else ""
+    mock_mountain_helpers = (
+        java_mock_mountain_array_helpers() if method_name == "findInMountainArray" else ""
+    )
     rand10_helpers = (
         textwrap.dedent(
             """
@@ -1103,6 +1179,8 @@ def build_test_source(config: dict, cases_doc: dict, define_listnode: bool = Tru
             {mock_robot_helpers}
 
             {mock_grid_helpers}
+
+            {mock_mountain_helpers}
 
             {tree_helpers}
 
