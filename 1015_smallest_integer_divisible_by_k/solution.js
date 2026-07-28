@@ -1,9 +1,16 @@
-﻿// LeetCode 1015 - Smallest Integer Divisible by K
+// LeetCode 1015 - Smallest Integer Divisible by K
 // https://leetcode.com/problems/smallest-integer-divisible-by-k/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var smallestRepunitDivByK = function(k) {
+    if (k % 2 === 0 || k % 5 === 0) return -1;
+    let rem = 0;
+    for (let length = 1; length <= k; length++) {
+        rem = (rem * 10 + 1) % k;
+        if (rem === 0) return length;
+    }
+    return -1;
 };

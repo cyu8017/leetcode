@@ -1,9 +1,54 @@
-﻿// LeetCode 1095 - Find in Mountain Array
+// LeetCode 1095 - Find in Mountain Array
 // https://leetcode.com/problems/find-in-mountain-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * // This is the MountainArray's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function MountainArray() {
+ *     @param {number} index
+ *     @return {number}
+ *     this.get = function(index) {
+ *         ...
+ *     };
+ *
+ *     @return {number}
+ *     this.length = function() {
+ *         ...
+ *     };
+ * };
  */
-var solve = function(input) {
+/**
+ * @param {number} target
+ * @param {MountainArray} mountainArr
+ * @return {number}
+ */
+var findInMountainArray = function(target, mountainArr) {
+    const n = mountainArr.length();
+    let lo = 0;
+    let hi = n - 1;
+    while (lo < hi) {
+        const mid = (lo + hi) >> 1;
+        if (mountainArr.get(mid) < mountainArr.get(mid + 1)) lo = mid + 1;
+        else hi = mid;
+    }
+    const peak = lo;
+    lo = 0;
+    hi = peak;
+    while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        const val = mountainArr.get(mid);
+        if (val === target) return mid;
+        if (val < target) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    lo = peak + 1;
+    hi = n - 1;
+    while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        const val = mountainArr.get(mid);
+        if (val === target) return mid;
+        if (val > target) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
 };

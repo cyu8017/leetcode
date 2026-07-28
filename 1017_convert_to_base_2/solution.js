@@ -1,9 +1,21 @@
-﻿// LeetCode 1017 - Convert to Base -2
+// LeetCode 1017 - Convert to Base -2
 // https://leetcode.com/problems/convert-to-base-2/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {string}
  */
-var solve = function(input) {
+var baseNeg2 = function(n) {
+    if (n === 0) return '0';
+    const ans = [];
+    while (n !== 0) {
+        let rem = n % -2;
+        n = Math.trunc(n / -2);
+        if (rem < 0) {
+            n += 1;
+            rem += 2;
+        }
+        ans.push(String(rem));
+    }
+    return ans.reverse().join('');
 };

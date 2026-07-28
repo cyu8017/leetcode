@@ -489,6 +489,17 @@ function jsonToNestedList(values) {
   return values.map((value) => jsonToNestedInteger(value));
 }
 
+function mockMountainArray(values) {
+  return {
+    get(index) {
+      return values[index];
+    },
+    length() {
+      return values.length;
+    },
+  };
+}
+
 function convertArg(value, typeName) {
   if (typeName === "listnode") return listToListNode(value);
   if (typeName === "listnode[]") {
@@ -880,6 +891,14 @@ async function main() {
         const sIndex = keys.indexOf("s");
         values[sIndex] = [...values[sIndex]];
       }
+      if (returnType === "void" && keys.includes("arr") && Array.isArray(args.arr)) {
+        const arrIndex = keys.indexOf("arr");
+        values[arrIndex] = [...values[arrIndex]];
+      }
+      if (keys.includes("mountainArr") && config.method === "findInMountainArray") {
+        const mountainIndex = keys.indexOf("mountainArr");
+        values[mountainIndex] = mockMountainArray(args.mountainArr);
+      }
       if (returnType === "void" && keys.includes("nums1")) {
         const nums1Index = keys.indexOf("nums1");
         values[nums1Index] = [...values[nums1Index]];
@@ -899,6 +918,7 @@ async function main() {
       const actualRaw = fn(...values);
       if (returnType === "void") {
         if (keys.includes("nums")) actual = values[keys.indexOf("nums")];
+        else if (keys.includes("arr") && Array.isArray(values[keys.indexOf("arr")])) actual = values[keys.indexOf("arr")];
         else if (keys.includes("s") && Array.isArray(values[keys.indexOf("s")])) actual = values[keys.indexOf("s")];
         else if (keys.includes("nums1")) actual = values[keys.indexOf("nums1")];
         else if (keys.includes("board")) actual = values[keys.indexOf("board")];

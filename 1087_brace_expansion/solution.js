@@ -1,9 +1,30 @@
-﻿// LeetCode 1087 - Brace Expansion
+// LeetCode 1087 - Brace Expansion
 // https://leetcode.com/problems/brace-expansion/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string[]}
  */
-var solve = function(input) {
+var expand = function(s) {
+    const groups = [];
+    let i = 0;
+    while (i < s.length) {
+        if (s[i] === "{") {
+            const j = s.indexOf("}", i);
+            groups.push(s.slice(i + 1, j).split(",").sort());
+            i = j + 1;
+        } else {
+            groups.push([s[i]]);
+            i++;
+        }
+    }
+    let ans = [""];
+    for (const group of groups) {
+        const next = [];
+        for (const prefix of ans) {
+            for (const ch of group) next.push(prefix + ch);
+        }
+        ans = next;
+    }
+    return ans;
 };

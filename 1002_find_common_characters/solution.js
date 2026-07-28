@@ -1,9 +1,24 @@
-﻿// LeetCode 1002 - Find Common Characters
+// LeetCode 1002 - Find Common Characters
 // https://leetcode.com/problems/find-common-characters/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[]} words
+ * @return {string[]}
  */
-var solve = function(input) {
+var commonChars = function(words) {
+    const count = (w) => {
+        const freq = new Array(26).fill(0);
+        for (const ch of w) freq[ch.charCodeAt(0) - 97]++;
+        return freq;
+    };
+    let common = count(words[0]);
+    for (let i = 1; i < words.length; i++) {
+        const cur = count(words[i]);
+        for (let j = 0; j < 26; j++) common[j] = Math.min(common[j], cur[j]);
+    }
+    const ans = [];
+    for (let j = 0; j < 26; j++) {
+        for (let k = 0; k < common[j]; k++) ans.push(String.fromCharCode(97 + j));
+    }
+    return ans;
 };

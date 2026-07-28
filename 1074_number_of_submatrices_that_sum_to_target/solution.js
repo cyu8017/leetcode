@@ -1,9 +1,27 @@
-﻿// LeetCode 1074 - Number of Submatrices That Sum to Target
+// LeetCode 1074 - Number of Submatrices That Sum to Target
 // https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {number}
  */
-var solve = function(input) {
+var numSubmatrixSumTarget = function(matrix, target) {
+    const rows = matrix.length;
+    const cols = matrix[0].length;
+    let ans = 0;
+    for (let left = 0; left < cols; left++) {
+        const rowSum = new Array(rows).fill(0);
+        for (let right = left; right < cols; right++) {
+            for (let r = 0; r < rows; r++) rowSum[r] += matrix[r][right];
+            let prefix = 0;
+            const seen = new Map([[0, 1]]);
+            for (const val of rowSum) {
+                prefix += val;
+                ans += seen.get(prefix - target) || 0;
+                seen.set(prefix, (seen.get(prefix) || 0) + 1);
+            }
+        }
+    }
+    return ans;
 };

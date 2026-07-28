@@ -1,9 +1,13 @@
-﻿// LeetCode 1009 - Complement of Base 10 Integer
+// LeetCode 1009 - Complement of Base 10 Integer
 // https://leetcode.com/problems/complement-of-base-10-integer/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var bitwiseComplement = function(n) {
+    if (n === 0) return 1;
+    let mask = 1;
+    while (mask <= n) mask <<= 1;
+    return n ^ (mask - 1);
 };

@@ -1,9 +1,23 @@
-﻿// LeetCode 1063 - Number of Valid Subarrays
+// LeetCode 1063 - Number of Valid Subarrays
 // https://leetcode.com/problems/number-of-valid-subarrays/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var validSubarrays = function(nums) {
+    const stack = [];
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++) {
+        while (stack.length && nums[stack[stack.length - 1]] > nums[i]) {
+            const j = stack.pop();
+            ans += i - j;
+        }
+        stack.push(i);
+    }
+    while (stack.length) {
+        const j = stack.pop();
+        ans += nums.length - j;
+    }
+    return ans;
 };
