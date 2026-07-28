@@ -1,5 +1,19 @@
-﻿// LeetCode 1041 - Robot Bounded In Circle
+// LeetCode 1041 - Robot Bounded In Circle
 // https://leetcode.com/problems/robot-bounded-in-circle/
 
-func solve() {
+func isRobotBounded(instructions string) bool {
+	x, y := 0, 0
+	dx, dy := 0, 1
+	for i := 0; i < len(instructions); i++ {
+		switch instructions[i] {
+		case 'G':
+			x += dx
+			y += dy
+		case 'L':
+			dx, dy = -dy, dx
+		default:
+			dx, dy = dy, -dx
+		}
+	}
+	return (x == 0 && y == 0) || !(dx == 0 && dy == 1)
 }
