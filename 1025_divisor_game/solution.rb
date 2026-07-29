@@ -1,7 +1,8 @@
-﻿# LeetCode 1025 - Divisor Game
+# LeetCode 1025 - Divisor Game
 # https://leetcode.com/problems/divisor-game/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} n
+# @return {Boolean}
+def divisor_game(n)
+  n.even?
 end

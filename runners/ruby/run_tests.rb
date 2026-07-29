@@ -291,6 +291,20 @@ def convert_arg(value, type_name)
   value
 end
 
+class MockMountainArray
+  def initialize(values)
+    @values = values
+  end
+
+  def get(index)
+    @values[index]
+  end
+
+  def length
+    @values.length
+  end
+end
+
 def convert_result(value, type_name)
   return listnode_to_list(value) if type_name == "listnode"
   return tree_to_list(value) if type_name == "treenode"
@@ -339,7 +353,7 @@ def run_design_cases(cases_doc)
         method_sym = if instance.respond_to?(operation)
                        operation
                      else
-                       operation.gsub(/([A-Z])/) { "_#{Regexp.last_match(1).downcase}" }.sub(/^_/, "")
+                       camel_to_snake(operation)
                      end
         result = call_args.empty? ? instance.public_send(method_sym) : instance.public_send(method_sym, *call_args)
       end
@@ -380,9 +394,17 @@ def parse_inplace_expected(expected)
   end
 end
 
+def camel_to_snake(name)
+  name
+    .gsub(/([A-Z\d]+)([A-Z][a-z])/, '\1_\2')
+    .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+    .downcase
+    .sub(/^_/, "")
+end
+
 def resolve_callable(config)
   method_name = config["method"]
-  snake_method = method_name.gsub(/([A-Z])/, '_\1').downcase.sub(/^_/, "")
+  snake_method = camel_to_snake(method_name)
   class_name = config["class"] || "Solution"
 
   if Object.const_defined?(class_name)
@@ -566,10 +588,25 @@ cases_doc["cases"].each_with_index do |test_case, index|
     if keys.include?("chars") && inplace_expected?(expected)
       values[keys.index("chars")] = args["chars"].dup
     end
+    if keys.include?("nums") && (inplace_expected?(expected) || arg_types["return"] == "void")
+      values[keys.index("nums")] = args["nums"].dup
+    end
+    if keys.include?("arr") && arg_types["return"] == "void" && args["arr"].is_a?(Array)
+      values[keys.index("arr")] = args["arr"].dup
+    end
+    if keys.include?("mountainArr") && method_name == "findInMountainArray"
+      values[keys.index("mountainArr")] = MockMountainArray.new(args["mountainArr"])
+    end
     if arg_types["return"] == "void"
       callable.call(*values)
       if keys.include?("root")
         actual = tree_to_list(values[keys.index("root")])
+      elsif keys.include?("nums")
+        actual = values[keys.index("nums")]
+      elsif keys.include?("arr") && values[keys.index("arr")].is_a?(Array)
+        actual = values[keys.index("arr")]
+      elsif keys.include?("chars")
+        actual = values[keys.index("chars")]
       end
     else
       actual = callable.call(*values)
