@@ -1,8 +1,14 @@
-﻿// LeetCode 1365 - How Many Numbers Are Smaller Than the Current Number
-// https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> smallerNumbersThanCurrent(std::vector<int>& nums) {
+        std::vector<int> sorted = nums;
+        std::sort(sorted.begin(), sorted.end());
+        std::vector<int> answer;
+        for (int x : nums)
+            answer.push_back((int)(std::lower_bound(sorted.begin(), sorted.end(), x) - sorted.begin()));
+        return answer;
     }
 };

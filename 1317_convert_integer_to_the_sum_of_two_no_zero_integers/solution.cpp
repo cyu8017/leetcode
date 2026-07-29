@@ -1,8 +1,14 @@
-﻿// LeetCode 1317 - Convert Integer to the Sum of Two No-Zero Integers
-// https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
+#include <string>
+#include <vector>
 
 class Solution {
+    bool valid(int value) {
+        return std::to_string(value).find('0') == std::string::npos;
+    }
 public:
-    void solve() {
+    std::vector<int> getNoZeroIntegers(int n) {
+        for (int first = 1; first < n; ++first)
+            if (valid(first) && valid(n - first)) return {first, n - first};
+        return {};
     }
 };

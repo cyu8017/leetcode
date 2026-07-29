@@ -1,8 +1,18 @@
-﻿// LeetCode 1351 - Count Negative Numbers in a Sorted Matrix
-// https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int countNegatives(std::vector<std::vector<int>>& grid) {
+        int answer = 0;
+        for (auto& row : grid) {
+            int lo = 0, hi = (int)row.size();
+            while (lo < hi) {
+                int mid = (lo + hi) / 2;
+                if (row[mid] < 0) hi = mid;
+                else lo = mid + 1;
+            }
+            answer += (int)row.size() - lo;
+        }
+        return answer;
     }
 };

@@ -1,8 +1,11 @@
-﻿// LeetCode 1464 - Maximum Product of Two Elements in an Array
-// https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int maxProduct(std::vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int a = nums[nums.size() - 2], b = nums.back();
+        return (a - 1) * (b - 1);
     }
 };

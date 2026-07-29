@@ -1,8 +1,16 @@
-﻿// LeetCode 1455 - Check If a Word Occurs As a Prefix of Any Word in a Sentence
-// https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
+#include <sstream>
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int isPrefixOfWord(std::string sentence, std::string searchWord) {
+        std::istringstream iss(sentence);
+        std::string w;
+        int i = 1;
+        while (iss >> w) {
+            if (w.compare(0, searchWord.size(), searchWord) == 0) return i;
+            ++i;
+        }
+        return -1;
     }
 };

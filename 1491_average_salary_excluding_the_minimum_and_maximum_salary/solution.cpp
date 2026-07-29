@@ -1,8 +1,13 @@
-﻿// LeetCode 1491 - Average Salary Excluding the Minimum and Maximum Salary
-// https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
+#include <algorithm>
+#include <numeric>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    double average(std::vector<int>& salary) {
+        int mn = *std::min_element(salary.begin(), salary.end());
+        int mx = *std::max_element(salary.begin(), salary.end());
+        long long sum = std::accumulate(salary.begin(), salary.end(), 0LL);
+        return (double)(sum - mn - mx) / (salary.size() - 2);
     }
 };

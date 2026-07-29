@@ -1,8 +1,12 @@
-﻿// LeetCode 1323 - Maximum 69 Number
-// https://leetcode.com/problems/maximum-69-number/
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int maximum69Number(int num) {
+        std::string s = std::to_string(num);
+        for (char& ch : s) {
+            if (ch == '6') { ch = '9'; break; }
+        }
+        return std::stoi(s);
     }
 };

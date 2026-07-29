@@ -1,8 +1,11 @@
-﻿// LeetCode 1460 - Make Two Arrays Equal by Reversing Subarrays
-// https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    bool canBeEqual(std::vector<int>& target, std::vector<int>& arr) {
+        std::sort(target.begin(), target.end());
+        std::sort(arr.begin(), arr.end());
+        return target == arr;
     }
 };

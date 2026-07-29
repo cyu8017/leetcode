@@ -1,8 +1,19 @@
-﻿// LeetCode 1371 - Find the Longest Substring Containing Vowels in Even Counts
-// https://leetcode.com/problems/find-the-longest-substring-containing-vowels-in-even-counts/
+#include <algorithm>
+#include <string>
+#include <unordered_map>
 
 class Solution {
 public:
-    void solve() {
+    int findTheLongestSubstring(std::string s) {
+        std::unordered_map<int, int> first{{0, -1}};
+        int mask = 0, ans = 0;
+        std::string vowels = "aeiou";
+        for (int i = 0; i < (int)s.size(); ++i) {
+            auto pos = vowels.find(s[i]);
+            if (pos != std::string::npos) mask ^= 1 << (int)pos;
+            if (first.count(mask)) ans = std::max(ans, i - first[mask]);
+            else first[mask] = i;
+        }
+        return ans;
     }
 };

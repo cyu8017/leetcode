@@ -1,8 +1,14 @@
-﻿// LeetCode 1394 - Find Lucky Integer in an Array
-// https://leetcode.com/problems/find-lucky-integer-in-an-array/
+#include <algorithm>
+#include <unordered_map>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int findLucky(std::vector<int>& arr) {
+        std::unordered_map<int, int> c;
+        for (int x : arr) ++c[x];
+        int ans = -1;
+        for (auto [x, cnt] : c) if (x == cnt) ans = std::max(ans, x);
+        return ans;
     }
 };

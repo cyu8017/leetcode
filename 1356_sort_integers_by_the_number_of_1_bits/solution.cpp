@@ -1,8 +1,13 @@
-﻿// LeetCode 1356 - Sort Integers by The Number of 1 Bits
-// https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> sortByBits(std::vector<int>& arr) {
+        std::sort(arr.begin(), arr.end(), [](int a, int b) {
+            int ca = __builtin_popcount(a), cb = __builtin_popcount(b);
+            return ca != cb ? ca < cb : a < b;
+        });
+        return arr;
     }
 };

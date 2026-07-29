@@ -1,8 +1,11 @@
-﻿// LeetCode 1389 - Create Target Array in the Given Order
-// https://leetcode.com/problems/create-target-array-in-the-given-order/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> createTargetArray(std::vector<int>& nums, std::vector<int>& index) {
+        std::vector<int> out;
+        for (size_t i = 0; i < nums.size(); ++i)
+            out.insert(out.begin() + index[i], nums[i]);
+        return out;
     }
 };

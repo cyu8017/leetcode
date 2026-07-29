@@ -1,8 +1,11 @@
-﻿// LeetCode 1401 - Circle and Rectangle Overlapping
-// https://leetcode.com/problems/circle-and-rectangle-overlapping/
+#include <algorithm>
 
 class Solution {
 public:
-    void solve() {
+    bool checkOverlap(int radius, int xCenter, int yCenter, int x1, int y1, int x2, int y2) {
+        int x = std::min(std::max(xCenter, x1), x2);
+        int y = std::min(std::max(yCenter, y1), y2);
+        long long dx = x - xCenter, dy = y - yCenter;
+        return dx * dx + dy * dy <= 1LL * radius * radius;
     }
 };

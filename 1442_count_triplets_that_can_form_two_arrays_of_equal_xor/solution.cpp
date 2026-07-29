@@ -1,8 +1,16 @@
-﻿// LeetCode 1442 - Count Triplets That Can Form Two Arrays of Equal XOR
-// https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int countTriplets(std::vector<int>& arr) {
+        int answer = 0;
+        for (int i = 0; i < (int)arr.size(); ++i) {
+            int value = 0;
+            for (int k = i; k < (int)arr.size(); ++k) {
+                value ^= arr[k];
+                if (value == 0) answer += k - i;
+            }
+        }
+        return answer;
     }
 };

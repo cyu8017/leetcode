@@ -1,8 +1,17 @@
-﻿// LeetCode 1471 - The k Strongest Values in an Array
-// https://leetcode.com/problems/the-k-strongest-values-in-an-array/
+#include <algorithm>
+#include <cstdlib>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> getStrongest(std::vector<int>& arr, int k) {
+        std::sort(arr.begin(), arr.end());
+        int median = arr[(arr.size() - 1) / 2];
+        std::sort(arr.begin(), arr.end(), [&](int a, int b) {
+            int da = std::abs(a - median), db = std::abs(b - median);
+            return da != db ? da > db : a > b;
+        });
+        arr.resize(k);
+        return arr;
     }
 };

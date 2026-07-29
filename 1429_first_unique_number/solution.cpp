@@ -1,8 +1,28 @@
-﻿// LeetCode 1429 - First Unique Number
-// https://leetcode.com/problems/first-unique-number/
+#include <list>
+#include <unordered_map>
+#include <vector>
 
-class Solution {
+class FirstUnique {
+    std::unordered_map<int, int> counts;
+    std::list<int> unique;
+    std::unordered_map<int, std::list<int>::iterator> pos;
 public:
-    void solve() {
+    FirstUnique(std::vector<int>& nums) {
+        for (int value : nums) add(value);
+    }
+
+    int showFirstUnique() {
+        return unique.empty() ? -1 : unique.front();
+    }
+
+    void add(int value) {
+        ++counts[value];
+        if (counts[value] == 1) {
+            unique.push_back(value);
+            pos[value] = std::prev(unique.end());
+        } else if (pos.count(value)) {
+            unique.erase(pos[value]);
+            pos.erase(value);
+        }
     }
 };

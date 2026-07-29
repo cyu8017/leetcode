@@ -1,8 +1,15 @@
-﻿// LeetCode 1343 - Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
-// https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int numOfSubarrays(std::vector<int>& arr, int k, int threshold) {
+        long long window = 0;
+        for (int i = 0; i < k; ++i) window += arr[i];
+        int answer = window >= 1LL * k * threshold;
+        for (int i = k; i < (int)arr.size(); ++i) {
+            window += arr[i] - arr[i - k];
+            answer += window >= 1LL * k * threshold;
+        }
+        return answer;
     }
 };

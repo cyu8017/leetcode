@@ -1,8 +1,9 @@
-﻿// LeetCode 1480 - Running Sum of 1d Array
-// https://leetcode.com/problems/running-sum-of-1d-array/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> runningSum(std::vector<int>& nums) {
+        for (size_t i = 1; i < nums.size(); ++i) nums[i] += nums[i - 1];
+        return nums;
     }
 };

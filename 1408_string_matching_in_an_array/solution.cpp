@@ -1,8 +1,18 @@
-﻿// LeetCode 1408 - String Matching in an Array
-// https://leetcode.com/problems/string-matching-in-an-array/
+#include <string>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<std::string> stringMatching(std::vector<std::string>& words) {
+        std::vector<std::string> answer;
+        for (size_t i = 0; i < words.size(); ++i) {
+            for (size_t j = 0; j < words.size(); ++j) {
+                if (i != j && words[j].find(words[i]) != std::string::npos) {
+                    answer.push_back(words[i]);
+                    break;
+                }
+            }
+        }
+        return answer;
     }
 };

@@ -1,8 +1,19 @@
-﻿// LeetCode 1456 - Maximum Number of Vowels in a Substring of Given Length
-// https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/
+#include <algorithm>
+#include <string>
 
 class Solution {
+    bool isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+    }
 public:
-    void solve() {
+    int maxVowels(std::string s, int k) {
+        int cur = 0;
+        for (int i = 0; i < k; ++i) cur += isVowel(s[i]);
+        int ans = cur;
+        for (int i = k; i < (int)s.size(); ++i) {
+            cur += isVowel(s[i]) - isVowel(s[i - k]);
+            ans = std::max(ans, cur);
+        }
+        return ans;
     }
 };

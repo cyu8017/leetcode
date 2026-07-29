@@ -1,8 +1,14 @@
-﻿// LeetCode 1375 - Number of Times Binary String Is Prefix-Aligned
-// https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int numTimesAllBlue(std::vector<int>& flips) {
+        int ans = 0, mx = 0;
+        for (int i = 0; i < (int)flips.size(); ++i) {
+            mx = std::max(mx, flips[i]);
+            ans += mx == i + 1;
+        }
+        return ans;
     }
 };

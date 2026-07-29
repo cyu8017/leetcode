@@ -1,8 +1,14 @@
-﻿// LeetCode 1346 - Check If N and Its Double Exist
-// https://leetcode.com/problems/check-if-n-and-its-double-exist/
+#include <unordered_set>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    bool checkIfExist(std::vector<int>& arr) {
+        std::unordered_set<int> seen;
+        for (int value : arr) {
+            if (seen.count(2 * value) || (value % 2 == 0 && seen.count(value / 2))) return true;
+            seen.insert(value);
+        }
+        return false;
     }
 };

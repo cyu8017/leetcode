@@ -1,8 +1,13 @@
-﻿// LeetCode 1332 - Remove Palindromic Subsequences
-// https://leetcode.com/problems/remove-palindromic-subsequences/
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int removePalindromeSub(std::string s) {
+        if (s.empty()) return 0;
+        int i = 0, j = (int)s.size() - 1;
+        while (i < j) {
+            if (s[i++] != s[j--]) return 2;
+        }
+        return 1;
     }
 };

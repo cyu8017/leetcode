@@ -1,8 +1,12 @@
-﻿// LeetCode 1431 - Kids With the Greatest Number of Candies
-// https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<bool> kidsWithCandies(std::vector<int>& candies, int extraCandies) {
+        int maximum = *std::max_element(candies.begin(), candies.end());
+        std::vector<bool> answer;
+        for (int value : candies) answer.push_back(value + extraCandies >= maximum);
+        return answer;
     }
 };

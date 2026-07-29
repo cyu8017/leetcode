@@ -1,8 +1,19 @@
-﻿// LeetCode 1415 - The k-th Lexicographical String of All Happy Strings of Length n
-// https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
+#include <string>
+#include <vector>
 
 class Solution {
+    std::vector<std::string> answer;
+    int n;
+    void build(std::string path) {
+        if ((int)path.size() == n) { answer.push_back(path); return; }
+        for (char ch : {'a', 'b', 'c'}) {
+            if (path.empty() || path.back() != ch) build(path + ch);
+        }
+    }
 public:
-    void solve() {
+    std::string getHappyString(int n_, int k) {
+        n = n_;
+        build("");
+        return k <= (int)answer.size() ? answer[k - 1] : "";
     }
 };

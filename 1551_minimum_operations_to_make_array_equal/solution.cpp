@@ -3,6 +3,7 @@
 
 class Solution {
 public:
-    void solve() {
+    int minOperations(int n) {
+        return n * n / 4;
     }
 };

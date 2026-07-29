@@ -1,8 +1,16 @@
-﻿// LeetCode 1328 - Break a Palindrome
-// https://leetcode.com/problems/break-a-palindrome/
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    std::string breakPalindrome(std::string palindrome) {
+        if (palindrome.size() == 1) return ";
+        for (size_t i = 0; i < palindrome.size() / 2; ++i) {
+            if (palindrome[i] != 'a') {
+                palindrome[i] = 'a';
+                return palindrome;
+            }
+        }
+        palindrome.back() = 'b';
+        return palindrome;
     }
 };

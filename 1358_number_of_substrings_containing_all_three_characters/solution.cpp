@@ -1,8 +1,14 @@
-﻿// LeetCode 1358 - Number of Substrings Containing All Three Characters
-// https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+#include <algorithm>
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int numberOfSubstrings(std::string s) {
+        int last[3] = {-1, -1, -1}, ans = 0;
+        for (int i = 0; i < (int)s.size(); ++i) {
+            last[s[i] - 'a'] = i;
+            ans += 1 + std::min({last[0], last[1], last[2]});
+        }
+        return ans;
     }
 };

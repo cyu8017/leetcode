@@ -1,8 +1,17 @@
-﻿// LeetCode 1352 - Product of the Last K Numbers
-// https://leetcode.com/problems/product-of-the-last-k-numbers/
+#include <vector>
 
-class Solution {
+class ProductOfNumbers {
+    std::vector<int> p{1};
 public:
-    void solve() {
+    ProductOfNumbers() {}
+
+    void add(int num) {
+        if (num == 0) p = {1};
+        else p.push_back(p.back() * num);
+    }
+
+    int getProduct(int k) {
+        if (k >= (int)p.size()) return 0;
+        return p.back() / p[(int)p.size() - 1 - k];
     }
 };

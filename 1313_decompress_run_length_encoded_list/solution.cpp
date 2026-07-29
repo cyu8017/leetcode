@@ -1,8 +1,11 @@
-﻿// LeetCode 1313 - Decompress Run-Length Encoded List
-// https://leetcode.com/problems/decompress-run-length-encoded-list/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> decompressRLElist(std::vector<int>& nums) {
+        std::vector<int> answer;
+        for (int i = 0; i < (int)nums.size(); i += 2)
+            answer.insert(answer.end(), nums[i], nums[i + 1]);
+        return answer;
     }
 };

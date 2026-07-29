@@ -1,8 +1,11 @@
-﻿// LeetCode 1450 - Number of Students Doing Homework at a Given Time
-// https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int busyStudent(std::vector<int>& startTime, std::vector<int>& endTime, int queryTime) {
+        int ans = 0;
+        for (size_t i = 0; i < startTime.size(); ++i)
+            ans += startTime[i] <= queryTime && queryTime <= endTime[i];
+        return ans;
     }
 };

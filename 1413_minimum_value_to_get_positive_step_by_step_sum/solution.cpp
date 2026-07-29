@@ -1,8 +1,14 @@
-﻿// LeetCode 1413 - Minimum Value to Get Positive Step by Step Sum
-// https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int minStartValue(std::vector<int>& nums) {
+        int prefix = 0, lowest = 0;
+        for (int value : nums) {
+            prefix += value;
+            lowest = std::min(lowest, prefix);
+        }
+        return 1 - lowest;
     }
 };

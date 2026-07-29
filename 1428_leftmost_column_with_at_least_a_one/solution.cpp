@@ -1,8 +1,23 @@
-﻿// LeetCode 1428 - Leftmost Column with at Least a One
-// https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
+#include <vector>
+
+class BinaryMatrix {
+public:
+    int get(int row, int col);
+    std::vector<int> dimensions();
+};
 
 class Solution {
 public:
-    void solve() {
+    int leftMostColumnWithOne(BinaryMatrix &binaryMatrix) {
+        auto dim = binaryMatrix.dimensions();
+        int rows = dim[0], cols = dim[1];
+        int row = 0, col = cols - 1, answer = -1;
+        while (row < rows && col >= 0) {
+            if (binaryMatrix.get(row, col) == 1) {
+                answer = col;
+                --col;
+            } else ++row;
+        }
+        return answer;
     }
 };
