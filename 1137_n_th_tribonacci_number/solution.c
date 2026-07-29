@@ -1,5 +1,13 @@
-﻿// LeetCode 1137 - N-th Tribonacci Number
+// LeetCode 1137 - N-th Tribonacci Number
 // https://leetcode.com/problems/n-th-tribonacci-number/
 
-void solve() {
+int tribonacci(int n) {
+    if (n == 0) return 0;
+    if (n <= 2) return 1;
+    int a = 0, b = 1, c = 1;
+    for (int i = 3; i <= n; i++) {
+        int d = a + b + c;
+        a = b; b = c; c = d;
+    }
+    return c;
 }

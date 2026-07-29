@@ -1,5 +1,6 @@
-﻿// LeetCode 1551 - Minimum Operations to Make Array Equal
-// https://leetcode.com/problems/minimum-operations-to-make-array-equal/
+﻿// LeetCode 1551 - Minimum Operations to Make the Array Equal
+// https://leetcode.com/problems/minimum-operations-to-make-the-array-equal/
 
-void solve() {
+int minOperations(int n) {
+    return n * n / 4;
 }

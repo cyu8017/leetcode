@@ -1,5 +1,54 @@
-﻿// LeetCode 1116 - Print Zero Even Odd
+// LeetCode 1116 - Print Zero Even Odd
 // https://leetcode.com/problems/print-zero-even-odd/
 
-void solve() {
+#include <semaphore.h>
+#include <stdlib.h>
+
+typedef struct {
+    int n;
+    sem_t zeroSem;
+    sem_t evenSem;
+    sem_t oddSem;
+} ZeroEvenOdd;
+
+ZeroEvenOdd* zeroEvenOddCreate(int n) {
+    ZeroEvenOdd* obj = (ZeroEvenOdd*)malloc(sizeof(ZeroEvenOdd));
+    obj->n = n;
+    sem_init(&obj->zeroSem, 0, 1);
+    sem_init(&obj->evenSem, 0, 0);
+    sem_init(&obj->oddSem, 0, 0);
+    return obj;
+}
+
+void zeroEvenOddZero(ZeroEvenOdd* obj, void (*printNumber)(int)) {
+    for (int i = 0; i < obj->n; i++) {
+        sem_wait(&obj->zeroSem);
+        printNumber(0);
+        if (i % 2 == 0) sem_post(&obj->oddSem);
+        else sem_post(&obj->evenSem);
+    }
+}
+
+void zeroEvenOddEven(ZeroEvenOdd* obj, void (*printNumber)(int)) {
+    for (int num = 2; num <= obj->n; num += 2) {
+        sem_wait(&obj->evenSem);
+        printNumber(num);
+        sem_post(&obj->zeroSem);
+    }
+}
+
+void zeroEvenOddOdd(ZeroEvenOdd* obj, void (*printNumber)(int)) {
+    for (int num = 1; num <= obj->n; num += 2) {
+        sem_wait(&obj->oddSem);
+        printNumber(num);
+        sem_post(&obj->zeroSem);
+    }
+}
+
+void zeroEvenOddFree(ZeroEvenOdd* obj) {
+    if (!obj) return;
+    sem_destroy(&obj->zeroSem);
+    sem_destroy(&obj->evenSem);
+    sem_destroy(&obj->oddSem);
+    free(obj);
 }

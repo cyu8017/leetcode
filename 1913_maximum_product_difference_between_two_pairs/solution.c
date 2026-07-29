@@ -1,5 +1,14 @@
-﻿// LeetCode 1913 - Maximum Product Difference Between Two Pairs
+// LeetCode 1913 - Maximum Product Difference Between Two Pairs
 // https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
 
-void solve() {
+int maxProductDifference(int* nums, int numsSize) {
+    int a = 0, b = 0, c = 100000, d = 100000;
+    for (int i = 0; i < numsSize; i++) {
+        int x = nums[i];
+        if (x > a) { b = a; a = x; }
+        else if (x > b) b = x;
+        if (x < c) { d = c; c = x; }
+        else if (x < d) d = x;
+    }
+    return a * b - c * d;
 }
