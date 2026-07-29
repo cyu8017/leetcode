@@ -510,6 +510,26 @@ function parseInplaceExpected(string $expected): ?array {
     return [$count, $prefix];
 }
 
+class MockMountainArray {
+    /** @var array<int, int> */
+    private array $arr;
+
+    /**
+     * @param array<int, int> $arr
+     */
+    public function __construct(array $arr) {
+        $this->arr = $arr;
+    }
+
+    public function get(int $index): int {
+        return $this->arr[$index];
+    }
+
+    public function length(): int {
+        return count($this->arr);
+    }
+}
+
 function deepEqualDesign($actual, $expected): bool {
     if (is_array($actual) && is_array($expected)) {
         if (count($actual) !== count($expected)) {
@@ -732,6 +752,9 @@ foreach ($casesDoc['cases'] as $index => $case) {
         for ($call = 0; $call < $args['n']; $call++) {
             $actual[] = $solution->rand10();
         }
+    } elseif (isset($args['mountainArr']) && $method === 'findInMountainArray') {
+        $instance = new $className();
+        $actual = $instance->findInMountainArray($args['target'], new MockMountainArray($args['mountainArr']));
     } else {
         $instance = new $className();
         $converted = [];
@@ -742,9 +765,21 @@ foreach ($casesDoc['cases'] as $index => $case) {
             $converted[array_search('chars', $keys, true)] = array_values($args['chars']);
         }
         if (($argTypes['return'] ?? null) === 'void') {
-            $instance->$method(...$converted);
+            $refArgs = [];
+            foreach ($converted as $i => $_) {
+                $refArgs[$i] = &$converted[$i];
+            }
+            $instance->$method(...$refArgs);
             if (in_array('root', $keys, true)) {
                 $actual = treeToList($converted[array_search('root', $keys, true)]);
+            } else {
+                foreach (['nums', 'arr', 'board', 'matrix', 'chars'] as $field) {
+                    $fieldIndex = array_search($field, $keys, true);
+                    if ($fieldIndex !== false) {
+                        $actual = $converted[$fieldIndex];
+                        break;
+                    }
+                }
             }
         } else {
             $actual = $instance->$method(...$converted);

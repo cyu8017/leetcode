@@ -1,7 +1,13 @@
-﻿// LeetCode 1025 - Divisor Game
+<?php
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $n
+     * @return Boolean
+     */
+    function divisorGame($n) {
+        return $n % 2 === 0;
     }
 }
