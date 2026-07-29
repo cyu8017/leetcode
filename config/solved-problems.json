@@ -1396,24 +1396,36 @@
     {
       "folder": "0175_combine_two_tables",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0176_second_highest_salary",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0177_nth_highest_salary",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0178_rank_scores",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -1428,36 +1440,54 @@
     {
       "folder": "0180_consecutive_numbers",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0181_employees_earning_more_than_their_managers",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0182_duplicate_emails",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0183_customers_who_never_order",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0184_department_highest_salary",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0185_department_top_three_salaries",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -1544,12 +1574,18 @@
     {
       "folder": "0196_delete_duplicate_emails",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0197_rising_temperature",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -2068,6 +2104,9 @@
     {
       "folder": "0262_trips_and_users",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4058,12 +4097,18 @@
     {
       "folder": "0511_game_play_analysis_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0512_game_play_analysis_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4238,6 +4283,9 @@
     {
       "folder": "0534_game_play_analysis_iii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4364,6 +4412,9 @@
     {
       "folder": "0550_game_play_analysis_iv",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4514,18 +4565,27 @@
     {
       "folder": "0569_median_employee_salary",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0570_managers_with_at_least_5_direct_reports",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0571_find_median_given_frequency_of_numbers",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4548,6 +4608,9 @@
     {
       "folder": "0574_winning_candidate",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4570,24 +4633,36 @@
     {
       "folder": "0577_employee_bonus",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0578_get_highest_answer_rate_question",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0579_find_cumulative_salary_of_an_employee",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0580_count_student_number_in_departments",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4618,18 +4693,27 @@
     {
       "folder": "0584_find_customer_referee",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0585_investments_in_2016",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0586_customer_placing_the_largest_number_of_orders",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4700,18 +4784,27 @@
     {
       "folder": "0595_big_countries",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0596_classes_with_at_least_5_students",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0597_friend_requests_i_overall_acceptance_rate",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4742,18 +4835,27 @@
     {
       "folder": "0601_human_traffic_of_stadium",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0602_friend_requests_ii_who_has_the_most_friends",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0603_consecutive_available_seats",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4784,12 +4886,18 @@
     {
       "folder": "0607_sales_person",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0608_tree_node",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4804,6 +4912,9 @@
     {
       "folder": "0610_triangle_judgement",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4818,24 +4929,36 @@
     {
       "folder": "0612_shortest_distance_in_a_plane",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0613_shortest_distance_in_a_line",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0614_second_degree_follower",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0615_average_salary_departments_vs_company",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4858,18 +4981,27 @@
     {
       "folder": "0618_students_report_by_geography",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0619_biggest_single_number",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0620_not_boring_movies",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -4916,12 +5048,18 @@
     {
       "folder": "0626_exchange_seats",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "0627_swap_sex_of_employees",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9716,6 +9854,9 @@
     {
       "folder": "1107_new_users_daily_count",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9746,12 +9887,18 @@
     {
       "folder": "1112_highest_grade_for_each_student",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1113_reported_posts",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9830,12 +9977,18 @@
     {
       "folder": "1126_active_businesses",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1127_user_purchase_platform",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9866,6 +10019,9 @@
     {
       "folder": "1132_reported_posts_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9920,12 +10076,18 @@
     {
       "folder": "1141_user_activity_for_the_past_30_days_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1142_user_activity_for_the_past_30_days_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -9962,12 +10124,18 @@
     {
       "folder": "1148_article_views_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1149_article_views_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10022,12 +10190,18 @@
     {
       "folder": "1158_market_analysis_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1159_market_analysis_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10058,6 +10232,9 @@
     {
       "folder": "1164_product_price_at_a_given_date",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10112,12 +10289,18 @@
     {
       "folder": "1173_immediate_food_delivery_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1174_immediate_food_delivery_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10148,6 +10331,9 @@
     {
       "folder": "1179_reformat_department_table",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10232,12 +10418,18 @@
     {
       "folder": "1193_monthly_transactions_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1194_tournament_winners",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10298,12 +10490,18 @@
     {
       "folder": "1204_last_person_to_fit_in_the_bus",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1205_monthly_transactions_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10340,12 +10538,18 @@
     {
       "folder": "1211_queries_quality_and_percentage",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1212_team_scores_in_football_tournament",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10424,6 +10628,9 @@
     {
       "folder": "1225_report_contiguous_dates",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10520,6 +10727,9 @@
     {
       "folder": "1241_number_of_comments_per_post",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10580,6 +10790,9 @@
     {
       "folder": "1251_average_selling_price",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10658,6 +10871,9 @@
     {
       "folder": "1264_page_recommendations",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10694,6 +10910,9 @@
     {
       "folder": "1270_all_people_report_to_the_given_manager",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10754,6 +10973,9 @@
     {
       "folder": "1280_students_and_examinations",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10784,6 +11006,9 @@
     {
       "folder": "1285_find_the_start_and_end_number_of_continuous_ranges",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10838,6 +11063,9 @@
     {
       "folder": "1294_weather_type_in_each_country",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10892,6 +11120,9 @@
     {
       "folder": "1303_find_the_team_size",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -10922,6 +11153,9 @@
     {
       "folder": "1308_running_total_for_different_genders",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11000,12 +11234,18 @@
     {
       "folder": "1321_restaurant_growth",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1322_ads_performance",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11036,6 +11276,9 @@
     {
       "folder": "1327_list_the_products_ordered_in_a_period",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11090,6 +11333,9 @@
     {
       "folder": "1336_number_of_transactions_per_visit",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11120,6 +11366,9 @@
     {
       "folder": "1341_movie_rating",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11174,6 +11423,9 @@
     {
       "folder": "1350_students_with_invalid_departments",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11204,6 +11456,9 @@
     {
       "folder": "1355_activity_participants",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11258,6 +11513,9 @@
     {
       "folder": "1364_number_of_trusted_contacts_of_a_customer",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -11288,6 +11546,9 @@
     {
       "folder": "1369_get_the_second_most_recent_activity",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },

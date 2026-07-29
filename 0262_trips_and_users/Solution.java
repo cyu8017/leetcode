@@ -1,18 +1,19 @@
-﻿// LeetCode 0262 - Trips and Users
+// LeetCode 0262 - Trips And Users
 // https://leetcode.com/problems/trips-and-users/
 
-public class Solution {
-    public static final String QUERY = "SELECT\n" +
-        "    Request_at AS Day,\n" +
-        "    ROUND(\n" +
-        "        SUM(CASE WHEN Status <> 'completed' THEN 1 ELSE 0 END) / COUNT(*),\n" +
-        "        2\n" +
-        "    ) AS `Cancellation Rate`\n" +
-        "FROM Trips\n" +
-        "INNER JOIN Users ON Trips.Client_Id = Users.Users_Id AND Users.Role = 'client'\n" +
-        "WHERE Users.Banned = 'No'\n" +
-        "    AND Request_at BETWEEN '2013-10-01' AND '2013-10-03'\n" +
-        "GROUP BY Request_at\n" +
-        "ORDER BY Day\n" +
-        "";
+class Solution {
+    public static final String QUERY = """
+SELECT
+    Request_at AS Day,
+    ROUND(
+        SUM(CASE WHEN Status <> 'completed' THEN 1 ELSE 0 END) / COUNT(*),
+        2
+    ) AS `Cancellation Rate`
+FROM Trips
+INNER JOIN Users ON Trips.Client_Id = Users.Users_Id AND Users.Role = 'client'
+WHERE Users.Banned = 'No'
+    AND Request_at BETWEEN '2013-10-01' AND '2013-10-03'
+GROUP BY Request_at
+ORDER BY Day
+""";
 }

@@ -1,7 +1,16 @@
-﻿// LeetCode 0626 - Exchange Seats
+// LeetCode 0626 - Exchange Seats
 // https://leetcode.com/problems/exchange-seats/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT
+    CASE
+        WHEN id % 2 = 1 AND id = (SELECT MAX(id) FROM Seat) THEN id
+        WHEN id % 2 = 1 THEN id + 1
+        ELSE id - 1
+    END AS id,
+    student
+FROM Seat
+ORDER BY id
+""";
 }

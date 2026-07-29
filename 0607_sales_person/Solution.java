@@ -1,7 +1,15 @@
-﻿// LeetCode 0607 - Sales Person
+// LeetCode 0607 - Sales Person
 // https://leetcode.com/problems/sales-person/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT name
+FROM SalesPerson
+WHERE sales_id NOT IN (
+    SELECT o.sales_id
+    FROM Orders o
+    JOIN Company c ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+)
+""";
 }

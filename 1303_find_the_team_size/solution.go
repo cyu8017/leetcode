@@ -1,5 +1,7 @@
-﻿// LeetCode 1303 - Find the Team Size
+// LeetCode 1303 - Find The Team Size
 // https://leetcode.com/problems/find-the-team-size/
 
-func solve() {
-}
+const QUERY = `
+SELECT employee_id, COUNT(*) OVER (PARTITION BY team_id) AS team_size
+FROM Employee
+`

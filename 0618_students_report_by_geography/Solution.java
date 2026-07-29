@@ -1,7 +1,21 @@
-﻿// LeetCode 0618 - Students Report By Geography
+// LeetCode 0618 - Students Report By Geography
 // https://leetcode.com/problems/students-report-by-geography/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+WITH ranked AS (
+    SELECT
+        name,
+        continent,
+        ROW_NUMBER() OVER (PARTITION BY continent ORDER BY name) AS rn
+    FROM Student
+)
+SELECT
+    MAX(CASE WHEN continent = 'America' THEN name END) AS America,
+    MAX(CASE WHEN continent = 'Asia' THEN name END) AS Asia,
+    MAX(CASE WHEN continent = 'Europe' THEN name END) AS Europe
+FROM ranked
+GROUP BY rn
+ORDER BY rn
+""";
 }
