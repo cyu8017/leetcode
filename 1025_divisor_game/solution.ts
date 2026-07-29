@@ -1,6 +1,6 @@
-﻿// LeetCode 1025 - Divisor Game
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
-function solve(input: unknown): unknown {
-    return null;
+function divisorGame(n: number): boolean {
+    return n % 2 === 0;
 }

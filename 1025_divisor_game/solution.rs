@@ -1,7 +1,8 @@
-﻿// LeetCode 1025 - Divisor Game
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
 impl Solution {
-    pub fn solve() {
+    pub fn divisor_game(n: i32) -> bool {
+        n % 2 == 0
     }
 }

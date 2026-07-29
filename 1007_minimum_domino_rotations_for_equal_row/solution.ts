@@ -1,6 +1,16 @@
-﻿// LeetCode 1007 - Minimum Domino Rotations For Equal Row
+// LeetCode 1007 - Minimum Domino Rotations For Equal Row
 // https://leetcode.com/problems/minimum-domino-rotations-for-equal-row/
 
-function solve(input: unknown): unknown {
-    return null;
+function minDominoRotations(tops: number[], bottoms: number[]): number {
+    const check = (target: number): number => {
+        let rotTop = 0, rotBot = 0;
+        for (let i = 0; i < tops.length; i++) {
+            if (tops[i] !== target && bottoms[i] !== target) return Infinity;
+            if (tops[i] !== target) rotTop++;
+            if (bottoms[i] !== target) rotBot++;
+        }
+        return Math.min(rotTop, rotBot);
+    };
+    const ans = Math.min(check(tops[0]), check(bottoms[0]));
+    return ans === Infinity ? -1 : ans;
 }
