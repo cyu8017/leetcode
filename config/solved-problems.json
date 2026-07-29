@@ -6853,6 +6853,9 @@
     {
       "folder": "1045_customers_who_bought_all_products",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -6935,6 +6938,9 @@
     {
       "folder": "1050_actors_and_directors_who_cooperated_at_least_three_times",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -7264,18 +7270,27 @@
     {
       "folder": "1068_product_sales_analysis_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1069_product_sales_analysis_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1070_product_sales_analysis_iii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -7358,18 +7373,27 @@
     {
       "folder": "1075_project_employees_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1076_project_employees_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1077_project_employees_iii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -7452,18 +7476,27 @@
     {
       "folder": "1082_sales_analysis_i",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1083_sales_analysis_ii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1084_sales_analysis_iii",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
@@ -7698,12 +7731,18 @@
     {
       "folder": "1097_game_play_analysis_v",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },
     {
       "folder": "1098_unpopular_books",
       "languages": [
+        "go",
+        "java",
+        "php",
         "python"
       ]
     },

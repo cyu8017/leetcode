@@ -1,7 +1,6 @@
 # LeetCode 1083 - Sales Analysis II
 # https://leetcode.com/problems/sales-analysis-ii/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT DISTINCT s.buyer_id
 FROM Sales s

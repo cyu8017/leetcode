@@ -1,7 +1,6 @@
 # LeetCode 1082 - Sales Analysis I
 # https://leetcode.com/problems/sales-analysis-i/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT seller_id
 FROM Sales

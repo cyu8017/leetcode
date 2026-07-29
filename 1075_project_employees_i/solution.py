@@ -1,7 +1,6 @@
 # LeetCode 1075 - Project Employees I
 # https://leetcode.com/problems/project-employees-i/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT p.project_id, ROUND(AVG(e.experience_years), 2) AS average_years
 FROM Project p

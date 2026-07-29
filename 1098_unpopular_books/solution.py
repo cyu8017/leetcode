@@ -1,7 +1,6 @@
 # LeetCode 1098 - Unpopular Books
 # https://leetcode.com/problems/unpopular-books/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT b.book_id, b.name
 FROM Books b

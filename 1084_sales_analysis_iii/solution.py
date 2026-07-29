@@ -1,7 +1,6 @@
 # LeetCode 1084 - Sales Analysis III
 # https://leetcode.com/problems/sales-analysis-iii/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT DISTINCT p.product_id, p.product_name
 FROM Product p

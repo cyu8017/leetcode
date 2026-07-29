@@ -1,7 +1,6 @@
 # LeetCode 1077 - Project Employees III
 # https://leetcode.com/problems/project-employees-iii/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT p.project_id, p.employee_id
 FROM Project p

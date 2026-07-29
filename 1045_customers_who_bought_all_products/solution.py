@@ -1,7 +1,6 @@
 ﻿# LeetCode 1045 - Customers Who Bought All Products
 # https://leetcode.com/problems/customers-who-bought-all-products/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT customer_id
 FROM Customer

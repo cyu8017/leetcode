@@ -1,7 +1,6 @@
 # LeetCode 1070 - Product Sales Analysis III
 # https://leetcode.com/problems/product-sales-analysis-iii/
 
-# Write your MySQL query statement below
 QUERY = """
 SELECT product_id, year AS first_year, quantity, price
 FROM Sales
