@@ -1,6 +1,6 @@
-﻿// LeetCode 1025 - Divisor Game
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
 object Solution {
-  def solve(): Unit = {}
+  def divisorGame(n: Int): Boolean = n % 2 == 0
 }
