@@ -1,4 +1,4 @@
-﻿// LeetCode 0150 - Evaluate Reverse Polish Notation
+// LeetCode 0150 - Evaluate Reverse Polish Notation
 // https://leetcode.com/problems/evaluate-reverse-polish-notation/
 
 #include <stdlib.h>
@@ -26,9 +26,4 @@ int evalRPN(char **tokens, int tokensSize) {
     int result = stack[0];
     free(stack);
     return result;
-}
-// LeetCode 0150 - Evaluate Reverse Polish Notation
-// https://leetcode.com/problems/evaluate-reverse-polish-notation/
-
-void solve() {
 }

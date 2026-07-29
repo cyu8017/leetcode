@@ -1,4 +1,4 @@
-﻿// LeetCode 0148 - Sort List
+// LeetCode 0148 - Sort List
 // https://leetcode.com/problems/sort-list/
 
 #include <stddef.h>
@@ -36,9 +36,4 @@ struct ListNode *sortList(struct ListNode *head) {
     struct ListNode *right = slow->next;
     slow->next = NULL;
     return merge(sortList(head), sortList(right));
-}
-// LeetCode 0148 - Sort List
-// https://leetcode.com/problems/sort-list/
-
-void solve() {
 }

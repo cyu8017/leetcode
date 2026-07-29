@@ -1,4 +1,4 @@
-﻿// LeetCode 0146 - LRU Cache
+// LeetCode 0146 - LRU Cache
 // https://leetcode.com/problems/lru-cache/
 
 #include <stdlib.h>
@@ -99,9 +99,4 @@ void lRUCacheFree(LRUCache *obj) {
     }
     free(obj->buckets);
     free(obj);
-}
-// LeetCode 0146 - LRU Cache
-// https://leetcode.com/problems/lru-cache/
-
-void solve() {
 }

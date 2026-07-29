@@ -1,4 +1,4 @@
-﻿// LeetCode 0144 - Binary Tree Preorder Traversal
+// LeetCode 0144 - Binary Tree Preorder Traversal
 // https://leetcode.com/problems/binary-tree-preorder-traversal/
 
 #include <stdlib.h>
@@ -32,9 +32,4 @@ int *preorderTraversal(struct TreeNode *root, int *returnSize) {
     }
     free(stack);
     return values;
-}
-// LeetCode 0144 - Binary Tree Preorder Traversal
-// https://leetcode.com/problems/binary-tree-preorder-traversal/
-
-void solve() {
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0141 - Linked List Cycle
+// LeetCode 0141 - Linked List Cycle
 // https://leetcode.com/problems/linked-list-cycle/
 
 #include <stdbool.h>
@@ -20,9 +20,4 @@ bool hasCycle(struct ListNode *head) {
         }
     }
     return false;
-}
-// LeetCode 0141 - Linked List Cycle
-// https://leetcode.com/problems/linked-list-cycle/
-
-void solve() {
 }

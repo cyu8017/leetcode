@@ -1,4 +1,4 @@
-﻿// LeetCode 0147 - Insertion Sort List
+// LeetCode 0147 - Insertion Sort List
 // https://leetcode.com/problems/insertion-sort-list/
 
 #include <stddef.h>
@@ -21,9 +21,4 @@ struct ListNode *insertionSortList(struct ListNode *head) {
         head = next;
     }
     return dummy.next;
-}
-// LeetCode 0147 - Insertion Sort List
-// https://leetcode.com/problems/insertion-sort-list/
-
-void solve() {
 }

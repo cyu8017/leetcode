@@ -4,1044 +4,1218 @@
     {
       "folder": "0001_two_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0002_add_two_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0003_longest_substring_without_repeating_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0004_median_of_two_sorted_arrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0005_longest_palindromic_substring",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0006_zigzag_conversion",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0007_reverse_integer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0008_string_to_integer_atoi",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0009_palindrome_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0010_regular_expression_matching",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0011_container_with_most_water",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0012_integer_to_roman",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0013_roman_to_integer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0014_longest_common_prefix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0015_3sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0016_3sum_closest",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0017_letter_combinations_of_a_phone_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0018_4sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0019_remove_nth_node_from_end_of_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0020_valid_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0021_merge_two_sorted_lists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0022_generate_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0023_merge_k_sorted_lists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0024_swap_nodes_in_pairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0025_reverse_nodes_in_k_group",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0026_remove_duplicates_from_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0027_remove_element",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0028_find_the_index_of_the_first_occurrence_in_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0029_divide_two_integers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0030_substring_with_concatenation_of_all_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0031_next_permutation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0032_longest_valid_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0033_search_in_rotated_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0034_find_first_and_last_position_of_element_in_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0035_search_insert_position",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0036_valid_sudoku",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0037_sudoku_solver",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0038_count_and_say",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0039_combination_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0040_combination_sum_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0041_first_missing_positive",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0042_trapping_rain_water",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0043_multiply_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0044_wildcard_matching",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0045_jump_game_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0046_permutations",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0047_permutations_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0048_rotate_image",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0049_group_anagrams",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0050_powx_n",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0051_n_queens",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0052_n_queens_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0053_maximum_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0054_spiral_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0055_jump_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0056_merge_intervals",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0057_insert_interval",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0058_length_of_last_word",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0059_spiral_matrix_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0060_permutation_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0061_rotate_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0062_unique_paths",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0063_unique_paths_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0064_minimum_path_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0065_valid_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0066_plus_one",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0067_add_binary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0068_text_justification",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0069_sqrtx",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0070_climbing_stairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0071_simplify_path",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0072_edit_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0073_set_matrix_zeroes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0074_search_a_2d_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0075_sort_colors",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0076_minimum_window_substring",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0077_combinations",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0078_subsets",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0079_word_search",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0080_remove_duplicates_from_sorted_array_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0081_search_in_rotated_sorted_array_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0082_remove_duplicates_from_sorted_list_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0083_remove_duplicates_from_sorted_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0084_largest_rectangle_in_histogram",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0085_maximal_rectangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0086_partition_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0087_scramble_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0088_merge_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0089_gray_code",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0090_subsets_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0091_decode_ways",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0092_reverse_linked_list_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0093_restore_ip_addresses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0094_binary_tree_inorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0095_unique_binary_search_trees_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0096_unique_binary_search_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0097_interleaving_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0098_validate_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0099_recover_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0100_same_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0101_symmetric_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0102_binary_tree_level_order_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0103_binary_tree_zigzag_level_order_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0104_maximum_depth_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0105_construct_binary_tree_from_preorder_and_inorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0106_construct_binary_tree_from_inorder_and_postorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0107_binary_tree_level_order_traversal_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0108_convert_sorted_array_to_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0109_convert_sorted_list_to_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0110_balanced_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0111_minimum_depth_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0112_path_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0113_path_sum_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0114_flatten_binary_tree_to_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0115_distinct_subsequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0116_populating_next_right_pointers_in_each_node",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0117_populating_next_right_pointers_in_each_node_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0118_pascals_triangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0119_pascals_triangle_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0120_triangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0121_best_time_to_buy_and_sell_stock",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0122_best_time_to_buy_and_sell_stock_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0123_best_time_to_buy_and_sell_stock_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0124_binary_tree_maximum_path_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0125_valid_palindrome",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0126_word_ladder_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0127_word_ladder",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0128_longest_consecutive_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0129_sum_root_to_leaf_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0130_surrounded_regions",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0131_palindrome_partitioning",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0132_palindrome_partitioning_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0133_clone_graph",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0134_gas_station",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0135_candy",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0136_single_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0137_single_number_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0138_copy_list_with_random_pointer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0139_word_break",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0140_word_break_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0141_linked_list_cycle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0142_linked_list_cycle_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0143_reorder_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0144_binary_tree_preorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0145_binary_tree_postorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0146_lru_cache",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0147_insertion_sort_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0148_sort_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0149_max_points_on_a_line",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0150_evaluate_reverse_polish_notation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0151_reverse_words_in_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0152_maximum_product_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0153_find_minimum_in_rotated_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0154_find_minimum_in_rotated_sorted_array_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0155_min_stack",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0156_binary_tree_upside_down",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0157_read_n_characters_given_read4",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0158_read_n_characters_given_read4_ii_call_multiple_times",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0159_longest_substring_with_at_most_two_distinct_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0160_intersection_of_two_linked_lists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0161_one_edit_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0162_find_peak_element",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0163_missing_ranges",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0164_maximum_gap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0165_compare_version_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0166_fraction_to_recurring_decimal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0167_two_sum_ii_input_array_is_sorted",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0168_excel_sheet_column_title",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0169_majority_element",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0170_two_sum_iii_data_structure_design",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0171_excel_sheet_column_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0172_factorial_trailing_zeroes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0173_binary_search_tree_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0174_dungeon_game",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -1072,6 +1246,7 @@
     {
       "folder": "0179_largest_number",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -1114,60 +1289,70 @@
     {
       "folder": "0186_reverse_words_in_a_string_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0187_repeated_dna_sequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0188_best_time_to_buy_and_sell_stock_iv",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0189_rotate_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0190_reverse_bits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0191_number_of_1_bits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0192_word_frequency",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0193_valid_phone_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0194_transpose_file",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0195_tenth_line",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -1186,384 +1371,448 @@
     {
       "folder": "0198_house_robber",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0199_binary_tree_right_side_view",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0200_number_of_islands",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0201_bitwise_and_of_numbers_range",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0202_happy_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0203_remove_linked_list_elements",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0204_count_primes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0205_isomorphic_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0206_reverse_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0207_course_schedule",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0208_implement_trie_prefix_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0209_minimum_size_subarray_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0210_course_schedule_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0211_design_add_and_search_words_data_structure",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0212_word_search_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0213_house_robber_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0214_shortest_palindrome",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0215_kth_largest_element_in_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0216_combination_sum_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0217_contains_duplicate",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0218_the_skyline_problem",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0219_contains_duplicate_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0220_contains_duplicate_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0221_maximal_square",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0222_count_complete_tree_nodes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0223_rectangle_area",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0224_basic_calculator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0225_implement_stack_using_queues",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0226_invert_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0227_basic_calculator_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0228_summary_ranges",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0229_majority_element_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0230_kth_smallest_element_in_a_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0231_power_of_two",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0232_implement_queue_using_stacks",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0233_number_of_digit_one",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0234_palindrome_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0235_lowest_common_ancestor_of_a_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0236_lowest_common_ancestor_of_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0237_delete_node_in_a_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0238_product_of_array_except_self",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0239_sliding_window_maximum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0240_search_a_2d_matrix_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0241_different_ways_to_add_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0242_valid_anagram",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0243_shortest_word_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0244_shortest_word_distance_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0245_shortest_word_distance_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0246_strobogrammatic_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0247_strobogrammatic_number_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0248_strobogrammatic_number_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0249_group_shifted_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0250_count_univalue_subtrees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0251_flatten_2d_vector",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0252_meeting_rooms",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0253_meeting_rooms_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0254_factor_combinations",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0255_verify_preorder_sequence_in_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0256_paint_house",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0257_binary_tree_paths",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0258_add_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0259_3sum_smaller",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0260_single_number_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0261_graph_valid_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -1576,1488 +1825,1736 @@
     {
       "folder": "0263_ugly_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0264_ugly_number_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0265_paint_house_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0266_palindrome_permutation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0267_palindrome_permutation_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0268_missing_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0269_alien_dictionary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0270_closest_binary_search_tree_value",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0271_encode_and_decode_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0272_closest_binary_search_tree_value_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0273_integer_to_english_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0274_h_index",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0275_h_index_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0276_paint_fence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0277_find_the_celebrity",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0278_first_bad_version",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0279_perfect_squares",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0280_wiggle_sort",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0281_zigzag_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0282_expression_add_operators",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0283_move_zeroes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0284_peeking_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0285_inorder_successor_in_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0286_walls_and_gates",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0287_find_the_duplicate_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0288_unique_word_abbreviation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0289_game_of_life",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0290_word_pattern",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0291_word_pattern_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0292_nim_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0293_flip_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0294_flip_game_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0295_find_median_from_data_stream",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0296_best_meeting_point",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0297_serialize_and_deserialize_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0298_binary_tree_longest_consecutive_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0299_bulls_and_cows",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0300_longest_increasing_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0301_remove_invalid_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0302_smallest_rectangle_enclosing_black_pixels",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0303_range_sum_query_immutable",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0304_range_sum_query_2d_immutable",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0305_number_of_islands_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0306_additive_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0307_range_sum_query_mutable",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0308_range_sum_query_2d_mutable",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0309_best_time_to_buy_and_sell_stock_with_cooldown",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0310_minimum_height_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0311_sparse_matrix_multiplication",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0312_burst_balloons",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0313_super_ugly_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0314_binary_tree_vertical_order_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0315_count_of_smaller_numbers_after_self",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0316_remove_duplicate_letters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0317_shortest_distance_from_all_buildings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0318_maximum_product_of_word_lengths",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0319_bulb_switcher",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0320_generalized_abbreviation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0321_create_maximum_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0322_coin_change",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0323_number_of_connected_components_in_an_undirected_graph",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0324_wiggle_sort_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0325_maximum_size_subarray_sum_equals_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0326_power_of_three",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0327_count_of_range_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0328_odd_even_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0329_longest_increasing_path_in_a_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0330_patching_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0331_verify_preorder_serialization_of_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0332_reconstruct_itinerary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0333_largest_bst_subtree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0334_increasing_triplet_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0335_self_crossing",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0336_palindrome_pairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0337_house_robber_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0338_counting_bits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0339_nested_list_weight_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0340_longest_substring_with_at_most_k_distinct_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0341_flatten_nested_list_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0342_power_of_four",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0343_integer_break",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0344_reverse_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0345_reverse_vowels_of_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0346_moving_average_from_data_stream",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0347_top_k_frequent_elements",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0348_design_tic_tac_toe",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0349_intersection_of_two_arrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0350_intersection_of_two_arrays_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0351_android_unlock_patterns",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0352_data_stream_as_disjoint_intervals",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0353_design_snake_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0354_russian_doll_envelopes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0355_design_twitter",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0356_line_reflection",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0357_count_numbers_with_unique_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0358_rearrange_string_k_distance_apart",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0359_logger_rate_limiter",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0360_sort_transformed_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0361_bomb_enemy",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0362_design_hit_counter",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0363_max_sum_of_rectangle_no_larger_than_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0364_nested_list_weight_sum_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0365_water_and_jug_problem",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0366_find_leaves_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0367_valid_perfect_square",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0368_largest_divisible_subset",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0369_plus_one_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0370_range_addition",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0371_sum_of_two_integers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0372_super_pow",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0373_find_k_pairs_with_smallest_sums",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0374_guess_number_higher_or_lower",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0375_guess_number_higher_or_lower_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0376_wiggle_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0377_combination_sum_iv",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0378_kth_smallest_element_in_a_sorted_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0379_design_phone_directory",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0380_insert_delete_getrandom_o1",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0381_insert_delete_getrandom_o1_duplicates_allowed",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0382_linked_list_random_node",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0383_ransom_note",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0384_shuffle_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0385_mini_parser",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0386_lexicographical_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0387_first_unique_character_in_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0388_longest_absolute_file_path",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0389_find_the_difference",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0390_elimination_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0391_perfect_rectangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0392_is_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0393_utf_8_validation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0394_decode_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0395_longest_substring_with_at_least_k_repeating_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0396_rotate_function",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0397_integer_replacement",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0398_random_pick_index",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0399_evaluate_division",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0400_nth_digit",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0401_binary_watch",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0402_remove_k_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0403_frog_jump",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0404_sum_of_left_leaves",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0405_convert_a_number_to_hexadecimal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0406_queue_reconstruction_by_height",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0407_trapping_rain_water_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0408_valid_word_abbreviation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0409_longest_palindrome",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0410_split_array_largest_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0411_minimum_unique_word_abbreviation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0412_fizz_buzz",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0413_arithmetic_slices",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0414_third_maximum_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0415_add_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0416_partition_equal_subset_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0417_pacific_atlantic_water_flow",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0418_sentence_screen_fitting",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0419_battleships_in_a_board",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0420_strong_password_checker",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0421_maximum_xor_of_two_numbers_in_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0422_valid_word_square",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0423_reconstruct_original_digits_from_english",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0424_longest_repeating_character_replacement",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0425_word_squares",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0426_convert_binary_search_tree_to_sorted_doubly_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0427_construct_quad_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0428_serialize_and_deserialize_n_ary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0429_n_ary_tree_level_order_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0430_flatten_a_multilevel_doubly_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0431_encode_n_ary_tree_to_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0432_all_oone_data_structure",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0433_minimum_genetic_mutation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0434_number_of_segments_in_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0435_non_overlapping_intervals",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0436_find_right_interval",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0437_path_sum_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0438_find_all_anagrams_in_a_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0439_ternary_expression_parser",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0440_k_th_smallest_in_lexicographical_order",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0441_arranging_coins",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0442_find_all_duplicates_in_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0443_string_compression",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0444_sequence_reconstruction",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0445_add_two_numbers_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0446_arithmetic_slices_ii_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0447_number_of_boomerangs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0448_find_all_numbers_disappeared_in_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0449_serialize_and_deserialize_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0450_delete_node_in_a_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0451_sort_characters_by_frequency",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0452_minimum_number_of_arrows_to_burst_balloons",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0453_minimum_moves_to_equal_array_elements",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0454_4sum_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0455_assign_cookies",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0456_132_pattern",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0457_circular_array_loop",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0458_poor_pigs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0459_repeated_substring_pattern",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0460_lfu_cache",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0461_hamming_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0462_minimum_moves_to_equal_array_elements_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0463_island_perimeter",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0464_can_i_win",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0465_optimal_account_balancing",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0466_count_the_repetitions",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0467_unique_substrings_in_wraparound_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0468_validate_ip_address",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0469_convex_polygon",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0470_implement_rand10_using_rand7",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0471_encode_string_with_shortest_length",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0472_concatenated_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0473_matchsticks_to_square",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0474_ones_and_zeroes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0475_heaters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0476_number_complement",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0477_total_hamming_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0478_generate_random_point_in_a_circle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0479_largest_palindrome_product",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0480_sliding_window_median",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0481_magical_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0482_license_key_formatting",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0483_smallest_good_base",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0484_find_permutation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0485_max_consecutive_ones",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0486_predict_the_winner",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0487_max_consecutive_ones_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0488_zuma_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0489_robot_room_cleaner",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0490_the_maze",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0491_non_decreasing_subsequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0492_construct_the_rectangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0493_reverse_pairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0494_target_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0495_teemo_attacking",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0496_next_greater_element_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0497_random_point_in_non_overlapping_rectangles",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0498_diagonal_traverse",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0499_the_maze_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0500_keyboard_row",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0501_find_mode_in_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0502_ipo",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0503_next_greater_element_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0504_base_7",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0505_the_maze_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0506_relative_ranks",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0507_perfect_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0508_most_frequent_subtree_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0509_fibonacci_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0510_inorder_successor_in_bst_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3076,126 +3573,147 @@
     {
       "folder": "0513_find_bottom_left_tree_value",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0514_freedom_trail",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0515_find_largest_value_in_each_tree_row",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0516_longest_palindromic_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0517_super_washing_machines",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0518_coin_change_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0519_random_flip_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0520_detect_capital",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0521_longest_uncommon_subsequence_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0522_longest_uncommon_subsequence_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0523_continuous_subarray_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0524_longest_word_in_dictionary_through_deleting",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0525_contiguous_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0526_beautiful_arrangement",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0527_word_abbreviation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0528_random_pick_with_weight",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0529_minesweeper",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0530_minimum_absolute_difference_in_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0531_lonely_pixel_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0532_k_diff_pairs_in_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0533_lonely_pixel_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3208,90 +3726,105 @@
     {
       "folder": "0535_encode_and_decode_tinyurl",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0536_construct_binary_tree_from_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0537_complex_number_multiplication",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0538_convert_bst_to_greater_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0539_minimum_time_difference",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0540_single_element_in_a_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0541_reverse_string_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0542_01_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0543_diameter_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0544_output_contest_matches",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0545_boundary_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0546_remove_boxes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0547_number_of_provinces",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0548_split_array_with_equal_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0549_binary_tree_longest_consecutive_sequence_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3304,108 +3837,126 @@
     {
       "folder": "0551_student_attendance_record_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0552_student_attendance_record_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0553_optimal_division",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0554_brick_wall",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0555_split_concatenated_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0556_next_greater_element_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0557_reverse_words_in_a_string_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0558_logical_or_of_two_binary_grids_represented_as_quad_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0559_maximum_depth_of_n_ary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0560_subarray_sum_equals_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0561_array_partition",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0562_longest_line_of_consecutive_one_in_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0563_binary_tree_tilt",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0564_find_the_closest_palindrome",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0565_array_nesting",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0566_reshape_the_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0567_permutation_in_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0568_maximum_vacation_days",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3430,12 +3981,14 @@
     {
       "folder": "0572_subtree_of_another_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0573_squirrel_simulation",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3448,12 +4001,14 @@
     {
       "folder": "0575_distribute_candies",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0576_out_of_boundary_paths",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3484,18 +4039,21 @@
     {
       "folder": "0581_shortest_unsorted_continuous_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0582_kill_process",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0583_delete_operation_for_two_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3520,48 +4078,56 @@
     {
       "folder": "0587_erect_the_fence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0588_design_in_memory_file_system",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0589_n_ary_tree_preorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0590_n_ary_tree_postorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0591_tag_validator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0592_fraction_addition_and_subtraction",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0593_valid_square",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0594_longest_harmonious_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3586,18 +4152,21 @@
     {
       "folder": "0598_range_addition_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0599_minimum_index_sum_of_two_lists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0600_non_negative_integers_without_consecutive_ones",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3622,18 +4191,21 @@
     {
       "folder": "0604_design_compressed_string_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0605_can_place_flowers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0606_construct_string_from_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3652,6 +4224,7 @@
     {
       "folder": "0609_find_duplicate_file_in_system",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3664,6 +4237,7 @@
     {
       "folder": "0611_valid_triangle_number",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3694,12 +4268,14 @@
     {
       "folder": "0616_add_bold_tag_in_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0617_merge_two_binary_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3724,30 +4300,35 @@
     {
       "folder": "0621_task_scheduler",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0622_design_circular_queue",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0623_add_one_row_to_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0624_maximum_distance_in_arrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0625_minimum_factorization",
       "languages": [
+        "c",
         "python"
       ]
     },
@@ -3766,2232 +4347,2604 @@
     {
       "folder": "0628_maximum_product_of_three_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0629_k_inverse_pairs_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0630_course_schedule_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0631_design_excel_sum_formula",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0632_smallest_range_covering_elements_from_k_lists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0633_sum_of_square_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0634_find_the_derangement_of_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0635_design_log_storage_system",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0636_exclusive_time_of_functions",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0637_average_of_levels_in_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0638_shopping_offers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0639_decode_ways_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0640_solve_the_equation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0641_design_circular_deque",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0642_design_search_autocomplete_system",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0643_maximum_average_subarray_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0644_maximum_average_subarray_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0645_set_mismatch",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0646_maximum_length_of_pair_chain",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0647_palindromic_substrings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0648_replace_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0649_dota2_senate",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0650_2_keys_keyboard",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0651_4_keys_keyboard",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0652_find_duplicate_subtrees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0653_two_sum_iv_input_is_a_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0654_maximum_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0655_print_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0656_coin_path",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0657_robot_return_to_origin",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0658_find_k_closest_elements",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0659_split_array_into_consecutive_subsequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0660_remove_9",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0661_image_smoother",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0662_maximum_width_of_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0663_equal_tree_partition",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0664_strange_printer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0665_non_decreasing_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0666_path_sum_iv",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0667_beautiful_arrangement_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0668_kth_smallest_number_in_multiplication_table",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0669_trim_a_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0670_maximum_swap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0671_second_minimum_node_in_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0672_bulb_switcher_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0673_number_of_longest_increasing_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0674_longest_continuous_increasing_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0675_cut_off_trees_for_golf_event",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0676_implement_magic_dictionary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0677_map_sum_pairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0678_valid_parenthesis_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0679_24_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0680_valid_palindrome_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0681_next_closest_time",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0682_baseball_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0683_k_empty_slots",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0684_redundant_connection",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0685_redundant_connection_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0686_repeated_string_match",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0687_longest_univalue_path",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0688_knight_probability_in_chessboard",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0689_maximum_sum_of_3_non_overlapping_subarrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0690_employee_importance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0691_stickers_to_spell_word",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0692_top_k_frequent_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0693_binary_number_with_alternating_bits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0694_number_of_distinct_islands",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0695_max_area_of_island",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0696_count_binary_substrings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0697_degree_of_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0698_partition_to_k_equal_sum_subsets",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0699_falling_squares",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0700_search_in_a_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0701_insert_into_a_binary_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0702_search_in_a_sorted_array_of_unknown_size",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0703_kth_largest_element_in_a_stream",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0704_binary_search",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0705_design_hashset",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0706_design_hashmap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0707_design_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0708_insert_into_a_sorted_circular_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0709_to_lower_case",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0710_random_pick_with_blacklist",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0711_number_of_distinct_islands_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0712_minimum_ascii_delete_sum_for_two_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0713_subarray_product_less_than_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0714_best_time_to_buy_and_sell_stock_with_transaction_fee",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0715_range_module",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0716_max_stack",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0717_1_bit_and_2_bit_characters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0718_maximum_length_of_repeated_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0719_find_k_th_smallest_pair_distance",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0720_longest_word_in_dictionary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0721_accounts_merge",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0722_remove_comments",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0723_candy_crush",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0724_find_pivot_index",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0725_split_linked_list_in_parts",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0726_number_of_atoms",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0727_minimum_window_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0728_self_dividing_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0729_my_calendar_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0730_count_different_palindromic_subsequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0731_my_calendar_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0732_my_calendar_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0733_flood_fill",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0734_sentence_similarity",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0735_asteroid_collision",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0736_parse_lisp_expression",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0737_sentence_similarity_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0738_monotone_increasing_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0739_daily_temperatures",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0740_delete_and_earn",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0741_cherry_pickup",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0742_closest_leaf_in_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0743_network_delay_time",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0744_find_smallest_letter_greater_than_target",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0745_prefix_and_suffix_search",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0746_min_cost_climbing_stairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0747_largest_number_at_least_twice_of_others",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0748_shortest_completing_word",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0749_contain_virus",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0750_number_of_corner_rectangles",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0751_ip_to_cidr",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0752_open_the_lock",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0753_cracking_the_safe",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0754_reach_a_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0755_pour_water",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0756_pyramid_transition_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0757_set_intersection_size_at_least_two",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0758_bold_words_in_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0759_employee_free_time",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0760_find_anagram_mappings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0761_special_binary_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0762_prime_number_of_set_bits_in_binary_representation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0763_partition_labels",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0764_largest_plus_sign",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0765_couples_holding_hands",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0766_toeplitz_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0767_reorganize_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0768_max_chunks_to_make_sorted_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0769_max_chunks_to_make_sorted",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0770_basic_calculator_iv",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0771_jewels_and_stones",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0772_basic_calculator_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0773_sliding_puzzle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0774_minimize_max_distance_to_gas_station",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0775_global_and_local_inversions",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0776_split_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0777_swap_adjacent_in_lr_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0778_swim_in_rising_water",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0779_k_th_symbol_in_grammar",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0780_reaching_points",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0781_rabbits_in_forest",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0782_transform_to_chessboard",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0783_minimum_distance_between_bst_nodes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0784_letter_case_permutation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0785_is_graph_bipartite",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0786_k_th_smallest_prime_fraction",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0787_cheapest_flights_within_k_stops",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0788_rotated_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0789_escape_the_ghosts",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0790_domino_and_tromino_tiling",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0791_custom_sort_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0792_number_of_matching_subsequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0793_preimage_size_of_factorial_zeroes_function",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0794_valid_tic_tac_toe_state",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0795_number_of_subarrays_with_bounded_maximum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0796_rotate_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0797_all_paths_from_source_to_target",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0798_smallest_rotation_with_highest_score",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0799_champagne_tower",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0800_similar_rgb_color",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0801_minimum_swaps_to_make_sequences_increasing",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0802_find_eventual_safe_states",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0803_bricks_falling_when_hit",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0804_unique_morse_code_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0805_split_array_with_same_average",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0806_number_of_lines_to_write_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0807_max_increase_to_keep_city_skyline",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0808_soup_servings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0809_expressive_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0810_chalkboard_xor_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0811_subdomain_visit_count",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0812_largest_triangle_area",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0813_largest_sum_of_averages",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0814_binary_tree_pruning",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0815_bus_routes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0816_ambiguous_coordinates",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0817_linked_list_components",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0818_race_car",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0819_most_common_word",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0820_short_encoding_of_words",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0821_shortest_distance_to_a_character",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0822_card_flipping_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0823_binary_trees_with_factors",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0824_goat_latin",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0825_friends_of_appropriate_ages",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0826_most_profit_assigning_work",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0827_making_a_large_island",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0828_count_unique_characters_of_all_substrings_of_a_given_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0829_consecutive_numbers_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0830_positions_of_large_groups",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0831_masking_personal_information",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0832_flipping_an_image",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0833_find_and_replace_in_string",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0834_sum_of_distances_in_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0835_image_overlap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0836_rectangle_overlap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0837_new_21_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0838_push_dominoes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0839_similar_string_groups",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0840_magic_squares_in_grid",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0841_keys_and_rooms",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0842_split_array_into_fibonacci_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0843_guess_the_word",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0844_backspace_string_compare",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0845_longest_mountain_in_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0846_hand_of_straights",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0847_shortest_path_visiting_all_nodes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0848_shifting_letters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0849_maximize_distance_to_closest_person",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0850_rectangle_area_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0851_loud_and_rich",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0852_peak_index_in_a_mountain_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0853_car_fleet",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0854_k_similar_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0855_exam_room",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0856_score_of_parentheses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0857_minimum_cost_to_hire_k_workers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0858_mirror_reflection",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0859_buddy_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0860_lemonade_change",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0861_score_after_flipping_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0862_shortest_subarray_with_sum_at_least_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0863_all_nodes_distance_k_in_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0864_shortest_path_to_get_all_keys",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0865_smallest_subtree_with_all_the_deepest_nodes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0866_prime_palindrome",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0867_transpose_matrix",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0868_binary_gap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0869_reordered_power_of_2",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0870_advantage_shuffle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0871_minimum_number_of_refueling_stops",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0872_leaf_similar_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0873_length_of_longest_fibonacci_subsequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0874_walking_robot_simulation",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0875_koko_eating_bananas",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0876_middle_of_the_linked_list",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0877_stone_game",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0878_nth_magical_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0879_profitable_schemes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0880_decoded_string_at_index",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0881_boats_to_save_people",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0882_reachable_nodes_in_subdivided_graph",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0883_projection_area_of_3d_shapes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0884_uncommon_words_from_two_sentences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0885_spiral_matrix_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0886_possible_bipartition",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0887_super_egg_drop",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0888_fair_candy_swap",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0889_construct_binary_tree_from_preorder_and_postorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0890_find_and_replace_pattern",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0891_sum_of_subsequence_widths",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0892_surface_area_of_3d_shapes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0893_groups_of_special_equivalent_strings",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0894_all_possible_full_binary_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0895_maximum_frequency_stack",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0896_monotonic_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0897_increasing_order_search_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0898_bitwise_ors_of_subarrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0899_orderly_queue",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0900_rle_iterator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0901_online_stock_span",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0902_numbers_at_most_n_given_digit_set",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0903_valid_permutations_for_di_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0904_fruit_into_baskets",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0905_sort_array_by_parity",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0906_super_palindromes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0907_sum_of_subarray_minimums",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0908_smallest_range_i",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0909_snakes_and_ladders",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0910_smallest_range_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0911_online_election",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0912_sort_an_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0913_cat_and_mouse",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0914_x_of_a_kind_in_a_deck_of_cards",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0915_partition_array_into_disjoint_intervals",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0916_word_subsets",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0917_reverse_only_letters",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0918_maximum_sum_circular_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0919_complete_binary_tree_inserter",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0920_number_of_music_playlists",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0921_minimum_add_to_make_parentheses_valid",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0922_sort_array_by_parity_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0923_3sum_with_multiplicity",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0924_minimize_malware_spread",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0925_long_pressed_name",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0926_flip_string_to_monotone_increasing",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0927_three_equal_parts",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0928_minimize_malware_spread_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0929_unique_email_addresses",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0930_binary_subarrays_with_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0931_minimum_falling_path_sum",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0932_beautiful_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0933_number_of_recent_calls",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0934_shortest_bridge",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0935_knight_dialer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0936_stamping_the_sequence",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0937_reorder_data_in_log_files",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0938_range_sum_of_bst",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0939_minimum_area_rectangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0940_distinct_subsequences_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0941_valid_mountain_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0942_di_string_match",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0943_find_the_shortest_superstring",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0944_delete_columns_to_make_sorted",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0945_minimum_increment_to_make_array_unique",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0946_validate_stack_sequences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0947_most_stones_removed_with_same_row_or_column",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0948_bag_of_tokens",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0949_largest_time_for_given_digits",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0950_reveal_cards_in_increasing_order",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0951_flip_equivalent_binary_trees",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0952_largest_component_size_by_common_factor",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0953_verifying_an_alien_dictionary",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0954_array_of_doubled_pairs",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0955_delete_columns_to_make_sorted_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0956_tallest_billboard",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0957_prison_cells_after_n_days",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0958_check_completeness_of_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0959_regions_cut_by_slashes",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0960_delete_columns_to_make_sorted_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0961_n_repeated_element_in_size_2n_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0962_maximum_width_ramp",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0963_minimum_area_rectangle_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0964_least_operators_to_express_number",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0965_univalued_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0966_vowel_spellchecker",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0967_numbers_with_same_consecutive_differences",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0968_binary_tree_cameras",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0969_pancake_sorting",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0970_powerful_integers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0971_flip_binary_tree_to_match_preorder_traversal",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0972_equal_rational_numbers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0973_k_closest_points_to_origin",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0974_subarray_sums_divisible_by_k",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0975_odd_even_jump",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0976_largest_perimeter_triangle",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0977_squares_of_a_sorted_array",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0978_longest_turbulent_subarray",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0979_distribute_coins_in_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0980_unique_paths_iii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0981_time_based_key_value_store",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0982_triples_with_bitwise_and_equal_to_zero",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0983_minimum_cost_for_tickets",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0984_string_without_aaa_or_bbb",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0985_sum_of_even_numbers_after_queries",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0986_interval_list_intersections",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0987_vertical_order_traversal_of_a_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0988_smallest_string_starting_from_leaf",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0989_add_to_array_form_of_integer",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0990_satisfiability_of_equality_equations",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0991_broken_calculator",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0992_subarrays_with_k_different_integers",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0993_cousins_in_binary_tree",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0994_rotting_oranges",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0995_minimum_number_of_k_consecutive_bit_flips",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0996_number_of_squareful_arrays",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0997_find_the_town_judge",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0998_maximum_binary_tree_ii",
       "languages": [
+        "c",
         "python"
       ]
     },
     {
       "folder": "0999_available_captures_for_rook",
       "languages": [
+        "c",
         "python"
       ]
     },

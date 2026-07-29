@@ -1,4 +1,4 @@
-﻿// LeetCode 0145 - Binary Tree Postorder Traversal
+// LeetCode 0145 - Binary Tree Postorder Traversal
 // https://leetcode.com/problems/binary-tree-postorder-traversal/
 
 #include <stdlib.h>
@@ -37,9 +37,4 @@ int *postorderTraversal(struct TreeNode *root, int *returnSize) {
     }
     free(stack);
     return values;
-}
-// LeetCode 0145 - Binary Tree Postorder Traversal
-// https://leetcode.com/problems/binary-tree-postorder-traversal/
-
-void solve() {
 }

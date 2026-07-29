@@ -1,4 +1,4 @@
-﻿// LeetCode 0142 - Linked List Cycle II
+// LeetCode 0142 - Linked List Cycle II
 // https://leetcode.com/problems/linked-list-cycle-ii/
 
 #include <stddef.h>
@@ -25,9 +25,4 @@ struct ListNode *detectCycle(struct ListNode *head) {
         }
     }
     return NULL;
-}
-// LeetCode 0142 - Linked List Cycle II
-// https://leetcode.com/problems/linked-list-cycle-ii/
-
-void solve() {
 }

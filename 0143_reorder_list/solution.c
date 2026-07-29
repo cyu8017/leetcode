@@ -1,4 +1,4 @@
-﻿// LeetCode 0143 - Reorder List
+// LeetCode 0143 - Reorder List
 // https://leetcode.com/problems/reorder-list/
 
 #include <stddef.h>
@@ -40,9 +40,4 @@ void reorderList(struct ListNode *head) {
         first = first_next;
         second = second_next;
     }
-}
-// LeetCode 0143 - Reorder List
-// https://leetcode.com/problems/reorder-list/
-
-void solve() {
 }

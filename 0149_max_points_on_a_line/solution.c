@@ -1,4 +1,4 @@
-﻿// LeetCode 0149 - Max Points on a Line
+// LeetCode 0149 - Max Points on a Line
 // https://leetcode.com/problems/max-points-on-a-line/
 
 #include <stdlib.h>
@@ -55,9 +55,4 @@ int maxPoints(int **points, int pointsSize, int *pointsColSize) {
         free(table);
     }
     return best;
-}
-// LeetCode 0149 - Max Points on a Line
-// https://leetcode.com/problems/max-points-on-a-line/
-
-void solve() {
 }
