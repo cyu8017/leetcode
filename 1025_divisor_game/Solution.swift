@@ -1,7 +1,8 @@
-﻿// LeetCode 1025 - Divisor Game
+// LeetCode 1025 - Divisor Game
 // https://leetcode.com/problems/divisor-game/
 
 class Solution {
-    func solve() {
+    func divisorGame(_ n: Int) -> Bool {
+        return n % 2 == 0
     }
 }
