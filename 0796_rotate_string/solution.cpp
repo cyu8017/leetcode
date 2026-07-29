@@ -1,8 +1,11 @@
 ﻿// LeetCode 0796 - Rotate String
 // https://leetcode.com/problems/rotate-string/
 
+#include <string>
+
 class Solution {
 public:
-    void solve() {
+    bool rotateString(std::string s, std::string goal) {
+        return s.size() == goal.size() && (s + s).find(goal) != std::string::npos;
     }
 };

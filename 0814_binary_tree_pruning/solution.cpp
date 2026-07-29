@@ -1,8 +1,27 @@
 ﻿// LeetCode 0814 - Binary Tree Pruning
 // https://leetcode.com/problems/binary-tree-pruning/
 
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode* left, TreeNode* right)
+        : val(x), left(left), right(right) {}
+};
+
 class Solution {
 public:
-    void solve() {
+    TreeNode* pruneTree(TreeNode* root) {
+        if (!root) {
+            return nullptr;
+        }
+        root->left = pruneTree(root->left);
+        root->right = pruneTree(root->right);
+        if (root->val == 0 && !root->left && !root->right) {
+            return nullptr;
+        }
+        return root;
     }
 };

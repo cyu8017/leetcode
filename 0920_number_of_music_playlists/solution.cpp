@@ -1,8 +1,20 @@
-﻿// LeetCode 0920 - Number of Music Playlists
+// LeetCode 0920 - Number of Music Playlists
 // https://leetcode.com/problems/number-of-music-playlists/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int numMusicPlaylists(int n, int goal, int k) {
+        const int MOD = 1000000007;
+        std::vector<std::vector<long long>> dp(goal + 1, std::vector<long long>(n + 1, 0));
+        dp[0][0] = 1;
+        for (int i = 1; i <= goal; i++) {
+            for (int j = 1; j <= i && j <= n; j++) {
+                dp[i][j] = dp[i - 1][j - 1] * (n - j + 1) % MOD;
+                if (j > k) dp[i][j] = (dp[i][j] + dp[i - 1][j] * (j - k)) % MOD;
+            }
+        }
+        return (int)dp[goal][n];
     }
 };

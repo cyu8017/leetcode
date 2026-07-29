@@ -3,6 +3,18 @@
 
 class Solution {
 public:
-    void solve() {
+    int findDerangement(int n) {
+        constexpr int mod = 1000000007;
+        if (n == 1) {
+            return 0;
+        }
+        long long prev2 = 0;
+        long long prev1 = 1;
+        for (int size = 3; size <= n; ++size) {
+            const long long next = (size - 1) * (prev1 + prev2) % mod;
+            prev2 = prev1;
+            prev1 = next;
+        }
+        return static_cast<int>(prev1);
     }
 };

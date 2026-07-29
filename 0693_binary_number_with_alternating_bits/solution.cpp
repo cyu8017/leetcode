@@ -3,6 +3,8 @@
 
 class Solution {
 public:
-    void solve() {
+    bool hasAlternatingBits(int n) {
+        const unsigned x = static_cast<unsigned>(n) ^ (static_cast<unsigned>(n) >> 1);
+        return (x & (x + 1)) == 0;
     }
 };

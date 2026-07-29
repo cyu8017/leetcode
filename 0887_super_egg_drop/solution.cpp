@@ -1,8 +1,19 @@
 ﻿// LeetCode 0887 - Super Egg Drop
 // https://leetcode.com/problems/super-egg-drop/
 
+#include <vector>
+
 class Solution {
 public:
-    void solve() {
+    int superEggDrop(int k, int n) {
+        std::vector<int> dp(k + 1, 0);
+        int moves = 0;
+        while (dp[k] < n) {
+            ++moves;
+            for (int eggs = k; eggs >= 1; --eggs) {
+                dp[eggs] = dp[eggs] + dp[eggs - 1] + 1;
+            }
+        }
+        return moves;
     }
 };
