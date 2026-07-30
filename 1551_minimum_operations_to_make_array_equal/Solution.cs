@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/minimum-operations-to-make-array-equal/
 
 public class Solution {
-    public void Solve() {
+    public int MinOperations(int n) {
+        return n * n / 4;
     }
 }

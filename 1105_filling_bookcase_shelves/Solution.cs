@@ -1,7 +1,25 @@
 ﻿// LeetCode 1105 - Filling Bookcase Shelves
 // https://leetcode.com/problems/filling-bookcase-shelves/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    public int MinHeightShelves(int[][] books, int shelfWidth) {
+        int n = books.Length;
+        int[] dp = new int[n + 1];
+        for (int i = 1; i <= n; i++) {
+            int width = 0;
+            int height = 0;
+            dp[i] = int.MaxValue;
+            for (int j = i; j >= 1; j--) {
+                width += books[j - 1][0];
+                if (width > shelfWidth) {
+                    break;
+                }
+                height = Math.Max(height, books[j - 1][1]);
+                dp[i] = Math.Min(dp[i], dp[j - 1] + height);
+            }
+        }
+        return dp[n];
     }
 }

@@ -1,7 +1,16 @@
-﻿// LeetCode 1996 - The Number of Weak Characters in the Game
+// LeetCode 1996 - The Number of Weak Characters in the Game
 // https://leetcode.com/problems/the-number-of-weak-characters-in-the-game/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    public int NumberOfWeakCharacters(int[][] properties) {
+        Array.Sort(properties, (a, b) => a[0] != b[0] ? a[0].CompareTo(b[0]) : b[1].CompareTo(a[1]));
+        int ans = 0, maxDef = 0;
+        for (int i = properties.Length - 1; i >= 0; i--) {
+            if (properties[i][1] < maxDef) ans++;
+            else maxDef = properties[i][1];
+        }
+        return ans;
     }
 }

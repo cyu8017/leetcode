@@ -2,6 +2,14 @@
 // https://leetcode.com/problems/day-of-the-year/
 
 public class Solution {
-    public void Solve() {
+    public int DayOfYear(string date) {
+        int year = int.Parse(date.Substring(0, 4));
+        int month = int.Parse(date.Substring(5, 2));
+        int day = int.Parse(date.Substring(8, 2));
+        bool leap = year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+        int[] days = { 31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        int ans = day;
+        for (int i = 0; i < month - 1; i++) ans += days[i];
+        return ans;
     }
 }

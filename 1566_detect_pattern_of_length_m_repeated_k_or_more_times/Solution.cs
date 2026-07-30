@@ -2,6 +2,12 @@
 // https://leetcode.com/problems/detect-pattern-of-length-m-repeated-k-or-more-times/
 
 public class Solution {
-    public void Solve() {
+    public bool ContainsPattern(int[] arr, int m, int k) {
+        int run = 0;
+        for (int i = m; i < arr.Length; i++) {
+            run = arr[i] == arr[i - m] ? run + 1 : 0;
+            if (run >= m * (k - 1)) return true;
+        }
+        return false;
     }
 }

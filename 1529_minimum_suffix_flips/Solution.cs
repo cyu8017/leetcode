@@ -2,6 +2,15 @@
 // https://leetcode.com/problems/minimum-suffix-flips/
 
 public class Solution {
-    public void Solve() {
+    public int MinFlips(string target) {
+        int ans = 0;
+        char prev = '0';
+        foreach (char ch in target) {
+            if (ch != prev) {
+                ans++;
+                prev = ch;
+            }
+        }
+        return ans;
     }
 }
