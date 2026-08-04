@@ -506,6 +506,9 @@ function convertArg(value, typeName) {
     return value.map((item) => (item && item.length ? listToListNode(item) : null));
   }
   if (typeName === "treenode") return listToTree(value);
+  if (typeName === "treenode[]") {
+    return (value || []).map((item) => listToTree(item));
+  }
   if (typeName === "nextnode") return listToNextNode(value);
   if (typeName === "graphnode") return listToGraph(value);
   if (typeName === "randomlistnode") return listToRandomList(value);

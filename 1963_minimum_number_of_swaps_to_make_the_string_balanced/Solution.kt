@@ -1,7 +1,14 @@
-﻿// LeetCode 1963 - Minimum Number of Swaps to Make the String Balanced
+// LeetCode 1963
 // https://leetcode.com/problems/minimum-number-of-swaps-to-make-the-string-balanced/
 
 class Solution {
-    fun solve() {
+    fun minSwaps(s: String): Int {
+        var bal = 0
+        var mx = 0
+        for (ch in s) {
+            if (ch == '[') bal++ else bal--
+            mx = minOf(mx, bal)
+        }
+        return (-mx + 1) / 2
     }
 }

@@ -2,6 +2,12 @@
 // https://leetcode.com/problems/find-smallest-common-element-in-all-rows/
 
 class Solution {
-    fun solve() {
+    fun smallestCommonElement(mat: Array<IntArray>): Int {
+        var common = mat[0].toMutableSet()
+        for (r in 1 until mat.size) {
+            common = common.intersect(mat[r].toSet()).toMutableSet()
+            if (common.isEmpty()) return -1
+        }
+        return common.minOrNull() ?: -1
     }
 }

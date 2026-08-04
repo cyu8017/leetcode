@@ -2,6 +2,8 @@
 // https://leetcode.com/problems/remove-vowels-from-a-string/
 
 class Solution {
-    fun solve() {
+    fun removeVowels(s: String): String {
+        val vowels = setOf('a', 'e', 'i', 'o', 'u')
+        return s.filter { it !in vowels }
     }
 }

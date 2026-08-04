@@ -2,6 +2,5 @@
 // https://leetcode.com/problems/minimum-operations-to-make-array-equal/
 
 class Solution {
-    fun solve() {
-    }
+    fun minOperations(n: Int): Int = n * n / 4
 }

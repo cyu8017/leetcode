@@ -312,7 +312,9 @@ class MovieRentingSystem {
         return this.rented.slice(0, 5).map((x) => [x[1], x[2]]);
     }
 }
-''',
+
+module.exports = { MovieRentingSystem };
+'''
     "1913_maximum_product_difference_between_two_pairs": r'''// LeetCode 1913 - Maximum Product Difference Between Two Pairs
 // https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
 

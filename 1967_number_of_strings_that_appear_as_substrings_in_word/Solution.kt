@@ -1,7 +1,7 @@
-﻿// LeetCode 1967 - Number of Strings That Appear as Substrings in Word
+// LeetCode 1967
 // https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/
 
 class Solution {
-    fun solve() {
-    }
+    fun numOfStrings(patterns: Array<String>, word: String): Int =
+        patterns.count { it in word }
 }

@@ -563,6 +563,8 @@ class LockingTree {
         return true;
     }
 }
+
+module.exports = { LockingTree };
 ''',
     "1994_the_number_of_good_subsets": r'''// LeetCode 1994 - The Number of Good Subsets
 // https://leetcode.com/problems/the-number-of-good-subsets/

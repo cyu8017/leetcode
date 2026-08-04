@@ -2,6 +2,16 @@
 // https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
 
 class Solution {
-    fun solve() {
+    fun reverseParentheses(s: String): String {
+        val stack = ArrayDeque<Char>()
+        for (ch in s) {
+            if (ch == ')') {
+                val chunk = mutableListOf<Char>()
+                while (stack.isNotEmpty() && stack.last() != '(') chunk.add(stack.removeLast())
+                stack.removeLast()
+                for (c in chunk) stack.addLast(c)
+            } else stack.addLast(ch)
+        }
+        return stack.joinToString("")
     }
 }

@@ -1,7 +1,7 @@
-﻿// LeetCode 1985 - Find the Kth Largest Integer in the Array
+// LeetCode 1985
 // https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/
 
 class Solution {
-    fun solve() {
-    }
+    fun kthLargestNumber(nums: Array<String>, k: Int): String =
+        nums.sortedWith(compareByDescending<String> { it.length }.thenByDescending { it })[k - 1]
 }

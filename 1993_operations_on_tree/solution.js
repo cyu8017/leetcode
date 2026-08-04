@@ -66,3 +66,5 @@ class LockingTree {
         return true;
     }
 }
+
+module.exports = { LockingTree };

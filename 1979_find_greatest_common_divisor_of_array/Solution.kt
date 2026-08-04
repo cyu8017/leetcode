@@ -1,7 +1,9 @@
-﻿// LeetCode 1979 - Find Greatest Common Divisor of Array
+// LeetCode 1979
 // https://leetcode.com/problems/find-greatest-common-divisor-of-array/
 
 class Solution {
-    fun solve() {
+    fun findGCD(nums: IntArray): Int {
+        fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
+        return gcd(nums.minOrNull()!!, nums.maxOrNull()!!)
     }
 }

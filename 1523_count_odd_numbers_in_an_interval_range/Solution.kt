@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
 
 class Solution {
-    fun solve() {
+    fun countOdds(low: Int, high: Int): Int {
+        return (high + 1) / 2 - low / 2
     }
 }

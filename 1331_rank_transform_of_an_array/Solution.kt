@@ -2,6 +2,12 @@
 // https://leetcode.com/problems/rank-transform-of-an-array/
 
 class Solution {
-    fun solve() {
+    fun arrayRankTransform(arr: IntArray): IntArray {
+        val sorted = arr.toSet().sorted()
+        val rank = HashMap<Int, Int>()
+        for (i in sorted.indices) {
+            rank[sorted[i]] = i + 1
+        }
+        return IntArray(arr.size) { rank[arr[it]]!! }
     }
 }

@@ -1,7 +1,6 @@
-﻿// LeetCode 1929 - Concatenation of Array
+// LeetCode 1929
 // https://leetcode.com/problems/concatenation-of-array/
 
 class Solution {
-    fun solve() {
-    }
+    fun getConcatenation(nums: IntArray): IntArray = nums + nums
 }

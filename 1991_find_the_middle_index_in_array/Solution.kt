@@ -1,7 +1,14 @@
-﻿// LeetCode 1991 - Find the Middle Index in Array
+// LeetCode 1991
 // https://leetcode.com/problems/find-the-middle-index-in-array/
 
 class Solution {
-    fun solve() {
+    fun findMiddleIndex(nums: IntArray): Int {
+        val total = nums.sum()
+        var left = 0
+        for (i in nums.indices) {
+            if (left == total - left - nums[i]) return i
+            left += nums[i]
+        }
+        return -1
     }
 }
