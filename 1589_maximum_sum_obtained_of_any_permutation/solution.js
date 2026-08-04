@@ -2,8 +2,21 @@
 // https://leetcode.com/problems/maximum-sum-obtained-of-any-permutation/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number[][]} requests
+ * @return {number}
  */
-var solve = function(input) {
+var maxSumRangeQuery = function(nums, requests) {
+    const MOD = 1000000007;
+    const diff = Array(nums.length + 1).fill(0);
+    for (const [left, right] of requests) {
+        diff[left]++;
+        diff[right + 1]--;
+    }
+    for (let i = 1; i < nums.length; i++) diff[i] += diff[i - 1];
+    nums.sort((a, b) => a - b);
+    const freq = diff.slice(0, nums.length).sort((a, b) => a - b);
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++) ans = (ans + nums[i] * freq[i]) % MOD;
+    return ans;
 };

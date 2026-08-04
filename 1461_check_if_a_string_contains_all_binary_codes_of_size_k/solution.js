@@ -1,9 +1,1 @@
-﻿// LeetCode 1461 - Check If a String Contains All Binary Codes of Size K
-// https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var hasAllCodes = function(s, k) { const seen=new Set(); for(let i=0;i+k<=s.length;i++)seen.add(s.slice(i,i+k)); return seen.size===(1<<k); };

@@ -2,8 +2,16 @@
 // https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @return {number}
  */
-var solve = function(input) {
+var numOfSubarrays = function(arr) {
+    const counts = [1, 0];
+    let parity = 0, answer = 0;
+    for (const value of arr) {
+        parity ^= value & 1;
+        answer += counts[parity ^ 1];
+        counts[parity]++;
+    }
+    return answer % 1000000007;
 };

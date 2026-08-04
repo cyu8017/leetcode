@@ -2,8 +2,14 @@
 // https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {ListNode} head
+ * @return {number}
  */
-var solve = function(input) {
+var getDecimalValue = function(head) {
+    let value = 0;
+    while (head) {
+        value = value * 2 + head.val;
+        head = head.next;
+    }
+    return value;
 };

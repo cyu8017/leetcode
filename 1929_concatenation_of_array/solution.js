@@ -1,9 +1,10 @@
-﻿// LeetCode 1929 - Concatenation of Array
+// LeetCode 1929 - Concatenation of Array
 // https://leetcode.com/problems/concatenation-of-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var getConcatenation = function(nums) {
+    return nums.concat(nums);
 };

@@ -2,8 +2,16 @@
 // https://leetcode.com/problems/kth-missing-positive-number/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var findKthPositive = function(arr, k) {
+    let left = 0, right = arr.length;
+    while (left < right) {
+        const middle = (left + right) >> 1;
+        if (arr[middle] - middle - 1 < k) left = middle + 1;
+        else right = middle;
+    }
+    return left + k;
 };

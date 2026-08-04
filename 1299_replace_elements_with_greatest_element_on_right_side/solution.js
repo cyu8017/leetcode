@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @return {number[]}
  */
-var solve = function(input) {
+var replaceElements = function(arr) {
+    let greatest = -1;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        const current = arr[i];
+        arr[i] = greatest;
+        greatest = Math.max(greatest, current);
+    }
+    return arr;
 };

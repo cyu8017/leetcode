@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/minimum-suffix-flips/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} target
+ * @return {number}
  */
-var solve = function(input) {
+var minFlips = function(target) {
+    let ans = 0;
+    let prev = "0";
+    for (const ch of target) {
+        if (ch !== prev) {
+            ans++;
+            prev = ch;
+        }
+    }
+    return ans;
 };

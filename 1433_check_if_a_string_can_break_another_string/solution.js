@@ -1,9 +1,5 @@
-﻿// LeetCode 1433 - Check If a String Can Break Another String
-// https://leetcode.com/problems/check-if-a-string-can-break-another-string/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var checkIfCanBreak = function(s1, s2) {
+    const a = [...s1].sort(), b = [...s2].sort(); let ab = true, ba = true;
+    for (let i = 0; i < a.length; i++) { if (a[i] < b[i]) ab = false; if (b[i] < a[i]) ba = false; }
+    return ab || ba;
 };

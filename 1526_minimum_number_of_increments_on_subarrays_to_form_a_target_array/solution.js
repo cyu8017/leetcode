@@ -2,8 +2,13 @@
 // https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} target
+ * @return {number}
  */
-var solve = function(input) {
+var minNumberOperations = function(target) {
+    let ans = target[0];
+    for (let i = 1; i < target.length; i++) {
+        ans += Math.max(0, target[i] - target[i - 1]);
+    }
+    return ans;
 };

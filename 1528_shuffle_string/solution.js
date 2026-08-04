@@ -2,8 +2,12 @@
 // https://leetcode.com/problems/shuffle-string/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @param {number[]} indices
+ * @return {string}
  */
-var solve = function(input) {
+var restoreString = function(s, indices) {
+    const answer = Array(s.length);
+    for (let i = 0; i < s.length; i++) answer[indices[i]] = s[i];
+    return answer.join("");
 };

@@ -1,9 +1,12 @@
-﻿// LeetCode 1474 - Delete N Nodes After M Nodes of a Linked List
-// https://leetcode.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var deleteNodes = function(head, m, n) {
+    let current = head;
+    while (current) {
+        for (let kept = 1; kept < m && current; kept++) current = current.next;
+        if (!current) break;
+        let removed = current.next;
+        for (let count = 0; count < n && removed; count++) removed = removed.next;
+        current.next = removed;
+        current = removed;
+    }
+    return head;
 };

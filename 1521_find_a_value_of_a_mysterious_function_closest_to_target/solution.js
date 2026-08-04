@@ -2,8 +2,18 @@
 // https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number}
  */
-var solve = function(input) {
+var closestToTarget = function(arr, target) {
+    let answer = Infinity;
+    let current = new Set();
+    for (const value of arr) {
+        const next = new Set([value]);
+        for (const previous of current) next.add(value & previous);
+        current = next;
+        for (const candidate of current) answer = Math.min(answer, Math.abs(candidate - target));
+    }
+    return answer;
 };

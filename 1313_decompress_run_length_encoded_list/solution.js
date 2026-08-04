@@ -1,9 +1,14 @@
-﻿// LeetCode 1313 - Decompress Run-Length Encoded List
+// LeetCode 1313 - Decompress Run Length Encoded List
 // https://leetcode.com/problems/decompress-run-length-encoded-list/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var decompressRLElist = function(nums) {
+    const answer = [];
+    for (let i = 0; i < nums.length; i += 2) {
+        for (let j = 0; j < nums[i]; j++) answer.push(nums[i + 1]);
+    }
+    return answer;
 };

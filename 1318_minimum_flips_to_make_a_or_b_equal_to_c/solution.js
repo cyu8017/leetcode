@@ -1,9 +1,18 @@
-﻿// LeetCode 1318 - Minimum Flips to Make a OR b Equal to c
+// LeetCode 1318 - Minimum Flips To Make A Or B Equal To C
 // https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
+ * @return {number}
  */
-var solve = function(input) {
+var minFlips = function(a, b, c) {
+    let flips = 0;
+    while (a || b || c) {
+        const x = a & 1, y = b & 1, z = c & 1;
+        flips += z === 0 ? x + y : (x === 0 && y === 0 ? 1 : 0);
+        a >>= 1; b >>= 1; c >>= 1;
+    }
+    return flips;
 };

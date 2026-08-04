@@ -1,9 +1,12 @@
-﻿// LeetCode 1331 - Rank Transform of an Array
+// LeetCode 1331 - Rank Transform Of An Array
 // https://leetcode.com/problems/rank-transform-of-an-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @return {number[]}
  */
-var solve = function(input) {
+var arrayRankTransform = function(arr) {
+    const sorted = [...new Set(arr)].sort((a, b) => a - b);
+    const rank = new Map(sorted.map((value, i) => [value, i + 1]));
+    return arr.map((value) => rank.get(value));
 };

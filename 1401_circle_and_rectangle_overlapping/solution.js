@@ -1,9 +1,6 @@
-﻿// LeetCode 1401 - Circle and Rectangle Overlapping
-// https://leetcode.com/problems/circle-and-rectangle-overlapping/
+// LeetCode 1401: Circle And Rectangle Overlapping
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var checkOverlap = function(radius, xCenter, yCenter, x1, y1, x2, y2) {
+    const x = Math.max(x1, Math.min(xCenter, x2)), y = Math.max(y1, Math.min(yCenter, y2));
+    return (x - xCenter) ** 2 + (y - yCenter) ** 2 <= radius ** 2;
 };

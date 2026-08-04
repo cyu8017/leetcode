@@ -2,8 +2,18 @@
 // https://leetcode.com/problems/make-the-string-great/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var makeGood = function(s) {
+    const stack = [];
+    for (const ch of s) {
+        if (stack.length && stack[stack.length - 1] !== ch &&
+            stack[stack.length - 1].toLowerCase() === ch.toLowerCase()) {
+            stack.pop();
+        } else {
+            stack.push(ch);
+        }
+    }
+    return stack.join("");
 };

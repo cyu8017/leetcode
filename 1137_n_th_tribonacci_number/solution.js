@@ -2,8 +2,18 @@
 // https://leetcode.com/problems/n-th-tribonacci-number/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var tribonacci = function(n) {
+    if (n === 0) return 0;
+    if (n <= 2) return 1;
+    let a = 0, b = 1, c = 1;
+    for (let i = 3; i <= n; i++) {
+        const next = a + b + c;
+        a = b;
+        b = c;
+        c = next;
+    }
+    return c;
 };

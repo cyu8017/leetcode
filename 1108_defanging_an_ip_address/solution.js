@@ -2,8 +2,9 @@
 // https://leetcode.com/problems/defanging-an-ip-address/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} address
+ * @return {string}
  */
-var solve = function(input) {
+var defangIPaddr = function(address) {
+    return address.replaceAll(".", "[.]");
 };

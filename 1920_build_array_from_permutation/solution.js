@@ -1,9 +1,10 @@
-﻿// LeetCode 1920 - Build Array from Permutation
+// LeetCode 1920 - Build Array from Permutation
 // https://leetcode.com/problems/build-array-from-permutation/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var buildArray = function(nums) {
+    return nums.map((x) => nums[x]);
 };

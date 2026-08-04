@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/divide-array-into-increasing-sequences/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
  */
-var solve = function(input) {
+var canDivideIntoSubsequences = function(nums, k) {
+    const freq = new Map();
+    let maxFreq = 0;
+    for (const x of nums) {
+        const f = (freq.get(x) || 0) + 1;
+        freq.set(x, f);
+        maxFreq = Math.max(maxFreq, f);
+    }
+    return nums.length >= k * maxFreq;
 };

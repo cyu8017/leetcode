@@ -1,9 +1,1 @@
-﻿// LeetCode 1448 - Count Good Nodes in Binary Tree
-// https://leetcode.com/problems/count-good-nodes-in-binary-tree/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var goodNodes = function(root) { const dfs = (node, maximum) => !node ? 0 : (node.val >= maximum ? 1 : 0) + dfs(node.left, Math.max(maximum,node.val)) + dfs(node.right, Math.max(maximum,node.val)); return dfs(root, -Infinity); };

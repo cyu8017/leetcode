@@ -1,9 +1,9 @@
-﻿// LeetCode 1497 - Check If Array Pairs Are Divisible by k
-// https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var canArrange = function(arr, k) {
+    const count = Array(k).fill(0);
+    for (const value of arr) count[((value % k) + k) % k]++;
+    if (count[0] % 2) return false;
+    for (let remainder = 1; remainder < k; remainder++) {
+        if (count[remainder] !== count[k - remainder]) return false;
+    }
+    return true;
 };

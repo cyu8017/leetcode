@@ -1,9 +1,5 @@
-﻿// LeetCode 1437 - Check If All 1's Are at Least Length K Places Away
-// https://leetcode.com/problems/check-if-all-1s-are-at-least-length-k-places-away/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var kLengthApart = function(nums, k) {
+    let previous = -k - 1;
+    for (let i = 0; i < nums.length; i++) if (nums[i]) { if (i - previous <= k) return false; previous = i; }
+    return true;
 };

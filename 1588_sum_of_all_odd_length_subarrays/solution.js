@@ -2,8 +2,14 @@
 // https://leetcode.com/problems/sum-of-all-odd-length-subarrays/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @return {number}
  */
-var solve = function(input) {
+var sumOddLengthSubarrays = function(arr) {
+    const n = arr.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        ans += arr[i] * Math.floor(((i + 1) * (n - i) + 1) / 2);
+    }
+    return ans;
 };

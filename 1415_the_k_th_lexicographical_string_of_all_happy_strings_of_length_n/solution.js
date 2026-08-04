@@ -1,9 +1,10 @@
-﻿// LeetCode 1415 - The k-th Lexicographical String of All Happy Strings of Length n
-// https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
+// LeetCode 1415: The K Th Lexicographical String Of All Happy Strings Of Length N
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var getHappyString = function(n, k) {
+    const build = (prefix, remaining) => {
+        if (!remaining) { if (--k === 0) return prefix; return ""; }
+        for (const ch of "abc") if (ch !== prefix.at(-1)) { const answer = build(prefix + ch, remaining - 1); if (answer) return answer; }
+        return "";
+    };
+    return build("", n);
 };

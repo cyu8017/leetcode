@@ -2,8 +2,23 @@
 // https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var numKLenSubstrNoRepeats = function(s, k) {
+    if (k > s.length) return 0;
+    const window = new Map();
+    for (let i = 0; i < k; i++) {
+        window.set(s[i], (window.get(s[i]) || 0) + 1);
+    }
+    let ans = window.size === k ? 1 : 0;
+    for (let i = k; i < s.length; i++) {
+        window.set(s[i], (window.get(s[i]) || 0) + 1);
+        const left = s[i - k];
+        window.set(left, window.get(left) - 1);
+        if (window.get(left) === 0) window.delete(left);
+        if (window.size === k) ans++;
+    }
+    return ans;
 };

@@ -1,9 +1,13 @@
-﻿// LeetCode 1952 - Three Divisors
+// LeetCode 1952 - Three Divisors
 // https://leetcode.com/problems/three-divisors/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {boolean}
  */
-var solve = function(input) {
+var isThree = function(n) {
+    const root = Math.floor(Math.sqrt(n));
+    if (root * root !== n || root < 2) return false;
+    for (let i = 2; i * i <= root; i++) if (root % i === 0) return false;
+    return true;
 };

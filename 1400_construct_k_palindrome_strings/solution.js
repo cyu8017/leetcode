@@ -1,9 +1,8 @@
-﻿// LeetCode 1400 - Construct K Palindrome Strings
-// https://leetcode.com/problems/construct-k-palindrome-strings/
+// LeetCode 1400: Construct K Palindrome Strings
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var canConstruct = function(s, k) {
+    if (s.length < k) return false;
+    const count = Array(26).fill(0);
+    for (const ch of s) count[ch.charCodeAt(0) - 97]++;
+    return count.filter(value => value % 2).length <= k;
 };

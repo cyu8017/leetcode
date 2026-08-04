@@ -2,8 +2,21 @@
 // https://leetcode.com/problems/longest-well-performing-interval/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} hours
+ * @return {number}
  */
-var solve = function(input) {
+var longestWPI = function(hours) {
+    let score = 0;
+    const firstSeen = new Map([[0, -1]]);
+    let ans = 0;
+    for (let i = 0; i < hours.length; i++) {
+        score += hours[i] > 8 ? 1 : -1;
+        if (score > 0) {
+            ans = i + 1;
+        } else if (firstSeen.has(score - 1)) {
+            ans = Math.max(ans, i - firstSeen.get(score - 1));
+        }
+        if (!firstSeen.has(score)) firstSeen.set(score, i);
+    }
+    return ans;
 };

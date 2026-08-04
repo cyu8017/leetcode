@@ -1,9 +1,23 @@
-﻿// LeetCode 1964 - Find the Longest Valid Obstacle Course at Each Position
+// LeetCode 1964 - Find the Longest Valid Obstacle Course at Each Position
 // https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} obstacles
+ * @return {number[]}
  */
-var solve = function(input) {
+var longestObstacleCourseAtEachPosition = function(obstacles) {
+    const tails = [];
+    const ans = [];
+    for (const x of obstacles) {
+        let lo = 0, hi = tails.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (tails[mid] <= x) lo = mid + 1;
+            else hi = mid;
+        }
+        if (lo === tails.length) tails.push(x);
+        else tails[lo] = x;
+        ans.push(lo + 1);
+    }
+    return ans;
 };

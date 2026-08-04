@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/subtract-the-product-and-sum-of-digits-of-an-integer/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var subtractProductAndSum = function(n) {
+    let product = 1;
+    let total = 0;
+    while (n > 0) {
+        const digit = n % 10;
+        product *= digit;
+        total += digit;
+        n = Math.floor(n / 10);
+    }
+    return product - total;
 };

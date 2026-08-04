@@ -1,9 +1,16 @@
-﻿// LeetCode 1233 - Remove Sub-Folders from the Filesystem
+// LeetCode 1233 - Remove Sub-Folders From The Filesystem
 // https://leetcode.com/problems/remove-sub-folders-from-the-filesystem/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[]} folder
+ * @return {string[]}
  */
-var solve = function(input) {
+var removeSubfolders = function(folder) {
+    const answer = [];
+    for (const path of [...folder].sort()) {
+        if (!answer.length || !path.startsWith(answer[answer.length - 1] + "/")) {
+            answer.push(path);
+        }
+    }
+    return answer;
 };

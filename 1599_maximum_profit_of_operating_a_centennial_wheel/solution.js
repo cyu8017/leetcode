@@ -2,8 +2,24 @@
 // https://leetcode.com/problems/maximum-profit-of-operating-a-centennial-wheel/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} customers
+ * @param {number} boardingCost
+ * @param {number} runningCost
+ * @return {number}
  */
-var solve = function(input) {
+var minOperationsMaxProfit = function(customers, boardingCost, runningCost) {
+    let waiting = 0, profit = 0, best = 0, answer = 0, rotation = 0, i = 0;
+    while (i < customers.length || waiting) {
+        if (i < customers.length) waiting += customers[i];
+        const boarded = Math.min(4, waiting);
+        waiting -= boarded;
+        rotation++;
+        profit += boarded * boardingCost - runningCost;
+        if (profit > best) {
+            best = profit;
+            answer = rotation;
+        }
+        i++;
+    }
+    return best > 0 ? answer : -1;
 };

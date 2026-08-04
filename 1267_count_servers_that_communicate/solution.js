@@ -1,9 +1,28 @@
-﻿// LeetCode 1267 - Count Servers that Communicate
+﻿// LeetCode 1267 - Count Servers That Communicate
 // https://leetcode.com/problems/count-servers-that-communicate/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} grid
+ * @return {number}
  */
-var solve = function(input) {
+var countServers = function(grid) {
+    const m = grid.length;
+    const n = grid[0].length;
+    const rows = new Array(m).fill(0);
+    const cols = new Array(n).fill(0);
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c]) {
+                rows[r]++;
+                cols[c]++;
+            }
+        }
+    }
+    let count = 0;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (grid[r][c] && (rows[r] > 1 || cols[c] > 1)) count++;
+        }
+    }
+    return count;
 };

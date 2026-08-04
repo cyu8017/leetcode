@@ -1,9 +1,5 @@
-﻿// LeetCode 1443 - Minimum Time to Collect All Apples in a Tree
-// https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var minTime = function(n, edges, hasApple) {
+    const graph = Array.from({length: n}, () => []); for (const [a, b] of edges) { graph[a].push(b); graph[b].push(a); }
+    const dfs = (node, parent) => { let time = 0; for (const child of graph[node]) if (child !== parent) { const childTime = dfs(child, node); if (childTime || hasApple[child]) time += childTime + 2; } return time; };
+    return dfs(0, -1);
 };

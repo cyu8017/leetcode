@@ -2,8 +2,9 @@
 // https://leetcode.com/problems/remove-vowels-from-a-string/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var removeVowels = function(s) {
+    return s.replace(/[aeiou]/g, "");
 };

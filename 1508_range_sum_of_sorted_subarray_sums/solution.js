@@ -2,8 +2,23 @@
 // https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} n
+ * @param {number} left
+ * @param {number} right
+ * @return {number}
  */
-var solve = function(input) {
+var rangeSum = function(nums, n, left, right) {
+    const values = [];
+    for (let i = 0; i < n; i++) {
+        let total = 0;
+        for (let j = i; j < n; j++) {
+            total += nums[j];
+            values.push(total);
+        }
+    }
+    values.sort((a, b) => a - b);
+    let sum = 0;
+    for (let i = left - 1; i < right; i++) sum += values[i];
+    return sum % 1000000007;
 };

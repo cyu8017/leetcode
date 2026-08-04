@@ -1,9 +1,5 @@
-﻿// LeetCode 1470 - Shuffle the Array
-// https://leetcode.com/problems/shuffle-the-array/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var shuffle = function(nums, n) {
+    const result = [];
+    for (let i = 0; i < n; i++) result.push(nums[i], nums[i + n]);
+    return result;
 };

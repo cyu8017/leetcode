@@ -2,8 +2,9 @@
 // https://leetcode.com/problems/minimum-operations-to-make-array-equal/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var minOperations = function(n) {
+    return Math.floor(n * n / 4);
 };

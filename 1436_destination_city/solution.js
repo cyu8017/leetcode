@@ -1,9 +1,3 @@
-﻿// LeetCode 1436 - Destination City
-// https://leetcode.com/problems/destination-city/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var destCity = function(paths) {
+    const starts = new Set(paths.map((path) => path[0])); return paths.find((path) => !starts.has(path[1]))[1];
 };

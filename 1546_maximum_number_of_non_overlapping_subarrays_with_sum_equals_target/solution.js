@@ -2,8 +2,22 @@
 // https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
  */
-var solve = function(input) {
+var maxNonOverlapping = function(nums, target) {
+    let seen = new Set([0]);
+    let prefix = 0, answer = 0;
+    for (const value of nums) {
+        prefix += value;
+        if (seen.has(prefix - target)) {
+            answer++;
+            prefix = 0;
+            seen = new Set([0]);
+        } else {
+            seen.add(prefix);
+        }
+    }
+    return answer;
 };

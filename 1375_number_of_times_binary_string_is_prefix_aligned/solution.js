@@ -1,9 +1,15 @@
-﻿// LeetCode 1375 - Number of Times Binary String Is Prefix-Aligned
+// LeetCode 1375 - Number Of Times Binary String Is Prefix Aligned
 // https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} flips
+ * @return {number}
  */
-var solve = function(input) {
+var numTimesAllBlue = function(flips) {
+    let ans = 0, mx = 0;
+    for (let i = 0; i < flips.length; i++) {
+        mx = Math.max(mx, flips[i]);
+        if (mx === i + 1) ans++;
+    }
+    return ans;
 };

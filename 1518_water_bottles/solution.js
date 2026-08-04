@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/water-bottles/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
  */
-var solve = function(input) {
+var numWaterBottles = function(numBottles, numExchange) {
+    let total = numBottles;
+    while (numBottles >= numExchange) {
+        const neu = Math.floor(numBottles / numExchange);
+        const rem = numBottles % numExchange;
+        total += neu;
+        numBottles = neu + rem;
+    }
+    return total;
 };

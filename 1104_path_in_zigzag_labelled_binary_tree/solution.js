@@ -2,8 +2,16 @@
 // https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} label
+ * @return {number[]}
  */
-var solve = function(input) {
+var pathInZigZagTree = function(label) {
+    const path = [label];
+    while (label > 1) {
+        const level = Math.floor(Math.log2(label));
+        label >>= 1;
+        label = (1 << level) - 1 - label + (1 << (level - 1));
+        path.push(label);
+    }
+    return path.reverse();
 };

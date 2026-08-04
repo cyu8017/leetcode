@@ -1,9 +1,12 @@
-﻿// LeetCode 1481 - Least Number of Unique Integers after K Removals
-// https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var findLeastNumOfUniqueInts = function(arr, k) {
+    const frequencies = new Map();
+    for (const value of arr) frequencies.set(value, (frequencies.get(value) || 0) + 1);
+    const counts = [...frequencies.values()].sort((a, b) => a - b);
+    let remaining = counts.length;
+    for (const count of counts) {
+        if (k < count) break;
+        k -= count;
+        remaining--;
+    }
+    return remaining;
 };

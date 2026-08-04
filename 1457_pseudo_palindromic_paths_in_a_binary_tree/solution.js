@@ -1,9 +1,1 @@
-﻿// LeetCode 1457 - Pseudo-Palindromic Paths in a Binary Tree
-// https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var pseudoPalindromicPaths = function(root) { const dfs=(node,mask)=>{if(!node)return 0; mask^=1<<node.val; return !node.left&&!node.right ? ((mask&(mask-1))===0?1:0) : dfs(node.left,mask)+dfs(node.right,mask);}; return dfs(root,0); };

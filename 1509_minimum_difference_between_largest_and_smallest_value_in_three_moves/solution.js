@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var minDifference = function(nums) {
+    if (nums.length <= 4) return 0;
+    nums.sort((a, b) => a - b);
+    let ans = Infinity;
+    for (let i = 0; i < 4; i++) {
+        ans = Math.min(ans, nums[nums.length - 4 + i] - nums[i]);
+    }
+    return ans;
 };

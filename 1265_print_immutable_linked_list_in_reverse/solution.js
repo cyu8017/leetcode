@@ -2,8 +2,11 @@
 // https://leetcode.com/problems/print-immutable-linked-list-in-reverse/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {ImmutableListNode} head
+ * @return {void}
  */
-var solve = function(input) {
+var printLinkedListInReverse = function(head) {
+    if (!head) return;
+    printLinkedListInReverse(head.getNext());
+    head.printValue();
 };

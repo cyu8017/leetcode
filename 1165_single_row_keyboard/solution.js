@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/single-row-keyboard/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} keyboard
+ * @param {string} word
+ * @return {number}
  */
-var solve = function(input) {
+var calculateTime = function(keyboard, word) {
+    const pos = new Map();
+    for (let i = 0; i < keyboard.length; i++) pos.set(keyboard[i], i);
+    let ans = 0, prev = 0;
+    for (const ch of word) {
+        ans += Math.abs(pos.get(ch) - prev);
+        prev = pos.get(ch);
+    }
+    return ans;
 };

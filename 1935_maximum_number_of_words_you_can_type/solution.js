@@ -1,9 +1,12 @@
-﻿// LeetCode 1935 - Maximum Number of Words You Can Type
+// LeetCode 1935 - Maximum Number of Words You Can Type
 // https://leetcode.com/problems/maximum-number-of-words-you-can-type/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} text
+ * @param {string} brokenLetters
+ * @return {number}
  */
-var solve = function(input) {
+var canBeTypedWords = function(text, brokenLetters) {
+    const broken = new Set(brokenLetters);
+    return text.split(" ").filter((w) => ![...w].some((ch) => broken.has(ch))).length;
 };

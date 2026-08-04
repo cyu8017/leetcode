@@ -1,9 +1,18 @@
-﻿// LeetCode 1324 - Print Words Vertically
+// LeetCode 1324 - Print Words Vertically
 // https://leetcode.com/problems/print-words-vertically/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string[]}
  */
-var solve = function(input) {
+var printVertically = function(s) {
+    const words = s.split(" ");
+    const maxLen = Math.max(...words.map((w) => w.length));
+    const answer = [];
+    for (let i = 0; i < maxLen; i++) {
+        let row = "";
+        for (const word of words) row += i < word.length ? word[i] : " ";
+        answer.push(row.replace(/\s+$/, ""));
+    }
+    return answer;
 };

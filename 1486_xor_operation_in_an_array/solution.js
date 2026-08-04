@@ -1,9 +1,5 @@
-﻿// LeetCode 1486 - XOR Operation in an Array
-// https://leetcode.com/problems/xor-operation-in-an-array/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var xorOperation = function(n, start) {
+    let value = 0;
+    for (let i = 0; i < n; i++) value ^= start + 2 * i;
+    return value;
 };

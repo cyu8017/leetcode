@@ -1,9 +1,16 @@
-﻿// LeetCode 1974 - Minimum Time to Type Word Using Special Typewriter
+// LeetCode 1974 - Minimum Time to Type Word Using Special Typewriter
 // https://leetcode.com/problems/minimum-time-to-type-word-using-special-typewriter/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} word
+ * @return {number}
  */
-var solve = function(input) {
+var minTimeToType = function(word) {
+    let cur = "a", ans = 0;
+    for (const ch of word) {
+        const d = Math.abs(ch.charCodeAt(0) - cur.charCodeAt(0));
+        ans += Math.min(d, 26 - d) + 1;
+        cur = ch;
+    }
+    return ans;
 };

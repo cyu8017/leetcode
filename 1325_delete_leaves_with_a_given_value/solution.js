@@ -1,9 +1,15 @@
-﻿// LeetCode 1325 - Delete Leaves With a Given Value
+// LeetCode 1325 - Delete Leaves With A Given Value
 // https://leetcode.com/problems/delete-leaves-with-a-given-value/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {TreeNode} root
+ * @param {number} target
+ * @return {TreeNode}
  */
-var solve = function(input) {
+var removeLeafNodes = function(root, target) {
+    if (!root) return null;
+    root.left = removeLeafNodes(root.left, target);
+    root.right = removeLeafNodes(root.right, target);
+    if (!root.left && !root.right && root.val === target) return null;
+    return root;
 };

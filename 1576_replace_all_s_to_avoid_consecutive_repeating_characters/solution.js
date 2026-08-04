@@ -2,8 +2,20 @@
 // https://leetcode.com/problems/replace-all-s-to-avoid-consecutive-repeating-characters/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var modifyString = function(s) {
+    const chars = s.split("");
+    for (let i = 0; i < chars.length; i++) {
+        if (chars[i] === "?") {
+            for (const c of "abc") {
+                if ((i === 0 || chars[i - 1] !== c) && (i + 1 === chars.length || chars[i + 1] !== c)) {
+                    chars[i] = c;
+                    break;
+                }
+            }
+        }
+    }
+    return chars.join("");
 };

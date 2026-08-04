@@ -1,9 +1,12 @@
-﻿// LeetCode 1908 - Game of Nim
+// LeetCode 1908 - Game of Nim
 // https://leetcode.com/problems/game-of-nim/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} piles
+ * @return {boolean}
  */
-var solve = function(input) {
+var nimGame = function(piles) {
+    let x = 0;
+    for (const p of piles) x ^= p;
+    return x !== 0;
 };

@@ -1,9 +1,3 @@
-﻿// LeetCode 1431 - Kids With the Greatest Number of Candies
-// https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var kidsWithCandies = function(candies, extraCandies) {
+    const maximum = Math.max(...candies); return candies.map((x) => x + extraCandies >= maximum);
 };

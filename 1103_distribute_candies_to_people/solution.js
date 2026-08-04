@@ -2,8 +2,19 @@
 // https://leetcode.com/problems/distribute-candies-to-people/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} candies
+ * @param {number} num_people
+ * @return {number[]}
  */
-var solve = function(input) {
+var distributeCandies = function(candies, num_people) {
+    const ans = Array(num_people).fill(0);
+    let give = 1, i = 0;
+    while (candies > 0) {
+        const take = Math.min(give, candies);
+        ans[i] += take;
+        candies -= take;
+        give++;
+        i = (i + 1) % num_people;
+    }
+    return ans;
 };

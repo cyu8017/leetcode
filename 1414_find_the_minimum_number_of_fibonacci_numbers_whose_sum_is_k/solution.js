@@ -1,9 +1,9 @@
-﻿// LeetCode 1414 - Find the Minimum Number of Fibonacci Numbers Whose Sum Is K
-// https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
+// LeetCode 1414: Find The Minimum Number Of Fibonacci Numbers Whose Sum Is K
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var findMinFibonacciNumbers = function(k) {
+    const fib = [1, 1];
+    while (fib.at(-1) < k) fib.push(fib.at(-1) + fib.at(-2));
+    let count = 0;
+    for (let i = fib.length - 1; i >= 0 && k; i--) if (fib[i] <= k) { k -= fib[i]; count++; }
+    return count;
 };

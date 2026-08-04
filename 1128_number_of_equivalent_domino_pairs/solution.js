@@ -2,8 +2,17 @@
 // https://leetcode.com/problems/number-of-equivalent-domino-pairs/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} dominoes
+ * @return {number}
  */
-var solve = function(input) {
+var numEquivDominoPairs = function(dominoes) {
+    const count = new Map();
+    let ans = 0;
+    for (const [a, b] of dominoes) {
+        const key = a < b ? `${a},${b}` : `${b},${a}`;
+        const c = count.get(key) || 0;
+        ans += c;
+        count.set(key, c + 1);
+    }
+    return ans;
 };

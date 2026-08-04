@@ -1,9 +1,13 @@
-﻿// LeetCode 1310 - XOR Queries of a Subarray
+// LeetCode 1310 - Xor Queries Of A Subarray
 // https://leetcode.com/problems/xor-queries-of-a-subarray/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} arr
+ * @param {number[][]} queries
+ * @return {number[]}
  */
-var solve = function(input) {
+var xorQueries = function(arr, queries) {
+    const prefix = [0];
+    for (const value of arr) prefix.push(prefix[prefix.length - 1] ^ value);
+    return queries.map(([left, right]) => prefix[right + 1] ^ prefix[left]);
 };

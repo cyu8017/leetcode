@@ -2,8 +2,10 @@
 // https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} position
+ * @return {number}
  */
-var solve = function(input) {
+var minCostToMoveChips = function(position) {
+    const odd = position.filter((x) => x & 1).length;
+    return Math.min(odd, position.length - odd);
 };

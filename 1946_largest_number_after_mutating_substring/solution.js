@@ -1,9 +1,21 @@
-﻿// LeetCode 1946 - Largest Number After Mutating Substring
+// LeetCode 1946 - Largest Number After Mutating Substring
 // https://leetcode.com/problems/largest-number-after-mutating-substring/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} num
+ * @param {number[]} change
+ * @return {string}
  */
-var solve = function(input) {
+var maximumNumber = function(num, change) {
+    const chars = num.split("");
+    let started = false;
+    for (let i = 0; i < chars.length; i++) {
+        const d = chars[i].charCodeAt(0) - 48;
+        const mapped = change[d];
+        if (mapped > d) {
+            chars[i] = String(mapped);
+            started = true;
+        } else if (mapped < d && started) break;
+    }
+    return chars.join("");
 };

@@ -2,8 +2,10 @@
 // https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} low
+ * @param {number} high
+ * @return {number}
  */
-var solve = function(input) {
+var countOdds = function(low, high) {
+    return Math.floor((high + 1) / 2) - Math.floor(low / 2);
 };

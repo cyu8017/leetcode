@@ -1,9 +1,20 @@
-﻿// LeetCode 1472 - Design Browser History
-// https://leetcode.com/problems/design-browser-history/
+var BrowserHistory = function(homepage) {
+    this.history = [homepage];
+    this.index = 0;
+};
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+BrowserHistory.prototype.visit = function(url) {
+    this.history.length = this.index + 1;
+    this.history.push(url);
+    this.index++;
+};
+
+BrowserHistory.prototype.back = function(steps) {
+    this.index = Math.max(0, this.index - steps);
+    return this.history[this.index];
+};
+
+BrowserHistory.prototype.forward = function(steps) {
+    this.index = Math.min(this.history.length - 1, this.index + steps);
+    return this.history[this.index];
 };

@@ -2,8 +2,29 @@
 // https://leetcode.com/problems/parsing-a-boolean-expression/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} expression
+ * @return {boolean}
  */
-var solve = function(input) {
+var parseBoolExpr = function(expression) {
+    const stack = [];
+    for (const ch of expression) {
+        if (ch === ")") {
+            const values = [];
+            while (stack.length && !"&|!".includes(stack[stack.length - 1])) {
+                const token = stack.pop();
+                if (token === "t" || token === "f") values.push(token === "t");
+            }
+            const op = stack.pop();
+            if (op === "!") {
+                stack.push(values[0] ? "f" : "t");
+            } else if (op === "&") {
+                stack.push(values.every(Boolean) ? "t" : "f");
+            } else {
+                stack.push(values.some(Boolean) ? "t" : "f");
+            }
+        } else if (ch !== ",") {
+            stack.push(ch);
+        }
+    }
+    return stack[stack.length - 1] === "t";
 };

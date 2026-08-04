@@ -2,8 +2,15 @@
 // https://leetcode.com/problems/thousand-separator/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {string}
  */
-var solve = function(input) {
+var thousandSeparator = function(n) {
+    let s = String(n);
+    const parts = [];
+    while (s) {
+        parts.push(s.slice(-3));
+        s = s.slice(0, -3);
+    }
+    return parts.reverse().join(".");
 };

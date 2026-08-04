@@ -1,9 +1,1 @@
-﻿// LeetCode 1460 - Make Two Arrays Equal by Reversing Subarrays
-// https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var canBeEqual = function(target, arr) { const count=new Map(); for(const x of target)count.set(x,(count.get(x)||0)+1); for(const x of arr){if(!count.has(x))return false; count.set(x,count.get(x)-1); if(count.get(x)===0)count.delete(x);} return count.size===0; };
