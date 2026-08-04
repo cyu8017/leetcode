@@ -2,6 +2,16 @@
 // https://leetcode.com/problems/minimum-suffix-flips/
 
 class Solution {
-    public void solve() {
+    public int minFlips(String target) {
+        int answer = 0;
+        char previous = '0';
+        for (int i = 0; i < target.length(); i++) {
+            char current = target.charAt(i);
+            if (current != previous) {
+                answer++;
+            }
+            previous = current;
+        }
+        return answer;
     }
 }

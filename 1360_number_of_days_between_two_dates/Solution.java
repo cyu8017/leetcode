@@ -1,7 +1,11 @@
-﻿// LeetCode 1360 - Number of Days Between Two Dates
+// LeetCode 1360 - Number Of Days Between Two Dates
 // https://leetcode.com/problems/number-of-days-between-two-dates/
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
 class Solution {
-    public void solve() {
+    public int daysBetweenDates(String date1, String date2) {
+        return (int) Math.abs(ChronoUnit.DAYS.between(LocalDate.parse(date1), LocalDate.parse(date2)));
     }
 }

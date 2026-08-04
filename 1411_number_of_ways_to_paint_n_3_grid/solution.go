@@ -1,5 +1,11 @@
-﻿// LeetCode 1411 - Number of Ways to Paint N × 3 Grid
+// LeetCode 1411 - Number of Ways to Paint N × 3 Grid
 // https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/
 
-func solve() {
+func numOfWays(n int) int {
+	const mod = 1000000007
+	aba, abc := 6, 6
+	for i := 1; i < n; i++ {
+		aba, abc = (3*aba+2*abc)%mod, (2*aba+2*abc)%mod
+	}
+	return (aba + abc) % mod
 }

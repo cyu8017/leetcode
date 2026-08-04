@@ -2,6 +2,12 @@
 // https://leetcode.com/problems/sum-of-all-odd-length-subarrays/
 
 class Solution {
-    public void solve() {
+    public int sumOddLengthSubarrays(int[] arr) {
+        int n = arr.length;
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            ans += arr[i] * (((i + 1) * (n - i) + 1) / 2);
+        }
+        return ans;
     }
 }

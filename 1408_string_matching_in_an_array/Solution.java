@@ -1,7 +1,14 @@
-﻿// LeetCode 1408 - String Matching in an Array
-// https://leetcode.com/problems/string-matching-in-an-array/
+// LeetCode 1408 - String Matching In An Array
+// https://leetcode.com/problems/String-matching-in-an-array/
+
+import java.util.*;
 
 class Solution {
-    public void solve() {
+    public List<String> stringMatching(String[] words) {
+        var answer = new ArrayList<>();
+        for (int i = 0; i < words.length; i++)
+            for (int j = 0; j < words.length; j++)
+                if (i != j && words[j].contains(words[i])) { answer.add(words[i]); break; }
+        return answer;
     }
 }

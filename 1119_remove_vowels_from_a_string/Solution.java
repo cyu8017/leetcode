@@ -2,6 +2,13 @@
 // https://leetcode.com/problems/remove-vowels-from-a-string/
 
 class Solution {
-    public void solve() {
+    public String removeVowels(String s) {
+        StringBuilder sb = new StringBuilder();
+        for (char ch : s.toCharArray()) {
+            if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u') {
+                sb.append(ch);
+            }
+        }
+        return sb.toString();
     }
 }

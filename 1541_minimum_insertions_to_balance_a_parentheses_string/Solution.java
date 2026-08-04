@@ -2,6 +2,23 @@
 // https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
 
 class Solution {
-    public void solve() {
+    public int minInsertions(String s) {
+        int insertions = 0, needed = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') {
+                needed += 2;
+                if ((needed & 1) == 1) {
+                    insertions++;
+                    needed--;
+                }
+            } else {
+                needed--;
+                if (needed < 0) {
+                    insertions++;
+                    needed = 1;
+                }
+            }
+        }
+        return insertions + needed;
     }
 }

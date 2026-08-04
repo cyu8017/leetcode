@@ -1,7 +1,9 @@
-﻿// LeetCode 1256 - Encode Number
+// LeetCode 1256 - Encode Number
 // https://leetcode.com/problems/encode-number/
 
 class Solution {
-    public void solve() {
+    public String encode(int num) {
+        return Integer.toBinaryString(num + 1).substring(1);
     }
 }
+

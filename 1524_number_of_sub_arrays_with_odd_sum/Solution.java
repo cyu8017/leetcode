@@ -2,6 +2,17 @@
 // https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/
 
 class Solution {
-    public void solve() {
+    private static final int MOD = 1_000_000_007;
+
+    public int numOfSubarrays(int[] arr) {
+        int[] counts = {1, 0};
+        int parity = 0;
+        long answer = 0;
+        for (int value : arr) {
+            parity ^= value & 1;
+            answer += counts[parity ^ 1];
+            counts[parity]++;
+        }
+        return (int) (answer % MOD);
     }
 }
