@@ -1,6 +1,10 @@
-﻿// LeetCode 1490 - Clone N-ary Tree
-// https://leetcode.com/problems/clone-n-ary-tree/
-
 object Solution {
-  def solve(): Unit = {}
+  def cloneTree(root: Node): Node = {
+    if (root == null) null
+    else {
+      val copy = new Node(root.value)
+      copy.children = root.children.map(cloneTree)
+      copy
+    }
+  }
 }

@@ -1,6 +1,6 @@
-﻿// LeetCode 1365 - How Many Numbers Are Smaller Than the Current Number
-// https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
-
 object Solution {
-  def solve(): Unit = {}
+  def smallerNumbersThanCurrent(nums: Array[Int]): Array[Int] = {
+    val sorted = nums.sorted
+    nums.map(sorted.indexOf)
+  }
 }

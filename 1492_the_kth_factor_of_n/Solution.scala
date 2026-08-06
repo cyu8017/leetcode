@@ -1,6 +1,10 @@
-﻿// LeetCode 1492 - The kth Factor of n
-// https://leetcode.com/problems/the-kth-factor-of-n/
-
 object Solution {
-  def solve(): Unit = {}
+  def kthFactor(n: Int, k: Int): Int = {
+    var remaining = k
+    for (factor <- 1 to n if n % factor == 0) {
+      remaining -= 1
+      if (remaining == 0) return factor
+    }
+    -1
+  }
 }

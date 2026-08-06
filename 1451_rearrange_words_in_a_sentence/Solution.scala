@@ -1,6 +1,6 @@
-﻿// LeetCode 1451 - Rearrange Words in a Sentence
-// https://leetcode.com/problems/rearrange-words-in-a-sentence/
-
 object Solution {
-  def solve(): Unit = {}
+  def arrangeWords(text: String): String = {
+    val result = text.toLowerCase.split(" ").sortBy(_.length).mkString(" ")
+    result.head.toUpper + result.tail
+  }
 }

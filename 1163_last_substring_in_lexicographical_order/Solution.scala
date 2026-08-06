@@ -1,6 +1,23 @@
-﻿// LeetCode 1163 - Last Substring in Lexicographical Order
+// LeetCode 1163 - Last Substring in Lexicographical Order
 // https://leetcode.com/problems/last-substring-in-lexicographical-order/
 
 object Solution {
-  def solve(): Unit = {}
+  def lastSubstring(s: String): String = {
+    var i = 0
+    var j = 1
+    var k = 0
+    val n = s.length
+    while (j + k < n) {
+      if (s(i + k) == s(j + k)) k += 1
+      else if (s(i + k) > s(j + k)) {
+        j = j + k + 1
+        k = 0
+      } else {
+        i = math.max(i + k + 1, j)
+        j = i + 1
+        k = 0
+      }
+    }
+    s.substring(i)
+  }
 }

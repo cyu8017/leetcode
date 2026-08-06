@@ -1,6 +1,3 @@
-﻿// LeetCode 1411 - Number of Ways to Paint N × 3 Grid
-// https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/
-
 object Solution {
-  def solve(): Unit = {}
+  def numOfWays(n: Int): Int = { val mod=1000000007L; var aba=6L; var abc=6L; for(_ <- 1 until n) { val x=(3*aba+2*abc)%mod; abc=(2*aba+2*abc)%mod; aba=x }; ((aba+abc)%mod).toInt }
 }

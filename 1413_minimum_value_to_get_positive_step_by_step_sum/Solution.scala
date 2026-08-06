@@ -1,6 +1,3 @@
-﻿// LeetCode 1413 - Minimum Value to Get Positive Step by Step Sum
-// https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
-
 object Solution {
-  def solve(): Unit = {}
+  def minStartValue(nums: Array[Int]): Int = { var sum=0; var low=0; nums.foreach(x => {sum += x; low=math.min(low,sum)}); 1-low }
 }

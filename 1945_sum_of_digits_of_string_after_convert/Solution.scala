@@ -2,5 +2,11 @@
 // https://leetcode.com/problems/sum-of-digits-of-string-after-convert/
 
 object Solution {
-  def solve(): Unit = {}
+  def getLucky(s: String, k: Int): Int = {
+    var num = s.map(c => (c - 'a' + 1).toString).mkString
+    for (_ <- 0 until k) {
+      num = num.map(_ - '0').sum.toString
+    }
+    num.toInt
+  }
 }

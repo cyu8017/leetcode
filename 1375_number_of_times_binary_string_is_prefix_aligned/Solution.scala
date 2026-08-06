@@ -1,6 +1,7 @@
-﻿// LeetCode 1375 - Number of Times Binary String Is Prefix-Aligned
-// https://leetcode.com/problems/number-of-times-binary-string-is-prefix-aligned/
-
 object Solution {
-  def solve(): Unit = {}
+  def numTimesAllBlue(flips: Array[Int]): Int = {
+    var maximum = 0; var answer = 0
+    flips.indices.foreach(i => { maximum = math.max(maximum, flips(i)); if (maximum == i + 1) answer += 1 })
+    answer
+  }
 }

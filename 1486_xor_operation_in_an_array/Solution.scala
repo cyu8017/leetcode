@@ -1,6 +1,3 @@
-﻿// LeetCode 1486 - XOR Operation in an Array
-// https://leetcode.com/problems/xor-operation-in-an-array/
-
 object Solution {
-  def solve(): Unit = {}
+  def xorOperation(n: Int, start: Int): Int = (0 until n).foldLeft(0)((answer, i) => answer ^ (start + 2 * i))
 }

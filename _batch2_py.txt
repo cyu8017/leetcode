@@ -1,0 +1,859 @@
+==== 1136_parallel_courses
+# LeetCode 1136 - Parallel Courses
+# https://leetcode.com/problems/parallel-courses/
+
+from collections import deque
+
+
+class Solution:
+    def minimumSemesters(self, n: int, relations: list[list[int]]) -> int:
+        graph = [[] for _ in range(n + 1)]
+        indegree = [0] * (n + 1)
+        for prev, nxt in relations:
+            graph[prev].append(nxt)
+            indegree[nxt] += 1
+        queue = deque(i for i in range(1, n + 1) if indegree[i] == 0)
+        semesters = 0
+        taken = 0
+        while queue:
+            semesters += 1
+            for _ in range(len(queue)):
+                course = queue.popleft()
+                taken += 1
+                for nxt in graph[course]:
+                    indegree[nxt] -= 1
+                    if indegree[nxt] == 0:
+                        queue.append(nxt)
+        return semesters if taken == n else -1
+
+==== 1137_n_th_tribonacci_number
+# LeetCode 1137 - N-th Tribonacci Number
+# https://leetcode.com/problems/n-th-tribonacci-number/
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        if n == 0:
+            return 0
+        if n <= 2:
+            return 1
+        a, b, c = 0, 1, 1
+        for _ in range(3, n + 1):
+            a, b, c = b, c, a + b + c
+        return c
+
+==== 1138_alphabet_board_path
+# LeetCode 1138 - Alphabet Board Path
+# https://leetcode.com/problems/alphabet-board-path/
+
+class Solution:
+    def alphabetBoardPath(self, target: str) -> str:
+        row, col = 0, 0
+        ans: list[str] = []
+
+        def move_to(r: int, c: int) -> None:
+            nonlocal row, col
+            while row < r:
+                ans.append("D")
+                row += 1
+            while row > r:
+                ans.append("U")
+                row -= 1
+            while col < c:
+                ans.append("R")
+                col += 1
+            while col > c:
+                ans.append("L")
+                col -= 1
+
+        for ch in target:
+            r, c = divmod(ord(ch) - ord("a"), 5)
+            if c < col and row == r:
+                while col > c:
+                    ans.append("L")
+                    col -= 1
+            else:
+                move_to(r, c)
+            ans.append("!")
+        return "".join(ans)
+
+==== 1139_largest_1_bordered_square
+# LeetCode 1139 - Largest 1-Bordered Square
+# https://leetcode.com/problems/largest-1-bordered-square/
+
+class Solution:
+    def largest1BorderedSquare(self, grid: list[list[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        left = [[0] * n for _ in range(m)]
+        up = [[0] * n for _ in range(m)]
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c]:
+                    left[r][c] = 1 + (left[r][c - 1] if c else 0)
+                    up[r][c] = 1 + (up[r - 1][c] if r else 0)
+        best = 0
+        for r in range(m):
+            for c in range(n):
+                if not grid[r][c]:
+                    continue
+                limit = min(left[r][c], up[r][c])
+                for size in range(limit, 0, -1):
+                    if left[r - size + 1][c] >= size and up[r][c - size + 1] >= size:
+                        best = max(best, size)
+                        break
+        return best * best
+
+==== 1140_stone_game_ii
+# LeetCode 1140 - Stone Game II
+# https://leetcode.com/problems/stone-game-ii/
+
+from functools import lru_cache
+
+
+class Solution:
+    def stoneGameII(self, piles: list[int]) -> int:
+        n = len(piles)
+        suffix = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            suffix[i] = suffix[i + 1] + piles[i]
+
+        @lru_cache(None)
+        def dfs(i: int, m: int) -> int:
+            if i >= n:
+                return 0
+            if m + i >= n:
+                return suffix[i]
+            return suffix[i] - min(
+                dfs(i + x, max(x, m)) for x in range(1, min(m * 2, n - i) + 1)
+            )
+
+        return dfs(0, 1)
+
+==== 1143_longest_common_subsequence
+# LeetCode 1143 - Longest Common Subsequence
+# https://leetcode.com/problems/longest-common-subsequence/
+
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
+        dp = [0] * (n + 1)
+        for i in range(1, m + 1):
+            prev = 0
+            for j in range(1, n + 1):
+                cur = dp[j]
+                if text1[i - 1] == text2[j - 1]:
+                    dp[j] = prev + 1
+                else:
+                    dp[j] = max(dp[j], dp[j - 1])
+                prev = cur
+        return dp[n]
+
+==== 1144_decrease_elements_to_make_array_zigzag
+# LeetCode 1144 - Decrease Elements To Make Array Zigzag
+# https://leetcode.com/problems/decrease-elements-to-make-array-zigzag/
+
+class Solution:
+    def movesToMakeZigzag(self, nums: list[int]) -> int:
+        def cost(start: int) -> int:
+            ans = 0
+            for i in range(start, len(nums), 2):
+                left = nums[i - 1] if i else float("inf")
+                right = nums[i + 1] if i + 1 < len(nums) else float("inf")
+                ans += max(0, nums[i] - min(left, right) + 1)
+            return ans
+
+        return min(cost(0), cost(1))
+
+==== 1145_binary_tree_coloring_game
+# LeetCode 1145 - Binary Tree Coloring Game
+# https://leetcode.com/problems/binary-tree-coloring-game/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def btreeGameWinningMove(self, root: Optional[TreeNode], n: int, x: int) -> bool:
+        left = right = 0
+
+        def dfs(node: Optional[TreeNode]) -> int:
+            nonlocal left, right
+            if not node:
+                return 0
+            l, r = dfs(node.left), dfs(node.right)
+            if node.val == x:
+                left, right = l, r
+            return l + r + 1
+
+        dfs(root)
+        return max(left, right, n - left - right - 1) > n // 2
+
+==== 1146_snapshot_array
+# LeetCode 1146 - Snapshot Array
+# https://leetcode.com/problems/snapshot-array/
+
+import bisect
+
+
+class SnapshotArray:
+    def __init__(self, length: int):
+        self.snap_id = 0
+        self.data = [[(0, 0)] for _ in range(length)]
+
+    def set(self, index: int, val: int) -> None:
+        hist = self.data[index]
+        if hist[-1][0] == self.snap_id:
+            hist[-1] = (self.snap_id, val)
+        else:
+            hist.append((self.snap_id, val))
+
+    def snap(self) -> int:
+        self.snap_id += 1
+        return self.snap_id - 1
+
+    def get(self, index: int, snap_id: int) -> int:
+        hist = self.data[index]
+        i = bisect.bisect_right(hist, (snap_id, float("inf"))) - 1
+        return hist[i][1]
+
+==== 1147_longest_chunked_palindrome_decomposition
+# LeetCode 1147 - Longest Chunked Palindrome Decomposition
+# https://leetcode.com/problems/longest-chunked-palindrome-decomposition/
+
+class Solution:
+    def longestDecomposition(self, text: str) -> int:
+        n = len(text)
+        ans = 0
+        i = 0
+        while i < n - i:
+            found = False
+            for length in range(1, (n - 2 * i) // 2 + 1):
+                if text[i : i + length] == text[n - i - length : n - i]:
+                    ans += 2
+                    i += length
+                    found = True
+                    break
+            if not found:
+                ans += 1
+                break
+        return ans
+
+==== 1150_check_if_a_number_is_majority_element_in_a_sorted_array
+# LeetCode 1150 - Check If a Number Is Majority Element in a Sorted Array
+# https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/
+
+import bisect
+
+
+class Solution:
+    def isMajorityElement(self, nums: list[int], target: int) -> bool:
+        left = bisect.bisect_left(nums, target)
+        right = bisect.bisect_right(nums, target)
+        return right - left > len(nums) // 2
+
+==== 1151_minimum_swaps_to_group_all_1s_together
+# LeetCode 1151 - Minimum Swaps to Group All 1's Together
+# https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/
+
+class Solution:
+    def minSwaps(self, data: list[int]) -> int:
+        ones = sum(data)
+        if ones <= 1:
+            return 0
+        cur = sum(data[:ones])
+        best = cur
+        for i in range(ones, len(data)):
+            cur += data[i] - data[i - ones]
+            best = max(best, cur)
+        return ones - best
+
+==== 1152_analyze_user_website_visit_pattern
+# LeetCode 1152 - Analyze User Website Visit Pattern
+# https://leetcode.com/problems/analyze-user-website-visit-pattern/
+
+from collections import defaultdict
+
+
+class Solution:
+    def mostVisitedPattern(self, username: list[str], timestamp: list[int], website: list[str]) -> list[str]:
+        visits: dict[str, list[tuple[int, str]]] = defaultdict(list)
+        for user, t, site in zip(username, timestamp, website):
+            visits[user].append((t, site))
+        scores: dict[tuple[str, str, str], int] = defaultdict(int)
+        for user in visits:
+            sites = [site for _, site in sorted(visits[user])]
+            patterns = set()
+            for i in range(len(sites)):
+                for j in range(i + 1, len(sites)):
+                    for k in range(j + 1, len(sites)):
+                        patterns.add((sites[i], sites[j], sites[k]))
+            for pattern in patterns:
+                scores[pattern] += 1
+        best = min((-count, pattern) for pattern, count in scores.items())[1]
+        return list(best)
+
+==== 1153_string_transforms_into_another_string
+# LeetCode 1153 - String Transforms Into Another String
+# https://leetcode.com/problems/string-transforms-into-another-string/
+
+class Solution:
+    def canConvert(self, str1: str, str2: str) -> bool:
+        if str1 == str2:
+            return True
+        mapping: dict[str, str] = {}
+        for a, b in zip(str1, str2):
+            if a in mapping and mapping[a] != b:
+                return False
+            mapping[a] = b
+        return len(set(str2)) < 26
+
+==== 1154_day_of_the_year
+# LeetCode 1154 - Day of the Year
+# https://leetcode.com/problems/day-of-the-year/
+
+class Solution:
+    def dayOfYear(self, date: str) -> int:
+        year, month, day = map(int, date.split("-"))
+        leap = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+        days = [31, 29 if leap else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        return sum(days[: month - 1]) + day
+
+==== 1155_number_of_dice_rolls_with_target_sum
+# LeetCode 1155 - Number of Dice Rolls With Target Sum
+# https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+
+class Solution:
+    def numRollsToTarget(self, n: int, k: int, target: int) -> int:
+        MOD = 10**9 + 7
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        for _ in range(n):
+            new = [0] * (target + 1)
+            for s in range(target + 1):
+                if not dp[s]:
+                    continue
+                for face in range(1, k + 1):
+                    if s + face <= target:
+                        new[s + face] = (new[s + face] + dp[s]) % MOD
+            dp = new
+        return dp[target]
+
+==== 1156_swap_for_longest_repeated_character_substring
+# LeetCode 1156 - Swap For Longest Repeated Character Substring
+# https://leetcode.com/problems/swap-for-longest-repeated-character-substring/
+
+from collections import Counter
+
+
+class Solution:
+    def maxRepOpt1(self, text: str) -> int:
+        count = Counter(text)
+        n = len(text)
+        ans = 0
+        i = 0
+        while i < n:
+            j = i
+            while j < n and text[j] == text[i]:
+                j += 1
+            length = j - i
+            k = j + 1
+            while k < n and text[k] == text[i]:
+                k += 1
+            length2 = k - j - 1 if j < n else 0
+            ans = max(ans, min(length + length2 + 1, count[text[i]]))
+            i = j
+        return ans
+
+==== 1157_online_majority_element_in_subarray
+# LeetCode 1157 - Online Majority Element In Subarray
+# https://leetcode.com/problems/online-majority-element-in-subarray/
+
+import bisect
+from collections import defaultdict
+
+
+class MajorityChecker:
+    def __init__(self, arr: list[int]):
+        self.arr = arr
+        self.pos: dict[int, list[int]] = defaultdict(list)
+        for i, x in enumerate(arr):
+            self.pos[x].append(i)
+
+    def query(self, left: int, right: int, threshold: int) -> int:
+        candidate = count = 0
+        for i in range(left, right + 1):
+            if count == 0:
+                candidate = self.arr[i]
+            count += 1 if self.arr[i] == candidate else -1
+        locs = self.pos[candidate]
+        freq = bisect.bisect_right(locs, right) - bisect.bisect_left(locs, left)
+        return candidate if freq >= threshold else -1
+
+==== 1160_find_words_that_can_be_formed_by_characters
+# LeetCode 1160 - Find Words That Can Be Formed by Characters
+# https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/
+
+from collections import Counter
+
+
+class Solution:
+    def countCharacters(self, words: list[str], chars: str) -> int:
+        avail = Counter(chars)
+        ans = 0
+        for word in words:
+            need = Counter(word)
+            if all(need[c] <= avail[c] for c in need):
+                ans += len(word)
+        return ans
+
+==== 1161_maximum_level_sum_of_a_binary_tree
+# LeetCode 1161 - Maximum Level Sum of a Binary Tree
+# https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+from collections import deque
+
+
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        queue = deque([root])
+        best_sum = float("-inf")
+        best_level = level = 1
+        while queue:
+            total = 0
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                total += node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            if total > best_sum:
+                best_sum = total
+                best_level = level
+            level += 1
+        return best_level
+
+==== 1162_as_far_from_land_as_possible
+# LeetCode 1162 - As Far from Land as Possible
+# https://leetcode.com/problems/as-far-from-land-as-possible/
+
+from collections import deque
+
+
+class Solution:
+    def maxDistance(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+        queue = deque()
+        for r in range(n):
+            for c in range(n):
+                if grid[r][c] == 1:
+                    queue.append((r, c))
+        if not queue or len(queue) == n * n:
+            return -1
+        dist = -1
+        while queue:
+            dist += 1
+            for _ in range(len(queue)):
+                r, c = queue.popleft()
+                for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+                    if 0 <= nr < n and 0 <= nc < n and grid[nr][nc] == 0:
+                        grid[nr][nc] = 1
+                        queue.append((nr, nc))
+        return dist
+
+==== 1163_last_substring_in_lexicographical_order
+# LeetCode 1163 - Last Substring in Lexicographical Order
+# https://leetcode.com/problems/last-substring-in-lexicographical-order/
+
+class Solution:
+    def lastSubstring(self, s: str) -> str:
+        i, j, k = 0, 1, 0
+        n = len(s)
+        while j + k < n:
+            if s[i + k] == s[j + k]:
+                k += 1
+                continue
+            if s[i + k] > s[j + k]:
+                j = j + k + 1
+            else:
+                i = max(i + k + 1, j)
+                j = i + 1
+            k = 0
+        return s[i:]
+
+==== 1165_single_row_keyboard
+# LeetCode 1165 - Single-Row Keyboard
+# https://leetcode.com/problems/single-row-keyboard/
+
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        pos = {ch: i for i, ch in enumerate(keyboard)}
+        ans = prev = 0
+        for ch in word:
+            ans += abs(pos[ch] - prev)
+            prev = pos[ch]
+        return ans
+
+==== 1166_design_file_system
+# LeetCode 1166 - Design File System
+# https://leetcode.com/problems/design-file-system/
+
+class FileSystem:
+    def __init__(self):
+        self.paths: dict[str, int] = {"": -1}
+
+    def createPath(self, path: str, value: int) -> bool:
+        if path in self.paths:
+            return False
+        parent = path.rsplit("/", 1)[0]
+        if parent not in self.paths:
+            return False
+        self.paths[path] = value
+        return True
+
+    def get(self, path: str) -> int:
+        return self.paths.get(path, -1)
+
+==== 1167_minimum_cost_to_connect_sticks
+# LeetCode 1167 - Minimum Cost to Connect Sticks
+# https://leetcode.com/problems/minimum-cost-to-connect-sticks/
+
+import heapq
+
+
+class Solution:
+    def connectSticks(self, sticks: list[int]) -> int:
+        if len(sticks) <= 1:
+            return 0
+        heapq.heapify(sticks)
+        ans = 0
+        while len(sticks) > 1:
+            cost = heapq.heappop(sticks) + heapq.heappop(sticks)
+            ans += cost
+            heapq.heappush(sticks, cost)
+        return ans
+
+==== 1168_optimize_water_distribution_in_a_village
+# LeetCode 1168 - Optimize Water Distribution in a Village
+# https://leetcode.com/problems/optimize-water-distribution-in-a-village/
+
+class Solution:
+    def minCostToSupplyWater(self, n: int, wells: list[int], pipes: list[list[int]]) -> int:
+        parent = list(range(n + 1))
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        edges = [[0, i + 1, w] for i, w in enumerate(wells)] + pipes
+        edges.sort(key=lambda e: e[2])
+        ans = 0
+        for a, b, cost in edges:
+            ra, rb = find(a), find(b)
+            if ra == rb:
+                continue
+            parent[rb] = ra
+            ans += cost
+        return ans
+
+==== 1169_invalid_transactions
+# LeetCode 1169 - Invalid Transactions
+# https://leetcode.com/problems/invalid-transactions/
+
+class Solution:
+    def invalidTransactions(self, transactions: list[str]) -> list[str]:
+        parsed = []
+        for t in transactions:
+            name, time, amount, city = t.split(",")
+            parsed.append((name, int(time), int(amount), city, t))
+        invalid = set()
+        for i, (name, time, amount, city, raw) in enumerate(parsed):
+            if amount > 1000:
+                invalid.add(raw)
+            for j, (name2, time2, amount2, city2, raw2) in enumerate(parsed):
+                if i != j and name == name2 and city != city2 and abs(time - time2) <= 60:
+                    invalid.add(raw)
+                    invalid.add(raw2)
+        return list(invalid)
+
+==== 1170_compare_strings_by_frequency_of_the_smallest_character
+# LeetCode 1170 - Compare Strings by Frequency of the Smallest Character
+# https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/
+
+import bisect
+
+
+class Solution:
+    def numSmallerByFrequency(self, queries: list[str], words: list[str]) -> list[int]:
+        def f(s: str) -> int:
+            return s.count(min(s))
+
+        freqs = sorted(f(w) for w in words)
+        return [len(freqs) - bisect.bisect_right(freqs, f(q)) for q in queries]
+
+==== 1171_remove_zero_sum_consecutive_nodes_from_linked_list
+# LeetCode 1171 - Remove Zero Sum Consecutive Nodes from Linked List
+# https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        prefix = 0
+        seen: dict[int, ListNode] = {0: dummy}
+        node = dummy
+        while node:
+            prefix += node.val
+            seen[prefix] = node
+            node = node.next
+        prefix = 0
+        node = dummy
+        while node:
+            prefix += node.val
+            node.next = seen[prefix].next
+            node = node.next
+        return dummy.next
+
+==== 1172_dinner_plate_stacks
+# LeetCode 1172 - Dinner Plate Stacks
+# https://leetcode.com/problems/dinner-plate-stacks/
+
+import heapq
+
+
+class DinnerPlates:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.stacks: list[list[int]] = []
+        self.available: list[int] = []
+
+    def push(self, val: int) -> None:
+        while self.available and (
+            self.available[0] >= len(self.stacks) or len(self.stacks[self.available[0]]) == self.capacity
+        ):
+            heapq.heappop(self.available)
+        if not self.available:
+            self.stacks.append([])
+            heapq.heappush(self.available, len(self.stacks) - 1)
+        idx = self.available[0]
+        self.stacks[idx].append(val)
+        if len(self.stacks[idx]) == self.capacity:
+            heapq.heappop(self.available)
+
+    def pop(self) -> int:
+        while self.stacks and not self.stacks[-1]:
+            self.stacks.pop()
+        return self.popAtStack(len(self.stacks) - 1) if self.stacks else -1
+
+    def popAtStack(self, index: int) -> int:
+        if index < 0 or index >= len(self.stacks) or not self.stacks[index]:
+            return -1
+        if len(self.stacks[index]) == self.capacity:
+            heapq.heappush(self.available, index)
+        return self.stacks[index].pop()
+
+==== 1175_prime_arrangements
+# LeetCode 1175 - Prime Arrangements
+# https://leetcode.com/problems/prime-arrangements/
+
+import math
+
+
+class Solution:
+    def numPrimeArrangements(self, n: int) -> int:
+        MOD = 10**9 + 7
+
+        def is_prime(x: int) -> bool:
+            if x < 2:
+                return False
+            for d in range(2, int(x**0.5) + 1):
+                if x % d == 0:
+                    return False
+            return True
+
+        primes = sum(1 for i in range(1, n + 1) if is_prime(i))
+        return (math.factorial(primes) * math.factorial(n - primes)) % MOD
+
+==== 1176_diet_plan_performance
+# LeetCode 1176 - Diet Plan Performance
+# https://leetcode.com/problems/diet-plan-performance/
+
+class Solution:
+    def dietPlanPerformance(self, calories: list[int], k: int, lower: int, upper: int) -> int:
+        window = sum(calories[:k])
+        ans = 0
+        if window < lower:
+            ans -= 1
+        elif window > upper:
+            ans += 1
+        for i in range(k, len(calories)):
+            window += calories[i] - calories[i - k]
+            if window < lower:
+                ans -= 1
+            elif window > upper:
+                ans += 1
+        return ans
+
+==== 1177_can_make_palindrome_from_substring
+# LeetCode 1177 - Can Make Palindrome from Substring
+# https://leetcode.com/problems/can-make-palindrome-from-substring/
+
+class Solution:
+    def canMakePaliQueries(self, s: str, queries: list[list[int]]) -> list[bool]:
+        prefix = [0]
+        mask = 0
+        for ch in s:
+            mask ^= 1 << (ord(ch) - 97)
+            prefix.append(mask)
+        ans = []
+        for left, right, k in queries:
+            bits = (prefix[right + 1] ^ prefix[left]).bit_count()
+            ans.append(bits // 2 <= k)
+        return ans
+
+==== 1178_number_of_valid_words_for_each_puzzle
+# LeetCode 1178 - Number of Valid Words for Each Puzzle
+# https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+
+from collections import Counter
+
+
+class Solution:
+    def findNumOfValidWords(self, words: list[str], puzzles: list[str]) -> list[int]:
+        def mask_of(s: str) -> int:
+            mask = 0
+            for ch in s:
+                mask |= 1 << (ord(ch) - 97)
+            return mask
+
+        freq = Counter(mask_of(w) for w in words)
+        ans = []
+        for puzzle in puzzles:
+            first = 1 << (ord(puzzle[0]) - 97)
+            full = mask_of(puzzle)
+            sub = full
+            total = 0
+            while True:
+                if sub & first:
+                    total += freq[sub]
+                if sub == 0:
+                    break
+                sub = (sub - 1) & full
+            ans.append(total)
+        return ans
+
+==== 1180_count_substrings_with_only_one_distinct_letter
+# LeetCode 1180 - Count Substrings with Only One Distinct Letter
+# https://leetcode.com/problems/count-substrings-with-only-one-distinct-letter/
+
+class Solution:
+    def countLetters(self, s: str) -> int:
+        ans = length = 1
+        for i in range(1, len(s)):
+            length = length + 1 if s[i] == s[i - 1] else 1
+            ans += length
+        return ans
+
+==== 1181_before_and_after_puzzle
+# LeetCode 1181 - Before and After Puzzle
+# https://leetcode.com/problems/before-and-after-puzzle/
+
+class Solution:
+    def beforeAndAfterPuzzles(self, phrases: list[str]) -> list[str]:
+        split = [p.split() for p in phrases]
+        result: set[str] = set()
+        for i in range(len(split)):
+            for j in range(len(split)):
+                if i == j:
+                    continue
+                if split[i][-1] == split[j][0]:
+                    result.add(" ".join(split[i] + split[j][1:]))
+        return sorted(result)
+
+==== 1182_shortest_distance_to_target_color
+# LeetCode 1182 - Shortest Distance to Target Color
+# https://leetcode.com/problems/shortest-distance-to-target-color/
+
+from collections import defaultdict
+import bisect
+
+
+class Solution:
+    def shortestDistanceColor(self, colors: list[int], queries: list[list[int]]) -> list[int]:
+        pos: dict[int, list[int]] = defaultdict(list)
+        for i, c in enumerate(colors):
+            pos[c].append(i)
+        ans = []
+        for i, c in queries:
+            if c not in pos:
+                ans.append(-1)
+                continue
+            arr = pos[c]
+            idx = bisect.bisect_left(arr, i)
+            best = float("inf")
+            if idx < len(arr):
+                best = min(best, arr[idx] - i)
+            if idx:
+                best = min(best, i - arr[idx - 1])
+            ans.append(best if best != float("inf") else -1)
+        return ans
+
+==== 1183_maximum_number_of_ones
+# LeetCode 1183 - Maximum Number of Ones
+# https://leetcode.com/problems/maximum-number-of-ones/
+
+class Solution:
+    def maximumNumberOfOnes(self, width: int, height: int, sideLength: int, maxOnes: int) -> int:
+        counts = []
+        for r in range(sideLength):
+            for c in range(sideLength):
+                rows = (height - r + sideLength - 1) // sideLength
+                cols = (width - c + sideLength - 1) // sideLength
+                counts.append(rows * cols)
+        counts.sort(reverse=True)
+        return sum(counts[:maxOnes])
+
+==== 1184_distance_between_bus_stops
+# LeetCode 1184 - Distance Between Bus Stops
+# https://leetcode.com/problems/distance-between-bus-stops/
+
+class Solution:
+    def distanceBetweenBusStops(self, distance: list[int], start: int, destination: int) -> int:
+        if start > destination:
+            start, destination = destination, start
+        clockwise = sum(distance[start:destination])
+        return min(clockwise, sum(distance) - clockwise)
+
+==== 1185_day_of_the_week
+# LeetCode 1185 - Day of the Week
+# https://leetcode.com/problems/day-of-the-week/
+
+import datetime
+
+
+class Solution:
+    def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
+        return datetime.date(year, month, day).strftime("%A")

@@ -2,5 +2,6 @@
 // https://leetcode.com/problems/concatenation-of-array/
 
 object Solution {
-  def solve(): Unit = {}
+  def getConcatenation(nums: Array[Int]): Array[Int] =
+    nums ++ nums
 }

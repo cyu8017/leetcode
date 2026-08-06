@@ -1,6 +1,3 @@
-﻿// LeetCode 1403 - Minimum Subsequence in Non-Increasing Order
-// https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/
-
 object Solution {
-  def solve(): Unit = {}
+  def minSubsequence(nums: Array[Int]): List[Int] = { val total=nums.sum; var sum=0; val out=scala.collection.mutable.ListBuffer[Int](); nums.sorted(Ordering.Int.reverse).foreach(x => if(sum <= total-sum) { out += x; sum += x }); out.toList }
 }

@@ -1,6 +1,14 @@
-﻿// LeetCode 1379 - Find a Corresponding Node of a Binary Tree in a Clone of That Tree
-// https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/
+import scala.collection.mutable
 
+class TreeNode(_value: Int = 0, _left: TreeNode = null, _right: TreeNode = null) {
+  var value: Int = _value
+  var left: TreeNode = _left
+  var right: TreeNode = _right
+}
 object Solution {
-  def solve(): Unit = {}
+  def getTargetCopy(original: TreeNode, cloned: TreeNode, target: TreeNode): TreeNode = {
+    val stack = mutable.Stack((original, cloned))
+    while (stack.nonEmpty) { val (node, copy) = stack.pop(); if (node eq target) return copy; if (node.left != null) stack.push((node.left, copy.left)); if (node.right != null) stack.push((node.right, copy.right)) }
+    null
+  }
 }

@@ -1,6 +1,11 @@
-﻿// LeetCode 1475 - Final Prices With a Special Discount in a Shop
-// https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
-
 object Solution {
-  def solve(): Unit = {}
+  def finalPrices(prices: Array[Int]): Array[Int] = {
+    val answer = prices.clone()
+    val stack = scala.collection.mutable.Stack.empty[Int]
+    for (i <- prices.indices) {
+      while (stack.nonEmpty && prices(stack.top) >= prices(i)) answer(stack.pop()) -= prices(i)
+      stack.push(i)
+    }
+    answer
+  }
 }

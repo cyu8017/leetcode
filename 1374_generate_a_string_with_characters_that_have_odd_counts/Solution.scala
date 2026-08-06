@@ -1,6 +1,3 @@
-﻿// LeetCode 1374 - Generate a String With Characters That Have Odd Counts
-// https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/
-
 object Solution {
-  def solve(): Unit = {}
+  def generateTheString(n: Int): String = if (n % 2 == 1) "a" * n else "a" * (n - 1) + "b"
 }

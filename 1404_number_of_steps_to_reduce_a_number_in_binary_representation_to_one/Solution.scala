@@ -1,6 +1,3 @@
-﻿// LeetCode 1404 - Number of Steps to Reduce a Number in Binary Representation to One
-// https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-representation-to-one/
-
 object Solution {
-  def solve(): Unit = {}
+  def numSteps(s: String): Int = { var steps=0; var carry=0; for(i <- s.length-1 to 1 by -1) { if(s(i)-'0'+carry == 1) { steps += 2; carry=1 } else steps += 1 }; steps+carry }
 }

@@ -1,0 +1,5312 @@
+##### FOLDER 1100_find_k_length_substrings_with_no_repeated_characters STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numKLenSubstrNoRepeats",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1100 - Find K-Length Substrings With No Repeated Characters
+# https://leetcode.com/problems/find-k-length-substrings-with-no-repeated-characters/
+
+class Solution:
+    def numKLenSubstrNoRepeats(self, s: str, k: int) -> int:
+        if k > len(s):
+            return 0
+        from collections import Counter
+
+        window = Counter(s[:k])
+        ans = 1 if len(window) == k else 0
+        for i in range(k, len(s)):
+            window[s[i]] += 1
+            left = s[i - k]
+            window[left] -= 1
+            if window[left] == 0:
+                del window[left]
+            if len(window) == k:
+                ans += 1
+        return ans
+
+
+##### FOLDER 1101_the_earliest_moment_when_everyone_become_friends STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "earliestAcq",
+  "paramOrder": [
+    "logs",
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1101 - The Earliest Moment When Everyone Become Friends
+# https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/
+
+class Solution:
+    def earliestAcq(self, logs: list[list[int]], n: int) -> int:
+        parent = list(range(n))
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        def union(a: int, b: int) -> bool:
+            ra, rb = find(a), find(b)
+            if ra == rb:
+                return False
+            parent[rb] = ra
+            return True
+
+        logs.sort()
+        components = n
+        for t, a, b in logs:
+            if union(a, b):
+                components -= 1
+                if components == 1:
+                    return t
+        return -1
+
+
+##### FOLDER 1102_path_with_maximum_minimum_value STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maximumMinimumPath",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1102 - Path With Maximum Minimum Value
+# https://leetcode.com/problems/path-with-maximum-minimum-value/
+
+import heapq
+
+
+class Solution:
+    def maximumMinimumPath(self, grid: list[list[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        heap = [(-grid[0][0], 0, 0)]
+        seen = {(0, 0)}
+        while heap:
+            val, r, c = heapq.heappop(heap)
+            if r == m - 1 and c == n - 1:
+                return -val
+            for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < m and 0 <= nc < n and (nr, nc) not in seen:
+                    seen.add((nr, nc))
+                    heapq.heappush(heap, (max(val, -grid[nr][nc]), nr, nc))
+        return grid[0][0]
+
+
+##### FOLDER 1103_distribute_candies_to_people STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "distributeCandies",
+  "paramOrder": [
+    "candies",
+    "num_people"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1103 - Distribute Candies to People
+# https://leetcode.com/problems/distribute-candies-to-people/
+
+class Solution:
+    def distributeCandies(self, candies: int, num_people: int) -> list[int]:
+        ans = [0] * num_people
+        give = 1
+        i = 0
+        while candies:
+            take = min(give, candies)
+            ans[i] += take
+            candies -= take
+            give += 1
+            i = (i + 1) % num_people
+        return ans
+
+
+##### FOLDER 1104_path_in_zigzag_labelled_binary_tree STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "pathInZigZagTree",
+  "paramOrder": [
+    "label"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1104 - Path In Zigzag Labelled Binary Tree
+# https://leetcode.com/problems/path-in-zigzag-labelled-binary-tree/
+
+class Solution:
+    def pathInZigZagTree(self, label: int) -> list[int]:
+        path = [label]
+        while label > 1:
+            level = label.bit_length() - 1
+            label >>= 1
+            label = (1 << level) - 1 - label + (1 << (level - 1))
+            path.append(label)
+        return path[::-1]
+
+
+##### FOLDER 1105_filling_bookcase_shelves STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minHeightShelves",
+  "paramOrder": [
+    "books",
+    "shelfWidth"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1105 - Filling Bookcase Shelves
+# https://leetcode.com/problems/filling-bookcase-shelves/
+
+class Solution:
+    def minHeightShelves(self, books: list[list[int]], shelfWidth: int) -> int:
+        n = len(books)
+        dp = [0] * (n + 1)
+        for i in range(1, n + 1):
+            width = height = 0
+            dp[i] = float("inf")
+            for j in range(i, 0, -1):
+                w, h = books[j - 1]
+                width += w
+                if width > shelfWidth:
+                    break
+                height = max(height, h)
+                dp[i] = min(dp[i], dp[j - 1] + height)
+        return dp[n]
+
+
+##### FOLDER 1106_parsing_a_boolean_expression STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "parseBoolExpr",
+  "paramOrder": [
+    "expression"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1106 - Parsing A Boolean Expression
+# https://leetcode.com/problems/parsing-a-boolean-expression/
+
+class Solution:
+    def parseBoolExpr(self, expression: str) -> bool:
+        stack: list[str] = []
+        for ch in expression:
+            if ch == ")":
+                values: list[bool] = []
+                while stack and stack[-1] not in "&|!":
+                    token = stack.pop()
+                    if token in "tf":
+                        values.append(token == "t")
+                op = stack.pop()
+                if op == "!":
+                    stack.append("t" if not values[0] else "f")
+                elif op == "&":
+                    stack.append("t" if all(values) else "f")
+                else:
+                    stack.append("t" if any(values) else "f")
+            elif ch != ",":
+                stack.append(ch)
+        return stack[-1] == "t"
+
+
+##### FOLDER 1108_defanging_an_ip_address STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "defangIPaddr",
+  "paramOrder": [
+    "address"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1108 - Defanging an IP Address
+# https://leetcode.com/problems/defanging-an-ip-address/
+
+class Solution:
+    def defangIPaddr(self, address: str) -> str:
+        return address.replace(".", "[.]")
+
+
+##### FOLDER 1109_corporate_flight_bookings STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "corpFlightBookings",
+  "paramOrder": [
+    "bookings",
+    "n"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1109 - Corporate Flight Bookings
+# https://leetcode.com/problems/corporate-flight-bookings/
+
+class Solution:
+    def corpFlightBookings(self, bookings: list[list[int]], n: int) -> list[int]:
+        diff = [0] * (n + 1)
+        for first, last, seats in bookings:
+            diff[first - 1] += seats
+            diff[last] -= seats
+        ans = []
+        cur = 0
+        for i in range(n):
+            cur += diff[i]
+            ans.append(cur)
+        return ans
+
+
+##### FOLDER 1110_delete_nodes_and_return_forest STUB=False
+###CONFIG
+{
+  "class": "Solution",
+  "method": "delNodes",
+  "paramOrder": [
+    "root",
+    "to_delete"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "treenode[]"
+  }
+}
+
+###PYTHON
+# LeetCode 1110 - Delete Nodes And Return Forest
+# https://leetcode.com/problems/delete-nodes-and-return-forest/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def delNodes(self, root: Optional[TreeNode], to_delete: list[int]) -> list[TreeNode]:
+        delete = set(to_delete)
+        forest: list[TreeNode] = []
+
+        def dfs(node: Optional[TreeNode], is_root: bool) -> Optional[TreeNode]:
+            if not node:
+                return None
+            removed = node.val in delete
+            if is_root and not removed:
+                forest.append(node)
+            node.left = dfs(node.left, removed)
+            node.right = dfs(node.right, removed)
+            return None if removed else node
+
+        dfs(root, True)
+        return forest
+
+
+##### FOLDER 1111_maximum_nesting_depth_of_two_valid_parentheses_strings STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxDepthAfterSplit",
+  "paramOrder": [
+    "seq"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1111 - Maximum Nesting Depth of Two Valid Parentheses Strings
+# https://leetcode.com/problems/maximum-nesting-depth-of-two-valid-parentheses-strings/
+
+class Solution:
+    def maxDepthAfterSplit(self, seq: str) -> list[int]:
+        depth = 0
+        ans = [0] * len(seq)
+        for i, ch in enumerate(seq):
+            if ch == "(":
+                ans[i] = depth % 2
+                depth += 1
+            else:
+                depth -= 1
+                ans[i] = depth % 2
+        return ans
+
+
+##### FOLDER 1114_print_in_order STUB=True
+###CONFIG
+{
+  "class": "Foo",
+  "method": "first",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1114 - Print in Order
+# https://leetcode.com/problems/print-in-order/
+
+import threading
+
+
+class Foo:
+    def __init__(self) -> None:
+        self._second = threading.Lock()
+        self._second.acquire()
+        self._third = threading.Lock()
+        self._third.acquire()
+
+    def first(self, output=None) -> None:
+        write = output.write if output else (lambda s: print(s, end=""))
+        write("first")
+        self._second.release()
+
+    def second(self, output=None) -> None:
+        write = output.write if output else (lambda s: print(s, end=""))
+        self._second.acquire()
+        write("second")
+        self._third.release()
+
+    def third(self, output=None) -> None:
+        write = output.write if output else (lambda s: print(s, end=""))
+        self._third.acquire()
+        write("third")
+
+
+##### FOLDER 1115_print_foobar_alternately STUB=True
+###CONFIG
+{
+  "class": "FooBar",
+  "method": "foo",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1115 - Print FooBar Alternately
+# https://leetcode.com/problems/print-foobar-alternately/
+
+import threading
+
+
+class FooBar:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self._foo = threading.Semaphore(1)
+        self._bar = threading.Semaphore(0)
+
+    def foo(self, output=None) -> None:
+        write = output.write if output else (lambda s: print(s, end=""))
+        for _ in range(self.n):
+            self._foo.acquire()
+            write("foo")
+            self._bar.release()
+
+    def bar(self, output=None) -> None:
+        write = output.write if output else (lambda s: print(s, end=""))
+        for _ in range(self.n):
+            self._bar.acquire()
+            write("bar")
+            self._foo.release()
+
+
+##### FOLDER 1116_print_zero_even_odd STUB=True
+###CONFIG
+{
+  "class": "ZeroEvenOdd",
+  "method": "zero",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1116 - Print Zero Even Odd
+# https://leetcode.com/problems/print-zero-even-odd/
+
+import threading
+
+
+class ZeroEvenOdd:
+    def __init__(self, n: int) -> None:
+        self.n = n
+        self._zero = threading.Semaphore(1)
+        self._even = threading.Semaphore(0)
+        self._odd = threading.Semaphore(0)
+
+    def zero(self, printNumber) -> None:
+        for i in range(self.n):
+            self._zero.acquire()
+            printNumber(0)
+            if i % 2 == 0:
+                self._odd.release()
+            else:
+                self._even.release()
+
+    def even(self, printNumber) -> None:
+        for num in range(2, self.n + 1, 2):
+            self._even.acquire()
+            printNumber(num)
+            self._zero.release()
+
+    def odd(self, printNumber) -> None:
+        for num in range(1, self.n + 1, 2):
+            self._odd.acquire()
+            printNumber(num)
+            self._zero.release()
+
+
+##### FOLDER 1117_building_h2o STUB=True
+###CONFIG
+{
+  "class": "H2O",
+  "method": "hydrogen",
+  "paramOrder": [
+    "water"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1117 - Building H2O
+# https://leetcode.com/problems/building-h2o/
+
+import threading
+
+
+class H2O:
+    def __init__(self) -> None:
+        self._hydrogen = threading.Semaphore(2)
+        self._oxygen = threading.Semaphore(0)
+        self._lock = threading.Lock()
+        self._count = 0
+
+    def hydrogen(self, releaseHydrogen) -> None:
+        self._hydrogen.acquire()
+        with self._lock:
+            self._count += 1
+            if self._count == 2:
+                self._oxygen.release()
+        releaseHydrogen()
+
+    def oxygen(self, releaseOxygen) -> None:
+        self._oxygen.acquire()
+        releaseOxygen()
+        with self._lock:
+            self._count = 0
+            self._hydrogen.release()
+            self._hydrogen.release()
+
+
+##### FOLDER 1118_number_of_days_in_a_month STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numberOfDays",
+  "paramOrder": [
+    "year",
+    "month"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1118 - Number of Days in a Month
+# https://leetcode.com/problems/number-of-days-in-a-month/
+
+import calendar
+
+
+class Solution:
+    def numberOfDays(self, year: int, month: int) -> int:
+        return calendar.monthrange(year, month)[1]
+
+
+##### FOLDER 1119_remove_vowels_from_a_string STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeVowels",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1119 - Remove Vowels from a String
+# https://leetcode.com/problems/remove-vowels-from-a-string/
+
+class Solution:
+    def removeVowels(self, s: str) -> str:
+        vowels = set("aeiou")
+        return "".join(ch for ch in s if ch not in vowels)
+
+
+##### FOLDER 1120_maximum_average_subtree STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maximumAverageSubtree",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  }
+}
+
+###PYTHON
+# LeetCode 1120 - Maximum Average Subtree
+# https://leetcode.com/problems/maximum-average-subtree/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def maximumAverageSubtree(self, root: Optional[TreeNode]) -> float:
+        best = 0.0
+
+        def dfs(node: Optional[TreeNode]) -> tuple[int, int]:
+            nonlocal best
+            if not node:
+                return 0, 0
+            left_sum, left_count = dfs(node.left)
+            right_sum, right_count = dfs(node.right)
+            total_sum = left_sum + right_sum + node.val
+            total_count = left_count + right_count + 1
+            best = max(best, total_sum / total_count)
+            return total_sum, total_count
+
+        dfs(root)
+        return best
+
+
+##### FOLDER 1121_divide_array_into_increasing_sequences STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "canDivideIntoSubsequences",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1121 - Divide Array Into Increasing Sequences
+# https://leetcode.com/problems/divide-array-into-increasing-sequences/
+
+from collections import Counter
+
+
+class Solution:
+    def canDivideIntoSubsequences(self, nums: list[int], k: int) -> bool:
+        return len(nums) >= k * max(Counter(nums).values())
+
+
+##### FOLDER 1122_relative_sort_array STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "relativeSortArray",
+  "paramOrder": [
+    "arr1",
+    "arr2"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1122 - Relative Sort Array
+# https://leetcode.com/problems/relative-sort-array/
+
+from collections import Counter
+
+
+class Solution:
+    def relativeSortArray(self, arr1: list[int], arr2: list[int]) -> list[int]:
+        count = Counter(arr1)
+        ans: list[int] = []
+        for x in arr2:
+            ans.extend([x] * count.pop(x, 0))
+        for x in sorted(count):
+            ans.extend([x] * count[x])
+        return ans
+
+
+##### FOLDER 1123_lowest_common_ancestor_of_deepest_leaves STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "lcaDeepestLeaves",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode",
+    "return": "treenode"
+  }
+}
+
+###PYTHON
+# LeetCode 1123 - Lowest Common Ancestor of Deepest Leaves
+# https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def lcaDeepestLeaves(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def dfs(node: Optional[TreeNode]) -> tuple[TreeNode, int]:
+            if not node:
+                return None, 0
+            left_node, left_depth = dfs(node.left)
+            right_node, right_depth = dfs(node.right)
+            if left_depth > right_depth:
+                return left_node, left_depth + 1
+            if right_depth > left_depth:
+                return right_node, right_depth + 1
+            return node, left_depth + 1
+
+        return dfs(root)[0]
+
+
+##### FOLDER 1124_longest_well_performing_interval STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "longestWPI",
+  "paramOrder": [
+    "hours"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1124 - Longest Well-Performing Interval
+# https://leetcode.com/problems/longest-well-performing-interval/
+
+class Solution:
+    def longestWPI(self, hours: list[int]) -> int:
+        score = 0
+        first_seen: dict[int, int] = {0: -1}
+        ans = 0
+        for i, h in enumerate(hours):
+            score += 1 if h > 8 else -1
+            if score > 0:
+                ans = i + 1
+            elif score - 1 in first_seen:
+                ans = max(ans, i - first_seen[score - 1])
+            first_seen.setdefault(score, i)
+        return ans
+
+
+##### FOLDER 1125_smallest_sufficient_team STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "smallestSufficientTeam",
+  "paramOrder": [
+    "req_skills",
+    "people"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1125 - Smallest Sufficient Team
+# https://leetcode.com/problems/smallest-sufficient-team/
+
+from functools import lru_cache
+
+
+class Solution:
+    def smallestSufficientTeam(self, req_skills: list[str], people: list[list[str]]) -> list[int]:
+        skill_id = {skill: i for i, skill in enumerate(req_skills)}
+        person_masks = []
+        for skills in people:
+            mask = 0
+            for skill in skills:
+                mask |= 1 << skill_id[skill]
+            person_masks.append(mask)
+        target = (1 << len(req_skills)) - 1
+
+        @lru_cache(None)
+        def dp(state: int) -> tuple[int, ...]:
+            if state == target:
+                return ()
+            best: tuple[int, ...] | None = None
+            for idx, mask in enumerate(person_masks):
+                next_state = state | mask
+                if next_state == state:
+                    continue
+                team = (idx,) + dp(next_state)
+                if best is None or len(team) < len(best):
+                    best = team
+            return best or ()
+
+        return list(dp(0))
+
+
+##### FOLDER 1128_number_of_equivalent_domino_pairs STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numEquivDominoPairs",
+  "paramOrder": [
+    "dominoes"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1128 - Number of Equivalent Domino Pairs
+# https://leetcode.com/problems/number-of-equivalent-domino-pairs/
+
+from collections import Counter
+
+
+class Solution:
+    def numEquivDominoPairs(self, dominoes: list[list[int]]) -> int:
+        keys = [tuple(sorted(d)) for d in dominoes]
+        ans = 0
+        for count in Counter(keys).values():
+            ans += count * (count - 1) // 2
+        return ans
+
+
+##### FOLDER 1129_shortest_path_with_alternating_colors STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "shortestAlternatingPaths",
+  "paramOrder": [
+    "n",
+    "redEdges",
+    "blueEdges"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1129 - Shortest Path with Alternating Colors
+# https://leetcode.com/problems/shortest-path-with-alternating-colors/
+
+from collections import defaultdict, deque
+
+
+class Solution:
+    def shortestAlternatingPaths(self, n: int, redEdges: list[list[int]], blueEdges: list[list[int]]) -> list[int]:
+        graph = [defaultdict(list), defaultdict(list)]
+        for u, v in redEdges:
+            graph[0][u].append(v)
+        for u, v in blueEdges:
+            graph[1][u].append(v)
+        ans = [-1] * n
+        queue = deque([(0, 0, 0), (0, 1, 0)])
+        seen = {(0, 0), (0, 1)}
+        while queue:
+            node, color, dist = queue.popleft()
+            if ans[node] == -1:
+                ans[node] = dist
+            next_color = 1 - color
+            for nxt in graph[color][node]:
+                state = (nxt, next_color)
+                if state not in seen:
+                    seen.add(state)
+                    queue.append((nxt, next_color, dist + 1))
+        return ans
+
+
+##### FOLDER 1130_minimum_cost_tree_from_leaf_values STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "mctFromLeafValues",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1130 - Minimum Cost Tree From Leaf Values
+# https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
+
+class Solution:
+    def mctFromLeafValues(self, arr: list[int]) -> int:
+        stack = [float("inf")]
+        ans = 0
+        for x in arr:
+            while stack[-1] <= x:
+                mid = stack.pop()
+                ans += mid * min(stack[-1], x)
+            stack.append(x)
+        while len(stack) > 2:
+            ans += stack.pop() * stack[-1]
+        return ans
+
+
+##### FOLDER 1131_maximum_of_absolute_value_expression STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxAbsValExpr",
+  "paramOrder": [
+    "arr1",
+    "arr2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1131 - Maximum of Absolute Value Expression
+# https://leetcode.com/problems/maximum-of-absolute-value-expression/
+
+class Solution:
+    def maxAbsValExpr(self, arr1: list[int], arr2: list[int]) -> int:
+        n = len(arr1)
+        ans = 0
+        for p, q in ((1, 1), (1, -1), (-1, 1), (-1, -1)):
+            best = p * arr1[0] + q * arr2[0]
+            for i in range(1, n):
+                cur = p * arr1[i] + q * arr2[i] + i
+                ans = max(ans, cur - best)
+                best = min(best, p * arr1[i] + q * arr2[i] + i)
+        return ans
+
+
+##### FOLDER 1133_largest_unique_number STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "largestUniqueNumber",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1133 - Largest Unique Number
+# https://leetcode.com/problems/largest-unique-number/
+
+from collections import Counter
+
+
+class Solution:
+    def largestUniqueNumber(self, nums: list[int]) -> int:
+        count = Counter(nums)
+        ans = -1
+        for value, freq in count.items():
+            if freq == 1:
+                ans = max(ans, value)
+        return ans
+
+
+##### FOLDER 1134_armstrong_number STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "isArmstrong",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1134 - Armstrong Number
+# https://leetcode.com/problems/armstrong-number/
+
+class Solution:
+    def isArmstrong(self, n: int) -> bool:
+        digits = str(n)
+        power = len(digits)
+        return n == sum(int(d) ** power for d in digits)
+
+
+##### FOLDER 1135_connecting_cities_with_minimum_cost STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumCost",
+  "paramOrder": [
+    "n",
+    "connections"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1135 - Connecting Cities With Minimum Cost
+# https://leetcode.com/problems/connecting-cities-with-minimum-cost/
+
+class Solution:
+    def minimumCost(self, n: int, connections: list[list[int]]) -> int:
+        parent = list(range(n + 1))
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        def union(a: int, b: int) -> bool:
+            ra, rb = find(a), find(b)
+            if ra == rb:
+                return False
+            parent[rb] = ra
+            return True
+
+        connections.sort(key=lambda x: x[2])
+        cost = edges = 0
+        for a, b, w in connections:
+            if union(a, b):
+                cost += w
+                edges += 1
+                if edges == n - 1:
+                    return cost
+        return -1
+
+
+##### FOLDER 1136_parallel_courses STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumSemesters",
+  "paramOrder": [
+    "n",
+    "relations"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1136 - Parallel Courses
+# https://leetcode.com/problems/parallel-courses/
+
+from collections import deque
+
+
+class Solution:
+    def minimumSemesters(self, n: int, relations: list[list[int]]) -> int:
+        graph = [[] for _ in range(n + 1)]
+        indegree = [0] * (n + 1)
+        for prev, nxt in relations:
+            graph[prev].append(nxt)
+            indegree[nxt] += 1
+        queue = deque(i for i in range(1, n + 1) if indegree[i] == 0)
+        semesters = 0
+        taken = 0
+        while queue:
+            semesters += 1
+            for _ in range(len(queue)):
+                course = queue.popleft()
+                taken += 1
+                for nxt in graph[course]:
+                    indegree[nxt] -= 1
+                    if indegree[nxt] == 0:
+                        queue.append(nxt)
+        return semesters if taken == n else -1
+
+
+##### FOLDER 1137_n_th_tribonacci_number STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "tribonacci",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1137 - N-th Tribonacci Number
+# https://leetcode.com/problems/n-th-tribonacci-number/
+
+class Solution:
+    def tribonacci(self, n: int) -> int:
+        if n == 0:
+            return 0
+        if n <= 2:
+            return 1
+        a, b, c = 0, 1, 1
+        for _ in range(3, n + 1):
+            a, b, c = b, c, a + b + c
+        return c
+
+
+##### FOLDER 1138_alphabet_board_path STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "alphabetBoardPath",
+  "paramOrder": [
+    "target"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1138 - Alphabet Board Path
+# https://leetcode.com/problems/alphabet-board-path/
+
+class Solution:
+    def alphabetBoardPath(self, target: str) -> str:
+        row, col = 0, 0
+        ans: list[str] = []
+
+        def move_to(r: int, c: int) -> None:
+            nonlocal row, col
+            while row < r:
+                ans.append("D")
+                row += 1
+            while row > r:
+                ans.append("U")
+                row -= 1
+            while col < c:
+                ans.append("R")
+                col += 1
+            while col > c:
+                ans.append("L")
+                col -= 1
+
+        for ch in target:
+            r, c = divmod(ord(ch) - ord("a"), 5)
+            if c < col and row == r:
+                while col > c:
+                    ans.append("L")
+                    col -= 1
+            else:
+                move_to(r, c)
+            ans.append("!")
+        return "".join(ans)
+
+
+##### FOLDER 1139_largest_1_bordered_square STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "largest1BorderedSquare",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1139 - Largest 1-Bordered Square
+# https://leetcode.com/problems/largest-1-bordered-square/
+
+class Solution:
+    def largest1BorderedSquare(self, grid: list[list[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        left = [[0] * n for _ in range(m)]
+        up = [[0] * n for _ in range(m)]
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c]:
+                    left[r][c] = 1 + (left[r][c - 1] if c else 0)
+                    up[r][c] = 1 + (up[r - 1][c] if r else 0)
+        best = 0
+        for r in range(m):
+            for c in range(n):
+                if not grid[r][c]:
+                    continue
+                limit = min(left[r][c], up[r][c])
+                for size in range(limit, 0, -1):
+                    if left[r - size + 1][c] >= size and up[r][c - size + 1] >= size:
+                        best = max(best, size)
+                        break
+        return best * best
+
+
+##### FOLDER 1140_stone_game_ii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "stoneGameII",
+  "paramOrder": [
+    "piles"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1140 - Stone Game II
+# https://leetcode.com/problems/stone-game-ii/
+
+from functools import lru_cache
+
+
+class Solution:
+    def stoneGameII(self, piles: list[int]) -> int:
+        n = len(piles)
+        suffix = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            suffix[i] = suffix[i + 1] + piles[i]
+
+        @lru_cache(None)
+        def dfs(i: int, m: int) -> int:
+            if i >= n:
+                return 0
+            if m + i >= n:
+                return suffix[i]
+            return suffix[i] - min(
+                dfs(i + x, max(x, m)) for x in range(1, min(m * 2, n - i) + 1)
+            )
+
+        return dfs(0, 1)
+
+
+##### FOLDER 1143_longest_common_subsequence STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "longestCommonSubsequence",
+  "paramOrder": [
+    "text1",
+    "text2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1143 - Longest Common Subsequence
+# https://leetcode.com/problems/longest-common-subsequence/
+
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m, n = len(text1), len(text2)
+        dp = [0] * (n + 1)
+        for i in range(1, m + 1):
+            prev = 0
+            for j in range(1, n + 1):
+                cur = dp[j]
+                if text1[i - 1] == text2[j - 1]:
+                    dp[j] = prev + 1
+                else:
+                    dp[j] = max(dp[j], dp[j - 1])
+                prev = cur
+        return dp[n]
+
+
+##### FOLDER 1144_decrease_elements_to_make_array_zigzag STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "movesToMakeZigzag",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1144 - Decrease Elements To Make Array Zigzag
+# https://leetcode.com/problems/decrease-elements-to-make-array-zigzag/
+
+class Solution:
+    def movesToMakeZigzag(self, nums: list[int]) -> int:
+        def cost(start: int) -> int:
+            ans = 0
+            for i in range(start, len(nums), 2):
+                left = nums[i - 1] if i else float("inf")
+                right = nums[i + 1] if i + 1 < len(nums) else float("inf")
+                ans += max(0, nums[i] - min(left, right) + 1)
+            return ans
+
+        return min(cost(0), cost(1))
+
+
+##### FOLDER 1145_binary_tree_coloring_game STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "btreeGameWinningMove",
+  "paramOrder": [
+    "root",
+    "n",
+    "x"
+  ],
+  "types": {
+    "root": "treenode"
+  }
+}
+
+###PYTHON
+# LeetCode 1145 - Binary Tree Coloring Game
+# https://leetcode.com/problems/binary-tree-coloring-game/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def btreeGameWinningMove(self, root: Optional[TreeNode], n: int, x: int) -> bool:
+        left = right = 0
+
+        def dfs(node: Optional[TreeNode]) -> int:
+            nonlocal left, right
+            if not node:
+                return 0
+            l, r = dfs(node.left), dfs(node.right)
+            if node.val == x:
+                left, right = l, r
+            return l + r + 1
+
+        dfs(root)
+        return max(left, right, n - left - right - 1) > n // 2
+
+
+##### FOLDER 1146_snapshot_array STUB=True
+###CONFIG
+{
+  "class": "SnapshotArray",
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+# LeetCode 1146 - Snapshot Array
+# https://leetcode.com/problems/snapshot-array/
+
+import bisect
+
+
+class SnapshotArray:
+    def __init__(self, length: int):
+        self.snap_id = 0
+        self.data = [[(0, 0)] for _ in range(length)]
+
+    def set(self, index: int, val: int) -> None:
+        hist = self.data[index]
+        if hist[-1][0] == self.snap_id:
+            hist[-1] = (self.snap_id, val)
+        else:
+            hist.append((self.snap_id, val))
+
+    def snap(self) -> int:
+        self.snap_id += 1
+        return self.snap_id - 1
+
+    def get(self, index: int, snap_id: int) -> int:
+        hist = self.data[index]
+        i = bisect.bisect_right(hist, (snap_id, float("inf"))) - 1
+        return hist[i][1]
+
+
+##### FOLDER 1147_longest_chunked_palindrome_decomposition STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "longestDecomposition",
+  "paramOrder": [
+    "text"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1147 - Longest Chunked Palindrome Decomposition
+# https://leetcode.com/problems/longest-chunked-palindrome-decomposition/
+
+class Solution:
+    def longestDecomposition(self, text: str) -> int:
+        n = len(text)
+        ans = 0
+        i = 0
+        while i < n - i:
+            found = False
+            for length in range(1, (n - 2 * i) // 2 + 1):
+                if text[i : i + length] == text[n - i - length : n - i]:
+                    ans += 2
+                    i += length
+                    found = True
+                    break
+            if not found:
+                ans += 1
+                break
+        return ans
+
+
+##### FOLDER 1150_check_if_a_number_is_majority_element_in_a_sorted_array STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "isMajorityElement",
+  "paramOrder": [
+    "nums",
+    "target"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1150 - Check If a Number Is Majority Element in a Sorted Array
+# https://leetcode.com/problems/check-if-a-number-is-majority-element-in-a-sorted-array/
+
+import bisect
+
+
+class Solution:
+    def isMajorityElement(self, nums: list[int], target: int) -> bool:
+        left = bisect.bisect_left(nums, target)
+        right = bisect.bisect_right(nums, target)
+        return right - left > len(nums) // 2
+
+
+##### FOLDER 1151_minimum_swaps_to_group_all_1s_together STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minSwaps",
+  "paramOrder": [
+    "data"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1151 - Minimum Swaps to Group All 1's Together
+# https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together/
+
+class Solution:
+    def minSwaps(self, data: list[int]) -> int:
+        ones = sum(data)
+        if ones <= 1:
+            return 0
+        cur = sum(data[:ones])
+        best = cur
+        for i in range(ones, len(data)):
+            cur += data[i] - data[i - ones]
+            best = max(best, cur)
+        return ones - best
+
+
+##### FOLDER 1152_analyze_user_website_visit_pattern STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "mostVisitedPattern",
+  "paramOrder": [
+    "username",
+    "timestamp",
+    "website"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1152 - Analyze User Website Visit Pattern
+# https://leetcode.com/problems/analyze-user-website-visit-pattern/
+
+from collections import defaultdict
+
+
+class Solution:
+    def mostVisitedPattern(self, username: list[str], timestamp: list[int], website: list[str]) -> list[str]:
+        visits: dict[str, list[tuple[int, str]]] = defaultdict(list)
+        for user, t, site in zip(username, timestamp, website):
+            visits[user].append((t, site))
+        scores: dict[tuple[str, str, str], int] = defaultdict(int)
+        for user in visits:
+            sites = [site for _, site in sorted(visits[user])]
+            patterns = set()
+            for i in range(len(sites)):
+                for j in range(i + 1, len(sites)):
+                    for k in range(j + 1, len(sites)):
+                        patterns.add((sites[i], sites[j], sites[k]))
+            for pattern in patterns:
+                scores[pattern] += 1
+        best = min((-count, pattern) for pattern, count in scores.items())[1]
+        return list(best)
+
+
+##### FOLDER 1153_string_transforms_into_another_string STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "canConvert",
+  "paramOrder": [
+    "str1",
+    "str2"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1153 - String Transforms Into Another String
+# https://leetcode.com/problems/string-transforms-into-another-string/
+
+class Solution:
+    def canConvert(self, str1: str, str2: str) -> bool:
+        if str1 == str2:
+            return True
+        mapping: dict[str, str] = {}
+        for a, b in zip(str1, str2):
+            if a in mapping and mapping[a] != b:
+                return False
+            mapping[a] = b
+        return len(set(str2)) < 26
+
+
+##### FOLDER 1154_day_of_the_year STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "dayOfYear",
+  "paramOrder": [
+    "date"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1154 - Day of the Year
+# https://leetcode.com/problems/day-of-the-year/
+
+class Solution:
+    def dayOfYear(self, date: str) -> int:
+        year, month, day = map(int, date.split("-"))
+        leap = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+        days = [31, 29 if leap else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        return sum(days[: month - 1]) + day
+
+
+##### FOLDER 1155_number_of_dice_rolls_with_target_sum STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numRollsToTarget",
+  "paramOrder": [
+    "n",
+    "k",
+    "target"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1155 - Number of Dice Rolls With Target Sum
+# https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+
+class Solution:
+    def numRollsToTarget(self, n: int, k: int, target: int) -> int:
+        MOD = 10**9 + 7
+        dp = [0] * (target + 1)
+        dp[0] = 1
+        for _ in range(n):
+            new = [0] * (target + 1)
+            for s in range(target + 1):
+                if not dp[s]:
+                    continue
+                for face in range(1, k + 1):
+                    if s + face <= target:
+                        new[s + face] = (new[s + face] + dp[s]) % MOD
+            dp = new
+        return dp[target]
+
+
+##### FOLDER 1156_swap_for_longest_repeated_character_substring STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxRepOpt1",
+  "paramOrder": [
+    "text"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1156 - Swap For Longest Repeated Character Substring
+# https://leetcode.com/problems/swap-for-longest-repeated-character-substring/
+
+from collections import Counter
+
+
+class Solution:
+    def maxRepOpt1(self, text: str) -> int:
+        count = Counter(text)
+        n = len(text)
+        ans = 0
+        i = 0
+        while i < n:
+            j = i
+            while j < n and text[j] == text[i]:
+                j += 1
+            length = j - i
+            k = j + 1
+            while k < n and text[k] == text[i]:
+                k += 1
+            length2 = k - j - 1 if j < n else 0
+            ans = max(ans, min(length + length2 + 1, count[text[i]]))
+            i = j
+        return ans
+
+
+##### FOLDER 1157_online_majority_element_in_subarray STUB=True
+###CONFIG
+{
+  "class": "MajorityChecker",
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+# LeetCode 1157 - Online Majority Element In Subarray
+# https://leetcode.com/problems/online-majority-element-in-subarray/
+
+import bisect
+from collections import defaultdict
+
+
+class MajorityChecker:
+    def __init__(self, arr: list[int]):
+        self.arr = arr
+        self.pos: dict[int, list[int]] = defaultdict(list)
+        for i, x in enumerate(arr):
+            self.pos[x].append(i)
+
+    def query(self, left: int, right: int, threshold: int) -> int:
+        candidate = count = 0
+        for i in range(left, right + 1):
+            if count == 0:
+                candidate = self.arr[i]
+            count += 1 if self.arr[i] == candidate else -1
+        locs = self.pos[candidate]
+        freq = bisect.bisect_right(locs, right) - bisect.bisect_left(locs, left)
+        return candidate if freq >= threshold else -1
+
+
+##### FOLDER 1160_find_words_that_can_be_formed_by_characters STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countCharacters",
+  "paramOrder": [
+    "words",
+    "chars"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1160 - Find Words That Can Be Formed by Characters
+# https://leetcode.com/problems/find-words-that-can-be-formed-by-characters/
+
+from collections import Counter
+
+
+class Solution:
+    def countCharacters(self, words: list[str], chars: str) -> int:
+        avail = Counter(chars)
+        ans = 0
+        for word in words:
+            need = Counter(word)
+            if all(need[c] <= avail[c] for c in need):
+                ans += len(word)
+        return ans
+
+
+##### FOLDER 1161_maximum_level_sum_of_a_binary_tree STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxLevelSum",
+  "paramOrder": [
+    "root"
+  ],
+  "types": {
+    "root": "treenode"
+  }
+}
+
+###PYTHON
+# LeetCode 1161 - Maximum Level Sum of a Binary Tree
+# https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+from collections import deque
+
+
+class Solution:
+    def maxLevelSum(self, root: Optional[TreeNode]) -> int:
+        queue = deque([root])
+        best_sum = float("-inf")
+        best_level = level = 1
+        while queue:
+            total = 0
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                total += node.val
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+            if total > best_sum:
+                best_sum = total
+                best_level = level
+            level += 1
+        return best_level
+
+
+##### FOLDER 1162_as_far_from_land_as_possible STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxDistance",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1162 - As Far from Land as Possible
+# https://leetcode.com/problems/as-far-from-land-as-possible/
+
+from collections import deque
+
+
+class Solution:
+    def maxDistance(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+        queue = deque()
+        for r in range(n):
+            for c in range(n):
+                if grid[r][c] == 1:
+                    queue.append((r, c))
+        if not queue or len(queue) == n * n:
+            return -1
+        dist = -1
+        while queue:
+            dist += 1
+            for _ in range(len(queue)):
+                r, c = queue.popleft()
+                for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+                    if 0 <= nr < n and 0 <= nc < n and grid[nr][nc] == 0:
+                        grid[nr][nc] = 1
+                        queue.append((nr, nc))
+        return dist
+
+
+##### FOLDER 1163_last_substring_in_lexicographical_order STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "lastSubstring",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1163 - Last Substring in Lexicographical Order
+# https://leetcode.com/problems/last-substring-in-lexicographical-order/
+
+class Solution:
+    def lastSubstring(self, s: str) -> str:
+        i, j, k = 0, 1, 0
+        n = len(s)
+        while j + k < n:
+            if s[i + k] == s[j + k]:
+                k += 1
+                continue
+            if s[i + k] > s[j + k]:
+                j = j + k + 1
+            else:
+                i = max(i + k + 1, j)
+                j = i + 1
+            k = 0
+        return s[i:]
+
+
+##### FOLDER 1165_single_row_keyboard STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "calculateTime",
+  "paramOrder": [
+    "keyboard",
+    "word"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1165 - Single-Row Keyboard
+# https://leetcode.com/problems/single-row-keyboard/
+
+class Solution:
+    def calculateTime(self, keyboard: str, word: str) -> int:
+        pos = {ch: i for i, ch in enumerate(keyboard)}
+        ans = prev = 0
+        for ch in word:
+            ans += abs(pos[ch] - prev)
+            prev = pos[ch]
+        return ans
+
+
+##### FOLDER 1166_design_file_system STUB=True
+###CONFIG
+{
+  "class": "FileSystem",
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+# LeetCode 1166 - Design File System
+# https://leetcode.com/problems/design-file-system/
+
+class FileSystem:
+    def __init__(self):
+        self.paths: dict[str, int] = {"": -1}
+
+    def createPath(self, path: str, value: int) -> bool:
+        if path in self.paths:
+            return False
+        parent = path.rsplit("/", 1)[0]
+        if parent not in self.paths:
+            return False
+        self.paths[path] = value
+        return True
+
+    def get(self, path: str) -> int:
+        return self.paths.get(path, -1)
+
+
+##### FOLDER 1167_minimum_cost_to_connect_sticks STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "connectSticks",
+  "paramOrder": [
+    "sticks"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1167 - Minimum Cost to Connect Sticks
+# https://leetcode.com/problems/minimum-cost-to-connect-sticks/
+
+import heapq
+
+
+class Solution:
+    def connectSticks(self, sticks: list[int]) -> int:
+        if len(sticks) <= 1:
+            return 0
+        heapq.heapify(sticks)
+        ans = 0
+        while len(sticks) > 1:
+            cost = heapq.heappop(sticks) + heapq.heappop(sticks)
+            ans += cost
+            heapq.heappush(sticks, cost)
+        return ans
+
+
+##### FOLDER 1168_optimize_water_distribution_in_a_village STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minCostToSupplyWater",
+  "paramOrder": [
+    "n",
+    "wells",
+    "pipes"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1168 - Optimize Water Distribution in a Village
+# https://leetcode.com/problems/optimize-water-distribution-in-a-village/
+
+class Solution:
+    def minCostToSupplyWater(self, n: int, wells: list[int], pipes: list[list[int]]) -> int:
+        parent = list(range(n + 1))
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        edges = [[0, i + 1, w] for i, w in enumerate(wells)] + pipes
+        edges.sort(key=lambda e: e[2])
+        ans = 0
+        for a, b, cost in edges:
+            ra, rb = find(a), find(b)
+            if ra == rb:
+                continue
+            parent[rb] = ra
+            ans += cost
+        return ans
+
+
+##### FOLDER 1169_invalid_transactions STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "invalidTransactions",
+  "paramOrder": [
+    "transactions"
+  ],
+  "types": {
+    "return": "string[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1169 - Invalid Transactions
+# https://leetcode.com/problems/invalid-transactions/
+
+class Solution:
+    def invalidTransactions(self, transactions: list[str]) -> list[str]:
+        parsed = []
+        for t in transactions:
+            name, time, amount, city = t.split(",")
+            parsed.append((name, int(time), int(amount), city, t))
+        invalid = set()
+        for i, (name, time, amount, city, raw) in enumerate(parsed):
+            if amount > 1000:
+                invalid.add(raw)
+            for j, (name2, time2, amount2, city2, raw2) in enumerate(parsed):
+                if i != j and name == name2 and city != city2 and abs(time - time2) <= 60:
+                    invalid.add(raw)
+                    invalid.add(raw2)
+        return list(invalid)
+
+
+##### FOLDER 1170_compare_strings_by_frequency_of_the_smallest_character STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numSmallerByFrequency",
+  "paramOrder": [
+    "queries",
+    "words"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1170 - Compare Strings by Frequency of the Smallest Character
+# https://leetcode.com/problems/compare-strings-by-frequency-of-the-smallest-character/
+
+import bisect
+
+
+class Solution:
+    def numSmallerByFrequency(self, queries: list[str], words: list[str]) -> list[int]:
+        def f(s: str) -> int:
+            return s.count(min(s))
+
+        freqs = sorted(f(w) for w in words)
+        return [len(freqs) - bisect.bisect_right(freqs, f(q)) for q in queries]
+
+
+##### FOLDER 1171_remove_zero_sum_consecutive_nodes_from_linked_list STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeZeroSumSublists",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "listnode",
+    "return": "listnode"
+  }
+}
+
+###PYTHON
+# LeetCode 1171 - Remove Zero Sum Consecutive Nodes from Linked List
+# https://leetcode.com/problems/remove-zero-sum-consecutive-nodes-from-linked-list/
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def removeZeroSumSublists(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0)
+        dummy.next = head
+        prefix = 0
+        seen: dict[int, ListNode] = {0: dummy}
+        node = dummy
+        while node:
+            prefix += node.val
+            seen[prefix] = node
+            node = node.next
+        prefix = 0
+        node = dummy
+        while node:
+            prefix += node.val
+            node.next = seen[prefix].next
+            node = node.next
+        return dummy.next
+
+
+##### FOLDER 1172_dinner_plate_stacks STUB=True
+###CONFIG
+{
+  "class": "DinnerPlates",
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+# LeetCode 1172 - Dinner Plate Stacks
+# https://leetcode.com/problems/dinner-plate-stacks/
+
+import heapq
+
+
+class DinnerPlates:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.stacks: list[list[int]] = []
+        self.available: list[int] = []
+
+    def push(self, val: int) -> None:
+        while self.available and (
+            self.available[0] >= len(self.stacks) or len(self.stacks[self.available[0]]) == self.capacity
+        ):
+            heapq.heappop(self.available)
+        if not self.available:
+            self.stacks.append([])
+            heapq.heappush(self.available, len(self.stacks) - 1)
+        idx = self.available[0]
+        self.stacks[idx].append(val)
+        if len(self.stacks[idx]) == self.capacity:
+            heapq.heappop(self.available)
+
+    def pop(self) -> int:
+        while self.stacks and not self.stacks[-1]:
+            self.stacks.pop()
+        return self.popAtStack(len(self.stacks) - 1) if self.stacks else -1
+
+    def popAtStack(self, index: int) -> int:
+        if index < 0 or index >= len(self.stacks) or not self.stacks[index]:
+            return -1
+        if len(self.stacks[index]) == self.capacity:
+            heapq.heappush(self.available, index)
+        return self.stacks[index].pop()
+
+
+##### FOLDER 1175_prime_arrangements STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numPrimeArrangements",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1175 - Prime Arrangements
+# https://leetcode.com/problems/prime-arrangements/
+
+import math
+
+
+class Solution:
+    def numPrimeArrangements(self, n: int) -> int:
+        MOD = 10**9 + 7
+
+        def is_prime(x: int) -> bool:
+            if x < 2:
+                return False
+            for d in range(2, int(x**0.5) + 1):
+                if x % d == 0:
+                    return False
+            return True
+
+        primes = sum(1 for i in range(1, n + 1) if is_prime(i))
+        return (math.factorial(primes) * math.factorial(n - primes)) % MOD
+
+
+##### FOLDER 1176_diet_plan_performance STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "dietPlanPerformance",
+  "paramOrder": [
+    "calories",
+    "k",
+    "lower",
+    "upper"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1176 - Diet Plan Performance
+# https://leetcode.com/problems/diet-plan-performance/
+
+class Solution:
+    def dietPlanPerformance(self, calories: list[int], k: int, lower: int, upper: int) -> int:
+        window = sum(calories[:k])
+        ans = 0
+        if window < lower:
+            ans -= 1
+        elif window > upper:
+            ans += 1
+        for i in range(k, len(calories)):
+            window += calories[i] - calories[i - k]
+            if window < lower:
+                ans -= 1
+            elif window > upper:
+                ans += 1
+        return ans
+
+
+##### FOLDER 1177_can_make_palindrome_from_substring STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "canMakePaliQueries",
+  "paramOrder": [
+    "s",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1177 - Can Make Palindrome from Substring
+# https://leetcode.com/problems/can-make-palindrome-from-substring/
+
+class Solution:
+    def canMakePaliQueries(self, s: str, queries: list[list[int]]) -> list[bool]:
+        prefix = [0]
+        mask = 0
+        for ch in s:
+            mask ^= 1 << (ord(ch) - 97)
+            prefix.append(mask)
+        ans = []
+        for left, right, k in queries:
+            bits = (prefix[right + 1] ^ prefix[left]).bit_count()
+            ans.append(bits // 2 <= k)
+        return ans
+
+
+##### FOLDER 1178_number_of_valid_words_for_each_puzzle STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "findNumOfValidWords",
+  "paramOrder": [
+    "words",
+    "puzzles"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1178 - Number of Valid Words for Each Puzzle
+# https://leetcode.com/problems/number-of-valid-words-for-each-puzzle/
+
+from collections import Counter
+
+
+class Solution:
+    def findNumOfValidWords(self, words: list[str], puzzles: list[str]) -> list[int]:
+        def mask_of(s: str) -> int:
+            mask = 0
+            for ch in s:
+                mask |= 1 << (ord(ch) - 97)
+            return mask
+
+        freq = Counter(mask_of(w) for w in words)
+        ans = []
+        for puzzle in puzzles:
+            first = 1 << (ord(puzzle[0]) - 97)
+            full = mask_of(puzzle)
+            sub = full
+            total = 0
+            while True:
+                if sub & first:
+                    total += freq[sub]
+                if sub == 0:
+                    break
+                sub = (sub - 1) & full
+            ans.append(total)
+        return ans
+
+
+##### FOLDER 1180_count_substrings_with_only_one_distinct_letter STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countLetters",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1180 - Count Substrings with Only One Distinct Letter
+# https://leetcode.com/problems/count-substrings-with-only-one-distinct-letter/
+
+class Solution:
+    def countLetters(self, s: str) -> int:
+        ans = length = 1
+        for i in range(1, len(s)):
+            length = length + 1 if s[i] == s[i - 1] else 1
+            ans += length
+        return ans
+
+
+##### FOLDER 1181_before_and_after_puzzle STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "beforeAndAfterPuzzles",
+  "paramOrder": [
+    "phrases"
+  ],
+  "types": {
+    "return": "string[]"
+  }
+}
+
+###PYTHON
+# LeetCode 1181 - Before and After Puzzle
+# https://leetcode.com/problems/before-and-after-puzzle/
+
+class Solution:
+    def beforeAndAfterPuzzles(self, phrases: list[str]) -> list[str]:
+        split = [p.split() for p in phrases]
+        result: set[str] = set()
+        for i in range(len(split)):
+            for j in range(len(split)):
+                if i == j:
+                    continue
+                if split[i][-1] == split[j][0]:
+                    result.add(" ".join(split[i] + split[j][1:]))
+        return sorted(result)
+
+
+##### FOLDER 1182_shortest_distance_to_target_color STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "shortestDistanceColor",
+  "paramOrder": [
+    "colors",
+    "queries"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1182 - Shortest Distance to Target Color
+# https://leetcode.com/problems/shortest-distance-to-target-color/
+
+from collections import defaultdict
+import bisect
+
+
+class Solution:
+    def shortestDistanceColor(self, colors: list[int], queries: list[list[int]]) -> list[int]:
+        pos: dict[int, list[int]] = defaultdict(list)
+        for i, c in enumerate(colors):
+            pos[c].append(i)
+        ans = []
+        for i, c in queries:
+            if c not in pos:
+                ans.append(-1)
+                continue
+            arr = pos[c]
+            idx = bisect.bisect_left(arr, i)
+            best = float("inf")
+            if idx < len(arr):
+                best = min(best, arr[idx] - i)
+            if idx:
+                best = min(best, i - arr[idx - 1])
+            ans.append(best if best != float("inf") else -1)
+        return ans
+
+
+##### FOLDER 1183_maximum_number_of_ones STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maximumNumberOfOnes",
+  "paramOrder": [
+    "width",
+    "height",
+    "sideLength",
+    "maxOnes"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1183 - Maximum Number of Ones
+# https://leetcode.com/problems/maximum-number-of-ones/
+
+class Solution:
+    def maximumNumberOfOnes(self, width: int, height: int, sideLength: int, maxOnes: int) -> int:
+        counts = []
+        for r in range(sideLength):
+            for c in range(sideLength):
+                rows = (height - r + sideLength - 1) // sideLength
+                cols = (width - c + sideLength - 1) // sideLength
+                counts.append(rows * cols)
+        counts.sort(reverse=True)
+        return sum(counts[:maxOnes])
+
+
+##### FOLDER 1184_distance_between_bus_stops STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "distanceBetweenBusStops",
+  "paramOrder": [
+    "distance",
+    "start",
+    "destination"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1184 - Distance Between Bus Stops
+# https://leetcode.com/problems/distance-between-bus-stops/
+
+class Solution:
+    def distanceBetweenBusStops(self, distance: list[int], start: int, destination: int) -> int:
+        if start > destination:
+            start, destination = destination, start
+        clockwise = sum(distance[start:destination])
+        return min(clockwise, sum(distance) - clockwise)
+
+
+##### FOLDER 1185_day_of_the_week STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "dayOfTheWeek",
+  "paramOrder": [
+    "day",
+    "month",
+    "year"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1185 - Day of the Week
+# https://leetcode.com/problems/day-of-the-week/
+
+import datetime
+
+
+class Solution:
+    def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
+        return datetime.date(year, month, day).strftime("%A")
+
+
+##### FOLDER 1186_maximum_subarray_sum_with_one_deletion STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maximumSum",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1186 - Maximum Subarray Sum with One Deletion
+# https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
+
+class Solution:
+    def maximumSum(self, arr: list[int]) -> int:
+        keep = delete = ans = arr[0]
+        for x in arr[1:]:
+            delete = max(keep, delete + x)
+            keep = max(keep + x, x)
+            ans = max(ans, keep, delete)
+        return ans
+
+
+##### FOLDER 1187_make_array_strictly_increasing STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "makeArrayIncreasing",
+  "paramOrder": [
+    "arr1",
+    "arr2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1187 - Make Array Strictly Increasing
+# https://leetcode.com/problems/make-array-strictly-increasing/
+
+import bisect
+
+
+class Solution:
+    def makeArrayIncreasing(self, arr1: list[int], arr2: list[int]) -> int:
+        arr2 = sorted(set(arr2))
+        dp = {-1: 0}
+        for num in arr1:
+            new_dp: dict[int, int] = {}
+            for prev, ops in dp.items():
+                if num > prev:
+                    new_dp[num] = min(new_dp.get(num, float("inf")), ops)
+                idx = bisect.bisect_right(arr2, prev)
+                if idx < len(arr2):
+                    chosen = arr2[idx]
+                    new_dp[chosen] = min(new_dp.get(chosen, float("inf")), ops + 1)
+            dp = new_dp
+            if not dp:
+                return -1
+        return min(dp.values())
+
+
+##### FOLDER 1188_design_bounded_blocking_queue STUB=True
+###CONFIG
+{
+  "class": "BoundedBlockingQueue",
+  "description": "Update method name and add cases to cases.json when implementing the solution.",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+# LeetCode 1188 - Design Bounded Blocking Queue
+# https://leetcode.com/problems/design-bounded-blocking-queue/
+
+import threading
+from collections import deque
+
+
+class BoundedBlockingQueue:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.queue: deque[int] = deque()
+        self.not_full = threading.Semaphore(capacity)
+        self.not_empty = threading.Semaphore(0)
+        self.lock = threading.Lock()
+
+    def enqueue(self, element: int) -> None:
+        self.not_full.acquire()
+        with self.lock:
+            self.queue.append(element)
+        self.not_empty.release()
+
+    def dequeue(self) -> int:
+        self.not_empty.acquire()
+        with self.lock:
+            value = self.queue.popleft()
+        self.not_full.release()
+        return value
+
+    def size(self) -> int:
+        with self.lock:
+            return len(self.queue)
+
+
+##### FOLDER 1189_maximum_number_of_balloons STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxNumberOfBalloons",
+  "paramOrder": [
+    "text"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1189 - Maximum Number of Balloons
+# https://leetcode.com/problems/maximum-number-of-balloons/
+
+from collections import Counter
+
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        count = Counter(text)
+        return min(count["b"], count["a"], count["l"] // 2, count["o"] // 2, count["n"])
+
+
+##### FOLDER 1190_reverse_substrings_between_each_pair_of_parentheses STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "reverseParentheses",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1190 - Reverse Substrings Between Each Pair of Parentheses
+# https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        stack: list[str] = []
+        for ch in s:
+            if ch == ")":
+                chunk: list[str] = []
+                while stack and stack[-1] != "(":
+                    chunk.append(stack.pop())
+                stack.pop()
+                stack.extend(chunk)
+            else:
+                stack.append(ch)
+        return "".join(stack)
+
+
+##### FOLDER 1191_k_concatenation_maximum_sum STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "kConcatenationMaxSum",
+  "paramOrder": [
+    "arr",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1191 - K-Concatenation Maximum Sum
+# https://leetcode.com/problems/k-concatenation-maximum-sum/
+
+class Solution:
+    def kConcatenationMaxSum(self, arr: list[int], k: int) -> int:
+        MOD = 10**9 + 7
+
+        def kadane(nums: list[int]) -> int:
+            best = cur = 0
+            for x in nums:
+                cur = max(0, cur + x)
+                best = max(best, cur)
+            return best
+
+        one = kadane(arr)
+        if k == 1:
+            return one % MOD
+        two = kadane(arr + arr)
+        total = sum(arr)
+        if total > 0:
+            return max(one, two + total * (k - 2)) % MOD
+        return max(one, two) % MOD
+
+
+##### FOLDER 1192_critical_connections_in_a_network STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "criticalConnections",
+  "paramOrder": [
+    "n",
+    "connections"
+  ],
+  "types": {
+    "return": "integer[][]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1192 - Critical Connections in a Network
+# https://leetcode.com/problems/critical-connections-in-a-network/
+
+from collections import defaultdict
+
+
+class Solution:
+    def criticalConnections(self, n: int, connections: list[list[int]]) -> list[list[int]]:
+        graph = defaultdict(list)
+        for a, b in connections:
+            graph[a].append(b)
+            graph[b].append(a)
+        disc = [-1] * n
+        low = [-1] * n
+        time = 0
+        bridges: list[list[int]] = []
+
+        def dfs(node: int, parent: int) -> None:
+            nonlocal time
+            disc[node] = low[node] = time
+            time += 1
+            for nxt in graph[node]:
+                if nxt == parent:
+                    continue
+                if disc[nxt] == -1:
+                    dfs(nxt, node)
+                    low[node] = min(low[node], low[nxt])
+                    if low[nxt] > disc[node]:
+                        bridges.append([node, nxt])
+                else:
+                    low[node] = min(low[node], disc[nxt])
+
+        dfs(0, -1)
+        return [[min(a, b), max(a, b)] for a, b in bridges]
+
+
+##### FOLDER 1195_fizz_buzz_multithreaded STUB=True
+###CONFIG
+{
+  "class": "FizzBuzz",
+  "method": "fizz",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1195 - Fizz Buzz Multithreaded
+# https://leetcode.com/problems/fizz-buzz-multithreaded/
+
+import threading
+
+
+class FizzBuzz:
+    def __init__(self, n: int):
+        self.n = n
+        self.current = 1
+        self.condition = threading.Condition()
+
+    def fizz(self, printFizz) -> None:
+        self._run(lambda x: x % 3 == 0 and x % 5 != 0, lambda: printFizz())
+
+    def buzz(self, printBuzz) -> None:
+        self._run(lambda x: x % 5 == 0 and x % 3 != 0, lambda: printBuzz())
+
+    def fizzbuzz(self, printFizzBuzz) -> None:
+        self._run(lambda x: x % 15 == 0, lambda: printFizzBuzz())
+
+    def number(self, printNumber) -> None:
+        self._run(lambda x: x % 3 != 0 and x % 5 != 0, lambda: printNumber(self.current))
+
+    def _run(self, predicate, action) -> None:
+        with self.condition:
+            while self.current <= self.n:
+                if predicate(self.current):
+                    action()
+                    self.current += 1
+                    self.condition.notify_all()
+                else:
+                    self.condition.wait()
+
+
+##### FOLDER 1196_how_many_apples_can_you_put_into_the_basket STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxNumberOfApples",
+  "paramOrder": [
+    "weight"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1196 - How Many Apples Can You Put into the Basket
+# https://leetcode.com/problems/how-many-apples-can-you-put-into-the-basket/
+
+class Solution:
+    def maxNumberOfApples(self, weight: list[int]) -> int:
+        weight.sort()
+        total = 0
+        for i, w in enumerate(weight):
+            total += w
+            if total > 5000:
+                return i
+        return len(weight)
+
+
+##### FOLDER 1197_minimum_knight_moves STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minKnightMoves",
+  "paramOrder": [
+    "x",
+    "y"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1197 - Minimum Knight Moves
+# https://leetcode.com/problems/minimum-knight-moves/
+
+from collections import deque
+from functools import lru_cache
+
+
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        x, y = abs(x), abs(y)
+
+        @lru_cache(None)
+        def dfs(a: int, b: int) -> int:
+            if a + b == 0:
+                return 0
+            if a + b == 2:
+                return 2
+            return min(dfs(abs(a - 1), abs(b - 2)), dfs(abs(a - 2), abs(b - 1))) + 1
+
+        return dfs(x, y)
+
+
+##### FOLDER 1198_find_smallest_common_element_in_all_rows STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "smallestCommonElement",
+  "paramOrder": [
+    "mat"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1198 - Find Smallest Common Element in All Rows
+# https://leetcode.com/problems/find-smallest-common-element-in-all-rows/
+
+class Solution:
+    def smallestCommonElement(self, mat: list[list[int]]) -> int:
+        common = set(mat[0])
+        for row in mat[1:]:
+            common &= set(row)
+            if not common:
+                return -1
+        return min(common)
+
+
+##### FOLDER 1199_minimum_time_to_build_blocks STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minBuildTime",
+  "paramOrder": [
+    "blocks",
+    "split"
+  ],
+  "types": null
+}
+
+###PYTHON
+# LeetCode 1199 - Minimum Time to Build Blocks
+# https://leetcode.com/problems/minimum-time-to-build-blocks/
+
+import heapq
+
+
+class Solution:
+    def minBuildTime(self, blocks: list[int], split: int) -> int:
+        heap = blocks[:]
+        heapq.heapify(heap)
+        while len(heap) > 1:
+            heapq.heappop(heap)
+            heapq.heappush(heap, heapq.heappop(heap) + split)
+        return heap[0]
+
+
+##### FOLDER 1200_minimum_absolute_difference STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumAbsDifference",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": {
+    "return": "integer[][]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+
+###PYTHON
+# LeetCode 1200 - Minimum Absolute Difference
+# https://leetcode.com/problems/minimum-absolute-difference/
+
+class Solution:
+    def minimumAbsDifference(self, arr: list[int]) -> list[list[int]]:
+        arr.sort()
+        best = min(arr[i + 1] - arr[i] for i in range(len(arr) - 1))
+        return [[arr[i], arr[i + 1]] for i in range(len(arr) - 1) if arr[i + 1] - arr[i] == best]
+
+
+##### FOLDER 1201_ugly_number_iii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "nthUglyNumber",
+  "paramOrder": [
+    "n",
+    "a",
+    "b",
+    "c"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from math import gcd
+
+class Solution:
+    def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
+        def lcm(x, y): return x // gcd(x, y) * y
+        ab, ac, bc = lcm(a, b), lcm(a, c), lcm(b, c)
+        abc = lcm(ab, c)
+        def count(x):
+            return x // a + x // b + x // c - x // ab - x // ac - x // bc + x // abc
+        lo, hi = 1, 2_000_000_000
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if count(mid) >= n: hi = mid
+            else: lo = mid + 1
+        return lo
+
+
+##### FOLDER 1202_smallest_string_with_swaps STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "smallestStringWithSwaps",
+  "paramOrder": [
+    "s",
+    "pairs"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import defaultdict
+
+class Solution:
+    def smallestStringWithSwaps(self, s: str, pairs: list[list[int]]) -> str:
+        parent = list(range(len(s)))
+        def find(x):
+            while x != parent[x]:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+        for a, b in pairs:
+            ra, rb = find(a), find(b)
+            parent[ra] = rb
+        groups = defaultdict(list)
+        for i, ch in enumerate(s): groups[find(i)].append(ch)
+        for chars in groups.values(): chars.sort(reverse=True)
+        return ''.join(groups[find(i)].pop() for i in range(len(s)))
+
+
+##### FOLDER 1203_sort_items_by_groups_respecting_dependencies STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "sortItems",
+  "paramOrder": [
+    "n",
+    "m",
+    "group",
+    "beforeItems"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import deque
+
+class Solution:
+    def sortItems(self, n: int, m: int, group: list[int], beforeItems: list[list[int]]) -> list[int]:
+        for i in range(n):
+            if group[i] == -1:
+                group[i] = m
+                m += 1
+        item_graph = [[] for _ in range(n)]
+        item_indeg = [0] * n
+        group_graph = [set() for _ in range(m)]
+        group_indeg = [0] * m
+        for v in range(n):
+            for u in beforeItems[v]:
+                item_graph[u].append(v)
+                item_indeg[v] += 1
+                if group[u] != group[v] and group[v] not in group_graph[group[u]]:
+                    group_graph[group[u]].add(group[v])
+                    group_indeg[group[v]] += 1
+        def topo(graph, indeg):
+            q = deque(i for i, d in enumerate(indeg) if d == 0)
+            order = []
+            while q:
+                u = q.popleft()
+                order.append(u)
+                for v in graph[u]:
+                    indeg[v] -= 1
+                    if indeg[v] == 0: q.append(v)
+            return order if len(order) == len(graph) else []
+        items, groups = topo(item_graph, item_indeg), topo(group_graph, group_indeg)
+        if not items or not groups: return []
+        buckets = [[] for _ in range(m)]
+        for item in items: buckets[group[item]].append(item)
+        return [item for g in groups for item in buckets[g]]
+
+
+##### FOLDER 1206_design_skiplist STUB=True
+###CONFIG
+{
+  "class": "Skiplist",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+from bisect import bisect_left, insort
+
+class Skiplist:
+    def __init__(self):
+        self.values = []
+
+    def search(self, target: int) -> bool:
+        i = bisect_left(self.values, target)
+        return i < len(self.values) and self.values[i] == target
+
+    def add(self, num: int) -> None:
+        insort(self.values, num)
+
+    def erase(self, num: int) -> bool:
+        i = bisect_left(self.values, num)
+        if i == len(self.values) or self.values[i] != num: return False
+        self.values.pop(i)
+        return True
+
+
+##### FOLDER 1207_unique_number_of_occurrences STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "uniqueOccurrences",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import Counter
+
+class Solution:
+    def uniqueOccurrences(self, arr: list[int]) -> bool:
+        counts = Counter(arr).values()
+        return len(counts) == len(set(counts))
+
+
+##### FOLDER 1208_get_equal_substrings_within_budget STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "equalSubstring",
+  "paramOrder": [
+    "s",
+    "t",
+    "maxCost"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+        left = cost = answer = 0
+        for right, (a, b) in enumerate(zip(s, t)):
+            cost += abs(ord(a) - ord(b))
+            while cost > maxCost:
+                cost -= abs(ord(s[left]) - ord(t[left]))
+                left += 1
+            answer = max(answer, right - left + 1)
+        return answer
+
+
+##### FOLDER 1209_remove_all_adjacent_duplicates_in_string_ii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeDuplicates",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        stack = []
+        for ch in s:
+            if stack and stack[-1][0] == ch: stack[-1][1] += 1
+            else: stack.append([ch, 1])
+            if stack[-1][1] == k: stack.pop()
+        return ''.join(ch * count for ch, count in stack)
+
+
+##### FOLDER 1210_minimum_moves_to_reach_target_with_rotations STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumMoves",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import deque
+
+class Solution:
+    def minimumMoves(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+        start, target = (0, 0, 0), (n - 1, n - 2, 0)
+        q, seen = deque([(start, 0)]), {start}
+        while q:
+            (r, c, orient), moves = q.popleft()
+            if (r, c, orient) == target: return moves
+            nxt = []
+            if orient == 0:
+                if c + 2 < n and grid[r][c + 2] == 0: nxt.append((r, c + 1, 0))
+                if r + 1 < n and grid[r + 1][c] == grid[r + 1][c + 1] == 0:
+                    nxt += [(r + 1, c, 0), (r, c, 1)]
+            else:
+                if r + 2 < n and grid[r + 2][c] == 0: nxt.append((r + 1, c, 1))
+                if c + 1 < n and grid[r][c + 1] == grid[r + 1][c + 1] == 0:
+                    nxt += [(r, c + 1, 1), (r, c, 0)]
+            for state in nxt:
+                if state not in seen:
+                    seen.add(state)
+                    q.append((state, moves + 1))
+        return -1
+
+
+##### FOLDER 1213_intersection_of_three_sorted_arrays STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "arraysIntersection",
+  "paramOrder": [
+    "arr1",
+    "arr2",
+    "arr3"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def arraysIntersection(self, arr1: list[int], arr2: list[int], arr3: list[int]) -> list[int]:
+        return sorted(set(arr1) & set(arr2) & set(arr3))
+
+
+##### FOLDER 1214_two_sum_bsts STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "twoSumBSTs",
+  "paramOrder": [
+    "root1",
+    "root2",
+    "target"
+  ],
+  "types": {
+    "root1": "treenode",
+    "root2": "treenode",
+    "target": "int"
+  },
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def twoSumBSTs(self, root1: 'TreeNode', root2: 'TreeNode', target: int) -> bool:
+        values = set()
+        stack = [root1] if root1 else []
+        while stack:
+            node = stack.pop()
+            values.add(node.val)
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+        stack = [root2] if root2 else []
+        while stack:
+            node = stack.pop()
+            if target - node.val in values: return True
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+        return False
+
+
+##### FOLDER 1215_stepping_numbers STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countSteppingNumbers",
+  "paramOrder": [
+    "low",
+    "high"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import deque
+
+class Solution:
+    def countSteppingNumbers(self, low: int, high: int) -> list[int]:
+        answer = [0] if low == 0 else []
+        q = deque(range(1, 10))
+        while q:
+            x = q.popleft()
+            if x > high: continue
+            if x >= low: answer.append(x)
+            last = x % 10
+            if last > 0: q.append(x * 10 + last - 1)
+            if last < 9: q.append(x * 10 + last + 1)
+        return sorted(answer)
+
+
+##### FOLDER 1216_valid_palindrome_iii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "isValidPalindrome",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def isValidPalindrome(self, s: str, k: int) -> bool:
+        dp = [0] * len(s)
+        for i in range(len(s) - 1, -1, -1):
+            previous = 0
+            for j in range(i + 1, len(s)):
+                old = dp[j]
+                if s[i] == s[j]: dp[j] = previous
+                else: dp[j] = 1 + min(dp[j], dp[j - 1])
+                previous = old
+        return not s or dp[-1] <= k
+
+
+##### FOLDER 1217_minimum_cost_to_move_chips_to_the_same_position STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minCostToMoveChips",
+  "paramOrder": [
+    "position"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def minCostToMoveChips(self, position: list[int]) -> int:
+        odd = sum(x & 1 for x in position)
+        return min(odd, len(position) - odd)
+
+
+##### FOLDER 1218_longest_arithmetic_subsequence_of_given_difference STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "longestSubsequence",
+  "paramOrder": [
+    "arr",
+    "difference"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def longestSubsequence(self, arr: list[int], difference: int) -> int:
+        dp = {}
+        for x in arr: dp[x] = dp.get(x - difference, 0) + 1
+        return max(dp.values())
+
+
+##### FOLDER 1219_path_with_maximum_gold STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "getMaximumGold",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def getMaximumGold(self, grid: list[list[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        def dfs(r, c):
+            gold, grid[r][c] = grid[r][c], 0
+            best = 0
+            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc]:
+                    best = max(best, dfs(nr, nc))
+            grid[r][c] = gold
+            return gold + best
+        return max((dfs(r, c) for r in range(rows) for c in range(cols) if grid[r][c]), default=0)
+
+
+##### FOLDER 1220_count_vowels_permutation STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countVowelPermutation",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def countVowelPermutation(self, n: int) -> int:
+        mod = 1_000_000_007
+        a = e = i = o = u = 1
+        for _ in range(n - 1):
+            a, e, i, o, u = (e + i + u) % mod, (a + i) % mod, (e + o) % mod, i, (i + o) % mod
+        return (a + e + i + o + u) % mod
+
+
+##### FOLDER 1221_split_a_string_in_balanced_strings STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "balancedStringSplit",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        balance = answer = 0
+        for ch in s:
+            balance += 1 if ch == 'L' else -1
+            answer += balance == 0
+        return answer
+
+
+##### FOLDER 1222_queens_that_can_attack_the_king STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "queensAttacktheKing",
+  "paramOrder": [
+    "queens",
+    "king"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def queensAttacktheKing(self, queens: list[list[int]], king: list[int]) -> list[list[int]]:
+        occupied, answer = {tuple(q) for q in queens}, []
+        for dr in (-1, 0, 1):
+            for dc in (-1, 0, 1):
+                if dr == dc == 0: continue
+                r, c = king[0] + dr, king[1] + dc
+                while 0 <= r < 8 and 0 <= c < 8:
+                    if (r, c) in occupied:
+                        answer.append([r, c])
+                        break
+                    r, c = r + dr, c + dc
+        return answer
+
+
+##### FOLDER 1223_dice_roll_simulation STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "dieSimulator",
+  "paramOrder": [
+    "n",
+    "rollMax"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def dieSimulator(self, n: int, rollMax: list[int]) -> int:
+        mod = 1_000_000_007
+        dp = [[0] * (rollMax[j] + 1) for j in range(6)]
+        for j in range(6): dp[j][1] = 1
+        for _ in range(1, n):
+            totals = [sum(row) % mod for row in dp]
+            nxt = [[0] * len(dp[j]) for j in range(6)]
+            for j in range(6):
+                nxt[j][1] = (sum(totals) - totals[j]) % mod
+                for run in range(2, len(dp[j])):
+                    nxt[j][run] = dp[j][run - 1]
+            dp = nxt
+        return sum(map(sum, dp)) % mod
+
+
+##### FOLDER 1224_maximum_equal_frequency STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxEqualFreq",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import Counter
+
+class Solution:
+    def maxEqualFreq(self, nums: list[int]) -> int:
+        count, frequencies = Counter(), Counter()
+        answer = 0
+        for i, x in enumerate(nums, 1):
+            old = count[x]
+            if old: frequencies[old] -= 1
+            count[x] += 1
+            frequencies[old + 1] += 1
+            high = max(frequencies)
+            if high == 1 or frequencies[high] * high + 1 == i or frequencies[high] == 1 and frequencies[high - 1] * (high - 1) + high == i:
+                answer = i
+        return answer
+
+
+##### FOLDER 1226_the_dining_philosophers STUB=True
+###CONFIG
+{
+  "class": "DiningPhilosophers",
+  "method": "wantsToEat",
+  "paramOrder": [
+    "philosopher",
+    "pickLeftFork",
+    "pickRightFork",
+    "eat",
+    "putLeftFork",
+    "putRightFork"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from threading import Lock
+
+class DiningPhilosophers:
+    def __init__(self):
+        self.forks = [Lock() for _ in range(5)]
+
+    def wantsToEat(self, philosopher: int, pickLeftFork: 'Callable[[], None]',
+                   pickRightFork: 'Callable[[], None]', eat: 'Callable[[], None]',
+                   putLeftFork: 'Callable[[], None]', putRightFork: 'Callable[[], None]') -> None:
+        left, right = philosopher, (philosopher + 1) % 5
+        first, second = (left, right) if philosopher % 2 == 0 else (right, left)
+        with self.forks[first]:
+            with self.forks[second]:
+                pickLeftFork()
+                pickRightFork()
+                eat()
+                putLeftFork()
+                putRightFork()
+
+
+##### FOLDER 1227_airplane_seat_assignment_probability STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "nthPersonGetsNthSeat",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def nthPersonGetsNthSeat(self, n: int) -> float:
+        return 1.0 if n == 1 else 0.5
+
+
+##### FOLDER 1228_missing_number_in_arithmetic_progression STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "missingNumber",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def missingNumber(self, arr: list[int]) -> int:
+        difference = (arr[-1] - arr[0]) // len(arr)
+        for i in range(1, len(arr)):
+            expected = arr[0] + i * difference
+            if arr[i] != expected: return expected
+        return arr[0]
+
+
+##### FOLDER 1229_meeting_scheduler STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minAvailableDuration",
+  "paramOrder": [
+    "slots1",
+    "slots2",
+    "duration"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:
+        slots1.sort()
+        slots2.sort()
+        i = j = 0
+        while i < len(slots1) and j < len(slots2):
+            start, end = max(slots1[i][0], slots2[j][0]), min(slots1[i][1], slots2[j][1])
+            if end - start >= duration: return [start, start + duration]
+            if slots1[i][1] < slots2[j][1]: i += 1
+            else: j += 1
+        return []
+
+
+##### FOLDER 1230_toss_strange_coins STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "probabilityOfHeads",
+  "paramOrder": [
+    "prob",
+    "target"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def probabilityOfHeads(self, prob: list[float], target: int) -> float:
+        dp = [1.0] + [0.0] * target
+        for p in prob:
+            for heads in range(target, -1, -1):
+                dp[heads] = dp[heads] * (1 - p) + (dp[heads - 1] * p if heads else 0)
+        return dp[target]
+
+
+##### FOLDER 1231_divide_chocolate STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maximizeSweetness",
+  "paramOrder": [
+    "sweetness",
+    "k"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def maximizeSweetness(self, sweetness: list[int], k: int) -> int:
+        lo, hi = 1, sum(sweetness) // (k + 1)
+        while lo <= hi:
+            mid, pieces, current = (lo + hi) // 2, 0, 0
+            for value in sweetness:
+                current += value
+                if current >= mid:
+                    pieces += 1
+                    current = 0
+            if pieces >= k + 1: lo = mid + 1
+            else: hi = mid - 1
+        return hi
+
+
+##### FOLDER 1232_check_if_it_is_a_straight_line STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "checkStraightLine",
+  "paramOrder": [
+    "coordinates"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def checkStraightLine(self, coordinates: list[list[int]]) -> bool:
+        x0, y0 = coordinates[0]
+        dx, dy = coordinates[1][0] - x0, coordinates[1][1] - y0
+        return all((x - x0) * dy == (y - y0) * dx for x, y in coordinates[2:])
+
+
+##### FOLDER 1233_remove_sub_folders_from_the_filesystem STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeSubfolders",
+  "paramOrder": [
+    "folder"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def removeSubfolders(self, folder: list[str]) -> list[str]:
+        answer = []
+        for path in sorted(folder):
+            if not answer or not path.startswith(answer[-1] + '/'): answer.append(path)
+        return answer
+
+
+##### FOLDER 1234_replace_the_substring_for_balanced_string STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "balancedString",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import Counter
+
+class Solution:
+    def balancedString(self, s: str) -> int:
+        count, limit = Counter(s), len(s) // 4
+        n = len(s)
+        left, answer = 0, n
+        for right, ch in enumerate(s):
+            count[ch] -= 1
+            while left < n and all(count[c] <= limit for c in 'QWER'):
+                answer = min(answer, right - left + 1)
+                count[s[left]] += 1
+                left += 1
+        return answer
+
+
+##### FOLDER 1235_maximum_profit_in_job_scheduling STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "jobScheduling",
+  "paramOrder": [
+    "startTime",
+    "endTime",
+    "profit"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from bisect import bisect_right
+
+class Solution:
+    def jobScheduling(self, startTime: list[int], endTime: list[int], profit: list[int]) -> int:
+        jobs = sorted(zip(endTime, startTime, profit))
+        ends, dp = [0], [0]
+        for end, start, gain in jobs:
+            i = bisect_right(ends, start) - 1
+            ends.append(end)
+            dp.append(max(dp[-1], dp[i] + gain))
+        return dp[-1]
+
+
+##### FOLDER 1236_web_crawler STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "crawl",
+  "paramOrder": [
+    "startUrl"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from urllib.parse import urlsplit
+
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> list[str]:
+        host = urlsplit(startUrl).netloc
+        seen, stack = {startUrl}, [startUrl]
+        while stack:
+            for url in htmlParser.getUrls(stack.pop()):
+                if urlsplit(url).netloc == host and url not in seen:
+                    seen.add(url)
+                    stack.append(url)
+        return sorted(seen)
+
+
+##### FOLDER 1237_find_positive_integer_solution_for_a_given_equation STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "findSolution",
+  "paramOrder": [
+    "function_id",
+    "z"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def findSolution(self, customfunction: 'CustomFunction', z: int) -> list[list[int]]:
+        answer, x, y = [], 1, 1000
+        while x <= 1000 and y >= 1:
+            value = customfunction.f(x, y)
+            if value == z:
+                answer.append([x, y])
+                x += 1
+                y -= 1
+            elif value < z: x += 1
+            else: y -= 1
+        return answer
+
+
+##### FOLDER 1238_circular_permutation_in_binary_representation STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "circularPermutation",
+  "paramOrder": [
+    "n",
+    "start"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def circularPermutation(self, n: int, start: int) -> list[int]:
+        return [start ^ i ^ (i >> 1) for i in range(1 << n)]
+
+
+##### FOLDER 1239_maximum_length_of_a_concatenated_string_with_unique_characters STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxLength",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def maxLength(self, arr: list[str]) -> int:
+        masks = [(0, 0)]
+        for word in arr:
+            mask = 0
+            for ch in word: mask |= 1 << (ord(ch) - 97)
+            if mask.bit_count() != len(word): continue
+            masks += [(used | mask, length + len(word)) for used, length in masks if not used & mask]
+        return max(length for _, length in masks)
+
+
+##### FOLDER 1240_tiling_a_rectangle_with_the_fewest_squares STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "tilingRectangle",
+  "paramOrder": [
+    "n",
+    "m"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def tilingRectangle(self, n: int, m: int) -> int:
+        if n > m: n, m = m, n
+        heights, best = [0] * m, n * m
+        def search(used):
+            nonlocal best
+            if used >= best: return
+            low = min(heights)
+            if low == n:
+                best = used
+                return
+            left = heights.index(low)
+            right = left
+            while right < m and heights[right] == low: right += 1
+            max_size = min(n - low, right - left)
+            for size in range(max_size, 0, -1):
+                heights[left:left + size] = [low + size] * size
+                search(used + 1)
+                heights[left:left + size] = [low] * size
+        search(0)
+        return best
+
+
+##### FOLDER 1242_web_crawler_multithreaded STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "crawl",
+  "paramOrder": [
+    "startUrl"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from concurrent.futures import ThreadPoolExecutor
+from urllib.parse import urlsplit
+
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> list[str]:
+        host, seen, frontier = urlsplit(startUrl).netloc, {startUrl}, [startUrl]
+        with ThreadPoolExecutor() as pool:
+            while frontier:
+                next_frontier = []
+                for urls in pool.map(htmlParser.getUrls, frontier):
+                    for url in urls:
+                        if urlsplit(url).netloc == host and url not in seen:
+                            seen.add(url)
+                            next_frontier.append(url)
+                frontier = next_frontier
+        return sorted(seen)
+
+
+##### FOLDER 1243_array_transformation STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "transformArray",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def transformArray(self, arr: list[int]) -> list[int]:
+        while True:
+            nxt = arr[:]
+            for i in range(1, len(arr) - 1):
+                if arr[i] < arr[i - 1] and arr[i] < arr[i + 1]: nxt[i] += 1
+                elif arr[i] > arr[i - 1] and arr[i] > arr[i + 1]: nxt[i] -= 1
+            if nxt == arr: return arr
+            arr = nxt
+
+
+##### FOLDER 1244_design_a_leaderboard STUB=True
+###CONFIG
+{
+  "class": "Leaderboard",
+  "method": "top",
+  "paramOrder": [
+    "K"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import defaultdict
+
+class Leaderboard:
+    def __init__(self):
+        self.scores = defaultdict(int)
+
+    def addScore(self, playerId: int, score: int) -> None:
+        self.scores[playerId] += score
+
+    def top(self, K: int) -> int:
+        return sum(sorted(self.scores.values(), reverse=True)[:K])
+
+    def reset(self, playerId: int) -> None:
+        self.scores.pop(playerId, None)
+
+
+##### FOLDER 1245_tree_diameter STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "treeDiameter",
+  "paramOrder": [
+    "edges"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import defaultdict, deque
+
+class Solution:
+    def treeDiameter(self, edges: list[list[int]]) -> int:
+        if not edges: return 0
+        graph = defaultdict(list)
+        for a, b in edges:
+            graph[a].append(b)
+            graph[b].append(a)
+        def farthest(start):
+            q, seen, last = deque([(start, 0)]), {start}, (start, 0)
+            while q:
+                last = q.popleft()
+                for v in graph[last[0]]:
+                    if v not in seen:
+                        seen.add(v)
+                        q.append((v, last[1] + 1))
+            return last
+        endpoint, _ = farthest(edges[0][0])
+        return farthest(endpoint)[1]
+
+
+##### FOLDER 1246_palindrome_removal STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumMoves",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def minimumMoves(self, arr: list[int]) -> int:
+        n = len(arr)
+        dp = [[0] * n for _ in range(n)]
+        for i in range(n): dp[i][i] = 1
+        for length in range(2, n + 1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                dp[i][j] = 1 + dp[i + 1][j]
+                if arr[i] == arr[i + 1]:
+                    dp[i][j] = min(dp[i][j], 1 + (dp[i + 2][j] if i + 2 <= j else 0))
+                for k in range(i + 2, j + 1):
+                    if arr[i] == arr[k]:
+                        dp[i][j] = min(dp[i][j], dp[i + 1][k - 1] + (dp[k + 1][j] if k < j else 0))
+        return dp[0][n - 1]
+
+
+##### FOLDER 1247_minimum_swaps_to_make_strings_equal STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minimumSwap",
+  "paramOrder": [
+    "s1",
+    "s2"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        xy = sum(a == 'x' and b == 'y' for a, b in zip(s1, s2))
+        yx = sum(a == 'y' and b == 'x' for a, b in zip(s1, s2))
+        return -1 if (xy + yx) % 2 else xy // 2 + yx // 2 + 2 * (xy % 2)
+
+
+##### FOLDER 1248_count_number_of_nice_subarrays STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numberOfSubarrays",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from collections import defaultdict
+
+class Solution:
+    def numberOfSubarrays(self, nums: list[int], k: int) -> int:
+        frequency, odd, answer = defaultdict(int, {0: 1}), 0, 0
+        for x in nums:
+            odd += x & 1
+            answer += frequency[odd - k]
+            frequency[odd] += 1
+        return answer
+
+
+##### FOLDER 1249_minimum_remove_to_make_valid_parentheses STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minRemoveToMakeValid",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        chars, opens = list(s), []
+        for i, ch in enumerate(chars):
+            if ch == '(': opens.append(i)
+            elif ch == ')':
+                if opens: opens.pop()
+                else: chars[i] = ''
+        for i in opens: chars[i] = ''
+        return ''.join(chars)
+
+
+##### FOLDER 1250_check_if_it_is_a_good_array STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "isGoodArray",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Python implementation and runner metadata."
+}
+
+###PYTHON
+from math import gcd
+from functools import reduce
+
+class Solution:
+    def isGoodArray(self, nums: list[int]) -> bool:
+        return reduce(gcd, nums) == 1
+
+
+##### FOLDER 1252_cells_with_odd_values_in_a_matrix STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "oddCells",
+  "paramOrder": [
+    "m",
+    "n",
+    "indices"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
+        rows, cols = [0] * m, [0] * n
+        for r, c in indices:
+            rows[r] ^= 1
+            cols[c] ^= 1
+        return sum(rows[r] ^ cols[c] for r in range(m) for c in range(n))
+
+
+##### FOLDER 1253_reconstruct_a_2_row_binary_matrix STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "reconstructMatrix",
+  "paramOrder": [
+    "upper",
+    "lower",
+    "colsum"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def reconstructMatrix(self, upper: int, lower: int, colsum: List[int]) -> List[List[int]]:
+        top, bottom = [0] * len(colsum), [0] * len(colsum)
+        for i, value in enumerate(colsum):
+            if value == 2:
+                top[i] = bottom[i] = 1
+                upper -= 1
+                lower -= 1
+        if upper < 0 or lower < 0:
+            return []
+        for i, value in enumerate(colsum):
+            if value == 1:
+                if upper:
+                    top[i] = 1
+                    upper -= 1
+                elif lower:
+                    bottom[i] = 1
+                    lower -= 1
+                else:
+                    return []
+        return [top, bottom] if upper == lower == 0 else []
+
+
+##### FOLDER 1254_number_of_closed_islands STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "closedIsland",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        def flood(sr: int, sc: int) -> bool:
+            stack, closed = [(sr, sc)], True
+            grid[sr][sc] = 1
+            while stack:
+                r, c = stack.pop()
+                if r in (0, m - 1) or c in (0, n - 1):
+                    closed = False
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == 0:
+                        grid[nr][nc] = 1
+                        stack.append((nr, nc))
+            return closed
+        return sum(flood(r, c) for r in range(m) for c in range(n) if grid[r][c] == 0)
+
+
+##### FOLDER 1255_maximum_score_words_formed_by_letters STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxScoreWords",
+  "paramOrder": [
+    "words",
+    "letters",
+    "score"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import Counter
+from typing import List
+
+class Solution:
+    def maxScoreWords(self, words: List[str], letters: List[str], score: List[int]) -> int:
+        available = Counter(letters)
+        counts = [Counter(word) for word in words]
+        values = [sum(score[ord(ch) - 97] for ch in word) for word in words]
+        def dfs(i: int) -> int:
+            if i == len(words):
+                return 0
+            best = dfs(i + 1)
+            if counts[i] <= available:
+                available.subtract(counts[i])
+                best = max(best, values[i] + dfs(i + 1))
+                available.update(counts[i])
+            return best
+        return dfs(0)
+
+
+##### FOLDER 1256_encode_number STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "encode",
+  "paramOrder": [
+    "num"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def encode(self, num: int) -> str:
+        return bin(num + 1)[3:]
+
+
+##### FOLDER 1257_smallest_common_region STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "findSmallestRegion",
+  "paramOrder": [
+    "regions",
+    "region1",
+    "region2"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def findSmallestRegion(self, regions: List[List[str]], region1: str, region2: str) -> str:
+        parent = {}
+        for group in regions:
+            for child in group[1:]:
+                parent[child] = group[0]
+        ancestors = set()
+        while region1:
+            ancestors.add(region1)
+            region1 = parent.get(region1)
+        while region2 not in ancestors:
+            region2 = parent[region2]
+        return region2
+
+
+##### FOLDER 1258_synonymous_sentences STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "generateSentences",
+  "paramOrder": [
+    "synonyms",
+    "text"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import defaultdict
+from itertools import product
+from typing import List
+
+class Solution:
+    def generateSentences(self, synonyms: List[List[str]], text: str) -> List[str]:
+        parent = {}
+        def find(x):
+            parent.setdefault(x, x)
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+        for a, b in synonyms:
+            ra, rb = find(a), find(b)
+            parent[ra] = rb
+        groups = defaultdict(list)
+        for word in parent:
+            groups[find(word)].append(word)
+        choices = [sorted(groups[find(w)]) if w in parent else [w] for w in text.split()]
+        return [" ".join(words) for words in product(*choices)]
+
+
+##### FOLDER 1259_handshakes_that_dont_cross STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numberOfWays",
+  "paramOrder": [
+    "numPeople"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def numberOfWays(self, numPeople: int) -> int:
+        mod = 1_000_000_007
+        dp = [0] * (numPeople + 1)
+        dp[0] = 1
+        for people in range(2, numPeople + 1, 2):
+            dp[people] = sum(dp[left] * dp[people - 2 - left] for left in range(0, people, 2)) % mod
+        return dp[numPeople]
+
+
+##### FOLDER 1260_shift_2d_grid STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "shiftGrid",
+  "paramOrder": [
+    "grid",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def shiftGrid(self, grid: List[List[int]], k: int) -> List[List[int]]:
+        m, n = len(grid), len(grid[0])
+        flat = sum(grid, [])
+        k %= len(flat)
+        flat = flat[-k:] + flat[:-k] if k else flat
+        return [flat[i * n:(i + 1) * n] for i in range(m)]
+
+
+##### FOLDER 1261_find_elements_in_a_contaminated_binary_tree STUB=True
+###CONFIG
+{
+  "class": "FindElements",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+class FindElements:
+    def __init__(self, root):
+        if isinstance(root, list):
+            class Node:
+                def __init__(self, val):
+                    self.val, self.left, self.right = val, None, None
+            nodes = [None if value is None else Node(value) for value in root]
+            children = iter(nodes[1:])
+            for node in nodes:
+                if node is not None:
+                    node.left = next(children, None)
+                    node.right = next(children, None)
+            root = nodes[0] if nodes else None
+        self.values = set()
+        def recover(node, value):
+            if not node:
+                return
+            node.val = value
+            self.values.add(value)
+            recover(node.left, 2 * value + 1)
+            recover(node.right, 2 * value + 2)
+        recover(root, 0)
+
+    def find(self, target: int) -> bool:
+        return target in self.values
+
+
+##### FOLDER 1262_greatest_sum_divisible_by_three STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxSumDivThree",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def maxSumDivThree(self, nums: List[int]) -> int:
+        impossible = -10**18
+        dp = [0, impossible, impossible]
+        for value in nums:
+            old = dp[:]
+            for total in old:
+                if total != impossible:
+                    remainder = (total + value) % 3
+                    dp[remainder] = max(dp[remainder], total + value)
+        return dp[0]
+
+
+##### FOLDER 1263_minimum_moves_to_move_a_box_to_their_target_location STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minPushBox",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import deque
+from typing import List
+
+class Solution:
+    def minPushBox(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        for r in range(m):
+            for c in range(n):
+                if grid[r][c] == "B": box = (r, c)
+                elif grid[r][c] == "S": player = (r, c)
+                elif grid[r][c] == "T": target = (r, c)
+        def reachable(start, blocked):
+            seen, stack = {start}, [start]
+            while stack:
+                r, c = stack.pop()
+                for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+                    nxt = (r + dr, c + dc)
+                    if (0 <= nxt[0] < m and 0 <= nxt[1] < n and
+                            grid[nxt[0]][nxt[1]] != "#" and nxt != blocked and nxt not in seen):
+                        seen.add(nxt); stack.append(nxt)
+            return seen
+        queue = deque([(box, player, 0)])
+        seen = {(box, player)}
+        while queue:
+            b, p, pushes = queue.popleft()
+            if b == target:
+                return pushes
+            can_reach = reachable(p, b)
+            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+                stand = (b[0] - dr, b[1] - dc)
+                nb = (b[0] + dr, b[1] + dc)
+                if (stand in can_reach and 0 <= nb[0] < m and 0 <= nb[1] < n
+                        and grid[nb[0]][nb[1]] != "#"):
+                    state = (nb, b)
+                    if state not in seen:
+                        seen.add(state)
+                        queue.append((nb, b, pushes + 1))
+        return -1
+
+
+##### FOLDER 1265_print_immutable_linked_list_in_reverse STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "printLinkedListInReverse",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "immutablelistnode"
+  }
+}
+
+###PYTHON
+class ImmutableListNode:
+    def printValue(self) -> None: ...
+    def getNext(self) -> "ImmutableListNode": ...
+
+class Solution:
+    def printLinkedListInReverse(self, head: "ImmutableListNode") -> None:
+        if head is None:
+            return
+        self.printLinkedListInReverse(head.getNext())
+        head.printValue()
+
+
+##### FOLDER 1266_minimum_time_visiting_all_points STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minTimeToVisitAllPoints",
+  "paramOrder": [
+    "points"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def minTimeToVisitAllPoints(self, points: List[List[int]]) -> int:
+        return sum(max(abs(a[0] - b[0]), abs(a[1] - b[1])) for a, b in zip(points, points[1:]))
+
+
+##### FOLDER 1267_count_servers_that_communicate STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countServers",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def countServers(self, grid: List[List[int]]) -> int:
+        rows = [sum(row) for row in grid]
+        cols = [sum(grid[r][c] for r in range(len(grid))) for c in range(len(grid[0]))]
+        return sum(grid[r][c] and (rows[r] > 1 or cols[c] > 1)
+                   for r in range(len(grid)) for c in range(len(grid[0])))
+
+
+##### FOLDER 1268_search_suggestions_system STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "suggestedProducts",
+  "paramOrder": [
+    "products",
+    "searchWord"
+  ],
+  "types": null
+}
+
+###PYTHON
+from bisect import bisect_left
+from typing import List
+
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        products.sort()
+        answer, prefix = [], ""
+        for ch in searchWord:
+            prefix += ch
+            i = bisect_left(products, prefix)
+            answer.append([p for p in products[i:i + 3] if p.startswith(prefix)])
+        return answer
+
+
+##### FOLDER 1269_number_of_ways_to_stay_in_the_same_place_after_some_steps STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numWays",
+  "paramOrder": [
+    "steps",
+    "arrLen"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def numWays(self, steps: int, arrLen: int) -> int:
+        mod = 1_000_000_007
+        width = min(arrLen, steps // 2 + 1)
+        dp = [1] + [0] * (width - 1)
+        for _ in range(steps):
+            dp = [(dp[i] + (dp[i - 1] if i else 0) + (dp[i + 1] if i + 1 < width else 0)) % mod
+                  for i in range(width)]
+        return dp[0]
+
+
+##### FOLDER 1271_hexspeak STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "toHexspeak",
+  "paramOrder": [
+    "num"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def toHexspeak(self, num: str) -> str:
+        value = int(num)
+        digits = "0123456789ABCDEF"
+        out = ""
+        while value:
+            value, rem = divmod(value, 16)
+            if 2 <= rem <= 9:
+                return "ERROR"
+            out = digits[rem] + out
+        return (out or "0").replace("0", "O").replace("1", "I")
+
+
+##### FOLDER 1272_remove_interval STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeInterval",
+  "paramOrder": [
+    "intervals",
+    "toBeRemoved"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def removeInterval(self, intervals: List[List[int]], toBeRemoved: List[int]) -> List[List[int]]:
+        left, right = toBeRemoved
+        answer = []
+        for start, end in intervals:
+            if end <= left or start >= right:
+                answer.append([start, end])
+            else:
+                if start < left: answer.append([start, left])
+                if end > right: answer.append([right, end])
+        return answer
+
+
+##### FOLDER 1273_delete_tree_nodes STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "deleteTreeNodes",
+  "paramOrder": [
+    "nodes",
+    "parent",
+    "value"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def deleteTreeNodes(self, nodes: int, parent: List[int], value: List[int]) -> int:
+        children = [[] for _ in range(nodes)]
+        for node in range(1, nodes):
+            children[parent[node]].append(node)
+        def dfs(node):
+            total, count = value[node], 1
+            for child in children[node]:
+                child_sum, child_count = dfs(child)
+                total += child_sum
+                count += child_count
+            return (total, 0 if total == 0 else count)
+        return dfs(0)[1]
+
+
+##### FOLDER 1274_number_of_ships_in_a_rectangle STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countShips",
+  "paramOrder": [
+    "ans",
+    "topRight",
+    "bottomLeft"
+  ],
+  "types": {
+    "ans": "sea"
+  }
+}
+
+###PYTHON
+class Sea:
+    def hasShips(self, topRight: "Point", bottomLeft: "Point") -> bool: ...
+
+class Solution:
+    def countShips(self, sea: "Sea", topRight: "Point", bottomLeft: "Point") -> int:
+        tx, ty = topRight
+        bx, by = bottomLeft
+        if tx < bx or ty < by or not sea.hasShips(topRight, bottomLeft):
+            return 0
+        if tx == bx and ty == by:
+            return 1
+        mx, my = (tx + bx) // 2, (ty + by) // 2
+        return (
+            self.countShips(sea, [mx, my], [bx, by])
+            + self.countShips(sea, [tx, my], [mx + 1, by])
+            + self.countShips(sea, [mx, ty], [bx, my + 1])
+            + self.countShips(sea, [tx, ty], [mx + 1, my + 1])
+        )
+
+
+##### FOLDER 1275_find_winner_on_a_tic_tac_toe_game STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "tictactoe",
+  "paramOrder": [
+    "moves"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def tictactoe(self, moves: List[List[int]]) -> str:
+        board = [[0] * 3 for _ in range(3)]
+        for i, (r, c) in enumerate(moves):
+            board[r][c] = 1 if i % 2 == 0 else -1
+        lines = board + [list(col) for col in zip(*board)]
+        lines += [[board[i][i] for i in range(3)], [board[i][2-i] for i in range(3)]]
+        for line in lines:
+            if abs(sum(line)) == 3:
+                return "A" if sum(line) == 3 else "B"
+        return "Draw" if len(moves) == 9 else "Pending"
+
+
+##### FOLDER 1276_number_of_burgers_with_no_waste_of_ingredients STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "numOfBurgers",
+  "paramOrder": [
+    "tomatoSlices",
+    "cheeseSlices"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def numOfBurgers(self, tomatoSlices: int, cheeseSlices: int) -> List[int]:
+        jumbo = tomatoSlices // 2 - cheeseSlices
+        small = cheeseSlices - jumbo
+        return [jumbo, small] if tomatoSlices % 2 == 0 and jumbo >= 0 and small >= 0 else []
+
+
+##### FOLDER 1277_count_square_submatrices_with_all_ones STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "countSquares",
+  "paramOrder": [
+    "matrix"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        answer = 0
+        for r in range(len(matrix)):
+            for c in range(len(matrix[0])):
+                if matrix[r][c] and r and c:
+                    matrix[r][c] += min(matrix[r-1][c], matrix[r][c-1], matrix[r-1][c-1])
+                answer += matrix[r][c]
+        return answer
+
+
+##### FOLDER 1278_palindrome_partitioning_iii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "palindromePartition",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def palindromePartition(self, s: str, k: int) -> int:
+        n = len(s)
+        cost = [[0] * n for _ in range(n)]
+        for length in range(2, n + 1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                cost[i][j] = (cost[i + 1][j - 1] if length > 2 else 0) + (s[i] != s[j])
+        inf = n + 1
+        dp = [[inf] * (n + 1) for _ in range(k + 1)]
+        dp[0][0] = 0
+        for parts in range(1, k + 1):
+            for end in range(parts, n + 1):
+                dp[parts][end] = min(dp[parts - 1][start] + cost[start][end - 1]
+                                     for start in range(parts - 1, end))
+        return dp[k][n]
+
+
+##### FOLDER 1279_traffic_light_controlled_intersection STUB=True
+###CONFIG
+{
+  "class": "TrafficLight",
+  "method": "carArrived",
+  "paramOrder": ["cars", "directions", "arrivalTimes"],
+  "types": null
+}
+
+###PYTHON
+from threading import Lock
+from typing import Callable
+
+class TrafficLight:
+    def __init__(self):
+        self.green_road = 1
+        self.lock = Lock()
+
+    def carArrived(self, carId: int, roadId: int, direction: int,
+                   turnGreen: "Callable", crossCar: "Callable") -> None:
+        with self.lock:
+            if roadId != self.green_road:
+                turnGreen()
+                self.green_road = roadId
+            crossCar()
+
+
+##### FOLDER 1281_subtract_the_product_and_sum_of_digits_of_an_integer STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "subtractProductAndSum",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null
+}
+
+###PYTHON
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        product, total = 1, 0
+        while n:
+            n, digit = divmod(n, 10)
+            product *= digit
+            total += digit
+        return product - total
+
+
+##### FOLDER 1282_group_the_people_given_the_group_size_they_belong_to STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "groupThePeople",
+  "paramOrder": [
+    "groupSizes"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import defaultdict
+from typing import List
+
+class Solution:
+    def groupThePeople(self, groupSizes: List[int]) -> List[List[int]]:
+        pending, answer = defaultdict(list), []
+        for person, size in enumerate(groupSizes):
+            pending[size].append(person)
+            if len(pending[size]) == size:
+                answer.append(pending[size])
+                pending[size] = []
+        return sorted(answer, key=lambda group: (len(group), group))
+
+
+##### FOLDER 1283_find_the_smallest_divisor_given_a_threshold STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "smallestDivisor",
+  "paramOrder": [
+    "nums",
+    "threshold"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def smallestDivisor(self, nums: List[int], threshold: int) -> int:
+        lo, hi = 1, max(nums)
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if sum((x + mid - 1) // mid for x in nums) <= threshold:
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+
+##### FOLDER 1284_minimum_number_of_flips_to_convert_binary_matrix_to_zero_matrix STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minFlips",
+  "paramOrder": [
+    "mat"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import deque
+from typing import List
+
+class Solution:
+    def minFlips(self, mat: List[List[int]]) -> int:
+        m, n = len(mat), len(mat[0])
+        start = sum(mat[r][c] << (r * n + c) for r in range(m) for c in range(n))
+        masks = []
+        for r in range(m):
+            for c in range(n):
+                mask = 0
+                for dr, dc in ((0,0),(1,0),(-1,0),(0,1),(0,-1)):
+                    nr, nc = r + dr, c + dc
+                    if 0 <= nr < m and 0 <= nc < n:
+                        mask ^= 1 << (nr * n + nc)
+                masks.append(mask)
+        queue, seen = deque([(start, 0)]), {start}
+        while queue:
+            state, distance = queue.popleft()
+            if state == 0: return distance
+            for mask in masks:
+                nxt = state ^ mask
+                if nxt not in seen:
+                    seen.add(nxt); queue.append((nxt, distance + 1))
+        return -1
+
+
+##### FOLDER 1286_iterator_for_combination STUB=True
+###CONFIG
+{
+  "class": "CombinationIterator",
+  "kind": "design",
+  "runnable": true
+}
+
+###PYTHON
+from itertools import combinations
+
+class CombinationIterator:
+    def __init__(self, characters: str, combinationLength: int):
+        self.items = iter(map("".join, combinations(characters, combinationLength)))
+        self.next_item = next(self.items, None)
+
+    def next(self) -> str:
+        current = self.next_item
+        self.next_item = next(self.items, None)
+        return current
+
+    def hasNext(self) -> bool:
+        return self.next_item is not None
+
+
+##### FOLDER 1287_element_appearing_more_than_25_in_sorted_array STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "findSpecialInteger",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        n = len(arr)
+        for value in (arr[n // 4], arr[n // 2], arr[3 * n // 4]):
+            if arr.count(value) > n // 4:
+                return value
+        return arr[0]
+
+
+##### FOLDER 1288_remove_covered_intervals STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "removeCoveredIntervals",
+  "paramOrder": [
+    "intervals"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+        intervals.sort(key=lambda x: (x[0], -x[1]))
+        answer = 0
+        farthest = -1
+        for _, end in intervals:
+            if end > farthest:
+                answer += 1
+                farthest = end
+        return answer
+
+
+##### FOLDER 1289_minimum_falling_path_sum_ii STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "minFallingPathSum",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def minFallingPathSum(self, grid: List[List[int]]) -> int:
+        dp = grid[0][:]
+        for row in grid[1:]:
+            first = min(range(len(dp)), key=dp.__getitem__)
+            second_value = min(dp[i] for i in range(len(dp)) if i != first) if len(dp) > 1 else 0
+            dp = [value + (second_value if i == first else dp[first]) for i, value in enumerate(row)]
+        return min(dp)
+
+
+##### FOLDER 1290_convert_binary_number_in_a_linked_list_to_integer STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "getDecimalValue",
+  "paramOrder": [
+    "head"
+  ],
+  "types": {
+    "head": "listnode"
+  }
+}
+
+###PYTHON
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+class Solution:
+    def getDecimalValue(self, head: "ListNode") -> int:
+        value = 0
+        while head:
+            value = value * 2 + head.val
+            head = head.next
+        return value
+
+
+##### FOLDER 1291_sequential_digits STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "sequentialDigits",
+  "paramOrder": [
+    "low",
+    "high"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def sequentialDigits(self, low: int, high: int) -> List[int]:
+        digits = "123456789"
+        answer = []
+        for length in range(2, 10):
+            for start in range(10 - length):
+                value = int(digits[start:start + length])
+                if low <= value <= high:
+                    answer.append(value)
+        return answer
+
+
+##### FOLDER 1292_maximum_side_length_of_a_square_with_sum_less_than_or_equal_to_threshold STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxSideLength",
+  "paramOrder": [
+    "mat",
+    "threshold"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def maxSideLength(self, mat: List[List[int]], threshold: int) -> int:
+        m, n = len(mat), len(mat[0])
+        prefix = [[0] * (n + 1) for _ in range(m + 1)]
+        for r in range(m):
+            for c in range(n):
+                prefix[r+1][c+1] = mat[r][c] + prefix[r][c+1] + prefix[r+1][c] - prefix[r][c]
+        def possible(size):
+            return any(prefix[r][c] - prefix[r-size][c] - prefix[r][c-size] + prefix[r-size][c-size] <= threshold
+                       for r in range(size, m + 1) for c in range(size, n + 1))
+        lo, hi = 0, min(m, n)
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if possible(mid): lo = mid
+            else: hi = mid - 1
+        return lo
+
+
+##### FOLDER 1293_shortest_path_in_a_grid_with_obstacles_elimination STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "shortestPath",
+  "paramOrder": [
+    "grid",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import deque
+from typing import List
+
+class Solution:
+    def shortestPath(self, grid: List[List[int]], k: int) -> int:
+        m, n = len(grid), len(grid[0])
+        if k >= m + n - 2:
+            return m + n - 2
+        queue = deque([(0, 0, k, 0)])
+        best = {(0, 0): k}
+        while queue:
+            r, c, remaining, distance = queue.popleft()
+            if (r, c) == (m - 1, n - 1):
+                return distance
+            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < m and 0 <= nc < n:
+                    nxt = remaining - grid[nr][nc]
+                    if nxt >= 0 and nxt > best.get((nr, nc), -1):
+                        best[(nr, nc)] = nxt
+                        queue.append((nr, nc, nxt, distance + 1))
+        return -1
+
+
+##### FOLDER 1295_find_numbers_with_even_number_of_digits STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "findNumbers",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def findNumbers(self, nums: List[int]) -> int:
+        return sum(len(str(value)) % 2 == 0 for value in nums)
+
+
+##### FOLDER 1296_divide_array_in_sets_of_k_consecutive_numbers STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "isPossibleDivide",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import Counter
+from typing import List
+
+class Solution:
+    def isPossibleDivide(self, nums: List[int], k: int) -> bool:
+        if len(nums) % k:
+            return False
+        counts = Counter(nums)
+        for start in sorted(counts):
+            amount = counts[start]
+            if amount:
+                for value in range(start, start + k):
+                    if counts[value] < amount:
+                        return False
+                    counts[value] -= amount
+        return True
+
+
+##### FOLDER 1297_maximum_number_of_occurrences_of_a_substring STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxFreq",
+  "paramOrder": [
+    "s",
+    "maxLetters",
+    "minSize",
+    "maxSize"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import Counter
+
+class Solution:
+    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:
+        counts = Counter(s[i:i + minSize] for i in range(len(s) - minSize + 1)
+                         if len(set(s[i:i + minSize])) <= maxLetters)
+        return max(counts.values(), default=0)
+
+
+##### FOLDER 1298_maximum_candies_you_can_get_from_boxes STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "maxCandies",
+  "paramOrder": [
+    "status",
+    "candies",
+    "keys",
+    "containedBoxes",
+    "initialBoxes"
+  ],
+  "types": null
+}
+
+###PYTHON
+from collections import deque
+from typing import List
+
+class Solution:
+    def maxCandies(self, status: List[int], candies: List[int], keys: List[List[int]],
+                   containedBoxes: List[List[int]], initialBoxes: List[int]) -> int:
+        owned, opened = set(initialBoxes), set()
+        queue = deque(box for box in initialBoxes if status[box])
+        total = 0
+        while queue:
+            box = queue.popleft()
+            if box in opened or not status[box]:
+                continue
+            opened.add(box)
+            total += candies[box]
+            for key in keys[box]:
+                status[key] = 1
+                if key in owned and key not in opened:
+                    queue.append(key)
+            for child in containedBoxes[box]:
+                owned.add(child)
+                if status[child] and child not in opened:
+                    queue.append(child)
+        return total
+
+
+##### FOLDER 1299_replace_elements_with_greatest_element_on_right_side STUB=True
+###CONFIG
+{
+  "class": "Solution",
+  "method": "replaceElements",
+  "paramOrder": [
+    "arr"
+  ],
+  "types": null
+}
+
+###PYTHON
+from typing import List
+
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        greatest = -1
+        for i in range(len(arr) - 1, -1, -1):
+            arr[i], greatest = greatest, max(greatest, arr[i])
+        return arr
+

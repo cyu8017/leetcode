@@ -1,6 +1,6 @@
-﻿// LeetCode 1480 - Running Sum of 1d Array
-// https://leetcode.com/problems/running-sum-of-1d-array/
-
 object Solution {
-  def solve(): Unit = {}
+  def runningSum(nums: Array[Int]): Array[Int] = {
+    for (i <- 1 until nums.length) nums(i) += nums(i - 1)
+    nums
+  }
 }

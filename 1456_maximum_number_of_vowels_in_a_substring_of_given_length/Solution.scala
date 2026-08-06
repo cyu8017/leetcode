@@ -1,6 +1,8 @@
-﻿// LeetCode 1456 - Maximum Number of Vowels in a Substring of Given Length
-// https://leetcode.com/problems/maximum-number-of-vowels-in-a-substring-of-given-length/
-
 object Solution {
-  def solve(): Unit = {}
+  def maxVowels(s: String, k: Int): Int = {
+    def isVowel(c: Char): Boolean = "aeiou".contains(c)
+    var current = s.take(k).count(isVowel); var answer = current
+    for (i <- k until s.length) { if (isVowel(s(i))) current += 1; if (isVowel(s(i - k))) current -= 1; answer = answer.max(current) }
+    answer
+  }
 }

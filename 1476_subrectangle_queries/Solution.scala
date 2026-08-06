@@ -1,6 +1,7 @@
-﻿// LeetCode 1476 - Subrectangle Queries
-// https://leetcode.com/problems/subrectangle-queries/
+class SubrectangleQueries(rectangle: Array[Array[Int]]) {
+  def updateSubrectangle(row1: Int, col1: Int, row2: Int, col2: Int, newValue: Int): Unit = {
+    for (row <- row1 to row2; col <- col1 to col2) rectangle(row)(col) = newValue
+  }
 
-object Solution {
-  def solve(): Unit = {}
+  def getValue(row: Int, col: Int): Int = rectangle(row)(col)
 }

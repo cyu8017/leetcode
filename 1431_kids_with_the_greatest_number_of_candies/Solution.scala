@@ -1,6 +1,6 @@
-﻿// LeetCode 1431 - Kids With the Greatest Number of Candies
-// https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/
-
 object Solution {
-  def solve(): Unit = {}
+  def kidsWithCandies(candies: Array[Int], extraCandies: Int): List[Boolean] = {
+    val maximum = candies.max
+    candies.map(_ + extraCandies >= maximum).toList
+  }
 }

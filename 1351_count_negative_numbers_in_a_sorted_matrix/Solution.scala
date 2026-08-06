@@ -1,6 +1,7 @@
-﻿// LeetCode 1351 - Count Negative Numbers in a Sorted Matrix
-// https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
-
 object Solution {
-  def solve(): Unit = {}
+  def countNegatives(grid: Array[Array[Int]]): Int = grid.map { row =>
+    var lo = 0; var hi = row.length
+    while (lo < hi) { val mid = (lo + hi) >>> 1; if (row(mid) < 0) hi = mid else lo = mid + 1 }
+    row.length - lo
+  }.sum
 }

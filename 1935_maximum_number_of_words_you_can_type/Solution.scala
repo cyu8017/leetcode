@@ -2,5 +2,8 @@
 // https://leetcode.com/problems/maximum-number-of-words-you-can-type/
 
 object Solution {
-  def solve(): Unit = {}
+  def canBeTypedWords(text: String, brokenLetters: String): Int = {
+    val broken = brokenLetters.toSet
+    text.split(" ").count(w => !w.exists(broken.contains))
+  }
 }

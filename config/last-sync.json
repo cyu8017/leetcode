@@ -1,9 +1,164 @@
-{
-  "syncedAt": "2026-07-16T08:15:59.3059529Z",
-  "sourceUrl": "https://raw.githubusercontent.com/bunnyxt/lcid/main/problems_all.json",
-  "remoteCount": 3991,
-  "localFolderCount": 3991,
-  "created": 0,
-  "skipped": 3991,
-  "newProblems": []
+﻿{
+    "syncedAt":  "2026-08-06T13:52:16.5172940Z",
+    "sourceUrl":  "https://raw.githubusercontent.com/bunnyxt/lcid/main/problems_all.json",
+    "remoteCount":  4013,
+    "localFolderCount":  4013,
+    "created":  22,
+    "skipped":  3991,
+    "newProblems":  [
+                        {
+                            "Number":  3992,
+                            "Title":  "Rearrange String to Avoid Character Pair",
+                            "TitleSlug":  "rearrange-string-to-avoid-character-pair",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "3992_rearrange_string_to_avoid_character_pair"
+                        },
+                        {
+                            "Number":  3993,
+                            "Title":  "Maximum Value of an Alternating Sequence",
+                            "TitleSlug":  "maximum-value-of-an-alternating-sequence",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3993_maximum_value_of_an_alternating_sequence"
+                        },
+                        {
+                            "Number":  3994,
+                            "Title":  "Minimum Adjacent Swaps to Partition Array",
+                            "TitleSlug":  "minimum-adjacent-swaps-to-partition-array",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3994_minimum_adjacent_swaps_to_partition_array"
+                        },
+                        {
+                            "Number":  3995,
+                            "Title":  "Minimum Cost to Convert String III",
+                            "TitleSlug":  "minimum-cost-to-convert-string-iii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "3995_minimum_cost_to_convert_string_iii"
+                        },
+                        {
+                            "Number":  3996,
+                            "Title":  "Even Number of Knight Moves",
+                            "TitleSlug":  "even-number-of-knight-moves",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "3996_even_number_of_knight_moves"
+                        },
+                        {
+                            "Number":  3997,
+                            "Title":  "Count Dominant Nodes in a Binary Tree",
+                            "TitleSlug":  "count-dominant-nodes-in-a-binary-tree",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3997_count_dominant_nodes_in_a_binary_tree"
+                        },
+                        {
+                            "Number":  3998,
+                            "Title":  "Transform Binary String Using Subsequence Sort",
+                            "TitleSlug":  "transform-binary-string-using-subsequence-sort",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "3998_transform_binary_string_using_subsequence_sort"
+                        },
+                        {
+                            "Number":  3999,
+                            "Title":  "Minimum Number of String Groups Through Transformations",
+                            "TitleSlug":  "minimum-number-of-string-groups-through-transformations",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "3999_minimum_number_of_string_groups_through_transformations"
+                        },
+                        {
+                            "Number":  4000,
+                            "Title":  "Largest Integer With Given Digit Sum",
+                            "TitleSlug":  "largest-integer-with-given-digit-sum",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "4000_largest_integer_with_given_digit_sum"
+                        },
+                        {
+                            "Number":  4001,
+                            "Title":  "Aggregate Two Time Series",
+                            "TitleSlug":  "aggregate-two-time-series",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4001_aggregate_two_time_series"
+                        },
+                        {
+                            "Number":  4002,
+                            "Title":  "Count Valid Sequences",
+                            "TitleSlug":  "count-valid-sequences",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4002_count_valid_sequences"
+                        },
+                        {
+                            "Number":  4003,
+                            "Title":  "Minimum Cost Path with Alternating Directions III",
+                            "TitleSlug":  "minimum-cost-path-with-alternating-directions-iii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "4003_minimum_cost_path_with_alternating_directions_iii"
+                        },
+                        {
+                            "Number":  4004,
+                            "Title":  "Minimum Moves to Balance Circular Array II",
+                            "TitleSlug":  "minimum-moves-to-balance-circular-array-ii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "4004_minimum_moves_to_balance_circular_array_ii"
+                        },
+                        {
+                            "Number":  4005,
+                            "Title":  "Minimum Operations to Make Array Equal III",
+                            "TitleSlug":  "minimum-operations-to-make-array-equal-iii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "4005_minimum_operations_to_make_array_equal_iii"
+                        },
+                        {
+                            "Number":  4006,
+                            "Title":  "Count Valid Prefixes",
+                            "TitleSlug":  "count-valid-prefixes",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "4006_count_valid_prefixes"
+                        },
+                        {
+                            "Number":  4007,
+                            "Title":  "Widest Possible Fence",
+                            "TitleSlug":  "widest-possible-fence",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4007_widest_possible_fence"
+                        },
+                        {
+                            "Number":  4008,
+                            "Title":  "Minimum Initial Strength to Defeat All Monsters",
+                            "TitleSlug":  "minimum-initial-strength-to-defeat-all-monsters",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4008_minimum_initial_strength_to_defeat_all_monsters"
+                        },
+                        {
+                            "Number":  4009,
+                            "Title":  "Minimum Possible Maximum Waiting Time",
+                            "TitleSlug":  "minimum-possible-maximum-waiting-time",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "4009_minimum_possible_maximum_waiting_time"
+                        },
+                        {
+                            "Number":  4010,
+                            "Title":  "Maximize Pair Strength Using GCD",
+                            "TitleSlug":  "maximize-pair-strength-using-gcd",
+                            "Difficulty":  "Easy",
+                            "FolderName":  "4010_maximize_pair_strength_using_gcd"
+                        },
+                        {
+                            "Number":  4011,
+                            "Title":  "Count Subarrays With Even Odd Ratio I",
+                            "TitleSlug":  "count-subarrays-with-even-odd-ratio-i",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4011_count_subarrays_with_even_odd_ratio_i"
+                        },
+                        {
+                            "Number":  4012,
+                            "Title":  "Count of Unfinished Tasks After Each Shift",
+                            "TitleSlug":  "count-of-unfinished-tasks-after-each-shift",
+                            "Difficulty":  "Medium",
+                            "FolderName":  "4012_count_of_unfinished_tasks_after_each_shift"
+                        },
+                        {
+                            "Number":  4013,
+                            "Title":  "Count Subarrays With Even Odd Ratio II",
+                            "TitleSlug":  "count-subarrays-with-even-odd-ratio-ii",
+                            "Difficulty":  "Hard",
+                            "FolderName":  "4013_count_subarrays_with_even_odd_ratio_ii"
+                        }
+                    ]
 }

@@ -1,6 +1,6 @@
-﻿// LeetCode 1359 - Count All Valid Pickup and Delivery Options
-// https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
-
 object Solution {
-  def solve(): Unit = {}
+  def countOrders(n: Int): Int = {
+    val mod = 1000000007L
+    (1 to n).foldLeft(1L)((answer, i) => answer * i % mod * (2L * i - 1) % mod).toInt
+  }
 }

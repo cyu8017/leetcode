@@ -1,6 +1,7 @@
-﻿// LeetCode 1352 - Product of the Last K Numbers
-// https://leetcode.com/problems/product-of-the-last-k-numbers/
+import scala.collection.mutable
 
-object Solution {
-  def solve(): Unit = {}
+class ProductOfNumbers {
+  private val prefix = mutable.ArrayBuffer(1)
+  def add(num: Int): Unit = if (num == 0) { prefix.clear(); prefix += 1 } else prefix += prefix.last * num
+  def getProduct(k: Int): Int = if (k >= prefix.length) 0 else prefix.last / prefix(prefix.length - 1 - k)
 }

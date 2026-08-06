@@ -1,6 +1,7 @@
-﻿// LeetCode 1358 - Number of Substrings Containing All Three Characters
-// https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
-
 object Solution {
-  def solve(): Unit = {}
+  def numberOfSubstrings(s: String): Int = {
+    val last = Array(-1, -1, -1); var answer = 0
+    s.indices.foreach(i => { last(s(i) - 'a') = i; answer += last.min + 1 })
+    answer
+  }
 }

@@ -1,6 +1,7 @@
-﻿// LeetCode 1380 - Lucky Numbers in a Matrix
-// https://leetcode.com/problems/lucky-numbers-in-a-matrix/
-
 object Solution {
-  def solve(): Unit = {}
+  def luckyNumbers(matrix: Array[Array[Int]): List[Int] = {
+    val minimums = matrix.map(_.min).toSet
+    val maximums = matrix.head.indices.map(c => matrix.map(_(c)).max).toSet
+    minimums.intersect(maximums).toList
+  }
 }

@@ -2,5 +2,13 @@
 // https://leetcode.com/problems/find-the-middle-index-in-array/
 
 object Solution {
-  def solve(): Unit = {}
+  def findMiddleIndex(nums: Array[Int]): Int = {
+    val total = nums.sum
+    var left = 0
+    for (i <- nums.indices) {
+      if (left == total - left - nums(i)) return i
+      left += nums(i)
+    }
+    -1
+  }
 }

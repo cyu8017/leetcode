@@ -1,6 +1,4 @@
-﻿// LeetCode 1461 - Check If a String Contains All Binary Codes of Size K
-// https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
-
 object Solution {
-  def solve(): Unit = {}
+  def hasAllCodes(s: String, k: Int): Boolean =
+    s.length >= k && (0 to s.length - k).map(i => s.substring(i, i + k)).toSet.size == (1 << k)
 }

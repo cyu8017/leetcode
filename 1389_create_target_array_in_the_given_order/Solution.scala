@@ -1,6 +1,3 @@
-﻿// LeetCode 1389 - Create Target Array in the Given Order
-// https://leetcode.com/problems/create-target-array-in-the-given-order/
-
 object Solution {
-  def solve(): Unit = {}
+  def createTargetArray(nums: Array[Int], index: Array[Int]): Array[Int] = { val out = scala.collection.mutable.ArrayBuffer[Int](); nums.indices.foreach(i => out.insert(index(i), nums(i))); out.toArray }
 }

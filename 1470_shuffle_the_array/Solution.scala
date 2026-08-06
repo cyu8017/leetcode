@@ -1,6 +1,10 @@
-﻿// LeetCode 1470 - Shuffle the Array
-// https://leetcode.com/problems/shuffle-the-array/
-
 object Solution {
-  def solve(): Unit = {}
+  def shuffle(nums: Array[Int], n: Int): Array[Int] = {
+    val answer = new Array[Int](2 * n)
+    for (i <- 0 until n) {
+      answer(2 * i) = nums(i)
+      answer(2 * i + 1) = nums(i + n)
+    }
+    answer
+  }
 }

@@ -1,6 +1,6 @@
-﻿// LeetCode 1344 - Angle Between Hands of a Clock
-// https://leetcode.com/problems/angle-between-hands-of-a-clock/
-
 object Solution {
-  def solve(): Unit = {}
+  def angleClock(hour: Int, minutes: Int): Double = {
+    val difference = math.abs((hour % 12) * 30.0 + minutes * 0.5 - minutes * 6.0)
+    math.min(difference, 360.0 - difference)
+  }
 }

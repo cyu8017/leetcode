@@ -2,5 +2,7 @@
 // https://leetcode.com/problems/defanging-an-ip-address/
 
 object Solution {
-  def solve(): Unit = {}
+  def defangIPaddr(address: String): String = {
+    address.replace(".", "[.]")
+  }
 }

@@ -2,5 +2,15 @@
 // https://leetcode.com/problems/remove-all-occurrences-of-a-substring/
 
 object Solution {
-  def solve(): Unit = {}
+  def removeOccurrences(s: String, part: String): String = {
+    val stack = new StringBuilder
+    val m = part.length
+    for (ch <- s) {
+      stack.append(ch)
+      if (stack.length >= m && stack.substring(stack.length - m) == part) {
+        stack.delete(stack.length - m, stack.length)
+      }
+    }
+    stack.toString
+  }
 }

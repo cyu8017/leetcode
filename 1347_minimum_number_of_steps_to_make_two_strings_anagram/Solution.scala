@@ -1,6 +1,7 @@
-﻿// LeetCode 1347 - Minimum Number of Steps to Make Two Strings Anagram
-// https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
-
 object Solution {
-  def solve(): Unit = {}
+  def minSteps(s: String, t: String): Int = {
+    val count = Array.fill(26)(0)
+    s.foreach(c => count(c - 'a') += 1); t.foreach(c => count(c - 'a') -= 1)
+    count.filter(_ > 0).sum
+  }
 }

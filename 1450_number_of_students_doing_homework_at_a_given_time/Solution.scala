@@ -1,6 +1,4 @@
-﻿// LeetCode 1450 - Number of Students Doing Homework at a Given Time
-// https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/
-
 object Solution {
-  def solve(): Unit = {}
+  def busyStudent(startTime: Array[Int], endTime: Array[Int], queryTime: Int): Int =
+    startTime.indices.count(i => startTime(i) <= queryTime && queryTime <= endTime(i))
 }

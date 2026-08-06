@@ -1,6 +1,3 @@
-﻿// LeetCode 1409 - Queries on a Permutation With Key
-// https://leetcode.com/problems/queries-on-a-permutation-with-key/
-
 object Solution {
-  def solve(): Unit = {}
+  def processQueries(queries: Array[Int], m: Int): Array[Int] = { val a=scala.collection.mutable.ArrayBuffer((1 to m): _*); queries.map { x => val i=a.indexOf(x); a.remove(i); a.prepend(x); i } }
 }

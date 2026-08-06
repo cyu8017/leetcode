@@ -2,5 +2,6 @@
 // https://leetcode.com/problems/game-of-nim/
 
 object Solution {
-  def solve(): Unit = {}
+  def nimGame(piles: Array[Int]): Boolean =
+    piles.foldLeft(0)(_ ^ _) != 0
 }

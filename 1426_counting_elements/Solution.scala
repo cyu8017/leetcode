@@ -1,6 +1,6 @@
-﻿// LeetCode 1426 - Counting Elements
-// https://leetcode.com/problems/counting-elements/
-
 object Solution {
-  def solve(): Unit = {}
+  def countElements(arr: Array[Int]): Int = {
+    val values = arr.toSet
+    arr.count(x => values.contains(x + 1))
+  }
 }

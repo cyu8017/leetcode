@@ -2,5 +2,6 @@
 // https://leetcode.com/problems/build-array-from-permutation/
 
 object Solution {
-  def solve(): Unit = {}
+  def buildArray(nums: Array[Int]): Array[Int] =
+    nums.map(x => nums(x))
 }

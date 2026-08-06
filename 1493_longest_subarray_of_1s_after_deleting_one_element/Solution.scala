@@ -1,6 +1,16 @@
-﻿// LeetCode 1493 - Longest Subarray of 1's After Deleting One Element
-// https://leetcode.com/problems/longest-subarray-of-1s-after-deleting-one-element/
-
 object Solution {
-  def solve(): Unit = {}
+  def longestSubarray(nums: Array[Int]): Int = {
+    var left = 0
+    var zeros = 0
+    var answer = 0
+    for (right <- nums.indices) {
+      if (nums(right) == 0) zeros += 1
+      while (zeros > 1) {
+        if (nums(left) == 0) zeros -= 1
+        left += 1
+      }
+      answer = math.max(answer, right - left)
+    }
+    answer
+  }
 }

@@ -1,0 +1,746 @@
+==== 1186_maximum_subarray_sum_with_one_deletion
+# LeetCode 1186 - Maximum Subarray Sum with One Deletion
+# https://leetcode.com/problems/maximum-subarray-sum-with-one-deletion/
+
+class Solution:
+    def maximumSum(self, arr: list[int]) -> int:
+        keep = delete = ans = arr[0]
+        for x in arr[1:]:
+            delete = max(keep, delete + x)
+            keep = max(keep + x, x)
+            ans = max(ans, keep, delete)
+        return ans
+
+==== 1187_make_array_strictly_increasing
+# LeetCode 1187 - Make Array Strictly Increasing
+# https://leetcode.com/problems/make-array-strictly-increasing/
+
+import bisect
+
+
+class Solution:
+    def makeArrayIncreasing(self, arr1: list[int], arr2: list[int]) -> int:
+        arr2 = sorted(set(arr2))
+        dp = {-1: 0}
+        for num in arr1:
+            new_dp: dict[int, int] = {}
+            for prev, ops in dp.items():
+                if num > prev:
+                    new_dp[num] = min(new_dp.get(num, float("inf")), ops)
+                idx = bisect.bisect_right(arr2, prev)
+                if idx < len(arr2):
+                    chosen = arr2[idx]
+                    new_dp[chosen] = min(new_dp.get(chosen, float("inf")), ops + 1)
+            dp = new_dp
+            if not dp:
+                return -1
+        return min(dp.values())
+
+==== 1188_design_bounded_blocking_queue
+# LeetCode 1188 - Design Bounded Blocking Queue
+# https://leetcode.com/problems/design-bounded-blocking-queue/
+
+import threading
+from collections import deque
+
+
+class BoundedBlockingQueue:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.queue: deque[int] = deque()
+        self.not_full = threading.Semaphore(capacity)
+        self.not_empty = threading.Semaphore(0)
+        self.lock = threading.Lock()
+
+    def enqueue(self, element: int) -> None:
+        self.not_full.acquire()
+        with self.lock:
+            self.queue.append(element)
+        self.not_empty.release()
+
+    def dequeue(self) -> int:
+        self.not_empty.acquire()
+        with self.lock:
+            value = self.queue.popleft()
+        self.not_full.release()
+        return value
+
+    def size(self) -> int:
+        with self.lock:
+            return len(self.queue)
+
+==== 1189_maximum_number_of_balloons
+# LeetCode 1189 - Maximum Number of Balloons
+# https://leetcode.com/problems/maximum-number-of-balloons/
+
+from collections import Counter
+
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        count = Counter(text)
+        return min(count["b"], count["a"], count["l"] // 2, count["o"] // 2, count["n"])
+
+==== 1190_reverse_substrings_between_each_pair_of_parentheses
+# LeetCode 1190 - Reverse Substrings Between Each Pair of Parentheses
+# https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/
+
+class Solution:
+    def reverseParentheses(self, s: str) -> str:
+        stack: list[str] = []
+        for ch in s:
+            if ch == ")":
+                chunk: list[str] = []
+                while stack and stack[-1] != "(":
+                    chunk.append(stack.pop())
+                stack.pop()
+                stack.extend(chunk)
+            else:
+                stack.append(ch)
+        return "".join(stack)
+
+==== 1191_k_concatenation_maximum_sum
+# LeetCode 1191 - K-Concatenation Maximum Sum
+# https://leetcode.com/problems/k-concatenation-maximum-sum/
+
+class Solution:
+    def kConcatenationMaxSum(self, arr: list[int], k: int) -> int:
+        MOD = 10**9 + 7
+
+        def kadane(nums: list[int]) -> int:
+            best = cur = 0
+            for x in nums:
+                cur = max(0, cur + x)
+                best = max(best, cur)
+            return best
+
+        one = kadane(arr)
+        if k == 1:
+            return one % MOD
+        two = kadane(arr + arr)
+        total = sum(arr)
+        if total > 0:
+            return max(one, two + total * (k - 2)) % MOD
+        return max(one, two) % MOD
+
+==== 1192_critical_connections_in_a_network
+# LeetCode 1192 - Critical Connections in a Network
+# https://leetcode.com/problems/critical-connections-in-a-network/
+
+from collections import defaultdict
+
+
+class Solution:
+    def criticalConnections(self, n: int, connections: list[list[int]]) -> list[list[int]]:
+        graph = defaultdict(list)
+        for a, b in connections:
+            graph[a].append(b)
+            graph[b].append(a)
+        disc = [-1] * n
+        low = [-1] * n
+        time = 0
+        bridges: list[list[int]] = []
+
+        def dfs(node: int, parent: int) -> None:
+            nonlocal time
+            disc[node] = low[node] = time
+            time += 1
+            for nxt in graph[node]:
+                if nxt == parent:
+                    continue
+                if disc[nxt] == -1:
+                    dfs(nxt, node)
+                    low[node] = min(low[node], low[nxt])
+                    if low[nxt] > disc[node]:
+                        bridges.append([node, nxt])
+                else:
+                    low[node] = min(low[node], disc[nxt])
+
+        dfs(0, -1)
+        return [[min(a, b), max(a, b)] for a, b in bridges]
+
+==== 1195_fizz_buzz_multithreaded
+# LeetCode 1195 - Fizz Buzz Multithreaded
+# https://leetcode.com/problems/fizz-buzz-multithreaded/
+
+import threading
+
+
+class FizzBuzz:
+    def __init__(self, n: int):
+        self.n = n
+        self.current = 1
+        self.condition = threading.Condition()
+
+    def fizz(self, printFizz) -> None:
+        self._run(lambda x: x % 3 == 0 and x % 5 != 0, lambda: printFizz())
+
+    def buzz(self, printBuzz) -> None:
+        self._run(lambda x: x % 5 == 0 and x % 3 != 0, lambda: printBuzz())
+
+    def fizzbuzz(self, printFizzBuzz) -> None:
+        self._run(lambda x: x % 15 == 0, lambda: printFizzBuzz())
+
+    def number(self, printNumber) -> None:
+        self._run(lambda x: x % 3 != 0 and x % 5 != 0, lambda: printNumber(self.current))
+
+    def _run(self, predicate, action) -> None:
+        with self.condition:
+            while self.current <= self.n:
+                if predicate(self.current):
+                    action()
+                    self.current += 1
+                    self.condition.notify_all()
+                else:
+                    self.condition.wait()
+
+==== 1196_how_many_apples_can_you_put_into_the_basket
+# LeetCode 1196 - How Many Apples Can You Put into the Basket
+# https://leetcode.com/problems/how-many-apples-can-you-put-into-the-basket/
+
+class Solution:
+    def maxNumberOfApples(self, weight: list[int]) -> int:
+        weight.sort()
+        total = 0
+        for i, w in enumerate(weight):
+            total += w
+            if total > 5000:
+                return i
+        return len(weight)
+
+==== 1197_minimum_knight_moves
+# LeetCode 1197 - Minimum Knight Moves
+# https://leetcode.com/problems/minimum-knight-moves/
+
+from collections import deque
+from functools import lru_cache
+
+
+class Solution:
+    def minKnightMoves(self, x: int, y: int) -> int:
+        x, y = abs(x), abs(y)
+
+        @lru_cache(None)
+        def dfs(a: int, b: int) -> int:
+            if a + b == 0:
+                return 0
+            if a + b == 2:
+                return 2
+            return min(dfs(abs(a - 1), abs(b - 2)), dfs(abs(a - 2), abs(b - 1))) + 1
+
+        return dfs(x, y)
+
+==== 1198_find_smallest_common_element_in_all_rows
+# LeetCode 1198 - Find Smallest Common Element in All Rows
+# https://leetcode.com/problems/find-smallest-common-element-in-all-rows/
+
+class Solution:
+    def smallestCommonElement(self, mat: list[list[int]]) -> int:
+        common = set(mat[0])
+        for row in mat[1:]:
+            common &= set(row)
+            if not common:
+                return -1
+        return min(common)
+
+==== 1199_minimum_time_to_build_blocks
+# LeetCode 1199 - Minimum Time to Build Blocks
+# https://leetcode.com/problems/minimum-time-to-build-blocks/
+
+import heapq
+
+
+class Solution:
+    def minBuildTime(self, blocks: list[int], split: int) -> int:
+        heap = blocks[:]
+        heapq.heapify(heap)
+        while len(heap) > 1:
+            heapq.heappop(heap)
+            heapq.heappush(heap, heapq.heappop(heap) + split)
+        return heap[0]
+
+==== 1200_minimum_absolute_difference
+# LeetCode 1200 - Minimum Absolute Difference
+# https://leetcode.com/problems/minimum-absolute-difference/
+
+class Solution:
+    def minimumAbsDifference(self, arr: list[int]) -> list[list[int]]:
+        arr.sort()
+        best = min(arr[i + 1] - arr[i] for i in range(len(arr) - 1))
+        return [[arr[i], arr[i + 1]] for i in range(len(arr) - 1) if arr[i + 1] - arr[i] == best]
+
+==== 1201_ugly_number_iii
+from math import gcd
+
+class Solution:
+    def nthUglyNumber(self, n: int, a: int, b: int, c: int) -> int:
+        def lcm(x, y): return x // gcd(x, y) * y
+        ab, ac, bc = lcm(a, b), lcm(a, c), lcm(b, c)
+        abc = lcm(ab, c)
+        def count(x):
+            return x // a + x // b + x // c - x // ab - x // ac - x // bc + x // abc
+        lo, hi = 1, 2_000_000_000
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if count(mid) >= n: hi = mid
+            else: lo = mid + 1
+        return lo
+
+==== 1202_smallest_string_with_swaps
+from collections import defaultdict
+
+class Solution:
+    def smallestStringWithSwaps(self, s: str, pairs: list[list[int]]) -> str:
+        parent = list(range(len(s)))
+        def find(x):
+            while x != parent[x]:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+        for a, b in pairs:
+            ra, rb = find(a), find(b)
+            parent[ra] = rb
+        groups = defaultdict(list)
+        for i, ch in enumerate(s): groups[find(i)].append(ch)
+        for chars in groups.values(): chars.sort(reverse=True)
+        return ''.join(groups[find(i)].pop() for i in range(len(s)))
+
+==== 1203_sort_items_by_groups_respecting_dependencies
+from collections import deque
+
+class Solution:
+    def sortItems(self, n: int, m: int, group: list[int], beforeItems: list[list[int]]) -> list[int]:
+        for i in range(n):
+            if group[i] == -1:
+                group[i] = m
+                m += 1
+        item_graph = [[] for _ in range(n)]
+        item_indeg = [0] * n
+        group_graph = [set() for _ in range(m)]
+        group_indeg = [0] * m
+        for v in range(n):
+            for u in beforeItems[v]:
+                item_graph[u].append(v)
+                item_indeg[v] += 1
+                if group[u] != group[v] and group[v] not in group_graph[group[u]]:
+                    group_graph[group[u]].add(group[v])
+                    group_indeg[group[v]] += 1
+        def topo(graph, indeg):
+            q = deque(i for i, d in enumerate(indeg) if d == 0)
+            order = []
+            while q:
+                u = q.popleft()
+                order.append(u)
+                for v in graph[u]:
+                    indeg[v] -= 1
+                    if indeg[v] == 0: q.append(v)
+            return order if len(order) == len(graph) else []
+        items, groups = topo(item_graph, item_indeg), topo(group_graph, group_indeg)
+        if not items or not groups: return []
+        buckets = [[] for _ in range(m)]
+        for item in items: buckets[group[item]].append(item)
+        return [item for g in groups for item in buckets[g]]
+
+==== 1206_design_skiplist
+from bisect import bisect_left, insort
+
+class Skiplist:
+    def __init__(self):
+        self.values = []
+
+    def search(self, target: int) -> bool:
+        i = bisect_left(self.values, target)
+        return i < len(self.values) and self.values[i] == target
+
+    def add(self, num: int) -> None:
+        insort(self.values, num)
+
+    def erase(self, num: int) -> bool:
+        i = bisect_left(self.values, num)
+        if i == len(self.values) or self.values[i] != num: return False
+        self.values.pop(i)
+        return True
+
+==== 1207_unique_number_of_occurrences
+from collections import Counter
+
+class Solution:
+    def uniqueOccurrences(self, arr: list[int]) -> bool:
+        counts = Counter(arr).values()
+        return len(counts) == len(set(counts))
+
+==== 1208_get_equal_substrings_within_budget
+class Solution:
+    def equalSubstring(self, s: str, t: str, maxCost: int) -> int:
+        left = cost = answer = 0
+        for right, (a, b) in enumerate(zip(s, t)):
+            cost += abs(ord(a) - ord(b))
+            while cost > maxCost:
+                cost -= abs(ord(s[left]) - ord(t[left]))
+                left += 1
+            answer = max(answer, right - left + 1)
+        return answer
+
+==== 1209_remove_all_adjacent_duplicates_in_string_ii
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        stack = []
+        for ch in s:
+            if stack and stack[-1][0] == ch: stack[-1][1] += 1
+            else: stack.append([ch, 1])
+            if stack[-1][1] == k: stack.pop()
+        return ''.join(ch * count for ch, count in stack)
+
+==== 1210_minimum_moves_to_reach_target_with_rotations
+from collections import deque
+
+class Solution:
+    def minimumMoves(self, grid: list[list[int]]) -> int:
+        n = len(grid)
+        start, target = (0, 0, 0), (n - 1, n - 2, 0)
+        q, seen = deque([(start, 0)]), {start}
+        while q:
+            (r, c, orient), moves = q.popleft()
+            if (r, c, orient) == target: return moves
+            nxt = []
+            if orient == 0:
+                if c + 2 < n and grid[r][c + 2] == 0: nxt.append((r, c + 1, 0))
+                if r + 1 < n and grid[r + 1][c] == grid[r + 1][c + 1] == 0:
+                    nxt += [(r + 1, c, 0), (r, c, 1)]
+            else:
+                if r + 2 < n and grid[r + 2][c] == 0: nxt.append((r + 1, c, 1))
+                if c + 1 < n and grid[r][c + 1] == grid[r + 1][c + 1] == 0:
+                    nxt += [(r, c + 1, 1), (r, c, 0)]
+            for state in nxt:
+                if state not in seen:
+                    seen.add(state)
+                    q.append((state, moves + 1))
+        return -1
+
+==== 1213_intersection_of_three_sorted_arrays
+class Solution:
+    def arraysIntersection(self, arr1: list[int], arr2: list[int], arr3: list[int]) -> list[int]:
+        return sorted(set(arr1) & set(arr2) & set(arr3))
+
+==== 1214_two_sum_bsts
+class Solution:
+    def twoSumBSTs(self, root1: 'TreeNode', root2: 'TreeNode', target: int) -> bool:
+        values = set()
+        stack = [root1] if root1 else []
+        while stack:
+            node = stack.pop()
+            values.add(node.val)
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+        stack = [root2] if root2 else []
+        while stack:
+            node = stack.pop()
+            if target - node.val in values: return True
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+        return False
+
+==== 1215_stepping_numbers
+from collections import deque
+
+class Solution:
+    def countSteppingNumbers(self, low: int, high: int) -> list[int]:
+        answer = [0] if low == 0 else []
+        q = deque(range(1, 10))
+        while q:
+            x = q.popleft()
+            if x > high: continue
+            if x >= low: answer.append(x)
+            last = x % 10
+            if last > 0: q.append(x * 10 + last - 1)
+            if last < 9: q.append(x * 10 + last + 1)
+        return sorted(answer)
+
+==== 1216_valid_palindrome_iii
+class Solution:
+    def isValidPalindrome(self, s: str, k: int) -> bool:
+        dp = [0] * len(s)
+        for i in range(len(s) - 1, -1, -1):
+            previous = 0
+            for j in range(i + 1, len(s)):
+                old = dp[j]
+                if s[i] == s[j]: dp[j] = previous
+                else: dp[j] = 1 + min(dp[j], dp[j - 1])
+                previous = old
+        return not s or dp[-1] <= k
+
+==== 1217_minimum_cost_to_move_chips_to_the_same_position
+class Solution:
+    def minCostToMoveChips(self, position: list[int]) -> int:
+        odd = sum(x & 1 for x in position)
+        return min(odd, len(position) - odd)
+
+==== 1218_longest_arithmetic_subsequence_of_given_difference
+class Solution:
+    def longestSubsequence(self, arr: list[int], difference: int) -> int:
+        dp = {}
+        for x in arr: dp[x] = dp.get(x - difference, 0) + 1
+        return max(dp.values())
+
+==== 1219_path_with_maximum_gold
+class Solution:
+    def getMaximumGold(self, grid: list[list[int]]) -> int:
+        rows, cols = len(grid), len(grid[0])
+        def dfs(r, c):
+            gold, grid[r][c] = grid[r][c], 0
+            best = 0
+            for dr, dc in ((1,0),(-1,0),(0,1),(0,-1)):
+                nr, nc = r + dr, c + dc
+                if 0 <= nr < rows and 0 <= nc < cols and grid[nr][nc]:
+                    best = max(best, dfs(nr, nc))
+            grid[r][c] = gold
+            return gold + best
+        return max((dfs(r, c) for r in range(rows) for c in range(cols) if grid[r][c]), default=0)
+
+==== 1220_count_vowels_permutation
+class Solution:
+    def countVowelPermutation(self, n: int) -> int:
+        mod = 1_000_000_007
+        a = e = i = o = u = 1
+        for _ in range(n - 1):
+            a, e, i, o, u = (e + i + u) % mod, (a + i) % mod, (e + o) % mod, i, (i + o) % mod
+        return (a + e + i + o + u) % mod
+
+==== 1221_split_a_string_in_balanced_strings
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        balance = answer = 0
+        for ch in s:
+            balance += 1 if ch == 'L' else -1
+            answer += balance == 0
+        return answer
+
+==== 1222_queens_that_can_attack_the_king
+class Solution:
+    def queensAttacktheKing(self, queens: list[list[int]], king: list[int]) -> list[list[int]]:
+        occupied, answer = {tuple(q) for q in queens}, []
+        for dr in (-1, 0, 1):
+            for dc in (-1, 0, 1):
+                if dr == dc == 0: continue
+                r, c = king[0] + dr, king[1] + dc
+                while 0 <= r < 8 and 0 <= c < 8:
+                    if (r, c) in occupied:
+                        answer.append([r, c])
+                        break
+                    r, c = r + dr, c + dc
+        return answer
+
+==== 1223_dice_roll_simulation
+class Solution:
+    def dieSimulator(self, n: int, rollMax: list[int]) -> int:
+        mod = 1_000_000_007
+        dp = [[0] * (rollMax[j] + 1) for j in range(6)]
+        for j in range(6): dp[j][1] = 1
+        for _ in range(1, n):
+            totals = [sum(row) % mod for row in dp]
+            nxt = [[0] * len(dp[j]) for j in range(6)]
+            for j in range(6):
+                nxt[j][1] = (sum(totals) - totals[j]) % mod
+                for run in range(2, len(dp[j])):
+                    nxt[j][run] = dp[j][run - 1]
+            dp = nxt
+        return sum(map(sum, dp)) % mod
+
+==== 1224_maximum_equal_frequency
+from collections import Counter
+
+class Solution:
+    def maxEqualFreq(self, nums: list[int]) -> int:
+        count, frequencies = Counter(), Counter()
+        answer = 0
+        for i, x in enumerate(nums, 1):
+            old = count[x]
+            if old: frequencies[old] -= 1
+            count[x] += 1
+            frequencies[old + 1] += 1
+            high = max(frequencies)
+            if high == 1 or frequencies[high] * high + 1 == i or frequencies[high] == 1 and frequencies[high - 1] * (high - 1) + high == i:
+                answer = i
+        return answer
+
+==== 1226_the_dining_philosophers
+from threading import Lock
+
+class DiningPhilosophers:
+    def __init__(self):
+        self.forks = [Lock() for _ in range(5)]
+
+    def wantsToEat(self, philosopher: int, pickLeftFork: 'Callable[[], None]',
+                   pickRightFork: 'Callable[[], None]', eat: 'Callable[[], None]',
+                   putLeftFork: 'Callable[[], None]', putRightFork: 'Callable[[], None]') -> None:
+        left, right = philosopher, (philosopher + 1) % 5
+        first, second = (left, right) if philosopher % 2 == 0 else (right, left)
+        with self.forks[first]:
+            with self.forks[second]:
+                pickLeftFork()
+                pickRightFork()
+                eat()
+                putLeftFork()
+                putRightFork()
+
+==== 1227_airplane_seat_assignment_probability
+class Solution:
+    def nthPersonGetsNthSeat(self, n: int) -> float:
+        return 1.0 if n == 1 else 0.5
+
+==== 1228_missing_number_in_arithmetic_progression
+class Solution:
+    def missingNumber(self, arr: list[int]) -> int:
+        difference = (arr[-1] - arr[0]) // len(arr)
+        for i in range(1, len(arr)):
+            expected = arr[0] + i * difference
+            if arr[i] != expected: return expected
+        return arr[0]
+
+==== 1229_meeting_scheduler
+class Solution:
+    def minAvailableDuration(self, slots1: list[list[int]], slots2: list[list[int]], duration: int) -> list[int]:
+        slots1.sort()
+        slots2.sort()
+        i = j = 0
+        while i < len(slots1) and j < len(slots2):
+            start, end = max(slots1[i][0], slots2[j][0]), min(slots1[i][1], slots2[j][1])
+            if end - start >= duration: return [start, start + duration]
+            if slots1[i][1] < slots2[j][1]: i += 1
+            else: j += 1
+        return []
+
+==== 1230_toss_strange_coins
+class Solution:
+    def probabilityOfHeads(self, prob: list[float], target: int) -> float:
+        dp = [1.0] + [0.0] * target
+        for p in prob:
+            for heads in range(target, -1, -1):
+                dp[heads] = dp[heads] * (1 - p) + (dp[heads - 1] * p if heads else 0)
+        return dp[target]
+
+==== 1231_divide_chocolate
+class Solution:
+    def maximizeSweetness(self, sweetness: list[int], k: int) -> int:
+        lo, hi = 1, sum(sweetness) // (k + 1)
+        while lo <= hi:
+            mid, pieces, current = (lo + hi) // 2, 0, 0
+            for value in sweetness:
+                current += value
+                if current >= mid:
+                    pieces += 1
+                    current = 0
+            if pieces >= k + 1: lo = mid + 1
+            else: hi = mid - 1
+        return hi
+
+==== 1232_check_if_it_is_a_straight_line
+class Solution:
+    def checkStraightLine(self, coordinates: list[list[int]]) -> bool:
+        x0, y0 = coordinates[0]
+        dx, dy = coordinates[1][0] - x0, coordinates[1][1] - y0
+        return all((x - x0) * dy == (y - y0) * dx for x, y in coordinates[2:])
+
+==== 1233_remove_sub_folders_from_the_filesystem
+class Solution:
+    def removeSubfolders(self, folder: list[str]) -> list[str]:
+        answer = []
+        for path in sorted(folder):
+            if not answer or not path.startswith(answer[-1] + '/'): answer.append(path)
+        return answer
+
+==== 1234_replace_the_substring_for_balanced_string
+from collections import Counter
+
+class Solution:
+    def balancedString(self, s: str) -> int:
+        count, limit = Counter(s), len(s) // 4
+        n = len(s)
+        left, answer = 0, n
+        for right, ch in enumerate(s):
+            count[ch] -= 1
+            while left < n and all(count[c] <= limit for c in 'QWER'):
+                answer = min(answer, right - left + 1)
+                count[s[left]] += 1
+                left += 1
+        return answer
+
+==== 1235_maximum_profit_in_job_scheduling
+from bisect import bisect_right
+
+class Solution:
+    def jobScheduling(self, startTime: list[int], endTime: list[int], profit: list[int]) -> int:
+        jobs = sorted(zip(endTime, startTime, profit))
+        ends, dp = [0], [0]
+        for end, start, gain in jobs:
+            i = bisect_right(ends, start) - 1
+            ends.append(end)
+            dp.append(max(dp[-1], dp[i] + gain))
+        return dp[-1]
+
+==== 1236_web_crawler
+from urllib.parse import urlsplit
+
+class Solution:
+    def crawl(self, startUrl: str, htmlParser: 'HtmlParser') -> list[str]:
+        host = urlsplit(startUrl).netloc
+        seen, stack = {startUrl}, [startUrl]
+        while stack:
+            for url in htmlParser.getUrls(stack.pop()):
+                if urlsplit(url).netloc == host and url not in seen:
+                    seen.add(url)
+                    stack.append(url)
+        return sorted(seen)
+
+==== 1237_find_positive_integer_solution_for_a_given_equation
+class Solution:
+    def findSolution(self, customfunction: 'CustomFunction', z: int) -> list[list[int]]:
+        answer, x, y = [], 1, 1000
+        while x <= 1000 and y >= 1:
+            value = customfunction.f(x, y)
+            if value == z:
+                answer.append([x, y])
+                x += 1
+                y -= 1
+            elif value < z: x += 1
+            else: y -= 1
+        return answer
+
+==== 1238_circular_permutation_in_binary_representation
+class Solution:
+    def circularPermutation(self, n: int, start: int) -> list[int]:
+        return [start ^ i ^ (i >> 1) for i in range(1 << n)]
+
+==== 1239_maximum_length_of_a_concatenated_string_with_unique_characters
+class Solution:
+    def maxLength(self, arr: list[str]) -> int:
+        masks = [(0, 0)]
+        for word in arr:
+            mask = 0
+            for ch in word: mask |= 1 << (ord(ch) - 97)
+            if mask.bit_count() != len(word): continue
+            masks += [(used | mask, length + len(word)) for used, length in masks if not used & mask]
+        return max(length for _, length in masks)
+
+==== 1240_tiling_a_rectangle_with_the_fewest_squares
+class Solution:
+    def tilingRectangle(self, n: int, m: int) -> int:
+        if n > m: n, m = m, n
+        heights, best = [0] * m, n * m
+        def search(used):
+            nonlocal best
+            if used >= best: return
+            low = min(heights)
+            if low == n:
+                best = used
+                return
+            left = heights.index(low)
+            right = left
+            while right < m and heights[right] == low: right += 1
+            max_size = min(n - low, right - left)
+            for size in range(max_size, 0, -1):
+                heights[left:left + size] = [low + size] * size
+                search(used + 1)
+                heights[left:left + size] = [low] * size
+        search(0)
+        return best

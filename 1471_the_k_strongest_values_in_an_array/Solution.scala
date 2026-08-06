@@ -1,6 +1,10 @@
-﻿// LeetCode 1471 - The k Strongest Values in an Array
-// https://leetcode.com/problems/the-k-strongest-values-in-an-array/
-
 object Solution {
-  def solve(): Unit = {}
+  def getStrongest(arr: Array[Int], k: Int): Array[Int] = {
+    val sorted = arr.sorted
+    val median = sorted((sorted.length - 1) / 2)
+    sorted.sortWith((a, b) => {
+      val diff = math.abs(a - median) - math.abs(b - median)
+      if (diff != 0) diff > 0 else a > b
+    }).take(k)
+  }
 }

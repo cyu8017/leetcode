@@ -1,6 +1,6 @@
-﻿// LeetCode 1433 - Check If a String Can Break Another String
-// https://leetcode.com/problems/check-if-a-string-can-break-another-string/
-
 object Solution {
-  def solve(): Unit = {}
+  def checkIfCanBreak(s1: String, s2: String): Boolean = {
+    val a = s1.sorted; val b = s2.sorted
+    a.indices.forall(i => a(i) >= b(i)) || a.indices.forall(i => a(i) <= b(i))
+  }
 }
