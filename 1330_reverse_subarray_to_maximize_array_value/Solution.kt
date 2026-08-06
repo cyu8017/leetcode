@@ -14,7 +14,7 @@ class Solution {
             gain = maxOf(
                 gain,
                 kotlin.math.abs(nums[0] - b) - kotlin.math.abs(a - b),
-                kotlin.math.abs(nums[nums.size - 1] - a) - kotlin.math.abs(a - b)
+                kotlin.math.abs(nums[nums.lastIndex] - a) - kotlin.math.abs(a - b)
             )
             low = minOf(low, maxOf(a, b))
             high = maxOf(high, minOf(a, b))

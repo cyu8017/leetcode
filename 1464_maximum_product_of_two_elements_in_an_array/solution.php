@@ -1,7 +1,8 @@
-﻿// LeetCode 1464 - Maximum Product of Two Elements in an Array
-// https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/
-
+<?php
 class Solution {
-    function solve() {
+    function maxProduct($nums) {
+        sort($nums);
+        $n = count($nums);
+        return ($nums[$n - 2] - 1) * ($nums[$n - 1] - 1);
     }
 }

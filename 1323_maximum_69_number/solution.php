@@ -1,7 +1,9 @@
-﻿// LeetCode 1323 - Maximum 69 Number
-// https://leetcode.com/problems/maximum-69-number/
-
+<?php
 class Solution {
-    function solve() {
+    function maximum69Number($num) {
+        $s = strval($num);
+        $pos = strpos($s, "6");
+        if ($pos !== false) $s[$pos] = "9";
+        return intval($s);
     }
 }

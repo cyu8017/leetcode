@@ -1,4 +1,4 @@
-// LeetCode 1310 - XOR Queries of a Subarray
+// LeetCode 1310 - XOR Queries Of A Subarray
 // https://leetcode.com/problems/xor-queries-of-a-subarray/
 
 class Solution {

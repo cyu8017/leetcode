@@ -1,7 +1,13 @@
-﻿// LeetCode 1347 - Minimum Number of Steps to Make Two Strings Anagram
-// https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
-
+<?php
 class Solution {
-    function solve() {
+    function minSteps($s, $t) {
+        $count = array_fill(0, 26, 0);
+        for ($i = 0; $i < strlen($s); $i++) {
+            $count[ord($s[$i]) - 97]++;
+            $count[ord($t[$i]) - 97]--;
+        }
+        $answer = 0;
+        foreach ($count as $c) if ($c > 0) $answer += $c;
+        return $answer;
     }
 }

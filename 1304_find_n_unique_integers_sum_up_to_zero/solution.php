@@ -1,7 +1,12 @@
-﻿// LeetCode 1304 - Find N Unique Integers Sum up to Zero
-// https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
-
+<?php
 class Solution {
-    function solve() {
+    function sumZero($n) {
+        $answer = [];
+        for ($value = 1; $value <= intdiv($n, 2); $value++) {
+            $answer[] = -$value;
+            $answer[] = $value;
+        }
+        if ($n % 2) $answer[] = 0;
+        return $answer;
     }
 }

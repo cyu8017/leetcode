@@ -1,4 +1,4 @@
-// LeetCode 1428 - Leftmost Column With At Least A One
+// LeetCode 1428 - Leftmost Column with at Least a One
 // https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
 
 interface BinaryMatrix {
@@ -8,9 +8,7 @@ interface BinaryMatrix {
 
 class Solution {
     fun leftMostColumnWithOne(binaryMatrix: BinaryMatrix): Int {
-        val dims = binaryMatrix.dimensions()
-        val rows = dims[0]
-        val cols = dims[1]
+        val (rows, cols) = binaryMatrix.dimensions()
         var row = 0
         var col = cols - 1
         var answer = -1

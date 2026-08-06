@@ -1,7 +1,21 @@
-﻿// LeetCode 1954 - Minimum Garden Perimeter to Collect Enough Apples
-// https://leetcode.com/problems/minimum-garden-perimeter-to-collect-enough-apples/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $neededApples
+     * @return Integer
+     */
+    function minimumPerimeter($neededApples) {
+        $lo = 1;
+        $hi = 100000;
+        while ($lo < $hi) {
+            $mid = intdiv($lo + $hi, 2);
+            $apples = 2 * $mid * ($mid + 1) * (2 * $mid + 1);
+            if ($apples >= $neededApples) {
+                $hi = $mid;
+            } else {
+                $lo = $mid + 1;
+            }
+        }
+        return 8 * $lo;
     }
 }

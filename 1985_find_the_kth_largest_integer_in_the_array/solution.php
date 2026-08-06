@@ -1,7 +1,19 @@
-﻿// LeetCode 1985 - Find the Kth Largest Integer in the Array
-// https://leetcode.com/problems/find-the-kth-largest-integer-in-the-array/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param String[] $nums
+     * @param Integer $k
+     * @return String
+     */
+    function kthLargestNumber($nums, $k) {
+        usort($nums, function ($a, $b) {
+            $la = strlen($a);
+            $lb = strlen($b);
+            if ($la !== $lb) {
+                return $lb <=> $la;
+            }
+            return strcmp($b, $a);
+        });
+        return $nums[$k - 1];
     }
 }

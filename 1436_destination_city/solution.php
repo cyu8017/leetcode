@@ -1,7 +1,11 @@
-﻿// LeetCode 1436 - Destination City
-// https://leetcode.com/problems/destination-city/
-
+<?php
 class Solution {
-    function solve() {
+    function destCity($paths) {
+        $starts = [];
+        foreach ($paths as [$start, $end]) $starts[$start] = true;
+        foreach ($paths as [$start, $end]) {
+            if (!isset($starts[$end])) return $end;
+        }
+        return "";
     }
 }

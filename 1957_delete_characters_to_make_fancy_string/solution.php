@@ -1,7 +1,20 @@
-﻿// LeetCode 1957 - Delete Characters to Make Fancy String
-// https://leetcode.com/problems/delete-characters-to-make-fancy-string/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param String $s
+     * @return String
+     */
+    function makeFancyString($s) {
+        $ans = [];
+        $len = strlen($s);
+        for ($i = 0; $i < $len; $i++) {
+            $c = $s[$i];
+            $n = count($ans);
+            if ($n >= 2 && $ans[$n - 1] === $c && $ans[$n - 2] === $c) {
+                continue;
+            }
+            $ans[] = $c;
+        }
+        return implode('', $ans);
     }
 }

@@ -42,11 +42,8 @@ class Solution {
         val critical = mutableListOf<Int>()
         val pseudo = mutableListOf<Int>()
         for (j in es.indices) {
-            if (mst(skip = j) > base) {
-                critical.add(es[j][3])
-            } else if (mst(force = j) == base) {
-                pseudo.add(es[j][3])
-            }
+            if (mst(skip = j) > base) critical.add(es[j][3])
+            else if (mst(force = j) == base) pseudo.add(es[j][3])
         }
         return listOf(critical.sorted(), pseudo.sorted())
     }

@@ -1,7 +1,14 @@
-﻿// LeetCode 1365 - How Many Numbers Are Smaller Than the Current Number
-// https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
-
+<?php
 class Solution {
-    function solve() {
+    function smallerNumbersThanCurrent($nums) {
+        $sorted = $nums;
+        sort($sorted);
+        $rank = [];
+        foreach ($sorted as $i => $x) {
+            if (!array_key_exists($x, $rank)) $rank[$x] = $i;
+        }
+        $answer = [];
+        foreach ($nums as $x) $answer[] = $rank[$x];
+        return $answer;
     }
 }

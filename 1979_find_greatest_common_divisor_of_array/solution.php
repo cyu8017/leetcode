@@ -1,7 +1,17 @@
-﻿// LeetCode 1979 - Find Greatest Common Divisor of Array
-// https://leetcode.com/problems/find-greatest-common-divisor-of-array/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $nums
+     * @return Integer
+     */
+    function findGCD($nums) {
+        $a = min($nums);
+        $b = max($nums);
+        while ($b !== 0) {
+            $t = $b;
+            $b = $a % $b;
+            $a = $t;
+        }
+        return $a;
     }
 }

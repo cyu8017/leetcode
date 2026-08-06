@@ -1,7 +1,8 @@
-﻿// LeetCode 1460 - Make Two Arrays Equal by Reversing Subarrays
-// https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/
-
+<?php
 class Solution {
-    function solve() {
+    function canBeEqual($target, $arr) {
+        sort($target);
+        sort($arr);
+        return $target === $arr;
     }
 }

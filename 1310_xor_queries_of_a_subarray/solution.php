@@ -1,7 +1,12 @@
-﻿// LeetCode 1310 - XOR Queries of a Subarray
-// https://leetcode.com/problems/xor-queries-of-a-subarray/
-
+<?php
 class Solution {
-    function solve() {
+    function xorQueries($arr, $queries) {
+        $prefix = [0];
+        foreach ($arr as $value) $prefix[] = $prefix[count($prefix) - 1] ^ $value;
+        $answer = [];
+        foreach ($queries as $q) {
+            $answer[] = $prefix[$q[1] + 1] ^ $prefix[$q[0]];
+        }
+        return $answer;
     }
 }

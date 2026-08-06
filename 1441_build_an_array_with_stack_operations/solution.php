@@ -1,7 +1,17 @@
-﻿// LeetCode 1441 - Build an Array With Stack Operations
-// https://leetcode.com/problems/build-an-array-with-stack-operations/
-
+<?php
 class Solution {
-    function solve() {
+    function buildArray($target, $n) {
+        $answer = [];
+        $current = 1;
+        foreach ($target as $value) {
+            while ($current < $value) {
+                $answer[] = "Push";
+                $answer[] = "Pop";
+                $current++;
+            }
+            $answer[] = "Push";
+            $current++;
+        }
+        return $answer;
     }
 }

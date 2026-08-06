@@ -1,7 +1,17 @@
-﻿// LeetCode 1309 - Decrypt String from Alphabet to Integer Mapping
-// https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
-
+<?php
 class Solution {
-    function solve() {
+    function freqAlphabets($s) {
+        $answer = [];
+        $i = strlen($s) - 1;
+        while ($i >= 0) {
+            if ($s[$i] === "#") {
+                $answer[] = chr(96 + intval(substr($s, $i - 2, 2)));
+                $i -= 3;
+            } else {
+                $answer[] = chr(96 + intval($s[$i]));
+                $i -= 1;
+            }
+        }
+        return implode("", array_reverse($answer));
     }
 }

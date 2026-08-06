@@ -1,4 +1,4 @@
-// LeetCode 1312 - Minimum Insertion Steps to Make a String Palindrome
+// LeetCode 1312 - Minimum Insertion Steps To Make A String Palindrome
 // https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 
 class Solution {
@@ -9,11 +9,7 @@ class Solution {
             var diagonal = 0
             for (right in left + 1 until n) {
                 val old = dp[right]
-                dp[right] = if (s[left] == s[right]) {
-                    diagonal
-                } else {
-                    1 + minOf(dp[right], dp[right - 1])
-                }
+                dp[right] = if (s[left] == s[right]) diagonal else 1 + minOf(dp[right], dp[right - 1])
                 diagonal = old
             }
         }

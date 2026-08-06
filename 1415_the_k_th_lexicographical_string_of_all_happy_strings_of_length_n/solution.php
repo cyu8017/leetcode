@@ -1,7 +1,17 @@
-﻿// LeetCode 1415 - The k-th Lexicographical String of All Happy Strings of Length n
-// https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
-
+<?php
 class Solution {
-    function solve() {
+    function getHappyString($n, $k) {
+        $answer = [];
+        $build = function($path) use (&$build, &$answer, $n) {
+            if (strlen($path) === $n) {
+                $answer[] = $path;
+                return;
+            }
+            foreach (["a", "b", "c"] as $char) {
+                if ($path === "" || $path[strlen($path) - 1] !== $char) $build($path . $char);
+            }
+        };
+        $build("");
+        return $k <= count($answer) ? $answer[$k - 1] : "";
     }
 }

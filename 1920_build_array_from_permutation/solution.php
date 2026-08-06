@@ -1,7 +1,18 @@
-﻿// LeetCode 1920 - Build Array from Permutation
+﻿<?php
+// LeetCode 1920 - Build Array from Permutation
 // https://leetcode.com/problems/build-array-from-permutation/
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $nums
+     * @return Integer[]
+     */
+    function buildArray($nums) {
+        $n = count($nums);
+        $ans = array_fill(0, $n, 0);
+        for ($i = 0; $i < $n; $i++) {
+            $ans[$i] = $nums[$nums[$i]];
+        }
+        return $ans;
     }
 }

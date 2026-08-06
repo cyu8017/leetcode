@@ -1,7 +1,24 @@
-﻿// LeetCode 1521 - Find a Value of a Mysterious Function Closest to Target
-// https://leetcode.com/problems/find-a-value-of-a-mysterious-function-closest-to-target/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $arr
+     * @param Integer $target
+     * @return Integer
+     */
+    function closestToTarget($arr, $target) {
+        $answer = PHP_INT_MAX;
+        $current = [];
+        foreach ($arr as $value) {
+            $next = [$value => true];
+            foreach ($current as $previous => $_) {
+                $next[$value & $previous] = true;
+            }
+            $current = $next;
+            foreach ($current as $candidate => $_) {
+                $answer = min($answer, abs($candidate - $target));
+            }
+        }
+        return $answer;
     }
 }

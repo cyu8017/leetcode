@@ -5,7 +5,7 @@ class Solution {
     fun getStrongest(arr: IntArray, k: Int): IntArray {
         arr.sort()
         val median = arr[(arr.size - 1) / 2]
-        val sorted = arr.sortedWith(compareByDescending<Int> { kotlin.math.abs(it - median) }.thenByDescending { it })
-        return sorted.take(k).toIntArray()
+        return arr.sortedWith(compareByDescending<Int> { kotlin.math.abs(it - median) }
+            .thenByDescending { it }).take(k).toIntArray()
     }
 }

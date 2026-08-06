@@ -1,7 +1,14 @@
-﻿// LeetCode 1409 - Queries on a Permutation With Key
-// https://leetcode.com/problems/queries-on-a-permutation-with-key/
-
+<?php
 class Solution {
-    function solve() {
+    function processQueries($queries, $m) {
+        $values = range(1, $m);
+        $answer = [];
+        foreach ($queries as $query) {
+            $index = array_search($query, $values);
+            $answer[] = $index;
+            array_splice($values, $index, 1);
+            array_unshift($values, $query);
+        }
+        return $answer;
     }
 }

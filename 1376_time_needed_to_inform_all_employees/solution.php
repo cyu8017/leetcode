@@ -1,7 +1,15 @@
-﻿// LeetCode 1376 - Time Needed to Inform All Employees
-// https://leetcode.com/problems/time-needed-to-inform-all-employees/
-
+<?php
 class Solution {
-    function solve() {
+    function numOfMinutes($n, $headID, $manager, $informTime) {
+        $children = array_fill(0, $n, []);
+        foreach ($manager as $i => $p) {
+            if ($p !== -1) $children[$p][] = $i;
+        }
+        $dfs = function($u) use (&$dfs, $children, $informTime) {
+            $best = 0;
+            foreach ($children[$u] as $v) $best = max($best, $dfs($v));
+            return $informTime[$u] + $best;
+        };
+        return $dfs($headID);
     }
 }

@@ -1,7 +1,22 @@
-﻿// LeetCode 1452 - People Whose List of Favorite Companies Is Not a Subset of Another List
-// https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/
-
+<?php
 class Solution {
-    function solve() {
+    function peopleIndexes($favoriteCompanies) {
+        $sets = [];
+        foreach ($favoriteCompanies as $x) $sets[] = array_flip($x);
+        $answer = [];
+        $n = count($sets);
+        for ($i = 0; $i < $n; $i++) {
+            $subset = false;
+            for ($j = 0; $j < $n; $j++) {
+                if ($i === $j) continue;
+                $ok = true;
+                foreach ($sets[$i] as $c => $_) {
+                    if (!isset($sets[$j][$c])) { $ok = false; break; }
+                }
+                if ($ok) { $subset = true; break; }
+            }
+            if (!$subset) $answer[] = $i;
+        }
+        return $answer;
     }
 }

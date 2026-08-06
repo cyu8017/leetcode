@@ -1,7 +1,25 @@
-﻿// LeetCode 1546 - Maximum Number of Non-Overlapping Subarrays With Sum Equals Target
-// https://leetcode.com/problems/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $nums
+     * @param Integer $target
+     * @return Integer
+     */
+    function maxNonOverlapping($nums, $target) {
+        $seen = [0 => true];
+        $prefix = 0;
+        $answer = 0;
+        foreach ($nums as $value) {
+            $prefix += $value;
+            if (isset($seen[$prefix - $target])) {
+                $answer++;
+                $prefix = 0;
+                $seen = [0 => true];
+            } else {
+                $seen[$prefix] = true;
+            }
+        }
+        return $answer;
     }
 }

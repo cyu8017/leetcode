@@ -1,7 +1,12 @@
-﻿// LeetCode 1356 - Sort Integers by The Number of 1 Bits
-// https://leetcode.com/problems/sort-integers-by-the-number-of-1-bits/
-
+<?php
 class Solution {
-    function solve() {
+    function sortByBits($arr) {
+        usort($arr, function($a, $b) {
+            $ca = substr_count(decbin($a), "1");
+            $cb = substr_count(decbin($b), "1");
+            if ($ca !== $cb) return $ca <=> $cb;
+            return $a <=> $b;
+        });
+        return $arr;
     }
 }

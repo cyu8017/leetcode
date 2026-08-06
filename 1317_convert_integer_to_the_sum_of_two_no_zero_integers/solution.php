@@ -1,7 +1,12 @@
-﻿// LeetCode 1317 - Convert Integer to the Sum of Two No-Zero Integers
-// https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
-
+<?php
 class Solution {
-    function solve() {
+    function getNoZeroIntegers($n) {
+        $valid = function($value) {
+            return strpos(strval($value), "0") === false;
+        };
+        for ($first = 1; $first < $n; $first++) {
+            if ($valid($first) && $valid($n - $first)) return [$first, $n - $first];
+        }
+        return [];
     }
 }

@@ -1,7 +1,20 @@
-﻿// LeetCode 1967 - Number of Strings That Appear as Substrings in Word
+﻿<?php
+// LeetCode 1967 - Number of Strings That Appear as Substrings in Word
 // https://leetcode.com/problems/number-of-strings-that-appear-as-substrings-in-word/
 
 class Solution {
-    function solve() {
+    /**
+     * @param String[] $patterns
+     * @param String $word
+     * @return Integer
+     */
+    function numOfStrings($patterns, $word) {
+        $count = 0;
+        foreach ($patterns as $p) {
+            if (strpos($word, $p) !== false) {
+                $count++;
+            }
+        }
+        return $count;
     }
 }

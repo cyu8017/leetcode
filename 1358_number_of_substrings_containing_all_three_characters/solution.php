@@ -1,7 +1,12 @@
-﻿// LeetCode 1358 - Number of Substrings Containing All Three Characters
-// https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
-
+<?php
 class Solution {
-    function solve() {
+    function numberOfSubstrings($s) {
+        $last = [-1, -1, -1];
+        $ans = 0;
+        for ($i = 0; $i < strlen($s); $i++) {
+            $last[ord($s[$i]) - 97] = $i;
+            $ans += min($last) + 1;
+        }
+        return $ans;
     }
 }

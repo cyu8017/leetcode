@@ -1,7 +1,10 @@
-﻿// LeetCode 1929 - Concatenation of Array
-// https://leetcode.com/problems/concatenation-of-array/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $nums
+     * @return Integer[]
+     */
+    function getConcatenation($nums) {
+        return array_merge($nums, $nums);
     }
 }

@@ -1,7 +1,9 @@
-﻿// LeetCode 1394 - Find Lucky Integer in an Array
-// https://leetcode.com/problems/find-lucky-integer-in-an-array/
-
+<?php
 class Solution {
-    function solve() {
+    function findLucky($arr) {
+        $c = array_count_values($arr);
+        $ans = -1;
+        foreach ($c as $x => $cnt) if ($x === $cnt) $ans = max($ans, $x);
+        return $ans;
     }
 }

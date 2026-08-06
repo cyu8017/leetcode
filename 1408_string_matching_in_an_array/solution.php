@@ -1,7 +1,15 @@
-﻿// LeetCode 1408 - String Matching in an Array
-// https://leetcode.com/problems/string-matching-in-an-array/
-
+<?php
 class Solution {
-    function solve() {
+    function stringMatching($words) {
+        $answer = [];
+        foreach ($words as $i => $word) {
+            foreach ($words as $j => $other) {
+                if ($i !== $j && strpos($other, $word) !== false) {
+                    $answer[] = $word;
+                    break;
+                }
+            }
+        }
+        return $answer;
     }
 }

@@ -11,8 +11,7 @@ class Solution {
                 val price = cost[digit - 1]
                 if (total >= price && dp[total - price] != null) {
                     val candidate = digit.toString() + dp[total - price]
-                    if (best == null ||
-                        candidate.length > best.length ||
+                    if (best == null || candidate.length > best.length ||
                         (candidate.length == best.length && candidate > best)
                     ) {
                         best = candidate

@@ -3,6 +3,6 @@
 
 class Solution {
     fun average(salary: IntArray): Double {
-        return (salary.sum().toLong() - salary.minOrNull()!! - salary.maxOrNull()!!).toDouble() / (salary.size - 2)
+        return (salary.sum().toDouble() - salary.minOrNull()!! - salary.maxOrNull()!!) / (salary.size - 2)
     }
 }

@@ -8,11 +8,11 @@ class TreeNode(var `val`: Int) {
 
 class Solution {
     fun deepestLeavesSum(root: TreeNode?): Int {
-        var level = listOf(root!!)
+        var level = listOfNotNull(root)
         var answer = 0
         while (level.isNotEmpty()) {
             answer = level.sumOf { it.`val` }
-            level = level.flatMap { node -> listOfNotNull(node.left, node.right) }
+            level = level.flatMap { listOfNotNull(it.left, it.right) }
         }
         return answer
     }

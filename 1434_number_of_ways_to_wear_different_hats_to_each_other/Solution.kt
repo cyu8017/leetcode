@@ -6,10 +6,8 @@ class Solution {
         val mod = 1_000_000_007
         val people = hats.size
         val wearers = Array(41) { mutableListOf<Int>() }
-        for (person in hats.indices) {
-            for (hat in hats[person]) {
-                wearers[hat].add(person)
-            }
+        for ((person, choices) in hats.withIndex()) {
+            for (hat in choices) wearers[hat].add(person)
         }
         var dp = IntArray(1 shl people)
         dp[0] = 1

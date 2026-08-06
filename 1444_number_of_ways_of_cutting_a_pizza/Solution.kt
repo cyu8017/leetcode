@@ -9,8 +9,7 @@ class Solution {
         val apples = Array(rows + 1) { IntArray(cols + 1) }
         for (r in rows - 1 downTo 0) {
             for (c in cols - 1 downTo 0) {
-                apples[r][c] = (if (pizza[r][c] == 'A') 1 else 0) +
-                    apples[r + 1][c] + apples[r][c + 1] - apples[r + 1][c + 1]
+                apples[r][c] = (if (pizza[r][c] == 'A') 1 else 0) + apples[r + 1][c] + apples[r][c + 1] - apples[r + 1][c + 1]
             }
         }
         var dp = Array(rows) { r -> IntArray(cols) { c -> if (apples[r][c] > 0) 1 else 0 } }
@@ -19,14 +18,10 @@ class Solution {
             for (r in 0 until rows) {
                 for (c in 0 until cols) {
                     for (nr in r + 1 until rows) {
-                        if (apples[r][c] > apples[nr][c]) {
-                            nxt[r][c] = (nxt[r][c] + dp[nr][c]) % mod
-                        }
+                        if (apples[r][c] > apples[nr][c]) nxt[r][c] = (nxt[r][c] + dp[nr][c]) % mod
                     }
                     for (nc in c + 1 until cols) {
-                        if (apples[r][c] > apples[r][nc]) {
-                            nxt[r][c] = (nxt[r][c] + dp[r][nc]) % mod
-                        }
+                        if (apples[r][c] > apples[r][nc]) nxt[r][c] = (nxt[r][c] + dp[r][nc]) % mod
                     }
                 }
             }

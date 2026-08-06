@@ -2,7 +2,5 @@
 // https://leetcode.com/problems/maximum-69-number/
 
 class Solution {
-    fun maximum69Number(num: Int): Int {
-        return num.toString().replaceFirst('6', '9').toInt()
-    }
+    fun maximum69Number(num: Int): Int = num.toString().replaceFirst("6", "9").toInt()
 }

@@ -1,7 +1,16 @@
-﻿// LeetCode 1953 - Maximum Number of Weeks for Which You Can Work
-// https://leetcode.com/problems/maximum-number-of-weeks-for-which-you-can-work/
-
+﻿<?php
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $milestones
+     * @return Integer
+     */
+    function numberOfWeeks($milestones) {
+        $total = array_sum($milestones);
+        $mx = max($milestones);
+        $rest = $total - $mx;
+        if ($mx > $rest + 1) {
+            return 2 * $rest + 1;
+        }
+        return $total;
     }
 }

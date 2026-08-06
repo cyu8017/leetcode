@@ -1,7 +1,11 @@
-﻿// LeetCode 1430 - Check If a String Is a Valid Sequence from Root to Leaves Path in a Binary Tree
-// https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/
-
+<?php
 class Solution {
-    function solve() {
+    function isValidSequence($root, $arr) {
+        $visit = function($node, $index) use (&$visit, $arr) {
+            if (!$node || $index === count($arr) || $node->val !== $arr[$index]) return false;
+            if (!$node->left && !$node->right) return $index === count($arr) - 1;
+            return $visit($node->left, $index + 1) || $visit($node->right, $index + 1);
+        };
+        return $visit($root, 0);
     }
 }

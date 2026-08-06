@@ -1,7 +1,13 @@
-﻿// LeetCode 1108 - Defanging an IP Address
+<?php
+// LeetCode 1108 - Defanging an IP Address
 // https://leetcode.com/problems/defanging-an-ip-address/
 
 class Solution {
-    function solve() {
+    /**
+     * @param String $address
+     * @return String
+     */
+    function defangIPaddr($address) {
+        return str_replace('.', '[.]', $address);
     }
 }

@@ -1,7 +1,17 @@
-﻿// LeetCode 1561 - Maximum Number of Coins You Can Get
-// https://leetcode.com/problems/maximum-number-of-coins-you-can-get/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer[] $piles
+     * @return Integer
+     */
+    function maxCoins($piles) {
+        sort($piles);
+        $n = count($piles);
+        $sum = 0;
+        for ($i = intdiv($n, 3); $i < $n; $i += 2) {
+            $sum += $piles[$i];
+        }
+        return $sum;
     }
 }

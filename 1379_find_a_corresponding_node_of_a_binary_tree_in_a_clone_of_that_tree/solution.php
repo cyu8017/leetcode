@@ -1,7 +1,14 @@
-﻿// LeetCode 1379 - Find a Corresponding Node of a Binary Tree in a Clone of That Tree
-// https://leetcode.com/problems/find-a-corresponding-node-of-a-binary-tree-in-a-clone-of-that-tree/
-
+<?php
 class Solution {
-    function solve() {
+    function getTargetCopy($original, $cloned, $target) {
+        $wanted = is_object($target) ? $target->val : $target;
+        $stack = [[$original, $cloned]];
+        while ($stack) {
+            [$a, $b] = array_pop($stack);
+            if ($a->val === $wanted) return $b;
+            if ($a->left) $stack[] = [$a->left, $b->left];
+            if ($a->right) $stack[] = [$a->right, $b->right];
+        }
+        return null;
     }
 }

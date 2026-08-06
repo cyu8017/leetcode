@@ -3,6 +3,7 @@
 
 class Solution {
     fun simplifiedFractions(n: Int): List<String> {
+        fun gcd(a: Int, b: Int): Int = if (b == 0) a else gcd(b, a % b)
         val answer = mutableListOf<String>()
         for (a in 1 until n) {
             for (b in a + 1..n) {
@@ -10,16 +11,5 @@ class Solution {
             }
         }
         return answer
-    }
-
-    private fun gcd(a: Int, b: Int): Int {
-        var x = a
-        var y = b
-        while (y != 0) {
-            val t = x % y
-            x = y
-            y = t
-        }
-        return x
     }
 }

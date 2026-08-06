@@ -1,7 +1,9 @@
-﻿// LeetCode 1461 - Check If a String Contains All Binary Codes of Size K
-// https://leetcode.com/problems/check-if-a-string-contains-all-binary-codes-of-size-k/
-
+<?php
 class Solution {
-    function solve() {
+    function hasAllCodes($s, $k) {
+        $seen = [];
+        $n = strlen($s);
+        for ($i = 0; $i <= $n - $k; $i++) $seen[substr($s, $i, $k)] = true;
+        return count($seen) === (1 << $k);
     }
 }

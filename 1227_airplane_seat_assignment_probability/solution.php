@@ -1,7 +1,13 @@
-﻿// LeetCode 1227 - Airplane Seat Assignment Probability
+<?php
+// LeetCode 1227 - Airplane Seat Assignment Probability
 // https://leetcode.com/problems/airplane-seat-assignment-probability/
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $n
+     * @return Float
+     */
+    function nthPersonGetsNthSeat($n) {
+        return $n === 1 ? 1.0 : 0.5;
     }
 }

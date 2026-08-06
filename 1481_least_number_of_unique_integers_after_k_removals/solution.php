@@ -1,7 +1,14 @@
-﻿// LeetCode 1481 - Least Number of Unique Integers after K Removals
-// https://leetcode.com/problems/least-number-of-unique-integers-after-k-removals/
-
+<?php
 class Solution {
-    function solve() {
+    function findLeastNumOfUniqueInts($arr, $k) {
+        $counts = array_values(array_count_values($arr));
+        sort($counts);
+        $removed = 0;
+        foreach ($counts as $count) {
+            if ($k < $count) break;
+            $k -= $count;
+            $removed++;
+        }
+        return count($counts) - $removed;
     }
 }

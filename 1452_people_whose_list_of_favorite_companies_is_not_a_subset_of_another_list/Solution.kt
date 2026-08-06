@@ -4,12 +4,8 @@
 class Solution {
     fun peopleIndexes(favoriteCompanies: List<List<String>>): List<Int> {
         val sets = favoriteCompanies.map { it.toSet() }
-        val answer = mutableListOf<Int>()
-        for (i in sets.indices) {
-            val s = sets[i]
-            val isSubset = sets.indices.any { j -> i != j && sets[j].containsAll(s) }
-            if (!isSubset) answer.add(i)
+        return sets.indices.filter { i ->
+            sets.indices.none { j -> i != j && sets[j].containsAll(sets[i]) }
         }
-        return answer
     }
 }

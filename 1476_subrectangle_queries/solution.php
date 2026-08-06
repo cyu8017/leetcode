@@ -1,7 +1,20 @@
-﻿// LeetCode 1476 - Subrectangle Queries
-// https://leetcode.com/problems/subrectangle-queries/
+<?php
+class SubrectangleQueries {
+    private $rectangle;
 
-class Solution {
-    function solve() {
+    function __construct($rectangle) {
+        $this->rectangle = $rectangle;
+    }
+
+    function updateSubrectangle($row1, $col1, $row2, $col2, $newValue) {
+        for ($r = $row1; $r <= $row2; $r++) {
+            for ($c = $col1; $c <= $col2; $c++) {
+                $this->rectangle[$r][$c] = $newValue;
+            }
+        }
+    }
+
+    function getValue($row, $col) {
+        return $this->rectangle[$row][$col];
     }
 }

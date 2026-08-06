@@ -1,7 +1,15 @@
-﻿// LeetCode 1442 - Count Triplets That Can Form Two Arrays of Equal XOR
-// https://leetcode.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/
-
+<?php
 class Solution {
-    function solve() {
+    function countTriplets($arr) {
+        $answer = 0;
+        $n = count($arr);
+        for ($i = 0; $i < $n; $i++) {
+            $value = 0;
+            for ($k = $i; $k < $n; $k++) {
+                $value ^= $arr[$k];
+                if ($value === 0) $answer += $k - $i;
+            }
+        }
+        return $answer;
     }
 }

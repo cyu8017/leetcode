@@ -14,17 +14,12 @@ class Solution {
                 cost[i][j] = sum
             }
         }
-        val inf = 1e15.toLong()
-        var dp = LongArray(n + 1) { inf }
-        dp[0] = 0
+        var dp = LongArray(n + 1) { if (it == 0) 0 else 1e15.toLong() }
         repeat(k) {
-            val ndp = LongArray(n + 1) { inf }
-            ndp[0] = 0
+            val ndp = LongArray(n + 1) { if (it == 0) 0 else 1e15.toLong() }
             for (j in 1..n) {
-                var best = inf
-                for (i in 0 until j) {
-                    best = minOf(best, dp[i] + cost[i][j - 1])
-                }
+                var best = 1e15.toLong()
+                for (i in 0 until j) best = minOf(best, dp[i] + cost[i][j - 1])
                 ndp[j] = best
             }
             dp = ndp

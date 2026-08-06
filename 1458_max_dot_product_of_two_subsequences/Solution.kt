@@ -8,13 +8,9 @@ class Solution {
         for (a in nums1) {
             val prev = dp.copyOf()
             for (j in 1..n) {
-                val product = a.toLong() * nums2[j - 1]
-                dp[j] = maxOf(
-                    dp[j - 1],
-                    prev[j],
-                    product,
-                    product + maxOf(0L, prev[j - 1])
-                )
+                val b = nums2[j - 1]
+                val product = a.toLong() * b
+                dp[j] = maxOf(dp[j - 1], prev[j], product, product + maxOf(0L, prev[j - 1]))
             }
         }
         return dp[n].toInt()

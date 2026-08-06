@@ -4,9 +4,7 @@
 class Solution {
     fun minNumberOfSemesters(n: Int, relations: Array<IntArray>, k: Int): Int {
         val prereq = IntArray(n)
-        for (e in relations) {
-            prereq[e[1] - 1] = prereq[e[1] - 1] or (1 shl (e[0] - 1))
-        }
+        for (edge in relations) prereq[edge[1] - 1] = prereq[edge[1] - 1] or (1 shl (edge[0] - 1))
         val full = (1 shl n) - 1
         val inf = 1_000_000_000
         val dp = IntArray(1 shl n) { inf }
@@ -15,7 +13,7 @@ class Solution {
             if (dp[mask] == inf) continue
             var available = 0
             for (c in 0 until n) {
-                if ((mask shr c) and 1 == 0 && (prereq[c] and mask) == prereq[c]) {
+                if (mask shr c and 1 == 0 && prereq[c] and mask == prereq[c]) {
                     available = available or (1 shl c)
                 }
             }

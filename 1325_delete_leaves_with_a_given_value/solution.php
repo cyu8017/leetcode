@@ -1,7 +1,10 @@
-﻿// LeetCode 1325 - Delete Leaves With a Given Value
-// https://leetcode.com/problems/delete-leaves-with-a-given-value/
-
+<?php
 class Solution {
-    function solve() {
+    function removeLeafNodes($root, $target) {
+        if (!$root) return null;
+        $root->left = $this->removeLeafNodes($root->left, $target);
+        $root->right = $this->removeLeafNodes($root->right, $target);
+        if (!$root->left && !$root->right && $root->val === $target) return null;
+        return $root;
     }
 }

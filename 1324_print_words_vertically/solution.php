@@ -1,7 +1,17 @@
-﻿// LeetCode 1324 - Print Words Vertically
-// https://leetcode.com/problems/print-words-vertically/
-
+<?php
 class Solution {
-    function solve() {
+    function printVertically($s) {
+        $words = explode(" ", $s);
+        $maxLen = 0;
+        foreach ($words as $w) $maxLen = max($maxLen, strlen($w));
+        $answer = [];
+        for ($i = 0; $i < $maxLen; $i++) {
+            $row = "";
+            foreach ($words as $word) {
+                $row .= $i < strlen($word) ? $word[$i] : " ";
+            }
+            $answer[] = rtrim($row);
+        }
+        return $answer;
     }
 }

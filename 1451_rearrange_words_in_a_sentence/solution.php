@@ -1,7 +1,14 @@
-﻿// LeetCode 1451 - Rearrange Words in a Sentence
-// https://leetcode.com/problems/rearrange-words-in-a-sentence/
-
+<?php
 class Solution {
-    function solve() {
+    function arrangeWords($text) {
+        $words = explode(" ", strtolower($text));
+        usort($words, function($a, $b) {
+            $la = strlen($a);
+            $lb = strlen($b);
+            if ($la !== $lb) return $la <=> $lb;
+            return 0;
+        });
+        $s = implode(" ", $words);
+        return $s === "" ? "" : strtoupper($s[0]) . substr($s, 1);
     }
 }

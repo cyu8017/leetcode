@@ -28,8 +28,8 @@ class Solution {
         for (half in 1..n / 2) {
             for (left in 0..n - 2 * half) {
                 if (hashed(left, left + half) == hashed(left + half, left + 2 * half)) {
-                    val h = hashed(left, left + 2 * half)
-                    echoes.add(Triple(2 * half, h.first, h.second))
+                    val (a, b) = hashed(left, left + 2 * half)
+                    echoes.add(Triple(2 * half, a, b))
                 }
             }
         }

@@ -1,7 +1,18 @@
-﻿// LeetCode 1428 - Leftmost Column with at Least a One
-// https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
-
+<?php
 class Solution {
-    function solve() {
+    function leftMostColumnWithOne($binaryMatrix) {
+        [$rows, $cols] = $binaryMatrix->dimensions();
+        $row = 0;
+        $col = $cols - 1;
+        $answer = -1;
+        while ($row < $rows && $col >= 0) {
+            if ($binaryMatrix->get($row, $col) === 1) {
+                $answer = $col;
+                $col--;
+            } else {
+                $row++;
+            }
+        }
+        return $answer;
     }
 }

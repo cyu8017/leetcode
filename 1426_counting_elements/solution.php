@@ -1,7 +1,9 @@
-﻿// LeetCode 1426 - Counting Elements
-// https://leetcode.com/problems/counting-elements/
-
+<?php
 class Solution {
-    function solve() {
+    function countElements($arr) {
+        $values = array_flip($arr);
+        $ans = 0;
+        foreach ($arr as $value) if (isset($values[$value + 1])) $ans++;
+        return $ans;
     }
 }

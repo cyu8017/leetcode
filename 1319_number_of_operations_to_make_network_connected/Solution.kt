@@ -5,13 +5,13 @@ class Solution {
     fun makeConnected(n: Int, connections: Array<IntArray>): Int {
         if (connections.size < n - 1) return -1
         val parent = IntArray(n) { it }
-        fun find(x0: Int): Int {
-            var x = x0
-            while (x != parent[x]) {
-                parent[x] = parent[parent[x]]
-                x = parent[x]
+        fun find(x: Int): Int {
+            var cur = x
+            while (cur != parent[cur]) {
+                parent[cur] = parent[parent[cur]]
+                cur = parent[cur]
             }
-            return x
+            return cur
         }
         for (edge in connections) {
             val ra = find(edge[0])

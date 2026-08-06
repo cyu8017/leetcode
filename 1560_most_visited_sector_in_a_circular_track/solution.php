@@ -1,7 +1,17 @@
-﻿// LeetCode 1560 - Most Visited Sector in  a Circular Track
-// https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $n
+     * @param Integer[] $rounds
+     * @return Integer[]
+     */
+    function mostVisited($n, $rounds) {
+        $start = $rounds[0];
+        $end = $rounds[count($rounds) - 1];
+        if ($start <= $end) {
+            return range($start, $end);
+        }
+        return array_merge(range(1, $end), range($start, $n));
     }
 }

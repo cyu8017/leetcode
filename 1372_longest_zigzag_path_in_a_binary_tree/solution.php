@@ -1,7 +1,18 @@
-﻿// LeetCode 1372 - Longest ZigZag Path in a Binary Tree
-// https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/
-
+<?php
 class Solution {
-    function solve() {
+    private $ans = 0;
+    function longestZigZag($root) {
+        $this->ans = 0;
+        $this->dfs($root);
+        return $this->ans;
+    }
+    private function dfs($node) {
+        if (!$node) return [-1, -1];
+        $l = $this->dfs($node->left);
+        $r = $this->dfs($node->right);
+        $a = $l[1] + 1;
+        $b = $r[0] + 1;
+        $this->ans = max($this->ans, $a, $b);
+        return [$a, $b];
     }
 }

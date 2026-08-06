@@ -13,7 +13,7 @@ class Solution {
             if (node == null) return
             val left = node.left
             val right = node.right
-            if ((left != null) xor (right != null)) {
+            if ((left == null) xor (right == null)) {
                 ans.add((left ?: right)!!.`val`)
             }
             dfs(left)

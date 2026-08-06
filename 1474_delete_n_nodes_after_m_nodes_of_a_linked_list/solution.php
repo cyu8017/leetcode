@@ -1,7 +1,15 @@
-﻿// LeetCode 1474 - Delete N Nodes After M Nodes of a Linked List
-// https://leetcode.com/problems/delete-n-nodes-after-m-nodes-of-a-linked-list/
-
+<?php
 class Solution {
-    function solve() {
+    function deleteNodes($head, $m, $n) {
+        $cur = $head;
+        while ($cur) {
+            for ($kept = 1; $kept < $m && $cur; $kept++) $cur = $cur->next;
+            if (!$cur) break;
+            $drop = $cur->next;
+            for ($count = 0; $count < $n && $drop; $count++) $drop = $drop->next;
+            $cur->next = $drop;
+            $cur = $drop;
+        }
+        return $head;
     }
 }

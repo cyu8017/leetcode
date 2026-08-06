@@ -1,7 +1,11 @@
-﻿// LeetCode 1470 - Shuffle the Array
-// https://leetcode.com/problems/shuffle-the-array/
-
+<?php
 class Solution {
-    function solve() {
+    function shuffle($nums, $n) {
+        $answer = [];
+        for ($i = 0; $i < $n; $i++) {
+            $answer[] = $nums[$i];
+            $answer[] = $nums[$i + $n];
+        }
+        return $answer;
     }
 }

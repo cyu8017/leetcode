@@ -1,4 +1,4 @@
-// LeetCode 1311 - Get Watched Videos by Your Friends
+// LeetCode 1311 - Get Watched Videos By Your Friends
 // https://leetcode.com/problems/get-watched-videos-by-your-friends/
 
 class Solution {

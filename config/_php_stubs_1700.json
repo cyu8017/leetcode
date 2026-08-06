@@ -1,0 +1,702 @@
+[
+    {
+        "Folder":  "1700_number_of_students_unable_to_eat_lunch",
+        "Len":  182,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1901_find_a_peak_element_ii",
+        "Len":  150,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1902_depth_of_bst_given_insertion_order",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1903_largest_odd_number_in_string",
+        "Len":  162,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1904_the_number_of_full_rounds_you_have_played",
+        "Len":  188,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1905_count_sub_islands",
+        "Len":  140,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1906_minimum_absolute_difference_queries",
+        "Len":  176,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1907_count_salary_categories",
+        "Len":  152,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1908_game_of_nim",
+        "Len":  128,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1909_remove_one_element_to_make_the_array_strictly_increasing",
+        "Len":  218,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1910_remove_all_occurrences_of_a_substring",
+        "Len":  180,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1911_maximum_alternating_subsequence_sum",
+        "Len":  176,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1912_design_movie_rental_system",
+        "Len":  158,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1913_maximum_product_difference_between_two_pairs",
+        "Len":  194,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1914_cyclically_rotating_a_grid",
+        "Len":  158,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1915_number_of_wonderful_substrings",
+        "Len":  166,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1916_count_ways_to_build_rooms_in_an_ant_colony",
+        "Len":  190,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1917_leetcodify_friends_recommendations",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1918_kth_smallest_subarray_sum",
+        "Len":  156,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1919_leetcodify_similar_friends",
+        "Len":  158,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1920_build_array_from_permutation",
+        "Len":  162,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1921_eliminate_maximum_number_of_monsters",
+        "Len":  178,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1922_count_good_numbers",
+        "Len":  142,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1923_longest_common_subpath",
+        "Len":  150,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1924_erect_the_fence_ii",
+        "Len":  142,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1925_count_square_sum_triples",
+        "Len":  154,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1926_nearest_exit_from_entrance_in_maze",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1927_sum_game",
+        "Len":  122,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1928_minimum_cost_to_reach_destination_in_time",
+        "Len":  188,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1929_concatenation_of_array",
+        "Len":  150,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1930_unique_length_3_palindromic_subsequences",
+        "Len":  186,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1931_painting_a_grid_with_three_different_colors",
+        "Len":  192,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1932_merge_bsts_to_create_single_bst",
+        "Len":  168,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1933_check_if_string_is_decomposable_into_value_equal_substrings",
+        "Len":  224,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1934_confirmation_rate",
+        "Len":  140,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1935_maximum_number_of_words_you_can_type",
+        "Len":  178,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1936_add_minimum_number_of_rungs",
+        "Len":  160,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1937_maximum_number_of_points_with_cost",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1938_maximum_genetic_difference_query",
+        "Len":  170,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1939_users_that_actively_request_confirmation_messages",
+        "Len":  204,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1940_longest_common_subsequence_between_sorted_arrays",
+        "Len":  202,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1941_check_if_all_characters_have_equal_number_of_occurrences",
+        "Len":  218,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1942_the_number_of_the_smallest_unoccupied_chair",
+        "Len":  192,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1943_describe_the_painting",
+        "Len":  148,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1944_number_of_visible_people_in_a_queue",
+        "Len":  176,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1945_sum_of_digits_of_string_after_convert",
+        "Len":  180,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1946_largest_number_after_mutating_substring",
+        "Len":  184,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1947_maximum_compatibility_score_sum",
+        "Len":  168,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1948_delete_duplicate_folders_in_system",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1949_strong_friendship",
+        "Len":  140,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1950_maximum_of_minimum_values_in_all_subarrays",
+        "Len":  190,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1951_all_the_pairs_with_the_maximum_number_of_common_followers",
+        "Len":  220,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1952_three_divisors",
+        "Len":  134,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1953_maximum_number_of_weeks_for_which_you_can_work",
+        "Len":  198,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1954_minimum_garden_perimeter_to_collect_enough_apples",
+        "Len":  204,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1955_count_number_of_special_subsequences",
+        "Len":  178,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1956_minimum_time_for_k_virus_variants_to_spread",
+        "Len":  192,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1957_delete_characters_to_make_fancy_string",
+        "Len":  182,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1958_check_if_move_is_legal",
+        "Len":  150,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1959_minimum_total_space_wasted_with_k_resizing_operations",
+        "Len":  212,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1960_maximum_product_of_the_length_of_two_palindromic_substrings",
+        "Len":  224,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1961_check_if_string_is_a_prefix_of_array",
+        "Len":  178,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1962_remove_stones_to_minimize_the_total",
+        "Len":  176,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1963_minimum_number_of_swaps_to_make_the_string_balanced",
+        "Len":  208,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1964_find_the_longest_valid_obstacle_course_at_each_position",
+        "Len":  216,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1965_employees_with_missing_information",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1966_binary_searchable_numbers_in_an_unsorted_array",
+        "Len":  198,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1967_number_of_strings_that_appear_as_substrings_in_word",
+        "Len":  208,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1968_array_with_elements_not_equal_to_average_of_neighbors",
+        "Len":  212,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1969_minimum_non_zero_product_of_the_array_elements",
+        "Len":  198,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1970_last_day_where_you_can_still_cross",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1971_find_if_path_exists_in_graph",
+        "Len":  162,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1972_first_and_last_call_on_the_same_day",
+        "Len":  176,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1973_count_nodes_equal_to_sum_of_descendants",
+        "Len":  184,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1974_minimum_time_to_type_word_using_special_typewriter",
+        "Len":  206,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1975_maximum_matrix_sum",
+        "Len":  142,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1976_number_of_ways_to_arrive_at_destination",
+        "Len":  184,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1977_number_of_ways_to_separate_numbers",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1978_employees_whose_manager_left_the_company",
+        "Len":  186,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1979_find_greatest_common_divisor_of_array",
+        "Len":  180,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1980_find_unique_binary_string",
+        "Len":  156,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1981_minimize_the_difference_between_target_and_chosen_elements",
+        "Len":  222,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1982_find_array_given_subset_sums",
+        "Len":  162,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1983_widest_pair_of_indices_with_equal_range_sum",
+        "Len":  192,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1984_minimum_difference_between_highest_and_lowest_of_k_scores",
+        "Len":  220,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1985_find_the_kth_largest_integer_in_the_array",
+        "Len":  188,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1986_minimum_number_of_work_sessions_to_finish_the_tasks",
+        "Len":  208,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1987_number_of_unique_good_subsequences",
+        "Len":  174,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1988_find_cutoff_score_for_each_school",
+        "Len":  172,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1989_maximum_number_of_people_that_can_be_caught_in_tag",
+        "Len":  206,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1990_count_the_number_of_experiments",
+        "Len":  168,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  true
+    },
+    {
+        "Folder":  "1991_find_the_middle_index_in_array",
+        "Len":  166,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1992_find_all_groups_of_farmland",
+        "Len":  160,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1993_operations_on_tree",
+        "Len":  142,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1994_the_number_of_good_subsets",
+        "Len":  158,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1995_count_special_quadruplets",
+        "Len":  156,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1996_the_number_of_weak_characters_in_the_game",
+        "Len":  188,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1997_first_day_where_you_have_been_in_all_the_rooms",
+        "Len":  198,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1998_gcd_sort_of_an_array",
+        "Len":  146,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    },
+    {
+        "Folder":  "1999_smallest_greater_multiple_made_of_two_digits",
+        "Len":  194,
+        "Lines":  7,
+        "Reason":  "empty solve",
+        "SQL":  false
+    }
+]

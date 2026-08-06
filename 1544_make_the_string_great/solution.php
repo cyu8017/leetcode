@@ -1,7 +1,24 @@
-﻿// LeetCode 1544 - Make The String Great
-// https://leetcode.com/problems/make-the-string-great/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param String $s
+     * @return String
+     */
+    function makeGood($s) {
+        $stack = [];
+        $n = strlen($s);
+        for ($i = 0; $i < $n; $i++) {
+            $ch = $s[$i];
+            if (!empty($stack)) {
+                $top = $stack[count($stack) - 1];
+                if ($top !== $ch && strtolower($top) === strtolower($ch)) {
+                    array_pop($stack);
+                    continue;
+                }
+            }
+            $stack[] = $ch;
+        }
+        return implode('', $stack);
     }
 }

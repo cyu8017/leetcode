@@ -1,7 +1,10 @@
-﻿// LeetCode 1313 - Decompress Run-Length Encoded List
-// https://leetcode.com/problems/decompress-run-length-encoded-list/
-
+<?php
 class Solution {
-    function solve() {
+    function decompressRLElist($nums) {
+        $answer = [];
+        for ($i = 0; $i < count($nums); $i += 2) {
+            for ($j = 0; $j < $nums[$i]; $j++) $answer[] = $nums[$i + 1];
+        }
+        return $answer;
     }
 }

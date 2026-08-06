@@ -5,9 +5,9 @@ class Solution {
     fun maxDiff(num: Int): Int {
         val s = num.toString()
         var high = s
-        for (ch in s) {
-            if (ch != '9') {
-                high = s.replace(ch, '9')
+        for (char in s) {
+            if (char != '9') {
+                high = s.replace(char, '9')
                 break
             }
         }
@@ -15,9 +15,9 @@ class Solution {
         if (s[0] != '1') {
             low = s.replace(s[0], '1')
         } else {
-            for (ch in s.substring(1)) {
-                if (ch != '0' && ch != '1') {
-                    low = s.replace(ch, '0')
+            for (char in s.drop(1)) {
+                if (char !in "01") {
+                    low = s.replace(char, '0')
                     break
                 }
             }

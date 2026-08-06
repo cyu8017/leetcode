@@ -1,7 +1,11 @@
-﻿// LeetCode 1551 - Minimum Operations to Make Array Equal
-// https://leetcode.com/problems/minimum-operations-to-make-array-equal/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $n
+     * @return Integer
+     */
+    function minOperations($n) {
+        return intdiv($n * $n, 4);
     }
 }

@@ -1,7 +1,14 @@
-﻿// LeetCode 1422 - Maximum Score After Splitting a String
-// https://leetcode.com/problems/maximum-score-after-splitting-a-string/
-
+<?php
 class Solution {
-    function solve() {
+    function maxScore($s) {
+        $ones = substr_count($s, "1");
+        $leftZeros = 0;
+        $answer = 0;
+        for ($i = 0; $i < strlen($s) - 1; $i++) {
+            if ($s[$i] === "0") $leftZeros++;
+            else $ones--;
+            $answer = max($answer, $leftZeros + $ones);
+        }
+        return $answer;
     }
 }

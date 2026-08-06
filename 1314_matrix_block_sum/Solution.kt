@@ -8,8 +8,7 @@ class Solution {
         val prefix = Array(m + 1) { IntArray(n + 1) }
         for (r in 0 until m) {
             for (c in 0 until n) {
-                prefix[r + 1][c + 1] =
-                    mat[r][c] + prefix[r][c + 1] + prefix[r + 1][c] - prefix[r][c]
+                prefix[r + 1][c + 1] = mat[r][c] + prefix[r][c + 1] + prefix[r + 1][c] - prefix[r][c]
             }
         }
         val answer = Array(m) { IntArray(n) }

@@ -3,9 +3,7 @@
 
 class Solution {
     fun findLeastNumOfUniqueInts(arr: IntArray, k: Int): Int {
-        val freq = HashMap<Int, Int>()
-        for (x in arr) freq[x] = freq.getOrDefault(x, 0) + 1
-        val counts = freq.values.sorted()
+        val counts = arr.toList().groupingBy { it }.eachCount().values.sorted()
         var remaining = k
         var removed = 0
         for (count in counts) {

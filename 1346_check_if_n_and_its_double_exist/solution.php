@@ -1,7 +1,11 @@
-﻿// LeetCode 1346 - Check If N and Its Double Exist
-// https://leetcode.com/problems/check-if-n-and-its-double-exist/
-
+<?php
 class Solution {
-    function solve() {
+    function checkIfExist($arr) {
+        $seen = [];
+        foreach ($arr as $value) {
+            if (isset($seen[2 * $value]) || ($value % 2 === 0 && isset($seen[intdiv($value, 2)]))) return true;
+            $seen[$value] = true;
+        }
+        return false;
     }
 }

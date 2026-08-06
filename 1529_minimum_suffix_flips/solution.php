@@ -1,7 +1,20 @@
-﻿// LeetCode 1529 - Minimum Suffix Flips
-// https://leetcode.com/problems/minimum-suffix-flips/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param String $target
+     * @return Integer
+     */
+    function minFlips($target) {
+        $answer = 0;
+        $prev = '0';
+        $n = strlen($target);
+        for ($i = 0; $i < $n; $i++) {
+            if ($prev !== $target[$i]) {
+                $answer++;
+            }
+            $prev = $target[$i];
+        }
+        return $answer;
     }
 }

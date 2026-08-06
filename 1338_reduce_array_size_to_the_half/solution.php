@@ -1,7 +1,16 @@
-﻿// LeetCode 1338 - Reduce Array Size to The Half
-// https://leetcode.com/problems/reduce-array-size-to-the-half/
-
+<?php
 class Solution {
-    function solve() {
+    function minSetSize($arr) {
+        $counts = array_count_values($arr);
+        rsort($counts);
+        $removed = 0;
+        $need = intdiv(count($arr), 2);
+        $answer = 0;
+        foreach ($counts as $c) {
+            $removed += $c;
+            $answer++;
+            if ($removed >= $need) return $answer;
+        }
+        return $answer;
     }
 }

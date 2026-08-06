@@ -12,7 +12,7 @@ class Solution {
 
     fun copyRandomBinaryTree(root: Node?): Node? {
         if (root == null) return null
-        if (root in copies) return copies[root]
+        copies[root]?.let { return it }
         val copy = Node(root.`val`)
         copies[root] = copy
         copy.left = copyRandomBinaryTree(root.left)

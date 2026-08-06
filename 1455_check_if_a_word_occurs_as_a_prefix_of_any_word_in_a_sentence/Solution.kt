@@ -3,9 +3,8 @@
 
 class Solution {
     fun isPrefixOfWord(sentence: String, searchWord: String): Int {
-        val words = sentence.split(" ")
-        for (i in words.indices) {
-            if (words[i].startsWith(searchWord)) return i + 1
+        sentence.split(" ").forEachIndexed { index, word ->
+            if (word.startsWith(searchWord)) return index + 1
         }
         return -1
     }

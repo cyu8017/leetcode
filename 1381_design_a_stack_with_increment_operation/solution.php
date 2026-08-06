@@ -1,7 +1,23 @@
-﻿// LeetCode 1381 - Design a Stack With Increment Operation
-// https://leetcode.com/problems/design-a-stack-with-increment-operation/
+<?php
+class CustomStack {
+    private $maxSize;
+    private $a = [];
 
-class Solution {
-    function solve() {
+    function __construct($maxSize) {
+        $this->maxSize = $maxSize;
+        $this->a = [];
+    }
+
+    function push($x) {
+        if (count($this->a) < $this->maxSize) $this->a[] = $x;
+    }
+
+    function pop() {
+        return $this->a ? array_pop($this->a) : -1;
+    }
+
+    function increment($k, $val) {
+        $limit = min($k, count($this->a));
+        for ($i = 0; $i < $limit; $i++) $this->a[$i] += $val;
     }
 }

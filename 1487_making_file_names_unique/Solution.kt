@@ -3,10 +3,9 @@
 
 class Solution {
     fun getFolderNames(names: Array<String>): Array<String> {
-        val used = HashMap<String, Int>()
+        val used = mutableMapOf<String, Int>()
         val ans = Array(names.size) { "" }
-        for (i in names.indices) {
-            val name = names[i]
+        for ((idx, name) in names.withIndex()) {
             val candidate = if (name !in used) {
                 name
             } else {
@@ -16,7 +15,7 @@ class Solution {
                 "$name($k)"
             }
             used[candidate] = 1
-            ans[i] = candidate
+            ans[idx] = candidate
         }
         return ans
     }

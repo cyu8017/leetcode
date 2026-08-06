@@ -1,7 +1,12 @@
-﻿// LeetCode 1343 - Number of Sub-arrays of Size K and Average Greater than or Equal to Threshold
-// https://leetcode.com/problems/number-of-sub-arrays-of-size-k-and-average-greater-than-or-equal-to-threshold/
-
+<?php
 class Solution {
-    function solve() {
+    function numOfSubarrays($arr, $k, $threshold) {
+        $window = array_sum(array_slice($arr, 0, $k));
+        $answer = $window >= $k * $threshold ? 1 : 0;
+        for ($i = $k; $i < count($arr); $i++) {
+            $window += $arr[$i] - $arr[$i - $k];
+            if ($window >= $k * $threshold) $answer++;
+        }
+        return $answer;
     }
 }

@@ -3,9 +3,7 @@
 
 class Solution {
     fun arrangeWords(text: String): String {
-        val words = text.lowercase().split(" ").toMutableList()
-        words.sortBy { it.length }
-        val joined = words.joinToString(" ")
-        return joined.replaceFirstChar { it.uppercaseChar() }
+        val words = text.lowercase().split(" ").sortedBy { it.length }
+        return words.joinToString(" ").replaceFirstChar { it.uppercaseChar() }
     }
 }

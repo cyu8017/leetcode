@@ -3,19 +3,20 @@
 
 class Solution {
     fun longestSubarray(nums: IntArray, limit: Int): Int {
-        val maxq = ArrayDeque<Int>()
-        val minq = ArrayDeque<Int>()
+        val low = ArrayDeque<Int>()
+        val high = ArrayDeque<Int>()
         var left = 0
         var answer = 0
         for (right in nums.indices) {
-            while (maxq.isNotEmpty() && nums[maxq.last()] < nums[right]) maxq.removeLast()
-            while (minq.isNotEmpty() && nums[minq.last()] > nums[right]) minq.removeLast()
-            maxq.addLast(right)
-            minq.addLast(right)
-            while (nums[maxq.first()] - nums[minq.first()] > limit) {
-                if (maxq.first() == left) maxq.removeFirst()
-                if (minq.first() == left) minq.removeFirst()
+            val value = nums[right]
+            while (low.isNotEmpty() && nums[low.last()] > value) low.removeLast()
+            while (high.isNotEmpty() && nums[high.last()] < value) high.removeLast()
+            low.add(right)
+            high.add(right)
+            while (nums[high.first()] - nums[low.first()] > limit) {
                 left++
+                if (low.first() < left) low.removeFirst()
+                if (high.first() < left) high.removeFirst()
             }
             answer = maxOf(answer, right - left + 1)
         }

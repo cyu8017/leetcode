@@ -11,7 +11,7 @@ class Solution {
                 return String(chars)
             }
         }
-        chars[chars.size - 1] = 'b'
+        chars[chars.lastIndex] = 'b'
         return String(chars)
     }
 }

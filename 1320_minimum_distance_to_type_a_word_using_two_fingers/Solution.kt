@@ -10,8 +10,7 @@ class Solution {
         val letters = word.map { it - 'A' }
         var dp = mutableMapOf(26 to 0)
         var previous = letters[0]
-        for (idx in 1 until letters.size) {
-            val current = letters[idx]
+        for (current in letters.drop(1)) {
             val nxt = mutableMapOf<Int, Int>()
             for ((free, cost) in dp) {
                 nxt[free] = minOf(nxt.getOrDefault(free, Int.MAX_VALUE / 2), cost + distance(previous, current))
@@ -20,6 +19,6 @@ class Solution {
             dp = nxt
             previous = current
         }
-        return dp.values.minOrNull()!!
+        return dp.values.minOrNull() ?: 0
     }
 }

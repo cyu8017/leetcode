@@ -19,7 +19,7 @@ class Solution {
         var lo = bloomDay.minOrNull()!!
         var hi = bloomDay.maxOrNull()!!
         while (lo < hi) {
-            val mid = lo + (hi - lo) / 2
+            val mid = (lo + hi) / 2
             if (possible(mid)) hi = mid else lo = mid + 1
         }
         return lo

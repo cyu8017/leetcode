@@ -1,7 +1,15 @@
-﻿// LeetCode 1403 - Minimum Subsequence in Non-Increasing Order
-// https://leetcode.com/problems/minimum-subsequence-in-non-increasing-order/
-
+<?php
 class Solution {
-    function solve() {
+    function minSubsequence($nums) {
+        rsort($nums);
+        $answer = [];
+        $chosen = 0;
+        $total = array_sum($nums);
+        foreach ($nums as $value) {
+            $answer[] = $value;
+            $chosen += $value;
+            if ($chosen > $total - $chosen) return $answer;
+        }
+        return $answer;
     }
 }

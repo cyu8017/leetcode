@@ -1,7 +1,21 @@
-﻿// LeetCode 1443 - Minimum Time to Collect All Apples in a Tree
-// https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/
-
+<?php
 class Solution {
-    function solve() {
+    function minTime($n, $edges, $hasApple) {
+        $graph = array_fill(0, $n, []);
+        foreach ($edges as [$a, $b]) {
+            $graph[$a][] = $b;
+            $graph[$b][] = $a;
+        }
+        $visit = function($node, $parent) use (&$visit, $graph, $hasApple) {
+            $cost = 0;
+            foreach ($graph[$node] as $child) {
+                if ($child !== $parent) {
+                    $childCost = $visit($child, $node);
+                    if ($childCost || $hasApple[$child]) $cost += $childCost + 2;
+                }
+            }
+            return $cost;
+        };
+        return $visit(0, -1);
     }
 }

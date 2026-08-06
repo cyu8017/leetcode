@@ -2,9 +2,13 @@
 // https://leetcode.com/problems/course-schedule-iv/
 
 class Solution {
-    fun checkIfPrerequisite(numCourses: Int, prerequisites: Array<IntArray>, queries: Array<IntArray>): List<Boolean> {
+    fun checkIfPrerequisite(
+        numCourses: Int,
+        prerequisites: Array<IntArray>,
+        queries: Array<IntArray>
+    ): List<Boolean> {
         val reach = Array(numCourses) { BooleanArray(numCourses) }
-        for (e in prerequisites) reach[e[0]][e[1]] = true
+        for (edge in prerequisites) reach[edge[0]][edge[1]] = true
         for (k in 0 until numCourses) {
             for (i in 0 until numCourses) {
                 if (reach[i][k]) {

@@ -1,4 +1,4 @@
-// LeetCode 1304 - Find N Unique Integers Sum up to Zero
+// LeetCode 1304 - Find N Unique Integers Sum Up To Zero
 // https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/
 
 class Solution {
@@ -8,7 +8,7 @@ class Solution {
             answer.add(-value)
             answer.add(value)
         }
-        if (n % 2 != 0) answer.add(0)
+        if (n % 2 == 1) answer.add(0)
         return answer.toIntArray()
     }
 }

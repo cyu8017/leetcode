@@ -1,7 +1,11 @@
-﻿// LeetCode 1342 - Number of Steps to Reduce a Number to Zero
-// https://leetcode.com/problems/number-of-steps-to-reduce-a-number-to-zero/
-
+<?php
 class Solution {
-    function solve() {
+    function numberOfSteps($num) {
+        $steps = 0;
+        while ($num) {
+            $num = $num % 2 === 0 ? intdiv($num, 2) : $num - 1;
+            $steps++;
+        }
+        return $steps;
     }
 }

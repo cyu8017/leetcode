@@ -1,7 +1,10 @@
-﻿// LeetCode 1389 - Create Target Array in the Given Order
-// https://leetcode.com/problems/create-target-array-in-the-given-order/
-
+<?php
 class Solution {
-    function solve() {
+    function createTargetArray($nums, $index) {
+        $out = [];
+        foreach ($nums as $i => $x) {
+            array_splice($out, $index[$i], 0, [$x]);
+        }
+        return $out;
     }
 }

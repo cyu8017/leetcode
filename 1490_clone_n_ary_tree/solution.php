@@ -1,7 +1,9 @@
-﻿// LeetCode 1490 - Clone N-ary Tree
-// https://leetcode.com/problems/clone-n-ary-tree/
-
+<?php
 class Solution {
-    function solve() {
+    function cloneTree($root) {
+        if ($root === null) return null;
+        $copy = (object)['val' => $root->val, 'children' => []];
+        foreach ($root->children as $child) $copy->children[] = $this->cloneTree($child);
+        return $copy;
     }
 }

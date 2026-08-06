@@ -4,14 +4,19 @@
 class Solution {
     fun findBestValue(arr: IntArray, target: Int): Int {
         var lo = 0
-        var hi = arr.maxOrNull()!!
+        var hi = arr.maxOrNull() ?: 0
         while (lo < hi) {
             val mid = (lo + hi) / 2
-            val s = arr.sumOf { minOf(it, mid) }
-            if (s < target) lo = mid + 1 else hi = mid
+            var sum = 0L
+            for (x in arr) sum += minOf(x, mid).toLong()
+            if (sum < target) lo = mid + 1 else hi = mid
         }
-        val before = arr.sumOf { minOf(it, lo - 1) }
-        val after = arr.sumOf { minOf(it, lo) }
+        var before = 0L
+        var after = 0L
+        for (x in arr) {
+            before += minOf(x, lo - 1).toLong()
+            after += minOf(x, lo).toLong()
+        }
         return if (target - before <= after - target) lo - 1 else lo
     }
 }

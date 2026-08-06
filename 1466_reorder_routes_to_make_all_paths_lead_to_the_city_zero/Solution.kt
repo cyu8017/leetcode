@@ -3,23 +3,19 @@
 
 class Solution {
     fun minReorder(n: Int, connections: Array<IntArray>): Int {
-        val graph = Array(n) { mutableListOf<IntArray>() }
-        for (e in connections) {
-            graph[e[0]].add(intArrayOf(e[1], 1))
-            graph[e[1]].add(intArrayOf(e[0], 0))
+        val graph = Array(n) { mutableListOf<Pair<Int, Int>>() }
+        for (edge in connections) {
+            graph[edge[0]].add(edge[1] to 1)
+            graph[edge[1]].add(edge[0] to 0)
         }
         var ans = 0
-        val stack = ArrayDeque<Int>()
-        val seen = BooleanArray(n)
-        stack.add(0)
-        seen[0] = true
+        val stack = ArrayDeque(listOf(0))
+        val seen = mutableSetOf(0)
         while (stack.isNotEmpty()) {
             val node = stack.removeLast()
-            for (edge in graph[node]) {
-                val nei = edge[0]
-                val cost = edge[1]
-                if (!seen[nei]) {
-                    seen[nei] = true
+            for ((nei, cost) in graph[node]) {
+                if (nei !in seen) {
+                    seen.add(nei)
                     stack.add(nei)
                     ans += cost
                 }

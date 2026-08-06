@@ -3,8 +3,9 @@
 
 class Solution {
     fun maxProduct(nums: IntArray): Int {
-        nums.sort()
-        val n = nums.size
-        return (nums[n - 2] - 1) * (nums[n - 1] - 1)
+        val sorted = nums.sorted()
+        val a = sorted[sorted.size - 2]
+        val b = sorted[sorted.size - 1]
+        return (a - 1) * (b - 1)
     }
 }

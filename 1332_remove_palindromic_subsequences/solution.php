@@ -1,7 +1,7 @@
-﻿// LeetCode 1332 - Remove Palindromic Subsequences
-// https://leetcode.com/problems/remove-palindromic-subsequences/
-
+<?php
 class Solution {
-    function solve() {
+    function removePalindromeSub($s) {
+        if ($s === "") return 0;
+        return $s === strrev($s) ? 1 : 2;
     }
 }

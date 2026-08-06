@@ -2,17 +2,14 @@
 // https://leetcode.com/problems/kth-ancestor-of-a-tree-node/
 
 class TreeAncestor(n: Int, parent: IntArray) {
-    private val up: Array<IntArray>
+    private val up = mutableListOf(parent.copyOf())
 
     init {
         val width = maxOf(1, 32 - Integer.numberOfLeadingZeros(n))
-        up = Array(width) { IntArray(n) { -1 } }
-        for (i in 0 until n) up[0][i] = parent[i]
-        for (bit in 1 until width) {
-            for (i in 0 until n) {
-                val p = up[bit - 1][i]
-                up[bit][i] = if (p == -1) -1 else up[bit - 1][p]
-            }
+        for (b in 1 until width) {
+            val prev = up[b - 1]
+            val cur = IntArray(n) { i -> if (prev[i] == -1) -1 else prev[prev[i]] }
+            up.add(cur)
         }
     }
 
@@ -21,7 +18,7 @@ class TreeAncestor(n: Int, parent: IntArray) {
         var steps = k
         var bit = 0
         while (steps > 0 && cur != -1) {
-            if (steps and 1 == 1) {
+            if (steps and 1 != 0) {
                 if (bit >= up.size) return -1
                 cur = up[bit][cur]
             }

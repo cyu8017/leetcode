@@ -1,4 +1,4 @@
-// LeetCode 1317 - Convert Integer to the Sum of Two No-Zero Integers
+// LeetCode 1317 - Convert Integer to the Sum of Two Zero-Free Integers
 // https://leetcode.com/problems/convert-integer-to-the-sum-of-two-no-zero-integers/
 
 class Solution {

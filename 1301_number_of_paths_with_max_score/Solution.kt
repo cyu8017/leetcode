@@ -1,4 +1,4 @@
-// LeetCode 1301 - Number of Paths with Max Score
+// LeetCode 1301 - Number Of Paths With Max Score
 // https://leetcode.com/problems/number-of-paths-with-max-score/
 
 class Solution {
@@ -14,7 +14,7 @@ class Solution {
                 if (board[r][c] == 'X' || (r == n - 1 && c == n - 1)) continue
                 var best = -1
                 var count = 0
-                for ((nr, nc) in arrayOf(r + 1 to c, r to c + 1, r + 1 to c + 1)) {
+                for ((nr, nc) in listOf(r + 1 to c, r to c + 1, r + 1 to c + 1)) {
                     if (nr < n && nc < n && score[nr][nc] >= 0) {
                         when {
                             score[nr][nc] > best -> {

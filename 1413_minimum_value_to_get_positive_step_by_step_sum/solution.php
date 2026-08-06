@@ -1,7 +1,12 @@
-﻿// LeetCode 1413 - Minimum Value to Get Positive Step by Step Sum
-// https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
-
+<?php
 class Solution {
-    function solve() {
+    function minStartValue($nums) {
+        $prefix = 0;
+        $lowest = 0;
+        foreach ($nums as $value) {
+            $prefix += $value;
+            $lowest = min($lowest, $prefix);
+        }
+        return 1 - $lowest;
     }
 }

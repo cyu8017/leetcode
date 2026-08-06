@@ -1,7 +1,19 @@
-﻿// LeetCode 1598 - Crawler Log Folder
-// https://leetcode.com/problems/crawler-log-folder/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param String[] $logs
+     * @return Integer
+     */
+    function minOperations($logs) {
+        $depth = 0;
+        foreach ($logs as $log) {
+            if ($log === '../') {
+                $depth = max(0, $depth - 1);
+            } elseif ($log !== './') {
+                $depth++;
+            }
+        }
+        return $depth;
     }
 }

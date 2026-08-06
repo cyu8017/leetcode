@@ -1,7 +1,15 @@
-﻿// LeetCode 1475 - Final Prices With a Special Discount in a Shop
-// https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
-
+<?php
 class Solution {
-    function solve() {
+    function finalPrices($prices) {
+        $ans = $prices;
+        $stack = [];
+        foreach ($prices as $i => $price) {
+            while ($stack && $prices[$stack[count($stack) - 1]] >= $price) {
+                $j = array_pop($stack);
+                $ans[$j] -= $price;
+            }
+            $stack[] = $i;
+        }
+        return $ans;
     }
 }

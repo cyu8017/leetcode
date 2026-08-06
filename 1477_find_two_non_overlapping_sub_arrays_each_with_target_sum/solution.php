@@ -1,7 +1,25 @@
-﻿// LeetCode 1477 - Find Two Non-overlapping Sub-arrays Each With Target Sum
-// https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/
-
+<?php
 class Solution {
-    function solve() {
+    function minSumOfLengths($arr, $target) {
+        $inf = 1000000000;
+        $left = 0;
+        $total = 0;
+        $best = $inf;
+        $ans = $inf;
+        $shortest = array_fill(0, count($arr), $inf);
+        foreach ($arr as $right => $x) {
+            $total += $x;
+            while ($total > $target) {
+                $total -= $arr[$left];
+                $left++;
+            }
+            if ($total === $target) {
+                $length = $right - $left + 1;
+                if ($left) $ans = min($ans, $length + $shortest[$left - 1]);
+                $best = min($best, $length);
+            }
+            $shortest[$right] = $best;
+        }
+        return $ans === $inf ? -1 : $ans;
     }
 }

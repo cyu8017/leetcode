@@ -1,7 +1,9 @@
-﻿// LeetCode 1359 - Count All Valid Pickup and Delivery Options
-// https://leetcode.com/problems/count-all-valid-pickup-and-delivery-options/
-
+<?php
 class Solution {
-    function solve() {
+    function countOrders($n) {
+        $ans = 1;
+        $mod = 1000000007;
+        for ($i = 1; $i <= $n; $i++) $ans = $ans * $i * (2 * $i - 1) % $mod;
+        return $ans;
     }
 }

@@ -1,7 +1,7 @@
-﻿// LeetCode 1344 - Angle Between Hands of a Clock
-// https://leetcode.com/problems/angle-between-hands-of-a-clock/
-
+<?php
 class Solution {
-    function solve() {
+    function angleClock($hour, $minutes) {
+        $difference = abs(($hour % 12) * 30 + $minutes * 0.5 - $minutes * 6);
+        return min($difference, 360 - $difference);
     }
 }

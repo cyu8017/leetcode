@@ -1,7 +1,12 @@
-﻿// LeetCode 1523 - Count Odd Numbers in an Interval Range
-// https://leetcode.com/problems/count-odd-numbers-in-an-interval-range/
+﻿<?php
 
 class Solution {
-    function solve() {
+    /**
+     * @param Integer $low
+     * @param Integer $high
+     * @return Integer
+     */
+    function countOdds($low, $high) {
+        return intdiv($high + 1, 2) - intdiv($low, 2);
     }
 }
