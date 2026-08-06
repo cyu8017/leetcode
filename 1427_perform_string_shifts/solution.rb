@@ -1,7 +1,9 @@
-﻿# LeetCode 1427 - Perform String Shifts
+# LeetCode 1427 - Perform String Shifts
 # https://leetcode.com/problems/perform-string-shifts/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def string_shift(s, shift)
+  offset = 0
+  shift.each { |direction, amount| offset += direction == 1 ? amount : -amount }
+  offset %= s.length
+  offset == 0 ? s : s[-offset..] + s[0...-offset]
 end

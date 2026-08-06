@@ -1,7 +1,8 @@
-﻿# LeetCode 1426 - Counting Elements
+# LeetCode 1426 - Counting Elements
 # https://leetcode.com/problems/counting-elements/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def count_elements(arr)
+  values = {}
+  arr.each { |v| values[v] = true }
+  arr.count { |value| values[value + 1] }
 end

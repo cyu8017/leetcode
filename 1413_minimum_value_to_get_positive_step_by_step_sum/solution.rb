@@ -1,7 +1,11 @@
-﻿# LeetCode 1413 - Minimum Value to Get Positive Step by Step Sum
+# LeetCode 1413 - Minimum Value To Get Positive Step By Step Sum
 # https://leetcode.com/problems/minimum-value-to-get-positive-step-by-step-sum/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def min_start_value(nums)
+  prefix = lowest = 0
+  nums.each do |value|
+    prefix += value
+    lowest = [lowest, prefix].min
+  end
+  1 - lowest
 end

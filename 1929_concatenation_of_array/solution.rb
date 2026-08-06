@@ -1,7 +1,8 @@
-﻿# LeetCode 1929 - Concatenation of Array
+# LeetCode 1929 - Concatenation of Array
 # https://leetcode.com/problems/concatenation-of-array/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @return {Integer[]}
+def get_concatenation(nums)
+  nums + nums
 end

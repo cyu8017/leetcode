@@ -1,7 +1,8 @@
-﻿# LeetCode 1451 - Rearrange Words in a Sentence
+# LeetCode 1451 - Rearrange Words In A Sentence
 # https://leetcode.com/problems/rearrange-words-in-a-sentence/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def arrange_words(text)
+  words = text.downcase.split
+  words.sort_by!(&:length)
+  words.join(' ').sub(/\A./) { |c| c.upcase }
 end

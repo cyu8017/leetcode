@@ -1,7 +1,6 @@
-﻿# LeetCode 1351 - Count Negative Numbers in a Sorted Matrix
+# LeetCode 1351 - Count Negative Numbers In A Sorted Matrix
 # https://leetcode.com/problems/count-negative-numbers-in-a-sorted-matrix/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def count_negatives(grid)
+  grid.sum { |row| row.count(&:negative?) }
 end

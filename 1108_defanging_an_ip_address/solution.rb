@@ -1,7 +1,8 @@
-﻿# LeetCode 1108 - Defanging an IP Address
+# LeetCode 1108 - Defanging an IP Address
 # https://leetcode.com/problems/defanging-an-ip-address/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} address
+# @return {String}
+def defang_i_paddr(address)
+  address.gsub(".", "[.]")
 end

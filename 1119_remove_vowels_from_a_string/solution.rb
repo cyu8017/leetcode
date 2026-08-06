@@ -1,7 +1,8 @@
-﻿# LeetCode 1119 - Remove Vowels from a String
+# LeetCode 1119 - Remove Vowels From a String
 # https://leetcode.com/problems/remove-vowels-from-a-string/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} s
+# @return {String}
+def remove_vowels(s)
+  s.gsub(/[aeiou]/, "")
 end

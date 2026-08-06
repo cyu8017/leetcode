@@ -1,7 +1,10 @@
-﻿# LeetCode 1134 - Armstrong Number
+# LeetCode 1134 - Armstrong Number
 # https://leetcode.com/problems/armstrong-number/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} n
+# @return {Boolean}
+def is_armstrong(n)
+  digits = n.to_s
+  power = digits.length
+  n == digits.chars.sum { |d| d.to_i**power }
 end

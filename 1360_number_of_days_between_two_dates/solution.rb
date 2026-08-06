@@ -1,7 +1,7 @@
-﻿# LeetCode 1360 - Number of Days Between Two Dates
+# LeetCode 1360 - Number Of Days Between Two Dates
 # https://leetcode.com/problems/number-of-days-between-two-dates/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+require 'date'
+def days_between_dates(date1, date2)
+  (Date.parse(date1) - Date.parse(date2)).to_i.abs
 end

@@ -1,7 +1,6 @@
-﻿# LeetCode 1460 - Make Two Arrays Equal by Reversing Subarrays
+# LeetCode 1460 - Make Two Arrays Equal By Reversing Subarrays
 # https://leetcode.com/problems/make-two-arrays-equal-by-reversing-subarrays/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def can_be_equal(target, arr)
+  target.sort == arr.sort
 end

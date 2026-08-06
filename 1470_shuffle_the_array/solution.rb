@@ -1,7 +1,6 @@
-﻿# LeetCode 1470 - Shuffle the Array
+# LeetCode 1470 - Shuffle The Array
 # https://leetcode.com/problems/shuffle-the-array/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+def shuffle(nums, n)
+  nums[0, n].zip(nums[n..]).flatten
 end
