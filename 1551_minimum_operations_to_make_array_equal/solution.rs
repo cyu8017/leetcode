@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/minimum-operations-to-make-array-equal/
 
 impl Solution {
-    pub fn solve() {
+    pub fn min_operations(n: i32) -> i32 {
+        n * n / 4
     }
 }
