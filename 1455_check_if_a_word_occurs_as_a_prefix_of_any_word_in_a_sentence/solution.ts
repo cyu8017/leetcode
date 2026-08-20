@@ -1,6 +1,1 @@
-﻿// LeetCode 1455 - Check If a Word Occurs As a Prefix of Any Word in a Sentence
-// https://leetcode.com/problems/check-if-a-word-occurs-as-a-prefix-of-any-word-in-a-sentence/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function isPrefixOfWord(sentence: any, searchWord: any): any { const words=sentence.split(" "); for(let i=0;i<words.length;i++) if(words[i].startsWith(searchWord)) return i+1; return -1; }

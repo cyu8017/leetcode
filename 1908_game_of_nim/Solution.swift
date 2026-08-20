@@ -1,7 +1,8 @@
-﻿// LeetCode 1908 - Game of Nim
+// LeetCode 1908 - Game of Nim
 // https://leetcode.com/problems/game-of-nim/
 
 class Solution {
-    func solve() {
+    func nimGame(_ piles: [Int]) -> Bool {
+        piles.reduce(0, ^) != 0
     }
 }

@@ -1,6 +1,14 @@
-﻿// LeetCode 1128 - Number of Equivalent Domino Pairs
+// LeetCode 1128 - Number of Equivalent Domino Pairs
 // https://leetcode.com/problems/number-of-equivalent-domino-pairs/
 
-function solve(input: unknown): unknown {
-    return null;
+function numEquivDominoPairs(dominoes: number[][]): number {
+    const count = new Map();
+    let ans = 0;
+    for (const [a, b] of dominoes) {
+        const key = a < b ? `${a},${b}` : `${b},${a}`;
+        const c = count.get(key) || 0;
+        ans += c;
+        count.set(key, c + 1);
+    }
+    return ans;
 }

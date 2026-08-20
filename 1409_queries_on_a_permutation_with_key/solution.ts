@@ -1,6 +1,6 @@
-﻿// LeetCode 1409 - Queries on a Permutation With Key
-// https://leetcode.com/problems/queries-on-a-permutation-with-key/
+// LeetCode 1409: Queries On A Permutation With Key
 
-function solve(input: unknown): unknown {
-    return null;
+function processQueries(queries: any, m: any): any {
+    const permutation = Array.from({ length: m }, (_, i: any): any => i + 1);
+    return queries.map((query: any): any => { const index = permutation.indexOf(query); permutation.splice(index, 1); permutation.unshift(query); return index; });
 }

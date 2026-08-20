@@ -1,6 +1,1 @@
-﻿// LeetCode 1450 - Number of Students Doing Homework at a Given Time
-// https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function busyStudent(startTime: any, endTime: any, queryTime: any): any { return startTime.reduce((answer,start,i: any): any =>answer+(start<=queryTime&&queryTime<=endTime[i]),0); }

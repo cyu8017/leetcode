@@ -1,6 +1,13 @@
-﻿// LeetCode 1376 - Time Needed to Inform All Employees
+// LeetCode 1376 - Time Needed To Inform All Employees
 // https://leetcode.com/problems/time-needed-to-inform-all-employees/
 
-function solve(input: unknown): unknown {
-    return null;
+function numOfMinutes(n: number, headID: number, manager: number[], informTime: number[]): number {
+    const children = Array.from({ length: n }, (: any): any => []);
+    for (let i = 0; i < n; i++) if (manager[i] !== -1) children[manager[i]].push(i);
+    const dfs = (u: any): any => {
+        let best = 0;
+        for (const v of children[u]) best = Math.max(best, dfs(v));
+        return informTime[u] + best;
+    };
+    return dfs(headID);
 }

@@ -1,6 +1,22 @@
-﻿// LeetCode 1244 - Design A Leaderboard
+// LeetCode 1244 - Design A Leaderboard
 // https://leetcode.com/problems/design-a-leaderboard/
 
-function solve(input: unknown): unknown {
-    return null;
+class Leaderboard {
+    scores: any;
+
+    constructor() {
+        this.scores = new Map();
+    }
+
+    addScore(playerId: number, score: number): void {
+        this.scores.set(playerId, (this.scores.get(playerId) || 0) + score);
+    }
+
+    top(K: number): number {
+        return [...this.scores.values()].sort((a, b) => b - a).slice(0, K).reduce((s, v) => s + v, 0);
+    }
+
+    reset(playerId: number): void {
+        this.scores.delete(playerId);
+    }
 }

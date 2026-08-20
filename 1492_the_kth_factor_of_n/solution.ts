@@ -1,6 +1,6 @@
-﻿// LeetCode 1492 - The kth Factor of n
-// https://leetcode.com/problems/the-kth-factor-of-n/
-
-function solve(input: unknown): unknown {
-    return null;
+function kthFactor(n: any, k: any): any {
+    for (let factor = 1; factor <= n; factor++) {
+        if (n % factor === 0 && --k === 0) return factor;
+    }
+    return -1;
 }

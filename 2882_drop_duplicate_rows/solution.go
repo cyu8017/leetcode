@@ -1,5 +1,6 @@
-﻿// LeetCode 2882 - Drop Duplicate Rows
+// LeetCode 2882 - Drop Duplicate Rows
 // https://leetcode.com/problems/drop-duplicate-rows/
 
-func solve() {
+func dropDuplicateEmails(df [][]interface{}) [][]interface{} {
+	return nil
 }

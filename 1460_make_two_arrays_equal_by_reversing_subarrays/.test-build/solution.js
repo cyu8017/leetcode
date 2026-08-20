@@ -1,0 +1,9 @@
+"use strict";
+function canBeEqual(target, arr) { const count = new Map(); for (const x of target)
+    count.set(x, (count.get(x) || 0) + 1); for (const x of arr) {
+    if (!count.has(x))
+        return false;
+    count.set(x, count.get(x) - 1);
+    if (count.get(x) === 0)
+        count.delete(x);
+} return count.size === 0; }

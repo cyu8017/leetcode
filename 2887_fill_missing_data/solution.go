@@ -1,5 +1,6 @@
-﻿// LeetCode 2887 - Fill Missing Data
+// LeetCode 2887 - Fill Missing Data
 // https://leetcode.com/problems/fill-missing-data/
 
-func solve() {
+func fillMissingValues(df [][]interface{}) [][]interface{} {
+	return nil
 }

@@ -1,5 +1,6 @@
-﻿// LeetCode 2885 - Rename Columns
+// LeetCode 2885 - Rename Columns
 // https://leetcode.com/problems/rename-columns/
 
-func solve() {
+func renameColumns(df [][]interface{}) [][]interface{} {
+	return nil
 }

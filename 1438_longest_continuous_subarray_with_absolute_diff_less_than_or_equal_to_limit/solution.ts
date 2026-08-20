@@ -1,6 +1,9 @@
-﻿// LeetCode 1438 - Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit
-// https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
-
-function solve(input: unknown): unknown {
-    return null;
+function longestSubarray(nums: any, limit: any): any {
+    const minq: any[] = [], maxq = []; let left = 0, answer = 0;
+    for (let right = 0; right < nums.length; right++) {
+        while (minq.length && nums[minq[minq.length - 1]] > nums[right]) minq.pop(); minq.push(right);
+        while (maxq.length && nums[maxq[maxq.length - 1]] < nums[right]) maxq.pop(); maxq.push(right);
+        while (nums[maxq[0]] - nums[minq[0]] > limit) { if (minq[0] === left) minq.shift(); if (maxq[0] === left) maxq.shift(); left++; }
+        answer = Math.max(answer, right - left + 1);
+    } return answer;
 }

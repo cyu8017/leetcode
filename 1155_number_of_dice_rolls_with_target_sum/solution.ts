@@ -1,6 +1,19 @@
-﻿// LeetCode 1155 - Number of Dice Rolls With Target Sum
+// LeetCode 1155 - Number of Dice Rolls With Target Sum
 // https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
 
-function solve(input: unknown): unknown {
-    return null;
+function numRollsToTarget(n: number, k: number, target: number): number {
+    const MOD = 1e9 + 7;
+    let dp = Array(target + 1).fill(0);
+    dp[0] = 1;
+    for (let dice = 0; dice < n; dice++) {
+        const next = Array(target + 1).fill(0);
+        for (let s = 0; s <= target; s++) {
+            if (!dp[s]) continue;
+            for (let face = 1; face <= k; face++) {
+                if (s + face <= target) next[s + face] = (next[s + face] + dp[s]) % MOD;
+            }
+        }
+        dp = next;
+    }
+    return dp[target];
 }

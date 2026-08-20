@@ -1,5 +1,20 @@
-﻿// LeetCode 2104 - Sum of Subarray Ranges
+// LeetCode 2104 - Sum of Subarray Ranges
 // https://leetcode.com/problems/sum-of-subarray-ranges/
 
-func solve() {
+func subArrayRanges(nums []int) int64 {
+	n := len(nums)
+	var ans int64
+	for i := 0; i < n; i++ {
+		mn, mx := nums[i], nums[i]
+		for j := i; j < n; j++ {
+			if nums[j] < mn {
+				mn = nums[j]
+			}
+			if nums[j] > mx {
+				mx = nums[j]
+			}
+			ans += int64(mx - mn)
+		}
+	}
+	return ans
 }

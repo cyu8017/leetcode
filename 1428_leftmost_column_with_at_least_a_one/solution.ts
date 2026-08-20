@@ -1,6 +1,13 @@
-﻿// LeetCode 1428 - Leftmost Column with at Least a One
-// https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
+interface BinaryMatrix {
+    get(row: number, col: number): number;
+    dimensions(): number[];
+}
 
-function solve(input: unknown): unknown {
-    return null;
+function leftMostColumnWithOne(binaryMatrix: BinaryMatrix): number {
+    const [rows, cols] = binaryMatrix.dimensions();
+    let row = 0, col = cols - 1, answer = -1;
+    while (row < rows && col >= 0) {
+        if (binaryMatrix.get(row, col) === 1) { answer = col; col--; } else row++;
+    }
+    return answer;
 }

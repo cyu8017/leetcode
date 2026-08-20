@@ -1,6 +1,18 @@
-﻿// LeetCode 1508 - Range Sum of Sorted Subarray Sums
+// LeetCode 1508 - Range Sum of Sorted Subarray Sums
 // https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/
+// @ts-nocheck
 
-function solve(input: unknown): unknown {
-    return null;
+function rangeSum(nums: number[], n: number, left: number, right: number): number {
+    const values = [];
+    for (let i = 0; i < n; i++) {
+        let total = 0;
+        for (let j = i; j < n; j++) {
+            total += nums[j];
+            values.push(total);
+        }
+    }
+    values.sort((a, b) => a - b);
+    let sum = 0;
+    for (let i = left - 1; i < right; i++) sum += values[i];
+    return sum % 1000000007;
 }

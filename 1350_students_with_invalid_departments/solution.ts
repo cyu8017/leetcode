@@ -1,6 +1,3 @@
-﻿// LeetCode 1350 - Students With Invalid Departments
-// https://leetcode.com/problems/students-with-invalid-departments/
-
 function solve(input: unknown): unknown {
     return null;
 }

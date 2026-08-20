@@ -1,7 +1,19 @@
-﻿// LeetCode 1955 - Count Number of Special Subsequences
+// LeetCode 1955 - Count Number of Special Subsequences
 // https://leetcode.com/problems/count-number-of-special-subsequences/
 
 class Solution {
-    func solve() {
+    func countSpecialSubsequences(_ nums: [Int]) -> Int {
+        let MOD = 1_000_000_007
+        var a = 0, b = 0, c = 0
+        for x in nums {
+            if x == 0 {
+                a = (a * 2 + 1) % MOD
+            } else if x == 1 {
+                b = (b * 2 + a) % MOD
+            } else {
+                c = (c * 2 + b) % MOD
+            }
+        }
+        return c
     }
 }

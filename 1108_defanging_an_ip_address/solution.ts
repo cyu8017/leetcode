@@ -1,6 +1,6 @@
-﻿// LeetCode 1108 - Defanging an IP Address
+// LeetCode 1108 - Defanging an IP Address
 // https://leetcode.com/problems/defanging-an-ip-address/
 
-function solve(input: unknown): unknown {
-    return null;
+function defangIPaddr(address: string): string {
+    return address.replaceAll(".", "[.]");
 }

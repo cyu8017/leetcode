@@ -1,6 +1,1 @@
-﻿// LeetCode 1447 - Simplified Fractions
-// https://leetcode.com/problems/simplified-fractions/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function simplifiedFractions(n: any): any { const gcd = (a: any, b: any): any => b ? gcd(b,a%b) : a, answer=[]; for(let d=2;d<=n;d++) for(let x=1;x<d;x++) if(gcd(x,d)===1) answer.push(x+"/"+d); return answer; }

@@ -1,5 +1,6 @@
-﻿// LeetCode 2979 - Most Expensive Item That Can Not Be Bought
+// LeetCode 2979 - Most Expensive Item That Can Not Be Bought
 // https://leetcode.com/problems/most-expensive-item-that-can-not-be-bought/
 
-func solve() {
+func mostExpensiveItem(primeOne int, primeTwo int) int {
+	return primeOne*primeTwo - primeOne - primeTwo
 }

@@ -1,5 +1,6 @@
-﻿// LeetCode 2775 - Undefined to Null
+// LeetCode 2775 - Undefined to Null
 // https://leetcode.com/problems/undefined-to-null/
 
-func solve() {
+func undefinedToNull(obj interface{}) interface{} {
+	return obj
 }

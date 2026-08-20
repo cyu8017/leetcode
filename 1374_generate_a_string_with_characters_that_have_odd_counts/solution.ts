@@ -1,6 +1,6 @@
-﻿// LeetCode 1374 - Generate a String With Characters That Have Odd Counts
+// LeetCode 1374 - Generate A String With Characters That Have Odd Counts
 // https://leetcode.com/problems/generate-a-string-with-characters-that-have-odd-counts/
 
-function solve(input: unknown): unknown {
-    return null;
+function generateTheString(n: number): string {
+    return n % 2 ? "a".repeat(n) : "a".repeat(n - 1) + "b";
 }

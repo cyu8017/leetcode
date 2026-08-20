@@ -1,5 +1,14 @@
-﻿// LeetCode 2485 - Find the Pivot Integer
+// LeetCode 2485 - Find the Pivot Integer
 // https://leetcode.com/problems/find-the-pivot-integer/
 
-func solve() {
+func pivotInteger(n int) int {
+	total := n * (n + 1) / 2
+	sum := 0
+	for x := 1; x <= n; x++ {
+		sum += x
+		if sum == total-sum+x {
+			return x
+		}
+	}
+	return -1
 }

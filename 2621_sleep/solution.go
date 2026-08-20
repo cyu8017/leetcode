@@ -1,5 +1,9 @@
-﻿// LeetCode 2621 - Sleep
+// LeetCode 2621 - Sleep
 // https://leetcode.com/problems/sleep/
 
-func solve() {
+
+import "time"
+
+func sleep(millis int) {
+	time.Sleep(time.Duration(millis) * time.Millisecond)
 }

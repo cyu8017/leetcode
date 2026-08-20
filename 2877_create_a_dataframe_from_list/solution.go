@@ -1,5 +1,6 @@
-﻿// LeetCode 2877 - Create a DataFrame from List
+// LeetCode 2877 - Create a DataFrame from List
 // https://leetcode.com/problems/create-a-dataframe-from-list/
 
-func solve() {
+func createDataframe(studentData [][]int) [][]int {
+	return nil
 }

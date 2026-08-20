@@ -1,6 +1,14 @@
-﻿// LeetCode 1243 - Array Transformation
+// LeetCode 1243 - Array Transformation
 // https://leetcode.com/problems/array-transformation/
 
-function solve(input: unknown): unknown {
-    return null;
+function transformArray(arr: number[]): number[] {
+    while (true) {
+        const nxt = arr.slice();
+        for (let i = 1; i < arr.length - 1; i++) {
+            if (arr[i] < arr[i - 1] && arr[i] < arr[i + 1]) nxt[i]++;
+            else if (arr[i] > arr[i - 1] && arr[i] > arr[i + 1]) nxt[i]--;
+        }
+        if (nxt.every((v, i) => v === arr[i])) return arr;
+        arr = nxt;
+    }
 }

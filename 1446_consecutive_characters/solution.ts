@@ -1,6 +1,1 @@
-﻿// LeetCode 1446 - Consecutive Characters
-// https://leetcode.com/problems/consecutive-characters/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function maxPower(s: any): any { let best = 0, run = 0, previous = ""; for (const ch of s) { run = ch === previous ? run + 1 : 1; previous = ch; best = Math.max(best, run); } return best; }

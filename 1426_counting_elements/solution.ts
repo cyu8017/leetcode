@@ -1,6 +1,3 @@
-﻿// LeetCode 1426 - Counting Elements
-// https://leetcode.com/problems/counting-elements/
-
-function solve(input: unknown): unknown {
-    return null;
+function countElements(arr: any): any {
+    const values = new Set(arr); return arr.reduce((count, x: any): any => count + values.has(x + 1), 0);
 }

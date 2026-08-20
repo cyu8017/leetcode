@@ -1,6 +1,7 @@
-﻿// LeetCode 1365 - How Many Numbers Are Smaller Than the Current Number
+// LeetCode 1365 - How Many Numbers Are Smaller Than The Current Number
 // https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/
 
-function solve(input: unknown): unknown {
-    return null;
+function smallerNumbersThanCurrent(nums: number[]): number[] {
+    const sorted = [...nums].sort((a, b: any): any => a - b);
+    return nums.map((x: any): any => sorted.indexOf(x));
 }

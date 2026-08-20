@@ -1,7 +1,8 @@
-﻿// LeetCode 1929 - Concatenation of Array
+// LeetCode 1929 - Concatenation of Array
 // https://leetcode.com/problems/concatenation-of-array/
 
 class Solution {
-    func solve() {
+    func getConcatenation(_ nums: [Int]) -> [Int] {
+        nums + nums
     }
 }

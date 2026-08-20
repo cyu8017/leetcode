@@ -1,6 +1,17 @@
-﻿// LeetCode 1340 - Jump Game V
+// LeetCode 1340 - Jump Game V
 // https://leetcode.com/problems/jump-game-v/
 
-function solve(input: unknown): unknown {
-    return null;
+function maxJumps(arr: number[], d: number): number {
+    const dp = Array(arr.length).fill(1);
+    const order = arr.map((value, i: any): any => [value, i]).sort((a, b: any): any => a[0] - b[0]);
+    for (const [, i] of order) {
+        for (const step of [-1, 1]) {
+            let j = i + step;
+            while (j >= 0 && j < arr.length && Math.abs(j - i) <= d && arr[j] < arr[i]) {
+                dp[i] = Math.max(dp[i], 1 + dp[j]);
+                j += step;
+            }
+        }
+    }
+    return Math.max(...dp);
 }

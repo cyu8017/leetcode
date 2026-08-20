@@ -1,5 +1,6 @@
-﻿// LeetCode 2890 - Reshape Data: Melt
+// LeetCode 2890 - Reshape Data: Melt
 // https://leetcode.com/problems/reshape-data-melt/
 
-func solve() {
+func meltTable(df [][]interface{}) [][]interface{} {
+	return nil
 }

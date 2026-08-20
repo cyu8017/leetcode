@@ -1,6 +1,8 @@
-﻿// LeetCode 1424 - Diagonal Traverse II
-// https://leetcode.com/problems/diagonal-traverse-ii/
-
-function solve(input: unknown): unknown {
-    return null;
+function findDiagonalOrder(nums: any): any {
+    const diagonals = new Map(), answer = [];
+    for (let r = 0; r < nums.length; r++) for (let c = 0; c < nums[r].length; c++) {
+        const d = r + c; if (!diagonals.has(d)) diagonals.set(d, []); diagonals.get(d).push(nums[r][c]);
+    }
+    for (let d = 0; diagonals.has(d); d++) answer.push(...diagonals.get(d).reverse());
+    return answer;
 }

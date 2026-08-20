@@ -1,6 +1,6 @@
-﻿// LeetCode 1471 - The k Strongest Values in an Array
-// https://leetcode.com/problems/the-k-strongest-values-in-an-array/
-
-function solve(input: unknown): unknown {
-    return null;
+function getStrongest(arr: any, k: any): any {
+    arr.sort((a, b: any): any => a - b);
+    const median = arr[Math.floor((arr.length - 1) / 2)];
+    arr.sort((a, b: any): any => Math.abs(b - median) - Math.abs(a - median) || b - a);
+    return arr.slice(0, k);
 }

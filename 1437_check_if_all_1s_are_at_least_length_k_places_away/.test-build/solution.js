@@ -1,0 +1,11 @@
+"use strict";
+function kLengthApart(nums, k) {
+    let previous = -k - 1;
+    for (let i = 0; i < nums.length; i++)
+        if (nums[i]) {
+            if (i - previous <= k)
+                return false;
+            previous = i;
+        }
+    return true;
+}

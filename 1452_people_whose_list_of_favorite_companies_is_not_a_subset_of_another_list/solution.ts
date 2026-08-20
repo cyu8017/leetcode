@@ -1,6 +1,1 @@
-﻿// LeetCode 1452 - People Whose List of Favorite Companies Is Not a Subset of Another List
-// https://leetcode.com/problems/people-whose-list-of-favorite-companies-is-not-a-subset-of-another-list/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function peopleIndexes(favoriteCompanies: any): any { const sets=favoriteCompanies.map((x: any): any =>new Set(x)); return sets.map((set,i: any): any =>sets.every((other,j: any): any =>i===j||set.size>other.size||[...set].some((x: any): any =>!other.has(x)))?i:-1).filter((i: any): any =>i>=0); }

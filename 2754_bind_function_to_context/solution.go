@@ -1,5 +1,6 @@
-﻿// LeetCode 2754 - Bind Function to Context
+// LeetCode 2754 - Bind Function to Context
 // https://leetcode.com/problems/bind-function-to-context/
 
-func solve() {
+func bindFunction(fn int, args []int) int {
+	return fn
 }

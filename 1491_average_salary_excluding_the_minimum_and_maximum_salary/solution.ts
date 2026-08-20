@@ -1,6 +1,9 @@
-﻿// LeetCode 1491 - Average Salary Excluding the Minimum and Maximum Salary
-// https://leetcode.com/problems/average-salary-excluding-the-minimum-and-maximum-salary/
-
-function solve(input: unknown): unknown {
-    return null;
+function average(salary: any): any {
+    let total = 0, minimum = Infinity, maximum = -Infinity;
+    for (const value of salary) {
+        total += value;
+        minimum = Math.min(minimum, value);
+        maximum = Math.max(maximum, value);
+    }
+    return (total - minimum - maximum) / (salary.length - 2);
 }

@@ -1,6 +1,6 @@
-﻿// LeetCode 1490 - Clone N-ary Tree
-// https://leetcode.com/problems/clone-n-ary-tree/
+const makeNode = (val: any, children: any = []): any => ({ val, children });
 
-function solve(input: unknown): unknown {
-    return null;
+function cloneTree(root: any): any {
+    if (!root) return null;
+    return makeNode(root.val, root.children.map(cloneTree));
 }

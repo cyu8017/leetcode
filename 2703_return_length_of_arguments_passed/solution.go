@@ -1,5 +1,7 @@
-﻿// LeetCode 2703 - Return Length of Arguments Passed
+// LeetCode 2703 - Return Length of Arguments Passed
 // https://leetcode.com/problems/return-length-of-arguments-passed/
 
-func solve() {
+
+func argumentsLength(args ...interface{}) int {
+	return len(args)
 }

@@ -1,7 +1,8 @@
-﻿// LeetCode 1551 - Minimum Operations to Make Array Equal
+// LeetCode 1551 - Minimum Operations to Make Array Equal
 // https://leetcode.com/problems/minimum-operations-to-make-array-equal/
 
 class Solution {
-    func solve() {
+    func minOperations(_ n: Int) -> Int {
+        return n * n / 4
     }
 }

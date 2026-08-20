@@ -1,6 +1,11 @@
-﻿// LeetCode 1315 - Sum of Nodes with Even-Valued Grandparent
+// LeetCode 1315 - Sum Of Nodes With Even Valued Grandparent
 // https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
 
-function solve(input: unknown): unknown {
-    return null;
+function sumEvenGrandparent(root: any): number {
+    const dfs = (node: any, parent: any, grandparent: any): any => {
+        if (!node) return 0;
+        const add = grandparent && grandparent.val % 2 === 0 ? node.val : 0;
+        return add + dfs(node.left, node, parent) + dfs(node.right, node, parent);
+    };
+    return dfs(root, null, null);
 }

@@ -1,5 +1,7 @@
-﻿// LeetCode 2692 - Make Object Immutable
+// LeetCode 2692 - Make Object Immutable
 // https://leetcode.com/problems/make-object-immutable/
 
-func solve() {
+
+func makeImmutable(obj interface{}) interface{} {
+	return obj
 }

@@ -1,0 +1,12 @@
+"use strict";
+function numPoints(darts, r) { let best = 1, rr = 2 * r; for (let i = 0; i < darts.length; i++)
+    for (let j = i; j < darts.length; j++) {
+        const dx = darts[j][0] - darts[i][0], dy = darts[j][1] - darts[i][1], d = Math.hypot(dx, dy);
+        if (d > rr + 1e-8)
+            continue;
+        const mx = (darts[i][0] + darts[j][0]) / 2, my = (darts[i][1] + darts[j][1]) / 2, h = Math.sqrt(Math.max(0, r * r - d * d / 4)), ux = -dy / d || 0, uy = dx / d || 0;
+        for (const sign of [-1, 1]) {
+            const x = mx + sign * h * ux, y = my + sign * h * uy;
+            best = Math.max(best, any, darts.reduce((c, p) => c + (Math.hypot(p[0] - x, p[1] - y) <= r + 1e-7), 0));
+        }
+    } return best; }

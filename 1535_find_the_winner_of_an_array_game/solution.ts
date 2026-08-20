@@ -1,6 +1,13 @@
-﻿// LeetCode 1535 - Find the Winner of an Array Game
+// LeetCode 1535 - Find the Winner of an Array Game
 // https://leetcode.com/problems/find-the-winner-of-an-array-game/
+// @ts-nocheck
 
-function solve(input: unknown): unknown {
-    return null;
+function getWinner(arr: number[], k: number): number {
+    let champion = arr[0], wins = 0;
+    for (let i = 1; i < arr.length; i++) {
+        if (champion > arr[i]) wins++;
+        else { champion = arr[i]; wins = 1; }
+        if (wins === k) break;
+    }
+    return champion;
 }

@@ -1,6 +1,1 @@
-﻿// LeetCode 1451 - Rearrange Words in a Sentence
-// https://leetcode.com/problems/rearrange-words-in-a-sentence/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function arrangeWords(text: any): any { const words=text.toLowerCase().split(" ").map((word,index: any): any =>[word,index]); words.sort((a,b: any): any =>a[0].length-b[0].length||a[1]-b[1]); const result=words.map((x: any): any =>x[0]).join(" "); return result[0].toUpperCase()+result.slice(1); }

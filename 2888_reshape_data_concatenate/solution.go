@@ -1,5 +1,6 @@
-﻿// LeetCode 2888 - Reshape Data: Concatenate
+// LeetCode 2888 - Reshape Data: Concatenate
 // https://leetcode.com/problems/reshape-data-concatenate/
 
-func solve() {
+func concatenateTables(df1, df2 [][]interface{}) [][]interface{} {
+	return nil
 }

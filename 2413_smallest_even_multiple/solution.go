@@ -1,5 +1,9 @@
-﻿// LeetCode 2413 - Smallest Even Multiple
+// LeetCode 2413 - Smallest Even Multiple
 // https://leetcode.com/problems/smallest-even-multiple/
 
-func solve() {
+func smallestEvenMultiple(n int) int {
+	if n%2 == 0 {
+		return n
+	}
+	return n * 2
 }

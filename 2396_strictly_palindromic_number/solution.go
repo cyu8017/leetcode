@@ -1,5 +1,6 @@
-﻿// LeetCode 2396 - Strictly Palindromic Number
+// LeetCode 2396 - Strictly Palindromic Number
 // https://leetcode.com/problems/strictly-palindromic-number/
 
-func solve() {
+func isStrictlyPalindromic(n int) bool {
+	return false
 }

@@ -1,6 +1,9 @@
-﻿// LeetCode 1276 - Number of Burgers with No Waste of Ingredients
+// LeetCode 1276 - Number of Burgers with No Waste of Ingredients
 // https://leetcode.com/problems/number-of-burgers-with-no-waste-of-ingredients/
 
-function solve(input: unknown): unknown {
-    return null;
+function numOfBurgers(tomatoSlices: number, cheeseSlices: number): number[] {
+    if (tomatoSlices % 2 !== 0) return [];
+    const jumbo = tomatoSlices / 2 - cheeseSlices;
+    const small = cheeseSlices - jumbo;
+    return jumbo >= 0 && small >= 0 ? [jumbo, small] : [];
 }

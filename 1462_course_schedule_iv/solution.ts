@@ -1,6 +1,1 @@
-﻿// LeetCode 1462 - Course Schedule IV
-// https://leetcode.com/problems/course-schedule-iv/
-
-function solve(input: unknown): unknown {
-    return null;
-}
+function checkIfPrerequisite(numCourses: any, prerequisites: any, queries: any): any { const reach=Array.from({length:numCourses}, (: any): any =>Array(numCourses).fill(false)); for(const [a,b] of prerequisites)reach[a][b]=true; for(let k=0;k<numCourses;k++)for(let i=0;i<numCourses;i++)if(reach[i][k])for(let j=0;j<numCourses;j++)reach[i][j]=reach[i][j]||reach[k][j]; return queries.map(([a,b]: any): any =>reach[a][b]); }

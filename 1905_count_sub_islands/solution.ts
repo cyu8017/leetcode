@@ -1,6 +1,22 @@
-﻿// LeetCode 1905 - Count Sub Islands
+// LeetCode 1905 - Count Sub Islands
 // https://leetcode.com/problems/count-sub-islands/
 
-function solve(input: unknown): unknown {
-    return null;
+function countSubIslands(grid1: number[][], grid2: number[][]): number {
+    const rows = grid2.length, cols = grid2[0].length;
+    const dfs = (r: any, c: any) => {
+        if (r < 0 || c < 0 || r >= rows || c >= cols || grid2[r][c] === 0) return true;
+        grid2[r][c] = 0;
+        let ok = grid1[r][c] === 1;
+        for (const [nr, nc] of [[r + 1, c], [r - 1, c], [r, c + 1], [r, c - 1]]) {
+            if (!dfs(nr, nc)) ok = false;
+        }
+        return ok;
+    };
+    let ans = 0;
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (grid2[r][c] === 1 && dfs(r, c)) ans++;
+        }
+    }
+    return ans;
 }

@@ -1,6 +1,7 @@
-﻿// LeetCode 1217 - Minimum Cost to Move Chips to The Same Position
+// LeetCode 1217 - Minimum Cost to Move Chips to The Same Position
 // https://leetcode.com/problems/minimum-cost-to-move-chips-to-the-same-position/
 
-function solve(input: unknown): unknown {
-    return null;
+function minCostToMoveChips(position: number[]): number {
+    const odd = position.filter((x) => x & 1).length;
+    return Math.min(odd, position.length - odd);
 }

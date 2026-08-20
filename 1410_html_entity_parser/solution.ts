@@ -1,6 +1,6 @@
-﻿// LeetCode 1410 - HTML Entity Parser
-// https://leetcode.com/problems/html-entity-parser/
+// LeetCode 1410: Html Entity Parser
 
-function solve(input: unknown): unknown {
-    return null;
+function entityParser(text: any): any {
+    const entities = {"&quot;": '"', "&apos;": "'", "&amp;": "&", "&gt;": ">", "&lt;": "<", "&frasl;": "/"};
+    return text.replace(/&quot;|&apos;|&amp;|&gt;|&lt;|&frasl;/g: any, (match: any): any => entities[match]);
 }

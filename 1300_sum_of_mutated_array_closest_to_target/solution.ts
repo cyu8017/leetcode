@@ -1,6 +1,14 @@
-﻿// LeetCode 1300 - Sum of Mutated Array Closest to Target
+// LeetCode 1300 - Sum of Mutated Array Closest to Target
 // https://leetcode.com/problems/sum-of-mutated-array-closest-to-target/
 
-function solve(input: unknown): unknown {
-    return null;
+function findBestValue(arr: number[], target: number): number {
+    let lo = 0, hi = Math.max(...arr);
+    const sumAt = (v: any): any => arr.reduce((s, x: any): any => s + Math.min(x, v), 0);
+    while (lo < hi) {
+        const mid = (lo + hi) >> 1;
+        if (sumAt(mid) < target) lo = mid + 1;
+        else hi = mid;
+    }
+    const before = sumAt(lo - 1), after = sumAt(lo);
+    return target - before <= after - target ? lo - 1 : lo;
 }

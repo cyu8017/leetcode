@@ -1,6 +1,5 @@
-﻿// LeetCode 1408 - String Matching in an Array
-// https://leetcode.com/problems/string-matching-in-an-array/
+// LeetCode 1408: String Matching In An Array
 
-function solve(input: unknown): unknown {
-    return null;
+function stringMatching(words: any): any {
+    return words.filter((word, i: any): any => words.some((other, j: any): any => i !== j && other.includes(word)));
 }

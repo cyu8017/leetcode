@@ -1,5 +1,6 @@
-﻿// LeetCode 2883 - Drop Missing Data
+// LeetCode 2883 - Drop Missing Data
 // https://leetcode.com/problems/drop-missing-data/
 
-func solve() {
+func dropMissingData(df [][]interface{}) [][]interface{} {
+	return nil
 }

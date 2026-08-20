@@ -1,6 +1,13 @@
-﻿// LeetCode 1539 - Kth Missing Positive Number
+// LeetCode 1539 - Kth Missing Positive Number
 // https://leetcode.com/problems/kth-missing-positive-number/
+// @ts-nocheck
 
-function solve(input: unknown): unknown {
-    return null;
+function findKthPositive(arr: number[], k: number): number {
+    let left = 0, right = arr.length;
+    while (left < right) {
+        const middle = (left + right) >> 1;
+        if (arr[middle] - middle - 1 < k) left = middle + 1;
+        else right = middle;
+    }
+    return left + k;
 }

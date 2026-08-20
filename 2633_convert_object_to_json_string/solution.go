@@ -1,5 +1,10 @@
-﻿// LeetCode 2633 - Convert Object to JSON String
+// LeetCode 2633 - Convert Object to JSON String
 // https://leetcode.com/problems/convert-object-to-json-string/
 
-func solve() {
+
+import "encoding/json"
+
+func jsonStringify(object interface{}) string {
+	b, _ := json.Marshal(object)
+	return string(b)
 }

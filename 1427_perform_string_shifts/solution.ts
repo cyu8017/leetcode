@@ -1,6 +1,6 @@
-﻿// LeetCode 1427 - Perform String Shifts
-// https://leetcode.com/problems/perform-string-shifts/
-
-function solve(input: unknown): unknown {
-    return null;
+function stringShift(s: any, shift: any): any {
+    let offset = 0;
+    for (const [direction, amount] of shift) offset += direction === 0 ? -amount : amount;
+    offset = ((offset % s.length) + s.length) % s.length;
+    return s.slice(s.length - offset) + s.slice(0, s.length - offset);
 }

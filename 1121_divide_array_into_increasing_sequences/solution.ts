@@ -1,6 +1,13 @@
-﻿// LeetCode 1121 - Divide Array Into Increasing Sequences
+// LeetCode 1121 - Divide Array Into Increasing Sequences
 // https://leetcode.com/problems/divide-array-into-increasing-sequences/
 
-function solve(input: unknown): unknown {
-    return null;
+function canDivideIntoSubsequences(nums: number[], k: number): boolean {
+    const freq = new Map();
+    let maxFreq = 0;
+    for (const x of nums) {
+        const f = (freq.get(x) || 0) + 1;
+        freq.set(x, f);
+        maxFreq = Math.max(maxFreq, f);
+    }
+    return nums.length >= k * maxFreq;
 }

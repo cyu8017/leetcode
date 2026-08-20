@@ -1,6 +1,9 @@
-﻿// LeetCode 1903 - Largest Odd Number in String
+// LeetCode 1903 - Largest Odd Number in String
 // https://leetcode.com/problems/largest-odd-number-in-string/
 
-function solve(input: unknown): unknown {
-    return null;
+function largestOddNumber(num: string): string {
+    for (let i = num.length - 1; i >= 0; i--) {
+        if ((num.charCodeAt(i) - 48) % 2) return num.slice(0, i + 1);
+    }
+    return "";
 }
