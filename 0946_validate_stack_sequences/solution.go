@@ -1,5 +1,15 @@
-﻿// LeetCode 0946 - Validate Stack Sequences
+// LeetCode 0946 - Validate Stack Sequences
 // https://leetcode.com/problems/validate-stack-sequences/
 
-func solve() {
+func validateStackSequences(pushed []int, popped []int) bool {
+	stack := []int{}
+	j := 0
+	for _, x := range pushed {
+		stack = append(stack, x)
+		for len(stack) > 0 && stack[len(stack)-1] == popped[j] {
+			stack = stack[:len(stack)-1]
+			j++
+		}
+	}
+	return len(stack) == 0
 }

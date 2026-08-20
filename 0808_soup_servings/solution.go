@@ -1,5 +1,30 @@
-﻿// LeetCode 0808 - Soup Servings
+// LeetCode 0808 - Soup Servings
 // https://leetcode.com/problems/soup-servings/
 
-func solve() {
+func soupServings(n int) float64 {
+	if n >= 4800 {
+		return 1.0
+	}
+	units := (n + 24) / 25
+	memo := map[[2]int]float64{}
+	var dp func(int, int) float64
+	dp = func(a, b int) float64 {
+		if a <= 0 && b <= 0 {
+			return 0.5
+		}
+		if a <= 0 {
+			return 1.0
+		}
+		if b <= 0 {
+			return 0.0
+		}
+		key := [2]int{a, b}
+		if v, ok := memo[key]; ok {
+			return v
+		}
+		ans := 0.25 * (dp(a-4, b) + dp(a-3, b-1) + dp(a-2, b-2) + dp(a-1, b-3))
+		memo[key] = ans
+		return ans
+	}
+	return dp(units, units)
 }

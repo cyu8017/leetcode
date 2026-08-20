@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "delayedCount",
   "paramOrder": [
     "nums",
     "k"

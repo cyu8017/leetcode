@@ -1,5 +1,16 @@
-﻿// LeetCode 3842 - Toggle Light Bulbs
+// LeetCode 3842 - Toggle Light Bulbs
 // https://leetcode.com/problems/toggle-light-bulbs/
 
-func solve() {
+func toggleLightBulbs(bulbs []int) []int {
+	st := make([]int, 101)
+	for _, x := range bulbs {
+		st[x] ^= 1
+	}
+	ans := make([]int, 0)
+	for i := 0; i < 101; i++ {
+		if st[i] == 1 {
+			ans = append(ans, i)
+		}
+	}
+	return ans
 }

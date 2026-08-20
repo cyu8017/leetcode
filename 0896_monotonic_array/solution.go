@@ -1,5 +1,15 @@
-﻿// LeetCode 0896 - Monotonic Array
+// LeetCode 0896 - Monotonic Array
 // https://leetcode.com/problems/monotonic-array/
 
-func solve() {
+func isMonotonic(nums []int) bool {
+	inc, dec := true, true
+	for i := 1; i < len(nums); i++ {
+		if nums[i] < nums[i-1] {
+			inc = false
+		}
+		if nums[i] > nums[i-1] {
+			dec = false
+		}
+	}
+	return inc || dec
 }

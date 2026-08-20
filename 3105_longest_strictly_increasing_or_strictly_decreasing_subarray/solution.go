@@ -1,5 +1,25 @@
-﻿// LeetCode 3105 - Longest Strictly Increasing or Strictly Decreasing Subarray
+// LeetCode 3105 - Longest Strictly Increasing or Strictly Decreasing Subarray
 // https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/
 
-func solve() {
+func longestMonotonicSubarray(nums []int) int {
+	ans := 1
+	t := 1
+	for i, x := range nums[1:] {
+		if nums[i] < x {
+			t++
+			ans = max(ans, t)
+		} else {
+			t = 1
+		}
+	}
+	t = 1
+	for i, x := range nums[1:] {
+		if nums[i] > x {
+			t++
+			ans = max(ans, t)
+		} else {
+			t = 1
+		}
+	}
+	return ans
 }

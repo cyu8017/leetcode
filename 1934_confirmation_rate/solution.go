@@ -1,5 +1,10 @@
-﻿// LeetCode 1934 - Confirmation Rate
+// LeetCode 1934 - Confirmation Rate
 // https://leetcode.com/problems/confirmation-rate/
 
-func solve() {
-}
+const QUERY = `
+SELECT s.user_id,
+       ROUND(AVG(IF(c.action = 'confirmed', 1, 0)), 2) AS confirmation_rate
+FROM Signups s
+LEFT JOIN Confirmations c ON s.user_id = c.user_id
+GROUP BY s.user_id
+`

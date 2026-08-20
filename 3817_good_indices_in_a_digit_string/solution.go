@@ -1,5 +1,15 @@
-﻿// LeetCode 3817 - Good Indices in a Digit String
+// LeetCode 3817 - Good Indices In A Digit String
 // https://leetcode.com/problems/good-indices-in-a-digit-string/
 
-func solve() {
+import "strconv"
+
+func goodIndices(s string) (ans []int) {
+	for i := range s {
+		t := strconv.Itoa(i)
+		k := len(t)
+		if s[i+1-k:i+1] == t {
+			ans = append(ans, i)
+		}
+	}
+	return
 }

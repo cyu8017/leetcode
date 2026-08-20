@@ -1,5 +1,15 @@
-﻿// LeetCode 3181 - Maximum Total Reward Using Operations II
+// LeetCode 3181 - Maximum Total Reward Using Operations II
 // https://leetcode.com/problems/maximum-total-reward-using-operations-ii/
 
-func solve() {
+func maxTotalReward(rewardValues []int) int {
+	slices.Sort(rewardValues)
+	rewardValues = slices.Compact(rewardValues)
+	one := big.NewInt(1)
+	f := big.NewInt(1)
+	p := new(big.Int)
+	for _, v := range rewardValues {
+		mask := p.Sub(p.Lsh(one, uint(v)), one)
+		f.Or(f, p.Lsh(p.And(f, mask), uint(v)))
+	}
+	return f.BitLen() - 1
 }

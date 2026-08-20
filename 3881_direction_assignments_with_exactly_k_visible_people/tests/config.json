@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "qmi",
   "paramOrder": [
     "n",
     "pos",

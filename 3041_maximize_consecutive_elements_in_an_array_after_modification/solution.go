@@ -1,5 +1,21 @@
-﻿// LeetCode 3041 - Maximize Consecutive Elements in an Array After Modification
+// LeetCode 3041 - Maximize Consecutive Elements in an Array After Modification
 // https://leetcode.com/problems/maximize-consecutive-elements-in-an-array-after-modification/
 
-func solve() {
+import "sort"
+
+func maxSelectedElements(nums []int) int {
+	sort.Ints(nums)
+	dp := map[int]int{}
+	ans := 0
+	for _, num := range nums {
+		dp[num+1] = dp[num] + 1
+		dp[num] = dp[num-1] + 1
+		if dp[num] > ans {
+			ans = dp[num]
+		}
+		if dp[num+1] > ans {
+			ans = dp[num+1]
+		}
+	}
+	return ans
 }

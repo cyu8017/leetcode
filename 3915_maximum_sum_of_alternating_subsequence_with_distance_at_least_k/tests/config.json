@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxAlternatingSum",
   "paramOrder": [
     "nums",
     "k"

@@ -1,5 +1,8 @@
-﻿// LeetCode 0796 - Rotate String
+// LeetCode 0796 - Rotate String
 // https://leetcode.com/problems/rotate-string/
 
-func solve() {
+import "strings"
+
+func rotateString(s string, goal string) bool {
+	return len(s) == len(goal) && strings.Contains(s+s, goal)
 }

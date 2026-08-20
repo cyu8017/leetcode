@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "countFancy",
   "paramOrder": [
     "l",
     "r"

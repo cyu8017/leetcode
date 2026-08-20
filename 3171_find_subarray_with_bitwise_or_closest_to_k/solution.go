@@ -1,5 +1,39 @@
-﻿// LeetCode 3171 - Find Subarray With Bitwise OR Closest to K
+// LeetCode 3171 - Find Subarray With Bitwise OR Closest to K
 // https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
 
-func solve() {
+func minimumDifference(nums []int, k int) int {
+	m := bits.Len(uint(slices.Max(nums)))
+	cnt := make([]int, m)
+	ans := math.MaxInt32
+	s, i := 0, 0
+	for j, x := range nums {
+		s |= x
+		ans = min(ans, abs(s-k))
+		for h := 0; h < m; h++ {
+			if x>>h&1 == 1 {
+				cnt[h]++
+			}
+		}
+		for i < j && s > k {
+			y := nums[i]
+			for h := 0; h < m; h++ {
+				if y>>h&1 == 1 {
+					cnt[h]--
+					if cnt[h] == 0 {
+						s ^= 1 << h
+					}
+				}
+			}
+			ans = min(ans, abs(s-k))
+			i++
+		}
+	}
+	return ans
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }

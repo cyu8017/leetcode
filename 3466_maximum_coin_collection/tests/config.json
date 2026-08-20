@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxCoins",
   "paramOrder": [
     "lane1",
     "lane2"

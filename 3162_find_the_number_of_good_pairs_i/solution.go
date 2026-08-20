@@ -1,5 +1,13 @@
-﻿// LeetCode 3162 - Find the Number of Good Pairs I
+// LeetCode 3162 - Find the Number of Good Pairs I
 // https://leetcode.com/problems/find-the-number-of-good-pairs-i/
 
-func solve() {
+func numberOfPairs(nums1 []int, nums2 []int, k int) (ans int) {
+	for _, x := range nums1 {
+		for _, y := range nums2 {
+			if x%(y*k) == 0 {
+				ans++
+			}
+		}
+	}
+	return
 }

@@ -1,5 +1,15 @@
-﻿// LeetCode 0991 - Broken Calculator
+// LeetCode 0991 - Broken Calculator
 // https://leetcode.com/problems/broken-calculator/
 
-func solve() {
+func brokenCalc(startValue int, target int) int {
+	ans := 0
+	for target > startValue {
+		if target%2 == 1 {
+			target++
+		} else {
+			target /= 2
+		}
+		ans++
+	}
+	return ans + startValue - target
 }

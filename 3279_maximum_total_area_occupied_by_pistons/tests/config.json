@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxArea",
   "paramOrder": [
     "height",
     "positions",

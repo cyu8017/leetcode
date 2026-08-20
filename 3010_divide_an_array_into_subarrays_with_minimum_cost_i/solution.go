@@ -1,5 +1,14 @@
-﻿// LeetCode 3010 - Divide an Array Into Subarrays With Minimum Cost I
+// LeetCode 3010 - Divide an Array Into Subarrays With Minimum Cost I
 // https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/
 
-func solve() {
+func minimumCost(nums []int) int {
+	a, b, c := nums[0], 100, 100
+	for _, x := range nums[1:] {
+		if x < b {
+			b, c = x, b
+		} else if x < c {
+			c = x
+		}
+	}
+	return a + b + c
 }

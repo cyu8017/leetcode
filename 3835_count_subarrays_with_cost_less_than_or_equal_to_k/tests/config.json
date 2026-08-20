@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "countSubarrays",
   "paramOrder": [
     "nums",
     "k"

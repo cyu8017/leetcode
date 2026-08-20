@@ -1,5 +1,16 @@
-﻿// LeetCode 3678 - Smallest Absent Positive Greater Than Average
+// LeetCode 3678 - Smallest Absent Positive Greater Than Average
 // https://leetcode.com/problems/smallest-absent-positive-greater-than-average/
 
-func solve() {
+func smallestAbsent(nums []int) int {
+	s := map[int]bool{}
+	sum := 0
+	for _, x := range nums {
+		s[x] = true
+		sum += x
+	}
+	ans := max(1, sum/len(nums)+1)
+	for s[ans] {
+		ans++
+	}
+	return ans
 }

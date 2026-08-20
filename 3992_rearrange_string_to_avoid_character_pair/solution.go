@@ -1,5 +1,14 @@
-﻿// LeetCode 3992 - Rearrange String to Avoid Character Pair
+// LeetCode 3992 - Rearrange String To Avoid Character Pair
 // https://leetcode.com/problems/rearrange-string-to-avoid-character-pair/
 
-func solve() {
+func rearrangeString(s string, x byte, y byte) string {
+	t := []byte(s)
+	i := 0
+	for j, c := range t {
+		if c == y {
+			t[i], t[j] = t[j], t[i]
+			i++
+		}
+	}
+	return string(t)
 }

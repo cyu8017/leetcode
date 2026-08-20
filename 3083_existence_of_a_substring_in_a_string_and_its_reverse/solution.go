@@ -1,5 +1,15 @@
-﻿// LeetCode 3083 - Existence of a Substring in a String and Its Reverse
+// LeetCode 3083 - Existence of a Substring in a String and Its Reverse
 // https://leetcode.com/problems/existence-of-a-substring-in-a-string-and-its-reverse/
 
-func solve() {
+func isSubstringPresent(s string) bool {
+	st := [26][26]bool{}
+	for i := 0; i < len(s)-1; i++ {
+		st[s[i+1]-'a'][s[i]-'a'] = true
+	}
+	for i := 0; i < len(s)-1; i++ {
+		if st[s[i]-'a'][s[i+1]-'a'] {
+			return true
+		}
+	}
+	return false
 }

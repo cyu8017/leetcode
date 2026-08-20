@@ -1,5 +1,27 @@
-﻿// LeetCode 3134 - Find the Median of the Uniqueness Array
+// LeetCode 3134 - Find the Median of the Uniqueness Array
 // https://leetcode.com/problems/find-the-median-of-the-uniqueness-array/
 
-func solve() {
+func medianOfUniquenessArray(nums []int) int {
+	n := len(nums)
+	m := (1 + n) * n / 2
+	return sort.Search(n, func(mx int) bool {
+		cnt := map[int]int{}
+		l, k := 0, 0
+		for r, x := range nums {
+			cnt[x]++
+			for len(cnt) > mx {
+				y := nums[l]
+				cnt[y]--
+				if cnt[y] == 0 {
+					delete(cnt, y)
+				}
+				l++
+			}
+			k += r - l + 1
+			if k >= (m+1)/2 {
+				return true
+			}
+		}
+		return false
+	})
 }

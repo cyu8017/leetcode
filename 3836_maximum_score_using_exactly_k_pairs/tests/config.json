@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxScore",
   "paramOrder": [
     "nums1",
     "nums2",

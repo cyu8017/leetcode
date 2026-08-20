@@ -1,5 +1,8 @@
-﻿// LeetCode 3798 - Largest Even Number
+// LeetCode 3798 - Largest Even Number
 // https://leetcode.com/problems/largest-even-number/
 
-func solve() {
+import "strings"
+
+func largestEven(s string) string {
+	return strings.TrimRight(s, "1")
 }

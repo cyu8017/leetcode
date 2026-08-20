@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "alternatingXOR",
   "paramOrder": [
     "nums",
     "target1",

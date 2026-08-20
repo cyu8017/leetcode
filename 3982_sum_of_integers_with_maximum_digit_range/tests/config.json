@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxDigitRange",
   "paramOrder": [
     "nums"
   ],

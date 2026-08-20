@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxPoints",
   "paramOrder": [
     "technique1",
     "technique2",

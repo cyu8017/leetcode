@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "minCost",
   "paramOrder": [
     "s",
     "cost"

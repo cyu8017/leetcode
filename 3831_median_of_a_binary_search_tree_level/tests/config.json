@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "levelMedian",
   "paramOrder": [
     "root",
     "level"

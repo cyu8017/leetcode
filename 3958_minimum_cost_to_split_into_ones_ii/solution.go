@@ -1,5 +1,6 @@
-﻿// LeetCode 3958 - Minimum Cost to Split into Ones II
+// LeetCode 3958 - Minimum Cost To Split Into Ones Ii
 // https://leetcode.com/problems/minimum-cost-to-split-into-ones-ii/
 
-func solve() {
+func minCost(n int) int64 {
+	return int64(n * (n - 1) / 2)
 }

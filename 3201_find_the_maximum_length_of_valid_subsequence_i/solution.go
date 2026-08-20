@@ -1,5 +1,19 @@
-﻿// LeetCode 3201 - Find the Maximum Length of Valid Subsequence I
+// LeetCode 3201 - Find the Maximum Length of Valid Subsequence I
 // https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i/
 
-func solve() {
+func maximumLength(nums []int) (ans int) {
+	k := 2
+	f := make([][]int, k)
+	for i := range f {
+		f[i] = make([]int, k)
+	}
+	for _, x := range nums {
+		x %= k
+		for j := 0; j < k; j++ {
+			y := (j - x + k) % k
+			f[x][y] = f[y][x] + 1
+			ans = max(ans, f[x][y])
+		}
+	}
+	return
 }

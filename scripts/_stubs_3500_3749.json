@@ -1,0 +1,1692 @@
+{
+  "3521_find_product_recommendation_pairs": {
+    "skip": "sql"
+  },
+  "3554_find_category_recommendation_pairs": {
+    "skip": "sql"
+  },
+  "3564_seasonal_sales_analysis": {
+    "skip": "sql"
+  },
+  "3570_find_books_with_no_available_copies": {
+    "skip": "sql"
+  },
+  "3580_find_consistently_improving_employees": {
+    "skip": "sql"
+  },
+  "3586_find_covid_recovery_patients": {
+    "skip": "sql"
+  },
+  "3601_find_drivers_with_improved_fuel_efficiency": {
+    "skip": "sql"
+  },
+  "3611_find_overbooked_employees": {
+    "skip": "sql"
+  },
+  "3617_find_students_with_study_spiral_pattern": {
+    "skip": "sql"
+  },
+  "3626_find_stores_with_inventory_imbalance": {
+    "skip": "sql"
+  },
+  "3642_find_books_with_polarized_opinions": {
+    "skip": "sql"
+  },
+  "3657_find_loyal_customers": {
+    "skip": "sql"
+  },
+  "3673_find_zombie_sessions": {
+    "skip": "sql"
+  },
+  "3705_find_golden_hour_customers": {
+    "skip": "sql"
+  },
+  "3716_find_churn_risk_customers": {
+    "skip": "sql"
+  },
+  "3500_minimum_cost_to_divide_array_into_subarrays": {
+    "slug": "minimum-cost-to-divide-array-into-subarrays",
+    "title": "Minimum Cost to Divide Array Into Subarrays",
+    "paid": false,
+    "go": "func minimumCost(nums []int, cost []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minimumCost(self, nums: List[int], cost: List[int], k: int) -> int:\n        "
+  },
+  "3501_maximize_active_section_with_trade_ii": {
+    "slug": "maximize-active-section-with-trade-ii",
+    "title": "Maximize Active Section with Trade II",
+    "paid": false,
+    "go": "func maxActiveSectionsAfterTrade(s string, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def maxActiveSectionsAfterTrade(self, s: str, queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3502_minimum_cost_to_reach_every_position": {
+    "slug": "minimum-cost-to-reach-every-position",
+    "title": "Minimum Cost to Reach Every Position",
+    "paid": false,
+    "go": "func minCosts(cost []int) []int {\n    \n}",
+    "py": "class Solution:\n    def minCosts(self, cost: List[int]) -> List[int]:\n        "
+  },
+  "3503_longest_palindrome_after_substring_concatenation_i": {
+    "slug": "longest-palindrome-after-substring-concatenation-i",
+    "title": "Longest Palindrome After Substring Concatenation I",
+    "paid": false,
+    "go": "func longestPalindrome(s string, t string) int {\n    \n}",
+    "py": "class Solution:\n    def longestPalindrome(self, s: str, t: str) -> int:\n        "
+  },
+  "3504_longest_palindrome_after_substring_concatenation_ii": {
+    "slug": "longest-palindrome-after-substring-concatenation-ii",
+    "title": "Longest Palindrome After Substring Concatenation II",
+    "paid": false,
+    "go": "func longestPalindrome(s string, t string) int {\n    \n}",
+    "py": "class Solution:\n    def longestPalindrome(self, s: str, t: str) -> int:\n        "
+  },
+  "3505_minimum_operations_to_make_elements_within_k_subarrays_equal": {
+    "slug": "minimum-operations-to-make-elements-within-k-subarrays-equal",
+    "title": "Minimum Operations to Make Elements Within K Subarrays Equal",
+    "paid": false,
+    "go": "func minOperations(nums []int, x int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, nums: List[int], x: int, k: int) -> int:\n        "
+  },
+  "3506_find_time_required_to_eliminate_bacterial_strains": {
+    "slug": "find-time-required-to-eliminate-bacterial-strains",
+    "title": "Find Time Required to Eliminate Bacterial Strains",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3507_minimum_pair_removal_to_sort_array_i": {
+    "slug": "minimum-pair-removal-to-sort-array-i",
+    "title": "Minimum Pair Removal to Sort Array I",
+    "paid": false,
+    "go": "func minimumPairRemoval(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minimumPairRemoval(self, nums: List[int]) -> int:\n        "
+  },
+  "3508_implement_router": {
+    "slug": "implement-router",
+    "title": "Implement Router",
+    "paid": false,
+    "go": "type Router struct {\n    \n}\n\n\nfunc Constructor(memoryLimit int) Router {\n    \n}\n\n\nfunc (this *Router) AddPacket(source int, destination int, timestamp int) bool {\n    \n}\n\n\nfunc (this *Router) ForwardPacket() []int {\n    \n}\n\n\nfunc (this *Router) GetCount(destination int, startTime int, endTime int) int {\n    \n}\n\n\n/**\n * Your Router object will be instantiated and called as such:\n * obj := Constructor(memoryLimit);\n * param_1 := obj.AddPacket(source,destination,timestamp);\n * param_2 := obj.ForwardPacket();\n * param_3 := obj.GetCount(destination,startTime,endTime);\n */",
+    "py": "class Router:\n\n    def __init__(self, memoryLimit: int):\n        \n\n    def addPacket(self, source: int, destination: int, timestamp: int) -> bool:\n        \n\n    def forwardPacket(self) -> List[int]:\n        \n\n    def getCount(self, destination: int, startTime: int, endTime: int) -> int:\n        \n\n\n# Your Router object will be instantiated and called as such:\n# obj = Router(memoryLimit)\n# param_1 = obj.addPacket(source,destination,timestamp)\n# param_2 = obj.forwardPacket()\n# param_3 = obj.getCount(destination,startTime,endTime)"
+  },
+  "3509_maximum_product_of_subsequences_with_an_alternating_sum_equal_to_k": {
+    "slug": "maximum-product-of-subsequences-with-an-alternating-sum-equal-to-k",
+    "title": "Maximum Product of Subsequences With an Alternating Sum Equal to K",
+    "paid": false,
+    "go": "func maxProduct(nums []int, k int, limit int) int {\n    \n}",
+    "py": "class Solution:\n    def maxProduct(self, nums: List[int], k: int, limit: int) -> int:\n        "
+  },
+  "3510_minimum_pair_removal_to_sort_array_ii": {
+    "slug": "minimum-pair-removal-to-sort-array-ii",
+    "title": "Minimum Pair Removal to Sort Array II",
+    "paid": false,
+    "go": "func minimumPairRemoval(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minimumPairRemoval(self, nums: List[int]) -> int:\n        "
+  },
+  "3511_make_a_positive_array": {
+    "slug": "make-a-positive-array",
+    "title": "Make a Positive Array",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3512_minimum_operations_to_make_array_sum_divisible_by_k": {
+    "slug": "minimum-operations-to-make-array-sum-divisible-by-k",
+    "title": "Minimum Operations to Make Array Sum Divisible by K",
+    "paid": false,
+    "go": "func minOperations(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3513_number_of_unique_xor_triplets_i": {
+    "slug": "number-of-unique-xor-triplets-i",
+    "title": "Number of Unique XOR Triplets I",
+    "paid": false,
+    "go": "func uniqueXorTriplets(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def uniqueXorTriplets(self, nums: List[int]) -> int:\n        "
+  },
+  "3514_number_of_unique_xor_triplets_ii": {
+    "slug": "number-of-unique-xor-triplets-ii",
+    "title": "Number of Unique XOR Triplets II",
+    "paid": false,
+    "go": "func uniqueXorTriplets(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def uniqueXorTriplets(self, nums: List[int]) -> int:\n        "
+  },
+  "3515_shortest_path_in_a_weighted_tree": {
+    "slug": "shortest-path-in-a-weighted-tree",
+    "title": "Shortest Path in a Weighted Tree",
+    "paid": false,
+    "go": "func treeQueries(n int, edges [][]int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def treeQueries(self, n: int, edges: List[List[int]], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3516_find_closest_person": {
+    "slug": "find-closest-person",
+    "title": "Find Closest Person",
+    "paid": false,
+    "go": "func findClosest(x int, y int, z int) int {\n    \n}",
+    "py": "class Solution:\n    def findClosest(self, x: int, y: int, z: int) -> int:\n        "
+  },
+  "3517_smallest_palindromic_rearrangement_i": {
+    "slug": "smallest-palindromic-rearrangement-i",
+    "title": "Smallest Palindromic Rearrangement I",
+    "paid": false,
+    "go": "func smallestPalindrome(s string) string {\n    \n}",
+    "py": "class Solution:\n    def smallestPalindrome(self, s: str) -> str:\n        "
+  },
+  "3518_smallest_palindromic_rearrangement_ii": {
+    "slug": "smallest-palindromic-rearrangement-ii",
+    "title": "Smallest Palindromic Rearrangement II",
+    "paid": false,
+    "go": "func smallestPalindrome(s string, k int) string {\n    \n}",
+    "py": "class Solution:\n    def smallestPalindrome(self, s: str, k: int) -> str:\n        "
+  },
+  "3519_count_numbers_with_non_decreasing_digits": {
+    "slug": "count-numbers-with-non-decreasing-digits",
+    "title": "Count Numbers with Non-Decreasing Digits ",
+    "paid": false,
+    "go": "func countNumbers(l string, r string, b int) int {\n    \n}",
+    "py": "class Solution:\n    def countNumbers(self, l: str, r: str, b: int) -> int:\n        "
+  },
+  "3520_minimum_threshold_for_inversion_pairs_count": {
+    "slug": "minimum-threshold-for-inversion-pairs-count",
+    "title": "Minimum Threshold for Inversion Pairs Count",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3522_calculate_score_after_performing_instructions": {
+    "slug": "calculate-score-after-performing-instructions",
+    "title": "Calculate Score After Performing Instructions",
+    "paid": false,
+    "go": "func calculateScore(instructions []string, values []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def calculateScore(self, instructions: List[str], values: List[int]) -> int:\n        "
+  },
+  "3523_make_array_non_decreasing": {
+    "slug": "make-array-non-decreasing",
+    "title": "Make Array Non-decreasing",
+    "paid": false,
+    "go": "func maximumPossibleSize(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def maximumPossibleSize(self, nums: List[int]) -> int:\n        "
+  },
+  "3524_find_x_value_of_array_i": {
+    "slug": "find-x-value-of-array-i",
+    "title": "Find X Value of Array I",
+    "paid": false,
+    "go": "func resultArray(nums []int, k int) []int64 {\n    \n}",
+    "py": "class Solution:\n    def resultArray(self, nums: List[int], k: int) -> List[int]:\n        "
+  },
+  "3525_find_x_value_of_array_ii": {
+    "slug": "find-x-value-of-array-ii",
+    "title": "Find X Value of Array II",
+    "paid": false,
+    "go": "func resultArray(nums []int, k int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3526_range_xor_queries_with_subarray_reversals": {
+    "slug": "range-xor-queries-with-subarray-reversals",
+    "title": "Range XOR Queries with Subarray Reversals",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3527_find_the_most_common_response": {
+    "slug": "find-the-most-common-response",
+    "title": "Find the Most Common Response",
+    "paid": false,
+    "go": "func findCommonResponse(responses [][]string) string {\n    \n}",
+    "py": "class Solution:\n    def findCommonResponse(self, responses: List[List[str]]) -> str:\n        "
+  },
+  "3528_unit_conversion_i": {
+    "slug": "unit-conversion-i",
+    "title": "Unit Conversion I",
+    "paid": false,
+    "go": "func baseUnitConversions(conversions [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def baseUnitConversions(self, conversions: List[List[int]]) -> List[int]:\n        "
+  },
+  "3529_count_cells_in_overlapping_horizontal_and_vertical_substrings": {
+    "slug": "count-cells-in-overlapping-horizontal-and-vertical-substrings",
+    "title": "Count Cells in Overlapping Horizontal and Vertical Substrings",
+    "paid": false,
+    "go": "func countCells(grid [][]byte, pattern string) int {\n    \n}",
+    "py": "class Solution:\n    def countCells(self, grid: List[List[str]], pattern: str) -> int:\n        "
+  },
+  "3530_maximum_profit_from_valid_topological_order_in_dag": {
+    "slug": "maximum-profit-from-valid-topological-order-in-dag",
+    "title": "Maximum Profit from Valid Topological Order in DAG",
+    "paid": false,
+    "go": "func maxProfit(n int, edges [][]int, score []int) int {\n    \n}",
+    "py": "class Solution:\n    def maxProfit(self, n: int, edges: List[List[int]], score: List[int]) -> int:\n        "
+  },
+  "3531_count_covered_buildings": {
+    "slug": "count-covered-buildings",
+    "title": "Count Covered Buildings",
+    "paid": false,
+    "go": "func countCoveredBuildings(n int, buildings [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def countCoveredBuildings(self, n: int, buildings: List[List[int]]) -> int:\n        "
+  },
+  "3532_path_existence_queries_in_a_graph_i": {
+    "slug": "path-existence-queries-in-a-graph-i",
+    "title": "Path Existence Queries in a Graph I",
+    "paid": false,
+    "go": "func pathExistenceQueries(n int, nums []int, maxDiff int, queries [][]int) []bool {\n    \n}",
+    "py": "class Solution:\n    def pathExistenceQueries(self, n: int, nums: List[int], maxDiff: int, queries: List[List[int]]) -> List[bool]:\n        "
+  },
+  "3533_concatenated_divisibility": {
+    "slug": "concatenated-divisibility",
+    "title": "Concatenated Divisibility",
+    "paid": false,
+    "go": "func concatenatedDivisibility(nums []int, k int) []int {\n    \n}",
+    "py": "class Solution:\n    def concatenatedDivisibility(self, nums: List[int], k: int) -> List[int]:\n        "
+  },
+  "3534_path_existence_queries_in_a_graph_ii": {
+    "slug": "path-existence-queries-in-a-graph-ii",
+    "title": "Path Existence Queries in a Graph II",
+    "paid": false,
+    "go": "func pathExistenceQueries(n int, nums []int, maxDiff int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def pathExistenceQueries(self, n: int, nums: List[int], maxDiff: int, queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3535_unit_conversion_ii": {
+    "slug": "unit-conversion-ii",
+    "title": "Unit Conversion II",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3536_maximum_product_of_two_digits": {
+    "slug": "maximum-product-of-two-digits",
+    "title": "Maximum Product of Two Digits",
+    "paid": false,
+    "go": "func maxProduct(n int) int {\n    \n}",
+    "py": "class Solution:\n    def maxProduct(self, n: int) -> int:\n        "
+  },
+  "3537_fill_a_special_grid": {
+    "slug": "fill-a-special-grid",
+    "title": "Fill a Special Grid",
+    "paid": false,
+    "go": "func specialGrid(n int) [][]int {\n    \n}",
+    "py": "class Solution:\n    def specialGrid(self, n: int) -> List[List[int]]:\n        "
+  },
+  "3538_merge_operations_for_minimum_travel_time": {
+    "slug": "merge-operations-for-minimum-travel-time",
+    "title": "Merge Operations for Minimum Travel Time",
+    "paid": false,
+    "go": "func minTravelTime(l int, n int, k int, position []int, time []int) int {\n    \n}",
+    "py": "class Solution:\n    def minTravelTime(self, l: int, n: int, k: int, position: List[int], time: List[int]) -> int:\n        "
+  },
+  "3539_find_sum_of_array_product_of_magical_sequences": {
+    "slug": "find-sum-of-array-product-of-magical-sequences",
+    "title": "Find Sum of Array Product of Magical Sequences",
+    "paid": false,
+    "go": "func magicalSum(m int, k int, nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def magicalSum(self, m: int, k: int, nums: List[int]) -> int:\n        "
+  },
+  "3540_minimum_time_to_visit_all_houses": {
+    "slug": "minimum-time-to-visit-all-houses",
+    "title": "Minimum Time to Visit All Houses",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3541_find_most_frequent_vowel_and_consonant": {
+    "slug": "find-most-frequent-vowel-and-consonant",
+    "title": "Find Most Frequent Vowel and Consonant",
+    "paid": false,
+    "go": "func maxFreqSum(s string) int {\n    \n}",
+    "py": "class Solution:\n    def maxFreqSum(self, s: str) -> int:\n        "
+  },
+  "3542_minimum_operations_to_convert_all_elements_to_zero": {
+    "slug": "minimum-operations-to-convert-all-elements-to-zero",
+    "title": "Minimum Operations to Convert All Elements to Zero",
+    "paid": false,
+    "go": "func minOperations(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, nums: List[int]) -> int:\n        "
+  },
+  "3543_maximum_weighted_k_edge_path": {
+    "slug": "maximum-weighted-k-edge-path",
+    "title": "Maximum Weighted K-Edge Path",
+    "paid": false,
+    "go": "func maxWeight(n int, edges [][]int, k int, t int) int {\n    \n}",
+    "py": "class Solution:\n    def maxWeight(self, n: int, edges: List[List[int]], k: int, t: int) -> int:\n        "
+  },
+  "3544_subtree_inversion_sum": {
+    "slug": "subtree-inversion-sum",
+    "title": "Subtree Inversion Sum",
+    "paid": false,
+    "go": "func subtreeInversionSum(edges [][]int, nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def subtreeInversionSum(self, edges: List[List[int]], nums: List[int], k: int) -> int:\n        "
+  },
+  "3545_minimum_deletions_for_at_most_k_distinct_characters": {
+    "slug": "minimum-deletions-for-at-most-k-distinct-characters",
+    "title": "Minimum Deletions for At Most K Distinct Characters",
+    "paid": false,
+    "go": "func minDeletion(s string, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minDeletion(self, s: str, k: int) -> int:\n        "
+  },
+  "3546_equal_sum_grid_partition_i": {
+    "slug": "equal-sum-grid-partition-i",
+    "title": "Equal Sum Grid Partition I",
+    "paid": false,
+    "go": "func canPartitionGrid(grid [][]int) bool {\n    \n}",
+    "py": "class Solution:\n    def canPartitionGrid(self, grid: List[List[int]]) -> bool:\n        "
+  },
+  "3547_maximum_sum_of_edge_values_in_a_graph": {
+    "slug": "maximum-sum-of-edge-values-in-a-graph",
+    "title": "Maximum Sum of Edge Values in a Graph",
+    "paid": false,
+    "go": "func maxScore(n int, edges [][]int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxScore(self, n: int, edges: List[List[int]]) -> int:\n        "
+  },
+  "3548_equal_sum_grid_partition_ii": {
+    "slug": "equal-sum-grid-partition-ii",
+    "title": "Equal Sum Grid Partition II",
+    "paid": false,
+    "go": "func canPartitionGrid(grid [][]int) bool {\n    \n}",
+    "py": "class Solution:\n    def canPartitionGrid(self, grid: List[List[int]]) -> bool:\n        "
+  },
+  "3549_multiply_two_polynomials": {
+    "slug": "multiply-two-polynomials",
+    "title": "Multiply Two Polynomials",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3550_smallest_index_with_digit_sum_equal_to_index": {
+    "slug": "smallest-index-with-digit-sum-equal-to-index",
+    "title": "Smallest Index With Digit Sum Equal to Index",
+    "paid": false,
+    "go": "func smallestIndex(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def smallestIndex(self, nums: List[int]) -> int:\n        "
+  },
+  "3551_minimum_swaps_to_sort_by_digit_sum": {
+    "slug": "minimum-swaps-to-sort-by-digit-sum",
+    "title": "Minimum Swaps to Sort by Digit Sum",
+    "paid": false,
+    "go": "func minSwaps(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        "
+  },
+  "3552_grid_teleportation_traversal": {
+    "slug": "grid-teleportation-traversal",
+    "title": "Grid Teleportation Traversal",
+    "paid": false,
+    "go": "func minMoves(matrix []string) int {\n    \n}",
+    "py": "class Solution:\n    def minMoves(self, matrix: List[str]) -> int:\n        "
+  },
+  "3553_minimum_weighted_subgraph_with_the_required_paths_ii": {
+    "slug": "minimum-weighted-subgraph-with-the-required-paths-ii",
+    "title": "Minimum Weighted Subgraph With the Required Paths II",
+    "paid": false,
+    "go": "func minimumWeight(edges [][]int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def minimumWeight(self, edges: List[List[int]], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3555_smallest_subarray_to_sort_in_every_sliding_window": {
+    "slug": "smallest-subarray-to-sort-in-every-sliding-window",
+    "title": "Smallest Subarray to Sort in Every Sliding Window",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3556_sum_of_largest_prime_substrings": {
+    "slug": "sum-of-largest-prime-substrings",
+    "title": "Sum of Largest Prime Substrings",
+    "paid": false,
+    "go": "func sumOfLargestPrimes(s string) int64 {\n    \n}",
+    "py": "class Solution:\n    def sumOfLargestPrimes(self, s: str) -> int:\n        "
+  },
+  "3557_find_maximum_number_of_non_intersecting_substrings": {
+    "slug": "find-maximum-number-of-non-intersecting-substrings",
+    "title": "Find Maximum Number of Non Intersecting Substrings",
+    "paid": false,
+    "go": "func maxSubstrings(word string) int {\n    \n}",
+    "py": "class Solution:\n    def maxSubstrings(self, word: str) -> int:\n        "
+  },
+  "3558_number_of_ways_to_assign_edge_weights_i": {
+    "slug": "number-of-ways-to-assign-edge-weights-i",
+    "title": "Number of Ways to Assign Edge Weights I",
+    "paid": false,
+    "go": "func assignEdgeWeights(edges [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def assignEdgeWeights(self, edges: List[List[int]]) -> int:\n        "
+  },
+  "3559_number_of_ways_to_assign_edge_weights_ii": {
+    "slug": "number-of-ways-to-assign-edge-weights-ii",
+    "title": "Number of Ways to Assign Edge Weights II",
+    "paid": false,
+    "go": "func assignEdgeWeights(edges [][]int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def assignEdgeWeights(self, edges: List[List[int]], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3560_find_minimum_log_transportation_cost": {
+    "slug": "find-minimum-log-transportation-cost",
+    "title": "Find Minimum Log Transportation Cost",
+    "paid": false,
+    "go": "func minCuttingCost(n int, m int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minCuttingCost(self, n: int, m: int, k: int) -> int:\n        "
+  },
+  "3561_resulting_string_after_adjacent_removals": {
+    "slug": "resulting-string-after-adjacent-removals",
+    "title": "Resulting String After Adjacent Removals",
+    "paid": false,
+    "go": "func resultingString(s string) string {\n    \n}",
+    "py": "class Solution:\n    def resultingString(self, s: str) -> str:\n        "
+  },
+  "3562_maximum_profit_from_trading_stocks_with_discounts": {
+    "slug": "maximum-profit-from-trading-stocks-with-discounts",
+    "title": "Maximum Profit from Trading Stocks with Discounts",
+    "paid": false,
+    "go": "func maxProfit(n int, present []int, future []int, hierarchy [][]int, budget int) int {\n    \n}",
+    "py": "class Solution:\n    def maxProfit(self, n: int, present: List[int], future: List[int], hierarchy: List[List[int]], budget: int) -> int:\n        "
+  },
+  "3563_lexicographically_smallest_string_after_adjacent_removals": {
+    "slug": "lexicographically-smallest-string-after-adjacent-removals",
+    "title": "Lexicographically Smallest String After Adjacent Removals",
+    "paid": false,
+    "go": "func lexicographicallySmallestString(s string) string {\n    \n}",
+    "py": "class Solution:\n    def lexicographicallySmallestString(self, s: str) -> str:\n        "
+  },
+  "3565_sequential_grid_path_cover": {
+    "slug": "sequential-grid-path-cover",
+    "title": "Sequential Grid Path Cover",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3566_partition_array_into_two_equal_product_subsets": {
+    "slug": "partition-array-into-two-equal-product-subsets",
+    "title": "Partition Array into Two Equal Product Subsets",
+    "paid": false,
+    "go": "func checkEqualPartitions(nums []int, target int64) bool {\n    \n}",
+    "py": "class Solution:\n    def checkEqualPartitions(self, nums: List[int], target: int) -> bool:\n        "
+  },
+  "3567_minimum_absolute_difference_in_sliding_submatrix": {
+    "slug": "minimum-absolute-difference-in-sliding-submatrix",
+    "title": "Minimum Absolute Difference in Sliding Submatrix",
+    "paid": false,
+    "go": "func minAbsDiff(grid [][]int, k int) [][]int {\n    \n}",
+    "py": "class Solution:\n    def minAbsDiff(self, grid: List[List[int]], k: int) -> List[List[int]]:\n        "
+  },
+  "3568_minimum_moves_to_clean_the_classroom": {
+    "slug": "minimum-moves-to-clean-the-classroom",
+    "title": "Minimum Moves to Clean the Classroom",
+    "paid": false,
+    "go": "func minMoves(classroom []string, energy int) int {\n    \n}",
+    "py": "class Solution:\n    def minMoves(self, classroom: List[str], energy: int) -> int:\n        "
+  },
+  "3569_maximize_count_of_distinct_primes_after_split": {
+    "slug": "maximize-count-of-distinct-primes-after-split",
+    "title": "Maximize Count of Distinct Primes After Split",
+    "paid": false,
+    "go": "func maximumCount(nums []int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def maximumCount(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3571_find_the_shortest_superstring_ii": {
+    "slug": "find-the-shortest-superstring-ii",
+    "title": "Find the Shortest Superstring II",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3572_maximize_ysum_by_picking_a_triplet_of_distinct_xvalues": {
+    "slug": "maximize-ysum-by-picking-a-triplet-of-distinct-xvalues",
+    "title": "Maximize Y\u2011Sum by Picking a Triplet of Distinct X\u2011Values",
+    "paid": false,
+    "go": "func maxSumDistinctTriplet(x []int, y []int) int {\n    \n}",
+    "py": "class Solution:\n    def maxSumDistinctTriplet(self, x: List[int], y: List[int]) -> int:\n        "
+  },
+  "3573_best_time_to_buy_and_sell_stock_v": {
+    "slug": "best-time-to-buy-and-sell-stock-v",
+    "title": "Best Time to Buy and Sell Stock V",
+    "paid": false,
+    "go": "func maximumProfit(prices []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maximumProfit(self, prices: List[int], k: int) -> int:\n        "
+  },
+  "3574_maximize_subarray_gcd_score": {
+    "slug": "maximize-subarray-gcd-score",
+    "title": "Maximize Subarray GCD Score",
+    "paid": false,
+    "go": "func maxGCDScore(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxGCDScore(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3575_maximum_good_subtree_score": {
+    "slug": "maximum-good-subtree-score",
+    "title": "Maximum Good Subtree Score",
+    "paid": false,
+    "go": "func goodSubtreeSum(vals []int, par []int) int {\n    \n}",
+    "py": "class Solution:\n    def goodSubtreeSum(self, vals: List[int], par: List[int]) -> int:\n        "
+  },
+  "3576_transform_array_to_all_equal_elements": {
+    "slug": "transform-array-to-all-equal-elements",
+    "title": "Transform Array to All Equal Elements",
+    "paid": false,
+    "go": "func canMakeEqual(nums []int, k int) bool {\n    \n}",
+    "py": "class Solution:\n    def canMakeEqual(self, nums: List[int], k: int) -> bool:\n        "
+  },
+  "3577_count_the_number_of_computer_unlocking_permutations": {
+    "slug": "count-the-number-of-computer-unlocking-permutations",
+    "title": "Count the Number of Computer Unlocking Permutations",
+    "paid": false,
+    "go": "func countPermutations(complexity []int) int {\n    \n}",
+    "py": "class Solution:\n    def countPermutations(self, complexity: List[int]) -> int:\n        "
+  },
+  "3578_count_partitions_with_max_min_difference_at_most_k": {
+    "slug": "count-partitions-with-max-min-difference-at-most-k",
+    "title": "Count Partitions With Max-Min Difference at Most K",
+    "paid": false,
+    "go": "func countPartitions(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def countPartitions(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3579_minimum_steps_to_convert_string_with_operations": {
+    "slug": "minimum-steps-to-convert-string-with-operations",
+    "title": "Minimum Steps to Convert String with Operations",
+    "paid": false,
+    "go": "func minOperations(word1 string, word2 string) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, word1: str, word2: str) -> int:\n        "
+  },
+  "3581_count_odd_letters_from_number": {
+    "slug": "count-odd-letters-from-number",
+    "title": "Count Odd Letters from Number",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3582_generate_tag_for_video_caption": {
+    "slug": "generate-tag-for-video-caption",
+    "title": "Generate Tag for Video Caption",
+    "paid": false,
+    "go": "func generateTag(caption string) string {\n    \n}",
+    "py": "class Solution:\n    def generateTag(self, caption: str) -> str:\n        "
+  },
+  "3583_count_special_triplets": {
+    "slug": "count-special-triplets",
+    "title": "Count Special Triplets",
+    "paid": false,
+    "go": "func specialTriplets(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def specialTriplets(self, nums: List[int]) -> int:\n        "
+  },
+  "3584_maximum_product_of_first_and_last_elements_of_a_subsequence": {
+    "slug": "maximum-product-of-first-and-last-elements-of-a-subsequence",
+    "title": "Maximum Product of First and Last Elements of a Subsequence",
+    "paid": false,
+    "go": "func maximumProduct(nums []int, m int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maximumProduct(self, nums: List[int], m: int) -> int:\n        "
+  },
+  "3585_find_weighted_median_node_in_tree": {
+    "slug": "find-weighted-median-node-in-tree",
+    "title": "Find Weighted Median Node in Tree",
+    "paid": false,
+    "go": "func findMedian(n int, edges [][]int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def findMedian(self, n: int, edges: List[List[int]], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3587_minimum_adjacent_swaps_to_alternate_parity": {
+    "slug": "minimum-adjacent-swaps-to-alternate-parity",
+    "title": "Minimum Adjacent Swaps to Alternate Parity",
+    "paid": false,
+    "go": "func minSwaps(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minSwaps(self, nums: List[int]) -> int:\n        "
+  },
+  "3588_find_maximum_area_of_a_triangle": {
+    "slug": "find-maximum-area-of-a-triangle",
+    "title": "Find Maximum Area of a Triangle",
+    "paid": false,
+    "go": "func maxArea(coords [][]int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxArea(self, coords: List[List[int]]) -> int:\n        "
+  },
+  "3589_count_prime_gap_balanced_subarrays": {
+    "slug": "count-prime-gap-balanced-subarrays",
+    "title": "Count Prime-Gap Balanced Subarrays",
+    "paid": false,
+    "go": "func primeSubarray(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def primeSubarray(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3590_kth_smallest_path_xor_sum": {
+    "slug": "kth-smallest-path-xor-sum",
+    "title": "Kth Smallest Path XOR Sum",
+    "paid": false,
+    "go": "func kthSmallest(par []int, vals []int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def kthSmallest(self, par: List[int], vals: List[int], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3591_check_if_any_element_has_prime_frequency": {
+    "slug": "check-if-any-element-has-prime-frequency",
+    "title": "Check if Any Element Has Prime Frequency",
+    "paid": false,
+    "go": "func checkPrimeFrequency(nums []int) bool {\n    \n}",
+    "py": "class Solution:\n    def checkPrimeFrequency(self, nums: List[int]) -> bool:\n        "
+  },
+  "3592_inverse_coin_change": {
+    "slug": "inverse-coin-change",
+    "title": "Inverse Coin Change",
+    "paid": false,
+    "go": "func findCoins(numWays []int) []int {\n    \n}",
+    "py": "class Solution:\n    def findCoins(self, numWays: List[int]) -> List[int]:\n        "
+  },
+  "3593_minimum_increments_to_equalize_leaf_paths": {
+    "slug": "minimum-increments-to-equalize-leaf-paths",
+    "title": "Minimum Increments to Equalize Leaf Paths",
+    "paid": false,
+    "go": "func minIncrease(n int, edges [][]int, cost []int) int {\n    \n}",
+    "py": "class Solution:\n    def minIncrease(self, n: int, edges: List[List[int]], cost: List[int]) -> int:\n        "
+  },
+  "3594_minimum_time_to_transport_all_individuals": {
+    "slug": "minimum-time-to-transport-all-individuals",
+    "title": "Minimum Time to Transport All Individuals",
+    "paid": false,
+    "go": "func minTime(n int, k int, m int, time []int, mul []float64) float64 {\n    \n}",
+    "py": "class Solution:\n    def minTime(self, n: int, k: int, m: int, time: List[int], mul: List[float]) -> float:\n        "
+  },
+  "3595_once_twice": {
+    "slug": "once-twice",
+    "title": "Once Twice",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3596_minimum_cost_path_with_alternating_directions_i": {
+    "slug": "minimum-cost-path-with-alternating-directions-i",
+    "title": "Minimum Cost Path with Alternating Directions I",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3597_partition_string": {
+    "slug": "partition-string",
+    "title": "Partition String ",
+    "paid": false,
+    "go": "func partitionString(s string) []string {\n    \n}",
+    "py": "class Solution:\n    def partitionString(self, s: str) -> List[str]:\n        "
+  },
+  "3598_longest_common_prefix_between_adjacent_strings_after_removals": {
+    "slug": "longest-common-prefix-between-adjacent-strings-after-removals",
+    "title": "Longest Common Prefix Between Adjacent Strings After Removals",
+    "paid": false,
+    "go": "func longestCommonPrefix(words []string) []int {\n    \n}",
+    "py": "class Solution:\n    def longestCommonPrefix(self, words: List[str]) -> List[int]:\n        "
+  },
+  "3599_partition_array_to_minimize_xor": {
+    "slug": "partition-array-to-minimize-xor",
+    "title": "Partition Array to Minimize XOR",
+    "paid": false,
+    "go": "func minXor(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minXor(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3600_maximize_spanning_tree_stability_with_upgrades": {
+    "slug": "maximize-spanning-tree-stability-with-upgrades",
+    "title": "Maximize Spanning Tree Stability with Upgrades",
+    "paid": false,
+    "go": "func maxStability(n int, edges [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def maxStability(self, n: int, edges: List[List[int]], k: int) -> int:\n        "
+  },
+  "3602_hexadecimal_and_hexatrigesimal_conversion": {
+    "slug": "hexadecimal-and-hexatrigesimal-conversion",
+    "title": "Hexadecimal and Hexatrigesimal Conversion",
+    "paid": false,
+    "go": "func concatHex36(n int) string {\n    \n}",
+    "py": "class Solution:\n    def concatHex36(self, n: int) -> str:\n        "
+  },
+  "3603_minimum_cost_path_with_alternating_directions_ii": {
+    "slug": "minimum-cost-path-with-alternating-directions-ii",
+    "title": "Minimum Cost Path with Alternating Directions II",
+    "paid": false,
+    "go": "func minCost(m int, n int, waitCost [][]int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minCost(self, m: int, n: int, waitCost: List[List[int]]) -> int:\n        "
+  },
+  "3604_minimum_time_to_reach_destination_in_directed_graph": {
+    "slug": "minimum-time-to-reach-destination-in-directed-graph",
+    "title": "Minimum Time to Reach Destination in Directed Graph",
+    "paid": false,
+    "go": "func minTime(n int, edges [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def minTime(self, n: int, edges: List[List[int]]) -> int:\n        "
+  },
+  "3605_minimum_stability_factor_of_array": {
+    "slug": "minimum-stability-factor-of-array",
+    "title": "Minimum Stability Factor of Array",
+    "paid": false,
+    "go": "func minStable(nums []int, maxC int) int {\n    \n}",
+    "py": "class Solution:\n    def minStable(self, nums: List[int], maxC: int) -> int:\n        "
+  },
+  "3606_coupon_code_validator": {
+    "slug": "coupon-code-validator",
+    "title": "Coupon Code Validator",
+    "paid": false,
+    "go": "func validateCoupons(code []string, businessLine []string, isActive []bool) []string {\n    \n}",
+    "py": "class Solution:\n    def validateCoupons(self, code: List[str], businessLine: List[str], isActive: List[bool]) -> List[str]:\n        "
+  },
+  "3607_power_grid_maintenance": {
+    "slug": "power-grid-maintenance",
+    "title": "Power Grid Maintenance",
+    "paid": false,
+    "go": "func processQueries(c int, connections [][]int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def processQueries(self, c: int, connections: List[List[int]], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3608_minimum_time_for_k_connected_components": {
+    "slug": "minimum-time-for-k-connected-components",
+    "title": "Minimum Time for K Connected Components",
+    "paid": false,
+    "go": "func minTime(n int, edges [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minTime(self, n: int, edges: List[List[int]], k: int) -> int:\n        "
+  },
+  "3609_minimum_moves_to_reach_target_in_grid": {
+    "slug": "minimum-moves-to-reach-target-in-grid",
+    "title": "Minimum Moves to Reach Target in Grid",
+    "paid": false,
+    "go": "func minMoves(sx int, sy int, tx int, ty int) int {\n    \n}",
+    "py": "class Solution:\n    def minMoves(self, sx: int, sy: int, tx: int, ty: int) -> int:\n        "
+  },
+  "3610_minimum_number_of_primes_to_sum_to_target": {
+    "slug": "minimum-number-of-primes-to-sum-to-target",
+    "title": "Minimum Number of Primes to Sum to Target",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3612_process_string_with_special_operations_i": {
+    "slug": "process-string-with-special-operations-i",
+    "title": "Process String with Special Operations I",
+    "paid": false,
+    "go": "func processStr(s string) string {\n    \n}",
+    "py": "class Solution:\n    def processStr(self, s: str) -> str:\n        "
+  },
+  "3613_minimize_maximum_component_cost": {
+    "slug": "minimize-maximum-component-cost",
+    "title": "Minimize Maximum Component Cost",
+    "paid": false,
+    "go": "func minCost(n int, edges [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minCost(self, n: int, edges: List[List[int]], k: int) -> int:\n        "
+  },
+  "3614_process_string_with_special_operations_ii": {
+    "slug": "process-string-with-special-operations-ii",
+    "title": "Process String with Special Operations II",
+    "paid": false,
+    "go": "func processStr(s string, k int64) byte {\n    \n}",
+    "py": "class Solution:\n    def processStr(self, s: str, k: int) -> str:\n        "
+  },
+  "3615_longest_palindromic_path_in_graph": {
+    "slug": "longest-palindromic-path-in-graph",
+    "title": "Longest Palindromic Path in Graph",
+    "paid": false,
+    "go": "func maxLen(n int, edges [][]int, label string) int {\n    \n}",
+    "py": "class Solution:\n    def maxLen(self, n: int, edges: List[List[int]], label: str) -> int:\n        "
+  },
+  "3616_number_of_student_replacements": {
+    "slug": "number-of-student-replacements",
+    "title": "Number of Student Replacements",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3618_split_array_by_prime_indices": {
+    "slug": "split-array-by-prime-indices",
+    "title": "Split Array by Prime Indices",
+    "paid": false,
+    "go": "func splitArray(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def splitArray(self, nums: List[int]) -> int:\n        "
+  },
+  "3619_count_islands_with_total_value_divisible_by_k": {
+    "slug": "count-islands-with-total-value-divisible-by-k",
+    "title": "Count Islands With Total Value Divisible by K",
+    "paid": false,
+    "go": "func countIslands(grid [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def countIslands(self, grid: List[List[int]], k: int) -> int:\n        "
+  },
+  "3620_network_recovery_pathways": {
+    "slug": "network-recovery-pathways",
+    "title": "Network Recovery Pathways",
+    "paid": false,
+    "go": "func findMaxPathScore(edges [][]int, online []bool, k int64) int {\n    \n}",
+    "py": "class Solution:\n    def findMaxPathScore(self, edges: List[List[int]], online: List[bool], k: int) -> int:\n        "
+  },
+  "3621_number_of_integers_with_popcount_depth_equal_to_k_i": {
+    "slug": "number-of-integers-with-popcount-depth-equal-to-k-i",
+    "title": "Number of Integers With Popcount-Depth Equal to K I",
+    "paid": false,
+    "go": "func popcountDepth(n int64, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def popcountDepth(self, n: int, k: int) -> int:\n        "
+  },
+  "3622_check_divisibility_by_digit_sum_and_product": {
+    "slug": "check-divisibility-by-digit-sum-and-product",
+    "title": "Check Divisibility by Digit Sum and Product",
+    "paid": false,
+    "go": "func checkDivisibility(n int) bool {\n    \n}",
+    "py": "class Solution:\n    def checkDivisibility(self, n: int) -> bool:\n        "
+  },
+  "3623_count_number_of_trapezoids_i": {
+    "slug": "count-number-of-trapezoids-i",
+    "title": "Count Number of Trapezoids I",
+    "paid": false,
+    "go": "func countTrapezoids(points [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def countTrapezoids(self, points: List[List[int]]) -> int:\n        "
+  },
+  "3624_number_of_integers_with_popcount_depth_equal_to_k_ii": {
+    "slug": "number-of-integers-with-popcount-depth-equal-to-k-ii",
+    "title": "Number of Integers With Popcount-Depth Equal to K II",
+    "paid": false,
+    "go": "func popcountDepth(nums []int64, queries [][]int64) []int {\n    \n}",
+    "py": "class Solution:\n    def popcountDepth(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3625_count_number_of_trapezoids_ii": {
+    "slug": "count-number-of-trapezoids-ii",
+    "title": "Count Number of Trapezoids II",
+    "paid": false,
+    "go": "func countTrapezoids(points [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def countTrapezoids(self, points: List[List[int]]) -> int:\n        "
+  },
+  "3627_maximum_median_sum_of_subsequences_of_size_3": {
+    "slug": "maximum-median-sum-of-subsequences-of-size-3",
+    "title": "Maximum Median Sum of Subsequences of Size 3",
+    "paid": false,
+    "go": "func maximumMedianSum(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maximumMedianSum(self, nums: List[int]) -> int:\n        "
+  },
+  "3628_maximum_number_of_subsequences_after_one_inserting": {
+    "slug": "maximum-number-of-subsequences-after-one-inserting",
+    "title": "Maximum Number of Subsequences After One Inserting",
+    "paid": false,
+    "go": "func numOfSubsequences(s string) int64 {\n    \n}",
+    "py": "class Solution:\n    def numOfSubsequences(self, s: str) -> int:\n        "
+  },
+  "3629_minimum_jumps_to_reach_end_via_prime_teleportation": {
+    "slug": "minimum-jumps-to-reach-end-via-prime-teleportation",
+    "title": "Minimum Jumps to Reach End via Prime Teleportation",
+    "paid": false,
+    "go": "func minJumps(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minJumps(self, nums: List[int]) -> int:\n        "
+  },
+  "3630_partition_array_for_maximum_xor_and_and": {
+    "slug": "partition-array-for-maximum-xor-and-and",
+    "title": "Partition Array for Maximum XOR and AND",
+    "paid": false,
+    "go": "func maximizeXorAndXor(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maximizeXorAndXor(self, nums: List[int]) -> int:\n        "
+  },
+  "3631_sort_threats_by_severity_and_exploitability": {
+    "slug": "sort-threats-by-severity-and-exploitability",
+    "title": "Sort Threats by Severity and Exploitability",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3632_subarrays_with_xor_at_least_k": {
+    "slug": "subarrays-with-xor-at-least-k",
+    "title": "Subarrays with XOR at Least K",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3633_earliest_finish_time_for_land_and_water_rides_i": {
+    "slug": "earliest-finish-time-for-land-and-water-rides-i",
+    "title": "Earliest Finish Time for Land and Water Rides I",
+    "paid": false,
+    "go": "func earliestFinishTime(landStartTime []int, landDuration []int, waterStartTime []int, waterDuration []int) int {\n    \n}",
+    "py": "class Solution:\n    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:\n        "
+  },
+  "3634_minimum_removals_to_balance_array": {
+    "slug": "minimum-removals-to-balance-array",
+    "title": "Minimum Removals to Balance Array",
+    "paid": false,
+    "go": "func minRemoval(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minRemoval(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3635_earliest_finish_time_for_land_and_water_rides_ii": {
+    "slug": "earliest-finish-time-for-land-and-water-rides-ii",
+    "title": "Earliest Finish Time for Land and Water Rides II",
+    "paid": false,
+    "go": "func earliestFinishTime(landStartTime []int, landDuration []int, waterStartTime []int, waterDuration []int) int {\n    \n}",
+    "py": "class Solution:\n    def earliestFinishTime(self, landStartTime: List[int], landDuration: List[int], waterStartTime: List[int], waterDuration: List[int]) -> int:\n        "
+  },
+  "3636_threshold_majority_queries": {
+    "slug": "threshold-majority-queries",
+    "title": "Threshold Majority Queries",
+    "paid": false,
+    "go": "func subarrayMajority(nums []int, queries [][]int) []int {\n    \n}",
+    "py": "class Solution:\n    def subarrayMajority(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3637_trionic_array_i": {
+    "slug": "trionic-array-i",
+    "title": "Trionic Array I",
+    "paid": false,
+    "go": "func isTrionic(nums []int) bool {\n    \n}",
+    "py": "class Solution:\n    def isTrionic(self, nums: List[int]) -> bool:\n        "
+  },
+  "3638_maximum_balanced_shipments": {
+    "slug": "maximum-balanced-shipments",
+    "title": "Maximum Balanced Shipments",
+    "paid": false,
+    "go": "func maxBalancedShipments(weight []int) int {\n    \n}",
+    "py": "class Solution:\n    def maxBalancedShipments(self, weight: List[int]) -> int:\n        "
+  },
+  "3639_minimum_time_to_activate_string": {
+    "slug": "minimum-time-to-activate-string",
+    "title": "Minimum Time to Activate String",
+    "paid": false,
+    "go": "func minTime(s string, order []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minTime(self, s: str, order: List[int], k: int) -> int:\n        "
+  },
+  "3640_trionic_array_ii": {
+    "slug": "trionic-array-ii",
+    "title": "Trionic Array II",
+    "paid": false,
+    "go": "func maxSumTrionic(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxSumTrionic(self, nums: List[int]) -> int:\n        "
+  },
+  "3641_longest_semi_repeating_subarray": {
+    "slug": "longest-semi-repeating-subarray",
+    "title": "Longest Semi-Repeating Subarray",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3643_flip_square_submatrix_vertically": {
+    "slug": "flip-square-submatrix-vertically",
+    "title": "Flip Square Submatrix Vertically",
+    "paid": false,
+    "go": "func reverseSubmatrix(grid [][]int, x int, y int, k int) [][]int {\n    \n}",
+    "py": "class Solution:\n    def reverseSubmatrix(self, grid: List[List[int]], x: int, y: int, k: int) -> List[List[int]]:\n        "
+  },
+  "3644_maximum_k_to_sort_a_permutation": {
+    "slug": "maximum-k-to-sort-a-permutation",
+    "title": "Maximum K to Sort a Permutation",
+    "paid": false,
+    "go": "func sortPermutation(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def sortPermutation(self, nums: List[int]) -> int:\n        "
+  },
+  "3645_maximum_total_from_optimal_activation_order": {
+    "slug": "maximum-total-from-optimal-activation-order",
+    "title": "Maximum Total from Optimal Activation Order",
+    "paid": false,
+    "go": "func maxTotal(value []int, limit []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxTotal(self, value: List[int], limit: List[int]) -> int:\n        "
+  },
+  "3646_next_special_palindrome_number": {
+    "slug": "next-special-palindrome-number",
+    "title": "Next Special Palindrome Number",
+    "paid": false,
+    "go": "func specialPalindrome(n int64) int64 {\n    \n}",
+    "py": "class Solution:\n    def specialPalindrome(self, n: int) -> int:\n        "
+  },
+  "3647_maximum_weight_in_two_bags": {
+    "slug": "maximum-weight-in-two-bags",
+    "title": "Maximum Weight in Two Bags",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3648_minimum_sensors_to_cover_grid": {
+    "slug": "minimum-sensors-to-cover-grid",
+    "title": "Minimum Sensors to Cover Grid",
+    "paid": false,
+    "go": "func minSensors(n int, m int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minSensors(self, n: int, m: int, k: int) -> int:\n        "
+  },
+  "3649_number_of_perfect_pairs": {
+    "slug": "number-of-perfect-pairs",
+    "title": "Number of Perfect Pairs",
+    "paid": false,
+    "go": "func perfectPairs(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def perfectPairs(self, nums: List[int]) -> int:\n        "
+  },
+  "3650_minimum_cost_path_with_edge_reversals": {
+    "slug": "minimum-cost-path-with-edge-reversals",
+    "title": "Minimum Cost Path with Edge Reversals",
+    "paid": false,
+    "go": "func minCost(n int, edges [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def minCost(self, n: int, edges: List[List[int]]) -> int:\n        "
+  },
+  "3651_minimum_cost_path_with_teleportations": {
+    "slug": "minimum-cost-path-with-teleportations",
+    "title": "Minimum Cost Path with Teleportations",
+    "paid": false,
+    "go": "func minCost(grid [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minCost(self, grid: List[List[int]], k: int) -> int:\n        "
+  },
+  "3652_best_time_to_buy_and_sell_stock_using_strategy": {
+    "slug": "best-time-to-buy-and-sell-stock-using-strategy",
+    "title": "Best Time to Buy and Sell Stock using Strategy",
+    "paid": false,
+    "go": "func maxProfit(prices []int, strategy []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxProfit(self, prices: List[int], strategy: List[int], k: int) -> int:\n        "
+  },
+  "3653_xor_after_range_multiplication_queries_i": {
+    "slug": "xor-after-range-multiplication-queries-i",
+    "title": "XOR After Range Multiplication Queries I",
+    "paid": false,
+    "go": "func xorAfterQueries(nums []int, queries [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def xorAfterQueries(self, nums: List[int], queries: List[List[int]]) -> int:\n        "
+  },
+  "3654_minimum_sum_after_divisible_sum_deletions": {
+    "slug": "minimum-sum-after-divisible-sum-deletions",
+    "title": "Minimum Sum After Divisible Sum Deletions",
+    "paid": false,
+    "go": "func minArraySum(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minArraySum(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3655_xor_after_range_multiplication_queries_ii": {
+    "slug": "xor-after-range-multiplication-queries-ii",
+    "title": "XOR After Range Multiplication Queries II",
+    "paid": false,
+    "go": "func xorAfterQueries(nums []int, queries [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def xorAfterQueries(self, nums: List[int], queries: List[List[int]]) -> int:\n        "
+  },
+  "3656_determine_if_a_simple_graph_exists": {
+    "slug": "determine-if-a-simple-graph-exists",
+    "title": "Determine if a Simple Graph Exists",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3658_gcd_of_odd_and_even_sums": {
+    "slug": "gcd-of-odd-and-even-sums",
+    "title": "GCD of Odd and Even Sums",
+    "paid": false,
+    "go": "func gcdOfOddEvenSums(n int) int {\n    \n}",
+    "py": "class Solution:\n    def gcdOfOddEvenSums(self, n: int) -> int:\n        "
+  },
+  "3659_partition_array_into_k_distinct_groups": {
+    "slug": "partition-array-into-k-distinct-groups",
+    "title": "Partition Array Into K-Distinct Groups",
+    "paid": false,
+    "go": "func partitionArray(nums []int, k int) bool {\n    \n}",
+    "py": "class Solution:\n    def partitionArray(self, nums: List[int], k: int) -> bool:\n        "
+  },
+  "3660_jump_game_ix": {
+    "slug": "jump-game-ix",
+    "title": "Jump Game IX",
+    "paid": false,
+    "go": "func maxValue(nums []int) []int {\n    \n}",
+    "py": "class Solution:\n    def maxValue(self, nums: List[int]) -> List[int]:\n        "
+  },
+  "3661_maximum_walls_destroyed_by_robots": {
+    "slug": "maximum-walls-destroyed-by-robots",
+    "title": "Maximum Walls Destroyed by Robots",
+    "paid": false,
+    "go": "func maxWalls(robots []int, distance []int, walls []int) int {\n    \n}",
+    "py": "class Solution:\n    def maxWalls(self, robots: List[int], distance: List[int], walls: List[int]) -> int:\n        "
+  },
+  "3662_filter_characters_by_frequency": {
+    "slug": "filter-characters-by-frequency",
+    "title": "Filter Characters by Frequency",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3663_find_the_least_frequent_digit": {
+    "slug": "find-the-least-frequent-digit",
+    "title": "Find The Least Frequent Digit",
+    "paid": false,
+    "go": "func getLeastFrequentDigit(n int) int {\n    \n}",
+    "py": "class Solution:\n    def getLeastFrequentDigit(self, n: int) -> int:\n        "
+  },
+  "3664_two_letter_card_game": {
+    "slug": "two-letter-card-game",
+    "title": "Two-Letter Card Game",
+    "paid": false,
+    "go": "func score(cards []string, x byte) int {\n    \n}",
+    "py": "class Solution:\n    def score(self, cards: List[str], x: str) -> int:\n        "
+  },
+  "3665_twisted_mirror_path_count": {
+    "slug": "twisted-mirror-path-count",
+    "title": "Twisted Mirror Path Count",
+    "paid": false,
+    "go": "func uniquePaths(grid [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def uniquePaths(self, grid: List[List[int]]) -> int:\n        "
+  },
+  "3666_minimum_operations_to_equalize_binary_string": {
+    "slug": "minimum-operations-to-equalize-binary-string",
+    "title": "Minimum Operations to Equalize Binary String",
+    "paid": false,
+    "go": "func minOperations(s string, k int) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, s: str, k: int) -> int:\n        "
+  },
+  "3667_sort_array_by_absolute_value": {
+    "slug": "sort-array-by-absolute-value",
+    "title": "Sort Array By Absolute Value",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3668_restore_finishing_order": {
+    "slug": "restore-finishing-order",
+    "title": "Restore Finishing Order",
+    "paid": false,
+    "go": "func recoverOrder(order []int, friends []int) []int {\n    \n}",
+    "py": "class Solution:\n    def recoverOrder(self, order: List[int], friends: List[int]) -> List[int]:\n        "
+  },
+  "3669_balanced_k_factor_decomposition": {
+    "slug": "balanced-k-factor-decomposition",
+    "title": "Balanced K-Factor Decomposition",
+    "paid": false,
+    "go": "func minDifference(n int, k int) []int {\n    \n}",
+    "py": "class Solution:\n    def minDifference(self, n: int, k: int) -> List[int]:\n        "
+  },
+  "3670_maximum_product_of_two_integers_with_no_common_bits": {
+    "slug": "maximum-product-of-two-integers-with-no-common-bits",
+    "title": "Maximum Product of Two Integers With No Common Bits",
+    "paid": false,
+    "go": "func maxProduct(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxProduct(self, nums: List[int]) -> int:\n        "
+  },
+  "3671_sum_of_beautiful_subsequences": {
+    "slug": "sum-of-beautiful-subsequences",
+    "title": "Sum of Beautiful Subsequences",
+    "paid": false,
+    "go": "func totalBeauty(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def totalBeauty(self, nums: List[int]) -> int:\n        "
+  },
+  "3672_sum_of_weighted_modes_in_subarrays": {
+    "slug": "sum-of-weighted-modes-in-subarrays",
+    "title": "Sum of Weighted Modes in Subarrays",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3674_minimum_operations_to_equalize_array": {
+    "slug": "minimum-operations-to-equalize-array",
+    "title": "Minimum Operations to Equalize Array",
+    "paid": false,
+    "go": "func minOperations(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, nums: List[int]) -> int:\n        "
+  },
+  "3675_minimum_operations_to_transform_string": {
+    "slug": "minimum-operations-to-transform-string",
+    "title": "Minimum Operations to Transform String",
+    "paid": false,
+    "go": "func minOperations(s string) int {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, s: str) -> int:\n        "
+  },
+  "3676_count_bowl_subarrays": {
+    "slug": "count-bowl-subarrays",
+    "title": "Count Bowl Subarrays",
+    "paid": false,
+    "go": "func bowlSubarrays(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def bowlSubarrays(self, nums: List[int]) -> int:\n        "
+  },
+  "3677_count_binary_palindromic_numbers": {
+    "slug": "count-binary-palindromic-numbers",
+    "title": "Count Binary Palindromic Numbers",
+    "paid": false,
+    "go": "func countBinaryPalindromes(n int64) int {\n    \n}",
+    "py": "class Solution:\n    def countBinaryPalindromes(self, n: int) -> int:\n        "
+  },
+  "3678_smallest_absent_positive_greater_than_average": {
+    "slug": "smallest-absent-positive-greater-than-average",
+    "title": "Smallest Absent Positive Greater Than Average",
+    "paid": false,
+    "go": "func smallestAbsent(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def smallestAbsent(self, nums: List[int]) -> int:\n        "
+  },
+  "3679_minimum_discards_to_balance_inventory": {
+    "slug": "minimum-discards-to-balance-inventory",
+    "title": " Minimum Discards to Balance Inventory",
+    "paid": false,
+    "go": "func minArrivalsToDiscard(arrivals []int, w int, m int) int {\n    \n}",
+    "py": "class Solution:\n    def minArrivalsToDiscard(self, arrivals: List[int], w: int, m: int) -> int:\n        "
+  },
+  "3680_generate_schedule": {
+    "slug": "generate-schedule",
+    "title": "Generate Schedule",
+    "paid": false,
+    "go": "func generateSchedule(n int) [][]int {\n    \n}",
+    "py": "class Solution:\n    def generateSchedule(self, n: int) -> List[List[int]]:\n        "
+  },
+  "3681_maximum_xor_of_subsequences": {
+    "slug": "maximum-xor-of-subsequences",
+    "title": "Maximum XOR of Subsequences",
+    "paid": false,
+    "go": "func maxXorSubsequences(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def maxXorSubsequences(self, nums: List[int]) -> int:\n        "
+  },
+  "3682_minimum_index_sum_of_common_elements": {
+    "slug": "minimum-index-sum-of-common-elements",
+    "title": "Minimum Index Sum of Common Elements",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3683_earliest_time_to_finish_one_task": {
+    "slug": "earliest-time-to-finish-one-task",
+    "title": "Earliest Time to Finish One Task",
+    "paid": false,
+    "go": "func earliestTime(tasks [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def earliestTime(self, tasks: List[List[int]]) -> int:\n        "
+  },
+  "3684_maximize_sum_of_at_most_k_distinct_elements": {
+    "slug": "maximize-sum-of-at-most-k-distinct-elements",
+    "title": "Maximize Sum of At Most K Distinct Elements",
+    "paid": false,
+    "go": "func maxKDistinct(nums []int, k int) []int {\n    \n}",
+    "py": "class Solution:\n    def maxKDistinct(self, nums: List[int], k: int) -> List[int]:\n        "
+  },
+  "3685_subsequence_sum_after_capping_elements": {
+    "slug": "subsequence-sum-after-capping-elements",
+    "title": "Subsequence Sum After Capping Elements",
+    "paid": false,
+    "go": "func subsequenceSumAfterCapping(nums []int, k int) []bool {\n    \n}",
+    "py": "class Solution:\n    def subsequenceSumAfterCapping(self, nums: List[int], k: int) -> List[bool]:\n        "
+  },
+  "3686_number_of_stable_subsequences": {
+    "slug": "number-of-stable-subsequences",
+    "title": "Number of Stable Subsequences",
+    "paid": false,
+    "go": "func countStableSubsequences(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def countStableSubsequences(self, nums: List[int]) -> int:\n        "
+  },
+  "3687_library_late_fee_calculator": {
+    "slug": "library-late-fee-calculator",
+    "title": "Library Late Fee Calculator",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3688_bitwise_or_of_even_numbers_in_an_array": {
+    "slug": "bitwise-or-of-even-numbers-in-an-array",
+    "title": "Bitwise OR of Even Numbers in an Array",
+    "paid": false,
+    "go": "func evenNumberBitwiseORs(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def evenNumberBitwiseORs(self, nums: List[int]) -> int:\n        "
+  },
+  "3689_maximum_total_subarray_value_i": {
+    "slug": "maximum-total-subarray-value-i",
+    "title": "Maximum Total Subarray Value I",
+    "paid": false,
+    "go": "func maxTotalValue(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxTotalValue(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3690_split_and_merge_array_transformation": {
+    "slug": "split-and-merge-array-transformation",
+    "title": "Split and Merge Array Transformation",
+    "paid": false,
+    "go": "func minSplitMerge(nums1 []int, nums2 []int) int {\n    \n}",
+    "py": "class Solution:\n    def minSplitMerge(self, nums1: List[int], nums2: List[int]) -> int:\n        "
+  },
+  "3691_maximum_total_subarray_value_ii": {
+    "slug": "maximum-total-subarray-value-ii",
+    "title": "Maximum Total Subarray Value II",
+    "paid": false,
+    "go": "func maxTotalValue(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxTotalValue(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3692_majority_frequency_characters": {
+    "slug": "majority-frequency-characters",
+    "title": "Majority Frequency Characters",
+    "paid": false,
+    "go": "func majorityFrequencyGroup(s string) string {\n    \n}",
+    "py": "class Solution:\n    def majorityFrequencyGroup(self, s: str) -> str:\n        "
+  },
+  "3693_climbing_stairs_ii": {
+    "slug": "climbing-stairs-ii",
+    "title": "Climbing Stairs II",
+    "paid": false,
+    "go": "func climbStairs(n int, costs []int) int {\n    \n}",
+    "py": "class Solution:\n    def climbStairs(self, n: int, costs: List[int]) -> int:\n        "
+  },
+  "3694_distinct_points_reachable_after_substring_removal": {
+    "slug": "distinct-points-reachable-after-substring-removal",
+    "title": "Distinct Points Reachable After Substring Removal",
+    "paid": false,
+    "go": "func distinctPoints(s string, k int) int {\n    \n}",
+    "py": "class Solution:\n    def distinctPoints(self, s: str, k: int) -> int:\n        "
+  },
+  "3695_maximize_alternating_sum_using_swaps": {
+    "slug": "maximize-alternating-sum-using-swaps",
+    "title": "Maximize Alternating Sum Using Swaps",
+    "paid": false,
+    "go": "func maxAlternatingSum(nums []int, swaps [][]int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxAlternatingSum(self, nums: List[int], swaps: List[List[int]]) -> int:\n        "
+  },
+  "3696_maximum_distance_between_unequal_words_in_array_i": {
+    "slug": "maximum-distance-between-unequal-words-in-array-i",
+    "title": "Maximum Distance Between Unequal Words in Array I",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3697_compute_decimal_representation": {
+    "slug": "compute-decimal-representation",
+    "title": "Compute Decimal Representation",
+    "paid": false,
+    "go": "func decimalRepresentation(n int) []int {\n    \n}",
+    "py": "class Solution:\n    def decimalRepresentation(self, n: int) -> List[int]:\n        "
+  },
+  "3698_split_array_with_minimum_difference": {
+    "slug": "split-array-with-minimum-difference",
+    "title": "Split Array With Minimum Difference",
+    "paid": false,
+    "go": "func splitArray(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def splitArray(self, nums: List[int]) -> int:\n        "
+  },
+  "3699_number_of_zigzag_arrays_i": {
+    "slug": "number-of-zigzag-arrays-i",
+    "title": "Number of ZigZag Arrays I",
+    "paid": false,
+    "go": "func zigZagArrays(n int, l int, r int) int {\n    \n}",
+    "py": "class Solution:\n    def zigZagArrays(self, n: int, l: int, r: int) -> int:\n        "
+  },
+  "3700_number_of_zigzag_arrays_ii": {
+    "slug": "number-of-zigzag-arrays-ii",
+    "title": "Number of ZigZag Arrays II",
+    "paid": false,
+    "go": "func zigZagArrays(n int, l int, r int) int {\n    \n}",
+    "py": "class Solution:\n    def zigZagArrays(self, n: int, l: int, r: int) -> int:\n        "
+  },
+  "3701_compute_alternating_sum": {
+    "slug": "compute-alternating-sum",
+    "title": "Compute Alternating Sum",
+    "paid": false,
+    "go": "func alternatingSum(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def alternatingSum(self, nums: List[int]) -> int:\n        "
+  },
+  "3702_longest_subsequence_with_non_zero_bitwise_xor": {
+    "slug": "longest-subsequence-with-non-zero-bitwise-xor",
+    "title": "Longest Subsequence With Non-Zero Bitwise XOR",
+    "paid": false,
+    "go": "func longestSubsequence(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def longestSubsequence(self, nums: List[int]) -> int:\n        "
+  },
+  "3703_remove_k_balanced_substrings": {
+    "slug": "remove-k-balanced-substrings",
+    "title": "Remove K-Balanced Substrings",
+    "paid": false,
+    "go": "func removeSubstring(s string, k int) string {\n    \n}",
+    "py": "class Solution:\n    def removeSubstring(self, s: str, k: int) -> str:\n        "
+  },
+  "3704_count_no_zero_pairs_that_sum_to_n": {
+    "slug": "count-no-zero-pairs-that-sum-to-n",
+    "title": "Count No-Zero Pairs That Sum to N",
+    "paid": false,
+    "go": "func countNoZeroPairs(n int64) int64 {\n    \n}",
+    "py": "class Solution:\n    def countNoZeroPairs(self, n: int) -> int:\n        "
+  },
+  "3706_maximum_distance_between_unequal_words_in_array_ii": {
+    "slug": "maximum-distance-between-unequal-words-in-array-ii",
+    "title": "Maximum Distance Between Unequal Words in Array II",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3707_equal_score_substrings": {
+    "slug": "equal-score-substrings",
+    "title": "Equal Score Substrings",
+    "paid": false,
+    "go": "func scoreBalance(s string) bool {\n    \n}",
+    "py": "class Solution:\n    def scoreBalance(self, s: str) -> bool:\n        "
+  },
+  "3708_longest_fibonacci_subarray": {
+    "slug": "longest-fibonacci-subarray",
+    "title": "Longest Fibonacci Subarray",
+    "paid": false,
+    "go": "func longestSubarray(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def longestSubarray(self, nums: List[int]) -> int:\n        "
+  },
+  "3709_design_exam_scores_tracker": {
+    "slug": "design-exam-scores-tracker",
+    "title": "Design Exam Scores Tracker",
+    "paid": false,
+    "go": "type ExamTracker struct {\n    \n}\n\n\nfunc Constructor() ExamTracker {\n    \n}\n\n\nfunc (this *ExamTracker) Record(time int, score int)  {\n    \n}\n\n\nfunc (this *ExamTracker) TotalScore(startTime int, endTime int) int64 {\n    \n}\n\n\n/**\n * Your ExamTracker object will be instantiated and called as such:\n * obj := Constructor();\n * obj.Record(time,score);\n * param_2 := obj.TotalScore(startTime,endTime);\n */",
+    "py": "class ExamTracker:\n\n    def __init__(self):\n        \n\n    def record(self, time: int, score: int) -> None:\n        \n\n    def totalScore(self, startTime: int, endTime: int) -> int:\n        \n\n\n# Your ExamTracker object will be instantiated and called as such:\n# obj = ExamTracker()\n# obj.record(time,score)\n# param_2 = obj.totalScore(startTime,endTime)"
+  },
+  "3710_maximum_partition_factor": {
+    "slug": "maximum-partition-factor",
+    "title": "Maximum Partition Factor",
+    "paid": false,
+    "go": "func maxPartitionFactor(points [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def maxPartitionFactor(self, points: List[List[int]]) -> int:\n        "
+  },
+  "3711_maximum_transactions_without_negative_balance": {
+    "slug": "maximum-transactions-without-negative-balance",
+    "title": "Maximum Transactions Without Negative Balance",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3712_sum_of_elements_with_frequency_divisible_by_k": {
+    "slug": "sum-of-elements-with-frequency-divisible-by-k",
+    "title": "Sum of Elements With Frequency Divisible by K",
+    "paid": false,
+    "go": "func sumDivisibleByK(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def sumDivisibleByK(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3713_longest_balanced_substring_i": {
+    "slug": "longest-balanced-substring-i",
+    "title": "Longest Balanced Substring I",
+    "paid": false,
+    "go": "func longestBalanced(s string) int {\n    \n}",
+    "py": "class Solution:\n    def longestBalanced(self, s: str) -> int:\n        "
+  },
+  "3714_longest_balanced_substring_ii": {
+    "slug": "longest-balanced-substring-ii",
+    "title": "Longest Balanced Substring II",
+    "paid": false,
+    "go": "func longestBalanced(s string) int {\n    \n}",
+    "py": "class Solution:\n    def longestBalanced(self, s: str) -> int:\n        "
+  },
+  "3715_sum_of_perfect_square_ancestors": {
+    "slug": "sum-of-perfect-square-ancestors",
+    "title": "Sum of Perfect Square Ancestors",
+    "paid": false,
+    "go": "func sumOfAncestors(n int, edges [][]int, nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def sumOfAncestors(self, n: int, edges: List[List[int]], nums: List[int]) -> int:\n        "
+  },
+  "3717_minimum_operations_to_make_the_array_beautiful": {
+    "slug": "minimum-operations-to-make-the-array-beautiful",
+    "title": "Minimum Operations to Make the Array Beautiful",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3718_smallest_missing_multiple_of_k": {
+    "slug": "smallest-missing-multiple-of-k",
+    "title": "Smallest Missing Multiple of K",
+    "paid": false,
+    "go": "func missingMultiple(nums []int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def missingMultiple(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3719_longest_balanced_subarray_i": {
+    "slug": "longest-balanced-subarray-i",
+    "title": "Longest Balanced Subarray I",
+    "paid": false,
+    "go": "func longestBalanced(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def longestBalanced(self, nums: List[int]) -> int:\n        "
+  },
+  "3720_lexicographically_smallest_permutation_greater_than_target": {
+    "slug": "lexicographically-smallest-permutation-greater-than-target",
+    "title": "Lexicographically Smallest Permutation Greater Than Target",
+    "paid": false,
+    "go": "func lexGreaterPermutation(s string, target string) string {\n    \n}",
+    "py": "class Solution:\n    def lexGreaterPermutation(self, s: str, target: str) -> str:\n        "
+  },
+  "3721_longest_balanced_subarray_ii": {
+    "slug": "longest-balanced-subarray-ii",
+    "title": "Longest Balanced Subarray II",
+    "paid": false,
+    "go": "func longestBalanced(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def longestBalanced(self, nums: List[int]) -> int:\n        "
+  },
+  "3722_lexicographically_smallest_string_after_reverse": {
+    "slug": "lexicographically-smallest-string-after-reverse",
+    "title": "Lexicographically Smallest String After Reverse",
+    "paid": false,
+    "go": "func lexSmallest(s string) string {\n    \n}",
+    "py": "class Solution:\n    def lexSmallest(self, s: str) -> str:\n        "
+  },
+  "3723_maximize_sum_of_squares_of_digits": {
+    "slug": "maximize-sum-of-squares-of-digits",
+    "title": "Maximize Sum of Squares of Digits",
+    "paid": false,
+    "go": "func maxSumOfSquares(num int, sum int) string {\n    \n}",
+    "py": "class Solution:\n    def maxSumOfSquares(self, num: int, sum: int) -> str:\n        "
+  },
+  "3724_minimum_operations_to_transform_array": {
+    "slug": "minimum-operations-to-transform-array",
+    "title": "Minimum Operations to Transform Array",
+    "paid": false,
+    "go": "func minOperations(nums1 []int, nums2 []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minOperations(self, nums1: List[int], nums2: List[int]) -> int:\n        "
+  },
+  "3725_count_ways_to_choose_coprime_integers_from_rows": {
+    "slug": "count-ways-to-choose-coprime-integers-from-rows",
+    "title": "Count Ways to Choose Coprime Integers from Rows",
+    "paid": false,
+    "go": "func countCoprime(mat [][]int) int {\n    \n}",
+    "py": "class Solution:\n    def countCoprime(self, mat: List[List[int]]) -> int:\n        "
+  },
+  "3726_remove_zeros_in_decimal_representation": {
+    "slug": "remove-zeros-in-decimal-representation",
+    "title": "Remove Zeros in Decimal Representation",
+    "paid": false,
+    "go": "func removeZeros(n int64) int64 {\n    \n}",
+    "py": "class Solution:\n    def removeZeros(self, n: int) -> int:\n        "
+  },
+  "3727_maximum_alternating_sum_of_squares": {
+    "slug": "maximum-alternating-sum-of-squares",
+    "title": "Maximum Alternating Sum of Squares",
+    "paid": false,
+    "go": "func maxAlternatingSum(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxAlternatingSum(self, nums: List[int]) -> int:\n        "
+  },
+  "3728_stable_subarrays_with_equal_boundary_and_interior_sum": {
+    "slug": "stable-subarrays-with-equal-boundary-and-interior-sum",
+    "title": "Stable Subarrays With Equal Boundary and Interior Sum",
+    "paid": false,
+    "go": "func countStableSubarrays(capacity []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def countStableSubarrays(self, capacity: List[int]) -> int:\n        "
+  },
+  "3729_count_distinct_subarrays_divisible_by_k_in_sorted_array": {
+    "slug": "count-distinct-subarrays-divisible-by-k-in-sorted-array",
+    "title": "Count Distinct Subarrays Divisible by K in Sorted Array",
+    "paid": false,
+    "go": "func numGoodSubarrays(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def numGoodSubarrays(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3730_maximum_calories_burnt_from_jumps": {
+    "slug": "maximum-calories-burnt-from-jumps",
+    "title": "Maximum Calories Burnt from Jumps",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3731_find_missing_elements": {
+    "slug": "find-missing-elements",
+    "title": "Find Missing Elements",
+    "paid": false,
+    "go": "func findMissingElements(nums []int) []int {\n    \n}",
+    "py": "class Solution:\n    def findMissingElements(self, nums: List[int]) -> List[int]:\n        "
+  },
+  "3732_maximum_product_of_three_elements_after_one_replacement": {
+    "slug": "maximum-product-of-three-elements-after-one-replacement",
+    "title": "Maximum Product of Three Elements After One Replacement",
+    "paid": false,
+    "go": "func maxProduct(nums []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maxProduct(self, nums: List[int]) -> int:\n        "
+  },
+  "3733_minimum_time_to_complete_all_deliveries": {
+    "slug": "minimum-time-to-complete-all-deliveries",
+    "title": "Minimum Time to Complete All Deliveries",
+    "paid": false,
+    "go": "func minimumTime(d []int, r []int) int64 {\n    \n}",
+    "py": "class Solution:\n    def minimumTime(self, d: List[int], r: List[int]) -> int:\n        "
+  },
+  "3734_lexicographically_smallest_palindromic_permutation_greater_than_target": {
+    "slug": "lexicographically-smallest-palindromic-permutation-greater-than-target",
+    "title": "Lexicographically Smallest Palindromic Permutation Greater Than Target",
+    "paid": false,
+    "go": "func lexPalindromicPermutation(s string, target string) string {\n    \n}",
+    "py": "class Solution:\n    def lexPalindromicPermutation(self, s: str, target: str) -> str:\n        "
+  },
+  "3735_lexicographically_smallest_string_after_reverse_ii": {
+    "slug": "lexicographically-smallest-string-after-reverse-ii",
+    "title": "Lexicographically Smallest String After Reverse II",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3736_minimum_moves_to_equal_array_elements_iii": {
+    "slug": "minimum-moves-to-equal-array-elements-iii",
+    "title": "Minimum Moves to Equal Array Elements III",
+    "paid": false,
+    "go": "func minMoves(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minMoves(self, nums: List[int]) -> int:\n        "
+  },
+  "3737_count_subarrays_with_majority_element_i": {
+    "slug": "count-subarrays-with-majority-element-i",
+    "title": "Count Subarrays With Majority Element I",
+    "paid": false,
+    "go": "func countMajoritySubarrays(nums []int, target int) int {\n    \n}",
+    "py": "class Solution:\n    def countMajoritySubarrays(self, nums: List[int], target: int) -> int:\n        "
+  },
+  "3738_longest_non_decreasing_subarray_after_replacing_at_most_one_element": {
+    "slug": "longest-non-decreasing-subarray-after-replacing-at-most-one-element",
+    "title": "Longest Non-Decreasing Subarray After Replacing at Most One Element",
+    "paid": false,
+    "go": "func longestSubarray(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def longestSubarray(self, nums: List[int]) -> int:\n        "
+  },
+  "3739_count_subarrays_with_majority_element_ii": {
+    "slug": "count-subarrays-with-majority-element-ii",
+    "title": "Count Subarrays With Majority Element II",
+    "paid": false,
+    "go": "func countMajoritySubarrays(nums []int, target int) int64 {\n    \n}",
+    "py": "class Solution:\n    def countMajoritySubarrays(self, nums: List[int], target: int) -> int:\n        "
+  },
+  "3740_minimum_distance_between_three_equal_elements_i": {
+    "slug": "minimum-distance-between-three-equal-elements-i",
+    "title": "Minimum Distance Between Three Equal Elements I",
+    "paid": false,
+    "go": "func minimumDistance(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minimumDistance(self, nums: List[int]) -> int:\n        "
+  },
+  "3741_minimum_distance_between_three_equal_elements_ii": {
+    "slug": "minimum-distance-between-three-equal-elements-ii",
+    "title": "Minimum Distance Between Three Equal Elements II",
+    "paid": false,
+    "go": "func minimumDistance(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def minimumDistance(self, nums: List[int]) -> int:\n        "
+  },
+  "3742_maximum_path_score_in_a_grid": {
+    "slug": "maximum-path-score-in-a-grid",
+    "title": "Maximum Path Score in a Grid",
+    "paid": false,
+    "go": "func maxPathScore(grid [][]int, k int) int {\n    \n}",
+    "py": "class Solution:\n    def maxPathScore(self, grid: List[List[int]], k: int) -> int:\n        "
+  },
+  "3743_maximize_cyclic_partition_score": {
+    "slug": "maximize-cyclic-partition-score",
+    "title": "Maximize Cyclic Partition Score",
+    "paid": false,
+    "go": "func maximumScore(nums []int, k int) int64 {\n    \n}",
+    "py": "class Solution:\n    def maximumScore(self, nums: List[int], k: int) -> int:\n        "
+  },
+  "3744_find_kth_character_in_expanded_string": {
+    "slug": "find-kth-character-in-expanded-string",
+    "title": "Find Kth Character in Expanded String",
+    "paid": true,
+    "go": null,
+    "py": null
+  },
+  "3745_maximize_expression_of_three_elements": {
+    "slug": "maximize-expression-of-three-elements",
+    "title": "Maximize Expression of Three Elements",
+    "paid": false,
+    "go": "func maximizeExpressionOfThree(nums []int) int {\n    \n}",
+    "py": "class Solution:\n    def maximizeExpressionOfThree(self, nums: List[int]) -> int:\n        "
+  },
+  "3746_minimum_string_length_after_balanced_removals": {
+    "slug": "minimum-string-length-after-balanced-removals",
+    "title": "Minimum String Length After Balanced Removals",
+    "paid": false,
+    "go": "func minLengthAfterRemovals(s string) int {\n    \n}",
+    "py": "class Solution:\n    def minLengthAfterRemovals(self, s: str) -> int:\n        "
+  },
+  "3747_count_distinct_integers_after_removing_zeros": {
+    "slug": "count-distinct-integers-after-removing-zeros",
+    "title": "Count Distinct Integers After Removing Zeros",
+    "paid": false,
+    "go": "func countDistinct(n int64) int64 {\n    \n}",
+    "py": "class Solution:\n    def countDistinct(self, n: int) -> int:\n        "
+  },
+  "3748_count_stable_subarrays": {
+    "slug": "count-stable-subarrays",
+    "title": "Count Stable Subarrays",
+    "paid": false,
+    "go": "func countStableSubarrays(nums []int, queries [][]int) []int64 {\n    \n}",
+    "py": "class Solution:\n    def countStableSubarrays(self, nums: List[int], queries: List[List[int]]) -> List[int]:\n        "
+  },
+  "3749_evaluate_valid_expressions": {
+    "slug": "evaluate-valid-expressions",
+    "title": "Evaluate Valid Expressions",
+    "paid": true,
+    "go": null,
+    "py": null
+  }
+}

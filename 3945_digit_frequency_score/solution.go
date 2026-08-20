@@ -1,5 +1,9 @@
-﻿// LeetCode 3945 - Digit Frequency Score
+// LeetCode 3945 - Digit Frequency Score
 // https://leetcode.com/problems/digit-frequency-score/
 
-func solve() {
+func digitFrequencyScore(n int) (ans int) {
+	for ; n > 0; n /= 10 {
+		ans += n % 10
+	}
+	return
 }
