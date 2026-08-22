@@ -1,4 +1,4 @@
-﻿// LeetCode 1813 - Sentence Similarity III
+// LeetCode 1813 - Sentence Similarity III
 // https://leetcode.com/problems/sentence-similarity-iii/
 
 #include <stdbool.h>

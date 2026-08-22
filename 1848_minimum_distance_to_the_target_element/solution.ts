@@ -1,4 +1,4 @@
-﻿// LeetCode 1848 - Minimum Distance to the Target Element
+// LeetCode 1848 - Minimum Distance to the Target Element
 // https://leetcode.com/problems/minimum-distance-to-the-target-element/
 
 function getMinDistance(nums: number[], target: number, start: number): number {

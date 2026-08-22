@@ -1,4 +1,4 @@
-﻿// LeetCode 1818 - Minimum Absolute Sum Difference
+// LeetCode 1818 - Minimum Absolute Sum Difference
 // https://leetcode.com/problems/minimum-absolute-sum-difference/
 
 function minAbsoluteSumDiff(nums1: number[], nums2: number[]): number {

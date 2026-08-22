@@ -1,4 +1,4 @@
-﻿// LeetCode 1826 - Faulty Sensor
+// LeetCode 1826 - Faulty Sensor
 // https://leetcode.com/problems/faulty-sensor/
 
 #include <stdbool.h>

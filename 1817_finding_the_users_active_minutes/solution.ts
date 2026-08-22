@@ -1,4 +1,4 @@
-﻿// LeetCode 1817 - Finding the Users Active Minutes
+// LeetCode 1817 - Finding the Users Active Minutes
 // https://leetcode.com/problems/finding-the-users-active-minutes/
 
 function findingUsersActiveMinutes(logs: number[][], k: number): number[] {

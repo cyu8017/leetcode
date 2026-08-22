@@ -1,4 +1,4 @@
-﻿// LeetCode 1808 - Maximize Number of Nice Divisors
+// LeetCode 1808 - Maximize Number of Nice Divisors
 // https://leetcode.com/problems/maximize-number-of-nice-divisors/
 
 static long long powMod(long long base, long long exp, long long mod) {

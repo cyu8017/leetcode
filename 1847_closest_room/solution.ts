@@ -1,4 +1,4 @@
-﻿// LeetCode 1847 - Closest Room
+// LeetCode 1847 - Closest Room
 // https://leetcode.com/problems/closest-room/
 
 function closestRoom(rooms: number[][], queries: number[][]): number[] {

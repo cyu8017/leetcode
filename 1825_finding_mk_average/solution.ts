@@ -1,4 +1,4 @@
-﻿// LeetCode 1825 - Finding MK Average
+// LeetCode 1825 - Finding MK Average
 // https://leetcode.com/problems/finding-mk-average/
 
 export class MKAverage {

@@ -1,4 +1,4 @@
-﻿// LeetCode 1824 - Minimum Sideway Jumps
+// LeetCode 1824 - Minimum Sideway Jumps
 // https://leetcode.com/problems/minimum-sideway-jumps/
 
 #define INF 1000000000

@@ -1,4 +1,4 @@
-﻿// LeetCode 1816 - Truncate Sentence
+// LeetCode 1816 - Truncate Sentence
 // https://leetcode.com/problems/truncate-sentence/
 
 function truncateSentence(s: string, k: number): string {

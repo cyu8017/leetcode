@@ -22328,9 +22328,11 @@
       "folder": "1809_ad_free_sessions",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -22356,9 +22358,11 @@
       "folder": "1811_find_interview_candidates",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -22536,9 +22540,11 @@
       "folder": "1821_find_customers_with_positive_revenue_this_year",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -22716,9 +22722,11 @@
       "folder": "1831_maximum_transaction_each_day",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -22896,9 +22904,11 @@
       "folder": "1841_league_statistics",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -22924,9 +22934,11 @@
       "folder": "1843_suspicious_bank_accounts",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23104,9 +23116,11 @@
       "folder": "1853_convert_date_format",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23360,9 +23374,11 @@
       "folder": "1867_orders_with_maximum_quantity_above_average",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23464,9 +23480,11 @@
       "folder": "1873_calculate_special_bonus",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23492,9 +23510,11 @@
       "folder": "1875_group_employees_of_the_same_salary",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23767,9 +23787,11 @@
       "folder": "1890_the_latest_login_in_2020",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -23795,9 +23817,11 @@
       "folder": "1892_page_recommendations_ii",
       "languages": [
         "python",
+        "typescript",
         "go",
         "java",
-        "php"
+        "php",
+        "c"
       ]
     },
     {
@@ -31267,7 +31291,20 @@
     {
       "folder": "3991_sort_array_using_prefix_reversals",
       "languages": [
-        "python"
+        "python",
+        "javascript",
+        "typescript",
+        "java",
+        "ruby",
+        "php",
+        "cpp",
+        "c",
+        "go",
+        "rust",
+        "csharp",
+        "kotlin",
+        "scala",
+        "swift"
       ]
     }
   ]

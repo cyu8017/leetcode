@@ -1,4 +1,4 @@
-﻿// LeetCode 1820 - Maximum Number of Accepted Invitations
+// LeetCode 1820 - Maximum Number of Accepted Invitations
 // https://leetcode.com/problems/maximum-number-of-accepted-invitations/
 
 function maximumInvitations(grid: number[][]): number {

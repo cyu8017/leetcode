@@ -1,4 +1,4 @@
-﻿// LeetCode 1814 - Count Nice Pairs in an Array
+// LeetCode 1814 - Count Nice Pairs in an Array
 // https://leetcode.com/problems/count-nice-pairs-in-an-array/
 
 #include <stdlib.h>

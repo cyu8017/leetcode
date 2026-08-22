@@ -1,4 +1,4 @@
-﻿// LeetCode 1824 - Minimum Sideway Jumps
+// LeetCode 1824 - Minimum Sideway Jumps
 // https://leetcode.com/problems/minimum-sideway-jumps/
 
 function minSideJumps(obstacles: number[]): number {

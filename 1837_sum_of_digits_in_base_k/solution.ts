@@ -1,4 +1,4 @@
-﻿// LeetCode 1837 - Sum of Digits in Base K
+// LeetCode 1837 - Sum of Digits in Base K
 // https://leetcode.com/problems/sum-of-digits-in-base-k/
 
 function sumBase(n: number, k: number): number {

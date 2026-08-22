@@ -1,4 +1,4 @@
-﻿// LeetCode 1834 - Single-Threaded CPU
+// LeetCode 1834 - Single-Threaded CPU
 // https://leetcode.com/problems/single-threaded-cpu/
 
 function getOrder(tasks: number[][]): number[] {

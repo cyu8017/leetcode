@@ -1,4 +1,4 @@
-﻿// LeetCode 1848 - Minimum Distance to the Target Element
+// LeetCode 1848 - Minimum Distance to the Target Element
 // https://leetcode.com/problems/minimum-distance-to-the-target-element/
 
 int getMinDistance(int* nums, int numsSize, int target, int start) {
