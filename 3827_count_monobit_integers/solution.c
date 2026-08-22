@@ -1,5 +1,11 @@
-﻿// LeetCode 3827 - Count Monobit Integers
+// LeetCode 3827 - Count Monobit Integers
 // https://leetcode.com/problems/count-monobit-integers/
 
-void solve() {
+int countMonobit(int n) {
+    int ans = 1;
+    for (int i = 1, x = 1; x <= n; i++) {
+        ans++;
+        x += (1 << i);
+    }
+    return ans;
 }

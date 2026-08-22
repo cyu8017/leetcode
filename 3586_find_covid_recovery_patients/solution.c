@@ -1,5 +1,35 @@
-﻿// LeetCode 3586 - Find COVID Recovery Patients
+// LeetCode 3586 - Find COVID Recovery Patients
 // https://leetcode.com/problems/find-covid-recovery-patients/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH\n"
+    "    first_positive AS (\n"
+    "        SELECT\n"
+    "            patient_id,\n"
+    "            MIN(test_date) AS first_positive_date\n"
+    "        FROM covid_tests\n"
+    "        WHERE result = 'Positive'\n"
+    "        GROUP BY patient_id\n"
+    "    ),\n"
+    "    first_negative_after_positive AS (\n"
+    "        SELECT\n"
+    "            t.patient_id,\n"
+    "            MIN(t.test_date) AS first_negative_date\n"
+    "        FROM\n"
+    "            covid_tests t\n"
+    "            JOIN first_positive p\n"
+    "                ON t.patient_id = p.patient_id AND t.test_date > p.first_positive_date\n"
+    "        WHERE t.result = 'Negative'\n"
+    "        GROUP BY t.patient_id\n"
+    "    )\n"
+    "SELECT\n"
+    "    p.patient_id,\n"
+    "    p.patient_name,\n"
+    "    p.age,\n"
+    "    DATEDIFF(n.first_negative_date, f.first_positive_date) AS recovery_time\n"
+    "FROM\n"
+    "    first_positive f\n"
+    "    JOIN first_negative_after_positive n ON f.patient_id = n.patient_id\n"
+    "    JOIN patients p ON p.patient_id = f.patient_id\n"
+    "ORDER BY recovery_time ASC, patient_name ASC;\n";

@@ -1,5 +1,33 @@
-﻿// LeetCode 3580 - Find Consistently Improving Employees
+// LeetCode 3580 - Find Consistently Improving Employees
 // https://leetcode.com/problems/find-consistently-improving-employees/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH\n"
+    "    recent AS (\n"
+    "        SELECT\n"
+    "            employee_id,\n"
+    "            review_date,\n"
+    "            ROW_NUMBER() OVER (\n"
+    "                PARTITION BY employee_id\n"
+    "                ORDER BY review_date DESC\n"
+    "            ) AS rn,\n"
+    "            (\n"
+    "                LAG(rating) OVER (\n"
+    "                    PARTITION BY employee_id\n"
+    "                    ORDER BY review_date DESC\n"
+    "                ) - rating\n"
+    "            ) AS delta\n"
+    "        FROM performance_reviews\n"
+    "    )\n"
+    "SELECT\n"
+    "    employee_id,\n"
+    "    name,\n"
+    "    SUM(delta) AS improvement_score\n"
+    "FROM\n"
+    "    recent\n"
+    "    JOIN employees USING (employee_id)\n"
+    "WHERE rn > 1 AND rn <= 3\n"
+    "GROUP BY 1\n"
+    "HAVING COUNT(*) = 2 AND MIN(delta) > 0\n"
+    "ORDER BY 3 DESC, 2;\n";

@@ -1,5 +1,20 @@
-﻿// LeetCode 3751 - Total Waviness of Numbers in Range I
+// LeetCode 3751 - Total Waviness Of Numbers In Range I
 // https://leetcode.com/problems/total-waviness-of-numbers-in-range-i/
 
-void solve() {
+static int f(int x) {
+    int nums[20], m = 0;
+    while (x > 0) { nums[m++] = x % 10; x /= 10; }
+    if (m < 3) return 0;
+    int s = 0;
+    for (int i = 1; i < m - 1; i++) {
+        if ((nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) ||
+            (nums[i] < nums[i - 1] && nums[i] < nums[i + 1])) s++;
+    }
+    return s;
+}
+
+int totalWaviness(int num1, int num2) {
+    int ans = 0;
+    for (int x = num1; x <= num2; x++) ans += f(x);
+    return ans;
 }

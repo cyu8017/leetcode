@@ -32794,6 +32794,5946 @@
       ]
     },
     {
+      "folder": "3001_minimum_moves_to_capture_the_queen",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3002_maximum_size_of_a_set_after_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3003_maximize_the_number_of_partitions_after_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3004_maximum_subtree_of_the_same_color",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3005_count_elements_with_maximum_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3006_find_beautiful_indices_in_the_given_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3007_maximum_number_that_sum_of_the_prices_is_less_than_or_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3008_find_beautiful_indices_in_the_given_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3009_maximum_number_of_intersections_on_the_chart",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3010_divide_an_array_into_subarrays_with_minimum_cost_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3011_find_if_array_can_be_sorted",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3012_minimize_length_of_array_using_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3013_divide_an_array_into_subarrays_with_minimum_cost_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3014_minimum_number_of_pushes_to_type_word_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3015_count_the_number_of_houses_at_a_certain_distance_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3016_minimum_number_of_pushes_to_type_word_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3017_count_the_number_of_houses_at_a_certain_distance_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3018_maximum_number_of_removal_queries_that_can_be_processed_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3019_number_of_changing_keys",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3020_find_the_maximum_number_of_elements_in_subset",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3021_alice_and_bob_playing_flower_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3022_minimize_or_of_remaining_elements_using_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3023_find_pattern_in_infinite_stream_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3024_type_of_triangle",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3025_find_the_number_of_ways_to_place_people_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3026_maximum_good_subarray_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3027_find_the_number_of_ways_to_place_people_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3028_ant_on_the_boundary",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3029_minimum_time_to_revert_word_to_initial_state_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3030_find_the_grid_of_region_average",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3031_minimum_time_to_revert_word_to_initial_state_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3032_count_numbers_with_unique_digits_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3033_modify_the_matrix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3034_number_of_subarrays_that_match_a_pattern_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3035_maximum_palindromes_after_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3036_number_of_subarrays_that_match_a_pattern_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3037_find_pattern_in_infinite_stream_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3038_maximum_number_of_operations_with_the_same_score_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3039_apply_operations_to_make_string_empty",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3040_maximum_number_of_operations_with_the_same_score_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3041_maximize_consecutive_elements_in_an_array_after_modification",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3042_count_prefix_and_suffix_pairs_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3043_find_the_length_of_the_longest_common_prefix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3044_most_frequent_prime",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3045_count_prefix_and_suffix_pairs_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3046_split_the_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3047_find_the_largest_area_of_square_inside_two_rectangles",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3048_earliest_second_to_mark_indices_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3049_earliest_second_to_mark_indices_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3050_pizza_toppings_cost_analysis",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3051_find_candidates_for_data_scientist_position",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3052_maximize_items",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3053_classifying_triangles_by_lengths",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3054_binary_tree_nodes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3055_top_percentile_fraud",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3056_snaps_analysis",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3057_employees_project_allocation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3058_friends_with_no_mutual_friends",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3059_find_all_unique_email_domains",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3060_user_activities_within_time_bounds",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3061_calculate_trapping_rain_water",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3062_winner_of_the_linked_list_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3063_linked_list_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3064_guess_the_number_using_bitwise_questions_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3065_minimum_operations_to_exceed_threshold_value_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3066_minimum_operations_to_exceed_threshold_value_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3067_count_pairs_of_connectable_servers_in_a_weighted_tree_network",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3068_find_the_maximum_sum_of_node_values",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3069_distribute_elements_into_two_arrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3070_count_submatrices_with_top_left_element_and_sum_less_than_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3071_minimum_operations_to_write_the_letter_y_on_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3072_distribute_elements_into_two_arrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3073_maximum_increasing_triplet_value",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3074_apple_redistribution_into_boxes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3075_maximize_happiness_of_selected_children",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3076_shortest_uncommon_substring_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3077_maximum_strength_of_k_disjoint_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3078_match_alphanumerical_pattern_in_matrix_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3079_find_the_sum_of_encrypted_integers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3080_mark_elements_on_array_by_performing_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3081_replace_question_marks_in_string_to_minimize_its_value",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3082_find_the_sum_of_the_power_of_all_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3083_existence_of_a_substring_in_a_string_and_its_reverse",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3084_count_substrings_starting_and_ending_with_given_character",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3085_minimum_deletions_to_make_string_k_special",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3086_minimum_moves_to_pick_k_ones",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3087_find_trending_hashtags",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3088_make_string_anti_palindrome",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3089_find_bursty_behavior",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3090_maximum_length_substring_with_two_occurrences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3091_apply_operations_to_make_sum_of_array_greater_than_or_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3092_most_frequent_ids",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3093_longest_common_suffix_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3094_guess_the_number_using_bitwise_questions_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3095_shortest_subarray_with_or_at_least_k_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3096_minimum_levels_to_gain_more_points",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3097_shortest_subarray_with_or_at_least_k_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3098_find_the_sum_of_subsequence_powers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3099_harshad_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3100_water_bottles_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3101_count_alternating_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3102_minimize_manhattan_distances",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3103_find_trending_hashtags_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3104_find_longest_self_contained_substring",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3105_longest_strictly_increasing_or_strictly_decreasing_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3106_lexicographically_smallest_string_after_operations_with_constraint",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3107_minimum_operations_to_make_median_of_array_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3108_minimum_cost_walk_in_weighted_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3109_find_the_index_of_permutation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3110_score_of_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3111_minimum_rectangles_to_cover_points",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3112_minimum_time_to_visit_disappearing_nodes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3113_find_the_number_of_subarrays_where_boundary_elements_are_maximum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3114_latest_time_you_can_obtain_after_replacing_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3115_maximum_prime_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3116_kth_smallest_amount_with_single_denomination_combination",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3117_minimum_sum_of_values_by_dividing_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3118_friday_purchase_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3119_maximum_number_of_potholes_that_can_be_fixed",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3120_count_the_number_of_special_characters_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3121_count_the_number_of_special_characters_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3122_minimum_number_of_operations_to_satisfy_conditions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3123_find_edges_in_shortest_paths",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3124_find_longest_calls",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3125_maximum_number_that_makes_result_of_bitwise_and_zero",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3126_server_utilization_time",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3127_make_a_square_with_the_same_color",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3128_right_triangles",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3129_find_all_possible_stable_binary_arrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3130_find_all_possible_stable_binary_arrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3131_find_the_integer_added_to_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3132_find_the_integer_added_to_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3133_minimum_array_end",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3134_find_the_median_of_the_uniqueness_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3135_equalize_strings_by_adding_or_removing_characters_at_ends",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3136_valid_word",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3137_minimum_number_of_operations_to_make_word_k_periodic",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3138_minimum_length_of_anagram_concatenation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3139_minimum_cost_to_equalize_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3140_consecutive_available_seats_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3141_maximum_hamming_distances",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3142_check_if_grid_satisfies_conditions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3143_maximum_points_inside_the_square",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3144_minimum_substring_partition_of_equal_character_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3145_find_products_of_elements_of_big_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3146_permutation_difference_between_two_strings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3147_taking_maximum_energy_from_the_mystic_dungeon",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3148_maximum_difference_score_in_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3149_find_the_minimum_cost_array_permutation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3150_invalid_tweets_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3151_special_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3152_special_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3153_sum_of_digit_differences_of_all_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3154_find_number_of_ways_to_reach_the_k_th_stair",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3155_maximum_number_of_upgradable_servers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3156_employee_task_duration_and_concurrent_tasks",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3157_find_the_level_of_tree_with_minimum_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3158_find_the_xor_of_numbers_which_appear_twice",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3159_find_occurrences_of_an_element_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3160_find_the_number_of_distinct_colors_among_the_balls",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3161_block_placement_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3162_find_the_number_of_good_pairs_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3163_string_compression_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3164_find_the_number_of_good_pairs_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3165_maximum_sum_of_subsequence_with_non_adjacent_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3166_calculate_parking_fees_and_duration",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3167_better_compression_of_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3168_minimum_number_of_chairs_in_a_waiting_room",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3169_count_days_without_meetings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3170_lexicographically_minimum_string_after_removing_stars",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3171_find_subarray_with_bitwise_or_closest_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3172_second_day_verification",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3173_bitwise_or_of_adjacent_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3174_clear_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3175_find_the_first_player_to_win_k_games_in_a_row",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3176_find_the_maximum_length_of_a_good_subsequence_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3177_find_the_maximum_length_of_a_good_subsequence_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3178_find_the_child_who_has_the_ball_after_k_seconds",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3179_find_the_n_th_value_after_k_seconds",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3180_maximum_total_reward_using_operations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3181_maximum_total_reward_using_operations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3182_find_top_scoring_students",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3183_the_number_of_ways_to_make_the_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3184_count_pairs_that_form_a_complete_day_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3185_count_pairs_that_form_a_complete_day_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3186_maximum_total_damage_with_spell_casting",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3187_peaks_in_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3188_find_top_scoring_students_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3189_minimum_moves_to_get_a_peaceful_board",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3190_find_minimum_operations_to_make_all_elements_divisible_by_three",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3191_minimum_operations_to_make_binary_array_elements_equal_to_one_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3192_minimum_operations_to_make_binary_array_elements_equal_to_one_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3193_count_the_number_of_inversions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3194_minimum_average_of_smallest_and_largest_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3195_find_the_minimum_area_to_cover_all_ones_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3196_maximize_total_cost_of_alternating_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3197_find_the_minimum_area_to_cover_all_ones_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3198_find_cities_in_each_state",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3199_count_triplets_with_even_xor_set_bits_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3200_maximum_height_of_a_triangle",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3201_find_the_maximum_length_of_valid_subsequence_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3202_find_the_maximum_length_of_valid_subsequence_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3203_find_minimum_diameter_after_merging_two_trees",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3204_bitwise_user_permissions_analysis",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3205_maximum_array_hopping_score_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3206_alternating_groups_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3207_maximum_points_after_enemy_battles",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3208_alternating_groups_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3209_number_of_subarrays_with_and_value_of_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3210_find_the_encrypted_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3211_generate_binary_strings_without_adjacent_zeros",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3212_count_submatrices_with_equal_frequency_of_x_and_y",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3213_construct_string_with_minimum_cost",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3214_year_on_year_growth_rate",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3215_count_triplets_with_even_xor_set_bits_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3216_lexicographically_smallest_string_after_a_swap",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3217_delete_nodes_from_linked_list_present_in_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3218_minimum_cost_for_cutting_cake_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3219_minimum_cost_for_cutting_cake_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3220_odd_and_even_transactions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3221_maximum_array_hopping_score_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3222_find_the_winning_player_in_coin_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3223_minimum_length_of_string_after_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3224_minimum_array_changes_to_make_differences_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3225_maximum_score_from_grid_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3226_number_of_bit_changes_to_make_two_integers_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3227_vowels_game_in_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3228_maximum_number_of_operations_to_move_ones_to_the_end",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3229_minimum_operations_to_make_array_equal_to_target",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3230_customer_purchasing_behavior_analysis",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3231_minimum_number_of_increasing_subsequence_to_be_removed",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3232_find_if_digit_game_can_be_won",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3233_find_the_count_of_numbers_which_are_not_special",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3234_count_the_number_of_substrings_with_dominant_ones",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3235_check_if_the_rectangle_corner_is_reachable",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3236_ceo_subordinate_hierarchy",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3237_alt_and_tab_simulation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3238_find_the_number_of_winning_players",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3239_minimum_number_of_flips_to_make_binary_grid_palindromic_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3240_minimum_number_of_flips_to_make_binary_grid_palindromic_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3241_time_taken_to_mark_all_nodes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3242_design_neighbor_sum_service",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3243_shortest_distance_after_road_addition_queries_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3244_shortest_distance_after_road_addition_queries_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3245_alternating_groups_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3246_premier_league_table_ranking",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3247_number_of_subsequences_with_odd_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3248_snake_in_matrix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3249_count_the_number_of_good_nodes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3250_find_the_count_of_monotonic_pairs_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3251_find_the_count_of_monotonic_pairs_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3252_premier_league_table_ranking_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3253_construct_string_with_minimum_cost_easy",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3254_find_the_power_of_k_size_subarrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3255_find_the_power_of_k_size_subarrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3256_maximum_value_sum_by_placing_three_rooks_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3257_maximum_value_sum_by_placing_three_rooks_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3258_count_substrings_that_satisfy_k_constraint_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3259_maximum_energy_boost_from_two_drinks",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3260_find_the_largest_palindrome_divisible_by_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3261_count_substrings_that_satisfy_k_constraint_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3262_find_overlapping_shifts",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3263_convert_doubly_linked_list_to_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3264_final_array_state_after_k_multiplication_operations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3265_count_almost_equal_pairs_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3266_final_array_state_after_k_multiplication_operations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3267_count_almost_equal_pairs_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3268_find_overlapping_shifts_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3269_constructing_two_increasing_arrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3270_find_the_key_of_the_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3271_hash_divided_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3272_find_the_count_of_good_integers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3273_minimum_amount_of_damage_dealt_to_bob",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3274_check_if_two_chessboard_squares_have_the_same_color",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3275_k_th_nearest_obstacle_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3276_select_cells_in_grid_with_maximum_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3277_maximum_xor_score_subarray_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3278_find_candidates_for_data_scientist_position_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3279_maximum_total_area_occupied_by_pistons",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3280_convert_date_to_binary",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3281_maximize_score_of_numbers_in_ranges",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3282_reach_end_of_array_with_max_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3283_maximum_number_of_moves_to_kill_all_pawns",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3284_sum_of_consecutive_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3285_find_indices_of_stable_mountains",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3286_find_a_safe_walk_through_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3287_find_the_maximum_sequence_value_of_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3288_length_of_the_longest_increasing_path",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3289_the_two_sneaky_numbers_of_digitville",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3290_maximum_multiplication_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3291_minimum_number_of_valid_strings_to_form_target_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3292_minimum_number_of_valid_strings_to_form_target_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3293_calculate_product_final_price",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3294_convert_doubly_linked_list_to_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3295_report_spam_message",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3296_minimum_number_of_seconds_to_make_mountain_height_zero",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3297_count_substrings_that_can_be_rearranged_to_contain_a_string_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3298_count_substrings_that_can_be_rearranged_to_contain_a_string_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3299_sum_of_consecutive_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3300_minimum_element_after_replacement_with_digit_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3301_maximize_the_total_height_of_unique_towers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3302_find_the_lexicographically_smallest_valid_sequence",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3303_find_the_occurrence_of_first_almost_equal_substring",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3304_find_the_k_th_character_in_string_game_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3305_count_of_substrings_containing_every_vowel_and_k_consonants_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3306_count_of_substrings_containing_every_vowel_and_k_consonants_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3307_find_the_k_th_character_in_string_game_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3308_find_top_performing_driver",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3309_maximum_possible_number_by_binary_concatenation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3310_remove_methods_from_project",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3311_construct_2d_grid_matching_graph_layout",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3312_sorted_gcd_pair_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3313_find_the_last_marked_nodes_in_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3314_construct_the_minimum_bitwise_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3315_construct_the_minimum_bitwise_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3316_find_maximum_removals_from_source_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3317_find_the_number_of_possible_ways_for_an_event",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3318_find_x_sum_of_all_k_long_subarrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3319_k_th_largest_perfect_subtree_size_in_binary_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3320_count_the_number_of_winning_sequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3321_find_x_sum_of_all_k_long_subarrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3322_premier_league_table_ranking_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3323_minimize_connected_groups_by_inserting_interval",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3324_find_the_sequence_of_strings_appeared_on_the_screen",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3325_count_substrings_with_k_frequency_characters_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3326_minimum_division_operations_to_make_array_non_decreasing",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3327_check_if_dfs_strings_are_palindromes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3328_find_cities_in_each_state_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3329_count_substrings_with_k_frequency_characters_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3330_find_the_original_typed_string_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3331_find_subtree_sizes_after_changes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3332_maximum_points_tourist_can_earn",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3333_find_the_original_typed_string_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3334_find_the_maximum_factor_score_of_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3335_total_characters_in_string_after_transformations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3336_find_the_number_of_subsequences_with_equal_gcd",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3337_total_characters_in_string_after_transformations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3338_second_highest_salary_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3339_find_the_number_of_k_even_arrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3340_check_balanced_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3341_find_minimum_time_to_reach_last_room_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3342_find_minimum_time_to_reach_last_room_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3343_count_number_of_balanced_permutations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3344_maximum_sized_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3345_smallest_divisible_digit_product_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3346_maximum_frequency_of_an_element_after_performing_operations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3347_maximum_frequency_of_an_element_after_performing_operations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3348_smallest_divisible_digit_product_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3349_adjacent_increasing_subarrays_detection_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3350_adjacent_increasing_subarrays_detection_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3351_sum_of_good_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3352_count_k_reducible_numbers_less_than_n",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3353_minimum_total_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3354_make_array_elements_equal_to_zero",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3355_zero_array_transformation_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3356_zero_array_transformation_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3357_minimize_the_maximum_adjacent_element_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3358_books_with_null_ratings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3359_find_sorted_submatrices_with_maximum_element_at_most_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3360_stone_removal_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3361_shift_distance_between_two_strings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3362_zero_array_transformation_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3363_find_the_maximum_number_of_fruits_collected",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3364_minimum_positive_sum_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3365_rearrange_k_substrings_to_form_target_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3366_minimum_array_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3367_maximize_sum_of_weights_after_edge_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3368_first_letter_capitalization",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3369_design_an_array_statistics_tracker",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3370_smallest_number_with_all_set_bits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3371_identify_the_largest_outlier_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3372_maximize_the_number_of_target_nodes_after_connecting_trees_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3373_maximize_the_number_of_target_nodes_after_connecting_trees_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3374_first_letter_capitalization_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3375_minimum_operations_to_make_array_values_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3376_minimum_time_to_break_locks_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3377_digit_operations_to_make_two_integers_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3378_count_connected_components_in_lcm_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3379_transformed_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3380_maximum_area_rectangle_with_point_constraints_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3381_maximum_subarray_sum_with_length_divisible_by_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3382_maximum_area_rectangle_with_point_constraints_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3383_minimum_runes_to_add_to_cast_spell",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3384_team_dominance_by_pass_success",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3385_minimum_time_to_break_locks_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3386_button_with_longest_push_time",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3387_maximize_amount_after_two_days_of_conversions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3388_count_beautiful_splits_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3389_minimum_operations_to_make_character_frequencies_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3390_longest_team_pass_streak",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3391_design_a_3d_binary_matrix_with_efficient_layer_tracking",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3392_count_subarrays_of_length_three_with_a_condition",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3393_count_paths_with_the_given_xor_value",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3394_check_if_grid_can_be_cut_into_sections",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3395_subsequences_with_a_unique_middle_mode_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3396_minimum_number_of_operations_to_make_elements_in_array_distinct",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3397_maximum_number_of_distinct_elements_after_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3398_smallest_substring_with_identical_characters_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3399_smallest_substring_with_identical_characters_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3400_maximum_number_of_matching_indices_after_right_shifts",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3401_find_circular_gift_exchange_chains",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3402_minimum_operations_to_make_columns_strictly_increasing",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3403_find_the_lexicographically_largest_string_from_the_box_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3404_count_special_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3405_count_the_number_of_arrays_with_k_matching_adjacent_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3406_find_the_lexicographically_largest_string_from_the_box_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3407_substring_matching_pattern",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3408_design_task_manager",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3409_longest_subsequence_with_decreasing_adjacent_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3410_maximize_subarray_sum_after_removing_all_occurrences_of_one_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3411_maximum_subarray_with_equal_products",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3412_find_mirror_score_of_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3413_maximum_coins_from_k_consecutive_bags",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3414_maximum_score_of_non_overlapping_intervals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3415_find_products_with_three_consecutive_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3416_subsequences_with_a_unique_middle_mode_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3417_zigzag_grid_traversal_with_skip",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3418_maximum_amount_of_money_robot_can_earn",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3419_minimize_the_maximum_edge_weight_of_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3420_count_non_decreasing_subarrays_after_k_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3421_find_students_who_improved",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3422_minimum_operations_to_make_subarray_elements_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3423_maximum_difference_between_adjacent_elements_in_a_circular_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3424_minimum_cost_to_make_arrays_identical",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3425_longest_special_path",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3426_manhattan_distances_of_all_arrangements_of_pieces",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3427_sum_of_variable_length_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3428_maximum_and_minimum_sums_of_at_most_size_k_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3429_paint_house_iv",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3430_maximum_and_minimum_sums_of_at_most_size_k_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3431_minimum_unlocked_indices_to_sort_nums",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3432_count_partitions_with_even_sum_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3433_count_mentions_per_user",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3434_maximum_frequency_after_subarray_operation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3435_frequencies_of_shortest_supersequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3436_find_valid_emails",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3437_permutations_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3438_find_valid_pair_of_adjacent_digits_in_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3439_reschedule_meetings_for_maximum_free_time_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3440_reschedule_meetings_for_maximum_free_time_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3441_minimum_cost_good_caption",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3442_maximum_difference_between_even_and_odd_frequency_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3443_maximum_manhattan_distance_after_k_changes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3444_minimum_increments_for_target_multiples_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3445_maximum_difference_between_even_and_odd_frequency_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3446_sort_matrix_by_diagonals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3447_assign_elements_to_groups_with_constraints",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3448_count_substrings_divisible_by_last_digit",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3449_maximize_the_minimum_game_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3450_maximum_students_on_a_single_bench",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3451_find_invalid_ip_addresses",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3452_sum_of_good_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3453_separate_squares_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3454_separate_squares_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3455_shortest_matching_substring",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3456_find_special_substring_of_length_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3457_eat_pizzas",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3458_select_k_disjoint_special_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3459_length_of_longest_v_shaped_diagonal_segment",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3460_longest_common_prefix_after_at_most_one_removal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3461_check_if_digits_are_equal_in_string_after_operations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3462_maximum_sum_with_at_most_k_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3463_check_if_digits_are_equal_in_string_after_operations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3464_maximize_the_distance_between_points_on_a_square",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3465_find_products_with_valid_serial_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3466_maximum_coin_collection",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3467_transform_array_by_parity",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3468_find_the_number_of_copy_arrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3469_find_minimum_cost_to_remove_array_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3470_permutations_iv",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3471_find_the_largest_almost_missing_integer",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3472_longest_palindromic_subsequence_after_at_most_k_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3473_sum_of_k_subarrays_with_length_at_least_m",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3474_lexicographically_smallest_generated_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3475_dna_pattern_recognition",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3476_maximize_profit_from_task_assignment",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3477_fruits_into_baskets_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3478_choose_k_elements_with_maximum_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3479_fruits_into_baskets_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3480_maximize_subarrays_after_removing_one_conflicting_pair",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3481_apply_substitutions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3482_analyze_organization_hierarchy",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3483_unique_3_digit_even_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3484_design_spreadsheet",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3485_longest_common_prefix_of_k_strings_after_removal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3486_longest_special_path_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3487_maximum_unique_subarray_sum_after_deletion",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3488_closest_equal_element_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3489_zero_array_transformation_iv",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3490_count_beautiful_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3491_phone_number_prefix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3492_maximum_containers_on_a_ship",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3493_properties_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3494_find_the_minimum_amount_of_time_to_brew_potions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3495_minimum_operations_to_make_array_elements_zero",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3496_maximize_score_after_pair_deletions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3497_analyze_subscription_conversion",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3498_reverse_degree_of_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3499_maximize_active_section_with_trade_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3500_minimum_cost_to_divide_array_into_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3501_maximize_active_section_with_trade_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3502_minimum_cost_to_reach_every_position",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3503_longest_palindrome_after_substring_concatenation_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3504_longest_palindrome_after_substring_concatenation_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3505_minimum_operations_to_make_elements_within_k_subarrays_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3506_find_time_required_to_eliminate_bacterial_strains",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3507_minimum_pair_removal_to_sort_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3508_implement_router",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3509_maximum_product_of_subsequences_with_an_alternating_sum_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3510_minimum_pair_removal_to_sort_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3511_make_a_positive_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3512_minimum_operations_to_make_array_sum_divisible_by_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3513_number_of_unique_xor_triplets_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3514_number_of_unique_xor_triplets_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3515_shortest_path_in_a_weighted_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3516_find_closest_person",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3517_smallest_palindromic_rearrangement_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3518_smallest_palindromic_rearrangement_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3519_count_numbers_with_non_decreasing_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3520_minimum_threshold_for_inversion_pairs_count",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3521_find_product_recommendation_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3522_calculate_score_after_performing_instructions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3523_make_array_non_decreasing",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3524_find_x_value_of_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3525_find_x_value_of_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3526_range_xor_queries_with_subarray_reversals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3527_find_the_most_common_response",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3528_unit_conversion_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3529_count_cells_in_overlapping_horizontal_and_vertical_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3530_maximum_profit_from_valid_topological_order_in_dag",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3531_count_covered_buildings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3532_path_existence_queries_in_a_graph_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3533_concatenated_divisibility",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3534_path_existence_queries_in_a_graph_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3535_unit_conversion_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3536_maximum_product_of_two_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3537_fill_a_special_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3538_merge_operations_for_minimum_travel_time",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3539_find_sum_of_array_product_of_magical_sequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3540_minimum_time_to_visit_all_houses",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3541_find_most_frequent_vowel_and_consonant",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3542_minimum_operations_to_convert_all_elements_to_zero",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3543_maximum_weighted_k_edge_path",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3544_subtree_inversion_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3545_minimum_deletions_for_at_most_k_distinct_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3546_equal_sum_grid_partition_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3547_maximum_sum_of_edge_values_in_a_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3548_equal_sum_grid_partition_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3549_multiply_two_polynomials",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3550_smallest_index_with_digit_sum_equal_to_index",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3551_minimum_swaps_to_sort_by_digit_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3552_grid_teleportation_traversal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3553_minimum_weighted_subgraph_with_the_required_paths_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3554_find_category_recommendation_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3555_smallest_subarray_to_sort_in_every_sliding_window",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3556_sum_of_largest_prime_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3557_find_maximum_number_of_non_intersecting_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3558_number_of_ways_to_assign_edge_weights_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3559_number_of_ways_to_assign_edge_weights_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3560_find_minimum_log_transportation_cost",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3561_resulting_string_after_adjacent_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3562_maximum_profit_from_trading_stocks_with_discounts",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3563_lexicographically_smallest_string_after_adjacent_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3564_seasonal_sales_analysis",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3565_sequential_grid_path_cover",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3566_partition_array_into_two_equal_product_subsets",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3567_minimum_absolute_difference_in_sliding_submatrix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3568_minimum_moves_to_clean_the_classroom",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3569_maximize_count_of_distinct_primes_after_split",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3570_find_books_with_no_available_copies",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3571_find_the_shortest_superstring_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3572_maximize_ysum_by_picking_a_triplet_of_distinct_xvalues",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3573_best_time_to_buy_and_sell_stock_v",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3574_maximize_subarray_gcd_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3575_maximum_good_subtree_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3576_transform_array_to_all_equal_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3577_count_the_number_of_computer_unlocking_permutations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3578_count_partitions_with_max_min_difference_at_most_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3579_minimum_steps_to_convert_string_with_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3580_find_consistently_improving_employees",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3581_count_odd_letters_from_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3582_generate_tag_for_video_caption",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3583_count_special_triplets",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3584_maximum_product_of_first_and_last_elements_of_a_subsequence",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3585_find_weighted_median_node_in_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3586_find_covid_recovery_patients",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3587_minimum_adjacent_swaps_to_alternate_parity",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3588_find_maximum_area_of_a_triangle",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3589_count_prime_gap_balanced_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3590_kth_smallest_path_xor_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3591_check_if_any_element_has_prime_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3592_inverse_coin_change",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3593_minimum_increments_to_equalize_leaf_paths",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3594_minimum_time_to_transport_all_individuals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3595_once_twice",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3596_minimum_cost_path_with_alternating_directions_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3597_partition_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3598_longest_common_prefix_between_adjacent_strings_after_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3599_partition_array_to_minimize_xor",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3600_maximize_spanning_tree_stability_with_upgrades",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3601_find_drivers_with_improved_fuel_efficiency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3602_hexadecimal_and_hexatrigesimal_conversion",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3603_minimum_cost_path_with_alternating_directions_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3604_minimum_time_to_reach_destination_in_directed_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3605_minimum_stability_factor_of_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3606_coupon_code_validator",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3607_power_grid_maintenance",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3608_minimum_time_for_k_connected_components",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3609_minimum_moves_to_reach_target_in_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3610_minimum_number_of_primes_to_sum_to_target",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3611_find_overbooked_employees",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3612_process_string_with_special_operations_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3613_minimize_maximum_component_cost",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3614_process_string_with_special_operations_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3615_longest_palindromic_path_in_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3616_number_of_student_replacements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3617_find_students_with_study_spiral_pattern",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3618_split_array_by_prime_indices",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3619_count_islands_with_total_value_divisible_by_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3620_network_recovery_pathways",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3621_number_of_integers_with_popcount_depth_equal_to_k_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3622_check_divisibility_by_digit_sum_and_product",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3623_count_number_of_trapezoids_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3624_number_of_integers_with_popcount_depth_equal_to_k_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3625_count_number_of_trapezoids_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3626_find_stores_with_inventory_imbalance",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3627_maximum_median_sum_of_subsequences_of_size_3",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3628_maximum_number_of_subsequences_after_one_inserting",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3629_minimum_jumps_to_reach_end_via_prime_teleportation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3630_partition_array_for_maximum_xor_and_and",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3631_sort_threats_by_severity_and_exploitability",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3632_subarrays_with_xor_at_least_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3633_earliest_finish_time_for_land_and_water_rides_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3634_minimum_removals_to_balance_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3635_earliest_finish_time_for_land_and_water_rides_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3636_threshold_majority_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3637_trionic_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3638_maximum_balanced_shipments",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3639_minimum_time_to_activate_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3640_trionic_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3641_longest_semi_repeating_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3642_find_books_with_polarized_opinions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3643_flip_square_submatrix_vertically",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3644_maximum_k_to_sort_a_permutation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3645_maximum_total_from_optimal_activation_order",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3646_next_special_palindrome_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3647_maximum_weight_in_two_bags",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3648_minimum_sensors_to_cover_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3649_number_of_perfect_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3650_minimum_cost_path_with_edge_reversals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3651_minimum_cost_path_with_teleportations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3652_best_time_to_buy_and_sell_stock_using_strategy",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3653_xor_after_range_multiplication_queries_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3654_minimum_sum_after_divisible_sum_deletions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3655_xor_after_range_multiplication_queries_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3656_determine_if_a_simple_graph_exists",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3657_find_loyal_customers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3658_gcd_of_odd_and_even_sums",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3659_partition_array_into_k_distinct_groups",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3660_jump_game_ix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3661_maximum_walls_destroyed_by_robots",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3662_filter_characters_by_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3663_find_the_least_frequent_digit",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3664_two_letter_card_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3665_twisted_mirror_path_count",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3666_minimum_operations_to_equalize_binary_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3667_sort_array_by_absolute_value",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3668_restore_finishing_order",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3669_balanced_k_factor_decomposition",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3670_maximum_product_of_two_integers_with_no_common_bits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3671_sum_of_beautiful_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3672_sum_of_weighted_modes_in_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3673_find_zombie_sessions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3674_minimum_operations_to_equalize_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3675_minimum_operations_to_transform_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3676_count_bowl_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3677_count_binary_palindromic_numbers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3678_smallest_absent_positive_greater_than_average",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3679_minimum_discards_to_balance_inventory",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3680_generate_schedule",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3681_maximum_xor_of_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3682_minimum_index_sum_of_common_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3683_earliest_time_to_finish_one_task",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3684_maximize_sum_of_at_most_k_distinct_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3685_subsequence_sum_after_capping_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3686_number_of_stable_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3687_library_late_fee_calculator",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3688_bitwise_or_of_even_numbers_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3689_maximum_total_subarray_value_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3690_split_and_merge_array_transformation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3691_maximum_total_subarray_value_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3692_majority_frequency_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3693_climbing_stairs_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3694_distinct_points_reachable_after_substring_removal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3695_maximize_alternating_sum_using_swaps",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3696_maximum_distance_between_unequal_words_in_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3697_compute_decimal_representation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3698_split_array_with_minimum_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3699_number_of_zigzag_arrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3700_number_of_zigzag_arrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3701_compute_alternating_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3702_longest_subsequence_with_non_zero_bitwise_xor",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3703_remove_k_balanced_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3704_count_no_zero_pairs_that_sum_to_n",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3705_find_golden_hour_customers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3706_maximum_distance_between_unequal_words_in_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3707_equal_score_substrings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3708_longest_fibonacci_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3709_design_exam_scores_tracker",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3710_maximum_partition_factor",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3711_maximum_transactions_without_negative_balance",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3712_sum_of_elements_with_frequency_divisible_by_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3713_longest_balanced_substring_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3714_longest_balanced_substring_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3715_sum_of_perfect_square_ancestors",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3716_find_churn_risk_customers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3717_minimum_operations_to_make_the_array_beautiful",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3718_smallest_missing_multiple_of_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3719_longest_balanced_subarray_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3720_lexicographically_smallest_permutation_greater_than_target",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3721_longest_balanced_subarray_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3722_lexicographically_smallest_string_after_reverse",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3723_maximize_sum_of_squares_of_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3724_minimum_operations_to_transform_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3725_count_ways_to_choose_coprime_integers_from_rows",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3726_remove_zeros_in_decimal_representation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3727_maximum_alternating_sum_of_squares",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3728_stable_subarrays_with_equal_boundary_and_interior_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3729_count_distinct_subarrays_divisible_by_k_in_sorted_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3730_maximum_calories_burnt_from_jumps",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3731_find_missing_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3732_maximum_product_of_three_elements_after_one_replacement",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3733_minimum_time_to_complete_all_deliveries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3734_lexicographically_smallest_palindromic_permutation_greater_than_target",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3735_lexicographically_smallest_string_after_reverse_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3736_minimum_moves_to_equal_array_elements_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3737_count_subarrays_with_majority_element_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3738_longest_non_decreasing_subarray_after_replacing_at_most_one_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3739_count_subarrays_with_majority_element_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3740_minimum_distance_between_three_equal_elements_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3741_minimum_distance_between_three_equal_elements_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3742_maximum_path_score_in_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3743_maximize_cyclic_partition_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3744_find_kth_character_in_expanded_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3745_maximize_expression_of_three_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3746_minimum_string_length_after_balanced_removals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3747_count_distinct_integers_after_removing_zeros",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3748_count_stable_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3749_evaluate_valid_expressions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3750_minimum_number_of_flips_to_reverse_binary_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3751_total_waviness_of_numbers_in_range_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3752_lexicographically_smallest_negated_permutation_that_sums_to_target",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3753_total_waviness_of_numbers_in_range_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3754_concatenate_non_zero_digits_and_multiply_by_sum_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3755_find_maximum_balanced_xor_subarray_length",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3756_concatenate_non_zero_digits_and_multiply_by_sum_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3757_number_of_effective_subsequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3758_convert_number_words_to_digits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3759_count_elements_with_at_least_k_greater_values",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3760_maximum_substrings_with_distinct_start",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3761_minimum_absolute_distance_between_mirror_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3762_minimum_operations_to_equalize_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3763_maximum_total_sum_with_threshold_constraints",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3764_most_common_course_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3765_complete_prime_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3766_minimum_operations_to_make_binary_palindrome",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3767_maximize_points_after_choosing_k_tasks",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3768_minimum_inversion_count_in_subarrays_of_fixed_length",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3769_sort_integers_by_binary_reflection",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3770_largest_prime_from_consecutive_prime_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3771_total_score_of_dungeon_runs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3772_maximum_subgraph_score_in_a_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3773_maximum_number_of_equal_length_runs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3774_absolute_difference_between_maximum_and_minimum_k_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3775_reverse_words_with_same_vowel_count",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3776_minimum_moves_to_balance_circular_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3777_minimum_deletions_to_make_alternating_substring",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3778_minimum_distance_excluding_one_maximum_weighted_edge",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3779_minimum_number_of_operations_to_have_distinct_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3780_maximum_sum_of_three_numbers_divisible_by_three",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3781_maximum_score_after_binary_swaps",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3782_last_remaining_integer_after_alternating_deletion_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3783_mirror_distance_of_an_integer",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3784_minimum_deletion_cost_to_make_all_characters_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3785_minimum_swaps_to_avoid_forbidden_values",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3786_total_sum_of_interaction_cost_in_tree_groups",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3787_find_diameter_endpoints_of_a_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3788_maximum_score_of_a_split",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3789_minimum_cost_to_acquire_required_items",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3790_smallest_all_ones_multiple",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3791_number_of_balanced_integers_in_a_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3792_sum_of_increasing_product_blocks",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3793_find_users_with_high_token_usage",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3794_reverse_string_prefix",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3795_minimum_subarray_length_with_distinct_sum_at_least_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3796_find_maximum_value_in_a_constrained_sequence",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3797_count_routes_to_climb_a_rectangular_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3798_largest_even_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3799_word_squares_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3800_minimum_cost_to_make_two_binary_strings_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3801_minimum_cost_to_merge_sorted_lists",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3802_number_of_ways_to_paint_sheets",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3803_count_residue_prefixes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3804_number_of_centered_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3805_count_caesar_cipher_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3806_maximum_bitwise_and_after_increment_operations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3807_minimum_cost_to_repair_edges_to_traverse_a_graph",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3808_find_emotionally_consistent_users",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3809_best_reachable_tower",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3810_minimum_operations_to_reach_target_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3811_number_of_alternating_xor_partitions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3812_minimum_edge_toggles_on_a_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3813_vowel_consonant_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3814_maximum_capacity_within_budget",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3815_design_auction_system",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3816_lexicographically_smallest_string_after_deleting_duplicate_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3817_good_indices_in_a_digit_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3818_minimum_prefix_removal_to_make_array_strictly_increasing",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3819_rotate_non_negative_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3820_pythagorean_distance_nodes_in_a_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3821_find_nth_smallest_integer_with_k_one_bits",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3822_design_order_management_system",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3823_reverse_letters_then_special_characters_in_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3824_minimum_k_to_reduce_array_within_limit",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3825_longest_strictly_increasing_subsequence_with_non_zero_bitwise_and",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3826_minimum_partition_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3827_count_monobit_integers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3828_final_element_after_subarray_deletions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3829_design_ride_sharing_system",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3830_longest_alternating_subarray_after_removing_at_most_one_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3831_median_of_a_binary_search_tree_level",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3832_find_users_with_persistent_behavior_patterns",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3833_count_dominant_indices",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3834_merge_adjacent_equal_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3835_count_subarrays_with_cost_less_than_or_equal_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3836_maximum_score_using_exactly_k_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3837_delayed_count_of_equal_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3838_weighted_word_mapping",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3839_number_of_prefix_connected_groups",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3840_house_robber_v",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3841_palindromic_path_queries_in_a_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3842_toggle_light_bulbs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3843_first_element_with_unique_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3844_longest_almost_palindromic_substring",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3845_maximum_subarray_xor_with_bounded_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3846_total_distance_to_type_a_string_using_one_finger",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3847_find_the_score_difference_in_a_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3848_check_digitorial_permutation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3849_maximum_bitwise_xor_after_rearrangement",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3850_count_sequences_to_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3851_maximum_requests_without_violating_the_limit",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3852_smallest_pair_with_different_frequencies",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3853_merge_close_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3854_minimum_operations_to_make_array_parity_alternating",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3855_sum_of_k_digit_numbers_in_a_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3856_trim_trailing_vowels",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3857_minimum_cost_to_split_into_ones",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3858_minimum_bitwise_or_from_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3859_count_subarrays_with_k_distinct_integers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3860_unique_email_groups",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3861_minimum_capacity_box",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3862_find_the_smallest_balanced_index",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3863_minimum_operations_to_sort_a_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3864_minimum_cost_to_partition_a_binary_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3865_reverse_k_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3866_first_unique_even_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3867_sum_of_gcd_of_formed_pairs",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3868_minimum_cost_to_equalize_arrays_using_swaps",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3869_count_fancy_numbers_in_a_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3870_count_commas_in_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3871_count_commas_in_range_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3872_longest_arithmetic_sequence_after_changing_at_most_one_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3873_maximum_points_activated_with_one_addition",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3874_valid_subarrays_with_exactly_one_peak",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3875_construct_uniform_parity_array_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3876_construct_uniform_parity_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3877_minimum_removals_to_achieve_target_xor",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3878_count_good_subarrays",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3879_maximum_distinct_path_sum_in_a_binary_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3880_minimum_absolute_difference_between_two_values",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3881_direction_assignments_with_exactly_k_visible_people",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3882_minimum_xor_path_in_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3883_count_non_decreasing_arrays_with_given_digit_sums",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3884_first_matching_character_from_both_ends",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3885_design_event_manager",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3886_sum_of_sortable_integers",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3887_incremental_even_weighted_cycle_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3888_minimum_operations_to_make_all_grid_elements_equal",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3889_mirror_frequency_distance",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3890_integers_with_multiple_sum_of_two_cubes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3891_minimum_increase_to_maximize_special_indices",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3892_minimum_operations_to_achieve_at_least_k_peaks",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3893_maximum_team_size_with_overlapping_intervals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3894_traffic_signal_color",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3895_count_digit_appearances",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3896_minimum_operations_to_transform_array_into_alternating_prime",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3897_maximum_value_of_concatenated_binary_segments",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3898_find_the_degree_of_each_vertex",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3899_angles_of_a_triangle",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3900_longest_balanced_substring_after_one_swap",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3901_good_subsequence_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3902_zigzag_level_sum_of_binary_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3903_smallest_stable_index_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3904_smallest_stable_index_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3905_multi_source_flood_fill",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3906_count_good_integers_on_a_grid_path",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3907_count_smaller_elements_with_opposite_parity",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3908_valid_digit_number",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3909_compare_sums_of_bitonic_parts",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3910_count_connected_subgraphs_with_even_node_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3911_k_th_smallest_remaining_even_integer_in_subarray_queries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3912_valid_elements_in_an_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3913_sort_vowels_by_frequency",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3914_minimum_operations_to_make_array_non_decreasing",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3915_maximum_sum_of_alternating_subsequence_with_distance_at_least_k",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3916_number_of_zigzag_arrays_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3917_count_indices_with_opposite_parity",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3918_sum_of_primes_between_number_and_its_reverse",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3919_minimum_cost_to_move_between_indices",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3920_maximize_fixed_points_after_deletions",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3921_score_validator",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3922_minimum_flips_to_make_binary_string_coherent",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3923_minimum_generations_to_target_point",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3924_minimum_threshold_path_with_limited_heavy_edges",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3925_concatenate_array_with_reverse",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3926_count_valid_word_occurrences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3927_minimize_array_sum_using_divisible_replacements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3928_minimum_cost_to_buy_apples_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3929_minimum_partition_score_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3930_power_update_after_k_th_largest_insertion_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3931_check_adjacent_digit_differences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3932_count_k_th_roots_in_a_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3933_largest_local_values_in_a_matrix_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3934_smallest_unique_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3935_power_update_after_k_th_largest_insertion_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3936_minimum_swaps_to_move_zeros_to_end",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3937_minimum_operations_to_make_array_modulo_alternating_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3938_maximum_path_intersection_sum_in_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3939_count_non_adjacent_subsets_in_a_rooted_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3940_limit_occurrences_in_sorted_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3941_password_strength",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3942_minimum_operations_to_sort_a_permutation",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3943_number_of_pairs_after_increment",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3944_minimum_operations_to_make_array_modulo_alternating_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3945_digit_frequency_score",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3946_maximum_number_of_items_from_sale_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3947_maximum_number_of_items_from_sale_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3948_lexicographically_maximum_mex_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3949_subtree_inversion_sum_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3950_exactly_one_consecutive_set_bits_pair",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3951_minimum_energy_to_maintain_brightness",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3952_maximum_total_value_of_covered_indices",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3953_maximum_score_with_co_prime_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3954_sum_of_compatible_numbers_in_range_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3955_valid_binary_strings_with_cost_limit",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3956_maximum_sum_of_m_non_overlapping_subarrays_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3957_maximum_sum_of_m_non_overlapping_subarrays_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3958_minimum_cost_to_split_into_ones_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3959_check_good_integer",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3960_frequency_balance_subarray",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3961_maximize_sum_of_device_ratings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3962_maximum_subarray_sum_after_at_most_k_swaps",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3963_create_grid_with_exactly_one_path",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3964_minimum_lights_to_illuminate_a_road",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3965_finish_time_of_tasks_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3966_count_good_integers_in_a_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3967_finish_time_of_tasks_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3968_maximum_manhattan_distance_after_all_moves",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3969_valid_subarrays_with_matching_sum_digits_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3970_shortest_path_with_at_most_k_consecutive_identical_characters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3971_maximum_total_value",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3972_valid_subarrays_with_matching_sum_digits_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3973_distinct_gate_paths_to_lca",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3974_maximum_total_sum_of_k_selected_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3975_filter_occupied_intervals",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3976_maximum_subarray_sum_after_multiplier",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3977_minimum_time_to_reach_target_with_limited_power",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3978_unique_middle_element",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3979_maximum_valid_pair_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3980_minimum_operations_to_transform_binary_string",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3981_count_distinct_ways_to_form_target_from_two_strings",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3982_sum_of_integers_with_maximum_digit_range",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3983_subsequence_after_one_replacement",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3984_divisible_game",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3985_palindromic_subarray_sum",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3986_number_of_elapsed_seconds_between_two_times",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3987_minimum_total_cost_to_process_all_elements",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3988_create_grid_with_exactly_k_paths_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3989_maximum_consistent_columns_in_a_grid",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3990_create_grid_with_exactly_k_paths_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
       "folder": "3991_sort_array_using_prefix_reversals",
       "languages": [
         "python",
@@ -32810,6 +38750,60 @@
         "kotlin",
         "scala",
         "swift"
+      ]
+    },
+    {
+      "folder": "3992_rearrange_string_to_avoid_character_pair",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3993_maximum_value_of_an_alternating_sequence",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3994_minimum_adjacent_swaps_to_partition_array",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3995_minimum_cost_to_convert_string_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3996_even_number_of_knight_moves",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3997_count_dominant_nodes_in_a_binary_tree",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3998_transform_binary_string_using_subsequence_sort",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "3999_minimum_number_of_string_groups_through_transformations",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4000_largest_integer_with_given_digit_sum",
+      "languages": [
+        "c"
       ]
     }
   ]

@@ -1,5 +1,32 @@
-﻿// LeetCode 3118 - Friday Purchase III 
+// LeetCode 3118 - Friday Purchase III
 // https://leetcode.com/problems/friday-purchase-iii/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH RECURSIVE\n"
+    "    T AS (\n"
+    "        SELECT 1 AS week_of_month\n"
+    "        UNION\n"
+    "        SELECT week_of_month + 1\n"
+    "        FROM T\n"
+    "        WHERE week_of_month < 4\n"
+    "    ),\n"
+    "    M AS (\n"
+    "        SELECT 'Premium' AS membership\n"
+    "        UNION\n"
+    "        SELECT 'VIP'\n"
+    "    ),\n"
+    "    P AS (\n"
+    "        SELECT CEIL(DAYOFMONTH(purchase_date) / 7) AS week_of_month, membership, amount_spend\n"
+    "        FROM\n"
+    "            Purchases\n"
+    "            JOIN Users USING (user_id)\n"
+    "        WHERE DAYOFWEEK(purchase_date) = 6\n"
+    "    )\n"
+    "SELECT week_of_month, membership, IFNULL(SUM(amount_spend), 0) AS total_amount\n"
+    "FROM\n"
+    "    T\n"
+    "    JOIN M\n"
+    "    LEFT JOIN P USING (week_of_month, membership)\n"
+    "GROUP BY 1, 2\n"
+    "ORDER BY 1, 2;\n";

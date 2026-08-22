@@ -1,5 +1,44 @@
-﻿// LeetCode 3230 - Customer Purchasing Behavior Analysis
+// LeetCode 3230 - Customer Purchasing Behavior Analysis
 // https://leetcode.com/problems/customer-purchasing-behavior-analysis/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH\n"
+    "    T AS (\n"
+    "        SELECT *\n"
+    "        FROM\n"
+    "            Transactions\n"
+    "            JOIN Products USING (product_id)\n"
+    "    ),\n"
+    "    P AS (\n"
+    "        SELECT\n"
+    "            customer_id,\n"
+    "            category,\n"
+    "            COUNT(1) cnt,\n"
+    "            MAX(transaction_date) max_date\n"
+    "        FROM T\n"
+    "        GROUP BY 1, 2\n"
+    "    ),\n"
+    "    R AS (\n"
+    "        SELECT\n"
+    "            customer_id,\n"
+    "            category,\n"
+    "            RANK() OVER (\n"
+    "                PARTITION BY customer_id\n"
+    "                ORDER BY cnt DESC, max_date DESC\n"
+    "            ) rk\n"
+    "        FROM P\n"
+    "    )\n"
+    "SELECT\n"
+    "    t.customer_id,\n"
+    "    ROUND(SUM(amount), 2) total_amount,\n"
+    "    COUNT(1) transaction_count,\n"
+    "    COUNT(DISTINCT t.category) unique_categories,\n"
+    "    ROUND(AVG(amount), 2) avg_transaction_amount,\n"
+    "    r.category top_category,\n"
+    "    ROUND(COUNT(1) * 10 + SUM(amount) / 100, 2) loyalty_score\n"
+    "FROM\n"
+    "    T t\n"
+    "    JOIN R r ON t.customer_id = r.customer_id AND r.rk = 1\n"
+    "GROUP BY 1\n"
+    "ORDER BY 7 DESC, 1;\n";

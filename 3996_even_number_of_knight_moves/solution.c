@@ -1,5 +1,10 @@
-﻿// LeetCode 3996 - Even Number of Knight Moves
+// LeetCode 3996 - Even Number of Knight Moves
 // https://leetcode.com/problems/even-number-of-knight-moves/
 
-void solve() {
+#include <stdbool.h>
+
+bool canReach(int* start, int startSize, int* target, int targetSize) {
+    (void)startSize;
+    (void)targetSize;
+    return ((start[0] + start[1]) % 2) == ((target[0] + target[1]) % 2);
 }

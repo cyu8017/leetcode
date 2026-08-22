@@ -1,5 +1,37 @@
-﻿// LeetCode 3401 - Find Circular Gift Exchange Chains
+// LeetCode 3401 - Find Circular Gift Exchange Chains
 // https://leetcode.com/problems/find-circular-gift-exchange-chains/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH RECURSIVE cycles_cte AS (\n"
+    "    SELECT giver_id,\n"
+    "           receiver_id,\n"
+    "           gift_value,\n"
+    "           giver_id AS start\n"
+    "    FROM SecretSanta\n"
+    "    UNION\n"
+    "    SELECT s.giver_id,\n"
+    "           s.receiver_id,\n"
+    "           s.gift_value,\n"
+    "           c.start\n"
+    "    FROM SecretSanta s\n"
+    "    INNER JOIN cycles_cte c ON s.giver_id = c.receiver_id AND s.giver_id != c.start\n"
+    "),\n"
+    "cycle_start_length_value_triples_cte AS (\n"
+    "    SELECT start,\n"
+    "           COUNT(*) AS chain_length,\n"
+    "           SUM(gift_value) AS total_gift_value\n"
+    "    FROM cycles_cte\n"
+    "    GROUP BY 1\n"
+    "    ORDER BY NULL\n"
+    "),\n"
+    "unique_cycle_length_value_pairs_cte AS (\n"
+    "    SELECT chain_length, total_gift_value\n"
+    "    FROM cycle_start_length_value_triples_cte\n"
+    "    GROUP BY 1, 2\n"
+    "    ORDER BY NULL\n"
+    ")\n"
+    "SELECT RANK() OVER (ORDER BY chain_length DESC, total_gift_value DESC) AS chain_id,\n"
+    "       chain_length,\n"
+    "       total_gift_value\n"
+    "FROM unique_cycle_length_value_pairs_cte;\n";
