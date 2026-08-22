@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "maxSubgraphScore",
   "paramOrder": [
     "n",
     "edges",

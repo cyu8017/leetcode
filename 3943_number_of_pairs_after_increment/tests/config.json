@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "numberOfPairs",
   "paramOrder": [
     "nums1",
     "nums2",

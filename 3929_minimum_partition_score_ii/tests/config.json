@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "minPartitionScore",
   "paramOrder": [
     "nums",
     "k"

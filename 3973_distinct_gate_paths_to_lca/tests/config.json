@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "gatePathXor",
   "paramOrder": [
     "n",
     "parent",

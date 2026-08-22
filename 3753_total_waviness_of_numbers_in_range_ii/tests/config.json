@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "totalWaviness",
   "paramOrder": [
     "num1",
     "num2"

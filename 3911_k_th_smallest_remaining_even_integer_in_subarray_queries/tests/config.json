@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "kthSmallestEven",
   "paramOrder": [
     "nums",
     "queries"

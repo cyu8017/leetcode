@@ -1,6 +1,6 @@
 {
   "class": "Solution",
-  "method": "solve",
+  "method": "countWays",
   "paramOrder": [
     "word1",
     "word2",
