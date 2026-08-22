@@ -1,5 +1,8 @@
-﻿// LeetCode 1378 - Replace Employee ID With The Unique Identifier
+// LeetCode 1378 - Replace Employee ID With The Unique Identifier
 // https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "SELECT euni.unique_id, e.name\n"
+    "FROM Employees e\n"
+    "LEFT JOIN EmployeeUNI euni ON e.id = euni.id\n";

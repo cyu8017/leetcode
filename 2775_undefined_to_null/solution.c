@@ -1,5 +1,7 @@
-﻿// LeetCode 2775 - Undefined to Null
+// LeetCode 2775 - Undefined to Null
 // https://leetcode.com/problems/undefined-to-null/
+// JS-only problem; identity stand-in matching Go stub.
 
-void solve() {
+void* undefinedToNull(void* obj) {
+    return obj;
 }

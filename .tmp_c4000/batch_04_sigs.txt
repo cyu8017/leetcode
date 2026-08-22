@@ -1,0 +1,257 @@
+### 3452_sum_of_good_numbers
+func sumOfGoodNumbers(nums []int, k int) int {
+### 3453_separate_squares_i
+func separateSquares(squares [][]int) float64 {
+### 3454_separate_squares_ii
+func separateSquares(squares [][]int) float64 {
+func separateSquaresI(squares [][]int) float64 {
+### 3455_shortest_matching_substring
+func shortestMatchingSubstring(s string, p string) int {
+func sortSearch(arr []int, x int) int {
+### 3456_find_special_substring_of_length_k
+func hasSpecialSubstring(s string, k int) bool {
+### 3457_eat_pizzas
+func maxWeight(pizzas []int) int64 {
+### 3458_select_k_disjoint_special_substrings
+func maxSubstringLength(s string, k int) bool {
+### 3459_length_of_longest_v_shaped_diagonal_segment
+func lenOfVDiagonal(grid [][]int) int {
+### 3460_longest_common_prefix_after_at_most_one_removal
+func longestCommonPrefix(s string, t string) int {
+### 3461_check_if_digits_are_equal_in_string_after_operations_i
+func hasSameDigits(s string) bool {
+### 3462_maximum_sum_with_at_most_k_elements
+func (h minH) Len() int            { return len(h) }
+func (h minH) Less(i, j int) bool  { return h[i] < h[j] }
+func (h minH) Swap(i, j int)       { h[i], h[j] = h[j], h[i] }
+func (h *minH) Push(x interface{}) { *h = append(*h, x.(int)) }
+func (h *minH) Pop() interface{} {
+func maxSum(grid [][]int, limits []int, k int) int64 {
+### 3463_check_if_digits_are_equal_in_string_after_operations_ii
+func hasSameDigits(s string) bool {
+func combineDigit(s string, n, offset int) int {
+func binomMod10(n, k int) int {
+func binomMod(n, k, p int) int {
+func modInvPrime(a, p int) int {
+func modPowP(a, e, p int) int {
+func crt(a1, m1, a2, m2 int) int {
+func evalMod(s string, n, mod int) int { return 0 }
+### 3464_maximize_the_distance_between_points_on_a_square
+func maxDistance(side int, points [][]int, k int) int {
+func minDist(a, b, perim int) int {
+func canPlace(arr []int, perim, k, mid int) bool {
+### 3466_maximum_coin_collection
+func maxCoins(lane1 []int, lane2 []int) int64 {
+func max64(a, b int64) int64 {
+### 3467_transform_array_by_parity
+func transformArray(nums []int) []int {
+### 3468_find_the_number_of_copy_arrays
+func countArrays(original []int, bounds [][]int) int {
+### 3469_find_minimum_cost_to_remove_array_elements
+func minCost(nums []int) int {
+func min3(a, b, c int) int {
+func max2(a, b int) int {
+### 3470_permutations_iv
+func permute(n int, k int64) []int {
+### 3471_find_the_largest_almost_missing_integer
+func largestInteger(nums []int, k int) int {
+### 3472_longest_palindromic_subsequence_after_at_most_k_operations
+func longestPalindromicSubsequence(s string, k int) int {
+func distCirc(a, b byte) int {
+### 3473_sum_of_k_subarrays_with_length_at_least_m
+func maxSum(nums []int, k int, m int) int {
+### 3474_lexicographically_smallest_generated_string
+func generateString(str1 string, str2 string) string {
+### 3476_maximize_profit_from_task_assignment
+func maxProfit(workers []int, tasks [][]int) int64 {
+### 3477_fruits_into_baskets_ii
+func numOfUnplacedFruits(fruits []int, baskets []int) int {
+### 3478_choose_k_elements_with_maximum_sum
+func (h mh3478) Len() int            { return len(h) }
+func (h mh3478) Less(i, j int) bool  { return h[i] < h[j] }
+func (h mh3478) Swap(i, j int)       { h[i], h[j] = h[j], h[i] }
+func (h *mh3478) Push(x interface{}) { *h = append(*h, x.(int)) }
+func (h *mh3478) Pop() interface{} {
+func findMaxSum(nums1 []int, nums2 []int, k int) []int64 {
+### 3479_fruits_into_baskets_iii
+func numOfUnplacedFruits(fruits []int, baskets []int) int {
+### 3480_maximize_subarrays_after_removing_one_conflicting_pair
+func maxSubarrays(n int, conflictingPairs [][]int) int64 {
+### 3481_apply_substitutions
+func applySubstitutions(replacements [][]string, text string) string {
+### 3483_unique_3_digit_even_numbers
+func totalNumbers(digits []int) int {
+### 3484_design_spreadsheet
+func Constructor(rows int) Spreadsheet {
+func (this *Spreadsheet) SetCell(cell string, value int) {
+func (this *Spreadsheet) ResetCell(cell string) {
+func (this *Spreadsheet) GetValue(formula string) int {
+### 3485_longest_common_prefix_of_k_strings_after_removal
+func longestCommonPrefix(words []string, k int) []int {
+func sortStrings(a []string) {
+func lcpOf(a []string) int {
+### 3486_longest_special_path_ii
+func longestSpecialPath(edges [][]int, nums []int) []int {
+### 3487_maximum_unique_subarray_sum_after_deletion
+func maxSum(nums []int) int {
+### 3488_closest_equal_element_queries
+func solveQueries(nums []int, queries []int) []int {
+### 3489_zero_array_transformation_iv
+func minZeroArray(nums []int, queries [][]int) int {
+func canSubsetSum(vals []int, target int) bool {
+### 3490_count_beautiful_numbers
+func beautifulNumbers(l int, r int) int {
+func countBeautiful(n int) int {
+func itoa3490(x int) string {
+### 3491_phone_number_prefix
+func phonePrefix(numbers []string) bool {
+### 3492_maximum_containers_on_a_ship
+func maxContainers(n int, w int, maxWeight int) int {
+### 3493_properties_graph
+func numberOfComponents(properties [][]int, k int) int {
+### 3494_find_the_minimum_amount_of_time_to_brew_potions
+func minTime(skill []int, mana []int) int64 {
+### 3495_minimum_operations_to_make_array_elements_zero
+func minOperations(queries [][]int) int64 {
+### 3496_maximize_score_after_pair_deletions
+func maximizeScore(nums []int) int {
+### 3498_reverse_degree_of_a_string
+func reverseDegree(s string) int {
+### 3499_maximize_active_section_with_trade_i
+func maxActiveSectionsAfterTrade(s string) int {
+### 3500_minimum_cost_to_divide_array_into_subarrays
+func minimumCost(nums []int, cost []int, k int) int64 {
+### 3501_maximize_active_section_with_trade_ii
+func maxActiveSectionsAfterTrade(s string, queries [][]int) []int {
+### 3502_minimum_cost_to_reach_every_position
+func minCosts(cost []int) []int {
+### 3503_longest_palindrome_after_substring_concatenation_i
+func longestPalindrome(s, t string) int {
+func calc(s string) []int {
+func expand(s string, g []int, l, r int) {
+func reverse(s string) string {
+### 3504_longest_palindrome_after_substring_concatenation_ii
+func longestPalindrome(s, t string) int {
+func calc(s string) []int {
+func expand(s string, g []int, l, r int) {
+func reverse(s string) string {
+### 3505_minimum_operations_to_make_elements_within_k_subarrays_equal
+func minOperations(nums []int, x int, k int) int64 {
+### 3506_find_time_required_to_eliminate_bacterial_strains
+func minEliminationTime(timeReq []int, splitTime int) int64 {
+func (h *hp) Push(v any) { h.IntSlice = append(h.IntSlice, v.(int)) }
+func (h *hp) Pop() any {
+### 3507_minimum_pair_removal_to_sort_array_i
+func minimumPairRemoval(nums []int) int {
+### 3508_implement_router
+func Constructor(memoryLimit int) Router {
+func (this *Router) f(a, b, c int) int64 {
+func (this *Router) AddPacket(source int, destination int, timestamp int) bool {
+func (this *Router) ForwardPacket() []int {
+func (this *Router) GetCount(destination int, startTime int, endTime int) int {
+### 3509_maximum_product_of_subsequences_with_an_alternating_sum_equal_to_k
+func maxProduct(nums []int, k int, limit int) int {
+func abs(x int) int {
+func max(a, b int) int {
+### 3510_minimum_pair_removal_to_sort_array_ii
+func minimumPairRemoval(nums []int) (ans int) {
+### 3511_make_a_positive_array
+func makeArrayPositive(nums []int) (ans int) {
+### 3512_minimum_operations_to_make_array_sum_divisible_by_k
+func minOperations(nums []int, k int) (ans int) {
+### 3513_number_of_unique_xor_triplets_i
+func uniqueXorTriplets(nums []int) int {
+### 3514_number_of_unique_xor_triplets_ii
+func uniqueXorTriplets(nums []int) int {
+### 3515_shortest_path_in_a_weighted_tree
+func treeQueries(n int, edges [][]int, queries [][]int) []int {
+### 3516_find_closest_person
+func findClosest(x int, y int, z int) int {
+func abs(x int) int {
+### 3517_smallest_palindromic_rearrangement_i
+func smallestPalindrome(s string) string {
+### 3518_smallest_palindromic_rearrangement_ii
+func smallestPalindrome(s string, k int) string {
+### 3519_count_numbers_with_non_decreasing_digits
+func countNumbers(l string, r string, b int) int {
+### 3520_minimum_threshold_for_inversion_pairs_count
+func minThreshold(nums []int, k int) int {
+func countInv(nums []int, k, threshold int) bool {
+### 3522_calculate_score_after_performing_instructions
+func calculateScore(instructions []string, values []int) (ans int64) {
+### 3523_make_array_non_decreasing
+func maximumPossibleSize(nums []int) int {
+### 3524_find_x_value_of_array_i
+func resultArray(nums []int, k int) []int64 {
+### 3525_find_x_value_of_array_ii
+func resultArray(nums []int, k int, queries [][]int) []int {
+### 3526_range_xor_queries_with_subarray_reversals
+func getResults(nums []int, queries [][]int) []int {
+### 3527_find_the_most_common_response
+func findCommonResponse(responses [][]string) string {
+### 3528_unit_conversion_i
+func baseUnitConversions(conversions [][]int) []int {
+### 3529_count_cells_in_overlapping_horizontal_and_vertical_substrings
+func countCells(grid [][]byte, pattern string) int {
+### 3530_maximum_profit_from_valid_topological_order_in_dag
+func maxProfit(n int, edges [][]int, score []int) int {
+### 3531_count_covered_buildings
+func countCoveredBuildings(n int, buildings [][]int) (ans int) {
+### 3532_path_existence_queries_in_a_graph_i
+func pathExistenceQueries(n int, nums []int, maxDiff int, queries [][]int) (ans []bool) {
+### 3533_concatenated_divisibility
+func concatenatedDivisibility(nums []int, k int) []int {
+### 3534_path_existence_queries_in_a_graph_ii
+func pathExistenceQueries(n int, nums []int, maxDiff int, queries [][]int) []int {
+### 3535_unit_conversion_ii
+func queryConversions(conversions [][]int, queries [][]int) []int {
+### 3536_maximum_product_of_two_digits
+func maxProduct(n int) int {
+### 3537_fill_a_special_grid
+func specialGrid(n int) [][]int {
+### 3538_merge_operations_for_minimum_travel_time
+func minTravelTime(l int, n int, k int, position []int, time []int) int {
+### 3539_find_sum_of_array_product_of_magical_sequences
+func init() {
+func qpow(a, k int64) int64 {
+func comb(m, n int) int64 {
+func magicalSum(m int, k int, nums []int) int {
+### 3540_minimum_time_to_visit_all_houses
+func minTotalTime(forward []int, backward []int, queries []int) int64 {
+### 3541_find_most_frequent_vowel_and_consonant
+func maxFreqSum(s string) int {
+### 3542_minimum_operations_to_convert_all_elements_to_zero
+func minOperations(nums []int) int {
+### 3543_maximum_weighted_k_edge_path
+func maxWeight(n int, edges [][]int, k int, t int) int {
+### 3544_subtree_inversion_sum
+func subtreeInversionSum(edges [][]int, nums []int, k int) int64 {
+### 3545_minimum_deletions_for_at_most_k_distinct_characters
+func minDeletion(s string, k int) (ans int) {
+### 3546_equal_sum_grid_partition_i
+func canPartitionGrid(grid [][]int) bool {
+### 3547_maximum_sum_of_edge_values_in_a_graph
+func maxScore(n int, edges [][]int) int64 {
+### 3548_equal_sum_grid_partition_ii
+func canPartitionGrid(grid [][]int) bool {
+func check(g [][]int) bool {
+func rotate(grid [][]int) [][]int {
+### 3549_multiply_two_polynomials
+func multiply(poly1 []int, poly2 []int) []int64 {
+func fft(a []complex128, invert bool) {
+### 3550_smallest_index_with_digit_sum_equal_to_index
+func smallestIndex(nums []int) int {
+### 3551_minimum_swaps_to_sort_by_digit_sum
+func minSwaps(nums []int) int {
+func f(x int) int {
+### 3552_grid_teleportation_traversal
+func minMoves(matrix []string) int {
+### 3553_minimum_weighted_subgraph_with_the_required_paths_ii
+func minimumWeight(edges [][]int, queries [][]int) []int {
+### 3555_smallest_subarray_to_sort_in_every_sliding_window
+func minSubarraySort(nums []int, k int) []int {
+### 3556_sum_of_largest_prime_substrings
+func sumOfLargestPrimes(s string) (ans int64) {
+func isPrime(x int64) bool {
+### 3557_find_maximum_number_of_non_intersecting_substrings
+func maxSubstrings(word string) int {

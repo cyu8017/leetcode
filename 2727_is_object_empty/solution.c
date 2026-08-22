@@ -1,5 +1,8 @@
-﻿// LeetCode 2727 - Is Object Empty
+// LeetCode 2727 - Is Object Empty
 // https://leetcode.com/problems/is-object-empty/
 
-void solve() {
+#include <stdbool.h>
+
+bool isEmpty(int size) {
+    return size == 0;
 }

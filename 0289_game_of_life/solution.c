@@ -1,4 +1,4 @@
-﻿// LeetCode 0289 - Game of Life
+// LeetCode 0289 - Game of Life
 // https://leetcode.com/problems/game-of-life/
 
 void gameOfLife(int** board, int boardSize, int* boardColSize) {

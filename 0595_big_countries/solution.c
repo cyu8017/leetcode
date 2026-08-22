@@ -1,5 +1,8 @@
-﻿// LeetCode 0595 - Big Countries
+// LeetCode 0595 - Big Countries
 // https://leetcode.com/problems/big-countries/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "SELECT name, population, area\n"
+    "FROM World\n"
+    "WHERE area >= 3000000 OR population >= 25000000\n";

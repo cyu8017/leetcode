@@ -1,4 +1,4 @@
-﻿// LeetCode 0053 - Maximum Subarray
+// LeetCode 0053 - Maximum Subarray
 // https://leetcode.com/problems/maximum-subarray/
 
 int maxSubArray(int* nums, int numsSize) {

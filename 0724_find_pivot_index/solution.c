@@ -1,4 +1,4 @@
-﻿// LeetCode 0724 - Find Pivot Index
+// LeetCode 0724 - Find Pivot Index
 // https://leetcode.com/problems/find-pivot-index/
 
 int pivotIndex(int* nums, int numsSize) {

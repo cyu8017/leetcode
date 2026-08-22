@@ -1,4 +1,4 @@
-﻿// LeetCode 0139 - Word Break
+// LeetCode 0139 - Word Break
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>

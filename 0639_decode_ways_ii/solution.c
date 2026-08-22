@@ -1,4 +1,4 @@
-﻿// LeetCode 0639 - Decode Ways II
+// LeetCode 0639 - Decode Ways II
 // https://leetcode.com/problems/decode-ways-ii/
 
 static int one(char ch) {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0303 - Range Sum Query - Immutable
+// LeetCode 0303 - Range Sum Query - Immutable
 // https://leetcode.com/problems/range-sum-query-immutable/
 
 #include <stdlib.h>

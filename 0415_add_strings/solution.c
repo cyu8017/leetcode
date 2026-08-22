@@ -1,4 +1,4 @@
-﻿// LeetCode 0415 - Add Strings
+// LeetCode 0415 - Add Strings
 // https://leetcode.com/problems/add-strings/
 
 #include <stdlib.h>

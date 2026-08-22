@@ -1,4 +1,4 @@
-﻿// LeetCode 0130 - Surrounded Regions
+// LeetCode 0130 - Surrounded Regions
 // https://leetcode.com/problems/surrounded-regions/
 
 static void mark(char** board,int rows,int* cols,int row,int col){if(row<0||row==rows||col<0||col==cols[row]||board[row][col]!='O')return;board[row][col]='E';mark(board,rows,cols,row+1,col);mark(board,rows,cols,row-1,col);mark(board,rows,cols,row,col+1);mark(board,rows,cols,row,col-1);}

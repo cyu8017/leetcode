@@ -1,4 +1,4 @@
-﻿// LeetCode 0527 - Word Abbreviation
+// LeetCode 0527 - Word Abbreviation
 // https://leetcode.com/problems/word-abbreviation/
 
 #include <stdbool.h>

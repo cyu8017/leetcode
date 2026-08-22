@@ -1,4 +1,4 @@
-﻿// LeetCode 0519 - Random Flip Matrix
+// LeetCode 0519 - Random Flip Matrix
 // https://leetcode.com/problems/random-flip-matrix/
 
 #include <stdlib.h>

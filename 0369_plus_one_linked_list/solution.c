@@ -1,4 +1,4 @@
-﻿// LeetCode 0369 - Plus One Linked List
+// LeetCode 0369 - Plus One Linked List
 // https://leetcode.com/problems/plus-one-linked-list/
 
 #include <stdlib.h>

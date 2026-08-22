@@ -1,4 +1,4 @@
-﻿// LeetCode 0284 - Peeking Iterator
+// LeetCode 0284 - Peeking Iterator
 // https://leetcode.com/problems/peeking-iterator/
 
 #include <stdbool.h>

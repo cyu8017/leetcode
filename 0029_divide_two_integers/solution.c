@@ -1,4 +1,4 @@
-﻿// LeetCode 0029 - Divide Two Integers
+// LeetCode 0029 - Divide Two Integers
 // https://leetcode.com/problems/divide-two-integers/
 
 #include <limits.h>

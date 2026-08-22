@@ -1,4 +1,4 @@
-﻿// LeetCode 0063 - Unique Paths II
+// LeetCode 0063 - Unique Paths II
 // https://leetcode.com/problems/unique-paths-ii/
 
 int uniquePathsWithObstacles(int** obstacleGrid, int obstacleGridSize, int* obstacleGridColSize) {

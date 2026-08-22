@@ -1,4 +1,4 @@
-﻿// LeetCode 0648 - Replace Words
+// LeetCode 0648 - Replace Words
 // https://leetcode.com/problems/replace-words/
 
 #define _POSIX_C_SOURCE 200809L

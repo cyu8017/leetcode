@@ -1,4 +1,4 @@
-﻿// LeetCode 0113 - Path Sum II
+// LeetCode 0113 - Path Sum II
 #include <stdlib.h>
 struct TreeNode { int val; struct TreeNode *left, *right; };
 static void dfs(struct TreeNode* n,int sum,int* path,int len,int*** out,int** cols,int* size) {

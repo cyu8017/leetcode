@@ -1,4 +1,4 @@
-﻿// LeetCode 0187 - Repeated DNA Sequences
+// LeetCode 0187 - Repeated DNA Sequences
 // https://leetcode.com/problems/repeated-dna-sequences/
 
 #include <stdlib.h>

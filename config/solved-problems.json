@@ -1396,37 +1396,41 @@
     {
       "folder": "0175_combine_two_tables",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0176_second_highest_salary",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0177_nth_highest_salary",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0178_rank_scores",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -1440,55 +1444,61 @@
     {
       "folder": "0180_consecutive_numbers",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0181_employees_earning_more_than_their_managers",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0182_duplicate_emails",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0183_customers_who_never_order",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0184_department_highest_salary",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0185_department_top_three_salaries",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -1574,19 +1584,21 @@
     {
       "folder": "0196_delete_duplicate_emails",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0197_rising_temperature",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -2104,10 +2116,11 @@
     {
       "folder": "0262_trips_and_users",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4097,19 +4110,21 @@
     {
       "folder": "0511_game_play_analysis_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0512_game_play_analysis_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4283,10 +4298,11 @@
     {
       "folder": "0534_game_play_analysis_iii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4412,10 +4428,11 @@
     {
       "folder": "0550_game_play_analysis_iv",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4565,28 +4582,31 @@
     {
       "folder": "0569_median_employee_salary",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0570_managers_with_at_least_5_direct_reports",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0571_find_median_given_frequency_of_numbers",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4608,10 +4628,11 @@
     {
       "folder": "0574_winning_candidate",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4633,37 +4654,41 @@
     {
       "folder": "0577_employee_bonus",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0578_get_highest_answer_rate_question",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0579_find_cumulative_salary_of_an_employee",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0580_count_student_number_in_departments",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4693,28 +4718,31 @@
     {
       "folder": "0584_find_customer_referee",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0585_investments_in_2016",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0586_customer_placing_the_largest_number_of_orders",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4784,28 +4812,31 @@
     {
       "folder": "0595_big_countries",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0596_classes_with_at_least_5_students",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0597_friend_requests_i_overall_acceptance_rate",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4835,28 +4866,31 @@
     {
       "folder": "0601_human_traffic_of_stadium",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0602_friend_requests_ii_who_has_the_most_friends",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0603_consecutive_available_seats",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4886,19 +4920,21 @@
     {
       "folder": "0607_sales_person",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0608_tree_node",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4912,10 +4948,11 @@
     {
       "folder": "0610_triangle_judgement",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4929,37 +4966,41 @@
     {
       "folder": "0612_shortest_distance_in_a_plane",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0613_shortest_distance_in_a_line",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0614_second_degree_follower",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0615_average_salary_departments_vs_company",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -4981,28 +5022,31 @@
     {
       "folder": "0618_students_report_by_geography",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0619_biggest_single_number",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0620_not_boring_movies",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -5048,19 +5092,21 @@
     {
       "folder": "0626_exchange_seats",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "0627_swap_sex_of_employees",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -8897,10 +8943,11 @@
     {
       "folder": "1045_customers_who_bought_all_products",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -8982,10 +9029,11 @@
     {
       "folder": "1050_actors_and_directors_who_cooperated_at_least_three_times",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -9314,28 +9362,31 @@
     {
       "folder": "1068_product_sales_analysis_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1069_product_sales_analysis_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1070_product_sales_analysis_iii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -9417,28 +9468,31 @@
     {
       "folder": "1075_project_employees_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1076_project_employees_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1077_project_employees_iii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -9520,28 +9574,31 @@
     {
       "folder": "1082_sales_analysis_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1083_sales_analysis_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1084_sales_analysis_iii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -9775,19 +9832,21 @@
     {
       "folder": "1097_game_play_analysis_v",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1098_unpopular_books",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -9945,10 +10004,11 @@
     {
       "folder": "1107_new_users_daily_count",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10030,19 +10090,21 @@
     {
       "folder": "1112_highest_grade_for_each_student",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1113_reported_posts",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10276,19 +10338,21 @@
     {
       "folder": "1126_active_businesses",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1127_user_purchase_platform",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10370,10 +10434,11 @@
     {
       "folder": "1132_reported_posts_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10531,19 +10596,21 @@
     {
       "folder": "1141_user_activity_for_the_past_30_days_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1142_user_activity_for_the_past_30_days_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10644,19 +10711,21 @@
     {
       "folder": "1148_article_views_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1149_article_views_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10814,19 +10883,21 @@
     {
       "folder": "1158_market_analysis_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1159_market_analysis_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -10908,10 +10979,11 @@
     {
       "folder": "1164_product_price_at_a_given_date",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11069,19 +11141,21 @@
     {
       "folder": "1173_immediate_food_delivery_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1174_immediate_food_delivery_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11163,10 +11237,11 @@
     {
       "folder": "1179_reformat_department_table",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11419,19 +11494,21 @@
     {
       "folder": "1193_monthly_transactions_i",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1194_tournament_winners",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11608,19 +11685,21 @@
     {
       "folder": "1204_last_person_to_fit_in_the_bus",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1205_monthly_transactions_ii",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11721,19 +11800,21 @@
     {
       "folder": "1211_queries_quality_and_percentage",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1212_team_scores_in_football_tournament",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -11967,10 +12048,11 @@
     {
       "folder": "1225_report_contiguous_dates",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -12261,10 +12343,11 @@
     {
       "folder": "1241_number_of_comments_per_post",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -12441,10 +12524,11 @@
     {
       "folder": "1251_average_selling_price",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -12678,10 +12762,11 @@
     {
       "folder": "1264_page_recommendations",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -12782,10 +12867,11 @@
     {
       "folder": "1270_all_people_report_to_the_given_manager",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -12962,10 +13048,11 @@
     {
       "folder": "1280_students_and_examinations",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13047,10 +13134,11 @@
     {
       "folder": "1285_find_the_start_and_end_number_of_continuous_ranges",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13208,10 +13296,11 @@
     {
       "folder": "1294_weather_type_in_each_country",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13369,10 +13458,11 @@
     {
       "folder": "1303_find_the_team_size",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13454,10 +13544,11 @@
     {
       "folder": "1308_running_total_for_different_genders",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13691,19 +13782,21 @@
     {
       "folder": "1321_restaurant_growth",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
       "folder": "1322_ads_performance",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13785,10 +13878,11 @@
     {
       "folder": "1327_list_the_products_ordered_in_a_period",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -13946,10 +14040,11 @@
     {
       "folder": "1336_number_of_transactions_per_visit",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14031,10 +14126,11 @@
     {
       "folder": "1341_movie_rating",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14192,10 +14288,11 @@
     {
       "folder": "1350_students_with_invalid_departments",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14277,10 +14374,11 @@
     {
       "folder": "1355_activity_participants",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14438,10 +14536,11 @@
     {
       "folder": "1364_number_of_trusted_contacts_of_a_customer",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14523,10 +14622,11 @@
     {
       "folder": "1369_get_the_second_most_recent_activity",
       "languages": [
-        "go",
+        "python",
         "java",
         "php",
-        "python"
+        "c",
+        "go"
       ]
     },
     {
@@ -14684,7 +14784,8 @@
     {
       "folder": "1378_replace_employee_id_with_the_unique_identifier",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -14785,7 +14886,8 @@
     {
       "folder": "1384_total_sales_amount_by_year",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -14943,7 +15045,8 @@
     {
       "folder": "1393_capital_gainloss",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15025,7 +15128,8 @@
     {
       "folder": "1398_customers_who_bought_products_a_and_b_but_not_c",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15183,7 +15287,8 @@
     {
       "folder": "1407_top_travellers",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15265,7 +15370,8 @@
     {
       "folder": "1412_find_the_quiet_students_in_all_exams",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15423,7 +15529,8 @@
     {
       "folder": "1421_npv_queries",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15676,7 +15783,8 @@
     {
       "folder": "1435_create_a_session_bar_chart",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15758,7 +15866,8 @@
     {
       "folder": "1440_evaluate_boolean_expression",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15840,7 +15949,8 @@
     {
       "folder": "1445_apples_oranges",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -15998,7 +16108,8 @@
     {
       "folder": "1454_active_users",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16080,7 +16191,8 @@
     {
       "folder": "1459_rectangles_area",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16238,7 +16350,8 @@
     {
       "folder": "1468_calculate_salaries",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16434,7 +16547,8 @@
     {
       "folder": "1479_sales_by_day_of_the_week",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16516,7 +16630,8 @@
     {
       "folder": "1484_group_sold_products_by_the_date",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16712,7 +16827,8 @@
     {
       "folder": "1495_friendly_movies_streamed_last_month",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16813,7 +16929,8 @@
     {
       "folder": "1501_countries_you_can_safely_invest_in",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -16990,7 +17107,8 @@
     {
       "folder": "1511_customer_order_frequency",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17091,7 +17209,8 @@
     {
       "folder": "1517_find_users_with_valid_e_mails",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17268,7 +17387,8 @@
     {
       "folder": "1527_patients_with_a_condition",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17350,7 +17470,8 @@
     {
       "folder": "1532_the_most_recent_three_orders",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17546,7 +17667,8 @@
     {
       "folder": "1543_fix_product_name_format",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17647,7 +17769,8 @@
     {
       "folder": "1549_the_most_recent_orders_for_each_product",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17748,7 +17871,8 @@
     {
       "folder": "1555_bank_account_summary",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -17925,7 +18049,8 @@
     {
       "folder": "1565_unique_orders_and_customers_per_month",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18026,7 +18151,8 @@
     {
       "folder": "1571_warehouse_manager",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18203,7 +18329,8 @@
     {
       "folder": "1581_customer_who_visited_but_did_not_make_any_transactions",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18304,7 +18431,8 @@
     {
       "folder": "1587_bank_account_summary_ii",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18462,7 +18590,8 @@
     {
       "folder": "1596_the_most_frequently_ordered_products_for_each_customer",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18658,7 +18787,8 @@
     {
       "folder": "1607_sellers_with_no_sales",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18759,7 +18889,8 @@
     {
       "folder": "1613_find_the_missing_ids",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -18936,7 +19067,8 @@
     {
       "folder": "1623_all_valid_triplets_that_can_represent_a_country",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19113,7 +19245,8 @@
     {
       "folder": "1633_percentage_of_users_attended_a_contest",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19138,7 +19271,8 @@
     {
       "folder": "1635_hopper_company_queries_i",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19315,7 +19449,8 @@
     {
       "folder": "1645_hopper_company_queries_ii",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19416,7 +19551,8 @@
     {
       "folder": "1651_hopper_company_queries_iii",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19593,7 +19729,8 @@
     {
       "folder": "1661_average_time_of_process_per_machine",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19694,7 +19831,8 @@
     {
       "folder": "1667_fix_names_in_a_table",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19871,7 +20009,8 @@
     {
       "folder": "1677_products_worth_over_invoices",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -19972,7 +20111,8 @@
     {
       "folder": "1683_invalid_tweets",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -20149,7 +20289,8 @@
     {
       "folder": "1693_daily_leads_and_partners",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -20250,7 +20391,8 @@
     {
       "folder": "1699_number_of_calls_between_two_persons",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24093,7 +24235,8 @@
     {
       "folder": "1907_count_salary_categories",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24270,7 +24413,8 @@
     {
       "folder": "1917_leetcodify_friends_recommendations",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24295,7 +24439,8 @@
     {
       "folder": "1919_leetcodify_similar_friends",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24567,7 +24712,8 @@
     {
       "folder": "1934_confirmation_rate",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24649,7 +24795,8 @@
     {
       "folder": "1939_users_that_actively_request_confirmation_messages",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24826,7 +24973,8 @@
     {
       "folder": "1949_strong_friendship",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -24851,7 +24999,8 @@
     {
       "folder": "1951_all_the_pairs_with_the_maximum_number_of_common_followers",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25104,7 +25253,8 @@
     {
       "folder": "1965_employees_with_missing_information",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25224,7 +25374,8 @@
     {
       "folder": "1972_first_and_last_call_on_the_same_day",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25325,7 +25476,8 @@
     {
       "folder": "1978_employees_whose_manager_left_the_company",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25502,7 +25654,8 @@
     {
       "folder": "1988_find_cutoff_score_for_each_school",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25527,7 +25680,8 @@
     {
       "folder": "1990_count_the_number_of_experiments",
       "languages": [
-        "python"
+        "python",
+        "c"
       ]
     },
     {
@@ -25704,5588 +25858,6939 @@
     {
       "folder": "2000_reverse_prefix_of_word",
       "languages": [
-        "go",
-        "python"
+        "python",
+        "c",
+        "go"
       ]
     },
     {
       "folder": "2001_number_of_pairs_of_interchangeable_rectangles",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2002_maximum_product_of_the_length_of_two_palindromic_subsequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2003_smallest_missing_genetic_value_in_each_subtree",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2004_the_number_of_seniors_and_juniors_to_join_the_company",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2005_subtree_removal_game_with_fibonacci_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2006_count_number_of_pairs_with_absolute_difference_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2007_find_original_array_from_doubled_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2008_maximum_earnings_from_taxi",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2009_minimum_number_of_operations_to_make_array_continuous",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2010_the_number_of_seniors_and_juniors_to_join_the_company_ii",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2011_final_value_of_variable_after_performing_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2012_sum_of_beauty_in_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2013_detect_squares",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2014_longest_subsequence_repeated_k_times",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2015_average_height_of_buildings_in_each_segment",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2016_maximum_difference_between_increasing_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2017_grid_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2018_check_if_word_can_be_placed_in_crossword",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2019_the_score_of_students_solving_math_expression",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2020_number_of_accounts_that_did_not_stream",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2021_brightest_position_on_street",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2022_convert_1d_array_into_2d_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2023_number_of_pairs_of_strings_with_concatenation_equal_to_target",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2024_maximize_the_confusion_of_an_exam",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2025_maximum_number_of_ways_to_partition_an_array",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2026_low_quality_problems",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2027_minimum_moves_to_convert_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2028_find_missing_observations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2029_stone_game_ix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2030_smallest_k_length_subsequence_with_occurrences_of_a_letter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2031_count_subarrays_with_more_ones_than_zeros",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2032_two_out_of_three",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2033_minimum_operations_to_make_a_uni_value_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2034_stock_price_fluctuation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2035_partition_array_into_two_arrays_to_minimize_sum_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2036_maximum_alternating_subarray_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2037_minimum_number_of_moves_to_seat_everyone",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2038_remove_colored_pieces_if_both_neighbors_are_the_same_color",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2039_the_time_when_the_network_becomes_idle",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2040_kth_smallest_product_of_two_sorted_arrays",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2041_accepted_candidates_from_the_interviews",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2042_check_if_numbers_are_ascending_in_a_sentence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2043_simple_bank_system",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2044_count_number_of_maximum_bitwise_or_subsets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2045_second_minimum_time_to_reach_destination",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2046_sort_linked_list_already_sorted_using_absolute_values",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2047_number_of_valid_words_in_a_sentence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2048_next_greater_numerically_balanced_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2049_count_nodes_with_the_highest_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2050_parallel_courses_iii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2051_the_category_of_each_member_in_the_store",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2052_minimum_cost_to_separate_sentence_into_rows",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2053_kth_distinct_string_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2054_two_best_non_overlapping_events",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2055_plates_between_candles",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2056_number_of_valid_move_combinations_on_chessboard",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2057_smallest_index_with_equal_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2058_find_the_minimum_and_maximum_number_of_nodes_between_critical_points",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2059_minimum_operations_to_convert_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2060_check_if_an_original_string_exists_given_two_encoded_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2061_number_of_spaces_cleaning_robot_cleaned",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2062_count_vowel_substrings_of_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2063_vowels_of_all_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2064_minimized_maximum_of_products_distributed_to_any_store",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2065_maximum_path_quality_of_a_graph",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2066_account_balance",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2067_number_of_equal_count_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2068_check_whether_two_strings_are_almost_equivalent",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2069_walking_robot_simulation_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2070_most_beautiful_item_for_each_query",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2071_maximum_number_of_tasks_you_can_assign",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2072_the_winner_university",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2073_time_needed_to_buy_tickets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2074_reverse_nodes_in_even_length_groups",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2075_decode_the_slanted_ciphertext",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2076_process_restricted_friend_requests",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2077_paths_in_maze_that_lead_to_same_room",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2078_two_furthest_houses_with_different_colors",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2079_watering_plants",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2080_range_frequency_queries",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2081_sum_of_k_mirror_numbers",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2082_the_number_of_rich_customers",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2083_substrings_that_begin_and_end_with_the_same_letter",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2084_drop_type_1_orders_for_customers_with_type_0_orders",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2085_count_common_words_with_one_occurrence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2086_minimum_number_of_food_buckets_to_feed_the_hamsters",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2087_minimum_cost_homecoming_of_a_robot_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2088_count_fertile_pyramids_in_a_land",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2089_find_target_indices_after_sorting_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2090_k_radius_subarray_averages",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2091_removing_minimum_and_maximum_from_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2092_find_all_people_with_secret",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2093_minimum_cost_to_reach_city_with_discounts",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2094_finding_3_digit_even_numbers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2095_delete_the_middle_node_of_a_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2096_step_by_step_directions_from_a_binary_tree_node_to_another",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2097_valid_arrangement_of_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2098_subsequence_of_size_k_with_the_largest_even_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2099_find_subsequence_of_length_k_with_the_largest_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2100_find_good_days_to_rob_the_bank",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2101_detonate_the_maximum_bombs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2102_sequentially_ordinal_rank_tracker",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2103_rings_and_rods",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2104_sum_of_subarray_ranges",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2105_watering_plants_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2106_maximum_fruits_harvested_after_at_most_k_steps",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2107_number_of_unique_flavors_after_sharing_k_candies",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2108_find_first_palindromic_string_in_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2109_adding_spaces_to_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2110_number_of_smooth_descent_periods_of_a_stock",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2111_minimum_operations_to_make_the_array_k_increasing",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2112_the_airport_with_the_most_traffic",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2113_elements_in_array_after_removing_and_replacing_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2114_maximum_number_of_words_found_in_sentences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2115_find_all_possible_recipes_from_given_supplies",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2116_check_if_a_parentheses_string_can_be_valid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2117_abbreviating_the_product_of_a_range",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2118_build_the_equation",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2119_a_number_after_a_double_reversal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2120_execution_of_all_suffix_instructions_staying_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2121_intervals_between_identical_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2122_recover_the_original_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2123_minimum_operations_to_remove_adjacent_ones_in_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2124_check_if_all_as_appears_before_all_bs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2125_number_of_laser_beams_in_a_bank",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2126_destroying_asteroids",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2127_maximum_employees_to_be_invited_to_a_meeting",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2128_remove_all_ones_with_row_and_column_flips",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2129_capitalize_the_title",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2130_maximum_twin_sum_of_a_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2131_longest_palindrome_by_concatenating_two_letter_words",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2132_stamping_the_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2133_check_if_every_row_and_column_contains_all_numbers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2134_minimum_swaps_to_group_all_1s_together_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2135_count_words_obtained_after_adding_a_letter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2136_earliest_possible_day_of_full_bloom",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2137_pour_water_between_buckets_to_make_water_levels_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2138_divide_a_string_into_groups_of_size_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2139_minimum_moves_to_reach_target_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2140_solving_questions_with_brainpower",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2141_maximum_running_time_of_n_computers",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2142_the_number_of_passengers_in_each_bus_i",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2143_choose_numbers_from_two_arrays_in_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2144_minimum_cost_of_buying_candies_with_discount",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2145_count_the_hidden_sequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2146_k_highest_ranked_items_within_a_price_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2147_number_of_ways_to_divide_a_long_corridor",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2148_count_elements_with_strictly_smaller_and_greater_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2149_rearrange_array_elements_by_sign",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2150_find_all_lonely_numbers_in_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2151_maximum_good_people_based_on_statements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2152_minimum_number_of_lines_to_cover_points",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2153_the_number_of_passengers_in_each_bus_ii",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2154_keep_multiplying_found_values_by_two",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2155_all_divisions_with_the_highest_score_of_a_binary_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2156_find_substring_with_given_hash_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2157_groups_of_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2158_amount_of_new_area_painted_each_day",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2159_order_two_columns_independently",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2160_minimum_sum_of_four_digit_number_after_splitting_digits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2161_partition_array_according_to_given_pivot",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2162_minimum_cost_to_set_cooking_time",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2163_minimum_difference_in_sums_after_removal_of_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2164_sort_even_and_odd_indices_independently",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2165_smallest_value_of_the_rearranged_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2166_design_bitset",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2167_minimum_time_to_remove_all_cars_containing_illegal_goods",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2168_unique_substrings_with_equal_digit_frequency",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2169_count_operations_to_obtain_zero",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2170_minimum_operations_to_make_the_array_alternating",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2171_removing_minimum_number_of_magic_beans",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2172_maximum_and_sum_of_array",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2173_longest_winning_streak",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2174_remove_all_ones_with_row_and_column_flips_ii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2175_the_change_in_global_rankings",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2176_count_equal_and_divisible_pairs_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2177_find_three_consecutive_integers_that_sum_to_a_given_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2178_maximum_split_of_positive_even_integers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2179_count_good_triplets_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2180_count_integers_with_even_digit_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2181_merge_nodes_in_between_zeros",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2182_construct_string_with_repeat_limit",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2183_count_array_pairs_divisible_by_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2184_number_of_ways_to_build_sturdy_brick_wall",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2185_counting_words_with_a_given_prefix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2186_minimum_number_of_steps_to_make_two_strings_anagram_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2187_minimum_time_to_complete_trips",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2188_minimum_time_to_finish_the_race",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2189_number_of_ways_to_build_house_of_cards",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2190_most_frequent_number_following_key_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2191_sort_the_jumbled_numbers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2192_all_ancestors_of_a_node_in_a_directed_acyclic_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2193_minimum_number_of_moves_to_make_palindrome",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2194_cells_in_a_range_on_an_excel_sheet",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2195_append_k_integers_with_minimal_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2196_create_binary_tree_from_descriptions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2197_replace_non_coprime_numbers_in_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2198_number_of_single_divisor_triplets",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2199_finding_the_topic_of_each_post",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2200_find_all_k_distant_indices_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2201_count_artifacts_that_can_be_extracted",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2202_maximize_the_topmost_element_after_k_moves",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2203_minimum_weighted_subgraph_with_the_required_paths",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2204_distance_to_a_cycle_in_undirected_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2205_the_number_of_users_that_are_eligible_for_discount",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2206_divide_array_into_equal_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2207_maximize_number_of_subsequences_in_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2208_minimum_operations_to_halve_array_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2209_minimum_white_tiles_after_covering_with_carpets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2210_count_hills_and_valleys_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2211_count_collisions_on_a_road",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2212_maximum_points_in_an_archery_competition",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2213_longest_substring_of_one_repeating_character",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2214_minimum_health_to_beat_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2215_find_the_difference_of_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2216_minimum_deletions_to_make_array_beautiful",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2217_find_palindrome_with_fixed_length",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2218_maximum_value_of_k_coins_from_piles",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2219_maximum_sum_score_of_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2220_minimum_bit_flips_to_convert_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2221_find_triangular_sum_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2222_number_of_ways_to_select_buildings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2223_sum_of_scores_of_built_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2224_minimum_number_of_operations_to_convert_time",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2225_find_players_with_zero_or_one_losses",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2226_maximum_candies_allocated_to_k_children",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2227_encrypt_and_decrypt_strings",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2228_users_with_two_purchases_within_seven_days",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2229_check_if_an_array_is_consecutive",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2230_the_users_that_are_eligible_for_discount",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2231_largest_number_after_digit_swaps_by_parity",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2232_minimize_result_by_adding_parentheses_to_expression",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2233_maximum_product_after_k_increments",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2234_maximum_total_beauty_of_the_gardens",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2235_add_two_integers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2236_root_equals_sum_of_children",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2237_count_positions_on_street_with_required_brightness",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2238_number_of_times_a_driver_was_a_passenger",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2239_find_closest_number_to_zero",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2240_number_of_ways_to_buy_pens_and_pencils",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2241_design_an_atm_machine",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2242_maximum_score_of_a_node_sequence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2243_calculate_digit_sum_of_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2244_minimum_rounds_to_complete_all_tasks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2245_maximum_trailing_zeros_in_a_cornered_path",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2246_longest_path_with_different_adjacent_characters",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2247_maximum_cost_of_trip_with_k_highways",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2248_intersection_of_multiple_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2249_count_lattice_points_inside_a_circle",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2250_count_number_of_rectangles_containing_each_point",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2251_number_of_flowers_in_full_bloom",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2252_dynamic_pivoting_of_a_table",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2253_dynamic_unpivoting_of_a_table",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2254_design_video_sharing_platform",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2255_count_prefixes_of_a_given_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2256_minimum_average_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2257_count_unguarded_cells_in_the_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2258_escape_the_spreading_fire",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2259_remove_digit_from_number_to_maximize_result",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2260_minimum_consecutive_cards_to_pick_up",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2261_k_divisible_elements_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2262_total_appeal_of_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2263_make_array_non_decreasing_or_non_increasing",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2264_largest_3_same_digit_number_in_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2265_count_nodes_equal_to_average_of_subtree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2266_count_number_of_texts",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2267_check_if_there_is_a_valid_parentheses_string_path",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2268_minimum_number_of_keypresses",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2269_find_the_k_beauty_of_a_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2270_number_of_ways_to_split_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2271_maximum_white_tiles_covered_by_a_carpet",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2272_substring_with_largest_variance",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2273_find_resultant_array_after_removing_anagrams",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2274_maximum_consecutive_floors_without_special_floors",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2275_largest_combination_with_bitwise_and_greater_than_zero",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2276_count_integers_in_intervals",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2277_closest_node_to_path_in_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2278_percentage_of_letter_in_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2279_maximum_bags_with_full_capacity_of_rocks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2280_minimum_lines_to_represent_a_line_chart",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2281_sum_of_total_strength_of_wizards",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2282_number_of_people_that_can_be_seen_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2283_check_if_number_has_equal_digit_count_and_digit_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2284_sender_with_largest_word_count",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2285_maximum_total_importance_of_roads",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2286_booking_concert_tickets_in_groups",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2287_rearrange_characters_to_make_target_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2288_apply_discount_to_prices",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2289_steps_to_make_array_non_decreasing",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2290_minimum_obstacle_removal_to_reach_corner",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2291_maximum_profit_from_trading_stocks",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2292_products_with_three_or_more_orders_in_two_consecutive_years",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2293_min_max_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2294_partition_array_such_that_maximum_difference_is_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2295_replace_elements_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2296_design_a_text_editor",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2297_jump_game_viii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2298_tasks_count_in_the_weekend",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2299_strong_password_checker_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2300_successful_pairs_of_spells_and_potions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2301_match_substring_after_replacement",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2302_count_subarrays_with_score_less_than_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2303_calculate_amount_paid_in_taxes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2304_minimum_path_cost_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2305_fair_distribution_of_cookies",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2306_naming_a_company",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2307_check_for_contradictions_in_equations",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2308_arrange_table_by_gender",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2309_greatest_english_letter_in_upper_and_lower_case",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2310_sum_of_numbers_with_units_digit_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2311_longest_binary_subsequence_less_than_or_equal_to_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2312_selling_pieces_of_wood",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2313_minimum_flips_in_binary_tree_to_get_result",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2314_the_first_day_of_the_maximum_recorded_degree_in_each_city",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2315_count_asterisks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2316_count_unreachable_pairs_of_nodes_in_an_undirected_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2317_maximum_xor_after_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2318_number_of_distinct_roll_sequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2319_check_if_matrix_is_x_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2320_count_number_of_ways_to_place_houses",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2321_maximum_score_of_spliced_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2322_minimum_score_after_removals_on_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2323_find_minimum_time_to_finish_all_jobs_ii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2324_product_sales_analysis_iv",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2325_decode_the_message",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2326_spiral_matrix_iv",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2327_number_of_people_aware_of_a_secret",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2328_number_of_increasing_paths_in_a_grid",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2329_product_sales_analysis_v",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2330_valid_palindrome_iv",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2331_evaluate_boolean_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2332_the_latest_time_to_catch_a_bus",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2333_minimum_sum_of_squared_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2334_subarray_with_elements_greater_than_varying_threshold",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2335_minimum_amount_of_time_to_fill_cups",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2336_smallest_number_in_infinite_set",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2337_move_pieces_to_obtain_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2338_count_the_number_of_ideal_arrays",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2339_all_the_matches_of_the_league",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2340_minimum_adjacent_swaps_to_make_a_valid_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2341_maximum_number_of_pairs_in_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2342_max_sum_of_a_pair_with_equal_sum_of_digits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2343_query_kth_smallest_trimmed_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2344_minimum_deletions_to_make_array_divisible",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2345_finding_the_number_of_visible_mountains",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2346_compute_the_rank_as_a_percentage",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2347_best_poker_hand",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2348_number_of_zero_filled_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2349_design_a_number_container_system",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2350_shortest_impossible_sequence_of_rolls",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2351_first_letter_to_appear_twice",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2352_equal_row_and_column_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2353_design_a_food_rating_system",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2354_number_of_excellent_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2355_maximum_number_of_books_you_can_take",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2356_number_of_unique_subjects_taught_by_each_teacher",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2357_make_array_zero_by_subtracting_equal_amounts",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2358_maximum_number_of_groups_entering_a_competition",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2359_find_closest_node_to_given_two_nodes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2360_longest_cycle_in_a_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2361_minimum_costs_using_the_train_line",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2362_generate_the_invoice",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2363_merge_similar_items",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2364_count_number_of_bad_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2365_task_scheduler_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2366_minimum_replacements_to_sort_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2367_number_of_arithmetic_triplets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2368_reachable_nodes_with_restrictions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2369_check_if_there_is_a_valid_partition_for_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2370_longest_ideal_subsequence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2371_minimize_maximum_value_in_a_grid",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2372_calculate_the_influence_of_each_salesperson",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2373_largest_local_values_in_a_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2374_node_with_highest_edge_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2375_construct_smallest_number_from_di_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2376_count_special_integers",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2377_sort_the_olympic_table",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2378_choose_edges_to_maximize_score_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2379_minimum_recolors_to_get_k_consecutive_black_blocks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2380_time_needed_to_rearrange_a_binary_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2381_shifting_letters_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2382_maximum_segment_sum_after_removals",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2383_minimum_hours_of_training_to_win_a_competition",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2384_largest_palindromic_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2385_amount_of_time_for_binary_tree_to_be_infected",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2386_find_the_k_sum_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2387_median_of_a_row_wise_sorted_matrix",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2388_change_null_values_in_a_table_to_the_previous_value",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2389_longest_subsequence_with_limited_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2390_removing_stars_from_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2391_minimum_amount_of_time_to_collect_garbage",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2392_build_a_matrix_with_conditions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2393_count_strictly_increasing_subarrays",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2394_employees_with_deductions",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2395_find_subarrays_with_equal_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2396_strictly_palindromic_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2397_maximum_rows_covered_by_columns",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2398_maximum_number_of_robots_within_budget",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2399_check_distances_between_same_letters",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2400_number_of_ways_to_reach_a_position_after_exactly_k_steps",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2401_longest_nice_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2402_meeting_rooms_iii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2403_minimum_time_to_kill_all_monsters",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2404_most_frequent_even_element",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2405_optimal_partition_of_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2406_divide_intervals_into_minimum_number_of_groups",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2407_longest_increasing_subsequence_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2408_design_sql",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2409_count_days_spent_together",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2410_maximum_matching_of_players_with_trainers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2411_smallest_subarrays_with_maximum_bitwise_or",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2412_minimum_money_required_before_transactions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2413_smallest_even_multiple",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2414_length_of_the_longest_alphabetical_continuous_substring",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2415_reverse_odd_levels_of_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2416_sum_of_prefix_scores_of_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2417_closest_fair_integer",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2418_sort_the_people",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2419_longest_subarray_with_maximum_bitwise_and",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2420_find_all_good_indices",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2421_number_of_good_paths",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2422_merge_operations_to_turn_array_into_a_palindrome",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2423_remove_letter_to_equalize_frequency",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2424_longest_uploaded_prefix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2425_bitwise_xor_of_all_pairings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2426_number_of_pairs_satisfying_inequality",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2427_number_of_common_factors",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2428_maximum_sum_of_an_hourglass",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2429_minimize_xor",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2430_maximum_deletions_on_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2431_maximize_total_tastiness_of_purchased_fruits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2432_the_employee_that_worked_on_the_longest_task",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2433_find_the_original_array_of_prefix_xor",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2434_using_a_robot_to_print_the_lexicographically_smallest_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2435_paths_in_matrix_whose_sum_is_divisible_by_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2436_minimum_split_into_subarrays_with_gcd_greater_than_one",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2437_number_of_valid_clock_times",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2438_range_product_queries_of_powers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2439_minimize_maximum_of_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2440_create_components_with_same_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2441_largest_positive_integer_that_exists_with_its_negative",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2442_count_number_of_distinct_integers_after_reverse_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2443_sum_of_number_and_its_reverse",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2444_count_subarrays_with_fixed_bounds",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2445_number_of_nodes_with_value_one",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2446_determine_if_two_events_have_conflict",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2447_number_of_subarrays_with_gcd_equal_to_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2448_minimum_cost_to_make_array_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2449_minimum_number_of_operations_to_make_arrays_similar",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2450_number_of_distinct_binary_strings_after_applying_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2451_odd_string_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2452_words_within_two_edits_of_dictionary",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2453_destroy_sequential_targets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2454_next_greater_element_iv",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2455_average_value_of_even_numbers_that_are_divisible_by_three",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2456_most_popular_video_creator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2457_minimum_addition_to_make_integer_beautiful",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2458_height_of_binary_tree_after_subtree_removal_queries",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2459_sort_array_by_moving_items_to_empty_space",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2460_apply_operations_to_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2461_maximum_sum_of_distinct_subarrays_with_length_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2462_total_cost_to_hire_k_workers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2463_minimum_total_distance_traveled",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2464_minimum_subarrays_in_a_valid_split",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2465_number_of_distinct_averages",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2466_count_ways_to_build_good_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2467_most_profitable_path_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2468_split_message_based_on_limit",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2469_convert_the_temperature",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2470_number_of_subarrays_with_lcm_equal_to_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2471_minimum_number_of_operations_to_sort_a_binary_tree_by_level",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2472_maximum_number_of_non_overlapping_palindrome_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2473_minimum_cost_to_buy_apples",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2474_customers_with_strictly_increasing_purchases",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2475_number_of_unequal_triplets_in_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2476_closest_nodes_queries_in_a_binary_search_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2477_minimum_fuel_cost_to_report_to_the_capital",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2478_number_of_beautiful_partitions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2479_maximum_xor_of_two_non_overlapping_subtrees",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2480_form_a_chemical_bond",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2481_minimum_cuts_to_divide_a_circle",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2482_difference_between_ones_and_zeros_in_row_and_column",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2483_minimum_penalty_for_a_shop",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2484_count_palindromic_subsequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2485_find_the_pivot_integer",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2486_append_characters_to_string_to_make_subsequence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2487_remove_nodes_from_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2488_count_subarrays_with_median_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2489_number_of_substrings_with_fixed_ratio",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2490_circular_sentence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2491_divide_players_into_teams_of_equal_skill",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2492_minimum_score_of_a_path_between_two_cities",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2493_divide_nodes_into_the_maximum_number_of_groups",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2494_merge_overlapping_events_in_the_same_hall",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2495_number_of_subarrays_having_even_product",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2496_maximum_value_of_a_string_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2497_maximum_star_sum_of_a_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2498_frog_jump_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2499_minimum_total_cost_to_make_arrays_unequal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2500_delete_greatest_value_in_each_row",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2501_longest_square_streak_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2502_design_memory_allocator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2503_maximum_number_of_points_from_grid_queries",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2504_concatenate_the_name_and_the_profession",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2505_bitwise_or_of_all_subsequence_sums",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2506_count_pairs_of_similar_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2507_smallest_value_after_replacing_with_sum_of_prime_factors",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2508_add_edges_to_make_degrees_of_all_nodes_even",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2509_cycle_length_queries_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2510_check_if_there_is_a_path_with_equal_number_of_0s_and_1s",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2511_maximum_enemy_forts_that_can_be_captured",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2512_reward_top_k_students",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2513_minimize_the_maximum_of_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2514_count_anagrams",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2515_shortest_distance_to_target_string_in_a_circular_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2516_take_k_of_each_character_from_left_and_right",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2517_maximum_tastiness_of_candy_basket",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2518_number_of_great_partitions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2519_count_the_number_of_k_big_indices",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2520_count_the_digits_that_divide_a_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2521_distinct_prime_factors_of_product_of_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2522_partition_string_into_substrings_with_values_at_most_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2523_closest_prime_numbers_in_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2524_maximum_frequency_score_of_a_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2525_categorize_box_according_to_criteria",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2526_find_consecutive_integers_from_a_data_stream",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2527_find_xor_beauty_of_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2528_maximize_the_minimum_powered_city",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2529_maximum_count_of_positive_integer_and_negative_integer",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2530_maximal_score_after_applying_k_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2531_make_number_of_distinct_characters_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2532_time_to_cross_a_bridge",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2533_number_of_good_binary_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2534_time_taken_to_cross_the_door",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2535_difference_between_element_sum_and_digit_sum_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2536_increment_submatrices_by_one",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2537_count_the_number_of_good_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2538_difference_between_maximum_and_minimum_price_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2539_count_the_number_of_good_subsequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2540_minimum_common_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2541_minimum_operations_to_make_array_equal_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2542_maximum_subsequence_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2543_check_if_point_is_reachable",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2544_alternating_digit_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2545_sort_the_students_by_their_kth_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2546_apply_bitwise_operations_to_make_strings_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2547_minimum_cost_to_split_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2548_maximum_price_to_fill_a_bag",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2549_count_distinct_numbers_on_board",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2550_count_collisions_of_monkeys_on_a_polygon",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2551_put_marbles_in_bags",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2552_count_increasing_quadruplets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2553_separate_the_digits_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2554_maximum_number_of_integers_to_choose_from_a_range_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2555_maximize_win_from_two_segments",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2556_disconnect_path_in_a_binary_matrix_by_at_most_one_flip",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2557_maximum_number_of_integers_to_choose_from_a_range_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2558_take_gifts_from_the_richest_pile",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2559_count_vowel_strings_in_ranges",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2560_house_robber_iv",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2561_rearranging_fruits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2562_find_the_array_concatenation_value",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2563_count_the_number_of_fair_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2564_substring_xor_queries",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2565_subsequence_with_the_minimum_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2566_maximum_difference_by_remapping_a_digit",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2567_minimum_score_by_changing_two_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2568_minimum_impossible_or",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2569_handling_sum_queries_after_update",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2570_merge_two_2d_arrays_by_summing_values",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2571_minimum_operations_to_reduce_an_integer_to_0",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2572_count_the_number_of_square_free_subsets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2573_find_the_string_with_lcp",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2574_left_and_right_sum_differences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2575_find_the_divisibility_array_of_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2576_find_the_maximum_number_of_marked_indices",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2577_minimum_time_to_visit_a_cell_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2578_split_with_minimum_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2579_count_total_number_of_colored_cells",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2580_count_ways_to_group_overlapping_ranges",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2581_count_number_of_possible_root_nodes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2582_pass_the_pillow",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2583_kth_largest_sum_in_a_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2584_split_the_array_to_make_coprime_products",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2585_number_of_ways_to_earn_points",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2586_count_the_number_of_vowel_strings_in_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2587_rearrange_array_to_maximize_prefix_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2588_count_the_number_of_beautiful_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2589_minimum_time_to_complete_all_tasks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2590_design_a_todo_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2591_distribute_money_to_maximum_children",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2592_maximize_greatness_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2593_find_score_of_an_array_after_marking_all_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2594_minimum_time_to_repair_cars",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2595_number_of_even_and_odd_bits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2596_check_knight_tour_configuration",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2597_the_number_of_beautiful_subsets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2598_smallest_missing_non_negative_integer_after_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2599_make_the_prefix_sum_non_negative",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2600_k_items_with_the_maximum_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2601_prime_subtraction_operation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2602_minimum_operations_to_make_all_array_elements_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2603_collect_coins_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2604_minimum_time_to_eat_all_grains",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2605_form_smallest_number_from_two_digit_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2606_find_the_substring_with_maximum_cost",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2607_make_k_subarray_sums_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2608_shortest_cycle_in_a_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2609_find_the_longest_balanced_substring_of_a_binary_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2610_convert_an_array_into_a_2d_array_with_conditions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2611_mice_and_cheese",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2612_minimum_reverse_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2613_beautiful_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2614_prime_in_diagonal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2615_sum_of_distances",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2616_minimize_the_maximum_difference_of_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2617_minimum_number_of_visited_cells_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2618_check_if_object_instance_of_class",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2619_array_prototype_last",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2620_counter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2621_sleep",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2622_cache_with_time_limit",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2623_memoize",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2624_snail_traversal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2625_flatten_deeply_nested_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2626_array_reduce_transformation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2627_debounce",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2628_json_deep_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2629_function_composition",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2630_memoize_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2631_group_by",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2632_curry",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2633_convert_object_to_json_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2634_filter_elements_from_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2635_apply_transform_over_each_element_in_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2636_promise_pool",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2637_promise_time_limit",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2638_count_the_number_of_k_free_subsets",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2639_find_the_width_of_columns_of_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2640_find_the_score_of_all_prefixes_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2641_cousins_in_binary_tree_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2642_design_graph_with_shortest_path_calculator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2643_row_with_maximum_ones",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2644_find_the_maximum_divisibility_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2645_minimum_additions_to_make_valid_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2646_minimize_the_total_price_of_the_trips",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2647_color_the_triangle_red",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2648_generate_fibonacci_sequence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2649_nested_array_generator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2650_design_cancellable_function",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2651_calculate_delayed_arrival_time",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2652_sum_multiples",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2653_sliding_subarray_beauty",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2654_minimum_number_of_operations_to_make_all_array_elements_equal_to_1",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2655_find_maximal_uncovered_ranges",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2656_maximum_sum_with_exactly_k_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2657_find_the_prefix_common_array_of_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2658_maximum_number_of_fish_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2659_make_array_empty",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2660_determine_the_winner_of_a_bowling_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2661_first_completely_painted_row_or_column",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2662_minimum_cost_of_a_path_with_special_roads",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2663_lexicographically_smallest_beautiful_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2664_the_knights_tour",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2665_counter_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2666_allow_one_function_call",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2667_create_hello_world_function",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2668_find_latest_salaries",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2669_count_artist_occurrences_on_spotify_ranking_list",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2670_find_the_distinct_difference_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2671_frequency_tracker",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2672_number_of_adjacent_elements_with_the_same_color",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2673_make_costs_of_paths_equal_in_a_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2674_split_a_circular_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2675_array_of_objects_to_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2676_throttle",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2677_chunk_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2678_number_of_senior_citizens",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2679_sum_in_a_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2680_maximum_or",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2681_power_of_heroes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2682_find_the_losers_of_the_circular_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2683_neighboring_bitwise_xor",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2684_maximum_number_of_moves_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2685_count_the_number_of_complete_components",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2686_immediate_food_delivery_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2687_bikes_last_time_used",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2688_find_active_users",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2689_extract_kth_character_from_the_rope_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2690_infinite_method_object",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2691_immutability_helper",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2692_make_object_immutable",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2693_call_function_with_custom_context",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2694_event_emitter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2695_array_wrapper",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2696_minimum_string_length_after_removing_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2697_lexicographically_smallest_palindrome",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2698_find_the_punishment_number_of_an_integer",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2699_modify_graph_edge_weights",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2700_differences_between_two_objects",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2701_consecutive_transactions_with_increasing_amounts",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2702_minimum_operations_to_make_numbers_non_positive",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2703_return_length_of_arguments_passed",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2704_to_be_or_not_to_be",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2705_compact_object",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2706_buy_two_chocolates",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2707_extra_characters_in_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2708_maximum_strength_of_a_group",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2709_greatest_common_divisor_traversal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2710_remove_trailing_zeros_from_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2711_difference_of_number_of_distinct_values_on_diagonals",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2712_minimum_cost_to_make_all_characters_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2713_maximum_strictly_increasing_cells_in_a_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2714_find_shortest_path_with_k_hops",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2715_timeout_cancellation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2716_minimize_string_length",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2717_semi_ordered_permutation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2718_sum_of_matrix_after_queries",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2719_count_of_integers",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2720_popularity_percentage",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2721_execute_asynchronous_functions_in_parallel",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2722_join_two_arrays_by_id",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2723_add_two_promises",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2724_sort_by",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2725_interval_cancellation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2726_calculator_with_method_chaining",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2727_is_object_empty",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2728_count_houses_in_a_circular_street",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2729_check_if_the_number_is_fascinating",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2730_find_the_longest_semi_repetitive_substring",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2731_movement_of_robots",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2732_find_a_good_subset_of_the_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2733_neither_minimum_nor_maximum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2734_lexicographically_smallest_string_after_substring_operation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2735_collecting_chocolates",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2736_maximum_sum_queries",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2737_find_the_closest_marked_node",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2738_count_occurrences_in_text",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2739_total_distance_traveled",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2740_find_the_value_of_the_partition",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2741_special_permutations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2742_painting_the_walls",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2743_count_substrings_without_repeating_character",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2744_find_maximum_number_of_string_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2745_construct_the_longest_new_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2746_decremental_string_concatenation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2747_count_zero_request_servers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2748_number_of_beautiful_pairs",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2749_minimum_operations_to_make_the_integer_zero",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2750_ways_to_split_array_into_good_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2751_robot_collisions",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2752_customers_with_maximum_number_of_transactions_on_consecutive_days",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2753_count_houses_in_a_circular_street_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2754_bind_function_to_context",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2755_deep_merge_of_two_objects",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2756_query_batching",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2757_generate_circular_array_values",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2758_next_day",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2759_convert_json_string_to_object",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2760_longest_even_odd_subarray_with_threshold",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2761_prime_pairs_with_target_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2762_continuous_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2763_sum_of_imbalance_numbers_of_all_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2764_is_array_a_preorder_of_some_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2765_longest_alternating_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2766_relocate_marbles",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2767_partition_string_into_minimum_beautiful_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2768_number_of_black_blocks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2769_find_the_maximum_achievable_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2770_maximum_number_of_jumps_to_reach_the_last_index",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2771_longest_non_decreasing_subarray_from_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2772_apply_operations_to_make_all_array_elements_equal_to_zero",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2773_height_of_special_binary_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2774_array_upper_bound",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2775_undefined_to_null",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2776_convert_callback_based_function_to_promise_based_function",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2777_date_range_generator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2778_sum_of_squares_of_special_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2779_maximum_beauty_of_an_array_after_applying_operation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2780_minimum_index_of_a_valid_split",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2781_length_of_the_longest_valid_substring",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2782_number_of_unique_categories",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2783_flight_occupancy_and_waitlist_analysis",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2784_check_if_array_is_good",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2785_sort_vowels_in_a_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2786_visit_array_positions_to_maximize_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2787_ways_to_express_an_integer_as_sum_of_powers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2788_split_strings_by_separator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2789_largest_element_in_an_array_after_merge_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2790_maximum_number_of_groups_with_increasing_length",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2791_count_paths_that_can_form_a_palindrome_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2792_count_nodes_that_are_great_enough",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2793_status_of_flight_tickets",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2794_create_object_from_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2795_parallel_execution_of_promises_for_individual_results_retrieval",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2796_repeat_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2797_partial_function_with_placeholders",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2798_number_of_employees_who_met_the_target",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2799_count_complete_subarrays_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2800_shortest_string_that_contains_three_strings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2801_count_stepping_numbers_in_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2802_find_the_k_th_lucky_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2803_factorial_generator",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2804_array_prototype_foreach",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2805_custom_interval",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2806_account_balance_after_rounded_purchase",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2807_insert_greatest_common_divisors_in_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2808_minimum_seconds_to_equalize_a_circular_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2809_minimum_time_to_make_array_sum_at_most_x",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2810_faulty_keyboard",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2811_check_if_it_is_possible_to_split_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2812_find_the_safest_path_in_a_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2813_maximum_elegance_of_a_k_length_subsequence",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2814_minimum_time_takes_to_reach_destination_without_drowning",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2815_max_pair_sum_in_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2816_double_a_number_represented_as_a_linked_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2817_minimum_absolute_difference_between_elements_with_constraint",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2818_apply_operations_to_maximize_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2819_minimum_relative_loss_after_buying_chocolates",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2820_election_results",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2821_delay_the_resolution_of_each_promise",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2822_inversion_of_object",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2823_deep_object_filter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2824_count_pairs_whose_sum_is_less_than_target",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2825_make_string_a_subsequence_using_cyclic_increments",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2826_sorting_three_groups",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2827_number_of_beautiful_integers_in_the_range",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2828_check_if_a_string_is_an_acronym_of_words",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2829_determine_the_minimum_sum_of_a_k_avoiding_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2830_maximize_the_profit_as_the_salesman",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2831_find_the_longest_equal_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2832_maximal_range_that_each_element_is_maximum_in_it",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2833_furthest_point_from_origin",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2834_find_the_minimum_possible_sum_of_a_beautiful_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2835_minimum_operations_to_form_subsequence_with_target_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2836_maximize_value_of_function_in_a_ball_passing_game",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2837_total_traveled_distance",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2838_maximum_coins_heroes_can_collect",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2839_check_if_strings_can_be_made_equal_with_operations_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2840_check_if_strings_can_be_made_equal_with_operations_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2841_maximum_sum_of_almost_unique_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2842_count_k_subsequences_of_a_string_with_maximum_beauty",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2843_count_symmetric_integers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2844_minimum_operations_to_make_a_special_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2845_count_of_interesting_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2846_minimum_edge_weight_equilibrium_queries_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2847_smallest_number_with_given_digit_product",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2848_points_that_intersect_with_cars",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2849_determine_if_a_cell_is_reachable_at_a_given_time",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2850_minimum_moves_to_spread_stones_over_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2851_string_transformation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2852_sum_of_remoteness_of_all_cells",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2853_highest_salaries_difference",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2854_rolling_average_steps",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2855_minimum_right_shifts_to_sort_the_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2856_minimum_array_length_after_pair_removals",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2857_count_pairs_of_points_with_distance_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2858_minimum_edge_reversals_so_every_node_is_reachable",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2859_sum_of_values_at_indices_with_k_set_bits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2860_happy_students",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2861_maximum_number_of_alloys",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2862_maximum_element_sum_of_a_complete_subset_of_indices",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2863_maximum_length_of_semi_decreasing_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2864_maximum_odd_binary_number",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2865_beautiful_towers_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2866_beautiful_towers_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2867_count_valid_paths_in_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2868_the_wording_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2869_minimum_operations_to_collect_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2870_minimum_number_of_operations_to_make_array_empty",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2871_split_array_into_maximum_number_of_subarrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2872_maximum_number_of_k_divisible_components",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2873_maximum_value_of_an_ordered_triplet_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2874_maximum_value_of_an_ordered_triplet_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2875_minimum_size_subarray_in_infinite_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2876_count_visited_nodes_in_a_directed_graph",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2877_create_a_dataframe_from_list",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2878_get_the_size_of_a_dataframe",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2879_display_the_first_three_rows",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2880_select_data",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2881_create_a_new_column",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2882_drop_duplicate_rows",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2883_drop_missing_data",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2884_modify_columns",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2885_rename_columns",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2886_change_data_type",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2887_fill_missing_data",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2888_reshape_data_concatenate",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2889_reshape_data_pivot",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2890_reshape_data_melt",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2891_method_chaining",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2892_minimizing_array_after_replacing_pairs_with_their_product",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2893_calculate_orders_within_each_interval",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2894_divisible_and_non_divisible_sums_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2895_minimum_processing_time",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2896_apply_operations_to_make_two_strings_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2897_apply_operations_on_array_to_maximize_sum_of_squares",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2898_maximum_linear_stock_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2899_last_visited_integers",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2900_longest_unequal_adjacent_groups_subsequence_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2901_longest_unequal_adjacent_groups_subsequence_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2902_count_of_sub_multisets_with_bounded_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2903_find_indices_with_index_and_value_difference_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2904_shortest_and_lexicographically_smallest_beautiful_string",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2905_find_indices_with_index_and_value_difference_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2906_construct_product_matrix",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2907_maximum_profitable_triplets_with_increasing_prices_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2908_minimum_sum_of_mountain_triplets_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2909_minimum_sum_of_mountain_triplets_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2910_minimum_number_of_groups_to_create_a_valid_assignment",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2911_minimum_changes_to_make_k_semi_palindromes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2912_number_of_ways_to_reach_destination_in_the_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2913_subarrays_distinct_element_sum_of_squares_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2914_minimum_number_of_changes_to_make_binary_string_beautiful",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2915_length_of_the_longest_subsequence_that_sums_to_target",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2916_subarrays_distinct_element_sum_of_squares_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2917_find_the_k_or_of_an_array",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2918_minimum_equal_sum_of_two_arrays_after_replacing_zeros",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2919_minimum_increment_operations_to_make_array_beautiful",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2920_maximum_points_after_collecting_coins_from_all_nodes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2921_maximum_profitable_triplets_with_increasing_prices_ii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2922_market_analysis_iii",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2923_find_champion_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2924_find_champion_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2925_maximum_score_after_applying_operations_on_a_tree",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2926_maximum_balanced_subsequence_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2927_distribute_candies_among_children_iii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2928_distribute_candies_among_children_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2929_distribute_candies_among_children_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2930_number_of_strings_which_can_be_rearranged_to_contain_substring",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2931_maximum_spending_after_buying_items",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2932_maximum_strong_pair_xor_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2933_high_access_employees",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2934_minimum_operations_to_maximize_last_elements_in_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2935_maximum_strong_pair_xor_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2936_number_of_equal_numbers_blocks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2937_make_three_strings_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2938_separate_black_and_white_balls",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2939_maximum_xor_product",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2940_find_building_where_alice_and_bob_can_meet",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2941_maximum_gcd_sum_of_a_subarray",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2942_find_words_containing_character",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2943_maximize_area_of_square_hole_in_grid",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2944_minimum_number_of_coins_for_fruits",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2945_find_maximum_non_decreasing_array_length",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2946_matrix_similarity_after_cyclic_shifts",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2947_count_beautiful_substrings_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2948_make_lexicographically_smallest_array_by_swapping_elements",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2949_count_beautiful_substrings_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2950_number_of_divisible_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2951_find_the_peaks",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2952_minimum_number_of_coins_to_be_added",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2953_count_complete_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2954_count_the_number_of_infection_sequences",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2955_number_of_same_end_substrings",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2956_find_common_elements_between_two_arrays",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2957_remove_adjacent_almost_equal_characters",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2958_length_of_longest_subarray_with_at_most_k_frequency",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2959_number_of_possible_sets_of_closing_branches",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2960_count_tested_devices_after_test_operations",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2961_double_modular_exponentiation",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2962_count_subarrays_where_max_element_appears_at_least_k_times",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2963_count_the_number_of_good_partitions",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2964_number_of_divisible_triplet_sums",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2965_find_missing_and_repeated_values",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2966_divide_array_into_arrays_with_max_difference",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2967_minimum_cost_to_make_array_equalindromic",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2968_apply_operations_to_maximize_frequency_score",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2969_minimum_number_of_coins_for_fruits_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2970_count_the_number_of_incremovable_subarrays_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2971_find_polygon_with_the_largest_perimeter",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2972_count_the_number_of_incremovable_subarrays_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2973_find_number_of_coins_to_place_in_tree_nodes",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2974_minimum_number_game",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2975_maximum_square_area_by_removing_fences_from_a_field",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2976_minimum_cost_to_convert_string_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2977_minimum_cost_to_convert_string_ii",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2978_symmetric_coordinates",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2979_most_expensive_item_that_can_not_be_bought",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2980_check_if_bitwise_or_has_trailing_zeros",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2981_find_longest_special_substring_that_occurs_thrice_i",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2982_find_longest_special_substring_that_occurs_thrice_ii",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2983_palindrome_rearrangement_queries",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2984_find_peak_calling_hours_for_each_city",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2985_calculate_compressed_mean",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2986_find_third_transaction",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2987_find_expensive_cities",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2988_manager_of_the_largest_department",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2989_class_performance",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2990_loan_types",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2991_top_three_wineries",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2992_number_of_self_divisible_permutations",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "2993_friday_purchases_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2994_friday_purchases_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "2995_viewers_turned_streamers",
+      "languages": [
+        "c"
       ]
     },
     {
       "folder": "2996_smallest_missing_integer_greater_than_sequential_prefix_sum",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2997_minimum_number_of_operations_to_make_array_xor_equal_to_k",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2998_minimum_number_of_operations_to_make_x_and_y_equal",
       "languages": [
+        "c",
         "go"
       ]
     },
     {
       "folder": "2999_count_the_number_of_powerful_integers",
       "languages": [
+        "c",
         "go"
+      ]
+    },
+    {
+      "folder": "3000_maximum_area_of_longest_diagonal_rectangle",
+      "languages": [
+        "c"
       ]
     },
     {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0737 - Sentence Similarity II
+// LeetCode 0737 - Sentence Similarity II
 // https://leetcode.com/problems/sentence-similarity-ii/
 
 #include <stdbool.h>

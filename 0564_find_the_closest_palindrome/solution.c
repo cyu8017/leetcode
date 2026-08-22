@@ -1,4 +1,4 @@
-﻿// LeetCode 0564 - Find the Closest Palindrome
+// LeetCode 0564 - Find the Closest Palindrome
 // https://leetcode.com/problems/find-the-closest-palindrome/
 
 #include <stdio.h>

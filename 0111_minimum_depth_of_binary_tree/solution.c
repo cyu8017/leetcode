@@ -1,4 +1,4 @@
-﻿// LeetCode 0111 - Minimum Depth of Binary Tree
+// LeetCode 0111 - Minimum Depth of Binary Tree
 struct TreeNode { int val; struct TreeNode *left, *right; };
 int minDepth(struct TreeNode* root) {
     if (!root) return 0;

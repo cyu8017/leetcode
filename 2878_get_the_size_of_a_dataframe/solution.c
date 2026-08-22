@@ -1,5 +1,10 @@
-﻿// LeetCode 2878 - Get the Size of a DataFrame
+// LeetCode 2878 - Get the Size of a DataFrame
 // https://leetcode.com/problems/get-the-size-of-a-dataframe/
 
-void solve() {
+#include <stdlib.h>
+// Pandas stand-in: Go returns nil.
+int* getDataframeSize(void* df, int* returnSize) {
+    (void)df;
+    *returnSize = 0;
+    return NULL;
 }

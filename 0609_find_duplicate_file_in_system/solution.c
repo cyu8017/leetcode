@@ -1,4 +1,4 @@
-﻿// LeetCode 0609 - Find Duplicate File in System
+// LeetCode 0609 - Find Duplicate File in System
 // https://leetcode.com/problems/find-duplicate-file-in-system/
 
 #define _POSIX_C_SOURCE 200809L

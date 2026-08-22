@@ -1,4 +1,4 @@
-﻿// LeetCode 0165 - Compare Version Numbers
+// LeetCode 0165 - Compare Version Numbers
 int compareVersion(char* version1, char* version2) {
     int i = 0, j = 0;
     while (version1[i] || version2[j]) {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0221 - Maximal Square
+// LeetCode 0221 - Maximal Square
 // https://leetcode.com/problems/maximal-square/
 
 #include <stdlib.h>

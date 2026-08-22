@@ -1,4 +1,4 @@
-﻿// LeetCode 0432 - All O`one Data Structure
+// LeetCode 0432 - All O`one Data Structure
 // https://leetcode.com/problems/all-oone-data-structure/
 
 #define _POSIX_C_SOURCE 200809L

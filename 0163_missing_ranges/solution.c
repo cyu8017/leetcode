@@ -1,4 +1,4 @@
-﻿// LeetCode 0163 - Missing Ranges
+// LeetCode 0163 - Missing Ranges
 #include <stdlib.h>
 int** findMissingRanges(int* nums, int numsSize, int lower, int upper,
                         int* returnSize, int** returnColumnSizes) {

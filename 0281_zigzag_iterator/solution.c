@@ -1,4 +1,4 @@
-﻿// LeetCode 0281 - Zigzag Iterator
+// LeetCode 0281 - Zigzag Iterator
 // https://leetcode.com/problems/zigzag-iterator/
 
 #include <stdbool.h>

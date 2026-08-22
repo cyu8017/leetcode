@@ -1,4 +1,4 @@
-﻿// LeetCode 0040 - Combination Sum II
+// LeetCode 0040 - Combination Sum II
 // https://leetcode.com/problems/combination-sum-ii/
 
 #include <stdlib.h>

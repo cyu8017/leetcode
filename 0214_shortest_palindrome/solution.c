@@ -1,4 +1,4 @@
-﻿// LeetCode 0214 - Shortest Palindrome
+// LeetCode 0214 - Shortest Palindrome
 // https://leetcode.com/problems/shortest-palindrome/
 
 #include <stdlib.h>

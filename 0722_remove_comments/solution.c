@@ -1,4 +1,4 @@
-﻿// LeetCode 0722 - Remove Comments
+// LeetCode 0722 - Remove Comments
 // https://leetcode.com/problems/remove-comments/
 
 #include <stdlib.h>

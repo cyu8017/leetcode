@@ -1,4 +1,4 @@
-﻿// LeetCode 0185 - Department Top Three Salaries
+// LeetCode 0185 - Department Top Three Salaries
 // https://leetcode.com/problems/department-top-three-salaries/
 
 const char* QUERY =

@@ -1,4 +1,4 @@
-﻿// LeetCode 0035 - Search Insert Position
+// LeetCode 0035 - Search Insert Position
 // https://leetcode.com/problems/search-insert-position/
 
 int searchInsert(int* nums, int numsSize, int target) {

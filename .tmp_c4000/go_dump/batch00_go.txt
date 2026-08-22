@@ -1,0 +1,3069 @@
+===== 3001_minimum_moves_to_capture_the_queen =====
+// LeetCode 3001 - Minimum Moves to Capture The Queen
+// https://leetcode.com/problems/minimum-moves-to-capture-the-queen/
+
+func minMovesToCaptureTheQueen(a int, b int, c int, d int, e int, f int) int {
+	if a == e && (c != a || (d-b)*(d-f) > 0) {
+		return 1
+	}
+	if b == f && (d != b || (c-a)*(c-e) > 0) {
+		return 1
+	}
+	if c-e == d-f && (a-e != b-f || (a-c)*(a-e) > 0) {
+		return 1
+	}
+	if c-e == f-d && (a-e != f-b || (a-c)*(a-e) > 0) {
+		return 1
+	}
+	return 2
+}
+
+===== 3002_maximum_size_of_a_set_after_removals =====
+// LeetCode 3002 - Maximum Size of a Set After Removals
+// https://leetcode.com/problems/maximum-size-of-a-set-after-removals/
+
+func maximumSetSize(nums1 []int, nums2 []int) int {
+	s1 := map[int]bool{}
+	s2 := map[int]bool{}
+	for _, x := range nums1 {
+		s1[x] = true
+	}
+	for _, x := range nums2 {
+		s2[x] = true
+	}
+	a, b, c := 0, 0, 0
+	for x := range s1 {
+		if !s2[x] {
+			a++
+		}
+	}
+	for x := range s2 {
+		if !s1[x] {
+			b++
+		} else {
+			c++
+		}
+	}
+	n := len(nums1)
+	a = min(a, n/2)
+	b = min(b, n/2)
+	return min(a+b+c, n)
+}
+
+===== 3003_maximize_the_number_of_partitions_after_operations =====
+// LeetCode 3003 - Maximize the Number of Partitions After Operations
+// https://leetcode.com/problems/maximize-the-number-of-partitions-after-operations/
+
+func maxPartitionsAfterOperations(s string, k int) int {
+	n := len(s)
+	type tuple struct{ i, cur, t int }
+	f := map[tuple]int{}
+	var dfs func(i, cur, t int) int
+	dfs = func(i, cur, t int) int {
+		if i >= n {
+			return 1
+		}
+		key := tuple{i, cur, t}
+		if v, ok := f[key]; ok {
+			return v
+		}
+		v := 1 << (s[i] - 'a')
+		nxt := cur | v
+		var ans int
+		if bits.OnesCount(uint(nxt)) > k {
+			ans = dfs(i+1, v, t) + 1
+		} else {
+			ans = dfs(i+1, nxt, t)
+		}
+		if t > 0 {
+			for j := 0; j < 26; j++ {
+				nxt = cur | (1 << j)
+				if bits.OnesCount(uint(nxt)) > k {
+					ans = max(ans, dfs(i+1, 1<<j, 0)+1)
+				} else {
+					ans = max(ans, dfs(i+1, nxt, 0))
+				}
+			}
+		}
+		f[key] = ans
+		return ans
+	}
+	return dfs(0, 0, 1)
+}
+
+===== 3004_maximum_subtree_of_the_same_color =====
+// LeetCode 3004 - Maximum Subtree of the Same Color
+// https://leetcode.com/problems/maximum-subtree-of-the-same-color/
+
+func maximumSubtreeSize(edges [][]int, colors []int) (ans int) {
+	n := len(edges) + 1
+	g := make([][]int, n)
+	for _, e := range edges {
+		a, b := e[0], e[1]
+		g[a] = append(g[a], b)
+		g[b] = append(g[b], a)
+	}
+	size := make([]int, n)
+	var dfs func(int, int) bool
+	dfs = func(a, fa int) bool {
+		size[a] = 1
+		ok := true
+		for _, b := range g[a] {
+			if b != fa {
+				t := dfs(b, a)
+				ok = ok && t && colors[a] == colors[b]
+				size[a] += size[b]
+			}
+		}
+		if ok {
+			ans = max(ans, size[a])
+		}
+		return ok
+	}
+	dfs(0, -1)
+	return
+}
+
+===== 3005_count_elements_with_maximum_frequency =====
+// LeetCode 3005 - Count Elements With Maximum Frequency
+// https://leetcode.com/problems/count-elements-with-maximum-frequency/
+
+func maxFrequencyElements(nums []int) (ans int) {
+	cnt := [101]int{}
+	for _, x := range nums {
+		cnt[x]++
+	}
+	mx := -1
+	for _, x := range cnt {
+		if mx < x {
+			mx, ans = x, x
+		} else if mx == x {
+			ans += x
+		}
+	}
+	return
+}
+
+===== 3006_find_beautiful_indices_in_the_given_array_i =====
+// LeetCode 3006 - Find Beautiful Indices in the Given Array I
+// https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-i/
+
+func beautifulIndices(s string, a string, b string, k int) []int {
+
+	s_len := len(s)
+	a_len := len(a)
+	b_len := len(b)
+
+	final := make([]int, 0)
+	lps_a := make([]int, a_len)
+	lps_b := make([]int, b_len)
+	a_index := make([]int, 0)
+	b_index := make([]int, 0)
+
+	var pat func(lps []int, s_l int, pattern string)
+
+	pat = func(lps []int, s_l int, pattern string) {
+
+		l := 0
+		lps[0] = 0
+		i := 1
+
+		for i < s_l {
+			if pattern[i] == pattern[l] {
+				l++
+				lps[i] = l
+				i++
+			} else {
+				if l != 0 {
+					l = lps[l-1]
+				} else {
+					lps[i] = l
+					i++
+				}
+			}
+		}
+	}
+
+	pat(lps_a, a_len, a)
+	pat(lps_b, b_len, b)
+
+	var kmp func(pat string, pat_l int, lps []int, index *[]int)
+
+	kmp = func(pat string, pat_l int, lps []int, index *[]int) {
+		i := 0
+		j := 0
+		for s_len-i >= pat_l-j {
+			if s[i] == pat[j] {
+				i++
+				j++
+			}
+			if j == pat_l {
+				*index = append(*index, i-pat_l)
+				j = lps[j-1]
+			} else if s[i] != pat[j] {
+				if j != 0 {
+					j = lps[j-1]
+				} else {
+					i++
+				}
+			}
+		}
+	}
+
+	kmp(a, a_len, lps_a, &a_index)
+	kmp(b, b_len, lps_b, &b_index)
+
+	// fmt.Println(a_index, b_index)
+
+	i := 0
+	j := 0
+
+	for i < len(a_index) && j < len(b_index) {
+		if a_index[i]+k >= b_index[j] && a_index[i]-k <= b_index[j] {
+			final = append(final, a_index[i])
+			i++
+		} else if a_index[i]-k > b_index[j] {
+			j++
+		} else {
+			i++
+		}
+	}
+
+	return final
+}
+
+===== 3007_maximum_number_that_sum_of_the_prices_is_less_than_or_equal_to_k =====
+// LeetCode 3007 - Maximum Number That Sum of the Prices Is Less Than or Equal to K
+// https://leetcode.com/problems/maximum-number-that-sum-of-the-prices-is-less-than-or-equal-to-k/
+
+func findMaximumNumber(k int64, x int) int64 {
+	var l, r int64 = 1, 1e17
+	var num int64
+	var f [65][65]int64
+	var dfs func(pos, cnt int, limit bool) int64
+	dfs = func(pos, cnt int, limit bool) int64 {
+		if pos == 0 {
+			return int64(cnt)
+		}
+		if !limit && f[pos][cnt] != -1 {
+			return f[pos][cnt]
+		}
+		var ans int64
+		up := 1
+		if limit {
+			up = int(num >> (pos - 1) & 1)
+		}
+		for i := 0; i <= up; i++ {
+			v := cnt
+			if i == 1 && pos%x == 0 {
+				v++
+			}
+			ans += dfs(pos-1, v, limit && i == up)
+		}
+		if !limit {
+			f[pos][cnt] = ans
+		}
+		return ans
+	}
+	for l < r {
+		mid := (l + r + 1) >> 1
+		num = mid
+		m := bits.Len(uint(num))
+		for i := range f {
+			for j := range f[i] {
+				f[i][j] = -1
+			}
+		}
+		if dfs(m, 0, true) <= k {
+			l = mid
+		} else {
+			r = mid - 1
+		}
+	}
+	return l
+}
+
+===== 3008_find_beautiful_indices_in_the_given_array_ii =====
+// LeetCode 3008 - Find Beautiful Indices in the Given Array II
+// https://leetcode.com/problems/find-beautiful-indices-in-the-given-array-ii/
+
+func beautifulIndices(s string, a string, b string, k int) []int {
+
+	s_len := len(s)
+	a_len := len(a)
+	b_len := len(b)
+
+	final := make([]int, 0)
+	lps_a := make([]int, a_len)
+	lps_b := make([]int, b_len)
+	a_index := make([]int, 0)
+	b_index := make([]int, 0)
+
+	var pat func(lps []int, s_l int, pattern string)
+
+	pat = func(lps []int, s_l int, pattern string) {
+
+		l := 0
+		lps[0] = 0
+		i := 1
+
+		for i < s_l {
+			if pattern[i] == pattern[l] {
+				l++
+				lps[i] = l
+				i++
+			} else {
+				if l != 0 {
+					l = lps[l-1]
+				} else {
+					lps[i] = l
+					i++
+				}
+			}
+		}
+	}
+
+	pat(lps_a, a_len, a)
+	pat(lps_b, b_len, b)
+
+	var kmp func(pat string, pat_l int, lps []int, index *[]int)
+
+	kmp = func(pat string, pat_l int, lps []int, index *[]int) {
+		i := 0
+		j := 0
+		for s_len-i >= pat_l-j {
+			if s[i] == pat[j] {
+				i++
+				j++
+			}
+			if j == pat_l {
+				*index = append(*index, i-pat_l)
+				j = lps[j-1]
+			} else if s[i] != pat[j] {
+				if j != 0 {
+					j = lps[j-1]
+				} else {
+					i++
+				}
+			}
+		}
+	}
+
+	kmp(a, a_len, lps_a, &a_index)
+	kmp(b, b_len, lps_b, &b_index)
+
+	// fmt.Println(a_index, b_index)
+
+	i := 0
+	j := 0
+
+	for i < len(a_index) && j < len(b_index) {
+		if a_index[i]+k >= b_index[j] && a_index[i]-k <= b_index[j] {
+			final = append(final, a_index[i])
+			i++
+		} else if a_index[i]-k > b_index[j] {
+			j++
+		} else {
+			i++
+		}
+	}
+
+	return final
+}
+
+===== 3009_maximum_number_of_intersections_on_the_chart =====
+// LeetCode 3009 - Maximum Number of Intersections on the Chart
+// https://leetcode.com/problems/maximum-number-of-intersections-on-the-chart/
+
+import "sort"
+
+func maxIntersectionCount(y []int) int {
+	n := len(y)
+	line := map[int]int{}
+	for i := 1; i < n; i++ {
+		start := 2 * y[i-1]
+		end := 2 * y[i]
+		if i != n-1 {
+			if y[i] > y[i-1] {
+				end--
+			} else {
+				end++
+			}
+		}
+		a, b := start, end
+		if a > b {
+			a, b = b, a
+		}
+		line[a]++
+		line[b+1]--
+	}
+	keys := make([]int, 0, len(line))
+	for k := range line {
+		keys = append(keys, k)
+	}
+	sort.Ints(keys)
+	ans, cur := 0, 0
+	for _, k := range keys {
+		cur += line[k]
+		if cur > ans {
+			ans = cur
+		}
+	}
+	return ans
+}
+
+===== 3010_divide_an_array_into_subarrays_with_minimum_cost_i =====
+// LeetCode 3010 - Divide an Array Into Subarrays With Minimum Cost I
+// https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/
+
+func minimumCost(nums []int) int {
+	a, b, c := nums[0], 100, 100
+	for _, x := range nums[1:] {
+		if x < b {
+			b, c = x, b
+		} else if x < c {
+			c = x
+		}
+	}
+	return a + b + c
+}
+
+===== 3011_find_if_array_can_be_sorted =====
+// LeetCode 3011 - Find if Array Can Be Sorted
+// https://leetcode.com/problems/find-if-array-can-be-sorted/
+
+func canSortArray(nums []int) bool {
+	preMx := 0
+	i, n := 0, len(nums)
+	for i < n {
+		cnt := bits.OnesCount(uint(nums[i]))
+		j := i + 1
+		mi, mx := nums[i], nums[i]
+		for j < n && bits.OnesCount(uint(nums[j])) == cnt {
+			mi = min(mi, nums[j])
+			mx = max(mx, nums[j])
+			j++
+		}
+		if preMx > mi {
+			return false
+		}
+		preMx = mx
+		i = j
+	}
+	return true
+}
+
+===== 3012_minimize_length_of_array_using_operations =====
+// LeetCode 3012 - Minimize Length of Array Using Operations
+// https://leetcode.com/problems/minimize-length-of-array-using-operations/
+
+func minimumArrayLength(nums []int) int {
+	mi := slices.Min(nums)
+	cnt := 0
+	for _, x := range nums {
+		if x%mi != 0 {
+			return 1
+		}
+		if x == mi {
+			cnt++
+		}
+	}
+	return (cnt + 1) / 2
+}
+
+===== 3013_divide_an_array_into_subarrays_with_minimum_cost_ii =====
+// LeetCode 3013 - Divide an Array Into Subarrays With Minimum Cost II
+// https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-ii/
+
+func minimumCost(nums []int, k int, dist int) int64 {
+	k--
+	l := redblacktree.New[int, int]()
+	r := redblacktree.New[int, int]()
+	merge := func(st *redblacktree.Tree[int, int], x, v int) {
+		c, _ := st.Get(x)
+		if c+v == 0 {
+			st.Remove(x)
+		} else {
+			st.Put(x, c+v)
+		}
+	}
+
+	s := nums[0]
+	for _, x := range nums[1 : dist+2] {
+		s += x
+		merge(l, x, 1)
+	}
+	size := dist + 1
+
+	l2r := func() {
+		x := l.Right().Key
+		merge(l, x, -1)
+		s -= x
+		size--
+		merge(r, x, 1)
+	}
+	r2l := func() {
+		x := r.Left().Key
+		merge(r, x, -1)
+		merge(l, x, 1)
+		s += x
+		size++
+	}
+
+	for size > k {
+		l2r()
+	}
+
+	ans := s
+	for i := dist + 2; i < len(nums); i++ {
+		x := nums[i-dist-1]
+		if _, ok := l.Get(x); ok {
+			merge(l, x, -1)
+			s -= x
+			size--
+		} else {
+			merge(r, x, -1)
+		}
+		y := nums[i]
+		if y < l.Right().Key {
+			merge(l, y, 1)
+			s += y
+			size++
+		} else {
+			merge(r, y, 1)
+		}
+		for size < k {
+			r2l()
+		}
+		for size > k {
+			l2r()
+		}
+		ans = min(ans, s)
+
+	}
+	return int64(ans)
+}
+
+===== 3014_minimum_number_of_pushes_to_type_word_i =====
+// LeetCode 3014 - Minimum Number of Pushes to Type Word I
+// https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-i/
+
+func minimumPushes(word string) (ans int) {
+	n := len(word)
+	k := 1
+	for i := 0; i < n/8; i++ {
+		ans += k * 8
+		k++
+	}
+	ans += k * (n % 8)
+	return
+}
+
+===== 3015_count_the_number_of_houses_at_a_certain_distance_i =====
+// LeetCode 3015 - Count the Number of Houses at a Certain Distance I
+// https://leetcode.com/problems/count-the-number-of-houses-at-a-certain-distance-i/
+
+func countOfPairs(n int, x int, y int) []int {
+	ans := make([]int, n)
+	x, y = x-1, y-1
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			a := j - i
+			b := abs(x-i) + abs(y-j) + 1
+			c := abs(x-j) + abs(y-i) + 1
+			ans[min(a, min(b, c))-1] += 2
+		}
+	}
+	return ans
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+===== 3016_minimum_number_of_pushes_to_type_word_ii =====
+// LeetCode 3016 - Minimum Number of Pushes to Type Word II
+// https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-ii/
+
+func minimumPushes(word string) (ans int) {
+	cnt := make([]int, 26)
+	for _, c := range word {
+		cnt[c-'a']++
+	}
+	sort.Ints(cnt)
+	for i := 0; i < 26; i++ {
+		ans += (i/8 + 1) * cnt[26-i-1]
+	}
+	return
+}
+
+===== 3017_count_the_number_of_houses_at_a_certain_distance_ii =====
+// LeetCode 3017 - Count the Number of Houses at a Certain Distance II
+// https://leetcode.com/problems/count-the-number-of-houses-at-a-certain-distance-ii/
+
+func countOfPairs(n int, x int, y int) []int64 {
+	if x > y {
+		x, y = y, x
+	}
+	A := make([]int64, n)
+	for i := 1; i <= n; i++ {
+		A[0] += 2
+		A[min(int64(i-1), int64(math.Abs(float64(i-y)))+int64(x))] -= 1
+		A[min(int64(n-i), int64(math.Abs(float64(i-x)))+1+int64(n-y))] -= 1
+		A[min(int64(math.Abs(float64(i-x))), int64(math.Abs(float64(y-i)))+1)] += 1
+		A[min(int64(math.Abs(float64(i-x)))+1, int64(math.Abs(float64(y-i))))] += 1
+		r := max(int64(x-i), 0) + max(int64(i-y), 0)
+		A[r+int64((y-x+0)/2)] -= 1
+		A[r+int64((y-x+1)/2)] -= 1
+	}
+	for i := 1; i < n; i++ {
+		A[i] += A[i-1]
+	}
+
+	return A
+}
+
+===== 3018_maximum_number_of_removal_queries_that_can_be_processed_i =====
+// LeetCode 3018 - Maximum Number of Removal Queries That Can Be Processed I
+// https://leetcode.com/problems/maximum-number-of-removal-queries-that-can-be-processed-i/
+
+func maximumProcessableQueries(nums []int, queries []int) (ans int) {
+	n := len(nums)
+	f := make([][]int, n)
+	for i := range f {
+		f[i] = make([]int, n)
+	}
+	m := len(queries)
+	for i := 0; i < n; i++ {
+		for j := n - 1; j >= i; j-- {
+			if i > 0 {
+				t := 0
+				if nums[i-1] >= queries[f[i-1][j]] {
+					t = 1
+				}
+				f[i][j] = max(f[i][j], f[i-1][j]+t)
+			}
+			if j+1 < n {
+				t := 0
+				if nums[j+1] >= queries[f[i][j+1]] {
+					t = 1
+				}
+				f[i][j] = max(f[i][j], f[i][j+1]+t)
+			}
+			if f[i][j] == m {
+				return m
+			}
+		}
+	}
+	for i := 0; i < n; i++ {
+		t := 0
+		if nums[i] >= queries[f[i][i]] {
+			t = 1
+		}
+		ans = max(ans, f[i][i]+t)
+	}
+	return
+}
+
+===== 3019_number_of_changing_keys =====
+// LeetCode 3019 - Number of Changing Keys
+// https://leetcode.com/problems/number-of-changing-keys/
+
+func countKeyChanges(s string) (ans int) {
+	s = strings.ToLower(s)
+	for i, c := range s[1:] {
+		if byte(c) != s[i] {
+			ans++
+		}
+	}
+	return
+}
+
+===== 3020_find_the_maximum_number_of_elements_in_subset =====
+// LeetCode 3020 - Find the Maximum Number of Elements in Subset
+// https://leetcode.com/problems/find-the-maximum-number-of-elements-in-subset/
+
+func maximumLength(nums []int) (ans int) {
+	cnt := map[int]int{}
+	for _, x := range nums {
+		cnt[x]++
+	}
+	ans = cnt[1] - (cnt[1]%2 ^ 1)
+	delete(cnt, 1)
+	for x := range cnt {
+		t := 0
+		for cnt[x] > 1 {
+			x = x * x
+			t += 2
+		}
+		if cnt[x] > 0 {
+			t += 1
+		} else {
+			t -= 1
+		}
+		ans = max(ans, t)
+	}
+	return
+}
+
+===== 3021_alice_and_bob_playing_flower_game =====
+// LeetCode 3021 - Alice and Bob Playing Flower Game
+// https://leetcode.com/problems/alice-and-bob-playing-flower-game/
+
+func flowerGame(n int, m int) int64 {
+	a1, b1 := (n+1)/2, (m+1)/2
+	a2, b2 := n/2, m/2
+	return int64(a1*b2 + a2*b1)
+}
+
+===== 3022_minimize_or_of_remaining_elements_using_operations =====
+// LeetCode 3022 - Minimize OR of Remaining Elements Using Operations
+// https://leetcode.com/problems/minimize-or-of-remaining-elements-using-operations/
+
+func minOrAfterOperations(nums []int, k int) int {
+    ans := 0
+    rans := 0
+    for i := 29; i >= 0; i-- {
+        test := ans + (1 << i)
+        cnt := 0
+        val := 0
+        for _, num := range nums {
+            if val == 0 {
+                val = test & num
+            } else {
+                val &= test & num
+            }
+            if val != 0 {
+                cnt++
+            }
+        }
+        if cnt > k {
+            rans += (1 << i)
+        } else {
+            ans += (1 << i)
+        }
+    }
+    return rans
+}
+
+===== 3023_find_pattern_in_infinite_stream_i =====
+// LeetCode 3023 - Find Pattern in Infinite Stream I
+// https://leetcode.com/problems/find-pattern-in-infinite-stream-i/
+
+/**
+ * Definition for an infinite stream.
+ * type InfiniteStream interface {
+ *     Next() int
+ * }
+ */
+func findPattern(stream InfiniteStream, pattern []int) int {
+	a, b := 0, 0
+	m := len(pattern)
+	half := m >> 1
+	mask1 := (1 << half) - 1
+	mask2 := (1 << (m - half)) - 1
+	for i := 0; i < half; i++ {
+		a |= pattern[i] << (half - 1 - i)
+	}
+	for i := half; i < m; i++ {
+		b |= pattern[i] << (m - 1 - i)
+	}
+	x, y := 0, 0
+	for i := 1; ; i++ {
+		v := stream.Next()
+		y = y<<1 | v
+		v = (y >> (m - half)) & 1
+		y &= mask2
+		x = x<<1 | v
+		x &= mask1
+		if i >= m && a == x && b == y {
+			return i - m
+		}
+	}
+}
+
+===== 3024_type_of_triangle =====
+// LeetCode 3024 - Type of Triangle
+// https://leetcode.com/problems/type-of-triangle/
+
+func triangleType(nums []int) string {
+	sort.Ints(nums)
+	if nums[0]+nums[1] <= nums[2] {
+		return "none"
+	}
+	if nums[0] == nums[2] {
+		return "equilateral"
+	}
+	if nums[0] == nums[1] || nums[1] == nums[2] {
+		return "isosceles"
+	}
+	return "scalene"
+}
+
+===== 3025_find_the_number_of_ways_to_place_people_i =====
+// LeetCode 3025 - Find the Number of Ways to Place People I
+// https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
+
+func numberOfPairs(points [][]int) (ans int) {
+	sort.Slice(points, func(i, j int) bool {
+		return points[i][0] < points[j][0] || points[i][0] == points[j][0] && points[j][1] < points[i][1]
+	})
+	for i, p1 := range points {
+		y1 := p1[1]
+		maxY := math.MinInt32
+		for _, p2 := range points[i+1:] {
+			y2 := p2[1]
+			if maxY < y2 && y2 <= y1 {
+				maxY = y2
+				ans++
+			}
+		}
+	}
+	return
+}
+
+===== 3026_maximum_good_subarray_sum =====
+// LeetCode 3026 - Maximum Good Subarray Sum
+// https://leetcode.com/problems/maximum-good-subarray-sum/
+
+func maximumSubarraySum(nums []int, k int) int64 {
+	p := map[int]int64{nums[0]: 0}
+	var s int64 = 0
+	n := len(nums)
+	var ans int64 = math.MinInt64
+	for i, x := range nums {
+		s += int64(x)
+		if t, ok := p[nums[i]-k]; ok {
+			ans = max(ans, s-t)
+		}
+		if t, ok := p[nums[i]+k]; ok {
+			ans = max(ans, s-t)
+		}
+		if i+1 == n {
+			break
+		}
+		if t, ok := p[nums[i+1]]; !ok || s < t {
+			p[nums[i+1]] = s
+		}
+	}
+	if ans == math.MinInt64 {
+		return 0
+	}
+	return ans
+}
+
+===== 3027_find_the_number_of_ways_to_place_people_ii =====
+// LeetCode 3027 - Find the Number of Ways to Place People II
+// https://leetcode.com/problems/find-the-number-of-ways-to-place-people-ii/
+
+func numberOfPairs(points [][]int) (ans int) {
+	sort.Slice(points, func(i, j int) bool {
+		return points[i][0] < points[j][0] || points[i][0] == points[j][0] && points[j][1] < points[i][1]
+	})
+	for i, p1 := range points {
+		y1 := p1[1]
+		maxY := math.MinInt32
+		for _, p2 := range points[i+1:] {
+			y2 := p2[1]
+			if maxY < y2 && y2 <= y1 {
+				maxY = y2
+				ans++
+			}
+		}
+	}
+	return
+}
+
+===== 3028_ant_on_the_boundary =====
+// LeetCode 3028 - Ant on the Boundary
+// https://leetcode.com/problems/ant-on-the-boundary/
+
+func returnToBoundaryCount(nums []int) (ans int) {
+	s := 0
+	for _, x := range nums {
+		s += x
+		if s == 0 {
+			ans++
+		}
+	}
+	return
+}
+
+===== 3029_minimum_time_to_revert_word_to_initial_state_i =====
+// LeetCode 3029 - Minimum Time to Revert Word to Initial State I
+// https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i/
+
+func minimumTimeToInitialState(word string, k int) int {
+	n := len(word)
+	for i := k; i < n; i += k {
+		if word[i:] == word[:n-i] {
+			return i / k
+		}
+	}
+	return (n + k - 1) / k
+}
+
+===== 3030_find_the_grid_of_region_average =====
+// LeetCode 3030 - Find the Grid of Region Average
+// https://leetcode.com/problems/find-the-grid-of-region-average/
+
+func resultGrid(image [][]int, threshold int) [][]int {
+	n := len(image)
+	m := len(image[0])
+	ans := make([][]int, n)
+	ct := make([][]int, n)
+	for i := range ans {
+		ans[i] = make([]int, m)
+		ct[i] = make([]int, m)
+	}
+	for i := 0; i+2 < n; i++ {
+		for j := 0; j+2 < m; j++ {
+			region := true
+			for k := 0; k < 3; k++ {
+				for l := 0; l < 2; l++ {
+					region = region && abs(image[i+k][j+l]-image[i+k][j+l+1]) <= threshold
+				}
+			}
+			for k := 0; k < 2; k++ {
+				for l := 0; l < 3; l++ {
+					region = region && abs(image[i+k][j+l]-image[i+k+1][j+l]) <= threshold
+				}
+			}
+			if region {
+				tot := 0
+				for k := 0; k < 3; k++ {
+					for l := 0; l < 3; l++ {
+						tot += image[i+k][j+l]
+					}
+				}
+				for k := 0; k < 3; k++ {
+					for l := 0; l < 3; l++ {
+						ct[i+k][j+l]++
+						ans[i+k][j+l] += tot / 9
+					}
+				}
+			}
+		}
+	}
+	for i := 0; i < n; i++ {
+		for j := 0; j < m; j++ {
+			if ct[i][j] == 0 {
+				ans[i][j] = image[i][j]
+			} else {
+				ans[i][j] /= ct[i][j]
+			}
+		}
+	}
+	return ans
+}
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+===== 3031_minimum_time_to_revert_word_to_initial_state_ii =====
+// LeetCode 3031 - Minimum Time to Revert Word to Initial State II
+// https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-ii/
+
+type Hashing struct {
+	p   []int64
+	h   []int64
+	mod int64
+}
+
+func NewHashing(word string, base int64, mod int64) *Hashing {
+	n := len(word)
+	p := make([]int64, n+1)
+	h := make([]int64, n+1)
+	p[0] = 1
+	for i := 1; i <= n; i++ {
+		p[i] = (p[i-1] * base) % mod
+		h[i] = (h[i-1]*base + int64(word[i-1]-'a')) % mod
+	}
+	return &Hashing{p, h, mod}
+}
+
+func (hashing *Hashing) Query(l, r int) int64 {
+	return (hashing.h[r] - hashing.h[l-1]*hashing.p[r-l+1]%hashing.mod + hashing.mod) % hashing.mod
+}
+
+func minimumTimeToInitialState(word string, k int) int {
+	hashing := NewHashing(word, 13331, 998244353)
+	n := len(word)
+	for i := k; i < n; i += k {
+		if hashing.Query(1, n-i) == hashing.Query(i+1, n) {
+			return i / k
+		}
+	}
+	return (n + k - 1) / k
+}
+
+===== 3032_count_numbers_with_unique_digits_ii =====
+// LeetCode 3032 - Count Numbers With Unique Digits II
+// https://leetcode.com/problems/count-numbers-with-unique-digits-ii/
+
+func numberCount(a int, b int) int {
+	num := strconv.Itoa(b)
+	f := make([][1 << 10]int, len(num))
+	for i := range f {
+		for j := range f[i] {
+			f[i][j] = -1
+		}
+	}
+	var dfs func(pos, mask int, limit bool) int
+	dfs = func(pos, mask int, limit bool) int {
+		if pos >= len(num) {
+			if mask != 0 {
+				return 1
+			}
+			return 0
+		}
+		if !limit && f[pos][mask] != -1 {
+			return f[pos][mask]
+		}
+		up := 9
+		if limit {
+			up = int(num[pos] - '0')
+		}
+		ans := 0
+		for i := 0; i <= up; i++ {
+			if mask>>i&1 == 1 {
+				continue
+			}
+			nxt := mask | 1<<i
+			if mask == 0 && i == 0 {
+				nxt = 0
+			}
+			ans += dfs(pos+1, nxt, limit && i == up)
+		}
+		if !limit {
+			f[pos][mask] = ans
+		}
+		return ans
+	}
+	y := dfs(0, 0, true)
+	num = strconv.Itoa(a - 1)
+	for i := range f {
+		for j := range f[i] {
+			f[i][j] = -1
+		}
+	}
+	x := dfs(0, 0, true)
+	return y - x
+}
+
+===== 3033_modify_the_matrix =====
+// LeetCode 3033 - Modify the Matrix
+// https://leetcode.com/problems/modify-the-matrix/
+
+func modifiedMatrix(matrix [][]int) [][]int {
+	m, n := len(matrix), len(matrix[0])
+	for j := 0; j < n; j++ {
+		mx := -1
+		for i := 0; i < m; i++ {
+			mx = max(mx, matrix[i][j])
+		}
+		for i := 0; i < m; i++ {
+			if matrix[i][j] == -1 {
+				matrix[i][j] = mx
+			}
+		}
+	}
+	return matrix
+}
+
+===== 3034_number_of_subarrays_that_match_a_pattern_i =====
+// LeetCode 3034 - Number of Subarrays That Match a Pattern I
+// https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-i/
+
+func countMatchingSubarrays(nums []int, pattern []int) (ans int) {
+	f := func(a, b int) int {
+		if a == b {
+			return 0
+		}
+		if a < b {
+			return 1
+		}
+		return -1
+	}
+	n, m := len(nums), len(pattern)
+	for i := 0; i < n-m; i++ {
+		ok := 1
+		for k := 0; k < m && ok == 1; k++ {
+			if f(nums[i+k], nums[i+k+1]) != pattern[k] {
+				ok = 0
+			}
+		}
+		ans += ok
+	}
+	return
+}
+
+===== 3035_maximum_palindromes_after_operations =====
+// LeetCode 3035 - Maximum Palindromes After Operations
+// https://leetcode.com/problems/maximum-palindromes-after-operations/
+
+func maxPalindromesAfterOperations(words []string) (ans int) {
+	var s, mask int
+	for _, w := range words {
+		s += len(w)
+		for _, c := range w {
+			mask ^= 1 << (c - 'a')
+		}
+	}
+	s -= bits.OnesCount(uint(mask))
+	sort.Slice(words, func(i, j int) bool {
+		return len(words[i]) < len(words[j])
+	})
+	for _, w := range words {
+		s -= len(w) / 2 * 2
+		if s < 0 {
+			break
+		}
+		ans++
+	}
+	return
+}
+
+===== 3036_number_of_subarrays_that_match_a_pattern_ii =====
+// LeetCode 3036 - Number of Subarrays That Match a Pattern II
+// https://leetcode.com/problems/number-of-subarrays-that-match-a-pattern-ii/
+
+func countMatchingSubarrays(nums []int, pattern []int) int {
+	N := len(pattern)
+	ps := make([]int, N+1)
+	ps[0], ps[1] = -1, 0
+	for i, p := 2, 0; i <= N; i++ {
+		x := pattern[i-1]
+		for p >= 0 && pattern[p] != x {
+			p = ps[p]
+		}
+		p++
+		ps[i] = p
+	}
+	res := 0
+	M := len(nums)
+	for i, p := 1, 0; i < M; i++ {
+		t := nums[i] - nums[i-1]
+		switch {
+		case t > 0:
+			t = 1
+		case t < 0:
+			t = -1
+		}
+		for p >= 0 && pattern[p] != t {
+			p = ps[p]
+		}
+		if p++; p == N {
+			res++
+			p = ps[p]
+		}
+	}
+	return res
+}
+
+===== 3037_find_pattern_in_infinite_stream_ii =====
+// LeetCode 3037 - Find Pattern in Infinite Stream II
+// https://leetcode.com/problems/find-pattern-in-infinite-stream-ii/
+
+/**
+ * Definition for an infinite stream.
+ * type InfiniteStream interface {
+ *     Next() int
+ * }
+ */
+func findPattern(stream InfiniteStream, pattern []int) int {
+	lps := getLPS(pattern)
+	i, j := 0, 0
+	bit := 0
+	readNext := false
+	for {
+		if !readNext {
+			bit = stream.Next()
+			readNext = true
+		}
+		if bit == pattern[j] {
+			i++
+			readNext = false
+			j++
+			if j == len(pattern) {
+				return i - j
+			}
+		} else if j > 0 {
+			j = lps[j-1]
+		} else {
+			i++
+			readNext = false
+		}
+	}
+}
+
+func getLPS(pattern []int) []int {
+	lps := make([]int, len(pattern))
+	j := 0
+	for i := 1; i < len(pattern); i++ {
+		for j > 0 && pattern[j] != pattern[i] {
+			j = lps[j-1]
+		}
+		if pattern[i] == pattern[j] {
+			j++
+			lps[i] = j
+		}
+	}
+	return lps
+}
+
+===== 3038_maximum_number_of_operations_with_the_same_score_i =====
+// LeetCode 3038 - Maximum Number of Operations With the Same Score I
+// https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-i/
+
+func maxOperations(nums []int) (ans int) {
+	s, n := nums[0]+nums[1], len(nums)
+	for i := 0; i+1 < n && nums[i]+nums[i+1] == s; i += 2 {
+		ans++
+	}
+	return
+}
+
+===== 3039_apply_operations_to_make_string_empty =====
+// LeetCode 3039 - Apply Operations to Make String Empty
+// https://leetcode.com/problems/apply-operations-to-make-string-empty/
+
+func lastNonEmptyString(s string) string {
+	cnt := [26]int{}
+	last := [26]int{}
+	mx := 0
+	for i, c := range s {
+		c -= 'a'
+		cnt[c]++
+		last[c] = i
+		mx = max(mx, cnt[c])
+	}
+	ans := []rune{}
+	for i, c := range s {
+		if cnt[c-'a'] == mx && last[c-'a'] == i {
+			ans = append(ans, c)
+		}
+	}
+	return string(ans)
+}
+
+===== 3040_maximum_number_of_operations_with_the_same_score_ii =====
+// LeetCode 3040 - Maximum Number of Operations With the Same Score II
+// https://leetcode.com/problems/maximum-number-of-operations-with-the-same-score-ii/
+
+func maxOperations(nums []int) int {
+	n := len(nums)
+	var g func(i, j, s int) int
+	g = func(i, j, s int) int {
+		f := make([][]int, n)
+		for i := range f {
+			f[i] = make([]int, n)
+			for j := range f {
+				f[i][j] = -1
+			}
+		}
+		var dfs func(i, j int) int
+		dfs = func(i, j int) int {
+			if j-i < 1 {
+				return 0
+			}
+			if f[i][j] != -1 {
+				return f[i][j]
+			}
+			ans := 0
+			if nums[i]+nums[i+1] == s {
+				ans = max(ans, 1+dfs(i+2, j))
+			}
+
+			if nums[i]+nums[j] == s {
+				ans = max(ans, 1+dfs(i+1, j-1))
+			}
+
+			if nums[j-1]+nums[j] == s {
+				ans = max(ans, 1+dfs(i, j-2))
+			}
+			f[i][j] = ans
+			return ans
+		}
+		return dfs(i, j)
+	}
+	a := g(2, n-1, nums[0]+nums[1])
+	b := g(0, n-3, nums[n-1]+nums[n-2])
+	c := g(1, n-2, nums[0]+nums[n-1])
+	return 1 + max(a, b, c)
+}
+
+===== 3041_maximize_consecutive_elements_in_an_array_after_modification =====
+// LeetCode 3041 - Maximize Consecutive Elements in an Array After Modification
+// https://leetcode.com/problems/maximize-consecutive-elements-in-an-array-after-modification/
+
+import "sort"
+
+func maxSelectedElements(nums []int) int {
+	sort.Ints(nums)
+	dp := map[int]int{}
+	ans := 0
+	for _, num := range nums {
+		dp[num+1] = dp[num] + 1
+		dp[num] = dp[num-1] + 1
+		if dp[num] > ans {
+			ans = dp[num]
+		}
+		if dp[num+1] > ans {
+			ans = dp[num+1]
+		}
+	}
+	return ans
+}
+
+===== 3042_count_prefix_and_suffix_pairs_i =====
+// LeetCode 3042 - Count Prefix and Suffix Pairs I
+// https://leetcode.com/problems/count-prefix-and-suffix-pairs-i/
+
+func countPrefixSuffixPairs(words []string) (ans int) {
+	for i, s := range words {
+		for _, t := range words[i+1:] {
+			if strings.HasPrefix(t, s) && strings.HasSuffix(t, s) {
+				ans++
+			}
+		}
+	}
+	return
+}
+
+===== 3043_find_the_length_of_the_longest_common_prefix =====
+// LeetCode 3043 - Find the Length of the Longest Common Prefix
+// https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix/
+
+func longestCommonPrefix(arr1 []int, arr2 []int) int {
+	s := map[int]bool{}
+	for _, x := range arr1 {
+		for ; x > 0; x /= 10 {
+			s[x] = true
+		}
+	}
+	mx := 0
+	for _, x := range arr2 {
+		for ; x > 0; x /= 10 {
+			if s[x] {
+				mx = max(mx, x)
+				break
+			}
+		}
+	}
+	if mx > 0 {
+		return len(strconv.Itoa(mx))
+	}
+	return 0
+}
+
+===== 3044_most_frequent_prime =====
+// LeetCode 3044 - Most Frequent Prime
+// https://leetcode.com/problems/most-frequent-prime/
+
+func mostFrequentPrime(mat [][]int) int {
+	m, n := len(mat), len(mat[0])
+	cnt := make(map[int]int)
+	for i := 0; i < m; i++ {
+		for j := 0; j < n; j++ {
+			for a := -1; a <= 1; a++ {
+				for b := -1; b <= 1; b++ {
+					if a == 0 && b == 0 {
+						continue
+					}
+					x, y, v := i+a, j+b, mat[i][j]
+					for x >= 0 && x < m && y >= 0 && y < n {
+						v = v*10 + mat[x][y]
+						if isPrime(v) {
+							cnt[v]++
+						}
+						x += a
+						y += b
+					}
+				}
+			}
+		}
+	}
+	ans, mx := -1, 0
+	for v, x := range cnt {
+		if mx < x || (mx == x && ans < v) {
+			mx = x
+			ans = v
+		}
+	}
+	return ans
+}
+
+func isPrime(n int) bool {
+	for i := 2; i <= n/i; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+===== 3045_count_prefix_and_suffix_pairs_ii =====
+// LeetCode 3045 - Count Prefix and Suffix Pairs II
+// https://leetcode.com/problems/count-prefix-and-suffix-pairs-ii/
+
+type Node struct {
+	children map[int]*Node
+	cnt      int
+}
+
+func countPrefixSuffixPairs(words []string) (ans int64) {
+	trie := &Node{children: make(map[int]*Node)}
+	for _, s := range words {
+		node := trie
+		m := len(s)
+		for i := 0; i < m; i++ {
+			p := int(s[i])*32 + int(s[m-i-1])
+			if _, ok := node.children[p]; !ok {
+				node.children[p] = &Node{children: make(map[int]*Node)}
+			}
+			node = node.children[p]
+			ans += int64(node.cnt)
+		}
+		node.cnt++
+	}
+	return
+}
+
+===== 3046_split_the_array =====
+// LeetCode 3046 - Split the Array
+// https://leetcode.com/problems/split-the-array/
+
+func isPossibleToSplit(nums []int) bool {
+	cnt := [101]int{}
+	for _, x := range nums {
+		cnt[x]++
+		if cnt[x] >= 3 {
+			return false
+		}
+	}
+	return true
+}
+
+===== 3047_find_the_largest_area_of_square_inside_two_rectangles =====
+// LeetCode 3047 - Find the Largest Area of Square Inside Two Rectangles
+// https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles/
+
+func largestSquareArea(bottomLeft [][]int, topRight [][]int) (ans int64) {
+	for i, b1 := range bottomLeft {
+		t1 := topRight[i]
+		x1, y1 := b1[0], b1[1]
+		x2, y2 := t1[0], t1[1]
+		for j := i + 1; j < len(bottomLeft); j++ {
+			x3, y3 := bottomLeft[j][0], bottomLeft[j][1]
+			x4, y4 := topRight[j][0], topRight[j][1]
+			w := min(x2, x4) - max(x1, x3)
+			h := min(y2, y4) - max(y1, y3)
+			e := min(w, h)
+			if e > 0 {
+				ans = max(ans, int64(e)*int64(e))
+			}
+		}
+	}
+	return
+}
+
+===== 3048_earliest_second_to_mark_indices_i =====
+// LeetCode 3048 - Earliest Second to Mark Indices I
+// https://leetcode.com/problems/earliest-second-to-mark-indices-i/
+
+func earliestSecondToMarkIndices(nums []int, changeIndices []int) int {
+	n, m := len(nums), len(changeIndices)
+	l := sort.Search(m+1, func(t int) bool {
+		last := make([]int, n+1)
+		for s, i := range changeIndices[:t] {
+			last[i] = s
+		}
+		decrement, marked := 0, 0
+		for s, i := range changeIndices[:t] {
+			if last[i] == s {
+				if decrement < nums[i-1] {
+					return false
+				}
+				decrement -= nums[i-1]
+				marked++
+			} else {
+				decrement++
+			}
+		}
+		return marked == n
+	})
+	if l > m {
+		return -1
+	}
+	return l
+}
+
+===== 3049_earliest_second_to_mark_indices_ii =====
+// LeetCode 3049 - Earliest Second to Mark Indices II
+// https://leetcode.com/problems/earliest-second-to-mark-indices-ii/
+
+import "container/heap"
+
+type minHeap []int
+
+func (h minHeap) Len() int            { return len(h) }
+func (h minHeap) Less(i, j int) bool  { return h[i] < h[j] }
+func (h minHeap) Swap(i, j int)       { h[i], h[j] = h[j], h[i] }
+func (h *minHeap) Push(x interface{}) { *h = append(*h, x.(int)) }
+func (h *minHeap) Pop() interface{} {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[:n-1]
+	return x
+}
+
+func earliestSecondToMarkIndices(nums []int, changeIndices []int) int {
+	secondToIndex := getSecondToIndex(nums, changeIndices)
+	var numsSum int64
+	for _, v := range nums {
+		numsSum += int64(v)
+	}
+	l, r := 0, len(changeIndices)+1
+	for l < r {
+		m := (l + r) / 2
+		if canMark(nums, secondToIndex, m, numsSum) {
+			r = m
+		} else {
+			l = m + 1
+		}
+	}
+	if l <= len(changeIndices) {
+		return l
+	}
+	return -1
+}
+
+func canMark(nums []int, secondToIndex map[int]int, maxSecond int, numsSum int64) bool {
+	h := &minHeap{}
+	heap.Init(h)
+	marks := 0
+	for second := maxSecond - 1; second >= 0; second-- {
+		if index, ok := secondToIndex[second]; ok {
+			heap.Push(h, nums[index])
+			if marks == 0 {
+				heap.Pop(h)
+				marks++
+			} else {
+				marks--
+			}
+		} else {
+			marks++
+		}
+	}
+	heapSize := h.Len()
+	var heapSum int64
+	for h.Len() > 0 {
+		heapSum += int64(heap.Pop(h).(int))
+	}
+	decrementAndMarkCost := numsSum - heapSum + int64(len(nums)-heapSize)
+	zeroAndMarkCost := int64(heapSize + heapSize)
+	return decrementAndMarkCost+zeroAndMarkCost <= int64(maxSecond)
+}
+
+func getSecondToIndex(nums []int, changeIndices []int) map[int]int {
+	indexToFirstSecond := map[int]int{}
+	for second, oneIndexed := range changeIndices {
+		index := oneIndexed - 1
+		if nums[index] > 0 {
+			if _, ok := indexToFirstSecond[index]; !ok {
+				indexToFirstSecond[index] = second
+			}
+		}
+	}
+	secondToIndex := map[int]int{}
+	for index, second := range indexToFirstSecond {
+		secondToIndex[second] = index
+	}
+	return secondToIndex
+}
+
+===== 3062_winner_of_the_linked_list_game =====
+// LeetCode 3062 - Winner of the Linked List Game
+// https://leetcode.com/problems/winner-of-the-linked-list-game/
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func gameResult(head *ListNode) string {
+	var odd, even int
+	for ; head != nil; head = head.Next.Next {
+		a, b := head.Val, head.Next.Val
+		if a < b {
+			odd++
+		}
+		if a > b {
+			even++
+		}
+	}
+	if odd > even {
+		return "Odd"
+	}
+	if odd < even {
+		return "Even"
+	}
+	return "Tie"
+}
+
+===== 3063_linked_list_frequency =====
+// LeetCode 3063 - Linked List Frequency
+// https://leetcode.com/problems/linked-list-frequency/
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+func frequenciesOfElements(head *ListNode) *ListNode {
+	cnt := map[int]int{}
+	for ; head != nil; head = head.Next {
+		cnt[head.Val]++
+	}
+	dummy := &ListNode{}
+	for _, val := range cnt {
+		dummy.Next = &ListNode{val, dummy.Next}
+	}
+	return dummy.Next
+}
+
+===== 3064_guess_the_number_using_bitwise_questions_i =====
+// LeetCode 3064 - Guess the Number Using Bitwise Questions I
+// https://leetcode.com/problems/guess-the-number-using-bitwise-questions-i/
+
+/**
+ * Definition of commonSetBits API.
+ * func commonSetBits(num int) int;
+ */
+
+func findNumber() (n int) {
+	for i := 0; i < 32; i++ {
+		if commonSetBits(1<<i) > 0 {
+			n |= 1 << i
+		}
+	}
+	return
+}
+
+===== 3065_minimum_operations_to_exceed_threshold_value_i =====
+// LeetCode 3065 - Minimum Operations to Exceed Threshold Value I
+// https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-i/
+
+func minOperations(nums []int, k int) (ans int) {
+	for _, x := range nums {
+		if x < k {
+			ans++
+		}
+	}
+	return
+}
+
+===== 3066_minimum_operations_to_exceed_threshold_value_ii =====
+// LeetCode 3066 - Minimum Operations to Exceed Threshold Value II
+// https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-ii/
+
+func minOperations(nums []int, k int) (ans int) {
+	pq := &hp{nums}
+	heap.Init(pq)
+	for ; pq.Len() > 1 && pq.IntSlice[0] < k; ans++ {
+		x, y := heap.Pop(pq).(int), heap.Pop(pq).(int)
+		heap.Push(pq, x*2+y)
+	}
+	return
+}
+
+type hp struct{ sort.IntSlice }
+
+func (h *hp) Less(i, j int) bool { return h.IntSlice[i] < h.IntSlice[j] }
+func (h *hp) Pop() interface{} {
+	old := h.IntSlice
+	n := len(old)
+	x := old[n-1]
+	h.IntSlice = old[0 : n-1]
+	return x
+}
+func (h *hp) Push(x interface{}) {
+	h.IntSlice = append(h.IntSlice, x.(int))
+}
+
+===== 3067_count_pairs_of_connectable_servers_in_a_weighted_tree_network =====
+// LeetCode 3067 - Count Pairs of Connectable Servers in a Weighted Tree Network
+// https://leetcode.com/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/
+
+func countPairsOfConnectableServers(edges [][]int, signalSpeed int) []int {
+	n := len(edges) + 1
+	type pair struct{ x, w int }
+	g := make([][]pair, n)
+	for _, e := range edges {
+		a, b, w := e[0], e[1], e[2]
+		g[a] = append(g[a], pair{b, w})
+		g[b] = append(g[b], pair{a, w})
+	}
+	var dfs func(a, fa, ws int) int
+	dfs = func(a, fa, ws int) int {
+		cnt := 0
+		if ws%signalSpeed == 0 {
+			cnt++
+		}
+		for _, e := range g[a] {
+			b, w := e.x, e.w
+			if b != fa {
+				cnt += dfs(b, a, ws+w)
+			}
+		}
+		return cnt
+	}
+	ans := make([]int, n)
+	for a := 0; a < n; a++ {
+		s := 0
+		for _, e := range g[a] {
+			b, w := e.x, e.w
+			t := dfs(b, a, w)
+			ans[a] += s * t
+			s += t
+		}
+	}
+	return ans
+}
+
+===== 3068_find_the_maximum_sum_of_node_values =====
+// LeetCode 3068 - Find the Maximum Sum of Node Values
+// https://leetcode.com/problems/find-the-maximum-sum-of-node-values/
+
+func maximumValueSum(nums []int, k int, edges [][]int) int64 {
+	f0, f1 := 0, -0x3f3f3f3f
+	for _, x := range nums {
+		f0, f1 = max(f0+x, f1+(x^k)), max(f1+x, f0+(x^k))
+	}
+	return int64(f0)
+}
+
+===== 3069_distribute_elements_into_two_arrays_i =====
+// LeetCode 3069 - Distribute Elements Into Two Arrays I
+// https://leetcode.com/problems/distribute-elements-into-two-arrays-i/
+
+func resultArray(nums []int) []int {
+	arr1 := []int{nums[0]}
+	arr2 := []int{nums[1]}
+	for _, x := range nums[2:] {
+		if arr1[len(arr1)-1] > arr2[len(arr2)-1] {
+			arr1 = append(arr1, x)
+		} else {
+			arr2 = append(arr2, x)
+		}
+	}
+	return append(arr1, arr2...)
+}
+
+===== 3070_count_submatrices_with_top_left_element_and_sum_less_than_k =====
+// LeetCode 3070 - Count Submatrices with Top-Left Element and Sum Less Than k
+// https://leetcode.com/problems/count-submatrices-with-top-left-element-and-sum-less-than-k/
+
+func countSubmatrices(grid [][]int, k int) (ans int) {
+	s := make([][]int, len(grid)+1)
+	for i := range s {
+		s[i] = make([]int, len(grid[0])+1)
+	}
+	for i, row := range grid {
+		for j, x := range row {
+			s[i+1][j+1] = s[i+1][j] + s[i][j+1] - s[i][j] + x
+			if s[i+1][j+1] <= k {
+				ans++
+			}
+		}
+	}
+	return
+}
+
+===== 3071_minimum_operations_to_write_the_letter_y_on_a_grid =====
+// LeetCode 3071 - Minimum Operations to Write the Letter Y on a Grid
+// https://leetcode.com/problems/minimum-operations-to-write-the-letter-y-on-a-grid/
+
+func minimumOperationsToWriteY(grid [][]int) int {
+	n := len(grid)
+	cnt1 := [3]int{}
+	cnt2 := [3]int{}
+	for i, row := range grid {
+		for j, x := range row {
+			a := i == j && i <= n/2
+			b := i+j == n-1 && i <= n/2
+			c := j == n/2 && i >= n/2
+			if a || b || c {
+				cnt1[x]++
+			} else {
+				cnt2[x]++
+			}
+		}
+	}
+	ans := n * n
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if i != j {
+				ans = min(ans, n*n-cnt1[i]-cnt2[j])
+			}
+		}
+	}
+	return ans
+}
+
+===== 3072_distribute_elements_into_two_arrays_ii =====
+// LeetCode 3072 - Distribute Elements Into Two Arrays II
+// https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
+
+type BinaryIndexedTree struct {
+	n int
+	c []int
+}
+
+func NewBinaryIndexedTree(n int) *BinaryIndexedTree {
+	return &BinaryIndexedTree{n: n, c: make([]int, n+1)}
+}
+
+func (bit *BinaryIndexedTree) update(x, delta int) {
+	for ; x <= bit.n; x += x & -x {
+		bit.c[x] += delta
+	}
+}
+
+func (bit *BinaryIndexedTree) query(x int) int {
+	s := 0
+	for ; x > 0; x -= x & -x {
+		s += bit.c[x]
+	}
+	return s
+}
+
+func resultArray(nums []int) []int {
+	st := make([]int, len(nums))
+	copy(st, nums)
+	sort.Ints(st)
+	n := len(st)
+	tree1 := NewBinaryIndexedTree(n + 1)
+	tree2 := NewBinaryIndexedTree(n + 1)
+	tree1.update(sort.SearchInts(st, nums[0])+1, 1)
+	tree2.update(sort.SearchInts(st, nums[1])+1, 1)
+	arr1 := []int{nums[0]}
+	arr2 := []int{nums[1]}
+	for _, x := range nums[2:] {
+		i := sort.SearchInts(st, x) + 1
+		a := len(arr1) - tree1.query(i)
+		b := len(arr2) - tree2.query(i)
+		if a > b {
+			arr1 = append(arr1, x)
+			tree1.update(i, 1)
+		} else if a < b {
+			arr2 = append(arr2, x)
+			tree2.update(i, 1)
+		} else if len(arr1) <= len(arr2) {
+			arr1 = append(arr1, x)
+			tree1.update(i, 1)
+		} else {
+			arr2 = append(arr2, x)
+			tree2.update(i, 1)
+		}
+	}
+	arr1 = append(arr1, arr2...)
+	return arr1
+}
+
+===== 3073_maximum_increasing_triplet_value =====
+// LeetCode 3073 - Maximum Increasing Triplet Value
+// https://leetcode.com/problems/maximum-increasing-triplet-value/
+
+func maximumTripletValue(nums []int) (ans int) {
+	n := len(nums)
+	right := make([]int, n)
+	right[n-1] = nums[n-1]
+	for i := n - 2; i >= 0; i-- {
+		right[i] = max(nums[i], right[i+1])
+	}
+	ts := treemap.NewWithIntComparator()
+	ts.Put(nums[0], nil)
+	for j := 1; j < n-1; j++ {
+		if right[j+1] > nums[j] {
+			val, _ := ts.Floor(nums[j] - 1)
+			if val != nil {
+				ans = max(ans, val.(int)-nums[j]+right[j+1])
+			}
+		}
+		ts.Put(nums[j], nil)
+	}
+	return
+}
+
+===== 3074_apple_redistribution_into_boxes =====
+// LeetCode 3074 - Apple Redistribution into Boxes
+// https://leetcode.com/problems/apple-redistribution-into-boxes/
+
+func minimumBoxes(apple []int, capacity []int) int {
+	sort.Ints(capacity)
+	s := 0
+	for _, x := range apple {
+		s += x
+	}
+	for i := 1; ; i++ {
+		s -= capacity[len(capacity)-i]
+		if s <= 0 {
+			return i
+		}
+	}
+}
+
+===== 3075_maximize_happiness_of_selected_children =====
+// LeetCode 3075 - Maximize Happiness of Selected Children
+// https://leetcode.com/problems/maximize-happiness-of-selected-children/
+
+func maximumHappinessSum(happiness []int, k int) (ans int64) {
+	sort.Ints(happiness)
+	for i := 0; i < k; i++ {
+		x := happiness[len(happiness)-i-1] - i
+		ans += int64(max(x, 0))
+	}
+	return
+}
+
+===== 3076_shortest_uncommon_substring_in_an_array =====
+// LeetCode 3076 - Shortest Uncommon Substring in an Array
+// https://leetcode.com/problems/shortest-uncommon-substring-in-an-array/
+
+func shortestSubstrings(arr []string) []string {
+	ans := make([]string, len(arr))
+	for i, s := range arr {
+		m := len(s)
+		for j := 1; j <= m && len(ans[i]) == 0; j++ {
+			for l := 0; l <= m-j; l++ {
+				sub := s[l : l+j]
+				if len(ans[i]) == 0 || ans[i] > sub {
+					ok := true
+					for k, t := range arr {
+						if k != i && strings.Contains(t, sub) {
+							ok = false
+							break
+						}
+					}
+					if ok {
+						ans[i] = sub
+					}
+				}
+			}
+		}
+	}
+	return ans
+}
+
+===== 3077_maximum_strength_of_k_disjoint_subarrays =====
+// LeetCode 3077 - Maximum Strength of K Disjoint Subarrays
+// https://leetcode.com/problems/maximum-strength-of-k-disjoint-subarrays/
+
+func maximumStrength(nums []int, k int) int64 {
+	n := len(nums)
+	f := make([][][]int64, n+1)
+	const inf int64 = math.MinInt64 / 2
+	for i := range f {
+		f[i] = make([][]int64, k+1)
+		for j := range f[i] {
+			f[i][j] = []int64{inf, inf}
+		}
+	}
+	f[0][0][0] = 0
+	for i := 1; i <= n; i++ {
+		x := nums[i-1]
+		for j := 0; j <= k; j++ {
+			sign := int64(-1)
+			if j&1 == 1 {
+				sign = 1
+			}
+			val := sign * int64(x) * int64(k-j+1)
+			f[i][j][0] = max(f[i-1][j][0], f[i-1][j][1])
+			f[i][j][1] = max(f[i][j][1], f[i-1][j][1]+val)
+			if j > 0 {
+				t := max(f[i-1][j-1][0], f[i-1][j-1][1]) + val
+				f[i][j][1] = max(f[i][j][1], t)
+			}
+		}
+	}
+	return max(f[n][k][0], f[n][k][1])
+}
+
+===== 3078_match_alphanumerical_pattern_in_matrix_i =====
+// LeetCode 3078 - Match Alphanumerical Pattern in Matrix I
+// https://leetcode.com/problems/match-alphanumerical-pattern-in-matrix-i/
+
+func findPattern(board [][]int, pattern []string) []int {
+	m, n := len(board), len(board[0])
+	r, c := len(pattern), len(pattern[0])
+	check := func(i, j int) bool {
+		d1 := [26]int{}
+		d2 := [10]int{}
+		for a := 0; a < r; a++ {
+			for b := 0; b < c; b++ {
+				x, y := i+a, j+b
+				if pattern[a][b] >= '0' && pattern[a][b] <= '9' {
+					v := int(pattern[a][b] - '0')
+					if v != board[x][y] {
+						return false
+					}
+				} else {
+					v := int(pattern[a][b] - 'a')
+					if d1[v] > 0 && d1[v]-1 != board[x][y] {
+						return false
+					}
+					if d2[board[x][y]] > 0 && d2[board[x][y]]-1 != v {
+						return false
+					}
+					d1[v] = board[x][y] + 1
+					d2[board[x][y]] = v + 1
+				}
+			}
+		}
+		return true
+	}
+	for i := 0; i < m-r+1; i++ {
+		for j := 0; j < n-c+1; j++ {
+			if check(i, j) {
+				return []int{i, j}
+			}
+		}
+	}
+	return []int{-1, -1}
+}
+
+===== 3079_find_the_sum_of_encrypted_integers =====
+// LeetCode 3079 - Find the Sum of Encrypted Integers
+// https://leetcode.com/problems/find-the-sum-of-encrypted-integers/
+
+func sumOfEncryptedInt(nums []int) (ans int) {
+	encrypt := func(x int) int {
+		mx, p := 0, 0
+		for ; x > 0; x /= 10 {
+			mx = max(mx, x%10)
+			p = p*10 + 1
+		}
+		return mx * p
+	}
+	for _, x := range nums {
+		ans += encrypt(x)
+	}
+	return
+}
+
+===== 3080_mark_elements_on_array_by_performing_queries =====
+// LeetCode 3080 - Mark Elements on Array by Performing Queries
+// https://leetcode.com/problems/mark-elements-on-array-by-performing-queries/
+
+func unmarkedSumArray(nums []int, queries [][]int) []int64 {
+	n := len(nums)
+	var s int64
+	for _, x := range nums {
+		s += int64(x)
+	}
+	mark := make([]bool, n)
+	arr := make([][2]int, 0, n)
+	for i, x := range nums {
+		arr = append(arr, [2]int{x, i})
+	}
+	sort.Slice(arr, func(i, j int) bool {
+		if arr[i][0] == arr[j][0] {
+			return arr[i][1] < arr[j][1]
+		}
+		return arr[i][0] < arr[j][0]
+	})
+	ans := make([]int64, len(queries))
+	j := 0
+	for i, q := range queries {
+		index, k := q[0], q[1]
+		if !mark[index] {
+			mark[index] = true
+			s -= int64(nums[index])
+		}
+		for ; k > 0 && j < n; j++ {
+			if !mark[arr[j][1]] {
+				mark[arr[j][1]] = true
+				s -= int64(arr[j][0])
+				k--
+			}
+		}
+		ans[i] = s
+	}
+	return ans
+}
+
+===== 3081_replace_question_marks_in_string_to_minimize_its_value =====
+// LeetCode 3081 - Replace Question Marks in String to Minimize Its Value
+// https://leetcode.com/problems/replace-question-marks-in-string-to-minimize-its-value/
+
+func minimizeStringValue(s string) string {
+	cnt := [26]int{}
+	k := 0
+	for _, c := range s {
+		if c == '?' {
+			k++
+		} else {
+			cnt[c-'a']++
+		}
+	}
+	pq := hp{}
+	for i, c := range cnt {
+		heap.Push(&pq, pair{c, i})
+	}
+	t := make([]int, k)
+	for i := 0; i < k; i++ {
+		p := heap.Pop(&pq).(pair)
+		t[i] = p.c
+		p.v++
+		heap.Push(&pq, p)
+	}
+	sort.Ints(t)
+	cs := []byte(s)
+	j := 0
+	for i, c := range cs {
+		if c == '?' {
+			cs[i] = byte(t[j] + 'a')
+			j++
+		}
+	}
+	return string(cs)
+}
+
+type pair struct{ v, c int }
+type hp []pair
+
+func (h hp) Len() int           { return len(h) }
+func (h hp) Less(i, j int) bool { return h[i].v < h[j].v || h[i].v == h[j].v && h[i].c < h[j].c }
+func (h hp) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *hp) Push(v any)        { *h = append(*h, v.(pair)) }
+func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
+
+===== 3082_find_the_sum_of_the_power_of_all_subsequences =====
+// LeetCode 3082 - Find the Sum of the Power of All Subsequences
+// https://leetcode.com/problems/find-the-sum-of-the-power-of-all-subsequences/
+
+func sumOfPower(nums []int, k int) int {
+	const mod int = 1e9 + 7
+	n := len(nums)
+	f := make([][]int, n+1)
+	for i := range f {
+		f[i] = make([]int, k+1)
+	}
+	f[0][0] = 1
+	for i := 1; i <= n; i++ {
+		for j := 0; j <= k; j++ {
+			f[i][j] = (f[i-1][j] * 2) % mod
+			if j >= nums[i-1] {
+				f[i][j] = (f[i][j] + f[i-1][j-nums[i-1]]) % mod
+			}
+		}
+	}
+	return f[n][k]
+}
+
+===== 3083_existence_of_a_substring_in_a_string_and_its_reverse =====
+// LeetCode 3083 - Existence of a Substring in a String and Its Reverse
+// https://leetcode.com/problems/existence-of-a-substring-in-a-string-and-its-reverse/
+
+func isSubstringPresent(s string) bool {
+	st := [26][26]bool{}
+	for i := 0; i < len(s)-1; i++ {
+		st[s[i+1]-'a'][s[i]-'a'] = true
+	}
+	for i := 0; i < len(s)-1; i++ {
+		if st[s[i]-'a'][s[i+1]-'a'] {
+			return true
+		}
+	}
+	return false
+}
+
+===== 3084_count_substrings_starting_and_ending_with_given_character =====
+// LeetCode 3084 - Count Substrings Starting and Ending with Given Character
+// https://leetcode.com/problems/count-substrings-starting-and-ending-with-given-character/
+
+func countSubstrings(s string, c byte) int64 {
+	cnt := int64(strings.Count(s, string(c)))
+	return cnt + cnt*(cnt-1)/2
+}
+
+===== 3085_minimum_deletions_to_make_string_k_special =====
+// LeetCode 3085 - Minimum Deletions to Make String K-Special
+// https://leetcode.com/problems/minimum-deletions-to-make-string-k-special/
+
+func minimumDeletions(word string, k int) int {
+	freq := [26]int{}
+	for _, c := range word {
+		freq[c-'a']++
+	}
+	nums := []int{}
+	for _, v := range freq {
+		if v > 0 {
+			nums = append(nums, v)
+		}
+	}
+	f := func(v int) int {
+		ans := 0
+		for _, x := range nums {
+			if x < v {
+				ans += x
+			} else if x > v+k {
+				ans += x - v - k
+			}
+		}
+		return ans
+	}
+	ans := len(word)
+	for i := 0; i <= len(word); i++ {
+		ans = min(ans, f(i))
+	}
+	return ans
+}
+
+===== 3086_minimum_moves_to_pick_k_ones =====
+// LeetCode 3086 - Minimum Moves to Pick K Ones
+// https://leetcode.com/problems/minimum-moves-to-pick-k-ones/
+
+func minimumMoves(nums []int, k int, maxChanges int) int64 {
+	n := len(nums)
+	cnt := make([]int, n+1)
+	s := make([]int, n+1)
+
+	for i := 1; i <= n; i++ {
+		cnt[i] = cnt[i-1] + nums[i-1]
+		s[i] = s[i-1] + i*nums[i-1]
+	}
+
+	ans := math.MaxInt64
+
+	for i := 1; i <= n; i++ {
+		t := 0
+		need := k - nums[i-1]
+
+		for _, j := range []int{i - 1, i + 1} {
+			if need > 0 && 1 <= j && j <= n && nums[j-1] == 1 {
+				need--
+				t++
+			}
+		}
+
+		c := min(need, maxChanges)
+		need -= c
+		t += c * 2
+
+		if need <= 0 {
+			ans = min(ans, t)
+			continue
+		}
+
+		l, r := 2, max(i-1, n-i)
+
+		for l <= r {
+			mid := (l + r) >> 1
+			l1, r1 := max(1, i-mid), max(0, i-2)
+			l2, r2 := min(n+1, i+2), min(n, i+mid)
+
+			c1 := cnt[r1] - cnt[l1-1]
+			c2 := cnt[r2] - cnt[l2-1]
+
+			if c1+c2 >= need {
+				t1 := c1*i - (s[r1] - s[l1-1])
+				t2 := s[r2] - s[l2-1] - c2*i
+				ans = min(ans, t+t1+t2)
+				r = mid - 1
+			} else {
+				l = mid + 1
+			}
+		}
+	}
+
+	return int64(ans)
+}
+
+===== 3088_make_string_anti_palindrome =====
+// LeetCode 3088 - Make String Anti-palindrome
+// https://leetcode.com/problems/make-string-anti-palindrome/
+
+func makeAntiPalindrome(s string) string {
+	cs := []byte(s)
+	sort.Slice(cs, func(i, j int) bool { return cs[i] < cs[j] })
+	n := len(cs)
+	m := n / 2
+	if cs[m] == cs[m-1] {
+		i := m
+		for i < n && cs[i] == cs[i-1] {
+			i++
+		}
+		for j := m; j < n && cs[j] == cs[n-j-1]; i, j = i+1, j+1 {
+			if i >= n {
+				return "-1"
+			}
+			cs[i], cs[j] = cs[j], cs[i]
+		}
+	}
+	return string(cs)
+}
+
+===== 3090_maximum_length_substring_with_two_occurrences =====
+// LeetCode 3090 - Maximum Length Substring With Two Occurrences
+// https://leetcode.com/problems/maximum-length-substring-with-two-occurrences/
+
+func maximumLengthSubstring(s string) (ans int) {
+	l := 0
+	cnt := [26]int{}
+	for r, c := range s {
+		idx := int(c - 'a')
+		cnt[idx]++
+		for cnt[idx] > 2 {
+			cnt[s[l]-'a']--
+			l++
+		}
+		ans = max(ans, r-l+1)
+	}
+	return
+}
+
+===== 3091_apply_operations_to_make_sum_of_array_greater_than_or_equal_to_k =====
+// LeetCode 3091 - Apply Operations to Make Sum of Array Greater Than or Equal to k
+// https://leetcode.com/problems/apply-operations-to-make-sum-of-array-greater-than-or-equal-to-k/
+
+func minOperations(k int) int {
+	ans := k
+	for a := 0; a < k; a++ {
+		x := a + 1
+		b := (k+x-1)/x - 1
+		ans = min(ans, a+b)
+	}
+	return ans
+}
+
+===== 3092_most_frequent_ids =====
+// LeetCode 3092 - Most Frequent IDs
+// https://leetcode.com/problems/most-frequent-ids/
+
+func mostFrequentIDs(nums []int, freq []int) []int64 {
+	n := len(nums)
+	cnt := map[int]int{}
+	lazy := map[int]int{}
+	ans := make([]int64, n)
+	pq := hp{}
+	heap.Init(&pq)
+	for i, x := range nums {
+		f := freq[i]
+		lazy[cnt[x]]++
+		cnt[x] += f
+		heap.Push(&pq, cnt[x])
+		for pq.Len() > 0 && lazy[pq.IntSlice[0]] > 0 {
+			lazy[pq.IntSlice[0]]--
+			heap.Pop(&pq)
+		}
+		if pq.Len() > 0 {
+			ans[i] = int64(pq.IntSlice[0])
+		}
+	}
+	return ans
+}
+
+type hp struct{ sort.IntSlice }
+
+func (h hp) Less(i, j int) bool { return h.IntSlice[i] > h.IntSlice[j] }
+func (h *hp) Push(v any)        { h.IntSlice = append(h.IntSlice, v.(int)) }
+func (h *hp) Pop() any {
+	a := h.IntSlice
+	v := a[len(a)-1]
+	h.IntSlice = a[:len(a)-1]
+	return v
+}
+
+===== 3093_longest_common_suffix_queries =====
+// LeetCode 3093 - Longest Common Suffix Queries
+// https://leetcode.com/problems/longest-common-suffix-queries/
+
+const inf = 1 << 30
+
+type Trie struct {
+	children [26]*Trie
+	length   int
+	idx      int
+}
+
+func newTrie() *Trie {
+	return &Trie{length: inf, idx: inf}
+}
+
+func (t *Trie) insert(w string, i int) {
+	node := t
+	if node.length > len(w) {
+		node.length = len(w)
+		node.idx = i
+	}
+	for k := len(w) - 1; k >= 0; k-- {
+		idx := int(w[k] - 'a')
+		if node.children[idx] == nil {
+			node.children[idx] = newTrie()
+		}
+		node = node.children[idx]
+		if node.length > len(w) {
+			node.length = len(w)
+			node.idx = i
+		}
+	}
+}
+
+func (t *Trie) query(w string) int {
+	node := t
+	for k := len(w) - 1; k >= 0; k-- {
+		idx := int(w[k] - 'a')
+		if node.children[idx] == nil {
+			break
+		}
+		node = node.children[idx]
+	}
+	return node.idx
+}
+
+func stringIndices(wordsContainer []string, wordsQuery []string) (ans []int) {
+	trie := newTrie()
+	for i, w := range wordsContainer {
+		trie.insert(w, i)
+	}
+	for _, w := range wordsQuery {
+		ans = append(ans, trie.query(w))
+	}
+	return
+}
+
+===== 3094_guess_the_number_using_bitwise_questions_ii =====
+// LeetCode 3094 - Guess the Number Using Bitwise Questions II
+// https://leetcode.com/problems/guess-the-number-using-bitwise-questions-ii/
+
+/**
+ * Definition of commonBits API.
+ * func commonBits(num int) int;
+ */
+
+func findNumber() (n int) {
+	for i := 0; i < 32; i++ {
+		count1 := commonBits(1 << i)
+		count2 := commonBits(1 << i)
+		if count1 > count2 {
+			n |= 1 << i
+		}
+	}
+	return
+}
+
+===== 3095_shortest_subarray_with_or_at_least_k_i =====
+// LeetCode 3095 - Shortest Subarray With OR at Least K I
+// https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-i/
+
+func minimumSubarrayLength(nums []int, k int) int {
+	n := len(nums)
+	cnt := [32]int{}
+	ans := n + 1
+	s, i := 0, 0
+	for j, x := range nums {
+		s |= x
+		for h := 0; h < 32; h++ {
+			if x>>h&1 == 1 {
+				cnt[h]++
+			}
+		}
+		for ; s >= k && i <= j; i++ {
+			ans = min(ans, j-i+1)
+			for h := 0; h < 32; h++ {
+				if nums[i]>>h&1 == 1 {
+					cnt[h]--
+					if cnt[h] == 0 {
+						s ^= 1 << h
+					}
+				}
+			}
+		}
+	}
+	if ans == n+1 {
+		return -1
+	}
+	return ans
+}
+
+===== 3096_minimum_levels_to_gain_more_points =====
+// LeetCode 3096 - Minimum Levels to Gain More Points
+// https://leetcode.com/problems/minimum-levels-to-gain-more-points/
+
+func minimumLevels(possible []int) int {
+	s := 0
+	for _, x := range possible {
+		if x == 0 {
+			x = -1
+		}
+		s += x
+	}
+	t := 0
+	for i, x := range possible[:len(possible)-1] {
+		if x == 0 {
+			x = -1
+		}
+		t += x
+		if t > s-t {
+			return i + 1
+		}
+	}
+	return -1
+}
+
+===== 3097_shortest_subarray_with_or_at_least_k_ii =====
+// LeetCode 3097 - Shortest Subarray With OR at Least K II
+// https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-ii/
+
+func minimumSubarrayLength(nums []int, k int) int {
+	n := len(nums)
+	cnt := [32]int{}
+	ans := n + 1
+	s, i := 0, 0
+	for j, x := range nums {
+		s |= x
+		for h := 0; h < 32; h++ {
+			if x>>h&1 == 1 {
+				cnt[h]++
+			}
+		}
+		for ; s >= k && i <= j; i++ {
+			ans = min(ans, j-i+1)
+			for h := 0; h < 32; h++ {
+				if nums[i]>>h&1 == 1 {
+					cnt[h]--
+					if cnt[h] == 0 {
+						s ^= 1 << h
+					}
+				}
+			}
+		}
+	}
+	if ans == n+1 {
+		return -1
+	}
+	return ans
+}
+
+===== 3098_find_the_sum_of_subsequence_powers =====
+// LeetCode 3098 - Find the Sum of Subsequence Powers
+// https://leetcode.com/problems/find-the-sum-of-subsequence-powers/
+
+func sumOfPowers(nums []int, k int) int {
+	const mod int = 1e9 + 7
+	sort.Ints(nums)
+	n := len(nums)
+	f := map[int]int{}
+	var dfs func(i, j, k, mi int) int
+	dfs = func(i, j, k, mi int) int {
+		if i >= n {
+			if k == 0 {
+				return mi
+			}
+			return 0
+		}
+		if n-i < k {
+			return 0
+		}
+		key := mi<<18 | (i << 12) | (j << 6) | k
+		if v, ok := f[key]; ok {
+			return v
+		}
+		ans := dfs(i+1, j, k, mi)
+		if j == n {
+			ans += dfs(i+1, i, k-1, mi)
+		} else {
+			ans += dfs(i+1, i, k-1, min(mi, nums[i]-nums[j]))
+		}
+		ans %= mod
+		f[key] = ans
+		return ans
+	}
+	return dfs(0, n, k, math.MaxInt)
+}
+
+===== 3099_harshad_number =====
+// LeetCode 3099 - Harshad Number
+// https://leetcode.com/problems/harshad-number/
+
+func sumOfTheDigitsOfHarshadNumber(x int) int {
+	s := 0
+	for y := x; y > 0; y /= 10 {
+		s += y % 10
+	}
+	if x%s == 0 {
+		return s
+	}
+	return -1
+}
+
+===== 3100_water_bottles_ii =====
+// LeetCode 3100 - Water Bottles II
+// https://leetcode.com/problems/water-bottles-ii/
+
+func maxBottlesDrunk(numBottles int, numExchange int) int {
+	ans := numBottles
+	for numBottles >= numExchange {
+		numBottles -= numExchange
+		numExchange++
+		ans++
+		numBottles++
+	}
+	return ans
+}
+
+===== 3101_count_alternating_subarrays =====
+// LeetCode 3101 - Count Alternating Subarrays
+// https://leetcode.com/problems/count-alternating-subarrays/
+
+func countAlternatingSubarrays(nums []int) int64 {
+	ans, s := int64(1), int64(1)
+	for i, x := range nums[1:] {
+		if x != nums[i] {
+			s++
+		} else {
+			s = 1
+		}
+		ans += s
+	}
+	return ans
+}
+
+===== 3102_minimize_manhattan_distances =====
+// LeetCode 3102 - Minimize Manhattan Distances
+// https://leetcode.com/problems/minimize-manhattan-distances/
+
+func minimumDistance(points [][]int) int {
+	st1 := redblacktree.New[int, int]()
+	st2 := redblacktree.New[int, int]()
+	merge := func(st *redblacktree.Tree[int, int], x, v int) {
+		c, _ := st.Get(x)
+		if c+v == 0 {
+			st.Remove(x)
+		} else {
+			st.Put(x, c+v)
+		}
+	}
+	for _, p := range points {
+		x, y := p[0], p[1]
+		merge(st1, x+y, 1)
+		merge(st2, x-y, 1)
+	}
+	ans := math.MaxInt
+	for _, p := range points {
+		x, y := p[0], p[1]
+		merge(st1, x+y, -1)
+		merge(st2, x-y, -1)
+		ans = min(ans, max(st1.Right().Key-st1.Left().Key, st2.Right().Key-st2.Left().Key))
+		merge(st1, x+y, 1)
+		merge(st2, x-y, 1)
+	}
+	return ans
+}
+
+===== 3104_find_longest_self_contained_substring =====
+// LeetCode 3104 - Find Longest Self-Contained Substring
+// https://leetcode.com/problems/find-longest-self-contained-substring/
+
+func maxSubstringLength(s string) int {
+	first := [26]int{}
+	last := [26]int{}
+	for i := range first {
+		first[i] = -1
+	}
+	n := len(s)
+	for i, c := range s {
+		j := int(c - 'a')
+		if first[j] == -1 {
+			first[j] = i
+		}
+		last[j] = i
+	}
+	ans := -1
+	for k := 0; k < 26; k++ {
+		i := first[k]
+		if i == -1 {
+			continue
+		}
+		mx := last[k]
+		for j := i; j < n; j++ {
+			a, b := first[s[j]-'a'], last[s[j]-'a']
+			if a < i {
+				break
+			}
+			mx = max(mx, b)
+			if mx == j && j-i+1 < n {
+				ans = max(ans, j-i+1)
+			}
+		}
+	}
+	return ans
+}
+
+===== 3105_longest_strictly_increasing_or_strictly_decreasing_subarray =====
+// LeetCode 3105 - Longest Strictly Increasing or Strictly Decreasing Subarray
+// https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/
+
+func longestMonotonicSubarray(nums []int) int {
+	ans := 1
+	t := 1
+	for i, x := range nums[1:] {
+		if nums[i] < x {
+			t++
+			ans = max(ans, t)
+		} else {
+			t = 1
+		}
+	}
+	t = 1
+	for i, x := range nums[1:] {
+		if nums[i] > x {
+			t++
+			ans = max(ans, t)
+		} else {
+			t = 1
+		}
+	}
+	return ans
+}
+
+===== 3106_lexicographically_smallest_string_after_operations_with_constraint =====
+// LeetCode 3106 - Lexicographically Smallest String After Operations With Constraint
+// https://leetcode.com/problems/lexicographically-smallest-string-after-operations-with-constraint/
+
+func getSmallestString(s string, k int) string {
+	cs := []byte(s)
+	for i, c1 := range cs {
+		for c2 := byte('a'); c2 < c1; c2++ {
+			d := int(min(c1-c2, 26-c1+c2))
+			if d <= k {
+				cs[i] = c2
+				k -= d
+				break
+			}
+		}
+	}
+	return string(cs)
+}
+
+===== 3107_minimum_operations_to_make_median_of_array_equal_to_k =====
+// LeetCode 3107 - Minimum Operations to Make Median of Array Equal to K
+// https://leetcode.com/problems/minimum-operations-to-make-median-of-array-equal-to-k/
+
+func minOperationsToMakeMedianK(nums []int, k int) (ans int64) {
+	sort.Ints(nums)
+	n := len(nums)
+	m := n >> 1
+	ans = int64(abs(nums[m] - k))
+	if nums[m] > k {
+		for i := m - 1; i >= 0 && nums[i] > k; i-- {
+			ans += int64(nums[i] - k)
+		}
+	} else {
+		for i := m + 1; i < n && nums[i] < k; i++ {
+			ans += int64(k - nums[i])
+		}
+	}
+	return
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+===== 3108_minimum_cost_walk_in_weighted_graph =====
+// LeetCode 3108 - Minimum Cost Walk in Weighted Graph
+// https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/
+
+type unionFind struct {
+	p, size []int
+}
+
+func newUnionFind(n int) *unionFind {
+	p := make([]int, n)
+	size := make([]int, n)
+	for i := range p {
+		p[i] = i
+		size[i] = 1
+	}
+	return &unionFind{p, size}
+}
+
+func (uf *unionFind) find(x int) int {
+	if uf.p[x] != x {
+		uf.p[x] = uf.find(uf.p[x])
+	}
+	return uf.p[x]
+}
+
+func (uf *unionFind) union(a, b int) bool {
+	pa, pb := uf.find(a), uf.find(b)
+	if pa == pb {
+		return false
+	}
+	if uf.size[pa] > uf.size[pb] {
+		uf.p[pb] = pa
+		uf.size[pa] += uf.size[pb]
+	} else {
+		uf.p[pa] = pb
+		uf.size[pb] += uf.size[pa]
+	}
+	return true
+}
+
+func (uf *unionFind) getSize(x int) int {
+	return uf.size[uf.find(x)]
+}
+
+func minimumCost(n int, edges [][]int, query [][]int) (ans []int) {
+	uf := newUnionFind(n)
+	g := make([]int, n)
+	for i := range g {
+		g[i] = -1
+	}
+	for _, e := range edges {
+		uf.union(e[0], e[1])
+	}
+	for _, e := range edges {
+		root := uf.find(e[0])
+		g[root] &= e[2]
+	}
+	f := func(u, v int) int {
+		if u == v {
+			return 0
+		}
+		a, b := uf.find(u), uf.find(v)
+		if a == b {
+			return g[a]
+		}
+		return -1
+	}
+	for _, q := range query {
+		ans = append(ans, f(q[0], q[1]))
+	}
+	return
+}
+
+===== 3109_find_the_index_of_permutation =====
+// LeetCode 3109 - Find the Index of Permutation
+// https://leetcode.com/problems/find-the-index-of-permutation/
+
+type BinaryIndexedTree struct {
+	n int
+	c []int
+}
+
+func NewBinaryIndexedTree(n int) *BinaryIndexedTree {
+	return &BinaryIndexedTree{n: n, c: make([]int, n+1)}
+}
+
+func (bit *BinaryIndexedTree) update(x, delta int) {
+	for ; x <= bit.n; x += x & -x {
+		bit.c[x] += delta
+	}
+}
+
+func (bit *BinaryIndexedTree) query(x int) int {
+	s := 0
+	for ; x > 0; x -= x & -x {
+		s += bit.c[x]
+	}
+	return s
+}
+
+func getPermutationIndex(perm []int) (ans int) {
+	const mod int = 1e9 + 7
+	n := len(perm)
+	tree := NewBinaryIndexedTree(n + 1)
+	f := make([]int, n)
+	f[0] = 1
+	for i := 1; i < n; i++ {
+		f[i] = f[i-1] * i % mod
+	}
+	for i, x := range perm {
+		cnt := x - 1 - tree.query(x)
+		ans += cnt * f[n-1-i] % mod
+		tree.update(x, 1)
+	}
+	return ans % mod
+}
+
+===== 3110_score_of_a_string =====
+// LeetCode 3110 - Score of a String
+// https://leetcode.com/problems/score-of-a-string/
+
+func scoreOfString(s string) (ans int) {
+	for i := 1; i < len(s); i++ {
+		ans += abs(int(s[i-1]) - int(s[i]))
+	}
+	return
+}
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
+===== 3111_minimum_rectangles_to_cover_points =====
+// LeetCode 3111 - Minimum Rectangles to Cover Points
+// https://leetcode.com/problems/minimum-rectangles-to-cover-points/
+
+func minRectanglesToCoverPoints(points [][]int, w int) (ans int) {
+	sort.Slice(points, func(i, j int) bool { return points[i][0] < points[j][0] })
+	x1 := -1
+	for _, p := range points {
+		if x := p[0]; x > x1 {
+			ans++
+			x1 = x + w
+		}
+	}
+	return
+}
+
+===== 3112_minimum_time_to_visit_disappearing_nodes =====
+// LeetCode 3112 - Minimum Time to Visit Disappearing Nodes
+// https://leetcode.com/problems/minimum-time-to-visit-disappearing-nodes/
+
+func minimumTime(n int, edges [][]int, disappear []int) []int {
+	g := make([][]pair, n)
+	for _, e := range edges {
+		u, v, w := e[0], e[1], e[2]
+		g[u] = append(g[u], pair{v, w})
+		g[v] = append(g[v], pair{u, w})
+	}
+
+	dist := make([]int, n)
+	for i := range dist {
+		dist[i] = 1 << 30
+	}
+	dist[0] = 0
+
+	pq := hp{{0, 0}}
+
+	for len(pq) > 0 {
+		du, u := pq[0].dis, pq[0].u
+		heap.Pop(&pq)
+
+		if du > dist[u] {
+			continue
+		}
+
+		for _, nxt := range g[u] {
+			v, w := nxt.dis, nxt.u
+			if dist[v] > dist[u]+w && dist[u]+w < disappear[v] {
+				dist[v] = dist[u] + w
+				heap.Push(&pq, pair{dist[v], v})
+			}
+		}
+	}
+
+	ans := make([]int, n)
+	for i := 0; i < n; i++ {
+		if dist[i] < disappear[i] {
+			ans[i] = dist[i]
+		} else {
+			ans[i] = -1
+		}
+	}
+
+	return ans
+}
+
+type pair struct{ dis, u int }
+type hp []pair
+
+func (h hp) Len() int           { return len(h) }
+func (h hp) Less(i, j int) bool { return h[i].dis < h[j].dis }
+func (h hp) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+func (h *hp) Push(v any)        { *h = append(*h, v.(pair)) }
+func (h *hp) Pop() any          { a := *h; v := a[len(a)-1]; *h = a[:len(a)-1]; return v }
+
+===== 3113_find_the_number_of_subarrays_where_boundary_elements_are_maximum =====
+// LeetCode 3113 - Find the Number of Subarrays Where Boundary Elements Are Maximum
+// https://leetcode.com/problems/find-the-number-of-subarrays-where-boundary-elements-are-maximum/
+
+func numberOfSubarrays(nums []int) (ans int64) {
+	stk := [][2]int{}
+	for _, x := range nums {
+		for len(stk) > 0 && stk[len(stk)-1][0] < x {
+			stk = stk[:len(stk)-1]
+		}
+		if len(stk) == 0 || stk[len(stk)-1][0] > x {
+			stk = append(stk, [2]int{x, 1})
+		} else {
+			stk[len(stk)-1][1]++
+		}
+		ans += int64(stk[len(stk)-1][1])
+	}
+	return
+}
+
+===== 3114_latest_time_you_can_obtain_after_replacing_characters =====
+// LeetCode 3114 - Latest Time You Can Obtain After Replacing Characters
+// https://leetcode.com/problems/latest-time-you-can-obtain-after-replacing-characters/
+
+func findLatestTime(s string) string {
+	for h := 11; ; h-- {
+		for m := 59; m >= 0; m-- {
+			t := fmt.Sprintf("%02d:%02d", h, m)
+			ok := true
+			for i := 0; i < len(s); i++ {
+				if s[i] != '?' && s[i] != t[i] {
+					ok = false
+					break
+				}
+			}
+			if ok {
+				return t
+			}
+		}
+	}
+}
+
+===== 3115_maximum_prime_difference =====
+// LeetCode 3115 - Maximum Prime Difference
+// https://leetcode.com/problems/maximum-prime-difference/
+
+func maximumPrimeDifference(nums []int) int {
+	for i := 0; ; i++ {
+		if isPrime(nums[i]) {
+			for j := len(nums) - 1; ; j-- {
+				if isPrime(nums[j]) {
+					return j - i
+				}
+			}
+		}
+	}
+}
+
+func isPrime(n int) bool {
+	if n < 2 {
+		return false
+	}
+	for i := 2; i <= n/i; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+

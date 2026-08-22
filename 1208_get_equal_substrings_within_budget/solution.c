@@ -1,4 +1,4 @@
-﻿// LeetCode 1208 - Get Equal Substrings Within Budget
+// LeetCode 1208 - Get Equal Substrings Within Budget
 // https://leetcode.com/problems/get-equal-substrings-within-budget/
 
 #include <stdlib.h>

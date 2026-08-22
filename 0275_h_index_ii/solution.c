@@ -1,4 +1,4 @@
-﻿// LeetCode 0275 - H-Index II
+// LeetCode 0275 - H-Index II
 // https://leetcode.com/problems/h-index-ii/
 
 int hIndex(int* citations, int citationsSize) {

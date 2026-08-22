@@ -1,4 +1,4 @@
-﻿// LeetCode 0042 - Trapping Rain Water
+// LeetCode 0042 - Trapping Rain Water
 // https://leetcode.com/problems/trapping-rain-water/
 
 int trap(int* height, int heightSize) {

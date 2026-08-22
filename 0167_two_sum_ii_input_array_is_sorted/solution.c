@@ -1,4 +1,4 @@
-﻿// LeetCode 0167 - Two Sum II - Input Array Is Sorted
+// LeetCode 0167 - Two Sum II - Input Array Is Sorted
 #include <stdlib.h>
 int* twoSum(int* numbers, int numbersSize, int target, int* returnSize) {
     int left = 0, right = numbersSize - 1;

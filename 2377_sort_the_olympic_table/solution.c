@@ -1,5 +1,8 @@
-﻿// LeetCode 2377 - Sort the Olympic Table
+// LeetCode 2377 - Sort the Olympic Table
 // https://leetcode.com/problems/sort-the-olympic-table/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "SELECT *\n"
+    "FROM Olympic\n"
+    "ORDER BY 2 DESC, 3 DESC, 4 DESC, 1\n";

@@ -1,4 +1,4 @@
-﻿// LeetCode 0435 - Non-overlapping Intervals
+// LeetCode 0435 - Non-overlapping Intervals
 // https://leetcode.com/problems/non-overlapping-intervals/
 
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0531 - Lonely Pixel I
+// LeetCode 0531 - Lonely Pixel I
 // https://leetcode.com/problems/lonely-pixel-i/
 
 int findLonelyPixel(char** picture, int pictureRowSize, int* pictureColSizes) {

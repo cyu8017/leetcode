@@ -1,4 +1,4 @@
-﻿// LeetCode 0591 - Tag Validator
+// LeetCode 0591 - Tag Validator
 // https://leetcode.com/problems/tag-validator/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0418 - Sentence Screen Fitting
+// LeetCode 0418 - Sentence Screen Fitting
 // https://leetcode.com/problems/sentence-screen-fitting/
 
 #include <string.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0101 - Symmetric Tree
+// LeetCode 0101 - Symmetric Tree
 // https://leetcode.com/problems/symmetric-tree/
 
 #include <stdbool.h>

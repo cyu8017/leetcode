@@ -1,4 +1,4 @@
-﻿// LeetCode 0739 - Daily Temperatures
+// LeetCode 0739 - Daily Temperatures
 // https://leetcode.com/problems/daily-temperatures/
 
 #include <stdlib.h>

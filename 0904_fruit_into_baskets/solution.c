@@ -1,4 +1,4 @@
-﻿// LeetCode 0904 - Fruit Into Baskets
+// LeetCode 0904 - Fruit Into Baskets
 // https://leetcode.com/problems/fruit-into-baskets/
 
 int totalFruit(int* fruits, int fruitsSize) {

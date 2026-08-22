@@ -1,4 +1,4 @@
-﻿// LeetCode 1099 - Two Sum Less Than K
+// LeetCode 1099 - Two Sum Less Than K
 // https://leetcode.com/problems/two-sum-less-than-k/
 
 #include <stdlib.h>

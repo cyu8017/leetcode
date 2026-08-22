@@ -1,4 +1,4 @@
-﻿// LeetCode 0449 - Serialize and Deserialize BST
+// LeetCode 0449 - Serialize and Deserialize BST
 // https://leetcode.com/problems/serialize-and-deserialize-bst/
 
 #define _POSIX_C_SOURCE 200809L

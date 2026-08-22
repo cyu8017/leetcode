@@ -1,4 +1,4 @@
-﻿// LeetCode 0526 - Beautiful Arrangement
+// LeetCode 0526 - Beautiful Arrangement
 // https://leetcode.com/problems/beautiful-arrangement/
 
 #include <stdbool.h>

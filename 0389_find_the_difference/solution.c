@@ -1,4 +1,4 @@
-﻿// LeetCode 0389 - Find the Difference
+// LeetCode 0389 - Find the Difference
 // https://leetcode.com/problems/find-the-difference/
 
 char findTheDifference(char* s, char* t) {

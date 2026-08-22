@@ -1,4 +1,4 @@
-﻿// LeetCode 1522 - Diameter of N-Ary Tree
+// LeetCode 1522 - Diameter of N-Ary Tree
 // https://leetcode.com/problems/diameter-of-n-ary-tree/
 
 #include <stddef.h>

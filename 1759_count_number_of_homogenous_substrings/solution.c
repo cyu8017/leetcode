@@ -1,4 +1,4 @@
-﻿// LeetCode 1759 - Count Number of Homogenous Substrings
+// LeetCode 1759 - Count Number of Homogenous Substrings
 // https://leetcode.com/problems/count-number-of-homogenous-substrings/
 
 #include <string.h>

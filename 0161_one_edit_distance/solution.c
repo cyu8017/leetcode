@@ -1,4 +1,4 @@
-﻿// LeetCode 0161 - One Edit Distance
+// LeetCode 0161 - One Edit Distance
 #include <stdbool.h>
 #include <string.h>
 bool isOneEditDistance(char* s, char* t) {

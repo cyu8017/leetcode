@@ -1,4 +1,4 @@
-﻿// LeetCode 0355 - Design Twitter
+// LeetCode 0355 - Design Twitter
 // https://leetcode.com/problems/design-twitter/
 
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0592 - Fraction Addition and Subtraction
+// LeetCode 0592 - Fraction Addition and Subtraction
 // https://leetcode.com/problems/fraction-addition-and-subtraction/
 
 #include <stdio.h>

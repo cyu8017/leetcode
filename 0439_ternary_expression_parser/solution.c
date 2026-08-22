@@ -1,4 +1,4 @@
-﻿// LeetCode 0439 - Ternary Expression Parser
+// LeetCode 0439 - Ternary Expression Parser
 // https://leetcode.com/problems/ternary-expression-parser/
 
 #include <stdlib.h>

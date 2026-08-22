@@ -1,4 +1,4 @@
-﻿// LeetCode 0625 - Minimum Factorization
+// LeetCode 0625 - Minimum Factorization
 // https://leetcode.com/problems/minimum-factorization/
 
 int smallestFactorization(int num) {

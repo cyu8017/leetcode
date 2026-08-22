@@ -1,4 +1,4 @@
-﻿// LeetCode 0713 - Subarray Product Less Than K
+// LeetCode 0713 - Subarray Product Less Than K
 // https://leetcode.com/problems/subarray-product-less-than-k/
 
 int numSubarrayProductLessThanK(int* nums, int numsSize, int k) {

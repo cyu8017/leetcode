@@ -1,4 +1,4 @@
-﻿// LeetCode 0465 - Optimal Account Balancing
+// LeetCode 0465 - Optimal Account Balancing
 // https://leetcode.com/problems/optimal-account-balancing/
 
 #include <stdlib.h>

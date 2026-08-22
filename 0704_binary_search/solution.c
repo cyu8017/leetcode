@@ -1,4 +1,4 @@
-﻿// LeetCode 0704 - Binary Search
+// LeetCode 0704 - Binary Search
 // https://leetcode.com/problems/binary-search/
 
 int search(int* nums, int numsSize, int target) {

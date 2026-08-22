@@ -1,4 +1,4 @@
-﻿// LeetCode 0022 - Generate Parentheses
+// LeetCode 0022 - Generate Parentheses
 // https://leetcode.com/problems/generate-parentheses/
 
 #include <stdlib.h>

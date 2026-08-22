@@ -1,4 +1,4 @@
-﻿// LeetCode 0050 - Pow(x, n)
+// LeetCode 0050 - Pow(x, n)
 // https://leetcode.com/problems/powx-n/
 
 double myPow(double x, int n) {

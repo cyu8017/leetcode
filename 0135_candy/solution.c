@@ -1,4 +1,4 @@
-﻿// LeetCode 0135 - Candy
+// LeetCode 0135 - Candy
 #include <stdlib.h>
 int candy(int* ratings, int ratingsSize) {
     int *candies = malloc(ratingsSize * sizeof(int)), total = 0;

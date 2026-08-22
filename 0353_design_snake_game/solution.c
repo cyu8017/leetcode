@@ -1,4 +1,4 @@
-﻿// LeetCode 0353 - Design Snake Game
+// LeetCode 0353 - Design Snake Game
 // https://leetcode.com/problems/design-snake-game/
 
 #include <stdlib.h>

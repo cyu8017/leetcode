@@ -1,4 +1,4 @@
-﻿// LeetCode 0553 - Optimal Division
+// LeetCode 0553 - Optimal Division
 // https://leetcode.com/problems/optimal-division/
 
 #include <stdio.h>

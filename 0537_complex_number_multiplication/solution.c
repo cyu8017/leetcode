@@ -1,4 +1,4 @@
-﻿// LeetCode 0537 - Complex Number Multiplication
+// LeetCode 0537 - Complex Number Multiplication
 // https://leetcode.com/problems/complex-number-multiplication/
 
 #include <stdio.h>

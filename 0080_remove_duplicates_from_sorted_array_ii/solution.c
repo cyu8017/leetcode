@@ -1,4 +1,4 @@
-﻿// LeetCode 0080 - Remove Duplicates from Sorted Array II
+// LeetCode 0080 - Remove Duplicates from Sorted Array II
 // https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 
 int removeDuplicates(int* nums, int numsSize) {

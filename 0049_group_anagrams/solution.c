@@ -1,4 +1,4 @@
-﻿// LeetCode 0049 - Group Anagrams
+// LeetCode 0049 - Group Anagrams
 // https://leetcode.com/problems/group-anagrams/
 
 #include <stdlib.h>

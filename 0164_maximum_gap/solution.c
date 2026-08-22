@@ -1,4 +1,4 @@
-﻿// LeetCode 0164 - Maximum Gap
+// LeetCode 0164 - Maximum Gap
 #include <limits.h>
 #include <stdlib.h>
 int maximumGap(int* nums, int numsSize) {

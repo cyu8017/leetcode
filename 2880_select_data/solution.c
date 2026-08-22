@@ -1,5 +1,6 @@
-﻿// LeetCode 2880 - Select Data
+// LeetCode 2880 - Select Data
 // https://leetcode.com/problems/select-data/
 
-void solve() {
-}
+#include <stdlib.h>
+// Pandas stand-in: Go returns nil.
+void* selectData(void* df) { (void)df; return NULL; }

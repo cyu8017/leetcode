@@ -1,4 +1,4 @@
-﻿// LeetCode 0372 - Super Pow
+// LeetCode 0372 - Super Pow
 // https://leetcode.com/problems/super-pow/
 
 static int powMod(int base, int exponent, int mod) {

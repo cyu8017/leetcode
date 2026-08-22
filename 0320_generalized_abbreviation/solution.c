@@ -1,4 +1,4 @@
-﻿// LeetCode 0320 - Generalized Abbreviation
+// LeetCode 0320 - Generalized Abbreviation
 // https://leetcode.com/problems/generalized-abbreviation/
 
 #include <stdio.h>

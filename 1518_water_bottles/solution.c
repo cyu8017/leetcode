@@ -1,4 +1,4 @@
-﻿// LeetCode 1518 - Water Bottles
+// LeetCode 1518 - Water Bottles
 // https://leetcode.com/problems/water-bottles/
 
 int numWaterBottles(int numBottles, int numExchange) {

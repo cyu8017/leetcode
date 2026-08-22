@@ -1,4 +1,4 @@
-﻿// LeetCode 0473 - Matchsticks to Square
+// LeetCode 0473 - Matchsticks to Square
 // https://leetcode.com/problems/matchsticks-to-square/
 
 #include <stdbool.h>

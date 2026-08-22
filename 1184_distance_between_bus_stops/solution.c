@@ -1,4 +1,4 @@
-﻿// LeetCode 1184 - Distance Between Bus Stops
+// LeetCode 1184 - Distance Between Bus Stops
 // https://leetcode.com/problems/distance-between-bus-stops/
 
 int distanceBetweenBusStops(int* distance, int distanceSize, int start, int destination) {

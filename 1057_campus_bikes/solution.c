@@ -1,4 +1,4 @@
-﻿// LeetCode 1057 - Campus Bikes
+// LeetCode 1057 - Campus Bikes
 // https://leetcode.com/problems/campus-bikes/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 1229 - Meeting Scheduler
+// LeetCode 1229 - Meeting Scheduler
 // https://leetcode.com/problems/meeting-scheduler/
 
 #include <stdlib.h>

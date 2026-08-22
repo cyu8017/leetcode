@@ -1,4 +1,4 @@
-﻿// LeetCode 0494 - Target Sum
+// LeetCode 0494 - Target Sum
 // https://leetcode.com/problems/target-sum/
 
 #include <stdlib.h>

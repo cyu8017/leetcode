@@ -1,4 +1,4 @@
-﻿// LeetCode 0178 - Rank Scores
+// LeetCode 0178 - Rank Scores
 // https://leetcode.com/problems/rank-scores/
 
 const char* QUERY =

@@ -1,4 +1,4 @@
-﻿// LeetCode 0485 - Max Consecutive Ones
+// LeetCode 0485 - Max Consecutive Ones
 // https://leetcode.com/problems/max-consecutive-ones/
 
 int findMaxConsecutiveOnes(int* nums, int numsSize) {

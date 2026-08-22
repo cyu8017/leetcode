@@ -1,4 +1,4 @@
-﻿// LeetCode 1052 - Grumpy Bookstore Owner
+// LeetCode 1052 - Grumpy Bookstore Owner
 // https://leetcode.com/problems/grumpy-bookstore-owner/
 
 int maxSatisfied(int* customers, int customersSize, int* grumpy, int grumpySize, int minutes) {

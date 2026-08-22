@@ -1,0 +1,254 @@
+######## 50 3397_maximum_number_of_distinct_elements_after_operations ########
+// LeetCode 3397 - Maximum Number of Distinct Elements After Operations
+// https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/
+
+import "sort"
+
+func maxDistinctElements(nums []int, k int) int {
+	sort.Ints(nums)
+	ans := 0
+	prev := int(-1e18)
+	for _, x := range nums {
+		cur := x - k
+		if cur <= prev {
+			cur = prev + 1
+		}
+		if cur > x+k {
+			continue
+		}
+		ans++
+		prev = cur
+	}
+	return ans
+}
+
+######## 51 3398_smallest_substring_with_identical_characters_i ########
+// LeetCode 3398 - Smallest Substring With Identical Characters I
+// https://leetcode.com/problems/smallest-substring-with-identical-characters-i/
+
+func minLength(s string, numOps int) int {
+	n := len(s)
+	ok := func(L int) bool {
+		if L == 0 {
+			return false
+		}
+		// min flips so no identical run longer than L
+		ops := 0
+		i := 0
+		for i < n {
+			j := i
+			for j < n && s[j] == s[i] {
+				j++
+			}
+			ops += (j - i) / (L + 1)
+			i = j
+		}
+		return ops <= numOps
+	}
+	lo, hi := 1, n
+	for lo < hi {
+		mid := (lo + hi) / 2
+		if ok(mid) {
+			hi = mid
+		} else {
+			lo = mid + 1
+		}
+	}
+	return lo
+}
+
+######## 52 3399_smallest_substring_with_identical_characters_ii ########
+// LeetCode 3399 - Smallest Substring With Identical Characters II
+// https://leetcode.com/problems/smallest-substring-with-identical-characters-ii/
+
+func minLength(s string, numOps int) int {
+	n := len(s)
+	ok := func(L int) bool {
+		ops := 0
+		i := 0
+		for i < n {
+			j := i
+			for j < n && s[j] == s[i] {
+				j++
+			}
+			ops += (j - i) / (L + 1)
+			i = j
+		}
+		return ops <= numOps
+	}
+	lo, hi := 1, n
+	for lo < hi {
+		mid := (lo + hi) / 2
+		if ok(mid) {
+			hi = mid
+		} else {
+			lo = mid + 1
+		}
+	}
+	return lo
+}
+
+######## 53 3400_maximum_number_of_matching_indices_after_right_shifts ########
+// LeetCode 3400 - Maximum Number of Matching Indices After Right Shifts
+// https://leetcode.com/problems/maximum-number-of-matching-indices-after-right-shifts/
+
+func maximumMatchingIndices(nums1 []int, nums2 []int) int {
+	n := len(nums1)
+	ans := 0
+	for shift := 0; shift < n; shift++ {
+		cnt := 0
+		for i := 0; i < n; i++ {
+			if nums1[(i-shift+n)%n] == nums2[i] {
+				cnt++
+			}
+		}
+		if cnt > ans {
+			ans = cnt
+		}
+	}
+	return ans
+}
+
+######## 54 3402_minimum_operations_to_make_columns_strictly_increasing ########
+// LeetCode 3402 - Minimum Operations to Make Columns Strictly Increasing
+// https://leetcode.com/problems/minimum-operations-to-make-columns-strictly-increasing/
+
+func minimumOperations(grid [][]int) int {
+	m, n := len(grid), len(grid[0])
+	ans := 0
+	for j := 0; j < n; j++ {
+		for i := 1; i < m; i++ {
+			if grid[i][j] <= grid[i-1][j] {
+				need := grid[i-1][j] + 1
+				ans += need - grid[i][j]
+				grid[i][j] = need
+			}
+		}
+	}
+	return ans
+}
+
+######## 55 3403_find_the_lexicographically_largest_string_from_the_box_i ########
+// LeetCode 3403 - Find the Lexicographically Largest String From the Box I
+// https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
+
+func answerString(word string, numFriends int) string {
+	if numFriends == 1 {
+		return word
+	}
+	n := len(word)
+	maxLen := n - (numFriends - 1)
+	ans := ""
+	for i := 0; i < n; i++ {
+		end := i + maxLen
+		if end > n {
+			end = n
+		}
+		cand := word[i:end]
+		if cand > ans {
+			ans = cand
+		}
+	}
+	return ans
+}
+
+######## 56 3404_count_special_subsequences ########
+// LeetCode 3404 - Count Special Subsequences
+// https://leetcode.com/problems/count-special-subsequences/
+
+func numberOfSubsequences(nums []int) int64 {
+	n := len(nums)
+	var ans int64
+	// p*r == q*s with indices i<j<k<l and j>i+1 etc gaps of at least 1
+	for i := 0; i < n; i++ {
+		for j := i + 2; j < n; j++ {
+			for k := j + 2; k < n; k++ {
+				for l := k + 2; l < n; l++ {
+					if int64(nums[i])*int64(nums[k]) == int64(nums[j])*int64(nums[l]) {
+						ans++
+					}
+				}
+			}
+		}
+	}
+	return ans
+}
+
+######## 57 3405_count_the_number_of_arrays_with_k_matching_adjacent_elements ########
+// LeetCode 3405 - Count the Number of Arrays With K Matching Adjacent Elements
+// https://leetcode.com/problems/count-the-number-of-arrays-with-k-matching-adjacent-elements/
+
+func countGoodArrays(n int, m int, k int) int {
+	const mod = 1000000007
+	// C(n-1, k) * m * (m-1)^(n-1-k)
+	return int(int64(comb3405(n-1, k, mod)) * int64(m) % mod * modPow3405(m-1, n-1-k, mod) % mod)
+}
+
+func comb3405(n, k, mod int) int {
+	if k < 0 || k > n {
+		return 0
+	}
+	num, den := 1, 1
+	for i := 0; i < k; i++ {
+		num = int(int64(num) * int64(n-i) % int64(mod))
+		den = int(int64(den) * int64(i+1) % int64(mod))
+	}
+	return int(int64(num) * int64(modPow3405(den, mod-2, mod)) % int64(mod))
+}
+
+func modPow3405(a, e, mod int) int {
+	if a < 0 {
+		a = 0
+	}
+	r := 1
+	a %= mod
+	for e > 0 {
+		if e&1 == 1 {
+			r = int(int64(r) * int64(a) % int64(mod))
+		}
+		a = int(int64(a) * int64(a) % int64(mod))
+		e >>= 1
+	}
+	return r
+}
+
+######## 58 3406_find_the_lexicographically_largest_string_from_the_box_ii ########
+// LeetCode 3406 - Find the Lexicographically Largest String From the Box II
+// https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-ii/
+
+func answerString(word string, numFriends int) string {
+	if numFriends == 1 {
+		return word
+	}
+	n := len(word)
+	maxLen := n - (numFriends - 1)
+	ans := ""
+	for i := 0; i < n; i++ {
+		end := i + maxLen
+		if end > n {
+			end = n
+		}
+		cand := word[i:end]
+		if cand > ans {
+			ans = cand
+		}
+	}
+	return ans
+}
+
+######## 59 3407_substring_matching_pattern ########
+// LeetCode 3407 - Substring Matching Pattern
+// https://leetcode.com/problems/substring-matching-pattern/
+
+import "strings"
+
+func hasMatch(s string, p string) bool {
+	i := strings.IndexByte(p, '*')
+	left, right := p[:i], p[i+1:]
+	li := strings.Index(s, left)
+	if li < 0 {
+		return false
+	}
+	return strings.Contains(s[li+len(left):], right)
+}
+

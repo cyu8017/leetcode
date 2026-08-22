@@ -1,4 +1,4 @@
-﻿// LeetCode 0398 - Random Pick Index
+// LeetCode 0398 - Random Pick Index
 // https://leetcode.com/problems/random-pick-index/
 
 #include <stdlib.h>

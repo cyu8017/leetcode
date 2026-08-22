@@ -1,4 +1,4 @@
-﻿// LeetCode 0328 - Odd Even Linked List
+// LeetCode 0328 - Odd Even Linked List
 // https://leetcode.com/problems/odd-even-linked-list/
 
 struct ListNode {

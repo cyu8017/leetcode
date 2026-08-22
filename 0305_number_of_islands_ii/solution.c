@@ -1,4 +1,4 @@
-﻿// LeetCode 0305 - Number of Islands II
+// LeetCode 0305 - Number of Islands II
 // https://leetcode.com/problems/number-of-islands-ii/
 
 #include <stdlib.h>

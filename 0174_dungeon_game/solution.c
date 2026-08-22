@@ -1,4 +1,4 @@
-﻿// LeetCode 0174 - Dungeon Game
+// LeetCode 0174 - Dungeon Game
 // https://leetcode.com/problems/dungeon-game/
 
 #include <limits.h>

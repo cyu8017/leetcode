@@ -1,4 +1,4 @@
-﻿// LeetCode 0059 - Spiral Matrix II
+// LeetCode 0059 - Spiral Matrix II
 // https://leetcode.com/problems/spiral-matrix-ii/
 
 #include <stdlib.h>

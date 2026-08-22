@@ -1,4 +1,4 @@
-﻿// LeetCode 0598 - Range Addition II
+// LeetCode 0598 - Range Addition II
 // https://leetcode.com/problems/range-addition-ii/
 
 int maxCount(int m, int n, int** ops, int opsSize, int* opsColSize) {

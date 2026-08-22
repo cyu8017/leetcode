@@ -1,4 +1,4 @@
-﻿// LeetCode 0587 - Erect the Fence
+// LeetCode 0587 - Erect the Fence
 // https://leetcode.com/problems/erect-the-fence/
 
 #include <stdlib.h>

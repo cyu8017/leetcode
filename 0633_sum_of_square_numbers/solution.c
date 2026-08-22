@@ -1,4 +1,4 @@
-﻿// LeetCode 0633 - Sum of Square Numbers
+// LeetCode 0633 - Sum of Square Numbers
 // https://leetcode.com/problems/sum-of-square-numbers/
 
 #include <math.h>

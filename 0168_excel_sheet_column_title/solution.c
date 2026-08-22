@@ -1,4 +1,4 @@
-﻿// LeetCode 0168 - Excel Sheet Column Title
+// LeetCode 0168 - Excel Sheet Column Title
 #include <stdlib.h>
 char* convertToTitle(int columnNumber) {
     char* result = malloc(8);

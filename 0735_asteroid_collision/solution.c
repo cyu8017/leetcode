@@ -1,4 +1,4 @@
-﻿// LeetCode 0735 - Asteroid Collision
+// LeetCode 0735 - Asteroid Collision
 // https://leetcode.com/problems/asteroid-collision/
 
 #include <stdlib.h>

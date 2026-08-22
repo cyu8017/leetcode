@@ -1,4 +1,4 @@
-﻿// LeetCode 0262 - Trips and Users
+// LeetCode 0262 - Trips and Users
 // https://leetcode.com/problems/trips-and-users/
 
 const char* QUERY =

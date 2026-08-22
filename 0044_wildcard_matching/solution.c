@@ -1,4 +1,4 @@
-﻿// LeetCode 0044 - Wildcard Matching
+// LeetCode 0044 - Wildcard Matching
 // https://leetcode.com/problems/wildcard-matching/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0736 - Parse Lisp Expression
+// LeetCode 0736 - Parse Lisp Expression
 // https://leetcode.com/problems/parse-lisp-expression/
 
 #include <stdlib.h>

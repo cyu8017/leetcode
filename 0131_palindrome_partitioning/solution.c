@@ -1,4 +1,4 @@
-﻿// LeetCode 0131 - Palindrome Partitioning
+// LeetCode 0131 - Palindrome Partitioning
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>

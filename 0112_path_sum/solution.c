@@ -1,4 +1,4 @@
-﻿// LeetCode 0112 - Path Sum
+// LeetCode 0112 - Path Sum
 #include <stdbool.h>
 struct TreeNode { int val; struct TreeNode *left, *right; };
 bool hasPathSum(struct TreeNode* root, int targetSum) {

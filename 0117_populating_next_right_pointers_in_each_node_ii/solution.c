@@ -1,4 +1,4 @@
-﻿// LeetCode 0117 - Populating Next Right Pointers in Each Node II
+// LeetCode 0117 - Populating Next Right Pointers in Each Node II
 struct Node { int val; struct Node *left,*right,*next; };
 struct Node* connect(struct Node* root) {
     if (!root) return 0;

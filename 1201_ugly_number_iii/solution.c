@@ -1,4 +1,4 @@
-﻿// LeetCode 1201 - Ugly Number III
+// LeetCode 1201 - Ugly Number III
 // https://leetcode.com/problems/ugly-number-iii/
 
 static long long gcdll(long long a, long long b) {

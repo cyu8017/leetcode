@@ -1,4 +1,4 @@
-﻿// LeetCode 0721 - Accounts Merge
+// LeetCode 0721 - Accounts Merge
 // https://leetcode.com/problems/accounts-merge/
 
 #include <stdlib.h>

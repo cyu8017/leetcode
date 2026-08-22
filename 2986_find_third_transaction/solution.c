@@ -1,5 +1,30 @@
-﻿// LeetCode 2986 - Find Third Transaction
+// LeetCode 2986 - Find Third Transaction
 // https://leetcode.com/problems/find-third-transaction/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "WITH\n"
+    "    T AS (\n"
+    "        SELECT\n"
+    "            *,\n"
+    "            RANK() OVER (\n"
+    "                PARTITION BY user_id\n"
+    "                ORDER BY transaction_date\n"
+    "            ) AS rk,\n"
+    "            spend > (\n"
+    "                LAG(spend) OVER (\n"
+    "                    PARTITION BY user_id\n"
+    "                    ORDER BY transaction_date\n"
+    "                )\n"
+    "            )\n"
+    "            AND spend > (\n"
+    "                LAG(spend, 2) OVER (\n"
+    "                    PARTITION BY user_id\n"
+    "                    ORDER BY transaction_date\n"
+    "                )\n"
+    "            ) AS st\n"
+    "        FROM Transactions\n"
+    "    )\n"
+    "SELECT user_id, spend AS third_transaction_spend, transaction_date AS third_transaction_date\n"
+    "FROM T\n"
+    "WHERE rk = 3 AND st = 1\n";

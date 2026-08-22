@@ -1,4 +1,4 @@
-﻿// LeetCode 0176 - Second Highest Salary
+// LeetCode 0176 - Second Highest Salary
 // https://leetcode.com/problems/second-highest-salary/
 
 const char* QUERY =

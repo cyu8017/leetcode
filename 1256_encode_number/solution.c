@@ -1,4 +1,4 @@
-﻿// LeetCode 1256 - Encode Number
+// LeetCode 1256 - Encode Number
 // https://leetcode.com/problems/encode-number/
 
 #include <stdlib.h>

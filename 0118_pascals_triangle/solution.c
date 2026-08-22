@@ -1,4 +1,4 @@
-﻿// LeetCode 0118 - Pascal's Triangle
+// LeetCode 0118 - Pascal's Triangle
 #include <stdlib.h>
 int** generate(int numRows,int* returnSize,int** returnColumnSizes) {
     int **a=malloc(numRows*sizeof(*a)); *returnColumnSizes=malloc(numRows*sizeof(int)); *returnSize=numRows;

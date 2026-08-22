@@ -1,4 +1,4 @@
-﻿// LeetCode 0138 - Copy List with Random Pointer
+// LeetCode 0138 - Copy List with Random Pointer
 #include <stdlib.h>
 struct Node { int val; struct Node *next, *random; };
 struct Node* copyRandomList(struct Node* head) {

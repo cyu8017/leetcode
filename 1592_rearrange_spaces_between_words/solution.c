@@ -1,4 +1,4 @@
-﻿// LeetCode 1592 - Rearrange Spaces Between Words
+// LeetCode 1592 - Rearrange Spaces Between Words
 // https://leetcode.com/problems/rearrange-spaces-between-words/
 
 #include <stdlib.h>

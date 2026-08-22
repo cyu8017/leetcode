@@ -1,4 +1,4 @@
-﻿// LeetCode 0394 - Decode String
+// LeetCode 0394 - Decode String
 // https://leetcode.com/problems/decode-string/
 
 #include <ctype.h>

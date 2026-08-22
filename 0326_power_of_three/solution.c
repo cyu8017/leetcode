@@ -1,4 +1,4 @@
-﻿// LeetCode 0326 - Power of Three
+// LeetCode 0326 - Power of Three
 // https://leetcode.com/problems/power-of-three/
 
 int isPowerOfThree(int n) {

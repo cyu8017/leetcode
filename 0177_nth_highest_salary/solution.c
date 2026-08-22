@@ -1,4 +1,4 @@
-﻿// LeetCode 0177 - Nth Highest Salary
+// LeetCode 0177 - Nth Highest Salary
 // https://leetcode.com/problems/nth-highest-salary/
 
 const char* QUERY =

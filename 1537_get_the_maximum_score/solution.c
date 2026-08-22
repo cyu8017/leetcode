@@ -1,4 +1,4 @@
-﻿// LeetCode 1537 - Get the Maximum Score
+// LeetCode 1537 - Get the Maximum Score
 // https://leetcode.com/problems/get-the-maximum-score/
 
 int maxSum(int* nums1, int nums1Size, int* nums2, int nums2Size) {

@@ -1,5 +1,6 @@
-﻿// LeetCode 2881 - Create a New Column
+// LeetCode 2881 - Create a New Column
 // https://leetcode.com/problems/create-a-new-column/
 
-void solve() {
-}
+#include <stdlib.h>
+// Pandas stand-in: Go returns nil.
+void* createBonusColumn(void* df) { (void)df; return NULL; }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0746 - Min Cost Climbing Stairs
+// LeetCode 0746 - Min Cost Climbing Stairs
 // https://leetcode.com/problems/min-cost-climbing-stairs/
 
 int minCostClimbingStairs(int* cost, int costSize) {

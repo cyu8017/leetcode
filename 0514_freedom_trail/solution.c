@@ -1,4 +1,4 @@
-﻿// LeetCode 0514 - Freedom Trail
+// LeetCode 0514 - Freedom Trail
 // https://leetcode.com/problems/freedom-trail/
 
 #include <limits.h>

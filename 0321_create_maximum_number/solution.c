@@ -1,4 +1,4 @@
-﻿// LeetCode 0321 - Create Maximum Number
+// LeetCode 0321 - Create Maximum Number
 // https://leetcode.com/problems/create-maximum-number/
 
 #include <stdlib.h>

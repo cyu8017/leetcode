@@ -1,4 +1,4 @@
-﻿// LeetCode 0213 - House Robber II
+// LeetCode 0213 - House Robber II
 // https://leetcode.com/problems/house-robber-ii/
 
 static int robLinear(int* nums, int start, int end) {

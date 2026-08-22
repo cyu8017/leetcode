@@ -1,4 +1,4 @@
-﻿// LeetCode 0098 - Validate Binary Search Tree
+// LeetCode 0098 - Validate Binary Search Tree
 // https://leetcode.com/problems/validate-binary-search-tree/
 
 #include <stdbool.h>

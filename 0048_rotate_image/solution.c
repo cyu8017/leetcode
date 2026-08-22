@@ -1,4 +1,4 @@
-﻿// LeetCode 0048 - Rotate Image
+// LeetCode 0048 - Rotate Image
 // https://leetcode.com/problems/rotate-image/
 
 static void swap_int(int* a, int* b) {

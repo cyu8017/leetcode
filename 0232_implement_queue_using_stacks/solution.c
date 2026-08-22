@@ -1,4 +1,4 @@
-﻿// LeetCode 0232 - Implement Queue using Stacks
+// LeetCode 0232 - Implement Queue using Stacks
 // https://leetcode.com/problems/implement-queue-using-stacks/
 
 #include <stdbool.h>

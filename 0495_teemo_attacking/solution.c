@@ -1,4 +1,4 @@
-﻿// LeetCode 0495 - Teemo Attacking
+// LeetCode 0495 - Teemo Attacking
 // https://leetcode.com/problems/teemo-attacking/
 
 int findPoisonedDuration(int* timeSeries, int timeSeriesSize, int duration) {

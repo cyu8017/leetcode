@@ -1,4 +1,4 @@
-﻿// LeetCode 0604 - Design Compressed String Iterator
+// LeetCode 0604 - Design Compressed String Iterator
 // https://leetcode.com/problems/design-compressed-string-iterator/
 
 #include <ctype.h>

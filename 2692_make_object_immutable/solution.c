@@ -1,5 +1,8 @@
-﻿// LeetCode 2692 - Make Object Immutable
+// LeetCode 2692 - Make Object Immutable
 // https://leetcode.com/problems/make-object-immutable/
 
-void solve() {
+#include <stdlib.h>
+
+void* makeImmutable(void* obj) {
+    return obj;
 }

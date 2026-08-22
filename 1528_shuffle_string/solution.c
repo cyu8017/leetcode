@@ -1,4 +1,4 @@
-﻿// LeetCode 1528 - Shuffle String
+// LeetCode 1528 - Shuffle String
 // https://leetcode.com/problems/shuffle-string/
 
 #include <stdlib.h>

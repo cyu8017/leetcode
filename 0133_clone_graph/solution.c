@@ -1,4 +1,4 @@
-﻿// LeetCode 0133 - Clone Graph
+// LeetCode 0133 - Clone Graph
 #include <stdlib.h>
 struct Node { int val; int numNeighbors; struct Node** neighbors; };
 

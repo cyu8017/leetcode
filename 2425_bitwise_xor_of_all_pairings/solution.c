@@ -1,5 +1,9 @@
-﻿// LeetCode 2425 - Bitwise XOR of All Pairings
+// LeetCode 2425 - Bitwise XOR of All Pairings
 // https://leetcode.com/problems/bitwise-xor-of-all-pairings/
 
-void solve() {
+int xorAllNums(int* nums1, int nums1Size, int* nums2, int nums2Size) {
+    int ans = 0;
+    if (nums2Size % 2 == 1) for (int i = 0; i < nums1Size; i++) ans ^= nums1[i];
+    if (nums1Size % 2 == 1) for (int i = 0; i < nums2Size; i++) ans ^= nums2[i];
+    return ans;
 }

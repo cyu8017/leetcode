@@ -1,4 +1,4 @@
-﻿// LeetCode 0334 - Increasing Triplet Subsequence
+// LeetCode 0334 - Increasing Triplet Subsequence
 // https://leetcode.com/problems/increasing-triplet-subsequence/
 
 #include <limits.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0748 - Shortest Completing Word
+// LeetCode 0748 - Shortest Completing Word
 // https://leetcode.com/problems/shortest-completing-word/
 
 #include <ctype.h>

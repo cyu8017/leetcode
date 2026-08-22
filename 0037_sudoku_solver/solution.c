@@ -1,4 +1,4 @@
-﻿// LeetCode 0037 - Sudoku Solver
+// LeetCode 0037 - Sudoku Solver
 // https://leetcode.com/problems/sudoku-solver/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0140 - Word Break II
+// LeetCode 0140 - Word Break II
 #include <stdlib.h>
 #include <string.h>
 static char **answers, *sentence, **dictionary;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0337 - House Robber III
+// LeetCode 0337 - House Robber III
 // https://leetcode.com/problems/house-robber-iii/
 
 #include <stdlib.h>

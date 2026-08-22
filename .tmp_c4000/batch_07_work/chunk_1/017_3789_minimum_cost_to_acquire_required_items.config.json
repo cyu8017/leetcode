@@ -1,0 +1,13 @@
+{
+  "class": "Solution",
+  "method": "minimumCost",
+  "paramOrder": [
+    "cost1",
+    "cost2",
+    "costBoth",
+    "need1",
+    "need2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

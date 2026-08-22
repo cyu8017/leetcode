@@ -1,4 +1,4 @@
-﻿// LeetCode 0744 - Find Smallest Letter Greater Than Target
+// LeetCode 0744 - Find Smallest Letter Greater Than Target
 // https://leetcode.com/problems/find-smallest-letter-greater-than-target/
 
 char nextGreatestLetter(char* letters, int lettersSize, char target) {

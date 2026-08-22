@@ -1,4 +1,4 @@
-﻿// LeetCode 1503 - Last Moment Before All Ants Fall Out of a Plank
+// LeetCode 1503 - Last Moment Before All Ants Fall Out of a Plank
 // https://leetcode.com/problems/last-moment-before-all-ants-fall-out-of-a-plank/
 
 int getLastMoment(int n, int* left, int leftSize, int* right, int rightSize) {

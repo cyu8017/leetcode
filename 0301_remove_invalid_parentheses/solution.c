@@ -1,4 +1,4 @@
-﻿// LeetCode 0301 - Remove Invalid Parentheses
+// LeetCode 0301 - Remove Invalid Parentheses
 // https://leetcode.com/problems/remove-invalid-parentheses/
 
 #include <stdbool.h>

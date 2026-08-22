@@ -1,4 +1,4 @@
-﻿// LeetCode 1089 - Duplicate Zeros
+// LeetCode 1089 - Duplicate Zeros
 // https://leetcode.com/problems/duplicate-zeros/
 
 void duplicateZeros(int* arr, int arrSize) {

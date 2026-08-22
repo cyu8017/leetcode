@@ -1,4 +1,4 @@
-﻿// LeetCode 1223 - Dice Roll Simulation
+// LeetCode 1223 - Dice Roll Simulation
 // https://leetcode.com/problems/dice-roll-simulation/
 
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0516 - Longest Palindromic Subsequence
+// LeetCode 0516 - Longest Palindromic Subsequence
 // https://leetcode.com/problems/longest-palindromic-subsequence/
 
 #include <string.h>

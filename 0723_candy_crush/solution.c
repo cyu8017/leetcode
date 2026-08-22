@@ -1,4 +1,4 @@
-﻿// LeetCode 0723 - Candy Crush
+// LeetCode 0723 - Candy Crush
 // https://leetcode.com/problems/candy-crush/
 
 #include <stdlib.h>

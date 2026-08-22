@@ -1,4 +1,4 @@
-﻿// LeetCode 0016 - 3Sum Closest
+// LeetCode 0016 - 3Sum Closest
 // https://leetcode.com/problems/3sum-closest/
 
 #include <stdlib.h>

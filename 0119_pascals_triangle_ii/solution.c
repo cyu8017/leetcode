@@ -1,4 +1,4 @@
-﻿// LeetCode 0119 - Pascal's Triangle II
+// LeetCode 0119 - Pascal's Triangle II
 #include <stdlib.h>
 int* getRow(int rowIndex,int* returnSize) {
     *returnSize=rowIndex+1; int* row=malloc(*returnSize*sizeof(int));

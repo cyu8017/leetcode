@@ -1,4 +1,4 @@
-﻿// LeetCode 1748 - Sum of Unique Elements
+// LeetCode 1748 - Sum of Unique Elements
 // https://leetcode.com/problems/sum-of-unique-elements/
 
 #include <string.h>

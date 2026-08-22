@@ -1,4 +1,4 @@
-﻿// LeetCode 0621 - Task Scheduler
+// LeetCode 0621 - Task Scheduler
 // https://leetcode.com/problems/task-scheduler/
 
 int leastInterval(char* tasks, int tasksSize, int n) {

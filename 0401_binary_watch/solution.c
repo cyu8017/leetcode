@@ -1,4 +1,4 @@
-﻿// LeetCode 0401 - Binary Watch
+// LeetCode 0401 - Binary Watch
 // https://leetcode.com/problems/binary-watch/
 
 #include <stdio.h>

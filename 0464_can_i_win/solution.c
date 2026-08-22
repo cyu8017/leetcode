@@ -1,4 +1,4 @@
-﻿// LeetCode 0464 - Can I Win
+// LeetCode 0464 - Can I Win
 // https://leetcode.com/problems/can-i-win/
 
 #include <stdbool.h>

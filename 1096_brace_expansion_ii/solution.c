@@ -1,4 +1,4 @@
-﻿// LeetCode 1096 - Brace Expansion II
+// LeetCode 1096 - Brace Expansion II
 // https://leetcode.com/problems/brace-expansion-ii/
 
 #include <stdlib.h>

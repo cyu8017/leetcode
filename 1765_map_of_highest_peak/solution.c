@@ -1,4 +1,4 @@
-﻿// LeetCode 1765 - Map of Highest Peak
+// LeetCode 1765 - Map of Highest Peak
 // https://leetcode.com/problems/map-of-highest-peak/
 
 #include <stdlib.h>

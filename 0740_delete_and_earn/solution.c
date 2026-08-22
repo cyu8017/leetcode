@@ -1,4 +1,4 @@
-﻿// LeetCode 0740 - Delete and Earn
+// LeetCode 0740 - Delete and Earn
 // https://leetcode.com/problems/delete-and-earn/
 
 #include <stdlib.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0419 - Battleships in a Board
+// LeetCode 0419 - Battleships in a Board
 // https://leetcode.com/problems/battleships-in-a-board/
 
 int countBattleships(char** board, int boardSize, int* boardColSize) {

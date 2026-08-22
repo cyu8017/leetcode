@@ -1,4 +1,4 @@
-﻿// LeetCode 0477 - Total Hamming Distance
+// LeetCode 0477 - Total Hamming Distance
 // https://leetcode.com/problems/total-hamming-distance/
 
 int totalHammingDistance(int* nums, int numsSize) {

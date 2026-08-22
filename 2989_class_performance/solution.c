@@ -1,5 +1,10 @@
-﻿// LeetCode 2989 - Class Performance
+// LeetCode 2989 - Class Performance
 // https://leetcode.com/problems/class-performance/
 
-void solve() {
-}
+const char* QUERY =
+    "\n"
+    "SELECT\n"
+    "    MAX(assignment1 + assignment2 + assignment3) - MIN(\n"
+    "        assignment1 + assignment2 + assignment3\n"
+    "    ) AS difference_in_score\n"
+    "FROM Scores\n";

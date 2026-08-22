@@ -1,4 +1,4 @@
-﻿// LeetCode 0115 - Distinct Subsequences
+// LeetCode 0115 - Distinct Subsequences
 #include <stdlib.h>
 #include <string.h>
 int numDistinct(char* s, char* t) {

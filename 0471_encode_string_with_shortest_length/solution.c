@@ -1,4 +1,4 @@
-﻿// LeetCode 0471 - Encode String with Shortest Length
+// LeetCode 0471 - Encode String with Shortest Length
 // https://leetcode.com/problems/encode-string-with-shortest-length/
 
 #define _POSIX_C_SOURCE 200809L

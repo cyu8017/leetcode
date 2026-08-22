@@ -1,4 +1,4 @@
-﻿// LeetCode 1088 - Confusing Number II
+// LeetCode 1088 - Confusing Number II
 // https://leetcode.com/problems/confusing-number-ii/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0258 - Add Digits
+// LeetCode 0258 - Add Digits
 // https://leetcode.com/problems/add-digits/
 
 int addDigits(int num) {

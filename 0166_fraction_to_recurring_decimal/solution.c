@@ -1,4 +1,4 @@
-﻿// LeetCode 0166 - Fraction to Recurring Decimal
+// LeetCode 0166 - Fraction to Recurring Decimal
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

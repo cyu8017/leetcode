@@ -1,4 +1,4 @@
-﻿// LeetCode 0282 - Expression Add Operators
+// LeetCode 0282 - Expression Add Operators
 // https://leetcode.com/problems/expression-add-operators/
 
 #include <stdlib.h>

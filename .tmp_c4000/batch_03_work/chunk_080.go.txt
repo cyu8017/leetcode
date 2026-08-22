@@ -1,0 +1,462 @@
+######## 80 3430_maximum_and_minimum_sums_of_at_most_size_k_subarrays ########
+// LeetCode 3430 - Maximum and Minimum Sums of at Most Size K Subarrays
+// https://leetcode.com/problems/maximum-and-minimum-sums-of-at-most-size-k-subarrays/
+
+func minMaxSubarraySum(nums []int, k int) int64 {
+	n := len(nums)
+	var ans int64
+	for i := 0; i < n; i++ {
+		mn, mx := nums[i], nums[i]
+		for j := i; j < n && j-i+1 <= k; j++ {
+			if nums[j] < mn {
+				mn = nums[j]
+			}
+			if nums[j] > mx {
+				mx = nums[j]
+			}
+			ans += int64(mn + mx)
+		}
+	}
+	return ans
+}
+
+######## 81 3431_minimum_unlocked_indices_to_sort_nums ########
+// LeetCode 3431 - Minimum Unlocked Indices to Sort Nums
+// https://leetcode.com/problems/minimum-unlocked-indices-to-sort-nums/
+
+func minUnlockedIndices(nums []int, locked []int) int {
+	n := len(nums)
+	target := append([]int(nil), nums...)
+	// sort target
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			if target[j] < target[i] {
+				target[i], target[j] = target[j], target[i]
+			}
+		}
+	}
+	// Check if possible: locked positions must already match
+	for i := 0; i < n; i++ {
+		if locked[i] == 1 && nums[i] != target[i] {
+			// may still swap through unlocked - actually locked cannot change
+			// so if locked and wrong value, impossible unless value equals somehow
+		}
+	}
+	// Simpler approach for values in {1,2,3}:
+	ans := 0
+	// find positions where order wrong
+	maxSeen := 0
+	for i := 0; i < n; i++ {
+		if nums[i] < maxSeen {
+			// need unlock something
+		}
+		if nums[i] > maxSeen {
+			maxSeen = nums[i]
+		}
+	}
+	// For 1,2,3 specifically:
+	pos3, pos1 := -1, -1
+	for i := 0; i < n; i++ {
+		if nums[i] == 3 {
+			pos3 = i
+		}
+	}
+	for i := n - 1; i >= 0; i-- {
+		if nums[i] == 1 {
+			pos1 = i
+			break
+		}
+	}
+	if pos1 == -1 || pos3 == -1 || pos3 < pos1 {
+		// check already sorted
+		ok := true
+		for i := 1; i < n; i++ {
+			if nums[i] < nums[i-1] {
+				ok = false
+				break
+			}
+		}
+		if ok {
+			return 0
+		}
+	}
+	// unlock all between first misplaced
+	need := false
+	for i := 1; i < n; i++ {
+		if nums[i] < nums[i-1] {
+			need = true
+			break
+		}
+	}
+	if !need {
+		return 0
+	}
+	// count locked in range where 3 appears before 1
+	left, right := n, -1
+	for i := 0; i < n; i++ {
+		for j := i + 1; j < n; j++ {
+			if nums[i] > nums[j] {
+				if i < left {
+					left = i
+				}
+				if j > right {
+					right = j
+				}
+			}
+		}
+	}
+	if right < left {
+		return 0
+	}
+	for i := left; i <= right; i++ {
+		if locked[i] == 1 {
+			ans++
+		}
+	}
+	// verify unlockable: if we unlock those, can we sort? For 1..3 bubbles
+	tmp := append([]int(nil), nums...)
+	lock := append([]int(nil), locked...)
+	for i := left; i <= right; i++ {
+		lock[i] = 0
+	}
+	changed := true
+	for changed {
+		changed = false
+		for i := 0; i+1 < n; i++ {
+			if lock[i] == 0 && lock[i+1] == 0 && tmp[i] > tmp[i+1] {
+				tmp[i], tmp[i+1] = tmp[i+1], tmp[i]
+				changed = true
+			}
+		}
+	}
+	for i := 1; i < n; i++ {
+		if tmp[i] < tmp[i-1] {
+			return -1
+		}
+	}
+	return ans
+}
+
+######## 82 3432_count_partitions_with_even_sum_difference ########
+// LeetCode 3432 - Count Partitions With Even Sum Difference
+// https://leetcode.com/problems/count-partitions-with-even-sum-difference/
+
+func countPartitions(nums []int) int {
+	total := 0
+	for _, x := range nums {
+		total += x
+	}
+	ans, left := 0, 0
+	for i := 0; i < len(nums)-1; i++ {
+		left += nums[i]
+		if (left-(total-left))%2 == 0 {
+			ans++
+		}
+	}
+	return ans
+}
+
+######## 83 3433_count_mentions_per_user ########
+// LeetCode 3433 - Count Mentions Per User
+// https://leetcode.com/problems/count-mentions-per-user/
+
+import "sort"
+import "strconv"
+import "strings"
+
+func countMentions(numberOfUsers int, events [][]string) []int {
+	sort.SliceStable(events, func(i, j int) bool {
+		ti, _ := strconv.Atoi(events[i][1])
+		tj, _ := strconv.Atoi(events[j][1])
+		if ti != tj {
+			return ti < tj
+		}
+		// OFFLINE before MESSAGE at same time
+		return events[i][0] > events[j][0]
+	})
+	online := make([]bool, numberOfUsers)
+	offlineUntil := make([]int, numberOfUsers)
+	for i := range online {
+		online[i] = true
+	}
+	ans := make([]int, numberOfUsers)
+	for _, e := range events {
+		t, _ := strconv.Atoi(e[1])
+		for i := 0; i < numberOfUsers; i++ {
+			if !online[i] && offlineUntil[i] <= t {
+				online[i] = true
+			}
+		}
+		if e[0] == "OFFLINE" {
+			id, _ := strconv.Atoi(e[2])
+			online[id] = false
+			offlineUntil[id] = t + 60
+		} else {
+			msg := e[2]
+			if msg == "ALL" {
+				for i := 0; i < numberOfUsers; i++ {
+					ans[i]++
+				}
+			} else if msg == "HERE" {
+				for i := 0; i < numberOfUsers; i++ {
+					if online[i] {
+						ans[i]++
+					}
+				}
+			} else {
+				for _, part := range strings.Fields(msg) {
+					id, _ := strconv.Atoi(part[2:])
+					ans[id]++
+				}
+			}
+		}
+	}
+	return ans
+}
+
+######## 84 3434_maximum_frequency_after_subarray_operation ########
+// LeetCode 3434 - Maximum Frequency After Subarray Operation
+// https://leetcode.com/problems/maximum-frequency-after-subarray-operation/
+
+func maxFrequency(nums []int, k int) int {
+	base := 0
+	for _, x := range nums {
+		if x == k {
+			base++
+		}
+	}
+	ans := base
+	// for each candidate value v != k, convert a subarray of v's to k: kadane on (v->+1, k->-1)
+	uniq := map[int]bool{}
+	for _, x := range nums {
+		uniq[x] = true
+	}
+	for v := range uniq {
+		if v == k {
+			continue
+		}
+		best, cur := 0, 0
+		for _, x := range nums {
+			delta := 0
+			if x == v {
+				delta = 1
+			} else if x == k {
+				delta = -1
+			}
+			cur += delta
+			if cur < 0 {
+				cur = 0
+			}
+			if cur > best {
+				best = cur
+			}
+		}
+		if base+best > ans {
+			ans = base + best
+		}
+	}
+	return ans
+}
+
+######## 85 3435_frequencies_of_shortest_supersequences ########
+// LeetCode 3435 - Frequencies of Shortest Supersequences
+// https://leetcode.com/problems/frequencies-of-shortest-supersequences/
+
+func supersequences(words []string) [][]int {
+	// words length 2 each - graph of letter constraints
+	need := [26][26]bool{}
+	used := [26]bool{}
+	for _, w := range words {
+		a, b := w[0]-'a', w[1]-'a'
+		used[a] = true
+		used[b] = true
+		if a != b {
+			need[a][b] = true
+		}
+	}
+	letters := []int{}
+	for i := 0; i < 26; i++ {
+		if used[i] {
+			letters = append(letters, i)
+		}
+	}
+	m := len(letters)
+	best := int(1e9)
+	var bestFreqs [][]int
+	var dfs func(i int, freq [26]int)
+	dfs = func(i int, freq [26]int) {
+		if i == m {
+			// validate: for each word, can form as subsequence with freqs
+			ok := true
+			for _, w := range words {
+				a, b := int(w[0]-'a'), int(w[1]-'a')
+				if a == b {
+					if freq[a] < 2 {
+						ok = false
+						break
+					}
+				} else if freq[a] < 1 || freq[b] < 1 {
+					ok = false
+					break
+				}
+			}
+			if !ok {
+				return
+			}
+			sum := 0
+			f := make([]int, 26)
+			for j := 0; j < 26; j++ {
+				f[j] = freq[j]
+				sum += freq[j]
+			}
+			if sum < best {
+				best = sum
+				bestFreqs = [][]int{f}
+			} else if sum == best {
+				bestFreqs = append(bestFreqs, f)
+			}
+			return
+		}
+		L := letters[i]
+		for c := 1; c <= 2; c++ {
+			freq[L] = c
+			dfs(i+1, freq)
+		}
+		freq[L] = 0
+	}
+	dfs(0, [26]int{})
+	return bestFreqs
+}
+
+######## 86 3437_permutations_iii ########
+// LeetCode 3437 - Permutations III
+// https://leetcode.com/problems/permutations-iii/
+
+func permute(n int) [][]int {
+	ans := [][]int{}
+	used := make([]bool, n+1)
+	cur := []int{}
+	var dfs func()
+	dfs = func() {
+		if len(cur) == n {
+			ans = append(ans, append([]int(nil), cur...))
+			return
+		}
+		for i := 1; i <= n; i++ {
+			if used[i] {
+				continue
+			}
+			if len(cur) > 0 && (cur[len(cur)-1]%2 == i%2) {
+				continue
+			}
+			used[i] = true
+			cur = append(cur, i)
+			dfs()
+			cur = cur[:len(cur)-1]
+			used[i] = false
+		}
+	}
+	dfs()
+	return ans
+}
+
+######## 87 3438_find_valid_pair_of_adjacent_digits_in_string ########
+// LeetCode 3438 - Find Valid Pair of Adjacent Digits in String
+// https://leetcode.com/problems/find-valid-pair-of-adjacent-digits-in-string/
+
+func findValidPair(s string) string {
+	freq := [10]int{}
+	for _, c := range s {
+		freq[c-'0']++
+	}
+	for i := 0; i+1 < len(s); i++ {
+		a, b := int(s[i]-'0'), int(s[i+1]-'0')
+		if a != b && freq[a] == a && freq[b] == b {
+			return s[i : i+2]
+		}
+	}
+	return ""
+}
+
+######## 88 3439_reschedule_meetings_for_maximum_free_time_i ########
+// LeetCode 3439 - Reschedule Meetings for Maximum Free Time I
+// https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-i/
+
+func maxFreeTime(eventTime int, k int, startTime []int, endTime []int) int {
+	n := len(startTime)
+	gaps := make([]int, n+1)
+	gaps[0] = startTime[0]
+	for i := 1; i < n; i++ {
+		gaps[i] = startTime[i] - endTime[i-1]
+	}
+	gaps[n] = eventTime - endTime[n-1]
+	// merge k+1 consecutive gaps by moving k meetings
+	window := k + 1
+	sum := 0
+	for i := 0; i < window && i < len(gaps); i++ {
+		sum += gaps[i]
+	}
+	ans := sum
+	for i := window; i < len(gaps); i++ {
+		sum += gaps[i] - gaps[i-window]
+		if sum > ans {
+			ans = sum
+		}
+	}
+	return ans
+}
+
+######## 89 3440_reschedule_meetings_for_maximum_free_time_ii ########
+// LeetCode 3440 - Reschedule Meetings for Maximum Free Time II
+// https://leetcode.com/problems/reschedule-meetings-for-maximum-free-time-ii/
+
+func maxFreeTime(eventTime int, startTime []int, endTime []int) int {
+	n := len(startTime)
+	gaps := make([]int, n+1)
+	gaps[0] = startTime[0]
+	for i := 1; i < n; i++ {
+		gaps[i] = startTime[i] - endTime[i-1]
+	}
+	gaps[n] = eventTime - endTime[n-1]
+	ans := 0
+	for _, g := range gaps {
+		if g > ans {
+			ans = g
+		}
+	}
+	leftMax := make([]int, n+1)
+	rightMax := make([]int, n+1)
+	for i := 0; i <= n; i++ {
+		leftMax[i] = gaps[i]
+		if i > 0 && leftMax[i-1] > leftMax[i] {
+			leftMax[i] = leftMax[i-1]
+		}
+	}
+	for i := n; i >= 0; i-- {
+		rightMax[i] = gaps[i]
+		if i < n && rightMax[i+1] > rightMax[i] {
+			rightMax[i] = rightMax[i+1]
+		}
+	}
+	for i := 0; i < n; i++ {
+		dur := endTime[i] - startTime[i]
+		merged := gaps[i] + gaps[i+1]
+		// can we place meeting elsewhere?
+		bestOther := 0
+		if i > 0 && leftMax[i-1] > bestOther {
+			bestOther = leftMax[i-1]
+		}
+		if i+2 <= n && rightMax[i+2] > bestOther {
+			bestOther = rightMax[i+2]
+		}
+		cand := merged
+		if bestOther >= dur {
+			cand = merged + dur
+		}
+		if cand > ans {
+			ans = cand
+		}
+	}
+	return ans
+}
+

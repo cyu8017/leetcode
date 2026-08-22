@@ -1,4 +1,4 @@
-﻿// LeetCode 0120 - Triangle
+// LeetCode 0120 - Triangle
 #include <stdlib.h>
 int minimumTotal(int** triangle,int triangleSize,int* triangleColSize) {
     int* dp=malloc(triangleSize*sizeof(int)); for(int j=0;j<triangleColSize[triangleSize-1];j++)dp[j]=triangle[triangleSize-1][j];

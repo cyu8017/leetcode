@@ -1,5 +1,9 @@
-﻿// LeetCode 2396 - Strictly Palindromic Number
+// LeetCode 2396 - Strictly Palindromic Number
 // https://leetcode.com/problems/strictly-palindromic-number/
 
-void solve() {
+#include <stdbool.h>
+
+bool isStrictlyPalindromic(int n) {
+    (void)n;
+    return false;
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0716 - Max Stack
+// LeetCode 0716 - Max Stack
 // https://leetcode.com/problems/max-stack/
 
 #include <stdlib.h>

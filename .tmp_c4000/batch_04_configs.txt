@@ -1,0 +1,1121 @@
+=== 3452_sum_of_good_numbers ===
+{
+  "class": "Solution",
+  "method": "sumOfGoodNumbers",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3453_separate_squares_i ===
+{
+  "class": "Solution",
+  "method": "separateSquares",
+  "paramOrder": [
+    "squares"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3454_separate_squares_ii ===
+{
+  "class": "Solution",
+  "method": "separateSquares",
+  "paramOrder": [
+    "squares"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3455_shortest_matching_substring ===
+{
+  "class": "Solution",
+  "method": "shortestMatchingSubstring",
+  "paramOrder": [
+    "s",
+    "p"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3456_find_special_substring_of_length_k ===
+{
+  "class": "Solution",
+  "method": "hasSpecialSubstring",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3457_eat_pizzas ===
+{
+  "class": "Solution",
+  "method": "maxWeight",
+  "paramOrder": [
+    "pizzas"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3458_select_k_disjoint_special_substrings ===
+{
+  "class": "Solution",
+  "method": "maxSubstringLength",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3459_length_of_longest_v_shaped_diagonal_segment ===
+{
+  "class": "Solution",
+  "method": "lenOfVDiagonal",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3460_longest_common_prefix_after_at_most_one_removal ===
+{
+  "class": "Solution",
+  "method": "longestCommonPrefix",
+  "paramOrder": [
+    "s",
+    "t"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3461_check_if_digits_are_equal_in_string_after_operations_i ===
+{
+  "class": "Solution",
+  "method": "hasSameDigits",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3462_maximum_sum_with_at_most_k_elements ===
+{
+  "class": "Solution",
+  "method": "maxSum",
+  "paramOrder": [
+    "grid",
+    "limits",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3463_check_if_digits_are_equal_in_string_after_operations_ii ===
+{
+  "class": "Solution",
+  "method": "hasSameDigits",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3464_maximize_the_distance_between_points_on_a_square ===
+{
+  "class": "Solution",
+  "method": "maxDistance",
+  "paramOrder": [
+    "side",
+    "points",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3466_maximum_coin_collection ===
+{
+  "class": "Solution",
+  "method": "maxCoins",
+  "paramOrder": [
+    "lane1",
+    "lane2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3467_transform_array_by_parity ===
+{
+  "class": "Solution",
+  "method": "transformArray",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3468_find_the_number_of_copy_arrays ===
+{
+  "class": "Solution",
+  "method": "countArrays",
+  "paramOrder": [
+    "original",
+    "bounds"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3469_find_minimum_cost_to_remove_array_elements ===
+{
+  "class": "Solution",
+  "method": "minCost",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3470_permutations_iv ===
+{
+  "class": "Solution",
+  "method": "permute",
+  "paramOrder": [
+    "n",
+    "k"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3471_find_the_largest_almost_missing_integer ===
+{
+  "class": "Solution",
+  "method": "largestInteger",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3472_longest_palindromic_subsequence_after_at_most_k_operations ===
+{
+  "class": "Solution",
+  "method": "longestPalindromicSubsequence",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3473_sum_of_k_subarrays_with_length_at_least_m ===
+{
+  "class": "Solution",
+  "method": "maxSum",
+  "paramOrder": [
+    "nums",
+    "k",
+    "m"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3474_lexicographically_smallest_generated_string ===
+{
+  "class": "Solution",
+  "method": "generateString",
+  "paramOrder": [
+    "str1",
+    "str2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3476_maximize_profit_from_task_assignment ===
+{
+  "class": "Solution",
+  "method": "maxProfit",
+  "paramOrder": [
+    "workers",
+    "tasks"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3477_fruits_into_baskets_ii ===
+{
+  "class": "Solution",
+  "method": "numOfUnplacedFruits",
+  "paramOrder": [
+    "fruits",
+    "baskets"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3478_choose_k_elements_with_maximum_sum ===
+{
+  "class": "Solution",
+  "method": "findMaxSum",
+  "paramOrder": [
+    "nums1",
+    "nums2",
+    "k"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3479_fruits_into_baskets_iii ===
+{
+  "class": "Solution",
+  "method": "numOfUnplacedFruits",
+  "paramOrder": [
+    "fruits",
+    "baskets"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3480_maximize_subarrays_after_removing_one_conflicting_pair ===
+{
+  "class": "Solution",
+  "method": "maxSubarrays",
+  "paramOrder": [
+    "n",
+    "conflictingPairs"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3481_apply_substitutions ===
+{
+  "class": "Solution",
+  "method": "applySubstitutions",
+  "paramOrder": [
+    "replacements",
+    "text"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3483_unique_3_digit_even_numbers ===
+{
+  "class": "Solution",
+  "method": "totalNumbers",
+  "paramOrder": [
+    "digits"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3484_design_spreadsheet ===
+{
+  "class": "Spreadsheet",
+  "method": "__init__",
+  "paramOrder": [
+    "rows"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3485_longest_common_prefix_of_k_strings_after_removal ===
+{
+  "class": "Solution",
+  "method": "longestCommonPrefix",
+  "paramOrder": [
+    "words",
+    "k"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3486_longest_special_path_ii ===
+{
+  "class": "Solution",
+  "method": "longestSpecialPath",
+  "paramOrder": [
+    "edges",
+    "nums"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3487_maximum_unique_subarray_sum_after_deletion ===
+{
+  "class": "Solution",
+  "method": "maxSum",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3488_closest_equal_element_queries ===
+{
+  "class": "Solution",
+  "method": "solveQueries",
+  "paramOrder": [
+    "nums",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3489_zero_array_transformation_iv ===
+{
+  "class": "Solution",
+  "method": "minZeroArray",
+  "paramOrder": [
+    "nums",
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3490_count_beautiful_numbers ===
+{
+  "class": "Solution",
+  "method": "beautifulNumbers",
+  "paramOrder": [
+    "l",
+    "r"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3491_phone_number_prefix ===
+{
+  "class": "Solution",
+  "method": "phonePrefix",
+  "paramOrder": [
+    "numbers"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3492_maximum_containers_on_a_ship ===
+{
+  "class": "Solution",
+  "method": "maxContainers",
+  "paramOrder": [
+    "n",
+    "w",
+    "maxWeight"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3493_properties_graph ===
+{
+  "class": "Solution",
+  "method": "numberOfComponents",
+  "paramOrder": [
+    "properties",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3494_find_the_minimum_amount_of_time_to_brew_potions ===
+{
+  "class": "Solution",
+  "method": "minTime",
+  "paramOrder": [
+    "skill",
+    "mana"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3495_minimum_operations_to_make_array_elements_zero ===
+{
+  "class": "Solution",
+  "method": "minOperations",
+  "paramOrder": [
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3496_maximize_score_after_pair_deletions ===
+{
+  "class": "Solution",
+  "method": "maximizeScore",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3498_reverse_degree_of_a_string ===
+{
+  "class": "Solution",
+  "method": "reverseDegree",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3499_maximize_active_section_with_trade_i ===
+{
+  "class": "Solution",
+  "method": "maxActiveSectionsAfterTrade",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3500_minimum_cost_to_divide_array_into_subarrays ===
+{
+  "class": "Solution",
+  "method": "minimumCost",
+  "paramOrder": [
+    "nums",
+    "cost",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3501_maximize_active_section_with_trade_ii ===
+{
+  "class": "Solution",
+  "method": "maxActiveSectionsAfterTrade",
+  "paramOrder": [
+    "s",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3502_minimum_cost_to_reach_every_position ===
+{
+  "class": "Solution",
+  "method": "minCosts",
+  "paramOrder": [
+    "cost"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3503_longest_palindrome_after_substring_concatenation_i ===
+{
+  "class": "Solution",
+  "method": "longestPalindrome",
+  "paramOrder": [
+    "s",
+    "t"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3504_longest_palindrome_after_substring_concatenation_ii ===
+{
+  "class": "Solution",
+  "method": "longestPalindrome",
+  "paramOrder": [
+    "s",
+    "t"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3505_minimum_operations_to_make_elements_within_k_subarrays_equal ===
+{
+  "class": "Solution",
+  "method": "minOperations",
+  "paramOrder": [
+    "nums",
+    "x",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3506_find_time_required_to_eliminate_bacterial_strains ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "timeReq",
+    "splitTime"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3507_minimum_pair_removal_to_sort_array_i ===
+{
+  "class": "Solution",
+  "method": "minimumPairRemoval",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3508_implement_router ===
+{
+  "class": "Router",
+  "method": "__init__",
+  "paramOrder": [
+    "memoryLimit"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3509_maximum_product_of_subsequences_with_an_alternating_sum_equal_to_k ===
+{
+  "class": "Solution",
+  "method": "maxProduct",
+  "paramOrder": [
+    "nums",
+    "k",
+    "limit"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3510_minimum_pair_removal_to_sort_array_ii ===
+{
+  "class": "Solution",
+  "method": "minimumPairRemoval",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3511_make_a_positive_array ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3512_minimum_operations_to_make_array_sum_divisible_by_k ===
+{
+  "class": "Solution",
+  "method": "minOperations",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3513_number_of_unique_xor_triplets_i ===
+{
+  "class": "Solution",
+  "method": "uniqueXorTriplets",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3514_number_of_unique_xor_triplets_ii ===
+{
+  "class": "Solution",
+  "method": "uniqueXorTriplets",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3515_shortest_path_in_a_weighted_tree ===
+{
+  "class": "Solution",
+  "method": "treeQueries",
+  "paramOrder": [
+    "n",
+    "edges",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3516_find_closest_person ===
+{
+  "class": "Solution",
+  "method": "findClosest",
+  "paramOrder": [
+    "x",
+    "y",
+    "z"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3517_smallest_palindromic_rearrangement_i ===
+{
+  "class": "Solution",
+  "method": "smallestPalindrome",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3518_smallest_palindromic_rearrangement_ii ===
+{
+  "class": "Solution",
+  "method": "smallestPalindrome",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3519_count_numbers_with_non_decreasing_digits ===
+{
+  "class": "Solution",
+  "method": "countNumbers",
+  "paramOrder": [
+    "l",
+    "r",
+    "b"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3520_minimum_threshold_for_inversion_pairs_count ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3522_calculate_score_after_performing_instructions ===
+{
+  "class": "Solution",
+  "method": "calculateScore",
+  "paramOrder": [
+    "instructions",
+    "values"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3523_make_array_non_decreasing ===
+{
+  "class": "Solution",
+  "method": "maximumPossibleSize",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3524_find_x_value_of_array_i ===
+{
+  "class": "Solution",
+  "method": "resultArray",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3525_find_x_value_of_array_ii ===
+{
+  "class": "Solution",
+  "method": "resultArray",
+  "paramOrder": [
+    "nums",
+    "k",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3526_range_xor_queries_with_subarray_reversals ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3527_find_the_most_common_response ===
+{
+  "class": "Solution",
+  "method": "findCommonResponse",
+  "paramOrder": [
+    "responses"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3528_unit_conversion_i ===
+{
+  "class": "Solution",
+  "method": "baseUnitConversions",
+  "paramOrder": [
+    "conversions"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3529_count_cells_in_overlapping_horizontal_and_vertical_substrings ===
+{
+  "class": "Solution",
+  "method": "countCells",
+  "paramOrder": [
+    "grid",
+    "pattern"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3530_maximum_profit_from_valid_topological_order_in_dag ===
+{
+  "class": "Solution",
+  "method": "maxProfit",
+  "paramOrder": [
+    "n",
+    "edges",
+    "score"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3531_count_covered_buildings ===
+{
+  "class": "Solution",
+  "method": "countCoveredBuildings",
+  "paramOrder": [
+    "n",
+    "buildings"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3532_path_existence_queries_in_a_graph_i ===
+{
+  "class": "Solution",
+  "method": "pathExistenceQueries",
+  "paramOrder": [
+    "n",
+    "nums",
+    "maxDiff",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3533_concatenated_divisibility ===
+{
+  "class": "Solution",
+  "method": "concatenatedDivisibility",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3534_path_existence_queries_in_a_graph_ii ===
+{
+  "class": "Solution",
+  "method": "pathExistenceQueries",
+  "paramOrder": [
+    "n",
+    "nums",
+    "maxDiff",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3535_unit_conversion_ii ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "conversions",
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3536_maximum_product_of_two_digits ===
+{
+  "class": "Solution",
+  "method": "maxProduct",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3537_fill_a_special_grid ===
+{
+  "class": "Solution",
+  "method": "specialGrid",
+  "paramOrder": [
+    "n"
+  ],
+  "types": {
+    "return": "integer[][]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3538_merge_operations_for_minimum_travel_time ===
+{
+  "class": "Solution",
+  "method": "minTravelTime",
+  "paramOrder": [
+    "l",
+    "n",
+    "k",
+    "position",
+    "time"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3539_find_sum_of_array_product_of_magical_sequences ===
+{
+  "class": "Solution",
+  "method": "magicalSum",
+  "paramOrder": [
+    "m",
+    "k",
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3540_minimum_time_to_visit_all_houses ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "forward",
+    "backward",
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3541_find_most_frequent_vowel_and_consonant ===
+{
+  "class": "Solution",
+  "method": "maxFreqSum",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3542_minimum_operations_to_convert_all_elements_to_zero ===
+{
+  "class": "Solution",
+  "method": "minOperations",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3543_maximum_weighted_k_edge_path ===
+{
+  "class": "Solution",
+  "method": "maxWeight",
+  "paramOrder": [
+    "n",
+    "edges",
+    "k",
+    "t"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3544_subtree_inversion_sum ===
+{
+  "class": "Solution",
+  "method": "subtreeInversionSum",
+  "paramOrder": [
+    "edges",
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3545_minimum_deletions_for_at_most_k_distinct_characters ===
+{
+  "class": "Solution",
+  "method": "minDeletion",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3546_equal_sum_grid_partition_i ===
+{
+  "class": "Solution",
+  "method": "canPartitionGrid",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3547_maximum_sum_of_edge_values_in_a_graph ===
+{
+  "class": "Solution",
+  "method": "maxScore",
+  "paramOrder": [
+    "n",
+    "edges"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3548_equal_sum_grid_partition_ii ===
+{
+  "class": "Solution",
+  "method": "canPartitionGrid",
+  "paramOrder": [
+    "grid"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3549_multiply_two_polynomials ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "poly1",
+    "poly2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3550_smallest_index_with_digit_sum_equal_to_index ===
+{
+  "class": "Solution",
+  "method": "smallestIndex",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3551_minimum_swaps_to_sort_by_digit_sum ===
+{
+  "class": "Solution",
+  "method": "minSwaps",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3552_grid_teleportation_traversal ===
+{
+  "class": "Solution",
+  "method": "minMoves",
+  "paramOrder": [
+    "matrix"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3553_minimum_weighted_subgraph_with_the_required_paths_ii ===
+{
+  "class": "Solution",
+  "method": "minimumWeight",
+  "paramOrder": [
+    "edges",
+    "queries"
+  ],
+  "types": {
+    "return": "integer[]"
+  },
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3555_smallest_subarray_to_sort_in_every_sliding_window ===
+{
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3556_sum_of_largest_prime_substrings ===
+{
+  "class": "Solution",
+  "method": "sumOfLargestPrimes",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+=== 3557_find_maximum_number_of_non_intersecting_substrings ===
+{
+  "class": "Solution",
+  "method": "maxSubstrings",
+  "paramOrder": [
+    "word"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}

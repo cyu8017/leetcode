@@ -1,4 +1,4 @@
-﻿// LeetCode 0605 - Can Place Flowers
+// LeetCode 0605 - Can Place Flowers
 // https://leetcode.com/problems/can-place-flowers/
 
 #include <stdbool.h>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0271 - Encode and Decode Strings
+// LeetCode 0271 - Encode and Decode Strings
 // https://leetcode.com/problems/encode-and-decode-strings/
 
 #include <stdio.h>
