@@ -1,4 +1,4 @@
-﻿// LeetCode 0142 - Linked List Cycle II
+// LeetCode 0142 - Linked List Cycle II
 // https://leetcode.com/problems/linked-list-cycle-ii/
 
 public class ListNode { public int val; public ListNode next; public ListNode(int x) { val = x; } }

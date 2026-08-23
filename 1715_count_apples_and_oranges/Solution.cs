@@ -1,4 +1,4 @@
-﻿// LeetCode 1715 - Count Apples and Oranges
+// LeetCode 1715 - Count Apples and Oranges
 // https://leetcode.com/problems/count-apples-and-oranges/
 
 public class Solution

@@ -1,4 +1,4 @@
-﻿public class Solution {
+public class Solution {
     public int Rob(int[] nums) {
         var previousTwo = 0;
         var previousOne = 0;

@@ -1,4 +1,4 @@
-﻿// LeetCode 1087 - Brace Expansion
+// LeetCode 1087 - Brace Expansion
 // https://leetcode.com/problems/brace-expansion/
 
 using System;

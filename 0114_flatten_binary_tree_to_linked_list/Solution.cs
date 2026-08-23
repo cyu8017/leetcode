@@ -1,4 +1,4 @@
-﻿// LeetCode 0114 - Flatten Binary Tree to Linked List
+// LeetCode 0114 - Flatten Binary Tree to Linked List
 // https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
 public class TreeNode {

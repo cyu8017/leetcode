@@ -1,4 +1,4 @@
-﻿// LeetCode 1665 - Minimum Initial Energy to Finish Tasks
+// LeetCode 1665 - Minimum Initial Energy to Finish Tasks
 // https://leetcode.com/problems/minimum-initial-energy-to-finish-tasks/
 
 using System;

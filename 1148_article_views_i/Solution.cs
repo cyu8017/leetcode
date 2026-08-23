@@ -1,7 +1,11 @@
-﻿// LeetCode 1148 - Article Views I
+// LeetCode 1148 - Article Views I
 // https://leetcode.com/problems/article-views-i/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+SELECT DISTINCT author_id AS id
+FROM Views
+WHERE author_id = viewer_id
+ORDER BY id
+";
 }

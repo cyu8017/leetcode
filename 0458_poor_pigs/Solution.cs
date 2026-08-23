@@ -1,4 +1,4 @@
-﻿// LeetCode 0458 - Poor Pigs
+// LeetCode 0458 - Poor Pigs
 // https://leetcode.com/problems/poor-pigs/
 
 public class Solution {

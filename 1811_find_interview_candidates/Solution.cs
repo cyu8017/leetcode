@@ -1,7 +1,48 @@
-﻿// LeetCode 1811 - Find Interview Candidates
+// LeetCode 1811 - Find Interview Candidates
 // https://leetcode.com/problems/find-interview-candidates/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+WITH Medals AS (
+
+const char* QUERY =
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+";
 }

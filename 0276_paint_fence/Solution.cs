@@ -1,4 +1,4 @@
-﻿// LeetCode 0276 - Paint Fence
+// LeetCode 0276 - Paint Fence
 // https://leetcode.com/problems/paint-fence/
 
 public class Solution {

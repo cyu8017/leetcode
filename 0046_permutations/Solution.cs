@@ -1,4 +1,4 @@
-﻿// LeetCode 0046 - Permutations
+// LeetCode 0046 - Permutations
 // https://leetcode.com/problems/permutations/
 
 public class Solution {

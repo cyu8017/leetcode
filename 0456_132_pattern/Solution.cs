@@ -1,4 +1,4 @@
-﻿// LeetCode 0456 - 132 Pattern
+// LeetCode 0456 - 132 Pattern
 // https://leetcode.com/problems/132-pattern/
 
 using System.Collections.Generic;

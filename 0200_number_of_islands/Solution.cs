@@ -1,4 +1,4 @@
-﻿public class Solution {
+public class Solution {
     public int NumIslands(char[][] grid) {
         if (grid == null || grid.Length == 0) return 0;
         var count = 0;

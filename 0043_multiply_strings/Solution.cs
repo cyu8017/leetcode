@@ -1,4 +1,4 @@
-﻿// LeetCode 0043 - Multiply Strings
+// LeetCode 0043 - Multiply Strings
 // https://leetcode.com/problems/multiply-strings/
 
 public class Solution {

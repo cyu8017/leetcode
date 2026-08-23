@@ -1,4 +1,4 @@
-﻿// LeetCode 0031 - Next Permutation
+// LeetCode 0031 - Next Permutation
 // https://leetcode.com/problems/next-permutation/
 
 public class Solution {

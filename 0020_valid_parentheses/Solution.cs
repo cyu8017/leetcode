@@ -1,4 +1,4 @@
-﻿// LeetCode 0020 - Valid Parentheses
+// LeetCode 0020 - Valid Parentheses
 // https://leetcode.com/problems/valid-parentheses/
 
 public class Solution {

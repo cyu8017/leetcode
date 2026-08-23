@@ -1,4 +1,4 @@
-﻿// LeetCode 0530 - Minimum Absolute Difference in BST
+// LeetCode 0530 - Minimum Absolute Difference in BST
 // https://leetcode.com/problems/minimum-absolute-difference-in-bst/
 
 public class TreeNode {

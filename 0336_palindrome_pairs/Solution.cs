@@ -1,4 +1,4 @@
-﻿// LeetCode 0336 - Palindrome Pairs
+// LeetCode 0336 - Palindrome Pairs
 
 // https://leetcode.com/problems/palindrome-pairs/
 

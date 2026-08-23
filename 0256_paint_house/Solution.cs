@@ -1,4 +1,4 @@
-﻿// LeetCode 0256 - Paint House
+// LeetCode 0256 - Paint House
 // https://leetcode.com/problems/paint-house/
 
 public class Solution {

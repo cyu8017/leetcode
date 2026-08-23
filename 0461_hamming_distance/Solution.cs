@@ -1,4 +1,4 @@
-﻿// LeetCode 0461 - Hamming Distance
+// LeetCode 0461 - Hamming Distance
 // https://leetcode.com/problems/hamming-distance/
 
 using System.Numerics;

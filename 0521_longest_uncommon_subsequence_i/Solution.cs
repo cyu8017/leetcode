@@ -1,4 +1,4 @@
-﻿// LeetCode 0521 - Longest Uncommon Subsequence I
+// LeetCode 0521 - Longest Uncommon Subsequence I
 // https://leetcode.com/problems/longest-uncommon-subsequence-i/
 
 public class Solution {

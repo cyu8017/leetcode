@@ -1,4 +1,4 @@
-﻿// LeetCode 0229 - Majority Element II
+// LeetCode 0229 - Majority Element II
 // https://leetcode.com/problems/majority-element-ii/
 
 using System.Collections.Generic;

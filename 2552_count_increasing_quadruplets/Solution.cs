@@ -1,7 +1,17 @@
-﻿// LeetCode 2552 - Count Increasing Quadruplets
+// LeetCode 2552 - Count Increasing Quadruplets
 // https://leetcode.com/problems/count-increasing-quadruplets/
 
 public class Solution {
-    public void Solve() {
+    public long CountQuadruplets(int[] nums) {
+        int n = nums.Length;
+        long ans = 0;
+        int[] great = new int[n];
+        for (int j = 0; j < n; ++j) {
+            for (int i = 0; i < j; ++i) {
+                if (nums[i] < nums[j]) ans += great[i];
+                else if (nums[i] > nums[j]) great[i]++;
+            }
+        }
+        return ans;
     }
 }

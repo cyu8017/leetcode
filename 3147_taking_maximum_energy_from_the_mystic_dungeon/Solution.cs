@@ -1,7 +1,18 @@
-﻿// LeetCode 3147 - Taking Maximum Energy From the Mystic Dungeon
+// LeetCode 3147 - Taking Maximum Energy From the Mystic Dungeon
 // https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    public int MaximumEnergy(int[] energy, int k) {
+        int ans = -(1 << 30);
+        int n = energy.Length;
+        for (int i = n - k; i < n; i++) {
+            for (int j = i, s = 0; j >= 0; j -= k) {
+                s += energy[j];
+                ans = Math.Max(ans, s);
+            }
+        }
+        return ans;
     }
 }

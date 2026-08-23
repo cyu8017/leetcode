@@ -1,7 +1,14 @@
-﻿// LeetCode 0612 - Shortest Distance in a Plane
+// LeetCode 0612 - Shortest Distance in a Plane
 // https://leetcode.com/problems/shortest-distance-in-a-plane/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+SELECT ROUND(
+    MIN(SQRT(POW(p1.x - p2.x, 2) + POW(p1.y - p2.y, 2))),
+    2
+) AS shortest
+FROM Point2D p1
+JOIN Point2D p2
+    ON p1.x < p2.x OR (p1.x = p2.x AND p1.y < p2.y)
+";
 }

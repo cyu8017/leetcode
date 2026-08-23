@@ -1,4 +1,4 @@
-﻿// LeetCode 1656 - Design an Ordered Stream
+// LeetCode 1656 - Design an Ordered Stream
 // https://leetcode.com/problems/design-an-ordered-stream/
 
 using System.Collections.Generic;

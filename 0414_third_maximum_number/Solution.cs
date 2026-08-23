@@ -1,4 +1,4 @@
-﻿// LeetCode 0414 - Third Maximum Number
+// LeetCode 0414 - Third Maximum Number
 
 // https://leetcode.com/problems/third-maximum-number/
 

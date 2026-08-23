@@ -1,4 +1,4 @@
-﻿// LeetCode 1730 - Shortest Path to Get Food
+// LeetCode 1730 - Shortest Path to Get Food
 // https://leetcode.com/problems/shortest-path-to-get-food/
 
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿// LeetCode 1659 - Maximize Grid Happiness
+// LeetCode 1659 - Maximize Grid Happiness
 // https://leetcode.com/problems/maximize-grid-happiness/
 
 using System;

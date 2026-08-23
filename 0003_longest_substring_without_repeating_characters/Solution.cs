@@ -1,4 +1,4 @@
-﻿// LeetCode 0003 - Longest Substring Without Repeating Characters
+// LeetCode 0003 - Longest Substring Without Repeating Characters
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 public class Solution {

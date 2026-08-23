@@ -1,7 +1,10 @@
-﻿// LeetCode 2377 - Sort the Olympic Table
+// LeetCode 2377 - Sort the Olympic Table
 // https://leetcode.com/problems/sort-the-olympic-table/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+SELECT *
+FROM Olympic
+ORDER BY 2 DESC, 3 DESC, 4 DESC, 1
+";
 }

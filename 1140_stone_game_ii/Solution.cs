@@ -1,4 +1,4 @@
-﻿// LeetCode 1140 - Stone Game II
+// LeetCode 1140 - Stone Game II
 // https://leetcode.com/problems/stone-game-ii/
 
 using System;

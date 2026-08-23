@@ -1,4 +1,4 @@
-﻿// LeetCode 0055 - Jump Game
+// LeetCode 0055 - Jump Game
 // https://leetcode.com/problems/jump-game/
 
 public class Solution {

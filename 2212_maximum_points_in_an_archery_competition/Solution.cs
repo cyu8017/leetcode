@@ -1,7 +1,32 @@
-﻿// LeetCode 2212 - Maximum Points in an Archery Competition
+// LeetCode 2212 - Maximum Points in an Archery Competition
 // https://leetcode.com/problems/maximum-points-in-an-archery-competition/
 
 public class Solution {
-    public void Solve() {
+    int bestScore = -1;
+    int[] best = new int[12];
+
+    void Dfs(int i, int remain, int score, int[] bob, int[] aliceArrows) {
+        if (i == 12) {
+            if (score > bestScore) {
+                bestScore = score;
+                best = (int[])bob.Clone();
+                if (remain > 0) best[0] += remain;
+            }
+            return;
+        }
+        Dfs(i + 1, remain, score, bob, aliceArrows);
+        int need = aliceArrows[i] + 1;
+        if (remain >= need) {
+            bob[i] = need;
+            Dfs(i + 1, remain - need, score + i, bob, aliceArrows);
+            bob[i] = 0;
+        }
+    }
+
+    public int[] MaximumBobPoints(int numArrows, int[] aliceArrows) {
+        bestScore = -1;
+        best = new int[12];
+        Dfs(0, numArrows, 0, new int[12], aliceArrows);
+        return best;
     }
 }

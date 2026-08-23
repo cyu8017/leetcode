@@ -1,4 +1,4 @@
-﻿// LeetCode 0143 - Reorder List
+// LeetCode 0143 - Reorder List
 // https://leetcode.com/problems/reorder-list/
 
 public class ListNode { public int val; public ListNode next; public ListNode(int val = 0, ListNode next = null) { this.val = val; this.next = next; } }

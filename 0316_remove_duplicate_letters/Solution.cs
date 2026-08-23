@@ -1,4 +1,4 @@
-﻿// LeetCode 0316 - Remove Duplicate Letters
+// LeetCode 0316 - Remove Duplicate Letters
 
 // https://leetcode.com/problems/remove-duplicate-letters/
 

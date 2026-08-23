@@ -1,7 +1,9 @@
-﻿// LeetCode 2775 - Undefined to Null
+// LeetCode 2775 - Undefined to Null
 // https://leetcode.com/problems/undefined-to-null/
+// JS-only problem; C# stand-in identity.
 
 public class Solution {
-    public void Solve() {
+    public int UndefinedToNull(int obj) {
+        return obj;
     }
 }

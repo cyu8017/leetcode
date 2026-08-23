@@ -1,4 +1,4 @@
-﻿// LeetCode 1110 - Delete Nodes And Return Forest
+// LeetCode 1110 - Delete Nodes And Return Forest
 // https://leetcode.com/problems/delete-nodes-and-return-forest/
 
 using System.Collections.Generic;

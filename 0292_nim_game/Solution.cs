@@ -1,4 +1,4 @@
-﻿// LeetCode 0292 - Nim Game
+// LeetCode 0292 - Nim Game
 // https://leetcode.com/problems/nim-game/
 
 public class Solution {

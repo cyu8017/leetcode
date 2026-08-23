@@ -1,4 +1,4 @@
-﻿// LeetCode 0422 - Valid Word Square
+// LeetCode 0422 - Valid Word Square
 // https://leetcode.com/problems/valid-word-square/
 
 public class Solution {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0077 - Combinations
+// LeetCode 0077 - Combinations
 // https://leetcode.com/problems/combinations/
 
 public class Solution {

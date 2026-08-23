@@ -1,4 +1,4 @@
-﻿// LeetCode 0279 - Perfect Squares
+// LeetCode 0279 - Perfect Squares
 // https://leetcode.com/problems/perfect-squares/
 
 using System.Collections.Generic;

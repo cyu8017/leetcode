@@ -1,7 +1,31 @@
-﻿// LeetCode 3011 - Find if Array Can Be Sorted
+// LeetCode 3011 - Find if Array Can Be Sorted
 // https://leetcode.com/problems/find-if-array-can-be-sorted/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    static int Popcount(int x) {
+        int c = 0;
+        while (x != 0) { c += x & 1; x >>= 1; }
+        return c;
+    }
+
+    public bool CanSortArray(int[] nums) {
+        int preMx = 0;
+        int i = 0, n = nums.Length;
+        while (i < n) {
+            int cnt = Popcount(nums[i]);
+            int j = i + 1;
+            int mi = nums[i], mx = nums[i];
+            while (j < n && Popcount(nums[j]) == cnt) {
+                mi = Math.Min(mi, nums[j]);
+                mx = Math.Max(mx, nums[j]);
+                j++;
+            }
+            if (preMx > mi) return false;
+            preMx = mx;
+            i = j;
+        }
+        return true;
     }
 }

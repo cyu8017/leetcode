@@ -1,7 +1,21 @@
-﻿// LeetCode 3136 - Valid Word
+// LeetCode 3136 - Valid Word
 // https://leetcode.com/problems/valid-word/
 
 public class Solution {
-    public void Solve() {
+    public bool IsValid(string word) {
+        if (word.Length < 3) return false;
+        bool hasVowel = false, hasConsonant = false;
+        bool[] vs = new bool[26];
+        foreach (char c in "aeiou") vs[c - 'a'] = true;
+        foreach (char c in word) {
+            if (char.IsLetter(c)) {
+                char lower = char.ToLower(c);
+                if (vs[lower - 'a']) hasVowel = true;
+                else hasConsonant = true;
+            } else if (!char.IsDigit(c)) {
+                return false;
+            }
+        }
+        return hasVowel && hasConsonant;
     }
 }

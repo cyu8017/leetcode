@@ -1,4 +1,4 @@
-﻿// LeetCode 1507 - Reformat Date
+// LeetCode 1507 - Reformat Date
 // https://leetcode.com/problems/reformat-date/
 
 using System;

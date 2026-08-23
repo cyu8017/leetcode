@@ -1,4 +1,4 @@
-﻿// LeetCode 0268 - Missing Number
+// LeetCode 0268 - Missing Number
 // https://leetcode.com/problems/missing-number/
 
 public class Solution {

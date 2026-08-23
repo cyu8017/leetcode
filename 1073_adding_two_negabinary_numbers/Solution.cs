@@ -1,4 +1,4 @@
-﻿// LeetCode 1073 - Adding Two Negabinary Numbers
+// LeetCode 1073 - Adding Two Negabinary Numbers
 // https://leetcode.com/problems/adding-two-negabinary-numbers/
 
 using System.Collections.Generic;

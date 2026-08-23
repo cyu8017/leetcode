@@ -1,7 +1,10 @@
-﻿// LeetCode 1421 - NPV Queries
+// LeetCode 1421 - NPV Queries
 // https://leetcode.com/problems/npv-queries/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+SELECT q.id, q.year, COALESCE(n.npv, 0) AS npv
+FROM Queries q
+LEFT JOIN NPV n ON n.id = q.id AND n.year = q.year
+";
 }

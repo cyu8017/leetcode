@@ -1,4 +1,4 @@
-﻿// LeetCode 0128 - Longest Consecutive Sequence
+// LeetCode 0128 - Longest Consecutive Sequence
 // https://leetcode.com/problems/longest-consecutive-sequence/
 
 using System.Collections.Generic;

@@ -1,7 +1,23 @@
-﻿// LeetCode 3025 - Find the Number of Ways to Place People I
+// LeetCode 3025 - Find the Number of Ways to Place People I
 // https://leetcode.com/problems/find-the-number-of-ways-to-place-people-i/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    public int NumberOfPairs(int[][] points) {
+        Array.Sort(points, (a, b) => a[0] != b[0] ? a[0].CompareTo(b[0]) : b[1].CompareTo(a[1]));
+        int ans = 0;
+        for (int i = 0; i < points.Length; i++) {
+            int y1 = points[i][1];
+            int maxY = int.MinValue;
+            for (int j = i + 1; j < points.Length; j++) {
+                int y2 = points[j][1];
+                if (maxY < y2 && y2 <= y1) {
+                    maxY = y2;
+                    ans++;
+                }
+            }
+        }
+        return ans;
     }
 }

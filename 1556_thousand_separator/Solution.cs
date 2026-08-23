@@ -1,4 +1,4 @@
-﻿// LeetCode 1556 - Thousand Separator
+// LeetCode 1556 - Thousand Separator
 // https://leetcode.com/problems/thousand-separator/
 
 using System.Collections.Generic;

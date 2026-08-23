@@ -1,4 +1,4 @@
-﻿// LeetCode 0433 - Minimum Genetic Mutation
+// LeetCode 0433 - Minimum Genetic Mutation
 // https://leetcode.com/problems/minimum-genetic-mutation/
 
 using System.Collections.Generic;

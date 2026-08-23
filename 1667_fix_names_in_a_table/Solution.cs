@@ -1,7 +1,9 @@
-﻿// LeetCode 1667 - Fix Names in a Table
+// LeetCode 1667 - Fix Names in a Table
 // https://leetcode.com/problems/fix-names-in-a-table/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+SELECT user_id, CONCAT(UPPER(LEFT(name,1)),LOWER(SUBSTRING(name,2))) name
+FROM Users ORDER BY user_id
+";
 }

@@ -1,7 +1,16 @@
-﻿// LeetCode 3033 - Modify the Matrix
+// LeetCode 3033 - Modify the Matrix
 // https://leetcode.com/problems/modify-the-matrix/
 
+using System;
+
 public class Solution {
-    public void Solve() {
+    public int[][] ModifiedMatrix(int[][] matrix) {
+        int m = matrix.Length, n = matrix[0].Length;
+        for (int j = 0; j < n; j++) {
+            int mx = -1;
+            for (int i = 0; i < m; i++) mx = Math.Max(mx, matrix[i][j]);
+            for (int i = 0; i < m; i++) if (matrix[i][j] == -1) matrix[i][j] = mx;
+        }
+        return matrix;
     }
 }

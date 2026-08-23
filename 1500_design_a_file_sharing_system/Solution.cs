@@ -1,4 +1,4 @@
-﻿// LeetCode 1500 - Design a File Sharing System
+// LeetCode 1500 - Design a File Sharing System
 // https://leetcode.com/problems/design-a-file-sharing-system/
 
 using System.Collections.Generic;

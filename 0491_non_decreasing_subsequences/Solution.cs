@@ -1,4 +1,4 @@
-﻿// LeetCode 0491 - Non-decreasing Subsequences
+// LeetCode 0491 - Non-decreasing Subsequences
 // https://leetcode.com/problems/non-decreasing-subsequences/
 
 public class Solution {

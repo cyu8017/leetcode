@@ -1,4 +1,4 @@
-﻿// LeetCode 1690 - Stone Game VII
+// LeetCode 1690 - Stone Game VII
 // https://leetcode.com/problems/stone-game-vii/
 
 using System;

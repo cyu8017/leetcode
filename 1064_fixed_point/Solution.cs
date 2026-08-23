@@ -1,4 +1,4 @@
-﻿// LeetCode 1064 - Fixed Point
+// LeetCode 1064 - Fixed Point
 // https://leetcode.com/problems/fixed-point/
 
 public class Solution {

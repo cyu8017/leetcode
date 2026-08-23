@@ -1,7 +1,19 @@
-﻿// LeetCode 2543 - Check if Point Is Reachable
+// LeetCode 2543 - Check if Point Is Reachable
 // https://leetcode.com/problems/check-if-point-is-reachable/
 
 public class Solution {
-    public void Solve() {
+    public bool IsReachable(int targetX, int targetY) {
+        int g = Gcd(targetX, targetY);
+        while (g % 2 == 0) g /= 2;
+        return g == 1;
+    }
+
+    int Gcd(int a, int b) {
+        while (b != 0) {
+            int t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
     }
 }

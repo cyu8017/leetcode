@@ -1,4 +1,4 @@
-﻿// LeetCode 1766 - Tree of Coprimes
+// LeetCode 1766 - Tree of Coprimes
 // https://leetcode.com/problems/tree-of-coprimes/
 
 using System.Collections.Generic;

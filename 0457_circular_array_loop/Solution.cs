@@ -1,4 +1,4 @@
-﻿// LeetCode 0457 - Circular Array Loop
+// LeetCode 0457 - Circular Array Loop
 // https://leetcode.com/problems/circular-array-loop/
 
 public class Solution {

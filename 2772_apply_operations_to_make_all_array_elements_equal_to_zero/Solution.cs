@@ -1,7 +1,21 @@
-﻿// LeetCode 2772 - Apply Operations to Make All Array Elements Equal to Zero
+// LeetCode 2772 - Apply Operations to Make All Array Elements Equal to Zero
 // https://leetcode.com/problems/apply-operations-to-make-all-array-elements-equal-to-zero/
 
 public class Solution {
-    public void Solve() {
+    public bool CheckArray(int[] nums, int k) {
+        int n = nums.Length;
+        int[] diff = new int[n + 1];
+        int cur = 0;
+        for (int i = 0; i < n; i++) {
+            cur += diff[i];
+            int need = nums[i] - cur;
+            if (need < 0) return false;
+            if (need > 0) {
+                if (i + k > n) return false;
+                cur += need;
+                diff[i + k] -= need;
+            }
+        }
+        return true;
     }
 }

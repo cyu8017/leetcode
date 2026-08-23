@@ -1,4 +1,4 @@
-﻿// LeetCode 0481 - Magical String
+// LeetCode 0481 - Magical String
 // https://leetcode.com/problems/magical-string/
 
 public class Solution {

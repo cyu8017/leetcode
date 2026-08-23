@@ -1,7 +1,17 @@
-﻿// LeetCode 1635 - Hopper Company Queries I
+// LeetCode 1635 - Hopper Company Queries I
 // https://leetcode.com/problems/hopper-company-queries-i/
 
 public class Solution {
-    public void Solve() {
-    }
+    public const string QUERY = @"
+WITH RECURSIVE months AS (
+  SELECT 1 AS month UNION ALL SELECT month + 1 FROM months WHERE month < 12
+)
+SELECT m.month,
+       (SELECT COUNT(*) FROM Drivers d WHERE d.join_date < DATE_ADD('2020-01-01', INTERVAL m.month MONTH)) AS active_drivers,
+       COUNT(ar.ride_id) AS accepted_rides
+FROM months m
+LEFT JOIN Rides r ON YEAR(r.requested_at) = 2020 AND MONTH(r.requested_at) = m.month
+LEFT JOIN AcceptedRides ar ON ar.ride_id = r.ride_id
+GROUP BY m.month ORDER BY m.month;
+";
 }

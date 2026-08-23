@@ -1,4 +1,4 @@
-﻿// LeetCode 1138 - Alphabet Board Path
+// LeetCode 1138 - Alphabet Board Path
 // https://leetcode.com/problems/alphabet-board-path/
 
 using System.Text;

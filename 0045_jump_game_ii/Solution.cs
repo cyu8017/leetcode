@@ -1,4 +1,4 @@
-﻿// LeetCode 0045 - Jump Game II
+// LeetCode 0045 - Jump Game II
 // https://leetcode.com/problems/jump-game-ii/
 
 public class Solution {

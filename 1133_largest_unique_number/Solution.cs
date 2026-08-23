@@ -1,4 +1,4 @@
-﻿// LeetCode 1133 - Largest Unique Number
+// LeetCode 1133 - Largest Unique Number
 // https://leetcode.com/problems/largest-unique-number/
 
 using System;

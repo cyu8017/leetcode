@@ -1,4 +1,4 @@
-﻿// LeetCode 0245 - Shortest Word Distance III
+// LeetCode 0245 - Shortest Word Distance III
 // https://leetcode.com/problems/shortest-word-distance-iii/
 
 public class Solution {

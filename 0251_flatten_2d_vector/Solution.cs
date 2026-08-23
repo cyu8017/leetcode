@@ -1,4 +1,4 @@
-﻿// LeetCode 0251 - Flatten 2D Vector
+// LeetCode 0251 - Flatten 2D Vector
 // https://leetcode.com/problems/flatten-2d-vector/
 
 public class Vector2D

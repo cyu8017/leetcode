@@ -1,4 +1,4 @@
-﻿// LeetCode 0312 - Burst Balloons
+// LeetCode 0312 - Burst Balloons
 
 // https://leetcode.com/problems/burst-balloons/
 

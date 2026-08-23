@@ -1,4 +1,4 @@
-﻿// LeetCode 0015 - 3Sum
+// LeetCode 0015 - 3Sum
 // https://leetcode.com/problems/3sum/
 
 public class Solution {

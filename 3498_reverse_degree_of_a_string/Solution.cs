@@ -1,7 +1,11 @@
-﻿// LeetCode 3498 - Reverse Degree of a String
+// LeetCode 3498 - Reverse Degree of a String
 // https://leetcode.com/problems/reverse-degree-of-a-string/
 
 public class Solution {
-    public void Solve() {
+    public int ReverseDegree(string s) {
+        int ans = 0;
+        for (int i = 0; i < s.Length; i++)
+            ans += (26 - (s[i] - 'a')) * (i + 1);
+        return ans;
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0359 - Logger Rate Limiter
+// LeetCode 0359 - Logger Rate Limiter
 
 // https://leetcode.com/problems/logger-rate-limiter/
 

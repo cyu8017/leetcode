@@ -2,10 +2,12 @@
 // https://leetcode.com/problems/leftmost-column-with-at-least-a-one/
 
 using System.Collections.Generic;
+
 public class BinaryMatrix {
     public int Get(int row, int col) { throw new System.NotImplementedException(); }
     public IList<int> Dimensions() { throw new System.NotImplementedException(); }
 }
+
 public class Solution {
     public int LeftMostColumnWithOne(BinaryMatrix binaryMatrix) {
         var dim = binaryMatrix.Dimensions();

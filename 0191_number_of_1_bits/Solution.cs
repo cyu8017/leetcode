@@ -1,4 +1,4 @@
-﻿public class Solution {
+public class Solution {
     public int HammingWeight(uint n) {
         var count = 0;
         while (n != 0) {

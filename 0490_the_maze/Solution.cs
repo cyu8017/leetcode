@@ -1,4 +1,4 @@
-﻿// LeetCode 0490 - The Maze
+// LeetCode 0490 - The Maze
 // https://leetcode.com/problems/the-maze/
 
 public class Solution {

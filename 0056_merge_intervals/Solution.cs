@@ -1,4 +1,4 @@
-﻿// LeetCode 0056 - Merge Intervals
+// LeetCode 0056 - Merge Intervals
 // https://leetcode.com/problems/merge-intervals/
 
 public class Solution {

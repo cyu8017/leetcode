@@ -1,4 +1,4 @@
-﻿// LeetCode 0535 - Encode and Decode TinyURL
+// LeetCode 0535 - Encode and Decode TinyURL
 // https://leetcode.com/problems/encode-and-decode-tinyurl/
 
 public class Codec {

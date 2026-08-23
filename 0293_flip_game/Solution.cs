@@ -1,4 +1,4 @@
-﻿// LeetCode 0293 - Flip Game
+// LeetCode 0293 - Flip Game
 // https://leetcode.com/problems/flip-game/
 
 using System.Collections.Generic;

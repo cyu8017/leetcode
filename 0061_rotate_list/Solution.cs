@@ -1,4 +1,4 @@
-﻿// LeetCode 0061 - Rotate List
+// LeetCode 0061 - Rotate List
 // https://leetcode.com/problems/rotate-list/
 
 public class ListNode {

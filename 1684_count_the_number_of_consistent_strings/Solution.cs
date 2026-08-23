@@ -1,4 +1,4 @@
-﻿// LeetCode 1684 - Count the Number of Consistent Strings
+// LeetCode 1684 - Count the Number of Consistent Strings
 // https://leetcode.com/problems/count-the-number-of-consistent-strings/
 
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0510 - Inorder Successor in BST II
+// LeetCode 0510 - Inorder Successor in BST II
 // https://leetcode.com/problems/inorder-successor-in-bst-ii/
 
 public class Node {

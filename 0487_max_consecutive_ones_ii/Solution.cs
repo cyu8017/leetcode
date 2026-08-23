@@ -1,4 +1,4 @@
-﻿// LeetCode 0487 - Max Consecutive Ones II
+// LeetCode 0487 - Max Consecutive Ones II
 // https://leetcode.com/problems/max-consecutive-ones-ii/
 
 public class Solution {
