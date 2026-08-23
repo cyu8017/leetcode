@@ -1,4 +1,4 @@
-﻿// LeetCode 0403 - Frog Jump
+// LeetCode 0403 - Frog Jump
 // https://leetcode.com/problems/frog-jump/
 
 #include <unordered_map>

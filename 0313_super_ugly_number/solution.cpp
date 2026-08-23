@@ -1,4 +1,4 @@
-﻿// LeetCode 0313 - Super Ugly Number
+// LeetCode 0313 - Super Ugly Number
 // https://leetcode.com/problems/super-ugly-number/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0175 - Combine Two Tables
+// LeetCode 0175 - Combine Two Tables
 // https://leetcode.com/problems/combine-two-tables/
 
 const char* QUERY = R"SQL(

@@ -1,4 +1,4 @@
-﻿// LeetCode 0799 - Champagne Tower
+// LeetCode 0799 - Champagne Tower
 // https://leetcode.com/problems/champagne-tower/
 
 #include <algorithm>

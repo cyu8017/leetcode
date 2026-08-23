@@ -1,4 +1,4 @@
-﻿// LeetCode 0060 - Permutation Sequence
+// LeetCode 0060 - Permutation Sequence
 // https://leetcode.com/problems/permutation-sequence/
 
 #include <string>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0376 - Wiggle Subsequence
+// LeetCode 0376 - Wiggle Subsequence
 // https://leetcode.com/problems/wiggle-subsequence/
 
 #include <algorithm>

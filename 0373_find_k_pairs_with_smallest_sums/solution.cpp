@@ -1,4 +1,4 @@
-﻿// LeetCode 0373 - Find K Pairs with Smallest Sums
+// LeetCode 0373 - Find K Pairs with Smallest Sums
 // https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
 
 #include <queue>

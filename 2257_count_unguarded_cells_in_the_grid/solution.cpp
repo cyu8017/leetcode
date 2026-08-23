@@ -1,8 +1,28 @@
-﻿// LeetCode 2257 - Count Unguarded Cells in the Grid
+// LeetCode 2257 - Count Unguarded Cells in the Grid
 // https://leetcode.com/problems/count-unguarded-cells-in-the-grid/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int countUnguarded(int m, int n, std::vector<std::vector<int>>& guards, std::vector<std::vector<int>>& walls) {
+        std::vector<std::vector<int>> grid(m, std::vector<int>(n));
+        for (auto& w : walls) grid[w[0]][w[1]] = 2;
+        for (auto& g : guards) grid[g[0]][g[1]] = 2;
+        int dirs[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+        for (auto& g : guards) {
+            for (auto& d : dirs) {
+                int r = g[0] + d[0], c = g[1] + d[1];
+                while (r >= 0 && r < m && c >= 0 && c < n && grid[r][c] != 2) {
+                    grid[r][c] = 1;
+                    r += d[0]; c += d[1];
+                }
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < m; ++i)
+            for (int j = 0; j < n; ++j)
+                if (grid[i][j] == 0) ans++;
+        return ans;
     }
 };

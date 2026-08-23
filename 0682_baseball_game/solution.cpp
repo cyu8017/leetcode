@@ -1,4 +1,4 @@
-﻿// LeetCode 0682 - Baseball Game
+// LeetCode 0682 - Baseball Game
 // https://leetcode.com/problems/baseball-game/
 
 #include <string>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0879 - Profitable Schemes
+// LeetCode 0879 - Profitable Schemes
 // https://leetcode.com/problems/profitable-schemes/
 
 #include <algorithm>

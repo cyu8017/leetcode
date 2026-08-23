@@ -1,4 +1,4 @@
-﻿// LeetCode 0968 - Binary Tree Cameras
+// LeetCode 0968 - Binary Tree Cameras
 // https://leetcode.com/problems/binary-tree-cameras/
 
 struct TreeNode {

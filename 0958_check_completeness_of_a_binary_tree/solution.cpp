@@ -1,4 +1,4 @@
-﻿// LeetCode 0958 - Check Completeness of a Binary Tree
+// LeetCode 0958 - Check Completeness of a Binary Tree
 // https://leetcode.com/problems/check-completeness-of-a-binary-tree/
 
 #include <queue>

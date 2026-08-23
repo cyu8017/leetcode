@@ -1,4 +1,4 @@
-﻿// LeetCode 0647 - Palindromic Substrings
+// LeetCode 0647 - Palindromic Substrings
 // https://leetcode.com/problems/palindromic-substrings/
 
 #include <string>

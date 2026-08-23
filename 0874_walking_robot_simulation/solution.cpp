@@ -1,4 +1,4 @@
-﻿// LeetCode 0874 - Walking Robot Simulation
+// LeetCode 0874 - Walking Robot Simulation
 // https://leetcode.com/problems/walking-robot-simulation/
 
 #include <algorithm>

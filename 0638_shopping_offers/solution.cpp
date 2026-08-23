@@ -1,4 +1,4 @@
-﻿// LeetCode 0638 - Shopping Offers
+// LeetCode 0638 - Shopping Offers
 // https://leetcode.com/problems/shopping-offers/
 
 #include <algorithm>

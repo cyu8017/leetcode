@@ -1,4 +1,4 @@
-﻿// LeetCode 0066 - Plus One
+// LeetCode 0066 - Plus One
 // https://leetcode.com/problems/plus-one/
 
 #include <vector>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0386 - Lexicographical Numbers
+// LeetCode 0386 - Lexicographical Numbers
 // https://leetcode.com/problems/lexicographical-numbers/
 
 #include <functional>

@@ -1,8 +1,35 @@
-﻿// LeetCode 3478 - Choose K Elements With Maximum Sum
+// LeetCode 3478 - Choose K Elements With Maximum Sum
 // https://leetcode.com/problems/choose-k-elements-with-maximum-sum/
+
+#include <vector>
+#include <queue>
+#include <algorithm>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<long long> findMaxSum(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+        int n = (int)nums1.size();
+        struct Item { int v1, v2, i; };
+        std::vector<Item> arr(n);
+        for (int i = 0; i < n; i++) arr[i] = {nums1[i], nums2[i], i};
+        std::sort(arr.begin(), arr.end(), [](auto& a, auto& b) { return a.v1 < b.v1; });
+        std::vector<long long> ans(n);
+        std::priority_queue<int, std::vector<int>, std::greater<int>> h;
+        long long sum = 0;
+        for (int i = 0; i < n;) {
+            int v = arr[i].v1;
+            int start = i;
+            while (i < n && arr[i].v1 == v) i++;
+            for (int t = start; t < i; t++) ans[arr[t].i] = sum;
+            for (int t = start; t < i; t++) {
+                h.push(arr[t].v2);
+                sum += arr[t].v2;
+                if ((int)h.size() > k) {
+                    sum -= h.top();
+                    h.pop();
+                }
+            }
+        }
+        return ans;
     }
 };

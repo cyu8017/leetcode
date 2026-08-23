@@ -1,4 +1,4 @@
-﻿// LeetCode 0391 - Perfect Rectangle
+// LeetCode 0391 - Perfect Rectangle
 // https://leetcode.com/problems/perfect-rectangle/
 
 #include <algorithm>

@@ -1,8 +1,26 @@
-﻿// LeetCode 3217 - Delete Nodes From Linked List Present in Array
+// LeetCode 3217 - Delete Nodes From Linked List Present in Array
 // https://leetcode.com/problems/delete-nodes-from-linked-list-present-in-array/
+
+#include <vector>
+#include <unordered_set>
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
 class Solution {
 public:
-    void solve() {
+    ListNode* modifiedList(std::vector<int>& nums, ListNode* head) {
+        std::unordered_set<int> s(nums.begin(), nums.end());
+        ListNode dummy(0, head);
+        for (ListNode* pre = &dummy; pre->next; ) {
+            if (s.count(pre->next->val)) pre->next = pre->next->next;
+            else pre = pre->next;
+        }
+        return dummy.next;
     }
 };

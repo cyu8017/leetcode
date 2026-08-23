@@ -1,4 +1,4 @@
-﻿// LeetCode 0808 - Soup Servings
+// LeetCode 0808 - Soup Servings
 // https://leetcode.com/problems/soup-servings/
 
 #include <functional>

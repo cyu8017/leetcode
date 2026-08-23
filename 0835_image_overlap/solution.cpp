@@ -1,4 +1,4 @@
-﻿// LeetCode 0835 - Image Overlap
+// LeetCode 0835 - Image Overlap
 // https://leetcode.com/problems/image-overlap/
 
 #include <algorithm>

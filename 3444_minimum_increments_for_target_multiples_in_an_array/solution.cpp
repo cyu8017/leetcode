@@ -1,8 +1,43 @@
-﻿// LeetCode 3444 - Minimum Increments for Target Multiples in an Array
+// LeetCode 3444 - Minimum Increments for Target Multiples in an Array
 // https://leetcode.com/problems/minimum-increments-for-target-multiples-in-an-array/
 
+#include <cstdint>
+#include <vector>
+
 class Solution {
+    static int gcd(int a, int b) {
+        while (b) { int t = a % b; a = b; b = t; }
+        return a;
+    }
+    static int lcm(int a, int b) { return a / gcd(a, b) * b; }
+
 public:
-    void solve() {
+    int minimumIncrements(std::vector<int>& nums, std::vector<int>& target) {
+        int m = (int)target.size();
+        int N = 1 << m;
+        const long long inf = (long long)1e18;
+        std::vector<long long> dp(N, inf);
+        dp[0] = 0;
+        for (int x : nums) {
+            std::vector<long long> ndp = dp;
+            for (int mask = 0; mask < N; mask++) {
+                for (int sub = 1; sub < N; sub++) {
+                    int L = 1;
+                    bool ok = true;
+                    for (int i = 0; i < m; i++) {
+                        if (sub & (1 << i)) {
+                            L = lcm(L, target[i]);
+                            if (L > 1000000000) { ok = false; break; }
+                        }
+                    }
+                    if (!ok) continue;
+                    int cost = (L - x % L) % L;
+                    int nmask = mask | sub;
+                    if (dp[mask] + cost < ndp[nmask]) ndp[nmask] = dp[mask] + cost;
+                }
+            }
+            dp.swap(ndp);
+        }
+        return (int)dp[N - 1];
     }
 };

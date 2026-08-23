@@ -1,4 +1,4 @@
-﻿// LeetCode 0322 - Coin Change
+// LeetCode 0322 - Coin Change
 // https://leetcode.com/problems/coin-change/
 
 #include <algorithm>

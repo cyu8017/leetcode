@@ -1,8 +1,10 @@
-﻿// LeetCode 2775 - Undefined to Null
+// LeetCode 2775 - Undefined to Null
 // https://leetcode.com/problems/undefined-to-null/
+// JS-only problem; C++ stand-in identity.
 
 class Solution {
 public:
-    void solve() {
+    int undefinedToNull(int obj) {
+        return obj;
     }
 };

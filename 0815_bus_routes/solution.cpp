@@ -1,4 +1,4 @@
-﻿// LeetCode 0815 - Bus Routes
+// LeetCode 0815 - Bus Routes
 // https://leetcode.com/problems/bus-routes/
 
 #include <queue>

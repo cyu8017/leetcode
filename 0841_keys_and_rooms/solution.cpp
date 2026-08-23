@@ -1,4 +1,4 @@
-﻿// LeetCode 0841 - Keys and Rooms
+// LeetCode 0841 - Keys and Rooms
 // https://leetcode.com/problems/keys-and-rooms/
 
 #include <unordered_set>

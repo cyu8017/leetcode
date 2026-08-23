@@ -1,4 +1,4 @@
-﻿// LeetCode 0072 - Edit Distance
+// LeetCode 0072 - Edit Distance
 // https://leetcode.com/problems/edit-distance/
 
 #include <algorithm>

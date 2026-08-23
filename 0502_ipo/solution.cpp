@@ -1,4 +1,4 @@
-﻿// LeetCode 0502 - IPO
+// LeetCode 0502 - IPO
 // https://leetcode.com/problems/ipo/
 
 #include <algorithm>

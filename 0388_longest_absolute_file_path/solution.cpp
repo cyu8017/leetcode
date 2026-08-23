@@ -1,4 +1,4 @@
-﻿// LeetCode 0388 - Longest Absolute File Path
+// LeetCode 0388 - Longest Absolute File Path
 // https://leetcode.com/problems/longest-absolute-file-path/
 
 #include <algorithm>

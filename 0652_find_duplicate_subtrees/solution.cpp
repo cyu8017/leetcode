@@ -1,4 +1,4 @@
-﻿// LeetCode 0652 - Find Duplicate Subtrees
+// LeetCode 0652 - Find Duplicate Subtrees
 // https://leetcode.com/problems/find-duplicate-subtrees/
 
 #include <string>

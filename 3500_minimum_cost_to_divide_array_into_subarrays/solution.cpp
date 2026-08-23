@@ -1,8 +1,27 @@
-﻿// LeetCode 3500 - Minimum Cost to Divide Array Into Subarrays
+// LeetCode 3500 - Minimum Cost to Divide Array Into Subarrays
 // https://leetcode.com/problems/minimum-cost-to-divide-array-into-subarrays/
+
+#include <vector>
+#include <algorithm>
 
 class Solution {
 public:
-    void solve() {
+    long long minimumCost(std::vector<int>& nums, std::vector<int>& cost, int k) {
+        int n = (int)nums.size();
+        std::vector<long long> pn(n + 1), pc(n + 1);
+        for (int i = 0; i < n; i++) {
+            pn[i + 1] = pn[i] + nums[i];
+            pc[i + 1] = pc[i] + cost[i];
+        }
+        const long long inf = 1LL << 62;
+        std::vector<long long> dp(n + 1, 0);
+        for (int i = 0; i < n; i++) dp[i] = inf;
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                long long cand = pn[j + 1] * (pc[j + 1] - pc[i]) + 1LL * k * (pc[n] - pc[i]) + dp[j + 1];
+                if (cand < dp[i]) dp[i] = cand;
+            }
+        }
+        return dp[0];
     }
 };

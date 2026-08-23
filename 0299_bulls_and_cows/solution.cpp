@@ -1,4 +1,4 @@
-﻿// LeetCode 0299 - Bulls and Cows
+// LeetCode 0299 - Bulls and Cows
 // https://leetcode.com/problems/bulls-and-cows/
 
 #include <string>

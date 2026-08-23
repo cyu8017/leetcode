@@ -1,8 +1,46 @@
-﻿// LeetCode 1811 - Find Interview Candidates
+// LeetCode 1811 - Find Interview Candidates
 // https://leetcode.com/problems/find-interview-candidates/
 
-class Solution {
-public:
-    void solve() {
-    }
-};
+const char* QUERY = R"SQL(
+WITH Medals AS (
+
+const char* QUERY =
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+)SQL";

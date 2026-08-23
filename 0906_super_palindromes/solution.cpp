@@ -1,4 +1,4 @@
-﻿// LeetCode 0906 - Super Palindromes
+// LeetCode 0906 - Super Palindromes
 // https://leetcode.com/problems/super-palindromes/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0640 - Solve the Equation
+// LeetCode 0640 - Solve the Equation
 // https://leetcode.com/problems/solve-the-equation/
 
 #include <cctype>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0169 - Majority Element
+// LeetCode 0169 - Majority Element
 #include <vector>
 using namespace std;
 class Solution {

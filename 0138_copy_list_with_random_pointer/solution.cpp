@@ -1,4 +1,4 @@
-﻿// LeetCode 0138 - Copy List with Random Pointer
+// LeetCode 0138 - Copy List with Random Pointer
 #include <unordered_map>
 using namespace std;
 class Node {

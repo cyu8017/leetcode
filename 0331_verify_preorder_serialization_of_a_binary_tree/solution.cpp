@@ -1,4 +1,4 @@
-﻿// LeetCode 0331 - Verify Preorder Serialization of a Binary Tree
+// LeetCode 0331 - Verify Preorder Serialization of a Binary Tree
 // https://leetcode.com/problems/verify-preorder-serialization-of-a-binary-tree/
 
 #include <string>

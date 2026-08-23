@@ -1,4 +1,4 @@
-﻿// LeetCode 0656 - Coin Path
+// LeetCode 0656 - Coin Path
 // https://leetcode.com/problems/coin-path/
 
 #include <climits>

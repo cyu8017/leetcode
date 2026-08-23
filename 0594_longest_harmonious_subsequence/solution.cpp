@@ -1,4 +1,4 @@
-﻿// LeetCode 0594 - Longest Harmonious Subsequence
+// LeetCode 0594 - Longest Harmonious Subsequence
 // https://leetcode.com/problems/longest-harmonious-subsequence/
 
 #include <algorithm>

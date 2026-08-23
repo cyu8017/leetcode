@@ -1,4 +1,4 @@
-﻿// LeetCode 0067 - Add Binary
+// LeetCode 0067 - Add Binary
 // https://leetcode.com/problems/add-binary/
 
 #include <algorithm>

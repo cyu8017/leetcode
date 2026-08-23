@@ -1,4 +1,4 @@
-﻿// LeetCode 0076 - Minimum Window Substring
+// LeetCode 0076 - Minimum Window Substring
 // https://leetcode.com/problems/minimum-window-substring/
 
 #include <limits>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0164 - Maximum Gap
+// LeetCode 0164 - Maximum Gap
 #include <algorithm>
 #include <climits>
 #include <vector>

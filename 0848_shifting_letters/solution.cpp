@@ -1,4 +1,4 @@
-﻿// LeetCode 0848 - Shifting Letters
+// LeetCode 0848 - Shifting Letters
 // https://leetcode.com/problems/shifting-letters/
 
 #include <string>

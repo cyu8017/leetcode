@@ -1,4 +1,4 @@
-﻿// LeetCode 0137 - Single Number II
+// LeetCode 0137 - Single Number II
 #include <vector>
 using namespace std;
 class Solution { public:

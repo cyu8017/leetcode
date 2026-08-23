@@ -1,4 +1,4 @@
-﻿// LeetCode 0704 - Binary Search
+// LeetCode 0704 - Binary Search
 // https://leetcode.com/problems/binary-search/
 
 #include <vector>

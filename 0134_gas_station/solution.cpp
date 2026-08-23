@@ -1,4 +1,4 @@
-﻿// LeetCode 0134 - Gas Station
+// LeetCode 0134 - Gas Station
 #include <vector>
 using namespace std;
 class Solution { public:

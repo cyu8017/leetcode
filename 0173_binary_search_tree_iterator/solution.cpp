@@ -1,4 +1,4 @@
-﻿// LeetCode 0173 - Binary Search Tree Iterator
+// LeetCode 0173 - Binary Search Tree Iterator
 // https://leetcode.com/problems/binary-search-tree-iterator/
 
 #include <stack>

@@ -1,8 +1,18 @@
-﻿// LeetCode 3637 - Trionic Array I
+// LeetCode 3637 - Trionic Array I
 // https://leetcode.com/problems/trionic-array-i/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    bool isTrionic(std::vector<int>& nums) {
+        int n = (int)nums.size(), p = 0;
+        while (p < n - 2 && nums[p] < nums[p + 1]) p++;
+        if (p == 0) return false;
+        int q = p;
+        while (q < n - 1 && nums[q] > nums[q + 1]) q++;
+        if (q == p || q == n - 1) return false;
+        while (q < n - 1 && nums[q] < nums[q + 1]) q++;
+        return q == n - 1;
     }
 };

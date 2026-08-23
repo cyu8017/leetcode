@@ -1,4 +1,4 @@
-﻿// LeetCode 0100 - Same Tree
+// LeetCode 0100 - Same Tree
 // https://leetcode.com/problems/same-tree/
 
 struct TreeNode {

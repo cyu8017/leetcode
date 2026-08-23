@@ -1,4 +1,4 @@
-﻿// LeetCode 0382 - Linked List Random Node
+// LeetCode 0382 - Linked List Random Node
 // https://leetcode.com/problems/linked-list-random-node/
 
 #include <vector>

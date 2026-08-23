@@ -1,8 +1,20 @@
-﻿// LeetCode 3427 - Sum of Variable Length Subarrays
+// LeetCode 3427 - Sum of Variable Length Subarrays
 // https://leetcode.com/problems/sum-of-variable-length-subarrays/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int subarraySum(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        std::vector<int> pref(n + 1);
+        for (int i = 0; i < n; i++) pref[i + 1] = pref[i] + nums[i];
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            int start = i - nums[i];
+            if (start < 0) start = 0;
+            ans += pref[i + 1] - pref[start];
+        }
+        return ans;
     }
 };

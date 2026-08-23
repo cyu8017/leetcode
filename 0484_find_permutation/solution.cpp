@@ -1,4 +1,4 @@
-﻿// LeetCode 0484 - Find Permutation
+// LeetCode 0484 - Find Permutation
 // https://leetcode.com/problems/find-permutation/
 
 #include <stack>

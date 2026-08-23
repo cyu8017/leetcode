@@ -1,8 +1,21 @@
-﻿// LeetCode 2765 - Longest Alternating Subarray
+// LeetCode 2765 - Longest Alternating Subarray
 // https://leetcode.com/problems/longest-alternating-subarray/
+
+#include <algorithm>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int alternatingSubarray(std::vector<int>& nums) {
+        int ans = -1, n = (int)nums.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int expect = ((j - i) % 2 == 0) ? -1 : 1;
+                if (nums[j] - nums[j - 1] != expect) break;
+                if (nums[i + 1] - nums[i] != 1) break;
+                ans = std::max(ans, j - i + 1);
+            }
+        }
+        return ans;
     }
 };

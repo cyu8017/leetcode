@@ -1,4 +1,4 @@
-﻿// LeetCode 0409 - Longest Palindrome
+// LeetCode 0409 - Longest Palindrome
 // https://leetcode.com/problems/longest-palindrome/
 
 #include <string>

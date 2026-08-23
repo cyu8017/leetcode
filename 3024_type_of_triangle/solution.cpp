@@ -1,8 +1,17 @@
-﻿// LeetCode 3024 - Type of Triangle
+// LeetCode 3024 - Type of Triangle
 // https://leetcode.com/problems/type-of-triangle/
+
+#include <algorithm>
+#include <string>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::string triangleType(std::vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        if (nums[0] + nums[1] <= nums[2]) return "none";
+        if (nums[0] == nums[2]) return "equilateral";
+        if (nums[0] == nums[1] || nums[1] == nums[2]) return "isosceles";
+        return "scalene";
     }
 };

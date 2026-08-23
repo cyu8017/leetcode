@@ -1,4 +1,4 @@
-﻿// LeetCode 0810 - Chalkboard XOR Game
+// LeetCode 0810 - Chalkboard XOR Game
 // https://leetcode.com/problems/chalkboard-xor-game/
 
 #include <vector>

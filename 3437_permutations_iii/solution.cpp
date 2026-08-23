@@ -1,8 +1,31 @@
-﻿// LeetCode 3437 - Permutations III
+// LeetCode 3437 - Permutations III
 // https://leetcode.com/problems/permutations-iii/
+
+#include <functional>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<std::vector<int>> permute(int n) {
+        std::vector<std::vector<int>> ans;
+        std::vector<char> used(n + 1);
+        std::vector<int> cur;
+        std::function<void()> dfs = [&]() {
+            if ((int)cur.size() == n) {
+                ans.push_back(cur);
+                return;
+            }
+            for (int i = 1; i <= n; i++) {
+                if (used[i]) continue;
+                if (!cur.empty() && (cur.back() % 2 == i % 2)) continue;
+                used[i] = 1;
+                cur.push_back(i);
+                dfs();
+                cur.pop_back();
+                used[i] = 0;
+            }
+        };
+        dfs();
+        return ans;
     }
 };

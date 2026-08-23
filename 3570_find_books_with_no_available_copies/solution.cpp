@@ -1,8 +1,18 @@
-﻿// LeetCode 3570 - Find Books with No Available Copies
+// LeetCode 3570 - Find Books with No Available Copies
 // https://leetcode.com/problems/find-books-with-no-available-copies/
 
-class Solution {
-public:
-    void solve() {
-    }
-};
+const char* QUERY = R"SQL(
+WITH
+    T AS (
+        SELECT book_id, COUNT(1) current_borrowers
+        FROM borrowing_records
+        WHERE return_date IS NULL
+        GROUP BY 1
+    )
+SELECT book_id, title, author, genre, publication_year, current_borrowers
+FROM
+    library_books
+    JOIN T USING (book_id)
+WHERE current_borrowers = total_copies
+ORDER BY 6 DESC, 2;
+)SQL";

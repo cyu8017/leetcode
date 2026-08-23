@@ -1,4 +1,4 @@
-﻿// LeetCode 0218 - The Skyline Problem
+// LeetCode 0218 - The Skyline Problem
 // https://leetcode.com/problems/the-skyline-problem/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0140 - Word Break II
+// LeetCode 0140 - Word Break II
 #include <string>
 #include <unordered_map>
 #include <unordered_set>

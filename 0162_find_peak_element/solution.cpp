@@ -1,4 +1,4 @@
-﻿// LeetCode 0162 - Find Peak Element
+// LeetCode 0162 - Find Peak Element
 #include <vector>
 using namespace std;
 class Solution {

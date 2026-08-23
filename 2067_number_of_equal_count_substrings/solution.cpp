@@ -1,8 +1,51 @@
-﻿// LeetCode 2067 - Number of Equal Count Substrings
+// LeetCode 2067 - Number of Equal Count Substrings
 // https://leetcode.com/problems/number-of-equal-count-substrings/
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <cstdint>
+#include <deque>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+using namespace std;
 
 class Solution {
 public:
-    void solve() {
+    int equalCountSubstrings(string s, int count) {
+        int ans = 0, n = (int)s.size();
+        unordered_set<char> unique(s.begin(), s.end());
+        int maxUnique = (int)unique.size();
+        for (int u = 1; u <= maxUnique; u++) {
+            int needLen = u * count;
+            if (needLen > n) break;
+            int freq[26] = {};
+            int have = 0;
+            for (int i = 0; i < n; i++) {
+                int c = s[i] - 'a';
+                freq[c]++;
+                if (freq[c] == count) have++;
+                else if (freq[c] == count + 1) have--;
+                if (i >= needLen) {
+                    int p = s[i - needLen] - 'a';
+                    if (freq[p] == count) have--;
+                    else if (freq[p] == count + 1) have++;
+                    freq[p]--;
+                }
+                if (i + 1 >= needLen && have == u) ans++;
+            }
+        }
+        return ans;
     }
 };

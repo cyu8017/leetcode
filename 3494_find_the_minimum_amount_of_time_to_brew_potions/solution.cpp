@@ -1,8 +1,24 @@
-﻿// LeetCode 3494 - Find the Minimum Amount of Time to Brew Potions
+// LeetCode 3494 - Find the Minimum Amount of Time to Brew Potions
 // https://leetcode.com/problems/find-the-minimum-amount-of-time-to-brew-potions/
+
+#include <vector>
+#include <algorithm>
 
 class Solution {
 public:
-    void solve() {
+    long long minTime(std::vector<int>& skill, std::vector<int>& mana) {
+        int n = (int)skill.size(), m = (int)mana.size();
+        std::vector<long long> done(n);
+        for (int j = 0; j < m; j++) {
+            long long t = 0;
+            for (int i = 0; i < n; i++) {
+                if (done[i] > t) t = done[i];
+                t += 1LL * skill[i] * mana[j];
+                done[i] = t;
+            }
+            for (int i = n - 2; i >= 0; i--)
+                done[i] = done[i + 1] - 1LL * skill[i + 1] * mana[j];
+        }
+        return done[n - 1];
     }
 };

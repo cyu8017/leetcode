@@ -1,4 +1,4 @@
-﻿// LeetCode 0248 - Strobogrammatic Number III
+// LeetCode 0248 - Strobogrammatic Number III
 // https://leetcode.com/problems/strobogrammatic-number-iii/
 
 #include <string>

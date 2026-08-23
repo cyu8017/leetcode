@@ -1,4 +1,4 @@
-﻿// LeetCode 0529 - Minesweeper
+// LeetCode 0529 - Minesweeper
 // https://leetcode.com/problems/minesweeper/
 
 #include <string>

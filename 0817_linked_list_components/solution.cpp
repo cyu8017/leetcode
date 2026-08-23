@@ -1,4 +1,4 @@
-﻿// LeetCode 0817 - Linked List Components
+// LeetCode 0817 - Linked List Components
 // https://leetcode.com/problems/linked-list-components/
 
 #include <unordered_set>

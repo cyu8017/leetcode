@@ -1,4 +1,4 @@
-﻿// LeetCode 0670 - Maximum Swap
+// LeetCode 0670 - Maximum Swap
 // https://leetcode.com/problems/maximum-swap/
 
 #include <string>

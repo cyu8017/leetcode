@@ -1,8 +1,19 @@
-﻿// LeetCode 3467 - Transform Array by Parity
+// LeetCode 3467 - Transform Array by Parity
 // https://leetcode.com/problems/transform-array-by-parity/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    std::vector<int> transformArray(std::vector<int>& nums) {
+        for (int i = 0; i < (int)nums.size(); i++) nums[i] %= 2;
+        int j = 0;
+        for (int i = 0; i < (int)nums.size(); i++) {
+            if (nums[i] == 0) {
+                std::swap(nums[i], nums[j]);
+                j++;
+            }
+        }
+        return nums;
     }
 };

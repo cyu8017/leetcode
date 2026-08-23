@@ -1,4 +1,4 @@
-﻿// LeetCode 0898 - Bitwise ORs of Subarrays
+// LeetCode 0898 - Bitwise ORs of Subarrays
 // https://leetcode.com/problems/bitwise-ors-of-subarrays/
 
 #include <unordered_set>

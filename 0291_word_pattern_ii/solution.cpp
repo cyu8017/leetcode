@@ -1,4 +1,4 @@
-﻿// LeetCode 0291 - Word Pattern II
+// LeetCode 0291 - Word Pattern II
 // https://leetcode.com/problems/word-pattern-ii/
 
 #include <string>

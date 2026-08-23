@@ -1,4 +1,4 @@
-﻿// LeetCode 0073 - Set Matrix Zeroes
+// LeetCode 0073 - Set Matrix Zeroes
 // https://leetcode.com/problems/set-matrix-zeroes/
 
 #include <vector>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0370 - Range Addition
+// LeetCode 0370 - Range Addition
 // https://leetcode.com/problems/range-addition/
 
 #include <vector>

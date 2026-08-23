@@ -1,4 +1,4 @@
-﻿// LeetCode 0118 - Pascal's Triangle
+// LeetCode 0118 - Pascal's Triangle
 #include <vector>
 class Solution { public: std::vector<std::vector<int>> generate(int numRows) {
     std::vector<std::vector<int>> ans;

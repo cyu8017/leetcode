@@ -1,4 +1,4 @@
-﻿// LeetCode 0168 - Excel Sheet Column Title
+// LeetCode 0168 - Excel Sheet Column Title
 #include <algorithm>
 #include <string>
 using namespace std;

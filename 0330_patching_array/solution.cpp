@@ -1,4 +1,4 @@
-﻿// LeetCode 0330 - Patching Array
+// LeetCode 0330 - Patching Array
 // https://leetcode.com/problems/patching-array/
 
 #include <vector>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0969 - Pancake Sorting
+// LeetCode 0969 - Pancake Sorting
 // https://leetcode.com/problems/pancake-sorting/
 
 #include <algorithm>

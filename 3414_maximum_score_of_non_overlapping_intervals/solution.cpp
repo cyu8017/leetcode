@@ -1,8 +1,50 @@
-﻿// LeetCode 3414 - Maximum Score of Non-overlapping Intervals
+// LeetCode 3414 - Maximum Score of Non-overlapping Intervals
 // https://leetcode.com/problems/maximum-score-of-non-overlapping-intervals/
 
+#include <algorithm>
+#include <cstdint>
+#include <vector>
+
 class Solution {
+    struct It { int l, r, w, i; };
+    struct State {
+        long long score = 0;
+        std::vector<int> idx;
+    };
+
+    static State better(const State& a, const State& b) {
+        if (a.score != b.score) return a.score > b.score ? a : b;
+        for (int i = 0; i < (int)a.idx.size() && i < (int)b.idx.size(); i++) {
+            if (a.idx[i] != b.idx[i]) return a.idx[i] < b.idx[i] ? a : b;
+        }
+        return a.idx.size() <= b.idx.size() ? a : b;
+    }
+
 public:
-    void solve() {
+    std::vector<int> maximumWeight(std::vector<std::vector<int>>& intervals) {
+        int n = (int)intervals.size();
+        std::vector<It> arr(n);
+        for (int i = 0; i < n; i++) arr[i] = {intervals[i][0], intervals[i][1], intervals[i][2], i};
+        std::sort(arr.begin(), arr.end(), [](const It& a, const It& b) { return a.r < b.r; });
+        std::vector<std::vector<State>> dp(n + 1, std::vector<State>(5));
+        for (int i = 1; i <= n; i++) {
+            It cur = arr[i - 1];
+            for (int t = 0; t <= 4; t++) dp[i][t] = dp[i - 1][t];
+            int p = (int)(std::lower_bound(arr.begin(), arr.begin() + (i - 1), cur.l,
+                [](const It& a, int val) { return a.r < val; }) - arr.begin());
+            int prev = p;
+            for (int t = 1; t <= 4; t++) {
+                State prevState = dp[prev][t - 1];
+                State cand;
+                cand.score = prevState.score + cur.w;
+                cand.idx = prevState.idx;
+                cand.idx.push_back(cur.i);
+                std::sort(cand.idx.begin(), cand.idx.end());
+                dp[i][t] = better(dp[i][t], cand);
+            }
+        }
+        State best = dp[n][0];
+        for (int t = 1; t <= 4; t++) best = better(best, dp[n][t]);
+        return best.idx;
     }
 };

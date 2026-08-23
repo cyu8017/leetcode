@@ -1,8 +1,20 @@
-﻿// LeetCode 2405 - Optimal Partition of String
+// LeetCode 2405 - Optimal Partition of String
 // https://leetcode.com/problems/optimal-partition-of-string/
+
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int partitionString(std::string s) {
+        int ans = 1, seen = 0;
+        for (char c : s) {
+            int bit = 1 << (c - 'a');
+            if (seen & bit) {
+                ans++;
+                seen = 0;
+            }
+            seen |= bit;
+        }
+        return ans;
     }
 };

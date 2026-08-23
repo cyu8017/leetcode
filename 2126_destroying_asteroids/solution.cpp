@@ -1,8 +1,35 @@
-﻿// LeetCode 2126 - Destroying Asteroids
+// LeetCode 2126 - Destroying Asteroids
 // https://leetcode.com/problems/destroying-asteroids/
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <cstdint>
+#include <deque>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+using namespace std;
 
 class Solution {
 public:
-    void solve() {
+    bool asteroidsDestroyed(int mass, vector<int>& asteroids) {
+        sort(asteroids.begin(), asteroids.end());
+        long long cur = mass;
+        for (int a : asteroids) {
+            if (cur < a) return false;
+            cur += a;
+        }
+        return true;
     }
 };

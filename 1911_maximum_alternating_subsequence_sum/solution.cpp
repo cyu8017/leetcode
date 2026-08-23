@@ -1,4 +1,4 @@
-﻿// LeetCode 1911 - Maximum Alternating Subsequence Sum
+// LeetCode 1911 - Maximum Alternating Subsequence Sum
 // https://leetcode.com/problems/maximum-alternating-subsequence-sum/
 
 #include <algorithm>

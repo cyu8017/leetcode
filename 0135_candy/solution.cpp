@@ -1,4 +1,4 @@
-﻿// LeetCode 0135 - Candy
+// LeetCode 0135 - Candy
 #include <algorithm>
 #include <numeric>
 #include <vector>

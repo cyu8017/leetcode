@@ -1,4 +1,4 @@
-﻿// LeetCode 0220 - Contains Duplicate III
+// LeetCode 0220 - Contains Duplicate III
 // https://leetcode.com/problems/contains-duplicate-iii/
 
 #include <cmath>

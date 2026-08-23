@@ -1,4 +1,4 @@
-﻿// LeetCode 0853 - Car Fleet
+// LeetCode 0853 - Car Fleet
 // https://leetcode.com/problems/car-fleet/
 
 #include <algorithm>

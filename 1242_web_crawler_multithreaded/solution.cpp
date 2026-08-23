@@ -1,4 +1,4 @@
-﻿// LeetCode 1242 - Web Crawler Multithreaded
+// LeetCode 1242 - Web Crawler Multithreaded
 // https://leetcode.com/problems/web-crawler-multithreaded/
 
 #include <algorithm>

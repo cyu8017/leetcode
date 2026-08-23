@@ -1,4 +1,4 @@
-﻿// LeetCode 0964 - Least Operators to Express Number
+// LeetCode 0964 - Least Operators to Express Number
 // https://leetcode.com/problems/least-operators-to-express-number/
 
 #include <algorithm>

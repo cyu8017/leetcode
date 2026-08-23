@@ -1,4 +1,4 @@
-﻿// LeetCode 0413 - Arithmetic Slices
+// LeetCode 0413 - Arithmetic Slices
 // https://leetcode.com/problems/arithmetic-slices/
 
 #include <vector>

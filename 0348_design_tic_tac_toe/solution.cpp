@@ -1,4 +1,4 @@
-﻿// LeetCode 0348 - Design Tic-Tac-Toe
+// LeetCode 0348 - Design Tic-Tac-Toe
 // https://leetcode.com/problems/design-tic-tac-toe/
 
 #include <cstdlib>

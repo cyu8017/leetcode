@@ -1,4 +1,4 @@
-﻿// LeetCode 0822 - Card Flipping Game
+// LeetCode 0822 - Card Flipping Game
 // https://leetcode.com/problems/card-flipping-game/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0130 - Surrounded Regions
+// LeetCode 0130 - Surrounded Regions
 // https://leetcode.com/problems/surrounded-regions/
 
 #include <vector>

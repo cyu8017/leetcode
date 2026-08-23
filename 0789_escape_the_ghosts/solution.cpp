@@ -1,4 +1,4 @@
-﻿// LeetCode 0789 - Escape The Ghosts
+// LeetCode 0789 - Escape The Ghosts
 // https://leetcode.com/problems/escape-the-ghosts/
 
 #include <cstdlib>

@@ -1,8 +1,17 @@
-﻿// LeetCode 2540 - Minimum Common Value
+// LeetCode 2540 - Minimum Common Value
 // https://leetcode.com/problems/minimum-common-value/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int getCommon(std::vector<int>& nums1, std::vector<int>& nums2) {
+        int i = 0, j = 0;
+        while (i < (int)nums1.size() && j < (int)nums2.size()) {
+            if (nums1[i] == nums2[j]) return nums1[i];
+            if (nums1[i] < nums2[j]) i++;
+            else j++;
+        }
+        return -1;
     }
 };

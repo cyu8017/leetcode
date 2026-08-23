@@ -1,4 +1,4 @@
-﻿// LeetCode 0260 - Single Number III
+// LeetCode 0260 - Single Number III
 // https://leetcode.com/problems/single-number-iii/
 
 #include <vector>

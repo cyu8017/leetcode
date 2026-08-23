@@ -1,4 +1,4 @@
-﻿// LeetCode 0139 - Word Break
+// LeetCode 0139 - Word Break
 #include <string>
 #include <unordered_set>
 #include <vector>

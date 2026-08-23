@@ -1,4 +1,4 @@
-﻿// LeetCode 1741 - Find Total Time Spent by Each Employee
+// LeetCode 1741 - Find Total Time Spent by Each Employee
 // https://leetcode.com/problems/find-total-time-spent-by-each-employee/
 
 const char* QUERY = R"SQL(

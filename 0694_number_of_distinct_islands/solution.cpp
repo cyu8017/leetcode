@@ -1,4 +1,4 @@
-﻿// LeetCode 0694 - Number of Distinct Islands
+// LeetCode 0694 - Number of Distinct Islands
 // https://leetcode.com/problems/number-of-distinct-islands/
 
 #include <set>

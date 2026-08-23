@@ -1,4 +1,4 @@
-﻿// LeetCode 0859 - Buddy Strings
+// LeetCode 0859 - Buddy Strings
 // https://leetcode.com/problems/buddy-strings/
 
 #include <string>

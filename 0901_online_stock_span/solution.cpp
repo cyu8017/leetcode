@@ -1,4 +1,4 @@
-﻿// LeetCode 0901 - Online Stock Span
+// LeetCode 0901 - Online Stock Span
 // https://leetcode.com/problems/online-stock-span/
 
 #include <utility>

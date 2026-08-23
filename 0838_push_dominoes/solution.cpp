@@ -1,4 +1,4 @@
-﻿// LeetCode 0838 - Push Dominoes
+// LeetCode 0838 - Push Dominoes
 // https://leetcode.com/problems/push-dominoes/
 
 #include <algorithm>

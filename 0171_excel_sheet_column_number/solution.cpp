@@ -1,4 +1,4 @@
-﻿// LeetCode 0171 - Excel Sheet Column Number
+// LeetCode 0171 - Excel Sheet Column Number
 // https://leetcode.com/problems/excel-sheet-column-number/
 
 #include <string>

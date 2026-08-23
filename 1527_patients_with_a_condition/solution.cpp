@@ -1,8 +1,8 @@
-﻿// LeetCode 1527 - Patients With a Condition
+// LeetCode 1527 - Patients With a Condition
 // https://leetcode.com/problems/patients-with-a-condition/
 
-class Solution {
-public:
-    void solve() {
-    }
-};
+const char* QUERY = R"SQL(
+SELECT patient_id, patient_name, conditions
+FROM Patients
+WHERE CONCAT(' ', conditions, ' ') LIKE '% DIAB1%'
+)SQL";

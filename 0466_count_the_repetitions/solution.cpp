@@ -1,4 +1,4 @@
-﻿// LeetCode 0466 - Count The Repetitions
+// LeetCode 0466 - Count The Repetitions
 // https://leetcode.com/problems/count-the-repetitions/
 
 #include <string>

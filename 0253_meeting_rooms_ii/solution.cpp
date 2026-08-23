@@ -1,4 +1,4 @@
-﻿// LeetCode 0253 - Meeting Rooms II
+// LeetCode 0253 - Meeting Rooms II
 // https://leetcode.com/problems/meeting-rooms-ii/
 
 #include <algorithm>

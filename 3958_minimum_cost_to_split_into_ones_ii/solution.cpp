@@ -1,8 +1,9 @@
-﻿// LeetCode 3958 - Minimum Cost to Split into Ones II
+// LeetCode 3958 - Minimum Cost To Split Into Ones II
 // https://leetcode.com/problems/minimum-cost-to-split-into-ones-ii/
 
 class Solution {
 public:
-    void solve() {
+    long long minCost(int n) {
+        return 1LL * n * (n - 1) / 2;
     }
 };

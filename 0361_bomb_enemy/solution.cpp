@@ -1,4 +1,4 @@
-﻿// LeetCode 0361 - Bomb Enemy
+// LeetCode 0361 - Bomb Enemy
 // https://leetcode.com/problems/bomb-enemy/
 
 #include <algorithm>

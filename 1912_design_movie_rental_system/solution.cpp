@@ -1,4 +1,4 @@
-﻿// LeetCode 1912 - Design Movie Rental System
+// LeetCode 1912 - Design Movie Rental System
 // https://leetcode.com/problems/design-movie-rental-system/
 
 #include <map>

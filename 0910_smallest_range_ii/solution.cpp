@@ -1,4 +1,4 @@
-﻿// LeetCode 0910 - Smallest Range II
+// LeetCode 0910 - Smallest Range II
 // https://leetcode.com/problems/smallest-range-ii/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0866 - Prime Palindrome
+// LeetCode 0866 - Prime Palindrome
 // https://leetcode.com/problems/prime-palindrome/
 
 #include <cmath>

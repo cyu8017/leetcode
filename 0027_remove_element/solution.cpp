@@ -1,4 +1,4 @@
-﻿// LeetCode 0027 - Remove Element
+// LeetCode 0027 - Remove Element
 // https://leetcode.com/problems/remove-element/
 
 #include <vector>

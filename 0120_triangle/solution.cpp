@@ -1,4 +1,4 @@
-﻿// LeetCode 0120 - Triangle
+// LeetCode 0120 - Triangle
 #include <vector>
 #include <algorithm>
 class Solution { public: int minimumTotal(std::vector<std::vector<int>>& triangle) {

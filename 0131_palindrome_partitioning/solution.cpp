@@ -1,4 +1,4 @@
-﻿// LeetCode 0131 - Palindrome Partitioning
+// LeetCode 0131 - Palindrome Partitioning
 #include <string>
 #include <vector>
 using namespace std;

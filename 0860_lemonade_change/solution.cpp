@@ -1,4 +1,4 @@
-﻿// LeetCode 0860 - Lemonade Change
+// LeetCode 0860 - Lemonade Change
 // https://leetcode.com/problems/lemonade-change/
 
 #include <vector>

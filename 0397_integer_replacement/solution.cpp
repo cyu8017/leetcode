@@ -1,4 +1,4 @@
-﻿// LeetCode 0397 - Integer Replacement
+// LeetCode 0397 - Integer Replacement
 // https://leetcode.com/problems/integer-replacement/
 
 class Solution {

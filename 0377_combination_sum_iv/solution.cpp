@@ -1,4 +1,4 @@
-﻿// LeetCode 0377 - Combination Sum IV
+// LeetCode 0377 - Combination Sum IV
 // https://leetcode.com/problems/combination-sum-iv/
 
 #include <vector>

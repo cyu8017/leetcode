@@ -1,4 +1,4 @@
-﻿// LeetCode 0785 - Is Graph Bipartite?
+// LeetCode 0785 - Is Graph Bipartite?
 // https://leetcode.com/problems/is-graph-bipartite/
 
 #include <vector>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0161 - One Edit Distance
+// LeetCode 0161 - One Edit Distance
 #include <string>
 using namespace std;
 class Solution {

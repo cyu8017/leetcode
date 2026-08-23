@@ -1,8 +1,16 @@
-﻿// LeetCode 3407 - Substring Matching Pattern
+// LeetCode 3407 - Substring Matching Pattern
 // https://leetcode.com/problems/substring-matching-pattern/
+
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    bool hasMatch(std::string s, std::string p) {
+        auto i = p.find('*');
+        std::string left = p.substr(0, i);
+        std::string right = p.substr(i + 1);
+        auto li = s.find(left);
+        if (li == std::string::npos) return false;
+        return s.find(right, li + left.size()) != std::string::npos;
     }
 };

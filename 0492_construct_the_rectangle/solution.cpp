@@ -1,4 +1,4 @@
-﻿// LeetCode 0492 - Construct the Rectangle
+// LeetCode 0492 - Construct the Rectangle
 // https://leetcode.com/problems/construct-the-rectangle/
 
 #include <cmath>

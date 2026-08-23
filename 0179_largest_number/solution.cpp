@@ -1,4 +1,4 @@
-﻿// LeetCode 0179 - Largest Number
+// LeetCode 0179 - Largest Number
 // https://leetcode.com/problems/largest-number/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0189 - Rotate Array
+// LeetCode 0189 - Rotate Array
 // https://leetcode.com/problems/rotate-array/
 
 #include <algorithm>

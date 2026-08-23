@@ -1,4 +1,4 @@
-﻿// LeetCode 0119 - Pascal's Triangle II
+// LeetCode 0119 - Pascal's Triangle II
 #include <vector>
 class Solution { public: std::vector<int> getRow(int rowIndex) {
     std::vector<int> row(rowIndex + 1, 1);

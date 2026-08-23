@@ -1,4 +1,4 @@
-﻿// LeetCode 0978 - Longest Turbulent Subarray
+// LeetCode 0978 - Longest Turbulent Subarray
 // https://leetcode.com/problems/longest-turbulent-subarray/
 
 #include <algorithm>

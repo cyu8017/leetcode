@@ -1,4 +1,4 @@
-﻿// LeetCode 0163 - Missing Ranges
+// LeetCode 0163 - Missing Ranges
 #include <vector>
 using namespace std;
 class Solution {

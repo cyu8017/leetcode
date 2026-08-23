@@ -1,4 +1,4 @@
-﻿// LeetCode 0974 - Subarray Sums Divisible by K
+// LeetCode 0974 - Subarray Sums Divisible by K
 // https://leetcode.com/problems/subarray-sums-divisible-by-k/
 
 #include <unordered_map>

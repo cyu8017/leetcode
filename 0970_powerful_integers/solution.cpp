@@ -1,4 +1,4 @@
-﻿// LeetCode 0970 - Powerful Integers
+// LeetCode 0970 - Powerful Integers
 // https://leetcode.com/problems/powerful-integers/
 
 #include <unordered_set>

@@ -1,8 +1,40 @@
-﻿// LeetCode 3410 - Maximize Subarray Sum After Removing All Occurrences of One Element
+// LeetCode 3410 - Maximize Subarray Sum After Removing All Occurrences of One Element
 // https://leetcode.com/problems/maximize-subarray-sum-after-removing-all-occurrences-of-one-element/
 
+#include <cstdint>
+#include <unordered_set>
+#include <vector>
+
 class Solution {
+    long long kadane(const std::vector<int>& a) {
+        long long best = -(1LL << 62), cur = 0;
+        for (int x : a) {
+            cur += x;
+            if (cur > best) best = cur;
+            if (cur < 0) cur = 0;
+        }
+        bool allNeg = true;
+        long long mx = a[0];
+        for (int x : a) {
+            if (x > mx) mx = x;
+            if (x >= 0) allNeg = false;
+        }
+        if (allNeg) return mx;
+        return best;
+    }
+
 public:
-    void solve() {
+    long long maxSubarraySum(std::vector<int>& nums) {
+        long long ans = kadane(nums);
+        std::unordered_set<int> uniq;
+        for (int x : nums) if (x < 0) uniq.insert(x);
+        for (int v : uniq) {
+            std::vector<int> b;
+            for (int x : nums) if (x != v) b.push_back(x);
+            if (b.empty()) continue;
+            long long cand = kadane(b);
+            if (cand > ans) ans = cand;
+        }
+        return ans;
     }
 };

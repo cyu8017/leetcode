@@ -1,8 +1,34 @@
-﻿// LeetCode 3480 - Maximize Subarrays After Removing One Conflicting Pair
+// LeetCode 3480 - Maximize Subarrays After Removing One Conflicting Pair
 // https://leetcode.com/problems/maximize-subarrays-after-removing-one-conflicting-pair/
+
+#include <vector>
+#include <algorithm>
 
 class Solution {
 public:
-    void solve() {
+    long long maxSubarrays(int n, std::vector<std::vector<int>>& conflictingPairs) {
+        int m = (int)conflictingPairs.size();
+        long long best = 0;
+        for (int skip = 0; skip < m; skip++) {
+            std::vector<std::pair<int, int>> banned;
+            for (int i = 0; i < m; i++) {
+                if (i == skip) continue;
+                int a = conflictingPairs[i][0], b = conflictingPairs[i][1];
+                if (a > b) std::swap(a, b);
+                banned.push_back({a, b});
+            }
+            std::vector<int> rightLimit(n + 2, n + 1);
+            for (auto& b : banned) {
+                if (b.second < rightLimit[b.first]) rightLimit[b.first] = b.second;
+            }
+            int minRight = n + 1;
+            long long cnt = 0;
+            for (int l = n; l >= 1; l--) {
+                if (rightLimit[l] < minRight) minRight = rightLimit[l];
+                cnt += minRight - l;
+            }
+            if (cnt > best) best = cnt;
+        }
+        return best;
     }
 };

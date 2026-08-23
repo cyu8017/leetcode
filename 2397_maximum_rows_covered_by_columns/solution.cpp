@@ -1,8 +1,35 @@
-﻿// LeetCode 2397 - Maximum Rows Covered by Columns
+// LeetCode 2397 - Maximum Rows Covered by Columns
 // https://leetcode.com/problems/maximum-rows-covered-by-columns/
+
+#include <functional>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int maximumRows(std::vector<std::vector<int>>& matrix, int numSelect) {
+        int m = (int)matrix.size(), n = (int)matrix[0].size();
+        int ans = 0;
+        std::function<void(int, int, int)> dfs = [&](int col, int chosen, int mask) {
+            if (chosen == numSelect) {
+                int covered = 0;
+                for (int i = 0; i < m; i++) {
+                    bool ok = true;
+                    for (int j = 0; j < n; j++) {
+                        if (matrix[i][j] == 1 && ((mask >> j) & 1) == 0) {
+                            ok = false;
+                            break;
+                        }
+                    }
+                    if (ok) covered++;
+                }
+                if (covered > ans) ans = covered;
+                return;
+            }
+            if (col == n) return;
+            dfs(col + 1, chosen + 1, mask | (1 << col));
+            dfs(col + 1, chosen, mask);
+        };
+        dfs(0, 0, 0);
+        return ans;
     }
 };

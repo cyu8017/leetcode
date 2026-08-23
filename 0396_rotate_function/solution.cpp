@@ -1,4 +1,4 @@
-﻿// LeetCode 0396 - Rotate Function
+// LeetCode 0396 - Rotate Function
 // https://leetcode.com/problems/rotate-function/
 
 #include <algorithm>

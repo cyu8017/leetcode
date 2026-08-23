@@ -1,4 +1,4 @@
-﻿// LeetCode 0085 - Maximal Rectangle
+// LeetCode 0085 - Maximal Rectangle
 // https://leetcode.com/problems/maximal-rectangle/
 
 #include <algorithm>

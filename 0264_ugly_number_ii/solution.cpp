@@ -1,4 +1,4 @@
-﻿// LeetCode 0264 - Ugly Number II
+// LeetCode 0264 - Ugly Number II
 // https://leetcode.com/problems/ugly-number-ii/
 
 #include <algorithm>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0460 - LFU Cache
+// LeetCode 0460 - LFU Cache
 // https://leetcode.com/problems/lfu-cache/
 
 #include <algorithm>

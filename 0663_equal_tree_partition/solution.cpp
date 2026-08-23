@@ -1,4 +1,4 @@
-﻿// LeetCode 0663 - Equal Tree Partition
+// LeetCode 0663 - Equal Tree Partition
 // https://leetcode.com/problems/equal-tree-partition/
 
 #include <unordered_set>

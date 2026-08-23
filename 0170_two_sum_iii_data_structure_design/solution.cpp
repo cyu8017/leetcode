@@ -1,4 +1,4 @@
-﻿// LeetCode 0170 - Two Sum III - Data structure design
+// LeetCode 0170 - Two Sum III - Data structure design
 #include <unordered_map>
 using namespace std;
 class TwoSum {

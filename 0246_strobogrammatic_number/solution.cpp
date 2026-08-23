@@ -1,4 +1,4 @@
-﻿// LeetCode 0246 - Strobogrammatic Number
+// LeetCode 0246 - Strobogrammatic Number
 // https://leetcode.com/problems/strobogrammatic-number/
 
 #include <string>

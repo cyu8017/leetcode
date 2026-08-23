@@ -1,4 +1,4 @@
-﻿// LeetCode 0132 - Palindrome Partitioning II
+// LeetCode 0132 - Palindrome Partitioning II
 #include <algorithm>
 #include <string>
 #include <vector>

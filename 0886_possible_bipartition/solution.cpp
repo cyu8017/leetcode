@@ -1,4 +1,4 @@
-﻿// LeetCode 0886 - Possible Bipartition
+// LeetCode 0886 - Possible Bipartition
 // https://leetcode.com/problems/possible-bipartition/
 
 #include <queue>

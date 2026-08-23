@@ -1,4 +1,4 @@
-﻿// LeetCode 0166 - Fraction to Recurring Decimal
+// LeetCode 0166 - Fraction to Recurring Decimal
 #include <cstdlib>
 #include <string>
 #include <unordered_map>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0338 - Counting Bits
+// LeetCode 0338 - Counting Bits
 // https://leetcode.com/problems/counting-bits/
 
 #include <vector>

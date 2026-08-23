@@ -1,4 +1,4 @@
-﻿// LeetCode 0648 - Replace Words
+// LeetCode 0648 - Replace Words
 // https://leetcode.com/problems/replace-words/
 
 #include <sstream>

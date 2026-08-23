@@ -1,8 +1,26 @@
-﻿// LeetCode 3443 - Maximum Manhattan Distance After K Changes
+// LeetCode 3443 - Maximum Manhattan Distance After K Changes
 // https://leetcode.com/problems/maximum-manhattan-distance-after-k-changes/
+
+#include <cstdlib>
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int maxDistance(std::string s, int k) {
+        int ans = 0;
+        int lat = 0, lon = 0;
+        for (int i = 0; i < (int)s.size(); i++) {
+            char c = s[i];
+            if (c == 'N') lat++;
+            else if (c == 'S') lat--;
+            else if (c == 'E') lon++;
+            else lon--;
+            int md = std::abs(lat) + std::abs(lon);
+            int steps = i + 1;
+            int cur = md + 2 * k;
+            if (cur > steps) cur = steps;
+            if (cur > ans) ans = cur;
+        }
+        return ans;
     }
 };

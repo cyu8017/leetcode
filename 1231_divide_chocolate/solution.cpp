@@ -1,4 +1,4 @@
-﻿// LeetCode 1231 - Divide Chocolate
+// LeetCode 1231 - Divide Chocolate
 // https://leetcode.com/problems/divide-chocolate/
 
 #include <numeric>

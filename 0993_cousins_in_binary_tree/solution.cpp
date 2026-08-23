@@ -1,4 +1,4 @@
-﻿// LeetCode 0993 - Cousins in Binary Tree
+// LeetCode 0993 - Cousins in Binary Tree
 // https://leetcode.com/problems/cousins-in-binary-tree/
 
 #include <unordered_map>

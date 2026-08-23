@@ -1,4 +1,4 @@
-﻿// LeetCode 0112 - Path Sum
+// LeetCode 0112 - Path Sum
 struct TreeNode { int val; TreeNode *left, *right; };
 class Solution { public: bool hasPathSum(TreeNode* root, int targetSum) {
     if (!root) return false;

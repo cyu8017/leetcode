@@ -1,4 +1,4 @@
-﻿// LeetCode 0302 - Smallest Rectangle Enclosing Black Pixels
+// LeetCode 0302 - Smallest Rectangle Enclosing Black Pixels
 // https://leetcode.com/problems/smallest-rectangle-enclosing-black-pixels/
 
 #include <string>

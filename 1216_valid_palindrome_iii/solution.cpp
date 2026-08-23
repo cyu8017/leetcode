@@ -1,4 +1,4 @@
-﻿// LeetCode 1216 - Valid Palindrome III
+// LeetCode 1216 - Valid Palindrome III
 // https://leetcode.com/problems/valid-palindrome-iii/
 
 #include <algorithm>

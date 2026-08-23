@@ -1,4 +1,4 @@
-﻿// LeetCode 0436 - Find Right Interval
+// LeetCode 0436 - Find Right Interval
 // https://leetcode.com/problems/find-right-interval/
 
 #include <algorithm>

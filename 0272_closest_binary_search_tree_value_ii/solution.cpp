@@ -1,4 +1,4 @@
-﻿// LeetCode 0272 - Closest Binary Search Tree Value II
+// LeetCode 0272 - Closest Binary Search Tree Value II
 // https://leetcode.com/problems/closest-binary-search-tree-value-ii/
 
 #include <cmath>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0005 - Longest Palindromic Substring
+// LeetCode 0005 - Longest Palindromic Substring
 // https://leetcode.com/problems/longest-palindromic-substring/
 
 #include <string>

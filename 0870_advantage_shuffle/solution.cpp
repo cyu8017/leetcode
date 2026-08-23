@@ -1,4 +1,4 @@
-﻿// LeetCode 0870 - Advantage Shuffle
+// LeetCode 0870 - Advantage Shuffle
 // https://leetcode.com/problems/advantage-shuffle/
 
 #include <algorithm>

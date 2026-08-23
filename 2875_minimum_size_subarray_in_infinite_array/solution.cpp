@@ -1,8 +1,32 @@
-﻿// LeetCode 2875 - Minimum Size Subarray in Infinite Array
+// LeetCode 2875 - Minimum Size Subarray in Infinite Array
 // https://leetcode.com/problems/minimum-size-subarray-in-infinite-array/
+
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int minSizeSubarray(std::vector<int>& nums, int target) {
+        int n = (int)nums.size();
+        long long total = 0;
+        for (int v : nums) total += v;
+        int ans = 1 << 30;
+        if (total > 0) {
+            int loops = (int)(target / total);
+            int remain = (int)(target % total);
+            if (remain == 0) return loops * n;
+            std::vector<int> arr = nums;
+            arr.insert(arr.end(), nums.begin(), nums.end());
+            int left = 0, sum = 0, best = 1 << 30;
+            for (int right = 0; right < (int)arr.size(); right++) {
+                sum += arr[right];
+                while (sum > remain && left <= right) {
+                    sum -= arr[left];
+                    left++;
+                }
+                if (sum == remain && right - left + 1 < best) best = right - left + 1;
+            }
+            if (best < (1 << 30)) ans = loops * n + best;
+        }
+        return ans == (1 << 30) ? -1 : ans;
     }
 };

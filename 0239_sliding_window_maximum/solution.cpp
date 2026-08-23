@@ -1,4 +1,4 @@
-﻿// LeetCode 0239 - Sliding Window Maximum
+// LeetCode 0239 - Sliding Window Maximum
 // https://leetcode.com/problems/sliding-window-maximum/
 
 #include <deque>

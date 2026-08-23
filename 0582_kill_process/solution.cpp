@@ -1,4 +1,4 @@
-﻿// LeetCode 0582 - Kill Process
+// LeetCode 0582 - Kill Process
 // https://leetcode.com/problems/kill-process/
 
 #include <queue>

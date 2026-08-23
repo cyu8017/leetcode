@@ -1,4 +1,4 @@
-﻿// LeetCode 0776 - Split BST
+// LeetCode 0776 - Split BST
 // https://leetcode.com/problems/split-bst/
 
 #include <vector>

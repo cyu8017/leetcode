@@ -1,4 +1,4 @@
-﻿// LeetCode 0463 - Island Perimeter
+// LeetCode 0463 - Island Perimeter
 // https://leetcode.com/problems/island-perimeter/
 
 #include <vector>

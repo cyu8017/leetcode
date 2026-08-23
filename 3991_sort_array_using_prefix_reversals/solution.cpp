@@ -1,62 +1,45 @@
-﻿// LeetCode 3991 - Sort Array Using Prefix Reversals
+// LeetCode 3991 - Sort Array Using Prefix Reversals
 // https://leetcode.com/problems/sort-array-using-prefix-reversals/
 
-#include <vector>
 #include <queue>
 #include <unordered_set>
-#include <algorithm>
-#include <string>
-
-using namespace std;
+#include <utility>
+#include <vector>
 
 class Solution {
 public:
-    int sortArray(vector<int>& nums, vector<int>& pre) {
-        int n = nums.size();
-        string start = key(nums);
-        vector<int> targetArr(n);
-        for (int i = 0; i < n; i++) targetArr[i] = i;
-        string target = key(targetArr);
+    int sortArray(std::vector<int>& nums, std::vector<int>& pre) {
+        int n = (int)nums.size();
+
+        int target = 0;
+        for (int i = 0; i < n; i++) target = target * 8 + i;
+
+        int start = 0;
+        for (int x : nums) start = start * 8 + x;
         if (start == target) return 0;
 
-        vector<int> lengths;
-        for (int i : pre) {
-            if (i >= 2 && i <= n) lengths.push_back(i);
-        }
-        sort(lengths.begin(), lengths.end());
-        lengths.erase(unique(lengths.begin(), lengths.end()), lengths.end());
-
-        unordered_set<string> visited;
-        visited.insert(start);
-        queue<vector<int>> q;
-        q.push(nums);
-        int steps = 0;
+        std::unordered_set<int> vis{start};
+        std::queue<std::pair<std::vector<int>, int>> q;
+        q.push({nums, 0});
 
         while (!q.empty()) {
-            steps++;
-            int size = q.size();
-            for (int t = 0; t < size; t++) {
-                vector<int> cur = q.front();
-                q.pop();
-                for (int i : lengths) {
-                    vector<int> nxt = cur;
-                    reverse(nxt.begin(), nxt.begin() + i);
-                    string k = key(nxt);
-                    if (k == target) return steps;
-                    if (visited.insert(k).second) q.push(nxt);
+            auto [state, dist] = q.front();
+            q.pop();
+            int nd = dist + 1;
+            for (int x : pre) {
+                std::vector<int> nxt = state;
+                for (int l = 0, r = x - 1; l < r; l++, r--) {
+                    std::swap(nxt[l], nxt[r]);
+                }
+                int key = 0;
+                for (int v : nxt) key = key * 8 + v;
+                if (key == target) return nd;
+                if (!vis.count(key)) {
+                    vis.insert(key);
+                    q.push({std::move(nxt), nd});
                 }
             }
         }
         return -1;
-    }
-
-private:
-    string key(const vector<int>& arr) {
-        string s;
-        for (int i = 0; i < (int)arr.size(); i++) {
-            if (i) s.push_back(',');
-            s += to_string(arr[i]);
-        }
-        return s;
     }
 };

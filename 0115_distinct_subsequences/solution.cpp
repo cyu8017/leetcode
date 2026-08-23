@@ -1,4 +1,4 @@
-﻿// LeetCode 0115 - Distinct Subsequences
+// LeetCode 0115 - Distinct Subsequences
 #include <string>
 #include <vector>
 class Solution { public: int numDistinct(std::string s, std::string t) {

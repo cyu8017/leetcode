@@ -1,4 +1,4 @@
-﻿// LeetCode 0290 - Word Pattern
+// LeetCode 0290 - Word Pattern
 // https://leetcode.com/problems/word-pattern/
 
 #include <sstream>

@@ -1,8 +1,14 @@
-﻿// LeetCode 3894 - Traffic Signal Color
+// LeetCode 3894 - Traffic Signal Color
 // https://leetcode.com/problems/traffic-signal-color/
+
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    std::string trafficSignal(int timer) {
+        if (timer == 0) return "Green";
+        if (timer == 30) return "Orange";
+        if (timer > 30 && timer <= 90) return "Red";
+        return "Invalid";
     }
 };

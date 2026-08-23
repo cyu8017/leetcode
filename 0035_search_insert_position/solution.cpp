@@ -1,4 +1,4 @@
-﻿// LeetCode 0035 - Search Insert Position
+// LeetCode 0035 - Search Insert Position
 // https://leetcode.com/problems/search-insert-position/
 
 #include <vector>

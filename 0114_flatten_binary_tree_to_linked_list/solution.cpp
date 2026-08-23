@@ -1,4 +1,4 @@
-﻿// LeetCode 0114 - Flatten Binary Tree to Linked List
+// LeetCode 0114 - Flatten Binary Tree to Linked List
 struct TreeNode { int val; TreeNode *left, *right; };
 class Solution {
     TreeNode* flattenTail(TreeNode* n) {

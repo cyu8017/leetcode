@@ -1,8 +1,13 @@
-﻿// LeetCode 3293 - Calculate Product Final Price
+// LeetCode 3293 - Calculate Product Final Price
 // https://leetcode.com/problems/calculate-product-final-price/
 
-class Solution {
-public:
-    void solve() {
-    }
-};
+const char* QUERY = R"SQL(
+SELECT
+    product_id,
+    price * (100 - IFNULL(discount, 0)) / 100 final_price,
+    category
+FROM
+    Products
+    LEFT JOIN Discounts USING (category)
+ORDER BY 1;
+)SQL";

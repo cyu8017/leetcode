@@ -1,8 +1,59 @@
-﻿// LeetCode 2132 - Stamping the Grid
+// LeetCode 2132 - Stamping the Grid
 // https://leetcode.com/problems/stamping-the-grid/
+
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <cmath>
+#include <cstdint>
+#include <deque>
+#include <functional>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <queue>
+#include <set>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+using namespace std;
 
 class Solution {
 public:
-    void solve() {
+    bool possibleToStamp(vector<vector<int>>& grid, int stampHeight, int stampWidth) {
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<int>> pref(m + 1, vector<int>(n + 1));
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                pref[i + 1][j + 1] = pref[i + 1][j] + pref[i][j + 1] - pref[i][j] + grid[i][j];
+        auto sum = [&](int r1, int c1, int r2, int c2) {
+            return pref[r2 + 1][c2 + 1] - pref[r1][c2 + 1] - pref[r2 + 1][c1] + pref[r1][c1];
+        };
+        vector<vector<int>> diff(m + 1, vector<int>(n + 1));
+        for (int i = 0; i + stampHeight - 1 < m; i++) {
+            for (int j = 0; j + stampWidth - 1 < n; j++) {
+                if (sum(i, j, i + stampHeight - 1, j + stampWidth - 1) == 0) {
+                    diff[i][j]++;
+                    diff[i][j + stampWidth]--;
+                    diff[i + stampHeight][j]--;
+                    diff[i + stampHeight][j + stampWidth]++;
+                }
+            }
+        }
+        vector<vector<int>> cur(m, vector<int>(n));
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int v = diff[i][j];
+                if (i > 0) v += cur[i - 1][j];
+                if (j > 0) v += cur[i][j - 1];
+                if (i > 0 && j > 0) v -= cur[i - 1][j - 1];
+                cur[i][j] = v;
+                if (grid[i][j] == 0 && v == 0) return false;
+            }
+        }
+        return true;
     }
 };

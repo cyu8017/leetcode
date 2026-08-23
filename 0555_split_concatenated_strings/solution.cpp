@@ -1,4 +1,4 @@
-﻿// LeetCode 0555 - Split Concatenated Strings
+// LeetCode 0555 - Split Concatenated Strings
 // https://leetcode.com/problems/split-concatenated-strings/
 
 #include <algorithm>

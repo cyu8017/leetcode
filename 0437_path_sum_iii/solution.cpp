@@ -1,4 +1,4 @@
-﻿// LeetCode 0437 - Path Sum III
+// LeetCode 0437 - Path Sum III
 // https://leetcode.com/problems/path-sum-iii/
 
 #include <unordered_map>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0982 - Triples with Bitwise AND Equal To Zero
+// LeetCode 0982 - Triples with Bitwise AND Equal To Zero
 // https://leetcode.com/problems/triples-with-bitwise-and-equal-to-zero/
 
 #include <unordered_map>

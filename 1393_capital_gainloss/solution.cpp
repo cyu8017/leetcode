@@ -1,8 +1,9 @@
-﻿// LeetCode 1393 - Capital Gain/Loss
+// LeetCode 1393 - Capital Gain/Loss
 // https://leetcode.com/problems/capital-gainloss/
 
-class Solution {
-public:
-    void solve() {
-    }
-};
+const char* QUERY = R"SQL(
+SELECT stock_name,
+       SUM(CASE WHEN operation = 'Sell' THEN price ELSE -price END) AS capital_gain_loss
+FROM Stocks
+GROUP BY stock_name
+)SQL";

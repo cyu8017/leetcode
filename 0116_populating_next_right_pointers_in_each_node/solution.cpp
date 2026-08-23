@@ -1,4 +1,4 @@
-﻿// LeetCode 0116 - Populating Next Right Pointers in Each Node
+// LeetCode 0116 - Populating Next Right Pointers in Each Node
 #include <queue>
 class Node { public: int val; Node *left, *right, *next; };
 class Solution { public: Node* connect(Node* root) {

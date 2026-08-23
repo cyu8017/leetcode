@@ -1,4 +1,4 @@
-﻿// LeetCode 1273 - Delete Tree Nodes
+// LeetCode 1273 - Delete Tree Nodes
 // https://leetcode.com/problems/delete-tree-nodes/
 
 #include <utility>

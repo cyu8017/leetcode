@@ -1,4 +1,4 @@
-﻿// LeetCode 0367 - Valid Perfect Square
+// LeetCode 0367 - Valid Perfect Square
 // https://leetcode.com/problems/valid-perfect-square/
 
 class Solution {

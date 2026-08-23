@@ -1,8 +1,14 @@
-﻿// LeetCode 3498 - Reverse Degree of a String
+// LeetCode 3498 - Reverse Degree of a String
 // https://leetcode.com/problems/reverse-degree-of-a-string/
+
+#include <string>
 
 class Solution {
 public:
-    void solve() {
+    int reverseDegree(std::string s) {
+        int ans = 0;
+        for (int i = 0; i < (int)s.size(); i++)
+            ans += (26 - (s[i] - 'a')) * (i + 1);
+        return ans;
     }
 };

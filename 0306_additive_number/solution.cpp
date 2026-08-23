@@ -1,4 +1,4 @@
-﻿// LeetCode 0306 - Additive Number
+// LeetCode 0306 - Additive Number
 // https://leetcode.com/problems/additive-number/
 
 #include <string>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0286 - Walls and Gates
+// LeetCode 0286 - Walls and Gates
 // https://leetcode.com/problems/walls-and-gates/
 
 #include <climits>

@@ -1,4 +1,4 @@
-﻿// LeetCode 0854 - K-Similar Strings
+// LeetCode 0854 - K-Similar Strings
 // https://leetcode.com/problems/k-similar-strings/
 
 #include <queue>

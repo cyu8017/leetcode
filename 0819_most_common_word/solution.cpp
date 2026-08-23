@@ -1,4 +1,4 @@
-﻿// LeetCode 0819 - Most Common Word
+// LeetCode 0819 - Most Common Word
 // https://leetcode.com/problems/most-common-word/
 
 #include <cctype>

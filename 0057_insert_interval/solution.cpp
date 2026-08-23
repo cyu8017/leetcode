@@ -1,4 +1,4 @@
-﻿// LeetCode 0057 - Insert Interval
+// LeetCode 0057 - Insert Interval
 // https://leetcode.com/problems/insert-interval/
 
 #include <algorithm>

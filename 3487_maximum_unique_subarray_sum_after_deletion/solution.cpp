@@ -1,8 +1,27 @@
-﻿// LeetCode 3487 - Maximum Unique Subarray Sum After Deletion
+// LeetCode 3487 - Maximum Unique Subarray Sum After Deletion
 // https://leetcode.com/problems/maximum-unique-subarray-sum-after-deletion/
+
+#include <vector>
+#include <unordered_set>
 
 class Solution {
 public:
-    void solve() {
+    int maxSum(std::vector<int>& nums) {
+        std::unordered_set<int> seen;
+        int sum = 0;
+        bool hasPos = false;
+        int maxNeg = (int)(-1e9);
+        for (int x : nums) {
+            if (x < 0) {
+                if (x > maxNeg) maxNeg = x;
+                continue;
+            }
+            hasPos = true;
+            if (!seen.count(x)) {
+                seen.insert(x);
+                sum += x;
+            }
+        }
+        return hasPos ? sum : maxNeg;
     }
 };

@@ -1,4 +1,4 @@
-﻿// LeetCode 1255 - Maximum Score Words Formed by Letters
+// LeetCode 1255 - Maximum Score Words Formed by Letters
 // https://leetcode.com/problems/maximum-score-words-formed-by-letters/
 
 #include <algorithm>

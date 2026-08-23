@@ -1,8 +1,28 @@
-﻿// LeetCode 3499 - Maximize Active Section with Trade I
+// LeetCode 3499 - Maximize Active Section with Trade I
 // https://leetcode.com/problems/maximize-active-section-with-trade-i/
+
+#include <string>
+#include <vector>
 
 class Solution {
 public:
-    void solve() {
+    int maxActiveSectionsAfterTrade(std::string s) {
+        int ones = 0;
+        for (char c : s) if (c == '1') ones++;
+        std::vector<std::pair<int, int>> zeros;
+        int n = (int)s.size();
+        for (int i = 0; i < n;) {
+            if (s[i] != '0') { i++; continue; }
+            int j = i;
+            while (j < n && s[j] == '0') j++;
+            zeros.push_back({i, j - 1});
+            i = j;
+        }
+        int best = 0;
+        for (int i = 0; i + 1 < (int)zeros.size(); i++) {
+            int gain = (zeros[i].second - zeros[i].first + 1) + (zeros[i + 1].second - zeros[i + 1].first + 1);
+            if (gain > best) best = gain;
+        }
+        return ones + best;
     }
 };

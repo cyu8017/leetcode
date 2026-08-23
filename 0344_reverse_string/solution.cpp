@@ -1,4 +1,4 @@
-﻿// LeetCode 0344 - Reverse String
+// LeetCode 0344 - Reverse String
 // https://leetcode.com/problems/reverse-string/
 
 #include <vector>

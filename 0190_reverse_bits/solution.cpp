@@ -1,4 +1,4 @@
-﻿// LeetCode 0190 - Reverse Bits
+// LeetCode 0190 - Reverse Bits
 // https://leetcode.com/problems/reverse-bits/
 
 #include <cstdint>

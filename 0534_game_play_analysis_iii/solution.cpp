@@ -1,4 +1,4 @@
-﻿// LeetCode 0534 - Game Play Analysis III
+// LeetCode 0534 - Game Play Analysis III
 // https://leetcode.com/problems/game-play-analysis-iii/
 
 const char* QUERY = R"SQL(
