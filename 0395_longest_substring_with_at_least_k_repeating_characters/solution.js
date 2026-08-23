@@ -1,4 +1,4 @@
-﻿// LeetCode 0395 - Longest Substring with At Least K Repeating Characters
+// LeetCode 0395 - Longest Substring with At Least K Repeating Characters
 var longestSubstring = function (s, k) {
     if (!s.length) return 0;
 

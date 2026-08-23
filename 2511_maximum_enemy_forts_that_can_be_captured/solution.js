@@ -1,9 +1,19 @@
-﻿// LeetCode 2511 - Maximum Enemy Forts That Can Be Captured
+// LeetCode 2511 - Maximum Enemy Forts That Can Be Captured
 // https://leetcode.com/problems/maximum-enemy-forts-that-can-be-captured/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} forts
+ * @return {number}
  */
-var solve = function(input) {
+var captureForts = function(forts) {
+    let ans = 0, prev = -1;
+    for (let i = 0; i < forts.length; i++) {
+        if (forts[i] !== 0) {
+            if (prev >= 0 && forts[prev] === -forts[i]) {
+                if (i - prev - 1 > ans) ans = i - prev - 1;
+            }
+            prev = i;
+        }
+    }
+    return ans;
 };

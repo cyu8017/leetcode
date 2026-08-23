@@ -1,4 +1,4 @@
-﻿// LeetCode 0262 - Trips and Users
+// LeetCode 0262 - Trips And Users
 // https://leetcode.com/problems/trips-and-users/
 
 var QUERY = `SELECT
@@ -6,7 +6,7 @@ var QUERY = `SELECT
     ROUND(
         SUM(CASE WHEN Status <> 'completed' THEN 1 ELSE 0 END) / COUNT(*),
         2
-    ) AS \`Cancellation Rate\`
+    ) AS `Cancellation Rate`
 FROM Trips
 INNER JOIN Users ON Trips.Client_Id = Users.Users_Id AND Users.Role = 'client'
 WHERE Users.Banned = 'No'

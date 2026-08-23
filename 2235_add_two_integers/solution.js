@@ -1,9 +1,11 @@
-﻿// LeetCode 2235 - Add Two Integers
+// LeetCode 2235 - Add Two Integers
 // https://leetcode.com/problems/add-two-integers/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} num1
+ * @param {number} num2
+ * @return {number}
  */
-var solve = function(input) {
+var sum = function(num1, num2) {
+    return num1 + num2;
 };

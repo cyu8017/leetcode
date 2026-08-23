@@ -1,9 +1,18 @@
-﻿// LeetCode 2017 - Grid Game
+// LeetCode 2017 - Grid Game
 // https://leetcode.com/problems/grid-game/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} grid
+ * @return {number}
  */
-var solve = function(input) {
+var gridGame = function(grid) {
+    const n = grid[0].length;
+    let top = 0, bottom = 0, ans = Number.MAX_SAFE_INTEGER;
+    for (const v of grid[0]) top += v;
+    for (let i = 0; i < n; i++) {
+        top -= grid[0][i];
+        ans = Math.min(ans, Math.max(top, bottom));
+        bottom += grid[1][i];
+    }
+    return ans;
 };

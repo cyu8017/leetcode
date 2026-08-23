@@ -1,4 +1,4 @@
-﻿// LeetCode 0500 - Keyboard Row
+// LeetCode 0500 - Keyboard Row
 // https://leetcode.com/problems/keyboard-row/
 
 class Solution {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0413 - Arithmetic Slices
+// LeetCode 0413 - Arithmetic Slices
 var numberOfArithmeticSlices = function (nums) {
     if (nums.length < 3) return 0;
     let total = 0;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0376 - Wiggle Subsequence
+// LeetCode 0376 - Wiggle Subsequence
 var wiggleMaxLength = function(nums) {
     if (nums.length < 2) return nums.length;
     let up = 1;

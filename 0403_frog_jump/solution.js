@@ -1,4 +1,4 @@
-﻿// LeetCode 0403 - Frog Jump
+// LeetCode 0403 - Frog Jump
 var canCross = function (stones) {
     const jumps = new Map(stones.map((stone) => [stone, new Set()]));
     jumps.get(0).add(0);

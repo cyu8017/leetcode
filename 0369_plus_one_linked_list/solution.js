@@ -1,4 +1,4 @@
-﻿// LeetCode 0369 - Plus One Linked List
+// LeetCode 0369 - Plus One Linked List
 function ListNode(val, next) {
     this.val = val === undefined ? 0 : val;
     this.next = next === undefined ? null : next;

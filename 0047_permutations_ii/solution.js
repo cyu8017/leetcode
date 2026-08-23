@@ -1,4 +1,4 @@
-﻿// LeetCode 0047 - Permutations II
+// LeetCode 0047 - Permutations II
 // https://leetcode.com/problems/permutations-ii/
 
 /**

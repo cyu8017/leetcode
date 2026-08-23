@@ -1,4 +1,4 @@
-﻿// LeetCode 0352 - Data Stream as Disjoint Intervals
+// LeetCode 0352 - Data Stream as Disjoint Intervals
 class SummaryRanges {
     constructor() {
         this.intervals = [];

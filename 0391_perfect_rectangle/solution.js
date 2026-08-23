@@ -1,4 +1,4 @@
-﻿// LeetCode 0391 - Perfect Rectangle
+// LeetCode 0391 - Perfect Rectangle
 var isRectangleCover = function (rectangles) {
     const points = new Set();
     let area = 0;

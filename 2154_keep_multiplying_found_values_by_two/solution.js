@@ -1,9 +1,13 @@
-﻿// LeetCode 2154 - Keep Multiplying Found Values by Two
+// LeetCode 2154 - Keep Multiplying Found Values by Two
 // https://leetcode.com/problems/keep-multiplying-found-values-by-two/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} original
+ * @return {number}
  */
-var solve = function(input) {
+var findFinalValue = function(nums, original) {
+    const have = new Set(nums);
+    while (have.has(original)) original *= 2;
+    return original;
 };

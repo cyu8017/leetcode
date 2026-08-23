@@ -1,9 +1,16 @@
-﻿// LeetCode 0598 - Range Addition II
+// LeetCode 0598 - Range Addition II
 // https://leetcode.com/problems/range-addition-ii/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} m
+ * @param {number} n
+ * @param {number[][]} ops
+ * @return {number}
  */
-var solve = function(input) {
+var maxCount = function(m, n, ops) {
+    for (const op of ops) {
+        m = Math.min(m, op[0]);
+        n = Math.min(n, op[1]);
+    }
+    return m * n;
 };

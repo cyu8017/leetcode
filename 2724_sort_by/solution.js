@@ -1,9 +1,6 @@
-﻿// LeetCode 2724 - Sort By
+// LeetCode 2724 - Sort By
 // https://leetcode.com/problems/sort-by/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var sortBy = function(arr, fn) {
+    return arr.slice().sort((a, b) => fn(a) - fn(b));
 };

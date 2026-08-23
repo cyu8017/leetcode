@@ -1,4 +1,4 @@
-﻿// LeetCode 0388 - Longest Absolute File Path
+// LeetCode 0388 - Longest Absolute File Path
 var lengthLongestPath = function (input) {
     const stack = [];
     let maxLength = 0;

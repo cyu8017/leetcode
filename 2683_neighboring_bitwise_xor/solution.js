@@ -1,9 +1,8 @@
-﻿// LeetCode 2683 - Neighboring Bitwise XOR
+// LeetCode 2683 - Neighboring Bitwise XOR
 // https://leetcode.com/problems/neighboring-bitwise-xor/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var doesValidArrayExist = function(derived) {
+    let x = 0;
+    for (const v of derived) x ^= v;
+    return x === 0;
 };

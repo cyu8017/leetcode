@@ -1,4 +1,4 @@
-﻿// LeetCode 0165 - Compare Version Numbers
+// LeetCode 0165 - Compare Version Numbers
 // https://leetcode.com/problems/compare-version-numbers/
 
 /**

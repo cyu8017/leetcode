@@ -1,4 +1,4 @@
-﻿// LeetCode 0393 - UTF-8 Validation
+// LeetCode 0393 - UTF-8 Validation
 var validUtf8 = function (data) {
     let remaining = 0;
 

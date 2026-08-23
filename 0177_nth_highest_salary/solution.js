@@ -1,4 +1,4 @@
-﻿// LeetCode 0177 - Nth Highest Salary
+// LeetCode 0177 - Nth Highest Salary
 // https://leetcode.com/problems/nth-highest-salary/
 
 var QUERY = `CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT

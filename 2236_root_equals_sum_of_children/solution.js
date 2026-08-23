@@ -1,9 +1,18 @@
-﻿// LeetCode 2236 - Root Equals Sum of Children
+// LeetCode 2236 - Root Equals Sum of Children
 // https://leetcode.com/problems/root-equals-sum-of-children/
 
 /**
- * @param {any} input
- * @return {any}
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
  */
-var solve = function(input) {
+/**
+ * @param {TreeNode} root
+ * @return {boolean}
+ */
+var checkTree = function(root) {
+    return root.val === root.left.val + root.right.val;
 };

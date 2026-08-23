@@ -1,4 +1,4 @@
-﻿// LeetCode 0193 - Valid Phone Numbers
+// LeetCode 0193 - Valid Phone Numbers
 // https://leetcode.com/problems/valid-phone-numbers/
 
 var SCRIPT = `

@@ -1,4 +1,4 @@
-﻿// LeetCode 0132 - Palindrome Partitioning II
+// LeetCode 0132 - Palindrome Partitioning II
 // https://leetcode.com/problems/palindrome-partitioning-ii/
 
 /**

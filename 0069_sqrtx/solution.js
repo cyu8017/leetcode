@@ -1,4 +1,4 @@
-﻿// LeetCode 0069 - Sqrt(x)
+// LeetCode 0069 - Sqrt(x)
 // https://leetcode.com/problems/sqrtx/
 
 /**

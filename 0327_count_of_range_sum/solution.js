@@ -1,4 +1,4 @@
-﻿// LeetCode 0327 - Count of Range Sum
+// LeetCode 0327 - Count of Range Sum
 var countRangeSum = function(nums, lower, upper) {
     const prefix = [0];
     for (const num of nums) prefix.push(prefix[prefix.length - 1] + num);

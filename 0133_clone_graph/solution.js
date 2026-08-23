@@ -1,4 +1,4 @@
-﻿// LeetCode 0133 - Clone Graph
+// LeetCode 0133 - Clone Graph
 // https://leetcode.com/problems/clone-graph/
 
 function Node(val = 0, neighbors = []) {

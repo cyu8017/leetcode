@@ -1,9 +1,15 @@
-﻿// LeetCode 0976 - Largest Perimeter Triangle
+// LeetCode 0976 - Largest Perimeter Triangle
 // https://leetcode.com/problems/largest-perimeter-triangle/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var largestPerimeter = function(nums) {
+    nums.sort((a, b) => a - b);
+    for (let i = nums.length - 1; i >= 2; i--) {
+        if (nums[i] < nums[i - 1] + nums[i - 2])
+            return nums[i] + nums[i - 1] + nums[i - 2];
+    }
+    return 0;
 };

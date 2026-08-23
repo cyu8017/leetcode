@@ -1,9 +1,22 @@
-﻿// LeetCode 2728 - Count Houses in a Circular Street
+// LeetCode 2728 - Count Houses in a Circular Street
 // https://leetcode.com/problems/count-houses-in-a-circular-street/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {Street} street
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var houseCount = function(street, k) {
+    for (let i = 0; i < k; i++) {
+        street.closeDoor();
+        street.moveRight();
+    }
+    let ans = 0;
+    for (;;) {
+        ans++;
+        street.openDoor();
+        street.moveRight();
+        if (street.isDoorOpen()) break;
+    }
+    return ans;
 };

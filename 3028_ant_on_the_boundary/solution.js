@@ -1,9 +1,11 @@
-﻿// LeetCode 3028 - Ant on the Boundary
+// LeetCode 3028 - Ant on the Boundary
 // https://leetcode.com/problems/ant-on-the-boundary/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var returnToBoundaryCount = function(nums) {
+    let s = 0, ans = 0;
+    for (const x of nums) {
+        s += x;
+        if (s === 0) ans++;
+    }
+    return ans;
 };

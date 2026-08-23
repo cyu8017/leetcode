@@ -1,9 +1,14 @@
-﻿// LeetCode 0771 - Jewels and Stones
+// LeetCode 0771 - Jewels and Stones
 // https://leetcode.com/problems/jewels-and-stones/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
  */
-var solve = function(input) {
+var numJewelsInStones = function(jewels, stones) {
+    const jewelSet = new Set(jewels);
+    let count = 0;
+    for (const stone of stones) if (jewelSet.has(stone)) count++;
+    return count;
 };

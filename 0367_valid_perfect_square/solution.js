@@ -1,4 +1,4 @@
-﻿// LeetCode 0367 - Valid Perfect Square
+// LeetCode 0367 - Valid Perfect Square
 var isPerfectSquare = function(num) {
     let left = 1;
     let right = num;

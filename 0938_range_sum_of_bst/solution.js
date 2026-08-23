@@ -1,9 +1,21 @@
-﻿// LeetCode 0938 - Range Sum of BST
+// LeetCode 0938 - Range Sum of BST
 // https://leetcode.com/problems/range-sum-of-bst/
 
+function TreeNode(val, left, right) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+}
+
 /**
- * @param {any} input
- * @return {any}
+ * @param {TreeNode} root
+ * @param {number} low
+ * @param {number} high
+ * @return {number}
  */
-var solve = function(input) {
+var rangeSumBST = function(root, low, high) {
+    if (!root) return 0;
+    if (root.val < low) return rangeSumBST(root.right, low, high);
+    if (root.val > high) return rangeSumBST(root.left, low, high);
+    return root.val + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high);
 };

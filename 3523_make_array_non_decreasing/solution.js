@@ -1,9 +1,13 @@
-﻿// LeetCode 3523 - Make Array Non-decreasing
+// LeetCode 3523 - Make Array Non-decreasing
 // https://leetcode.com/problems/make-array-non-decreasing/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var maximumPossibleSize = function(nums) {
+    let ans = 0, mx = 0;
+    for (const x of nums) {
+        if (mx <= x) {
+            ans++;
+            mx = x;
+        }
+    }
+    return ans;
 };

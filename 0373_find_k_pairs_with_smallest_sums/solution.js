@@ -1,4 +1,4 @@
-﻿// LeetCode 0373 - Find K Pairs with Smallest Sums
+// LeetCode 0373 - Find K Pairs with Smallest Sums
 var kSmallestPairs = function(nums1, nums2, k) {
     if (!nums1.length || !nums2.length || k === 0) return [];
 

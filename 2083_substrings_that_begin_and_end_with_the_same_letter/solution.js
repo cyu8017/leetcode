@@ -1,9 +1,16 @@
-﻿// LeetCode 2083 - Substrings That Begin and End With the Same Letter
+// LeetCode 2083 - Substrings That Begin and End With the Same Letter
 // https://leetcode.com/problems/substrings-that-begin-and-end-with-the-same-letter/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number}
  */
-var solve = function(input) {
+var numberOfSubstrings = function(s) {
+    const freq = new Array(26).fill(0);
+    let ans = 0;
+    for (const c of s) {
+        freq[c.charCodeAt(0) - 97]++;
+        ans += freq[c.charCodeAt(0) - 97];
+    }
+    return ans;
 };

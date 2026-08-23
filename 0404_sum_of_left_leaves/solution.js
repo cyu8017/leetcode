@@ -1,4 +1,4 @@
-﻿// LeetCode 0404 - Sum of Left Leaves
+// LeetCode 0404 - Sum of Left Leaves
 var sumOfLeftLeaves = function (root) {
     if (!root) return 0;
     let total = 0;

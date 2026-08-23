@@ -1,4 +1,4 @@
-﻿// LeetCode 0374 - Guess Number Higher or Lower
+// LeetCode 0374 - Guess Number Higher or Lower
 class Solution {
     guessNumber(n) {
         let left = 1;

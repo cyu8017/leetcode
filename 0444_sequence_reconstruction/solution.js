@@ -1,4 +1,4 @@
-﻿// LeetCode 0444 - Sequence Reconstruction
+// LeetCode 0444 - Sequence Reconstruction
 // https://leetcode.com/problems/sequence-reconstruction/
 
 class Solution {

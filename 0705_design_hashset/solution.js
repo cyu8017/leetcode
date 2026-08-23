@@ -1,9 +1,26 @@
-﻿// LeetCode 0705 - Design HashSet
+// LeetCode 0705 - Design HashSet
 // https://leetcode.com/problems/design-hashset/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+class MyHashSet {
+    constructor() {
+        this.data = new Set();
+    }
+
+    /**
+     * @param {number} key
+     * @return {void}
+     */
+    add(key) { this.data.add(key); }
+
+    /**
+     * @param {number} key
+     * @return {void}
+     */
+    remove(key) { this.data.delete(key); }
+
+    /**
+     * @param {number} key
+     * @return {boolean}
+     */
+    contains(key) { return this.data.has(key); }
+}

@@ -1,4 +1,4 @@
-﻿// LeetCode 0372 - Super Pow
+// LeetCode 0372 - Super Pow
 var superPow = function(a, b) {
     const mod = 1337;
     a %= mod;

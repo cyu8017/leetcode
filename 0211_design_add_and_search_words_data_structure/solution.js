@@ -1,4 +1,4 @@
-﻿// LeetCode 0211 - Design Add and Search Words Data Structure
+// LeetCode 0211 - Design Add and Search Words Data Structure
 // https://leetcode.com/problems/design-add-and-search-words-data-structure/
 
 class TrieNode {

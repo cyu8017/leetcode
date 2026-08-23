@@ -1,4 +1,4 @@
-﻿// LeetCode 0325 - Maximum Size Subarray Sum Equals k
+// LeetCode 0325 - Maximum Size Subarray Sum Equals k
 var maxSubArrayLen = function(nums, k) {
     const prefixIndex = new Map([[0, -1]]);
     let prefix = 0;

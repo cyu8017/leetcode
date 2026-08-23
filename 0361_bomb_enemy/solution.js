@@ -1,4 +1,4 @@
-﻿// LeetCode 0361 - Bomb Enemy
+// LeetCode 0361 - Bomb Enemy
 var maxKilledEnemies = function(grid) {
     if (!grid.length || !grid[0].length) return 0;
     const rows = grid.length;

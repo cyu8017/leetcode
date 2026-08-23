@@ -1,4 +1,4 @@
-﻿// LeetCode 0139 - Word Break
+// LeetCode 0139 - Word Break
 // https://leetcode.com/problems/word-break/
 
 /**

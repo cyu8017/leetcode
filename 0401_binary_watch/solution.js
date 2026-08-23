@@ -1,4 +1,4 @@
-﻿// LeetCode 0401 - Binary Watch
+// LeetCode 0401 - Binary Watch
 var readBinaryWatch = function (turnedOn) {
     const result = [];
     const bitCount = (value) => value.toString(2).split("1").length - 1;

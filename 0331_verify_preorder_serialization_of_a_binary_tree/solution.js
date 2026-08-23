@@ -1,4 +1,4 @@
-﻿// LeetCode 0331 - Verify Preorder Serialization of a Binary Tree
+// LeetCode 0331 - Verify Preorder Serialization of a Binary Tree
 var isValidSerialization = function(preorder) {
     let slots = 1;
     for (const node of preorder.split(",")) {

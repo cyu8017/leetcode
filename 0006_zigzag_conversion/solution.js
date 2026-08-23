@@ -1,4 +1,4 @@
-﻿// LeetCode 0006 - Zigzag Conversion
+// LeetCode 0006 - Zigzag Conversion
 // https://leetcode.com/problems/zigzag-conversion/
 
 /**

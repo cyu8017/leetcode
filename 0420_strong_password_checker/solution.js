@@ -1,4 +1,4 @@
-﻿// LeetCode 0420 - Strong Password Checker
+// LeetCode 0420 - Strong Password Checker
 var strongPasswordChecker = function (password) {
     const length = password.length;
     let missing = 3;

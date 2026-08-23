@@ -1,4 +1,4 @@
-﻿// LeetCode 0533 - Lonely Pixel II
+// LeetCode 0533 - Lonely Pixel II
 // https://leetcode.com/problems/lonely-pixel-ii/
 
 class Solution {

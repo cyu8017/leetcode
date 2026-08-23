@@ -1,9 +1,16 @@
-﻿// LeetCode 2129 - Capitalize the Title
+// LeetCode 2129 - Capitalize the Title
 // https://leetcode.com/problems/capitalize-the-title/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} title
+ * @return {string}
  */
-var solve = function(input) {
+var capitalizeTitle = function(title) {
+    const parts = title.trim().split(/\s+/);
+    for (let i = 0; i < parts.length; i++) {
+        let w = parts[i].toLowerCase();
+        if (w.length > 2) w = w[0].toUpperCase() + w.slice(1);
+        parts[i] = w;
+    }
+    return parts.join(' ');
 };

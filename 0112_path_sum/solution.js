@@ -1,4 +1,4 @@
-﻿// LeetCode 0112 - Path Sum
+// LeetCode 0112 - Path Sum
 // https://leetcode.com/problems/path-sum/
 
 function TreeNode(val, left, right) {

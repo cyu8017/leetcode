@@ -1,4 +1,4 @@
-﻿// LeetCode 0363 - Max Sum of Rectangle No Larger Than K
+// LeetCode 0363 - Max Sum of Rectangle No Larger Than K
 var maxSumSubmatrix = function(matrix, k) {
     const rows = matrix.length;
     const cols = matrix[0]?.length || 0;

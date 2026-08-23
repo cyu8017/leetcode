@@ -1,9 +1,7 @@
-﻿// LeetCode 3798 - Largest Even Number
+// LeetCode 3798 - Largest Even Number
 // https://leetcode.com/problems/largest-even-number/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var largestEven = function(s) {
+    while (s.length > 0 && s[s.length - 1] === '1') s = s.substring(0, s.length - 1);
+    return s;
 };

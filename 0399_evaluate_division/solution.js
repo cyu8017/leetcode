@@ -1,4 +1,4 @@
-﻿// LeetCode 0399 - Evaluate Division
+// LeetCode 0399 - Evaluate Division
 var calcEquation = function (equations, values, queries) {
     const graph = new Map();
 

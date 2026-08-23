@@ -1,9 +1,12 @@
-﻿// LeetCode 2733 - Neither Minimum nor Maximum
+// LeetCode 2733 - Neither Minimum nor Maximum
 // https://leetcode.com/problems/neither-minimum-nor-maximum/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var findNonMinOrMax = function(nums) {
+    if (nums.length < 3) return -1;
+    const a = nums[0], b = nums[1], c = nums[2];
+    return a + b + c - Math.max(a, b, c) - Math.min(a, b, c);
 };

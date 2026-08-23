@@ -1,4 +1,4 @@
-﻿// LeetCode 0418 - Sentence Screen Fitting
+// LeetCode 0418 - Sentence Screen Fitting
 var wordsTyping = function (sentence, rows, cols) {
     let count = 0;
     let index = 0;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0378 - Kth Smallest Element in a Sorted Matrix
+// LeetCode 0378 - Kth Smallest Element in a Sorted Matrix
 var kthSmallest = function(matrix, k) {
     const rows = matrix.length;
     let left = matrix[0][0];

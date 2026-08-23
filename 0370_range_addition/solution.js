@@ -1,4 +1,4 @@
-﻿// LeetCode 0370 - Range Addition
+// LeetCode 0370 - Range Addition
 var getModifiedArray = function(length, updates) {
     const diff = Array(length + 1).fill(0);
     for (const [start, end, inc] of updates) {

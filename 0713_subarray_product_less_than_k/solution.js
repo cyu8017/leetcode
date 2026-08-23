@@ -1,9 +1,18 @@
-﻿// LeetCode 0713 - Subarray Product Less Than K
+// LeetCode 0713 - Subarray Product Less Than K
 // https://leetcode.com/problems/subarray-product-less-than-k/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var numSubarrayProductLessThanK = function(nums, k) {
+    if (k <= 1) return 0;
+    let product = 1, left = 0, ans = 0;
+    for (let right = 0; right < nums.length; right++) {
+        product *= nums[right];
+        while (product >= k) product = Math.floor(product / nums[left++]);
+        ans += right - left + 1;
+    }
+    return ans;
 };

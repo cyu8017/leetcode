@@ -1,9 +1,13 @@
-﻿// LeetCode 2886 - Change Data Type
+// LeetCode 2886 - Change Data Type
 // https://leetcode.com/problems/change-data-type/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {object[]} students
+ * @return {object[]}
  */
-var solve = function(input) {
+var changeDatatype = function(students) {
+    return students.map((r) => {
+        if (Array.isArray(r)) return [r[0], r[1], r[2], Math.trunc(r[3])];
+        return { ...r, grade: Math.trunc(r.grade) };
+    });
 };

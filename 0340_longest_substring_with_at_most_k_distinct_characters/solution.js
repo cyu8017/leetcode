@@ -1,4 +1,4 @@
-﻿// LeetCode 0340 - Longest Substring with At Most K Distinct Characters
+// LeetCode 0340 - Longest Substring with At Most K Distinct Characters
 var lengthOfLongestSubstringKDistinct = function(s, k) {
     if (k === 0) return 0;
 

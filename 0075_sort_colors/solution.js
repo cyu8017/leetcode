@@ -1,4 +1,4 @@
-﻿// LeetCode 0075 - Sort Colors
+// LeetCode 0075 - Sort Colors
 // https://leetcode.com/problems/sort-colors/
 
 /**

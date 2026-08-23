@@ -1,4 +1,4 @@
-﻿// LeetCode 0163 - Missing Ranges
+// LeetCode 0163 - Missing Ranges
 // https://leetcode.com/problems/missing-ranges/
 
 /**

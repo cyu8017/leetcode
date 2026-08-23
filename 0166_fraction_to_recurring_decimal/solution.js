@@ -1,4 +1,4 @@
-﻿// LeetCode 0166 - Fraction to Recurring Decimal
+// LeetCode 0166 - Fraction to Recurring Decimal
 // https://leetcode.com/problems/fraction-to-recurring-decimal/
 
 /**

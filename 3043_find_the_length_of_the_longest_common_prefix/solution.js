@@ -1,9 +1,19 @@
-﻿// LeetCode 3043 - Find the Length of the Longest Common Prefix
+// LeetCode 3043 - Find the Length of the Longest Common Prefix
 // https://leetcode.com/problems/find-the-length-of-the-longest-common-prefix/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var longestCommonPrefix = function(arr1, arr2) {
+    const s = new Set();
+    for (const x0 of arr1) {
+        for (let x = x0; x > 0; x = (x / 10) | 0) s.add(x);
+    }
+    let mx = 0;
+    for (const x0 of arr2) {
+        for (let x = x0; x > 0; x = (x / 10) | 0) {
+            if (s.has(x)) {
+                mx = Math.max(mx, x);
+                break;
+            }
+        }
+    }
+    return mx > 0 ? String(mx).length : 0;
 };

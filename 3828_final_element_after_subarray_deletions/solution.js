@@ -1,9 +1,6 @@
-﻿// LeetCode 3828 - Final Element After Subarray Deletions
+// LeetCode 3828 - Final Element After Subarray Deletions
 // https://leetcode.com/problems/final-element-after-subarray-deletions/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var finalElement = function(nums) {
+    return Math.max(nums[0], nums[nums.length - 1]);
 };

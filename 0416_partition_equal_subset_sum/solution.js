@@ -1,4 +1,4 @@
-﻿// LeetCode 0416 - Partition Equal Subset Sum
+// LeetCode 0416 - Partition Equal Subset Sum
 var canPartition = function (nums) {
     const total = nums.reduce((sum, value) => sum + value, 0);
     if (total % 2) return false;

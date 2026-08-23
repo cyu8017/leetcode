@@ -1,4 +1,4 @@
-﻿// LeetCode 0341 - Flatten Nested List Iterator
+// LeetCode 0341 - Flatten Nested List Iterator
 class NestedInteger {
     constructor(value) {
         if (typeof value === "number") {

@@ -1,9 +1,9 @@
-﻿// LeetCode 3210 - Find the Encrypted String
+// LeetCode 3210 - Find the Encrypted String
 // https://leetcode.com/problems/find-the-encrypted-string/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var getEncryptedString = function(s, k) {
+    const n = s.length;
+    let out = '';
+    for (let i = 0; i < n; i++) out += s[(i + k) % n];
+    return out;
 };

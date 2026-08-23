@@ -1,4 +1,4 @@
-﻿// LeetCode 0197 - Rising Temperature
+// LeetCode 0197 - Rising Temperature
 // https://leetcode.com/problems/rising-temperature/
 
 var QUERY = `

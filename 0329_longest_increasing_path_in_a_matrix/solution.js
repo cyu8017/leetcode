@@ -1,4 +1,4 @@
-﻿// LeetCode 0329 - Longest Increasing Path in a Matrix
+// LeetCode 0329 - Longest Increasing Path in a Matrix
 var longestIncreasingPath = function(matrix) {
     if (!matrix.length) return 0;
     const rows = matrix.length;

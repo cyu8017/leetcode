@@ -1,4 +1,4 @@
-﻿// LeetCode 0414 - Third Maximum Number
+// LeetCode 0414 - Third Maximum Number
 var thirdMax = function (nums) {
     let first = null;
     let second = null;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0351 - Android Unlock Patterns
+// LeetCode 0351 - Android Unlock Patterns
 var numberOfPatterns = function(m, n) {
     const jumps = {
         "0,2": 1, "2,0": 1, "0,6": 3, "6,0": 3, "0,8": 4, "8,0": 4,

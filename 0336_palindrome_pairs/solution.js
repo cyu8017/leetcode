@@ -1,4 +1,4 @@
-﻿// LeetCode 0336 - Palindrome Pairs
+// LeetCode 0336 - Palindrome Pairs
 var palindromePairs = function(words) {
     const wordMap = new Map(words.map((word, index) => [word, index]));
     const result = new Set();

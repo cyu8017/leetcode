@@ -1,9 +1,10 @@
-﻿// LeetCode 3718 - Smallest Missing Multiple of K
+// LeetCode 3718 - Smallest Missing Multiple of K
 // https://leetcode.com/problems/smallest-missing-multiple-of-k/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var missingMultiple = function(nums, k) {
+    const s = new Set(nums);
+    for (let i = 1; ; i++) {
+        const x = k * i;
+        if (!s.has(x)) return x;
+    }
 };

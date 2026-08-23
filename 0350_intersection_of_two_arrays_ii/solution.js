@@ -1,4 +1,4 @@
-﻿// LeetCode 0350 - Intersection of Two Arrays II
+// LeetCode 0350 - Intersection of Two Arrays II
 var intersect = function(nums1, nums2) {
     const counts = new Map();
     for (const num of nums1) {

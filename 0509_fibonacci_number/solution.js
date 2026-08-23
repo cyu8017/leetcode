@@ -1,4 +1,4 @@
-﻿// LeetCode 0509 - Fibonacci Number
+// LeetCode 0509 - Fibonacci Number
 // https://leetcode.com/problems/fibonacci-number/
 
 class Solution {

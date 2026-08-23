@@ -1,9 +1,21 @@
-﻿// LeetCode 2788 - Split Strings by Separator
+// LeetCode 2788 - Split Strings by Separator
 // https://leetcode.com/problems/split-strings-by-separator/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[]} words
+ * @param {character} separator
+ * @return {string[]}
  */
-var solve = function(input) {
+var splitWordsBySeparator = function(words, separator) {
+    const ans = [];
+    for (const w of words) {
+        let start = 0;
+        for (let i = 0; i <= w.length; i++) {
+            if (i === w.length || w[i] === separator) {
+                if (i > start) ans.push(w.slice(start, i));
+                start = i + 1;
+            }
+        }
+    }
+    return ans;
 };

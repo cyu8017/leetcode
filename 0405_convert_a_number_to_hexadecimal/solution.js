@@ -1,4 +1,4 @@
-﻿// LeetCode 0405 - Convert a Number to Hexadecimal
+// LeetCode 0405 - Convert a Number to Hexadecimal
 var toHex = function (num) {
     if (num === 0) return "0";
     const digits = "0123456789abcdef";

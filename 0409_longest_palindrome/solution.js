@@ -1,4 +1,4 @@
-﻿// LeetCode 0409 - Longest Palindrome
+// LeetCode 0409 - Longest Palindrome
 var longestPalindrome = function (s) {
     const counts = new Map();
     for (const char of s) {

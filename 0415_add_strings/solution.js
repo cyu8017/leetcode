@@ -1,4 +1,4 @@
-﻿// LeetCode 0415 - Add Strings
+// LeetCode 0415 - Add Strings
 var addStrings = function (num1, num2) {
     let index1 = num1.length - 1;
     let index2 = num2.length - 1;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0385 - Mini Parser
+// LeetCode 0385 - Mini Parser
 class NestedInteger {
     constructor(value = null) {
         this.integer = value;

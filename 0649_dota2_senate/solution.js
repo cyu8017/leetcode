@@ -1,9 +1,21 @@
-﻿// LeetCode 0649 - Dota2 Senate
+// LeetCode 0649 - Dota2 Senate
 // https://leetcode.com/problems/dota2-senate/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} senate
+ * @return {string}
  */
-var solve = function(input) {
+var predictPartyVictory = function(senate) {
+    const radiant = [], dire = [];
+    const n = senate.length;
+    for (let i = 0; i < n; ++i) {
+        if (senate[i] === "R") radiant.push(i);
+        else dire.push(i);
+    }
+    while (radiant.length && dire.length) {
+        const r = radiant.shift(), d = dire.shift();
+        if (r < d) radiant.push(r + n);
+        else dire.push(d + n);
+    }
+    return radiant.length === 0 ? "Dire" : "Radiant";
 };

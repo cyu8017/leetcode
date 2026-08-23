@@ -1,9 +1,17 @@
-﻿// LeetCode 2988 - Manager of the Largest Department
+// LeetCode 2988 - Manager Of The Largest Department
 // https://leetcode.com/problems/manager-of-the-largest-department/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `WITH
+    T AS (
+        SELECT dep_id, COUNT(1) AS cnt
+        FROM Employees
+        GROUP BY 1
+    )
+SELECT emp_name AS manager_name, t.dep_id
+FROM
+    T AS t
+    JOIN Employees AS e ON t.dep_id = e.dep_id AND e.position = 'Manager'
+WHERE cnt = (SELECT MAX(cnt) FROM T)
+ORDER BY 2`;
+
+module.exports = { QUERY };

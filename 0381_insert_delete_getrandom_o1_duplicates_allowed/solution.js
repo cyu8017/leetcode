@@ -1,4 +1,4 @@
-﻿// LeetCode 0381 - Insert Delete GetRandom O(1) - Duplicates allowed
+// LeetCode 0381 - Insert Delete GetRandom O(1) - Duplicates allowed
 class RandomizedCollection {
     constructor() {
         this.values = [];

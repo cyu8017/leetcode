@@ -1,4 +1,4 @@
-﻿// LeetCode 0323 - Number of Connected Components in an Undirected Graph
+// LeetCode 0323 - Number of Connected Components in an Undirected Graph
 var countComponents = function(n, edges) {
     const parent = Array.from({ length: n }, (_, index) => index);
     const rank = Array(n).fill(0);

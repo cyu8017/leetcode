@@ -1,9 +1,13 @@
-﻿// LeetCode 2220 - Minimum Bit Flips to Convert Number
+// LeetCode 2220 - Minimum Bit Flips to Convert Number
 // https://leetcode.com/problems/minimum-bit-flips-to-convert-number/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} start
+ * @param {number} goal
+ * @return {number}
  */
-var solve = function(input) {
+var minBitFlips = function(start, goal) {
+    let x = start ^ goal, ans = 0;
+    while (x > 0) { ans += x & 1; x >>= 1; }
+    return ans;
 };

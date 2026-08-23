@@ -1,9 +1,17 @@
-﻿// LeetCode 2776 - Convert Callback Based Function to Promise Based Function
+// LeetCode 2776 - Convert Callback Based Function to Promise Based Function
 // https://leetcode.com/problems/convert-callback-based-function-to-promise-based-function/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {Function} fn
+ * @return {Function}
  */
-var solve = function(input) {
+var promisify = function(fn) {
+    return function(...args) {
+        return new Promise((resolve, reject) => {
+            fn((err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            }, ...args);
+        });
+    };
 };

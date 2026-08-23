@@ -1,4 +1,4 @@
-﻿// LeetCode 0371 - Sum of Two Integers
+// LeetCode 0371 - Sum of Two Integers
 var getSum = function(a, b) {
     const mask = 0xffffffff;
     while (b !== 0) {

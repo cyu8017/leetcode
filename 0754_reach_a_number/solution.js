@@ -1,9 +1,16 @@
-﻿// LeetCode 0754 - Reach a Number
+// LeetCode 0754 - Reach a Number
 // https://leetcode.com/problems/reach-a-number/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} target
+ * @return {number}
  */
-var solve = function(input) {
+var reachNumber = function(target) {
+    target = Math.abs(target);
+    let steps = 0, total = 0;
+    while (total < target || (total - target) % 2 !== 0) {
+        steps++;
+        total += steps;
+    }
+    return steps;
 };

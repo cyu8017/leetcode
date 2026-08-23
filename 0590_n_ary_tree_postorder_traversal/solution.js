@@ -1,9 +1,25 @@
-﻿// LeetCode 0590 - N-ary Tree Postorder Traversal
+// LeetCode 0590 - N-ary Tree Postorder Traversal
 // https://leetcode.com/problems/n-ary-tree-postorder-traversal/
 
 /**
- * @param {any} input
- * @return {any}
+ * // Definition for a Node.
+ * function Node(val, children) {
+ *    this.val = val;
+ *    this.children = children;
+ * };
  */
-var solve = function(input) {
+
+/**
+ * @param {Node|null} root
+ * @return {number[]}
+ */
+var postorder = function(root) {
+    const result = [];
+    const dfs = (node) => {
+        if (node == null) return;
+        if (node.children) for (const child of node.children) dfs(child);
+        result.push(node.val);
+    };
+    dfs(root);
+    return result;
 };

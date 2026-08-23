@@ -1,9 +1,11 @@
-﻿// LeetCode 3491 - Phone Number Prefix
+// LeetCode 3491 - Phone Number Prefix
 // https://leetcode.com/problems/phone-number-prefix/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var phonePrefix = function(numbers) {
+    numbers = numbers.slice().sort();
+    for (let i = 0; i + 1 < numbers.length; i++) {
+        if (numbers[i].length <= numbers[i + 1].length && numbers[i + 1].startsWith(numbers[i]))
+            return false;
+    }
+    return true;
 };

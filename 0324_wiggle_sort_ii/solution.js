@@ -1,4 +1,4 @@
-﻿// LeetCode 0324 - Wiggle Sort II
+// LeetCode 0324 - Wiggle Sort II
 var wiggleSort = function(nums) {
     const sorted = [...nums].sort((a, b) => a - b);
     let left = Math.floor((nums.length - 1) / 2);

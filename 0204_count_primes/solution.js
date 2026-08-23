@@ -1,4 +1,4 @@
-﻿// LeetCode 0204 - Count Primes
+// LeetCode 0204 - Count Primes
 // https://leetcode.com/problems/count-primes/
 
 /**

@@ -1,4 +1,4 @@
-﻿// LeetCode 0322 - Coin Change
+// LeetCode 0322 - Coin Change
 var coinChange = function(coins, amount) {
     const maxValue = amount + 1;
     const dp = Array(amount + 1).fill(maxValue);

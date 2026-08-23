@@ -1,9 +1,22 @@
-﻿// LeetCode 3932 - Count K-th Roots in a Range
+// LeetCode 3932 - Count K Th Roots In A Range
 // https://leetcode.com/problems/count-k-th-roots-in-a-range/
-
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var countKthRoots = function(l, r, k) {
+        if (k == 1) return r - l + 1;
+        let ans = 0;
+        for (let x = 0;; x++) {
+            let y = 1;
+            let tooBig = false;
+            for (let i = 0; i < k; i++) {
+                if (x != 0 && y > r / x) {
+                    tooBig = true;
+                    break;
+                }
+                y *= x;
+                if (y > r) break;
+            }
+            if (tooBig || y > r) break;
+            if (l <= y && y <= r) ans++;
+        }
+        return ans;
+    
 };

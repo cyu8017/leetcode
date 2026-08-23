@@ -1,4 +1,4 @@
-﻿// LeetCode 0364 - Nested List Weight Sum II
+// LeetCode 0364 - Nested List Weight Sum II
 class NestedInteger {
     constructor(value) {
         if (typeof value === "number") {

@@ -1,9 +1,12 @@
-﻿// LeetCode 2527 - Find Xor-Beauty of Array
+// LeetCode 2527 - Find Xor-Beauty of Array
 // https://leetcode.com/problems/find-xor-beauty-of-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var xorBeauty = function(nums) {
+    let ans = 0;
+    for (const x of nums) ans ^= x;
+    return ans;
 };

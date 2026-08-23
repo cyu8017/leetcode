@@ -1,9 +1,17 @@
-﻿// LeetCode 2779 - Maximum Beauty of an Array After Applying Operation
+// LeetCode 2779 - Maximum Beauty of an Array After Applying Operation
 // https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var maximumBeauty = function(nums, k) {
+    nums.sort((a, b) => a - b);
+    let ans = 0, left = 0;
+    for (let right = 0; right < nums.length; right++) {
+        while (nums[right] - nums[left] > 2 * k) left++;
+        ans = Math.max(ans, right - left + 1);
+    }
+    return ans;
 };

@@ -1,4 +1,4 @@
-﻿// LeetCode 0333 - Largest BST Subtree
+// LeetCode 0333 - Largest BST Subtree
 function TreeNode(val, left, right) {
     this.val = val === undefined ? 0 : val;
     this.left = left === undefined ? null : left;

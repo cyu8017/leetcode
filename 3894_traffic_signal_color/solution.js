@@ -1,9 +1,9 @@
-﻿// LeetCode 3894 - Traffic Signal Color
+// LeetCode 3894 - Traffic Signal Color
 // https://leetcode.com/problems/traffic-signal-color/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var trafficSignal = function(timer) {
+    if (timer === 0) return 'Green';
+    if (timer === 30) return 'Orange';
+    if (timer > 30 && timer <= 90) return 'Red';
+    return 'Invalid';
 };

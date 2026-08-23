@@ -1,9 +1,6 @@
-﻿// LeetCode 2979 - Most Expensive Item That Can Not Be Bought
+// LeetCode 2979 - Most Expensive Item That Can Not Be Bought
 // https://leetcode.com/problems/most-expensive-item-that-can-not-be-bought/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var mostExpensiveItem = function(primeOne, primeTwo) {
+    return primeOne * primeTwo - primeOne - primeTwo;
 };

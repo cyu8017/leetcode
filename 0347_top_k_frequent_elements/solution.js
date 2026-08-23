@@ -1,4 +1,4 @@
-﻿// LeetCode 0347 - Top K Frequent Elements
+// LeetCode 0347 - Top K Frequent Elements
 var topKFrequent = function(nums, k) {
     const counts = new Map();
     for (const num of nums) {

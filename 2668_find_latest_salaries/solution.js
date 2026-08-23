@@ -1,9 +1,13 @@
-﻿// LeetCode 2668 - Find Latest Salaries
+// LeetCode 2668 - Find Latest Salaries
 // https://leetcode.com/problems/find-latest-salaries/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT emp_id, firstname, lastname, salary, department_id
+FROM Salary
+WHERE (emp_id, salary) IN (
+    SELECT emp_id, MAX(salary)
+    FROM Salary
+    GROUP BY emp_id
+)
+ORDER BY emp_id`;
+
+module.exports = { QUERY };

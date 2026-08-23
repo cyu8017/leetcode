@@ -1,9 +1,16 @@
-﻿// LeetCode 3258 - Count Substrings That Satisfy K-Constraint I
+// LeetCode 3258 - Count Substrings That Satisfy K-Constraint I
 // https://leetcode.com/problems/count-substrings-that-satisfy-k-constraint-i/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var countKConstraintSubstrings = function(s, k) {
+    let ans = 0;
+    const n = s.length;
+    for (let i = 0; i < n; i++) {
+        let z = 0, o = 0;
+        for (let j = i; j < n; j++) {
+            if (s[j] === '0') z++; else o++;
+            if (z <= k || o <= k) ans++;
+            else break;
+        }
+    }
+    return ans;
 };

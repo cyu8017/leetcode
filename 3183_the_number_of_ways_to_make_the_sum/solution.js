@@ -1,9 +1,16 @@
-﻿// LeetCode 3183 - The Number of Ways to Make the Sum
+// LeetCode 3183 - The Number of Ways to Make the Sum
 // https://leetcode.com/problems/the-number-of-ways-to-make-the-sum/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var numberOfWays = function(n) {
+    const mod = 1000000007;
+    const coins = [1, 2, 6];
+    const f = new Array(n + 1).fill(0);
+    f[0] = 1;
+    for (const x of coins) {
+        for (let j = x; j <= n; j++) f[j] = (f[j] + f[j - x]) % mod;
+    }
+    let ans = f[n];
+    if (n >= 4) ans = (ans + f[n - 4]) % mod;
+    if (n >= 8) ans = (ans + f[n - 8]) % mod;
+    return ans;
 };

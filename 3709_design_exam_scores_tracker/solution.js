@@ -1,9 +1,27 @@
-﻿// LeetCode 3709 - Design Exam Scores Tracker
+// LeetCode 3709 - Design Exam Scores Tracker
 // https://leetcode.com/problems/design-exam-scores-tracker/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var ExamTracker = function() {
+    this.times = [0];
+    this.pre = [0];
+};
+
+ExamTracker.prototype.record = function(time, score) {
+    this.times.push(time);
+    this.pre.push(this.pre[this.pre.length - 1] + score);
+};
+
+ExamTracker.prototype.totalScore = function(startTime, endTime) {
+    const lowerBound = (a, target) => {
+        let lo = 0, hi = a.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (a[mid] < target) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    };
+    const l = lowerBound(this.times, startTime) - 1;
+    const r = lowerBound(this.times, endTime + 1) - 1;
+    return this.pre[r] - this.pre[l];
 };

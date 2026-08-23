@@ -1,4 +1,4 @@
-﻿// LeetCode 0259 - 3Sum Smaller
+// LeetCode 0259 - 3Sum Smaller
 // https://leetcode.com/problems/3sum-smaller/
 
 /**

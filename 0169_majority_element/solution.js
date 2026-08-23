@@ -1,4 +1,4 @@
-﻿// LeetCode 0169 - Majority Element
+// LeetCode 0169 - Majority Element
 // https://leetcode.com/problems/majority-element/
 
 /**

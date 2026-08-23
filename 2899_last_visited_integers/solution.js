@@ -1,9 +1,22 @@
-﻿// LeetCode 2899 - Last Visited Integers
+// LeetCode 2899 - Last Visited Integers
 // https://leetcode.com/problems/last-visited-integers/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var lastVisitedIntegers = function(nums) {
+    const seen = [], ans = [];
+    let k = 0;
+    for (const v of nums) {
+        if (v !== -1) {
+            seen.push(v);
+            k = 0;
+        } else {
+            k++;
+            if (k > seen.length) ans.push(-1);
+            else ans.push(seen[seen.length - k]);
+        }
+    }
+    return ans;
 };

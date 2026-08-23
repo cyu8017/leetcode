@@ -1,9 +1,29 @@
-﻿// LeetCode 2383 - Minimum Hours of Training to Win a Competition
+// LeetCode 2383 - Minimum Hours of Training to Win a Competition
 // https://leetcode.com/problems/minimum-hours-of-training-to-win-a-competition/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} initialEnergy
+ * @param {number} initialExperience
+ * @param {number[]} energy
+ * @param {number[]} experience
+ * @return {number}
  */
-var solve = function(input) {
+var minNumberOfHours = function(initialEnergy, initialExperience, energy, experience) {
+    let ans = 0;
+    let en = initialEnergy, ex = initialExperience;
+    for (let i = 0; i < energy.length; i++) {
+        if (en <= energy[i]) {
+            const need = energy[i] - en + 1;
+            ans += need;
+            en += need;
+        }
+        if (ex <= experience[i]) {
+            const need = experience[i] - ex + 1;
+            ans += need;
+            ex += need;
+        }
+        en -= energy[i];
+        ex += experience[i];
+    }
+    return ans;
 };

@@ -1,4 +1,4 @@
-﻿// LeetCode 0362 - Design Hit Counter
+// LeetCode 0362 - Design Hit Counter
 class HitCounter {
     constructor() {
         this.hits = [];

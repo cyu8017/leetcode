@@ -1,4 +1,4 @@
-﻿// LeetCode 0209 - Minimum Size Subarray Sum
+// LeetCode 0209 - Minimum Size Subarray Sum
 // https://leetcode.com/problems/minimum-size-subarray-sum/
 
 /**

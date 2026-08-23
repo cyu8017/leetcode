@@ -1,9 +1,22 @@
-﻿// LeetCode 0606 - Construct String from Binary Tree
+// LeetCode 0606 - Construct String from Binary Tree
 // https://leetcode.com/problems/construct-string-from-binary-tree/
 
 /**
- * @param {any} input
- * @return {any}
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
  */
-var solve = function(input) {
+/**
+ * @param {TreeNode} root
+ * @return {string}
+ */
+var tree2str = function(root) {
+    if (root == null) return "";
+    let result = String(root.val);
+    if (root.left != null || root.right != null) result += "(" + tree2str(root.left) + ")";
+    if (root.right != null) result += "(" + tree2str(root.right) + ")";
+    return result;
 };

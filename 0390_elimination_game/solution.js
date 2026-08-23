@@ -1,4 +1,4 @@
-﻿// LeetCode 0390 - Elimination Game
+// LeetCode 0390 - Elimination Game
 var lastRemaining = function (n) {
     let left = 1;
     let right = n;

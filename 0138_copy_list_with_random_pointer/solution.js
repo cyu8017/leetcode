@@ -1,4 +1,4 @@
-﻿// LeetCode 0138 - Copy List with Random Pointer
+// LeetCode 0138 - Copy List with Random Pointer
 // https://leetcode.com/problems/copy-list-with-random-pointer/
 
 function Node(val = 0, next = null, random = null) {

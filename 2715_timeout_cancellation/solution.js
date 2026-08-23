@@ -1,9 +1,7 @@
-﻿// LeetCode 2715 - Timeout Cancellation
+// LeetCode 2715 - Timeout Cancellation
 // https://leetcode.com/problems/timeout-cancellation/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var cancellable = function(fn, args, t) {
+    const timer = setTimeout(() => fn(...args), t);
+    return function() { clearTimeout(timer); };
 };

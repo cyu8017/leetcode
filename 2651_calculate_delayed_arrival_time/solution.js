@@ -1,9 +1,6 @@
-﻿// LeetCode 2651 - Calculate Delayed Arrival Time
+// LeetCode 2651 - Calculate Delayed Arrival Time
 // https://leetcode.com/problems/calculate-delayed-arrival-time/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var findDelayedArrivalTime = function(arrivalTime, delayedTime) {
+    return (arrivalTime + delayedTime) % 24;
 };

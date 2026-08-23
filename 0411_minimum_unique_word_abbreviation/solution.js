@@ -1,4 +1,4 @@
-﻿// LeetCode 0411 - Minimum Unique Word Abbreviation
+// LeetCode 0411 - Minimum Unique Word Abbreviation
 var minAbbreviation = function (target, dictionary) {
     const words = dictionary.filter((word) => word.length === target.length);
     let bestLen = target.length + 1;

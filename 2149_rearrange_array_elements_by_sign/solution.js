@@ -1,9 +1,16 @@
-﻿// LeetCode 2149 - Rearrange Array Elements by Sign
+// LeetCode 2149 - Rearrange Array Elements by Sign
 // https://leetcode.com/problems/rearrange-array-elements-by-sign/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var rearrangeArray = function(nums) {
+    const ans = new Array(nums.length);
+    let pos = 0, neg = 1;
+    for (const x of nums) {
+        if (x > 0) { ans[pos] = x; pos += 2; }
+        else { ans[neg] = x; neg += 2; }
+    }
+    return ans;
 };

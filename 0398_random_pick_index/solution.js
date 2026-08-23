@@ -1,4 +1,4 @@
-﻿// LeetCode 0398 - Random Pick Index
+// LeetCode 0398 - Random Pick Index
 class Solution {
     constructor(nums) {
         this.indices = new Map();

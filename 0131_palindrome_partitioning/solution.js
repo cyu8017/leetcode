@@ -1,4 +1,4 @@
-﻿// LeetCode 0131 - Palindrome Partitioning
+// LeetCode 0131 - Palindrome Partitioning
 // https://leetcode.com/problems/palindrome-partitioning/
 
 /**

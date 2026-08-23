@@ -1,4 +1,4 @@
-﻿// LeetCode 0410 - Split Array Largest Sum
+// LeetCode 0410 - Split Array Largest Sum
 var splitArray = function (nums, k) {
     let left = Math.max(...nums);
     let right = nums.reduce((sum, value) => sum + value, 0);

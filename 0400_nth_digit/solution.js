@@ -1,4 +1,4 @@
-﻿// LeetCode 0400 - Nth Digit
+// LeetCode 0400 - Nth Digit
 var findNthDigit = function (n) {
     let digits = 1;
     let count = 9;

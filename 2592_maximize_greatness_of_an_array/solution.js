@@ -1,9 +1,15 @@
-﻿// LeetCode 2592 - Maximize Greatness of an Array
+// LeetCode 2592 - Maximize Greatness of an Array
 // https://leetcode.com/problems/maximize-greatness-of-an-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var maximizeGreatness = function(nums) {
+    nums.sort((a, b) => a - b);
+    let i = 0;
+    for (const x of nums) {
+        if (x > nums[i]) i++;
+    }
+    return i;
 };

@@ -1,9 +1,17 @@
-﻿// LeetCode 0714 - Best Time to Buy and Sell Stock with Transaction Fee
+// LeetCode 0714 - Best Time to Buy and Sell Stock with Transaction Fee
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} prices
+ * @param {number} fee
+ * @return {number}
  */
-var solve = function(input) {
+var maxProfit = function(prices, fee) {
+    let hold = -prices[0], cash = 0;
+    for (let i = 1; i < prices.length; i++) {
+        const price = prices[i];
+        hold = Math.max(hold, cash - price);
+        cash = Math.max(cash, hold + price - fee);
+    }
+    return cash;
 };

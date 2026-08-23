@@ -1,4 +1,4 @@
-﻿// LeetCode 0280 - Wiggle Sort
+// LeetCode 0280 - Wiggle Sort
 // https://leetcode.com/problems/wiggle-sort/
 
 /**

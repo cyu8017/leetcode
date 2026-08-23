@@ -1,4 +1,4 @@
-﻿// LeetCode 1729 - Find Followers Count
+// LeetCode 1729 - Find Followers Count
 // https://leetcode.com/problems/find-followers-count/
 
 var QUERY = `SELECT user_id, COUNT(follower_id) AS followers_count

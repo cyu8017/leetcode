@@ -1,4 +1,4 @@
-﻿// LeetCode 0334 - Increasing Triplet Subsequence
+// LeetCode 0334 - Increasing Triplet Subsequence
 var increasingTriplet = function(nums) {
     let first = Infinity;
     let second = Infinity;

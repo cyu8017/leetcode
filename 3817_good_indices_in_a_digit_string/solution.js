@@ -1,9 +1,12 @@
-﻿// LeetCode 3817 - Good Indices in a Digit String
+// LeetCode 3817 - Good Indices In A Digit String
 // https://leetcode.com/problems/good-indices-in-a-digit-string/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var goodIndices = function(s) {
+    const ans = [];
+    for (let i = 0; i < s.length; i++) {
+        const t = String(i);
+        const k = t.length;
+        if (i + 1 - k >= 0 && s.substring(i + 1 - k, i + 1) === t) ans.push(i);
+    }
+    return ans;
 };

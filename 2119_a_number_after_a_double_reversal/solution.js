@@ -1,9 +1,10 @@
-﻿// LeetCode 2119 - A Number After a Double Reversal
+// LeetCode 2119 - A Number After a Double Reversal
 // https://leetcode.com/problems/a-number-after-a-double-reversal/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} num
+ * @return {boolean}
  */
-var solve = function(input) {
+var isSameAfterReversals = function(num) {
+    return num === 0 || num % 10 !== 0;
 };

@@ -1,9 +1,21 @@
-﻿// LeetCode 2346 - Compute the Rank as a Percentage
+// LeetCode 2346 - Compute The Rank As A Percentage
 // https://leetcode.com/problems/compute-the-rank-as-a-percentage/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT
+    student_id,
+    department_id,
+    IFNULL(
+        ROUND(
+            (
+                RANK() OVER (
+                    PARTITION BY department_id
+                    ORDER BY mark DESC
+                ) - 1
+            ) * 100 / (COUNT(1) OVER (PARTITION BY department_id) - 1),
+            2
+        ),
+        0
+    ) AS percentage
+FROM Students`;
+
+module.exports = { QUERY };

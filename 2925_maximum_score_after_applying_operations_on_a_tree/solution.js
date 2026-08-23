@@ -1,9 +1,30 @@
-﻿// LeetCode 2925 - Maximum Score After Applying Operations on a Tree
+// LeetCode 2925 - Maximum Score After Applying Operations on a Tree
 // https://leetcode.com/problems/maximum-score-after-applying-operations-on-a-tree/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} edges
+ * @param {number[]} values
+ * @return {number}
  */
-var solve = function(input) {
+var maximumScoreAfterOperations = function(edges, values) {
+    const n = values.length;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    let total = 0;
+    for (const v of values) total += v;
+    const dfs = (u, p) => {
+        let sumKids = 0;
+        let isLeaf = true;
+        for (const v of g[u]) {
+            if (v === p) continue;
+            isLeaf = false;
+            sumKids += dfs(v, u);
+        }
+        if (isLeaf) return values[u];
+        return values[u] < sumKids ? values[u] : sumKids;
+    };
+    return total - dfs(0, -1);
 };

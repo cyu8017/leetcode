@@ -1,4 +1,4 @@
-﻿// LeetCode 0375 - Guess Number Higher or Lower II
+// LeetCode 0375 - Guess Number Higher or Lower II
 var getMoneyAmount = function(n) {
     const dp = Array.from({ length: n + 2 }, () => Array(n + 2).fill(0));
 

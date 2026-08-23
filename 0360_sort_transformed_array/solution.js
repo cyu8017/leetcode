@@ -1,4 +1,4 @@
-﻿// LeetCode 0360 - Sort Transformed Array
+// LeetCode 0360 - Sort Transformed Array
 var sortTransformedArray = function(nums, a, b, c) {
     const transform = (value) => a * value * value + b * value + c;
     let left = 0;

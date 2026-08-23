@@ -1,4 +1,4 @@
-﻿// LeetCode 0010 - Regular Expression Matching
+// LeetCode 0010 - Regular Expression Matching
 // https://leetcode.com/problems/regular-expression-matching/
 
 /**

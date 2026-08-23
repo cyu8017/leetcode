@@ -1,4 +1,4 @@
-﻿// LeetCode 0389 - Find the Difference
+// LeetCode 0389 - Find the Difference
 var findTheDifference = function (s, t) {
     let xorValue = 0;
     for (const char of s + t) {

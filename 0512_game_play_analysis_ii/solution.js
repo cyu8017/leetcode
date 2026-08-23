@@ -1,8 +1,7 @@
-﻿// LeetCode 0512 - Game Play Analysis II
+// LeetCode 0512 - Game Play Analysis Ii
 // https://leetcode.com/problems/game-play-analysis-ii/
 
-const QUERY = `
-SELECT a.player_id, a.device_id
+var QUERY = `SELECT a.player_id, a.device_id
 FROM Activity a
 JOIN (
     SELECT player_id, MIN(event_date) AS first_date
@@ -10,7 +9,6 @@ JOIN (
     GROUP BY player_id
 ) first_login
     ON a.player_id = first_login.player_id
-   AND a.event_date = first_login.first_date
-`;
+   AND a.event_date = first_login.first_date`;
 
 module.exports = { QUERY };

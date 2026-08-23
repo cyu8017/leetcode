@@ -1,9 +1,10 @@
-﻿// LeetCode 2413 - Smallest Even Multiple
+// LeetCode 2413 - Smallest Even Multiple
 // https://leetcode.com/problems/smallest-even-multiple/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var smallestEvenMultiple = function(n) {
+    return n % 2 === 0 ? n : n * 2;
 };

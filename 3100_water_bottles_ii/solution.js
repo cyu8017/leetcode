@@ -1,9 +1,18 @@
-﻿// LeetCode 3100 - Water Bottles II
+// LeetCode 3100 - Water Bottles II
 // https://leetcode.com/problems/water-bottles-ii/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} numBottles
+ * @param {number} numExchange
+ * @return {number}
  */
-var solve = function(input) {
+var maxBottlesDrunk = function(numBottles, numExchange) {
+    let ans = numBottles;
+    while (numBottles >= numExchange) {
+        numBottles -= numExchange;
+        numExchange++;
+        ans++;
+        numBottles++;
+    }
+    return ans;
 };

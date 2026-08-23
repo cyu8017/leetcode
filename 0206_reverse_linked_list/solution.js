@@ -1,4 +1,4 @@
-﻿// LeetCode 0206 - Reverse Linked List
+// LeetCode 0206 - Reverse Linked List
 // https://leetcode.com/problems/reverse-linked-list/
 
 /**

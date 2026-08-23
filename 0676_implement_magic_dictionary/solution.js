@@ -1,9 +1,30 @@
-﻿// LeetCode 0676 - Implement Magic Dictionary
+// LeetCode 0676 - Implement Magic Dictionary
 // https://leetcode.com/problems/implement-magic-dictionary/
 
+var MagicDictionary = function() {
+    this.words = [];
+};
+
 /**
- * @param {any} input
- * @return {any}
+ * @param {string[]} dictionary
+ * @return {void}
  */
-var solve = function(input) {
+MagicDictionary.prototype.buildDict = function(dictionary) {
+    this.words = dictionary;
+};
+
+/**
+ * @param {string} searchWord
+ * @return {boolean}
+ */
+MagicDictionary.prototype.search = function(searchWord) {
+    for (const word of this.words) {
+        if (word.length !== searchWord.length) continue;
+        let diff = 0;
+        for (let i = 0; i < word.length; ++i) {
+            if (word[i] !== searchWord[i]) ++diff;
+        }
+        if (diff === 1) return true;
+    }
+    return false;
 };

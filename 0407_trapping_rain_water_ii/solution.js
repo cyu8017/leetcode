@@ -1,4 +1,4 @@
-﻿// LeetCode 0407 - Trapping Rain Water II
+// LeetCode 0407 - Trapping Rain Water II
 var trapRainWater = function (heightMap) {
     if (!heightMap.length || !heightMap[0].length) return 0;
     const rows = heightMap.length;

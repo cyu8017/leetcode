@@ -1,4 +1,4 @@
-﻿// LeetCode 0115 - Distinct Subsequences
+// LeetCode 0115 - Distinct Subsequences
 // https://leetcode.com/problems/distinct-subsequences/
 
 /**

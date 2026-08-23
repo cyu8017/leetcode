@@ -1,4 +1,4 @@
-﻿// LeetCode 0151 - Reverse Words in a String
+// LeetCode 0151 - Reverse Words in a String
 // https://leetcode.com/problems/reverse-words-in-a-string/
 
 /**

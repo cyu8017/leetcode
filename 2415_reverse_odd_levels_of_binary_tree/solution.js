@@ -1,9 +1,21 @@
-﻿// LeetCode 2415 - Reverse Odd Levels of Binary Tree
+// LeetCode 2415 - Reverse Odd Levels of Binary Tree
 // https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {TreeNode} root
+ * @return {TreeNode}
  */
-var solve = function(input) {
+var reverseOddLevels = function(root) {
+    const dfs = (a, b, level) => {
+        if (a === null || b === null) return;
+        if (level % 2 === 1) {
+            const tmp = a.val;
+            a.val = b.val;
+            b.val = tmp;
+        }
+        dfs(a.left, b.right, level + 1);
+        dfs(a.right, b.left, level + 1);
+    };
+    if (root !== null) dfs(root.left, root.right, 1);
+    return root;
 };

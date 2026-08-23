@@ -1,9 +1,11 @@
-﻿// LeetCode 0796 - Rotate String
+// LeetCode 0796 - Rotate String
 // https://leetcode.com/problems/rotate-string/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
  */
-var solve = function(input) {
+var rotateString = function(s, goal) {
+    return s.length === goal.length && (s + s).includes(goal);
 };

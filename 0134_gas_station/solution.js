@@ -1,4 +1,4 @@
-﻿// LeetCode 0134 - Gas Station
+// LeetCode 0134 - Gas Station
 // https://leetcode.com/problems/gas-station/
 
 /**

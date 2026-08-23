@@ -1,4 +1,4 @@
-﻿// LeetCode 0357 - Count Numbers with Unique Digits
+// LeetCode 0357 - Count Numbers with Unique Digits
 var countNumbersWithUniqueDigits = function(n) {
     if (n === 0) return 1;
 

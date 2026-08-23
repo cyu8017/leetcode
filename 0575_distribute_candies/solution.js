@@ -1,9 +1,10 @@
-﻿// LeetCode 0575 - Distribute Candies
+// LeetCode 0575 - Distribute Candies
 // https://leetcode.com/problems/distribute-candies/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} candyType
+ * @return {number}
  */
-var solve = function(input) {
+var distributeCandies = function(candyType) {
+    return Math.min(new Set(candyType).size, Math.floor(candyType.length / 2));
 };

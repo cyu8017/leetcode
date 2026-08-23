@@ -1,9 +1,11 @@
-﻿// LeetCode 2727 - Is Object Empty
+// LeetCode 2727 - Is Object Empty
 // https://leetcode.com/problems/is-object-empty/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {Object|Array} obj
+ * @return {boolean}
  */
-var solve = function(input) {
+var isEmpty = function(obj) {
+    if (Array.isArray(obj)) return obj.length === 0;
+    return Object.keys(obj).length === 0;
 };

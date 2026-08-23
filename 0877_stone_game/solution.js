@@ -1,9 +1,10 @@
-﻿// LeetCode 0877 - Stone Game
+// LeetCode 0877 - Stone Game
 // https://leetcode.com/problems/stone-game/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} piles
+ * @return {boolean}
  */
-var solve = function(input) {
+var stoneGame = function(piles) {
+    return true;
 };

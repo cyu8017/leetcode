@@ -1,4 +1,4 @@
-﻿// LeetCode 0195 - Tenth Line
+// LeetCode 0195 - Tenth Line
 // https://leetcode.com/problems/tenth-line/
 
 var SCRIPT = `

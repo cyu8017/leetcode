@@ -1,4 +1,4 @@
-﻿// LeetCode 1188 - Design Bounded Blocking Queue
+// LeetCode 1188 - Design Bounded Blocking Queue
 // https://leetcode.com/problems/design-bounded-blocking-queue/
 
 var BoundedBlockingQueue = function(capacity) {

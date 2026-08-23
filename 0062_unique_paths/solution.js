@@ -1,4 +1,4 @@
-﻿// LeetCode 0062 - Unique Paths
+// LeetCode 0062 - Unique Paths
 // https://leetcode.com/problems/unique-paths/
 
 /**

@@ -1,4 +1,4 @@
-﻿// LeetCode 0346 - Moving Average from Data Stream
+// LeetCode 0346 - Moving Average from Data Stream
 class MovingAverage {
     constructor(size) {
         this.size = size;

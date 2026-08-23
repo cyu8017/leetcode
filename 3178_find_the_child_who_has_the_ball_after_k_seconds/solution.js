@@ -1,9 +1,9 @@
-﻿// LeetCode 3178 - Find the Child Who Has the Ball After K Seconds
+// LeetCode 3178 - Find the Child Who Has the Ball After K Seconds
 // https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var numberOfChild = function(n, k) {
+    let mod = k % (n - 1);
+    k = Math.floor(k / (n - 1));
+    if (k % 2 === 1) return n - mod - 1;
+    return mod;
 };

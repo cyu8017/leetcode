@@ -1,9 +1,22 @@
-﻿// LeetCode 0965 - Univalued Binary Tree
+// LeetCode 0965 - Univalued Binary Tree
 // https://leetcode.com/problems/univalued-binary-tree/
 
+function TreeNode(val, left, right) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right);
+}
+
 /**
- * @param {any} input
- * @return {any}
+ * @param {TreeNode} root
+ * @return {boolean}
  */
-var solve = function(input) {
+var isUnivalTree = function(root) {
+    if (!root) return true;
+    const dfs = (node, v) => {
+        if (!node) return true;
+        if (node.val !== v) return false;
+        return dfs(node.left, v) && dfs(node.right, v);
+    };
+    return dfs(root, root.val);
 };

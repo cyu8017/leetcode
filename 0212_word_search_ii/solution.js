@@ -1,4 +1,4 @@
-﻿// LeetCode 0212 - Word Search II
+// LeetCode 0212 - Word Search II
 // https://leetcode.com/problems/word-search-ii/
 
 class TrieNode {

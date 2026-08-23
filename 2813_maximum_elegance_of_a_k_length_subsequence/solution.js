@@ -1,9 +1,29 @@
-﻿// LeetCode 2813 - Maximum Elegance of a K-Length Subsequence
+// LeetCode 2813 - Maximum Elegance of a K-Length Subsequence
 // https://leetcode.com/problems/maximum-elegance-of-a-k-length-subsequence/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} items
+ * @param {number} k
+ * @return {number}
  */
-var solve = function(input) {
+var findMaximumElegance = function(items, k) {
+    items.sort((a, b) => b[0] - a[0]);
+    const seen = new Set();
+    let total = 0;
+    const dup = [];
+    for (let i = 0; i < k; i++) {
+        total += items[i][0];
+        const c = items[i][1];
+        if (seen.has(c)) dup.push(items[i][0]);
+        else seen.add(c);
+    }
+    let ans = total + seen.size * seen.size;
+    for (let i = k; i < items.length; i++) {
+        const c = items[i][1];
+        if (seen.has(c) || !dup.length) continue;
+        total += items[i][0] - dup.pop();
+        seen.add(c);
+        ans = Math.max(ans, total + seen.size * seen.size);
+    }
+    return ans;
 };

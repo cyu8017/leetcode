@@ -1,9 +1,12 @@
-﻿// LeetCode 2880 - Select Data
+// LeetCode 2880 - Select Data
 // https://leetcode.com/problems/select-data/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {object[]} students
+ * @return {object[]}
  */
-var solve = function(input) {
+var selectData = function(students) {
+    return students
+        .filter((r) => r.student_id === 101 || r[0] === 101)
+        .map((r) => (Array.isArray(r) ? { name: r[1], age: r[2] } : { name: r.name, age: r.age }));
 };

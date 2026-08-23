@@ -1,9 +1,7 @@
-﻿// LeetCode 1853 - Convert Date Format
+// LeetCode 1853 - Convert Date Format
 // https://leetcode.com/problems/convert-date-format/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT DATE_FORMAT(day, '%W, %M %e, %Y') AS day
+FROM Days`;
+
+module.exports = { QUERY };

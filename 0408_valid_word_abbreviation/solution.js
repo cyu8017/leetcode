@@ -1,4 +1,4 @@
-﻿// LeetCode 0408 - Valid Word Abbreviation
+// LeetCode 0408 - Valid Word Abbreviation
 var validWordAbbreviation = function (word, abbr) {
     let i = 0;
     let j = 0;

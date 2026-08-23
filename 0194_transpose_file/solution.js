@@ -1,4 +1,4 @@
-﻿// LeetCode 0194 - Transpose File
+// LeetCode 0194 - Transpose File
 // https://leetcode.com/problems/transpose-file/
 
 var SCRIPT = `

@@ -1,9 +1,10 @@
-﻿// LeetCode 2877 - Create a DataFrame from List
+// LeetCode 2877 - Create a DataFrame from List
 // https://leetcode.com/problems/create-a-dataframe-from-list/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} studentData
+ * @return {object[]}
  */
-var solve = function(input) {
+var createDataframe = function(studentData) {
+    return studentData.map(([student_id, age]) => ({ student_id, age }));
 };

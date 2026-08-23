@@ -1,9 +1,15 @@
-﻿// LeetCode 2390 - Removing Stars From a String
+// LeetCode 2390 - Removing Stars From a String
 // https://leetcode.com/problems/removing-stars-from-a-string/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {string}
  */
-var solve = function(input) {
+var removeStars = function(s) {
+    const stack = [];
+    for (const c of s) {
+        if (c === '*') stack.pop();
+        else stack.push(c);
+    }
+    return stack.join('');
 };

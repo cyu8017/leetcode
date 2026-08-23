@@ -1,4 +1,4 @@
-﻿// LeetCode 0242 - Valid Anagram
+// LeetCode 0242 - Valid Anagram
 // https://leetcode.com/problems/valid-anagram/
 
 /**

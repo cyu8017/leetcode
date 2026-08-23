@@ -1,9 +1,10 @@
-﻿// LeetCode 3842 - Toggle Light Bulbs
+// LeetCode 3842 - Toggle Light Bulbs
 // https://leetcode.com/problems/toggle-light-bulbs/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var toggleLightBulbs = function(bulbs) {
+    const st = new Array(101).fill(0);
+    for (const x of bulbs) st[x] ^= 1;
+    const ans = [];
+    for (let i = 0; i < 101; i++) if (st[i] === 1) ans.push(i);
+    return ans;
 };

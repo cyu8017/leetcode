@@ -1,9 +1,12 @@
-﻿// LeetCode 2853 - Highest Salaries Difference
+// LeetCode 2853 - Highest Salaries Difference
 // https://leetcode.com/problems/highest-salaries-difference/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT MAX(s) - MIN(s) AS salary_difference
+FROM
+    (
+        SELECT MAX(salary) AS s
+        FROM Salaries
+        GROUP BY department
+    ) AS t`;
+
+module.exports = { QUERY };

@@ -1,4 +1,4 @@
-﻿// LeetCode 0353 - Design Snake Game
+// LeetCode 0353 - Design Snake Game
 class SnakeGame {
     constructor(width, height, food) {
         this.width = width;

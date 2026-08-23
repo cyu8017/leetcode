@@ -1,4 +1,4 @@
-﻿// LeetCode 0192 - Word Frequency
+// LeetCode 0192 - Word Frequency
 // https://leetcode.com/problems/word-frequency/
 
 var SCRIPT = `

@@ -1,4 +1,4 @@
-﻿// LeetCode 0038 - Count and Say
+// LeetCode 0038 - Count and Say
 // https://leetcode.com/problems/count-and-say/
 
 /**

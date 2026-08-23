@@ -1,9 +1,15 @@
-﻿// LeetCode 2505 - Bitwise OR of All Subsequence Sums
+// LeetCode 2505 - Bitwise OR of All Subsequence Sums
 // https://leetcode.com/problems/bitwise-or-of-all-subsequence-sums/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var subsequenceSumOr = function(nums) {
+    let ans = 0, prefix = 0;
+    for (const x of nums) {
+        prefix += x;
+        ans |= x | prefix;
+    }
+    return ans;
 };

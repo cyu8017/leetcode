@@ -1,9 +1,11 @@
-﻿// LeetCode 2329 - Product Sales Analysis V
+// LeetCode 2329 - Product Sales Analysis V
 // https://leetcode.com/problems/product-sales-analysis-v/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT user_id, SUM(quantity * price) AS spending
+FROM
+    Sales
+    JOIN Product USING (product_id)
+GROUP BY 1
+ORDER BY 2 DESC, 1`;
+
+module.exports = { QUERY };

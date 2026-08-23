@@ -1,4 +1,4 @@
-﻿// LeetCode 0252 - Meeting Rooms
+// LeetCode 0252 - Meeting Rooms
 // https://leetcode.com/problems/meeting-rooms/
 
 /**

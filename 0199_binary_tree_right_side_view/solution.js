@@ -1,4 +1,4 @@
-﻿// LeetCode 0199 - Binary Tree Right Side View
+// LeetCode 0199 - Binary Tree Right Side View
 // https://leetcode.com/problems/binary-tree-right-side-view/
 
 function TreeNode(val = 0, left = null, right = null) {

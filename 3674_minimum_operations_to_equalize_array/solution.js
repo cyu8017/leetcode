@@ -1,9 +1,7 @@
-﻿// LeetCode 3674 - Minimum Operations to Equalize Array
+// LeetCode 3674 - Minimum Operations to Equalize Array
 // https://leetcode.com/problems/minimum-operations-to-equalize-array/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var minOperations = function(nums) {
+    for (const x of nums) if (x !== nums[0]) return 1;
+    return 0;
 };

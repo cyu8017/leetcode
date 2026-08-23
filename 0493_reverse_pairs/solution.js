@@ -1,4 +1,4 @@
-﻿// LeetCode 0493 - Reverse Pairs
+// LeetCode 0493 - Reverse Pairs
 // https://leetcode.com/problems/reverse-pairs/
 
 class Solution {

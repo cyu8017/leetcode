@@ -1,4 +1,4 @@
-﻿// LeetCode 0025 - Reverse Nodes in k-Group
+// LeetCode 0025 - Reverse Nodes in k-Group
 // https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 function ListNode(val, next) {

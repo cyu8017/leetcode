@@ -1,9 +1,8 @@
-﻿// LeetCode 2690 - Infinite Method Object
+// LeetCode 2690 - Infinite Method Object
 // https://leetcode.com/problems/infinite-method-object/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var createInfiniteObject = function() {
+    return new Proxy({}, {
+        get: () => () => "Hello World",
+    });
 };

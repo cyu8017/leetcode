@@ -1,9 +1,17 @@
-﻿// LeetCode 2618 - Check if Object Instance of Class
+// LeetCode 2618 - Check if Object Instance of Class
 // https://leetcode.com/problems/check-if-object-instance-of-class/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {*} obj
+ * @param {*} classFunction
+ * @return {boolean}
  */
-var solve = function(input) {
+var checkIfInstanceOf = function(obj, classFunction) {
+    if (obj === null || obj === undefined || typeof classFunction !== "function") return false;
+    let proto = Object.getPrototypeOf(obj);
+    while (proto !== null) {
+        if (proto === classFunction.prototype) return true;
+        proto = Object.getPrototypeOf(proto);
+    }
+    return false;
 };

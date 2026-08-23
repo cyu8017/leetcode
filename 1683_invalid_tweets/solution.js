@@ -1,9 +1,6 @@
-﻿// LeetCode 1683 - Invalid Tweets
+// LeetCode 1683 - Invalid Tweets
 // https://leetcode.com/problems/invalid-tweets/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT tweet_id FROM Tweets WHERE CHAR_LENGTH(content)>15`;
+
+module.exports = { QUERY };

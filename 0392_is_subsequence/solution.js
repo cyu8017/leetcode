@@ -1,4 +1,4 @@
-﻿// LeetCode 0392 - Is Subsequence
+// LeetCode 0392 - Is Subsequence
 var isSubsequence = function (s, t) {
     let index = 0;
     for (const char of t) {

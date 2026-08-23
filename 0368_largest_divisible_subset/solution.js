@@ -1,4 +1,4 @@
-﻿// LeetCode 0368 - Largest Divisible Subset
+// LeetCode 0368 - Largest Divisible Subset
 var largestDivisibleSubset = function(nums) {
     nums.sort((a, b) => a - b);
     const chains = new Map(nums.map((num) => [num, [num]]));

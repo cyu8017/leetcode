@@ -1,9 +1,12 @@
-﻿// LeetCode 2317 - Maximum XOR After Operations 
+// LeetCode 2317 - Maximum XOR After Operations
 // https://leetcode.com/problems/maximum-xor-after-operations/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number}
  */
-var solve = function(input) {
+var maximumXOR = function(nums) {
+    let ans = 0;
+    for (const x of nums) ans |= x;
+    return ans;
 };

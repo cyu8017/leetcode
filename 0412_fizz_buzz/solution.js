@@ -1,4 +1,4 @@
-﻿// LeetCode 0412 - Fizz Buzz
+// LeetCode 0412 - Fizz Buzz
 var fizzBuzz = function (n) {
     const result = [];
     for (let value = 1; value <= n; value += 1) {

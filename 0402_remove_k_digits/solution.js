@@ -1,4 +1,4 @@
-﻿// LeetCode 0402 - Remove K Digits
+// LeetCode 0402 - Remove K Digits
 var removeKdigits = function (num, k) {
     const stack = [];
     for (const digit of num) {

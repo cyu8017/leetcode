@@ -1,4 +1,4 @@
-﻿// LeetCode 1709 - Biggest Window Between Visits
+// LeetCode 1709 - Biggest Window Between Visits
 // https://leetcode.com/problems/biggest-window-between-visits/
 
 var QUERY = `SELECT user_id, MAX(DATEDIFF(next_visit, visit_date)) AS biggest_window

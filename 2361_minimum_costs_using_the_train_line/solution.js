@@ -1,9 +1,22 @@
-﻿// LeetCode 2361 - Minimum Costs Using the Train Line
+// LeetCode 2361 - Minimum Costs Using the Train Line
 // https://leetcode.com/problems/minimum-costs-using-the-train-line/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} regular
+ * @param {number[]} express
+ * @param {number} expressCost
+ * @return {number[]}
  */
-var solve = function(input) {
+var minimumCosts = function(regular, express, expressCost) {
+    const n = regular.length;
+    const ans = Array(n);
+    let reg = 0, exp = expressCost;
+    for (let i = 0; i < n; i++) {
+        const nextReg = Math.min(reg + regular[i], exp + express[i]);
+        const nextExp = Math.min(reg + regular[i] + expressCost, exp + express[i]);
+        reg = nextReg;
+        exp = nextExp;
+        ans[i] = Math.min(reg, exp);
+    }
+    return ans;
 };

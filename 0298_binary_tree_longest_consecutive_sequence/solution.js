@@ -1,4 +1,4 @@
-﻿// LeetCode 0298 - Binary Tree Longest Consecutive Sequence
+// LeetCode 0298 - Binary Tree Longest Consecutive Sequence
 // https://leetcode.com/problems/binary-tree-longest-consecutive-sequence/
 
 /**

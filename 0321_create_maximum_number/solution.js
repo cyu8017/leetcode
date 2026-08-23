@@ -1,4 +1,4 @@
-﻿// LeetCode 0321 - Create Maximum Number
+// LeetCode 0321 - Create Maximum Number
 var maxNumber = function(nums1, nums2, k) {
     function pickMax(values, count) {
         let drop = values.length - count;

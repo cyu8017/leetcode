@@ -1,9 +1,18 @@
-﻿// LeetCode 0633 - Sum of Square Numbers
+// LeetCode 0633 - Sum of Square Numbers
 // https://leetcode.com/problems/sum-of-square-numbers/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} c
+ * @return {boolean}
  */
-var solve = function(input) {
+var judgeSquareSum = function(c) {
+    let left = 0;
+    let right = Math.floor(Math.sqrt(c));
+    while (left <= right) {
+        const total = left * left + right * right;
+        if (total === c) return true;
+        if (total < c) ++left;
+        else --right;
+    }
+    return false;
 };

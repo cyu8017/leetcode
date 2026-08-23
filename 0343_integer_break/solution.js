@@ -1,4 +1,4 @@
-﻿// LeetCode 0343 - Integer Break
+// LeetCode 0343 - Integer Break
 var integerBreak = function(n) {
     if (n <= 3) return n - 1;
     let product = 1;

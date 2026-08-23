@@ -1,4 +1,4 @@
-﻿// LeetCode 0348 - Design Tic-Tac-Toe
+// LeetCode 0348 - Design Tic-Tac-Toe
 class TicTacToe {
     constructor(n) {
         this.n = n;

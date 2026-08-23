@@ -1,9 +1,17 @@
-﻿// LeetCode 3597 - Partition String 
+// LeetCode 3597 - Partition String
 // https://leetcode.com/problems/partition-string/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var partitionString = function(s) {
+    const vis = new Set();
+    const ans = [];
+    let t = '';
+    for (const c of s) {
+        t += c;
+        if (!vis.has(t)) {
+            vis.add(t);
+            ans.push(t);
+            t = '';
+        }
+    }
+    return ans;
 };

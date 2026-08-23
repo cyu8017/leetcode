@@ -1,9 +1,11 @@
-﻿// LeetCode 3827 - Count Monobit Integers
+// LeetCode 3827 - Count Monobit Integers
 // https://leetcode.com/problems/count-monobit-integers/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var countMonobit = function(n) {
+    let ans = 1;
+    for (let i = 1, x = 1; x <= n; i++) {
+        ans++;
+        x += (1 << i);
+    }
+    return ans;
 };

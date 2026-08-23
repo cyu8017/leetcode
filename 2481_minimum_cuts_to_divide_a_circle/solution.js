@@ -1,9 +1,12 @@
-﻿// LeetCode 2481 - Minimum Cuts to Divide a Circle
+// LeetCode 2481 - Minimum Cuts to Divide a Circle
 // https://leetcode.com/problems/minimum-cuts-to-divide-a-circle/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var numberOfCuts = function(n) {
+    if (n === 1) return 0;
+    if (n % 2 === 0) return n / 2;
+    return n;
 };

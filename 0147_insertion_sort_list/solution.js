@@ -1,4 +1,4 @@
-﻿// LeetCode 0147 - Insertion Sort List
+// LeetCode 0147 - Insertion Sort List
 // https://leetcode.com/problems/insertion-sort-list/
 
 /**

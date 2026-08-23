@@ -1,9 +1,10 @@
-﻿// LeetCode 0614 - Second Degree Follower
+// LeetCode 0614 - Second Degree Follower
 // https://leetcode.com/problems/second-degree-follower/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT f1.follower, COUNT(DISTINCT f2.follower) AS num
+FROM Follow f1
+JOIN Follow f2 ON f1.follower = f2.followee
+GROUP BY f1.follower
+ORDER BY f1.follower`;
+
+module.exports = { QUERY };

@@ -1,9 +1,11 @@
-﻿// LeetCode 3856 - Trim Trailing Vowels
+// LeetCode 3856 - Trim Trailing Vowels
 // https://leetcode.com/problems/trim-trailing-vowels/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+function isVowel(c) {
+    return c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
+}
+var trimTrailingVowels = function(s) {
+    let i = s.length - 1;
+    while (i >= 0 && isVowel(s[i])) i--;
+    return s.substring(0, i + 1);
 };

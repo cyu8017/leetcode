@@ -1,4 +1,4 @@
-﻿// LeetCode 0377 - Combination Sum IV
+// LeetCode 0377 - Combination Sum IV
 var combinationSum4 = function(nums, target) {
     const dp = Array(target + 1).fill(0);
     dp[0] = 1;

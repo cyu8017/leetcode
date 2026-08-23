@@ -1,4 +1,4 @@
-﻿// LeetCode 0345 - Reverse Vowels of a String
+// LeetCode 0345 - Reverse Vowels of a String
 var reverseVowels = function(s) {
     const vowels = new Set("aeiouAEIOU");
     const chars = s.split("");

@@ -1,9 +1,14 @@
-﻿// LeetCode 3591 - Check if Any Element Has Prime Frequency
+// LeetCode 3591 - Check if Any Element Has Prime Frequency
 // https://leetcode.com/problems/check-if-any-element-has-prime-frequency/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+function isPrime3591(x) {
+    if (x < 2) return false;
+    for (let i = 2; i * i <= x; i++) if (x % i === 0) return false;
+    return true;
+}
+var checkPrimeFrequency = function(nums) {
+    const cnt = new Map();
+    for (const x of nums) cnt.set(x, (cnt.get(x) || 0) + 1);
+    for (const v of cnt.values()) if (isPrime3591(v)) return true;
+    return false;
 };

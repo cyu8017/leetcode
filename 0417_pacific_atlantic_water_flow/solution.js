@@ -1,4 +1,4 @@
-﻿// LeetCode 0417 - Pacific Atlantic Water Flow
+// LeetCode 0417 - Pacific Atlantic Water Flow
 var pacificAtlantic = function (heights) {
     if (!heights.length || !heights[0].length) return [];
     const rows = heights.length;

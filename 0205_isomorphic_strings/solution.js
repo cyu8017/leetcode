@@ -1,4 +1,4 @@
-﻿// LeetCode 0205 - Isomorphic Strings
+// LeetCode 0205 - Isomorphic Strings
 // https://leetcode.com/problems/isomorphic-strings/
 
 /**

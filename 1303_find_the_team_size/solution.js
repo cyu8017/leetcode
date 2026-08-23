@@ -1,9 +1,7 @@
-﻿// LeetCode 1303 - Find the Team Size
+// LeetCode 1303 - Find The Team Size
 // https://leetcode.com/problems/find-the-team-size/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT employee_id, COUNT(*) OVER (PARTITION BY team_id) AS team_size
+FROM Employee`;
+
+module.exports = { QUERY };

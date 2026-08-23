@@ -1,9 +1,19 @@
-﻿// LeetCode 0905 - Sort Array By Parity
+// LeetCode 0905 - Sort Array By Parity
 // https://leetcode.com/problems/sort-array-by-parity/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {number[]}
  */
-var solve = function(input) {
+var sortArrayByParity = function(nums) {
+    let i = 0;
+    for (let j = 0; j < nums.length; j++) {
+        if (nums[j] % 2 === 0) {
+            const tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+            i++;
+        }
+    }
+    return nums;
 };

@@ -1,9 +1,10 @@
-﻿// LeetCode 2396 - Strictly Palindromic Number
+// LeetCode 2396 - Strictly Palindromic Number
 // https://leetcode.com/problems/strictly-palindromic-number/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {boolean}
  */
-var solve = function(input) {
+var isStrictlyPalindromic = function(n) {
+    return false;
 };

@@ -1,4 +1,4 @@
-﻿// LeetCode 0355 - Design Twitter
+// LeetCode 0355 - Design Twitter
 class Twitter {
     constructor() {
         this.time = 0;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0394 - Decode String
+// LeetCode 0394 - Decode String
 var decodeString = function (s) {
     const stack = [];
     let current = "";

@@ -1,4 +1,4 @@
-﻿// LeetCode 0183 - Customers Who Never Order
+// LeetCode 0183 - Customers Who Never Order
 // https://leetcode.com/problems/customers-who-never-order/
 
 var QUERY = `

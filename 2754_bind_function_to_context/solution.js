@@ -1,9 +1,13 @@
-﻿// LeetCode 2754 - Bind Function to Context
+// LeetCode 2754 - Bind Function to Context
 // https://leetcode.com/problems/bind-function-to-context/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {Object} obj
+ * @return {Function}
  */
-var solve = function(input) {
+Function.prototype.bindPolyfill = function(obj) {
+    const fn = this;
+    return function(...args) {
+        return fn.apply(obj, args);
+    };
 };

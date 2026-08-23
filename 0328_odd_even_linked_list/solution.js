@@ -1,4 +1,4 @@
-﻿// LeetCode 0328 - Odd Even Linked List
+// LeetCode 0328 - Odd Even Linked List
 var oddEvenList = function(head) {
     if (!head || !head.next) return head;
     let odd = head;

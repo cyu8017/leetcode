@@ -1,4 +1,4 @@
-﻿// LeetCode 0344 - Reverse String
+// LeetCode 0344 - Reverse String
 var reverseString = function(s) {
     let left = 0;
     let right = s.length - 1;

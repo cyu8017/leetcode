@@ -1,9 +1,21 @@
-﻿// LeetCode 2406 - Divide Intervals Into Minimum Number of Groups
+// LeetCode 2406 - Divide Intervals Into Minimum Number of Groups
 // https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} intervals
+ * @return {number}
  */
-var solve = function(input) {
+var minGroups = function(intervals) {
+    const events = [];
+    for (const it of intervals) {
+        events.push([it[0], 1]);
+        events.push([it[1] + 1, -1]);
+    }
+    events.sort((a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]);
+    let cur = 0, ans = 0;
+    for (const e of events) {
+        cur += e[1];
+        ans = Math.max(ans, cur);
+    }
+    return ans;
 };

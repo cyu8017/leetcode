@@ -1,9 +1,10 @@
-﻿// LeetCode 2619 - Array Prototype Last
+// LeetCode 2619 - Array Prototype Last
 // https://leetcode.com/problems/array-prototype-last/
 
 /**
- * @param {any} input
- * @return {any}
+ * @return {null|boolean|number|string|Array|Object}
  */
-var solve = function(input) {
+Array.prototype.last = function() {
+    if (this.length === 0) return -1;
+    return this[this.length - 1];
 };

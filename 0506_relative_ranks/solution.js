@@ -1,4 +1,4 @@
-﻿// LeetCode 0506 - Relative Ranks
+// LeetCode 0506 - Relative Ranks
 // https://leetcode.com/problems/relative-ranks/
 
 class Solution {

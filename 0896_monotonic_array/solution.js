@@ -1,9 +1,15 @@
-﻿// LeetCode 0896 - Monotonic Array
+// LeetCode 0896 - Monotonic Array
 // https://leetcode.com/problems/monotonic-array/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[]} nums
+ * @return {boolean}
  */
-var solve = function(input) {
+var isMonotonic = function(nums) {
+    let inc = true, dec = true;
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] < nums[i - 1]) inc = false;
+        if (nums[i] > nums[i - 1]) dec = false;
+    }
+    return inc || dec;
 };

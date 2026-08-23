@@ -1,4 +1,4 @@
-﻿// LeetCode 0117 - Populating Next Right Pointers in Each Node II
+// LeetCode 0117 - Populating Next Right Pointers in Each Node II
 // https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 
 function Node(val, left, right, next) {

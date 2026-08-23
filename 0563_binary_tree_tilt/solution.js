@@ -1,9 +1,27 @@
-﻿// LeetCode 0563 - Binary Tree Tilt
+// LeetCode 0563 - Binary Tree Tilt
 // https://leetcode.com/problems/binary-tree-tilt/
 
 /**
- * @param {any} input
- * @return {any}
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
  */
-var solve = function(input) {
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var findTilt = function(root) {
+    let total = 0;
+    const subtreeSum = (node) => {
+        if (node == null) return 0;
+        const left = subtreeSum(node.left);
+        const right = subtreeSum(node.right);
+        total += Math.abs(left - right);
+        return node.val + left + right;
+    };
+    subtreeSum(root);
+    return total;
 };

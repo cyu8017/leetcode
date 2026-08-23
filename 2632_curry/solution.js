@@ -1,9 +1,11 @@
-﻿// LeetCode 2632 - Curry
+// LeetCode 2632 - Curry
 // https://leetcode.com/problems/curry/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var curry = function(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) return fn(...args);
+        return function(...next) {
+            return curried(...args, ...next);
+        };
+    };
 };

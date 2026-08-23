@@ -1,9 +1,18 @@
-﻿// LeetCode 0856 - Score of Parentheses
+// LeetCode 0856 - Score of Parentheses
 // https://leetcode.com/problems/score-of-parentheses/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number}
  */
-var solve = function(input) {
+var scoreOfParentheses = function(s) {
+    const stack = [0];
+    for (const ch of s) {
+        if (ch === '(') stack.push(0);
+        else {
+            const val = stack.pop();
+            stack.push(stack.pop() + Math.max(2 * val, 1));
+        }
+    }
+    return stack[stack.length - 1];
 };

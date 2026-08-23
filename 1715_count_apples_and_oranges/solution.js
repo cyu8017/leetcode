@@ -1,4 +1,4 @@
-﻿// LeetCode 1715 - Count Apples and Oranges
+// LeetCode 1715 - Count Apples and Oranges
 // https://leetcode.com/problems/count-apples-and-oranges/
 
 var QUERY = `SELECT SUM(apple_count) AS apple_count, SUM(orange_count) AS orange_count

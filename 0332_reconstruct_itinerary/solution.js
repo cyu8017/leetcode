@@ -1,4 +1,4 @@
-﻿// LeetCode 0332 - Reconstruct Itinerary
+// LeetCode 0332 - Reconstruct Itinerary
 var findItinerary = function(tickets) {
     const targets = new Map();
     for (const [source, destination] of tickets.sort().reverse()) {

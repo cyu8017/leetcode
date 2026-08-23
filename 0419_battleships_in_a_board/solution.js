@@ -1,4 +1,4 @@
-﻿// LeetCode 0419 - Battleships in a Board
+// LeetCode 0419 - Battleships in a Board
 var countBattleships = function (board) {
     let count = 0;
     for (let row = 0; row < board.length; row += 1) {

@@ -1,9 +1,21 @@
-﻿// LeetCode 0763 - Partition Labels
+// LeetCode 0763 - Partition Labels
 // https://leetcode.com/problems/partition-labels/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} s
+ * @return {number[]}
  */
-var solve = function(input) {
+var partitionLabels = function(s) {
+    const last = new Array(26).fill(0);
+    for (let i = 0; i < s.length; i++) last[s.charCodeAt(i) - 97] = i;
+    let start = 0, end = 0;
+    const answer = [];
+    for (let i = 0; i < s.length; i++) {
+        end = Math.max(end, last[s.charCodeAt(i) - 97]);
+        if (i === end) {
+            answer.push(end - start + 1);
+            start = i + 1;
+        }
+    }
+    return answer;
 };

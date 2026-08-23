@@ -1,9 +1,10 @@
-﻿// LeetCode 3732 - Maximum Product of Three Elements After One Replacement
+// LeetCode 3732 - Maximum Product of Three Elements After One Replacement
 // https://leetcode.com/problems/maximum-product-of-three-elements-after-one-replacement/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var maxProduct = function(nums) {
+    const a = nums.slice().sort((x, y) => x - y);
+    const n = a.length;
+    const A = a[0], B = a[1], C = a[n - 2], D = a[n - 1];
+    const x = 100000;
+    return Math.max(Math.max(A * B * x, C * D * x), -A * D * x);
 };

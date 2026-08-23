@@ -1,4 +1,4 @@
-﻿// LeetCode 0330 - Patching Array
+// LeetCode 0330 - Patching Array
 var minPatches = function(nums, n) {
     let patches = 0;
     let miss = 1;

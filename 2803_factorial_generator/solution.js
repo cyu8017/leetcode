@@ -1,9 +1,14 @@
-﻿// LeetCode 2803 - Factorial Generator
+// LeetCode 2803 - Factorial Generator
 // https://leetcode.com/problems/factorial-generator/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @yields {number}
  */
-var solve = function(input) {
+var factorialGenerator = function*(n) {
+    let cur = 1;
+    for (let i = 1; i <= n; i++) {
+        cur *= i;
+        yield cur;
+    }
 };

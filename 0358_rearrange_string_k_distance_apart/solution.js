@@ -1,4 +1,4 @@
-﻿// LeetCode 0358 - Rearrange String k Distance Apart
+// LeetCode 0358 - Rearrange String k Distance Apart
 var rearrangeString = function(s, k) {
     const counts = new Map();
     for (const char of s) counts.set(char, (counts.get(char) || 0) + 1);

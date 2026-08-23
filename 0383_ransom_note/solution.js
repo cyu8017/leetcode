@@ -1,4 +1,4 @@
-﻿// LeetCode 0383 - Ransom Note
+// LeetCode 0383 - Ransom Note
 var canConstruct = function (ransomNote, magazine) {
     const counts = new Map();
     for (const char of magazine) {

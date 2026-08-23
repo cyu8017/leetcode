@@ -1,9 +1,10 @@
-﻿// LeetCode 2005 - Subtree Removal Game with Fibonacci Tree
+// LeetCode 2005 - Subtree Removal Game with Fibonacci Tree
 // https://leetcode.com/problems/subtree-removal-game-with-fibonacci-tree/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {boolean}
  */
-var solve = function(input) {
+var findGameWinner = function(n) {
+    return n % 6 !== 1;
 };

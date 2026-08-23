@@ -1,4 +1,4 @@
-﻿// LeetCode 0335 - Self Crossing
+// LeetCode 0335 - Self Crossing
 var isSelfCrossing = function(distance) {
     for (let index = 3; index < distance.length; index += 1) {
         if (distance[index] >= distance[index - 2] && distance[index - 1] <= distance[index - 3]) {

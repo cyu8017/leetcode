@@ -1,9 +1,15 @@
-﻿// LeetCode 2490 - Circular Sentence
+// LeetCode 2490 - Circular Sentence
 // https://leetcode.com/problems/circular-sentence/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {string} sentence
+ * @return {boolean}
  */
-var solve = function(input) {
+var isCircularSentence = function(sentence) {
+    const n = sentence.length;
+    if (sentence[0] !== sentence[n - 1]) return false;
+    for (let i = 0; i < n; i++) {
+        if (sentence[i] === ' ' && sentence[i - 1] !== sentence[i + 1]) return false;
+    }
+    return true;
 };

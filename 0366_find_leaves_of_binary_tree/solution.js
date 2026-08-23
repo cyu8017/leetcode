@@ -1,4 +1,4 @@
-﻿// LeetCode 0366 - Find Leaves of Binary Tree
+// LeetCode 0366 - Find Leaves of Binary Tree
 function TreeNode(val, left, right) {
     this.val = val === undefined ? 0 : val;
     this.left = left === undefined ? null : left;

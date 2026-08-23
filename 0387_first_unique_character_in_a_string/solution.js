@@ -1,4 +1,4 @@
-﻿// LeetCode 0387 - First Unique Character in a String
+// LeetCode 0387 - First Unique Character in a String
 var firstUniqChar = function (s) {
     const counts = new Map();
     for (const char of s) {

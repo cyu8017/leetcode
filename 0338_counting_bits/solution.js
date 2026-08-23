@@ -1,4 +1,4 @@
-﻿// LeetCode 0338 - Counting Bits
+// LeetCode 0338 - Counting Bits
 var countBits = function(n) {
     const result = new Array(n + 1).fill(0);
     for (let index = 1; index <= n; index += 1) {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0384 - Shuffle an Array
+// LeetCode 0384 - Shuffle an Array
 class Solution {
     constructor(nums) {
         this.original = [...nums];

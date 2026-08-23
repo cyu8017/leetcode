@@ -1,4 +1,4 @@
-﻿// LeetCode 0354 - Russian Doll Envelopes
+// LeetCode 0354 - Russian Doll Envelopes
 var maxEnvelopes = function(envelopes) {
     envelopes.sort((a, b) => (a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]));
     const tails = [];

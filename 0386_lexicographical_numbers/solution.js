@@ -1,4 +1,4 @@
-﻿// LeetCode 0386 - Lexicographical Numbers
+// LeetCode 0386 - Lexicographical Numbers
 var lexicalOrder = function (n) {
     const result = [];
 

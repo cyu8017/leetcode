@@ -1,9 +1,14 @@
-﻿// LeetCode 0829 - Consecutive Numbers Sum
+// LeetCode 0829 - Consecutive Numbers Sum
 // https://leetcode.com/problems/consecutive-numbers-sum/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} n
+ * @return {number}
  */
-var solve = function(input) {
+var consecutiveNumbersSum = function(n) {
+    let ans = 0;
+    for (let k = 1; k * (k - 1) / 2 < n; k++) {
+        if ((n - k * (k - 1) / 2) % k === 0) ans++;
+    }
+    return ans;
 };

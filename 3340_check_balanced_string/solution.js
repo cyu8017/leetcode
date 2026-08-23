@@ -1,9 +1,11 @@
-﻿// LeetCode 3340 - Check Balanced String
+// LeetCode 3340 - Check Balanced String
 // https://leetcode.com/problems/check-balanced-string/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+var isBalanced = function(num) {
+    let even = 0, odd = 0;
+    for (let i = 0; i < num.length; i++) {
+        if (i % 2 === 0) even += num.charCodeAt(i) - 48;
+        else odd += num.charCodeAt(i) - 48;
+    }
+    return even === odd;
 };

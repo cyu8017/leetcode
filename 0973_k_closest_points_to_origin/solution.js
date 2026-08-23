@@ -1,9 +1,12 @@
-﻿// LeetCode 0973 - K Closest Points to Origin
+// LeetCode 0973 - K Closest Points to Origin
 // https://leetcode.com/problems/k-closest-points-to-origin/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} points
+ * @param {number} k
+ * @return {number[][]}
  */
-var solve = function(input) {
+var kClosest = function(points, k) {
+    points.sort((a, b) => (a[0] * a[0] + a[1] * a[1]) - (b[0] * b[0] + b[1] * b[1]));
+    return points.slice(0, k);
 };

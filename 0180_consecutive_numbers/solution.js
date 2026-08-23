@@ -1,4 +1,4 @@
-﻿// LeetCode 0180 - Consecutive Numbers
+// LeetCode 0180 - Consecutive Numbers
 // https://leetcode.com/problems/consecutive-numbers/
 
 var QUERY = `SELECT DISTINCT l1.num AS ConsecutiveNums

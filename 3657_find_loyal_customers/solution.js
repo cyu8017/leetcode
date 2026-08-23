@@ -1,9 +1,13 @@
-﻿// LeetCode 3657 - Find Loyal Customers
+// LeetCode 3657 - Find Loyal Customers
 // https://leetcode.com/problems/find-loyal-customers/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
-};
+var QUERY = `SELECT customer_id
+FROM customer_transactions
+GROUP BY 1
+HAVING
+    COUNT(1) >= 3
+    AND SUM(transaction_type = 'refund') / COUNT(1) < 0.2
+    AND DATEDIFF(MAX(transaction_date), MIN(transaction_date)) >= 30
+ORDER BY 1;`;
+
+module.exports = { QUERY };

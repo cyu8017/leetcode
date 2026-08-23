@@ -1,4 +1,4 @@
-﻿// LeetCode 0203 - Remove Linked List Elements
+// LeetCode 0203 - Remove Linked List Elements
 // https://leetcode.com/problems/remove-linked-list-elements/
 
 /**

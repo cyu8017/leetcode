@@ -1,9 +1,10 @@
-﻿// LeetCode 2469 - Convert the Temperature
+// LeetCode 2469 - Convert the Temperature
 // https://leetcode.com/problems/convert-the-temperature/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number} celsius
+ * @return {number[]}
  */
-var solve = function(input) {
+var convertTemperature = function(celsius) {
+    return [celsius + 273.15, celsius * 1.80 + 32.00];
 };

@@ -1,4 +1,4 @@
-﻿// LeetCode 0356 - Line Reflection
+// LeetCode 0356 - Line Reflection
 var isReflected = function(points) {
     const pointSet = new Set(points.map(([x, y]) => `${x},${y}`));
     const xs = points.map(([x]) => x);

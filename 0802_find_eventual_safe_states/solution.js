@@ -1,9 +1,23 @@
-﻿// LeetCode 0802 - Find Eventual Safe States
+// LeetCode 0802 - Find Eventual Safe States
 // https://leetcode.com/problems/find-eventual-safe-states/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {number[][]} graph
+ * @return {number[]}
  */
-var solve = function(input) {
+var eventualSafeNodes = function(graph) {
+    const n = graph.length;
+    const color = new Array(n).fill(0);
+    const dfs = (node) => {
+        if (color[node] !== 0) return color[node] === 2;
+        color[node] = 1;
+        for (const nei of graph[node]) {
+            if (!dfs(nei)) return false;
+        }
+        color[node] = 2;
+        return true;
+    };
+    const ans = [];
+    for (let i = 0; i < n; i++) if (dfs(i)) ans.push(i);
+    return ans;
 };

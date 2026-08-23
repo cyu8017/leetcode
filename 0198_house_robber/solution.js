@@ -1,4 +1,4 @@
-﻿// LeetCode 0198 - House Robber
+// LeetCode 0198 - House Robber
 // https://leetcode.com/problems/house-robber/
 
 /**

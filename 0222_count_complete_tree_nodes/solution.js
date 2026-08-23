@@ -1,4 +1,4 @@
-﻿// LeetCode 0222 - Count Complete Tree Nodes
+// LeetCode 0222 - Count Complete Tree Nodes
 // https://leetcode.com/problems/count-complete-tree-nodes/
 
 function TreeNode(val, left, right) {

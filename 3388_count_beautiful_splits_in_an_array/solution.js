@@ -1,9 +1,21 @@
-﻿// LeetCode 3388 - Count Beautiful Splits in an Array
+// LeetCode 3388 - Count Beautiful Splits in an Array
 // https://leetcode.com/problems/count-beautiful-splits-in-an-array/
 
-/**
- * @param {any} input
- * @return {any}
- */
-var solve = function(input) {
+function equal(a, as, ae, b, bs, be) {
+    if (ae - as !== be - bs) return false;
+    for (let i = 0; i < ae - as; i++) if (a[as + i] !== b[bs + i]) return false;
+    return true;
+}
+var beautifulSplits = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 1; i < n - 1; i++) {
+        for (let j = i + 1; j < n; j++) {
+            let ok = false;
+            if (i <= j - i && equal(nums, 0, i, nums, i, i + i)) ok = true;
+            if (!ok && j - i <= n - j && equal(nums, i, j, nums, j, j + (j - i))) ok = true;
+            if (ok) ans++;
+        }
+    }
+    return ans;
 };

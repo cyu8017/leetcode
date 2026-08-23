@@ -1,4 +1,4 @@
-﻿// LeetCode 0397 - Integer Replacement
+// LeetCode 0397 - Integer Replacement
 var integerReplacement = function (n) {
     let steps = 0;
     while (n !== 1) {

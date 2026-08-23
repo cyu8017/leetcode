@@ -1,4 +1,4 @@
-﻿// LeetCode 0520 - Detect Capital
+// LeetCode 0520 - Detect Capital
 // https://leetcode.com/problems/detect-capital/
 
 class Solution {

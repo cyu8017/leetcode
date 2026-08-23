@@ -1,4 +1,4 @@
-﻿// LeetCode 0379 - Design Phone Directory
+// LeetCode 0379 - Design Phone Directory
 class PhoneDirectory {
     constructor(maxNumbers) {
         this.available = new Set(Array.from({ length: maxNumbers }, (_, index) => index));

@@ -1,4 +1,4 @@
-﻿// LeetCode 1865 - Finding Pairs With a Certain Sum
+// LeetCode 1865 - Finding Pairs With a Certain Sum
 // https://leetcode.com/problems/finding-pairs-with-a-certain-sum/
 
 class FindSumPairs {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0156 - Binary Tree Upside Down
+// LeetCode 0156 - Binary Tree Upside Down
 // https://leetcode.com/problems/binary-tree-upside-down/
 
 /**

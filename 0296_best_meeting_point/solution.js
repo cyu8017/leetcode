@@ -1,4 +1,4 @@
-﻿// LeetCode 0296 - Best Meeting Point
+// LeetCode 0296 - Best Meeting Point
 // https://leetcode.com/problems/best-meeting-point/
 
 /**

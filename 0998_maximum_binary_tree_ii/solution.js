@@ -1,9 +1,17 @@
-﻿// LeetCode 0998 - Maximum Binary Tree II
+// LeetCode 0998 - Maximum Binary Tree II
 // https://leetcode.com/problems/maximum-binary-tree-ii/
 
 /**
- * @param {any} input
- * @return {any}
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
  */
-var solve = function(input) {
+var insertIntoMaxTree = function(root, val) {
+    if (!root || val > root.val) {
+        const node = new TreeNode(val);
+        node.left = root;
+        return node;
+    }
+    root.right = insertIntoMaxTree(root.right, val);
+    return root;
 };
