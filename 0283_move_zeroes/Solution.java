@@ -1,4 +1,4 @@
-﻿// LeetCode 0283 - Move Zeroes
+// LeetCode 0283 - Move Zeroes
 // https://leetcode.com/problems/move-zeroes/
 
 class Solution {

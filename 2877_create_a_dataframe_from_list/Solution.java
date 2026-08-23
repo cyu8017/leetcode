@@ -1,7 +1,9 @@
-﻿// LeetCode 2877 - Create a DataFrame from List
+// LeetCode 2877 - Create a DataFrame from List
 // https://leetcode.com/problems/create-a-dataframe-from-list/
+// Pandas stand-in.
 
 class Solution {
-    public void solve() {
+    public int[][] createDataframe(int[][] studentData) {
+        return new int[0][];
     }
 }

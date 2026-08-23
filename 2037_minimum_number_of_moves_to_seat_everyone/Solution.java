@@ -1,7 +1,14 @@
-﻿// LeetCode 2037 - Minimum Number of Moves to Seat Everyone
+// LeetCode 2037 - Minimum Number of Moves to Seat Everyone
 // https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/
 
+import java.util.*;
+
 class Solution {
-    public void solve() {
+    public int minMovesToSeat(int[] seats, int[] students) {
+        Arrays.sort(seats);
+        Arrays.sort(students);
+        int ans = 0;
+        for (int i = 0; i < seats.length; i++) ans += Math.abs(seats[i] - students[i]);
+        return ans;
     }
 }

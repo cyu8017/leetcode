@@ -1,7 +1,36 @@
-﻿// LeetCode 3756 - Concatenate Non-Zero Digits and Multiply by Sum II
-// https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-ii/
+// LeetCode 3756 - Concatenate Non Zero Digits And Multiply By Sum Ii
+// https://leetcode.com/problems/concatenate_non_zero_digits_and_multiply_by_sum_ii/
 
 class Solution {
-    public void solve() {
+    private static final int MX = 100001;
+    private static final long MOD = 1_000_000_007;
+    private static final long[] PW = new long[MX];
+    static {
+        PW[0] = 1;
+        for (int i = 1; i < MX; i++) PW[i] = PW[i - 1] * 10 % MOD;
+    }
+
+    public int[] sumAndMultiply(String s, int[][] queries) {
+        int n = s.length();
+        int[] sumD = new int[n + 1], cntN0 = new int[n + 1];
+        long[] p = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            long d = s.charAt(i - 1) - '0';
+            sumD[i] = sumD[i - 1] + (int) d;
+            cntN0[i] = cntN0[i - 1];
+            if (d > 0) {
+                cntN0[i]++;
+                p[i] = (p[i - 1] * 10 + d) % MOD;
+            } else p[i] = p[i - 1];
+        }
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int l = queries[i][0], r = queries[i][1];
+            int n0 = cntN0[r + 1] - cntN0[l];
+            long sd = sumD[r + 1] - sumD[l];
+            long x = (p[r + 1] - p[l] * PW[n0] % MOD + MOD) % MOD;
+            ans[i] = (int) (x * sd % MOD);
+        }
+        return ans;
     }
 }

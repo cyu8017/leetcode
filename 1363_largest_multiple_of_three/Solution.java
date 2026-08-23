@@ -1,4 +1,4 @@
-﻿// LeetCode 1363 - Largest Multiple Of Three
+// LeetCode 1363 - Largest Multiple Of Three
 // https://leetcode.com/problems/largest-multiple-of-three/
 
 class Solution {

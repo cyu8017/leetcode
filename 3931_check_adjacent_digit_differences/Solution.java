@@ -1,7 +1,11 @@
-﻿// LeetCode 3931 - Check Adjacent Digit Differences
+// LeetCode 3931 - Check Adjacent Digit Differences
 // https://leetcode.com/problems/check-adjacent-digit-differences/
 
 class Solution {
-    public void solve() {
+    public boolean isAdjacentDiffAtMostTwo(String s) {
+        for (int i = 1; i < s.length(); i++) {
+            if (Math.abs(s.charAt(i - 1) - s.charAt(i)) > 2) return false;
+        }
+        return true;
     }
 }

@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     public static final String SCRIPT = """
 #!/bin/bash
 awk '

@@ -1,7 +1,9 @@
-﻿// LeetCode 2886 - Change Data Type
+// LeetCode 2886 - Change Data Type
 // https://leetcode.com/problems/change-data-type/
+// Pandas stand-in.
 
 class Solution {
-    public void solve() {
+    public int[][] changeDatatype(int[][] df) {
+        return new int[0][];
     }
 }

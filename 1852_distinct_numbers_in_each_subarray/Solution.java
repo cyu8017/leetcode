@@ -1,4 +1,4 @@
-﻿// LeetCode 1852 - Distinct Numbers in Each Subarray
+// LeetCode 1852 - Distinct Numbers in Each Subarray
 // https://leetcode.com/problems/distinct-numbers-in-each-subarray/
 
 import java.util.HashMap;

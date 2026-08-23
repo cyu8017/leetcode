@@ -1,4 +1,4 @@
-﻿// LeetCode 0257 - Binary Tree Paths
+// LeetCode 0257 - Binary Tree Paths
 // https://leetcode.com/problems/binary-tree-paths/
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0447 - Number of Boomerangs
+// LeetCode 0447 - Number of Boomerangs
 // https://leetcode.com/problems/number-of-boomerangs/
 
 import java.util.HashMap;

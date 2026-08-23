@@ -1,4 +1,4 @@
-﻿// LeetCode 0405 - Convert a Number to Hexadecimal
+// LeetCode 0405 - Convert a Number to Hexadecimal
 
 // https://leetcode.com/problems/convert-a-number-to-hexadecimal/
 

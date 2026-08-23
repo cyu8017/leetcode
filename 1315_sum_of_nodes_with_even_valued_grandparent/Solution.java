@@ -1,4 +1,4 @@
-﻿// LeetCode 1315 - Sum Of Nodes With Even Valued Grandparent
+// LeetCode 1315 - Sum Of Nodes With Even Valued Grandparent
 // https://leetcode.com/problems/sum-of-nodes-with-even-valued-grandparent/
 
 class TreeNode {

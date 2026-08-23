@@ -1,4 +1,4 @@
-﻿// LeetCode 0480 - Sliding Window Median
+// LeetCode 0480 - Sliding Window Median
 // https://leetcode.com/problems/sliding-window-median/
 
 import java.util.ArrayList;

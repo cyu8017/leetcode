@@ -1,4 +1,4 @@
-﻿// LeetCode 0420 - Strong Password Checker
+// LeetCode 0420 - Strong Password Checker
 
 // https://leetcode.com/problems/strong-password-checker/
 

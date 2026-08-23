@@ -1,7 +1,65 @@
-﻿// LeetCode 3695 - Maximize Alternating Sum Using Swaps
+// LeetCode 3695 - Maximize Alternating Sum Using Swaps
 // https://leetcode.com/problems/maximize-alternating-sum-using-swaps/
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    private int[] parent;
+
+    private int find(int x) {
+        if (parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+
+    public long maxAlternatingSum(int[] nums, int[][] swaps) {
+        int n = nums.length;
+        parent = new int[n];
+        for (int i = 0; i < n; i++) parent[i] = i;
+        for (int[] s : swaps) {
+            int a = find(s[0]), b = find(s[1]);
+            if (a != b) parent[a] = b;
+        }
+        Map<Integer, List<Integer>> compVals = new HashMap<>();
+        Map<Integer, List<Integer>> compIdx = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int r = find(i);
+            compVals.computeIfAbsent(r, x -> new ArrayList<>()).add(nums[i]);
+            compIdx.computeIfAbsent(r, x -> new ArrayList<>()).add(i);
+        }
+        int[] arr = new int[n];
+        for (Map.Entry<Integer, List<Integer>> e : compVals.entrySet()) {
+            int r = e.getKey();
+            List<Integer> vals = e.getValue();
+            List<Integer> idxs = compIdx.get(r);
+            vals.sort(Collections.reverseOrder());
+            List<Integer> even = new ArrayList<>();
+            List<Integer> odd = new ArrayList<>();
+            for (int i : idxs) {
+                if (i % 2 == 0) even.add(i);
+                else odd.add(i);
+            }
+            Collections.sort(even);
+            Collections.sort(odd);
+            int ei = 0;
+            for (int v : vals) {
+                if (ei < even.size()) {
+                    arr[even.get(ei)] = v;
+                    ei++;
+                } else {
+                    arr[odd.get(ei - even.size())] = v;
+                    ei++;
+                }
+            }
+        }
+        long ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) ans += arr[i];
+            else ans -= arr[i];
+        }
+        return ans;
     }
 }

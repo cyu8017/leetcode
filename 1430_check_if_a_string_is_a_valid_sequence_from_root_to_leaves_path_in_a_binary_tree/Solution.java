@@ -1,4 +1,4 @@
-﻿// LeetCode 1430 - Check If A String Is A Valid Sequence From Root To Leaves Path In A Binary Tree
+// LeetCode 1430 - Check If A String Is A Valid Sequence From Root To Leaves Path In A Binary Tree
 // https://leetcode.com/problems/check-if-a-string-is-a-valid-sequence-from-root-to-leaves-path-in-a-binary-tree/
 
 class TreeNode {

@@ -1,7 +1,58 @@
-﻿// LeetCode 3714 - Longest Balanced Substring II
+// LeetCode 3714 - Longest Balanced Substring II
 // https://leetcode.com/problems/longest-balanced-substring-ii/
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    private int calc1(String s) {
+        int res = 0, n = s.length(), i = 0;
+        while (i < n) {
+            int j = i + 1;
+            while (j < n && s.charAt(j) == s.charAt(i)) j++;
+            res = Math.max(res, j - i);
+            i = j;
+        }
+        return res;
+    }
+
+    private int calc2(String s, char a, char b) {
+        int res = 0, n = s.length(), i = 0;
+        while (i < n) {
+            while (i < n && s.charAt(i) != a && s.charAt(i) != b) i++;
+            Map<Integer, Integer> pos = new HashMap<>();
+            pos.put(0, i - 1);
+            int d = 0;
+            while (i < n && (s.charAt(i) == a || s.charAt(i) == b)) {
+                if (s.charAt(i) == a) d++;
+                else d--;
+                if (pos.containsKey(d)) res = Math.max(res, i - pos.get(d));
+                else pos.put(d, i);
+                i++;
+            }
+        }
+        return res;
+    }
+
+    private int calc3(String s) {
+        Map<Long, Integer> pos = new HashMap<>();
+        pos.put(0L, -1);
+        int[] cnt = new int[3];
+        int res = 0;
+        for (int i = 0; i < s.length(); i++) {
+            cnt[s.charAt(i) - 'a']++;
+            int x = cnt[0] - cnt[1], y = cnt[1] - cnt[2];
+            long k = (((long) x) << 32) ^ (y & 0xffffffffL);
+            if (pos.containsKey(k)) res = Math.max(res, i - pos.get(k));
+            else pos.put(k, i);
+        }
+        return res;
+    }
+
+    public int longestBalanced(String s) {
+        int x = calc1(s);
+        int y = Math.max(calc2(s, 'a', 'b'), Math.max(calc2(s, 'b', 'c'), calc2(s, 'a', 'c')));
+        int z = calc3(s);
+        return Math.max(x, Math.max(y, z));
     }
 }

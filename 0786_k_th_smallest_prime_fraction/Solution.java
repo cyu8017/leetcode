@@ -1,7 +1,21 @@
-﻿// LeetCode 0786 - K-th Smallest Prime Fraction
+// LeetCode 0786 - K-th Smallest Prime Fraction
 // https://leetcode.com/problems/k-th-smallest-prime-fraction/
 
+import java.util.*;
+
 class Solution {
-    public void solve() {
+    public int[] kthSmallestPrimeFraction(int[] arr, int k) {
+        int n = arr.length;
+        PriorityQueue<int[]> heap = new PriorityQueue<>(
+            (a, b) -> Double.compare((double) arr[a[0]] / arr[a[1]], (double) arr[b[0]] / arr[b[1]])
+        );
+        for (int i = 0; i < n - 1; i++) heap.offer(new int[] {i, n - 1});
+        for (int t = 0; t < k - 1; t++) {
+            int[] top = heap.poll();
+            int i = top[0], j = top[1];
+            if (j - 1 > i) heap.offer(new int[] {i, j - 1});
+        }
+        int[] top = heap.poll();
+        return new int[] {arr[top[0]], arr[top[1]]};
     }
 }

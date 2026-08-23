@@ -1,4 +1,4 @@
-﻿// LeetCode 0269 - Alien Dictionary
+// LeetCode 0269 - Alien Dictionary
 // https://leetcode.com/problems/alien-dictionary/
 
 import java.util.ArrayDeque;

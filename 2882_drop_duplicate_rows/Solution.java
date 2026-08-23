@@ -1,7 +1,9 @@
-﻿// LeetCode 2882 - Drop Duplicate Rows
+// LeetCode 2882 - Drop Duplicate Rows
 // https://leetcode.com/problems/drop-duplicate-rows/
+// Pandas stand-in.
 
 class Solution {
-    public void solve() {
+    public int[][] dropDuplicateEmails(int[][] df) {
+        return new int[0][];
     }
 }

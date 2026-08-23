@@ -1,7 +1,57 @@
-﻿// LeetCode 3629 - Minimum Jumps to Reach End via Prime Teleportation
+// LeetCode 3629 - Minimum Jumps to Reach End via Prime Teleportation
 // https://leetcode.com/problems/minimum-jumps-to-reach-end-via-prime-teleportation/
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    private static final int MX = 1000001;
+    private static List<Integer>[] factors;
+
+    @SuppressWarnings("unchecked")
+    private static List<Integer>[] factors() {
+        if (factors == null) {
+            factors = new ArrayList[MX];
+            for (int i = 0; i < MX; i++) factors[i] = new ArrayList<>();
+            for (int i = 2; i < MX; i++) {
+                if (factors[i].isEmpty()) {
+                    for (int j = i; j < MX; j += i) factors[j].add(i);
+                }
+            }
+        }
+        return factors;
+    }
+
+    public int minJumps(int[] nums) {
+        List<Integer>[] fac = factors();
+        int n = nums.length;
+        Map<Integer, List<Integer>> g = new HashMap<>();
+        for (int i = 0; i < n; i++)
+            for (int p : fac[nums[i]]) g.computeIfAbsent(p, x -> new ArrayList<>()).add(i);
+        int ans = 0;
+        boolean[] vis = new boolean[n];
+        vis[0] = true;
+        List<Integer> q = new ArrayList<>();
+        q.add(0);
+        while (true) {
+            List<Integer> nq = new ArrayList<>();
+            for (int i : q) {
+                if (i == n - 1) return ans;
+                List<Integer> idx = new ArrayList<>(g.getOrDefault(nums[i], List.of()));
+                idx.add(i + 1);
+                if (i > 0) idx.add(i - 1);
+                for (int j : idx) {
+                    if (j >= 0 && j < n && !vis[j]) {
+                        vis[j] = true;
+                        nq.add(j);
+                    }
+                }
+                g.put(nums[i], new ArrayList<>());
+            }
+            q = nq;
+            ans++;
+        }
     }
 }

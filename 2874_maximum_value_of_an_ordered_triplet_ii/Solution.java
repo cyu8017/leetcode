@@ -1,7 +1,15 @@
-﻿// LeetCode 2874 - Maximum Value of an Ordered Triplet II
+// LeetCode 2874 - Maximum Value of an Ordered Triplet II
 // https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-ii/
 
 class Solution {
-    public void solve() {
+    public long maximumTripletValue(int[] nums) {
+        long ans = 0, maxI = 0, maxDiff = 0;
+        for (int v : nums) {
+            long val = v;
+            if (maxDiff * val > ans) ans = maxDiff * val;
+            if (maxI - val > maxDiff) maxDiff = maxI - val;
+            if (val > maxI) maxI = val;
+        }
+        return ans;
     }
 }

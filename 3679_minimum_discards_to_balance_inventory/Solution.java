@@ -1,7 +1,24 @@
-﻿// LeetCode 3679 -  Minimum Discards to Balance Inventory
+// LeetCode 3679 - Minimum Discards to Balance Inventory
 // https://leetcode.com/problems/minimum-discards-to-balance-inventory/
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    public int minArrivalsToDiscard(int[] arrivals, int w, int m) {
+        Map<Integer, Integer> cnt = new HashMap<>();
+        int n = arrivals.length;
+        int[] marked = new int[n];
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            int x = arrivals[i];
+            if (i >= w) cnt.merge(arrivals[i - w], -marked[i - w], Integer::sum);
+            if (cnt.getOrDefault(x, 0) >= m) ans++;
+            else {
+                marked[i] = 1;
+                cnt.merge(x, 1, Integer::sum);
+            }
+        }
+        return ans;
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0078 - Subsets
+// LeetCode 0078 - Subsets
 // https://leetcode.com/problems/subsets/
 
 import java.util.ArrayList;

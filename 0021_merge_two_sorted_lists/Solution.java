@@ -1,4 +1,4 @@
-﻿// LeetCode 0021 - Merge Two Sorted Lists
+// LeetCode 0021 - Merge Two Sorted Lists
 // https://leetcode.com/problems/merge-two-sorted-lists/
 
 class ListNode {

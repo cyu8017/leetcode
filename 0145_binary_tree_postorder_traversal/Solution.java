@@ -1,4 +1,4 @@
-﻿// LeetCode 0145 - Binary Tree Postorder Traversal
+// LeetCode 0145 - Binary Tree Postorder Traversal
 // https://leetcode.com/problems/binary-tree-postorder-traversal/
 
 import java.util.*;

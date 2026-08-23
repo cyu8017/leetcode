@@ -1,7 +1,13 @@
-﻿// LeetCode 2016 - Maximum Difference Between Increasing Elements
+// LeetCode 2016 - Maximum Difference Between Increasing Elements
 // https://leetcode.com/problems/maximum-difference-between-increasing-elements/
 
 class Solution {
-    public void solve() {
+    public int maximumDifference(int[] nums) {
+        int ans = -1, mn = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > mn) ans = Math.max(ans, nums[i] - mn);
+            else mn = nums[i];
+        }
+        return ans;
     }
 }

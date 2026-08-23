@@ -1,7 +1,24 @@
-﻿// LeetCode 3863 - Minimum Operations to Sort a String
+// LeetCode 3863 - Minimum Operations To Sort A String
 // https://leetcode.com/problems/minimum-operations-to-sort-a-string/
 
 class Solution {
-    public void solve() {
+    public int minOperations(String s) {
+        int n = s.length();
+        boolean sorted = true;
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i) < s.charAt(i - 1)) { sorted = false; break; }
+        }
+        if (sorted) return 0;
+        if (n == 2) return -1;
+        char mn = s.charAt(0), mx = s.charAt(0);
+        for (char c : s.toCharArray()) {
+            if (c < mn) mn = c;
+            if (c > mx) mx = c;
+        }
+        if (s.charAt(0) == mn || s.charAt(n - 1) == mx) return 1;
+        for (int i = 1; i < n - 1; i++) {
+            if (s.charAt(i) == mn || s.charAt(i) == mx) return 2;
+        }
+        return 3;
     }
 }

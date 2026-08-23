@@ -1,4 +1,4 @@
-﻿// LeetCode 1367 - Linked List In Binary Tree
+// LeetCode 1367 - Linked List In Binary Tree
 // https://leetcode.com/problems/linked-list-in-binary-tree/
 
 class ListNode {

@@ -1,7 +1,51 @@
-﻿// LeetCode 3621 - Number of Integers With Popcount-Depth Equal to K I
+// LeetCode 3621 - Number of Integers With Popcount Depth Equal to K I
 // https://leetcode.com/problems/number-of-integers-with-popcount-depth-equal-to-k-i/
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    private int k;
+    private String s;
+    private Map<String, Long> memo;
+
+    private int depth(int x) {
+        if (x <= 0) return 100;
+        int d = 0;
+        while (x > 1) {
+            x = Integer.bitCount(x);
+            d++;
+        }
+        return d;
+    }
+
+    private long dfs(int pos, int tight, int started, int pc) {
+        if (pos == s.length()) {
+            if (started == 0) return 0;
+            if (pc == 1) return k == 1 ? 1 : 0;
+            return depth(pc) == k - 1 ? 1 : 0;
+        }
+        String key = pos + "," + tight + "," + started + "," + pc;
+        if (memo.containsKey(key)) return memo.get(key);
+        int up = tight == 1 ? s.charAt(pos) - '0' : 1;
+        long res = 0;
+        for (int dig = 0; dig <= up; dig++) {
+            int nt = (tight == 1 && dig == up) ? 1 : 0;
+            if (started == 0 && dig == 0) res += dfs(pos + 1, nt, 0, 0);
+            else res += dfs(pos + 1, nt, 1, pc + dig);
+        }
+        memo.put(key, res);
+        return res;
+    }
+
+    public long popcountDepth(long n, int k) {
+        this.k = k;
+        if (k == 0) return n >= 1 ? 1 : 0;
+        StringBuilder sb = new StringBuilder();
+        for (long x = n; x > 0; x >>= 1) sb.append((char) ('0' + (x & 1)));
+        s = sb.reverse().toString();
+        if (s.isEmpty()) s = "0";
+        memo = new HashMap<>();
+        return dfs(0, 1, 0, 0);
     }
 }

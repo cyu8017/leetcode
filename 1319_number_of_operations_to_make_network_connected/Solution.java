@@ -1,4 +1,4 @@
-﻿// LeetCode 1319 - Number Of Operations To Make Network Connected
+// LeetCode 1319 - Number Of Operations To Make Network Connected
 // https://leetcode.com/problems/number-of-operations-to-make-network-connected/
 
 class Solution {

@@ -1,7 +1,11 @@
-﻿// LeetCode 2310 - Sum of Numbers With Units Digit K
+// LeetCode 2310 - Sum of Numbers With Units Digit K
 // https://leetcode.com/problems/sum-of-numbers-with-units-digit-k/
 
 class Solution {
-    public void solve() {
+    public int minimumNumbers(int num, int k) {
+        if (num == 0) return 0;
+        for (int count = 1; count <= 10; ++count)
+            if (count * k % 10 == num % 10 && count * k <= num) return count;
+        return -1;
     }
 }

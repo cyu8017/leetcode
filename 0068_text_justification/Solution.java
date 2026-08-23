@@ -1,4 +1,4 @@
-﻿// LeetCode 0068 - Text Justification
+// LeetCode 0068 - Text Justification
 // https://leetcode.com/problems/text-justification/
 
 import java.util.ArrayList;

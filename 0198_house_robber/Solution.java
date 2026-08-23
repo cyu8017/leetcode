@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     public int rob(int[] nums) {
         int previousTwo = 0;
         int previousOne = 0;

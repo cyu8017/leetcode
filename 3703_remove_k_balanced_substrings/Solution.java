@@ -1,7 +1,29 @@
-﻿// LeetCode 3703 - Remove K-Balanced Substrings
+// LeetCode 3703 - Remove K-Balanced Substrings
 // https://leetcode.com/problems/remove-k-balanced-substrings/
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
-    public void solve() {
+    public String removeSubstring(String s, int k) {
+        List<int[]> stk = new ArrayList<>();
+        for (char c : s.toCharArray()) {
+            if (!stk.isEmpty() && stk.get(stk.size() - 1)[0] == c)
+                stk.get(stk.size() - 1)[1]++;
+            else stk.add(new int[] {c, 1});
+            if (c == ')' && stk.size() > 1) {
+                int[] top = stk.get(stk.size() - 1);
+                int[] prev = stk.get(stk.size() - 2);
+                if (top[1] == k && prev[1] >= k) {
+                    stk.remove(stk.size() - 1);
+                    prev[1] -= k;
+                    if (prev[1] == 0) stk.remove(stk.size() - 1);
+                }
+            }
+        }
+        StringBuilder res = new StringBuilder();
+        for (int[] p : stk)
+            for (int i = 0; i < p[1]; i++) res.append((char) p[0]);
+        return res.toString();
     }
 }

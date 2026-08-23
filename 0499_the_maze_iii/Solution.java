@@ -1,4 +1,4 @@
-﻿// LeetCode 0499 - The Maze III
+// LeetCode 0499 - The Maze III
 // https://leetcode.com/problems/the-maze-iii/
 
 import java.util.HashMap;

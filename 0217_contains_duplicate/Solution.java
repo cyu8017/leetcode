@@ -1,4 +1,4 @@
-﻿// LeetCode 0217 - Contains Duplicate
+// LeetCode 0217 - Contains Duplicate
 // https://leetcode.com/problems/contains-duplicate/
 
 import java.util.HashSet;

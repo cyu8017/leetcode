@@ -1,7 +1,9 @@
-﻿// LeetCode 2880 - Select Data
+// LeetCode 2880 - Select Data
 // https://leetcode.com/problems/select-data/
+// Pandas stand-in.
 
 class Solution {
-    public void solve() {
+    public int[][] selectData(int[][] df) {
+        return new int[0][];
     }
 }

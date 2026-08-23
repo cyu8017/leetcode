@@ -1,7 +1,20 @@
-﻿// LeetCode 2840 - Check if Strings Can be Made Equal With Operations II
+// LeetCode 2840 - Check if Strings Can be Made Equal With Operations II
 // https://leetcode.com/problems/check-if-strings-can-be-made-equal-with-operations-ii/
 
+import java.util.Arrays;
+
 class Solution {
-    public void solve() {
+    public boolean checkStrings(String s1, String s2) {
+        int[] even1 = new int[26], odd1 = new int[26], even2 = new int[26], odd2 = new int[26];
+        for (int i = 0; i < s1.length(); i++) {
+            if (i % 2 == 0) {
+                even1[s1.charAt(i) - 'a']++;
+                even2[s2.charAt(i) - 'a']++;
+            } else {
+                odd1[s1.charAt(i) - 'a']++;
+                odd2[s2.charAt(i) - 'a']++;
+            }
+        }
+        return Arrays.equals(even1, even2) && Arrays.equals(odd1, odd2);
     }
 }

@@ -1,7 +1,8 @@
-﻿// LeetCode 2396 - Strictly Palindromic Number
+// LeetCode 2396 - Strictly Palindromic Number
 // https://leetcode.com/problems/strictly-palindromic-number/
 
 class Solution {
-    public void solve() {
+    public boolean isStrictlyPalindromic(int n) {
+        return false;
     }
 }

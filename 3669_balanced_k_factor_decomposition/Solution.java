@@ -1,7 +1,48 @@
-﻿// LeetCode 3669 - Balanced K-Factor Decomposition
+// LeetCode 3669 - Balanced K-Factor Decomposition
 // https://leetcode.com/problems/balanced-k-factor-decomposition/
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
-    public void solve() {
+    private static final int MX = 100001;
+    private static List<Integer>[] g;
+    private static boolean inited;
+    private int cur;
+    private int[] ans, path;
+
+    @SuppressWarnings("unchecked")
+    private static void ensureInit() {
+        if (inited) return;
+        g = new ArrayList[MX];
+        for (int i = 0; i < MX; i++) g[i] = new ArrayList<>();
+        for (int i = 1; i < MX; i++)
+            for (int j = i; j < MX; j += i) g[j].add(i);
+        inited = true;
+    }
+
+    private void dfs(int i, int x, int mi, int mx) {
+        if (i == 0) {
+            int d = Math.max(mx, x) - Math.min(mi, x);
+            if (d < cur) {
+                cur = d;
+                path[i] = x;
+                ans = path.clone();
+            }
+            return;
+        }
+        for (int y : g[x]) {
+            path[i] = y;
+            dfs(i - 1, x / y, Math.min(mi, y), Math.max(mx, y));
+        }
+    }
+
+    public int[] minDifference(int n, int k) {
+        ensureInit();
+        cur = Integer.MAX_VALUE;
+        ans = new int[0];
+        path = new int[k];
+        dfs(k - 1, n, Integer.MAX_VALUE, 0);
+        return ans;
     }
 }

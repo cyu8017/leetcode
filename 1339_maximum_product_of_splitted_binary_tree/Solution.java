@@ -1,4 +1,4 @@
-﻿// LeetCode 1339 - Maximum Product Of Splitted Binary Tree
+// LeetCode 1339 - Maximum Product Of Splitted Binary Tree
 // https://leetcode.com/problems/maximum-product-of-splitted-binary-tree/
 
 import java.util.*;

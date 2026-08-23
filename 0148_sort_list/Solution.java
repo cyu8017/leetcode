@@ -1,4 +1,4 @@
-﻿// LeetCode 0148 - Sort List
+// LeetCode 0148 - Sort List
 // https://leetcode.com/problems/sort-list/
 
 class ListNode { int val; ListNode next; ListNode() {} ListNode(int val) { this.val = val; } ListNode(int val, ListNode next) { this.val = val; this.next = next; } }

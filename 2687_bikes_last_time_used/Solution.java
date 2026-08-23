@@ -1,7 +1,13 @@
-﻿// LeetCode 2687 - Bikes Last Time Used 
+// LeetCode 2687 - Bikes Last Time Used
 // https://leetcode.com/problems/bikes-last-time-used/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT
+    bike_number,
+    MAX(end_time) AS end_time
+FROM Bikes
+GROUP BY bike_number
+ORDER BY end_time DESC
+""";
 }

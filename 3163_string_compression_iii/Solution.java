@@ -1,7 +1,22 @@
-﻿// LeetCode 3163 - String Compression III
+// LeetCode 3163 - String Compression III
 // https://leetcode.com/problems/string-compression-iii/
 
 class Solution {
-    public void solve() {
+    public String compressedString(String word) {
+        var ans = new StringBuilder();
+        int n = word.length();
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && word.charAt(j) == word.charAt(i)) j++;
+            int k = j - i;
+            while (k > 0) {
+                int x = Math.min(9, k);
+                ans.append((char)('0' + x));
+                ans.append(word.charAt(i));
+                k -= x;
+            }
+            i = j;
+        }
+        return ans.toString();
     }
 }

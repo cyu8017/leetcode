@@ -1,7 +1,30 @@
-﻿// LeetCode 3729 - Count Distinct Subarrays Divisible by K in Sorted Array
-// https://leetcode.com/problems/count-distinct-subarrays-divisible-by-k-in-sorted-array/
+// LeetCode 3729 - Count Distinct Subarrays Divisible By K In Sorted Array
+// https://leetcode.com/problems/count_distinct_subarrays_divisible_by_k_in_sorted_array/
+
+import java.util.HashMap;
+import java.util.Map;
 
 class Solution {
-    public void solve() {
+    public long numGoodSubarrays(int[] nums, int k) {
+        long ans = 0;
+        int s = 0;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        cnt.put(0, 1);
+        for (int x : nums) {
+            s = (s + x) % k;
+            ans += cnt.getOrDefault(s, 0);
+            cnt.merge(s, 1, Integer::sum);
+        }
+        int n = nums.length;
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && nums[j] == nums[i]) j++;
+            int m = j - i;
+            for (int h = 1; h <= m; h++) {
+                if (1L * nums[i] * h % k == 0) ans -= (m - h);
+            }
+            i = j;
+        }
+        return ans;
     }
 }

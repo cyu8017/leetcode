@@ -1,4 +1,4 @@
-﻿// LeetCode 0261 - Graph Valid Tree
+// LeetCode 0261 - Graph Valid Tree
 // https://leetcode.com/problems/graph-valid-tree/
 
 class Solution {

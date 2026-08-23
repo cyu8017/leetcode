@@ -1,4 +1,4 @@
-﻿// LeetCode 1305 - All Elements In Two Binary Search Trees
+// LeetCode 1305 - All Elements In Two Binary Search Trees
 // https://leetcode.com/problems/all-elements-in-two-binary-search-trees/
 
 import java.util.*;

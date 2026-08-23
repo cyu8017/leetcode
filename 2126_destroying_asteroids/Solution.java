@@ -1,7 +1,16 @@
-﻿// LeetCode 2126 - Destroying Asteroids
+// LeetCode 2126 - Destroying Asteroids
 // https://leetcode.com/problems/destroying-asteroids/
 
+import java.util.Arrays;
+
 class Solution {
-    public void solve() {
+    public boolean asteroidsDestroyed(int mass, int[] asteroids) {
+        Arrays.sort(asteroids);
+        long cur = mass;
+        for (int a : asteroids) {
+            if (cur < a) return false;
+            cur += a;
+        }
+        return true;
     }
 }

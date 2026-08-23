@@ -1,4 +1,4 @@
-﻿// LeetCode 1415 - The K Th Lexicographical String Of All Happy Strings Of Length N
+// LeetCode 1415 - The K Th Lexicographical String Of All Happy Strings Of Length N
 // https://leetcode.com/problems/the-k-th-lexicographical-string-of-all-happy-strings-of-length-n/
 
 import java.util.*;

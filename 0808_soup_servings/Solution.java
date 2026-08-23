@@ -1,7 +1,26 @@
-﻿// LeetCode 0808 - Soup Servings
+// LeetCode 0808 - Soup Servings
 // https://leetcode.com/problems/soup-servings/
 
+import java.util.*;
+
 class Solution {
-    public void solve() {
+    private Map<Long, Double> memo;
+
+    public double soupServings(int n) {
+        if (n >= 4800) return 1.0;
+        int units = (n + 24) / 25;
+        memo = new HashMap<>();
+        return dp(units, units);
+    }
+
+    private double dp(int a, int b) {
+        if (a <= 0 && b <= 0) return 0.5;
+        if (a <= 0) return 1.0;
+        if (b <= 0) return 0.0;
+        long key = ((long) a << 16) | b;
+        if (memo.containsKey(key)) return memo.get(key);
+        double val = 0.25 * (dp(a - 4, b) + dp(a - 3, b - 1) + dp(a - 2, b - 2) + dp(a - 1, b - 3));
+        memo.put(key, val);
+        return val;
     }
 }

@@ -1,7 +1,47 @@
-﻿// LeetCode 3625 - Count Number of Trapezoids II
+// LeetCode 3625 - Count Number of Trapezoids II
 // https://leetcode.com/problems/count-number-of-trapezoids-ii/
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    public int countTrapezoids(int[][] points) {
+        int n = points.length;
+        Map<Double, Map<Double, Integer>> cnt1 = new HashMap<>();
+        Map<Integer, Map<Double, Integer>> cnt2 = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            int x1 = points[i][0], y1 = points[i][1];
+            for (int j = 0; j < i; j++) {
+                int x2 = points[j][0], y2 = points[j][1];
+                int dx = x2 - x1, dy = y2 - y1;
+                double k, b;
+                if (dx == 0) {
+                    k = 1e9;
+                    b = x1;
+                } else {
+                    k = (double) dy / dx;
+                    b = (double) ((long) y1 * dx - (long) x1 * dy) / dx;
+                }
+                cnt1.computeIfAbsent(k, z -> new HashMap<>()).merge(b, 1, Integer::sum);
+                int p = (x1 + x2 + 2000) * 4000 + (y1 + y2 + 2000);
+                cnt2.computeIfAbsent(p, z -> new HashMap<>()).merge(k, 1, Integer::sum);
+            }
+        }
+        int ans = 0;
+        for (Map<Double, Integer> e : cnt1.values()) {
+            int s = 0;
+            for (int t : e.values()) {
+                ans += s * t;
+                s += t;
+            }
+        }
+        for (Map<Double, Integer> e : cnt2.values()) {
+            int s = 0;
+            for (int t : e.values()) {
+                ans -= s * t;
+                s += t;
+            }
+        }
+        return ans;
     }
 }

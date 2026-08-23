@@ -1,7 +1,30 @@
-﻿// LeetCode 3694 - Distinct Points Reachable After Substring Removal
+// LeetCode 3694 - Distinct Points Reachable After Substring Removal
 // https://leetcode.com/problems/distinct-points-reachable-after-substring-removal/
 
+import java.util.HashSet;
+import java.util.Set;
+
 class Solution {
-    public void solve() {
+    public int distinctPoints(String s, int k) {
+        int n = s.length();
+        int[] f = new int[n + 1], g = new int[n + 1];
+        int x = 0, y = 0;
+        for (int i = 1; i <= n; i++) {
+            char c = s.charAt(i - 1);
+            if (c == 'U') y++;
+            else if (c == 'D') y--;
+            else if (c == 'L') x--;
+            else x++;
+            f[i] = x;
+            g[i] = y;
+        }
+        var st = new HashSet<Long>();
+        for (int i = k; i <= n; i++) {
+            int a = f[n] - (f[i] - f[i - k]);
+            int b = g[n] - (g[i] - g[i - k]);
+            long key = (long)a * n + b;
+            st.add(key);
+        }
+        return st.size();
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0517 - Super Washing Machines
+// LeetCode 0517 - Super Washing Machines
 // https://leetcode.com/problems/super-washing-machines/
 
 class Solution {

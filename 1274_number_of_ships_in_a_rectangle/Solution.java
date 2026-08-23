@@ -14,9 +14,9 @@ class Solution {
         if (tx < bx || ty < by || !sea.hasShips(topRight, bottomLeft)) return 0;
         if (tx == bx && ty == by) return 1;
         int mx = (tx + bx) / 2, my = (ty + by) / 2;
-        return countShips(sea, new int[] {mx, my}, bottomLeft)
-            + countShips(sea, new int[] {tx, my}, new int[] {mx + 1, by})
-            + countShips(sea, new int[] {mx, ty}, new int[] {bx, my + 1})
-            + countShips(sea, topRight, new int[] {mx + 1, my + 1});
+        return countShips(sea, new int[] { mx, my }, bottomLeft)
+            + countShips(sea, new int[] { tx, my }, new int[] { mx + 1, by })
+            + countShips(sea, new int[] { mx, ty }, new int[] { bx, my + 1 })
+            + countShips(sea, topRight, new int[] { mx + 1, my + 1 });
     }
 }

@@ -1,7 +1,14 @@
-﻿// LeetCode 3838 - Weighted Word Mapping
+// LeetCode 3838 - Weighted Word Mapping
 // https://leetcode.com/problems/weighted-word-mapping/
 
 class Solution {
-    public void solve() {
+    public String mapWordWeights(String[] words, int[] weights) {
+        StringBuilder ans = new StringBuilder();
+        for (String w : words) {
+            int s = 0;
+            for (char c : w.toCharArray()) s = (s + weights[c - 'a']) % 26;
+            ans.append((char) ('a' + (25 - s)));
+        }
+        return ans.toString();
     }
 }

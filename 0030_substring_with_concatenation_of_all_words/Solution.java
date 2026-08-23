@@ -1,4 +1,4 @@
-﻿// LeetCode 0030 - Substring with Concatenation of All Words
+// LeetCode 0030 - Substring with Concatenation of All Words
 // https://leetcode.com/problems/substring-with-concatenation-of-all-words/
 
 import java.util.ArrayList;

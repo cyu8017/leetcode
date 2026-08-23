@@ -1,7 +1,14 @@
-﻿// LeetCode 0991 - Broken Calculator
+// LeetCode 0991 - Broken Calculator
 // https://leetcode.com/problems/broken-calculator/
 
 class Solution {
-    public void solve() {
+    public int brokenCalc(int startValue, int target) {
+        int ans = 0;
+        while (target > startValue) {
+            if (target % 2 == 1) target++;
+            else target /= 2;
+            ans++;
+        }
+        return ans + startValue - target;
     }
 }

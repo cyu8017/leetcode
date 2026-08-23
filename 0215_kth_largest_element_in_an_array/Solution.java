@@ -1,4 +1,4 @@
-﻿// LeetCode 0215 - Kth Largest Element in an Array
+// LeetCode 0215 - Kth Largest Element in an Array
 // https://leetcode.com/problems/kth-largest-element-in-an-array/
 
 import java.util.Random;

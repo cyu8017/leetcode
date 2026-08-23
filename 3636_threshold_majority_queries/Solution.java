@@ -1,7 +1,26 @@
-﻿// LeetCode 3636 - Threshold Majority Queries
+// LeetCode 3636 - Threshold Majority Queries
 // https://leetcode.com/problems/threshold-majority-queries/
 
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
-    public void solve() {
+    public int[] subarrayMajority(int[] nums, int[][] queries) {
+        int[] ans = new int[queries.length];
+        for (int qi = 0; qi < queries.length; qi++) {
+            int l = queries[qi][0], r = queries[qi][1], t = queries[qi][2];
+            Map<Integer, Integer> cnt = new HashMap<>();
+            for (int i = l; i <= r; i++) cnt.merge(nums[i], 1, Integer::sum);
+            int best = -1, bestC = 0;
+            for (Map.Entry<Integer, Integer> e : cnt.entrySet()) {
+                int v = e.getKey(), c = e.getValue();
+                if (c >= t && (c > bestC || (c == bestC && (best == -1 || v < best)))) {
+                    bestC = c;
+                    best = v;
+                }
+            }
+            ans[qi] = best;
+        }
+        return ans;
     }
 }

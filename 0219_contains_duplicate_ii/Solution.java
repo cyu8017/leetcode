@@ -1,4 +1,4 @@
-﻿// LeetCode 0219 - Contains Duplicate II
+// LeetCode 0219 - Contains Duplicate II
 // https://leetcode.com/problems/contains-duplicate-ii/
 
 import java.util.HashMap;

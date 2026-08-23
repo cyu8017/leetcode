@@ -1,4 +1,4 @@
-﻿// LeetCode 0084 - Largest Rectangle in Histogram
+// LeetCode 0084 - Largest Rectangle in Histogram
 // https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 import java.util.ArrayDeque;

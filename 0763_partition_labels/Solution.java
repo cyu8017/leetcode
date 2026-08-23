@@ -1,7 +1,21 @@
-﻿// LeetCode 0763 - Partition Labels
+// LeetCode 0763 - Partition Labels
 // https://leetcode.com/problems/partition-labels/
 
+import java.util.*;
+
 class Solution {
-    public void solve() {
+    public List<Integer> partitionLabels(String s) {
+        int[] last = new int[26];
+        for (int i = 0; i < s.length(); i++) last[s.charAt(i) - 'a'] = i;
+        int start = 0, end = 0;
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            end = Math.max(end, last[s.charAt(i) - 'a']);
+            if (i == end) {
+                answer.add(end - start + 1);
+                start = i + 1;
+            }
+        }
+        return answer;
     }
 }

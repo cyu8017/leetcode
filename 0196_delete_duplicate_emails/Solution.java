@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     public static final String QUERY = """
 DELETE p1
 FROM Person p1

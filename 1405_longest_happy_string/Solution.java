@@ -1,4 +1,4 @@
-﻿// LeetCode 1405 - Longest Happy String
+// LeetCode 1405 - Longest Happy String
 // https://leetcode.com/problems/longest-happy-string/
 
 import java.util.*;

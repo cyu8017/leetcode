@@ -1,7 +1,29 @@
-﻿// LeetCode 3618 - Split Array by Prime Indices
+// LeetCode 3618 - Split Array by Prime Indices
 // https://leetcode.com/problems/split-array-by-prime-indices/
 
 class Solution {
-    public void solve() {
+    private static final int M = 100010;
+    private static boolean[] primes;
+
+    private static boolean[] primes() {
+        if (primes == null) {
+            primes = new boolean[M];
+            for (int i = 0; i < M; i++) primes[i] = true;
+            primes[0] = primes[1] = false;
+            for (int i = 2; i < M; i++)
+                if (primes[i])
+                    for (int j = i + i; j < M; j += i) primes[j] = false;
+        }
+        return primes;
+    }
+
+    public long splitArray(int[] nums) {
+        boolean[] pr = primes();
+        long ans = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (pr[i]) ans += nums[i];
+            else ans -= nums[i];
+        }
+        return Math.abs(ans);
     }
 }

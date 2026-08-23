@@ -1,4 +1,4 @@
-﻿// LeetCode 0233 - Number of Digit One
+// LeetCode 0233 - Number of Digit One
 // https://leetcode.com/problems/number-of-digit-one/
 
 class Solution {

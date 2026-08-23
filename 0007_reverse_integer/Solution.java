@@ -1,4 +1,4 @@
-﻿// LeetCode 0007 - Reverse Integer
+// LeetCode 0007 - Reverse Integer
 // https://leetcode.com/problems/reverse-integer/
 
 class Solution {

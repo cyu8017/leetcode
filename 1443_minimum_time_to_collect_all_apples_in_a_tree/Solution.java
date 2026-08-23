@@ -1,4 +1,4 @@
-﻿// LeetCode 1443 - Minimum Time To Collect All Apples In A Tree
+// LeetCode 1443 - Minimum Time To Collect All Apples In A Tree
 // https://leetcode.com/problems/minimum-time-to-collect-all-apples-in-a-tree/
 
 import java.util.*;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0525 - Contiguous Array
+// LeetCode 0525 - Contiguous Array
 // https://leetcode.com/problems/contiguous-array/
 
 import java.util.HashMap;

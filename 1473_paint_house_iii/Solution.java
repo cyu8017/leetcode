@@ -1,4 +1,4 @@
-﻿// LeetCode 1473 - Paint House Iii
+// LeetCode 1473 - Paint House Iii
 // https://leetcode.com/problems/paint-house-iii/
 
 import java.util.*;

@@ -1,4 +1,4 @@
-﻿// LeetCode 1391 - Check If There Is A Valid Path In A Grid
+// LeetCode 1391 - Check If There Is A Valid Path In A Grid
 // https://leetcode.com/problems/check-if-there-is-a-valid-path-in-a-grid/
 
 import java.util.*;

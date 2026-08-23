@@ -4,15 +4,16 @@
 import java.util.*;
 
 class BinaryMatrix {
-    public int get(int row, int col) { throw new System.NotImplementedException(); }
-    public List<Integer> dimensions() { throw new System.NotImplementedException(); }
+    public int get(int row, int col) { throw new UnsupportedOperationException(); }
+    public List<Integer> dimensions() { throw new UnsupportedOperationException(); }
 }
+
 class Solution {
     public int leftMostColumnWithOne(BinaryMatrix binaryMatrix) {
-        var dim = binaryMatrix.Dimensions();
-        int rows = dim[0], cols = dim[1], row = 0, col = cols - 1, answer = -1;
+        List<Integer> dim = binaryMatrix.dimensions();
+        int rows = dim.get(0), cols = dim.get(1), row = 0, col = cols - 1, answer = -1;
         while (row < rows && col >= 0) {
-            if (binaryMatrix.Get(row, col) == 1) { answer = col; col--; }
+            if (binaryMatrix.get(row, col) == 1) { answer = col; col--; }
             else row++;
         }
         return answer;

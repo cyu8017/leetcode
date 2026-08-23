@@ -1,4 +1,4 @@
-﻿// LeetCode 0054 - Spiral Matrix
+// LeetCode 0054 - Spiral Matrix
 // https://leetcode.com/problems/spiral-matrix/
 
 import java.util.ArrayList;

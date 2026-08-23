@@ -1,7 +1,12 @@
-﻿// LeetCode 2620 - Counter
+// LeetCode 2620 - Counter
 // https://leetcode.com/problems/counter/
 
+import java.util.function.IntSupplier;
+
+// JavaScript problem; Java stand-in.
 class Solution {
-    public void solve() {
+    public IntSupplier createCounter(int n) {
+        int[] cur = new int[] {n};
+        return () -> cur[0]++;
     }
 }

@@ -1,7 +1,19 @@
-﻿// LeetCode 2509 - Cycle Length Queries in a Tree
+// LeetCode 2509 - Cycle Length Queries in a Tree
 // https://leetcode.com/problems/cycle-length-queries-in-a-tree/
 
 class Solution {
-    public void solve() {
+    public int[] cycleLengthQueries(int n, int[][] queries) {
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int a = queries[i][0], b = queries[i][1];
+            int steps = 0;
+            while (a != b) {
+                if (a > b) a /= 2;
+                else b /= 2;
+                steps++;
+            }
+            ans[i] = steps + 1;
+        }
+        return ans;
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 1489 - Find Critical And Pseudo Critical Edges In Minimum Spanning Tree
+// LeetCode 1489 - Find Critical And Pseudo Critical Edges In Minimum Spanning Tree
 // https://leetcode.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/
 
 import java.util.*;

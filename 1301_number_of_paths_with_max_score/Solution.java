@@ -1,4 +1,4 @@
-﻿// LeetCode 1301 - Number Of Paths With Max Score
+// LeetCode 1301 - Number Of Paths With Max Score
 // https://leetcode.com/problems/number-of-paths-with-max-score/
 
 import java.util.*;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0111 - Minimum Depth of Binary Tree
+// LeetCode 0111 - Minimum Depth of Binary Tree
 class TreeNode {
     int val;
     TreeNode left;

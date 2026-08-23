@@ -1,7 +1,8 @@
-﻿// LeetCode 2579 - Count Total Number of Colored Cells
+// LeetCode 2579 - Count Total Number of Colored Cells
 // https://leetcode.com/problems/count-total-number-of-colored-cells/
 
 class Solution {
-    public void solve() {
+    public long coloredCells(int n) {
+        return 1 + 2L * n * (n - 1);
     }
 }

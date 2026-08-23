@@ -1,4 +1,4 @@
-﻿// LeetCode 1457 - Pseudo Palindromic Paths In A Binary Tree
+// LeetCode 1457 - Pseudo Palindromic Paths In A Binary Tree
 // https://leetcode.com/problems/pseudo-palindromic-paths-in-a-binary-tree/
 
 class TreeNode {

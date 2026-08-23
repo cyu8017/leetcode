@@ -1,4 +1,4 @@
-﻿// LeetCode 0051 - N-Queens
+// LeetCode 0051 - N-Queens
 // https://leetcode.com/problems/n-queens/
 
 import java.util.ArrayList;

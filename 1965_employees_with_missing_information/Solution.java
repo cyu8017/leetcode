@@ -1,7 +1,15 @@
-﻿// LeetCode 1965 - Employees With Missing Information
+// LeetCode 1965 - Employees With Missing Information
 // https://leetcode.com/problems/employees-with-missing-information/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT employee_id
+FROM Employees
+WHERE employee_id NOT IN (SELECT employee_id FROM Salaries)
+UNION
+SELECT employee_id
+FROM Salaries
+WHERE employee_id NOT IN (SELECT employee_id FROM Employees)
+ORDER BY 1
+""";
 }

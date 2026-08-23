@@ -1,4 +1,4 @@
-﻿// LeetCode 0074 - Search a 2D Matrix
+// LeetCode 0074 - Search a 2D Matrix
 // https://leetcode.com/problems/search-a-2d-matrix/
 
 class Solution {

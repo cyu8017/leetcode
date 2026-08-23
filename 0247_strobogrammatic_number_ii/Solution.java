@@ -1,4 +1,4 @@
-﻿// LeetCode 0247 - Strobogrammatic Number II
+// LeetCode 0247 - Strobogrammatic Number II
 // https://leetcode.com/problems/strobogrammatic-number-ii/
 
 import java.util.ArrayList;

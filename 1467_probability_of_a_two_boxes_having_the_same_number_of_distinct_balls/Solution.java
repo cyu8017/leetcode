@@ -1,4 +1,4 @@
-﻿// LeetCode 1467 - Probability Of A Two Boxes Having The Same Number Of Distinct Balls
+// LeetCode 1467 - Probability Of A Two Boxes Having The Same Number Of Distinct Balls
 // https://leetcode.com/problems/probability-of-a-two-boxes-having-the-same-number-of-distinct-balls/
 
 class Solution {

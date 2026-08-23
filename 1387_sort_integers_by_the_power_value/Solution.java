@@ -1,4 +1,4 @@
-﻿// LeetCode 1387 - Sort Integers By The Power Value
+// LeetCode 1387 - Sort Integers By The Power Value
 // https://leetcode.com/problems/sort-integers-by-the-power-value/
 
 import java.util.*;

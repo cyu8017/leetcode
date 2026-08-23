@@ -1,7 +1,8 @@
-﻿// LeetCode 0796 - Rotate String
+// LeetCode 0796 - Rotate String
 // https://leetcode.com/problems/rotate-string/
 
 class Solution {
-    public void solve() {
+    public boolean rotateString(String s, String goal) {
+        return s.length() == goal.length() && (s + s).contains(goal);
     }
 }

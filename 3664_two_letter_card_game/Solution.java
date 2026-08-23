@@ -1,7 +1,34 @@
-﻿// LeetCode 3664 - Two-Letter Card Game
+// LeetCode 3664 - Two-Letter Card Game
 // https://leetcode.com/problems/two-letter-card-game/
 
 class Solution {
-    public void solve() {
+    private int[] pairGroup(int[] arr) {
+        int total = 0, mx = 0;
+        for (int i = 0; i < 26; i++) {
+            total += arr[i];
+            mx = Math.max(mx, arr[i]);
+        }
+        int pairs = total / 2;
+        if (total - mx < pairs) pairs = total - mx;
+        return new int[] {pairs, total - 2 * pairs};
+    }
+
+    public int score(String[] cards, char x) {
+        int xx = 0;
+        int[] left = new int[26], right = new int[26];
+        for (String c : cards) {
+            char a = c.charAt(0), b = c.charAt(1);
+            if (a == x && b == x) xx++;
+            else if (a == x) left[b - 'a']++;
+            else if (b == x) right[a - 'a']++;
+        }
+        int[] lp = pairGroup(left), rp = pairGroup(right);
+        int ans = lp[0] + rp[0];
+        int rem = lp[1] + rp[1];
+        int use = Math.min(xx, rem);
+        ans += use;
+        xx -= use;
+        ans += xx / 2;
+        return ans;
     }
 }

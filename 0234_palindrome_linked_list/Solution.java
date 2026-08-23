@@ -1,4 +1,4 @@
-﻿// LeetCode 0234 - Palindrome Linked List
+// LeetCode 0234 - Palindrome Linked List
 // https://leetcode.com/problems/palindrome-linked-list/
 
 class ListNode {

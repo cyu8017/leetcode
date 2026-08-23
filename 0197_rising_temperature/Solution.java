@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     public static final String QUERY = """
 SELECT w1.id
 FROM Weather w1

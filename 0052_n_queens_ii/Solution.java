@@ -1,4 +1,4 @@
-﻿// LeetCode 0052 - N-Queens II
+// LeetCode 0052 - N-Queens II
 // https://leetcode.com/problems/n-queens-ii/
 
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-﻿// LeetCode 1809 - Ad-Free Sessions
+// LeetCode 1809 - Ad-Free Sessions
 // https://leetcode.com/problems/ad-free-sessions/
 
 public class Solution {

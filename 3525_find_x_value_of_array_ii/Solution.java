@@ -1,7 +1,20 @@
-﻿// LeetCode 3525 - Find X Value of Array II
+// LeetCode 3525 - Find X Value of Array II
 // https://leetcode.com/problems/find-x-value-of-array-ii/
 
 class Solution {
-    public void solve() {
+    public int[] resultArray(int[] nums, int k, int[][] queries) {
+        int n = nums.length;
+        int[] ans = new int[queries.length];
+        for (int qi = 0; qi < queries.length; qi++) {
+            int idx = queries[qi][0], val = queries[qi][1], start = queries[qi][2], x = queries[qi][3];
+            nums[idx] = val;
+            int prod = 1, cnt = 0;
+            for (int i = start; i < n; i++) {
+                prod = prod * (nums[i] % k) % k;
+                if (prod == x) cnt++;
+            }
+            ans[qi] = cnt;
+        }
+        return ans;
     }
 }

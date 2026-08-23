@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     private int rows;
     private int cols;
 

@@ -1,7 +1,12 @@
-﻿// LeetCode 2480 - Form a Chemical Bond
+// LeetCode 2480 - Form a Chemical Bond
 // https://leetcode.com/problems/form-a-chemical-bond/
 
 class Solution {
-    public void solve() {
-    }
+    public static final String QUERY = """
+SELECT a.symbol AS metal, b.symbol AS nonmetal
+FROM
+    Elements AS a,
+    Elements AS b
+WHERE a.type = 'Metal' AND b.type = 'Nonmetal'
+""";
 }

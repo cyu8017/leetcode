@@ -1,4 +1,4 @@
-﻿// LeetCode 1320 - Minimum Distance To Type A Word Using Two Fingers
+// LeetCode 1320 - Minimum Distance To Type A Word Using Two Fingers
 // https://leetcode.com/problems/minimum-distance-to-type-a-word-using-two-fingers/
 
 import java.util.*;

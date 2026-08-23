@@ -1,7 +1,19 @@
-﻿// LeetCode 0856 - Score of Parentheses
+// LeetCode 0856 - Score of Parentheses
 // https://leetcode.com/problems/score-of-parentheses/
 
+import java.util.*;
+
 class Solution {
-    public void solve() {
+    public int scoreOfParentheses(String s) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        stack.push(0);
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') stack.push(0);
+            else {
+                int val = stack.pop();
+                stack.push(stack.pop() + Math.max(2 * val, 1));
+            }
+        }
+        return stack.peek();
     }
 }

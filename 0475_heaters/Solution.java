@@ -1,4 +1,4 @@
-﻿// LeetCode 0475 - Heaters
+// LeetCode 0475 - Heaters
 // https://leetcode.com/problems/heaters/
 
 import java.util.Arrays;

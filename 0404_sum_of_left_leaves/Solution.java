@@ -1,4 +1,4 @@
-﻿// LeetCode 0404 - Sum of Left Leaves
+// LeetCode 0404 - Sum of Left Leaves
 
 // https://leetcode.com/problems/sum-of-left-leaves/
 

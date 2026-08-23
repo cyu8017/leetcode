@@ -1,4 +1,4 @@
-﻿// LeetCode 0231 - Power of Two
+// LeetCode 0231 - Power of Two
 // https://leetcode.com/problems/power-of-two/
 
 class Solution {

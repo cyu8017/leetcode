@@ -1,4 +1,4 @@
-﻿// LeetCode 0227 - Basic Calculator II
+// LeetCode 0227 - Basic Calculator II
 // https://leetcode.com/problems/basic-calculator-ii/
 
 import java.util.ArrayDeque;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0442 - Find All Duplicates in an Array
+// LeetCode 0442 - Find All Duplicates in an Array
 // https://leetcode.com/problems/find-all-duplicates-in-an-array/
 
 import java.util.ArrayList;

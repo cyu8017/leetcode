@@ -1,7 +1,40 @@
-﻿// LeetCode 3672 - Sum of Weighted Modes in Subarrays
+// LeetCode 3672 - Sum of Weighted Modes in Subarrays
 // https://leetcode.com/problems/sum-of-weighted-modes-in-subarrays/
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
 class Solution {
-    public void solve() {
+    private Map<Integer, Integer> cnt;
+    private PriorityQueue<int[]> pq;
+
+    private long getMode() {
+        while (true) {
+            int[] top = pq.peek();
+            int freq = top[0], val = -top[1];
+            if (cnt.getOrDefault(val, 0) == freq) return 1L * freq * val;
+            pq.poll();
+        }
+    }
+
+    public long modeWeight(int[] nums, int k) {
+        cnt = new HashMap<>();
+        pq = new PriorityQueue<>((a, b) -> a[0] != b[0] ? Integer.compare(b[0], a[0]) : Integer.compare(a[1], b[1]));
+        for (int i = 0; i < k; i++) {
+            int x = nums[i];
+            cnt.merge(x, 1, Integer::sum);
+            pq.offer(new int[] {cnt.get(x), -x});
+        }
+        long ans = getMode();
+        for (int i = k; i < nums.length; i++) {
+            int x = nums[i], y = nums[i - k];
+            cnt.merge(x, 1, Integer::sum);
+            cnt.merge(y, -1, Integer::sum);
+            pq.offer(new int[] {cnt.get(x), -x});
+            pq.offer(new int[] {cnt.get(y), -y});
+            ans += getMode();
+        }
+        return ans;
     }
 }

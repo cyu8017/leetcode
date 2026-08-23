@@ -1,4 +1,4 @@
-﻿// LeetCode 0354 - Russian Doll Envelopes
+// LeetCode 0354 - Russian Doll Envelopes
 
 // https://leetcode.com/problems/russian-doll-envelopes/
 

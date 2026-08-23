@@ -1,4 +1,4 @@
-﻿// LeetCode 0374 - Guess Number Higher or Lower
+// LeetCode 0374 - Guess Number Higher or Lower
 
 // https://leetcode.com/problems/guess-number-higher-or-lower/
 

@@ -1,4 +1,4 @@
-﻿// LeetCode 1115 - Print FooBar Alternately
+// LeetCode 1115 - Print FooBar Alternately
 // https://leetcode.com/problems/print-foobar-alternately/
 
 import java.util.concurrent.Semaphore;

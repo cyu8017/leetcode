@@ -1,4 +1,4 @@
-﻿// LeetCode 0524 - Longest Word in Dictionary through Deleting
+// LeetCode 0524 - Longest Word in Dictionary through Deleting
 // https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
 
 import java.util.List;

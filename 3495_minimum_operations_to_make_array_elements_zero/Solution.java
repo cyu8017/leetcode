@@ -1,7 +1,21 @@
-﻿// LeetCode 3495 - Minimum Operations to Make Array Elements Zero
+// LeetCode 3495 - Minimum Operations to Make Array Elements Zero
 // https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero/
 
 class Solution {
-    public void solve() {
+    private int opsToZero(int x) {
+        int ops = 0;
+        while (x > 0) { x /= 4; ops++; }
+        return ops;
+    }
+
+    public long minOperations(int[][] queries) {
+        long ans = 0;
+        for (int[] q : queries) {
+            int l = q[0], r = q[1];
+            long sum = 0;
+            for (int x = l; x <= r; x++) sum += opsToZero(x);
+            ans += (sum + 1) / 2;
+        }
+        return ans;
     }
 }
