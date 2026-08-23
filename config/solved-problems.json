@@ -38805,6 +38805,84 @@
       "languages": [
         "c"
       ]
+    },
+    {
+      "folder": "4001_aggregate_two_time_series",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4002_count_valid_sequences",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4003_minimum_cost_path_with_alternating_directions_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4004_minimum_moves_to_balance_circular_array_ii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4005_minimum_operations_to_make_array_equal_iii",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4006_count_valid_prefixes",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4007_widest_possible_fence",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4008_minimum_initial_strength_to_defeat_all_monsters",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4009_minimum_possible_maximum_waiting_time",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4010_maximize_pair_strength_using_gcd",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4011_count_subarrays_with_even_odd_ratio_i",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4012_count_of_unfinished_tasks_after_each_shift",
+      "languages": [
+        "c"
+      ]
+    },
+    {
+      "folder": "4013_count_subarrays_with_even_odd_ratio_ii",
+      "languages": [
+        "c"
+      ]
     }
   ]
 }
