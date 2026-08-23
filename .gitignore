@@ -16,6 +16,10 @@ Cargo.lock
 *.swp
 *.swo
 
+# Scratch / one-off generation artifacts
+_c_gen/
+.tmp/
+
 # OS
 .DS_Store
 Thumbs.db
