@@ -1,4 +1,4 @@
-﻿// LeetCode 1185 - Day of the Week
+// LeetCode 1185 - Day of the Week
 // https://leetcode.com/problems/day-of-the-week/
 
 import java.time.LocalDate

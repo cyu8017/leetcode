@@ -1,4 +1,4 @@
-﻿// LeetCode 0125 - Valid Palindrome
+// LeetCode 0125 - Valid Palindrome
 // https://leetcode.com/problems/valid-palindrome/
 
 class Solution {

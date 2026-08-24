@@ -1,6 +1,10 @@
 // LeetCode 2262 - Total Appeal of A String
 // https://leetcode.com/problems/total-appeal-of-a-string/
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var appealSum = function(s) {
     const last = new Array(26).fill(-1);
     let ans = 0, cur = 0;

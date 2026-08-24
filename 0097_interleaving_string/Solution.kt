@@ -1,4 +1,4 @@
-﻿// LeetCode 0097 - Interleaving String
+// LeetCode 0097 - Interleaving String
 // https://leetcode.com/problems/interleaving-string/
 
 class Solution {

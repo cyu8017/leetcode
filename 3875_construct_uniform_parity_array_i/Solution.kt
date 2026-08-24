@@ -1,7 +1,8 @@
-﻿// LeetCode 3875 - Construct Uniform Parity Array I
+// LeetCode 3875 - Construct Uniform Parity Array I
 // https://leetcode.com/problems/construct-uniform-parity-array-i/
 
 class Solution {
-    fun solve() {
+    fun uniformArray(nums1: IntArray): Boolean {
+        return true
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 1271 - Hexspeak
+// LeetCode 1271 - Hexspeak
 // https://leetcode.com/problems/hexspeak/
 
 import java.math.BigInteger

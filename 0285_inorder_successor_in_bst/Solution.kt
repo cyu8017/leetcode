@@ -1,4 +1,4 @@
-﻿// LeetCode 0285 - Inorder Successor in BST
+// LeetCode 0285 - Inorder Successor in BST
 // https://leetcode.com/problems/inorder-successor-in-bst/
 
 class TreeNode(var `val`: Int) {

@@ -1,4 +1,4 @@
-﻿// LeetCode 0507 - Perfect Number
+// LeetCode 0507 - Perfect Number
 // https://leetcode.com/problems/perfect-number/
 
 import kotlin.math.sqrt

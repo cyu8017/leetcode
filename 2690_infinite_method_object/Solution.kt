@@ -1,7 +1,6 @@
-﻿// LeetCode 2690 - Infinite Method Object
+// LeetCode 2690 - Infinite Method Object
 // https://leetcode.com/problems/infinite-method-object/
 
 class Solution {
-    fun solve() {
-    }
+    fun createInfiniteObject(): (String) -> String = { "Hello World" }
 }

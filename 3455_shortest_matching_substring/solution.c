@@ -38,6 +38,14 @@ static int* findAll(const char* s, int n, const char* sub, int subLen, int* outC
 
 int shortestMatchingSubstring(char* s, char* p) {
     int n = (int)strlen(s);
+    char* pcopy = strdup(p);
+    char* parts[3] = {"", "", ""};
+    int pc = 0;
+    char* tok = strtok(pcopy, "*");
+    char* start = pcopy;
+    /* Handle leading/empty splits carefully */
+    free(pcopy);
+    /* Manual split on '*' ensuring 3 parts */
     int plen = (int)strlen(p);
     char* a = (char*)calloc((size_t)plen + 1, 1);
     char* b = (char*)calloc((size_t)plen + 1, 1);
@@ -72,11 +80,7 @@ int shortestMatchingSubstring(char* s, char* p) {
             break;
         }
     }
-    free(a);
-    free(b);
-    free(c);
-    free(posA);
-    free(posB);
-    free(posC);
+    free(a); free(b); free(c);
+    free(posA); free(posB); free(posC);
     return ans == n + 1 ? -1 : ans;
 }

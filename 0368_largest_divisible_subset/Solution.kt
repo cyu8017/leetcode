@@ -1,4 +1,4 @@
-﻿// LeetCode 0368 - Largest Divisible Subset
+// LeetCode 0368 - Largest Divisible Subset
 
 // https://leetcode.com/problems/largest-divisible-subset/
 

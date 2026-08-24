@@ -1,4 +1,4 @@
-﻿// LeetCode 1145 - Binary Tree Coloring Game
+// LeetCode 1145 - Binary Tree Coloring Game
 // https://leetcode.com/problems/binary-tree-coloring-game/
 
 class TreeNode(var `val`: Int) {

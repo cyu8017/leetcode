@@ -1,7 +1,44 @@
-﻿// LeetCode 2494 - Merge Overlapping Events in the Same Hall
+// LeetCode 2494 - Merge Overlapping Events In The Same Hall
 // https://leetcode.com/problems/merge-overlapping-events-in-the-same-hall/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    S AS (\n" +
+            "        SELECT\n" +
+            "            hall_id,\n" +
+            "            start_day,\n" +
+            "            end_day,\n" +
+            "            MAX(end_day) OVER (\n" +
+            "                PARTITION BY hall_id\n" +
+            "                ORDER BY start_day\n" +
+            "            ) AS cur_max_end_day\n" +
+            "        FROM HallEvents\n" +
+            "    ),\n" +
+            "    T AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            IF(\n" +
+            "                start_day <= LAG(cur_max_end_day) OVER (\n" +
+            "                    PARTITION BY hall_id\n" +
+            "                    ORDER BY start_day\n" +
+            "                ),\n" +
+            "                0,\n" +
+            "                1\n" +
+            "            ) AS start\n" +
+            "        FROM S\n" +
+            "    ),\n" +
+            "    P AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            SUM(start) OVER (\n" +
+            "                PARTITION BY hall_id\n" +
+            "                ORDER BY start_day\n" +
+            "            ) AS gid\n" +
+            "        FROM T\n" +
+            "    )\n" +
+            "SELECT hall_id, MIN(start_day) AS start_day, MAX(end_day) AS end_day\n" +
+            "FROM P\n" +
+            "GROUP BY hall_id, gid"
     }
 }

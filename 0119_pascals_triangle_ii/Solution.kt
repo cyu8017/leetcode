@@ -1,4 +1,4 @@
-﻿// LeetCode 0119 - Pascal's Triangle II
+// LeetCode 0119 - Pascal's Triangle II
 // https://leetcode.com/problems/pascals-triangle-ii/
 
 class Solution {

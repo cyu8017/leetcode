@@ -1,7 +1,16 @@
-﻿// LeetCode 0643 - Maximum Average Subarray I
+// LeetCode 0643 - Maximum Average Subarray I
 // https://leetcode.com/problems/maximum-average-subarray-i/
 
+
 class Solution {
-    fun solve() {
+    fun findMaxAverage(nums: IntArray, k: Int): Double {
+        var sum = 0
+        for (i in 0 until k) sum += nums[i]
+        var best = sum
+        for (i in k until nums.size) {
+            sum += nums[i] - nums[i - k]
+            best = maxOf(best, sum)
+        }
+        return best.toDouble() / k
     }
 }

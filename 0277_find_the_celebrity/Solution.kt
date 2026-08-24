@@ -1,4 +1,4 @@
-﻿// LeetCode 0277 - Find the Celebrity
+// LeetCode 0277 - Find the Celebrity
 // https://leetcode.com/problems/find-the-celebrity/
 
 fun knows(a: Int, b: Int): Boolean = false

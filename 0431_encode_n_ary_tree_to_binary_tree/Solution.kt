@@ -1,4 +1,4 @@
-﻿// LeetCode 0431 - Encode N-ary Tree to Binary Tree
+// LeetCode 0431 - Encode N-ary Tree to Binary Tree
 // https://leetcode.com/problems/encode-n-ary-tree-to-binary-tree/
 
 class Node(var `val`: Int? = null, val children: MutableList<Node> = mutableListOf())

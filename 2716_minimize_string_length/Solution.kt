@@ -1,7 +1,6 @@
-﻿// LeetCode 2716 - Minimize String Length
+// LeetCode 2716 - Minimize String Length
 // https://leetcode.com/problems/minimize-string-length/
 
 class Solution {
-    fun solve() {
-    }
+    fun minimizedStringLength(s: String): Int = s.toSet().size
 }

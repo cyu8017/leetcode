@@ -1,4 +1,4 @@
-﻿// LeetCode 0126 - Word Ladder II
+// LeetCode 0126 - Word Ladder II
 // https://leetcode.com/problems/word-ladder-ii/
 
 class Solution {

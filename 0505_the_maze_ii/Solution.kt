@@ -1,4 +1,4 @@
-﻿// LeetCode 0505 - The Maze II
+// LeetCode 0505 - The Maze II
 // https://leetcode.com/problems/the-maze-ii/
 
 import java.util.PriorityQueue

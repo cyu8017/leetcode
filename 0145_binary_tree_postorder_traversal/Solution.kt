@@ -1,4 +1,4 @@
-﻿// LeetCode 0145 - Binary Tree Postorder Traversal
+// LeetCode 0145 - Binary Tree Postorder Traversal
 // https://leetcode.com/problems/binary-tree-postorder-traversal/
 
 class TreeNode(var `val`: Int) { var left: TreeNode? = null; var right: TreeNode? = null }

@@ -1,7 +1,48 @@
-﻿// LeetCode 3278 - Find Candidates for Data Scientist Position II
+// LeetCode 3278 - Find Candidates For Data Scientist Position Ii
 // https://leetcode.com/problems/find-candidates-for-data-scientist-position-ii/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    S AS (\n" +
+            "        SELECT\n" +
+            "            candidate_id,\n" +
+            "            project_id,\n" +
+            "            COUNT(*) matched_skills,\n" +
+            "            SUM(\n" +
+            "                CASE\n" +
+            "                    WHEN proficiency > importance THEN 10\n" +
+            "                    WHEN proficiency < importance THEN -5\n" +
+            "                    ELSE 0\n" +
+            "                END\n" +
+            "            ) + 100 AS score\n" +
+            "        FROM\n" +
+            "            Candidates\n" +
+            "            JOIN Projects USING (skill)\n" +
+            "        GROUP BY 1, 2\n" +
+            "    ),\n" +
+            "    T AS (\n" +
+            "        SELECT project_id, COUNT(1) required_skills\n" +
+            "        FROM Projects\n" +
+            "        GROUP BY 1\n" +
+            "    ),\n" +
+            "    P AS (\n" +
+            "        SELECT\n" +
+            "            project_id,\n" +
+            "            candidate_id,\n" +
+            "            score,\n" +
+            "            RANK() OVER (\n" +
+            "                PARTITION BY project_id\n" +
+            "                ORDER BY score DESC, candidate_id\n" +
+            "            ) rk\n" +
+            "        FROM\n" +
+            "            S\n" +
+            "            JOIN T USING (project_id)\n" +
+            "        WHERE matched_skills = required_skills\n" +
+            "    )\n" +
+            "SELECT project_id, candidate_id, score\n" +
+            "FROM P\n" +
+            "WHERE rk = 1\n" +
+            "ORDER BY 1;"
     }
 }

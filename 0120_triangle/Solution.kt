@@ -1,4 +1,4 @@
-﻿// LeetCode 0120 - Triangle
+// LeetCode 0120 - Triangle
 // https://leetcode.com/problems/triangle/
 
 class Solution {

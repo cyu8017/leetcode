@@ -1,4 +1,4 @@
-﻿// LeetCode 0148 - Sort List
+// LeetCode 0148 - Sort List
 // https://leetcode.com/problems/sort-list/
 
 class ListNode(var `val`: Int) { var next: ListNode? = null }

@@ -1,6 +1,11 @@
 // LeetCode 2271 - Maximum White Tiles Covered by a Carpet
 // https://leetcode.com/problems/maximum-white-tiles-covered-by-a-carpet/
 
+/**
+ * @param {number[][]} tiles
+ * @param {number} carpetLen
+ * @return {number}
+ */
 var maximumWhiteTiles = function(tiles, carpetLen) {
     tiles.sort((a, b) => a[0] - b[0]);
     const n = tiles.length;

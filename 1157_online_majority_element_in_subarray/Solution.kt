@@ -1,4 +1,4 @@
-﻿// LeetCode 1157 - Online Majority Element In Subarray
+// LeetCode 1157 - Online Majority Element In Subarray
 // https://leetcode.com/problems/online-majority-element-in-subarray/
 
 class MajorityChecker(arr: IntArray) {

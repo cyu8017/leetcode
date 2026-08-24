@@ -1,4 +1,4 @@
-﻿// LeetCode 0335 - Self Crossing
+// LeetCode 0335 - Self Crossing
 
 // https://leetcode.com/problems/self-crossing/
 

@@ -1,4 +1,4 @@
-﻿// LeetCode 0311 - Sparse Matrix Multiplication
+// LeetCode 0311 - Sparse Matrix Multiplication
 
 // https://leetcode.com/problems/sparse-matrix-multiplication/
 

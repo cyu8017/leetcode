@@ -40,7 +40,7 @@ class AutocompleteSystem {
             return a.compareTo(b);
         });
         if (matches.size() > 3) {
-            return new ArrayList<>(matches.subList(0, 3));
+            return matches.subList(0, 3);
         }
         return matches;
     }

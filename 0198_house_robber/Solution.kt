@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     fun rob(nums: IntArray): Int {
         var previousTwo = 0
         var previousOne = 0

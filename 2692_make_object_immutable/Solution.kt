@@ -1,7 +1,7 @@
-﻿// LeetCode 2692 - Make Object Immutable
+// LeetCode 2692 - Make Object Immutable
 // https://leetcode.com/problems/make-object-immutable/
 
 class Solution {
-    fun solve() {
-    }
+    fun makeImmutable(obj: java.util.TreeMap<String, Int>): java.util.TreeMap<String, Int> =
+        java.util.TreeMap(obj)
 }

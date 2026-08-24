@@ -1,6 +1,10 @@
 // LeetCode 2275 - Largest Combination With Bitwise AND Greater Than Zero
 // https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/
 
+/**
+ * @param {number[]} candidates
+ * @return {number}
+ */
 var largestCombination = function(candidates) {
     let ans = 0;
     for (let bit = 0; bit < 24; bit++) {

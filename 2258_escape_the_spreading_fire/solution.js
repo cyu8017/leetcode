@@ -1,6 +1,10 @@
 // LeetCode 2258 - Escape the Spreading Fire
 // https://leetcode.com/problems/escape-the-spreading-fire/
 
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
 var maximumMinutes = function(grid) {
     const m = grid.length, n = grid[0].length;
     const inf = 1000000000;

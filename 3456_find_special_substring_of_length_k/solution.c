@@ -9,10 +9,7 @@ bool hasSpecialSubstring(char* s, int k) {
     for (int i = 0; i + k <= n; i++) {
         int ok = 1;
         for (int j = i + 1; j < i + k; j++) {
-            if (s[j] != s[i]) {
-                ok = 0;
-                break;
-            }
+            if (s[j] != s[i]) { ok = 0; break; }
         }
         if (!ok) continue;
         if (i > 0 && s[i - 1] == s[i]) continue;

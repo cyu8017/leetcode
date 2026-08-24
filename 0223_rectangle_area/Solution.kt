@@ -1,4 +1,4 @@
-﻿// LeetCode 0223 - Rectangle Area
+// LeetCode 0223 - Rectangle Area
 // https://leetcode.com/problems/rectangle-area/
 
 class Solution {

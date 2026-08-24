@@ -1,6 +1,12 @@
 // LeetCode 2261 - K Divisible Elements Subarrays
 // https://leetcode.com/problems/k-divisible-elements-subarrays/
 
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @param {number} p
+ * @return {number}
+ */
 var countDistinct = function(nums, k, p) {
     const n = nums.length;
     const seen = new Set();

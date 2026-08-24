@@ -1,4 +1,4 @@
-﻿// LeetCode 0356 - Line Reflection
+// LeetCode 0356 - Line Reflection
 
 // https://leetcode.com/problems/line-reflection/
 

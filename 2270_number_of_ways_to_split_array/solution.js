@@ -1,6 +1,10 @@
 // LeetCode 2270 - Number of Ways to Split Array
 // https://leetcode.com/problems/number-of-ways-to-split-array/
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
 var waysToSplitArray = function(nums) {
     let total = 0;
     for (const v of nums) total += v;

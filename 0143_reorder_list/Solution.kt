@@ -1,4 +1,4 @@
-﻿// LeetCode 0143 - Reorder List
+// LeetCode 0143 - Reorder List
 // https://leetcode.com/problems/reorder-list/
 
 class ListNode(var `val`: Int) { var next: ListNode? = null }

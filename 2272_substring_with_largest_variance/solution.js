@@ -1,6 +1,10 @@
 // LeetCode 2272 - Substring With Largest Variance
 // https://leetcode.com/problems/substring-with-largest-variance/
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var largestVariance = function(s) {
     let ans = 0;
     for (let ai = 0; ai < 26; ai++) {

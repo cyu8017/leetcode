@@ -1,4 +1,4 @@
-﻿// LeetCode 0384 - Shuffle an Array
+// LeetCode 0384 - Shuffle an Array
 
 // https://leetcode.com/problems/shuffle-an-array/
 

@@ -1,4 +1,4 @@
-﻿// LeetCode 0294 - Flip Game II
+// LeetCode 0294 - Flip Game II
 // https://leetcode.com/problems/flip-game-ii/
 
 class Solution {

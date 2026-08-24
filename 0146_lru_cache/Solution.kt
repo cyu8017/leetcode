@@ -1,4 +1,4 @@
-﻿// LeetCode 0146 - LRU Cache
+// LeetCode 0146 - LRU Cache
 // https://leetcode.com/problems/lru-cache/
 
 class LRUCache(private val capacity: Int) {

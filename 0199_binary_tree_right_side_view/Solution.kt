@@ -1,4 +1,4 @@
-﻿class TreeNode(var `val`: Int = 0, var left: TreeNode? = null, var right: TreeNode? = null)
+class TreeNode(var `val`: Int = 0, var left: TreeNode? = null, var right: TreeNode? = null)
 
 class Solution {
     fun rightSideView(root: TreeNode?): List<Int> {

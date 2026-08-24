@@ -36,6 +36,10 @@ MinHeap.prototype.pop = function() {
 MinHeap.prototype.peek = function() { return this.a[0]; };
 MinHeap.prototype.size = function() { return this.a.length; };
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
 var convertArray = function(nums) {
     const cost = (arr) => {
         const h = new MinHeap((a, b) => b - a);
@@ -50,5 +54,6 @@ var convertArray = function(nums) {
         }
         return ans;
     };
-    return Math.min(cost(nums), cost(nums.slice().reverse()));
+    const rev = nums.slice().reverse();
+    return Math.min(cost(nums), cost(rev));
 };

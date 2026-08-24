@@ -6,17 +6,14 @@ public:
     long long makeIntegerBeautiful(long long n, int target) {
         auto digitSum = [](long long x) {
             int s = 0;
-            while (x > 0) {
-                s += (int)(x % 10);
-                x /= 10;
-            }
+            while (x > 0) { s += (int)(x % 10); x /= 10; }
             return s;
         };
-        long long orig = n, pow10 = 1;
+        long long orig = n, pow = 1;
         while (digitSum(n) > target) {
             n = n / 10 + 1;
-            pow10 *= 10;
+            pow *= 10;
         }
-        return n * pow10 - orig;
+        return n * pow - orig;
     }
 };

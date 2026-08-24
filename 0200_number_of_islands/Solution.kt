@@ -1,4 +1,4 @@
-﻿class Solution {
+class Solution {
     fun numIslands(grid: Array<CharArray>): Int {
         if (grid.isEmpty()) return 0
         fun dfs(row: Int, col: Int) {

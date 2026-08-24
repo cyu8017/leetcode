@@ -1,4 +1,4 @@
-﻿// LeetCode 1236 - Web Crawler
+// LeetCode 1236 - Web Crawler
 // https://leetcode.com/problems/web-crawler/
 
 import java.net.URI

@@ -1,4 +1,4 @@
-﻿// LeetCode 0032 - Longest Valid Parentheses
+// LeetCode 0032 - Longest Valid Parentheses
 // https://leetcode.com/problems/longest-valid-parentheses/
 
 class Solution {

@@ -1,7 +1,9 @@
-﻿// LeetCode 2891 - Method Chaining
+// LeetCode 2891 - Method Chaining
 // https://leetcode.com/problems/method-chaining/
+// Pandas stand-in.
 
 class Solution {
-    fun solve() {
+    fun findHeavyAnimals(df: Array<IntArray>): Array<IntArray> {
+        return emptyArray()
     }
 }

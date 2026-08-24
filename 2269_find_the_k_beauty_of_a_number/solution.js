@@ -1,6 +1,11 @@
 // LeetCode 2269 - Find the K-Beauty of a Number
 // https://leetcode.com/problems/find-the-k-beauty-of-a-number/
 
+/**
+ * @param {number} num
+ * @param {number} k
+ * @return {number}
+ */
 var divisorSubstrings = function(num, k) {
     const s = String(num);
     let ans = 0;

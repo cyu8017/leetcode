@@ -14,13 +14,11 @@ public:
                 int diff = 0;
                 for (int i = 0; i < (int)q.size(); i++) {
                     if (q[i] != d[i]) {
-                        if (++diff > 2) break;
+                        diff++;
+                        if (diff > 2) break;
                     }
                 }
-                if (diff <= 2) {
-                    ok = true;
-                    break;
-                }
+                if (diff <= 2) { ok = true; break; }
             }
             if (ok) ans.push_back(q);
         }

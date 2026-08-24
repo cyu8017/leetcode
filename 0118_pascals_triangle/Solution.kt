@@ -1,4 +1,4 @@
-﻿// LeetCode 0118 - Pascal's Triangle
+// LeetCode 0118 - Pascal's Triangle
 // https://leetcode.com/problems/pascals-triangle/
 
 class Solution {

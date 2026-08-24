@@ -1,7 +1,6 @@
 // LeetCode 2459 - Sort Array By Moving Items to Empty Space
 // https://leetcode.com/problems/sort-array-by-moving-items-to-empty-space/
 
-#include <algorithm>
 #include <unordered_map>
 #include <vector>
 
@@ -9,7 +8,7 @@ class Solution {
 public:
     int sortArray(std::vector<int>& nums) {
         int n = (int)nums.size();
-        auto solveOne = [&](bool startZero) {
+        auto solve = [&](bool startZero) {
             std::vector<int> arr = nums;
             std::unordered_map<int, int> pos;
             for (int i = 0; i < n; i++) pos[arr[i]] = i;
@@ -21,10 +20,7 @@ public:
                     int found = -1;
                     for (int i = 0; i < n; i++) {
                         int want = startZero ? i : (i == n - 1 ? 0 : i + 1);
-                        if (arr[i] != want) {
-                            found = i;
-                            break;
-                        }
+                        if (arr[i] != want) { found = i; break; }
                     }
                     if (found == -1) return ops;
                     int v = arr[found];
@@ -42,6 +38,6 @@ public:
                 ops++;
             }
         };
-        return std::min(solveOne(true), solveOne(false));
+        return std::min(solve(true), solve(false));
     }
 };

@@ -1,6 +1,11 @@
 // LeetCode 2259 - Remove Digit From Number to Maximize Result
 // https://leetcode.com/problems/remove-digit-from-number-to-maximize-result/
 
+/**
+ * @param {string} number
+ * @param {character} digit
+ * @return {string}
+ */
 var removeDigit = function(number, digit) {
     let best = '';
     for (let i = 0; i < number.length; i++) {

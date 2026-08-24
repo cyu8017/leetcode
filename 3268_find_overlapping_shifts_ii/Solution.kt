@@ -1,7 +1,57 @@
-﻿// LeetCode 3268 - Find Overlapping Shifts II
+// LeetCode 3268 - Find Overlapping Shifts Ii
 // https://leetcode.com/problems/find-overlapping-shifts-ii/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    T AS (\n" +
+            "        SELECT DISTINCT employee_id, start_time AS st\n" +
+            "        FROM EmployeeShifts\n" +
+            "        UNION DISTINCT\n" +
+            "        SELECT DISTINCT employee_id, end_time AS st\n" +
+            "        FROM EmployeeShifts\n" +
+            "    ),\n" +
+            "    P AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            LEAD(st) OVER (\n" +
+            "                PARTITION BY employee_id\n" +
+            "                ORDER BY st\n" +
+            "            ) AS ed\n" +
+            "        FROM T\n" +
+            "    ),\n" +
+            "    S AS (\n" +
+            "        SELECT\n" +
+            "            P.*,\n" +
+            "            COUNT(1) AS concurrent_count\n" +
+            "        FROM\n" +
+            "            P\n" +
+            "            INNER JOIN EmployeeShifts USING (employee_id)\n" +
+            "        WHERE P.st >= EmployeeShifts.start_time AND P.ed <= EmployeeShifts.end_time\n" +
+            "        GROUP BY 1, 2, 3\n" +
+            "    ),\n" +
+            "    U AS (\n" +
+            "        SELECT\n" +
+            "            t1.employee_id,\n" +
+            "            SUM(\n" +
+            "                TIMESTAMPDIFF(MINUTE, t2.start_time, LEAST(t1.end_time, t2.end_time))\n" +
+            "            ) total_overlap_duration\n" +
+            "        FROM\n" +
+            "            EmployeeShifts t1\n" +
+            "            JOIN EmployeeShifts t2\n" +
+            "                ON t1.employee_id = t2.employee_id\n" +
+            "                AND t1.start_time < t2.start_time\n" +
+            "                AND t1.end_time > t2.start_time\n" +
+            "        GROUP BY 1\n" +
+            "    )\n" +
+            "SELECT\n" +
+            "    employee_id,\n" +
+            "    MAX(concurrent_count) max_overlapping_shifts,\n" +
+            "    IFNULL(AVG(total_overlap_duration), 0) total_overlap_duration\n" +
+            "FROM\n" +
+            "    S\n" +
+            "    LEFT JOIN U USING (employee_id)\n" +
+            "GROUP BY 1\n" +
+            "ORDER BY 1;"
     }
 }

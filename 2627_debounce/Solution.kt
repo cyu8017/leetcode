@@ -1,7 +1,6 @@
-﻿// LeetCode 2627 - Debounce
+// LeetCode 2627 - Debounce
 // https://leetcode.com/problems/debounce/
 
 class Solution {
-    fun solve() {
-    }
+    fun debounce(fn: () -> Unit, t: Int): () -> Unit = { fn() }
 }

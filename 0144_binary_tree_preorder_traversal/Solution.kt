@@ -1,4 +1,4 @@
-﻿// LeetCode 0144 - Binary Tree Preorder Traversal
+// LeetCode 0144 - Binary Tree Preorder Traversal
 // https://leetcode.com/problems/binary-tree-preorder-traversal/
 
 class TreeNode(var `val`: Int) { var left: TreeNode? = null; var right: TreeNode? = null }

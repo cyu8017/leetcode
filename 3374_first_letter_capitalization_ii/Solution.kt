@@ -1,7 +1,77 @@
-﻿// LeetCode 3374 - First Letter Capitalization II
+// LeetCode 3374 - First Letter Capitalization Ii
 // https://leetcode.com/problems/first-letter-capitalization-ii/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH RECURSIVE splitted_word_cte AS (\n" +
+            "    SELECT content_id,\n" +
+            "           content_text,\n" +
+            "           '^' AS delim,\n" +
+            "           CASE\n" +
+            "               WHEN INSTR(content_text, ' ') = 0 AND INSTR(content_text, '-') = 0 THEN\n" +
+            "                   content_text\n" +
+            "               WHEN INSTR(content_text, ' ') != 0 AND INSTR(content_text, '-') = 0 THEN\n" +
+            "                   SUBSTRING(content_text, 1, INSTR(content_text, ' ') - 1)\n" +
+            "               WHEN INSTR(content_text, ' ') = 0 AND INSTR(content_text, '-') != 0 THEN\n" +
+            "                   SUBSTRING(content_text, 1, INSTR(content_text, '-') - 1)\n" +
+            "               WHEN INSTR(content_text, ' ') != 0 AND INSTR(content_text, '-') != 0 THEN\n" +
+            "                   SUBSTRING(content_text, 1, INSTR(content_text, IF(INSTR(content_text, ' ') < INSTR(content_text, '-'), ' ', '-')) - 1)\n" +
+            "           END AS word,\n" +
+            "           CASE\n" +
+            "               WHEN INSTR(content_text, ' ') = 0 AND INSTR(content_text, '-') = 0 THEN\n" +
+            "                   ''\n" +
+            "               WHEN INSTR(content_text, ' ') != 0 AND INSTR(content_text, '-') = 0 THEN\n" +
+            "                   SUBSTRING(content_text, INSTR(content_text, ' '), 255)\n" +
+            "               WHEN INSTR(content_text, ' ') = 0 AND INSTR(content_text, '-') != 0 THEN\n" +
+            "                   SUBSTRING(content_text, INSTR(content_text, '-'), 255)\n" +
+            "               WHEN INSTR(content_text, ' ') != 0 AND INSTR(content_text, '-') != 0 THEN\n" +
+            "                   SUBSTRING(content_text, INSTR(content_text, IF(INSTR(content_text, ' ') < INSTR(content_text, '-'), ' ', '-')), 255)\n" +
+            "           END AS remain,\n" +
+            "        1 AS idx\n" +
+            "    FROM user_content\n" +
+            "    UNION ALL\n" +
+            "    SELECT\n" +
+            "        content_id,\n" +
+            "        content_text,\n" +
+            "        SUBSTR(remain, 1, 1) AS delim,\n" +
+            "        CASE\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') = 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') = 0 THEN\n" +
+            "                SUBSTRING(remain, 2, 255)\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') != 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') = 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), 1, INSTR(SUBSTRING(remain, 2, 255), ' ') - 1)\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') = 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') != 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), 1, INSTR(SUBSTRING(remain, 2, 255), '-') - 1)\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') != 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') != 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), 1, INSTR(SUBSTRING(remain, 2, 255), IF(INSTR(SUBSTRING(remain, 2, 255), ' ') < INSTR(SUBSTRING(remain, 2, 255), '-'), ' ', '-')) - 1)\n" +
+            "        END AS word,\n" +
+            "        CASE\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') = 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') = 0 THEN\n" +
+            "                ''\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') != 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') = 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), INSTR(SUBSTRING(remain, 2, 255), ' '), 255)\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') = 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') != 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), INSTR(SUBSTRING(remain, 2, 255), '-'), 255)\n" +
+            "            WHEN INSTR(SUBSTRING(remain, 2, 255), ' ') != 0 AND INSTR(SUBSTRING(remain, 2, 255), '-') != 0 THEN\n" +
+            "                SUBSTRING(SUBSTRING(remain, 2, 255), INSTR(SUBSTRING(remain, 2, 255), IF(INSTR(SUBSTRING(remain, 2, 255), ' ') < INSTR(SUBSTRING(remain, 2, 255), '-'), ' ', '-')), 255)\n" +
+            "        END AS remain,\n" +
+            "        idx + 1\n" +
+            "    FROM splitted_word_cte\n" +
+            "    WHERE remain != ''\n" +
+            "),\n" +
+            "formatted_word_cte AS (\n" +
+            "    SELECT content_id,\n" +
+            "           content_text,\n" +
+            "           idx,\n" +
+            "           word,\n" +
+            "           CONCAT(IF(delim = '^', '', delim), UPPER(SUBSTRING(word, 1, 1)), LOWER(SUBSTRING(word, 2, 255))) AS formatted_word\n" +
+            "    FROM splitted_word_cte\n" +
+            ")\n" +
+            "\n" +
+            "SELECT content_id,\n" +
+            "       content_text AS original_text,\n" +
+            "       GROUP_CONCAT(formatted_word ORDER BY idx SEPARATOR '') AS converted_text\n" +
+            "FROM formatted_word_cte\n" +
+            "GROUP BY 1, 2\n" +
+            "ORDER BY 1;"
     }
 }

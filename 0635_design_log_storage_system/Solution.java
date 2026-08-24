@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 class LogSystem {
-    private final List<Integer> ids = new ArrayList<>();
+    private final List<int[]> ids = new ArrayList<>();
     private final List<String> timestamps = new ArrayList<>();
     private final Map<String, Integer> granularityIndex = new HashMap<>();
 
@@ -22,7 +22,7 @@ class LogSystem {
     }
 
     public void put(int id, String timestamp) {
-        ids.add(id);
+        ids.add(new int[] {id});
         timestamps.add(timestamp);
     }
 
@@ -35,7 +35,7 @@ class LogSystem {
             String timestamp = timestamps.get(i);
             String key = timestamp.substring(0, index);
             if (startKey.compareTo(key) <= 0 && key.compareTo(endKey) <= 0) {
-                matched.add(new String[] {timestamp, String.valueOf(ids.get(i))});
+                matched.add(new String[] {timestamp, String.valueOf(ids.get(i)[0])});
             }
         }
         Collections.sort(matched, (a, b) -> a[0].compareTo(b[0]));

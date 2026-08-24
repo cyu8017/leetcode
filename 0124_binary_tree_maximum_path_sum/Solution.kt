@@ -1,4 +1,4 @@
-﻿// LeetCode 0124 - Binary Tree Maximum Path Sum
+// LeetCode 0124 - Binary Tree Maximum Path Sum
 // https://leetcode.com/problems/binary-tree-maximum-path-sum/
 
 class TreeNode(var `val`: Int) {

@@ -1,6 +1,10 @@
 // LeetCode 2268 - Minimum Number of Keypresses
 // https://leetcode.com/problems/minimum-number-of-keypresses/
 
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var minimumKeypresses = function(s) {
     const freq = new Array(26).fill(0);
     for (const c of s) freq[c.charCodeAt(0) - 97]++;

@@ -1,4 +1,4 @@
-﻿// LeetCode 0111 - Minimum Depth of Binary Tree
+// LeetCode 0111 - Minimum Depth of Binary Tree
 class TreeNode(var `val`: Int) {
     var left: TreeNode? = null
     var right: TreeNode? = null

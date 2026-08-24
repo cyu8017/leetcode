@@ -1,7 +1,37 @@
-﻿// LeetCode 3564 - Seasonal Sales Analysis
+// LeetCode 3564 - Seasonal Sales Analysis
 // https://leetcode.com/problems/seasonal-sales-analysis/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    SeasonalSales AS (\n" +
+            "        SELECT\n" +
+            "            CASE\n" +
+            "                WHEN MONTH(sale_date) IN (12, 1, 2) THEN 'Winter'\n" +
+            "                WHEN MONTH(sale_date) IN (3, 4, 5) THEN 'Spring'\n" +
+            "                WHEN MONTH(sale_date) IN (6, 7, 8) THEN 'Summer'\n" +
+            "                WHEN MONTH(sale_date) IN (9, 10, 11) THEN 'Fall'\n" +
+            "            END AS season,\n" +
+            "            category,\n" +
+            "            SUM(quantity) AS total_quantity,\n" +
+            "            SUM(quantity * price) AS total_revenue\n" +
+            "        FROM\n" +
+            "            sales\n" +
+            "            JOIN products USING (product_id)\n" +
+            "        GROUP BY 1, 2\n" +
+            "    ),\n" +
+            "    TopCategoryPerSeason AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            RANK() OVER (\n" +
+            "                PARTITION BY season\n" +
+            "                ORDER BY total_quantity DESC, total_revenue DESC\n" +
+            "            ) AS rk\n" +
+            "        FROM SeasonalSales\n" +
+            "    )\n" +
+            "SELECT season, category, total_quantity, total_revenue\n" +
+            "FROM TopCategoryPerSeason\n" +
+            "WHERE rk = 1\n" +
+            "ORDER BY 1;"
     }
 }

@@ -1,4 +1,4 @@
-﻿// LeetCode 0039 - Combination Sum
+// LeetCode 0039 - Combination Sum
 // https://leetcode.com/problems/combination-sum/
 
 class Solution {

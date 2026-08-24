@@ -1,4 +1,4 @@
-﻿// LeetCode 0489 - Robot Room Cleaner
+// LeetCode 0489 - Robot Room Cleaner
 // https://leetcode.com/problems/robot-room-cleaner/
 
 interface Robot {

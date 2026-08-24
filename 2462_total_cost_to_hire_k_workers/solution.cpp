@@ -29,8 +29,7 @@ public:
             bool useLeft = false;
             if (!leftH.empty() && !rightH.empty()) {
                 if (leftH.top().first < rightH.top().first ||
-                    (leftH.top().first == rightH.top().first &&
-                     leftH.top().second <= rightH.top().second)) {
+                    (leftH.top().first == rightH.top().first && leftH.top().second <= rightH.top().second)) {
                     useLeft = true;
                 }
             } else if (!leftH.empty()) {

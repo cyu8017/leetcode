@@ -1,7 +1,22 @@
-﻿// LeetCode 0860 - Lemonade Change
+// LeetCode 0860 - Lemonade Change
 // https://leetcode.com/problems/lemonade-change/
 
 class Solution {
-    fun solve() {
+    fun lemonadeChange(bills: IntArray): Boolean {
+        var fives = 0
+        var tens = 0
+        for (bill in bills) {
+            if (bill == 5) fives++
+            else if (bill == 10) {
+                if (fives == 0) return false
+                fives--
+                tens++
+            } else {
+                if (tens > 0 && fives > 0) { tens--; fives--; }
+                else if (fives >= 3) fives -= 3
+                else return false
+            }
+        }
+        return true
     }
 }

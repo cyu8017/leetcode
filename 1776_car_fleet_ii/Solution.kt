@@ -1,4 +1,4 @@
-﻿// LeetCode 1776 - Car Fleet II
+// LeetCode 1776 - Car Fleet II
 // https://leetcode.com/problems/car-fleet-ii/
 
 class Solution {

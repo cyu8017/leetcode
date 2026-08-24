@@ -1,7 +1,6 @@
-﻿// LeetCode 2632 - Curry
+// LeetCode 2632 - Curry
 // https://leetcode.com/problems/curry/
 
 class Solution {
-    fun solve() {
-    }
+    fun curry(fn: (IntArray) -> Int, arity: Int): (IntArray) -> Int = { args -> fn(args) }
 }

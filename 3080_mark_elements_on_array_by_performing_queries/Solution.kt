@@ -1,7 +1,33 @@
-﻿// LeetCode 3080 - Mark Elements on Array by Performing Queries
+// LeetCode 3080 - Mark Elements on Array by Performing Queries
 // https://leetcode.com/problems/mark-elements-on-array-by-performing-queries/
 
 class Solution {
-    fun solve() {
+    fun unmarkedSumArray(nums: IntArray, queries: Array<IntArray>): LongArray {
+        val n = nums.size
+        var s = 0L
+        for (x in nums) s += x
+        val mark = BooleanArray(n)
+        val arr = Array(n) { intArrayOf(nums[it], it) }
+        arr.sortWith(compareBy({ it[0] }, { it[1] }))
+        val ans = LongArray(queries.size)
+        var j = 0
+        for (qi in queries.indices) {
+            val index = queries[qi][0]
+            var k = queries[qi][1]
+            if (!mark[index]) {
+                mark[index] = true
+                s -= nums[index]
+            }
+            while (k > 0 && j < n) {
+                if (!mark[arr[j][1]]) {
+                    mark[arr[j][1]] = true
+                    s -= arr[j][0]
+                    k--
+                }
+                j++
+            }
+            ans[qi] = s
+        }
+        return ans
     }
 }

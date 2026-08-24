@@ -1,7 +1,15 @@
-﻿// LeetCode 3847 - Find the Score Difference in a Game
+// LeetCode 3847 - Find The Score Difference In A Game
 // https://leetcode.com/problems/find-the-score-difference-in-a-game/
 
 class Solution {
-    fun solve() {
+    fun scoreDifference(nums: IntArray): Int {
+        var ans = 0
+        var k = 1
+        for (i in 0 until nums.size) {
+            if (nums[i] % 2 != 0) k = -k
+            if (i % 6 == 5) k = -k
+            ans += k * nums[i]
+        }
+        return ans
     }
 }

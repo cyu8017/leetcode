@@ -1,6 +1,10 @@
 // LeetCode 2267 - Check if There Is a Valid Parentheses String Path
 // https://leetcode.com/problems/check-if-there-is-a-valid-parentheses-string-path/
 
+/**
+ * @param {character[][]} grid
+ * @return {boolean}
+ */
 var hasValidPath = function(grid) {
     const m = grid.length, n = grid[0].length;
     if ((m + n - 1) % 2 === 1 || grid[0][0] === ')' || grid[m - 1][n - 1] === '(') return false;

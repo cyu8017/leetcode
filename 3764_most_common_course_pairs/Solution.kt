@@ -1,7 +1,32 @@
-﻿// LeetCode 3764 - Most Common Course Pairs
+// LeetCode 3764 - Most Common Course Pairs
 // https://leetcode.com/problems/most-common-course-pairs/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    top_students AS (\n" +
+            "        SELECT user_id\n" +
+            "        FROM course_completions\n" +
+            "        GROUP BY user_id\n" +
+            "        HAVING COUNT(1) >= 5 AND AVG(course_rating) >= 4\n" +
+            "    ),\n" +
+            "    course_pairs AS (\n" +
+            "        SELECT\n" +
+            "            course_name AS first_course,\n" +
+            "            LEAD(course_name) OVER (\n" +
+            "                PARTITION BY user_id\n" +
+            "                ORDER BY completion_date\n" +
+            "            ) second_course\n" +
+            "        FROM\n" +
+            "            top_students\n" +
+            "            JOIN course_completions USING (user_id)\n" +
+            "    )\n" +
+            "SELECT\n" +
+            "    *,\n" +
+            "    COUNT(1) transition_count\n" +
+            "FROM course_pairs\n" +
+            "WHERE second_course IS NOT NULL\n" +
+            "GROUP BY 1, 2\n" +
+            "ORDER BY 3 DESC, 1, 2;"
     }
 }

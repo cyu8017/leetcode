@@ -1,6 +1,10 @@
 // LeetCode 2260 - Minimum Consecutive Cards to Pick Up
 // https://leetcode.com/problems/minimum-consecutive-cards-to-pick-up/
 
+/**
+ * @param {number[]} cards
+ * @return {number}
+ */
 var minimumCardPickup = function(cards) {
     const last = new Map();
     let ans = -1;

@@ -1,4 +1,4 @@
-﻿// LeetCode 1267 - Count Servers That Communicate
+// LeetCode 1267 - Count Servers That Communicate
 // https://leetcode.com/problems/count-servers-that-communicate/
 
 class Solution {

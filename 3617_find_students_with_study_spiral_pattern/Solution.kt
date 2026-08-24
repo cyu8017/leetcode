@@ -1,7 +1,156 @@
-﻿// LeetCode 3617 - Find Students with Study Spiral Pattern
+// LeetCode 3617 - Find Students With Study Spiral Pattern
 // https://leetcode.com/problems/find-students-with-study-spiral-pattern/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    ranked_sessions AS (\n" +
+            "        SELECT\n" +
+            "            s.student_id,\n" +
+            "            ss.session_date,\n" +
+            "            ss.subject,\n" +
+            "            ss.hours_studied,\n" +
+            "            ROW_NUMBER() OVER (\n" +
+            "                PARTITION BY s.student_id\n" +
+            "                ORDER BY ss.session_date\n" +
+            "            ) AS rn\n" +
+            "        FROM\n" +
+            "            study_sessions ss\n" +
+            "            JOIN students s ON s.student_id = ss.student_id\n" +
+            "    ),\n" +
+            "    grouped_sessions AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            DATEDIFF(\n" +
+            "                session_date,\n" +
+            "                LAG(session_date) OVER (\n" +
+            "                    PARTITION BY student_id\n" +
+            "                    ORDER BY session_date\n" +
+            "                )\n" +
+            "            ) AS date_diff\n" +
+            "        FROM ranked_sessions\n" +
+            "    ),\n" +
+            "    session_groups AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            SUM(\n" +
+            "                CASE\n" +
+            "                    WHEN date_diff > 2\n" +
+            "                    OR date_diff IS NULL THEN 1\n" +
+            "                    ELSE 0\n" +
+            "                END\n" +
+            "            ) OVER (\n" +
+            "                PARTITION BY student_id\n" +
+            "                ORDER BY session_date\n" +
+            "            ) AS group_id\n" +
+            "        FROM grouped_sessions\n" +
+            "    ),\n" +
+            "    valid_sequences AS (\n" +
+            "        SELECT\n" +
+            "            student_id,\n" +
+            "            group_id,\n" +
+            "            COUNT(*) AS session_count,\n" +
+            "            GROUP_CONCAT(subject ORDER BY session_date) AS subject_sequence,\n" +
+            "            SUM(hours_studied) AS total_hours\n" +
+            "        FROM session_groups\n" +
+            "        GROUP BY student_id, group_id\n" +
+            "        HAVING session_count >= 6\n" +
+            "    ),\n" +
+            "    pattern_detected AS (\n" +
+            "        SELECT\n" +
+            "            vs.student_id,\n" +
+            "            vs.total_hours,\n" +
+            "            vs.subject_sequence,\n" +
+            "            COUNT(\n" +
+            "                DISTINCT\n" +
+            "                SUBSTRING_INDEX(SUBSTRING_INDEX(subject_sequence, ',', n), ',', -1)\n" +
+            "            ) AS cycle_length\n" +
+            "        FROM\n" +
+            "            valid_sequences vs\n" +
+            "            JOIN (\n" +
+            "                SELECT a.N + b.N * 10 + 1 AS n\n" +
+            "                FROM\n" +
+            "                    (\n" +
+            "                        SELECT 0 AS N\n" +
+            "                        UNION\n" +
+            "                        SELECT 1\n" +
+            "                        UNION\n" +
+            "                        SELECT 2\n" +
+            "                        UNION\n" +
+            "                        SELECT 3\n" +
+            "                        UNION\n" +
+            "                        SELECT 4\n" +
+            "                        UNION\n" +
+            "                        SELECT 5\n" +
+            "                        UNION\n" +
+            "                        SELECT 6\n" +
+            "                        UNION\n" +
+            "                        SELECT 7\n" +
+            "                        UNION\n" +
+            "                        SELECT 8\n" +
+            "                        UNION\n" +
+            "                        SELECT 9\n" +
+            "                    ) a,\n" +
+            "                    (\n" +
+            "                        SELECT 0 AS N\n" +
+            "                        UNION\n" +
+            "                        SELECT 1\n" +
+            "                        UNION\n" +
+            "                        SELECT 2\n" +
+            "                        UNION\n" +
+            "                        SELECT 3\n" +
+            "                        UNION\n" +
+            "                        SELECT 4\n" +
+            "                        UNION\n" +
+            "                        SELECT 5\n" +
+            "                        UNION\n" +
+            "                        SELECT 6\n" +
+            "                        UNION\n" +
+            "                        SELECT 7\n" +
+            "                        UNION\n" +
+            "                        SELECT 8\n" +
+            "                        UNION\n" +
+            "                        SELECT 9\n" +
+            "                    ) b\n" +
+            "            ) nums\n" +
+            "                ON n <= 10\n" +
+            "        WHERE\n" +
+            "            -- Check if the sequence repeats every `k` items, for some `k >= 3` and divides session_count exactly\n" +
+            "            -- We simplify by checking the start and middle halves are equal\n" +
+            "            LENGTH(subject_sequence) > 0\n" +
+            "            AND LOCATE(',', subject_sequence) > 0\n" +
+            "            AND (\n" +
+            "                -- For cycle length 3:\n" +
+            "                subject_sequence LIKE CONCAT(\n" +
+            "                    SUBSTRING_INDEX(subject_sequence, ',', 3),\n" +
+            "                    ',',\n" +
+            "                    SUBSTRING_INDEX(SUBSTRING_INDEX(subject_sequence, ',', 6), ',', -3),\n" +
+            "                    '%'\n" +
+            "                )\n" +
+            "                OR subject_sequence LIKE CONCAT(\n" +
+            "                    -- For cycle length 4:\n" +
+            "                    SUBSTRING_INDEX(subject_sequence, ',', 4),\n" +
+            "                    ',',\n" +
+            "                    SUBSTRING_INDEX(SUBSTRING_INDEX(subject_sequence, ',', 8), ',', -4),\n" +
+            "                    '%'\n" +
+            "                )\n" +
+            "            )\n" +
+            "        GROUP BY vs.student_id, vs.total_hours, vs.subject_sequence\n" +
+            "    ),\n" +
+            "    final_output AS (\n" +
+            "        SELECT\n" +
+            "            s.student_id,\n" +
+            "            s.student_name,\n" +
+            "            s.major,\n" +
+            "            pd.cycle_length,\n" +
+            "            pd.total_hours AS total_study_hours\n" +
+            "        FROM\n" +
+            "            pattern_detected pd\n" +
+            "            JOIN students s ON s.student_id = pd.student_id\n" +
+            "        WHERE pd.cycle_length >= 3\n" +
+            "    )\n" +
+            "SELECT *\n" +
+            "FROM final_output\n" +
+            "ORDER BY cycle_length DESC, total_study_hours DESC;"
     }
 }

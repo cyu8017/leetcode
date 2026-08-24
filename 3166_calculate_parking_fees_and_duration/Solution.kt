@@ -1,7 +1,38 @@
-﻿// LeetCode 3166 - Calculate Parking Fees and Duration
+// LeetCode 3166 - Calculate Parking Fees And Duration
 // https://leetcode.com/problems/calculate-parking-fees-and-duration/
 
 class Solution {
-    fun solve() {
+    companion object {
+        const val QUERY = "WITH\n" +
+            "    T AS (\n" +
+            "        SELECT\n" +
+            "            car_id,\n" +
+            "            lot_id,\n" +
+            "            SUM(TIMESTAMPDIFF(SECOND, entry_time, exit_time)) AS duration\n" +
+            "        FROM ParkingTransactions\n" +
+            "        GROUP BY 1, 2\n" +
+            "    ),\n" +
+            "    P AS (\n" +
+            "        SELECT\n" +
+            "            *,\n" +
+            "            RANK() OVER (\n" +
+            "                PARTITION BY car_id\n" +
+            "                ORDER BY duration DESC\n" +
+            "            ) AS rk\n" +
+            "        FROM T\n" +
+            "    )\n" +
+            "SELECT\n" +
+            "    t1.car_id,\n" +
+            "    SUM(fee_paid) AS total_fee_paid,\n" +
+            "    ROUND(\n" +
+            "        SUM(fee_paid) / (SUM(TIMESTAMPDIFF(SECOND, entry_time, exit_time)) / 3600),\n" +
+            "        2\n" +
+            "    ) AS avg_hourly_fee,\n" +
+            "    t2.lot_id AS most_time_lot\n" +
+            "FROM\n" +
+            "    ParkingTransactions AS t1\n" +
+            "    LEFT JOIN P AS t2 ON t1.car_id = t2.car_id AND t2.rk = 1\n" +
+            "GROUP BY 1\n" +
+            "ORDER BY 1;"
     }
 }

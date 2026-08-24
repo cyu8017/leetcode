@@ -1,6 +1,10 @@
 // LeetCode 2265 - Count Nodes Equal to Average of Subtree
 // https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/
 
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
 var averageOfSubtree = function(root) {
     let ans = 0;
     const dfs = (node) => {

@@ -9,19 +9,17 @@ public class Solution {
         var queue = new Queue<(string, int)>();
         queue.Enqueue((s1, 0));
         var seen = new HashSet<string> { s1 };
-        List<string> Neighbors(string s) {
+        IEnumerable<string> Neighbors(string s) {
             char[] arr = s.ToCharArray();
             int i = 0;
             while (arr[i] == s2[i]) i++;
-            var res = new List<string>();
             for (int j = i + 1; j < arr.Length; j++) {
                 if (arr[j] == s2[i] && arr[j] != s2[j]) {
                     (arr[i], arr[j]) = (arr[j], arr[i]);
-                    res.Add(new string(arr));
+                    yield return new string(arr);
                     (arr[i], arr[j]) = (arr[j], arr[i]);
                 }
             }
-            return res;
         }
         while (queue.Count > 0) {
             var (cur, dist) = queue.Dequeue();

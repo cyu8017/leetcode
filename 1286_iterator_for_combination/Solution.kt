@@ -1,4 +1,4 @@
-﻿// LeetCode 1286 - Iterator for Combination
+// LeetCode 1286 - Iterator for Combination
 // https://leetcode.com/problems/iterator-for-combination/
 
 class CombinationIterator(characters: String, combinationLength: Int) {

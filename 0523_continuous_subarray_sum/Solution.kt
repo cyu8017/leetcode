@@ -1,4 +1,4 @@
-﻿// LeetCode 0523 - Continuous Subarray Sum
+// LeetCode 0523 - Continuous Subarray Sum
 // https://leetcode.com/problems/continuous-subarray-sum/
 
 class Solution {

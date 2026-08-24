@@ -1,4 +1,4 @@
-﻿// LeetCode 0360 - Sort Transformed Array
+// LeetCode 0360 - Sort Transformed Array
 
 // https://leetcode.com/problems/sort-transformed-array/
 

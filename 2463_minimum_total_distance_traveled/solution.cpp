@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/minimum-total-distance-traveled/
 
 #include <algorithm>
+#include <climits>
 #include <vector>
 
 class Solution {
@@ -15,7 +16,7 @@ public:
             for (int c = 0; c < f[1]; c++) pos.push_back(f[0]);
         }
         int n = (int)pos.size();
-        const long long INF = 1LL << 60;
+        const long long INF = (1LL << 60);
         std::vector<std::vector<long long>> dp(m + 1, std::vector<long long>(n + 1, INF));
         for (int j = 0; j <= n; j++) dp[0][j] = 0;
         for (int i = 1; i <= m; i++) {

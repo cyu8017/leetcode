@@ -1,6 +1,10 @@
 // LeetCode 2273 - Find Resultant Array After Removing Anagrams
 // https://leetcode.com/problems/find-resultant-array-after-removing-anagrams/
 
+/**
+ * @param {string[]} words
+ * @return {string[]}
+ */
 var removeAnagrams = function(words) {
     const sig = (w) => {
         const c = new Array(26).fill(0);

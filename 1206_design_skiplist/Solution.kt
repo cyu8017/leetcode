@@ -1,4 +1,4 @@
-﻿// LeetCode 1206 - Design Skiplist
+// LeetCode 1206 - Design Skiplist
 // https://leetcode.com/problems/design-skiplist/
 
 class Skiplist {
