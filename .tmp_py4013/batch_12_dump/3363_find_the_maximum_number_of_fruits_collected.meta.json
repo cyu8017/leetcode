@@ -1,0 +1,11 @@
+{
+  "folder": "3363_find_the_maximum_number_of_fruits_collected",
+  "num": "3363",
+  "title": "Find The Maximum Number Of Fruits Collected",
+  "method": "maxCollectedFruits",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 43,
+  "js_bytes": 1508
+}

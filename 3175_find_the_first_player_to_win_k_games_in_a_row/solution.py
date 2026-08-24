@@ -1,6 +1,21 @@
-﻿# LeetCode 3175 - Find The First Player to win K Games in a Row
+# LeetCode 3175 - Find The First Player to win K Games in a Row
 # https://leetcode.com/problems/find-the-first-player-to-win-k-games-in-a-row/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findWinningPlayer(self, skills: List[int], k: int) -> int:
+        n = len(skills)
+        k = min(k, n - 1)
+        i = 0
+        cnt = 0
+        for j in range(1, n):
+            if skills[i] < skills[j]:
+                i = j
+                cnt = 1
+            else:
+                cnt += 1
+            if cnt == k:
+                break
+        return i

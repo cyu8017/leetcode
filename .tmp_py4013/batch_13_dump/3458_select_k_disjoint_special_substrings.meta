@@ -1,0 +1,11 @@
+{
+  "folder": "3458_select_k_disjoint_special_substrings",
+  "num": 3458,
+  "title": "Select K Disjoint Special Substrings",
+  "method": "maxSubstringLength",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1357,
+  "js_lines": 46,
+  "header": "// LeetCode 3458 - Select K Disjoint Special Substrings\n// https://leetcode.com/problems/select-k-disjoint-special-substrings/\n\nvar maxSubstringLength = function(s, k) {\n    const n = s.length;\n    const first = new Array(26).fill(n), last = new Array(26).fill(-1);\n    for (let i = 0; i < n; i++) {\n        const ci = s.charCodeAt(i) - 97;"
+}

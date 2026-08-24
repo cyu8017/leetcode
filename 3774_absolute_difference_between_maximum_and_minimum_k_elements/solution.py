@@ -1,6 +1,14 @@
-﻿# LeetCode 3774 - Absolute Difference Between Maximum and Minimum K Elements
+# LeetCode 3774 - Absolute Difference Between Maximum and Minimum K Elements
 # https://leetcode.com/problems/absolute-difference-between-maximum-and-minimum-k-elements/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def absDifference(self, nums: List[int], k: int) -> int:
+        a = sorted(nums)
+        ans = 0
+        n = len(a)
+        for i in range(k):
+            ans += a[n - i - 1] - a[i]
+        return ans

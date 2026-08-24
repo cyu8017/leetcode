@@ -1,0 +1,11 @@
+{
+  "folder": "3509_maximum_product_of_subsequences_with_an_alternating_sum_equal_to_k",
+  "num": 3509,
+  "title": "Maximum Product Of Subsequences With An Alternating Sum Equal To K",
+  "method": "maxProduct",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1317,
+  "js_lines": 34,
+  "header": "// LeetCode 3509 - Maximum Product of Subsequences With an Alternating Sum Equal to K\n// https://leetcode.com/problems/maximum-product-of-subsequences-with-an-alternating-sum-equal-to-k/\n\nvar maxProduct = function(nums, k, limit) {\n    const MIN = -5000;\n    const memo = new Map();\n    let sumAll = 0;\n    for (const v of nums) sumAll += v;"
+}

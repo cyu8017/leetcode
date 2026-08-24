@@ -1,0 +1,14 @@
+{
+  "method": "areSimilar",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "return": null,
+  "keys": [
+    "class",
+    "method",
+    "paramOrder",
+    "types",
+    "description"
+  ]
+}

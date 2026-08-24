@@ -1,6 +1,7 @@
-﻿# LeetCode 3857 - Minimum Cost to Split into Ones
+# LeetCode 3857 - Minimum Cost To Split Into Ones
 # https://leetcode.com/problems/minimum-cost-to-split-into-ones/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minCost(self, n: int) -> int:
+        return n * (n - 1) // 2

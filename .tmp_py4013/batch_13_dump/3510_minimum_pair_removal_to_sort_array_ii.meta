@@ -1,0 +1,11 @@
+{
+  "folder": "3510_minimum_pair_removal_to_sort_array_ii",
+  "num": 3510,
+  "title": "Minimum Pair Removal To Sort Array Ii",
+  "method": "minimumPairRemoval",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 2222,
+  "js_lines": 70,
+  "header": "// LeetCode 3510 - Minimum Pair Removal to Sort Array II\n// https://leetcode.com/problems/minimum-pair-removal-to-sort-array-ii/\n\nvar minimumPairRemoval = function(nums) {\n    const n = nums.length;\n    let inv = 0, ans = 0;\n    const sl = [];\n    const idx = new Set();"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3457_eat_pizzas",
+  "num": 3457,
+  "title": "Eat Pizzas",
+  "method": "maxWeight",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 570,
+  "js_lines": 22,
+  "header": "// LeetCode 3457 - Eat Pizzas!\n// https://leetcode.com/problems/eat-pizzas/\n\nvar maxWeight = function(pizzas) {\n    pizzas = pizzas.slice().sort((a, b) => a - b);\n    const n = pizzas.length;\n    const days = Math.floor(n / 4);\n    let ans = 0;"
+}

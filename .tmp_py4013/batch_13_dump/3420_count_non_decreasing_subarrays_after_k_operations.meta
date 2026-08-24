@@ -1,0 +1,11 @@
+{
+  "folder": "3420_count_non_decreasing_subarrays_after_k_operations",
+  "num": 3420,
+  "title": "Count Non Decreasing Subarrays After K Operations",
+  "method": "countNonDecreasingSubarrays",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 551,
+  "js_lines": 18,
+  "header": "// LeetCode 3420 - Count Non-Decreasing Subarrays After K Operations\n// https://leetcode.com/problems/count-non-decreasing-subarrays-after-k-operations/\n\nvar countNonDecreasingSubarrays = function(nums, k) {\n    const n = nums.length;\n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        let cost = 0;"
+}

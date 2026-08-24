@@ -1,0 +1,35 @@
+// LeetCode 3267 - Count Almost Equal Pairs II
+// https://leetcode.com/problems/count-almost-equal-pairs-ii/
+
+var countPairs = function(nums) {
+    let sa, sb;
+    const padNum = (x) => String(x);
+    const dfs = (arr, start, left) => {
+        if (arr.join('') === sb) return true;
+        if (left === 0) return false;
+        for (let i = start; i < arr.length; i++) {
+            if (arr[i] === sb[i]) continue;
+            for (let j = i + 1; j < arr.length; j++) {
+                if (arr[j] === sb[i]) {
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    if (dfs(arr, i + 1, left - 1)) return true;
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+            }
+            return false;
+        }
+        return arr.join('') === sb;
+    };
+    const almostEqual = (a, b) => {
+        sa = padNum(a); sb = padNum(b);
+        while (sa.length < sb.length) sa = '0' + sa;
+        while (sb.length < sa.length) sb = '0' + sb;
+        if (sa === sb) return true;
+        return dfs(sa.split(''), 0, 2);
+    };
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++)
+        for (let j = i + 1; j < nums.length; j++)
+            if (almostEqual(nums[i], nums[j])) ans++;
+    return ans;
+};

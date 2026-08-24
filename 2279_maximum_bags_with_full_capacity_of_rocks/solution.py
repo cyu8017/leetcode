@@ -1,6 +1,17 @@
-﻿# LeetCode 2279 - Maximum Bags With Full Capacity of Rocks
+# LeetCode 2279 - Maximum Bags With Full Capacity of Rocks
 # https://leetcode.com/problems/maximum-bags-with-full-capacity-of-rocks/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumBags(self, capacity: List[int], rocks: List[int], additionalRocks: int) -> int:
+        need = [c - r for c, r in zip(capacity, rocks)]
+        need.sort()
+        ans = 0
+        for n in need:
+            if additionalRocks < n:
+                break
+            additionalRocks -= n
+            ans += 1
+        return ans

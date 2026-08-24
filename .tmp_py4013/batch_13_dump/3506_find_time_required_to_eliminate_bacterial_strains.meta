@@ -1,0 +1,11 @@
+{
+  "folder": "3506_find_time_required_to_eliminate_bacterial_strains",
+  "num": 3506,
+  "title": "Find Time Required To Eliminate Bacterial Strains",
+  "method": "solve",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 613,
+  "js_lines": 19,
+  "header": "// LeetCode 3506 - Find Time Required to Eliminate Bacterial Strains\n// https://leetcode.com/problems/find-time-required-to-eliminate-bacterial-strains/\n\nvar minEliminationTime = function(timeReq, splitTime) {\n    const pq = timeReq.slice().sort((a, b) => a - b);\n    while (pq.length > 1) {\n        pq.shift();\n        const x = pq.shift();"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3370_smallest_number_with_all_set_bits",
+  "num": "3370",
+  "title": "Smallest Number With All Set Bits",
+  "method": "smallestNumber",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 9,
+  "js_bytes": 222
+}

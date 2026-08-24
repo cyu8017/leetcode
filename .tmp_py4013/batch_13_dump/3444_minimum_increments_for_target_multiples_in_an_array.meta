@@ -1,0 +1,11 @@
+{
+  "folder": "3444_minimum_increments_for_target_multiples_in_an_array",
+  "num": 3444,
+  "title": "Minimum Increments For Target Multiples In An Array",
+  "method": "minimumIncrements",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1194,
+  "js_lines": 33,
+  "header": "// LeetCode 3444 - Minimum Increments for Target Multiples in an Array\n// https://leetcode.com/problems/minimum-increments-for-target-multiples-in-an-array/\n\nvar minimumIncrements = function(nums, target) {\n    const gcd = (a, b) => { while (b) { const t = a % b; a = b; b = t; } return a; };\n    const lcm = (a, b) => a / gcd(a, b) * b;\n    const m = target.length;\n    const N = 1 << m;"
+}

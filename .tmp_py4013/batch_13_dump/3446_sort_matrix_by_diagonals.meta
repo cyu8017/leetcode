@@ -1,0 +1,11 @@
+{
+  "folder": "3446_sort_matrix_by_diagonals",
+  "num": 3446,
+  "title": "Sort Matrix By Diagonals",
+  "method": "sortMatrix",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 829,
+  "js_lines": 28,
+  "header": "// LeetCode 3446 - Sort Matrix by Diagonals\n// https://leetcode.com/problems/sort-matrix-by-diagonals/\n\nvar sortMatrix = function(grid) {\n    const n = grid.length;\n    const diags = new Map();\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < n; j++) {"
+}

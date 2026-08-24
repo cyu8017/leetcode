@@ -1,0 +1,11 @@
+{
+  "folder": "3400_maximum_number_of_matching_indices_after_right_shifts",
+  "num": "3400",
+  "title": "Maximum Number Of Matching Indices After Right Shifts",
+  "method": "maximumMatchingIndices",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 16,
+  "js_bytes": 499
+}

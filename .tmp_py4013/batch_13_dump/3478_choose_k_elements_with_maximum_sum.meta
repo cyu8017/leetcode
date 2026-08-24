@@ -1,0 +1,11 @@
+{
+  "folder": "3478_choose_k_elements_with_maximum_sum",
+  "num": 3478,
+  "title": "Choose K Elements With Maximum Sum",
+  "method": "findMaxSum",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 859,
+  "js_lines": 26,
+  "header": "// LeetCode 3478 - Choose K Elements With Maximum Sum\n// https://leetcode.com/problems/choose-k-elements-with-maximum-sum/\n\nvar findMaxSum = function(nums1, nums2, k) {\n    const n = nums1.length;\n    const arr = [];\n    for (let i = 0; i < n; i++) arr.push([nums1[i], nums2[i], i]);\n    arr.sort((a, b) => a[0] - b[0]);"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3318_find_x_sum_of_all_k_long_subarrays_i",
+  "num": "3318",
+  "title": "Find X Sum Of All K Long Subarrays I",
+  "method": "findXSum",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 22,
+  "js_bytes": 830
+}

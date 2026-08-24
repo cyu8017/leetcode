@@ -1,0 +1,11 @@
+{
+  "folder": "3459_length_of_longest_v_shaped_diagonal_segment",
+  "num": 3459,
+  "title": "Length Of Longest V Shaped Diagonal Segment",
+  "method": "lenOfVDiagonal",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1529,
+  "js_lines": 40,
+  "header": "// LeetCode 3459 - Length of Longest V-Shaped Diagonal Segment\n// https://leetcode.com/problems/length-of-longest-v-shaped-diagonal-segment/\n\nvar lenOfVDiagonal = function(grid) {\n    const m = grid.length, n = grid[0].length;\n    const dirs = [[1, 1], [1, -1], [-1, -1], [-1, 1]];\n    const nextDir = [1, 2, 3, 0];\n    const memo = new Map();"
+}

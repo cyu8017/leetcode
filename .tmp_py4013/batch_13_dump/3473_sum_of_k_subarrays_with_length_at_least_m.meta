@@ -1,0 +1,11 @@
+{
+  "folder": "3473_sum_of_k_subarrays_with_length_at_least_m",
+  "num": 3473,
+  "title": "Sum Of K Subarrays With Length At Least M",
+  "method": "maxSum",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 832,
+  "js_lines": 21,
+  "header": "// LeetCode 3473 - Sum of K Subarrays With Length at Least M\n// https://leetcode.com/problems/sum-of-k-subarrays-with-length-at-least-m/\n\nvar maxSum = function(nums, k, m) {\n    const n = nums.length;\n    const pref = new Array(n + 1).fill(0);\n    for (let i = 0; i < n; i++) pref[i + 1] = pref[i] + nums[i];\n    const neg = Number.MIN_SAFE_INTEGER / 4;"
+}

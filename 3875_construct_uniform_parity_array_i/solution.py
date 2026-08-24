@@ -1,6 +1,9 @@
-﻿# LeetCode 3875 - Construct Uniform Parity Array I
+# LeetCode 3875 - Construct Uniform Parity Array I
 # https://leetcode.com/problems/construct-uniform-parity-array-i/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def uniformArray(self, nums1: List[int]) -> bool:
+        return True

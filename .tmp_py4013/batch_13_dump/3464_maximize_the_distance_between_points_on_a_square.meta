@@ -1,0 +1,11 @@
+{
+  "folder": "3464_maximize_the_distance_between_points_on_a_square",
+  "num": 3464,
+  "title": "Maximize The Distance Between Points On A Square",
+  "method": "maxDistance",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1733,
+  "js_lines": 51,
+  "header": "// LeetCode 3464 - Maximize the Distance Between Points on a Square\n// https://leetcode.com/problems/maximize-the-distance-between-points-on-a-square/\n\nvar maxDistance = function(side, points, k) {\n    const canPlace = (arr, perim, mid) => {\n        const n = arr.length;\n        for (let s = 0; s < n; s++) {\n            let cnt = 1;"
+}

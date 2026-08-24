@@ -1,0 +1,11 @@
+{
+  "folder": "3468_find_the_number_of_copy_arrays",
+  "num": 3468,
+  "title": "Find The Number Of Copy Arrays",
+  "method": "countArrays",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 596,
+  "js_lines": 18,
+  "header": "// LeetCode 3468 - Find the Number of Copy Arrays\n// https://leetcode.com/problems/find-the-number-of-copy-arrays/\n\nvar countArrays = function(original, bounds) {\n    const n = original.length;\n    let lo = bounds[0][0], hi = bounds[0][1];\n    for (let i = 1; i < n; i++) {\n        const diff = original[i] - original[i - 1];"
+}

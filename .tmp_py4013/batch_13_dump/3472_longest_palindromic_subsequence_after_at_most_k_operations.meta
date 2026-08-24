@@ -1,0 +1,11 @@
+{
+  "folder": "3472_longest_palindromic_subsequence_after_at_most_k_operations",
+  "num": 3472,
+  "title": "Longest Palindromic Subsequence After At Most K Operations",
+  "method": "longestPalindromicSubsequence",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 952,
+  "js_lines": 24,
+  "header": "// LeetCode 3472 - Longest Palindromic Subsequence After at Most K Operations\n// https://leetcode.com/problems/longest-palindromic-subsequence-after-at-most-k-operations/\n\nvar longestPalindromicSubsequence = function(s, k) {\n    const n = s.length;\n    const dp = Array.from({ length: n }, () =>\n        Array.from({ length: n }, () => new Array(k + 1).fill(-1))\n    );"
+}

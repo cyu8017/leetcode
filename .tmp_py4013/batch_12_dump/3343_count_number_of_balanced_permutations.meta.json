@@ -1,0 +1,11 @@
+{
+  "folder": "3343_count_number_of_balanced_permutations",
+  "num": "3343",
+  "title": "Count Number Of Balanced Permutations",
+  "method": "countBalancedPermutations",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 55,
+  "js_bytes": 1833
+}

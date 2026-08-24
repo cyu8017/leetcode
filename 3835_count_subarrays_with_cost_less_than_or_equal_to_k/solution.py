@@ -1,6 +1,27 @@
-﻿# LeetCode 3835 - Count Subarrays With Cost Less Than or Equal to K
+# LeetCode 3835 - Count Subarrays with Cost Less Than or Equal to K
 # https://leetcode.com/problems/count-subarrays-with-cost-less-than-or-equal-to-k/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        ans = 0
+        q1 = []
+        q2 = []
+        l = 0
+        for r, x in enumerate(nums):
+            while q1 and nums[q1[-1]] <= x:
+                q1.pop()
+            while q2 and nums[q2[-1]] >= x:
+                q2.pop()
+            q1.append(r)
+            q2.append(r)
+            while l < r and (nums[q1[0]] - nums[q2[0]]) * (r - l + 1) > k:
+                l += 1
+                if q1[0] < l:
+                    q1.pop(0)
+                if q2[0] < l:
+                    q2.pop(0)
+            ans += r - l + 1
+        return ans

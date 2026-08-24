@@ -1,0 +1,565 @@
+
+================================================================================
+2856_minimum_array_length_after_pair_removals
+================================================================================
+// LeetCode 2856 - Minimum Array Length After Pair Removals
+// https://leetcode.com/problems/minimum-array-length-after-pair-removals/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minLengthAfterRemovals = function(nums) {
+    const n = nums.length;
+    const freq = new Map();
+    let mx = 0;
+    for (const v of nums) {
+        const c = (freq.get(v) || 0) + 1;
+        freq.set(v, c);
+        if (c > mx) mx = c;
+    }
+    if (mx <= Math.floor(n / 2)) return n % 2;
+    return 2 * mx - n;
+};
+
+================================================================================
+2857_count_pairs_of_points_with_distance_k
+================================================================================
+// LeetCode 2857 - Count Pairs of Points With Distance k
+// https://leetcode.com/problems/count-pairs-of-points-with-distance-k/
+
+/**
+ * @param {number[][]} coordinates
+ * @param {number} k
+ * @return {number}
+ */
+var countPairs = function(coordinates, k) {
+    const freq = new Map();
+    const key = (x, y) => (BigInt(x) << 32n) ^ BigInt(y >>> 0);
+    let ans = 0;
+    for (const [x, y] of coordinates) {
+        for (let a = 0; a <= k; a++) {
+            const b = k - a;
+            ans += freq.get(key(x ^ a, y ^ b).toString()) || 0;
+        }
+        const k0 = key(x, y).toString();
+        freq.set(k0, (freq.get(k0) || 0) + 1);
+    }
+    return ans;
+};
+
+================================================================================
+2858_minimum_edge_reversals_so_every_node_is_reachable
+================================================================================
+// LeetCode 2858 - Minimum Edge Reversals So Every Node Is Reachable
+// https://leetcode.com/problems/minimum-edge-reversals-so-every-node-is-reachable/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number[]}
+ */
+var minEdgeReversals = function(n, edges) {
+    const g = Array.from({ length: n }, () => []);
+    for (const [u, v] of edges) {
+        g[u].push([v, 0]);
+        g[v].push([u, 1]);
+    }
+    const ans = Array(n).fill(0);
+    const dfs1 = (u, p) => {
+        for (const [v, ww] of g[u]) {
+            if (v === p) continue;
+            ans[0] += ww;
+            dfs1(v, u);
+        }
+    };
+    const dfs2 = (u, p) => {
+        for (const [v, ww] of g[u]) {
+            if (v === p) continue;
+            ans[v] = ww === 0 ? ans[u] + 1 : ans[u] - 1;
+            dfs2(v, u);
+        }
+    };
+    dfs1(0, -1);
+    dfs2(0, -1);
+    return ans;
+};
+
+================================================================================
+2859_sum_of_values_at_indices_with_k_set_bits
+================================================================================
+// LeetCode 2859 - Sum of Values at Indices With K Set Bits
+// https://leetcode.com/problems/sum-of-values-at-indices-with-k-set-bits/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var sumIndicesWithKSetBits = function(nums, k) {
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++) {
+        let x = i, bits = 0;
+        while (x) { bits += x & 1; x >>= 1; }
+        if (bits === k) ans += nums[i];
+    }
+    return ans;
+};
+
+================================================================================
+2860_happy_students
+================================================================================
+// LeetCode 2860 - Happy Students
+// https://leetcode.com/problems/happy-students/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countWays = function(nums) {
+    nums = [...nums].sort((a, b) => a - b);
+    const n = nums.length;
+    let ans = 0;
+    if (nums[0] > 0) ans++;
+    for (let i = 0; i < n; i++) {
+        const selected = i + 1;
+        if (selected > nums[i] && (i === n - 1 || selected < nums[i + 1])) ans++;
+    }
+    return ans;
+};
+
+================================================================================
+2861_maximum_number_of_alloys
+================================================================================
+// LeetCode 2861 - Maximum Number of Alloys
+// https://leetcode.com/problems/maximum-number-of-alloys/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @param {number} budget
+ * @param {number[][]} composition
+ * @param {number[]} stock
+ * @param {number[]} cost
+ * @return {number}
+ */
+var maxNumberOfAlloys = function(n, k, budget, composition, stock, cost) {
+    const ok = (machines) => {
+        for (const comp of composition) {
+            let spend = 0n;
+            for (let i = 0; i < n; i++) {
+                const need = BigInt(machines) * BigInt(comp[i]) - BigInt(stock[i]);
+                if (need > 0n) spend += need * BigInt(cost[i]);
+            }
+            if (spend <= BigInt(budget)) return true;
+        }
+        return false;
+    };
+    let lo = 0n, hi = 1000000000n, ans = 0n;
+    while (lo <= hi) {
+        const mid = (lo + hi) / 2n;
+        if (ok(mid)) { ans = mid; lo = mid + 1n; }
+        else hi = mid - 1n;
+    }
+    return Number(ans);
+};
+
+================================================================================
+2862_maximum_element_sum_of_a_complete_subset_of_indices
+================================================================================
+// LeetCode 2862 - Maximum Element-Sum of a Complete Subset of Indices
+// https://leetcode.com/problems/maximum-element-sum-of-a-complete-subset-of-indices/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maximumSum = function(nums) {
+    const squareFree = (x) => {
+        let res = 1;
+        for (let p = 2; p * p <= x; p++) {
+            let cnt = 0;
+            while (x % p === 0) { x = Math.floor(x / p); cnt++; }
+            if (cnt % 2 === 1) res *= p;
+        }
+        if (x > 1) res *= x;
+        return res;
+    };
+    const n = nums.length;
+    const groups = new Map();
+    let ans = 0;
+    for (let i = 1; i <= n; i++) {
+        const sf = squareFree(i);
+        const sum = (groups.get(sf) || 0) + nums[i - 1];
+        groups.set(sf, sum);
+        if (sum > ans) ans = sum;
+    }
+    return ans;
+};
+
+================================================================================
+2863_maximum_length_of_semi_decreasing_subarrays
+================================================================================
+// LeetCode 2863 - Maximum Length of Semi-Decreasing Subarrays
+// https://leetcode.com/problems/maximum-length-of-semi-decreasing-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubarrayLength = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    const st = [];
+    for (let i = n - 1; i >= 0; i--) {
+        if (!st.length || nums[i] > nums[st[st.length - 1]]) st.push(i);
+    }
+    for (let i = 0; i < n; i++) {
+        while (st.length && nums[i] > nums[st[st.length - 1]]) {
+            const j = st.pop();
+            if (j - i + 1 > ans) ans = j - i + 1;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2864_maximum_odd_binary_number
+================================================================================
+// LeetCode 2864 - Maximum Odd Binary Number
+// https://leetcode.com/problems/maximum-odd-binary-number/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var maximumOddBinaryNumber = function(s) {
+    let ones = 0;
+    for (const c of s) if (c === '1') ones++;
+    const zeros = s.length - ones;
+    return '1'.repeat(ones - 1) + '0'.repeat(zeros) + '1';
+};
+
+================================================================================
+2865_beautiful_towers_i
+================================================================================
+// LeetCode 2865 - Beautiful Towers I
+// https://leetcode.com/problems/beautiful-towers-i/
+
+/**
+ * @param {number[]} heights
+ * @return {number}
+ */
+var maximumSumOfHeights = function(heights) {
+    const n = heights.length;
+    let ans = 0;
+    for (let peak = 0; peak < n; peak++) {
+        let sum = heights[peak];
+        let mn = heights[peak];
+        for (let i = peak - 1; i >= 0; i--) {
+            if (heights[i] < mn) mn = heights[i];
+            sum += mn;
+        }
+        mn = heights[peak];
+        for (let i = peak + 1; i < n; i++) {
+            if (heights[i] < mn) mn = heights[i];
+            sum += mn;
+        }
+        if (sum > ans) ans = sum;
+    }
+    return ans;
+};
+
+================================================================================
+2866_beautiful_towers_ii
+================================================================================
+// LeetCode 2866 - Beautiful Towers II
+// https://leetcode.com/problems/beautiful-towers-ii/
+
+/**
+ * @param {number[]} maxHeights
+ * @return {number}
+ */
+var maximumSumOfHeights = function(maxHeights) {
+    const n = maxHeights.length;
+    const left = Array(n);
+    let st = [-1];
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        while (st.length > 1 && maxHeights[st[st.length - 1]] >= maxHeights[i]) {
+            const j = st.pop();
+            sum -= maxHeights[j] * (j - st[st.length - 1]);
+        }
+        sum += maxHeights[i] * (i - st[st.length - 1]);
+        left[i] = sum;
+        st.push(i);
+    }
+    const right = Array(n);
+    st = [n];
+    sum = 0;
+    for (let i = n - 1; i >= 0; i--) {
+        while (st.length > 1 && maxHeights[st[st.length - 1]] >= maxHeights[i]) {
+            const j = st.pop();
+            sum -= maxHeights[j] * (st[st.length - 1] - j);
+        }
+        sum += maxHeights[i] * (st[st.length - 1] - i);
+        right[i] = sum;
+        st.push(i);
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        const cand = left[i] + right[i] - maxHeights[i];
+        if (cand > ans) ans = cand;
+    }
+    return ans;
+};
+
+================================================================================
+2867_count_valid_paths_in_a_tree
+================================================================================
+// LeetCode 2867 - Count Valid Paths in a Tree
+// https://leetcode.com/problems/count-valid-paths-in-a-tree/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var countPaths = function(n, edges) {
+    const isPrime = Array(n + 1).fill(true);
+    isPrime[0] = isPrime[1] = false;
+    for (let i = 2; i * i <= n; i++) {
+        if (isPrime[i]) {
+            for (let j = i * i; j <= n; j += i) isPrime[j] = false;
+        }
+    }
+    const g = Array.from({ length: n + 1 }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const dfs = (u, p) => {
+        if (isPrime[u]) return 0;
+        let sz = 1;
+        for (const v of g[u]) if (v !== p) sz += dfs(v, u);
+        return sz;
+    };
+    let ans = 0;
+    for (let u = 1; u <= n; u++) {
+        if (!isPrime[u]) continue;
+        let total = 0;
+        for (const v of g[u]) {
+            const c = dfs(v, u);
+            ans += c;
+            ans += total * c;
+            total += c;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2868_the_wording_game
+================================================================================
+// LeetCode 2868 - The Wording Game
+// https://leetcode.com/problems/the-wording-game/
+
+/**
+ * @param {string[]} a
+ * @param {string[]} b
+ * @return {boolean}
+ */
+var canAliceWin = function(a, b) {
+    let i = 0, j = 0;
+    let last = String.fromCharCode(0);
+    let alice = true;
+    while (true) {
+        if (alice) {
+            while (i < a.length && a[i][0] <= last) i++;
+            if (i === a.length) return false;
+            last = a[i][a[i].length - 1];
+            i++;
+        } else {
+            while (j < b.length && b[j][0] <= last) j++;
+            if (j === b.length) return true;
+            last = b[j][b[j].length - 1];
+            j++;
+        }
+        alice = !alice;
+    }
+};
+
+================================================================================
+2869_minimum_operations_to_collect_elements
+================================================================================
+// LeetCode 2869 - Minimum Operations to Collect Elements
+// https://leetcode.com/problems/minimum-operations-to-collect-elements/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var minOperations = function(nums, k) {
+    const need = new Set();
+    for (let i = 1; i <= k; i++) need.add(i);
+    for (let i = nums.length - 1; i >= 0; i--) {
+        need.delete(nums[i]);
+        if (need.size === 0) return nums.length - i;
+    }
+    return nums.length;
+};
+
+================================================================================
+2870_minimum_number_of_operations_to_make_array_empty
+================================================================================
+// LeetCode 2870 - Minimum Number of Operations to Make Array Empty
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-array-empty/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minOperations = function(nums) {
+    const freq = new Map();
+    for (const v of nums) freq.set(v, (freq.get(v) || 0) + 1);
+    let ans = 0;
+    for (const c of freq.values()) {
+        if (c === 1) return -1;
+        ans += Math.floor((c + 2) / 3);
+    }
+    return ans;
+};
+
+================================================================================
+2871_split_array_into_maximum_number_of_subarrays
+================================================================================
+// LeetCode 2871 - Split Array Into Maximum Number of Subarrays
+// https://leetcode.com/problems/split-array-into-maximum-number-of-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSubarrays = function(nums) {
+    let ans = 0, cur = -1;
+    for (const v of nums) {
+        if (cur === -1) cur = v;
+        else cur &= v;
+        if (cur === 0) {
+            ans++;
+            cur = -1;
+        }
+    }
+    return ans === 0 ? 1 : ans;
+};
+
+================================================================================
+2872_maximum_number_of_k_divisible_components
+================================================================================
+// LeetCode 2872 - Maximum Number of K-Divisible Components
+// https://leetcode.com/problems/maximum-number-of-k-divisible-components/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number[]} values
+ * @param {number} k
+ * @return {number}
+ */
+var maxKDivisibleComponents = function(n, edges, values, k) {
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    let ans = 0;
+    const dfs = (u, p) => {
+        let sum = values[u] % k;
+        for (const v of g[u]) {
+            if (v === p) continue;
+            sum = (sum + dfs(v, u)) % k;
+        }
+        if (sum === 0) ans++;
+        return sum;
+    };
+    dfs(0, -1);
+    return ans;
+};
+
+================================================================================
+2873_maximum_value_of_an_ordered_triplet_i
+================================================================================
+// LeetCode 2873 - Maximum Value of an Ordered Triplet I
+// https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-i/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maximumTripletValue = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++)
+        for (let j = i + 1; j < n; j++)
+            for (let k = j + 1; k < n; k++) {
+                const cand = (nums[i] - nums[j]) * nums[k];
+                if (cand > ans) ans = cand;
+            }
+    return ans;
+};
+
+================================================================================
+2874_maximum_value_of_an_ordered_triplet_ii
+================================================================================
+// LeetCode 2874 - Maximum Value of an Ordered Triplet II
+// https://leetcode.com/problems/maximum-value-of-an-ordered-triplet-ii/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maximumTripletValue = function(nums) {
+    let ans = 0, maxI = 0, maxDiff = 0;
+    for (const v of nums) {
+        if (maxDiff * v > ans) ans = maxDiff * v;
+        if (maxI - v > maxDiff) maxDiff = maxI - v;
+        if (v > maxI) maxI = v;
+    }
+    return ans;
+};
+
+================================================================================
+2875_minimum_size_subarray_in_infinite_array
+================================================================================
+// LeetCode 2875 - Minimum Size Subarray in Infinite Array
+// https://leetcode.com/problems/minimum-size-subarray-in-infinite-array/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var minSizeSubarray = function(nums, target) {
+    const n = nums.length;
+    let total = 0;
+    for (const v of nums) total += v;
+    let ans = 1 << 30;
+    if (total > 0) {
+        const loops = Math.floor(target / total);
+        const remain = target % total;
+        if (remain === 0) return loops * n;
+        const arr = nums.concat(nums);
+        let left = 0, sum = 0, best = 1 << 30;
+        for (let right = 0; right < arr.length; right++) {
+            sum += arr[right];
+            while (sum > remain && left <= right) {
+                sum -= arr[left];
+                left++;
+            }
+            if (sum === remain && right - left + 1 < best) best = right - left + 1;
+        }
+        if (best < (1 << 30)) ans = loops * n + best;
+    }
+    return ans === (1 << 30) ? -1 : ans;
+};

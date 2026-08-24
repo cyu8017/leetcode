@@ -1,0 +1,11 @@
+{
+  "folder": "3461_check_if_digits_are_equal_in_string_after_operations_i",
+  "num": 3461,
+  "title": "Check If Digits Are Equal In String After Operations I",
+  "method": "hasSameDigits",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 494,
+  "js_lines": 14,
+  "header": "// LeetCode 3461 - Check If Digits Are Equal in String After Operations I\n// https://leetcode.com/problems/check-if-digits-are-equal-in-string-after-operations-i/\n\nvar hasSameDigits = function(s) {\n    let b = s.split(\"\");\n    while (b.length > 2) {\n        const nb = new Array(b.length - 1);\n        for (let i = 0; i + 1 < b.length; i++) {"
+}

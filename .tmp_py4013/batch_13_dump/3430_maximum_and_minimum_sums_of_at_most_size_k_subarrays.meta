@@ -1,0 +1,11 @@
+{
+  "folder": "3430_maximum_and_minimum_sums_of_at_most_size_k_subarrays",
+  "num": 3430,
+  "title": "Maximum And Minimum Sums Of At Most Size K Subarrays",
+  "method": "minMaxSubarraySum",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 529,
+  "js_lines": 16,
+  "header": "// LeetCode 3430 - Maximum and Minimum Sums of at Most Size K Subarrays\n// https://leetcode.com/problems/maximum-and-minimum-sums-of-at-most-size-k-subarrays/\n\nvar minMaxSubarraySum = function(nums, k) {\n    const n = nums.length;\n    let ans = 0;\n    for (let i = 0; i < n; i++) {\n        let mn = nums[i], mx = nums[i];"
+}

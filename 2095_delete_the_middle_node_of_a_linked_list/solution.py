@@ -1,6 +1,23 @@
-﻿# LeetCode 2095 - Delete the Middle Node of a Linked List
+# LeetCode 2095 - Delete the Middle Node of a Linked List
 # https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
 
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head.next is None:
+            return None
+        slow, fast, prev = head, head, None
+        while fast is not None and fast.next is not None:
+            prev = slow
+            slow = slow.next
+            fast = fast.next.next
+        prev.next = slow.next
+        return head

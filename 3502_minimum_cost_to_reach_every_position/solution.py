@@ -1,6 +1,15 @@
-﻿# LeetCode 3502 - Minimum Cost to Reach Every Position
+# LeetCode 3502 - Minimum Cost to Reach Every Position
 # https://leetcode.com/problems/minimum-cost-to-reach-every-position/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minCosts(self, cost: List[int]) -> List[int]:
+        n = len(cost)
+        ans = [0] * n
+        mi = cost[0]
+        for i in range(n):
+            mi = min(mi, cost[i])
+            ans[i] = mi
+        return ans

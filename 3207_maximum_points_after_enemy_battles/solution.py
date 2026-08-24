@@ -1,6 +1,17 @@
-﻿# LeetCode 3207 - Maximum Points After Enemy Battles
+# LeetCode 3207 - Maximum Points After Enemy Battles
 # https://leetcode.com/problems/maximum-points-after-enemy-battles/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumPoints(self, enemyEnergies: List[int], currentEnergy: int) -> int:
+        enemyEnergies.sort()
+        if currentEnergy < enemyEnergies[0]:
+            return 0
+        ans = 0
+        for i in range(len(enemyEnergies) - 1, -1, -1):
+            ans += currentEnergy // enemyEnergies[0]
+            currentEnergy %= enemyEnergies[0]
+            currentEnergy += enemyEnergies[i]
+        return ans

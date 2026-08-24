@@ -1,0 +1,11 @@
+{
+  "folder": "3312_sorted_gcd_pair_queries",
+  "num": "3312",
+  "title": "Sorted Gcd Pair Queries",
+  "method": "gcdValues",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 35,
+  "js_bytes": 1148
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3392_count_subarrays_of_length_three_with_a_condition",
+  "num": "3392",
+  "title": "Count Subarrays Of Length Three With A Condition",
+  "method": "countSubarrays",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 11,
+  "js_bytes": 346
+}

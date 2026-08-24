@@ -1,6 +1,16 @@
-﻿# LeetCode 2302 - Count Subarrays With Score Less Than K
+# LeetCode 2302 - Count Subarrays With Score Less Than K
 # https://leetcode.com/problems/count-subarrays-with-score-less-than-k/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        ans = s = left = 0
+        for right, x in enumerate(nums):
+            s += x
+            while s * (right - left + 1) >= k:
+                s -= nums[left]
+                left += 1
+            ans += right - left + 1
+        return ans

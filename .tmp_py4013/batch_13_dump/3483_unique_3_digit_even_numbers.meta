@@ -1,0 +1,11 @@
+{
+  "folder": "3483_unique_3_digit_even_numbers",
+  "num": 3483,
+  "title": "Unique 3 Digit Even Numbers",
+  "method": "totalNumbers",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 629,
+  "js_lines": 19,
+  "header": "// LeetCode 3483 - Unique 3-Digit Even Numbers\n// https://leetcode.com/problems/unique-3-digit-even-numbers/\n\nvar totalNumbers = function(digits) {\n    const seen = new Set();\n    const n = digits.length;\n    for (let i = 0; i < n; i++) {\n        for (let j = 0; j < n; j++) {"
+}

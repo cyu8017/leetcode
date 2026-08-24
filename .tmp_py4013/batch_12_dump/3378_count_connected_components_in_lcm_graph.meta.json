@@ -1,0 +1,11 @@
+{
+  "folder": "3378_count_connected_components_in_lcm_graph",
+  "num": "3378",
+  "title": "Count Connected Components In Lcm Graph",
+  "method": "countComponents",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 43,
+  "js_bytes": 1390
+}

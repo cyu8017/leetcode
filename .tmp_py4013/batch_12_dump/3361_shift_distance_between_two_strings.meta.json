@@ -1,0 +1,11 @@
+{
+  "folder": "3361_shift_distance_between_two_strings",
+  "num": "3361",
+  "title": "Shift Distance Between Two Strings",
+  "method": "shiftDistance",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 17,
+  "js_bytes": 590
+}

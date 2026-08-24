@@ -1,0 +1,11 @@
+{
+  "folder": "3489_zero_array_transformation_iv",
+  "num": 3489,
+  "title": "Zero Array Transformation Iv",
+  "method": "minZeroArray",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1164,
+  "js_lines": 34,
+  "header": "// LeetCode 3489 - Zero Array Transformation IV\n// https://leetcode.com/problems/zero-array-transformation-iv/\n\nvar minZeroArray = function(nums, queries) {\n    const canSubsetSum = (vals, target) => {\n        if (target === 0) return true;\n        const dp = new Array(target + 1).fill(false);\n        dp[0] = true;"
+}

@@ -1,6 +1,11 @@
-﻿# LeetCode 2567 - Minimum Score by Changing Two Elements
+# LeetCode 2567 - Minimum Score by Changing Two Elements
 # https://leetcode.com/problems/minimum-score-by-changing-two-elements/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minimizeSum(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        return min(nums[n - 1] - nums[2], nums[n - 3] - nums[0], nums[n - 2] - nums[1])

@@ -1,0 +1,11 @@
+{
+  "folder": "3414_maximum_score_of_non_overlapping_intervals",
+  "num": "3414",
+  "title": "Maximum Score Of Non Overlapping Intervals",
+  "method": "maximumWeight",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 43,
+  "js_bytes": 1659
+}

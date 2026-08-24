@@ -1,6 +1,15 @@
-﻿# LeetCode 2620 - Counter
+# LeetCode 2620 - Counter
 # https://leetcode.com/problems/counter/
 
+from typing import Callable
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def createCounter(self, n: int) -> Callable[[], int]:
+        def counter() -> int:
+            nonlocal n
+            v = n
+            n += 1
+            return v
+
+        return counter

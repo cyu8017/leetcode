@@ -1,0 +1,11 @@
+{
+  "folder": "3491_phone_number_prefix",
+  "num": 3491,
+  "title": "Phone Number Prefix",
+  "method": "phonePrefix",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 370,
+  "js_lines": 11,
+  "header": "// LeetCode 3491 - Phone Number Prefix\n// https://leetcode.com/problems/phone-number-prefix/\n\nvar phonePrefix = function(numbers) {\n    numbers = numbers.slice().sort();\n    for (let i = 0; i + 1 < numbers.length; i++) {\n        if (numbers[i].length <= numbers[i + 1].length && numbers[i + 1].startsWith(numbers[i]))\n            return false;"
+}

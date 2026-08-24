@@ -1,0 +1,413 @@
+
+================================================================================
+2876_count_visited_nodes_in_a_directed_graph
+================================================================================
+// LeetCode 2876 - Count Visited Nodes in a Directed Graph
+// https://leetcode.com/problems/count-visited-nodes-in-a-directed-graph/
+
+/**
+ * @param {number[]} edgesList
+ * @return {number[]}
+ */
+var countVisitedNodes = function(edgesList) {
+    const n = edgesList.length;
+    const edges = edgesList.slice();
+    const ans = Array(n).fill(0);
+    const state = Array(n).fill(0);
+    const stack = [];
+    const dfs = (u) => {
+        state[u] = 1;
+        stack.push(u);
+        const v = edges[u];
+        if (state[v] === 0) dfs(v);
+        else if (state[v] === 1) {
+            let idx = stack.length - 1;
+            while (stack[idx] !== v) idx--;
+            const cyc = stack.length - idx;
+            for (let i = idx; i < stack.length; i++) ans[stack[i]] = cyc;
+        }
+        if (ans[u] === 0) ans[u] = ans[edges[u]] + 1;
+        state[u] = 2;
+        stack.pop();
+    };
+    for (let i = 0; i < n; i++) if (state[i] === 0) dfs(i);
+    return ans;
+};
+
+================================================================================
+2877_create_a_dataframe_from_list
+================================================================================
+// LeetCode 2877 - Create a DataFrame from List
+// https://leetcode.com/problems/create-a-dataframe-from-list/
+
+/**
+ * @param {number[][]} studentData
+ * @return {object[]}
+ */
+var createDataframe = function(studentData) {
+    return studentData.map(([student_id, age]) => ({ student_id, age }));
+};
+
+================================================================================
+2878_get_the_size_of_a_dataframe
+================================================================================
+// LeetCode 2878 - Get the Size of a DataFrame
+// https://leetcode.com/problems/get-the-size-of-a-dataframe/
+
+/**
+ * @param {object[]|any[][]} df
+ * @return {number[]}
+ */
+var getDataframeSize = function(df) {
+    if (!df || df.length === 0) return [0, 0];
+    const rows = df.length;
+    const cols = Array.isArray(df[0]) ? df[0].length : Object.keys(df[0]).length;
+    return [rows, cols];
+};
+
+================================================================================
+2879_display_the_first_three_rows
+================================================================================
+// LeetCode 2879 - Display the First Three Rows
+// https://leetcode.com/problems/display-the-first-three-rows/
+
+/**
+ * @param {any[]} df
+ * @return {any[]}
+ */
+var selectFirstRows = function(df) {
+    return df.slice(0, 3);
+};
+
+================================================================================
+2880_select_data
+================================================================================
+// LeetCode 2880 - Select Data
+// https://leetcode.com/problems/select-data/
+
+/**
+ * @param {object[]} students
+ * @return {object[]}
+ */
+var selectData = function(students) {
+    return students
+        .filter((r) => r.student_id === 101 || r[0] === 101)
+        .map((r) => (Array.isArray(r) ? { name: r[1], age: r[2] } : { name: r.name, age: r.age }));
+};
+
+================================================================================
+2881_create_a_new_column
+================================================================================
+// LeetCode 2881 - Create a New Column
+// https://leetcode.com/problems/create-a-new-column/
+
+/**
+ * @param {object[]} employees
+ * @return {object[]}
+ */
+var createBonusColumn = function(employees) {
+    return employees.map((r) => {
+        if (Array.isArray(r)) return { name: r[0], salary: r[1], bonus: r[1] * 2 };
+        return { ...r, bonus: r.salary * 2 };
+    });
+};
+
+================================================================================
+2882_drop_duplicate_rows
+================================================================================
+// LeetCode 2882 - Drop Duplicate Rows
+// https://leetcode.com/problems/drop-duplicate-rows/
+
+/**
+ * @param {object[]} customers
+ * @return {object[]}
+ */
+var dropDuplicateEmails = function(customers) {
+    const seen = new Set();
+    const out = [];
+    for (const r of customers) {
+        const email = Array.isArray(r) ? r[2] : r.email;
+        if (seen.has(email)) continue;
+        seen.add(email);
+        out.push(r);
+    }
+    return out;
+};
+
+================================================================================
+2883_drop_missing_data
+================================================================================
+// LeetCode 2883 - Drop Missing Data
+// https://leetcode.com/problems/drop-missing-data/
+
+/**
+ * @param {object[]} students
+ * @return {object[]}
+ */
+var dropMissingData = function(students) {
+    return students.filter((r) => {
+        const name = Array.isArray(r) ? r[1] : r.name;
+        return name !== null && name !== undefined && name !== '';
+    });
+};
+
+================================================================================
+2884_modify_columns
+================================================================================
+// LeetCode 2884 - Modify Columns
+// https://leetcode.com/problems/modify-columns/
+
+/**
+ * @param {object[]} employees
+ * @return {object[]}
+ */
+var modifySalaryColumn = function(employees) {
+    return employees.map((r) => {
+        if (Array.isArray(r)) return [r[0], r[1] * 2];
+        return { ...r, salary: r.salary * 2 };
+    });
+};
+
+================================================================================
+2885_rename_columns
+================================================================================
+// LeetCode 2885 - Rename Columns
+// https://leetcode.com/problems/rename-columns/
+
+/**
+ * @param {object[]} students
+ * @return {object[]}
+ */
+var renameColumns = function(students) {
+    return students.map((r) => {
+        if (Array.isArray(r)) {
+            return { student_id: r[0], first_name: r[1], last_name: r[2], age_in_years: r[3] };
+        }
+        return {
+            student_id: r.id,
+            first_name: r.first,
+            last_name: r.last,
+            age_in_years: r.age,
+        };
+    });
+};
+
+================================================================================
+2886_change_data_type
+================================================================================
+// LeetCode 2886 - Change Data Type
+// https://leetcode.com/problems/change-data-type/
+
+/**
+ * @param {object[]} students
+ * @return {object[]}
+ */
+var changeDatatype = function(students) {
+    return students.map((r) => {
+        if (Array.isArray(r)) return [r[0], r[1], r[2], Math.trunc(r[3])];
+        return { ...r, grade: Math.trunc(r.grade) };
+    });
+};
+
+================================================================================
+2887_fill_missing_data
+================================================================================
+// LeetCode 2887 - Fill Missing Data
+// https://leetcode.com/problems/fill-missing-data/
+
+/**
+ * @param {object[]} products
+ * @return {object[]}
+ */
+var fillMissingValues = function(products) {
+    return products.map((r) => {
+        if (Array.isArray(r)) {
+            const q = r[1];
+            return [r[0], q === null || q === undefined ? 0 : q, r[2]];
+        }
+        return { ...r, quantity: r.quantity == null ? 0 : r.quantity };
+    });
+};
+
+================================================================================
+2888_reshape_data_concatenate
+================================================================================
+// LeetCode 2888 - Reshape Data: Concatenate
+// https://leetcode.com/problems/reshape-data-concatenate/
+
+/**
+ * @param {any[]} df1
+ * @param {any[]} df2
+ * @return {any[]}
+ */
+var concatenateTables = function(df1, df2) {
+    return df1.concat(df2);
+};
+
+================================================================================
+2889_reshape_data_pivot
+================================================================================
+// LeetCode 2889 - Reshape Data: Pivot
+// https://leetcode.com/problems/reshape-data-pivot/
+
+/**
+ * @param {object[]} weather
+ * @return {object[]}
+ */
+var pivotTable = function(weather) {
+    const months = [];
+    const byMonth = new Map();
+    for (const r of weather) {
+        const city = Array.isArray(r) ? r[0] : r.city;
+        const month = Array.isArray(r) ? r[1] : r.month;
+        const temperature = Array.isArray(r) ? r[2] : r.temperature;
+        if (!byMonth.has(month)) {
+            byMonth.set(month, {});
+            months.push(month);
+        }
+        byMonth.get(month)[city] = temperature;
+    }
+    return months.map((month) => ({ month, ...byMonth.get(month) }));
+};
+
+================================================================================
+2890_reshape_data_melt
+================================================================================
+// LeetCode 2890 - Reshape Data: Melt
+// https://leetcode.com/problems/reshape-data-melt/
+
+/**
+ * @param {object[]} report
+ * @return {object[]}
+ */
+var meltTable = function(report) {
+    const out = [];
+    for (const r of report) {
+        if (Array.isArray(r)) {
+            const product = r[0];
+            for (let q = 1; q <= 4; q++) out.push({ product, quarter: 'quarter_' + q, sales: r[q] });
+        } else {
+            for (const q of ['quarter_1', 'quarter_2', 'quarter_3', 'quarter_4']) {
+                out.push({ product: r.product, quarter: q, sales: r[q] });
+            }
+        }
+    }
+    return out;
+};
+
+================================================================================
+2891_method_chaining
+================================================================================
+// LeetCode 2891 - Method Chaining
+// https://leetcode.com/problems/method-chaining/
+
+/**
+ * @param {object[]} animals
+ * @return {object[]}
+ */
+var findHeavyAnimals = function(animals) {
+    return animals
+        .filter((r) => (Array.isArray(r) ? r[3] : r.weight) > 100)
+        .sort((a, b) => (Array.isArray(b) ? b[3] : b.weight) - (Array.isArray(a) ? a[3] : a.weight))
+        .map((r) => (Array.isArray(r) ? { name: r[0] } : { name: r.name }));
+};
+
+================================================================================
+2892_minimizing_array_after_replacing_pairs_with_their_product
+================================================================================
+// LeetCode 2892 - Minimizing Array After Replacing Pairs With Their Product
+// https://leetcode.com/problems/minimizing-array-after-replacing-pairs-with-their-product/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var minArrayLength = function(nums, k) {
+    if (nums.length === 0) return 0;
+    let ans = 1;
+    let prod = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        if (prod <= k && nums[i] <= k && (nums[i] === 0 || prod <= Math.floor(k / nums[i]))) {
+            prod *= nums[i];
+        } else {
+            ans++;
+            prod = nums[i];
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2894_divisible_and_non_divisible_sums_difference
+================================================================================
+// LeetCode 2894 - Divisible and Non-divisible Sums Difference
+// https://leetcode.com/problems/divisible-and-non-divisible-sums-difference/
+
+/**
+ * @param {number} n
+ * @param {number} m
+ * @return {number}
+ */
+var differenceOfSums = function(n, m) {
+    let num1 = 0, num2 = 0;
+    for (let i = 1; i <= n; i++) {
+        if (i % m === 0) num2 += i;
+        else num1 += i;
+    }
+    return num1 - num2;
+};
+
+================================================================================
+2895_minimum_processing_time
+================================================================================
+// LeetCode 2895 - Minimum Processing Time
+// https://leetcode.com/problems/minimum-processing-time/
+
+/**
+ * @param {number[]} processorTime
+ * @param {number[]} tasks
+ * @return {number}
+ */
+var minProcessingTime = function(processorTime, tasks) {
+    processorTime = [...processorTime].sort((a, b) => a - b);
+    tasks = [...tasks].sort((a, b) => b - a);
+    let ans = 0;
+    for (let i = 0; i < processorTime.length; i++) {
+        const fin = processorTime[i] + tasks[i * 4];
+        if (fin > ans) ans = fin;
+    }
+    return ans;
+};
+
+================================================================================
+2896_apply_operations_to_make_two_strings_equal
+================================================================================
+// LeetCode 2896 - Apply Operations to Make Two Strings Equal
+// https://leetcode.com/problems/apply-operations-to-make-two-strings-equal/
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @param {number} x
+ * @return {number}
+ */
+var minOperations = function(s1, s2, x) {
+    const diff = [];
+    for (let i = 0; i < s1.length; i++) if (s1[i] !== s2[i]) diff.push(i);
+    const m = diff.length;
+    if (m % 2 === 1) return -1;
+    if (m === 0) return 0;
+    const INF = 1 << 30;
+    const dp2 = Array(m + 1).fill(INF);
+    dp2[0] = 0;
+    for (let i = 0; i < m; i++) {
+        if (dp2[i] >= INF) continue;
+        if (i + 1 < m) {
+            let cand = diff[i + 1] - diff[i];
+            if (cand > x) cand = x;
+            if (dp2[i] + cand < dp2[i + 2]) dp2[i + 2] = dp2[i] + cand;
+        }
+    }
+    return dp2[m] >= INF ? -1 : dp2[m];
+};

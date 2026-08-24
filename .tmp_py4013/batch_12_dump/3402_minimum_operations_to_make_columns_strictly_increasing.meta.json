@@ -1,0 +1,11 @@
+{
+  "folder": "3402_minimum_operations_to_make_columns_strictly_increasing",
+  "num": "3402",
+  "title": "Minimum Operations To Make Columns Strictly Increasing",
+  "method": "minimumOperations",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 18,
+  "js_bytes": 564
+}

@@ -1,0 +1,966 @@
+{
+  "3845_maximum_subarray_xor_with_bounded_range": {
+    "class": "Solution",
+    "method": "maxSubarrayXor",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3846_total_distance_to_type_a_string_using_one_finger": {
+    "class": "Solution",
+    "method": "totalDistance",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3847_find_the_score_difference_in_a_game": {
+    "class": "Solution",
+    "method": "scoreDifference",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3848_check_digitorial_permutation": {
+    "class": "Solution",
+    "method": "isDigitorialPermutation",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3849_maximum_bitwise_xor_after_rearrangement": {
+    "class": "Solution",
+    "method": "maximumXor",
+    "paramOrder": [
+      "s",
+      "t"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3850_count_sequences_to_k": {
+    "class": "Solution",
+    "method": "countSequences",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3851_maximum_requests_without_violating_the_limit": {
+    "class": "Solution",
+    "method": "maxRequests",
+    "paramOrder": [
+      "requests",
+      "k",
+      "window"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3852_smallest_pair_with_different_frequencies": {
+    "class": "Solution",
+    "method": "minDistinctFreqPair",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3853_merge_close_characters": {
+    "class": "Solution",
+    "method": "mergeCharacters",
+    "paramOrder": [
+      "s",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3854_minimum_operations_to_make_array_parity_alternating": {
+    "class": "Solution",
+    "method": "makeParityAlternating",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3855_sum_of_k_digit_numbers_in_a_range": {
+    "class": "Solution",
+    "method": "sumOfNumbers",
+    "paramOrder": [
+      "l",
+      "r",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3856_trim_trailing_vowels": {
+    "class": "Solution",
+    "method": "trimTrailingVowels",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3857_minimum_cost_to_split_into_ones": {
+    "class": "Solution",
+    "method": "minCost",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3858_minimum_bitwise_or_from_grid": {
+    "class": "Solution",
+    "method": "minimumOR",
+    "paramOrder": [
+      "grid"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3859_count_subarrays_with_k_distinct_integers": {
+    "class": "Solution",
+    "method": "countSubarrays",
+    "paramOrder": [
+      "nums",
+      "k",
+      "m"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3860_unique_email_groups": {
+    "class": "Solution",
+    "method": "uniqueEmailGroups",
+    "paramOrder": [
+      "emails"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3861_minimum_capacity_box": {
+    "class": "Solution",
+    "method": "minimumIndex",
+    "paramOrder": [
+      "capacity",
+      "itemSize"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3862_find_the_smallest_balanced_index": {
+    "class": "Solution",
+    "method": "smallestBalancedIndex",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3863_minimum_operations_to_sort_a_string": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3864_minimum_cost_to_partition_a_binary_string": {
+    "class": "Solution",
+    "method": "minCost",
+    "paramOrder": [
+      "s",
+      "encCost",
+      "flatCost"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3865_reverse_k_subarrays": {
+    "class": "Solution",
+    "method": "reverseSubarrays",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3866_first_unique_even_element": {
+    "class": "Solution",
+    "method": "firstUniqueEven",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3867_sum_of_gcd_of_formed_pairs": {
+    "class": "Solution",
+    "method": "gcdSum",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3868_minimum_cost_to_equalize_arrays_using_swaps": {
+    "class": "Solution",
+    "method": "minCost",
+    "paramOrder": [
+      "nums1",
+      "nums2"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3869_count_fancy_numbers_in_a_range": {
+    "class": "Solution",
+    "method": "countFancy",
+    "paramOrder": [
+      "l",
+      "r"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3870_count_commas_in_range": {
+    "class": "Solution",
+    "method": "countCommas",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3871_count_commas_in_range_ii": {
+    "class": "Solution",
+    "method": "countCommas",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3872_longest_arithmetic_sequence_after_changing_at_most_one_element": {
+    "class": "Solution",
+    "method": "longestArithmetic",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3873_maximum_points_activated_with_one_addition": {
+    "class": "Solution",
+    "method": "maxActivated",
+    "paramOrder": [
+      "points"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3874_valid_subarrays_with_exactly_one_peak": {
+    "class": "Solution",
+    "method": "validSubarrays",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3875_construct_uniform_parity_array_i": {
+    "class": "Solution",
+    "method": "uniformArray",
+    "paramOrder": [
+      "nums1"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3876_construct_uniform_parity_array_ii": {
+    "class": "Solution",
+    "method": "uniformArray",
+    "paramOrder": [
+      "nums1"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3877_minimum_removals_to_achieve_target_xor": {
+    "class": "Solution",
+    "method": "minRemovals",
+    "paramOrder": [
+      "nums",
+      "target"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3878_count_good_subarrays": {
+    "class": "Solution",
+    "method": "countGoodSubarrays",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3879_maximum_distinct_path_sum_in_a_binary_tree": {
+    "class": "Solution",
+    "method": "maxSum",
+    "paramOrder": [
+      "root"
+    ],
+    "types": {
+      "root": "treenode"
+    },
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3880_minimum_absolute_difference_between_two_values": {
+    "class": "Solution",
+    "method": "minAbsoluteDifference",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3881_direction_assignments_with_exactly_k_visible_people": {
+    "class": "Solution",
+    "method": "qmi",
+    "paramOrder": [
+      "n",
+      "pos",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3882_minimum_xor_path_in_a_grid": {
+    "class": "Solution",
+    "method": "minXor",
+    "paramOrder": [
+      "grid"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3883_count_non_decreasing_arrays_with_given_digit_sums": {
+    "class": "Solution",
+    "method": "countNonDecreasingArrays",
+    "paramOrder": [
+      "digitSum"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3884_first_matching_character_from_both_ends": {
+    "class": "Solution",
+    "method": "firstMatchingIndex",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3885_design_event_manager": {
+    "class": "EventManager",
+    "description": "Update method name and add cases to cases.json when implementing the solution.",
+    "kind": "design",
+    "runnable": true,
+    "method": "Constructor"
+  },
+  "3886_sum_of_sortable_integers": {
+    "class": "Solution",
+    "method": "sumOfSortableIntegers",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3887_incremental_even_weighted_cycle_queries": {
+    "class": "Solution",
+    "method": "countValidEdges",
+    "paramOrder": [
+      "n",
+      "edges"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3888_minimum_operations_to_make_all_grid_elements_equal": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "grid",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3889_mirror_frequency_distance": {
+    "class": "Solution",
+    "method": "mirrorFrequency",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3890_integers_with_multiple_sum_of_two_cubes": {
+    "class": "Solution",
+    "method": "findGoodIntegers",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3891_minimum_increase_to_maximize_special_indices": {
+    "class": "Solution",
+    "method": "minIncrease",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3892_minimum_operations_to_achieve_at_least_k_peaks": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3893_maximum_team_size_with_overlapping_intervals": {
+    "class": "Solution",
+    "method": "maximumTeamSize",
+    "paramOrder": [
+      "startTime",
+      "endTime"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3894_traffic_signal_color": {
+    "class": "Solution",
+    "method": "trafficSignal",
+    "paramOrder": [
+      "timer"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3895_count_digit_appearances": {
+    "class": "Solution",
+    "method": "countDigitOccurrences",
+    "paramOrder": [
+      "nums",
+      "digit"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3896_minimum_operations_to_transform_array_into_alternating_prime": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3897_maximum_value_of_concatenated_binary_segments": {
+    "class": "Solution",
+    "method": "maxValue",
+    "paramOrder": [
+      "nums1",
+      "nums0"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3898_find_the_degree_of_each_vertex": {
+    "class": "Solution",
+    "method": "findDegrees",
+    "paramOrder": [
+      "matrix"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3899_angles_of_a_triangle": {
+    "class": "Solution",
+    "method": "internalAngles",
+    "paramOrder": [
+      "sides"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3900_longest_balanced_substring_after_one_swap": {
+    "class": "Solution",
+    "method": "longestBalanced",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3901_good_subsequence_queries": {
+    "class": "Solution",
+    "method": "countGoodSubseq",
+    "paramOrder": [
+      "nums",
+      "p",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3902_zigzag_level_sum_of_binary_tree": {
+    "class": "Solution",
+    "method": "zigzagLevelSum",
+    "paramOrder": [
+      "root"
+    ],
+    "types": {
+      "root": "treenode"
+    },
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3903_smallest_stable_index_i": {
+    "class": "Solution",
+    "method": "firstStableIndex",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3904_smallest_stable_index_ii": {
+    "class": "Solution",
+    "method": "firstStableIndex",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3905_multi_source_flood_fill": {
+    "class": "Solution",
+    "method": "colorGrid",
+    "paramOrder": [
+      "n",
+      "m",
+      "sources"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3906_count_good_integers_on_a_grid_path": {
+    "class": "Solution",
+    "method": "countGoodIntegersOnPath",
+    "paramOrder": [
+      "l",
+      "r",
+      "directions"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3907_count_smaller_elements_with_opposite_parity": {
+    "class": "Solution",
+    "method": "newBIT",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3908_valid_digit_number": {
+    "class": "Solution",
+    "method": "validDigit",
+    "paramOrder": [
+      "n",
+      "x"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3909_compare_sums_of_bitonic_parts": {
+    "class": "Solution",
+    "method": "compareBitonicSums",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3910_count_connected_subgraphs_with_even_node_sum": {
+    "class": "Solution",
+    "method": "evenSumSubgraphs",
+    "paramOrder": [
+      "nums",
+      "edges"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3911_k_th_smallest_remaining_even_integer_in_subarray_queries": {
+    "class": "Solution",
+    "method": "kthSmallestEven",
+    "paramOrder": [
+      "nums",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3912_valid_elements_in_an_array": {
+    "class": "Solution",
+    "method": "findValidElements",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3913_sort_vowels_by_frequency": {
+    "class": "Solution",
+    "method": "sortVowels",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3914_minimum_operations_to_make_array_non_decreasing": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3915_maximum_sum_of_alternating_subsequence_with_distance_at_least_k": {
+    "class": "Solution",
+    "method": "maxAlternatingSum",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3916_number_of_zigzag_arrays_iii": {
+    "class": "Solution",
+    "method": "zigZagArrays",
+    "paramOrder": [
+      "n",
+      "l",
+      "r"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3917_count_indices_with_opposite_parity": {
+    "class": "Solution",
+    "method": "countOppositeParity",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3918_sum_of_primes_between_number_and_its_reverse": {
+    "class": "Solution",
+    "method": "sumOfPrimesInRange",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3919_minimum_cost_to_move_between_indices": {
+    "class": "Solution",
+    "method": "minCost",
+    "paramOrder": [
+      "nums",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3920_maximize_fixed_points_after_deletions": {
+    "class": "Solution",
+    "method": "maxFixedPoints",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3921_score_validator": {
+    "class": "Solution",
+    "method": "scoreValidator",
+    "paramOrder": [
+      "events"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3922_minimum_flips_to_make_binary_string_coherent": {
+    "class": "Solution",
+    "method": "minFlips",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3923_minimum_generations_to_target_point": {
+    "class": "Solution",
+    "method": "minGenerations",
+    "paramOrder": [
+      "points",
+      "target"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3924_minimum_threshold_path_with_limited_heavy_edges": {
+    "class": "Solution",
+    "method": "minThreshold",
+    "paramOrder": [
+      "n",
+      "edges",
+      "source",
+      "target",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3925_concatenate_array_with_reverse": {
+    "class": "Solution",
+    "method": "concatWithReverse",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3926_count_valid_word_occurrences": {
+    "class": "Solution",
+    "method": "countWordOccurrences",
+    "paramOrder": [
+      "chunks",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3927_minimize_array_sum_using_divisible_replacements": {
+    "class": "Solution",
+    "method": "minArraySum",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3928_minimum_cost_to_buy_apples_ii": {
+    "class": "Solution",
+    "method": "minCostToBuyApples",
+    "paramOrder": [
+      "n",
+      "prices",
+      "roads"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3929_minimum_partition_score_ii": {
+    "class": "Solution",
+    "method": "minPartitionScore",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3931_check_adjacent_digit_differences": {
+    "class": "Solution",
+    "method": "isAdjacentDiffAtMostTwo",
+    "paramOrder": [
+      "s"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3932_count_k_th_roots_in_a_range": {
+    "class": "Solution",
+    "method": "countKthRoots",
+    "paramOrder": [
+      "l",
+      "r",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3933_largest_local_values_in_a_matrix_ii": {
+    "class": "Solution",
+    "method": "countLocalMaximums",
+    "paramOrder": [
+      "matrix"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3935_power_update_after_k_th_largest_insertion_i": {
+    "class": "Solution",
+    "method": "powerUpdate",
+    "paramOrder": [
+      "nums",
+      "p",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3936_minimum_swaps_to_move_zeros_to_end": {
+    "class": "Solution",
+    "method": "minimumSwaps",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3937_minimum_operations_to_make_array_modulo_alternating_i": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3938_maximum_path_intersection_sum_in_a_grid": {
+    "class": "Solution",
+    "method": "maxPathSum",
+    "paramOrder": [
+      "grid"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3939_count_non_adjacent_subsets_in_a_rooted_tree": {
+    "class": "Solution",
+    "method": "countNonAdjacentSubsets",
+    "paramOrder": [
+      "parent",
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3940_limit_occurrences_in_sorted_array": {
+    "class": "Solution",
+    "method": "limitOccurrences",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3941_password_strength": {
+    "class": "Solution",
+    "method": "passwordStrength",
+    "paramOrder": [
+      "password"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3942_minimum_operations_to_sort_a_permutation": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3943_number_of_pairs_after_increment": {
+    "class": "Solution",
+    "method": "numberOfPairs",
+    "paramOrder": [
+      "nums1",
+      "nums2",
+      "queries"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3944_minimum_operations_to_make_array_modulo_alternating_ii": {
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3945_digit_frequency_score": {
+    "class": "Solution",
+    "method": "digitFrequencyScore",
+    "paramOrder": [
+      "n"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  },
+  "3946_maximum_number_of_items_from_sale_i": {
+    "class": "Solution",
+    "method": "maximumSaleItems",
+    "paramOrder": [
+      "items",
+      "budget"
+    ],
+    "types": null,
+    "description": "Update method name and add cases to cases.json when implementing the solution."
+  }
+}

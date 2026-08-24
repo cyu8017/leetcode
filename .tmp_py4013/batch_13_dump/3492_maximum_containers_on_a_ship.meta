@@ -1,0 +1,11 @@
+{
+  "folder": "3492_maximum_containers_on_a_ship",
+  "num": 3492,
+  "title": "Maximum Containers On A Ship",
+  "method": "maxContainers",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 263,
+  "js_lines": 8,
+  "header": "// LeetCode 3492 - Maximum Containers on a Ship\n// https://leetcode.com/problems/maximum-containers-on-a-ship/\n\nvar maxContainers = function(n, w, maxWeight) {\n    const cap = n * n;\n    const byW = Math.floor(maxWeight / w);\n    return cap < byW ? cap : byW;\n};"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3331_find_subtree_sizes_after_changes",
+  "num": "3331",
+  "title": "Find Subtree Sizes After Changes",
+  "method": "findSubtreeSizes",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 30,
+  "js_bytes": 919
+}

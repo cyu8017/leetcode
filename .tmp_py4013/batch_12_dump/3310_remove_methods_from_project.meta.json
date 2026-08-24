@@ -1,0 +1,11 @@
+{
+  "folder": "3310_remove_methods_from_project",
+  "num": "3310",
+  "title": "Remove Methods From Project",
+  "method": "remainingMethods",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 25,
+  "js_bytes": 732
+}

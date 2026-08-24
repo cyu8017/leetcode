@@ -1,0 +1,11 @@
+{
+  "folder": "3340_check_balanced_string",
+  "num": "3340",
+  "title": "Check Balanced String",
+  "method": "isBalanced",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 12,
+  "js_bytes": 336
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3319_k_th_largest_perfect_subtree_size_in_binary_tree",
+  "num": "3319",
+  "title": "K Th Largest Perfect Subtree Size In Binary Tree",
+  "method": "__init__",
+  "class": "TreeNode",
+  "kind": null,
+  "params": null,
+  "js_lines": 28,
+  "js_bytes": 919
+}

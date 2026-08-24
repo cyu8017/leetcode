@@ -1,6 +1,10 @@
-﻿# LeetCode 2849 - Determine if a Cell Is Reachable at a Given Time
+# LeetCode 2849 - Determine if a Cell Is Reachable at a Given Time
 # https://leetcode.com/problems/determine-if-a-cell-is-reachable-at-a-given-time/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
+        need = max(abs(sx - fx), abs(sy - fy))
+        if need == 0:
+            return t != 1
+        return t >= need

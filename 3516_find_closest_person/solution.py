@@ -1,6 +1,10 @@
-﻿# LeetCode 3516 - Find Closest Person
+# LeetCode 3516 - Find Closest Person
 # https://leetcode.com/problems/find-closest-person/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findClosest(self, x: int, y: int, z: int) -> int:
+        a, b = abs(x - z), abs(y - z)
+        if a == b:
+            return 0
+        return 1 if a < b else 2

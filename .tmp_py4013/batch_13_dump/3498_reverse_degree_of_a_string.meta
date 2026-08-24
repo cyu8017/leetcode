@@ -1,0 +1,11 @@
+{
+  "folder": "3498_reverse_degree_of_a_string",
+  "num": 3498,
+  "title": "Reverse Degree Of A String",
+  "method": "reverseDegree",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 273,
+  "js_lines": 9,
+  "header": "// LeetCode 3498 - Reverse Degree of a String\n// https://leetcode.com/problems/reverse-degree-of-a-string/\n\nvar reverseDegree = function(s) {\n    let ans = 0;\n    for (let i = 0; i < s.length; i++)\n        ans += (26 - (s.charCodeAt(i) - 97)) * (i + 1);\n    return ans;"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3484_design_spreadsheet",
+  "num": 3484,
+  "title": "Design Spreadsheet",
+  "method": "__init__",
+  "class": "Spreadsheet",
+  "kind": null,
+  "js_size": 1405,
+  "js_lines": 53,
+  "header": "// LeetCode 3484 - Design Spreadsheet\n// https://leetcode.com/problems/design-spreadsheet/\n\nclass Spreadsheet {\n    /**\n     * @param {number} rows\n     */\n    constructor(rows) {"
+}

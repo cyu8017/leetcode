@@ -1,0 +1,11 @@
+{
+  "folder": "3351_sum_of_good_subsequences",
+  "num": "3351",
+  "title": "Sum Of Good Subsequences",
+  "method": "sumOfGoodSubsequences",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 26,
+  "js_bytes": 804
+}

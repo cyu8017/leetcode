@@ -1,0 +1,11 @@
+{
+  "folder": "3346_maximum_frequency_of_an_element_after_performing_operations_i",
+  "num": "3346",
+  "title": "Maximum Frequency Of An Element After Performing Operations I",
+  "method": "maxFrequency",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 41,
+  "js_bytes": 1250
+}

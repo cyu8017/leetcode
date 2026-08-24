@@ -1,0 +1,11 @@
+{
+  "folder": "3487_maximum_unique_subarray_sum_after_deletion",
+  "num": 3487,
+  "title": "Maximum Unique Subarray Sum After Deletion",
+  "method": "maxSum",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 534,
+  "js_lines": 21,
+  "header": "// LeetCode 3487 - Maximum Unique Subarray Sum After Deletion\n// https://leetcode.com/problems/maximum-unique-subarray-sum-after-deletion/\n\nvar maxSum = function(nums) {\n    const seen = new Set();\n    let sum = 0;\n    let hasPos = false;\n    let maxNeg = -1e9;"
+}

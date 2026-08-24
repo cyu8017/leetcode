@@ -1,0 +1,11 @@
+{
+  "folder": "3377_digit_operations_to_make_two_integers_equal",
+  "num": "3377",
+  "title": "Digit Operations To Make Two Integers Equal",
+  "method": "minOperations",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 47,
+  "js_bytes": 1538
+}

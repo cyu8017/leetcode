@@ -1,6 +1,16 @@
-﻿# LeetCode 2957 - Remove Adjacent Almost-Equal Characters
+# LeetCode 2957 - Remove Adjacent Almost-Equal Characters
 # https://leetcode.com/problems/remove-adjacent-almost-equal-characters/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeAlmostEqualCharacters(self, word: str) -> int:
+        ans = 0
+        i = 1
+        n = len(word)
+        while i < n:
+            if abs(ord(word[i]) - ord(word[i - 1])) <= 1:
+                ans += 1
+                i += 2
+            else:
+                i += 1
+        return ans

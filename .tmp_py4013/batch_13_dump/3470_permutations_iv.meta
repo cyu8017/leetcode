@@ -1,0 +1,11 @@
+{
+  "folder": "3470_permutations_iv",
+  "num": 3470,
+  "title": "Permutations Iv",
+  "method": "permute",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1027,
+  "js_lines": 35,
+  "header": "// LeetCode 3470 - Permutations IV\n// https://leetcode.com/problems/permutations-iv/\n\nvar permute = function(n, k) {\n    const fact = new Array(n + 1);\n    fact[0] = 1n;\n    for (let i = 1; i <= n; i++) {\n        fact[i] = fact[i - 1] * BigInt(i);"
+}

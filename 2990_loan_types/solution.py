@@ -1,6 +1,11 @@
-﻿# LeetCode 2990 - Loan Types
-# https://leetcode.com/problems/loan-types/
+# LeetCode 2990 - Loan Types
+# https:# leetcode.com/problems/loan-types/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+# Write your MySQL query statement below
+QUERY = """
+SELECT user_id
+FROM Loans
+GROUP BY 1
+HAVING SUM(loan_type = 'Refinance') > 0 AND SUM(loan_type = 'Mortgage') > 0
+ORDER BY 1
+"""

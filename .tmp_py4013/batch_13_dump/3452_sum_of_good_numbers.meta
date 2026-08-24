@@ -1,0 +1,11 @@
+{
+  "folder": "3452_sum_of_good_numbers",
+  "num": 3452,
+  "title": "Sum Of Good Numbers",
+  "method": "sumOfGoodNumbers",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 435,
+  "js_lines": 15,
+  "header": "// LeetCode 3452 - Sum of Good Numbers\n// https://leetcode.com/problems/sum-of-good-numbers/\n\nvar sumOfGoodNumbers = function(nums, k) {\n    let ans = 0;\n    const n = nums.length;\n    for (let i = 0; i < n; i++) {\n        const x = nums[i];"
+}

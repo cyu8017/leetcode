@@ -1,6 +1,6 @@
-﻿# LeetCode 2579 - Count Total Number of Colored Cells
+# LeetCode 2579 - Count Total Number of Colored Cells
 # https://leetcode.com/problems/count-total-number-of-colored-cells/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def coloredCells(self, n: int) -> int:
+        return 1 + 2 * n * (n - 1)

@@ -1,0 +1,11 @@
+{
+  "folder": "3450_maximum_students_on_a_single_bench",
+  "num": 3450,
+  "title": "Maximum Students On A Single Bench",
+  "method": "maxStudentsOnBench",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 456,
+  "js_lines": 15,
+  "header": "// LeetCode 3450 - Maximum Students on a Single Bench\n// https://leetcode.com/problems/maximum-students-on-a-single-bench/\n\nvar maxStudentsOnBench = function(students) {\n    const bench = new Map();\n    for (const s of students) {\n        if (!bench.has(s[1])) bench.set(s[1], new Set());\n        bench.get(s[1]).add(s[0]);"
+}

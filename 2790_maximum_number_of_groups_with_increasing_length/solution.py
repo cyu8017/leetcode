@@ -1,6 +1,17 @@
-﻿# LeetCode 2790 - Maximum Number of Groups With Increasing Length
+# LeetCode 2790 - Maximum Number of Groups With Increasing Length
 # https://leetcode.com/problems/maximum-number-of-groups-with-increasing-length/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
+        arr = sorted(usageLimits)
+        ans = 0
+        total = 0
+        for v in arr:
+            total += v
+            need = (ans + 1) * (ans + 2) / 2
+            if total >= need:
+                ans += 1
+        return ans

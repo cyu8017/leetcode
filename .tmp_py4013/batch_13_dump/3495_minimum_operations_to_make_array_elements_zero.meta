@@ -1,0 +1,11 @@
+{
+  "folder": "3495_minimum_operations_to_make_array_elements_zero",
+  "num": 3495,
+  "title": "Minimum Operations To Make Array Elements Zero",
+  "method": "minOperations",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 551,
+  "js_lines": 18,
+  "header": "// LeetCode 3495 - Minimum Operations to Make Array Elements Zero\n// https://leetcode.com/problems/minimum-operations-to-make-array-elements-zero/\n\nvar minOperations = function(queries) {\n    const opsToZero = (x) => {\n        let ops = 0;\n        while (x > 0) { x = Math.floor(x / 4); ops++; }\n        return ops;"
+}

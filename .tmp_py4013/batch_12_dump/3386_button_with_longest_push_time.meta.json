@@ -1,0 +1,11 @@
+{
+  "folder": "3386_button_with_longest_push_time",
+  "num": "3386",
+  "title": "Button With Longest Push Time",
+  "method": "buttonWithLongestTime",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 15,
+  "js_bytes": 470
+}

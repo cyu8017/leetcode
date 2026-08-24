@@ -1,6 +1,26 @@
-﻿# LeetCode 3022 - Minimize OR of Remaining Elements Using Operations
+# LeetCode 3022 - Minimize OR of Remaining Elements Using Operations
 # https://leetcode.com/problems/minimize-or-of-remaining-elements-using-operations/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minOrAfterOperations(self, nums: List[int], k: int) -> int:
+        ans = 0
+        rans = 0
+        for i in range(29, -1, -1):
+            test = ans + (1 << i)
+            cnt = 0
+            val = 0
+            for num in nums:
+                if val == 0:
+                    val = test & num
+                else:
+                    val &= test & num
+                if val != 0:
+                    cnt += 1
+            if cnt > k:
+                rans += 1 << i
+            else:
+                ans += 1 << i
+        return rans

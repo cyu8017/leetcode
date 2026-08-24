@@ -1,0 +1,11 @@
+{
+  "folder": "3435_frequencies_of_shortest_supersequences",
+  "num": 3435,
+  "title": "Frequencies Of Shortest Supersequences",
+  "method": "supersequences",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1337,
+  "js_lines": 42,
+  "header": "// LeetCode 3435 - Frequencies of Shortest Supersequences\n// https://leetcode.com/problems/frequencies-of-shortest-supersequences/\n\nvar supersequences = function(words) {\n    const used = new Array(26).fill(false);\n    for (const w of words) {\n        used[w.charCodeAt(0) - 97] = true;\n        used[w.charCodeAt(1) - 97] = true;"
+}

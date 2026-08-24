@@ -1,0 +1,11 @@
+{
+  "folder": "3499_maximize_active_section_with_trade_i",
+  "num": 3499,
+  "title": "Maximize Active Section With Trade I",
+  "method": "maxActiveSectionsAfterTrade",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 711,
+  "js_lines": 22,
+  "header": "// LeetCode 3499 - Maximize Active Section with Trade I\n// https://leetcode.com/problems/maximize-active-section-with-trade-i/\n\nvar maxActiveSectionsAfterTrade = function(s) {\n    let ones = 0;\n    for (const c of s) if (c === \"1\") ones++;\n    const zeros = [];\n    const n = s.length;"
+}

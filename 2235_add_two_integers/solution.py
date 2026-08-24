@@ -1,6 +1,7 @@
-﻿# LeetCode 2235 - Add Two Integers
+# LeetCode 2235 - Add Two Integers
 # https://leetcode.com/problems/add-two-integers/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def sum(self, num1: int, num2: int) -> int:
+        return num1 + num2

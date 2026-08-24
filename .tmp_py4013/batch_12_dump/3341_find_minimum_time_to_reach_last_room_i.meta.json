@@ -1,0 +1,11 @@
+{
+  "folder": "3341_find_minimum_time_to_reach_last_room_i",
+  "num": "3341",
+  "title": "Find Minimum Time To Reach Last Room I",
+  "method": "minTimeToReach",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 29,
+  "js_bytes": 1033
+}

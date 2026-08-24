@@ -1,6 +1,6 @@
-﻿# LeetCode 2396 - Strictly Palindromic Number
+# LeetCode 2396 - Strictly Palindromic Number
 # https://leetcode.com/problems/strictly-palindromic-number/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        return False

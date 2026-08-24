@@ -1,0 +1,11 @@
+{
+  "folder": "3447_assign_elements_to_groups_with_constraints",
+  "num": 3447,
+  "title": "Assign Elements To Groups With Constraints",
+  "method": "assignElements",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 931,
+  "js_lines": 25,
+  "header": "// LeetCode 3447 - Assign Elements to Groups with Constraints\n// https://leetcode.com/problems/assign-elements-to-groups-with-constraints/\n\nvar assignElements = function(groups, elements) {\n    const maxV = 100001;\n    const first = new Array(maxV).fill(-1);\n    for (let i = 0; i < elements.length; i++) {\n        const e = elements[i];"
+}

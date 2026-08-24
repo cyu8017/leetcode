@@ -1,6 +1,9 @@
-﻿# LeetCode 2446 - Determine if Two Events Have Conflict
+# LeetCode 2446 - Determine if Two Events Have Conflict
 # https://leetcode.com/problems/determine-if-two-events-have-conflict/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def haveConflict(self, event1: List[str], event2: List[str]) -> bool:
+        return event1[0] <= event2[1] and event2[0] <= event1[1]

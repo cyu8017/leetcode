@@ -1,6 +1,17 @@
-﻿# LeetCode 2104 - Sum of Subarray Ranges
+# LeetCode 2104 - Sum of Subarray Ranges
 # https://leetcode.com/problems/sum-of-subarray-ranges/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def subArrayRanges(self, nums: List[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for i in range(n):
+            mn = mx = nums[i]
+            for j in range(i, n):
+                mn = min(mn, nums[j])
+                mx = max(mx, nums[j])
+                ans += mx - mn
+        return ans

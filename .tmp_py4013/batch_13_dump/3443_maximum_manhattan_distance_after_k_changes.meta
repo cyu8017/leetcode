@@ -1,0 +1,11 @@
+{
+  "folder": "3443_maximum_manhattan_distance_after_k_changes",
+  "num": 3443,
+  "title": "Maximum Manhattan Distance After K Changes",
+  "method": "maxDistance",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 609,
+  "js_lines": 20,
+  "header": "// LeetCode 3443 - Maximum Manhattan Distance After K Changes\n// https://leetcode.com/problems/maximum-manhattan-distance-after-k-changes/\n\nvar maxDistance = function(s, k) {\n    let ans = 0;\n    let lat = 0, lon = 0;\n    for (let i = 0; i < s.length; i++) {\n        const c = s[i];"
+}

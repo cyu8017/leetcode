@@ -1,0 +1,11 @@
+{
+  "folder": "3432_count_partitions_with_even_sum_difference",
+  "num": 3432,
+  "title": "Count Partitions With Even Sum Difference",
+  "method": "countPartitions",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 413,
+  "js_lines": 13,
+  "header": "// LeetCode 3432 - Count Partitions with Even Sum Difference\n// https://leetcode.com/problems/count-partitions-with-even-sum-difference/\n\nvar countPartitions = function(nums) {\n    let total = 0;\n    for (const x of nums) total += x;\n    let ans = 0, left = 0;\n    for (let i = 0; i < nums.length - 1; i++) {"
+}

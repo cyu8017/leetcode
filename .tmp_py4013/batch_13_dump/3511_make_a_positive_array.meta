@@ -1,0 +1,11 @@
+{
+  "folder": "3511_make_a_positive_array",
+  "num": 3511,
+  "title": "Make A Positive Array",
+  "method": "solve",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 507,
+  "js_lines": 19,
+  "header": "// LeetCode 3511 - Make a Positive Array\n// https://leetcode.com/problems/make-a-positive-array/\n\nvar makeArrayPositive = function(nums) {\n    let ans = 0, l = -1;\n    let preMx = 0, s = 0;\n    for (let r = 0; r < nums.length; r++) {\n        s += nums[r];"
+}

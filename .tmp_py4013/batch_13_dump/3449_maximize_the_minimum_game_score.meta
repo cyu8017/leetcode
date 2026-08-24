@@ -1,0 +1,11 @@
+{
+  "folder": "3449_maximize_the_minimum_game_score",
+  "num": 3449,
+  "title": "Maximize The Minimum Game Score",
+  "method": "maxScore",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 878,
+  "js_lines": 30,
+  "header": "// LeetCode 3449 - Maximize the Minimum Game Score\n// https://leetcode.com/problems/maximize-the-minimum-game-score/\n\nvar maxScore = function(points, m) {\n    const ok = (mid) => {\n        let need = 0n, extra = 0n;\n        const mm = BigInt(m);\n        for (const p of points) {"
+}

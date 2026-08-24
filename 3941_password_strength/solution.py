@@ -1,6 +1,18 @@
-﻿# LeetCode 3941 - Password Strength
+# LeetCode 3941 - Password Strength
 # https://leetcode.com/problems/password-strength/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def passwordStrength(self, password: str) -> int:
+        st = set(password)
+        ans = 0
+        for ch in st:
+            if ch.islower():
+                ans += 1
+            elif ch.isupper():
+                ans += 2
+            elif ch.isdigit():
+                ans += 3
+            else:
+                ans += 5
+        return ans

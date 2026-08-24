@@ -1,0 +1,11 @@
+{
+  "folder": "3503_longest_palindrome_after_substring_concatenation_i",
+  "num": 3503,
+  "title": "Longest Palindrome After Substring Concatenation I",
+  "method": "longestPalindrome",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1343,
+  "js_lines": 39,
+  "header": "// LeetCode 3503 - Longest Palindrome After Substring Concatenation I\n// https://leetcode.com/problems/longest-palindrome-after-substring-concatenation-i/\n\nvar longestPalindrome = function(s, t) {\n    const expand = (str, g, l, r) => {\n        while (l >= 0 && r < str.length && str[l] === str[r]) {\n            g[l] = Math.max(g[l], r - l + 1);\n            l--; r++;"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3373_maximize_the_number_of_target_nodes_after_connecting_trees_ii",
+  "num": "3373",
+  "title": "Maximize The Number Of Target Nodes After Connecting Trees Ii",
+  "method": "maxTargetNodes",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 42,
+  "js_bytes": 1235
+}

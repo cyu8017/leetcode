@@ -1,0 +1,11 @@
+{
+  "folder": "3505_minimum_operations_to_make_elements_within_k_subarrays_equal",
+  "num": 3505,
+  "title": "Minimum Operations To Make Elements Within K Subarrays Equal",
+  "method": "minOperations",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 970,
+  "js_lines": 25,
+  "header": "// LeetCode 3505 - Minimum Operations to Make Elements Within K Subarrays Equal\n// https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/\n\nvar minOperations = function(nums, x, k) {\n    const n = nums.length;\n    const minOps = new Array(n - x + 1);\n    for (let i = 0; i + x <= n; i++) {\n        const w = nums.slice(i, i + x).sort((a, b) => a - b);"
+}

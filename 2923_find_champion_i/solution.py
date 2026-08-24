@@ -1,6 +1,18 @@
-﻿# LeetCode 2923 - Find Champion I
+# LeetCode 2923 - Find Champion I
 # https://leetcode.com/problems/find-champion-i/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findChampion(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        for i in range(n):
+            win = True
+            for j in range(n):
+                if i != j and grid[i][j] == 0:
+                    win = False
+                    break
+            if win:
+                return i
+        return -1

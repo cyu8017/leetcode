@@ -1,0 +1,11 @@
+{
+  "folder": "3353_minimum_total_operations",
+  "num": "3353",
+  "title": "Minimum Total Operations",
+  "method": "minimumOperations",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 11,
+  "js_bytes": 280
+}

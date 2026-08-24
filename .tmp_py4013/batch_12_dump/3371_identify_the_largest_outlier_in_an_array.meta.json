@@ -1,0 +1,11 @@
+{
+  "folder": "3371_identify_the_largest_outlier_in_an_array",
+  "num": "3371",
+  "title": "Identify The Largest Outlier In An Array",
+  "method": "getLargestOutlier",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 23,
+  "js_bytes": 640
+}

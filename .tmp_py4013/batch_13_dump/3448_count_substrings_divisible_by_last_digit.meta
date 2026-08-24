@@ -1,0 +1,11 @@
+{
+  "folder": "3448_count_substrings_divisible_by_last_digit",
+  "num": 3448,
+  "title": "Count Substrings Divisible By Last Digit",
+  "method": "countSubstrings",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 573,
+  "js_lines": 19,
+  "header": "// LeetCode 3448 - Count Substrings Divisible By Last Digit\n// https://leetcode.com/problems/count-substrings-divisible-by-last-digit/\n\nvar countSubstrings = function(s) {\n    let ans = 0;\n    const n = s.length;\n    for (let r = 0; r < n; r++) {\n        const last = s.charCodeAt(r) - 48;"
+}

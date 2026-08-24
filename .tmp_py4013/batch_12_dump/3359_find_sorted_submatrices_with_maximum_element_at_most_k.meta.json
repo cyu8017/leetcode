@@ -1,0 +1,11 @@
+{
+  "folder": "3359_find_sorted_submatrices_with_maximum_element_at_most_k",
+  "num": "3359",
+  "title": "Find Sorted Submatrices With Maximum Element At Most K",
+  "method": "countSortedMatrices",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 26,
+  "js_bytes": 1008
+}

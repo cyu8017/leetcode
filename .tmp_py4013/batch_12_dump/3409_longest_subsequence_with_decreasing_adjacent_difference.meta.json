@@ -1,0 +1,11 @@
+{
+  "folder": "3409_longest_subsequence_with_decreasing_adjacent_difference",
+  "num": "3409",
+  "title": "Longest Subsequence With Decreasing Adjacent Difference",
+  "method": "longestSubsequence",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 22,
+  "js_bytes": 772
+}

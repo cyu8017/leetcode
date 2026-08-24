@@ -1,6 +1,14 @@
-﻿# LeetCode 3501 - Maximize Active Section with Trade II
+# LeetCode 3501 - Maximize Active Section with Trade II
 # https://leetcode.com/problems/maximize-active-section-with-trade-ii/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maxActiveSectionsAfterTrade(self, s: str, queries: List[List[int]]) -> List[int]:
+        ones = 0
+        for c in s:
+            if c == "1":
+                ones += 1
+        ans = [ones] * len(queries)
+        return ans

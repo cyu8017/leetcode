@@ -1,0 +1,11 @@
+{
+  "folder": "3387_maximize_amount_after_two_days_of_conversions",
+  "num": "3387",
+  "title": "Maximize Amount After Two Days Of Conversions",
+  "method": "maxAmount",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 63,
+  "js_bytes": 2136
+}

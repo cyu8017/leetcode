@@ -1,0 +1,11 @@
+{
+  "folder": "3525_find_x_value_of_array_ii",
+  "num": 3525,
+  "title": "Find X Value Of Array Ii",
+  "method": "resultArray",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 609,
+  "js_lines": 18,
+  "header": "// LeetCode 3525 - Find X Value of Array II\n// https://leetcode.com/problems/find-x-value-of-array-ii/\n\nvar resultArray = function(nums, k, queries) {\n    const n = nums.length;\n    const ans = new Array(queries.length);\n    for (let qi = 0; qi < queries.length; qi++) {\n        const idx = queries[qi][0], val = queries[qi][1], start = queries[qi][2], x = queries[qi][3];"
+}

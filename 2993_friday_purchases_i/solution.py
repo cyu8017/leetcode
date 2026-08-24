@@ -1,6 +1,14 @@
-﻿# LeetCode 2993 - Friday Purchases I
-# https://leetcode.com/problems/friday-purchases-i/
+# LeetCode 2993 - Friday Purchases I
+# https:# leetcode.com/problems/friday-purchases-i/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+# Write your MySQL query statement below
+QUERY = """
+SELECT
+    CEIL(DAYOFMONTH(purchase_date) / 7) AS week_of_month,
+    purchase_date,
+    SUM(amount_spend) AS total_amount
+FROM Purchases
+WHERE DATE_FORMAT(purchase_date, '%Y%m') = '202311' AND DAYOFWEEK(purchase_date) = 6
+GROUP BY 2
+ORDER BY 1
+"""

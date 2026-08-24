@@ -1,0 +1,11 @@
+{
+  "folder": "3423_maximum_difference_between_adjacent_elements_in_a_circular_array",
+  "num": 3423,
+  "title": "Maximum Difference Between Adjacent Elements In A Circular Array",
+  "method": "maxAdjacentDistance",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 417,
+  "js_lines": 12,
+  "header": "// LeetCode 3423 - Maximum Difference Between Adjacent Elements in a Circular Array\n// https://leetcode.com/problems/maximum-difference-between-adjacent-elements-in-a-circular-array/\n\nvar maxAdjacentDistance = function(nums) {\n    let ans = 0;\n    const n = nums.length;\n    for (let i = 0; i < n; i++) {\n        const d = Math.abs(nums[i] - nums[(i + 1) % n]);"
+}

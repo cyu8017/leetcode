@@ -1,6 +1,12 @@
-﻿# LeetCode 3512 - Minimum Operations to Make Array Sum Divisible by K
+# LeetCode 3512 - Minimum Operations to Make Array Sum Divisible by K
 # https://leetcode.com/problems/minimum-operations-to-make-array-sum-divisible-by-k/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def minOperations(self, nums: List[int], k: int) -> int:
+        ans = 0
+        for x in nums:
+            ans = (ans + x) % k
+        return ans

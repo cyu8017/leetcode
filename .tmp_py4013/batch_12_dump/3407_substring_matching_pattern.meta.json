@@ -1,0 +1,11 @@
+{
+  "folder": "3407_substring_matching_pattern",
+  "num": "3407",
+  "title": "Substring Matching Pattern",
+  "method": "hasMatch",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 12,
+  "js_bytes": 361
+}

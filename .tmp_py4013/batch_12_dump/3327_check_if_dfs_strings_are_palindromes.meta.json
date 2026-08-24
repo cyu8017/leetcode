@@ -1,0 +1,11 @@
+{
+  "folder": "3327_check_if_dfs_strings_are_palindromes",
+  "num": "3327",
+  "title": "Check If Dfs Strings Are Palindromes",
+  "method": "findAnswer",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 25,
+  "js_bytes": 706
+}

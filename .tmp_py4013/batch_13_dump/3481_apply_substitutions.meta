@@ -1,0 +1,11 @@
+{
+  "folder": "3481_apply_substitutions",
+  "num": 3481,
+  "title": "Apply Substitutions",
+  "method": "applySubstitutions",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 718,
+  "js_lines": 24,
+  "header": "// LeetCode 3481 - Apply Substitutions\n// https://leetcode.com/problems/apply-substitutions/\n\nvar applySubstitutions = function(replacements, text) {\n    const mp = new Map();\n    for (const r of replacements) mp.set(r[0], r[1]);\n    const resolve = (s) => {\n        let out = \"\";"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3507_minimum_pair_removal_to_sort_array_i",
+  "num": 3507,
+  "title": "Minimum Pair Removal To Sort Array I",
+  "method": "minimumPairRemoval",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 651,
+  "js_lines": 22,
+  "header": "// LeetCode 3507 - Minimum Pair Removal to Sort Array I\n// https://leetcode.com/problems/minimum-pair-removal-to-sort-array-i/\n\nfunction isNonDecreasing(a) {\n    for (let i = 1; i < a.length; i++) if (a[i] < a[i - 1]) return false;\n    return true;\n}\nvar minimumPairRemoval = function(nums) {"
+}

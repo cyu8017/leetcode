@@ -1,0 +1,11 @@
+{
+  "folder": "3502_minimum_cost_to_reach_every_position",
+  "num": 3502,
+  "title": "Minimum Cost To Reach Every Position",
+  "method": "minCosts",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 355,
+  "js_lines": 13,
+  "header": "// LeetCode 3502 - Minimum Cost to Reach Every Position\n// https://leetcode.com/problems/minimum-cost-to-reach-every-position/\n\nvar minCosts = function(cost) {\n    const n = cost.length;\n    const ans = new Array(n);\n    let mi = cost[0];\n    for (let i = 0; i < n; i++) {"
+}

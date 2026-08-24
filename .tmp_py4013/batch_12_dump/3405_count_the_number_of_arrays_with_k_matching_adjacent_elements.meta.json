@@ -1,0 +1,11 @@
+{
+  "folder": "3405_count_the_number_of_arrays_with_k_matching_adjacent_elements",
+  "num": "3405",
+  "title": "Count The Number Of Arrays With K Matching Adjacent Elements",
+  "method": "countGoodArrays",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 29,
+  "js_bytes": 960
+}

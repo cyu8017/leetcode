@@ -1,6 +1,13 @@
-﻿# LeetCode 3898 - Find the Degree of Each Vertex
+# LeetCode 3898 - Find The Degree Of Each Vertex
 # https://leetcode.com/problems/find-the-degree-of-each-vertex/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def findDegrees(self, matrix: List[List[int]]) -> List[int]:
+        ans = [0] * len(matrix)
+        for i in range(len(matrix)):
+            for x in matrix[i]:
+                ans[i] += x
+        return ans

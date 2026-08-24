@@ -1,0 +1,11 @@
+{
+  "folder": "3427_sum_of_variable_length_subarrays",
+  "num": 3427,
+  "title": "Sum Of Variable Length Subarrays",
+  "method": "subarraySum",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 475,
+  "js_lines": 15,
+  "header": "// LeetCode 3427 - Sum of Variable Length Subarrays\n// https://leetcode.com/problems/sum-of-variable-length-subarrays/\n\nvar subarraySum = function(nums) {\n    const n = nums.length;\n    const pref = new Array(n + 1).fill(0);\n    for (let i = 0; i < n; i++) pref[i + 1] = pref[i] + nums[i];\n    let ans = 0;"
+}

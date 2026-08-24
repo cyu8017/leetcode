@@ -1,0 +1,11 @@
+{
+  "folder": "3424_minimum_cost_to_make_arrays_identical",
+  "num": 3424,
+  "title": "Minimum Cost To Make Arrays Identical",
+  "method": "minCost",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 518,
+  "js_lines": 12,
+  "header": "// LeetCode 3424 - Minimum Cost to Make Arrays Identical\n// https://leetcode.com/problems/minimum-cost-to-make-arrays-identical/\n\nvar minCost = function(arr, brr, k) {\n    let noSwap = 0;\n    for (let i = 0; i < arr.length; i++) noSwap += Math.abs(arr[i] - brr[i]);\n    const a2 = arr.slice().sort((a, b) => a - b);\n    const b2 = brr.slice().sort((a, b) => a - b);"
+}

@@ -1,0 +1,11 @@
+{
+  "folder": "3493_properties_graph",
+  "num": 3493,
+  "title": "Properties Graph",
+  "method": "numberOfComponents",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 847,
+  "js_lines": 26,
+  "header": "// LeetCode 3493 - Properties Graph\n// https://leetcode.com/problems/properties-graph/\n\nvar numberOfComponents = function(properties, k) {\n    const n = properties.length;\n    const sets = properties.map((row) => new Set(row));\n    const parent = Array.from({ length: n }, (_, i) => i);\n    const find = (x) => {"
+}

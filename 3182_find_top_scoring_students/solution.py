@@ -1,6 +1,14 @@
-﻿# LeetCode 3182 - Find Top Scoring Students
-# https://leetcode.com/problems/find-top-scoring-students/
+# LeetCode 3182 - Find Top Scoring Students
+# https:# leetcode.com/problems/find-top-scoring-students/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+# Write your MySQL query statement below
+QUERY = """
+SELECT student_id
+FROM
+    students
+    JOIN courses USING (major)
+    LEFT JOIN enrollments USING (student_id, course_id)
+GROUP BY 1
+HAVING SUM(grade = 'A') = COUNT(major)
+ORDER BY 1;
+"""

@@ -1,6 +1,12 @@
-﻿# LeetCode 3151 - Special Array I
+# LeetCode 3151 - Special Array I
 # https://leetcode.com/problems/special-array-i/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def isArraySpecial(self, nums: List[int]) -> bool:
+        for i in range(1, len(nums)):
+            if nums[i] % 2 == nums[i - 1] % 2:
+                return False
+        return True

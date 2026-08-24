@@ -1,0 +1,11 @@
+{
+  "folder": "3410_maximize_subarray_sum_after_removing_all_occurrences_of_one_element",
+  "num": "3410",
+  "title": "Maximize Subarray Sum After Removing All Occurrences Of One Element",
+  "method": "maxSubarraySum",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 33,
+  "js_bytes": 1005
+}

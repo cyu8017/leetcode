@@ -1,0 +1,11 @@
+{
+  "folder": "3453_separate_squares_i",
+  "num": 3453,
+  "title": "Separate Squares I",
+  "method": "separateSquares",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 757,
+  "js_lines": 28,
+  "header": "// LeetCode 3453 - Separate Squares I\n// https://leetcode.com/problems/separate-squares-i/\n\nvar separateSquares = function(squares) {\n    let total = 0;\n    for (const sq of squares) {\n        const l = sq[2];\n        total += l * l;"
+}

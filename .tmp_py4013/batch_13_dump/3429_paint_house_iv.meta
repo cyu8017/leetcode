@@ -1,0 +1,11 @@
+{
+  "folder": "3429_paint_house_iv",
+  "num": 3429,
+  "title": "Paint House Iv",
+  "method": "minCost",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1227,
+  "js_lines": 33,
+  "header": "// LeetCode 3429 - Paint House IV\n// https://leetcode.com/problems/paint-house-iv/\n\nvar minCost = function(n, cost) {\n    const inf = Number.MAX_SAFE_INTEGER / 4;\n    const m = Math.floor(n / 2);\n    let dp = Array.from({ length: 3 }, () => new Array(3).fill(0));\n    for (let a = 0; a < 3; a++) {"
+}

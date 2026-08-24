@@ -1,6 +1,20 @@
-﻿# LeetCode 2088 - Count Fertile Pyramids in a Land
+# LeetCode 2088 - Count Fertile Pyramids in a Land
 # https://leetcode.com/problems/count-fertile-pyramids-in-a-land/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countPyramids(self, grid: List[List[int]]) -> int:
+        def count(g: List[List[int]]) -> int:
+            m, n = len(g), len(g[0])
+            dp = [row[:] for row in g]
+            ans = 0
+            for i in range(m - 2, -1, -1):
+                for j in range(1, n - 1):
+                    if g[i][j] == 1:
+                        dp[i][j] = 1 + min(dp[i + 1][j - 1], dp[i + 1][j], dp[i + 1][j + 1])
+                        ans += dp[i][j] - 1
+            return ans
+
+        return count(grid) + count(grid[::-1])

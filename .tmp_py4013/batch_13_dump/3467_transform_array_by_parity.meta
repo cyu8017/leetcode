@@ -1,0 +1,11 @@
+{
+  "folder": "3467_transform_array_by_parity",
+  "num": 3467,
+  "title": "Transform Array By Parity",
+  "method": "transformArray",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 404,
+  "js_lines": 14,
+  "header": "// LeetCode 3467 - Transform Array by Parity\n// https://leetcode.com/problems/transform-array-by-parity/\n\nvar transformArray = function(nums) {\n    for (let i = 0; i < nums.length; i++) nums[i] %= 2;\n    let j = 0;\n    for (let i = 0; i < nums.length; i++) {\n        if (nums[i] === 0) {"
+}

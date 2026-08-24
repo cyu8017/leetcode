@@ -1,0 +1,11 @@
+{
+  "folder": "3522_calculate_score_after_performing_instructions",
+  "num": 3522,
+  "title": "Calculate Score After Performing Instructions",
+  "method": "calculateScore",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 531,
+  "js_lines": 18,
+  "header": "// LeetCode 3522 - Calculate Score After Performing Instructions\n// https://leetcode.com/problems/calculate-score-after-performing-instructions/\n\nvar calculateScore = function(instructions, values) {\n    const n = values.length;\n    const vis = new Array(n).fill(false);\n    let ans = 0, i = 0;\n    while (i >= 0 && i < n && !vis[i]) {"
+}

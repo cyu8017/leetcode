@@ -1,0 +1,11 @@
+{
+  "folder": "3417_zigzag_grid_traversal_with_skip",
+  "num": "3417",
+  "title": "Zigzag Grid Traversal With Skip",
+  "method": "zigzagTraversal",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 23,
+  "js_bytes": 615
+}

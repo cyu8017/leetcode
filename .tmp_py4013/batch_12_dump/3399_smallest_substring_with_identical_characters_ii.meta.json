@@ -1,0 +1,11 @@
+{
+  "folder": "3399_smallest_substring_with_identical_characters_ii",
+  "num": "3399",
+  "title": "Smallest Substring With Identical Characters Ii",
+  "method": "minLength",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 24,
+  "js_bytes": 654
+}

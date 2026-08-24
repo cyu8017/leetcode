@@ -1,6 +1,7 @@
-﻿# LeetCode 3870 - Count Commas in Range
+# LeetCode 3870 - Count Commas In Range
 # https://leetcode.com/problems/count-commas-in-range/
 
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def countCommas(self, n: int) -> int:
+        return max(0, n - 999)

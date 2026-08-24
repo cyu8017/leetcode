@@ -1,0 +1,11 @@
+{
+  "folder": "3476_maximize_profit_from_task_assignment",
+  "num": 3476,
+  "title": "Maximize Profit From Task Assignment",
+  "method": "maxProfit",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 771,
+  "js_lines": 25,
+  "header": "// LeetCode 3476 - Maximize Profit from Task Assignment\n// https://leetcode.com/problems/maximize-profit-from-task-assignment/\n\nvar maxProfit = function(workers, tasks) {\n    workers = workers.slice().sort((a, b) => a - b);\n    tasks = tasks.slice().sort((a, b) => a[0] - b[0]);\n    let ans = 0;\n    const used = new Array(tasks.length).fill(false);"
+}

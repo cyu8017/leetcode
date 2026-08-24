@@ -1,0 +1,11 @@
+{
+  "folder": "3404_count_special_subsequences",
+  "num": "3404",
+  "title": "Count Special Subsequences",
+  "method": "numberOfSubsequences",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 18,
+  "js_bytes": 507
+}

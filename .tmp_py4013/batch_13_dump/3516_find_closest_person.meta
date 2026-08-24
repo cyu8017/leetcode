@@ -1,0 +1,11 @@
+{
+  "folder": "3516_find_closest_person",
+  "num": 3516,
+  "title": "Find Closest Person",
+  "method": "findClosest",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 240,
+  "js_lines": 8,
+  "header": "// LeetCode 3516 - Find Closest Person\n// https://leetcode.com/problems/find-closest-person/\n\nvar findClosest = function(x, y, z) {\n    const a = Math.abs(x - z), b = Math.abs(y - z);\n    if (a === b) return 0;\n    return a < b ? 1 : 2;\n};"
+}

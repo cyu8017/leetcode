@@ -1,0 +1,11 @@
+{
+  "folder": "3380_maximum_area_rectangle_with_point_constraints_i",
+  "num": "3380",
+  "title": "Maximum Area Rectangle With Point Constraints I",
+  "method": "maxRectangleArea",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 39,
+  "js_bytes": 1603
+}

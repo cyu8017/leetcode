@@ -1,0 +1,11 @@
+{
+  "folder": "3455_shortest_matching_substring",
+  "num": 3455,
+  "title": "Shortest Matching Substring",
+  "method": "shortestMatchingSubstring",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 1593,
+  "js_lines": 53,
+  "header": "// LeetCode 3455 - Shortest Matching Substring\n// https://leetcode.com/problems/shortest-matching-substring/\n\nvar shortestMatchingSubstring = function(s, p) {\n    const parts = [];\n    let cur = \"\";\n    for (const c of p) {\n        if (c === \"*\") {"
+}

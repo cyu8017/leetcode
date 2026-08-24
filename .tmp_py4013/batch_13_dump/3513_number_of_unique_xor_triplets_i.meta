@@ -1,0 +1,11 @@
+{
+  "folder": "3513_number_of_unique_xor_triplets_i",
+  "num": 3513,
+  "title": "Number Of Unique Xor Triplets I",
+  "method": "uniqueXorTriplets",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 300,
+  "js_lines": 10,
+  "header": "// LeetCode 3513 - Number of Unique XOR Triplets I\n// https://leetcode.com/problems/number-of-unique-xor-triplets-i/\n\nvar uniqueXorTriplets = function(nums) {\n    const n = nums.length;\n    if (n <= 2) return n;\n    let x = n, len = 0;\n    while (x !== 0) { len++; x >>= 1; }"
+}

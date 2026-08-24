@@ -1,6 +1,16 @@
-﻿# LeetCode 3289 - The Two Sneaky Numbers of Digitville
+# LeetCode 3289 - The Two Sneaky Numbers of Digitville
 # https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def getSneakyNumbers(self, nums: List[int]) -> List[int]:
+        seen = set()
+        ans = []
+        for x in nums:
+            if x in seen:
+                ans.append(x)
+            else:
+                seen.add(x)
+        return ans

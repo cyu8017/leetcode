@@ -1,6 +1,12 @@
-﻿# LeetCode 2317 - Maximum XOR After Operations 
+# LeetCode 2317 - Maximum XOR After Operations
 # https://leetcode.com/problems/maximum-xor-after-operations/
 
+from typing import List
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def maximumXOR(self, nums: List[int]) -> int:
+        ans = 0
+        for x in nums:
+            ans |= x
+        return ans

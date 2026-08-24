@@ -1,0 +1,11 @@
+{
+  "folder": "3357_minimize_the_maximum_adjacent_element_difference",
+  "num": "3357",
+  "title": "Minimize The Maximum Adjacent Element Difference",
+  "method": "minDifference",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 39,
+  "js_bytes": 1121
+}

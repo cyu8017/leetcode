@@ -1,0 +1,11 @@
+{
+  "folder": "3508_implement_router",
+  "num": 3508,
+  "title": "Implement Router",
+  "method": "__init__",
+  "class": "Router",
+  "kind": null,
+  "js_size": 1565,
+  "js_lines": 51,
+  "header": "// LeetCode 3508 - Implement Router\n// https://leetcode.com/problems/implement-router/\n\nvar Router = function(memoryLimit) {\n    this.lim = memoryLimit;\n    this.vis = new Set();\n    this.q = [];\n    this.idx = new Map();"
+}

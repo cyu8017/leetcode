@@ -1,0 +1,11 @@
+{
+  "folder": "3354_make_array_elements_equal_to_zero",
+  "num": "3354",
+  "title": "Make Array Elements Equal To Zero",
+  "method": "countValidSelections",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 27,
+  "js_bytes": 773
+}

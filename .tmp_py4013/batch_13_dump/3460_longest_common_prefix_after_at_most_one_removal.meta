@@ -1,0 +1,11 @@
+{
+  "folder": "3460_longest_common_prefix_after_at_most_one_removal",
+  "num": 3460,
+  "title": "Longest Common Prefix After At Most One Removal",
+  "method": "longestCommonPrefix",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 466,
+  "js_lines": 18,
+  "header": "// LeetCode 3460 - Longest Common Prefix After at Most One Removal\n// https://leetcode.com/problems/longest-common-prefix-after-at-most-one-removal/\n\nvar longestCommonPrefix = function(s, t) {\n    let i = 0, j = 0;\n    let removed = false;\n    while (i < s.length && j < t.length) {\n        if (s[i] === t[j]) {"
+}

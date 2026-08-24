@@ -1,6 +1,11 @@
-﻿# LeetCode 2987 - Find Expensive Cities
-# https://leetcode.com/problems/find-expensive-cities/
+# LeetCode 2987 - Find Expensive Cities
+# https:# leetcode.com/problems/find-expensive-cities/
 
-class Solution:
-    def solve(self) -> None:
-        pass
+# Write your MySQL query statement below
+QUERY = """
+SELECT city
+FROM Listings
+GROUP BY city
+HAVING AVG(price) > (SELECT AVG(price) FROM Listings)
+ORDER BY 1
+"""

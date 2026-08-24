@@ -1,0 +1,595 @@
+
+================================================================================
+2897_apply_operations_on_array_to_maximize_sum_of_squares
+================================================================================
+// LeetCode 2897 - Apply Operations on Array to Maximize Sum of Squares
+// https://leetcode.com/problems/apply-operations-on-array-to-maximize-sum-of-squares/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maxSum = function(nums, k) {
+    const mod = 1000000007;
+    const cnt = Array(32).fill(0);
+    for (const v of nums)
+        for (let b = 0; b < 32; b++)
+            if ((v & (1 << b)) !== 0) cnt[b]++;
+    let ans = 0;
+    for (let i = 0; i < k; i++) {
+        let cur = 0;
+        for (let b = 0; b < 32; b++) {
+            if (cnt[b] > 0) {
+                cur |= 1 << b;
+                cnt[b]--;
+            }
+        }
+        ans = (ans + ((cur % mod) * (cur % mod)) % mod) % mod;
+    }
+    return ans;
+};
+
+================================================================================
+2898_maximum_linear_stock_score
+================================================================================
+// LeetCode 2898 - Maximum Linear Stock Score
+// https://leetcode.com/problems/maximum-linear-stock-score/
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+var maxScore = function(prices) {
+    const best = new Map();
+    let ans = 0;
+    for (let i = 0; i < prices.length; i++) {
+        const key = prices[i] - (i + 1);
+        const cand = (best.get(key) || 0) + prices[i];
+        if (cand > (best.get(key) || 0)) best.set(key, cand);
+        if (best.get(key) > ans) ans = best.get(key);
+    }
+    return ans;
+};
+
+================================================================================
+2899_last_visited_integers
+================================================================================
+// LeetCode 2899 - Last Visited Integers
+// https://leetcode.com/problems/last-visited-integers/
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var lastVisitedIntegers = function(nums) {
+    const seen = [], ans = [];
+    let k = 0;
+    for (const v of nums) {
+        if (v !== -1) {
+            seen.push(v);
+            k = 0;
+        } else {
+            k++;
+            if (k > seen.length) ans.push(-1);
+            else ans.push(seen[seen.length - k]);
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2900_longest_unequal_adjacent_groups_subsequence_i
+================================================================================
+// LeetCode 2900 - Longest Unequal Adjacent Groups Subsequence I
+// https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-i/
+
+/**
+ * @param {string[]} words
+ * @param {number[]} groups
+ * @return {string[]}
+ */
+var getLongestSubsequence = function(words, groups) {
+    const ans = [words[0]];
+    let last = groups[0];
+    for (let i = 1; i < words.length; i++) {
+        if (groups[i] !== last) {
+            ans.push(words[i]);
+            last = groups[i];
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2901_longest_unequal_adjacent_groups_subsequence_ii
+================================================================================
+// LeetCode 2901 - Longest Unequal Adjacent Groups Subsequence II
+// https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-ii/
+
+/**
+ * @param {string[]} words
+ * @param {number[]} groups
+ * @return {string[]}
+ */
+var getWordsInLongestSubsequence = function(words, groups) {
+    const n = words.length;
+    const dp = Array(n).fill(1);
+    const prev = Array(n).fill(-1);
+    const hamming = (a, b) => {
+        if (a.length !== b.length) return 100;
+        let d = 0;
+        for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) d++;
+        return d;
+    };
+    let best = 1, bestI = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < i; j++) {
+            if (groups[i] !== groups[j] && hamming(words[i], words[j]) === 1 && dp[j] + 1 > dp[i]) {
+                dp[i] = dp[j] + 1;
+                prev[i] = j;
+            }
+        }
+        if (dp[i] > best) { best = dp[i]; bestI = i; }
+    }
+    const path = [];
+    for (let i = bestI; i !== -1; i = prev[i]) path.push(words[i]);
+    path.reverse();
+    return path;
+};
+
+================================================================================
+2902_count_of_sub_multisets_with_bounded_sum
+================================================================================
+// LeetCode 2902 - Count of Sub-Multisets With Bounded Sum
+// https://leetcode.com/problems/count-of-sub-multisets-with-bounded-sum/
+
+/**
+ * @param {number[]} nums
+ * @param {number} l
+ * @param {number} r
+ * @return {number}
+ */
+var countSubMultisets = function(nums, l, r) {
+    const mod = 1000000007;
+    const freq = new Map();
+    let total = 0;
+    for (const v of nums) {
+        freq.set(v, (freq.get(v) || 0) + 1);
+        total += v;
+    }
+    if (total < l) return 0;
+    if (r > total) r = total;
+    let dp = Array(r + 1).fill(0);
+    dp[0] = 1;
+    const zeros = freq.get(0) || 0;
+    freq.delete(0);
+    for (const [v, c] of freq) {
+        const ndp = Array(r + 1).fill(0);
+        for (let sum = 0; sum <= r; sum++) {
+            if (dp[sum] === 0) continue;
+            for (let k = 0; k <= c && sum + k * v <= r; k++)
+                ndp[sum + k * v] = (ndp[sum + k * v] + dp[sum]) % mod;
+        }
+        dp = ndp;
+    }
+    let ans = 0;
+    for (let s = l; s <= r; s++) ans = (ans + dp[s]) % mod;
+    ans = Number((BigInt(ans) * BigInt(zeros + 1)) % BigInt(mod));
+    return ans;
+};
+
+================================================================================
+2903_find_indices_with_index_and_value_difference_i
+================================================================================
+// LeetCode 2903 - Find Indices With Index and Value Difference I
+// https://leetcode.com/problems/find-indices-with-index-and-value-difference-i/
+
+/**
+ * @param {number[]} nums
+ * @param {number} indexDifference
+ * @param {number} valueDifference
+ * @return {number[]}
+ */
+var findIndices = function(nums, indexDifference, valueDifference) {
+    const n = nums.length;
+    for (let i = 0; i < n; i++)
+        for (let j = i; j < n; j++) {
+            if (Math.abs(j - i) >= indexDifference && Math.abs(nums[i] - nums[j]) >= valueDifference)
+                return [i, j];
+        }
+    return [-1, -1];
+};
+
+================================================================================
+2904_shortest_and_lexicographically_smallest_beautiful_string
+================================================================================
+// LeetCode 2904 - Shortest and Lexicographically Smallest Beautiful String
+// https://leetcode.com/problems/shortest-and-lexicographically-smallest-beautiful-string/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+var shortestBeautifulSubstring = function(s, k) {
+    let ans = '';
+    const n = s.length;
+    for (let i = 0; i < n; i++) {
+        let ones = 0;
+        for (let j = i; j < n; j++) {
+            if (s[j] === '1') ones++;
+            if (ones === k) {
+                const cand = s.slice(i, j + 1);
+                if (!ans || cand.length < ans.length || (cand.length === ans.length && cand < ans))
+                    ans = cand;
+                break;
+            }
+            if (ones > k) break;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2905_find_indices_with_index_and_value_difference_ii
+================================================================================
+// LeetCode 2905 - Find Indices With Index and Value Difference II
+// https://leetcode.com/problems/find-indices-with-index-and-value-difference-ii/
+
+/**
+ * @param {number[]} nums
+ * @param {number} indexDifference
+ * @param {number} valueDifference
+ * @return {number[]}
+ */
+var findIndices = function(nums, indexDifference, valueDifference) {
+    const n = nums.length;
+    let minIdx = 0, maxIdx = 0;
+    for (let j = indexDifference; j < n; j++) {
+        const i = j - indexDifference;
+        if (nums[i] < nums[minIdx]) minIdx = i;
+        if (nums[i] > nums[maxIdx]) maxIdx = i;
+        if (nums[j] - nums[minIdx] >= valueDifference) return [minIdx, j];
+        if (nums[maxIdx] - nums[j] >= valueDifference) return [maxIdx, j];
+    }
+    return [-1, -1];
+};
+
+================================================================================
+2906_construct_product_matrix
+================================================================================
+// LeetCode 2906 - Construct Product Matrix
+// https://leetcode.com/problems/construct-product-matrix/
+
+/**
+ * @param {number[][]} grid
+ * @return {number[][]}
+ */
+var constructProductMatrix = function(grid) {
+    const mod = 12345;
+    const m = grid.length, n = grid[0].length;
+    const ans = Array.from({ length: m }, () => Array(n));
+    let pref = 1;
+    for (let i = 0; i < m; i++)
+        for (let j = 0; j < n; j++) {
+            ans[i][j] = pref;
+            pref = (pref * (grid[i][j] % mod)) % mod;
+        }
+    let suf = 1;
+    for (let i = m - 1; i >= 0; i--)
+        for (let j = n - 1; j >= 0; j--) {
+            ans[i][j] = (ans[i][j] * suf) % mod;
+            suf = (suf * (grid[i][j] % mod)) % mod;
+        }
+    return ans;
+};
+
+================================================================================
+2907_maximum_profitable_triplets_with_increasing_prices_i
+================================================================================
+// LeetCode 2907 - Maximum Profitable Triplets With Increasing Prices I
+// https://leetcode.com/problems/maximum-profitable-triplets-with-increasing-prices-i/
+
+/**
+ * @param {number[]} prices
+ * @param {number[]} profits
+ * @return {number}
+ */
+var maxProfit = function(prices, profits) {
+    const n = prices.length;
+    let ans = -1;
+    for (let j = 0; j < n; j++) {
+        let bestL = -1, bestR = -1;
+        for (let i = 0; i < j; i++)
+            if (prices[i] < prices[j] && profits[i] > bestL) bestL = profits[i];
+        for (let k = j + 1; k < n; k++)
+            if (prices[k] > prices[j] && profits[k] > bestR) bestR = profits[k];
+        if (bestL >= 0 && bestR >= 0) {
+            const cand = bestL + profits[j] + bestR;
+            if (cand > ans) ans = cand;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2908_minimum_sum_of_mountain_triplets_i
+================================================================================
+// LeetCode 2908 - Minimum Sum of Mountain Triplets I
+// https://leetcode.com/problems/minimum-sum-of-mountain-triplets-i/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumSum = function(nums) {
+    const n = nums.length;
+    let ans = 1 << 30;
+    for (let j = 1; j < n - 1; j++) {
+        let left = 1 << 30, right = 1 << 30;
+        for (let i = 0; i < j; i++)
+            if (nums[i] < nums[j] && nums[i] < left) left = nums[i];
+        for (let k = j + 1; k < n; k++)
+            if (nums[k] < nums[j] && nums[k] < right) right = nums[k];
+        if (left < (1 << 30) && right < (1 << 30)) {
+            const cand = left + nums[j] + right;
+            if (cand < ans) ans = cand;
+        }
+    }
+    return ans === (1 << 30) ? -1 : ans;
+};
+
+================================================================================
+2909_minimum_sum_of_mountain_triplets_ii
+================================================================================
+// LeetCode 2909 - Minimum Sum of Mountain Triplets II
+// https://leetcode.com/problems/minimum-sum-of-mountain-triplets-ii/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumSum = function(nums) {
+    const n = nums.length;
+    const left = Array(n), right = Array(n);
+    let mn = 1 << 30;
+    for (let i = 0; i < n; i++) {
+        left[i] = mn;
+        if (nums[i] < mn) mn = nums[i];
+    }
+    mn = 1 << 30;
+    for (let i = n - 1; i >= 0; i--) {
+        right[i] = mn;
+        if (nums[i] < mn) mn = nums[i];
+    }
+    let ans = 1 << 30;
+    for (let j = 1; j < n - 1; j++) {
+        if (left[j] < nums[j] && right[j] < nums[j]) {
+            const cand = left[j] + nums[j] + right[j];
+            if (cand < ans) ans = cand;
+        }
+    }
+    return ans === (1 << 30) ? -1 : ans;
+};
+
+================================================================================
+2910_minimum_number_of_groups_to_create_a_valid_assignment
+================================================================================
+// LeetCode 2910 - Minimum Number of Groups to Create a Valid Assignment
+// https://leetcode.com/problems/minimum-number-of-groups-to-create-a-valid-assignment/
+
+/**
+ * @param {number[]} balls
+ * @return {number}
+ */
+var minGroupsForValidAssignment = function(balls) {
+    const freq = new Map();
+    for (const b of balls) freq.set(b, (freq.get(b) || 0) + 1);
+    const counts = [...freq.values()];
+    let minF = Math.min(...counts);
+    for (let size = minF; size >= 1; size--) {
+        let ok = true, groups = 0;
+        for (const c of counts) {
+            const rem = c % (size + 1);
+            const g2 = Math.floor(c / (size + 1));
+            if (rem === 0) groups += g2;
+            else if (size - rem <= g2) groups += g2 + 1;
+            else { ok = false; break; }
+        }
+        if (ok) return groups;
+    }
+    return balls.length;
+};
+
+================================================================================
+2911_minimum_changes_to_make_k_semi_palindromes
+================================================================================
+// LeetCode 2911 - Minimum Changes to Make K Semi-palindromes
+// https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var minimumChanges = function(s, k) {
+    const n = s.length;
+    const INF = 1 << 20;
+    const cost = Array.from({ length: n }, () => Array(n).fill(INF));
+    const semiCost = (l, r) => {
+        const length = r - l + 1;
+        let best = INF;
+        for (let d = 1; d < length; d++) {
+            if (length % d !== 0) continue;
+            let chg = 0;
+            for (let start = 0; start < d; start++) {
+                const chars = [];
+                for (let i = l + start; i <= r; i += d) chars.push(s[i]);
+                for (let i = 0, j = chars.length - 1; i < j; i++, j--)
+                    if (chars[i] !== chars[j]) chg++;
+            }
+            if (chg < best) best = chg;
+        }
+        return best;
+    };
+    for (let i = 0; i < n; i++)
+        for (let j = i + 1; j < n; j++)
+            cost[i][j] = semiCost(i, j);
+    const dp = Array.from({ length: k + 1 }, () => Array(n + 1).fill(INF));
+    dp[0][0] = 0;
+    for (let p = 1; p <= k; p++)
+        for (let i = 1; i <= n; i++)
+            for (let t = 0; t < i - 1; t++) {
+                const cand = dp[p - 1][t] + cost[t][i - 1];
+                if (cand < dp[p][i]) dp[p][i] = cand;
+            }
+    return dp[k][n];
+};
+
+================================================================================
+2912_number_of_ways_to_reach_destination_in_the_grid
+================================================================================
+// LeetCode 2912 - Number of Ways to Reach Destination in the Grid
+// https://leetcode.com/problems/number-of-ways-to-reach-destination-in-the-grid/
+
+/**
+ * @param {number} n
+ * @param {number} m
+ * @param {number} k
+ * @param {number[]} source
+ * @param {number[]} dest
+ * @return {number}
+ */
+var numberOfWays = function(n, m, k, source, dest) {
+    const mod = 1000000007;
+    const sx = source[0], sy = source[1], tx = dest[0], ty = dest[1];
+    let same = 0, row = 0, col = 0, other = 0;
+    if (sx === tx && sy === ty) same = 1;
+    else if (sx === tx) row = 1;
+    else if (sy === ty) col = 1;
+    else other = 1;
+    for (let step = 0; step < k; step++) {
+        const ns = (row * (m - 1) + col * (n - 1)) % mod;
+        const nr = (same + (row * (m - 2)) % mod + (other * (n - 1)) % mod) % mod;
+        const nc = (same + (col * (n - 2)) % mod + (other * (m - 1)) % mod) % mod;
+        const no = (row * (n - 1) + col * (m - 1) + (other * (n + m - 4)) % mod) % mod;
+        same = ns; row = nr; col = nc; other = no;
+    }
+    if (sx === tx && sy === ty) return same;
+    if (sx === tx) return row;
+    if (sy === ty) return col;
+    return other;
+};
+
+================================================================================
+2913_subarrays_distinct_element_sum_of_squares_i
+================================================================================
+// LeetCode 2913 - Subarrays Distinct Element Sum of Squares I
+// https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-i/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sumCounts = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        const seen = new Set();
+        for (let j = i; j < n; j++) {
+            seen.add(nums[j]);
+            const d = seen.size;
+            ans += d * d;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+2914_minimum_number_of_changes_to_make_binary_string_beautiful
+================================================================================
+// LeetCode 2914 - Minimum Number of Changes to Make Binary String Beautiful
+// https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minChanges = function(s) {
+    let ans = 0;
+    for (let i = 0; i < s.length; i += 2)
+        if (s[i] !== s[i + 1]) ans++;
+    return ans;
+};
+
+================================================================================
+2915_length_of_the_longest_subsequence_that_sums_to_target
+================================================================================
+// LeetCode 2915 - Length of the Longest Subsequence That Sums to Target
+// https://leetcode.com/problems/length-of-the-longest-subsequence-that-sums-to-target/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var lengthOfLongestSubsequence = function(nums, target) {
+    const dp = Array(target + 1).fill(-1);
+    dp[0] = 0;
+    for (const v of nums)
+        for (let s = target; s >= v; s--)
+            if (dp[s - v] >= 0 && dp[s - v] + 1 > dp[s]) dp[s] = dp[s - v] + 1;
+    return dp[target];
+};
+
+================================================================================
+2916_subarrays_distinct_element_sum_of_squares_ii
+================================================================================
+// LeetCode 2916 - Subarrays Distinct Element Sum of Squares II
+// https://leetcode.com/problems/subarrays-distinct-element-sum-of-squares-ii/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sumCounts = function(nums) {
+    const MOD = 1000000007;
+    const n = nums.length;
+    const tree = Array.from({ length: 4 * (n + 2) }, () => ({ sum: 0, sumSq: 0, lazy: 0 }));
+    const apply = (idx, l, r, val) => {
+        const length = r - l + 1;
+        tree[idx].sumSq = (tree[idx].sumSq + 2 * val % MOD * tree[idx].sum % MOD
+            + val % MOD * val % MOD * length % MOD) % MOD;
+        tree[idx].sum = (tree[idx].sum + val % MOD * length % MOD) % MOD;
+        tree[idx].lazy = (tree[idx].lazy + val) % MOD;
+    };
+    const update = (idx, l, r, ql, qr, val) => {
+        if (ql > r || qr < l) return;
+        if (ql <= l && r <= qr) {
+            apply(idx, l, r, val);
+            return;
+        }
+        if (tree[idx].lazy !== 0 && l !== r) {
+            const mid = Math.floor((l + r) / 2);
+            apply(idx * 2, l, mid, tree[idx].lazy);
+            apply(idx * 2 + 1, mid + 1, r, tree[idx].lazy);
+            tree[idx].lazy = 0;
+        }
+        const mid = Math.floor((l + r) / 2);
+        update(idx * 2, l, mid, ql, qr, val);
+        update(idx * 2 + 1, mid + 1, r, ql, qr, val);
+        tree[idx].sum = (tree[idx * 2].sum + tree[idx * 2 + 1].sum) % MOD;
+        tree[idx].sumSq = (tree[idx * 2].sumSq + tree[idx * 2 + 1].sumSq) % MOD;
+    };
+    const last = new Map();
+    let ans = 0;
+    for (let i = 1; i <= n; i++) {
+        const v = nums[i - 1];
+        const prev = last.get(v) || 0;
+        update(1, 1, n, prev + 1, i, 1);
+        ans = (ans + tree[1].sumSq) % MOD;
+        last.set(v, i);
+    }
+    return ans;
+};

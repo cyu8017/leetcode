@@ -1,6 +1,16 @@
-﻿# LeetCode 2236 - Root Equals Sum of Children
+# LeetCode 2236 - Root Equals Sum of Children
 # https://leetcode.com/problems/root-equals-sum-of-children/
 
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
 class Solution:
-    def solve(self) -> None:
-        pass
+    def checkTree(self, root: Optional[TreeNode]) -> bool:
+        return root.val == root.left.val + root.right.val

@@ -1,0 +1,11 @@
+{
+  "folder": "3434_maximum_frequency_after_subarray_operation",
+  "num": 3434,
+  "title": "Maximum Frequency After Subarray Operation",
+  "method": "maxFrequency",
+  "class": "Solution",
+  "kind": null,
+  "js_size": 708,
+  "js_lines": 23,
+  "header": "// LeetCode 3434 - Maximum Frequency After Subarray Operation\n// https://leetcode.com/problems/maximum-frequency-after-subarray-operation/\n\nvar maxFrequency = function(nums, k) {\n    let base = 0;\n    for (const x of nums) if (x === k) base++;\n    let ans = base;\n    const uniq = new Set(nums);"
+}

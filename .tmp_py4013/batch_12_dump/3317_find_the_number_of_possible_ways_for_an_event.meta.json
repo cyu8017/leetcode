@@ -1,0 +1,11 @@
+{
+  "folder": "3317_find_the_number_of_possible_ways_for_an_event",
+  "num": "3317",
+  "title": "Find The Number Of Possible Ways For An Event",
+  "method": "numberOfWays",
+  "class": "Solution",
+  "kind": null,
+  "params": null,
+  "js_lines": 34,
+  "js_bytes": 1041
+}

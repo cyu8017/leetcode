@@ -1,6 +1,12 @@
-﻿# LeetCode 2390 - Removing Stars From a String
+# LeetCode 2390 - Removing Stars From a String
 # https://leetcode.com/problems/removing-stars-from-a-string/
 
 class Solution:
-    def solve(self) -> None:
-        pass
+    def removeStars(self, s: str) -> str:
+        stack = []
+        for c in s:
+            if c == "*":
+                stack.pop()
+            else:
+                stack.append(c)
+        return "".join(stack)
