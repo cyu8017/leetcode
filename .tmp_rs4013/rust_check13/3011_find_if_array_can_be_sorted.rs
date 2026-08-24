@@ -1,0 +1,29 @@
+#![allow(dead_code, unused_variables, unused_mut, unused_assignments, unused_imports)]
+struct Solution;
+// LeetCode 3011 - Find if Array Can Be Sorted
+// https://leetcode.com/problems/find-if-array-can-be-sorted/
+
+impl Solution {
+    pub fn can_sort_array(nums: Vec<i32>) -> bool {
+        let mut pre_mx = 0;
+        let n = nums.len();
+        let mut i = 0;
+        while i < n {
+            let cnt = nums[i].count_ones();
+            let mut j = i + 1;
+            let mut mi = nums[i];
+            let mut mx = nums[i];
+            while j < n && nums[j].count_ones() == cnt {
+                mi = mi.min(nums[j]);
+                mx = mx.max(nums[j]);
+                j += 1;
+            }
+            if pre_mx > mi {
+                return false;
+            }
+            pre_mx = mx;
+            i = j;
+        }
+        true
+    }
+}

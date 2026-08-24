@@ -1,7 +1,10 @@
-﻿// LeetCode 1445 - Apples & Oranges
+// LeetCode 1445 - Apples Oranges
 // https://leetcode.com/problems/apples-oranges/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT sale_date,
+       SUM(CASE WHEN fruit = 'apples' THEN sold_num ELSE -sold_num END) AS diff
+FROM Sales
+GROUP BY sale_date
+ORDER BY sale_date
+"#;

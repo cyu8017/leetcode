@@ -1,0 +1,1063 @@
+[
+  {
+    "folder": "3047_find_the_largest_area_of_square_inside_two_rectangles",
+    "class": "Solution",
+    "method": "largestSquareArea",
+    "paramOrder": [
+      "bottomLeft",
+      "topRight"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3048_earliest_second_to_mark_indices_i",
+    "class": "Solution",
+    "method": "earliestSecondToMarkIndices",
+    "paramOrder": [
+      "nums",
+      "changeIndices"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3049_earliest_second_to_mark_indices_ii",
+    "class": "Solution",
+    "method": "earliestSecondToMarkIndices",
+    "paramOrder": [
+      "nums",
+      "changeIndices"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3062_winner_of_the_linked_list_game",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "head"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3063_linked_list_frequency",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "head"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3064_guess_the_number_using_bitwise_questions_i",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "n"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3065_minimum_operations_to_exceed_threshold_value_i",
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3066_minimum_operations_to_exceed_threshold_value_ii",
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3067_count_pairs_of_connectable_servers_in_a_weighted_tree_network",
+    "class": "Solution",
+    "method": "countPairsOfConnectableServers",
+    "paramOrder": [
+      "edges",
+      "signalSpeed"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3068_find_the_maximum_sum_of_node_values",
+    "class": "Solution",
+    "method": "maximumValueSum",
+    "paramOrder": [
+      "nums",
+      "k",
+      "edges"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3069_distribute_elements_into_two_arrays_i",
+    "class": "Solution",
+    "method": "resultArray",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3070_count_submatrices_with_top_left_element_and_sum_less_than_k",
+    "class": "Solution",
+    "method": "countSubmatrices",
+    "paramOrder": [
+      "grid",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3071_minimum_operations_to_write_the_letter_y_on_a_grid",
+    "class": "Solution",
+    "method": "minimumOperationsToWriteY",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3072_distribute_elements_into_two_arrays_ii",
+    "class": "Solution",
+    "method": "resultArray",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3073_maximum_increasing_triplet_value",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3074_apple_redistribution_into_boxes",
+    "class": "Solution",
+    "method": "minimumBoxes",
+    "paramOrder": [
+      "apple",
+      "capacity"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3075_maximize_happiness_of_selected_children",
+    "class": "Solution",
+    "method": "maximumHappinessSum",
+    "paramOrder": [
+      "happiness",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3076_shortest_uncommon_substring_in_an_array",
+    "class": "Solution",
+    "method": "shortestSubstrings",
+    "paramOrder": [
+      "arr"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3077_maximum_strength_of_k_disjoint_subarrays",
+    "class": "Solution",
+    "method": "maximumStrength",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3078_match_alphanumerical_pattern_in_matrix_i",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "board",
+      "pattern"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3079_find_the_sum_of_encrypted_integers",
+    "class": "Solution",
+    "method": "sumOfEncryptedInt",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3080_mark_elements_on_array_by_performing_queries",
+    "class": "Solution",
+    "method": "unmarkedSumArray",
+    "paramOrder": [
+      "nums",
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3081_replace_question_marks_in_string_to_minimize_its_value",
+    "class": "Solution",
+    "method": "minimizeStringValue",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3082_find_the_sum_of_the_power_of_all_subsequences",
+    "class": "Solution",
+    "method": "sumOfPower",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3083_existence_of_a_substring_in_a_string_and_its_reverse",
+    "class": "Solution",
+    "method": "isSubstringPresent",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3084_count_substrings_starting_and_ending_with_given_character",
+    "class": "Solution",
+    "method": "countSubstrings",
+    "paramOrder": [
+      "s",
+      "c"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3085_minimum_deletions_to_make_string_k_special",
+    "class": "Solution",
+    "method": "minimumDeletions",
+    "paramOrder": [
+      "word",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3086_minimum_moves_to_pick_k_ones",
+    "class": "Solution",
+    "method": "minimumMoves",
+    "paramOrder": [
+      "nums",
+      "k",
+      "maxChanges"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3088_make_string_anti_palindrome",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3090_maximum_length_substring_with_two_occurrences",
+    "class": "Solution",
+    "method": "maximumLengthSubstring",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3091_apply_operations_to_make_sum_of_array_greater_than_or_equal_to_k",
+    "class": "Solution",
+    "method": "minOperations",
+    "paramOrder": [
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3092_most_frequent_ids",
+    "class": "Solution",
+    "method": "mostFrequentIDs",
+    "paramOrder": [
+      "nums",
+      "freq"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3093_longest_common_suffix_queries",
+    "class": "Solution",
+    "method": "stringIndices",
+    "paramOrder": [
+      "wordsContainer",
+      "wordsQuery"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3094_guess_the_number_using_bitwise_questions_ii",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": null,
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3095_shortest_subarray_with_or_at_least_k_i",
+    "class": "Solution",
+    "method": "minimumSubarrayLength",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3096_minimum_levels_to_gain_more_points",
+    "class": "Solution",
+    "method": "minimumLevels",
+    "paramOrder": [
+      "possible"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3097_shortest_subarray_with_or_at_least_k_ii",
+    "class": "Solution",
+    "method": "minimumSubarrayLength",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3098_find_the_sum_of_subsequence_powers",
+    "class": "Solution",
+    "method": "sumOfPowers",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3099_harshad_number",
+    "class": "Solution",
+    "method": "sumOfTheDigitsOfHarshadNumber",
+    "paramOrder": [
+      "x"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3100_water_bottles_ii",
+    "class": "Solution",
+    "method": "maxBottlesDrunk",
+    "paramOrder": [
+      "numBottles",
+      "numExchange"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3101_count_alternating_subarrays",
+    "class": "Solution",
+    "method": "countAlternatingSubarrays",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3102_minimize_manhattan_distances",
+    "class": "Solution",
+    "method": "minimumDistance",
+    "paramOrder": [
+      "points"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3104_find_longest_self_contained_substring",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3105_longest_strictly_increasing_or_strictly_decreasing_subarray",
+    "class": "Solution",
+    "method": "longestMonotonicSubarray",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3106_lexicographically_smallest_string_after_operations_with_constraint",
+    "class": "Solution",
+    "method": "getSmallestString",
+    "paramOrder": [
+      "s",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3107_minimum_operations_to_make_median_of_array_equal_to_k",
+    "class": "Solution",
+    "method": "minOperationsToMakeMedianK",
+    "paramOrder": [
+      "nums",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3108_minimum_cost_walk_in_weighted_graph",
+    "class": "Solution",
+    "method": "minimumCost",
+    "paramOrder": [
+      "n",
+      "edges",
+      "query"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3109_find_the_index_of_permutation",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "perm"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3110_score_of_a_string",
+    "class": "Solution",
+    "method": "scoreOfString",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3111_minimum_rectangles_to_cover_points",
+    "class": "Solution",
+    "method": "minRectanglesToCoverPoints",
+    "paramOrder": [
+      "points",
+      "w"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3112_minimum_time_to_visit_disappearing_nodes",
+    "class": "Solution",
+    "method": "minimumTime",
+    "paramOrder": [
+      "n",
+      "edges",
+      "disappear"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3113_find_the_number_of_subarrays_where_boundary_elements_are_maximum",
+    "class": "Solution",
+    "method": "numberOfSubarrays",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3114_latest_time_you_can_obtain_after_replacing_characters",
+    "class": "Solution",
+    "method": "findLatestTime",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3115_maximum_prime_difference",
+    "class": "Solution",
+    "method": "maximumPrimeDifference",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3116_kth_smallest_amount_with_single_denomination_combination",
+    "class": "Solution",
+    "method": "findKthSmallest",
+    "paramOrder": [
+      "coins",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3117_minimum_sum_of_values_by_dividing_array",
+    "class": "Solution",
+    "method": "minimumValueSum",
+    "paramOrder": [
+      "nums",
+      "andValues"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3119_maximum_number_of_potholes_that_can_be_fixed",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "road",
+      "budget"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3120_count_the_number_of_special_characters_i",
+    "class": "Solution",
+    "method": "numberOfSpecialChars",
+    "paramOrder": [
+      "word"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3121_count_the_number_of_special_characters_ii",
+    "class": "Solution",
+    "method": "numberOfSpecialChars",
+    "paramOrder": [
+      "word"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3122_minimum_number_of_operations_to_satisfy_conditions",
+    "class": "Solution",
+    "method": "minimumOperations",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3123_find_edges_in_shortest_paths",
+    "class": "Solution",
+    "method": "findAnswer",
+    "paramOrder": [
+      "n",
+      "edges"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3125_maximum_number_that_makes_result_of_bitwise_and_zero",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "n"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3127_make_a_square_with_the_same_color",
+    "class": "Solution",
+    "method": "canMakeSquare",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3128_right_triangles",
+    "class": "Solution",
+    "method": "numberOfRightTriangles",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3129_find_all_possible_stable_binary_arrays_i",
+    "class": "Solution",
+    "method": "numberOfStableArrays",
+    "paramOrder": [
+      "zero",
+      "one",
+      "limit"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3130_find_all_possible_stable_binary_arrays_ii",
+    "class": "Solution",
+    "method": "numberOfStableArrays",
+    "paramOrder": [
+      "zero",
+      "one",
+      "limit"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3131_find_the_integer_added_to_array_i",
+    "class": "Solution",
+    "method": "addedInteger",
+    "paramOrder": [
+      "nums1",
+      "nums2"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3132_find_the_integer_added_to_array_ii",
+    "class": "Solution",
+    "method": "minimumAddedInteger",
+    "paramOrder": [
+      "nums1",
+      "nums2"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3133_minimum_array_end",
+    "class": "Solution",
+    "method": "minEnd",
+    "paramOrder": [
+      "n",
+      "x"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3134_find_the_median_of_the_uniqueness_array",
+    "class": "Solution",
+    "method": "medianOfUniquenessArray",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3135_equalize_strings_by_adding_or_removing_characters_at_ends",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "initial",
+      "target"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3136_valid_word",
+    "class": "Solution",
+    "method": "isValid",
+    "paramOrder": [
+      "word"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3137_minimum_number_of_operations_to_make_word_k_periodic",
+    "class": "Solution",
+    "method": "minimumOperationsToMakeKPeriodic",
+    "paramOrder": [
+      "word",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3138_minimum_length_of_anagram_concatenation",
+    "class": "Solution",
+    "method": "minAnagramLength",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3139_minimum_cost_to_equalize_array",
+    "class": "Solution",
+    "method": "minCostToEqualizeArray",
+    "paramOrder": [
+      "nums",
+      "cost1",
+      "cost2"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3141_maximum_hamming_distances",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "nums",
+      "m"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3142_check_if_grid_satisfies_conditions",
+    "class": "Solution",
+    "method": "satisfiesConditions",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3143_maximum_points_inside_the_square",
+    "class": "Solution",
+    "method": "maxPointsInsideSquare",
+    "paramOrder": [
+      "points",
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3144_minimum_substring_partition_of_equal_character_frequency",
+    "class": "Solution",
+    "method": "minimumSubstringsInPartition",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3145_find_products_of_elements_of_big_array",
+    "class": "Solution",
+    "method": "findProductsOfElements",
+    "paramOrder": [
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3146_permutation_difference_between_two_strings",
+    "class": "Solution",
+    "method": "findPermutationDifference",
+    "paramOrder": [
+      "s",
+      "t"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3147_taking_maximum_energy_from_the_mystic_dungeon",
+    "class": "Solution",
+    "method": "maximumEnergy",
+    "paramOrder": [
+      "energy",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3148_maximum_difference_score_in_a_grid",
+    "class": "Solution",
+    "method": "maxScore",
+    "paramOrder": [
+      "grid"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3149_find_the_minimum_cost_array_permutation",
+    "class": "Solution",
+    "method": "findPermutation",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3151_special_array_i",
+    "class": "Solution",
+    "method": "isArraySpecial",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3152_special_array_ii",
+    "class": "Solution",
+    "method": "isArraySpecial",
+    "paramOrder": [
+      "nums",
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3153_sum_of_digit_differences_of_all_pairs",
+    "class": "Solution",
+    "method": "sumDigitDifferences",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3154_find_number_of_ways_to_reach_the_k_th_stair",
+    "class": "Solution",
+    "method": "waysToReachStair",
+    "paramOrder": [
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3155_maximum_number_of_upgradable_servers",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "count",
+      "upgrade",
+      "sell",
+      "money"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3157_find_the_level_of_tree_with_minimum_sum",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "root"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3158_find_the_xor_of_numbers_which_appear_twice",
+    "class": "Solution",
+    "method": "duplicateNumbersXOR",
+    "paramOrder": [
+      "nums"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3159_find_occurrences_of_an_element_in_an_array",
+    "class": "Solution",
+    "method": "occurrencesOfElement",
+    "paramOrder": [
+      "nums",
+      "queries",
+      "x"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3160_find_the_number_of_distinct_colors_among_the_balls",
+    "class": "Solution",
+    "method": "queryResults",
+    "paramOrder": [
+      "limit",
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3161_block_placement_queries",
+    "class": "Solution",
+    "method": "getResults",
+    "paramOrder": [
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3162_find_the_number_of_good_pairs_i",
+    "class": "Solution",
+    "method": "numberOfPairs",
+    "paramOrder": [
+      "nums1",
+      "nums2",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3163_string_compression_iii",
+    "class": "Solution",
+    "method": "compressedString",
+    "paramOrder": [
+      "word"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3164_find_the_number_of_good_pairs_ii",
+    "class": "Solution",
+    "method": "numberOfPairs",
+    "paramOrder": [
+      "nums1",
+      "nums2",
+      "k"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3165_maximum_sum_of_subsequence_with_non_adjacent_elements",
+    "class": "Solution",
+    "method": "maximumSumSubsequence",
+    "paramOrder": [
+      "nums",
+      "queries"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3167_better_compression_of_string",
+    "class": "Solution",
+    "method": "solve",
+    "paramOrder": [
+      "compressed"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  },
+  {
+    "folder": "3168_minimum_number_of_chairs_in_a_waiting_room",
+    "class": "Solution",
+    "method": "minimumChairs",
+    "paramOrder": [
+      "s"
+    ],
+    "source": "solution.cpp",
+    "exists": true
+  }
+]

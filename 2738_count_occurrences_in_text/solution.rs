@@ -1,7 +1,12 @@
-﻿// LeetCode 2738 - Count Occurrences in Text
-// https://leetcode.com/problems/count-occurrences-in-text/
+// LeetCode 2738 - Count Occurrences in Text
+// https:// leetcode.com/problems/count-occurrences-in-text/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT 'bull' AS word, COUNT(*) AS count
+FROM Files
+WHERE content LIKE '% bull %'
+UNION
+SELECT 'bear' AS word, COUNT(*) AS count
+FROM Files
+WHERE content LIKE '% bear %'
+"#;

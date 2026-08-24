@@ -1,7 +1,14 @@
-﻿// LeetCode 3099 - Harshad Number
+// LeetCode 3099 - Harshad Number
 // https://leetcode.com/problems/harshad-number/
 
 impl Solution {
-    pub fn solve() {
+    pub fn sum_of_the_digits_of_harshad_number(x: i32) -> i32 {
+        let mut s = 0;
+        let mut y = x;
+        while y > 0 {
+            s += y % 10;
+            y /= 10;
+        }
+        if x % s == 0 { s } else { -1 }
     }
 }

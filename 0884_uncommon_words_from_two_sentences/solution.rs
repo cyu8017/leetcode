@@ -1,7 +1,18 @@
-﻿// LeetCode 0884 - Uncommon Words from Two Sentences
+// LeetCode 0884 - Uncommon Words from Two Sentences
 // https://leetcode.com/problems/uncommon-words-from-two-sentences/
 
+use std::collections::HashMap;
+
 impl Solution {
-    pub fn solve() {
+    pub fn uncommon_from_sentences(s1: String, s2: String) -> Vec<String> {
+        let mut count = HashMap::new();
+        for w in s1.split_whitespace().chain(s2.split_whitespace()) {
+            *count.entry(w.to_string()).or_insert(0) += 1;
+        }
+        count
+            .into_iter()
+            .filter(|(_, c)| *c == 1)
+            .map(|(w, _)| w)
+            .collect()
     }
 }

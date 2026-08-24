@@ -1,7 +1,8 @@
-﻿// LeetCode 2413 - Smallest Even Multiple
+// LeetCode 2413 - Smallest Even Multiple
 // https://leetcode.com/problems/smallest-even-multiple/
 
 impl Solution {
-    pub fn solve() {
+    pub fn smallest_even_multiple(n: i32) -> i32 {
+        if n % 2 == 0 { n } else { n * 2 }
     }
 }

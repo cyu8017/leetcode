@@ -1,0 +1,42 @@
+=== 3479_fruits_into_baskets_iii ===
+class=Solution method=numOfUnplacedFruits params=['fruits', 'baskets']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3479 - Fruits Into Baskets III
+// https://leetcode.com/problems/fruits-into-baskets-iii/
+
+#include <vector>
+
+class Solution {
+public:
+    int numOfUnplacedFruits(std::vector<int>& fruits, std::vector<int>& baskets) {
+        int n = (int)baskets.size();
+        int size = 1;
+        while (size < n) size <<= 1;
+        std::vector<int> tree(size * 2);
+        for (int i = 0; i < n; i++) tree[size + i] = baskets[i];
+        for (int i = size - 1; i > 0; i--) tree[i] = std::max(tree[i * 2], tree[i * 2 + 1]);
+        auto find = [&](auto&& self, int node, int nl, int nr, int need) -> int {
+            if (tree[node] < need) return -1;
+            if (nl == nr) return nl;
+            int mid = (nl + nr) / 2;
+            int left = self(self, node * 2, nl, mid, need);
+            if (left != -1) return left;
+            return self(self, node * 2 + 1, mid + 1, nr, need);
+        };
+        auto update = [&](int idx) {
+            int p = size + idx;
+            tree[p] = -1;
+            for (p >>= 1; p > 0; p >>= 1) tree[p] = std::max(tree[p * 2], tree[p * 2 + 1]);
+        };
+        int unplaced = 0;
+        for (int f : fruits) {
+            int idx = find(find, 1, 0, size - 1, f);
+            if (idx == -1 || idx >= n) unplaced++;
+            else update(idx);
+        }
+        return unplaced;
+    }
+};
+
+---END---

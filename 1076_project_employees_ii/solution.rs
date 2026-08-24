@@ -1,7 +1,15 @@
-﻿// LeetCode 1076 - Project Employees II
+// LeetCode 1076 - Project Employees II
 // https://leetcode.com/problems/project-employees-ii/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT project_id
+FROM Project
+GROUP BY project_id
+HAVING COUNT(*) = (
+    SELECT COUNT(*)
+    FROM Project
+    GROUP BY project_id
+    ORDER BY COUNT(*) DESC
+    LIMIT 1
+)
+"#;

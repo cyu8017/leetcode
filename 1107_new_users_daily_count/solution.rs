@@ -1,7 +1,15 @@
-﻿// LeetCode 1107 - New Users Daily Count
+// LeetCode 1107 - New Users Daily Count
 // https://leetcode.com/problems/new-users-daily-count/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+WITH first_login AS (
+    SELECT user_id, MIN(activity_date) AS login_date
+    FROM Traffic
+    WHERE activity = 'login'
+    GROUP BY user_id
+)
+SELECT login_date, COUNT(*) AS user_count
+FROM first_login
+WHERE login_date BETWEEN '2019-04-01' AND '2019-06-30'
+GROUP BY login_date
+"#;

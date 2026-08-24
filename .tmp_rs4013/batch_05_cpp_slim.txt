@@ -1,0 +1,2490 @@
+===== 2088_count_fertile_pyramids_in_a_land =====
+// LeetCode 2088 - Count Fertile Pyramids in a Land
+// https://leetcode.com/problems/count-fertile-pyramids-in-a-land/
+
+class Solution {
+    int count(vector<vector<int>> g) {
+        int m = (int)g.size(), n = (int)g[0].size();
+        vector<vector<int>> dp = g;
+        int ans = 0;
+        for (int i = m - 2; i >= 0; i--) {
+            for (int j = 1; j < n - 1; j++) {
+                if (g[i][j] == 1) {
+                    dp[i][j] = 1 + min({dp[i + 1][j - 1], dp[i + 1][j], dp[i + 1][j + 1]});
+                    ans += dp[i][j] - 1;
+                }
+            }
+        }
+        return ans;
+    }
+public:
+    int countPyramids(vector<vector<int>>& grid) {
+        int ans = count(grid);
+        int m = (int)grid.size();
+        vector<vector<int>> rev(m);
+        for (int i = 0; i < m; i++) rev[i] = grid[m - 1 - i];
+        return ans + count(rev);
+    }
+};
+
+===== 2089_find_target_indices_after_sorting_array =====
+// LeetCode 2089 - Find Target Indices After Sorting Array
+// https://leetcode.com/problems/find-target-indices-after-sorting-array/
+
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        int less = 0, eq = 0;
+        for (int x : nums) {
+            if (x < target) less++;
+            else if (x == target) eq++;
+        }
+        vector<int> ans(eq);
+        for (int i = 0; i < eq; i++) ans[i] = less + i;
+        return ans;
+    }
+};
+
+===== 2090_k_radius_subarray_averages =====
+// LeetCode 2090 - K Radius Subarray Averages
+// https://leetcode.com/problems/k-radius-subarray-averages/
+
+class Solution {
+public:
+    vector<int> getAverages(vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        vector<int> ans(n, -1);
+        if (2 * k + 1 > n) return ans;
+        long long sum = 0;
+        for (int i = 0; i < 2 * k + 1; i++) sum += nums[i];
+        ans[k] = (int)(sum / (2 * k + 1));
+        for (int i = k + 1; i + k < n; i++) {
+            sum += nums[i + k] - nums[i - k - 1];
+            ans[i] = (int)(sum / (2 * k + 1));
+        }
+        return ans;
+    }
+};
+
+===== 2091_removing_minimum_and_maximum_from_array =====
+// LeetCode 2091 - Removing Minimum and Maximum From Array
+// https://leetcode.com/problems/removing-minimum-and-maximum-from-array/
+
+class Solution {
+public:
+    int minimumDeletions(vector<int>& nums) {
+        int n = (int)nums.size(), mi = 0, ma = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] < nums[mi]) mi = i;
+            if (nums[i] > nums[ma]) ma = i;
+        }
+        if (mi > ma) swap(mi, ma);
+        return min({ma + 1, n - mi, mi + 1 + n - ma});
+    }
+};
+
+===== 2092_find_all_people_with_secret =====
+// LeetCode 2092 - Find All People With Secret
+// https://leetcode.com/problems/find-all-people-with-secret/
+
+class Solution {
+public:
+    vector<int> findAllPeople(int n, vector<vector<int>>& meetings, int firstPerson) {
+        sort(meetings.begin(), meetings.end(), [](auto& a, auto& b) { return a[2] < b[2]; });
+        vector<int> parent(n);
+        iota(parent.begin(), parent.end(), 0);
+        function<int(int)> find = [&](int x) {
+            return parent[x] == x ? x : parent[x] = find(parent[x]);
+        };
+        auto unite = [&](int a, int b) {
+            a = find(a); b = find(b);
+            if (a != b) parent[a] = b;
+        };
+        vector<char> know(n);
+        know[0] = know[firstPerson] = 1;
+        unite(0, firstPerson);
+        for (int i = 0; i < (int)meetings.size(); ) {
+            int j = i;
+            while (j < (int)meetings.size() && meetings[j][2] == meetings[i][2]) j++;
+            for (int k = i; k < j; k++) unite(meetings[k][0], meetings[k][1]);
+            int root0 = find(0);
+            vector<int> reset;
+            for (int k = i; k < j; k++) {
+                int a = meetings[k][0], b = meetings[k][1];
+                if (find(a) != root0) { reset.push_back(a); reset.push_back(b); }
+                else { know[a] = know[b] = 1; }
+            }
+            for (int x : reset) parent[x] = x;
+            i = j;
+        }
+        vector<int> ans;
+        for (int i = 0; i < n; i++) if (find(i) == find(0) || know[i]) ans.push_back(i);
+        return ans;
+    }
+};
+
+===== 2093_minimum_cost_to_reach_city_with_discounts =====
+// LeetCode 2093 - Minimum Cost to Reach City With Discounts
+// https://leetcode.com/problems/minimum-cost-to-reach-city-with-discounts/
+
+class Solution {
+public:
+    int minimumCost(int n, vector<vector<int>>& highways, int discounts) {
+        vector<vector<pair<int,int>>> g(n);
+        for (auto& h : highways) {
+            g[h[0]].push_back({h[1], h[2]});
+            g[h[1]].push_back({h[0], h[2]});
+        }
+        const int INF = 1 << 30;
+        vector<vector<int>> dist(n, vector<int>(discounts + 1, INF));
+        priority_queue<array<int,3>, vector<array<int,3>>, greater<>> pq;
+        dist[0][discounts] = 0;
+        pq.push({0, 0, discounts});
+        while (!pq.empty()) {
+            auto [cost, city, disc] = pq.top(); pq.pop();
+            if (city == n - 1) return cost;
+            if (cost > dist[city][disc]) continue;
+            for (auto [v, w] : g[city]) {
+                if (cost + w < dist[v][disc]) {
+                    dist[v][disc] = cost + w;
+                    pq.push({dist[v][disc], v, disc});
+                }
+                if (disc > 0 && cost + w / 2 < dist[v][disc - 1]) {
+                    dist[v][disc - 1] = cost + w / 2;
+                    pq.push({dist[v][disc - 1], v, disc - 1});
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+===== 2094_finding_3_digit_even_numbers =====
+// LeetCode 2094 - Finding 3-Digit Even Numbers
+// https://leetcode.com/problems/finding-3-digit-even-numbers/
+
+class Solution {
+public:
+    vector<int> findEvenNumbers(vector<int>& digits) {
+        int freq[10] = {};
+        for (int d : digits) freq[d]++;
+        vector<int> ans;
+        for (int x = 100; x <= 998; x += 2) {
+            int a = x / 100, b = (x / 10) % 10, c = x % 10;
+            freq[a]--; freq[b]--; freq[c]--;
+            if (freq[a] >= 0 && freq[b] >= 0 && freq[c] >= 0) ans.push_back(x);
+            freq[a]++; freq[b]++; freq[c]++;
+        }
+        return ans;
+    }
+};
+
+===== 2095_delete_the_middle_node_of_a_linked_list =====
+// LeetCode 2095 - Delete the Middle Node of a Linked List
+// https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
+
+struct ListNode {
+    int val;
+    ListNode* next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode* next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* deleteMiddle(ListNode* head) {
+        if (!head->next) return nullptr;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = nullptr;
+        while (fast && fast->next) {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        prev->next = slow->next;
+        return head;
+    }
+};
+
+===== 2096_step_by_step_directions_from_a_binary_tree_node_to_another =====
+// LeetCode 2096 - Step-By-Step Directions From a Binary Tree Node to Another
+// https://leetcode.com/problems/step-by-step-directions-from-a-binary-tree-node-to-another/
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode* left, TreeNode* right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+    bool path(TreeNode* node, int target, string& p) {
+        if (!node) return false;
+        if (node->val == target) return true;
+        p.push_back('L');
+        if (path(node->left, target, p)) return true;
+        p.back() = 'R';
+        if (path(node->right, target, p)) return true;
+        p.pop_back();
+        return false;
+    }
+public:
+    string getDirections(TreeNode* root, int startValue, int destValue) {
+        string ps, pd;
+        path(root, startValue, ps);
+        path(root, destValue, pd);
+        int i = 0;
+        while (i < (int)ps.size() && i < (int)pd.size() && ps[i] == pd[i]) i++;
+        return string(ps.size() - i, 'U') + pd.substr(i);
+    }
+};
+
+===== 2097_valid_arrangement_of_pairs =====
+// LeetCode 2097 - Valid Arrangement of Pairs
+// https://leetcode.com/problems/valid-arrangement-of-pairs/
+
+class Solution {
+public:
+    vector<vector<int>> validArrangement(vector<vector<int>>& pairs) {
+        unordered_map<int, vector<int>> g;
+        unordered_map<int, int> indeg, outdeg;
+        for (auto& p : pairs) {
+            int u = p[0], v = p[1];
+            g[u].push_back(v);
+            outdeg[u]++; indeg[v]++;
+        }
+        int start = pairs[0][0];
+        for (auto& [u, o] : outdeg) if (o - indeg[u] == 1) { start = u; break; }
+        vector<int> path;
+        function<void(int)> dfs = [&](int u) {
+            while (!g[u].empty()) {
+                int v = g[u].back(); g[u].pop_back();
+                dfs(v);
+            }
+            path.push_back(u);
+        };
+        dfs(start);
+        reverse(path.begin(), path.end());
+        vector<vector<int>> ans;
+        for (int i = 0; i + 1 < (int)path.size(); i++) ans.push_back({path[i], path[i + 1]});
+        return ans;
+    }
+};
+
+===== 2098_subsequence_of_size_k_with_the_largest_even_sum =====
+// LeetCode 2098 - Subsequence of Size K With the Largest Even Sum
+// https://leetcode.com/problems/subsequence-of-size-k-with-the-largest-even-sum/
+
+class Solution {
+public:
+    long long largestEvenSum(vector<int>& nums, int k) {
+        sort(nums.begin(), nums.end(), greater<int>());
+        long long sum = 0;
+        for (int i = 0; i < k; i++) sum += nums[i];
+        if (sum % 2 == 0) return sum;
+        long long ans = -1;
+        int oddIn = -1, evenIn = -1, oddOut = -1, evenOut = -1;
+        for (int i = k - 1; i >= 0; i--) {
+            if (nums[i] % 2 && oddIn == -1) oddIn = i;
+            if (nums[i] % 2 == 0 && evenIn == -1) evenIn = i;
+        }
+        for (int i = k; i < (int)nums.size(); i++) {
+            if (nums[i] % 2 && oddOut == -1) oddOut = i;
+            if (nums[i] % 2 == 0 && evenOut == -1) evenOut = i;
+        }
+        if (oddIn != -1 && evenOut != -1) ans = max(ans, sum - nums[oddIn] + nums[evenOut]);
+        if (evenIn != -1 && oddOut != -1) ans = max(ans, sum - nums[evenIn] + nums[oddOut]);
+        return ans;
+    }
+};
+
+===== 2099_find_subsequence_of_length_k_with_the_largest_sum =====
+// LeetCode 2099 - Find Subsequence of Length K With the Largest Sum
+// https://leetcode.com/problems/find-subsequence-of-length-k-with-the-largest-sum/
+
+class Solution {
+public:
+    vector<int> maxSubsequence(vector<int>& nums, int k) {
+        vector<pair<int,int>> arr;
+        for (int i = 0; i < (int)nums.size(); i++) arr.push_back({nums[i], i});
+        sort(arr.begin(), arr.end(), [](auto& a, auto& b) { return a.first > b.first; });
+        vector<int> idx(k);
+        for (int i = 0; i < k; i++) idx[i] = arr[i].second;
+        sort(idx.begin(), idx.end());
+        vector<int> ans(k);
+        for (int i = 0; i < k; i++) ans[i] = nums[idx[i]];
+        return ans;
+    }
+};
+
+===== 2100_find_good_days_to_rob_the_bank =====
+// LeetCode 2100 - Find Good Days to Rob the Bank
+// https://leetcode.com/problems/find-good-days-to-rob-the-bank/
+
+class Solution {
+public:
+    vector<int> goodDaysToRobBank(vector<int>& security, int time) {
+        int n = (int)security.size();
+        if (time == 0) {
+            vector<int> ans(n);
+            iota(ans.begin(), ans.end(), 0);
+            return ans;
+        }
+        vector<int> left(n), right(n);
+        for (int i = 1; i < n; i++) if (security[i] <= security[i - 1]) left[i] = left[i - 1] + 1;
+        for (int i = n - 2; i >= 0; i--) if (security[i] <= security[i + 1]) right[i] = right[i + 1] + 1;
+        vector<int> ans;
+        for (int i = time; i < n - time; i++)
+            if (left[i] >= time && right[i] >= time) ans.push_back(i);
+        return ans;
+    }
+};
+
+===== 2101_detonate_the_maximum_bombs =====
+// LeetCode 2101 - Detonate the Maximum Bombs
+// https://leetcode.com/problems/detonate-the-maximum-bombs/
+
+class Solution {
+public:
+    int maximumDetonation(vector<vector<int>>& bombs) {
+        int n = (int)bombs.size();
+        vector<vector<int>> g(n);
+        for (int i = 0; i < n; i++) {
+            long long x1 = bombs[i][0], y1 = bombs[i][1], r1 = bombs[i][2];
+            for (int j = 0; j < n; j++) {
+                if (i == j) continue;
+                long long dx = bombs[j][0] - x1, dy = bombs[j][1] - y1;
+                if (dx * dx + dy * dy <= r1 * r1) g[i].push_back(j);
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            vector<char> vis(n);
+            queue<int> q;
+            q.push(i); vis[i] = 1;
+            int cnt = 0;
+            while (!q.empty()) {
+                int u = q.front(); q.pop();
+                cnt++;
+                for (int v : g[u]) if (!vis[v]) { vis[v] = 1; q.push(v); }
+            }
+            ans = max(ans, cnt);
+        }
+        return ans;
+    }
+};
+
+===== 2102_sequentially_ordinal_rank_tracker =====
+// LeetCode 2102 - Sequentially Ordinal Rank Tracker
+// https://leetcode.com/problems/sequentially-ordinal-rank-tracker/
+
+class SORTracker {
+    struct Loc {
+        string name;
+        int score;
+    };
+    // min-heap: smaller score first; on tie, lexicographically larger name first
+    struct MinCmp {
+        bool operator()(const Loc& a, const Loc& b) const {
+            if (a.score != b.score) return a.score > b.score;
+            return a.name < b.name;
+        }
+    };
+    // max-heap: larger score first; on tie, lexicographically smaller name first
+    struct MaxCmp {
+        bool operator()(const Loc& a, const Loc& b) const {
+            if (a.score != b.score) return a.score < b.score;
+            return a.name > b.name;
+        }
+    };
+    priority_queue<Loc, vector<Loc>, MinCmp> best;
+    priority_queue<Loc, vector<Loc>, MaxCmp> rest;
+    int k = 0;
+public:
+    SORTracker() {}
+    void add(string name, int score) {
+        best.push({name, score});
+        if ((int)best.size() > k) {
+            rest.push(best.top());
+            best.pop();
+        }
+    }
+    string get() {
+        k++;
+        if (!rest.empty()) {
+            best.push(rest.top());
+            rest.pop();
+        }
+        return best.top().name;
+    }
+};
+
+===== 2103_rings_and_rods =====
+// LeetCode 2103 - Rings and Rods
+// https://leetcode.com/problems/rings-and-rods/
+
+class Solution {
+public:
+    int countPoints(string rings) {
+        int mask[10] = {};
+        for (int i = 0; i < (int)rings.size(); i += 2) {
+            char c = rings[i];
+            int r = rings[i + 1] - '0';
+            int bit = c == 'R' ? 1 : c == 'G' ? 2 : 4;
+            mask[r] |= bit;
+        }
+        int ans = 0;
+        for (int m : mask) if (m == 7) ans++;
+        return ans;
+    }
+};
+
+===== 2104_sum_of_subarray_ranges =====
+// LeetCode 2104 - Sum of Subarray Ranges
+// https://leetcode.com/problems/sum-of-subarray-ranges/
+
+class Solution {
+public:
+    long long subArrayRanges(vector<int>& nums) {
+        int n = (int)nums.size();
+        long long ans = 0;
+        for (int i = 0; i < n; i++) {
+            int mn = nums[i], mx = nums[i];
+            for (int j = i; j < n; j++) {
+                mn = min(mn, nums[j]);
+                mx = max(mx, nums[j]);
+                ans += mx - mn;
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2105_watering_plants_ii =====
+// LeetCode 2105 - Watering Plants II
+// https://leetcode.com/problems/watering-plants-ii/
+
+class Solution {
+public:
+    int minimumRefill(vector<int>& plants, int capacityA, int capacityB) {
+        int i = 0, j = (int)plants.size() - 1;
+        int a = capacityA, b = capacityB, ans = 0;
+        while (i < j) {
+            if (a < plants[i]) { ans++; a = capacityA; }
+            a -= plants[i++];
+            if (b < plants[j]) { ans++; b = capacityB; }
+            b -= plants[j--];
+        }
+        if (i == j) {
+            if (a >= b) { if (a < plants[i]) ans++; }
+            else if (b < plants[i]) ans++;
+        }
+        return ans;
+    }
+};
+
+===== 2106_maximum_fruits_harvested_after_at_most_k_steps =====
+// LeetCode 2106 - Maximum Fruits Harvested After at Most K Steps
+// https://leetcode.com/problems/maximum-fruits-harvested-after-at-most-k-steps/
+
+class Solution {
+    int minSteps(int left, int right, int start) {
+        if (right <= start) return start - left;
+        if (left >= start) return right - start;
+        return min((start - left) + (right - left), (right - start) + (right - left));
+    }
+public:
+    int maxTotalFruits(vector<vector<int>>& fruits, int startPos, int k) {
+        int n = (int)fruits.size();
+        vector<int> pref(n + 1), pos(n);
+        for (int i = 0; i < n; i++) {
+            pos[i] = fruits[i][0];
+            pref[i + 1] = pref[i] + fruits[i][1];
+        }
+        int ans = 0, j = 0;
+        for (int i = 0; i < n; i++) {
+            while (j < n && minSteps(pos[i], pos[j], startPos) > k) j++;
+            if (j <= i) ans = max(ans, pref[i + 1] - pref[j]);
+        }
+        j = 0;
+        for (int i = 0; i < n; i++) {
+            while (j <= i && minSteps(pos[j], pos[i], startPos) > k) j++;
+            ans = max(ans, pref[i + 1] - pref[j]);
+        }
+        return ans;
+    }
+};
+
+===== 2107_number_of_unique_flavors_after_sharing_k_candies =====
+// LeetCode 2107 - Number of Unique Flavors After Sharing K Candies
+// https://leetcode.com/problems/number-of-unique-flavors-after-sharing-k-candies/
+
+class Solution {
+public:
+    int shareCandies(vector<int>& candies, int k) {
+        int n = (int)candies.size();
+        unordered_map<int, int> freq;
+        for (int c : candies) freq[c]++;
+        if (k == 0) return (int)freq.size();
+        for (int i = 0; i < k; i++) {
+            if (--freq[candies[i]] == 0) freq.erase(candies[i]);
+        }
+        int ans = (int)freq.size();
+        for (int i = k; i < n; i++) {
+            freq[candies[i - k]]++;
+            if (--freq[candies[i]] == 0) freq.erase(candies[i]);
+            ans = max(ans, (int)freq.size());
+        }
+        return ans;
+    }
+};
+
+===== 2108_find_first_palindromic_string_in_the_array =====
+// LeetCode 2108 - Find First Palindromic String in the Array
+// https://leetcode.com/problems/find-first-palindromic-string-in-the-array/
+
+class Solution {
+public:
+    string firstPalindrome(vector<string>& words) {
+        for (auto& w : words) {
+            bool ok = true;
+            for (int l = 0, r = (int)w.size() - 1; l < r; l++, r--)
+                if (w[l] != w[r]) { ok = false; break; }
+            if (ok) return w;
+        }
+        return "";
+    }
+};
+
+===== 2109_adding_spaces_to_a_string =====
+// LeetCode 2109 - Adding Spaces to a String
+// https://leetcode.com/problems/adding-spaces-to-a-string/
+
+class Solution {
+public:
+    string addSpaces(string s, vector<int>& spaces) {
+        string b;
+        b.reserve(s.size() + spaces.size());
+        int j = 0;
+        for (int i = 0; i < (int)s.size(); i++) {
+            if (j < (int)spaces.size() && spaces[j] == i) { b.push_back(' '); j++; }
+            b.push_back(s[i]);
+        }
+        return b;
+    }
+};
+
+===== 2110_number_of_smooth_descent_periods_of_a_stock =====
+// LeetCode 2110 - Number of Smooth Descent Periods of a Stock
+// https://leetcode.com/problems/number-of-smooth-descent-periods-of-a-stock/
+
+class Solution {
+public:
+    long long getDescentPeriods(vector<int>& prices) {
+        long long ans = 1, cur = 1;
+        for (int i = 1; i < (int)prices.size(); i++) {
+            if (prices[i] == prices[i - 1] - 1) cur++;
+            else cur = 1;
+            ans += cur;
+        }
+        return ans;
+    }
+};
+
+===== 2111_minimum_operations_to_make_the_array_k_increasing =====
+// LeetCode 2111 - Minimum Operations to Make the Array K-Increasing
+// https://leetcode.com/problems/minimum-operations-to-make-the-array-k-increasing/
+
+class Solution {
+public:
+    int kIncreasing(vector<int>& arr, int k) {
+        int ans = 0, n = arr.size();
+        for (int start = 0; start < k; start++) {
+            vector<int> seq;
+            for (int i = start; i < n; i += k) seq.push_back(arr[i]);
+            vector<int> tails;
+            for (int x : seq) {
+                auto it = upper_bound(tails.begin(), tails.end(), x);
+                if (it == tails.end()) tails.push_back(x);
+                else *it = x;
+            }
+            ans += (int)seq.size() - (int)tails.size();
+        }
+        return ans;
+    }
+};
+
+===== 2113_elements_in_array_after_removing_and_replacing_elements =====
+// LeetCode 2113 - Elements in Array After Removing and Replacing Elements
+// https://leetcode.com/problems/elements-in-array-after-removing-and-replacing-elements/
+
+class Solution {
+public:
+    vector<int> elementInNums(vector<int>& nums, vector<vector<int>>& queries) {
+        int n = nums.size();
+        vector<int> ans(queries.size());
+        for (int i = 0; i < (int)queries.size(); i++) {
+            int t = queries[i][0], idx = queries[i][1];
+            int cycle = t % (2 * n);
+            int size, offset;
+            if (cycle < n) {
+                size = n - cycle;
+                offset = cycle;
+            } else {
+                size = cycle - n;
+                offset = 0;
+            }
+            ans[i] = idx >= size ? -1 : nums[offset + idx];
+        }
+        return ans;
+    }
+};
+
+===== 2114_maximum_number_of_words_found_in_sentences =====
+// LeetCode 2114 - Maximum Number of Words Found in Sentences
+// https://leetcode.com/problems/maximum-number-of-words-found-in-sentences/
+
+class Solution {
+public:
+    int mostWordsFound(vector<string>& sentences) {
+        int ans = 0;
+        for (auto& s : sentences) {
+            int c = 1;
+            for (char ch : s) if (ch == ' ') c++;
+            ans = max(ans, c);
+        }
+        return ans;
+    }
+};
+
+===== 2115_find_all_possible_recipes_from_given_supplies =====
+// LeetCode 2115 - Find All Possible Recipes from Given Supplies
+// https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/
+
+class Solution {
+public:
+    vector<string> findAllRecipes(vector<string>& recipes, vector<vector<string>>& ingredients, vector<string>& supplies) {
+        unordered_set<string> have(supplies.begin(), supplies.end());
+        unordered_map<string, int> indeg;
+        unordered_map<string, vector<string>> graph;
+        for (int i = 0; i < (int)recipes.size(); i++) {
+            indeg[recipes[i]] = ingredients[i].size();
+            for (auto& ing : ingredients[i]) graph[ing].push_back(recipes[i]);
+        }
+        queue<string> q;
+        for (auto& s : have) q.push(s);
+        vector<string> ans;
+        while (!q.empty()) {
+            string cur = q.front(); q.pop();
+            for (auto& nxt : graph[cur]) {
+                if (--indeg[nxt] == 0) {
+                    ans.push_back(nxt);
+                    q.push(nxt);
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2116_check_if_a_parentheses_string_can_be_valid =====
+// LeetCode 2116 - Check if a Parentheses String Can Be Valid
+// https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid/
+
+class Solution {
+public:
+    bool canBeValid(string s, string locked) {
+        int n = s.size();
+        if (n % 2) return false;
+        int bal = 0;
+        for (int i = 0; i < n; i++) {
+            if (locked[i] == '0' || s[i] == '(') bal++;
+            else bal--;
+            if (bal < 0) return false;
+        }
+        bal = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            if (locked[i] == '0' || s[i] == ')') bal++;
+            else bal--;
+            if (bal < 0) return false;
+        }
+        return true;
+    }
+};
+
+===== 2117_abbreviating_the_product_of_a_range =====
+// LeetCode 2117 - Abbreviating the Product of a Range
+// https://leetcode.com/problems/abbreviating-the-product-of-a-range/
+
+class Solution {
+public:
+    string abbreviateProduct(int left, int right) {
+        int twos = 0, fives = 0;
+        for (int i = left; i <= right; i++) {
+            int x = i;
+            while (x % 2 == 0) { twos++; x /= 2; }
+            while (x % 5 == 0) { fives++; x /= 5; }
+        }
+        int zeros = min(twos, fives);
+        const long long MOD = 100000000000LL;
+        long long prod = 1;
+        int extra2 = twos - zeros, extra5 = fives - zeros;
+        double logSum = 0.0;
+        for (int i = left; i <= right; i++) {
+            int x = i;
+            while (x % 2 == 0) x /= 2;
+            while (x % 5 == 0) x /= 5;
+            prod = (prod * x) % MOD;
+            logSum += log10((double)x);
+        }
+        for (int i = 0; i < extra2; i++) { prod = (prod * 2) % MOD; logSum += log10(2.0); }
+        for (int i = 0; i < extra5; i++) { prod = (prod * 5) % MOD; logSum += log10(5.0); }
+        double fullLog = 0.0;
+        for (int i = left; i <= right; i++) fullLog += log10((double)i);
+        int digits = (int)fullLog + 1;
+        if (digits <= 10) {
+            long long p = 1;
+            for (int i = left; i <= right; i++) p *= i;
+            return to_string(p);
+        }
+        double frac = logSum - floor(logSum);
+        long long prefix = (long long)pow(10.0, frac + 4);
+        long long suffix = prod % 100000;
+        char buf[64];
+        snprintf(buf, sizeof(buf), "%lde%d%05lld", prefix, zeros, suffix);
+        return string(buf);
+    }
+};
+
+===== 2119_a_number_after_a_double_reversal =====
+// LeetCode 2119 - A Number After a Double Reversal
+// https://leetcode.com/problems/a-number-after-a-double-reversal/
+
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+        return num == 0 || num % 10 != 0;
+    }
+};
+
+===== 2120_execution_of_all_suffix_instructions_staying_in_a_grid =====
+// LeetCode 2120 - Execution of All Suffix Instructions Staying in a Grid
+// https://leetcode.com/problems/execution-of-all-suffix-instructions-staying-in-a-grid/
+
+class Solution {
+public:
+    vector<int> executeInstructions(int n, vector<int>& startPos, string s) {
+        int m = s.size();
+        vector<int> ans(m);
+        for (int i = 0; i < m; i++) {
+            int r = startPos[0], c = startPos[1], cnt = 0;
+            for (int j = i; j < m; j++) {
+                if (s[j] == 'L') c--;
+                else if (s[j] == 'R') c++;
+                else if (s[j] == 'U') r--;
+                else r++;
+                if (r < 0 || r >= n || c < 0 || c >= n) break;
+                cnt++;
+            }
+            ans[i] = cnt;
+        }
+        return ans;
+    }
+};
+
+===== 2121_intervals_between_identical_elements =====
+// LeetCode 2121 - Intervals Between Identical Elements
+// https://leetcode.com/problems/intervals-between-identical-elements/
+
+class Solution {
+public:
+    vector<long long> getDistances(vector<int>& arr) {
+        int n = arr.size();
+        unordered_map<int, vector<int>> pos;
+        for (int i = 0; i < n; i++) pos[arr[i]].push_back(i);
+        vector<long long> ans(n);
+        for (auto& [v, idxs] : pos) {
+            int m = idxs.size();
+            vector<long long> pref(m + 1);
+            for (int i = 0; i < m; i++) pref[i + 1] = pref[i] + idxs[i];
+            for (int i = 0; i < m; i++) {
+                long long left = 1LL * i * idxs[i] - pref[i];
+                long long right = (pref[m] - pref[i + 1]) - 1LL * (m - i - 1) * idxs[i];
+                ans[idxs[i]] = left + right;
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2122_recover_the_original_array =====
+// LeetCode 2122 - Recover the Original Array
+// https://leetcode.com/problems/recover-the-original-array/
+
+class Solution {
+public:
+    vector<int> recoverArray(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
+        for (int i = 1; i < n; i++) {
+            int diff = nums[i] - nums[0];
+            if (diff == 0 || diff % 2) continue;
+            int k = diff / 2;
+            vector<char> used(n);
+            used[0] = used[i] = 1;
+            vector<int> ans{(nums[0] + nums[i]) / 2};
+            int l = 0, r = i;
+            bool ok = true;
+            while ((int)ans.size() < n / 2) {
+                while (l < n && used[l]) l++;
+                if (l == n) { ok = false; break; }
+                int need = nums[l] + 2 * k;
+                while (r < n && (used[r] || nums[r] < need)) r++;
+                if (r == n || nums[r] != need) { ok = false; break; }
+                used[l] = used[r] = 1;
+                ans.push_back(nums[l] + k);
+            }
+            if (ok) return ans;
+        }
+        return {};
+    }
+};
+
+===== 2123_minimum_operations_to_remove_adjacent_ones_in_matrix =====
+// LeetCode 2123 - Minimum Operations to Remove Adjacent Ones in Matrix
+// https://leetcode.com/problems/minimum-operations-to-remove-adjacent-ones-in-matrix/
+
+class Solution {
+public:
+    int minimumOperations(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<int>> id(m, vector<int>(n, -1));
+        int cnt = 0;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (grid[i][j] == 1) id[i][j] = cnt++;
+        vector<vector<int>> g(cnt);
+        int dirs[4][2] = {{0,1},{1,0},{0,-1},{-1,0}};
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] != 1 || (i + j) % 2 != 0) continue;
+                int u = id[i][j];
+                for (auto& d : dirs) {
+                    int ni = i + d[0], nj = j + d[1];
+                    if (ni >= 0 && nj >= 0 && ni < m && nj < n && grid[ni][nj] == 1)
+                        g[u].push_back(id[ni][nj]);
+                }
+            }
+        }
+        vector<int> match(cnt, -1);
+        function<bool(int, vector<char>&)> dfs = [&](int u, vector<char>& seen) -> bool {
+            for (int v : g[u]) {
+                if (seen[v]) continue;
+                seen[v] = 1;
+                if (match[v] == -1 || dfs(match[v], seen)) {
+                    match[v] = u;
+                    return true;
+                }
+            }
+            return false;
+        };
+        int ans = 0;
+        for (int u = 0; u < cnt; u++) {
+            bool ok = false;
+            for (int i = 0; i < m && !ok; i++)
+                for (int j = 0; j < n; j++)
+                    if (id[i][j] == u && (i + j) % 2 == 0) { ok = true; break; }
+            if (!ok) continue;
+            vector<char> seen(cnt);
+            if (dfs(u, seen)) ans++;
+        }
+        return ans;
+    }
+};
+
+===== 2124_check_if_all_as_appears_before_all_bs =====
+// LeetCode 2124 - Check if All A's Appears Before All B's
+// https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/
+
+class Solution {
+public:
+    bool checkString(string s) {
+        bool seenB = false;
+        for (char c : s) {
+            if (c == 'b') seenB = true;
+            else if (seenB) return false;
+        }
+        return true;
+    }
+};
+
+===== 2125_number_of_laser_beams_in_a_bank =====
+// LeetCode 2125 - Number of Laser Beams in a Bank
+// https://leetcode.com/problems/number-of-laser-beams-in-a-bank/
+
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        int ans = 0, prev = 0;
+        for (auto& row : bank) {
+            int cnt = 0;
+            for (char c : row) if (c == '1') cnt++;
+            if (cnt > 0) {
+                ans += prev * cnt;
+                prev = cnt;
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2126_destroying_asteroids =====
+// LeetCode 2126 - Destroying Asteroids
+// https://leetcode.com/problems/destroying-asteroids/
+
+class Solution {
+public:
+    bool asteroidsDestroyed(int mass, vector<int>& asteroids) {
+        sort(asteroids.begin(), asteroids.end());
+        long long cur = mass;
+        for (int a : asteroids) {
+            if (cur < a) return false;
+            cur += a;
+        }
+        return true;
+    }
+};
+
+===== 2127_maximum_employees_to_be_invited_to_a_meeting =====
+// LeetCode 2127 - Maximum Employees to Be Invited to a Meeting
+// https://leetcode.com/problems/maximum-employees-to-be-invited-to-a-meeting/
+
+class Solution {
+public:
+    int maximumInvitations(vector<int>& favorite) {
+        int n = favorite.size();
+        vector<int> indeg(n), depth(n, 1);
+        for (int f : favorite) indeg[f]++;
+        queue<int> q;
+        for (int i = 0; i < n; i++) if (indeg[i] == 0) q.push(i);
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            int v = favorite[u];
+            depth[v] = max(depth[v], depth[u] + 1);
+            if (--indeg[v] == 0) q.push(v);
+        }
+        int pairSum = 0, maxCycle = 0;
+        vector<char> vis(n);
+        for (int i = 0; i < n; i++) {
+            if (indeg[i] == 0 || vis[i]) continue;
+            int u = i, lenCycle = 0;
+            while (!vis[u]) {
+                vis[u] = 1;
+                u = favorite[u];
+                lenCycle++;
+            }
+            if (lenCycle == 2) pairSum += depth[i] + depth[favorite[i]];
+            else maxCycle = max(maxCycle, lenCycle);
+        }
+        return max(pairSum, maxCycle);
+    }
+};
+
+===== 2128_remove_all_ones_with_row_and_column_flips =====
+// LeetCode 2128 - Remove All Ones With Row and Column Flips
+// https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips/
+
+class Solution {
+public:
+    bool removeOnes(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        for (int i = 1; i < m; i++) {
+            bool same = grid[i][0] == grid[0][0];
+            for (int j = 0; j < n; j++) {
+                if ((grid[i][j] == grid[0][j]) != same) return false;
+            }
+        }
+        return true;
+    }
+};
+
+===== 2129_capitalize_the_title =====
+// LeetCode 2129 - Capitalize the Title
+// https://leetcode.com/problems/capitalize-the-title/
+
+class Solution {
+public:
+    string capitalizeTitle(string title) {
+        stringstream ss(title);
+        string w, ans;
+        while (ss >> w) {
+            for (char& c : w) c = tolower(c);
+            if (w.size() > 2) w[0] = toupper(w[0]);
+            if (!ans.empty()) ans += ' ';
+            ans += w;
+        }
+        return ans;
+    }
+};
+
+===== 2130_maximum_twin_sum_of_a_linked_list =====
+// LeetCode 2130 - Maximum Twin Sum of a Linked List
+// https://leetcode.com/problems/maximum-twin-sum-of-a-linked-list/
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    int pairSum(ListNode* head) {
+        ListNode *slow = head, *fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* prev = nullptr;
+        while (slow) {
+            ListNode* nxt = slow->next;
+            slow->next = prev;
+            prev = slow;
+            slow = nxt;
+        }
+        int ans = 0;
+        ListNode *a = head, *b = prev;
+        while (b) {
+            ans = max(ans, a->val + b->val);
+            a = a->next;
+            b = b->next;
+        }
+        return ans;
+    }
+};
+
+===== 2131_longest_palindrome_by_concatenating_two_letter_words =====
+// LeetCode 2131 - Longest Palindrome by Concatenating Two Letter Words
+// https://leetcode.com/problems/longest-palindrome-by-concatenating-two-letter-words/
+
+class Solution {
+public:
+    int longestPalindrome(vector<string>& words) {
+        unordered_map<string, int> freq;
+        for (auto& w : words) freq[w]++;
+        int ans = 0;
+        bool center = false;
+        for (auto& [w, c] : freq) {
+            string rev = string{w[1], w[0]};
+            if (w[0] == w[1]) {
+                ans += (c / 2) * 4;
+                if (c % 2) center = true;
+            } else if (w < rev) {
+                ans += min(c, freq[rev]) * 4;
+            }
+        }
+        if (center) ans += 2;
+        return ans;
+    }
+};
+
+===== 2132_stamping_the_grid =====
+// LeetCode 2132 - Stamping the Grid
+// https://leetcode.com/problems/stamping-the-grid/
+
+class Solution {
+public:
+    bool possibleToStamp(vector<vector<int>>& grid, int stampHeight, int stampWidth) {
+        int m = grid.size(), n = grid[0].size();
+        vector<vector<int>> pref(m + 1, vector<int>(n + 1));
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                pref[i + 1][j + 1] = pref[i + 1][j] + pref[i][j + 1] - pref[i][j] + grid[i][j];
+        auto sum = [&](int r1, int c1, int r2, int c2) {
+            return pref[r2 + 1][c2 + 1] - pref[r1][c2 + 1] - pref[r2 + 1][c1] + pref[r1][c1];
+        };
+        vector<vector<int>> diff(m + 1, vector<int>(n + 1));
+        for (int i = 0; i + stampHeight - 1 < m; i++) {
+            for (int j = 0; j + stampWidth - 1 < n; j++) {
+                if (sum(i, j, i + stampHeight - 1, j + stampWidth - 1) == 0) {
+                    diff[i][j]++;
+                    diff[i][j + stampWidth]--;
+                    diff[i + stampHeight][j]--;
+                    diff[i + stampHeight][j + stampWidth]++;
+                }
+            }
+        }
+        vector<vector<int>> cur(m, vector<int>(n));
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int v = diff[i][j];
+                if (i > 0) v += cur[i - 1][j];
+                if (j > 0) v += cur[i][j - 1];
+                if (i > 0 && j > 0) v -= cur[i - 1][j - 1];
+                cur[i][j] = v;
+                if (grid[i][j] == 0 && v == 0) return false;
+            }
+        }
+        return true;
+    }
+};
+
+===== 2133_check_if_every_row_and_column_contains_all_numbers =====
+// LeetCode 2133 - Check if Every Row and Column Contains All Numbers
+// https://leetcode.com/problems/check-if-every-row-and-column-contains-all-numbers/
+
+class Solution {
+public:
+    bool checkValid(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        for (int i = 0; i < n; i++) {
+            vector<char> row(n + 1), col(n + 1);
+            for (int j = 0; j < n; j++) {
+                if (row[matrix[i][j]] || col[matrix[j][i]]) return false;
+                row[matrix[i][j]] = col[matrix[j][i]] = 1;
+            }
+        }
+        return true;
+    }
+};
+
+===== 2134_minimum_swaps_to_group_all_1s_together_ii =====
+// LeetCode 2134 - Minimum Swaps to Group All 1's Together II
+// https://leetcode.com/problems/minimum-swaps-to-group-all-1s-together-ii/
+
+class Solution {
+public:
+    int minSwaps(vector<int>& nums) {
+        int ones = accumulate(nums.begin(), nums.end(), 0);
+        if (ones == 0) return 0;
+        int n = nums.size(), window = 0;
+        for (int i = 0; i < ones; i++) window += nums[i];
+        int best = window;
+        for (int i = 0; i < n; i++) {
+            window -= nums[i];
+            window += nums[(i + ones) % n];
+            best = max(best, window);
+        }
+        return ones - best;
+    }
+};
+
+===== 2135_count_words_obtained_after_adding_a_letter =====
+// LeetCode 2135 - Count Words Obtained After Adding a Letter
+// https://leetcode.com/problems/count-words-obtained-after-adding-a-letter/
+
+class Solution {
+public:
+    int wordCount(vector<string>& startWords, vector<string>& targetWords) {
+        auto mask = [](const string& w) {
+            int m = 0;
+            for (char c : w) m |= 1 << (c - 'a');
+            return m;
+        };
+        unordered_set<int> have;
+        for (auto& w : startWords) have.insert(mask(w));
+        int ans = 0;
+        for (auto& w : targetWords) {
+            int m = mask(w);
+            for (int i = 0; i < (int)w.size(); i++) {
+                if (have.count(m ^ (1 << (w[i] - 'a')))) { ans++; break; }
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2136_earliest_possible_day_of_full_bloom =====
+// LeetCode 2136 - Earliest Possible Day of Full Bloom
+// https://leetcode.com/problems/earliest-possible-day-of-full-bloom/
+
+class Solution {
+public:
+    int earliestFullBloom(vector<int>& plantTime, vector<int>& growTime) {
+        int n = plantTime.size();
+        vector<int> idx(n);
+        iota(idx.begin(), idx.end(), 0);
+        sort(idx.begin(), idx.end(), [&](int a, int b) { return growTime[a] > growTime[b]; });
+        int day = 0, ans = 0;
+        for (int i : idx) {
+            day += plantTime[i];
+            ans = max(ans, day + growTime[i]);
+        }
+        return ans;
+    }
+};
+
+===== 2137_pour_water_between_buckets_to_make_water_levels_equal =====
+// LeetCode 2137 - Pour Water Between Buckets to Make Water Levels Equal
+// https://leetcode.com/problems/pour-water-between-buckets-to-make-water-levels-equal/
+
+class Solution {
+public:
+    double equalizeWater(vector<int>& buckets, int loss) {
+        double lo = 0, hi = 0;
+        for (int b : buckets) hi = max(hi, (double)b);
+        auto can = [&](double x) {
+            double have = 0, need = 0;
+            for (int b : buckets) {
+                if (b >= x) have += b - x;
+                else need += x - b;
+            }
+            return have * (1.0 - loss / 100.0) >= need;
+        };
+        for (int iter = 0; iter < 60; iter++) {
+            double mid = (lo + hi) / 2;
+            if (can(mid)) lo = mid;
+            else hi = mid;
+        }
+        return lo;
+    }
+};
+
+===== 2138_divide_a_string_into_groups_of_size_k =====
+// LeetCode 2138 - Divide a String Into Groups of Size k
+// https://leetcode.com/problems/divide-a-string-into-groups-of-size-k/
+
+class Solution {
+public:
+    vector<string> divideString(string s, int k, char fill) {
+        vector<string> ans;
+        for (int i = 0; i < (int)s.size(); i += k) {
+            if (i + k <= (int)s.size()) ans.push_back(s.substr(i, k));
+            else {
+                string chunk = s.substr(i);
+                while ((int)chunk.size() < k) chunk.push_back(fill);
+                ans.push_back(chunk);
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2139_minimum_moves_to_reach_target_score =====
+// LeetCode 2139 - Minimum Moves to Reach Target Score
+// https://leetcode.com/problems/minimum-moves-to-reach-target-score/
+
+class Solution {
+public:
+    int minMoves(int target, int maxDoubles) {
+        int ans = 0;
+        while (target > 1 && maxDoubles > 0) {
+            if (target % 2) { target--; ans++; }
+            else { target /= 2; maxDoubles--; ans++; }
+        }
+        return ans + target - 1;
+    }
+};
+
+===== 2140_solving_questions_with_brainpower =====
+// LeetCode 2140 - Solving Questions With Brainpower
+// https://leetcode.com/problems/solving-questions-with-brainpower/
+
+class Solution {
+public:
+    long long mostPoints(vector<vector<int>>& questions) {
+        int n = questions.size();
+        vector<long long> dp(n + 1);
+        for (int i = n - 1; i >= 0; i--) {
+            int pts = questions[i][0], brain = questions[i][1];
+            int next = i + brain + 1;
+            long long take = pts + (next < n ? dp[next] : 0);
+            dp[i] = max(dp[i + 1], take);
+        }
+        return dp[0];
+    }
+};
+
+===== 2141_maximum_running_time_of_n_computers =====
+// LeetCode 2141 - Maximum Running Time of N Computers
+// https://leetcode.com/problems/maximum-running-time-of-n-computers/
+
+class Solution {
+public:
+    long long maxRunTime(int n, vector<int>& batteries) {
+        long long sum = 0;
+        for (int b : batteries) sum += b;
+        long long lo = 1, hi = sum / n;
+        auto can = [&](long long t) {
+            long long need = 0;
+            for (int b : batteries) need += min((long long)b, t);
+            return need >= t * n;
+        };
+        while (lo < hi) {
+            long long mid = (lo + hi + 1) / 2;
+            if (can(mid)) lo = mid;
+            else hi = mid - 1;
+        }
+        return lo;
+    }
+};
+
+===== 2143_choose_numbers_from_two_arrays_in_range =====
+// LeetCode 2143 - Choose Numbers From Two Arrays in Range
+// https://leetcode.com/problems/choose-numbers-from-two-arrays-in-range/
+
+class Solution {
+public:
+    int countSubranges(vector<int>& nums1, vector<int>& nums2) {
+        const int MOD = 1000000007;
+        int n = nums1.size(), ans = 0;
+        unordered_map<int, int> dp;
+        for (int i = 0; i < n; i++) {
+            unordered_map<int, int> ndp;
+            ndp[nums1[i]] = (ndp[nums1[i]] + 1) % MOD;
+            ndp[-nums2[i]] = (ndp[-nums2[i]] + 1) % MOD;
+            for (auto& [diff, cnt] : dp) {
+                ndp[diff + nums1[i]] = (ndp[diff + nums1[i]] + cnt) % MOD;
+                ndp[diff - nums2[i]] = (ndp[diff - nums2[i]] + cnt) % MOD;
+            }
+            dp.swap(ndp);
+            ans = (ans + dp[0]) % MOD;
+        }
+        return ans;
+    }
+};
+
+===== 2144_minimum_cost_of_buying_candies_with_discount =====
+// LeetCode 2144 - Minimum Cost of Buying Candies With Discount
+// https://leetcode.com/problems/minimum-cost-of-buying-candies-with-discount/
+
+class Solution {
+public:
+    int minimumCost(vector<int>& cost) {
+        sort(cost.begin(), cost.end(), greater<int>());
+        int ans = 0;
+        for (int i = 0; i < (int)cost.size(); i++)
+            if (i % 3 != 2) ans += cost[i];
+        return ans;
+    }
+};
+
+===== 2145_count_the_hidden_sequences =====
+// LeetCode 2145 - Count the Hidden Sequences
+// https://leetcode.com/problems/count-the-hidden-sequences/
+
+class Solution {
+public:
+    int numberOfArrays(vector<int>& differences, int lower, int upper) {
+        long long cur = 0, mn = 0, mx = 0;
+        for (int d : differences) {
+            cur += d;
+            mn = min(mn, cur);
+            mx = max(mx, cur);
+        }
+        long long res = (long long)(upper - lower) - (mx - mn) + 1;
+        return res < 0 ? 0 : (int)res;
+    }
+};
+
+===== 2146_k_highest_ranked_items_within_a_price_range =====
+// LeetCode 2146 - K Highest Ranked Items Within a Price Range
+// https://leetcode.com/problems/k-highest-ranked-items-within-a-price-range/
+
+class Solution {
+public:
+    vector<vector<int>> highestRankedKItems(vector<vector<int>>& grid, vector<int>& pricing, vector<int>& start, int k) {
+        int m = grid.size(), n = grid[0].size();
+        int low = pricing[0], high = pricing[1];
+        vector<vector<char>> vis(m, vector<char>(n));
+        queue<array<int,3>> q;
+        q.push({start[0], start[1], 0});
+        vis[start[0]][start[1]] = 1;
+        vector<array<int,4>> cands;
+        int dirs[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+        while (!q.empty()) {
+            auto [r, c, d] = q.front(); q.pop();
+            if (grid[r][c] >= low && grid[r][c] <= high)
+                cands.push_back({d, grid[r][c], r, c});
+            for (auto& dir : dirs) {
+                int nr = r + dir[0], nc = c + dir[1];
+                if (nr >= 0 && nr < m && nc >= 0 && nc < n && !vis[nr][nc] && grid[nr][nc] != 0) {
+                    vis[nr][nc] = 1;
+                    q.push({nr, nc, d + 1});
+                }
+            }
+        }
+        sort(cands.begin(), cands.end());
+        if (k > (int)cands.size()) k = cands.size();
+        vector<vector<int>> ans(k);
+        for (int i = 0; i < k; i++) ans[i] = {cands[i][2], cands[i][3]};
+        return ans;
+    }
+};
+
+===== 2147_number_of_ways_to_divide_a_long_corridor =====
+// LeetCode 2147 - Number of Ways to Divide a Long Corridor
+// https://leetcode.com/problems/number-of-ways-to-divide-a-long-corridor/
+
+class Solution {
+public:
+    int numberOfWays(string corridor) {
+        const int MOD = 1000000007;
+        vector<int> seats;
+        for (int i = 0; i < (int)corridor.size(); i++)
+            if (corridor[i] == 'S') seats.push_back(i);
+        if (seats.empty() || seats.size() % 2) return 0;
+        long long ans = 1;
+        for (int i = 2; i < (int)seats.size(); i += 2)
+            ans = ans * (seats[i] - seats[i - 1]) % MOD;
+        return (int)ans;
+    }
+};
+
+===== 2148_count_elements_with_strictly_smaller_and_greater_elements =====
+// LeetCode 2148 - Count Elements With Strictly Smaller and Greater Elements
+// https://leetcode.com/problems/count-elements-with-strictly-smaller-and-greater-elements/
+
+class Solution {
+public:
+    int countElements(vector<int>& nums) {
+        int mn = *min_element(nums.begin(), nums.end());
+        int mx = *max_element(nums.begin(), nums.end());
+        int ans = 0;
+        for (int x : nums) if (x > mn && x < mx) ans++;
+        return ans;
+    }
+};
+
+===== 2149_rearrange_array_elements_by_sign =====
+// LeetCode 2149 - Rearrange Array Elements by Sign
+// https://leetcode.com/problems/rearrange-array-elements-by-sign/
+
+class Solution {
+public:
+    vector<int> rearrangeArray(vector<int>& nums) {
+        vector<int> ans(nums.size());
+        int pos = 0, neg = 1;
+        for (int x : nums) {
+            if (x > 0) { ans[pos] = x; pos += 2; }
+            else { ans[neg] = x; neg += 2; }
+        }
+        return ans;
+    }
+};
+
+===== 2150_find_all_lonely_numbers_in_the_array =====
+// LeetCode 2150 - Find All Lonely Numbers in the Array
+// https://leetcode.com/problems/find-all-lonely-numbers-in-the-array/
+
+class Solution {
+public:
+    vector<int> findLonely(vector<int>& nums) {
+        unordered_map<int, int> freq;
+        for (int x : nums) freq[x]++;
+        vector<int> ans;
+        for (auto& [x, c] : freq)
+            if (c == 1 && !freq.count(x - 1) && !freq.count(x + 1))
+                ans.push_back(x);
+        return ans;
+    }
+};
+
+===== 2151_maximum_good_people_based_on_statements =====
+// LeetCode 2151 - Maximum Good People Based on Statements
+// https://leetcode.com/problems/maximum-good-people-based-on-statements/
+
+class Solution {
+public:
+    int maximumGood(vector<vector<int>>& statements) {
+        int n = statements.size(), ans = 0;
+        auto ok = [&](int mask) {
+            for (int i = 0; i < n; i++) {
+                if ((mask & (1 << i)) == 0) continue;
+                for (int j = 0; j < n; j++) {
+                    int s = statements[i][j];
+                    if (s == 2) continue;
+                    bool goodJ = mask & (1 << j);
+                    if ((s == 1 && !goodJ) || (s == 0 && goodJ)) return false;
+                }
+            }
+            return true;
+        };
+        for (int mask = 0; mask < (1 << n); mask++)
+            if (ok(mask)) ans = max(ans, __builtin_popcount(mask));
+        return ans;
+    }
+};
+
+===== 2152_minimum_number_of_lines_to_cover_points =====
+// LeetCode 2152 - Minimum Number of Lines to Cover Points
+// https://leetcode.com/problems/minimum-number-of-lines-to-cover-points/
+
+class Solution {
+public:
+    int minimumLines(vector<vector<int>>& points) {
+        int n = points.size();
+        if (n <= 2) return 1;
+        auto colinear = [&](vector<int>& a, vector<int>& b, vector<int>& c) {
+            return (b[0] - a[0]) * (c[1] - a[1]) == (c[0] - a[0]) * (b[1] - a[1]);
+        };
+        int inf = n;
+        vector<int> dp(1 << n, inf);
+        dp[0] = 0;
+        for (int mask = 0; mask < (1 << n); mask++) {
+            if (dp[mask] == inf) continue;
+            int i = 0;
+            while (i < n && (mask & (1 << i))) i++;
+            if (i == n) continue;
+            int nm = mask | (1 << i);
+            dp[nm] = min(dp[nm], dp[mask] + 1);
+            for (int j = i + 1; j < n; j++) {
+                if (mask & (1 << j)) continue;
+                nm = mask | (1 << i) | (1 << j);
+                for (int k = 0; k < n; k++)
+                    if ((nm & (1 << k)) == 0 && colinear(points[i], points[j], points[k]))
+                        nm |= 1 << k;
+                dp[nm] = min(dp[nm], dp[mask] + 1);
+            }
+        }
+        return dp[(1 << n) - 1];
+    }
+};
+
+===== 2154_keep_multiplying_found_values_by_two =====
+// LeetCode 2154 - Keep Multiplying Found Values by Two
+// https://leetcode.com/problems/keep-multiplying-found-values-by-two/
+
+class Solution {
+public:
+    int findFinalValue(vector<int>& nums, int original) {
+        unordered_set<int> have(nums.begin(), nums.end());
+        while (have.count(original)) original *= 2;
+        return original;
+    }
+};
+
+===== 2155_all_divisions_with_the_highest_score_of_a_binary_array =====
+// LeetCode 2155 - All Divisions With the Highest Score of a Binary Array
+// https://leetcode.com/problems/all-divisions-with-the-highest-score-of-a-binary-array/
+
+class Solution {
+public:
+    vector<int> maxScoreIndices(vector<int>& nums) {
+        int n = nums.size();
+        int total1 = accumulate(nums.begin(), nums.end(), 0);
+        int best = total1, left0 = 0, right1 = total1;
+        vector<int> ans{0};
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == 0) left0++;
+            else right1--;
+            int score = left0 + right1;
+            if (score > best) { best = score; ans = {i + 1}; }
+            else if (score == best) ans.push_back(i + 1);
+        }
+        return ans;
+    }
+};
+
+===== 2156_find_substring_with_given_hash_value =====
+// LeetCode 2156 - Find Substring With Given Hash Value
+// https://leetcode.com/problems/find-substring-with-given-hash-value/
+
+class Solution {
+public:
+    string subStrHash(string s, int power, int modulo, int k, int hashValue) {
+        int n = s.size();
+        long long pk = 1;
+        for (int i = 0; i < k - 1; i++) pk = pk * power % modulo;
+        long long h = 0;
+        int ans = 0;
+        for (int i = n - 1; i >= n - k; i--)
+            h = (h * power + (s[i] - 'a' + 1)) % modulo;
+        if (h == hashValue) ans = n - k;
+        for (int i = n - k - 1; i >= 0; i--) {
+            h = (h - (s[i + k] - 'a' + 1) * pk % modulo + modulo) % modulo;
+            h = (h * power + (s[i] - 'a' + 1)) % modulo;
+            if (h == hashValue) ans = i;
+        }
+        return s.substr(ans, k);
+    }
+};
+
+===== 2157_groups_of_strings =====
+// LeetCode 2157 - Groups of Strings
+// https://leetcode.com/problems/groups-of-strings/
+
+class Solution {
+public:
+    vector<int> groupStrings(vector<string>& words) {
+        unordered_map<int, int> parent, size, freq;
+        function<int(int)> find = [&](int x) {
+            if (parent[x] != x) parent[x] = find(parent[x]);
+            return parent[x];
+        };
+        auto unite = [&](int a, int b) {
+            int ra = find(a), rb = find(b);
+            if (ra == rb) return;
+            if (size[ra] < size[rb]) swap(ra, rb);
+            parent[rb] = ra;
+            size[ra] += size[rb];
+        };
+        auto maskOf = [](const string& w) {
+            int m = 0;
+            for (char c : w) m |= 1 << (c - 'a');
+            return m;
+        };
+        for (auto& w : words) freq[maskOf(w)]++;
+        for (auto& [m, c] : freq) { parent[m] = m; size[m] = c; }
+        for (auto& [m, _] : freq) {
+            for (int b = 0; b < 26; b++) {
+                if (m & (1 << b)) {
+                    int nm = m ^ (1 << b);
+                    if (freq.count(nm)) unite(m, nm);
+                    for (int a = 0; a < 26; a++) {
+                        if ((nm & (1 << a)) == 0) {
+                            int rm = nm | (1 << a);
+                            if (freq.count(rm)) unite(m, rm);
+                        }
+                    }
+                } else {
+                    int nm = m | (1 << b);
+                    if (freq.count(nm)) unite(m, nm);
+                }
+            }
+        }
+        int groups = 0, maxSize = 0;
+        unordered_set<int> seen;
+        for (auto& [m, _] : freq) {
+            int r = find(m);
+            if (!seen.count(r)) {
+                seen.insert(r);
+                groups++;
+                maxSize = max(maxSize, size[r]);
+            }
+        }
+        return {groups, maxSize};
+    }
+};
+
+===== 2158_amount_of_new_area_painted_each_day =====
+// LeetCode 2158 - Amount of New Area Painted Each Day
+// https://leetcode.com/problems/amount-of-new-area-painted-each-day/
+
+class Solution {
+public:
+    vector<int> amountPainted(vector<vector<int>>& paint) {
+        vector<int> ans(paint.size()), line(50001);
+        for (int i = 0; i < (int)paint.size(); i++) {
+            int start = paint[i][0], end = paint[i][1], j = start;
+            while (j < end) {
+                if (line[j] == 0) {
+                    ans[i]++;
+                    line[j] = end;
+                    j++;
+                } else {
+                    int next = line[j];
+                    line[j] = max(end, next);
+                    j = next;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2160_minimum_sum_of_four_digit_number_after_splitting_digits =====
+// LeetCode 2160 - Minimum Sum of Four Digit Number After Splitting Digits
+// https://leetcode.com/problems/minimum-sum-of-four-digit-number-after-splitting-digits/
+
+class Solution {
+public:
+    int minimumSum(int num) {
+        vector<int> d{num / 1000, (num / 100) % 10, (num / 10) % 10, num % 10};
+        sort(d.begin(), d.end());
+        return 10 * d[0] + d[2] + 10 * d[1] + d[3];
+    }
+};
+
+===== 2161_partition_array_according_to_given_pivot =====
+// LeetCode 2161 - Partition Array According to Given Pivot
+// https://leetcode.com/problems/partition-array-according-to-given-pivot/
+
+class Solution {
+public:
+    vector<int> pivotArray(vector<int>& nums, int pivot) {
+        vector<int> less, eq, greater;
+        for (int x : nums) {
+            if (x < pivot) less.push_back(x);
+            else if (x == pivot) eq.push_back(x);
+            else greater.push_back(x);
+        }
+        less.insert(less.end(), eq.begin(), eq.end());
+        less.insert(less.end(), greater.begin(), greater.end());
+        return less;
+    }
+};
+
+===== 2162_minimum_cost_to_set_cooking_time =====
+// LeetCode 2162 - Minimum Cost to Set Cooking Time
+// https://leetcode.com/problems/minimum-cost-to-set-cooking-time/
+
+class Solution {
+public:
+    int minCostSetTime(int startAt, int moveCost, int pushCost, int targetSeconds) {
+        auto cost = [&](int mins, int secs) {
+            if (mins < 0 || mins > 99 || secs < 0 || secs > 99) return INT_MAX / 2;
+            string s;
+            if (mins > 0) {
+                s = to_string(mins);
+                s += char('0' + secs / 10);
+                s += char('0' + secs % 10);
+            } else s = to_string(secs);
+            char cur = '0' + startAt;
+            int ans = 0;
+            for (char c : s) {
+                if (c != cur) { ans += moveCost; cur = c; }
+                ans += pushCost;
+            }
+            return ans;
+        };
+        int mins = targetSeconds / 60, secs = targetSeconds % 60;
+        int ans = cost(mins, secs);
+        if (mins > 0) ans = min(ans, cost(mins - 1, secs + 60));
+        return ans;
+    }
+};
+
+===== 2163_minimum_difference_in_sums_after_removal_of_elements =====
+// LeetCode 2163 - Minimum Difference in Sums After Removal of Elements
+// https://leetcode.com/problems/minimum-difference-in-sums-after-removal-of-elements/
+
+class Solution {
+public:
+    long long minimumDifference(vector<int>& nums) {
+        int n = nums.size() / 3;
+        vector<long long> left(nums.size()), right(nums.size());
+        priority_queue<int> hmax;
+        long long sum = 0;
+        for (int i = 0; i < n; i++) { hmax.push(nums[i]); sum += nums[i]; }
+        left[n - 1] = sum;
+        for (int i = n; i < 2 * n; i++) {
+            hmax.push(nums[i]);
+            sum += nums[i];
+            sum -= hmax.top(); hmax.pop();
+            left[i] = sum;
+        }
+        priority_queue<int, vector<int>, greater<int>> hmin;
+        sum = 0;
+        for (int i = (int)nums.size() - 1; i >= 2 * n; i--) { hmin.push(nums[i]); sum += nums[i]; }
+        right[2 * n] = sum;
+        for (int i = 2 * n - 1; i >= n; i--) {
+            hmin.push(nums[i]);
+            sum += nums[i];
+            sum -= hmin.top(); hmin.pop();
+            right[i] = sum;
+        }
+        long long ans = left[n - 1] - right[n];
+        for (int i = n; i < 2 * n; i++) ans = min(ans, left[i] - right[i + 1]);
+        return ans;
+    }
+};
+
+===== 2164_sort_even_and_odd_indices_independently =====
+// LeetCode 2164 - Sort Even and Odd Indices Independently
+// https://leetcode.com/problems/sort-even-and-odd-indices-independently/
+
+class Solution {
+public:
+    vector<int> sortEvenOdd(vector<int>& nums) {
+        vector<int> even, odd;
+        for (int i = 0; i < (int)nums.size(); i++) {
+            if (i % 2 == 0) even.push_back(nums[i]);
+            else odd.push_back(nums[i]);
+        }
+        sort(even.begin(), even.end());
+        sort(odd.begin(), odd.end(), greater<int>());
+        int ei = 0, oi = 0;
+        for (int i = 0; i < (int)nums.size(); i++) {
+            if (i % 2 == 0) nums[i] = even[ei++];
+            else nums[i] = odd[oi++];
+        }
+        return nums;
+    }
+};
+
+===== 2165_smallest_value_of_the_rearranged_number =====
+// LeetCode 2165 - Smallest Value of the Rearranged Number
+// https://leetcode.com/problems/smallest-value-of-the-rearranged-number/
+
+class Solution {
+public:
+    long long smallestNumber(long long num) {
+        bool neg = num < 0;
+        if (neg) num = -num;
+        if (num == 0) return 0;
+        string digits;
+        while (num > 0) { digits.push_back('0' + num % 10); num /= 10; }
+        if (neg) {
+            sort(digits.begin(), digits.end(), greater<char>());
+            long long ans = 0;
+            for (char d : digits) ans = ans * 10 + (d - '0');
+            return -ans;
+        }
+        sort(digits.begin(), digits.end());
+        if (digits[0] == '0') {
+            for (int i = 1; i < (int)digits.size(); i++) {
+                if (digits[i] != '0') { swap(digits[0], digits[i]); break; }
+            }
+        }
+        long long ans = 0;
+        for (char d : digits) ans = ans * 10 + (d - '0');
+        return ans;
+    }
+};
+
+===== 2166_design_bitset =====
+// LeetCode 2166 - Design Bitset
+// https://leetcode.com/problems/design-bitset/
+
+class Bitset {
+    vector<char> bits;
+    int ones = 0;
+    bool flipped = false;
+    int size;
+public:
+    Bitset(int size) : bits(size, 0), size(size) {}
+    void fix(int idx) {
+        char target = flipped ? 0 : 1;
+        if (bits[idx] != target) {
+            bits[idx] = target;
+            ones += flipped ? -1 : 1;
+        }
+    }
+    void unfix(int idx) {
+        char target = flipped ? 1 : 0;
+        if (bits[idx] != target) {
+            bits[idx] = target;
+            ones += flipped ? 1 : -1;
+        }
+    }
+    void flip() {
+        flipped = !flipped;
+        ones = size - ones;
+    }
+    bool all() { return ones == size; }
+    bool one() { return ones > 0; }
+    int count() { return ones; }
+    string toString() {
+        string b(size, '0');
+        for (int i = 0; i < size; i++) {
+            char v = bits[i];
+            if (flipped) v ^= 1;
+            b[i] = '0' + v;
+        }
+        return b;
+    }
+};
+
+===== 2167_minimum_time_to_remove_all_cars_containing_illegal_goods =====
+// LeetCode 2167 - Minimum Time to Remove All Cars Containing Illegal Goods
+// https://leetcode.com/problems/minimum-time-to-remove-all-cars-containing-illegal-goods/
+
+class Solution {
+public:
+    int minimumTime(string s) {
+        int n = s.size();
+        vector<int> left(n);
+        if (s[0] == '1') left[0] = 1;
+        for (int i = 1; i < n; i++) {
+            left[i] = left[i - 1];
+            if (s[i] == '1') left[i] = min(i + 1, left[i - 1] + 2);
+        }
+        int ans = left[n - 1], right = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            if (s[i] == '1') right = min(n - i, right + 2);
+            int leftCost = i > 0 ? left[i - 1] : 0;
+            ans = min(ans, leftCost + right);
+        }
+        return ans;
+    }
+};
+
+===== 2168_unique_substrings_with_equal_digit_frequency =====
+// LeetCode 2168 - Unique Substrings With Equal Digit Frequency
+// https://leetcode.com/problems/unique-substrings-with-equal-digit-frequency/
+
+class Solution {
+public:
+    int equalDigitFrequency(string s) {
+        int n = s.size();
+        unordered_set<string> seen;
+        for (int i = 0; i < n; i++) {
+            int freq[10] = {}, maxf = 0, kinds = 0;
+            for (int j = i; j < n; j++) {
+                int d = s[j] - '0';
+                if (freq[d] == 0) kinds++;
+                freq[d]++;
+                maxf = max(maxf, freq[d]);
+                if (maxf * kinds == j - i + 1) seen.insert(s.substr(i, j - i + 1));
+            }
+        }
+        return (int)seen.size();
+    }
+};
+
+===== 2169_count_operations_to_obtain_zero =====
+// LeetCode 2169 - Count Operations to Obtain Zero
+// https://leetcode.com/problems/count-operations-to-obtain-zero/
+
+class Solution {
+public:
+    int countOperations(int num1, int num2) {
+        int ans = 0;
+        while (num1 > 0 && num2 > 0) {
+            if (num1 >= num2) { ans += num1 / num2; num1 %= num2; }
+            else { ans += num2 / num1; num2 %= num1; }
+        }
+        return ans;
+    }
+};
+
+===== 2170_minimum_operations_to_make_the_array_alternating =====
+// LeetCode 2170 - Minimum Operations to Make the Array Alternating
+// https://leetcode.com/problems/minimum-operations-to-make-the-array-alternating/
+
+class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 1) return 0;
+        auto top2 = [&](const vector<int>& idxs) {
+            unordered_map<int, int> freq;
+            for (int i : idxs) freq[nums[i]]++;
+            int a = 0, ac = 0, b = 0, bc = 0;
+            for (auto& [v, c] : freq) {
+                if (c > ac) { b = a; bc = ac; a = v; ac = c; }
+                else if (c > bc) { b = v; bc = c; }
+            }
+            return array<int,4>{a, ac, b, bc};
+        };
+        vector<int> even, odd;
+        for (int i = 0; i < n; i++) (i % 2 == 0 ? even : odd).push_back(i);
+        auto e = top2(even), o = top2(odd);
+        if (e[0] != o[0]) return n - e[1] - o[1];
+        return min(n - e[1] - o[3], n - e[3] - o[1]);
+    }
+};
+
+===== 2171_removing_minimum_number_of_magic_beans =====
+// LeetCode 2171 - Removing Minimum Number of Magic Beans
+// https://leetcode.com/problems/removing-minimum-number-of-magic-beans/
+
+class Solution {
+public:
+    long long minimumRemoval(vector<int>& beans) {
+        sort(beans.begin(), beans.end());
+        int n = beans.size();
+        long long sum = accumulate(beans.begin(), beans.end(), 0LL), ans = sum;
+        for (int i = 0; i < n; i++) {
+            long long remain = 1LL * (n - i) * beans[i];
+            ans = min(ans, sum - remain);
+        }
+        return ans;
+    }
+};
+
+===== 2172_maximum_and_sum_of_array =====
+// LeetCode 2172 - Maximum AND Sum of Array
+// https://leetcode.com/problems/maximum-and-sum-of-array/
+
+class Solution {
+public:
+    int maximumANDSum(vector<int>& nums, int numSlots) {
+        int n = nums.size(), slots = numSlots, maxMask = 1;
+        for (int i = 0; i < slots; i++) maxMask *= 3;
+        vector<int> dp(maxMask);
+        for (int mask = 0; mask < maxMask; mask++) {
+            int cnt = 0, x = mask;
+            while (x) { cnt += x % 3; x /= 3; }
+            if (cnt >= n) continue;
+            int v = nums[cnt], base = 1;
+            for (int s = 1; s <= slots; s++) {
+                int occ = (mask / base) % 3;
+                if (occ < 2) {
+                    int nm = mask + base;
+                    dp[nm] = max(dp[nm], dp[mask] + (v & s));
+                }
+                base *= 3;
+            }
+        }
+        return *max_element(dp.begin(), dp.end());
+    }
+};
+
+===== 2174_remove_all_ones_with_row_and_column_flips_ii =====
+// LeetCode 2174 - Remove All Ones With Row and Column Flips II
+// https://leetcode.com/problems/remove-all-ones-with-row-and-column-flips-ii/
+
+class Solution {
+public:
+    int removeOnes(vector<vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        vector<pair<int,int>> ones;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (grid[i][j] == 1) ones.push_back({i, j});
+        if (ones.empty()) return 0;
+        int ans = m + n;
+        function<void(int,int)> dfs = [&](int idx, int flips) {
+            if (flips >= ans) return;
+            while (idx < (int)ones.size() && grid[ones[idx].first][ones[idx].second] == 0) idx++;
+            if (idx == (int)ones.size()) { ans = flips; return; }
+            int r = ones[idx].first, c = ones[idx].second;
+            vector<pair<int,int>> changed;
+            for (int j = 0; j < n; j++) if (grid[r][j] == 1) { grid[r][j] = 0; changed.push_back({r, j}); }
+            dfs(idx + 1, flips + 1);
+            for (auto& p : changed) grid[p.first][p.second] = 1;
+            changed.clear();
+            for (int i = 0; i < m; i++) if (grid[i][c] == 1) { grid[i][c] = 0; changed.push_back({i, c}); }
+            dfs(idx + 1, flips + 1);
+            for (auto& p : changed) grid[p.first][p.second] = 1;
+        };
+        dfs(0, 0);
+        return ans;
+    }
+};
+
+===== 2176_count_equal_and_divisible_pairs_in_an_array =====
+// LeetCode 2176 - Count Equal and Divisible Pairs in an Array
+// https://leetcode.com/problems/count-equal-and-divisible-pairs-in-an-array/
+
+class Solution {
+public:
+    int countPairs(vector<int>& nums, int k) {
+        int ans = 0;
+        for (int i = 0; i < (int)nums.size(); i++)
+            for (int j = i + 1; j < (int)nums.size(); j++)
+                if (nums[i] == nums[j] && (i * j) % k == 0) ans++;
+        return ans;
+    }
+};
+
+===== 2177_find_three_consecutive_integers_that_sum_to_a_given_number =====
+// LeetCode 2177 - Find Three Consecutive Integers That Sum to a Given Number
+// https://leetcode.com/problems/find-three-consecutive-integers-that-sum-to-a-given-number/
+
+class Solution {
+public:
+    vector<long long> sumOfThree(long long num) {
+        if (num % 3) return {};
+        long long x = num / 3;
+        return {x - 1, x, x + 1};
+    }
+};
+
+===== 2178_maximum_split_of_positive_even_integers =====
+// LeetCode 2178 - Maximum Split of Positive Even Integers
+// https://leetcode.com/problems/maximum-split-of-positive-even-integers/
+
+class Solution {
+public:
+    vector<long long> maximumEvenSplit(long long finalSum) {
+        if (finalSum % 2) return {};
+        vector<long long> ans;
+        for (long long x = 2; x <= finalSum; x += 2) {
+            ans.push_back(x);
+            finalSum -= x;
+        }
+        ans.back() += finalSum;
+        return ans;
+    }
+};
+
+===== 2179_count_good_triplets_in_an_array =====
+// LeetCode 2179 - Count Good Triplets in an Array
+// https://leetcode.com/problems/count-good-triplets-in-an-array/
+
+class Solution {
+    struct Fenwick {
+        vector<int> bit;
+        Fenwick(int n) : bit(n) {}
+        void add(int i, int v) { for (; i < (int)bit.size(); i += i & -i) bit[i] += v; }
+        int sum(int i) { int s = 0; for (; i > 0; i -= i & -i) s += bit[i]; return s; }
+    };
+public:
+    long long goodTriplets(vector<int>& nums1, vector<int>& nums2) {
+        int n = nums1.size();
+        vector<int> pos2(n), mapped(n), left(n), right(n);
+        for (int i = 0; i < n; i++) pos2[nums2[i]] = i;
+        for (int i = 0; i < n; i++) mapped[i] = pos2[nums1[i]];
+        Fenwick fw(n + 2);
+        for (int i = 0; i < n; i++) {
+            left[i] = fw.sum(mapped[i]);
+            fw.add(mapped[i] + 1, 1);
+        }
+        fw = Fenwick(n + 2);
+        for (int i = n - 1; i >= 0; i--) {
+            right[i] = fw.sum(n) - fw.sum(mapped[i] + 1);
+            fw.add(mapped[i] + 1, 1);
+        }
+        long long ans = 0;
+        for (int i = 0; i < n; i++) ans += 1LL * left[i] * right[i];
+        return ans;
+    }
+};
+
+===== 2180_count_integers_with_even_digit_sum =====
+// LeetCode 2180 - Count Integers With Even Digit Sum
+// https://leetcode.com/problems/count-integers-with-even-digit-sum/
+
+class Solution {
+public:
+    int countEven(int num) {
+        int ans = 0;
+        for (int x = 1; x <= num; x++) {
+            int s = 0, y = x;
+            while (y) { s += y % 10; y /= 10; }
+            if (s % 2 == 0) ans++;
+        }
+        return ans;
+    }
+};
+
+===== 2181_merge_nodes_in_between_zeros =====
+// LeetCode 2181 - Merge Nodes in Between Zeros
+// https://leetcode.com/problems/merge-nodes-in-between-zeros/
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode dummy;
+        ListNode* cur = &dummy;
+        int sum = 0;
+        for (ListNode* p = head->next; p; p = p->next) {
+            if (p->val == 0) {
+                cur->next = new ListNode(sum);
+                cur = cur->next;
+                sum = 0;
+            } else sum += p->val;
+        }
+        return dummy.next;
+    }
+};
+
+===== 2182_construct_string_with_repeat_limit =====
+// LeetCode 2182 - Construct String With Repeat Limit
+// https://leetcode.com/problems/construct-string-with-repeat-limit/
+
+class Solution {
+public:
+    string repeatLimitedString(string s, int repeatLimit) {
+        int freq[26] = {};
+        for (char c : s) freq[c - 'a']++;
+        string ans;
+        while (true) {
+            bool placed = false;
+            for (int c = 25; c >= 0; c--) {
+                if (freq[c] == 0) continue;
+                if (!ans.empty() && ans.back() - 'a' == c) {
+                    bool found = false;
+                    for (int d = c - 1; d >= 0; d--) {
+                        if (freq[d] > 0) {
+                            ans.push_back('a' + d);
+                            freq[d]--;
+                            found = placed = true;
+                            break;
+                        }
+                    }
+                    if (!found) return ans;
+                    break;
+                }
+                int use = min(freq[c], repeatLimit);
+                for (int i = 0; i < use; i++) ans.push_back('a' + c);
+                freq[c] -= use;
+                placed = true;
+                break;
+            }
+            if (!placed) break;
+        }
+        return ans;
+    }
+};
+
+===== 2183_count_array_pairs_divisible_by_k =====
+// LeetCode 2183 - Count Array Pairs Divisible by K
+// https://leetcode.com/problems/count-array-pairs-divisible-by-k/
+
+class Solution {
+public:
+    long long countPairs(vector<int>& nums, int k) {
+        auto gcd = [](int a, int b) { while (b) { int t = a % b; a = b; b = t; } return a; };
+        unordered_map<int, int> freq;
+        long long ans = 0;
+        for (int x : nums) {
+            int g1 = gcd(x, k);
+            for (auto& [g2, c] : freq)
+                if (1LL * g1 * g2 % k == 0) ans += c;
+            freq[g1]++;
+        }
+        return ans;
+    }
+};
+
+===== 2184_number_of_ways_to_build_sturdy_brick_wall =====
+// LeetCode 2184 - Number of Ways to Build Sturdy Brick Wall
+// https://leetcode.com/problems/number-of-ways-to-build-sturdy-brick-wall/
+
+class Solution {
+public:
+    int buildWall(int height, int width, vector<int>& bricks) {
+        const int MOD = 1000000007;
+        vector<int> masks;
+        function<void(int,int)> gen = [&](int remain, int mask) {
+            if (remain == 0) { masks.push_back(mask); return; }
+            for (int b : bricks) {
+                if (b <= remain) {
+                    int nm = mask;
+                    if (remain - b > 0) nm |= 1 << (remain - b);
+                    gen(remain - b, nm);
+                }
+            }
+        };
+        gen(width, 0);
+        int m = masks.size();
+        vector<vector<int>> compat(m);
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < m; j++)
+                if ((masks[i] & masks[j]) == 0) compat[i].push_back(j);
+        vector<int> dp(m, 1);
+        for (int h = 1; h < height; h++) {
+            vector<int> ndp(m);
+            for (int i = 0; i < m; i++)
+                for (int j : compat[i]) ndp[j] = (ndp[j] + dp[i]) % MOD;
+            dp.swap(ndp);
+        }
+        int ans = 0;
+        for (int v : dp) ans = (ans + v) % MOD;
+        return ans;
+    }
+};
+
+===== 2185_counting_words_with_a_given_prefix =====
+// LeetCode 2185 - Counting Words With a Given Prefix
+// https://leetcode.com/problems/counting-words-with-a-given-prefix/
+
+class Solution {
+public:
+    int prefixCount(vector<string>& words, string pref) {
+        int ans = 0;
+        for (auto& w : words)
+            if (w.size() >= pref.size() && w.compare(0, pref.size(), pref) == 0) ans++;
+        return ans;
+    }
+};
+
+===== 2186_minimum_number_of_steps_to_make_two_strings_anagram_ii =====
+// LeetCode 2186 - Minimum Number of Steps to Make Two Strings Anagram II
+// https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram-ii/
+
+class Solution {
+public:
+    int minSteps(string s, string t) {
+        int freq[26] = {};
+        for (char c : s) freq[c - 'a']++;
+        for (char c : t) freq[c - 'a']--;
+        int ans = 0;
+        for (int v : freq) ans += abs(v);
+        return ans;
+    }
+};
+
+===== 2187_minimum_time_to_complete_trips =====
+// LeetCode 2187 - Minimum Time to Complete Trips
+// https://leetcode.com/problems/minimum-time-to-complete-trips/
+
+class Solution {
+public:
+    long long minimumTime(vector<int>& time, int totalTrips) {
+        int mn = *min_element(time.begin(), time.end());
+        long long lo = 1, hi = 1LL * mn * totalTrips;
+        auto can = [&](long long mid) {
+            long long trips = 0;
+            for (int t : time) {
+                trips += mid / t;
+                if (trips >= totalTrips) return true;
+            }
+            return false;
+        };
+        while (lo < hi) {
+            long long mid = (lo + hi) / 2;
+            if (can(mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+};
+
+===== 2188_minimum_time_to_finish_the_race =====
+// LeetCode 2188 - Minimum Time to Finish the Race
+// https://leetcode.com/problems/minimum-time-to-finish-the-race/
+
+class Solution {
+public:
+    int minimumFinishTime(vector<vector<int>>& tires, int changeTime, int numLaps) {
+        vector<int> minTime(20, 1 << 30);
+        for (auto& tire : tires) {
+            int f = tire[0], r = tire[1];
+            long long t = f, lap = f;
+            for (int x = 1; x < 20 && t < minTime[x]; x++) {
+                minTime[x] = (int)t;
+                lap *= r;
+                if (lap > changeTime + f) break;
+                t += lap;
+            }
+        }
+        vector<int> dp(numLaps + 1, 1 << 30);
+        dp[0] = -changeTime;
+        for (int i = 1; i <= numLaps; i++)
+            for (int j = 1; j <= i && j < 20; j++)
+                dp[i] = min(dp[i], dp[i - j] + changeTime + minTime[j]);
+        return dp[numLaps];
+    }
+};
+
+===== 2189_number_of_ways_to_build_house_of_cards =====
+// LeetCode 2189 - Number of Ways to Build House of Cards
+// https://leetcode.com/problems/number-of-ways-to-build-house-of-cards/
+
+class Solution {
+public:
+    int houseOfCards(int n) {
+        vector<int> dp(n + 1);
+        dp[0] = 1;
+        for (int k = 1; 3 * k - 1 <= n; k++) {
+            int cost = 3 * k - 1;
+            for (int j = n; j >= cost; j--) dp[j] += dp[j - cost];
+        }
+        return dp[n];
+    }
+};
+
+===== 2190_most_frequent_number_following_key_in_an_array =====
+// LeetCode 2190 - Most Frequent Number Following Key In an Array
+// https://leetcode.com/problems/most-frequent-number-following-key-in-an-array/
+
+class Solution {
+public:
+    int mostFrequent(vector<int>& nums, int key) {
+        unordered_map<int, int> freq;
+        int best = 0, ans = 0;
+        for (int i = 0; i + 1 < (int)nums.size(); i++) {
+            if (nums[i] == key) {
+                freq[nums[i + 1]]++;
+                if (freq[nums[i + 1]] > best) {
+                    best = freq[nums[i + 1]];
+                    ans = nums[i + 1];
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+===== 2191_sort_the_jumbled_numbers =====
+// LeetCode 2191 - Sort the Jumbled Numbers
+// https://leetcode.com/problems/sort-the-jumbled-numbers/
+
+class Solution {
+public:
+    vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
+        auto mapVal = [&](int x) {
+            if (x == 0) return mapping[0];
+            vector<int> digits;
+            while (x > 0) { digits.push_back(x % 10); x /= 10; }
+            int res = 0;
+            for (int i = (int)digits.size() - 1; i >= 0; i--)
+                res = res * 10 + mapping[digits[i]];
+            return res;
+        };
+        vector<array<int,3>> arr(nums.size());
+        for (int i = 0; i < (int)nums.size(); i++)
+            arr[i] = {mapVal(nums[i]), i, nums[i]};
+        sort(arr.begin(), arr.end());
+        vector<int> ans(nums.size());
+        for (int i = 0; i < (int)arr.size(); i++) ans[i] = arr[i][2];
+        return ans;
+    }
+};
+
+===== 2192_all_ancestors_of_a_node_in_a_directed_acyclic_graph =====
+// LeetCode 2192 - All Ancestors of a Node in a Directed Acyclic Graph
+// https://leetcode.com/problems/all-ancestors-of-a-node-in-a-directed-acyclic-graph/
+
+class Solution {
+public:
+    vector<vector<int>> getAncestors(int n, vector<vector<int>>& edges) {
+        vector<vector<int>> g(n);
+        vector<int> indeg(n);
+        for (auto& e : edges) { g[e[0]].push_back(e[1]); indeg[e[1]]++; }
+        vector<set<int>> anc(n);
+        queue<int> q;
+        for (int i = 0; i < n; i++) if (indeg[i] == 0) q.push(i);
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            for (int v : g[u]) {
+                anc[v].insert(u);
+                anc[v].insert(anc[u].begin(), anc[u].end());
+                if (--indeg[v] == 0) q.push(v);
+            }
+        }
+        vector<vector<int>> ans(n);
+        for (int i = 0; i < n; i++) ans[i].assign(anc[i].begin(), anc[i].end());
+        return ans;
+    }
+};
+
+===== 2193_minimum_number_of_moves_to_make_palindrome =====
+// LeetCode 2193 - Minimum Number of Moves to Make Palindrome
+// https://leetcode.com/problems/minimum-number-of-moves-to-make-palindrome/
+
+class Solution {
+public:
+    int minMovesToMakePalindrome(string s) {
+        string b = s;
+        int ans = 0;
+        while (b.size() > 1) {
+            int j = (int)b.size() - 1;
+            while (j > 0 && b[j] != b[0]) j--;
+            if (j == 0) {
+                ans += (int)b.size() / 2;
+                b.erase(b.begin());
+                continue;
+            }
+            ans += (int)b.size() - 1 - j;
+            b.erase(b.begin() + j);
+            b.erase(b.begin());
+            b.pop_back();
+        }
+        return ans;
+    }
+};
+
+===== 2194_cells_in_a_range_on_an_excel_sheet =====
+// LeetCode 2194 - Cells in a Range on an Excel Sheet
+// https://leetcode.com/problems/cells-in-a-range-on-an-excel-sheet/
+
+class Solution {
+public:
+    vector<string> cellsInRange(string s) {
+        vector<string> ans;
+        for (char c = s[0]; c <= s[3]; c++)
+            for (char r = s[1]; r <= s[4]; r++)
+                ans.push_back(string{c, r});
+        return ans;
+    }
+};

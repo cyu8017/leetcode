@@ -1,7 +1,11 @@
-﻿// LeetCode 2669 - Count Artist Occurrences On Spotify Ranking List
-// https://leetcode.com/problems/count-artist-occurrences-on-spotify-ranking-list/
+// LeetCode 2669 - Count Artist Occurrences On Spotify Ranking List
+// https:// leetcode.com/problems/count-artist-occurrences-on-spotify-ranking-list/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT
+    artist,
+    COUNT(1) AS occurrences
+FROM Spotify
+GROUP BY artist
+ORDER BY occurrences DESC, artist
+"#;

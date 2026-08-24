@@ -1,7 +1,9 @@
-﻿// LeetCode 1587 - Bank Account Summary II
+// LeetCode 1587 - Bank Account Summary Ii
 // https://leetcode.com/problems/bank-account-summary-ii/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT u.name, SUM(t.amount) AS balance
+FROM Users u JOIN Transactions t ON t.account = u.account
+GROUP BY u.account, u.name
+HAVING SUM(t.amount) > 10000\n
+"#;

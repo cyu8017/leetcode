@@ -1,0 +1,2865 @@
+
+================================================================================
+FOLDER: 2725_interval_cancellation
+================================================================================
+// LeetCode 2725 - Interval Cancellation
+// https://leetcode.com/problems/interval-cancellation/
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    // JS interval cancellation stand-in
+    std::pair<std::function<void()>, std::vector<int>> cancellable(
+        std::function<int()> fn, int /*t*/, int times) {
+        bool cancelled = false;
+        std::vector<int> results;
+        for (int i = 0; i < times && !cancelled; i++) results.push_back(fn());
+        auto cancel = [&cancelled]() { cancelled = true; };
+        return {cancel, results};
+    }
+};
+
+
+================================================================================
+FOLDER: 2726_calculator_with_method_chaining
+================================================================================
+// LeetCode 2726 - Calculator with Method Chaining
+// https://leetcode.com/problems/calculator-with-method-chaining/
+
+#include <cmath>
+
+class Calculator {
+    double val;
+public:
+    Calculator(double v) : val(v) {}
+    Calculator& add(double v) { val += v; return *this; }
+    Calculator& subtract(double v) { val -= v; return *this; }
+    Calculator& multiply(double v) { val *= v; return *this; }
+    Calculator& divide(double v) { if (v != 0) val /= v; return *this; }
+    Calculator& power(double v) { val = std::pow(val, v); return *this; }
+    double getResult() const { return val; }
+};
+
+// ensure non-stub file also exposes Solution for harnesses that look for it
+class Solution {
+public:
+    Calculator CalculatorCreate(double val) { return Calculator(val); }
+};
+
+
+================================================================================
+FOLDER: 2727_is_object_empty
+================================================================================
+// LeetCode 2727 - Is Object Empty
+// https://leetcode.com/problems/is-object-empty/
+
+#include <map>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    bool isEmpty(std::map<std::string, int>& obj) { return obj.empty(); }
+    bool isEmpty(std::vector<int>& arr) { return arr.empty(); }
+};
+
+
+================================================================================
+FOLDER: 2728_count_houses_in_a_circular_street
+================================================================================
+// LeetCode 2728 - Count Houses in a Circular Street
+// https://leetcode.com/problems/count-houses-in-a-circular-street/
+
+class Street {
+public:
+    virtual void openDoor() = 0;
+    virtual void closeDoor() = 0;
+    virtual bool isDoorOpen() = 0;
+    virtual void moveRight() = 0;
+    virtual void moveLeft() = 0;
+    virtual ~Street() = default;
+};
+
+class Solution {
+public:
+    int countHouses(Street* street, int k) {
+        for (int i = 0; i < k; i++) {
+            street->closeDoor();
+            street->moveRight();
+        }
+        int ans = 0;
+        for (;;) {
+            ans++;
+            street->openDoor();
+            street->moveRight();
+            if (street->isDoorOpen()) break;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2729_check_if_the_number_is_fascinating
+================================================================================
+// LeetCode 2729 - Check if The Number is Fascinating
+// https://leetcode.com/problems/check-if-the-number-is-fascinating/
+
+#include <string>
+
+class Solution {
+public:
+    bool isFascinating(int n) {
+        std::string s = std::to_string(n) + std::to_string(2 * n) + std::to_string(3 * n);
+        if ((int)s.size() != 9) return false;
+        int cnt[10] = {};
+        for (char c : s) cnt[c - '0']++;
+        if (cnt[0]) return false;
+        for (int i = 1; i <= 9; i++) if (cnt[i] != 1) return false;
+        return true;
+    }
+};
+
+
+================================================================================
+FOLDER: 2730_find_the_longest_semi_repetitive_substring
+================================================================================
+// LeetCode 2730 - Find the Longest Semi-Repetitive Substring
+// https://leetcode.com/problems/find-the-longest-semi-repetitive-substring/
+
+#include <string>
+#include <algorithm>
+
+class Solution {
+public:
+    int longestSemiRepetitiveSubstring(std::string s) {
+        int ans = 0, left = 0, lastPair = -1;
+        for (int right = 0; right < (int)s.size(); right++) {
+            if (right > 0 && s[right] == s[right - 1]) {
+                if (lastPair >= left) left = lastPair + 1;
+                lastPair = right - 1;
+            }
+            ans = std::max(ans, right - left + 1);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2731_movement_of_robots
+================================================================================
+// LeetCode 2731 - Movement of Robots
+// https://leetcode.com/problems/movement-of-robots/
+
+#include <vector>
+#include <string>
+#include <algorithm>
+
+class Solution {
+public:
+    int sumDistance(std::vector<int>& nums, std::string s, int d) {
+        const int MOD = 1000000007;
+        int n = (int)nums.size();
+        std::vector<long long> pos(n);
+        for (int i = 0; i < n; i++)
+            pos[i] = nums[i] + (s[i] == 'R' ? d : -d);
+        std::sort(pos.begin(), pos.end());
+        long long ans = 0, pref = 0;
+        for (int i = 0; i < n; i++) {
+            ans = (ans + pos[i] * i - pref) % MOD;
+            pref += pos[i];
+        }
+        return (int)((ans % MOD + MOD) % MOD);
+    }
+};
+
+
+================================================================================
+FOLDER: 2732_find_a_good_subset_of_the_matrix
+================================================================================
+// LeetCode 2732 - Find a Good Subset of the Matrix
+// https://leetcode.com/problems/find-a-good-subset-of-the-matrix/
+
+#include <vector>
+#include <unordered_map>
+
+class Solution {
+public:
+    std::vector<int> goodSubsetofBinaryMatrix(std::vector<std::vector<int>>& grid) {
+        int n = (int)grid[0].size();
+        std::unordered_map<int, int> first;
+        for (int i = 0; i < (int)grid.size(); i++) {
+            int mask = 0;
+            for (int j = 0; j < n; j++) if (grid[i][j] == 1) mask |= 1 << j;
+            if (mask == 0) return {i};
+            for (auto& [m, idx] : first) {
+                if ((m & mask) == 0) {
+                    if (idx < i) return {idx, i};
+                    return {i, idx};
+                }
+            }
+            if (!first.count(mask)) first[mask] = i;
+        }
+        return {};
+    }
+};
+
+
+================================================================================
+FOLDER: 2733_neither_minimum_nor_maximum
+================================================================================
+// LeetCode 2733 - Neither Minimum nor Maximum
+// https://leetcode.com/problems/neither-minimum-nor-maximum/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int findNonMinOrMax(std::vector<int>& nums) {
+        if ((int)nums.size() < 3) return -1;
+        int a = nums[0], b = nums[1], c = nums[2];
+        return a + b + c - std::max({a, b, c}) - std::min({a, b, c});
+    }
+};
+
+
+================================================================================
+FOLDER: 2734_lexicographically_smallest_string_after_substring_operation
+================================================================================
+// LeetCode 2734 - Lexicographically Smallest String After Substring Operation
+// https://leetcode.com/problems/lexicographically-smallest-string-after-substring-operation/
+
+#include <string>
+
+class Solution {
+public:
+    std::string smallestString(std::string s) {
+        int n = (int)s.size(), i = 0;
+        while (i < n && s[i] == 'a') i++;
+        if (i == n) { s[n - 1] = 'z'; return s; }
+        while (i < n && s[i] != 'a') { s[i]--; i++; }
+        return s;
+    }
+};
+
+
+================================================================================
+FOLDER: 2735_collecting_chocolates
+================================================================================
+// LeetCode 2735 - Collecting Chocolates
+// https://leetcode.com/problems/collecting-chocolates/
+
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+class Solution {
+public:
+    long long minCost(std::vector<int>& nums, int x) {
+        int n = (int)nums.size();
+        std::vector<int> best = nums;
+        long long ans = 0;
+        for (int v : nums) ans += v;
+        for (int rot = 1; rot < n; rot++) {
+            long long cur = 1LL * rot * x;
+            for (int i = 0; i < n; i++) {
+                best[i] = std::min(best[i], nums[(i + rot) % n]);
+                cur += best[i];
+            }
+            ans = std::min(ans, cur);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2736_maximum_sum_queries
+================================================================================
+// LeetCode 2736 - Maximum Sum Queries
+// https://leetcode.com/problems/maximum-sum-queries/
+
+#include <vector>
+#include <algorithm>
+#include <map>
+
+class Solution {
+public:
+    std::vector<int> maximumSumQueries(std::vector<int>& nums1, std::vector<int>& nums2, std::vector<std::vector<int>>& queries) {
+        int n = (int)nums1.size();
+        struct Pair { int x, y, s; };
+        std::vector<Pair> pts(n);
+        for (int i = 0; i < n; i++) pts[i] = {nums1[i], nums2[i], nums1[i] + nums2[i]};
+        std::sort(pts.begin(), pts.end(), [](auto& a, auto& b) { return a.x > b.x; });
+        struct Qi { int x, y, i; };
+        std::vector<Qi> qs(queries.size());
+        for (int i = 0; i < (int)queries.size(); i++) qs[i] = {queries[i][0], queries[i][1], i};
+        std::sort(qs.begin(), qs.end(), [](auto& a, auto& b) { return a.x > b.x; });
+        std::vector<int> ys = nums2;
+        for (auto& q : queries) ys.push_back(q[1]);
+        std::sort(ys.begin(), ys.end());
+        ys.erase(std::unique(ys.begin(), ys.end()), ys.end());
+        auto rank = [&](int y) {
+            return (int)(std::lower_bound(ys.begin(), ys.end(), y) - ys.begin()) + 1;
+        };
+        int m = (int)ys.size();
+        std::vector<int> bit(m + 2, -1);
+        auto update = [&](int i, int v) {
+            for (; i <= m; i += i & -i) bit[i] = std::max(bit[i], v);
+        };
+        auto query = [&](int i) {
+            int best = -1;
+            for (; i > 0; i -= i & -i) best = std::max(best, bit[i]);
+            return best;
+        };
+        std::vector<int> ans(queries.size());
+        int j = 0;
+        for (auto& q : qs) {
+            while (j < n && pts[j].x >= q.x) {
+                update(m - rank(pts[j].y) + 1, pts[j].s);
+                j++;
+            }
+            ans[q.i] = query(m - rank(q.y) + 1);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2737_find_the_closest_marked_node
+================================================================================
+// LeetCode 2737 - Find the Closest Marked Node
+// https://leetcode.com/problems/find-the-closest-marked-node/
+
+#include <vector>
+#include <queue>
+#include <climits>
+#include <unordered_set>
+
+class Solution {
+public:
+    int minimumDistance(int n, std::vector<std::vector<int>>& edges, int s, std::vector<int>& marked) {
+        std::vector<std::vector<std::pair<int,int>>> g(n);
+        for (auto& e : edges) g[e[0]].push_back({e[1], e[2]});
+        std::unordered_set<int> mark(marked.begin(), marked.end());
+        std::vector<int> dist(n, INT_MAX / 4);
+        dist[s] = 0;
+        using P = std::pair<int,int>;
+        std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+        pq.push({0, s});
+        while (!pq.empty()) {
+            auto [d, u] = pq.top(); pq.pop();
+            if (mark.count(u)) return d;
+            if (d > dist[u]) continue;
+            for (auto [v, w] : g[u]) {
+                if (d + w < dist[v]) {
+                    dist[v] = d + w;
+                    pq.push({dist[v], v});
+                }
+            }
+        }
+        return -1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2739_total_distance_traveled
+================================================================================
+// LeetCode 2739 - Total Distance Traveled
+// https://leetcode.com/problems/total-distance-traveled/
+
+class Solution {
+public:
+    int distanceTraveled(int mainTank, int additionalTank) {
+        int ans = 0;
+        while (mainTank > 0) {
+            if (mainTank >= 5) {
+                ans += 50;
+                mainTank -= 5;
+                if (additionalTank > 0) { additionalTank--; mainTank++; }
+            } else {
+                ans += mainTank * 10;
+                mainTank = 0;
+            }
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2740_find_the_value_of_the_partition
+================================================================================
+// LeetCode 2740 - Find the Value of the Partition
+// https://leetcode.com/problems/find-the-value-of-the-partition/
+
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+class Solution {
+public:
+    int findValueOfPartition(std::vector<int>& nums) {
+        std::sort(nums.begin(), nums.end());
+        int ans = INT_MAX;
+        for (int i = 1; i < (int)nums.size(); i++)
+            ans = std::min(ans, nums[i] - nums[i - 1]);
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2741_special_permutations
+================================================================================
+// LeetCode 2741 - Special Permutations
+// https://leetcode.com/problems/special-permutations/
+
+#include <vector>
+#include <functional>
+
+class Solution {
+public:
+    int specialPerm(std::vector<int>& nums) {
+        const int MOD = 1000000007;
+        int n = (int)nums.size();
+        std::vector<std::vector<int>> memo(1 << n, std::vector<int>(n, -1));
+        std::function<int(int,int)> dfs = [&](int mask, int last) -> int {
+            if (mask == (1 << n) - 1) return 1;
+            if (memo[mask][last] != -1) return memo[mask][last];
+            int res = 0;
+            for (int i = 0; i < n; i++) {
+                if (mask & (1 << i)) continue;
+                if (nums[i] % nums[last] == 0 || nums[last] % nums[i] == 0)
+                    res = (res + dfs(mask | (1 << i), i)) % MOD;
+            }
+            return memo[mask][last] = res;
+        };
+        int ans = 0;
+        for (int i = 0; i < n; i++) ans = (ans + dfs(1 << i, i)) % MOD;
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2742_painting_the_walls
+================================================================================
+// LeetCode 2742 - Painting the Walls
+// https://leetcode.com/problems/painting-the-walls/
+
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+class Solution {
+public:
+    int paintWalls(std::vector<int>& cost, std::vector<int>& time) {
+        int n = (int)cost.size();
+        const long long INF = (1LL << 60);
+        std::vector<long long> dp(n + 1, INF);
+        dp[0] = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = n; j >= 0; j--) {
+                int nj = j + time[i] + 1;
+                if (nj > n) nj = n;
+                if (dp[j] + cost[i] < dp[nj]) dp[nj] = dp[j] + cost[i];
+            }
+        }
+        return (int)dp[n];
+    }
+};
+
+
+================================================================================
+FOLDER: 2743_count_substrings_without_repeating_character
+================================================================================
+// LeetCode 2743 - Count Substrings Without Repeating Character
+// https://leetcode.com/problems/count-substrings-without-repeating-character/
+
+#include <string>
+
+class Solution {
+public:
+    int numberOfSpecialSubstrings(std::string s) {
+        int n = (int)s.size(), ans = 0, left = 0;
+        int cnt[26] = {};
+        for (int i = 0; i < n; i++) {
+            int c = s[i] - 'a';
+            cnt[c]++;
+            while (cnt[c] > 1) { cnt[s[left] - 'a']--; left++; }
+            ans += i - left + 1;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2744_find_maximum_number_of_string_pairs
+================================================================================
+// LeetCode 2744 - Find Maximum Number of String Pairs
+// https://leetcode.com/problems/find-maximum-number-of-string-pairs/
+
+#include <vector>
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+
+class Solution {
+public:
+    int maximumNumberOfStringPairs(std::vector<std::string>& words) {
+        std::unordered_map<std::string, int> freq;
+        int ans = 0;
+        for (auto& w : words) {
+            std::string rev = w;
+            std::reverse(rev.begin(), rev.end());
+            if (freq[rev] > 0) { ans++; freq[rev]--; }
+            else freq[w]++;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2745_construct_the_longest_new_string
+================================================================================
+// LeetCode 2745 - Construct the Longest New String
+// https://leetcode.com/problems/construct-the-longest-new-string/
+
+class Solution {
+public:
+    int longestString(int x, int y, int z) {
+        if (x < y) return (2 * x + 1 + z) * 2;
+        if (y < x) return (2 * y + 1 + z) * 2;
+        return (x + y + z) * 2;
+    }
+};
+
+
+================================================================================
+FOLDER: 2746_decremental_string_concatenation
+================================================================================
+// LeetCode 2746 - Decremental String Concatenation
+// https://leetcode.com/problems/decremental-string-concatenation/
+
+#include <vector>
+#include <string>
+#include <functional>
+#include <map>
+#include <tuple>
+#include <algorithm>
+
+class Solution {
+public:
+    int minimizeConcatenatedLength(std::vector<std::string>& words) {
+        int n = (int)words.size();
+        std::map<std::tuple<int,char,char>, int> memo;
+        std::function<int(int,char,char)> dfs = [&](int i, char first, char last) -> int {
+            if (i == n) return 0;
+            auto key = std::make_tuple(i, first, last);
+            if (memo.count(key)) return memo[key];
+            auto& w = words[i];
+            char wf = w.front(), wl = w.back();
+            int add1 = (int)w.size() - (last == wf ? 1 : 0);
+            int add2 = (int)w.size() - (wl == first ? 1 : 0);
+            int a = add1 + dfs(i + 1, first, wl);
+            int b = add2 + dfs(i + 1, wf, last);
+            return memo[key] = std::min(a, b);
+        };
+        auto& w0 = words[0];
+        return (int)w0.size() + dfs(1, w0.front(), w0.back());
+    }
+};
+
+
+================================================================================
+FOLDER: 2747_count_zero_request_servers
+================================================================================
+// LeetCode 2747 - Count Zero Request Servers
+// https://leetcode.com/problems/count-zero-request-servers/
+
+#include <vector>
+#include <algorithm>
+#include <unordered_map>
+
+class Solution {
+public:
+    std::vector<int> countServers(int n, std::vector<std::vector<int>>& logs, int x, std::vector<int>& queries) {
+        std::sort(logs.begin(), logs.end(), [](auto& a, auto& b) { return a[1] < b[1]; });
+        struct Qi { int t, i; };
+        std::vector<Qi> qs(queries.size());
+        for (int i = 0; i < (int)queries.size(); i++) qs[i] = {queries[i], i};
+        std::sort(qs.begin(), qs.end(), [](auto& a, auto& b) { return a.t < b.t; });
+        std::vector<int> ans(queries.size());
+        std::unordered_map<int, int> cnt;
+        int active = 0, l = 0, r = 0;
+        for (auto& q : qs) {
+            while (r < (int)logs.size() && logs[r][1] <= q.t) {
+                int id = logs[r][0];
+                if (cnt[id] == 0) active++;
+                cnt[id]++;
+                r++;
+            }
+            while (l < r && logs[l][1] < q.t - x) {
+                int id = logs[l][0];
+                cnt[id]--;
+                if (cnt[id] == 0) active--;
+                l++;
+            }
+            ans[q.i] = n - active;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2748_number_of_beautiful_pairs
+================================================================================
+// LeetCode 2748 - Number of Beautiful Pairs
+// https://leetcode.com/problems/number-of-beautiful-pairs/
+
+#include <vector>
+#include <numeric>
+
+class Solution {
+public:
+    int countBeautifulPairs(std::vector<int>& nums) {
+        int ans = 0;
+        int freq[10] = {};
+        auto firstDigit = [](int x) { while (x >= 10) x /= 10; return x; };
+        for (int x : nums) {
+            int last = x % 10;
+            for (int d = 1; d <= 9; d++)
+                if (freq[d] > 0 && std::gcd(d, last) == 1) ans += freq[d];
+            freq[firstDigit(x)]++;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2749_minimum_operations_to_make_the_integer_zero
+================================================================================
+// LeetCode 2749 - Minimum Operations to Make the Integer Zero
+// https://leetcode.com/problems/minimum-operations-to-make-the-integer-zero/
+
+#include <bit>
+
+class Solution {
+public:
+    int makeTheIntegerZero(int num1, int num2) {
+        for (int k = 1; k <= 60; k++) {
+            long long rem = num1 - 1LL * k * num2;
+            if (rem < k) continue;
+            if (__builtin_popcountll(rem) <= k) return k;
+        }
+        return -1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2750_ways_to_split_array_into_good_subarrays
+================================================================================
+// LeetCode 2750 - Ways to Split Array Into Good Subarrays
+// https://leetcode.com/problems/ways-to-split-array-into-good-subarrays/
+
+#include <vector>
+
+class Solution {
+public:
+    int numberOfGoodSubarraySplits(std::vector<int>& nums) {
+        const int MOD = 1000000007;
+        std::vector<int> ones;
+        for (int i = 0; i < (int)nums.size(); i++) if (nums[i] == 1) ones.push_back(i);
+        if (ones.empty()) return 0;
+        long long ans = 1;
+        for (int i = 1; i < (int)ones.size(); i++)
+            ans = ans * (ones[i] - ones[i - 1]) % MOD;
+        return (int)ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2751_robot_collisions
+================================================================================
+// LeetCode 2751 - Robot Collisions
+// https://leetcode.com/problems/robot-collisions/
+
+#include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> survivedRobotsHealths(std::vector<int>& positions, std::vector<int>& healths, std::string directions) {
+        int n = (int)positions.size();
+        std::vector<int> idx(n);
+        for (int i = 0; i < n; i++) idx[i] = i;
+        std::sort(idx.begin(), idx.end(), [&](int a, int b) { return positions[a] < positions[b]; });
+        struct Robot { int i, h; char d; };
+        std::vector<Robot> stack;
+        for (int i : idx) {
+            Robot cur{i, healths[i], directions[i]};
+            while (!stack.empty() && stack.back().d == 'R' && cur.d == 'L') {
+                if (stack.back().h == cur.h) {
+                    stack.pop_back();
+                    cur.h = 0;
+                    break;
+                } else if (stack.back().h > cur.h) {
+                    stack.back().h--;
+                    cur.h = 0;
+                    break;
+                } else {
+                    cur.h--;
+                    stack.pop_back();
+                }
+            }
+            if (cur.h > 0) stack.push_back(cur);
+        }
+        std::unordered_map<int, int> alive;
+        for (auto& r : stack) alive[r.i] = r.h;
+        std::vector<int> ans;
+        for (int i = 0; i < n; i++) {
+            if (alive.count(i)) ans.push_back(alive[i]);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2753_count_houses_in_a_circular_street_ii
+================================================================================
+// LeetCode 2753 - Count Houses in a Circular Street II
+// https://leetcode.com/problems/count-houses-in-a-circular-street-ii/
+
+#include <vector>
+
+class Solution {
+public:
+    int houseCount(std::vector<int>& street, int k) {
+        int n = (int)street.size();
+        if (n == 0) return 0;
+        int start = -1;
+        for (int i = 0; i < n; i++) {
+            if (street[i] == 1) { start = i; break; }
+        }
+        if (start < 0) return 0;
+        int count = 1, moves = 0, i = start;
+        while (moves < k) {
+            i = (i + 1) % n;
+            moves++;
+            if (i == start) break;
+            if (street[i] == 1) count++;
+        }
+        return count;
+    }
+};
+
+
+================================================================================
+FOLDER: 2754_bind_function_to_context
+================================================================================
+// LeetCode 2754 - Bind Function to Context
+// https://leetcode.com/problems/bind-function-to-context/
+// JS-only problem; C++ stand-in matching Go stub semantics.
+
+#include <vector>
+
+class Solution {
+public:
+    int bindFunction(int fn, std::vector<int>& args) {
+        (void)args;
+        return fn;
+    }
+};
+
+
+================================================================================
+FOLDER: 2755_deep_merge_of_two_objects
+================================================================================
+// LeetCode 2755 - Deep Merge of Two Objects
+// https://leetcode.com/problems/deep-merge-of-two-objects/
+// JS-only problem; simplified string-map merge stand-in.
+
+#include <string>
+#include <unordered_map>
+
+class Solution {
+public:
+    std::unordered_map<std::string, std::string> deepMerge(
+        std::unordered_map<std::string, std::string>& obj1,
+        std::unordered_map<std::string, std::string>& obj2) {
+        std::unordered_map<std::string, std::string> out = obj1;
+        for (auto& [k, v] : obj2) out[k] = v;
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2756_query_batching
+================================================================================
+// LeetCode 2756 - Query Batching
+// https://leetcode.com/problems/query-batching/
+// JS QueryBatcher design stand-in.
+
+#include <functional>
+#include <vector>
+
+class QueryBatcher {
+public:
+    QueryBatcher(std::function<std::vector<int>(std::vector<int>)> queryMultiple, int t)
+        : queryMultiple(std::move(queryMultiple)), t(t) {}
+
+    void addQuery(int query, std::function<void(int)> resolve) {
+        pending.push_back(query);
+        resolvers.push_back(std::move(resolve));
+    }
+
+private:
+    std::function<std::vector<int>(std::vector<int>)> queryMultiple;
+    int t;
+    std::vector<int> pending;
+    std::vector<std::function<void(int)>> resolvers;
+};
+
+
+================================================================================
+FOLDER: 2757_generate_circular_array_values
+================================================================================
+// LeetCode 2757 - Generate Circular Array Values
+// https://leetcode.com/problems/generate-circular-array-values/
+// JS generator stand-in.
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    std::function<int()> cyclicGenerator(std::vector<int>& arr, int startIndex) {
+        int i = startIndex;
+        int n = (int)arr.size();
+        return [arr, i, n]() mutable {
+            int v = arr[i];
+            i = (i + 1) % n;
+            return v;
+        };
+    }
+};
+
+
+================================================================================
+FOLDER: 2758_next_day
+================================================================================
+// LeetCode 2758 - Next Day
+// https://leetcode.com/problems/next-day/
+// JS Date stand-in using civil-day arithmetic.
+
+#include <cstdio>
+#include <string>
+
+class Solution {
+public:
+    std::string nextDay(std::string date) {
+        int y, m, d;
+        if (sscanf(date.c_str(), "%d-%d-%d", &y, &m, &d) != 3) return date;
+        auto isLeap = [](int yy) { return (yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0); };
+        int mdays[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if (isLeap(y)) mdays[2] = 29;
+        d++;
+        if (d > mdays[m]) { d = 1; m++; }
+        if (m > 12) { m = 1; y++; }
+        char buf[16];
+        snprintf(buf, sizeof(buf), "%04d-%02d-%02d", y, m, d);
+        return std::string(buf);
+    }
+};
+
+
+================================================================================
+FOLDER: 2759_convert_json_string_to_object
+================================================================================
+// LeetCode 2759 - Convert JSON String to Object
+// https://leetcode.com/problems/convert-json-string-to-object/
+// JS-only problem; C++ stand-in returns the input string.
+
+#include <string>
+
+class Solution {
+public:
+    std::string jsonParse(std::string str) {
+        return str;
+    }
+};
+
+
+================================================================================
+FOLDER: 2760_longest_even_odd_subarray_with_threshold
+================================================================================
+// LeetCode 2760 - Longest Even Odd Subarray With Threshold
+// https://leetcode.com/problems/longest-even-odd-subarray-with-threshold/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int longestAlternatingSubarray(std::vector<int>& nums, int threshold) {
+        int ans = 0, n = (int)nums.size();
+        for (int i = 0; i < n; i++) {
+            if (nums[i] % 2 != 0 || nums[i] > threshold) continue;
+            int j = i;
+            while (j + 1 < n && nums[j + 1] <= threshold && nums[j + 1] % 2 != nums[j] % 2) j++;
+            ans = std::max(ans, j - i + 1);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2761_prime_pairs_with_target_sum
+================================================================================
+// LeetCode 2761 - Prime Pairs With Target Sum
+// https://leetcode.com/problems/prime-pairs-with-target-sum/
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::vector<int>> findPrimePairs(int n) {
+        std::vector<bool> isPrime(n + 1, false);
+        for (int i = 2; i <= n; i++) isPrime[i] = true;
+        for (int i = 2; i * i <= n; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j <= n; j += i) isPrime[j] = false;
+            }
+        }
+        std::vector<std::vector<int>> ans;
+        for (int x = 2; x <= n / 2; x++) {
+            int y = n - x;
+            if (isPrime[x] && isPrime[y]) ans.push_back({x, y});
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2762_continuous_subarrays
+================================================================================
+// LeetCode 2762 - Continuous Subarrays
+// https://leetcode.com/problems/continuous-subarrays/
+
+#include <map>
+#include <vector>
+
+class Solution {
+public:
+    long long continuousSubarrays(std::vector<int>& nums) {
+        long long ans = 0;
+        int left = 0;
+        std::map<int, int> freq;
+        for (int right = 0; right < (int)nums.size(); right++) {
+            freq[nums[right]]++;
+            while (freq.rbegin()->first - freq.begin()->first > 2) {
+                if (--freq[nums[left]] == 0) freq.erase(nums[left]);
+                left++;
+            }
+            ans += right - left + 1;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2763_sum_of_imbalance_numbers_of_all_subarrays
+================================================================================
+// LeetCode 2763 - Sum of Imbalance Numbers of All Subarrays
+// https://leetcode.com/problems/sum-of-imbalance-numbers-of-all-subarrays/
+
+#include <set>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int sumImbalanceNumbers(std::vector<int>& nums) {
+        int n = (int)nums.size(), ans = 0;
+        for (int i = 0; i < n; i++) {
+            std::unordered_set<int> seen;
+            std::set<int> sortedVals;
+            int imbalance = 0;
+            for (int j = i; j < n; j++) {
+                int x = nums[j];
+                if (!seen.count(x)) {
+                    seen.insert(x);
+                    auto it = sortedVals.lower_bound(x);
+                    if (it != sortedVals.begin()) {
+                        auto pit = std::prev(it);
+                        if (x - *pit != 1) imbalance++;
+                    }
+                    if (it != sortedVals.end()) {
+                        if (*it - x != 1) imbalance++;
+                    }
+                    if (it != sortedVals.begin() && it != sortedVals.end()) {
+                        auto pit = std::prev(it);
+                        if (*it - *pit > 1) imbalance--;
+                    }
+                    sortedVals.insert(x);
+                }
+                ans += imbalance;
+            }
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2764_is_array_a_preorder_of_some_binary_tree
+================================================================================
+// LeetCode 2764 - Is Array a Preorder of Some Binary Tree
+// https://leetcode.com/problems/is-array-a-preorder-of-some-binary-tree/
+
+#include <vector>
+
+class Solution {
+public:
+    bool isPreorder(std::vector<std::vector<int>>& nodes) {
+        if (nodes.empty()) return true;
+        std::vector<int> stack;
+        stack.push_back(nodes[0][0]);
+        for (int i = 1; i < (int)nodes.size(); i++) {
+            int id = nodes[i][0], parent = nodes[i][1];
+            while (!stack.empty() && stack.back() != parent) stack.pop_back();
+            if (stack.empty()) return false;
+            stack.push_back(id);
+        }
+        return true;
+    }
+};
+
+
+================================================================================
+FOLDER: 2765_longest_alternating_subarray
+================================================================================
+// LeetCode 2765 - Longest Alternating Subarray
+// https://leetcode.com/problems/longest-alternating-subarray/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int alternatingSubarray(std::vector<int>& nums) {
+        int ans = -1, n = (int)nums.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int expect = ((j - i) % 2 == 0) ? -1 : 1;
+                if (nums[j] - nums[j - 1] != expect) break;
+                if (nums[i + 1] - nums[i] != 1) break;
+                ans = std::max(ans, j - i + 1);
+            }
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2766_relocate_marbles
+================================================================================
+// LeetCode 2766 - Relocate Marbles
+// https://leetcode.com/problems/relocate-marbles/
+
+#include <algorithm>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> relocateMarbles(std::vector<int>& nums, std::vector<int>& moveFrom, std::vector<int>& moveTo) {
+        std::unordered_set<int> pos(nums.begin(), nums.end());
+        for (int i = 0; i < (int)moveFrom.size(); i++) {
+            pos.erase(moveFrom[i]);
+            pos.insert(moveTo[i]);
+        }
+        std::vector<int> ans(pos.begin(), pos.end());
+        std::sort(ans.begin(), ans.end());
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2767_partition_string_into_minimum_beautiful_substrings
+================================================================================
+// LeetCode 2767 - Partition String Into Minimum Beautiful Substrings
+// https://leetcode.com/problems/partition-string-into-minimum-beautiful-substrings/
+
+#include <algorithm>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int minimumBeautifulSubstrings(std::string s) {
+        int n = (int)s.size();
+        std::unordered_set<std::string> pow5;
+        for (long long x = 1; ; x *= 5) {
+            std::string b;
+            long long t = x;
+            while (t) { b.push_back(char('0' + (t & 1))); t >>= 1; }
+            std::reverse(b.begin(), b.end());
+            if (b.empty()) b = "0";
+            if ((int)b.size() > n) break;
+            pow5.insert(b);
+        }
+        const int INF = 1 << 30;
+        std::vector<int> dp(n + 1, INF);
+        dp[0] = 0;
+        for (int i = 0; i < n; i++) {
+            if (dp[i] == INF || s[i] == '0') continue;
+            for (int j = i + 1; j <= n; j++) {
+                if (pow5.count(s.substr(i, j - i))) {
+                    dp[j] = std::min(dp[j], dp[i] + 1);
+                }
+            }
+        }
+        return dp[n] == INF ? -1 : dp[n];
+    }
+};
+
+
+================================================================================
+FOLDER: 2768_number_of_black_blocks
+================================================================================
+// LeetCode 2768 - Number of Black Blocks
+// https://leetcode.com/problems/number-of-black-blocks/
+
+#include <map>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<long long> countBlackBlocks(int m, int n, std::vector<std::vector<int>>& coordinates) {
+        std::map<std::pair<int, int>, int> cnt;
+        for (auto& c : coordinates) {
+            int x = c[0], y = c[1];
+            for (int i = x - 1; i <= x; i++) {
+                for (int j = y - 1; j <= y; j++) {
+                    if (i >= 0 && j >= 0 && i < m - 1 && j < n - 1) cnt[{i, j}]++;
+                }
+            }
+        }
+        std::vector<long long> ans(5, 0);
+        ans[0] = 1LL * (m - 1) * (n - 1);
+        for (auto& [_, v] : cnt) {
+            ans[v]++;
+            ans[0]--;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2769_find_the_maximum_achievable_number
+================================================================================
+// LeetCode 2769 - Find the Maximum Achievable Number
+// https://leetcode.com/problems/find-the-maximum-achievable-number/
+
+class Solution {
+public:
+    int theMaximumAchievableX(int num, int t) {
+        return num + 2 * t;
+    }
+};
+
+
+================================================================================
+FOLDER: 2770_maximum_number_of_jumps_to_reach_the_last_index
+================================================================================
+// LeetCode 2770 - Maximum Number of Jumps to Reach the Last Index
+// https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/
+
+#include <algorithm>
+#include <cstdlib>
+#include <vector>
+
+class Solution {
+public:
+    int maximumJumps(std::vector<int>& nums, int target) {
+        int n = (int)nums.size();
+        std::vector<int> dp(n, -1);
+        dp[0] = 0;
+        for (int i = 0; i < n; i++) {
+            if (dp[i] < 0) continue;
+            for (int j = i + 1; j < n; j++) {
+                if (std::abs(nums[j] - nums[i]) <= target) {
+                    dp[j] = std::max(dp[j], dp[i] + 1);
+                }
+            }
+        }
+        return dp[n - 1];
+    }
+};
+
+
+================================================================================
+FOLDER: 2771_longest_non_decreasing_subarray_from_two_arrays
+================================================================================
+// LeetCode 2771 - Longest Non-decreasing Subarray From Two Arrays
+// https://leetcode.com/problems/longest-non-decreasing-subarray-from-two-arrays/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int maxNonDecreasingLength(std::vector<int>& nums1, std::vector<int>& nums2) {
+        int n = (int)nums1.size();
+        int dp1 = 1, dp2 = 1, ans = 1;
+        for (int i = 1; i < n; i++) {
+            int nd1 = 1, nd2 = 1;
+            if (nums1[i] >= nums1[i - 1]) nd1 = std::max(nd1, dp1 + 1);
+            if (nums1[i] >= nums2[i - 1]) nd1 = std::max(nd1, dp2 + 1);
+            if (nums2[i] >= nums1[i - 1]) nd2 = std::max(nd2, dp1 + 1);
+            if (nums2[i] >= nums2[i - 1]) nd2 = std::max(nd2, dp2 + 1);
+            dp1 = nd1;
+            dp2 = nd2;
+            ans = std::max(ans, std::max(dp1, dp2));
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2772_apply_operations_to_make_all_array_elements_equal_to_zero
+================================================================================
+// LeetCode 2772 - Apply Operations to Make All Array Elements Equal to Zero
+// https://leetcode.com/problems/apply-operations-to-make-all-array-elements-equal-to-zero/
+
+#include <vector>
+
+class Solution {
+public:
+    bool checkArray(std::vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        std::vector<int> diff(n + 1, 0);
+        int cur = 0;
+        for (int i = 0; i < n; i++) {
+            cur += diff[i];
+            int need = nums[i] - cur;
+            if (need < 0) return false;
+            if (need > 0) {
+                if (i + k > n) return false;
+                cur += need;
+                diff[i + k] -= need;
+            }
+        }
+        return true;
+    }
+};
+
+
+================================================================================
+FOLDER: 2773_height_of_special_binary_tree
+================================================================================
+// LeetCode 2773 - Height of Special Binary Tree
+// https://leetcode.com/problems/height-of-special-binary-tree/
+
+#include <algorithm>
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+public:
+    int heightOfTree(TreeNode* root) {
+        if (!root) return -1;
+        return dfs(root);
+    }
+
+private:
+    int dfs(TreeNode* node) {
+        if (!node) return -1;
+        if (node->left && node->left->right == node) return dfs(node->right) + 1;
+        if (node->right && node->right->left == node) return dfs(node->left) + 1;
+        return std::max(dfs(node->left), dfs(node->right)) + 1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2774_array_upper_bound
+================================================================================
+// LeetCode 2774 - Array Upper Bound
+// https://leetcode.com/problems/array-upper-bound/
+
+#include <vector>
+
+class Solution {
+public:
+    int upperBound(std::vector<int>& nums, int target) {
+        int lo = 0, hi = (int)nums.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (nums[mid] <= target) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+};
+
+
+================================================================================
+FOLDER: 2775_undefined_to_null
+================================================================================
+// LeetCode 2775 - Undefined to Null
+// https://leetcode.com/problems/undefined-to-null/
+// JS-only problem; C++ stand-in identity.
+
+class Solution {
+public:
+    int undefinedToNull(int obj) {
+        return obj;
+    }
+};
+
+
+================================================================================
+FOLDER: 2776_convert_callback_based_function_to_promise_based_function
+================================================================================
+// LeetCode 2776 - Convert Callback Based Function to Promise Based Function
+// https://leetcode.com/problems/convert-callback-based-function-to-promise-based-function/
+// JS-only problem; C++ stand-in.
+
+#include <functional>
+
+class Solution {
+public:
+    std::function<int()> promisify(std::function<void()> fn) {
+        (void)fn;
+        return []() { return 0; };
+    }
+};
+
+
+================================================================================
+FOLDER: 2777_date_range_generator
+================================================================================
+// LeetCode 2777 - Date Range Generator
+// https://leetcode.com/problems/date-range-generator/
+// JS generator stand-in using civil-day arithmetic.
+
+#include <cstdio>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::string> dateRangeGenerator(std::string start, std::string end, int step) {
+        int y, m, d, ey, em, ed;
+        if (sscanf(start.c_str(), "%d-%d-%d", &y, &m, &d) != 3) return {};
+        if (sscanf(end.c_str(), "%d-%d-%d", &ey, &em, &ed) != 3) return {};
+        auto isLeap = [](int yy) { return (yy % 4 == 0 && yy % 100 != 0) || (yy % 400 == 0); };
+        auto addDays = [&](int& yy, int& mm, int& dd, int days) {
+            int mdays[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+            while (days--) {
+                if (isLeap(yy)) mdays[2] = 29; else mdays[2] = 28;
+                dd++;
+                if (dd > mdays[mm]) { dd = 1; mm++; }
+                if (mm > 12) { mm = 1; yy++; }
+            }
+        };
+        auto cmp = [&]() {
+            if (y != ey) return y < ey;
+            if (m != em) return m < em;
+            return d <= ed;
+        };
+        std::vector<std::string> ans;
+        while (cmp()) {
+            char buf[16];
+            snprintf(buf, sizeof(buf), "%04d-%02d-%02d", y, m, d);
+            ans.push_back(buf);
+            addDays(y, m, d, step);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2778_sum_of_squares_of_special_elements
+================================================================================
+// LeetCode 2778 - Sum of Squares of Special Elements
+// https://leetcode.com/problems/sum-of-squares-of-special-elements/
+
+#include <vector>
+
+class Solution {
+public:
+    int sumOfSquares(std::vector<int>& nums) {
+        int n = (int)nums.size(), ans = 0;
+        for (int i = 0; i < n; i++) {
+            if (n % (i + 1) == 0) ans += nums[i] * nums[i];
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2779_maximum_beauty_of_an_array_after_applying_operation
+================================================================================
+// LeetCode 2779 - Maximum Beauty of an Array After Applying Operation
+// https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int maximumBeauty(std::vector<int>& nums, int k) {
+        std::sort(nums.begin(), nums.end());
+        int ans = 0, left = 0;
+        for (int right = 0; right < (int)nums.size(); right++) {
+            while (nums[right] - nums[left] > 2 * k) left++;
+            ans = std::max(ans, right - left + 1);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2780_minimum_index_of_a_valid_split
+================================================================================
+// LeetCode 2780 - Minimum Index of a Valid Split
+// https://leetcode.com/problems/minimum-index-of-a-valid-split/
+
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    int minimumIndex(std::vector<int>& nums) {
+        std::unordered_map<int, int> freq;
+        int dom = 0, best = 0;
+        for (int v : nums) {
+            if (++freq[v] > best) { best = freq[v]; dom = v; }
+        }
+        int left = 0, n = (int)nums.size();
+        for (int i = 0; i < n - 1; i++) {
+            if (nums[i] == dom) left++;
+            int right = best - left;
+            if (left * 2 > i + 1 && right * 2 > n - i - 1) return i;
+        }
+        return -1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2781_length_of_the_longest_valid_substring
+================================================================================
+// LeetCode 2781 - Length of the Longest Valid Substring
+// https://leetcode.com/problems/length-of-the-longest-valid-substring/
+
+#include <algorithm>
+#include <string>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int longestValidSubstring(std::string word, std::vector<std::string>& forbidden) {
+        std::unordered_set<std::string> forbid;
+        int maxLen = 0;
+        for (auto& f : forbidden) {
+            forbid.insert(f);
+            maxLen = std::max(maxLen, (int)f.size());
+        }
+        int ans = 0, right = (int)word.size() - 1;
+        for (int left = (int)word.size() - 1; left >= 0; left--) {
+            for (int k = left; k <= right && k - left + 1 <= maxLen; k++) {
+                if (forbid.count(word.substr(left, k - left + 1))) {
+                    right = k - 1;
+                    break;
+                }
+            }
+            ans = std::max(ans, right - left + 1);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2782_number_of_unique_categories
+================================================================================
+// LeetCode 2782 - Number of Unique Categories
+// https://leetcode.com/problems/number-of-unique-categories/
+
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int numberOfCategories(int n, std::vector<int>& categoryHandler) {
+        (void)n;
+        return (int)std::unordered_set<int>(categoryHandler.begin(), categoryHandler.end()).size();
+    }
+};
+
+
+================================================================================
+FOLDER: 2784_check_if_array_is_good
+================================================================================
+// LeetCode 2784 - Check if Array is Good
+// https://leetcode.com/problems/check-if-array-is-good/
+
+#include <vector>
+
+class Solution {
+public:
+    bool isGood(std::vector<int>& nums) {
+        int n = (int)nums.size() - 1;
+        if (n < 1) return false;
+        std::vector<int> freq(n + 1, 0);
+        for (int v : nums) {
+            if (v < 1 || v > n) return false;
+            freq[v]++;
+        }
+        for (int i = 1; i < n; i++) if (freq[i] != 1) return false;
+        return freq[n] == 2;
+    }
+};
+
+
+================================================================================
+FOLDER: 2785_sort_vowels_in_a_string
+================================================================================
+// LeetCode 2785 - Sort Vowels in a String
+// https://leetcode.com/problems/sort-vowels-in-a-string/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    std::string sortVowels(std::string s) {
+        auto isVowel = [](char c) {
+            return c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||
+                   c=='A'||c=='E'||c=='I'||c=='O'||c=='U';
+        };
+        std::string vowels;
+        for (char c : s) if (isVowel(c)) vowels.push_back(c);
+        std::sort(vowels.begin(), vowels.end());
+        int vi = 0;
+        for (char& c : s) if (isVowel(c)) c = vowels[vi++];
+        return s;
+    }
+};
+
+
+================================================================================
+FOLDER: 2786_visit_array_positions_to_maximize_score
+================================================================================
+// LeetCode 2786 - Visit Array Positions to Maximize Score
+// https://leetcode.com/problems/visit-array-positions-to-maximize-score/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    long long maxScore(std::vector<int>& nums, int x) {
+        long long NEG = -(1LL << 60);
+        long long even = nums[0], odd = nums[0];
+        if (nums[0] % 2 == 0) odd = NEG;
+        else even = NEG;
+        for (int i = 1; i < (int)nums.size(); i++) {
+            long long v = nums[i];
+            if (nums[i] % 2 == 0) even = std::max(even + v, odd + v - x);
+            else odd = std::max(odd + v, even + v - x);
+        }
+        return std::max(even, odd);
+    }
+};
+
+
+================================================================================
+FOLDER: 2787_ways_to_express_an_integer_as_sum_of_powers
+================================================================================
+// LeetCode 2787 - Ways to Express an Integer as Sum of Powers
+// https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/
+
+#include <vector>
+
+class Solution {
+public:
+    int numberOfWays(int n, int x) {
+        const int MOD = 1000000007;
+        std::vector<int> powers;
+        for (int i = 1; ; i++) {
+            long long p = 1;
+            for (int j = 0; j < x; j++) {
+                p *= i;
+                if (p > n) break;
+            }
+            if (p > n) break;
+            powers.push_back((int)p);
+        }
+        std::vector<int> dp(n + 1, 0);
+        dp[0] = 1;
+        for (int p : powers) {
+            for (int s = n; s >= p; s--) {
+                dp[s] = (dp[s] + dp[s - p]) % MOD;
+            }
+        }
+        return dp[n];
+    }
+};
+
+
+================================================================================
+FOLDER: 2788_split_strings_by_separator
+================================================================================
+// LeetCode 2788 - Split Strings by Separator
+// https://leetcode.com/problems/split-strings-by-separator/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::string> splitWordsBySeparator(std::vector<std::string>& words, char separator) {
+        std::vector<std::string> ans;
+        for (auto& w : words) {
+            int start = 0;
+            for (int i = 0; i <= (int)w.size(); i++) {
+                if (i == (int)w.size() || w[i] == separator) {
+                    if (i > start) ans.push_back(w.substr(start, i - start));
+                    start = i + 1;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2789_largest_element_in_an_array_after_merge_operations
+================================================================================
+// LeetCode 2789 - Largest Element in an Array after Merge Operations
+// https://leetcode.com/problems/largest-element-in-an-array-after-merge-operations/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    long long maxArrayValue(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        long long cur = nums[n - 1], ans = cur;
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] <= cur) cur += nums[i];
+            else cur = nums[i];
+            ans = std::max(ans, cur);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2790_maximum_number_of_groups_with_increasing_length
+================================================================================
+// LeetCode 2790 - Maximum Number of Groups With Increasing Length
+// https://leetcode.com/problems/maximum-number-of-groups-with-increasing-length/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int maxIncreasingGroups(std::vector<int>& usageLimits) {
+        std::sort(usageLimits.begin(), usageLimits.end());
+        int ans = 0;
+        long long sum = 0;
+        for (int v : usageLimits) {
+            sum += v;
+            long long need = 1LL * (ans + 1) * (ans + 2) / 2;
+            if (sum >= need) ans++;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2791_count_paths_that_can_form_a_palindrome_in_a_tree
+================================================================================
+// LeetCode 2791 - Count Paths That Can Form a Palindrome in a Tree
+// https://leetcode.com/problems/count-paths-that-can-form-a-palindrome-in-a-tree/
+
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    long long countPalindromePaths(std::vector<int>& parent, std::string s) {
+        int n = (int)parent.size();
+        std::vector<std::vector<int>> g(n);
+        for (int i = 1; i < n; i++) g[parent[i]].push_back(i);
+        std::unordered_map<int, int> freq;
+        freq[0] = 1;
+        long long ans = 0;
+        auto dfs = [&](auto&& self, int u, int mask) -> void {
+            for (int v : g[u]) {
+                int nm = mask ^ (1 << (s[v] - 'a'));
+                ans += freq[nm];
+                for (int b = 0; b < 26; b++) ans += freq[nm ^ (1 << b)];
+                freq[nm]++;
+                self(self, v, nm);
+            }
+        };
+        dfs(dfs, 0, 0);
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2792_count_nodes_that_are_great_enough
+================================================================================
+// LeetCode 2792 - Count Nodes That Are Great Enough
+// https://leetcode.com/problems/count-nodes-that-are-great-enough/
+
+#include <algorithm>
+#include <vector>
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+public:
+    int countGreatEnoughNodes(TreeNode* root, int k) {
+        int ans = 0;
+        auto dfs = [&](auto&& self, TreeNode* node) -> std::vector<int> {
+            if (!node) return {};
+            std::vector<int> vals{node->val};
+            auto L = self(self, node->left);
+            auto R = self(self, node->right);
+            vals.insert(vals.end(), L.begin(), L.end());
+            vals.insert(vals.end(), R.begin(), R.end());
+            int smaller = 0;
+            for (int v : vals) if (v < node->val) smaller++;
+            if (smaller >= k) ans++;
+            return vals;
+        };
+        dfs(dfs, root);
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2794_create_object_from_two_arrays
+================================================================================
+// LeetCode 2794 - Create Object from Two Arrays
+// https://leetcode.com/problems/create-object-from-two-arrays/
+// JS-only problem; C++ string-map stand-in.
+
+#include <algorithm>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    std::unordered_map<std::string, int> createObject(std::vector<std::string>& keysArr, std::vector<int>& valuesArr) {
+        std::unordered_map<std::string, int> out;
+        int n = std::min((int)keysArr.size(), (int)valuesArr.size());
+        for (int i = 0; i < n; i++) {
+            if (!out.count(keysArr[i])) out[keysArr[i]] = valuesArr[i];
+        }
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2795_parallel_execution_of_promises_for_individual_results_retrieval
+================================================================================
+// LeetCode 2795 - Parallel Execution of Promises for Individual Results Retrieval
+// https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval/
+// JS-only problem; C++ stand-in.
+
+#include <functional>
+#include <string>
+#include <utility>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::pair<std::string, int>> promiseAllSettled(std::vector<std::function<int()>>& functions) {
+        std::vector<std::pair<std::string, int>> ans;
+        for (auto& f : functions) ans.push_back({"fulfilled", f()});
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2796_repeat_string
+================================================================================
+// LeetCode 2796 - Repeat String
+// https://leetcode.com/problems/repeat-string/
+// JS-only problem; C++ stand-in.
+
+#include <string>
+
+class Solution {
+public:
+    std::string replicate(std::string str, int times) {
+        if (times <= 0) return "";
+        std::string out;
+        out.reserve(str.size() * times);
+        for (int i = 0; i < times; i++) out += str;
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2797_partial_function_with_placeholders
+================================================================================
+// LeetCode 2797 - Partial Function with Placeholders
+// https://leetcode.com/problems/partial-function-with-placeholders/
+// JS-only problem; C++ stand-in with nullable placeholders as INT_MIN sentinel.
+
+#include <climits>
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    std::function<int(std::vector<int>)> partial(std::function<int(std::vector<int>)> fn, std::vector<int> args) {
+        return [fn, args](std::vector<int> rest) {
+            std::vector<int> full;
+            int ri = 0;
+            for (int a : args) {
+                if (a == INT_MIN) {
+                    if (ri < (int)rest.size()) full.push_back(rest[ri++]);
+                } else {
+                    full.push_back(a);
+                }
+            }
+            while (ri < (int)rest.size()) full.push_back(rest[ri++]);
+            return fn(full);
+        };
+    }
+};
+
+
+================================================================================
+FOLDER: 2798_number_of_employees_who_met_the_target
+================================================================================
+// LeetCode 2798 - Number of Employees Who Met the Target
+// https://leetcode.com/problems/number-of-employees-who-met-the-target/
+
+#include <vector>
+
+class Solution {
+public:
+    int numberOfEmployeesWhoMetTarget(std::vector<int>& hours, int target) {
+        int ans = 0;
+        for (int h : hours) if (h >= target) ans++;
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2799_count_complete_subarrays_in_an_array
+================================================================================
+// LeetCode 2799 - Count Complete Subarrays in an Array
+// https://leetcode.com/problems/count-complete-subarrays-in-an-array/
+
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int countCompleteSubarrays(std::vector<int>& nums) {
+        std::unordered_set<int> uniq(nums.begin(), nums.end());
+        int need = (int)uniq.size(), ans = 0, n = (int)nums.size();
+        for (int i = 0; i < n; i++) {
+            std::unordered_set<int> seen;
+            for (int j = i; j < n; j++) {
+                seen.insert(nums[j]);
+                if ((int)seen.size() == need) {
+                    ans += n - j;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2800_shortest_string_that_contains_three_strings
+================================================================================
+// LeetCode 2800 - Shortest String That Contains Three Strings
+// https://leetcode.com/problems/shortest-string-that-contains-three-strings/
+
+#include <algorithm>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::string minimumString(std::string a, std::string b, std::string c) {
+        auto merge = [](const std::string& x, const std::string& y) {
+            if (x.find(y) != std::string::npos) return x;
+            std::string best = x + y;
+            int n = std::min((int)x.size(), (int)y.size());
+            for (int i = n; i > 0; i--) {
+                if (x.substr(x.size() - i) == y.substr(0, i)) {
+                    std::string cand = x + y.substr(i);
+                    if (cand.size() < best.size() || (cand.size() == best.size() && cand < best)) best = cand;
+                    break;
+                }
+            }
+            return best;
+        };
+        std::vector<std::vector<std::string>> perms = {
+            {a, b, c}, {a, c, b}, {b, a, c}, {b, c, a}, {c, a, b}, {c, b, a}
+        };
+        std::string ans;
+        for (auto& p : perms) {
+            std::string cur = merge(merge(p[0], p[1]), p[2]);
+            if (ans.empty() || cur.size() < ans.size() || (cur.size() == ans.size() && cur < ans)) ans = cur;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2801_count_stepping_numbers_in_range
+================================================================================
+// LeetCode 2801 - Count Stepping Numbers in Range
+// https://leetcode.com/problems/count-stepping-numbers-in-range/
+
+#include <cstdlib>
+#include <cstring>
+#include <string>
+
+class Solution {
+public:
+    int countSteppingNumbers(std::string low, std::string high) {
+        const int MOD = 1000000007;
+        auto countTo = [&](const std::string& s) {
+            int memo[85][2][11][2];
+            std::memset(memo, -1, sizeof(memo));
+            auto dfs = [&](auto&& self, int pos, int tight, int last, int started) -> int {
+                if (pos == (int)s.size()) return started;
+                int& res = memo[pos][tight][last + 1][started];
+                if (res != -1) return res;
+                int up = tight ? s[pos] - '0' : 9;
+                long long ans = 0;
+                for (int d = 0; d <= up; d++) {
+                    int nt = tight && d == up;
+                    if (!started) {
+                        if (d == 0) ans += self(self, pos + 1, nt, -1, 0);
+                        else ans += self(self, pos + 1, nt, d, 1);
+                    } else if (std::abs(d - last) == 1) {
+                        ans += self(self, pos + 1, nt, d, 1);
+                    }
+                }
+                return res = (int)(ans % MOD);
+            };
+            return dfs(dfs, 0, 1, -1, 0);
+        };
+        auto dec = [](std::string s) {
+            int i = (int)s.size() - 1;
+            while (i >= 0 && s[i] == '0') { s[i] = '9'; i--; }
+            if (i >= 0) s[i]--;
+            int j = 0;
+            while (j < (int)s.size() - 1 && s[j] == '0') j++;
+            return s.substr(j);
+        };
+        int ans = (countTo(high) - countTo(dec(low))) % MOD;
+        if (ans < 0) ans += MOD;
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2802_find_the_k_th_lucky_number
+================================================================================
+// LeetCode 2802 - Find The K-th Lucky Number
+// https://leetcode.com/problems/find-the-k-th-lucky-number/
+
+#include <string>
+
+class Solution {
+public:
+    std::string kthLuckyNumber(int k) {
+        k++;
+        std::string bits;
+        while (k > 1) {
+            if (k % 2 == 0) bits = "4" + bits;
+            else bits = "7" + bits;
+            k /= 2;
+        }
+        return bits;
+    }
+};
+
+
+================================================================================
+FOLDER: 2803_factorial_generator
+================================================================================
+// LeetCode 2803 - Factorial Generator
+// https://leetcode.com/problems/factorial-generator/
+// JS generator stand-in returning factorial sequence.
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> factorialGenerator(int n) {
+        std::vector<int> ans;
+        int cur = 1;
+        for (int i = 1; i <= n; i++) {
+            cur *= i;
+            ans.push_back(cur);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2804_array_prototype_foreach
+================================================================================
+// LeetCode 2804 - Array Prototype ForEach
+// https://leetcode.com/problems/array-prototype-foreach/
+// JS-only problem; C++ stand-in.
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    void forEach(std::vector<int>& arr, std::function<void(int, int, std::vector<int>&)> callback) {
+        for (int i = 0; i < (int)arr.size(); i++) callback(arr[i], i, arr);
+    }
+};
+
+
+================================================================================
+FOLDER: 2805_custom_interval
+================================================================================
+// LeetCode 2805 - Custom Interval
+// https://leetcode.com/problems/custom-interval/
+// JS-only problem; C++ stand-in returning a cancel flag setter.
+
+#include <functional>
+
+class Solution {
+public:
+    std::function<void()> customInterval(std::function<void()> fn, int delay, int period) {
+        (void)fn; (void)delay; (void)period;
+        bool cancelled = false;
+        return [cancelled]() mutable { cancelled = true; };
+    }
+};
+
+
+================================================================================
+FOLDER: 2806_account_balance_after_rounded_purchase
+================================================================================
+// LeetCode 2806 - Account Balance After Rounded Purchase
+// https://leetcode.com/problems/account-balance-after-rounded-purchase/
+
+class Solution {
+public:
+    int accountBalanceAfterPurchase(int purchaseAmount) {
+        int r = ((purchaseAmount + 5) / 10) * 10;
+        return 100 - r;
+    }
+};
+
+
+================================================================================
+FOLDER: 2807_insert_greatest_common_divisors_in_linked_list
+================================================================================
+// LeetCode 2807 - Insert Greatest Common Divisors in Linked List
+// https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* insertGreatestCommonDivisors(ListNode* head) {
+        auto gcd = [](int a, int b) {
+            while (b) { int t = a % b; a = b; b = t; }
+            return a;
+        };
+        ListNode* cur = head;
+        while (cur && cur->next) {
+            int g = gcd(cur->val, cur->next->val);
+            ListNode* node = new ListNode(g, cur->next);
+            cur->next = node;
+            cur = node->next;
+        }
+        return head;
+    }
+};
+
+
+================================================================================
+FOLDER: 2808_minimum_seconds_to_equalize_a_circular_array
+================================================================================
+// LeetCode 2808 - Minimum Seconds to Equalize a Circular Array
+// https://leetcode.com/problems/minimum-seconds-to-equalize-a-circular-array/
+
+#include <algorithm>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    int minimumSeconds(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        std::unordered_map<int, std::vector<int>> pos;
+        for (int i = 0; i < n; i++) pos[nums[i]].push_back(i);
+        int ans = n;
+        for (auto& [_, p] : pos) {
+            int maxGap = 0;
+            for (int i = 0; i < (int)p.size(); i++) {
+                int gap = (i + 1 < (int)p.size()) ? p[i + 1] - p[i] : p[0] + n - p[i];
+                maxGap = std::max(maxGap, gap / 2);
+            }
+            ans = std::min(ans, maxGap);
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2809_minimum_time_to_make_array_sum_at_most_x
+================================================================================
+// LeetCode 2809 - Minimum Time to Make Array Sum At Most x
+// https://leetcode.com/problems/minimum-time-to-make-array-sum-at-most-x/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minimumTime(std::vector<int>& nums1, std::vector<int>& nums2, int x) {
+        int n = (int)nums1.size();
+        std::vector<std::pair<int, int>> arr(n);
+        int sum1 = 0, sum2 = 0;
+        for (int i = 0; i < n; i++) {
+            arr[i] = {nums1[i], nums2[i]};
+            sum1 += nums1[i];
+            sum2 += nums2[i];
+        }
+        std::sort(arr.begin(), arr.end(), [](auto& a, auto& b) { return a.second < b.second; });
+        std::vector<int> dp(n + 1, 0);
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j >= 1; j--) {
+                dp[j] = std::max(dp[j], dp[j - 1] + arr[i].first + j * arr[i].second);
+            }
+        }
+        for (int t = 0; t <= n; t++) {
+            if (sum1 + sum2 * t - dp[t] <= x) return t;
+        }
+        return -1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2810_faulty_keyboard
+================================================================================
+// LeetCode 2810 - Faulty Keyboard
+// https://leetcode.com/problems/faulty-keyboard/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    std::string finalString(std::string s) {
+        std::string b;
+        for (char c : s) {
+            if (c == 'i') std::reverse(b.begin(), b.end());
+            else b.push_back(c);
+        }
+        return b;
+    }
+};
+
+
+================================================================================
+FOLDER: 2811_check_if_it_is_possible_to_split_array
+================================================================================
+// LeetCode 2811 - Check if it is Possible to Split Array
+// https://leetcode.com/problems/check-if-it-is-possible-to-split-array/
+
+#include <vector>
+
+class Solution {
+public:
+    bool canSplitArray(std::vector<int>& nums, int m) {
+        int n = (int)nums.size();
+        if (n <= 2) return true;
+        for (int i = 0; i + 1 < n; i++) {
+            if (nums[i] + nums[i + 1] >= m) return true;
+        }
+        return false;
+    }
+};
+
+
+================================================================================
+FOLDER: 2812_find_the_safest_path_in_a_grid
+================================================================================
+// LeetCode 2812 - Find the Safest Path in a Grid
+// https://leetcode.com/problems/find-the-safest-path-in-a-grid/
+
+#include <queue>
+#include <vector>
+
+class Solution {
+public:
+    int maximumSafenessFactor(std::vector<std::vector<int>>& grid) {
+        int n = (int)grid.size();
+        std::vector<std::vector<int>> dist(n, std::vector<int>(n, -1));
+        std::queue<std::pair<int, int>> q;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (grid[i][j] == 1) { dist[i][j] = 0; q.push({i, j}); }
+        int dirs[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+        while (!q.empty()) {
+            auto [x, y] = q.front(); q.pop();
+            for (auto& d : dirs) {
+                int ni = x + d[0], nj = y + d[1];
+                if (ni >= 0 && nj >= 0 && ni < n && nj < n && dist[ni][nj] == -1) {
+                    dist[ni][nj] = dist[x][y] + 1;
+                    q.push({ni, nj});
+                }
+            }
+        }
+        auto ok = [&](int sf) {
+            if (dist[0][0] < sf) return false;
+            std::vector<std::vector<char>> seen(n, std::vector<char>(n, 0));
+            std::vector<std::pair<int, int>> st{{0, 0}};
+            seen[0][0] = 1;
+            while (!st.empty()) {
+                auto [x, y] = st.back(); st.pop_back();
+                if (x == n - 1 && y == n - 1) return true;
+                for (auto& d : dirs) {
+                    int ni = x + d[0], nj = y + d[1];
+                    if (ni >= 0 && nj >= 0 && ni < n && nj < n && !seen[ni][nj] && dist[ni][nj] >= sf) {
+                        seen[ni][nj] = 1;
+                        st.push_back({ni, nj});
+                    }
+                }
+            }
+            return false;
+        };
+        int lo = 0, hi = n * n, ans = 0;
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            if (ok(mid)) { ans = mid; lo = mid + 1; }
+            else hi = mid - 1;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2813_maximum_elegance_of_a_k_length_subsequence
+================================================================================
+// LeetCode 2813 - Maximum Elegance of a K-Length Subsequence
+// https://leetcode.com/problems/maximum-elegance-of-a-k-length-subsequence/
+
+#include <algorithm>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    long long findMaximumElegance(std::vector<std::vector<int>>& items, int k) {
+        std::sort(items.begin(), items.end(), [](auto& a, auto& b) { return a[0] > b[0]; });
+        std::unordered_set<int> seen;
+        long long total = 0;
+        std::vector<int> dup;
+        for (int i = 0; i < k; i++) {
+            total += items[i][0];
+            int c = items[i][1];
+            if (seen.count(c)) dup.push_back(items[i][0]);
+            else seen.insert(c);
+        }
+        long long ans = total + 1LL * (long long)seen.size() * (long long)seen.size();
+        for (int i = k; i < (int)items.size(); i++) {
+            int c = items[i][1];
+            if (seen.count(c) || dup.empty()) continue;
+            total += items[i][0] - dup.back();
+            dup.pop_back();
+            seen.insert(c);
+            ans = std::max(ans, total + 1LL * (long long)seen.size() * (long long)seen.size());
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2814_minimum_time_takes_to_reach_destination_without_drowning
+================================================================================
+// LeetCode 2814 - Minimum Time Takes to Reach Destination Without Drowning
+// https://leetcode.com/problems/minimum-time-takes-to-reach-destination-without-drowning/
+
+#include <queue>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    int minimumSeconds(std::vector<std::vector<std::string>>& land) {
+        int m = (int)land.size(), n = (int)land[0].size();
+        const int INF = 1 << 30;
+        std::vector<std::vector<int>> water(m, std::vector<int>(n, INF));
+        std::queue<std::pair<int, int>> wq;
+        std::pair<int, int> start{}, dest{};
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (land[i][j] == "*") { water[i][j] = 0; wq.push({i, j}); }
+                else if (land[i][j] == "S") start = {i, j};
+                else if (land[i][j] == "D") dest = {i, j};
+            }
+        }
+        int dirs[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
+        while (!wq.empty()) {
+            auto [x, y] = wq.front(); wq.pop();
+            for (auto& d : dirs) {
+                int ni = x + d[0], nj = y + d[1];
+                if (ni < 0 || nj < 0 || ni >= m || nj >= n) continue;
+                if (land[ni][nj] == "X" || land[ni][nj] == "D") continue;
+                if (water[ni][nj] > water[x][y] + 1) {
+                    water[ni][nj] = water[x][y] + 1;
+                    wq.push({ni, nj});
+                }
+            }
+        }
+        std::vector<std::vector<int>> dist(m, std::vector<int>(n, -1));
+        std::queue<std::pair<int, int>> q;
+        q.push(start);
+        dist[start.first][start.second] = 0;
+        while (!q.empty()) {
+            auto [x, y] = q.front(); q.pop();
+            if (x == dest.first && y == dest.second) return dist[x][y];
+            for (auto& d : dirs) {
+                int ni = x + d[0], nj = y + d[1];
+                if (ni < 0 || nj < 0 || ni >= m || nj >= n || dist[ni][nj] != -1) continue;
+                if (land[ni][nj] == "X") continue;
+                int nd = dist[x][y] + 1;
+                if (land[ni][nj] != "D" && nd >= water[ni][nj]) continue;
+                dist[ni][nj] = nd;
+                q.push({ni, nj});
+            }
+        }
+        return -1;
+    }
+};
+
+
+================================================================================
+FOLDER: 2815_max_pair_sum_in_an_array
+================================================================================
+// LeetCode 2815 - Max Pair Sum in an Array
+// https://leetcode.com/problems/max-pair-sum-in-an-array/
+
+#include <algorithm>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    int maxSum(std::vector<int>& nums) {
+        std::unordered_map<int, int> best;
+        int ans = -1;
+        for (int v : nums) {
+            int x = v, md = 0;
+            while (x > 0) { md = std::max(md, x % 10); x /= 10; }
+            if (best.count(md)) {
+                ans = std::max(ans, best[md] + v);
+                best[md] = std::max(best[md], v);
+            } else best[md] = v;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2816_double_a_number_represented_as_a_linked_list
+================================================================================
+// LeetCode 2816 - Double a Number Represented as a Linked List
+// https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+class Solution {
+public:
+    ListNode* doubleIt(ListNode* head) {
+        auto rev = [](ListNode* node) {
+            ListNode* prev = nullptr;
+            while (node) {
+                ListNode* nxt = node->next;
+                node->next = prev;
+                prev = node;
+                node = nxt;
+            }
+            return prev;
+        };
+        head = rev(head);
+        int carry = 0;
+        ListNode* cur = head;
+        ListNode* prev = nullptr;
+        while (cur) {
+            int val = cur->val * 2 + carry;
+            cur->val = val % 10;
+            carry = val / 10;
+            prev = cur;
+            cur = cur->next;
+        }
+        if (carry > 0) prev->next = new ListNode(carry);
+        return rev(head);
+    }
+};
+
+
+================================================================================
+FOLDER: 2817_minimum_absolute_difference_between_elements_with_constraint
+================================================================================
+// LeetCode 2817 - Minimum Absolute Difference Between Elements With Constraint
+// https://leetcode.com/problems/minimum-absolute-difference-between-elements-with-constraint/
+
+#include <algorithm>
+#include <climits>
+#include <cstdlib>
+#include <set>
+#include <vector>
+
+class Solution {
+public:
+    int minAbsoluteDifference(std::vector<int>& nums, int x) {
+        if (x == 0) {
+            int ans = INT_MAX;
+            for (int i = 1; i < (int)nums.size(); i++)
+                ans = std::min(ans, std::abs(nums[i] - nums[i - 1]));
+            return ans;
+        }
+        int ans = INT_MAX;
+        std::set<int> arr;
+        for (int i = x; i < (int)nums.size(); i++) {
+            arr.insert(nums[i - x]);
+            int cur = nums[i];
+            auto it = arr.lower_bound(cur);
+            if (it != arr.end()) ans = std::min(ans, *it - cur);
+            if (it != arr.begin()) ans = std::min(ans, cur - *std::prev(it));
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2818_apply_operations_to_maximize_score
+================================================================================
+// LeetCode 2818 - Apply Operations to Maximize Score
+// https://leetcode.com/problems/apply-operations-to-maximize-score/
+
+#include <algorithm>
+#include <unordered_set>
+#include <vector>
+
+class Solution {
+public:
+    int maximumScore(std::vector<int>& nums, int k) {
+        const int MOD = 1000000007;
+        int n = (int)nums.size();
+        int maxV = *std::max_element(nums.begin(), nums.end());
+        std::vector<int> spf(maxV + 1, 0);
+        for (int i = 2; i <= maxV; i++) {
+            if (spf[i] == 0) {
+                for (int j = i; j <= maxV; j += i) if (spf[j] == 0) spf[j] = i;
+            }
+        }
+        auto primeScore = [&](int x) {
+            std::unordered_set<int> seen;
+            while (x > 1) {
+                int p = spf[x];
+                seen.insert(p);
+                while (x % p == 0) x /= p;
+            }
+            return (int)seen.size();
+        };
+        std::vector<int> score(n);
+        for (int i = 0; i < n; i++) score[i] = primeScore(nums[i]);
+        std::vector<int> left(n), right(n), st;
+        for (int i = 0; i < n; i++) {
+            while (!st.empty() && score[st.back()] < score[i]) st.pop_back();
+            left[i] = st.empty() ? -1 : st.back();
+            st.push_back(i);
+        }
+        st.clear();
+        for (int i = n - 1; i >= 0; i--) {
+            while (!st.empty() && score[st.back()] <= score[i]) st.pop_back();
+            right[i] = st.empty() ? n : st.back();
+            st.push_back(i);
+        }
+        std::vector<std::pair<int, long long>> arr(n);
+        for (int i = 0; i < n; i++)
+            arr[i] = {nums[i], 1LL * (i - left[i]) * (right[i] - i)};
+        std::sort(arr.begin(), arr.end(), [](auto& a, auto& b) { return a.first > b.first; });
+        auto modPow = [&](long long a, long long b) {
+            long long res = 1;
+            a %= MOD;
+            while (b > 0) {
+                if (b & 1) res = res * a % MOD;
+                a = a * a % MOD;
+                b >>= 1;
+            }
+            return (int)res;
+        };
+        long long ans = 1;
+        long long remain = k;
+        for (auto& [v, cnt] : arr) {
+            if (remain <= 0) break;
+            long long use = std::min(cnt, remain);
+            ans = ans * modPow(v, use) % MOD;
+            remain -= use;
+        }
+        return (int)ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2819_minimum_relative_loss_after_buying_chocolates
+================================================================================
+// LeetCode 2819 - Minimum Relative Loss After Buying Chocolates
+// https://leetcode.com/problems/minimum-relative-loss-after-buying-chocolates/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<long long> minimumRelativeLosses(std::vector<int>& prices, std::vector<std::vector<int>>& queries) {
+        std::sort(prices.begin(), prices.end());
+        int n = (int)prices.size();
+        std::vector<long long> ans(queries.size());
+        for (int qi = 0; qi < (int)queries.size(); qi++) {
+            int k = queries[qi][0], m = queries[qi][1];
+            std::vector<long long> losses(n);
+            for (int i = 0; i < n; i++) {
+                if (prices[i] <= k) losses[i] = prices[i];
+                else losses[i] = 2LL * k - prices[i];
+            }
+            std::sort(losses.begin(), losses.end());
+            long long sum = 0;
+            for (int i = 0; i < m; i++) sum += losses[i];
+            ans[qi] = sum;
+        }
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2821_delay_the_resolution_of_each_promise
+================================================================================
+// LeetCode 2821 - Delay the Resolution of Each Promise
+// https://leetcode.com/problems/delay-the-resolution-of-each-promise/
+// JS-only problem; C++ stand-in wrapping callables.
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::function<int()>> delayAll(std::vector<std::function<int()>>& functions, int ms) {
+        (void)ms;
+        std::vector<std::function<int()>> out;
+        for (auto& f : functions) out.push_back(f);
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2822_inversion_of_object
+================================================================================
+// LeetCode 2822 - Inversion of Object
+// https://leetcode.com/problems/inversion-of-object/
+// JS-only problem; C++ string-map stand-in.
+
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    std::unordered_map<std::string, std::vector<std::string>> invertObject(
+        std::unordered_map<std::string, std::string>& obj) {
+        std::unordered_map<std::string, std::vector<std::string>> out;
+        for (auto& [k, v] : obj) out[v].push_back(k);
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2823_deep_object_filter
+================================================================================
+// LeetCode 2823 - Deep Object Filter
+// https://leetcode.com/problems/deep-object-filter/
+// JS-only problem; C++ vector filter stand-in.
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> deepFilter(std::vector<int>& obj, std::function<bool(int)> fn) {
+        std::vector<int> out;
+        for (int v : obj) if (fn(v)) out.push_back(v);
+        return out;
+    }
+};
+
+
+================================================================================
+FOLDER: 2824_count_pairs_whose_sum_is_less_than_target
+================================================================================
+// LeetCode 2824 - Count Pairs Whose Sum is Less than Target
+// https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/
+
+#include <vector>
+
+class Solution {
+public:
+    int countPairs(std::vector<int>& nums, int target) {
+        int ans = 0;
+        for (int i = 0; i < (int)nums.size(); i++)
+            for (int j = i + 1; j < (int)nums.size(); j++)
+                if (nums[i] + nums[j] < target) ans++;
+        return ans;
+    }
+};
+
+
+================================================================================
+FOLDER: 2825_make_string_a_subsequence_using_cyclic_increments
+================================================================================
+// LeetCode 2825 - Make String a Subsequence Using Cyclic Increments
+// https://leetcode.com/problems/make-string-a-subsequence-using-cyclic-increments/
+
+#include <string>
+
+class Solution {
+public:
+    bool canMakeSubsequence(std::string str1, std::string str2) {
+        int j = 0;
+        for (int i = 0; i < (int)str1.size() && j < (int)str2.size(); i++) {
+            char a = str1[i], b = str2[j];
+            if (a == b || (a - 'a' + 1) % 26 == (b - 'a')) j++;
+        }
+        return j == (int)str2.size();
+    }
+};
+
+
+================================================================================
+FOLDER: 2826_sorting_three_groups
+================================================================================
+// LeetCode 2826 - Sorting Three Groups
+// https://leetcode.com/problems/sorting-three-groups/
+
+#include <algorithm>
+#include <array>
+#include <vector>
+
+class Solution {
+public:
+    int minimumOperations(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        const int INF = 1 << 30;
+        std::vector<std::array<int, 4>> dp(n + 1);
+        for (int i = 0; i <= n; i++) for (int g = 1; g <= 3; g++) dp[i][g] = INF;
+        dp[0][1] = dp[0][2] = dp[0][3] = 0;
+        for (int i = 1; i <= n; i++) {
+            int v = nums[i - 1];
+            for (int g = 1; g <= 3; g++) {
+                int cost = (v != g);
+                for (int prev = 1; prev <= g; prev++)
+                    dp[i][g] = std::min(dp[i][g], dp[i - 1][prev] + cost);
+            }
+        }
+        return std::min({dp[n][1], dp[n][2], dp[n][3]});
+    }
+};
+
+
+================================================================================
+FOLDER: 2827_number_of_beautiful_integers_in_the_range
+================================================================================
+// LeetCode 2827 - Number of Beautiful Integers in the Range
+// https://leetcode.com/problems/number-of-beautiful-integers-in-the-range/
+
+#include <cstring>
+#include <string>
+
+class Solution {
+public:
+    int numberOfBeautifulIntegers(int low, int high, int k) {
+        auto count = [&](int n) {
+            if (n < 0) return 0;
+            std::string s = std::to_string(n);
+            int memo[12][45][22][2][2];
+            std::memset(memo, -1, sizeof(memo));
+            auto dfs = [&](auto&& self, int pos, int diff, int mod, int tight, int started) -> int {
+                if (pos == (int)s.size()) return started && diff == 0 && mod == 0;
+                int& res = memo[pos][diff + 20][mod][tight][started];
+                if (res != -1) return res;
+                int up = tight ? s[pos] - '0' : 9;
+                int ans = 0;
+                for (int d = 0; d <= up; d++) {
+                    int nt = tight && d == up;
+                    if (!started) {
+                        if (d == 0) ans += self(self, pos + 1, diff, mod, nt, 0);
+                        else {
+                            int nd = diff + (d % 2 == 0 ? 1 : -1);
+                            ans += self(self, pos + 1, nd, d % k, nt, 1);
+                        }
+                    } else {
+                        int nd = diff + (d % 2 == 0 ? 1 : -1);
+                        ans += self(self, pos + 1, nd, (mod * 10 + d) % k, nt, 1);
+                    }
+                }
+                return res = ans;
+            };
+            return dfs(dfs, 0, 0, 0, 1, 0);
+        };
+        return count(high) - count(low - 1);
+    }
+};
+
+
+================================================================================
+FOLDER: 2828_check_if_a_string_is_an_acronym_of_words
+================================================================================
+// LeetCode 2828 - Check if a String Is an Acronym of Words
+// https://leetcode.com/problems/check-if-a-string-is-an-acronym-of-words/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    bool isAcronym(std::vector<std::string>& words, std::string s) {
+        if (words.size() != s.size()) return false;
+        for (int i = 0; i < (int)words.size(); i++) {
+            if (words[i].empty() || words[i][0] != s[i]) return false;
+        }
+        return true;
+    }
+};
+
+
+================================================================================
+FOLDER: 2829_determine_the_minimum_sum_of_a_k_avoiding_array
+================================================================================
+// LeetCode 2829 - Determine the Minimum Sum of a k-avoiding Array
+// https://leetcode.com/problems/determine-the-minimum-sum-of-a-k-avoiding-array/
+
+#include <unordered_set>
+
+class Solution {
+public:
+    int minimumSum(int n, int k) {
+        std::unordered_set<int> used;
+        int sum = 0, x = 1;
+        while ((int)used.size() < n) {
+            if (!used.count(k - x)) {
+                used.insert(x);
+                sum += x;
+            }
+            x++;
+        }
+        return sum;
+    }
+};

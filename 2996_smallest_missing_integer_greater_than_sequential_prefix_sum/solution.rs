@@ -1,7 +1,20 @@
-﻿// LeetCode 2996 - Smallest Missing Integer Greater Than Sequential Prefix Sum
+// LeetCode 2996 - Smallest Missing Integer Greater Than Sequential Prefix Sum
 // https://leetcode.com/problems/smallest-missing-integer-greater-than-sequential-prefix-sum/
 
+use std::collections::HashSet;
+
 impl Solution {
-    pub fn solve() {
+    pub fn missing_integer(nums: Vec<i32>) -> i32 {
+        let mut sum = nums[0];
+        let mut i = 1;
+        while i < nums.len() && nums[i] == nums[i - 1] + 1 {
+            sum += nums[i];
+            i += 1;
+        }
+        let seen: HashSet<i32> = nums.into_iter().collect();
+        while seen.contains(&sum) {
+            sum += 1;
+        }
+        sum
     }
 }

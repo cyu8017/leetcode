@@ -1,7 +1,45 @@
-﻿// LeetCode 3306 - Count of Substrings Containing Every Vowel and K Consonants II
+// LeetCode 3306 - Count of Substrings Containing Every Vowel and K Consonants II
 // https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/
 
+use std::collections::HashMap;
+
 impl Solution {
-    pub fn solve() {
+    fn is_vowel(c: u8) -> bool {
+        matches!(c, b'a' | b'e' | b'i' | b'o' | b'u')
+    }
+
+    fn at_least(word: &str, k: i32) -> i64 {
+        let mut cnt: HashMap<u8, i32> = HashMap::new();
+        let mut cons = 0;
+        let mut l = 0;
+        let mut ans = 0i64;
+        let w = word.as_bytes();
+        for r in 0..w.len() {
+            let c = w[r];
+            if Self::is_vowel(c) {
+                *cnt.entry(c).or_insert(0) += 1;
+            } else {
+                cons += 1;
+            }
+            while cnt.len() == 5 && cons >= k {
+                ans += (w.len() - r) as i64;
+                let c2 = w[l];
+                if Self::is_vowel(c2) {
+                    let e = cnt.get_mut(&c2).unwrap();
+                    *e -= 1;
+                    if *e == 0 {
+                        cnt.remove(&c2);
+                    }
+                } else {
+                    cons -= 1;
+                }
+                l += 1;
+            }
+        }
+        ans
+    }
+
+    pub fn count_of_substrings(word: String, k: i32) -> i64 {
+        Self::at_least(&word, k) - Self::at_least(&word, k + 1)
     }
 }

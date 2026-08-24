@@ -1,7 +1,14 @@
-﻿// LeetCode 3644 - Maximum K to Sort a Permutation
+// LeetCode 3644 - Maximum K to Sort a Permutation
 // https://leetcode.com/problems/maximum-k-to-sort-a-permutation/
 
 impl Solution {
-    pub fn solve() {
+    pub fn sort_permutation(nums: Vec<i32>) -> i32 {
+        let mut ans = -1;
+        for (i, &x) in nums.iter().enumerate() {
+            if i as i32 != x {
+                ans &= x;
+            }
+        }
+        ans.max(0)
     }
 }

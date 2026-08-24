@@ -1,7 +1,19 @@
-﻿// LeetCode 0657 - Robot Return to Origin
+// LeetCode 0657 - Robot Return to Origin
 // https://leetcode.com/problems/robot-return-to-origin/
 
 impl Solution {
-    pub fn solve() {
+    pub fn judge_circle(moves: String) -> bool {
+        let mut x = 0;
+        let mut y = 0;
+        for mv in moves.chars() {
+            match mv {
+                'U' => y += 1,
+                'D' => y -= 1,
+                'L' => x -= 1,
+                'R' => x += 1,
+                _ => {}
+            }
+        }
+        x == 0 && y == 0
     }
 }

@@ -1,0 +1,49 @@
+=== 3469_find_minimum_cost_to_remove_array_elements ===
+class=Solution method=minCost params=['nums']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3469 - Find Minimum Cost to Remove Array Elements
+// https://leetcode.com/problems/find-minimum-cost-to-remove-array-elements/
+
+#include <vector>
+#include <map>
+#include <array>
+#include <algorithm>
+
+class Solution {
+    std::map<std::array<int, 2>, int> memo;
+    std::vector<int> nums;
+    int n;
+    int max2(int a, int b) { return a > b ? a : b; }
+    int min3(int a, int b, int c) { return std::min(a, std::min(b, c)); }
+    int dfs(int i, int prev) {
+        if (i >= n) return prev == -1 ? 0 : nums[prev];
+        std::array<int, 2> key = {i, prev};
+        if (memo.count(key)) return memo[key];
+        int res;
+        if (prev == -1) {
+            if (i + 1 >= n) res = nums[i];
+            else if (i + 2 >= n) res = max2(nums[i], nums[i + 1]);
+            else {
+                int a = nums[i], b = nums[i + 1], c = nums[i + 2];
+                res = min3(max2(b, c) + dfs(i + 3, i), max2(a, c) + dfs(i + 3, i + 1), max2(a, b) + dfs(i + 3, i + 2));
+            }
+        } else {
+            if (i + 1 >= n) res = max2(nums[prev], nums[i]);
+            else {
+                int a = nums[prev], b = nums[i], c = nums[i + 1];
+                res = min3(max2(b, c) + dfs(i + 2, prev), max2(a, c) + dfs(i + 2, i), max2(a, b) + dfs(i + 2, i + 1));
+            }
+        }
+        return memo[key] = res;
+    }
+public:
+    int minCost(std::vector<int>& nums_) {
+        nums = nums_;
+        n = (int)nums.size();
+        memo.clear();
+        return dfs(0, -1);
+    }
+};
+
+---END---

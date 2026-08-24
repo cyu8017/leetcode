@@ -1,7 +1,38 @@
-﻿// LeetCode 3830 - Longest Alternating Subarray After Removing At Most One Element
+// LeetCode 3830 - Longest Alternating Subarray After Removing At Most One Element
 // https://leetcode.com/problems/longest-alternating-subarray-after-removing-at-most-one-element/
 
 impl Solution {
-    pub fn solve() {
+    pub fn longest_alternating(nums: Vec<i32>) -> i32 {
+        let n = nums.len();
+        let mut l1 = vec![1; n];
+        let mut l2 = vec![1; n];
+        let mut r1 = vec![1; n];
+        let mut r2 = vec![1; n];
+        let mut ans = 0;
+        for i in 1..n {
+            if nums[i - 1] < nums[i] {
+                l1[i] = l2[i - 1] + 1;
+            } else if nums[i - 1] > nums[i] {
+                l2[i] = l1[i - 1] + 1;
+            }
+            ans = ans.max(l1[i]).max(l2[i]);
+        }
+        for i in (0..n.saturating_sub(1)).rev() {
+            if nums[i + 1] > nums[i] {
+                r1[i] = r2[i + 1] + 1;
+            } else if nums[i + 1] < nums[i] {
+                r2[i] = r1[i + 1] + 1;
+            }
+        }
+        if n >= 3 {
+            for i in 1..n - 1 {
+                if nums[i - 1] < nums[i + 1] {
+                    ans = ans.max(l2[i - 1] + r2[i + 1]);
+                } else if nums[i - 1] > nums[i + 1] {
+                    ans = ans.max(l1[i - 1] + r1[i + 1]);
+                }
+            }
+        }
+        ans
     }
 }

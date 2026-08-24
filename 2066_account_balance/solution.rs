@@ -1,7 +1,14 @@
-﻿// LeetCode 2066 - Account Balance
-// https://leetcode.com/problems/account-balance/
+// LeetCode 2066 - Account Balance
+// https:// leetcode.com/problems/account-balance/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT
+    account_id,
+    day,
+    SUM(IF(type = 'Deposit', amount, -amount)) OVER (
+        PARTITION BY account_id
+        ORDER BY day
+    ) AS balance
+FROM Transactions
+ORDER BY 1, 2
+"#;

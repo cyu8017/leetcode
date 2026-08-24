@@ -1,0 +1,34 @@
+=== 3399_smallest_substring_with_identical_characters_ii ===
+class=Solution method=minLength params=['s', 'numOps']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3399 - Smallest Substring With Identical Characters II
+// https://leetcode.com/problems/smallest-substring-with-identical-characters-ii/
+
+#include <string>
+
+class Solution {
+public:
+    int minLength(std::string s, int numOps) {
+        int n = (int)s.size();
+        auto ok = [&](int L) {
+            int ops = 0;
+            for (int i = 0; i < n; ) {
+                int j = i;
+                while (j < n && s[j] == s[i]) j++;
+                ops += (j - i) / (L + 1);
+                i = j;
+            }
+            return ops <= numOps;
+        };
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (ok(mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+};
+
+---END---

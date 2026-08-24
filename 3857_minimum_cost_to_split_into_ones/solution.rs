@@ -1,7 +1,8 @@
-﻿// LeetCode 3857 - Minimum Cost to Split into Ones
+// LeetCode 3857 - Minimum Cost to Split Into Ones
 // https://leetcode.com/problems/minimum-cost-to-split-into-ones/
 
 impl Solution {
-    pub fn solve() {
+    pub fn min_cost(n: i32) -> i32 {
+        n * (n - 1) / 2
     }
 }

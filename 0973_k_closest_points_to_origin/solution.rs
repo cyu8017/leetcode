@@ -1,7 +1,13 @@
-﻿// LeetCode 0973 - K Closest Points to Origin
+// LeetCode 0973 - K Closest Points to Origin
 // https://leetcode.com/problems/k-closest-points-to-origin/
 
 impl Solution {
-    pub fn solve() {
+    pub fn k_closest(mut points: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
+        let k = k as usize;
+        if k < points.len() {
+            points.select_nth_unstable_by_key(k, |p| p[0] * p[0] + p[1] * p[1]);
+        }
+        points.truncate(k);
+        points
     }
 }

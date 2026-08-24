@@ -1,0 +1,35 @@
+=== 3472_longest_palindromic_subsequence_after_at_most_k_operations ===
+class=Solution method=longestPalindromicSubsequence params=['s', 'k']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3472 - Longest Palindromic Subsequence After at Most K Operations
+// https://leetcode.com/problems/longest-palindromic-subsequence-after-at-most-k-operations/
+
+#include <string>
+#include <vector>
+#include <algorithm>
+
+class Solution {
+    int distCirc(char a, char b) {
+        int d = abs((int)a - (int)b);
+        return std::min(d, 26 - d);
+    }
+public:
+    int longestPalindromicSubsequence(std::string s, int k) {
+        int n = (int)s.size();
+        std::vector<std::vector<std::vector<int>>> dp(n, std::vector<std::vector<int>>(n, std::vector<int>(k + 1, -1)));
+        auto dfs = [&](auto&& self, int i, int j, int ops) -> int {
+            if (i > j) return 0;
+            if (i == j) return 1;
+            if (dp[i][j][ops] != -1) return dp[i][j][ops];
+            int best = self(self, i + 1, j, ops);
+            best = std::max(best, self(self, i, j - 1, ops));
+            int cost = distCirc(s[i], s[j]);
+            if (cost <= ops) best = std::max(best, 2 + self(self, i + 1, j - 1, ops - cost));
+            return dp[i][j][ops] = best;
+        };
+        return dfs(dfs, 0, n - 1, k);
+    }
+};
+
+---END---

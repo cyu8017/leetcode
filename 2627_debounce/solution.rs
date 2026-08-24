@@ -1,7 +1,8 @@
-﻿// LeetCode 2627 - Debounce
+// LeetCode 2627 - Debounce
 // https://leetcode.com/problems/debounce/
 
 impl Solution {
-    pub fn solve() {
+    pub fn debounce(f: impl Fn(), _t: i32) -> impl Fn() {
+        move || f()
     }
 }

@@ -1,0 +1,50 @@
+=== 3459_length_of_longest_v_shaped_diagonal_segment ===
+class=Solution method=lenOfVDiagonal params=['grid']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3459 - Length of Longest V-Shaped Diagonal Segment
+// https://leetcode.com/problems/length-of-longest-v-shaped-diagonal-segment/
+
+#include <vector>
+#include <map>
+#include <array>
+
+class Solution {
+public:
+    int lenOfVDiagonal(std::vector<std::vector<int>>& grid) {
+        int m = (int)grid.size(), n = (int)grid[0].size();
+        int dirs[4][2] = {{1, 1}, {1, -1}, {-1, -1}, {-1, 1}};
+        int nextDir[4] = {1, 2, 3, 0};
+        int ans = 0;
+        std::map<std::array<int, 5>, int> memo;
+        auto dfs = [&](auto&& self, int i, int j, int d, int turned, int expect) -> int {
+            if (i < 0 || j < 0 || i >= m || j >= n || grid[i][j] != expect) return 0;
+            std::array<int, 5> key = {i, j, d, turned, expect};
+            if (memo.count(key)) return memo[key];
+            int ni = i + dirs[d][0], nj = j + dirs[d][1];
+            int nx = (expect == 2) ? 0 : 2;
+            int best = 1 + self(self, ni, nj, d, turned, nx);
+            if (turned == 0) {
+                int nd = nextDir[d];
+                int ti = i + dirs[nd][0], tj = j + dirs[nd][1];
+                int cand = 1 + self(self, ti, tj, nd, 1, nx);
+                if (cand > best) best = cand;
+            }
+            return memo[key] = best;
+        };
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (grid[i][j] != 1) continue;
+                for (int d = 0; d < 4; d++) {
+                    int ni = i + dirs[d][0], nj = j + dirs[d][1];
+                    int best = 1 + dfs(dfs, ni, nj, d, 0, 2);
+                    if (best > ans) ans = best;
+                }
+                if (ans < 1) ans = 1;
+            }
+        }
+        return ans;
+    }
+};
+
+---END---

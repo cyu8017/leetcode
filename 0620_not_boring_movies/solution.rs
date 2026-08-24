@@ -1,7 +1,9 @@
-﻿// LeetCode 0620 - Not Boring Movies
+// LeetCode 0620 - Not Boring Movies
 // https://leetcode.com/problems/not-boring-movies/
 
-impl Solution {
-    pub fn solve() {
-    }
-}
+const QUERY: &str = r#"
+SELECT *
+FROM Cinema
+WHERE MOD(id, 2) = 1 AND description != 'boring'
+ORDER BY rating DESC
+"#;

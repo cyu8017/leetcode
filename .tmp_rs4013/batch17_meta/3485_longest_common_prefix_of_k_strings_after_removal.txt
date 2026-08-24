@@ -1,0 +1,45 @@
+=== 3485_longest_common_prefix_of_k_strings_after_removal ===
+class=Solution method=longestCommonPrefix params=['words', 'k']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3485 - Longest Common Prefix of K Strings After Removal
+// https://leetcode.com/problems/longest-common-prefix-of-k-strings-after-removal/
+
+#include <string>
+#include <vector>
+#include <algorithm>
+
+class Solution {
+    int lcpOf(const std::vector<std::string>& a) {
+        if (a.empty()) return 0;
+        std::string pref = a[0];
+        for (size_t t = 1; t < a.size(); t++) {
+            const std::string& s = a[t];
+            size_t i = 0;
+            while (i < pref.size() && i < s.size() && pref[i] == s[i]) i++;
+            pref.resize(i);
+            if (pref.empty()) return 0;
+        }
+        return (int)pref.size();
+    }
+public:
+    std::vector<int> longestCommonPrefix(std::vector<std::string>& words, int k) {
+        int n = (int)words.size();
+        std::vector<int> ans(n);
+        for (int i = 0; i < n; i++) {
+            std::vector<std::string> rest;
+            for (int j = 0; j < n; j++) if (j != i) rest.push_back(words[j]);
+            if ((int)rest.size() < k) { ans[i] = 0; continue; }
+            std::sort(rest.begin(), rest.end());
+            int best = 0;
+            for (int j = 0; j + k - 1 < (int)rest.size(); j++) {
+                std::vector<std::string> window(rest.begin() + j, rest.begin() + j + k);
+                best = std::max(best, lcpOf(window));
+            }
+            ans[i] = best;
+        }
+        return ans;
+    }
+};
+
+---END---

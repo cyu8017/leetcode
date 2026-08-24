@@ -1,7 +1,10 @@
-﻿// LeetCode 2545 - Sort the Students by Their Kth Score
+// LeetCode 2545 - Sort the Students by Their Kth Score
 // https://leetcode.com/problems/sort-the-students-by-their-kth-score/
 
 impl Solution {
-    pub fn solve() {
+    pub fn sort_the_students(mut score: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
+        let k = k as usize;
+        score.sort_by(|a, b| b[k].cmp(&a[k]));
+        score
     }
 }

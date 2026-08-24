@@ -1,0 +1,28 @@
+=== 3430_maximum_and_minimum_sums_of_at_most_size_k_subarrays ===
+class=Solution method=minMaxSubarraySum params=['nums', 'k']
+src_lang=cpp
+---SOURCE---
+// LeetCode 3430 - Maximum and Minimum Sums of at Most Size K Subarrays
+// https://leetcode.com/problems/maximum-and-minimum-sums-of-at-most-size-k-subarrays/
+
+#include <cstdint>
+#include <vector>
+
+class Solution {
+public:
+    long long minMaxSubarraySum(std::vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        long long ans = 0;
+        for (int i = 0; i < n; i++) {
+            int mn = nums[i], mx = nums[i];
+            for (int j = i; j < n && j - i + 1 <= k; j++) {
+                if (nums[j] < mn) mn = nums[j];
+                if (nums[j] > mx) mx = nums[j];
+                ans += mn + mx;
+            }
+        }
+        return ans;
+    }
+};
+
+---END---

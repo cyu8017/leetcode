@@ -1,0 +1,3123 @@
+
+================================================================================
+// FILE: 3047_find_the_largest_area_of_square_inside_two_rectangles | class=Solution method=largestSquareArea src=solution.cpp
+================================================================================
+// LeetCode 3047 - Find the Largest Area of Square Inside Two Rectangles
+// https://leetcode.com/problems/find-the-largest-area-of-square-inside-two-rectangles/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    long long largestSquareArea(std::vector<std::vector<int>>& bottomLeft, std::vector<std::vector<int>>& topRight) {
+        long long ans = 0;
+        int n = (int)bottomLeft.size();
+        for (int i = 0; i < n; i++) {
+            int x1 = bottomLeft[i][0], y1 = bottomLeft[i][1];
+            int x2 = topRight[i][0], y2 = topRight[i][1];
+            for (int j = i + 1; j < n; j++) {
+                int x3 = bottomLeft[j][0], y3 = bottomLeft[j][1];
+                int x4 = topRight[j][0], y4 = topRight[j][1];
+                int ww = std::min(x2, x4) - std::max(x1, x3);
+                int h = std::min(y2, y4) - std::max(y1, y3);
+                int e = std::min(ww, h);
+                if (e > 0) ans = std::max(ans, (long long)e * e);
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3048_earliest_second_to_mark_indices_i | class=Solution method=earliestSecondToMarkIndices src=solution.cpp
+================================================================================
+// LeetCode 3048 - Earliest Second to Mark Indices I
+// https://leetcode.com/problems/earliest-second-to-mark-indices-i/
+
+#include <vector>
+
+class Solution {
+public:
+    int earliestSecondToMarkIndices(std::vector<int>& nums, std::vector<int>& changeIndices) {
+        int n = (int)nums.size(), m = (int)changeIndices.size();
+        auto ok = [&](int t) {
+            std::vector<int> last(n + 1, 0);
+            for (int s = 0; s < t; s++) last[changeIndices[s]] = s;
+            int decrement = 0, marked = 0;
+            for (int s = 0; s < t; s++) {
+                int i = changeIndices[s];
+                if (last[i] == s) {
+                    if (decrement < nums[i - 1]) return false;
+                    decrement -= nums[i - 1];
+                    marked++;
+                } else {
+                    decrement++;
+                }
+            }
+            return marked == n;
+        };
+        int l = 0, r = m + 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (ok(mid)) r = mid;
+            else l = mid + 1;
+        }
+        return l > m ? -1 : l;
+    }
+};
+
+================================================================================
+// FILE: 3049_earliest_second_to_mark_indices_ii | class=Solution method=earliestSecondToMarkIndices src=solution.cpp
+================================================================================
+// LeetCode 3049 - Earliest Second to Mark Indices II
+// https://leetcode.com/problems/earliest-second-to-mark-indices-ii/
+
+#include <queue>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+    static std::unordered_map<int, int> getSecondToIndex(const std::vector<int>& nums, const std::vector<int>& changeIndices) {
+        std::unordered_map<int, int> indexToFirstSecond;
+        for (int second = 0; second < (int)changeIndices.size(); second++) {
+            int index = changeIndices[second] - 1;
+            if (nums[index] > 0 && !indexToFirstSecond.count(index))
+                indexToFirstSecond[index] = second;
+        }
+        std::unordered_map<int, int> secondToIndex;
+        for (auto& [index, second] : indexToFirstSecond) secondToIndex[second] = index;
+        return secondToIndex;
+    }
+    static bool canMark(const std::vector<int>& nums, const std::unordered_map<int, int>& secondToIndex, int maxSecond, long long numsSum) {
+        std::priority_queue<int, std::vector<int>, std::greater<int>> h;
+        int marks = 0;
+        for (int second = maxSecond - 1; second >= 0; second--) {
+            auto it = secondToIndex.find(second);
+            if (it != secondToIndex.end()) {
+                h.push(nums[it->second]);
+                if (marks == 0) {
+                    h.pop();
+                    marks++;
+                } else {
+                    marks--;
+                }
+            } else {
+                marks++;
+            }
+        }
+        int heapSize = (int)h.size();
+        long long heapSum = 0;
+        while (!h.empty()) {
+            heapSum += h.top();
+            h.pop();
+        }
+        long long decrementAndMarkCost = numsSum - heapSum + (long long)(nums.size() - heapSize);
+        long long zeroAndMarkCost = (long long)heapSize + heapSize;
+        return decrementAndMarkCost + zeroAndMarkCost <= maxSecond;
+    }
+public:
+    int earliestSecondToMarkIndices(std::vector<int>& nums, std::vector<int>& changeIndices) {
+        auto secondToIndex = getSecondToIndex(nums, changeIndices);
+        long long numsSum = 0;
+        for (int v : nums) numsSum += v;
+        int l = 0, r = (int)changeIndices.size() + 1;
+        while (l < r) {
+            int m = (l + r) / 2;
+            if (canMark(nums, secondToIndex, m, numsSum)) r = m;
+            else l = m + 1;
+        }
+        return l <= (int)changeIndices.size() ? l : -1;
+    }
+};
+
+================================================================================
+// FILE: 3062_winner_of_the_linked_list_game | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3062 - Winner of the Linked List Game
+// https://leetcode.com/problems/winner-of-the-linked-list-game/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+#include <string>
+
+class Solution {
+public:
+    std::string gameResult(ListNode* head) {
+        int odd = 0, even = 0;
+        for (; head; head = head->next->next) {
+            int a = head->val, b = head->next->val;
+            if (a < b) odd++;
+            if (a > b) even++;
+        }
+        if (odd > even) return "Odd";
+        if (odd < even) return "Even";
+        return "Tie";
+    }
+};
+
+================================================================================
+// FILE: 3063_linked_list_frequency | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3063 - Linked List Frequency
+// https://leetcode.com/problems/linked-list-frequency/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+#include <unordered_map>
+
+class Solution {
+public:
+    ListNode* frequenciesOfElements(ListNode* head) {
+        std::unordered_map<int, int> cnt;
+        for (; head; head = head->next) cnt[head->val]++;
+        ListNode dummy;
+        for (auto& [_, val] : cnt) {
+            (void)_;
+            dummy.next = new ListNode(val, dummy.next);
+        }
+        return dummy.next;
+    }
+};
+
+================================================================================
+// FILE: 3064_guess_the_number_using_bitwise_questions_i | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3064 - Guess the Number Using Bitwise Questions I
+// https://leetcode.com/problems/guess-the-number-using-bitwise-questions-i/
+
+/**
+ * Definition of commonSetBits API.
+ * int commonSetBits(int num);
+ */
+
+class Solution {
+public:
+    int findNumber() {
+        int n = 0;
+        for (int i = 0; i < 32; i++)
+            if (commonSetBits(1 << i) > 0) n |= 1 << i;
+        return n;
+    }
+};
+
+================================================================================
+// FILE: 3065_minimum_operations_to_exceed_threshold_value_i | class=Solution method=minOperations src=solution.cpp
+================================================================================
+// LeetCode 3065 - Minimum Operations to Exceed Threshold Value I
+// https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-i/
+
+#include <vector>
+
+class Solution {
+public:
+    int minOperations(std::vector<int>& nums, int k) {
+        int ans = 0;
+        for (int x : nums) if (x < k) ans++;
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3066_minimum_operations_to_exceed_threshold_value_ii | class=Solution method=minOperations src=solution.cpp
+================================================================================
+// LeetCode 3066 - Minimum Operations to Exceed Threshold Value II
+// https://leetcode.com/problems/minimum-operations-to-exceed-threshold-value-ii/
+
+#include <queue>
+#include <vector>
+
+class Solution {
+public:
+    int minOperations(std::vector<int>& nums, int k) {
+        std::priority_queue<long long, std::vector<long long>, std::greater<long long>> pq;
+        for (int x : nums) pq.push(x);
+        int ans = 0;
+        while (pq.size() > 1 && pq.top() < k) {
+            long long x = pq.top(); pq.pop();
+            long long y = pq.top(); pq.pop();
+            pq.push(x * 2 + y);
+            ans++;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3067_count_pairs_of_connectable_servers_in_a_weighted_tree_network | class=Solution method=countPairsOfConnectableServers src=solution.cpp
+================================================================================
+// LeetCode 3067 - Count Pairs of Connectable Servers in a Weighted Tree Network
+// https://leetcode.com/problems/count-pairs-of-connectable-servers-in-a-weighted-tree-network/
+
+#include <functional>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> countPairsOfConnectableServers(std::vector<std::vector<int>>& edges, int signalSpeed) {
+        int n = (int)edges.size() + 1;
+        std::vector<std::vector<std::pair<int, int>>> g(n);
+        for (auto& e : edges) {
+            g[e[0]].push_back({e[1], e[2]});
+            g[e[1]].push_back({e[0], e[2]});
+        }
+        std::function<int(int, int, int)> dfs = [&](int a, int fa, int ws) {
+            int cnt = (ws % signalSpeed == 0) ? 1 : 0;
+            for (auto [b, w] : g[a])
+                if (b != fa) cnt += dfs(b, a, ws + w);
+            return cnt;
+        };
+        std::vector<int> ans(n);
+        for (int a = 0; a < n; a++) {
+            int s = 0;
+            for (auto [b, w] : g[a]) {
+                int t = dfs(b, a, w);
+                ans[a] += s * t;
+                s += t;
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3068_find_the_maximum_sum_of_node_values | class=Solution method=maximumValueSum src=solution.cpp
+================================================================================
+// LeetCode 3068 - Find the Maximum Sum of Node Values
+// https://leetcode.com/problems/find-the-maximum-sum-of-node-values/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    long long maximumValueSum(std::vector<int>& nums, int k, std::vector<std::vector<int>>& edges) {
+        (void)edges;
+        long long f0 = 0, f1 = -0x3f3f3f3fLL;
+        for (int x : nums) {
+            long long nf0 = std::max(f0 + x, f1 + (x ^ k));
+            long long nf1 = std::max(f1 + x, f0 + (x ^ k));
+            f0 = nf0;
+            f1 = nf1;
+        }
+        return f0;
+    }
+};
+
+================================================================================
+// FILE: 3069_distribute_elements_into_two_arrays_i | class=Solution method=resultArray src=solution.cpp
+================================================================================
+// LeetCode 3069 - Distribute Elements Into Two Arrays I
+// https://leetcode.com/problems/distribute-elements-into-two-arrays-i/
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> resultArray(std::vector<int>& nums) {
+        std::vector<int> arr1{nums[0]}, arr2{nums[1]};
+        for (int i = 2; i < (int)nums.size(); i++) {
+            if (arr1.back() > arr2.back()) arr1.push_back(nums[i]);
+            else arr2.push_back(nums[i]);
+        }
+        arr1.insert(arr1.end(), arr2.begin(), arr2.end());
+        return arr1;
+    }
+};
+
+================================================================================
+// FILE: 3070_count_submatrices_with_top_left_element_and_sum_less_than_k | class=Solution method=countSubmatrices src=solution.cpp
+================================================================================
+// LeetCode 3070 - Count Submatrices with Top-Left Element and Sum Less Than k
+// https://leetcode.com/problems/count-submatrices-with-top-left-element-and-sum-less-than-k/
+
+#include <vector>
+
+class Solution {
+public:
+    int countSubmatrices(std::vector<std::vector<int>>& grid, int k) {
+        int n = (int)grid.size(), m = (int)grid[0].size(), ans = 0;
+        std::vector<std::vector<int>> s(n + 1, std::vector<int>(m + 1, 0));
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                s[i + 1][j + 1] = s[i + 1][j] + s[i][j + 1] - s[i][j] + grid[i][j];
+                if (s[i + 1][j + 1] <= k) ans++;
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3071_minimum_operations_to_write_the_letter_y_on_a_grid | class=Solution method=minimumOperationsToWriteY src=solution.cpp
+================================================================================
+// LeetCode 3071 - Minimum Operations to Write the Letter Y on a Grid
+// https://leetcode.com/problems/minimum-operations-to-write-the-letter-y-on-a-grid/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minimumOperationsToWriteY(std::vector<std::vector<int>>& grid) {
+        int n = (int)grid.size();
+        int cnt1[3] = {}, cnt2[3] = {};
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int x = grid[i][j];
+                bool a = i == j && i <= n / 2;
+                bool b = i + j == n - 1 && i <= n / 2;
+                bool c = j == n / 2 && i >= n / 2;
+                if (a || b || c) cnt1[x]++;
+                else cnt2[x]++;
+            }
+        }
+        int ans = n * n;
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                if (i != j) ans = std::min(ans, n * n - cnt1[i] - cnt2[j]);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3072_distribute_elements_into_two_arrays_ii | class=Solution method=resultArray src=solution.cpp
+================================================================================
+// LeetCode 3072 - Distribute Elements Into Two Arrays II
+// https://leetcode.com/problems/distribute-elements-into-two-arrays-ii/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+    struct BIT {
+        int n;
+        std::vector<int> c;
+        explicit BIT(int n_) : n(n_), c(n_ + 1, 0) {}
+        void update(int x, int delta) { for (; x <= n; x += x & -x) c[x] += delta; }
+        int query(int x) { int s = 0; for (; x > 0; x -= x & -x) s += c[x]; return s; }
+    };
+public:
+    std::vector<int> resultArray(std::vector<int>& nums) {
+        std::vector<int> st = nums;
+        std::sort(st.begin(), st.end());
+        int n = (int)st.size();
+        BIT tree1(n + 1), tree2(n + 1);
+        auto idx = [&](int x) {
+            return (int)(std::lower_bound(st.begin(), st.end(), x) - st.begin()) + 1;
+        };
+        tree1.update(idx(nums[0]), 1);
+        tree2.update(idx(nums[1]), 1);
+        std::vector<int> arr1{nums[0]}, arr2{nums[1]};
+        for (int i = 2; i < (int)nums.size(); i++) {
+            int x = nums[i];
+            int id = idx(x);
+            int a = (int)arr1.size() - tree1.query(id);
+            int b = (int)arr2.size() - tree2.query(id);
+            if (a > b || (a == b && arr1.size() <= arr2.size())) {
+                arr1.push_back(x);
+                tree1.update(id, 1);
+            } else {
+                arr2.push_back(x);
+                tree2.update(id, 1);
+            }
+        }
+        arr1.insert(arr1.end(), arr2.begin(), arr2.end());
+        return arr1;
+    }
+};
+
+================================================================================
+// FILE: 3073_maximum_increasing_triplet_value | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3073 - Maximum Increasing Triplet Value
+// https://leetcode.com/problems/maximum-increasing-triplet-value/
+
+#include <algorithm>
+#include <set>
+#include <vector>
+
+class Solution {
+public:
+    int maximumTripletValue(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        std::vector<int> right(n);
+        right[n - 1] = nums[n - 1];
+        for (int i = n - 2; i >= 0; i--) right[i] = std::max(nums[i], right[i + 1]);
+        std::set<int> ts;
+        ts.insert(nums[0]);
+        int ans = 0;
+        for (int j = 1; j < n - 1; j++) {
+            if (right[j + 1] > nums[j]) {
+                auto it = ts.lower_bound(nums[j]);
+                if (it != ts.begin()) {
+                    --it;
+                    ans = std::max(ans, *it - nums[j] + right[j + 1]);
+                }
+            }
+            ts.insert(nums[j]);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3074_apple_redistribution_into_boxes | class=Solution method=minimumBoxes src=solution.cpp
+================================================================================
+// LeetCode 3074 - Apple Redistribution into Boxes
+// https://leetcode.com/problems/apple-redistribution-into-boxes/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minimumBoxes(std::vector<int>& apple, std::vector<int>& capacity) {
+        std::sort(capacity.begin(), capacity.end());
+        int s = 0;
+        for (int x : apple) s += x;
+        for (int i = 1; ; i++) {
+            s -= capacity[(int)capacity.size() - i];
+            if (s <= 0) return i;
+        }
+    }
+};
+
+================================================================================
+// FILE: 3075_maximize_happiness_of_selected_children | class=Solution method=maximumHappinessSum src=solution.cpp
+================================================================================
+// LeetCode 3075 - Maximize Happiness of Selected Children
+// https://leetcode.com/problems/maximize-happiness-of-selected-children/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    long long maximumHappinessSum(std::vector<int>& happiness, int k) {
+        std::sort(happiness.begin(), happiness.end());
+        long long ans = 0;
+        for (int i = 0; i < k; i++) {
+            int x = happiness[(int)happiness.size() - i - 1] - i;
+            ans += std::max(x, 0);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3076_shortest_uncommon_substring_in_an_array | class=Solution method=shortestSubstrings src=solution.cpp
+================================================================================
+// LeetCode 3076 - Shortest Uncommon Substring in an Array
+// https://leetcode.com/problems/shortest-uncommon-substring-in-an-array/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<std::string> shortestSubstrings(std::vector<std::string>& arr) {
+        int n = (int)arr.size();
+        std::vector<std::string> ans(n);
+        for (int i = 0; i < n; i++) {
+            const auto& s = arr[i];
+            int m = (int)s.size();
+            for (int j = 1; j <= m && ans[i].empty(); j++) {
+                for (int l = 0; l <= m - j; l++) {
+                    std::string sub = s.substr(l, j);
+                    if (ans[i].empty() || ans[i] > sub) {
+                        bool ok = true;
+                        for (int k = 0; k < n; k++) {
+                            if (k != i && arr[k].find(sub) != std::string::npos) {
+                                ok = false;
+                                break;
+                            }
+                        }
+                        if (ok) ans[i] = sub;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3077_maximum_strength_of_k_disjoint_subarrays | class=Solution method=maximumStrength src=solution.cpp
+================================================================================
+// LeetCode 3077 - Maximum Strength of K Disjoint Subarrays
+// https://leetcode.com/problems/maximum-strength-of-k-disjoint-subarrays/
+
+#include <algorithm>
+#include <climits>
+#include <vector>
+
+class Solution {
+public:
+    long long maximumStrength(std::vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        const long long inf = LLONG_MIN / 2;
+        std::vector<std::vector<std::vector<long long>>> f(n + 1,
+            std::vector<std::vector<long long>>(k + 1, std::vector<long long>(2, inf)));
+        f[0][0][0] = 0;
+        for (int i = 1; i <= n; i++) {
+            long long x = nums[i - 1];
+            for (int j = 0; j <= k; j++) {
+                long long sign = (j & 1) ? 1 : -1;
+                long long val = sign * x * (k - j + 1);
+                f[i][j][0] = std::max(f[i - 1][j][0], f[i - 1][j][1]);
+                f[i][j][1] = std::max(f[i][j][1], f[i - 1][j][1] + val);
+                if (j > 0) {
+                    long long t = std::max(f[i - 1][j - 1][0], f[i - 1][j - 1][1]) + val;
+                    f[i][j][1] = std::max(f[i][j][1], t);
+                }
+            }
+        }
+        return std::max(f[n][k][0], f[n][k][1]);
+    }
+};
+
+================================================================================
+// FILE: 3078_match_alphanumerical_pattern_in_matrix_i | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3078 - Match Alphanumerical Pattern in Matrix I
+// https://leetcode.com/problems/match-alphanumerical-pattern-in-matrix-i/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> findPattern(std::vector<std::vector<int>>& board, std::vector<std::string>& pattern) {
+        int m = (int)board.size(), n = (int)board[0].size();
+        int r = (int)pattern.size(), c = (int)pattern[0].size();
+        auto check = [&](int i, int j) {
+            int d1[26] = {}, d2[10] = {};
+            for (int a = 0; a < r; a++) {
+                for (int b = 0; b < c; b++) {
+                    int x = i + a, y = j + b;
+                    char ch = pattern[a][b];
+                    if (ch >= '0' && ch <= '9') {
+                        if ((int)(ch - '0') != board[x][y]) return false;
+                    } else {
+                        int v = ch - 'a';
+                        if (d1[v] > 0 && d1[v] - 1 != board[x][y]) return false;
+                        if (d2[board[x][y]] > 0 && d2[board[x][y]] - 1 != v) return false;
+                        d1[v] = board[x][y] + 1;
+                        d2[board[x][y]] = v + 1;
+                    }
+                }
+            }
+            return true;
+        };
+        for (int i = 0; i < m - r + 1; i++)
+            for (int j = 0; j < n - c + 1; j++)
+                if (check(i, j)) return {i, j};
+        return {-1, -1};
+    }
+};
+
+================================================================================
+// FILE: 3079_find_the_sum_of_encrypted_integers | class=Solution method=sumOfEncryptedInt src=solution.cpp
+================================================================================
+// LeetCode 3079 - Find the Sum of Encrypted Integers
+// https://leetcode.com/problems/find-the-sum-of-encrypted-integers/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+    static int encrypt(int x) {
+        int mx = 0, p = 0;
+        for (; x > 0; x /= 10) {
+            mx = std::max(mx, x % 10);
+            p = p * 10 + 1;
+        }
+        return mx * p;
+    }
+public:
+    int sumOfEncryptedInt(std::vector<int>& nums) {
+        int ans = 0;
+        for (int x : nums) ans += encrypt(x);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3080_mark_elements_on_array_by_performing_queries | class=Solution method=unmarkedSumArray src=solution.cpp
+================================================================================
+// LeetCode 3080 - Mark Elements on Array by Performing Queries
+// https://leetcode.com/problems/mark-elements-on-array-by-performing-queries/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<long long> unmarkedSumArray(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
+        int n = (int)nums.size();
+        long long s = 0;
+        for (int x : nums) s += x;
+        std::vector<char> mark(n, 0);
+        std::vector<std::pair<int, int>> arr;
+        arr.reserve(n);
+        for (int i = 0; i < n; i++) arr.push_back({nums[i], i});
+        std::sort(arr.begin(), arr.end());
+        std::vector<long long> ans(queries.size());
+        int j = 0;
+        for (int qi = 0; qi < (int)queries.size(); qi++) {
+            int index = queries[qi][0], k = queries[qi][1];
+            if (!mark[index]) {
+                mark[index] = 1;
+                s -= nums[index];
+            }
+            for (; k > 0 && j < n; j++) {
+                if (!mark[arr[j].second]) {
+                    mark[arr[j].second] = 1;
+                    s -= arr[j].first;
+                    k--;
+                }
+            }
+            ans[qi] = s;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3081_replace_question_marks_in_string_to_minimize_its_value | class=Solution method=minimizeStringValue src=solution.cpp
+================================================================================
+// LeetCode 3081 - Replace Question Marks in String to Minimize Its Value
+// https://leetcode.com/problems/replace-question-marks-in-string-to-minimize-its-value/
+
+#include <algorithm>
+#include <queue>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    std::string minimizeStringValue(std::string s) {
+        int cnt[26] = {};
+        int k = 0;
+        for (char c : s) {
+            if (c == '?') k++;
+            else cnt[c - 'a']++;
+        }
+        using P = std::pair<int, int>;
+        std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+        for (int i = 0; i < 26; i++) pq.push({cnt[i], i});
+        std::vector<int> t(k);
+        for (int i = 0; i < k; i++) {
+            auto p = pq.top(); pq.pop();
+            t[i] = p.second;
+            p.first++;
+            pq.push(p);
+        }
+        std::sort(t.begin(), t.end());
+        int j = 0;
+        for (char& c : s) {
+            if (c == '?') {
+                c = (char)(t[j] + 'a');
+                j++;
+            }
+        }
+        return s;
+    }
+};
+
+================================================================================
+// FILE: 3082_find_the_sum_of_the_power_of_all_subsequences | class=Solution method=sumOfPower src=solution.cpp
+================================================================================
+// LeetCode 3082 - Find the Sum of the Power of All Subsequences
+// https://leetcode.com/problems/find-the-sum-of-the-power-of-all-subsequences/
+
+#include <vector>
+
+class Solution {
+public:
+    int sumOfPower(std::vector<int>& nums, int k) {
+        const int mod = 1e9 + 7;
+        int n = (int)nums.size();
+        std::vector<std::vector<int>> f(n + 1, std::vector<int>(k + 1, 0));
+        f[0][0] = 1;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 0; j <= k; j++) {
+                f[i][j] = (f[i - 1][j] * 2LL) % mod;
+                if (j >= nums[i - 1])
+                    f[i][j] = (f[i][j] + f[i - 1][j - nums[i - 1]]) % mod;
+            }
+        }
+        return f[n][k];
+    }
+};
+
+================================================================================
+// FILE: 3083_existence_of_a_substring_in_a_string_and_its_reverse | class=Solution method=isSubstringPresent src=solution.cpp
+================================================================================
+// LeetCode 3083 - Existence of a Substring in a String and Its Reverse
+// https://leetcode.com/problems/existence-of-a-substring-in-a-string-and-its-reverse/
+
+#include <string>
+
+class Solution {
+public:
+    bool isSubstringPresent(std::string s) {
+        bool st[26][26] = {};
+        for (int i = 0; i + 1 < (int)s.size(); i++)
+            st[s[i + 1] - 'a'][s[i] - 'a'] = true;
+        for (int i = 0; i + 1 < (int)s.size(); i++)
+            if (st[s[i] - 'a'][s[i + 1] - 'a']) return true;
+        return false;
+    }
+};
+
+================================================================================
+// FILE: 3084_count_substrings_starting_and_ending_with_given_character | class=Solution method=countSubstrings src=solution.cpp
+================================================================================
+// LeetCode 3084 - Count Substrings Starting and Ending with Given Character
+// https://leetcode.com/problems/count-substrings-starting-and-ending-with-given-character/
+
+#include <string>
+
+class Solution {
+public:
+    long long countSubstrings(std::string s, char c) {
+        long long cnt = 0;
+        for (char ch : s) if (ch == c) cnt++;
+        return cnt + cnt * (cnt - 1) / 2;
+    }
+};
+
+================================================================================
+// FILE: 3085_minimum_deletions_to_make_string_k_special | class=Solution method=minimumDeletions src=solution.cpp
+================================================================================
+// LeetCode 3085 - Minimum Deletions to Make String K-Special
+// https://leetcode.com/problems/minimum-deletions-to-make-string-k-special/
+
+#include <algorithm>
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    int minimumDeletions(std::string word, int k) {
+        int freq[26] = {};
+        for (char c : word) freq[c - 'a']++;
+        std::vector<int> nums;
+        for (int v : freq) if (v > 0) nums.push_back(v);
+        auto f = [&](int v) {
+            int ans = 0;
+            for (int x : nums) {
+                if (x < v) ans += x;
+                else if (x > v + k) ans += x - v - k;
+            }
+            return ans;
+        };
+        int ans = (int)word.size();
+        for (int i = 0; i <= (int)word.size(); i++) ans = std::min(ans, f(i));
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3086_minimum_moves_to_pick_k_ones | class=Solution method=minimumMoves src=solution.cpp
+================================================================================
+// LeetCode 3086 - Minimum Moves to Pick K Ones
+// https://leetcode.com/problems/minimum-moves-to-pick-k-ones/
+
+#include <algorithm>
+#include <climits>
+#include <vector>
+
+class Solution {
+public:
+    long long minimumMoves(std::vector<int>& nums, int k, int maxChanges) {
+        int n = (int)nums.size();
+        std::vector<int> cnt(n + 1), s(n + 1);
+        for (int i = 1; i <= n; i++) {
+            cnt[i] = cnt[i - 1] + nums[i - 1];
+            s[i] = s[i - 1] + i * nums[i - 1];
+        }
+        long long ans = LLONG_MAX;
+        for (int i = 1; i <= n; i++) {
+            long long t = 0;
+            int need = k - nums[i - 1];
+            for (int j : {i - 1, i + 1}) {
+                if (need > 0 && 1 <= j && j <= n && nums[j - 1] == 1) {
+                    need--;
+                    t++;
+                }
+            }
+            int c = std::min(need, maxChanges);
+            need -= c;
+            t += c * 2;
+            if (need <= 0) {
+                ans = std::min(ans, t);
+                continue;
+            }
+            int l = 2, r = std::max(i - 1, n - i);
+            while (l <= r) {
+                int mid = (l + r) >> 1;
+                int l1 = std::max(1, i - mid), r1 = std::max(0, i - 2);
+                int l2 = std::min(n + 1, i + 2), r2 = std::min(n, i + mid);
+                int c1 = cnt[r1] - cnt[l1 - 1];
+                int c2 = cnt[r2] - cnt[l2 - 1];
+                if (c1 + c2 >= need) {
+                    long long t1 = (long long)c1 * i - (s[r1] - s[l1 - 1]);
+                    long long t2 = s[r2] - s[l2 - 1] - (long long)c2 * i;
+                    ans = std::min(ans, t + t1 + t2);
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3088_make_string_anti_palindrome | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3088 - Make String Anti-palindrome
+// https://leetcode.com/problems/make-string-anti-palindrome/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    std::string makeAntiPalindrome(std::string s) {
+        std::sort(s.begin(), s.end());
+        int n = (int)s.size();
+        int m = n / 2;
+        if (s[m] == s[m - 1]) {
+            int i = m;
+            while (i < n && s[i] == s[i - 1]) i++;
+            for (int j = m; j < n && s[j] == s[n - j - 1]; i++, j++) {
+                if (i >= n) return "-1";
+                std::swap(s[i], s[j]);
+            }
+        }
+        return s;
+    }
+};
+
+================================================================================
+// FILE: 3090_maximum_length_substring_with_two_occurrences | class=Solution method=maximumLengthSubstring src=solution.cpp
+================================================================================
+// LeetCode 3090 - Maximum Length Substring With Two Occurrences
+// https://leetcode.com/problems/maximum-length-substring-with-two-occurrences/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    int maximumLengthSubstring(std::string s) {
+        int l = 0, ans = 0, cnt[26] = {};
+        for (int r = 0; r < (int)s.size(); r++) {
+            int idx = s[r] - 'a';
+            cnt[idx]++;
+            while (cnt[idx] > 2) {
+                cnt[s[l] - 'a']--;
+                l++;
+            }
+            ans = std::max(ans, r - l + 1);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3091_apply_operations_to_make_sum_of_array_greater_than_or_equal_to_k | class=Solution method=minOperations src=solution.cpp
+================================================================================
+// LeetCode 3091 - Apply Operations to Make Sum of Array Greater Than or Equal to k
+// https://leetcode.com/problems/apply-operations-to-make-sum-of-array-greater-than-or-equal-to-k/
+
+#include <algorithm>
+
+class Solution {
+public:
+    int minOperations(int k) {
+        int ans = k;
+        for (int a = 0; a < k; a++) {
+            int x = a + 1;
+            int b = (k + x - 1) / x - 1;
+            ans = std::min(ans, a + b);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3092_most_frequent_ids | class=Solution method=mostFrequentIDs src=solution.cpp
+================================================================================
+// LeetCode 3092 - Most Frequent IDs
+// https://leetcode.com/problems/most-frequent-ids/
+
+#include <queue>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<long long> mostFrequentIDs(std::vector<int>& nums, std::vector<int>& freq) {
+        int n = (int)nums.size();
+        std::unordered_map<int, int> cnt, lazy;
+        std::vector<long long> ans(n);
+        std::priority_queue<int> pq;
+        for (int i = 0; i < n; i++) {
+            int x = nums[i], f = freq[i];
+            lazy[cnt[x]]++;
+            cnt[x] += f;
+            pq.push(cnt[x]);
+            while (!pq.empty() && lazy[pq.top()] > 0) {
+                lazy[pq.top()]--;
+                pq.pop();
+            }
+            if (!pq.empty()) ans[i] = pq.top();
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3093_longest_common_suffix_queries | class=Solution method=stringIndices src=solution.cpp
+================================================================================
+// LeetCode 3093 - Longest Common Suffix Queries
+// https://leetcode.com/problems/longest-common-suffix-queries/
+
+#include <string>
+#include <vector>
+
+class Solution {
+    static const int INF = 1 << 30;
+    struct Trie {
+        Trie* children[26] = {};
+        int length = INF;
+        int idx = INF;
+    };
+    static void insert(Trie* t, const std::string& w, int i) {
+        Trie* node = t;
+        if (node->length > (int)w.size()) {
+            node->length = (int)w.size();
+            node->idx = i;
+        }
+        for (int k = (int)w.size() - 1; k >= 0; k--) {
+            int id = w[k] - 'a';
+            if (!node->children[id]) node->children[id] = new Trie();
+            node = node->children[id];
+            if (node->length > (int)w.size()) {
+                node->length = (int)w.size();
+                node->idx = i;
+            }
+        }
+    }
+    static int query(Trie* t, const std::string& w) {
+        Trie* node = t;
+        for (int k = (int)w.size() - 1; k >= 0; k--) {
+            int id = w[k] - 'a';
+            if (!node->children[id]) break;
+            node = node->children[id];
+        }
+        return node->idx;
+    }
+public:
+    std::vector<int> stringIndices(std::vector<std::string>& wordsContainer, std::vector<std::string>& wordsQuery) {
+        Trie* trie = new Trie();
+        for (int i = 0; i < (int)wordsContainer.size(); i++) insert(trie, wordsContainer[i], i);
+        std::vector<int> ans;
+        for (auto& w : wordsQuery) ans.push_back(query(trie, w));
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3094_guess_the_number_using_bitwise_questions_ii | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3094 - Guess the Number Using Bitwise Questions II
+// https://leetcode.com/problems/guess-the-number-using-bitwise-questions-ii/
+
+/**
+ * Definition of commonBits API.
+ * int commonBits(int num);
+ */
+
+class Solution {
+public:
+    int findNumber() {
+        int n = 0;
+        for (int i = 0; i < 32; i++) {
+            int count1 = commonBits(1 << i);
+            int count2 = commonBits(1 << i);
+            if (count1 > count2) n |= 1 << i;
+        }
+        return n;
+    }
+};
+
+================================================================================
+// FILE: 3095_shortest_subarray_with_or_at_least_k_i | class=Solution method=minimumSubarrayLength src=solution.cpp
+================================================================================
+// LeetCode 3095 - Shortest Subarray With OR at Least K I
+// https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-i/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minimumSubarrayLength(std::vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        int cnt[32] = {};
+        int ans = n + 1, s = 0, i = 0;
+        for (int j = 0; j < n; j++) {
+            int x = nums[j];
+            s |= x;
+            for (int h = 0; h < 32; h++)
+                if ((x >> h) & 1) cnt[h]++;
+            for (; s >= k && i <= j; i++) {
+                ans = std::min(ans, j - i + 1);
+                for (int h = 0; h < 32; h++) {
+                    if ((nums[i] >> h) & 1) {
+                        cnt[h]--;
+                        if (cnt[h] == 0) s ^= 1 << h;
+                    }
+                }
+            }
+        }
+        return ans == n + 1 ? -1 : ans;
+    }
+};
+
+================================================================================
+// FILE: 3096_minimum_levels_to_gain_more_points | class=Solution method=minimumLevels src=solution.cpp
+================================================================================
+// LeetCode 3096 - Minimum Levels to Gain More Points
+// https://leetcode.com/problems/minimum-levels-to-gain-more-points/
+
+#include <vector>
+
+class Solution {
+public:
+    int minimumLevels(std::vector<int>& possible) {
+        int s = 0;
+        for (int x : possible) s += (x == 0 ? -1 : x);
+        int t = 0;
+        for (int i = 0; i + 1 < (int)possible.size(); i++) {
+            int x = possible[i] == 0 ? -1 : possible[i];
+            t += x;
+            if (t > s - t) return i + 1;
+        }
+        return -1;
+    }
+};
+
+================================================================================
+// FILE: 3097_shortest_subarray_with_or_at_least_k_ii | class=Solution method=minimumSubarrayLength src=solution.cpp
+================================================================================
+// LeetCode 3097 - Shortest Subarray With OR at Least K II
+// https://leetcode.com/problems/shortest-subarray-with-or-at-least-k-ii/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minimumSubarrayLength(std::vector<int>& nums, int k) {
+        int n = (int)nums.size();
+        int cnt[32] = {};
+        int ans = n + 1, s = 0, i = 0;
+        for (int j = 0; j < n; j++) {
+            int x = nums[j];
+            s |= x;
+            for (int h = 0; h < 32; h++)
+                if ((x >> h) & 1) cnt[h]++;
+            for (; s >= k && i <= j; i++) {
+                ans = std::min(ans, j - i + 1);
+                for (int h = 0; h < 32; h++) {
+                    if ((nums[i] >> h) & 1) {
+                        cnt[h]--;
+                        if (cnt[h] == 0) s ^= 1 << h;
+                    }
+                }
+            }
+        }
+        return ans == n + 1 ? -1 : ans;
+    }
+};
+
+================================================================================
+// FILE: 3098_find_the_sum_of_subsequence_powers | class=Solution method=sumOfPowers src=solution.cpp
+================================================================================
+// LeetCode 3098 - Find the Sum of Subsequence Powers
+// https://leetcode.com/problems/find-the-sum-of-subsequence-powers/
+
+#include <algorithm>
+#include <climits>
+#include <unordered_map>
+#include <vector>
+
+class Solution {
+public:
+    int sumOfPowers(std::vector<int>& nums, int k) {
+        const int mod = 1e9 + 7;
+        std::sort(nums.begin(), nums.end());
+        int n = (int)nums.size();
+        std::unordered_map<long long, int> f;
+        auto dfs = [&](auto&& self, int i, int j, int kk, int mi) -> int {
+            if (i >= n) return kk == 0 ? mi : 0;
+            if (n - i < kk) return 0;
+            long long key = ((long long)mi << 18) | ((long long)i << 12) | ((long long)j << 6) | kk;
+            if (f.count(key)) return f[key];
+            int ans = self(self, i + 1, j, kk, mi);
+            if (j == n) ans = (ans + self(self, i + 1, i, kk - 1, mi)) % mod;
+            else ans = (ans + self(self, i + 1, i, kk - 1, std::min(mi, nums[i] - nums[j]))) % mod;
+            return f[key] = ans;
+        };
+        return dfs(dfs, 0, n, k, INT_MAX);
+    }
+};
+
+================================================================================
+// FILE: 3099_harshad_number | class=Solution method=sumOfTheDigitsOfHarshadNumber src=solution.cpp
+================================================================================
+// LeetCode 3099 - Harshad Number
+// https://leetcode.com/problems/harshad-number/
+
+class Solution {
+public:
+    int sumOfTheDigitsOfHarshadNumber(int x) {
+        int s = 0;
+        for (int y = x; y > 0; y /= 10) s += y % 10;
+        return x % s == 0 ? s : -1;
+    }
+};
+
+================================================================================
+// FILE: 3100_water_bottles_ii | class=Solution method=maxBottlesDrunk src=solution.cpp
+================================================================================
+// LeetCode 3100 - Water Bottles II
+// https://leetcode.com/problems/water-bottles-ii/
+
+class Solution {
+public:
+    int maxBottlesDrunk(int numBottles, int numExchange) {
+        int ans = numBottles;
+        while (numBottles >= numExchange) {
+            numBottles -= numExchange;
+            numExchange++;
+            ans++;
+            numBottles++;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3101_count_alternating_subarrays | class=Solution method=countAlternatingSubarrays src=solution.cpp
+================================================================================
+// LeetCode 3101 - Count Alternating Subarrays
+// https://leetcode.com/problems/count-alternating-subarrays/
+
+#include <vector>
+
+class Solution {
+public:
+    long long countAlternatingSubarrays(std::vector<int>& nums) {
+        long long ans = 1, s = 1;
+        for (int i = 1; i < (int)nums.size(); i++) {
+            if (nums[i] != nums[i - 1]) s++;
+            else s = 1;
+            ans += s;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3102_minimize_manhattan_distances | class=Solution method=minimumDistance src=solution.cpp
+================================================================================
+// LeetCode 3102 - Minimize Manhattan Distances
+// https://leetcode.com/problems/minimize-manhattan-distances/
+
+#include <algorithm>
+#include <climits>
+#include <map>
+#include <vector>
+
+class Solution {
+public:
+    int minimumDistance(std::vector<std::vector<int>>& points) {
+        std::map<int, int> st1, st2;
+        auto merge = [](std::map<int, int>& st, int x, int v) {
+            st[x] += v;
+            if (st[x] == 0) st.erase(x);
+        };
+        for (auto& p : points) {
+            merge(st1, p[0] + p[1], 1);
+            merge(st2, p[0] - p[1], 1);
+        }
+        int ans = INT_MAX;
+        for (auto& p : points) {
+            int x = p[0], y = p[1];
+            merge(st1, x + y, -1);
+            merge(st2, x - y, -1);
+            ans = std::min(ans, std::max(st1.rbegin()->first - st1.begin()->first,
+                                         st2.rbegin()->first - st2.begin()->first));
+            merge(st1, x + y, 1);
+            merge(st2, x - y, 1);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3104_find_longest_self_contained_substring | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3104 - Find Longest Self-Contained Substring
+// https://leetcode.com/problems/find-longest-self-contained-substring/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    int maxSubstringLength(std::string s) {
+        int first[26], last[26];
+        for (int i = 0; i < 26; i++) first[i] = -1;
+        int n = (int)s.size();
+        for (int i = 0; i < n; i++) {
+            int j = s[i] - 'a';
+            if (first[j] == -1) first[j] = i;
+            last[j] = i;
+        }
+        int ans = -1;
+        for (int k = 0; k < 26; k++) {
+            int i = first[k];
+            if (i == -1) continue;
+            int mx = last[k];
+            for (int j = i; j < n; j++) {
+                int a = first[s[j] - 'a'], b = last[s[j] - 'a'];
+                if (a < i) break;
+                mx = std::max(mx, b);
+                if (mx == j && j - i + 1 < n) ans = std::max(ans, j - i + 1);
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3105_longest_strictly_increasing_or_strictly_decreasing_subarray | class=Solution method=longestMonotonicSubarray src=solution.cpp
+================================================================================
+// LeetCode 3105 - Longest Strictly Increasing or Strictly Decreasing Subarray
+// https://leetcode.com/problems/longest-strictly-increasing-or-strictly-decreasing-subarray/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int longestMonotonicSubarray(std::vector<int>& nums) {
+        int ans = 1, t = 1;
+        for (int i = 1; i < (int)nums.size(); i++) {
+            if (nums[i - 1] < nums[i]) {
+                t++;
+                ans = std::max(ans, t);
+            } else t = 1;
+        }
+        t = 1;
+        for (int i = 1; i < (int)nums.size(); i++) {
+            if (nums[i - 1] > nums[i]) {
+                t++;
+                ans = std::max(ans, t);
+            } else t = 1;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3106_lexicographically_smallest_string_after_operations_with_constraint | class=Solution method=getSmallestString src=solution.cpp
+================================================================================
+// LeetCode 3106 - Lexicographically Smallest String After Operations With Constraint
+// https://leetcode.com/problems/lexicographically-smallest-string-after-operations-with-constraint/
+
+#include <algorithm>
+#include <string>
+
+class Solution {
+public:
+    std::string getSmallestString(std::string s, int k) {
+        for (int i = 0; i < (int)s.size(); i++) {
+            char c1 = s[i];
+            for (char c2 = 'a'; c2 < c1; c2++) {
+                int d = std::min(c1 - c2, 26 - (c1 - c2));
+                if (d <= k) {
+                    s[i] = c2;
+                    k -= d;
+                    break;
+                }
+            }
+        }
+        return s;
+    }
+};
+
+================================================================================
+// FILE: 3107_minimum_operations_to_make_median_of_array_equal_to_k | class=Solution method=minOperationsToMakeMedianK src=solution.cpp
+================================================================================
+// LeetCode 3107 - Minimum Operations to Make Median of Array Equal to K
+// https://leetcode.com/problems/minimum-operations-to-make-median-of-array-equal-to-k/
+
+#include <algorithm>
+#include <cstdlib>
+#include <vector>
+
+class Solution {
+public:
+    long long minOperationsToMakeMedianK(std::vector<int>& nums, int k) {
+        std::sort(nums.begin(), nums.end());
+        int n = (int)nums.size(), m = n >> 1;
+        long long ans = std::abs(nums[m] - k);
+        if (nums[m] > k) {
+            for (int i = m - 1; i >= 0 && nums[i] > k; i--) ans += nums[i] - k;
+        } else {
+            for (int i = m + 1; i < n && nums[i] < k; i++) ans += k - nums[i];
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3108_minimum_cost_walk_in_weighted_graph | class=Solution method=minimumCost src=solution.cpp
+================================================================================
+// LeetCode 3108 - Minimum Cost Walk in Weighted Graph
+// https://leetcode.com/problems/minimum-cost-walk-in-weighted-graph/
+
+#include <vector>
+
+class Solution {
+    struct UnionFind {
+        std::vector<int> p, size;
+        explicit UnionFind(int n) : p(n), size(n, 1) {
+            for (int i = 0; i < n; i++) p[i] = i;
+        }
+        int find(int x) {
+            if (p[x] != x) p[x] = find(p[x]);
+            return p[x];
+        }
+        void unite(int a, int b) {
+            int pa = find(a), pb = find(b);
+            if (pa == pb) return;
+            if (size[pa] > size[pb]) {
+                p[pb] = pa;
+                size[pa] += size[pb];
+            } else {
+                p[pa] = pb;
+                size[pb] += size[pa];
+            }
+        }
+    };
+public:
+    std::vector<int> minimumCost(int n, std::vector<std::vector<int>>& edges, std::vector<std::vector<int>>& query) {
+        UnionFind uf(n);
+        std::vector<int> g(n, -1);
+        for (auto& e : edges) uf.unite(e[0], e[1]);
+        for (auto& e : edges) {
+            int root = uf.find(e[0]);
+            g[root] &= e[2];
+        }
+        auto f = [&](int u, int v) {
+            if (u == v) return 0;
+            int a = uf.find(u), b = uf.find(v);
+            if (a == b) return g[a];
+            return -1;
+        };
+        std::vector<int> ans;
+        for (auto& q : query) ans.push_back(f(q[0], q[1]));
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3109_find_the_index_of_permutation | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3109 - Find the Index of Permutation
+// https://leetcode.com/problems/find-the-index-of-permutation/
+
+#include <vector>
+
+class Solution {
+    struct BIT {
+        int n;
+        std::vector<int> c;
+        explicit BIT(int n_) : n(n_), c(n_ + 1, 0) {}
+        void update(int x, int delta) { for (; x <= n; x += x & -x) c[x] += delta; }
+        int query(int x) { int s = 0; for (; x > 0; x -= x & -x) s += c[x]; return s; }
+    };
+public:
+    int getPermutationIndex(std::vector<int>& perm) {
+        const int mod = 1e9 + 7;
+        int n = (int)perm.size();
+        BIT tree(n + 1);
+        std::vector<int> f(n);
+        f[0] = 1;
+        for (int i = 1; i < n; i++) f[i] = (long long)f[i - 1] * i % mod;
+        long long ans = 0;
+        for (int i = 0; i < n; i++) {
+            int x = perm[i];
+            int cnt = x - 1 - tree.query(x);
+            ans = (ans + (long long)cnt * f[n - 1 - i]) % mod;
+            tree.update(x, 1);
+        }
+        return (int)ans;
+    }
+};
+
+================================================================================
+// FILE: 3110_score_of_a_string | class=Solution method=scoreOfString src=solution.cpp
+================================================================================
+// LeetCode 3110 - Score of a String
+// https://leetcode.com/problems/score-of-a-string/
+
+#include <cstdlib>
+#include <string>
+
+class Solution {
+public:
+    int scoreOfString(std::string s) {
+        int ans = 0;
+        for (int i = 1; i < (int)s.size(); i++)
+            ans += std::abs((int)s[i - 1] - (int)s[i]);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3111_minimum_rectangles_to_cover_points | class=Solution method=minRectanglesToCoverPoints src=solution.cpp
+================================================================================
+// LeetCode 3111 - Minimum Rectangles to Cover Points
+// https://leetcode.com/problems/minimum-rectangles-to-cover-points/
+
+#include <algorithm>
+#include <vector>
+
+class Solution {
+public:
+    int minRectanglesToCoverPoints(std::vector<std::vector<int>>& points, int w) {
+        std::sort(points.begin(), points.end(), [](const auto& a, const auto& b) {
+            return a[0] < b[0];
+        });
+        int ans = 0, x1 = -1;
+        for (auto& p : points) {
+            if (p[0] > x1) {
+                ans++;
+                x1 = p[0] + w;
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3112_minimum_time_to_visit_disappearing_nodes | class=Solution method=minimumTime src=solution.cpp
+================================================================================
+// LeetCode 3112 - Minimum Time to Visit Disappearing Nodes
+// https://leetcode.com/problems/minimum-time-to-visit-disappearing-nodes/
+
+#include <queue>
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> minimumTime(int n, std::vector<std::vector<int>>& edges, std::vector<int>& disappear) {
+        std::vector<std::vector<std::pair<int, int>>> g(n);
+        for (auto& e : edges) {
+            g[e[0]].push_back({e[1], e[2]});
+            g[e[1]].push_back({e[0], e[2]});
+        }
+        const int INF = 1 << 30;
+        std::vector<int> dist(n, INF);
+        dist[0] = 0;
+        using P = std::pair<int, int>;
+        std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+        pq.push({0, 0});
+        while (!pq.empty()) {
+            auto [du, u] = pq.top();
+            pq.pop();
+            if (du > dist[u]) continue;
+            for (auto [v, w] : g[u]) {
+                if (dist[v] > dist[u] + w && dist[u] + w < disappear[v]) {
+                    dist[v] = dist[u] + w;
+                    pq.push({dist[v], v});
+                }
+            }
+        }
+        std::vector<int> ans(n);
+        for (int i = 0; i < n; i++)
+            ans[i] = dist[i] < disappear[i] ? dist[i] : -1;
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3113_find_the_number_of_subarrays_where_boundary_elements_are_maximum | class=Solution method=numberOfSubarrays src=solution.cpp
+================================================================================
+// LeetCode 3113 - Find the Number of Subarrays Where Boundary Elements Are Maximum
+// https://leetcode.com/problems/find-the-number-of-subarrays-where-boundary-elements-are-maximum/
+
+#include <vector>
+
+class Solution {
+public:
+    long long numberOfSubarrays(std::vector<int>& nums) {
+        std::vector<std::pair<int, int>> stk;
+        long long ans = 0;
+        for (int x : nums) {
+            while (!stk.empty() && stk.back().first < x) stk.pop_back();
+            if (stk.empty() || stk.back().first > x) stk.push_back({x, 1});
+            else stk.back().second++;
+            ans += stk.back().second;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3114_latest_time_you_can_obtain_after_replacing_characters | class=Solution method=findLatestTime src=solution.cpp
+================================================================================
+// LeetCode 3114 - Latest Time You Can Obtain After Replacing Characters
+// https://leetcode.com/problems/latest-time-you-can-obtain-after-replacing-characters/
+
+#include <cstdio>
+#include <string>
+
+class Solution {
+public:
+    std::string findLatestTime(std::string s) {
+        for (int h = 11; ; h--) {
+            for (int m = 59; m >= 0; m--) {
+                char t[6];
+                std::snprintf(t, sizeof(t), "%02d:%02d", h, m);
+                bool ok = true;
+                for (int i = 0; i < 5; i++) {
+                    if (s[i] != '?' && s[i] != t[i]) {
+                        ok = false;
+                        break;
+                    }
+                }
+                if (ok) return std::string(t);
+            }
+        }
+    }
+};
+
+================================================================================
+// FILE: 3115_maximum_prime_difference | class=Solution method=maximumPrimeDifference src=solution.cpp
+================================================================================
+// LeetCode 3115 - Maximum Prime Difference
+// https://leetcode.com/problems/maximum-prime-difference/
+
+#include <vector>
+
+class Solution {
+    static bool isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= n / i; i++)
+            if (n % i == 0) return false;
+        return true;
+    }
+public:
+    int maximumPrimeDifference(std::vector<int>& nums) {
+        for (int i = 0; ; i++) {
+            if (isPrime(nums[i])) {
+                for (int j = (int)nums.size() - 1; ; j--) {
+                    if (isPrime(nums[j])) return j - i;
+                }
+            }
+        }
+    }
+};
+
+================================================================================
+// FILE: 3116_kth_smallest_amount_with_single_denomination_combination | class=Solution method=findKthSmallest src=solution.cpp
+================================================================================
+// LeetCode 3116 - Kth Smallest Amount With Single Denomination Combination
+// https://leetcode.com/problems/kth-smallest-amount-with-single-denomination-combination/
+
+#include <vector>
+
+class Solution {
+    long long gcdll(long long a, long long b) {
+        while (b) { long long t = a % b; a = b; b = t; }
+        return a;
+    }
+    long long lcmll(long long a, long long b) {
+        return a / gcdll(a, b) * b;
+    }
+public:
+    long long findKthSmallest(std::vector<int>& coins, int k) {
+        long long r = 100000000000LL;
+        int n = (int)coins.size();
+        auto check = [&](long long mx) -> bool {
+            long long cnt = 0;
+            for (int i = 1; i < (1 << n); i++) {
+                long long v = 1;
+                for (int j = 0; j < n; j++) {
+                    if ((i >> j) & 1) {
+                        v = lcmll(v, coins[j]);
+                        if (v > mx) break;
+                    }
+                }
+                int m = __builtin_popcount((unsigned)i);
+                if (m % 2 == 1) cnt += mx / v;
+                else cnt -= mx / v;
+            }
+            return cnt >= k;
+        };
+        long long lo = 1, hi = r;
+        while (lo < hi) {
+            long long mid = lo + (hi - lo) / 2;
+            if (check(mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+};
+
+================================================================================
+// FILE: 3117_minimum_sum_of_values_by_dividing_array | class=Solution method=minimumValueSum src=solution.cpp
+================================================================================
+// LeetCode 3117 - Minimum Sum of Values by Dividing Array
+// https://leetcode.com/problems/minimum-sum-of-values-by-dividing-array/
+
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+#include <climits>
+
+class Solution {
+public:
+    int minimumValueSum(std::vector<int>& nums, std::vector<int>& andValues) {
+        int n = (int)nums.size(), m = (int)andValues.size();
+        const int inf = 1 << 29;
+        std::unordered_map<long long, int> f;
+        auto dfs = [&](auto&& self, int i, int j, int a) -> int {
+            if (n - i < m - j) return inf;
+            if (j == m) return i == n ? 0 : inf;
+            a &= nums[i];
+            if (a < andValues[j]) return inf;
+            long long key = ((long long)i << 36) | ((long long)j << 32) | (unsigned)a;
+            auto it = f.find(key);
+            if (it != f.end()) return it->second;
+            int ans = self(self, i + 1, j, a);
+            if (a == andValues[j]) {
+                ans = std::min(ans, self(self, i + 1, j + 1, -1) + nums[i]);
+            }
+            return f[key] = ans;
+        };
+        int ans = dfs(dfs, 0, 0, -1);
+        return ans < inf ? ans : -1;
+    }
+};
+
+================================================================================
+// FILE: 3119_maximum_number_of_potholes_that_can_be_fixed | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3119 - Maximum Number of Potholes That Can Be Fixed
+// https://leetcode.com/problems/maximum-number-of-potholes-that-can-be-fixed/
+
+#include <string>
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int maxPotholes(std::string road, int budget) {
+        road += '.';
+        int n = (int)road.size();
+        std::vector<int> cnt(n);
+        int k = 0, ans = 0;
+        for (char c : road) {
+            if (c == 'x') k++;
+            else if (k > 0) { cnt[k]++; k = 0; }
+        }
+        for (k = n - 1; k > 0 && budget > 0; k--) {
+            int t = std::min(budget / (k + 1), cnt[k]);
+            ans += t * k;
+            budget -= t * (k + 1);
+            cnt[k - 1] += cnt[k] - t;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3120_count_the_number_of_special_characters_i | class=Solution method=numberOfSpecialChars src=solution.cpp
+================================================================================
+// LeetCode 3120 - Count the Number of Special Characters I
+// https://leetcode.com/problems/count-the-number-of-special-characters-i/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    int numberOfSpecialChars(std::string word) {
+        std::vector<bool> s(128);
+        for (char c : word) s[(unsigned char)c] = true;
+        int ans = 0;
+        for (int i = 0; i < 26; i++) {
+            if (s['a' + i] && s['A' + i]) ans++;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3121_count_the_number_of_special_characters_ii | class=Solution method=numberOfSpecialChars src=solution.cpp
+================================================================================
+// LeetCode 3121 - Count the Number of Special Characters II
+// https://leetcode.com/problems/count-the-number-of-special-characters-ii/
+
+#include <string>
+#include <vector>
+
+class Solution {
+public:
+    int numberOfSpecialChars(std::string word) {
+        std::vector<int> first(128), last(128);
+        for (int i = 0; i < (int)word.size(); i++) {
+            unsigned char c = word[i];
+            if (first[c] == 0) first[c] = i + 1;
+            last[c] = i + 1;
+        }
+        int ans = 0;
+        for (int i = 0; i < 26; i++) {
+            if (last['a' + i] > 0 && last['a' + i] < first['A' + i]) ans++;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3122_minimum_number_of_operations_to_satisfy_conditions | class=Solution method=minimumOperations src=solution.cpp
+================================================================================
+// LeetCode 3122 - Minimum Number of Operations to Satisfy Conditions
+// https://leetcode.com/problems/minimum-number-of-operations-to-satisfy-conditions/
+
+#include <vector>
+#include <algorithm>
+#include <array>
+
+class Solution {
+public:
+    int minimumOperations(std::vector<std::vector<int>>& grid) {
+        int m = (int)grid.size(), n = (int)grid[0].size();
+        const int inf = 1 << 29;
+        std::vector<std::vector<int>> f(n, std::vector<int>(10, inf));
+        for (int i = 0; i < n; i++) {
+            std::array<int, 10> cnt{};
+            for (int j = 0; j < m; j++) cnt[grid[j][i]]++;
+            if (i == 0) {
+                for (int j = 0; j < 10; j++) f[i][j] = m - cnt[j];
+            } else {
+                for (int j = 0; j < 10; j++) {
+                    for (int k = 0; k < 10; k++) {
+                        if (j != k) f[i][j] = std::min(f[i][j], f[i - 1][k] + m - cnt[j]);
+                    }
+                }
+            }
+        }
+        return *std::min_element(f[n - 1].begin(), f[n - 1].end());
+    }
+};
+
+================================================================================
+// FILE: 3123_find_edges_in_shortest_paths | class=Solution method=findAnswer src=solution.cpp
+================================================================================
+// LeetCode 3123 - Find Edges in Shortest Paths
+// https://leetcode.com/problems/find-edges-in-shortest-paths/
+
+#include <vector>
+#include <queue>
+#include <utility>
+#include <array>
+
+class Solution {
+public:
+    std::vector<bool> findAnswer(int n, std::vector<std::vector<int>>& edges) {
+        std::vector<std::vector<std::array<int, 3>>> g(n);
+        for (int i = 0; i < (int)edges.size(); i++) {
+            int a = edges[i][0], b = edges[i][1], w = edges[i][2];
+            g[a].push_back({b, w, i});
+            g[b].push_back({a, w, i});
+        }
+        const int inf = 1 << 30;
+        std::vector<int> dist(n, inf);
+        dist[0] = 0;
+        using P = std::pair<int, int>;
+        std::priority_queue<P, std::vector<P>, std::greater<P>> pq;
+        pq.push({0, 0});
+        while (!pq.empty()) {
+            auto [da, a] = pq.top(); pq.pop();
+            if (da > dist[a]) continue;
+            for (auto& e : g[a]) {
+                int b = e[0], w = e[1];
+                if (dist[b] > dist[a] + w) {
+                    dist[b] = dist[a] + w;
+                    pq.push({dist[b], b});
+                }
+            }
+        }
+        std::vector<bool> ans(edges.size(), false);
+        if (dist[n - 1] == inf) return ans;
+        std::queue<int> q;
+        q.push(n - 1);
+        while (!q.empty()) {
+            int a = q.front(); q.pop();
+            for (auto& e : g[a]) {
+                int b = e[0], w = e[1], i = e[2];
+                if (dist[a] == dist[b] + w) {
+                    ans[i] = true;
+                    q.push(b);
+                }
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3125_maximum_number_that_makes_result_of_bitwise_and_zero | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3125 - Maximum Number That Makes Result of Bitwise AND Zero
+// https://leetcode.com/problems/maximum-number-that-makes-result-of-bitwise-and-zero/
+
+class Solution {
+public:
+    long long maxNumber(long long n) {
+        int len = 64 - __builtin_clzll((unsigned long long)n);
+        return (1LL << (len - 1)) - 1;
+    }
+};
+
+================================================================================
+// FILE: 3127_make_a_square_with_the_same_color | class=Solution method=canMakeSquare src=solution.cpp
+================================================================================
+// LeetCode 3127 - Make a Square with the Same Color
+// https://leetcode.com/problems/make-a-square-with-the-same-color/
+
+#include <vector>
+
+class Solution {
+public:
+    bool canMakeSquare(std::vector<std::vector<char>>& grid) {
+        int dirs[5] = {0, 0, 1, 1, 0};
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                int cnt1 = 0, cnt2 = 0;
+                for (int k = 0; k < 4; k++) {
+                    int x = i + dirs[k], y = j + dirs[k + 1];
+                    if (grid[x][y] == 'W') cnt1++;
+                    else cnt2++;
+                }
+                if (cnt1 != cnt2) return true;
+            }
+        }
+        return false;
+    }
+};
+
+================================================================================
+// FILE: 3128_right_triangles | class=Solution method=numberOfRightTriangles src=solution.cpp
+================================================================================
+// LeetCode 3128 - Right Triangles
+// https://leetcode.com/problems/right-triangles/
+
+#include <vector>
+
+class Solution {
+public:
+    long long numberOfRightTriangles(std::vector<std::vector<int>>& grid) {
+        int m = (int)grid.size(), n = (int)grid[0].size();
+        std::vector<int> rows(m), cols(n);
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) {
+                rows[i] += grid[i][j];
+                cols[j] += grid[i][j];
+            }
+        long long ans = 0;
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                if (grid[i][j] == 1)
+                    ans += 1LL * (rows[i] - 1) * (cols[j] - 1);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3129_find_all_possible_stable_binary_arrays_i | class=Solution method=numberOfStableArrays src=solution.cpp
+================================================================================
+// LeetCode 3129 - Find All Possible Stable Binary Arrays I
+// https://leetcode.com/problems/find-all-possible-stable-binary-arrays-i/
+
+#include <vector>
+#include <array>
+
+class Solution {
+public:
+    int numberOfStableArrays(int zero, int one, int limit) {
+        const int mod = 1e9 + 7;
+        std::vector<std::vector<std::array<int, 2>>> f(zero + 1, std::vector<std::array<int, 2>>(one + 1, {-1, -1}));
+        auto dfs = [&](auto&& self, int i, int j, int k) -> int {
+            if (i < 0 || j < 0) return 0;
+            if (i == 0) return (k == 1 && j <= limit) ? 1 : 0;
+            if (j == 0) return (k == 0 && i <= limit) ? 1 : 0;
+            int& res = f[i][j][k];
+            if (res != -1) return res;
+            if (k == 0)
+                res = (self(self, i - 1, j, 0) + self(self, i - 1, j, 1) - self(self, i - limit - 1, j, 1) + mod) % mod;
+            else
+                res = (self(self, i, j - 1, 0) + self(self, i, j - 1, 1) - self(self, i, j - limit - 1, 0) + mod) % mod;
+            return res;
+        };
+        return (dfs(dfs, zero, one, 0) + dfs(dfs, zero, one, 1)) % mod;
+    }
+};
+
+================================================================================
+// FILE: 3130_find_all_possible_stable_binary_arrays_ii | class=Solution method=numberOfStableArrays src=solution.cpp
+================================================================================
+// LeetCode 3130 - Find All Possible Stable Binary Arrays II
+// https://leetcode.com/problems/find-all-possible-stable-binary-arrays-ii/
+
+#include <vector>
+#include <array>
+
+class Solution {
+public:
+    int numberOfStableArrays(int zero, int one, int limit) {
+        const int mod = 1e9 + 7;
+        std::vector<std::vector<std::array<int, 2>>> f(zero + 1, std::vector<std::array<int, 2>>(one + 1, {-1, -1}));
+        auto dfs = [&](auto&& self, int i, int j, int k) -> int {
+            if (i < 0 || j < 0) return 0;
+            if (i == 0) return (k == 1 && j <= limit) ? 1 : 0;
+            if (j == 0) return (k == 0 && i <= limit) ? 1 : 0;
+            int& res = f[i][j][k];
+            if (res != -1) return res;
+            if (k == 0)
+                res = (self(self, i - 1, j, 0) + self(self, i - 1, j, 1) - self(self, i - limit - 1, j, 1) + mod) % mod;
+            else
+                res = (self(self, i, j - 1, 0) + self(self, i, j - 1, 1) - self(self, i, j - limit - 1, 0) + mod) % mod;
+            return res;
+        };
+        return (dfs(dfs, zero, one, 0) + dfs(dfs, zero, one, 1)) % mod;
+    }
+};
+
+================================================================================
+// FILE: 3131_find_the_integer_added_to_array_i | class=Solution method=addedInteger src=solution.cpp
+================================================================================
+// LeetCode 3131 - Find the Integer Added to Array I
+// https://leetcode.com/problems/find-the-integer-added-to-array-i/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int addedInteger(std::vector<int>& nums1, std::vector<int>& nums2) {
+        return *std::min_element(nums2.begin(), nums2.end()) -
+               *std::min_element(nums1.begin(), nums1.end());
+    }
+};
+
+================================================================================
+// FILE: 3132_find_the_integer_added_to_array_ii | class=Solution method=minimumAddedInteger src=solution.cpp
+================================================================================
+// LeetCode 3132 - Find the Integer Added to Array II
+// https://leetcode.com/problems/find-the-integer-added-to-array-ii/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int minimumAddedInteger(std::vector<int>& nums1, std::vector<int>& nums2) {
+        std::sort(nums1.begin(), nums1.end());
+        std::sort(nums2.begin(), nums2.end());
+        int ans = 1 << 30;
+        auto f = [&](int x) {
+            int i = 0, j = 0, cnt = 0;
+            while (i < (int)nums1.size() && j < (int)nums2.size()) {
+                if (nums2[j] - nums1[i] != x) cnt++;
+                else j++;
+                i++;
+            }
+            return cnt <= 2;
+        };
+        for (int t = 0; t < 3; t++) {
+            int x = nums2[0] - nums1[t];
+            if (f(x)) ans = std::min(ans, x);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3133_minimum_array_end | class=Solution method=minEnd src=solution.cpp
+================================================================================
+// LeetCode 3133 - Minimum Array End
+// https://leetcode.com/problems/minimum-array-end/
+
+class Solution {
+public:
+    long long minEnd(int n, int x) {
+        n--;
+        long long ans = x;
+        for (int i = 0; i < 31; i++) {
+            if (((x >> i) & 1) == 0) {
+                ans |= (long long)(n & 1) << i;
+                n >>= 1;
+            }
+        }
+        ans |= (long long)n << 31;
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3134_find_the_median_of_the_uniqueness_array | class=Solution method=medianOfUniquenessArray src=solution.cpp
+================================================================================
+// LeetCode 3134 - Find the Median of the Uniqueness Array
+// https://leetcode.com/problems/find-the-median-of-the-uniqueness-array/
+
+#include <vector>
+#include <unordered_map>
+
+class Solution {
+public:
+    int medianOfUniquenessArray(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        long long m = (1LL + n) * n / 2;
+        auto check = [&](int mx) {
+            std::unordered_map<int, int> cnt;
+            int l = 0;
+            long long k = 0;
+            for (int r = 0; r < n; r++) {
+                cnt[nums[r]]++;
+                while ((int)cnt.size() > mx) {
+                    int y = nums[l++];
+                    if (--cnt[y] == 0) cnt.erase(y);
+                }
+                k += r - l + 1;
+                if (k >= (m + 1) / 2) return true;
+            }
+            return false;
+        };
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (check(mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+};
+
+================================================================================
+// FILE: 3135_equalize_strings_by_adding_or_removing_characters_at_ends | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3135 - Equalize Strings by Adding or Removing Characters at Ends
+// https://leetcode.com/problems/equalize-strings-by-adding-or-removing-characters-at-ends/
+
+#include <string>
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int minOperations(std::string initial, std::string target) {
+        int m = (int)initial.size(), n = (int)target.size();
+        std::vector<std::vector<int>> f(m + 1, std::vector<int>(n + 1));
+        int mx = 0;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (initial[i] == target[j]) {
+                    f[i + 1][j + 1] = f[i][j] + 1;
+                    mx = std::max(mx, f[i + 1][j + 1]);
+                }
+            }
+        }
+        return m + n - 2 * mx;
+    }
+};
+
+================================================================================
+// FILE: 3136_valid_word | class=Solution method=isValid src=solution.cpp
+================================================================================
+// LeetCode 3136 - Valid Word
+// https://leetcode.com/problems/valid-word/
+
+#include <string>
+#include <cctype>
+
+class Solution {
+public:
+    bool isValid(std::string word) {
+        if ((int)word.size() < 3) return false;
+        bool hasVowel = false, hasConsonant = false;
+        bool vs[26] = {};
+        for (char c : std::string("aeiou")) vs[c - 'a'] = true;
+        for (char c : word) {
+            if (std::isalpha((unsigned char)c)) {
+                char lower = (char)std::tolower((unsigned char)c);
+                if (vs[lower - 'a']) hasVowel = true;
+                else hasConsonant = true;
+            } else if (!std::isdigit((unsigned char)c)) {
+                return false;
+            }
+        }
+        return hasVowel && hasConsonant;
+    }
+};
+
+================================================================================
+// FILE: 3137_minimum_number_of_operations_to_make_word_k_periodic | class=Solution method=minimumOperationsToMakeKPeriodic src=solution.cpp
+================================================================================
+// LeetCode 3137 - Minimum Number of Operations to Make Word K-Periodic
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-word-k-periodic/
+
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+
+class Solution {
+public:
+    int minimumOperationsToMakeKPeriodic(std::string word, int k) {
+        std::unordered_map<std::string, int> cnt;
+        int n = (int)word.size(), mx = 0;
+        for (int i = 0; i < n; i += k) {
+            std::string s = word.substr(i, k);
+            mx = std::max(mx, ++cnt[s]);
+        }
+        return n / k - mx;
+    }
+};
+
+================================================================================
+// FILE: 3138_minimum_length_of_anagram_concatenation | class=Solution method=minAnagramLength src=solution.cpp
+================================================================================
+// LeetCode 3138 - Minimum Length of Anagram Concatenation
+// https://leetcode.com/problems/minimum-length-of-anagram-concatenation/
+
+#include <string>
+#include <array>
+
+class Solution {
+public:
+    int minAnagramLength(std::string s) {
+        int n = (int)s.size();
+        std::array<int, 26> cnt{};
+        for (char c : s) cnt[c - 'a']++;
+        auto check = [&](int k) {
+            for (int i = 0; i < n; i += k) {
+                std::array<int, 26> cnt1{};
+                for (int j = i; j < i + k; j++) cnt1[s[j] - 'a']++;
+                for (int j = 0; j < 26; j++) {
+                    if (cnt1[j] * (n / k) != cnt[j]) return false;
+                }
+            }
+            return true;
+        };
+        for (int i = 1; ; i++) {
+            if (n % i == 0 && check(i)) return i;
+        }
+    }
+};
+
+================================================================================
+// FILE: 3139_minimum_cost_to_equalize_array | class=Solution method=minCostToEqualizeArray src=solution.cpp
+================================================================================
+// LeetCode 3139 - Minimum Cost to Equalize Array
+// https://leetcode.com/problems/minimum-cost-to-equalize-array/
+
+#include <vector>
+#include <algorithm>
+#include <climits>
+
+class Solution {
+public:
+    int minCostToEqualizeArray(std::vector<int>& nums, int cost1, int cost2) {
+        const int mod = 1000000007;
+        int n = (int)nums.size();
+        int minNum = nums[0], maxNum = nums[0];
+        long long sum = 0;
+        for (int v : nums) {
+            minNum = std::min(minNum, v);
+            maxNum = std::max(maxNum, v);
+            sum += v;
+        }
+        if (cost1 * 2LL <= cost2 || n < 3) {
+            long long totalGap = 1LL * maxNum * n - sum;
+            return (int)(1LL * cost1 * totalGap % mod);
+        }
+        long long ans = LLONG_MAX;
+        for (int target = maxNum; target < 2 * maxNum; target++) {
+            int maxGap = target - minNum;
+            long long totalGap = 1LL * target * n - sum;
+            long long pairs = totalGap / 2;
+            long long alt = totalGap - maxGap;
+            if (alt < pairs) pairs = alt;
+            long long cost = 1LL * cost1 * (totalGap - 2 * pairs) + 1LL * cost2 * pairs;
+            ans = std::min(ans, cost);
+        }
+        return (int)(ans % mod);
+    }
+};
+
+================================================================================
+// FILE: 3141_maximum_hamming_distances | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3141 - Maximum Hamming Distances
+// https://leetcode.com/problems/maximum-hamming-distances/
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> maxHammingDistances(std::vector<int>& nums, int m) {
+        std::vector<int> dist(1 << m, -1);
+        std::vector<int> q;
+        for (int x : nums) {
+            dist[x] = 0;
+            q.push_back(x);
+        }
+        for (int k = 1; !q.empty(); k++) {
+            std::vector<int> t;
+            for (int x : q) {
+                for (int i = 0; i < m; i++) {
+                    int y = x ^ (1 << i);
+                    if (dist[y] == -1) {
+                        dist[y] = k;
+                        t.push_back(y);
+                    }
+                }
+            }
+            q.swap(t);
+        }
+        for (int i = 0; i < (int)nums.size(); i++) {
+            int x = nums[i];
+            nums[i] = m - dist[x ^ ((1 << m) - 1)];
+        }
+        return nums;
+    }
+};
+
+================================================================================
+// FILE: 3142_check_if_grid_satisfies_conditions | class=Solution method=satisfiesConditions src=solution.cpp
+================================================================================
+// LeetCode 3142 - Check if Grid Satisfies Conditions
+// https://leetcode.com/problems/check-if-grid-satisfies-conditions/
+
+#include <vector>
+
+class Solution {
+public:
+    bool satisfiesConditions(std::vector<std::vector<int>>& grid) {
+        int m = (int)grid.size(), n = (int)grid[0].size();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int x = grid[i][j];
+                if (i + 1 < m && x != grid[i + 1][j]) return false;
+                if (j + 1 < n && x == grid[i][j + 1]) return false;
+            }
+        }
+        return true;
+    }
+};
+
+================================================================================
+// FILE: 3143_maximum_points_inside_the_square | class=Solution method=maxPointsInsideSquare src=solution.cpp
+================================================================================
+// LeetCode 3143 - Maximum Points Inside the Square
+// https://leetcode.com/problems/maximum-points-inside-the-square/
+
+#include <vector>
+#include <string>
+#include <map>
+#include <algorithm>
+#include <cmath>
+
+class Solution {
+public:
+    int maxPointsInsideSquare(std::vector<std::vector<int>>& points, std::string s) {
+        std::map<int, std::vector<int>> g;
+        for (int i = 0; i < (int)points.size(); i++) {
+            int key = std::max({points[i][0], -points[i][0], points[i][1], -points[i][1]});
+            g[key].push_back(i);
+        }
+        bool vis[26] = {};
+        int ans = 0;
+        for (auto& [k, idx] : g) {
+            for (int i : idx) {
+                int j = s[i] - 'a';
+                if (vis[j]) return ans;
+                vis[j] = true;
+            }
+            ans += (int)idx.size();
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3144_minimum_substring_partition_of_equal_character_frequency | class=Solution method=minimumSubstringsInPartition src=solution.cpp
+================================================================================
+// LeetCode 3144 - Minimum Substring Partition of Equal Character Frequency
+// https://leetcode.com/problems/minimum-substring-partition-of-equal-character-frequency/
+
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <array>
+#include <algorithm>
+
+class Solution {
+public:
+    int minimumSubstringsInPartition(std::string s) {
+        int n = (int)s.size();
+        std::vector<int> memo(n, -1);
+        auto dfs = [&](auto&& self, int i) -> int {
+            if (i >= n) return 0;
+            if (memo[i] != -1) return memo[i];
+            std::array<int, 26> cnt{};
+            std::unordered_map<int, int> freq;
+            memo[i] = n - i;
+            for (int j = i; j < n; j++) {
+                int k = s[j] - 'a';
+                if (cnt[k] > 0) {
+                    if (--freq[cnt[k]] == 0) freq.erase(cnt[k]);
+                }
+                cnt[k]++;
+                freq[cnt[k]]++;
+                if ((int)freq.size() == 1) {
+                    memo[i] = std::min(memo[i], 1 + self(self, j + 1));
+                }
+            }
+            return memo[i];
+        };
+        return dfs(dfs, 0);
+    }
+};
+
+================================================================================
+// FILE: 3145_find_products_of_elements_of_big_array | class=Solution method=findProductsOfElements src=solution.cpp
+================================================================================
+// LeetCode 3145 - Find Products of Elements of Big Array
+// https://leetcode.com/problems/find-products-of-elements-of-big-array/
+
+#include <vector>
+#include <cstdint>
+
+class Solution {
+    static constexpr int M = 50;
+    long long cnt[M + 1]{}, s[M + 1]{};
+    void initTables() {
+        long long p = 1;
+        cnt[0] = 0;
+        s[0] = 0;
+        for (int i = 1; i <= M; i++) {
+            cnt[i] = cnt[i - 1] * 2 + p;
+            s[i] = s[i - 1] * 2 + p * (i - 1);
+            p *= 2;
+        }
+    }
+    std::pair<long long, long long> numIdxAndSum(long long x) {
+        long long idx = 0, totalSum = 0;
+        while (x > 0) {
+            int i = 63 - __builtin_clzll((unsigned long long)x);
+            idx += cnt[i];
+            totalSum += s[i];
+            x -= 1LL << i;
+            totalSum += (x + 1) * i;
+            idx += x + 1;
+        }
+        return {idx, totalSum};
+    }
+    long long f(long long i) {
+        long long l = 0, r = 1LL << M;
+        while (l < r) {
+            long long mid = (l + r + 1) >> 1;
+            auto [idx, _] = numIdxAndSum(mid);
+            if (idx < i) l = mid;
+            else r = mid - 1;
+        }
+        auto [_, totalSum] = numIdxAndSum(l);
+        auto [idx, __] = numIdxAndSum(l);
+        i -= idx;
+        long long x = l + 1;
+        for (long long j = 0; j < i; j++) {
+            long long y = x & -x;
+            totalSum += __builtin_ctzll((unsigned long long)y);
+            x -= y;
+        }
+        return totalSum;
+    }
+    long long qpow(long long a, long long n, long long mod) {
+        long long ans = 1 % mod;
+        a %= mod;
+        while (n > 0) {
+            if (n & 1) ans = ans * a % mod;
+            a = a * a % mod;
+            n >>= 1;
+        }
+        return ans;
+    }
+public:
+    Solution() { initTables(); }
+    std::vector<int> findProductsOfElements(std::vector<std::vector<long long>>& queries) {
+        std::vector<int> ans(queries.size());
+        for (int i = 0; i < (int)queries.size(); i++) {
+            long long left = queries[i][0], right = queries[i][1], mod = queries[i][2];
+            long long power = f(right + 1) - f(left);
+            ans[i] = (int)qpow(2, power, mod);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3146_permutation_difference_between_two_strings | class=Solution method=findPermutationDifference src=solution.cpp
+================================================================================
+// LeetCode 3146 - Permutation Difference between Two Strings
+// https://leetcode.com/problems/permutation-difference-between-two-strings/
+
+#include <string>
+#include <array>
+#include <cstdlib>
+
+class Solution {
+public:
+    int findPermutationDifference(std::string s, std::string t) {
+        std::array<int, 26> d{};
+        for (int i = 0; i < (int)s.size(); i++) d[s[i] - 'a'] = i;
+        int ans = 0;
+        for (int i = 0; i < (int)t.size(); i++) ans += std::abs(d[t[i] - 'a'] - i);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3147_taking_maximum_energy_from_the_mystic_dungeon | class=Solution method=maximumEnergy src=solution.cpp
+================================================================================
+// LeetCode 3147 - Taking Maximum Energy From the Mystic Dungeon
+// https://leetcode.com/problems/taking-maximum-energy-from-the-mystic-dungeon/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int maximumEnergy(std::vector<int>& energy, int k) {
+        int ans = -(1 << 30);
+        int n = (int)energy.size();
+        for (int i = n - k; i < n; i++) {
+            for (int j = i, s = 0; j >= 0; j -= k) {
+                s += energy[j];
+                ans = std::max(ans, s);
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3148_maximum_difference_score_in_a_grid | class=Solution method=maxScore src=solution.cpp
+================================================================================
+// LeetCode 3148 - Maximum Difference Score in a Grid
+// https://leetcode.com/problems/maximum-difference-score-in-a-grid/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    int maxScore(std::vector<std::vector<int>>& grid) {
+        int m = (int)grid.size(), n = (int)grid[0].size();
+        const int inf = 1 << 30;
+        std::vector<std::vector<int>> f(m, std::vector<int>(n));
+        int ans = -inf;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int x = grid[i][j];
+                int mi = inf;
+                if (i > 0) mi = std::min(mi, f[i - 1][j]);
+                if (j > 0) mi = std::min(mi, f[i][j - 1]);
+                ans = std::max(ans, x - mi);
+                f[i][j] = std::min(x, mi);
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3149_find_the_minimum_cost_array_permutation | class=Solution method=findPermutation src=solution.cpp
+================================================================================
+// LeetCode 3149 - Find the Minimum Cost Array Permutation
+// https://leetcode.com/problems/find-the-minimum-cost-array-permutation/
+
+#include <vector>
+#include <cstdlib>
+#include <climits>
+
+class Solution {
+public:
+    std::vector<int> findPermutation(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        std::vector<std::vector<int>> memo(1 << n, std::vector<int>(n, -1));
+        auto absv = [](int x) { return x < 0 ? -x : x; };
+        auto dfs = [&](auto&& self, int mask, int pre) -> int {
+            if (mask == (1 << n) - 1) return absv(pre - nums[0]);
+            if (memo[mask][pre] != -1) return memo[mask][pre];
+            int res = INT_MAX;
+            for (int cur = 1; cur < n; cur++) {
+                if (((mask >> cur) & 1) == 0) {
+                    res = std::min(res, absv(pre - nums[cur]) + self(self, mask | (1 << cur), cur));
+                }
+            }
+            return memo[mask][pre] = res;
+        };
+        std::vector<int> ans;
+        auto g = [&](auto&& self, int mask, int pre) -> void {
+            ans.push_back(pre);
+            if (mask == (1 << n) - 1) return;
+            int res = dfs(dfs, mask, pre);
+            for (int cur = 1; cur < n; cur++) {
+                if (((mask >> cur) & 1) == 0) {
+                    if (absv(pre - nums[cur]) + dfs(dfs, mask | (1 << cur), cur) == res) {
+                        self(self, mask | (1 << cur), cur);
+                        break;
+                    }
+                }
+            }
+        };
+        g(g, 1, 0);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3151_special_array_i | class=Solution method=isArraySpecial src=solution.cpp
+================================================================================
+// LeetCode 3151 - Special Array I
+// https://leetcode.com/problems/special-array-i/
+
+#include <vector>
+
+class Solution {
+public:
+    bool isArraySpecial(std::vector<int>& nums) {
+        for (int i = 1; i < (int)nums.size(); i++) {
+            if (nums[i] % 2 == nums[i - 1] % 2) return false;
+        }
+        return true;
+    }
+};
+
+================================================================================
+// FILE: 3152_special_array_ii | class=Solution method=isArraySpecial src=solution.cpp
+================================================================================
+// LeetCode 3152 - Special Array II
+// https://leetcode.com/problems/special-array-ii/
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<bool> isArraySpecial(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
+        int n = (int)nums.size();
+        std::vector<int> d(n);
+        for (int i = 0; i < n; i++) d[i] = i;
+        for (int i = 1; i < n; i++) {
+            if (nums[i] % 2 != nums[i - 1] % 2) d[i] = d[i - 1];
+        }
+        std::vector<bool> ans;
+        for (auto& q : queries) ans.push_back(d[q[1]] <= q[0]);
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3153_sum_of_digit_differences_of_all_pairs | class=Solution method=sumDigitDifferences src=solution.cpp
+================================================================================
+// LeetCode 3153 - Sum of Digit Differences of All Pairs
+// https://leetcode.com/problems/sum-of-digit-differences-of-all-pairs/
+
+#include <vector>
+#include <cmath>
+
+class Solution {
+public:
+    long long sumDigitDifferences(std::vector<int>& nums) {
+        int n = (int)nums.size();
+        int m = (int)std::floor(std::log10(nums[0])) + 1;
+        long long ans = 0;
+        for (int k = 0; k < m; k++) {
+            int cnt[10] = {};
+            for (int i = 0; i < n; i++) {
+                cnt[nums[i] % 10]++;
+                nums[i] /= 10;
+            }
+            for (int v : cnt) ans += 1LL * v * (n - v);
+        }
+        return ans / 2;
+    }
+};
+
+================================================================================
+// FILE: 3154_find_number_of_ways_to_reach_the_k_th_stair | class=Solution method=waysToReachStair src=solution.cpp
+================================================================================
+// LeetCode 3154 - Find Number of Ways to Reach the K-th Stair
+// https://leetcode.com/problems/find-number-of-ways-to-reach-the-k-th-stair/
+
+#include <unordered_map>
+
+class Solution {
+public:
+    int waysToReachStair(int k) {
+        std::unordered_map<long long, int> f;
+        auto dfs = [&](auto&& self, long long i, int j, int jump) -> int {
+            if (i > k + 1) return 0;
+            long long key = (i << 32) | ((long long)jump << 1) | j;
+            auto it = f.find(key);
+            if (it != f.end()) return it->second;
+            int ans = 0;
+            if (i == k) ans++;
+            if (i > 0 && j == 0) ans += self(self, i - 1, 1, jump);
+            ans += self(self, i + (1LL << jump), 0, jump + 1);
+            return f[key] = ans;
+        };
+        return dfs(dfs, 1, 0, 0);
+    }
+};
+
+================================================================================
+// FILE: 3155_maximum_number_of_upgradable_servers | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3155 - Maximum Number of Upgradable Servers
+// https://leetcode.com/problems/maximum-number-of-upgradable-servers/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+public:
+    std::vector<int> maxUpgrades(std::vector<int>& count, std::vector<int>& upgrade,
+                                 std::vector<int>& sell, std::vector<int>& money) {
+        std::vector<int> ans;
+        for (int i = 0; i < (int)count.size(); i++) {
+            long long cnt = count[i];
+            ans.push_back((int)std::min(cnt, (cnt * sell[i] + money[i]) / (upgrade[i] + sell[i])));
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3157_find_the_level_of_tree_with_minimum_sum | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3157 - Find the Level of Tree with Minimum Sum
+// https://leetcode.com/problems/find-the-level-of-tree-with-minimum-sum/
+
+#include <queue>
+#include <climits>
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+class Solution {
+public:
+    int minimumLevel(TreeNode* root) {
+        std::queue<TreeNode*> q;
+        q.push(root);
+        long long s = LLONG_MAX;
+        int ans = 0;
+        for (int level = 1; !q.empty(); level++) {
+            long long t = 0;
+            int m = (int)q.size();
+            while (m--) {
+                TreeNode* node = q.front(); q.pop();
+                t += node->val;
+                if (node->left) q.push(node->left);
+                if (node->right) q.push(node->right);
+            }
+            if (s > t) { s = t; ans = level; }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3158_find_the_xor_of_numbers_which_appear_twice | class=Solution method=duplicateNumbersXOR src=solution.cpp
+================================================================================
+// LeetCode 3158 - Find the XOR of Numbers Which Appear Twice
+// https://leetcode.com/problems/find-the-xor-of-numbers-which-appear-twice/
+
+#include <vector>
+#include <array>
+
+class Solution {
+public:
+    int duplicateNumbersXOR(std::vector<int>& nums) {
+        std::array<int, 51> cnt{};
+        int ans = 0;
+        for (int x : nums) {
+            if (++cnt[x] == 2) ans ^= x;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3159_find_occurrences_of_an_element_in_an_array | class=Solution method=occurrencesOfElement src=solution.cpp
+================================================================================
+// LeetCode 3159 - Find Occurrences of an Element in an Array
+// https://leetcode.com/problems/find-occurrences-of-an-element-in-an-array/
+
+#include <vector>
+
+class Solution {
+public:
+    std::vector<int> occurrencesOfElement(std::vector<int>& nums, std::vector<int>& queries, int x) {
+        std::vector<int> ids;
+        for (int i = 0; i < (int)nums.size(); i++) if (nums[i] == x) ids.push_back(i);
+        std::vector<int> ans;
+        for (int i : queries) {
+            if (i - 1 < (int)ids.size()) ans.push_back(ids[i - 1]);
+            else ans.push_back(-1);
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3160_find_the_number_of_distinct_colors_among_the_balls | class=Solution method=queryResults src=solution.cpp
+================================================================================
+// LeetCode 3160 - Find the Number of Distinct Colors Among the Balls
+// https://leetcode.com/problems/find-the-number-of-distinct-colors-among-the-balls/
+
+#include <vector>
+#include <unordered_map>
+
+class Solution {
+public:
+    std::vector<int> queryResults(int limit, std::vector<std::vector<int>>& queries) {
+        std::unordered_map<int, int> g, cnt;
+        std::vector<int> ans;
+        for (auto& q : queries) {
+            int x = q[0], y = q[1];
+            cnt[y]++;
+            auto it = g.find(x);
+            if (it != g.end()) {
+                if (--cnt[it->second] == 0) cnt.erase(it->second);
+            }
+            g[x] = y;
+            ans.push_back((int)cnt.size());
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3161_block_placement_queries | class=Solution method=getResults src=solution.cpp
+================================================================================
+// LeetCode 3161 - Block Placement Queries
+// https://leetcode.com/problems/block-placement-queries/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+    struct FenwickMax {
+        std::vector<int> vals;
+        FenwickMax(int n) : vals(n + 1) {}
+        void maximize(int i, int val) {
+            for (; i < (int)vals.size(); i += i & -i)
+                vals[i] = std::max(vals[i], val);
+        }
+        int get(int i) {
+            int res = 0;
+            for (; i > 0; i -= i & -i) res = std::max(res, vals[i]);
+            return res;
+        }
+    };
+public:
+    std::vector<bool> getResults(std::vector<std::vector<int>>& queries) {
+        int n = (int)queries.size() * 3;
+        if (n > 50000) n = 50000;
+        FenwickMax tree(n + 1);
+        std::vector<int> obs = {0, n};
+        for (auto& q : queries) {
+            if (q[0] == 1) {
+                int x = q[1];
+                auto it = std::lower_bound(obs.begin(), obs.end(), x);
+                if (it == obs.end() || *it != x) obs.insert(it, x);
+            }
+        }
+        for (int i = 0; i + 1 < (int)obs.size(); i++) {
+            tree.maximize(obs[i + 1], obs[i + 1] - obs[i]);
+        }
+        std::vector<bool> ans;
+        for (int i = (int)queries.size() - 1; i >= 0; i--) {
+            int typ = queries[i][0], x = queries[i][1];
+            if (typ == 1) {
+                auto it = std::lower_bound(obs.begin(), obs.end(), x);
+                int j = (int)(it - obs.begin());
+                int prev = obs[j - 1], next = obs[j + 1];
+                obs.erase(it);
+                tree.maximize(next, next - prev);
+            } else {
+                int sz = queries[i][2];
+                int j = (int)(std::lower_bound(obs.begin(), obs.end(), x + 1) - obs.begin()) - 1;
+                int prev = obs[j];
+                ans.push_back(tree.get(prev) >= sz || x - prev >= sz);
+            }
+        }
+        std::reverse(ans.begin(), ans.end());
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3162_find_the_number_of_good_pairs_i | class=Solution method=numberOfPairs src=solution.cpp
+================================================================================
+// LeetCode 3162 - Find the Number of Good Pairs I
+// https://leetcode.com/problems/find-the-number-of-good-pairs-i/
+
+#include <vector>
+
+class Solution {
+public:
+    int numberOfPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+        int ans = 0;
+        for (int x : nums1)
+            for (int y : nums2)
+                if (x % (y * k) == 0) ans++;
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3163_string_compression_iii | class=Solution method=compressedString src=solution.cpp
+================================================================================
+// LeetCode 3163 - String Compression III
+// https://leetcode.com/problems/string-compression-iii/
+
+#include <string>
+#include <algorithm>
+
+class Solution {
+public:
+    std::string compressedString(std::string word) {
+        std::string ans;
+        int n = (int)word.size();
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && word[j] == word[i]) j++;
+            int k = j - i;
+            while (k > 0) {
+                int x = std::min(9, k);
+                ans.push_back(char('0' + x));
+                ans.push_back(word[i]);
+                k -= x;
+            }
+            i = j;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3164_find_the_number_of_good_pairs_ii | class=Solution method=numberOfPairs src=solution.cpp
+================================================================================
+// LeetCode 3164 - Find the Number of Good Pairs II
+// https://leetcode.com/problems/find-the-number-of-good-pairs-ii/
+
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+
+class Solution {
+public:
+    long long numberOfPairs(std::vector<int>& nums1, std::vector<int>& nums2, int k) {
+        std::unordered_map<int, int> cnt1;
+        for (int x : nums1) if (x % k == 0) cnt1[x / k]++;
+        if (cnt1.empty()) return 0;
+        std::unordered_map<int, int> cnt2;
+        for (int x : nums2) cnt2[x]++;
+        int mx = 0;
+        for (auto& [x, _] : cnt1) mx = std::max(mx, x);
+        long long ans = 0;
+        for (auto& [x, v] : cnt2) {
+            int s = 0;
+            for (int y = x; y <= mx; y += x) {
+                auto it = cnt1.find(y);
+                if (it != cnt1.end()) s += it->second;
+            }
+            ans += 1LL * s * v;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3165_maximum_sum_of_subsequence_with_non_adjacent_elements | class=Solution method=maximumSumSubsequence src=solution.cpp
+================================================================================
+// LeetCode 3165 - Maximum Sum of Subsequence With Non-adjacent Elements
+// https://leetcode.com/problems/maximum-sum-of-subsequence-with-non-adjacent-elements/
+
+#include <vector>
+#include <algorithm>
+
+class Solution {
+    struct Node {
+        int l = 0, r = 0;
+        int s00 = 0, s01 = 0, s10 = 0, s11 = 0;
+    };
+    std::vector<Node> tr;
+    void build(int u, int l, int r) {
+        tr[u].l = l; tr[u].r = r;
+        if (l == r) return;
+        int mid = (l + r) >> 1;
+        build(u << 1, l, mid);
+        build(u << 1 | 1, mid + 1, r);
+    }
+    void pushup(int u) {
+        Node& left = tr[u << 1];
+        Node& right = tr[u << 1 | 1];
+        tr[u].s00 = std::max(left.s00 + right.s10, left.s01 + right.s00);
+        tr[u].s01 = std::max(left.s00 + right.s11, left.s01 + right.s01);
+        tr[u].s10 = std::max(left.s10 + right.s10, left.s11 + right.s00);
+        tr[u].s11 = std::max(left.s10 + right.s11, left.s11 + right.s01);
+    }
+    void modify(int u, int x, int v) {
+        if (tr[u].l == tr[u].r) {
+            tr[u].s11 = std::max(0, v);
+            return;
+        }
+        int mid = (tr[u].l + tr[u].r) >> 1;
+        if (x <= mid) modify(u << 1, x, v);
+        else modify(u << 1 | 1, x, v);
+        pushup(u);
+    }
+    int query(int u, int l, int r) {
+        if (tr[u].l >= l && tr[u].r <= r) return tr[u].s11;
+        int mid = (tr[u].l + tr[u].r) >> 1;
+        int ans = 0;
+        if (r <= mid) ans = query(u << 1, l, r);
+        if (l > mid) ans = std::max(ans, query(u << 1 | 1, l, r));
+        return ans;
+    }
+public:
+    int maximumSumSubsequence(std::vector<int>& nums, std::vector<std::vector<int>>& queries) {
+        int n = (int)nums.size();
+        tr.assign(n * 4, {});
+        build(1, 1, n);
+        for (int i = 0; i < n; i++) modify(1, i + 1, nums[i]);
+        const int mod = 1e9 + 7;
+        int ans = 0;
+        for (auto& q : queries) {
+            modify(1, q[0] + 1, q[1]);
+            ans = (ans + query(1, 1, n)) % mod;
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3167_better_compression_of_string | class=Solution method=solve src=solution.cpp
+================================================================================
+// LeetCode 3167 - Better Compression of String
+// https://leetcode.com/problems/better-compression-of-string/
+
+#include <string>
+#include <unordered_map>
+
+class Solution {
+public:
+    std::string betterCompression(std::string compressed) {
+        std::unordered_map<char, int> cnt;
+        int n = (int)compressed.size();
+        for (int i = 0; i < n; ) {
+            char c = compressed[i];
+            int j = i + 1, x = 0;
+            while (j < n && compressed[j] >= '0' && compressed[j] <= '9') {
+                x = x * 10 + (compressed[j] - '0');
+                j++;
+            }
+            cnt[c] += x;
+            i = j;
+        }
+        std::string ans;
+        for (char c = 'a'; c <= 'z'; c++) {
+            if (cnt[c] > 0) {
+                ans.push_back(c);
+                ans += std::to_string(cnt[c]);
+            }
+        }
+        return ans;
+    }
+};
+
+================================================================================
+// FILE: 3168_minimum_number_of_chairs_in_a_waiting_room | class=Solution method=minimumChairs src=solution.cpp
+================================================================================
+// LeetCode 3168 - Minimum Number of Chairs in a Waiting Room
+// https://leetcode.com/problems/minimum-number-of-chairs-in-a-waiting-room/
+
+#include <string>
+
+class Solution {
+public:
+    int minimumChairs(std::string s) {
+        int cnt = 0, left = 0;
+        for (char c : s) {
+            if (c == 'E') {
+                if (left > 0) left--;
+                else cnt++;
+            } else left++;
+        }
+        return cnt;
+    }
+};
