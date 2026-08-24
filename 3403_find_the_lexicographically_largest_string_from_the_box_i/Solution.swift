@@ -1,7 +1,19 @@
-﻿// LeetCode 3403 - Find the Lexicographically Largest String From the Box I
+// LeetCode 3403 - Find the Lexicographically Largest String From the Box I
 // https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
 
 class Solution {
-    func solve() {
+    func answerString(_ word: String, _ numFriends: Int) -> String {
+        if numFriends == 1 { return word }
+        let w = Array(word)
+        let n = w.count
+        let maxLen = n - (numFriends - 1)
+        var ans = ""
+        for i in 0..<n {
+            var end = i + maxLen
+            if end > n { end = n }
+            let cand = String(w[i..<end])
+            if cand > ans { ans = cand }
+        }
+        return ans
     }
 }

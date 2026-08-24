@@ -1,7 +1,15 @@
-﻿// LeetCode 1294 - Weather Type in Each Country
+// LeetCode 1294 - Weather Type In Each Country
 // https://leetcode.com/problems/weather-type-in-each-country/
 
-class Solution {
-    func solve() {
-    }
-}
+let QUERY = """
+SELECT c.country_name,
+       CASE
+           WHEN AVG(w.weather_state) <= 15 THEN 'Cold'
+           WHEN AVG(w.weather_state) >= 25 THEN 'Hot'
+           ELSE 'Warm'
+       END AS weather_type
+FROM Countries c
+JOIN Weather w ON w.country_id = c.country_id
+WHERE w.day BETWEEN '2019-11-01' AND '2019-11-30'
+GROUP BY c.country_id, c.country_name
+"""

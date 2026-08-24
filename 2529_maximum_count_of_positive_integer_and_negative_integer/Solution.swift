@@ -1,7 +1,13 @@
-﻿// LeetCode 2529 - Maximum Count of Positive Integer and Negative Integer
+// LeetCode 2529 - Maximum Count of Positive Integer and Negative Integer
 // https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/
 
 class Solution {
-    func solve() {
+    func maximumCount(_ nums: [Int]) -> Int {
+        var pos = 0, neg = 0
+        for x in nums {
+            if x > 0 { pos += 1 }
+            else if x < 0 { neg += 1 }
+        }
+        return max(pos, neg)
     }
 }

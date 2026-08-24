@@ -1,7 +1,10 @@
-﻿// LeetCode 2372 - Calculate the Influence of Each Salesperson
+// LeetCode 2372 - Calculate The Influence Of Each Salesperson
 // https://leetcode.com/problems/calculate-the-influence-of-each-salesperson/
 
-class Solution {
-    func solve() {
-    }
-}
+let QUERY = """
+SELECT sp.salesperson_id, sp.name, IFNULL(SUM(s.price), 0) AS total
+FROM Salesperson AS sp
+LEFT JOIN Customer AS c ON sp.salesperson_id = c.salesperson_id
+LEFT JOIN Sales AS s ON s.customer_id = c.customer_id
+GROUP BY sp.salesperson_id, sp.name
+"""

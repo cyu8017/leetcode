@@ -1,7 +1,21 @@
-﻿// LeetCode 3511 - Make a Positive Array
+// LeetCode 3511 - Make a Positive Array
 // https://leetcode.com/problems/make-a-positive-array/
 
 class Solution {
-    func solve() {
+    func makeArrayPositive(_ nums: [Int]) -> Int {
+        var ans = 0, l = -1
+        var preMx = 0, s = 0
+        for r in 0..<nums.count {
+            s += nums[r]
+            if r - l > 2 && s <= preMx {
+                ans += 1
+                l = r
+                preMx = 0
+                s = 0
+            } else if r - l >= 2 {
+                preMx = max(preMx, s - nums[r] - nums[r - 1])
+            }
+        }
+        return ans
     }
 }

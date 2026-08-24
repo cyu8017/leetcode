@@ -1,7 +1,8 @@
-﻿// LeetCode 2692 - Make Object Immutable
+// LeetCode 2692 - Make Object Immutable
 // https://leetcode.com/problems/make-object-immutable/
 
 class Solution {
-    func solve() {
+    func makeImmutable(_ obj: [String: Int]) -> [String: Int] {
+        obj
     }
 }

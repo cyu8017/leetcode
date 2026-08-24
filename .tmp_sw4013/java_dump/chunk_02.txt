@@ -1,0 +1,848 @@
+================================================================================
+3759_count_elements_with_at_least_k_greater_values  lines=17
+================================================================================
+// LeetCode 3759 - Count Elements With At Least K Greater Values
+// https://leetcode.com/problems/count-elements-with-at-least-k-greater-values/
+
+import java.util.Arrays;
+
+class Solution {
+    public int countElements(int[] nums, int k) {
+        int n = nums.length;
+        if (k == 0) return n;
+        Arrays.sort(nums);
+        int ans = 0;
+        for (int i = 0; i < n - k; i++) {
+            if (nums[n - k] > nums[i]) ans++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3760_maximum_substrings_with_distinct_start  lines=14
+================================================================================
+// LeetCode 3760 - Maximum Substrings With Distinct Start
+// https://leetcode.com/problems/maximum-substrings-with-distinct-start/
+
+class Solution {
+    public int maxDistinct(String s) {
+        int[] cnt = new int[26];
+        int ans = 0;
+        for (char c : s.toCharArray()) {
+            cnt[c - 'a']++;
+            if (cnt[c - 'a'] == 1) ans++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3761_minimum_absolute_distance_between_mirror_pairs  lines=24
+================================================================================
+// LeetCode 3761 - Minimum Absolute Distance Between Mirror Pairs
+// https://leetcode.com/problems/minimum_absolute_distance_between_mirror_pairs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minMirrorPairDistance(int[] nums) {
+        int n = nums.length;
+        Map<Integer, Integer> pos = new HashMap<>();
+        int ans = n + 1;
+        for (int i = 0; i < n; i++) {
+            if (pos.containsKey(nums[i])) ans = Math.min(ans, i - pos.get(nums[i]));
+            pos.put(reverse(nums[i]), i);
+        }
+        return ans > n ? -1 : ans;
+    }
+
+    private int reverse(int x) {
+        int y = 0;
+        for (; x > 0; x /= 10) y = y * 10 + x % 10;
+        return y;
+    }
+}
+
+
+================================================================================
+3762_minimum_operations_to_equalize_subarrays  lines=130
+================================================================================
+// LeetCode 3762 - Minimum Operations To Equalize Subarrays
+// https://leetcode.com/problems/minimum_operations_to_equalize_subarrays/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    static class Node {
+        int left, right, count;
+        long sum;
+        Node() {}
+        Node(Node o) {
+            left = o.left; right = o.right; count = o.count; sum = o.sum;
+        }
+    }
+
+    private List<Node> nodes;
+
+    public long[] minOperations(int[] nums, int k, int[][] queries) {
+        int n = nums.length;
+        int[] quotient = new int[n], remainder = new int[n], values = new int[n];
+        for (int i = 0; i < n; i++) {
+            quotient[i] = nums[i] / k;
+            remainder[i] = nums[i] % k;
+            values[i] = quotient[i];
+        }
+        Arrays.sort(values);
+        int vu = 1;
+        for (int i = 1; i < n; i++) if (values[i] != values[vu - 1]) values[vu++] = values[i];
+        values = Arrays.copyOf(values, vu);
+
+        nodes = new ArrayList<>();
+        nodes.add(new Node());
+        int[] roots = new int[n + 1];
+        int umax = values.length - 1;
+        for (int i = 0; i < n; i++) {
+            int position = lowerBound(values, quotient[i]);
+            roots[i + 1] = update(roots[i], 0, umax, position, quotient[i]);
+        }
+
+        int[] logv = new int[n + 1];
+        for (int i = 2; i <= n; i++) logv[i] = logv[i / 2] + 1;
+        int levels = logv[n] + 1;
+        int[][] minTable = new int[levels][];
+        int[][] maxTable = new int[levels][];
+        minTable[0] = remainder.clone();
+        maxTable[0] = remainder.clone();
+        for (int level = 1; level < levels; level++) {
+            int length = n - (1 << level) + 1;
+            minTable[level] = new int[length];
+            maxTable[level] = new int[length];
+            int half = 1 << (level - 1);
+            for (int i = 0; i < length; i++) {
+                minTable[level][i] = Math.min(minTable[level - 1][i], minTable[level - 1][i + half]);
+                maxTable[level][i] = Math.max(maxTable[level - 1][i], maxTable[level - 1][i + half]);
+            }
+        }
+
+        long[] answer = new long[queries.length];
+        for (int qi = 0; qi < queries.length; qi++) {
+            int left = queries[qi][0], right = queries[qi][1];
+            int length = right - left + 1;
+            int level = logv[length];
+            int offset = right - (1 << level) + 1;
+            int minR = Math.min(minTable[level][left], minTable[level][offset]);
+            int maxR = Math.max(maxTable[level][left], maxTable[level][offset]);
+            if (minR != maxR) {
+                answer[qi] = -1;
+                continue;
+            }
+            int medianIndex = kth(roots[right + 1], roots[left], 0, umax, (length + 1) / 2);
+            int median = values[medianIndex];
+            long[] stats = prefixStats(roots[right + 1], roots[left], 0, umax, medianIndex);
+            int leftCount = (int) stats[0];
+            long leftSum = stats[1];
+            long totalSum = nodes.get(roots[right + 1]).sum - nodes.get(roots[left]).sum;
+            answer[qi] = 1L * median * leftCount - leftSum + (totalSum - leftSum) - 1L * median * (length - leftCount);
+        }
+        return answer;
+    }
+
+    private int update(int previous, int lo, int hi, int position, int value) {
+        int current = nodes.size();
+        nodes.add(new Node(nodes.get(previous)));
+        nodes.get(current).count++;
+        nodes.get(current).sum += value;
+        if (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (position <= mid) nodes.get(current).left = update(nodes.get(previous).left, lo, mid, position, value);
+            else nodes.get(current).right = update(nodes.get(previous).right, mid + 1, hi, position, value);
+        }
+        return current;
+    }
+
+    private int kth(int rightRoot, int leftRoot, int lo, int hi, int rank) {
+        if (lo == hi) return lo;
+        int leftCount = nodes.get(nodes.get(rightRoot).left).count - nodes.get(nodes.get(leftRoot).left).count;
+        int mid = (lo + hi) / 2;
+        if (rank <= leftCount) return kth(nodes.get(rightRoot).left, nodes.get(leftRoot).left, lo, mid, rank);
+        return kth(nodes.get(rightRoot).right, nodes.get(leftRoot).right, mid + 1, hi, rank - leftCount);
+    }
+
+    private long[] prefixStats(int rightRoot, int leftRoot, int lo, int hi, int end) {
+        if (end < lo) return new long[]{0, 0};
+        if (hi <= end) return new long[]{
+            nodes.get(rightRoot).count - nodes.get(leftRoot).count,
+            nodes.get(rightRoot).sum - nodes.get(leftRoot).sum
+        };
+        int mid = (lo + hi) / 2;
+        long[] left = prefixStats(nodes.get(rightRoot).left, nodes.get(leftRoot).left, lo, mid, end);
+        long count = left[0], sum = left[1];
+        if (end > mid) {
+            long[] right = prefixStats(nodes.get(rightRoot).right, nodes.get(leftRoot).right, mid + 1, hi, end);
+            count += right[0];
+            sum += right[1];
+        }
+        return new long[]{count, sum};
+    }
+
+    private int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+3763_maximum_total_sum_with_threshold_constraints  lines=26
+================================================================================
+// LeetCode 3763 - Maximum Total Sum With Threshold Constraints
+// https://leetcode.com/problems/maximum_total_sum_with_threshold_constraints/
+
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+class Solution {
+    public long maxSum(int[] nums, int[] threshold) {
+        int n = nums.length;
+        Integer[] idx = new Integer[n];
+        for (int i = 0; i < n; i++) idx[i] = i;
+        Arrays.sort(idx, (a, b) -> Integer.compare(threshold[a], threshold[b]));
+        PriorityQueue<Integer> tree = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+        long ans = 0;
+        int i = 0;
+        for (int step = 1; ; step++) {
+            while (i < n && threshold[idx[i]] <= step) {
+                tree.offer(nums[idx[i]]);
+                i++;
+            }
+            if (tree.isEmpty()) break;
+            ans += tree.poll();
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3765_complete_prime_number  lines=27
+================================================================================
+// LeetCode 3765 - Complete Prime Number
+// https://leetcode.com/problems/complete_prime_number/
+
+class Solution {
+    private boolean isPrime(int x) {
+        if (x < 2) return false;
+        for (int i = 2; i * i <= x; i++) if (x % i == 0) return false;
+        return true;
+    }
+
+    public boolean completePrime(int num) {
+        String s = Integer.toString(num);
+        int x = 0;
+        for (char c : s.toCharArray()) {
+            x = x * 10 + (c - '0');
+            if (!isPrime(x)) return false;
+        }
+        x = 0;
+        int p = 1;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            x = p * (s.charAt(i) - '0') + x;
+            p *= 10;
+            if (!isPrime(x)) return false;
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+3766_minimum_operations_to_make_binary_palindrome  lines=54
+================================================================================
+// LeetCode 3766 - Minimum Operations To Make Binary Palindrome
+// https://leetcode.com/problems/minimum_operations_to_make_binary_palindrome/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private static final List<Integer> PALS = new ArrayList<>();
+    static {
+        int N = 1 << 14;
+        for (int i = 0; i < N; i++) {
+            StringBuilder sb = new StringBuilder();
+            int x = i;
+            if (x == 0) sb.append('0');
+            else {
+                while (x > 0) {
+                    sb.append((char) ('0' + (x & 1)));
+                    x >>= 1;
+                }
+                sb.reverse();
+            }
+            if (isPalindrome(sb)) PALS.add(i);
+        }
+    }
+
+    private static boolean isPalindrome(StringBuilder s) {
+        int m = s.length();
+        for (int i = 0; i < m / 2; i++) if (s.charAt(i) != s.charAt(m - 1 - i)) return false;
+        return true;
+    }
+
+    public int[] minOperations(int[] nums) {
+        int[] ans = new int[nums.length];
+        for (int k = 0; k < nums.length; k++) {
+            int x = nums[k];
+            int it = lowerBound(x);
+            int t = Integer.MAX_VALUE;
+            if (it < PALS.size()) t = PALS.get(it) - x;
+            if (it > 0) t = Math.min(t, x - PALS.get(it - 1));
+            ans[k] = t;
+        }
+        return ans;
+    }
+
+    private int lowerBound(int x) {
+        int lo = 0, hi = PALS.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (PALS.get(mid) < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+3767_maximize_points_after_choosing_k_tasks  lines=29
+================================================================================
+// LeetCode 3767 - Maximize Points After Choosing K Tasks
+// https://leetcode.com/problems/maximize_points_after_choosing_k_tasks/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maxPoints(int[] technique1, int[] technique2, int k) {
+        int n = technique1.length;
+        Integer[] idx = new Integer[n];
+        for (int i = 0; i < n; i++) idx[i] = i;
+        Arrays.sort(idx, (i, j) -> Integer.compare(
+            technique1[j] - technique2[j], technique1[i] - technique2[i]));
+        long ans = 0;
+        for (int x : technique2) ans += x;
+        for (int i = 0; i < k; i++) {
+            int index = idx[i];
+            ans -= technique2[index];
+            ans += technique1[index];
+        }
+        for (int i = k; i < n; i++) {
+            int index = idx[i];
+            if (technique1[index] >= technique2[index]) {
+                ans -= technique2[index];
+                ans += technique1[index];
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3768_minimum_inversion_count_in_subarrays_of_fixed_length  lines=63
+================================================================================
+// LeetCode 3768 - Minimum Inversion Count In Subarrays Of Fixed Length
+// https://leetcode.com/problems/minimum_inversion_count_in_subarrays_of_fixed_length/
+
+import java.util.Arrays;
+
+class Solution {
+    private int[] bit;
+
+    public long minInversionCount(int[] nums, int k) {
+        int[] vals = nums.clone();
+        Arrays.sort(vals);
+        int u = unique(vals);
+        vals = Arrays.copyOf(vals, u);
+        bit = new int[vals.length + 1];
+        int[] rank = new int[nums.length];
+        long inv = 0;
+        for (int i = 0; i < nums.length; i++) {
+            rank[i] = lowerBound(vals, nums[i]) + 1;
+            if (i < k) {
+                inv += i - sum(rank[i]);
+                add(rank[i], 1);
+            }
+        }
+        long best = inv;
+        for (int r = k; r < nums.length; r++) {
+            int left = rank[r - k];
+            inv -= sum(left - 1);
+            add(left, -1);
+            inv += k - 1 - sum(rank[r]);
+            add(rank[r], 1);
+            if (inv < best) best = inv;
+        }
+        return best;
+    }
+
+    private void add(int i, int delta) {
+        for (; i < bit.length; i += i & -i) bit[i] += delta;
+    }
+
+    private int sum(int i) {
+        int res = 0;
+        for (; i > 0; i -= i & -i) res += bit[i];
+        return res;
+    }
+
+    private int unique(int[] a) {
+        int n = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (n == 0 || a[i] != a[n - 1]) a[n++] = a[i];
+        }
+        return n;
+    }
+
+    private int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+3769_sort_integers_by_binary_reflection  lines=27
+================================================================================
+// LeetCode 3769 - Sort Integers By Binary Reflection
+// https://leetcode.com/problems/sort_integers_by_binary_reflection/
+
+import java.util.Arrays;
+
+class Solution {
+    public int[] sortByReflection(int[] nums) {
+        Integer[] arr = new Integer[nums.length];
+        for (int i = 0; i < nums.length; i++) arr[i] = nums[i];
+        Arrays.sort(arr, (a, b) -> {
+            int fa = f(a), fb = f(b);
+            if (fa != fb) return Integer.compare(fa, fb);
+            return Integer.compare(a, b);
+        });
+        for (int i = 0; i < nums.length; i++) nums[i] = arr[i];
+        return nums;
+    }
+
+    private int f(int x) {
+        int y = 0;
+        while (x != 0) {
+            y = (y << 1) | (x & 1);
+            x >>= 1;
+        }
+        return y;
+    }
+}
+
+
+================================================================================
+3770_largest_prime_from_consecutive_prime_sum  lines=45
+================================================================================
+// LeetCode 3770 - Largest Prime From Consecutive Prime Sum
+// https://leetcode.com/problems/largest_prime_from_consecutive_prime_sum/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private static final int MX = 500000;
+    private static final List<Integer> S = new ArrayList<>();
+    static {
+        boolean[] isPrime = new boolean[MX + 1];
+        ArraysFill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= MX; i++) {
+            if (isPrime[i]) {
+                primes.add(i);
+                if ((long) i * i <= MX) {
+                    for (int j = i * i; j <= MX; j += i) isPrime[j] = false;
+                }
+            }
+        }
+        S.add(0);
+        int t = 0;
+        for (int x : primes) {
+            t += x;
+            if (t > MX) break;
+            if (isPrime[t]) S.add(t);
+        }
+    }
+
+    private static void ArraysFill(boolean[] a, boolean v) {
+        for (int i = 0; i < a.length; i++) a[i] = v;
+    }
+
+    public int largestPrime(int n) {
+        int lo = 0, hi = S.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (S.get(mid) <= n) lo = mid + 1;
+            else hi = mid;
+        }
+        return S.get(lo - 1);
+    }
+}
+
+
+================================================================================
+3771_total_score_of_dungeon_runs  lines=22
+================================================================================
+// LeetCode 3771 - Total Score of Dungeon Runs
+// https://leetcode.com/problems/total-score-of-dungeon-runs/
+
+class Solution {
+    public long totalScore(int hp, int[] damage, int[] requirement) {
+        int n = damage.length;
+        long[] prefix = new long[n + 1];
+        for (int i = 0; i < n; i++) prefix[i + 1] = prefix[i] + damage[i];
+        long answer = 1L * n * (n + 1) / 2;
+        for (int j = 1; j <= n; j++) {
+            long threshold = prefix[j] + (requirement[j - 1] - hp);
+            int lo = 0, hi = j;
+            while (lo < hi) {
+                int mid = (lo + hi) / 2;
+                if (prefix[mid] < threshold) lo = mid + 1;
+                else hi = mid;
+            }
+            answer -= lo;
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+3772_maximum_subgraph_score_in_a_tree  lines=56
+================================================================================
+// LeetCode 3772 - Maximum Subgraph Score In A Tree
+// https://leetcode.com/problems/maximum_subgraph_score_in_a_tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] maxSubgraphScore(int n, int[][] edges, int[] good) {
+        List<Integer>[] g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] parent = new int[n];
+        java.util.Arrays.fill(parent, -2);
+        parent[0] = -1;
+        List<Integer> order = new ArrayList<>();
+        order.add(0);
+        for (int i = 0; i < order.size(); i++) {
+            int u = order.get(i);
+            for (int v : g[u]) {
+                if (parent[v] == -2) {
+                    parent[v] = u;
+                    order.add(v);
+                }
+            }
+        }
+        int[] down = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            int u = order.get(i);
+            down[u] = 2 * good[u] - 1;
+            for (int v : g[u]) {
+                if (parent[v] == u && down[v] > 0) down[u] += down[v];
+            }
+        }
+        int[] ans = down.clone();
+        for (int u : order) {
+            for (int v : g[u]) {
+                if (parent[v] == u) {
+                    int outside = ans[u];
+                    if (down[v] > 0) outside -= down[v];
+                    ans[v] = down[v];
+                    if (outside > 0) ans[v] += outside;
+                }
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+3773_maximum_number_of_equal_length_runs  lines=22
+================================================================================
+// LeetCode 3773 - Maximum Number Of Equal Length Runs
+// https://leetcode.com/problems/maximum-number-of-equal-length-runs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int maxSameLengthRuns(String s) {
+        var cnt = new HashMap<Integer, Integer>();
+        int n = s.length(), ans = 0;
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && s.charAt(j) == s.charAt(i)) j++;
+            int m = j - i;
+            if (!cnt.containsKey(m)) cnt.put(m, 0);
+            cnt.merge(m, 1, Integer::sum);
+            ans = Math.max(ans, cnt.get(m));
+            i = j;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3774_absolute_difference_between_maximum_and_minimum_k_elements  lines=13
+================================================================================
+// LeetCode 3774 - Absolute Difference Between Maximum And Minimum K Elements
+// https://leetcode.com/problems/absolute-difference-between-maximum-and-minimum-k-elements/
+
+import java.util.Arrays;
+
+class Solution {
+    public int absDifference(int[] nums, int k) {
+        Arrays.sort(nums);
+        int ans = 0, n = nums.length;
+        for (int i = 0; i < k; i++) ans += nums[n - i - 1] - nums[i];
+        return ans;
+    }
+}
+
+
+================================================================================
+3775_reverse_words_with_same_vowel_count  lines=25
+================================================================================
+// LeetCode 3775 - Reverse Words With Same Vowel Count
+// https://leetcode.com/problems/reverse_words_with_same_vowel_count/
+
+class Solution {
+    private int calc(String w) {
+        int cnt = 0;
+        for (char c : w.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') cnt++;
+        }
+        return cnt;
+    }
+
+    public String reverseWords(String s) {
+        String[] words = s.trim().split("\\s+");
+        int cnt = calc(words[0]);
+        StringBuilder ans = new StringBuilder();
+        ans.append(words[0]);
+        for (int i = 1; i < words.length; i++) {
+            String w = words[i];
+            if (calc(w) == cnt) w = new StringBuilder(w).reverse().toString();
+            ans.append(' ').append(w);
+        }
+        return ans.toString();
+    }
+}
+
+
+================================================================================
+3776_minimum_moves_to_balance_circular_array  lines=34
+================================================================================
+// LeetCode 3776 - Minimum Moves To Balance Circular Array
+// https://leetcode.com/problems/minimum-moves-to-balance-circular-array/
+
+class Solution {
+    public long minMoves(int[] balance) {
+        long sum = 0;
+        for (int b : balance) sum += b;
+        if (sum < 0) return -1;
+
+        int n = balance.length;
+        int mn = balance[0], idx = 0;
+        for (int i = 1; i < n; i++) {
+            if (balance[i] < mn) {
+                mn = balance[i];
+                idx = i;
+            }
+        }
+        if (mn >= 0) return 0;
+
+        int need = -mn;
+        long ans = 0;
+        for (int j = 1; j < n; j++) {
+            int a = balance[(idx - j + n) % n];
+            int b = balance[(idx + j) % n];
+            int c1 = Math.min(a, need);
+            need -= c1;
+            ans += (long)c1 * j;
+            int c2 = Math.min(b, need);
+            need -= c2;
+            ans += (long)c2 * j;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3777_minimum_deletions_to_make_alternating_substring  lines=51
+================================================================================
+// LeetCode 3777 - Minimum Deletions To Make Alternating Substring
+// https://leetcode.com/problems/minimum-deletions-to-make-alternating-substring/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    class BIT {
+        int n;
+        int[] c;
+        public BIT(int n_) { n = n_; c = new int[n_ + 1]; }
+        public void update(int x, int delta) {
+            for (; x <= n; x += x & -x) c[x] += delta;
+        }
+        public int query(int x) {
+            int s = 0;
+            for (; x > 0; x -= x & -x) s += c[x];
+            return s;
+        }
+    }
+
+    public int[] minDeletions(String s, int[][] queries) {
+        int n = s.length();
+        int[] nums = new int[n];
+        var bit = new BIT(n);
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                nums[i] = 1;
+                bit.update(i + 1, 1);
+            }
+        }
+        var ans = new ArrayList<Integer>();
+        for (var q : queries) {
+            if (q[0] == 1) {
+                int j = q[1];
+                int delta = (nums[j] ^ 1) - nums[j];
+                nums[j] ^= 1;
+                bit.update(j + 1, delta);
+                if (j + 1 < n) {
+                    delta = (nums[j + 1] ^ 1) - nums[j + 1];
+                    nums[j + 1] ^= 1;
+                    bit.update(j + 2, delta);
+                }
+            } else {
+                int l = q[1], r = q[2];
+                ans.add(bit.query(r + 1) - bit.query(l + 1));
+            }
+        }
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+
+================================================================================
+3778_minimum_distance_excluding_one_maximum_weighted_edge  lines=54
+================================================================================
+// LeetCode 3778 - Minimum Distance Excluding One Maximum Weighted Edge
+// https://leetcode.com/problems/minimum_distance_excluding_one_maximum_weighted_edge/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Solution {
+    public long minCostExcludingMax(int n, int[][] edges) {
+        List<int[]>[] g = newList(n);
+        for (int[] e : edges) {
+            int u = e[0], v = e[1], w = e[2];
+            g[u].add(new int[]{v, w});
+            g[v].add(new int[]{u, w});
+        }
+        final long INF = (long) 4e18;
+        long[][] dist = new long[n][2];
+        for (int i = 0; i < n; i++) Arrays.fill(dist[i], INF);
+        dist[0][0] = 0;
+        PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
+        pq.offer(new long[]{0, 0, 0}); // cost, u, used
+        while (!pq.isEmpty()) {
+            long[] cur = pq.poll();
+            long c = cur[0];
+            int u = (int) cur[1], used = (int) cur[2];
+            if (c > dist[u][used]) continue;
+            if (u == n - 1 && used == 1) return c;
+            for (int[] e : g[u]) {
+                int v = e[0], w = e[1];
+                long nxt = c + w;
+                if (nxt < dist[v][used]) {
+                    dist[v][used] = nxt;
+                    pq.offer(new long[]{nxt, v, used});
+                }
+                if (used == 0) {
+                    nxt = c;
+                    if (nxt < dist[v][1]) {
+                        dist[v][1] = nxt;
+                        pq.offer(new long[]{nxt, v, 1});
+                    }
+                }
+            }
+        }
+        return dist[n - 1][1];
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<int[]>[] newList(int n) {
+        List<int[]>[] g = (List<int[]>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+3779_minimum_number_of_operations_to_have_distinct_elements  lines=16
+================================================================================
+// LeetCode 3779 - Minimum Number Of Operations To Have Distinct Elements
+// https://leetcode.com/problems/minimum-number-of-operations-to-have-distinct-elements/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int minOperations(int[] nums) {
+        var st = new HashSet<Integer>();
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (st.contains(nums[i])) return i / 3 + 1;
+            st.add(nums[i]);
+        }
+        return 0;
+    }
+}
+

@@ -1,7 +1,8 @@
-﻿// LeetCode 2683 - Neighboring Bitwise XOR
+// LeetCode 2683 - Neighboring XOR
 // https://leetcode.com/problems/neighboring-bitwise-xor/
 
 class Solution {
-    func solve() {
+    func doesValidArrayExist(_ derived: [Int]) -> Bool {
+        derived.reduce(0, ^) == 0
     }
 }

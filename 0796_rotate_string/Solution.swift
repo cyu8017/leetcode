@@ -1,7 +1,8 @@
-﻿// LeetCode 0796 - Rotate String
+// LeetCode 0796 - Rotate String
 // https://leetcode.com/problems/rotate-string/
 
 class Solution {
-    func solve() {
+    func rotateString(_ s: String, _ goal: String) -> Bool {
+        return s.count == goal.count && (s + s).contains(goal)
     }
 }

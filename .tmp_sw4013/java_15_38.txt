@@ -1,0 +1,938 @@
+================================================================================
+3938_maximum_path_intersection_sum_in_a_grid
+================================================================================
+// LeetCode 3938 - Maximum Path Intersection Sum in a Grid
+// https://leetcode.com/problems/maximum-path-intersection-sum-in-a-grid/
+
+class Solution {
+    public int maxPathSum(int[][] grid) {
+        int rows = grid.length, cols = grid[0].length;
+        int answer = Integer.MIN_VALUE;
+        for (int row = 0; row < rows; row++) {
+            final int r = row;
+            answer = Math.max(answer, checkLine(cols, col -> grid[r][col]));
+        }
+        for (int col = 0; col < cols; col++) {
+            final int c = col;
+            answer = Math.max(answer, checkLine(rows, row -> grid[row][c]));
+        }
+        for (int row = 1; row + 1 < rows; row++) {
+            for (int col = 1; col + 1 < cols; col++) {
+                if (grid[row][col] > answer) answer = grid[row][col];
+            }
+        }
+        return answer;
+    }
+
+    private interface IntAt { int get(int i); }
+
+    private int checkLine(int length, IntAt value) {
+        int answer = Integer.MIN_VALUE;
+        int bestEnding = value.get(0) + value.get(1);
+        if (bestEnding > answer) answer = bestEnding;
+        for (int i = 2; i < length; i++) {
+            if (value.get(i - 1) + value.get(i) > bestEnding + value.get(i)) bestEnding = value.get(i - 1) + value.get(i);
+            else bestEnding += value.get(i);
+            if (bestEnding > answer) answer = bestEnding;
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+3939_count_non_adjacent_subsets_in_a_rooted_tree
+================================================================================
+// LeetCode 3939 - Count Non Adjacent Subsets in a Rooted Tree
+// https://leetcode.com/problems/count-non-adjacent-subsets-in-a-rooted-tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int countNonAdjacentSubsets(int[] parent, int[] nums, int k) {
+        final long mod = 1000000007;
+        int n = parent.length;
+        List<Integer>[] children = new ArrayList[n];
+        for (int i = 0; i < n; i++) children[i] = new ArrayList<>();
+        for (int i = 1; i < n; i++) children[parent[i]].add(i);
+        long[][] dp0 = new long[n][];
+        long[][] dp1 = new long[n][];
+        for (int u = n - 1; u >= 0; u--) {
+            long[] a = new long[k], b = new long[k];
+            a[0] = 1;
+            b[((nums[u] % k) + k) % k] = 1;
+            for (int v : children[u]) {
+                long[] na = new long[k], nb = new long[k];
+                for (int x = 0; x < k; x++) {
+                    for (int y = 0; y < k; y++) {
+                        long allChild = (dp0[v][y] + dp1[v][y]) % mod;
+                        na[(x + y) % k] = (na[(x + y) % k] + a[x] * allChild) % mod;
+                        nb[(x + y) % k] = (nb[(x + y) % k] + b[x] * dp0[v][y]) % mod;
+                    }
+                }
+                a = na;
+                b = nb;
+            }
+            dp0[u] = a;
+            dp1[u] = b;
+        }
+        long ans = (dp0[0][0] + dp1[0][0] - 1) % mod;
+        if (ans < 0) ans += mod;
+        return (int) ans;
+    }
+}
+
+
+================================================================================
+3940_limit_occurrences_in_sorted_array
+================================================================================
+// LeetCode 3940 - Limit Occurrences In Sorted Array
+// https://leetcode.com/problems/limit-occurrences-in-sorted-array/
+
+class Solution {
+    public int[] limitOccurrences(int[] nums, int k) {
+        int n = nums.length;
+        int cnt = 1, l = 1;
+        for (int r = 1; r < n; r++) {
+            if (nums[r] != nums[r - 1]) cnt = 1;
+            else cnt++;
+            if (cnt <= k) {
+                nums[l] = nums[r];
+                l++;
+            }
+        }
+        nums = java.util.Arrays.copyOf(nums, l);
+        return nums;
+    }
+}
+
+
+================================================================================
+3941_password_strength
+================================================================================
+// LeetCode 3941 - Password Strength
+// https://leetcode.com/problems/password-strength/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int passwordStrength(String password) {
+        Set<Character> st = new HashSet<>();
+        for (int i = 0; i < password.length(); i++) st.add(password.charAt(i));
+        int ans = 0;
+        for (char ch : st) {
+            if (Character.isLowerCase(ch)) ans += 1;
+            else if (Character.isUpperCase(ch)) ans += 2;
+            else if (Character.isDigit(ch)) ans += 3;
+            else ans += 5;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3942_minimum_operations_to_sort_a_permutation
+================================================================================
+// LeetCode 3942 - Minimum Operations To Sort A Permutation
+// https://leetcode.com/problems/minimum-operations-to-sort-a-permutation/
+
+class Solution {
+    public int minOperations(int[] nums) {
+        int n = nums.length;
+        int zero = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == 0) {
+                zero = i;
+                break;
+            }
+        }
+        int ans = Integer.MAX_VALUE;
+        if (check(nums, zero, 1)) {
+            ans = Math.min(ans, zero);
+            ans = Math.min(ans, n - zero + 2);
+        }
+        if (check(nums, zero, -1)) {
+            ans = Math.min(ans, zero + 2);
+            ans = Math.min(ans, n - zero);
+        }
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+
+    private boolean check(int[] nums, int zero, int step) {
+        int n = nums.length;
+        for (int i = 1; i < n; i++) {
+            int prev = ((zero + (i - 1) * step) % n + n) % n;
+            int curr = ((zero + i * step) % n + n) % n;
+            if (nums[prev] > nums[curr]) return false;
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+3943_number_of_pairs_after_increment
+================================================================================
+// LeetCode 3943 - Number of Pairs After Increment
+// https://leetcode.com/problems/number-of-pairs-after-increment/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long[] numberOfPairs(int[] nums1, int[] nums2, int[][] queries) {
+        final int blockSize = 225;
+        int n = nums2.length;
+        int blocks = (n + blockSize - 1) / blockSize;
+        int[] lazy = new int[blocks];
+        Map<Integer, Integer>[] freq = new HashMap[blocks];
+        for (int b = 0; b < blocks; b++) {
+            freq[b] = new HashMap<>();
+            rebuild(freq, nums2, b, blockSize, n);
+        }
+        Map<Integer, Integer> fixed = new HashMap<>();
+        for (int x : nums1) fixed.put(x, fixed.getOrDefault(x, 0) + 1);
+        java.util.List<Long> answer = new java.util.ArrayList<>();
+        for (int[] q : queries) {
+            if (q[0] == 1) {
+                int l = q[1], r = q[2], delta = q[3];
+                int first = l / blockSize, last = r / blockSize;
+                if (first == last) {
+                    push(lazy, nums2, first, blockSize, n);
+                    for (int i = l; i <= r; i++) nums2[i] += delta;
+                    rebuild(freq, nums2, first, blockSize, n);
+                    continue;
+                }
+                push(lazy, nums2, first, blockSize, n);
+                for (int i = l; i < (first + 1) * blockSize; i++) nums2[i] += delta;
+                rebuild(freq, nums2, first, blockSize, n);
+                push(lazy, nums2, last, blockSize, n);
+                for (int i = last * blockSize; i <= r; i++) nums2[i] += delta;
+                rebuild(freq, nums2, last, blockSize, n);
+                for (int b = first + 1; b < last; b++) lazy[b] += delta;
+            } else {
+                long total = 0;
+                for (Map.Entry<Integer, Integer> e : fixed.entrySet()) {
+                    int a = e.getKey(), countA = e.getValue();
+                    int target = q[1] - a;
+                    for (int b = 0; b < blocks; b++) {
+                        Integer c = freq[b].get(target - lazy[b]);
+                        if (c != null) total += (long) countA * c;
+                    }
+                }
+                answer.add(total);
+            }
+        }
+        long[] out = new long[answer.size()];
+        for (int i = 0; i < out.length; i++) out[i] = answer.get(i);
+        return out;
+    }
+
+    private void rebuild(Map<Integer, Integer>[] freq, int[] nums2, int b, int blockSize, int n) {
+        freq[b].clear();
+        int end = Math.min((b + 1) * blockSize, n);
+        for (int i = b * blockSize; i < end; i++) freq[b].put(nums2[i], freq[b].getOrDefault(nums2[i], 0) + 1);
+    }
+
+    private void push(int[] lazy, int[] nums2, int b, int blockSize, int n) {
+        if (lazy[b] != 0) {
+            int end = Math.min((b + 1) * blockSize, n);
+            for (int i = b * blockSize; i < end; i++) nums2[i] += lazy[b];
+            lazy[b] = 0;
+        }
+    }
+}
+
+
+================================================================================
+3944_minimum_operations_to_make_array_modulo_alternating_ii
+================================================================================
+// LeetCode 3944 - Minimum Operations to Make Array Modulo Alternating II
+// https://leetcode.com/problems/minimum-operations-to-make-array-modulo-alternating-ii/
+
+class Solution {
+    public long minOperations(int[] nums, int k) {
+        long[] evenFreq = new long[k], oddFreq = new long[k];
+        for (int i = 0; i < nums.length; i++) {
+            if (i % 2 == 0) evenFreq[nums[i] % k]++;
+            else oddFreq[nums[i] % k]++;
+        }
+        long[] evenCost = costs(evenFreq, k);
+        long[] oddCost = costs(oddFreq, k);
+        long best1 = 1L << 62, best2 = 1L << 62;
+        int bestIndex = -1;
+        for (int i = 0; i < k; i++) {
+            long x = oddCost[i];
+            if (x < best1) {
+                best2 = best1;
+                best1 = x;
+                bestIndex = i;
+            } else if (x < best2) best2 = x;
+        }
+        long ans = 1L << 62;
+        for (int x = 0; x < k; x++) {
+            long other = (x == bestIndex) ? best2 : best1;
+            ans = Math.min(ans, evenCost[x] + other);
+        }
+        return ans;
+    }
+
+    private long[] costs(long[] freq, int k) {
+        long[] dbl = new long[2 * k];
+        for (int i = 0; i < 2 * k; i++) dbl[i] = freq[i % k];
+        long[] countPrefix = new long[2 * k + 1], weightedPrefix = new long[2 * k + 1];
+        for (int i = 0; i < 2 * k; i++) {
+            countPrefix[i + 1] = countPrefix[i] + dbl[i];
+            weightedPrefix[i + 1] = weightedPrefix[i] + (long) i * dbl[i];
+        }
+        long[] res = new long[k];
+        int cw = k / 2, cc = (k - 1) / 2;
+        for (int t = 0; t < k; t++) {
+            long cnt = countPrefix[t + cw + 1] - countPrefix[t];
+            long sum = weightedPrefix[t + cw + 1] - weightedPrefix[t];
+            res[t] += sum - (long) t * cnt;
+            if (cc > 0) {
+                long cnt2 = countPrefix[t + k] - countPrefix[t + k - cc];
+                long sum2 = weightedPrefix[t + k] - weightedPrefix[t + k - cc];
+                res[t] += (long) (t + k) * cnt2 - sum2;
+            }
+        }
+        return res;
+    }
+}
+
+
+================================================================================
+3945_digit_frequency_score
+================================================================================
+// LeetCode 3945 - Digit Frequency Score
+// https://leetcode.com/problems/digit-frequency-score/
+
+class Solution {
+    public int digitFrequencyScore(int n) {
+        int ans = 0;
+        for (; n > 0; n /= 10) ans += n % 10;
+        return ans;
+    }
+}
+
+
+================================================================================
+3946_maximum_number_of_items_from_sale_i
+================================================================================
+// LeetCode 3946 - Maximum Number Of Items From Sale I
+// https://leetcode.com/problems/maximum-number-of-items-from-sale-i/
+
+class Solution {
+    public int maximumSaleItems(int[][] items, int budget) {
+        int[] f = new int[budget + 1];
+        int mn = Integer.MAX_VALUE;
+        for (var item : items) {
+            int factor = item[0], price = item[1];
+            mn = Math.min(mn, price);
+            int cnt = 0;
+            for (var jItem : items) {
+                if (jItem[0] % factor == 0) cnt++;
+            }
+            for (int j = budget; j >= price; j--) {
+                f[j] = Math.max(f[j], f[j - price] + cnt);
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i <= budget; i++) {
+            int extra = (budget - i) / mn;
+            ans = Math.max(ans, f[i] + extra);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3947_maximum_number_of_items_from_sale_ii
+================================================================================
+// LeetCode 3947 - Maximum Number of Items From Sale II
+// https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+class Solution {
+    public int maxItems(int[][] items, int budget) {
+        int n = items.length;
+        int[] frequency = new int[n + 1];
+        int minimumPrice = items[0][1];
+        for (int[] item : items) {
+            frequency[item[0]]++;
+            minimumPrice = Math.min(minimumPrice, item[1]);
+        }
+        List<int[]> batches = new ArrayList<>();
+        for (int[] item : items) {
+            int gain = 0;
+            for (int multiple = item[0]; multiple <= n; multiple += item[0]) gain += frequency[multiple];
+            gain--;
+            if (gain > 0 && item[1] < 2 * minimumPrice) batches.add(new int[] { item[1], gain });
+        }
+        batches.sort(Comparator.comparingInt(a -> a[0]));
+        long remaining = budget;
+        long answer = budget / minimumPrice;
+        long boosted = 0;
+        for (int[] current : batches) {
+            long count = current[1];
+            long affordable = remaining / current[0];
+            if (affordable < count) count = affordable;
+            remaining -= count * current[0];
+            boosted += count;
+            long total = 2 * boosted + remaining / minimumPrice;
+            if (total > answer) answer = total;
+            if (count < current[1]) break;
+        }
+        return (int) answer;
+    }
+}
+
+
+================================================================================
+3948_lexicographically_maximum_mex_array
+================================================================================
+// LeetCode 3948 - Lexicographically Maximum MEX Array
+// https://leetcode.com/problems/lexicographically-maximum-mex-array/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] maxMexArray(int[] nums) {
+        int n = nums.length;
+        int[] remaining = new int[n + 2];
+        for (int x : nums) {
+            if (x <= n + 1) remaining[x]++;
+        }
+        int mex = 0;
+        while (remaining[mex] > 0) mex++;
+        List<Integer> answer = new ArrayList<>();
+        int[] seen = new int[n + 2];
+        int stamp = 0, index = 0;
+        while (index < n) {
+            if (mex == 0) {
+                answer.add(0);
+                int x = nums[index];
+                if (x <= n + 1) remaining[x]--;
+                index++;
+                continue;
+            }
+            stamp++;
+            int need = mex;
+            while (need > 0) {
+                int x = nums[index];
+                if (x < mex && seen[x] != stamp) {
+                    seen[x] = stamp;
+                    need--;
+                }
+                if (x <= n + 1) remaining[x]--;
+                index++;
+            }
+            answer.add(mex);
+            mex = 0;
+            while (remaining[mex] > 0) mex++;
+        }
+        int[] out = new int[answer.size()];
+        for (int i = 0; i < out.length; i++) out[i] = answer.get(i);
+        return out;
+    }
+}
+
+
+================================================================================
+3949_subtree_inversion_sum_ii
+================================================================================
+// LeetCode 3949 - Subtree Inversion Sum II
+// https://leetcode.com/problems/subtree-inversion-sum-ii/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public long maxSubtreeInversionSum(int[][] edges, int[] nums, int k) {
+        int n = nums.length;
+        List<Integer>[] graph = new ArrayList[n];
+        for (int i = 0; i < n; i++) graph[i] = new ArrayList<>();
+        for (int[] edge : edges) {
+            graph[edge[0]].add(edge[1]);
+            graph[edge[1]].add(edge[0]);
+        }
+        int[] parent = new int[n];
+        Arrays.fill(parent, -2);
+        parent[0] = -1;
+        List<Integer> order = new ArrayList<>();
+        order.add(0);
+        for (int i = 0; i < order.size(); i++) {
+            int u = order.get(i);
+            for (int v : graph[u]) {
+                if (parent[v] == -2) {
+                    parent[v] = u;
+                    order.add(v);
+                }
+            }
+        }
+        final long infinity = 1L << 60;
+        long[][] maximum = new long[n][];
+        long[][] minimum = new long[n][];
+        for (int oi = n - 1; oi >= 0; oi--) {
+            int u = order.get(oi);
+            long[] currentMax = new long[k + 1];
+            long[] currentMin = new long[k + 1];
+            Arrays.fill(currentMax, -infinity);
+            Arrays.fill(currentMin, infinity);
+            currentMax[k] = currentMin[k] = nums[u];
+            for (int v : graph[u]) {
+                if (parent[v] != u) continue;
+                long[] nextMax = new long[k + 1];
+                long[] nextMin = new long[k + 1];
+                Arrays.fill(nextMax, -infinity);
+                Arrays.fill(nextMin, infinity);
+                for (int first = 0; first <= k; first++) {
+                    if (currentMax[first] == -infinity) continue;
+                    for (int childDistance = 0; childDistance <= k; childDistance++) {
+                        if (maximum[v][childDistance] == -infinity) continue;
+                        int second = childDistance + 1;
+                        if (second > k) second = k;
+                        if (first < k && second < k && first + second < k) continue;
+                        int distance = Math.min(first, second);
+                        long maxValue = currentMax[first] + maximum[v][childDistance];
+                        long minValue = currentMin[first] + minimum[v][childDistance];
+                        nextMax[distance] = Math.max(nextMax[distance], maxValue);
+                        nextMin[distance] = Math.min(nextMin[distance], minValue);
+                    }
+                }
+                currentMax = nextMax;
+                currentMin = nextMin;
+            }
+            if (-currentMin[k] > currentMax[0]) currentMax[0] = -currentMin[k];
+            if (-currentMax[k] < currentMin[0]) currentMin[0] = -currentMax[k];
+            maximum[u] = currentMax;
+            minimum[u] = currentMin;
+        }
+        long answer = -(1L << 60);
+        for (long value : maximum[0]) answer = Math.max(answer, value);
+        return answer;
+    }
+}
+
+
+================================================================================
+3950_exactly_one_consecutive_set_bits_pair
+================================================================================
+// LeetCode 3950 - Exactly One Consecutive Set Bits Pair
+// https://leetcode.com/problems/exactly-one-consecutive-set-bits-pair/
+
+class Solution {
+    public boolean consecutiveSetBits(int n) {
+        boolean vis = false;
+        for (int pre = 0; n > 0; n >>= 1) {
+            int cur = n & 1;
+            if (pre == cur && cur == 1) {
+                if (vis) return false;
+                vis = true;
+            }
+            pre = cur;
+        }
+        return vis;
+    }
+}
+
+
+================================================================================
+3951_minimum_energy_to_maintain_brightness
+================================================================================
+// LeetCode 3951 - Minimum Energy To Maintain Brightness
+// https://leetcode.com/problems/minimum-energy-to-maintain-brightness/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public long minEnergy(int n, int brightness, int[][] intervals) {
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        List<int[]> merged = new ArrayList<>();
+        merged.add(new int[] { intervals[0][0], intervals[0][1] });
+        for (int i = 1; i < intervals.length; i++) {
+            int[] x = intervals[i];
+            int[] last = merged.get(merged.size() - 1);
+            if (last[1] < x[0]) merged.add(new int[] { x[0], x[1] });
+            else if (x[1] > last[1]) last[1] = x[1];
+        }
+        long ans = 0;
+        for (int[] interval : merged) {
+            int m = interval[1] - interval[0] + 1;
+            ans += (long) ((brightness + 2) / 3) * m;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3952_maximum_total_value_of_covered_indices
+================================================================================
+// LeetCode 3952 - Maximum Total Value of Covered Indices
+// https://leetcode.com/problems/maximum-total-value-of-covered-indices/
+
+class Solution {
+    public int maxTotalValue(int[] nums, String s) {
+        int answer = 0;
+        for (int i = 0; i < s.length();) {
+            if (s.charAt(i) == '0') { i++; continue; }
+            int start = i;
+            while (i < s.length() && s.charAt(i) == '1') i++;
+            int end = i - 1;
+            if (start == 0) {
+                for (int index = start; index <= end; index++) answer += nums[index];
+                continue;
+            }
+            int minimum = nums[start - 1];
+            int total = 0;
+            for (int index = start - 1; index <= end; index++) {
+                total += nums[index];
+                if (nums[index] < minimum) minimum = nums[index];
+            }
+            answer += total - minimum;
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+3953_maximum_score_with_co_prime_element
+================================================================================
+// LeetCode 3953 - Maximum Score with Co-Prime Element
+// https://leetcode.com/problems/maximum-score-with-co-prime-element/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int maxScore(int[] nums, int maxVal) {
+        int limit = maxVal;
+        int[] frequency = new int[100001];
+        for (int x : nums) {
+            frequency[x]++;
+            if (x > limit) limit = x;
+        }
+        int[] divisible = new int[limit + 1];
+        for (int d = 1; d <= limit; d++) {
+            for (int multiple = d; multiple <= limit; multiple += d) {
+                if (multiple < frequency.length) divisible[d] += frequency[multiple];
+            }
+        }
+        int best = -nums.length;
+        boolean[] checked = new boolean[limit + 1];
+        for (int x = 1; x <= maxVal; x++) {
+            best = Math.max(best, evaluate(x, x < frequency.length && frequency[x] > 0, checked, divisible));
+        }
+        for (int x : nums) {
+            best = Math.max(best, evaluate(x, true, checked, divisible));
+        }
+        return best;
+    }
+
+    private int evaluate(int x, boolean exists, boolean[] checked, int[] divisible) {
+        if (checked[x]) return Integer.MIN_VALUE / 4;
+        checked[x] = true;
+        int bad = badCount(x, divisible);
+        int cost;
+        if (exists) cost = x > 1 ? bad - 1 : 0;
+        else cost = bad > 0 ? bad : 1;
+        return x - cost;
+    }
+
+    private int badCount(int x, int[] divisible) {
+        List<Integer> primes = new ArrayList<>();
+        int y = x;
+        for (int p = 2; 1L * p * p <= y; p++) {
+            if (y % p == 0) {
+                primes.add(p);
+                while (y % p == 0) y /= p;
+            }
+        }
+        if (y > 1) primes.add(y);
+        int bad = 0;
+        int psz = primes.size();
+        for (int mask = 1; mask < (1 << psz); mask++) {
+            int product = 1, bits = 0;
+            for (int i = 0; i < psz; i++) {
+                if (((mask >> i) & 1) != 0) {
+                    product *= primes.get(i);
+                    bits++;
+                }
+            }
+            if (bits % 2 == 1) bad += divisible[product];
+            else bad -= divisible[product];
+        }
+        return bad;
+    }
+}
+
+
+================================================================================
+3954_sum_of_compatible_numbers_in_range_i
+================================================================================
+// LeetCode 3954 - Sum Of Compatible Numbers In Range I
+// https://leetcode.com/problems/sum-of-compatible-numbers-in-range-i/
+
+class Solution {
+    public int sumOfGoodIntegers(int n, int k) {
+        int start = Math.max(1, n - k);
+        int end = n + k;
+        int ans = 0;
+        for (int x = start; x <= end; x++) {
+            if ((n & x) == 0) ans += x;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3955_valid_binary_strings_with_cost_limit
+================================================================================
+// LeetCode 3955 - Valid Binary Strings With Cost Limit
+// https://leetcode.com/problems/valid-binary-strings-with-cost-limit/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<String> generateValidStrings(int n, int k) {
+        List<String> ans = new ArrayList<>();
+        StringBuilder path = new StringBuilder();
+        dfs(0, 0, n, k, path, ans);
+        return ans;
+    }
+
+    private void dfs(int i, int tot, int n, int k, StringBuilder path, List<String> ans) {
+        if (i >= n) {
+            ans.add(path.toString());
+            return;
+        }
+        path.append('0');
+        dfs(i + 1, tot, n, k, path, ans);
+        path.deleteCharAt(path.length() - 1);
+        if ((path.length() == 0 || path.charAt(path.length() - 1) == '0') && tot + i <= k) {
+            path.append('1');
+            dfs(i + 1, tot + i, n, k, path, ans);
+            path.deleteCharAt(path.length() - 1);
+        }
+    }
+}
+
+
+================================================================================
+3956_maximum_sum_of_m_non_overlapping_subarrays_i
+================================================================================
+// LeetCode 3956 - Maximum Sum of M Non-Overlapping Subarrays I
+// https://leetcode.com/problems/maximum-sum-of-m-non-overlapping-subarrays-i/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public long maxSum(int[] nums, int m, int l, int r) {
+        int n = nums.length;
+        long[] prefix = new long[n + 1];
+        for (int i = 0; i < n; i++) prefix[i + 1] = prefix[i] + nums[i];
+        long[] dp = new long[n + 1];
+        long bestSelected = -(1L << 62);
+        for (int count = 1; count <= m; count++) {
+            long[] next = dp.clone();
+            var deque = new ArrayList<Integer>();
+            for (int end = 1; end <= n; end++) {
+                int addIndex = end - l;
+                if (addIndex >= 0) {
+                    long value = dp[addIndex] - prefix[addIndex];
+                    while (deque.size() > 0) {
+                        int last = deque.get(deque.size() - 1);
+                        if (dp[last] - prefix[last] > value) break;
+                        deque.remove(deque.size() - 1);
+                    }
+                    deque.add(addIndex);
+                }
+                int minIndex = end - r;
+                while (deque.size() > 0 && deque.get(0) < minIndex) deque.remove(0);
+                if (deque.size() > 0) {
+                    long candidate = prefix[end] + dp[deque.get(0)] - prefix[deque.get(0)];
+                    if (candidate > next[end]) next[end] = candidate;
+                    if (candidate > bestSelected) bestSelected = candidate;
+                }
+                if (next[end - 1] > next[end]) next[end] = next[end - 1];
+            }
+            dp = next;
+        }
+        return bestSelected;
+    }
+}
+
+
+================================================================================
+3957_maximum_sum_of_m_non_overlapping_subarrays_ii
+================================================================================
+// LeetCode 3957 - Maximum Sum of M Non-Overlapping Subarrays II
+// https://leetcode.com/problems/maximum-sum-of-m-non-overlapping-subarrays-ii/
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+class Solution {
+    static class State {
+        long value;
+        int count;
+        State() {}
+        State(long value, int count) { this.value = value; this.count = count; }
+    }
+
+    private static boolean better(State a, State b) {
+        return a.value > b.value || (a.value == b.value && a.count > b.count);
+    }
+
+    public long maxSum(int[] nums, int m, int l, int r) {
+        int n = nums.length;
+        long[] prefix = new long[n + 1];
+        for (int i = 0; i < n; i++) prefix[i + 1] = prefix[i] + nums[i];
+
+        State unconstrained = run(prefix, n, l, r, 0);
+        if (unconstrained.count > 0 && unconstrained.count <= m) return unconstrained.value;
+        if (unconstrained.count > m) {
+            long bound = 0;
+            for (int value : nums) bound += value >= 0 ? value : -value;
+            long low = 0, high = bound + 1;
+            while (low < high) {
+                long mid = low + (high - low + 1) / 2;
+                if (run(prefix, n, l, r, mid).count >= m) low = mid;
+                else high = mid - 1;
+            }
+            State state = run(prefix, n, l, r, low);
+            return state.value + low * m;
+        }
+        final long infinity = 1L << 60;
+        long bestSingle = -infinity;
+        Deque<Integer> deque = new ArrayDeque<>();
+        for (int end = 1; end <= n; end++) {
+            int addIndex = end - l;
+            if (addIndex >= 0) {
+                while (!deque.isEmpty() && prefix[deque.peekLast()] >= prefix[addIndex]) deque.pollLast();
+                deque.addLast(addIndex);
+            }
+            int minIndex = end - r;
+            while (!deque.isEmpty() && deque.peekFirst() < minIndex) deque.pollFirst();
+            if (!deque.isEmpty()) {
+                long sum = prefix[end] - prefix[deque.peekFirst()];
+                if (sum > bestSingle) bestSingle = sum;
+            }
+        }
+        return bestSingle;
+    }
+
+    private State run(long[] prefix, int n, int l, int r, long penalty) {
+        State[] dp = new State[n + 1];
+        for (int i = 0; i <= n; i++) dp[i] = new State();
+        Deque<Integer> deque = new ArrayDeque<>();
+        for (int end = 1; end <= n; end++) {
+            int addIndex = end - l;
+            if (addIndex >= 0) {
+                while (!deque.isEmpty() && candidateBetter(dp, prefix, addIndex, deque.peekLast())) deque.pollLast();
+                deque.addLast(addIndex);
+            }
+            int minIndex = end - r;
+            while (!deque.isEmpty() && deque.peekFirst() < minIndex) deque.pollFirst();
+            dp[end] = new State(dp[end - 1].value, dp[end - 1].count);
+            if (!deque.isEmpty()) {
+                int start = deque.peekFirst();
+                State take = new State(dp[start].value + prefix[end] - prefix[start] - penalty, dp[start].count + 1);
+                if (better(take, dp[end])) dp[end] = take;
+            }
+        }
+        return dp[n];
+    }
+
+    private boolean candidateBetter(State[] dp, long[] prefix, int a, int b) {
+        State left = new State(dp[a].value - prefix[a], dp[a].count);
+        State right = new State(dp[b].value - prefix[b], dp[b].count);
+        return better(left, right);
+    }
+}
+
+
+================================================================================
+3958_minimum_cost_to_split_into_ones_ii
+================================================================================
+// LeetCode 3958 - Minimum Cost To Split Into Ones II
+// https://leetcode.com/problems/minimum-cost-to-split-into-ones-ii/
+
+class Solution {
+    public long minCost(int n) {
+        return 1L * n * (n - 1) / 2;
+    }
+}
+
+
+================================================================================
+3959_check_good_integer
+================================================================================
+// LeetCode 3959 - Check Good Integer
+// https://leetcode.com/problems/check-good-integer/
+
+class Solution {
+    public boolean checkGoodInteger(int n) {
+        int s = 0;
+        for (; n > 0; n /= 10) {
+            int x = n % 10;
+            s += x * (x - 1);
+        }
+        return s >= 50;
+    }
+}
+
+
+================================================================================
+3960_frequency_balance_subarray
+================================================================================
+// LeetCode 3960 - Frequency Balance Subarray
+// https://leetcode.com/problems/frequency-balance-subarray/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int getLength(int[] nums) {
+        int n = nums.length;
+        int ans = 1;
+        for (int l = 0; l < n; l++) {
+            Map<Integer, Integer> cnt = new HashMap<>();
+            Map<Integer, Integer> freq = new HashMap<>();
+            for (int r = l; r < n; r++) {
+                int x = nums[r];
+                int c = cnt.getOrDefault(x, 0);
+                if (freq.getOrDefault(c, 0) > 0) {
+                    int fc = freq.get(c) - 1;
+                    if (fc == 0) freq.remove(c);
+                    else freq.put(c, fc);
+                }
+                cnt.put(x, c + 1);
+                freq.put(cnt.get(x), freq.getOrDefault(cnt.get(x), 0) + 1);
+                int cx = cnt.get(x);
+                if (cnt.size() == 1 || (freq.size() == 2 && (freq.getOrDefault(cx * 2, 0) > 0 || (cx % 2 == 0 && freq.getOrDefault(cx / 2, 0) > 0)))) {
+                    ans = Math.max(ans, r - l + 1);
+                }
+            }
+        }
+        return ans;
+    }
+}
+

@@ -1,0 +1,857 @@
+================================================================================
+3395_subsequences_with_a_unique_middle_mode_i
+================================================================================
+// LeetCode 3395 - Subsequences with a Unique Middle Mode I
+// https://leetcode.com/problems/subsequences-with-a-unique-middle-mode-i/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    private boolean uniqueMode(int[] a) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int x : a) freq.merge(x, 1, Integer::sum);
+        int best = 0, cnt = 0;
+        for (int f : freq.values()) {
+            if (f > best) { best = f; cnt = 1; }
+            else if (f == best) cnt++;
+        }
+        return cnt == 1;
+    }
+
+    public int subsequencesWithMiddleMode(int[] nums) {
+        final int mod = 1_000_000_007;
+        int n = nums.length;
+        int ans = 0;
+        for (int mid = 2; mid < n - 2; mid++) {
+            for (int a = 0; a < mid; a++) {
+                for (int b = a + 1; b < mid; b++) {
+                    for (int c = mid + 1; c < n; c++) {
+                        for (int d = c + 1; d < n; d++) {
+                            int[] seq = {nums[a], nums[b], nums[mid], nums[c], nums[d]};
+                            if (uniqueMode(seq)) ans++;
+                        }
+                    }
+                }
+            }
+        }
+        return ans % mod;
+    }
+}
+
+================================================================================
+3396_minimum_number_of_operations_to_make_elements_in_array_distinct
+================================================================================
+// LeetCode 3396 - Minimum Number of Operations to Make Elements in Array Distinct
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-elements-in-array-distinct/
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    public int minimumOperations(int[] nums) {
+        List<Integer> list = new ArrayList<>();
+        for (int x : nums) list.add(x);
+        int ops = 0;
+        while (true) {
+            Set<Integer> seen = new HashSet<>();
+            boolean dup = false;
+            for (int x : list) {
+                if (!seen.add(x)) { dup = true; break; }
+            }
+            if (!dup) return ops;
+            if (list.size() <= 3) return ops + 1;
+            list.subList(0, 3).clear();
+            ops++;
+        }
+    }
+}
+
+================================================================================
+3397_maximum_number_of_distinct_elements_after_operations
+================================================================================
+// LeetCode 3397 - Maximum Number of Distinct Elements After Operations
+// https://leetcode.com/problems/maximum-number-of-distinct-elements-after-operations/
+
+import java.util.Arrays;
+
+class Solution {
+    public int maxDistinctElements(int[] nums, int k) {
+        Arrays.sort(nums);
+        int ans = 0;
+        long prev = Long.MIN_VALUE / 2;
+        for (int x : nums) {
+            long cur = x - k;
+            if (cur <= prev) cur = prev + 1;
+            if (cur > x + k) continue;
+            ans++;
+            prev = cur;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3398_smallest_substring_with_identical_characters_i
+================================================================================
+// LeetCode 3398 - Smallest Substring With Identical Characters I
+// https://leetcode.com/problems/smallest-substring-with-identical-characters-i/
+
+class Solution {
+    public int minLength(String s, int numOps) {
+        int n = s.length();
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (ok(s, n, numOps, mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+
+    private boolean ok(String s, int n, int numOps, int L) {
+        if (L == 0) return false;
+        int ops = 0;
+        for (int i = 0; i < n; ) {
+            int j = i;
+            while (j < n && s.charAt(j) == s.charAt(i)) j++;
+            ops += (j - i) / (L + 1);
+            i = j;
+        }
+        return ops <= numOps;
+    }
+}
+
+================================================================================
+3399_smallest_substring_with_identical_characters_ii
+================================================================================
+// LeetCode 3399 - Smallest Substring With Identical Characters II
+// https://leetcode.com/problems/smallest-substring-with-identical-characters-ii/
+
+class Solution {
+    public int minLength(String s, int numOps) {
+        int n = s.length();
+        int lo = 1, hi = n;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (ok(s, n, numOps, mid)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+
+    private boolean ok(String s, int n, int numOps, int L) {
+        int ops = 0;
+        for (int i = 0; i < n; ) {
+            int j = i;
+            while (j < n && s.charAt(j) == s.charAt(i)) j++;
+            ops += (j - i) / (L + 1);
+            i = j;
+        }
+        return ops <= numOps;
+    }
+}
+
+================================================================================
+3400_maximum_number_of_matching_indices_after_right_shifts
+================================================================================
+// LeetCode 3400 - Maximum Number of Matching Indices After Right Shifts
+// https://leetcode.com/problems/maximum-number-of-matching-indices-after-right-shifts/
+
+class Solution {
+    public int maximumMatchingIndices(int[] nums1, int[] nums2) {
+        int n = nums1.length;
+        int ans = 0;
+        for (int shift = 0; shift < n; shift++) {
+            int cnt = 0;
+            for (int i = 0; i < n; i++) {
+                if (nums1[(i - shift + n) % n] == nums2[i]) cnt++;
+            }
+            if (cnt > ans) ans = cnt;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3402_minimum_operations_to_make_columns_strictly_increasing
+================================================================================
+// LeetCode 3402 - Minimum Operations to Make Columns Strictly Increasing
+// https://leetcode.com/problems/minimum-operations-to-make-columns-strictly-increasing/
+
+class Solution {
+    public int minimumOperations(int[][] grid) {
+        int m = grid.length, n = grid[0].length;
+        int ans = 0;
+        for (int j = 0; j < n; j++) {
+            for (int i = 1; i < m; i++) {
+                if (grid[i][j] <= grid[i - 1][j]) {
+                    int need = grid[i - 1][j] + 1;
+                    ans += need - grid[i][j];
+                    grid[i][j] = need;
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3403_find_the_lexicographically_largest_string_from_the_box_i
+================================================================================
+// LeetCode 3403 - Find the Lexicographically Largest String From the Box I
+// https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-i/
+
+class Solution {
+    public String answerString(String word, int numFriends) {
+        if (numFriends == 1) return word;
+        int n = word.length();
+        int maxLen = n - (numFriends - 1);
+        String ans = "";
+        for (int i = 0; i < n; i++) {
+            int end = i + maxLen;
+            if (end > n) end = n;
+            String cand = word.substring(i, end);
+            if (cand.compareTo(ans) > 0) ans = cand;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3404_count_special_subsequences
+================================================================================
+// LeetCode 3404 - Count Special Subsequences
+// https://leetcode.com/problems/count-special-subsequences/
+
+class Solution {
+    public long numberOfSubsequences(int[] nums) {
+        int n = nums.length;
+        long ans = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 2; j < n; j++) {
+                for (int k = j + 2; k < n; k++) {
+                    for (int l = k + 2; l < n; l++) {
+                        if ((long)nums[i] * nums[k] == (long)nums[j] * nums[l]) ans++;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3405_count_the_number_of_arrays_with_k_matching_adjacent_elements
+================================================================================
+// LeetCode 3405 - Count the Number of Arrays with K Matching Adjacent Elements
+// https://leetcode.com/problems/count-the-number-of-arrays-with-k-matching-adjacent-elements/
+
+class Solution {
+    private static long modPow(long a, long e, int mod) {
+        if (a < 0) a = 0;
+        long r = 1;
+        a %= mod;
+        while (e > 0) {
+            if ((e & 1) != 0) r = r * a % mod;
+            a = a * a % mod;
+            e >>= 1;
+        }
+        return r;
+    }
+
+    private static int comb(int n, int k, int mod) {
+        if (k < 0 || k > n) return 0;
+        long num = 1, den = 1;
+        for (int i = 0; i < k; i++) {
+            num = num * (n - i) % mod;
+            den = den * (i + 1) % mod;
+        }
+        return (int) (num * modPow(den, mod - 2, mod) % mod);
+    }
+
+    public int countGoodArrays(int n, int m, int k) {
+        final int mod = 1_000_000_007;
+        return (int) ((long) comb(n - 1, k, mod) * m % mod * modPow(m - 1, n - 1 - k, mod) % mod);
+    }
+}
+
+================================================================================
+3406_find_the_lexicographically_largest_string_from_the_box_ii
+================================================================================
+// LeetCode 3406 - Find the Lexicographically Largest String From the Box II
+// https://leetcode.com/problems/find-the-lexicographically-largest-string-from-the-box-ii/
+
+class Solution {
+    public String answerString(String word, int numFriends) {
+        if (numFriends == 1) return word;
+        int n = word.length();
+        int maxLen = n - (numFriends - 1);
+        String ans = "";
+        for (int i = 0; i < n; i++) {
+            int end = i + maxLen;
+            if (end > n) end = n;
+            String cand = word.substring(i, end);
+            if (cand.compareTo(ans) > 0) ans = cand;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3407_substring_matching_pattern
+================================================================================
+// LeetCode 3407 - Substring Matching Pattern
+// https://leetcode.com/problems/substring-matching-pattern/
+
+class Solution {
+    public boolean hasMatch(String s, String p) {
+        int i = p.indexOf('*');
+        String left = p.substring(0, i);
+        String right = p.substring(i + 1);
+        int li = s.indexOf(left);
+        if (li < 0) return false;
+        return s.indexOf(right, li + left.length()) >= 0;
+    }
+}
+
+================================================================================
+3408_design_task_manager
+================================================================================
+// LeetCode 3408 - Design Task Manager
+// https://leetcode.com/problems/design-task-manager/
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.PriorityQueue;
+
+class TaskManager {
+    private static class Item {
+        int pri, taskId, userId;
+        Item(int pri, int taskId, int userId) {
+            this.pri = pri;
+            this.taskId = taskId;
+            this.userId = userId;
+        }
+    }
+
+    private final PriorityQueue<Item> h = new PriorityQueue<>((a, b) -> {
+        if (a.pri != b.pri) return Integer.compare(b.pri, a.pri);
+        return Integer.compare(b.taskId, a.taskId);
+    });
+    private final Map<Integer, Integer> pri = new HashMap<>();
+    private final Map<Integer, Integer> user = new HashMap<>();
+
+    public TaskManager(List<List<Integer>> tasks) {
+        for (List<Integer> t : tasks) add(t.get(0), t.get(1), t.get(2));
+    }
+
+    public void add(int userId, int taskId, int priority) {
+        pri.put(taskId, priority);
+        user.put(taskId, userId);
+        h.offer(new Item(priority, taskId, userId));
+    }
+
+    public void edit(int taskId, int newPriority) {
+        pri.put(taskId, newPriority);
+        h.offer(new Item(newPriority, taskId, user.get(taskId)));
+    }
+
+    public void rmv(int taskId) {
+        pri.remove(taskId);
+        user.remove(taskId);
+    }
+
+    public int execTop() {
+        while (!h.isEmpty()) {
+            Item top = h.poll();
+            Integer p = pri.get(top.taskId);
+            if (p != null && p == top.pri && user.get(top.taskId) == top.userId) {
+                pri.remove(top.taskId);
+                int uid = user.remove(top.taskId);
+                return uid;
+            }
+        }
+        return -1;
+    }
+}
+
+================================================================================
+3409_longest_subsequence_with_decreasing_adjacent_difference
+================================================================================
+// LeetCode 3409 - Longest Subsequence With Decreasing Adjacent Difference
+// https://leetcode.com/problems/longest-subsequence-with-decreasing-adjacent-difference/
+
+class Solution {
+    public int longestSubsequence(int[] nums) {
+        int n = nums.length;
+        int ans = 1;
+        int[][] dp = new int[n][301];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < i; j++) {
+                int d = Math.abs(nums[i] - nums[j]);
+                int best = 1;
+                for (int pd = d; pd <= 300; pd++) {
+                    if (dp[j][pd] > best) best = dp[j][pd];
+                }
+                if (best + 1 > dp[i][d]) dp[i][d] = best + 1;
+                if (dp[i][d] > ans) ans = dp[i][d];
+            }
+            if (dp[i][0] < 1) dp[i][0] = 1;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3410_maximize_subarray_sum_after_removing_all_occurrences_of_one_element
+================================================================================
+// LeetCode 3410 - Maximize Subarray Sum After Removing All Occurrences of One Element
+// https://leetcode.com/problems/maximize-subarray-sum-after-removing-all-occurrences-of-one-element/
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    private long kadane(List<Integer> a) {
+        long best = -(1L << 62), cur = 0;
+        for (int x : a) {
+            cur += x;
+            if (cur > best) best = cur;
+            if (cur < 0) cur = 0;
+        }
+        boolean allNeg = true;
+        long mx = a.get(0);
+        for (int x : a) {
+            if (x > mx) mx = x;
+            if (x >= 0) allNeg = false;
+        }
+        if (allNeg) return mx;
+        return best;
+    }
+
+    private long kadane(int[] a) {
+        List<Integer> list = new ArrayList<>();
+        for (int x : a) list.add(x);
+        return kadane(list);
+    }
+
+    public long maxSubarraySum(int[] nums) {
+        long ans = kadane(nums);
+        Set<Integer> uniq = new HashSet<>();
+        for (int x : nums) if (x < 0) uniq.add(x);
+        for (int v : uniq) {
+            List<Integer> b = new ArrayList<>();
+            for (int x : nums) if (x != v) b.add(x);
+            if (b.isEmpty()) continue;
+            long cand = kadane(b);
+            if (cand > ans) ans = cand;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3411_maximum_subarray_with_equal_products
+================================================================================
+// LeetCode 3411 - Maximum Subarray With Equal Products
+// https://leetcode.com/problems/maximum-subarray-with-equal-products/
+
+class Solution {
+    private static int gcd(int a, int b) {
+        while (b != 0) {
+            int t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    }
+
+    public int maxLength(int[] nums) {
+        int n = nums.length;
+        int ans = 1;
+        for (int i = 0; i < n; i++) {
+            long prod = 1;
+            int g = 0, l = 1;
+            for (int j = i; j < n; j++) {
+                if (prod > 1_000_000_000L / nums[j]) break;
+                prod *= nums[j];
+                if (g == 0) {
+                    g = nums[j];
+                    l = nums[j];
+                } else {
+                    g = gcd(g, nums[j]);
+                    l = l / gcd(l, nums[j]) * nums[j];
+                }
+                if (prod == (long) l * g && j - i + 1 > ans) ans = j - i + 1;
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3412_find_mirror_score_of_a_string
+================================================================================
+// LeetCode 3412 - Find Mirror Score of a String
+// https://leetcode.com/problems/find-mirror-score-of-a-string/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public long calculateScore(String s) {
+        @SuppressWarnings("unchecked")
+        List<Integer>[] stacks = new ArrayList[26];
+        for (int i = 0; i < 26; i++) stacks[i] = new ArrayList<>();
+        long ans = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int ci = s.charAt(i) - 'a';
+            int mir = 25 - ci;
+            if (!stacks[mir].isEmpty()) {
+                int j = stacks[mir].remove(stacks[mir].size() - 1);
+                ans += i - j;
+            } else {
+                stacks[ci].add(i);
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3413_maximum_coins_from_k_consecutive_bags
+================================================================================
+// LeetCode 3413 - Maximum Coins From K Consecutive Bags
+// https://leetcode.com/problems/maximum-coins-from-k-consecutive-bags/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maximumCoins(int[][] coins, int k) {
+        Arrays.sort(coins, (a, b) -> Integer.compare(a[0], b[0]));
+        long ans = 0;
+        int n = coins.length;
+        for (int i = 0; i < n; i++) {
+            long sum = 0;
+            int start = coins[i][0];
+            int end = start + k - 1;
+            for (int j = i; j < n && coins[j][0] <= end; j++) {
+                int l = coins[j][0];
+                int r = coins[j][1];
+                if (r > end) r = end;
+                if (l < start) l = start;
+                if (l <= r) sum += (long) (r - l + 1) * coins[j][2];
+            }
+            if (sum > ans) ans = sum;
+        }
+        for (int i = 0; i < n; i++) {
+            long sum = 0;
+            int end = coins[i][1];
+            int start = end - k + 1;
+            for (int j = 0; j <= i; j++) {
+                int l = coins[j][0];
+                int r = coins[j][1];
+                if (l < start) l = start;
+                if (r > end) r = end;
+                if (l <= r) sum += (long) (r - l + 1) * coins[j][2];
+            }
+            if (sum > ans) ans = sum;
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3414_maximum_score_of_non_overlapping_intervals
+================================================================================
+// LeetCode 3414 - Maximum Score of Non-overlapping Intervals
+// https://leetcode.com/problems/maximum-score-of-non-overlapping-intervals/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+class Solution {
+    private static class It {
+        int l, r, w, i;
+        It(int l, int r, int w, int i) { this.l = l; this.r = r; this.w = w; this.i = i; }
+    }
+    private static class State {
+        long score;
+        List<Integer> idx = new ArrayList<>();
+        State() { this(0); }
+        State(long score) { this.score = score; }
+        State copy() {
+            State s = new State(score);
+            s.idx = new ArrayList<>(idx);
+            return s;
+        }
+    }
+
+    private State better(State a, State b) {
+        if (a.score != b.score) return a.score > b.score ? a : b;
+        int n = Math.min(a.idx.size(), b.idx.size());
+        for (int i = 0; i < n; i++) {
+            if (!a.idx.get(i).equals(b.idx.get(i))) return a.idx.get(i) < b.idx.get(i) ? a : b;
+        }
+        return a.idx.size() <= b.idx.size() ? a : b;
+    }
+
+    public int[] maximumWeight(int[][] intervals) {
+        int n = intervals.length;
+        It[] arr = new It[n];
+        for (int i = 0; i < n; i++) arr[i] = new It(intervals[i][0], intervals[i][1], intervals[i][2], i);
+        Arrays.sort(arr, (a, b) -> Integer.compare(a.r, b.r));
+        State[][] dp = new State[n + 1][5];
+        for (int i = 0; i <= n; i++) for (int t = 0; t <= 4; t++) dp[i][t] = new State();
+        for (int i = 1; i <= n; i++) {
+            It cur = arr[i - 1];
+            for (int t = 0; t <= 4; t++) dp[i][t] = dp[i - 1][t].copy();
+            int lo = 0, hi = i - 1;
+            while (lo < hi) {
+                int mid = (lo + hi) / 2;
+                if (arr[mid].r < cur.l) lo = mid + 1;
+                else hi = mid;
+            }
+            int prev = lo;
+            for (int t = 1; t <= 4; t++) {
+                State prevState = dp[prev][t - 1];
+                State cand = prevState.copy();
+                cand.score = prevState.score + cur.w;
+                cand.idx.add(cur.i);
+                Collections.sort(cand.idx);
+                dp[i][t] = better(dp[i][t], cand);
+            }
+        }
+        State best = dp[n][0];
+        for (int t = 1; t <= 4; t++) best = better(best, dp[n][t]);
+        int[] res = new int[best.idx.size()];
+        for (int i = 0; i < best.idx.size(); i++) res[i] = best.idx.get(i);
+        return res;
+    }
+}
+
+================================================================================
+3416_subsequences_with_a_unique_middle_mode_ii
+================================================================================
+// LeetCode 3416 - Subsequences with a Unique Middle Mode II
+// https://leetcode.com/problems/subsequences-with-a-unique-middle-mode-ii/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    private boolean uniqueMode(int[] a) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        for (int x : a) freq.merge(x, 1, Integer::sum);
+        int best = 0, cnt = 0;
+        for (int f : freq.values()) {
+            if (f > best) { best = f; cnt = 1; }
+            else if (f == best) cnt++;
+        }
+        return cnt == 1;
+    }
+
+    public int subsequencesWithMiddleMode(int[] nums) {
+        final int mod = 1_000_000_007;
+        int n = nums.length;
+        int ans = 0;
+        for (int mid = 2; mid < n - 2; mid++) {
+            for (int a = 0; a < mid; a++) {
+                for (int b = a + 1; b < mid; b++) {
+                    for (int c = mid + 1; c < n; c++) {
+                        for (int d = c + 1; d < n; d++) {
+                            int[] seq = {nums[a], nums[b], nums[mid], nums[c], nums[d]};
+                            if (uniqueMode(seq)) ans = (ans + 1) % mod;
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3417_zigzag_grid_traversal_with_skip
+================================================================================
+// LeetCode 3417 - Zigzag Grid Traversal With Skip
+// https://leetcode.com/problems/zigzag-grid-traversal-with-skip/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] zigzagTraversal(int[][] grid) {
+        List<Integer> ans = new ArrayList<>();
+        boolean skip = false;
+        for (int i = 0; i < grid.length; i++) {
+            int[] row = grid[i];
+            if (i % 2 == 0) {
+                for (int v : row) {
+                    if (!skip) ans.add(v);
+                    skip = !skip;
+                }
+            } else {
+                for (int j = row.length - 1; j >= 0; j--) {
+                    if (!skip) ans.add(row[j]);
+                    skip = !skip;
+                }
+            }
+        }
+        int[] res = new int[ans.size()];
+        for (int i = 0; i < ans.size(); i++) res[i] = ans.get(i);
+        return res;
+    }
+}
+
+================================================================================
+3418_maximum_amount_of_money_robot_can_earn
+================================================================================
+// LeetCode 3418 - Maximum Amount of Money Robot Can Earn
+// https://leetcode.com/problems/maximum-amount-of-money-robot-can-earn/
+
+class Solution {
+    public int maximumAmount(int[][] coins) {
+        int m = coins.length, n = coins[0].length;
+        final int neg = -(1 << 30);
+        int[][][] dp = new int[m][n][3];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                for (int k = 0; k < 3; k++) dp[i][j][k] = neg;
+        if (coins[0][0] < 0) {
+            dp[0][0][0] = coins[0][0];
+            dp[0][0][1] = 0;
+            dp[0][0][2] = 0;
+        } else {
+            dp[0][0][0] = coins[0][0];
+            dp[0][0][1] = coins[0][0];
+            dp[0][0][2] = coins[0][0];
+        }
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 && j == 0) continue;
+                for (int k = 0; k < 3; k++) {
+                    int best = neg;
+                    if (i > 0) best = Math.max(best, dp[i - 1][j][k]);
+                    if (j > 0) best = Math.max(best, dp[i][j - 1][k]);
+                    if (best == neg) continue;
+                    if (coins[i][j] >= 0) dp[i][j][k] = best + coins[i][j];
+                    else dp[i][j][k] = Math.max(dp[i][j][k], best + coins[i][j]);
+                }
+                for (int k = 1; k < 3; k++) {
+                    int best = neg;
+                    if (i > 0) best = Math.max(best, dp[i - 1][j][k - 1]);
+                    if (j > 0) best = Math.max(best, dp[i][j - 1][k - 1]);
+                    if (best != neg && coins[i][j] < 0) dp[i][j][k] = Math.max(dp[i][j][k], best);
+                }
+            }
+        }
+        return Math.max(dp[m - 1][n - 1][0], Math.max(dp[m - 1][n - 1][1], dp[m - 1][n - 1][2]));
+    }
+}
+
+================================================================================
+3419_minimize_the_maximum_edge_weight_of_graph
+================================================================================
+// LeetCode 3419 - Minimize the Maximum Edge Weight of Graph
+// https://leetcode.com/problems/minimize-the-maximum-edge-weight-of-graph/
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+class Solution {
+    public int minMaxWeight(int n, int[][] edges, int threshold) {
+        int lo = 1, hi = 1000001, ans = -1;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (ok(n, edges, mid)) {
+                ans = mid;
+                hi = mid;
+            } else lo = mid + 1;
+        }
+        return ans;
+    }
+
+    private boolean ok(int n, int[][] edges, int mid) {
+        List<List<Integer>> g = new ArrayList<>();
+        for (int i = 0; i < n; i++) g.add(new ArrayList<>());
+        for (int[] e : edges) {
+            if (e[2] <= mid) g.get(e[1]).add(e[0]);
+        }
+        boolean[] vis = new boolean[n];
+        Queue<Integer> q = new ArrayDeque<>();
+        q.offer(0);
+        vis[0] = true;
+        int cnt = 1;
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v : g.get(u)) {
+                if (!vis[v]) {
+                    vis[v] = true;
+                    cnt++;
+                    q.offer(v);
+                }
+            }
+        }
+        return cnt == n;
+    }
+}
+
+================================================================================
+3420_count_non_decreasing_subarrays_after_k_operations
+================================================================================
+// LeetCode 3420 - Count Non-Decreasing Subarrays After K Operations
+// https://leetcode.com/problems/count-non-decreasing-subarrays-after-k-operations/
+
+class Solution {
+    public long countNonDecreasingSubarrays(int[] nums, int k) {
+        int n = nums.length;
+        long ans = 0;
+        for (int i = 0; i < n; i++) {
+            long cost = 0;
+            int maxV = nums[i];
+            for (int j = i; j < n; j++) {
+                if (nums[j] >= maxV) maxV = nums[j];
+                else cost += maxV - nums[j];
+                if (cost > k) break;
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
+
+================================================================================
+3422_minimum_operations_to_make_subarray_elements_equal
+================================================================================
+// LeetCode 3422 - Minimum Operations to Make Subarray Elements Equal
+// https://leetcode.com/problems/minimum-operations-to-make-subarray-elements-equal/
+
+import java.util.Arrays;
+
+class Solution {
+    public long minOperations(int[] nums, int k) {
+        int n = nums.length;
+        long ans = 1L << 62;
+        for (int i = 0; i + k <= n; i++) {
+            int[] sub = Arrays.copyOfRange(nums, i, i + k);
+            Arrays.sort(sub);
+            int med = sub[k / 2];
+            long cost = 0;
+            for (int x : sub) cost += Math.abs(x - med);
+            if (cost < ans) ans = cost;
+        }
+        return ans;
+    }
+}
+

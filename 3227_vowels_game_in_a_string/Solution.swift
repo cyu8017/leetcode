@@ -2,6 +2,8 @@
 // https://leetcode.com/problems/vowels-game-in-a-string/
 
 class Solution {
-    func solve() {
+    func doesAliceWin(_ s: String) -> Bool {
+        for c in s where "aeiou".contains(c) { return true }
+        return false
     }
 }

@@ -1,7 +1,8 @@
-﻿// LeetCode 2795 - Parallel Execution of Promises for Individual Results Retrieval
+// LeetCode 2795 - Parallel Execution of Promises for Individual Results Retrieval
 // https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval/
 
 class Solution {
-    func solve() {
+    func promiseAllSettled(_ functions: [() -> Int]) -> [(String, Int)] {
+        functions.map { ("fulfilled", $0()) }
     }
 }

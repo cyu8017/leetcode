@@ -1,7 +1,8 @@
-﻿// LeetCode 2637 - Promise Time Limit
+// LeetCode 2637 - Promise Time Limit
 // https://leetcode.com/problems/promise-time-limit/
 
 class Solution {
-    func solve() {
+    func timeLimit(_ fn: @escaping () -> Int, _ t: Int) -> () -> Int {
+        { fn() }
     }
 }

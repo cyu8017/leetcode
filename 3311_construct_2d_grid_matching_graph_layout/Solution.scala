@@ -27,11 +27,11 @@ object Solution {
       row += cur
       vis(cur) = true
       var next = -1
-      for (v <- g(cur)) {
-        if (v != prev && !vis(v) && deg(v) <= 3) {
-          next = v
-          if (deg(v) < 4) { /* prefer */ }
-        }
+      var vi = 0
+      while (vi < g(cur).length && next == -1) {
+        val v = g(cur)(vi)
+        if (v != prev && !vis(v) && deg(v) <= 3) next = v
+        vi += 1
       }
       if (next == -1) done = true
       else {

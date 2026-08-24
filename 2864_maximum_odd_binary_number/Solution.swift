@@ -1,7 +1,10 @@
-﻿// LeetCode 2864 - Maximum Odd Binary Number
+// LeetCode 2864 - Maximum Odd Binary Number
 // https://leetcode.com/problems/maximum-odd-binary-number/
 
 class Solution {
-    func solve() {
+    func maximumOddBinaryNumber(_ s: String) -> String {
+        let ones = s.filter { $0 == "1" }.count
+        let zeros = s.count - ones
+        return String(repeating: "1", count: ones - 1) + String(repeating: "0", count: zeros) + "1"
     }
 }

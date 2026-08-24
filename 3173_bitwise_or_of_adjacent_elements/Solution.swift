@@ -2,6 +2,7 @@
 // https://leetcode.com/problems/bitwise-or-of-adjacent-elements/
 
 class Solution {
-    func solve() {
+    func orArray(_ nums: [Int]) -> [Int] {
+        (1..<nums.count).map { nums[$0] | nums[$0 - 1] }
     }
 }

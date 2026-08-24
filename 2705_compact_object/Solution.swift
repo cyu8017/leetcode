@@ -1,7 +1,8 @@
-﻿// LeetCode 2705 - Compact Object
+// LeetCode 2705 - Compact Object
 // https://leetcode.com/problems/compact-object/
 
 class Solution {
-    func solve() {
+    func compactObject(_ obj: [Int]) -> [Int] {
+        obj.filter { $0 != 0 }
     }
 }

@@ -1,7 +1,9 @@
-﻿// LeetCode 0596 - Classes With at Least 5 Students
+// LeetCode 0596 - Classes With At Least 5 Students
 // https://leetcode.com/problems/classes-with-at-least-5-students/
 
-class Solution {
-    func solve() {
-    }
-}
+let QUERY = """
+SELECT class
+FROM Courses
+GROUP BY class
+HAVING COUNT(student) >= 5
+"""

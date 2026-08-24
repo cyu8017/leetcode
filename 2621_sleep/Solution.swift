@@ -1,7 +1,8 @@
-﻿// LeetCode 2621 - Sleep
+// LeetCode 2621 - Sleep
 // https://leetcode.com/problems/sleep/
 
 class Solution {
-    func solve() {
+    func sleep(_ millis: Int) {
+        Thread.sleep(forTimeInterval: Double(millis) / 1000.0)
     }
 }

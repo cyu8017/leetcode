@@ -2,6 +2,14 @@
 // https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-ii/
 
 class Solution {
-    func solve() {
+    func minOperations(_ nums: [Int]) -> Int {
+        var ans = 0, v = 0
+        for raw in nums {
+            if (raw ^ v) == 0 {
+                v ^= 1
+                ans += 1
+            }
+        }
+        return ans
     }
 }

@@ -1,0 +1,628 @@
+================================================================================
+3780_maximum_sum_of_three_numbers_divisible_by_three  lines=40
+================================================================================
+// LeetCode 3780 - Maximum Sum Of Three Numbers Divisible By Three
+// https://leetcode.com/problems/maximum_sum_of_three_numbers_divisible_by_three/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public int maximumSum(int[] nums) {
+        Arrays.sort(nums);
+        List<Integer>[] g = newList(3);
+        for (int x : nums) g[x % 3].add(x);
+        int ans = 0;
+        for (int a = 0; a < 3; a++) {
+            if (!g[a].isEmpty()) {
+                int x = g[a].remove(g[a].size() - 1);
+                for (int b = 0; b < 3; b++) {
+                    if (!g[b].isEmpty()) {
+                        int y = g[b].remove(g[b].size() - 1);
+                        int c = (3 - (a + b) % 3) % 3;
+                        if (!g[c].isEmpty()) {
+                            int z = g[c].get(g[c].size() - 1);
+                            ans = Math.max(ans, x + y + z);
+                        }
+                        g[b].add(y);
+                    }
+                }
+                g[a].add(x);
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+3781_maximum_score_after_binary_swaps  lines=18
+================================================================================
+// LeetCode 3781 - Maximum Score After Binary Swaps
+// https://leetcode.com/problems/maximum_score_after_binary_swaps/
+
+import java.util.PriorityQueue;
+
+class Solution {
+    public long maximumScore(int[] nums, String s) {
+        long ans = 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+        for (int i = 0; i < nums.length; i++) {
+            pq.offer(nums[i]);
+            if (s.charAt(i) == '1') {
+                ans += pq.poll();
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3782_last_remaining_integer_after_alternating_deletion_operations  lines=16
+================================================================================
+// LeetCode 3782 - Last Remaining Integer After Alternating Deletion Operations
+// https://leetcode.com/problems/last-remaining-integer-after-alternating-deletion-operations/
+
+class Solution {
+    public long lastRemaining(long n) {
+        long first = 1, step = 2;
+        boolean left = true;
+        while (n > 1) {
+            if (!left && n % 2 == 0) first += step;
+            n = (n + 1) / 2;
+            step *= 2;
+            left = !left;
+        }
+        return first;
+    }
+}
+
+
+================================================================================
+3783_mirror_distance_of_an_integer  lines=14
+================================================================================
+// LeetCode 3783 - Mirror Distance Of An Integer
+// https://leetcode.com/problems/mirror_distance_of_an_integer/
+
+class Solution {
+    public int mirrorDistance(int n) {
+        return Math.abs(n - reverse(n));
+    }
+
+    private int reverse(int x) {
+        int y = 0;
+        for (; x > 0; x /= 10) y = y * 10 + x % 10;
+        return y;
+    }
+}
+
+
+================================================================================
+3784_minimum_deletion_cost_to_make_all_characters_equal  lines=19
+================================================================================
+// LeetCode 3784 - Minimum Deletion Cost To Make All Characters Equal
+// https://leetcode.com/problems/minimum_deletion_cost_to_make_all_characters_equal/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long minCost(String s, int[] cost) {
+        long tot = 0;
+        Map<Character, Long> g = new HashMap<>();
+        for (int i = 0; i < cost.length; i++) {
+            tot += cost[i];
+            g.merge(s.charAt(i), (long) cost[i], Long::sum);
+        }
+        long ans = tot;
+        for (long x : g.values()) ans = Math.min(ans, tot - x);
+        return ans;
+    }
+}
+
+
+================================================================================
+3785_minimum_swaps_to_avoid_forbidden_values  lines=35
+================================================================================
+// LeetCode 3785 - Minimum Swaps to Avoid Forbidden Values
+// https://leetcode.com/problems/minimum-swaps-to-avoid-forbidden-values/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minSwaps(int[] nums, int[] forbidden) {
+        int n = nums.length;
+        var freq = new HashMap<Integer, Integer>();
+        for (int x : nums) {
+            if (!freq.containsKey(x)) freq.put(x, 0);
+            freq.merge(x, 1, Integer::sum);
+        }
+        for (int x : forbidden) {
+            if (!freq.containsKey(x)) freq.put(x, 0);
+            freq.merge(x, 1, Integer::sum);
+        }
+        for (var c : freq.values()) {
+            if (c > n) return -1;
+        }
+        var bad = new HashMap<Integer, Integer>();
+        int total = 0, largest = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == forbidden[i]) {
+                if (!bad.containsKey(nums[i])) bad.put(nums[i], 0);
+                bad.merge(nums[i], 1, Integer::sum);
+                total++;
+                if (bad.get(nums[i]) > largest) largest = bad.get(nums[i]);
+            }
+        }
+        if ((total + 1) / 2 > largest) return (total + 1) / 2;
+        return largest;
+    }
+}
+
+
+================================================================================
+3786_total_sum_of_interaction_cost_in_tree_groups  lines=53
+================================================================================
+// LeetCode 3786 - Total Sum Of Interaction Cost In Tree Groups
+// https://leetcode.com/problems/total_sum_of_interaction_cost_in_tree_groups/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public long interactionCost(int n, int[][] edges, int[] group) {
+        List<Integer>[] g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] total = new int[21];
+        for (int x : group) total[x]++;
+        int[] parent = new int[n];
+        java.util.Arrays.fill(parent, -2);
+        parent[0] = -1;
+        List<Integer> order = new ArrayList<>();
+        order.add(0);
+        for (int i = 0; i < order.size(); i++) {
+            int u = order.get(i);
+            for (int v : g[u]) {
+                if (parent[v] == -2) {
+                    parent[v] = u;
+                    order.add(v);
+                }
+            }
+        }
+        int[][] count = new int[n][21];
+        long ans = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            int u = order.get(i);
+            count[u][group[u]]++;
+            for (int v : g[u]) {
+                if (parent[v] != u) continue;
+                for (int c = 1; c <= 20; c++) {
+                    int x = count[v][c];
+                    ans += (long) x * (total[c] - x);
+                    count[u][c] += x;
+                }
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+3787_find_diameter_endpoints_of_a_tree  lines=64
+================================================================================
+// LeetCode 3787 - Find Diameter Endpoints Of A Tree
+// https://leetcode.com/problems/find_diameter_endpoints_of_a_tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private List<Integer>[] g;
+    private int n;
+
+    public String findSpecialNodes(int n, int[][] edges) {
+        this.n = n;
+        g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] r0 = bfs(0);
+        int a = r0[0];
+        int[] r1 = bfs(a);
+        int b = r1[0];
+        int[] dist1 = java.util.Arrays.copyOfRange(r1, 1, n + 1);
+        int[] r2 = bfs(b);
+        int[] dist2 = java.util.Arrays.copyOfRange(r2, 1, n + 1);
+        int d = dist1[b];
+        char[] ans = new char[n];
+        java.util.Arrays.fill(ans, '0');
+        for (int i = 0; i < n; i++) {
+            if (dist1[i] == d || dist2[i] == d) ans[i] = '1';
+        }
+        return new String(ans);
+    }
+
+    // returns [far, dist0, dist1, ...]
+    private int[] bfs(int start) {
+        int[] dist = new int[n];
+        java.util.Arrays.fill(dist, -1);
+        dist[start] = 0;
+        List<Integer> q = new ArrayList<>();
+        q.add(start);
+        int far = start;
+        for (int head = 0; head < q.size(); head++) {
+            int u = q.get(head);
+            if (dist[u] > dist[far]) far = u;
+            for (int v : g[u]) {
+                if (dist[v] == -1) {
+                    dist[v] = dist[u] + 1;
+                    q.add(v);
+                }
+            }
+        }
+        int[] out = new int[n + 1];
+        out[0] = far;
+        System.arraycopy(dist, 0, out, 1, n);
+        return out;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+3788_maximum_score_of_a_split  lines=18
+================================================================================
+// LeetCode 3788 - Maximum Score Of A Split
+// https://leetcode.com/problems/maximum-score-of-a-split/
+
+class Solution {
+    public long maximumScore(int[] nums) {
+        int n = nums.length;
+        long[] suf = new long[n];
+        suf[n - 1] = nums[n - 1];
+        for (int i = n - 2; i >= 0; i--) suf[i] = Math.min(nums[i], suf[i + 1]);
+        long pre = 0;
+        long ans = Long.MIN_VALUE;
+        for (int i = 0; i < n - 1; i++) {
+            pre += nums[i];
+            ans = Math.max(ans, pre - suf[i + 1]);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3789_minimum_cost_to_acquire_required_items  lines=12
+================================================================================
+// LeetCode 3789 - Minimum Cost To Acquire Required Items
+// https://leetcode.com/problems/minimum-cost-to-acquire-required-items/
+
+class Solution {
+    public long minimumCost(int cost1, int cost2, int costBoth, int need1, int need2) {
+        long a = (long)need1 * cost1 + (long)need2 * cost2;
+        long b = (long)costBoth * Math.max(need1, need2);
+        int mn = Math.min(need1, need2);
+        long c = (long)costBoth * mn + (long)(need1 - mn) * cost1 + (long)(need2 - mn) * cost2;
+        return Math.min(a, Math.min(b, c));
+    }
+}
+
+
+================================================================================
+3790_smallest_all_ones_multiple  lines=16
+================================================================================
+// LeetCode 3790 - Smallest All Ones Multiple
+// https://leetcode.com/problems/smallest-all-ones-multiple/
+
+class Solution {
+    public int minAllOneMultiple(int k) {
+        if ((k & 1) == 0) return -1;
+        int x = 1 % k;
+        int ans = 1;
+        for (int i = 0; i < k; i++) {
+            x = (x * 10 + 1) % k;
+            ans++;
+            if (x == 0) return ans;
+        }
+        return -1;
+    }
+}
+
+
+================================================================================
+3791_number_of_balanced_integers_in_a_range  lines=35
+================================================================================
+// LeetCode 3791 - Number Of Balanced Integers In A Range
+// https://leetcode.com/problems/number_of_balanced_integers_in_a_range/
+
+import java.util.Arrays;
+
+class Solution {
+    private static final int BASE = 90;
+    private String num;
+    private long[][] f = new long[20][181];
+
+    private long dfs(int pos, int diff, boolean lim) {
+        if (pos >= num.length()) return diff == 0 ? 1 : 0;
+        if (!lim && f[pos][diff + BASE] != -1) return f[pos][diff + BASE];
+        int up = lim ? num.charAt(pos) - '0' : 9;
+        long res = 0;
+        for (int i = 0; i <= up; i++) {
+            if (pos % 2 == 0) res += dfs(pos + 1, diff + i, lim && i == up);
+            else res += dfs(pos + 1, diff - i, lim && i == up);
+        }
+        if (!lim) f[pos][diff + BASE] = res;
+        return res;
+    }
+
+    public long countBalanced(long low, long high) {
+        if (high < 11) return 0;
+        if (low < 11) low = 11;
+        num = Long.toString(low - 1);
+        for (long[] row : f) Arrays.fill(row, -1);
+        long a = dfs(0, 0, true);
+        num = Long.toString(high);
+        for (long[] row : f) Arrays.fill(row, -1);
+        long b = dfs(0, 0, true);
+        return b - a;
+    }
+}
+
+
+================================================================================
+3792_sum_of_increasing_product_blocks  lines=16
+================================================================================
+// LeetCode 3792 - Sum Of Increasing Product Blocks
+// https://leetcode.com/problems/sum-of-increasing-product-blocks/
+
+class Solution {
+    public int sumOfBlocks(int n) {
+        final int MOD = 1000000007;
+        int ans = 0, k = 1;
+        for (int i = 1; i <= n; i++) {
+            int x = 1;
+            for (int j = k; j < k + i; j++) x = (int)((long)x * j % MOD);
+            ans = (ans + x) % MOD;
+            k += i;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3794_reverse_string_prefix  lines=23
+================================================================================
+// LeetCode 3794 - Reverse String Prefix
+// https://leetcode.com/problems/reverse-string-prefix/
+
+class Solution {
+    public String reversePrefix(String s, int k) {
+        char[] arr = s.toCharArray();
+        reverse(arr, 0, 0 + k);
+        return new String(arr);
+    }
+
+    private void reverse(char[] a) { reverse(a, 0, a.length); }
+    private void reverse(char[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            char t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    private void reverse(int[] a) { reverse(a, 0, a.length); }
+    private void reverse(int[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+}
+
+
+================================================================================
+3795_minimum_subarray_length_with_distinct_sum_at_least_k  lines=29
+================================================================================
+// LeetCode 3795 - Minimum Subarray Length With Distinct Sum At Least K
+// https://leetcode.com/problems/minimum_subarray_length_with_distinct_sum_at_least_k/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minLength(int[] nums, int k) {
+        int n = nums.length;
+        int ans = n + 1, l = 0;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        long s = 0;
+        for (int r = 0; r < n; r++) {
+            int c = cnt.merge(nums[r], 1, Integer::sum);
+            if (c == 1) s += nums[r];
+            while (s >= k) {
+                if (r - l + 1 < ans) ans = r - l + 1;
+                int left = nums[l];
+                int nc = cnt.merge(left, -1, Integer::sum);
+                if (nc == 0) {
+                    cnt.remove(left);
+                    s -= left;
+                }
+                l++;
+            }
+        }
+        return ans > n ? -1 : ans;
+    }
+}
+
+
+================================================================================
+3796_find_maximum_value_in_a_constrained_sequence  lines=17
+================================================================================
+// LeetCode 3796 - Find Maximum Value in a Constrained Sequence
+// https://leetcode.com/problems/find-maximum-value-in-a-constrained-sequence/
+
+class Solution {
+    public int maxValue(int n, int[][] restrictions, int[] diff) {
+        final int INF = Integer.MAX_VALUE / 4;
+        int[] bound = new int[n];
+        for (int i = 0; i < n; i++) bound[i] = INF;
+        bound[0] = 0;
+        for (var r : restrictions) bound[r[0]] = r[1];
+        for (int i = 1; i < n; i++) bound[i] = Math.min(bound[i], bound[i - 1] + diff[i - 1]);
+        for (int i = n - 2; i >= 0; i--) bound[i] = Math.min(bound[i], bound[i + 1] + diff[i]);
+        int ans = bound[0];
+        for (int i = 1; i < n; i++) ans = Math.max(ans, bound[i]);
+        return ans;
+    }
+}
+
+
+================================================================================
+3797_count_routes_to_climb_a_rectangular_grid  lines=42
+================================================================================
+// LeetCode 3797 - Count Routes To Climb A Rectangular Grid
+// https://leetcode.com/problems/count_routes_to_climb_a_rectangular_grid/
+
+class Solution {
+    public int countRoutes(String[] grid, int d) {
+        final int MOD = 1_000_000_007;
+        int n = grid.length, m = grid[0].length();
+        int upRadius = 0;
+        while ((upRadius + 1) * (upRadius + 1) + 1 <= d * d) upRadius++;
+        int[] arrived = new int[m];
+        for (int c = 0; c < m; c++) {
+            if (grid[n - 1].charAt(c) == '.') arrived[c] = 1;
+        }
+        for (int r = n - 1; r >= 0; r--) {
+            int[] pref = new int[m + 1];
+            for (int i = 0; i < m; i++) pref[i + 1] = (pref[i] + arrived[i]) % MOD;
+            int[] horizontal = new int[m];
+            for (int c = 0; c < m; c++) {
+                if (grid[r].charAt(c) == '#') continue;
+                int l = Math.max(0, c - d), rr = Math.min(m - 1, c + d);
+                horizontal[c] = (pref[rr + 1] - pref[l] - arrived[c]) % MOD;
+                if (horizontal[c] < 0) horizontal[c] += MOD;
+            }
+            if (r == 0) {
+                int ans = 0;
+                for (int c = 0; c < m; c++) ans = (ans + arrived[c] + horizontal[c]) % MOD;
+                return ans;
+            }
+            int[] pref2 = new int[m + 1];
+            for (int c = 0; c < m; c++) pref2[c + 1] = (pref2[c] + arrived[c] + horizontal[c]) % MOD;
+            int[] next = new int[m];
+            for (int c = 0; c < m; c++) {
+                if (grid[r - 1].charAt(c) == '#') continue;
+                int l = Math.max(0, c - upRadius), rr = Math.min(m - 1, c + upRadius);
+                next[c] = pref2[rr + 1] - pref2[l];
+                if (next[c] < 0) next[c] += MOD;
+            }
+            arrived = next;
+        }
+        return 0;
+    }
+}
+
+
+================================================================================
+3798_largest_even_number  lines=9
+================================================================================
+// LeetCode 3798 - Largest Even Number
+// https://leetcode.com/problems/largest-even-number/
+
+class Solution {
+    public String largestEven(String s) {
+        while (s.length() > 0 && s.charAt(s.length() - 1) == '1') s = s.substring(0, s.length() - 1);
+        return s;
+    }
+}
+
+
+================================================================================
+3799_word_squares_ii  lines=34
+================================================================================
+// LeetCode 3799 - Word Squares Ii
+// https://leetcode.com/problems/word-squares-ii/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public List<List<String>> wordSquares(String[] words) {
+        Arrays.sort(words);
+        int n = words.length;
+        var ans = new ArrayList<List<String>>();
+        for (int i = 0; i < n; i++) {
+            String top = words[i];
+            for (int j = 0; j < n; j++) {
+                if (j == i) continue;
+                String left = words[j];
+                for (int k = 0; k < n; k++) {
+                    if (k == j || k == i) continue;
+                    String right = words[k];
+                    for (int h = 0; h < n; h++) {
+                        if (h == k || h == j || h == i) continue;
+                        String bottom = words[h];
+                        if (top.charAt(0) == left.charAt(0) && top.charAt(3) == right.charAt(0) &&
+                            bottom.charAt(0) == left.charAt(3) && bottom.charAt(3) == right.charAt(3)) {
+                            ans.add(new ArrayList<String>(java.util.Arrays.asList(top, left, right, bottom)));
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+3800_minimum_cost_to_make_two_binary_strings_equal  lines=19
+================================================================================
+// LeetCode 3800 - Minimum Cost To Make Two Binary Strings Equal
+// https://leetcode.com/problems/minimum-cost-to-make-two-binary-strings-equal/
+
+class Solution {
+    public long minimumCost(String s, String t, int flipCost, int swapCost, int crossCost) {
+        long[] diff = new long[2];
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) != t.charAt(i)) diff[s.charAt(i) - '0']++;
+        }
+        long ans = (diff[0] + diff[1]) * flipCost;
+        long mx = Math.max(diff[0], diff[1]);
+        long mn = Math.min(diff[0], diff[1]);
+        ans = Math.min(ans, mn * swapCost + (mx - mn) * flipCost);
+        long avg = (mx + mn) / 2;
+        ans = Math.min(ans, (avg - mn) * crossCost + avg * swapCost + (mx + mn - avg * 2) * flipCost);
+        return ans;
+    }
+}
+

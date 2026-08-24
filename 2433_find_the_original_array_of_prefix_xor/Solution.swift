@@ -1,7 +1,13 @@
-﻿// LeetCode 2433 - Find The Original Array of Prefix Xor
+// LeetCode 2433 - Find The Original Array of Prefix Xor
 // https://leetcode.com/problems/find-the-original-array-of-prefix-xor/
 
 class Solution {
-    func solve() {
+    func findArray(_ pref: [Int]) -> [Int] {
+        var ans = [Int](repeating: 0, count: pref.count)
+        ans[0] = pref[0]
+        for i in 1..<pref.count {
+            ans[i] = pref[i] ^ pref[i - 1]
+        }
+        return ans
     }
 }

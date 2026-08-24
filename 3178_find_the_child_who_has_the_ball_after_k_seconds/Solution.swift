@@ -2,6 +2,10 @@
 // https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds/
 
 class Solution {
-    func solve() {
+    func numberOfChild(_ n: Int, _ k: Int) -> Int {
+        let mod = k % (n - 1)
+        let rounds = k / (n - 1)
+        if rounds % 2 == 1 { return n - mod - 1 }
+        return mod
     }
 }

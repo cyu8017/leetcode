@@ -1,7 +1,13 @@
-﻿// LeetCode 2505 - Bitwise OR of All Subsequence Sums
+// LeetCode 2505 - Bitwise OR of All Subsequence Sums
 // https://leetcode.com/problems/bitwise-or-of-all-subsequence-sums/
 
 class Solution {
-    func solve() {
+    func subsequenceSumOr(_ nums: [Int]) -> Int {
+        var ans = 0, prefix = 0
+        for x in nums {
+            prefix += x
+            ans |= x | prefix
+        }
+        return ans
     }
 }

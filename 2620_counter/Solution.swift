@@ -1,7 +1,13 @@
-﻿// LeetCode 2620 - Counter
+// LeetCode 2620 - Counter
 // https://leetcode.com/problems/counter/
 
 class Solution {
-    func solve() {
+    func createCounter(_ n: Int) -> () -> Int {
+        var cur = n
+        return {
+            let v = cur
+            cur += 1
+            return v
+        }
     }
 }

@@ -1,7 +1,8 @@
-﻿// LeetCode 0575 - Distribute Candies
+// LeetCode 0575 - Distribute Candies
 // https://leetcode.com/problems/distribute-candies/
 
 class Solution {
-    func solve() {
+    func distributeCandies(_ candyType: [Int]) -> Int {
+        return min(Set(candyType).count, candyType.count / 2)
     }
 }
