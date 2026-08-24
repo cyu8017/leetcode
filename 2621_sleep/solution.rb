@@ -1,7 +1,13 @@
-﻿# LeetCode 2621 - Sleep
+# LeetCode 2621 - Sleep
 # https://leetcode.com/problems/sleep/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} millis
+# @return {NilClass}
+def sleep(millis)
+  Kernel.sleep(millis / 1000.0)
+  nil
+end
+
+def solve(*args)
+  sleep(*args)
 end

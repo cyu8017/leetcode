@@ -1,7 +1,20 @@
-﻿# LeetCode 2720 - Popularity Percentage
-# https://leetcode.com/problems/popularity-percentage/
+# LeetCode 2720 - Popularity Percentage
+# https:# leetcode.com/problems/popularity-percentage/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  WITH
+      F AS (
+          SELECT * FROM Friends
+          UNION
+          SELECT user2, user1 FROM Friends
+      ),
+      T AS (SELECT COUNT(DISTINCT user1) AS cnt FROM F)
+  SELECT DISTINCT
+      user1,
+      ROUND(
+          (COUNT(1) OVER (PARTITION BY user1)) * 100 / (SELECT cnt FROM T),
+          2
+      ) AS percentage_popularity
+  FROM F
+  ORDER BY 1
+SQL

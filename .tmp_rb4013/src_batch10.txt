@@ -1,0 +1,2710 @@
+
+================================================================================
+# FOLDER 2620_counter
+================================================================================
+# LeetCode 2620 - Counter
+# https://leetcode.com/problems/counter/
+
+from typing import Callable
+
+
+class Solution:
+    def createCounter(self, n: int) -> Callable[[], int]:
+        def counter() -> int:
+            nonlocal n
+            v = n
+            n += 1
+            return v
+
+        return counter
+
+================================================================================
+# FOLDER 2621_sleep
+================================================================================
+# LeetCode 2621 - Sleep
+# https://leetcode.com/problems/sleep/
+
+import time
+
+
+class Solution:
+    def sleep(self, millis: int):
+        time.sleep(millis / 1000.0)
+        return None
+
+================================================================================
+# FOLDER 2622_cache_with_time_limit
+================================================================================
+# LeetCode 2622 - Cache With Time Limit
+# https://leetcode.com/problems/cache-with-time-limit/
+
+import time
+from typing import Any
+
+
+class TimeLimitedCache:
+    def __init__(self):
+        self.data = {}
+
+    def set(self, key: int, value: int, duration: int) -> bool:
+        now = int(time.time() * 1000)
+        e = self.data.get(key)
+        alive = e is not None and e["expire"] > now
+        self.data[key] = {"value": value, "expire": now + duration}
+        return alive
+
+    def get(self, key: int) -> int:
+        now = int(time.time() * 1000)
+        e = self.data.get(key)
+        if e is None or e["expire"] <= now:
+            return -1
+        return e["value"]
+
+    def count(self) -> int:
+        now = int(time.time() * 1000)
+        cnt = 0
+        dead = []
+        for k, e in self.data.items():
+            if e["expire"] > now:
+                cnt += 1
+            else:
+                dead.append(k)
+        for k in dead:
+            del self.data[k]
+        return cnt
+
+
+class Solution:
+    def TimeLimitedCache(self, actions: Any = None) -> TimeLimitedCache:
+        return TimeLimitedCache()
+
+================================================================================
+# FOLDER 2623_memoize
+================================================================================
+# LeetCode 2623 - Memoize
+# https://leetcode.com/problems/memoize/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def memoize(self, fn: Callable) -> Callable:
+        cache = {}
+
+        def wrapped(x: Any) -> Any:
+            if x in cache:
+                return cache[x]
+            r = fn(x)
+            cache[x] = r
+            return r
+
+        return wrapped
+
+================================================================================
+# FOLDER 2624_snail_traversal
+================================================================================
+# LeetCode 2624 - Snail Traversal
+# https://leetcode.com/problems/snail-traversal/
+
+from typing import List
+
+
+class Solution:
+    def snail(self, nums: List[int], rowsCount: int, colsCount: int) -> List[List[int]]:
+        if rowsCount * colsCount != len(nums):
+            return []
+        ans = [[0] * colsCount for _ in range(rowsCount)]
+        idx = 0
+        for c in range(colsCount):
+            if c % 2 == 0:
+                for r in range(rowsCount):
+                    ans[r][c] = nums[idx]
+                    idx += 1
+            else:
+                for r in range(rowsCount - 1, -1, -1):
+                    ans[r][c] = nums[idx]
+                    idx += 1
+        return ans
+
+================================================================================
+# FOLDER 2625_flatten_deeply_nested_array
+================================================================================
+# LeetCode 2625 - Flatten Deeply Nested Array
+# https://leetcode.com/problems/flatten-deeply-nested-array/
+
+from typing import Any, List
+
+
+class Solution:
+    def flat(self, arr: List[Any], n: int) -> List[Any]:
+        res = []
+
+        def dfs(a: List[Any], depth: int) -> None:
+            for x in a:
+                if isinstance(x, list) and depth < n:
+                    dfs(x, depth + 1)
+                else:
+                    res.append(x)
+
+        dfs(arr, 0)
+        return res
+
+================================================================================
+# FOLDER 2626_array_reduce_transformation
+================================================================================
+# LeetCode 2626 - Array Reduce Transformation
+# https://leetcode.com/problems/array-reduce-transformation/
+
+from typing import Any, Callable, List
+
+
+class Solution:
+    def reduce(self, nums: List[int], fn: Callable, init: Any) -> Any:
+        acc = init
+        for x in nums:
+            acc = fn(acc, x)
+        return acc
+
+================================================================================
+# FOLDER 2627_debounce
+================================================================================
+# LeetCode 2627 - Debounce
+# https://leetcode.com/problems/debounce/
+
+from typing import Any, Callable, List
+
+
+class Solution:
+    def debounce(self, fn: Callable, t: int) -> Callable:
+        timer = {"id": None}
+
+        def wrapped(*args: Any) -> Any:
+            timer["id"] = {"args": args, "t": t}
+            return fn(*args)
+
+        return wrapped
+
+================================================================================
+# FOLDER 2628_json_deep_equal
+================================================================================
+# LeetCode 2628 - JSON Deep Equal
+# https://leetcode.com/problems/json-deep-equal/
+
+from typing import Any
+
+
+class Solution:
+    def areDeeplyEqual(self, o1: Any, o2: Any) -> bool:
+        if o1 is o2:
+            return True
+        if type(o1) is not type(o2):
+            return False
+        if o1 is None or o2 is None:
+            return False
+        if not isinstance(o1, (list, dict)):
+            return o1 == o2
+        if isinstance(o1, list) != isinstance(o2, list):
+            return False
+        if isinstance(o1, list):
+            if len(o1) != len(o2):
+                return False
+            for i in range(len(o1)):
+                if not self.areDeeplyEqual(o1[i], o2[i]):
+                    return False
+            return True
+        if len(o1) != len(o2):
+            return False
+        for k in o1:
+            if k not in o2 or not self.areDeeplyEqual(o1[k], o2[k]):
+                return False
+        return True
+
+================================================================================
+# FOLDER 2629_function_composition
+================================================================================
+# LeetCode 2629 - Function Composition
+# https://leetcode.com/problems/function-composition/
+
+from typing import Callable, List
+
+
+class Solution:
+    def compose(self, functions: List[Callable]) -> Callable:
+        def wrapped(x):
+            for i in range(len(functions) - 1, -1, -1):
+                x = functions[i](x)
+            return x
+
+        return wrapped
+
+================================================================================
+# FOLDER 2630_memoize_ii
+================================================================================
+# LeetCode 2630 - Memoize II
+# https://leetcode.com/problems/memoize-ii/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def memoize(self, fn: Callable) -> Callable:
+        root = {}
+        RES = object()
+
+        def wrapped(*args: Any) -> Any:
+            node = root
+            for a in args:
+                if a not in node:
+                    node[a] = {}
+                node = node[a]
+            if RES in node:
+                return node[RES]
+            v = fn(*args)
+            node[RES] = v
+            return v
+
+        return wrapped
+
+================================================================================
+# FOLDER 2631_group_by
+================================================================================
+# LeetCode 2631 - Group By
+# https://leetcode.com/problems/group-by/
+
+from typing import Any, Callable, Dict, List
+
+
+class Solution:
+    def groupBy(self, array: List[Any], fn: Callable) -> Dict[Any, List[Any]]:
+        out = {}
+        for x in array:
+            k = fn(x)
+            if k not in out:
+                out[k] = []
+            out[k].append(x)
+        return out
+
+================================================================================
+# FOLDER 2632_curry
+================================================================================
+# LeetCode 2632 - Curry
+# https://leetcode.com/problems/curry/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def curry(self, fn: Callable) -> Callable:
+        arity = fn.__code__.co_argcount
+
+        def curried(*args: Any):
+            if len(args) >= arity:
+                return fn(*args)
+
+            def nxt(*next_args: Any):
+                return curried(*args, *next_args)
+
+            return nxt
+
+        return curried
+
+================================================================================
+# FOLDER 2633_convert_object_to_json_string
+================================================================================
+# LeetCode 2633 - Convert Object to JSON String
+# https://leetcode.com/problems/convert-object-to-json-string/
+
+from typing import Any
+
+
+class Solution:
+    def jsonStringify(self, object: Any) -> str:
+        if object is None:
+            return "null"
+        t = type(object)
+        if t is str:
+            return '"' + object + '"'
+        if t is bool:
+            return "true" if object else "false"
+        if t is int or t is float:
+            return str(object)
+        if isinstance(object, list):
+            return "[" + ",".join(self.jsonStringify(x) for x in object) + "]"
+        keys = list(object.keys())
+        return "{" + ",".join('"' + str(k) + '":' + self.jsonStringify(object[k]) for k in keys) + "}"
+
+================================================================================
+# FOLDER 2634_filter_elements_from_array
+================================================================================
+# LeetCode 2634 - Filter Elements from Array
+# https://leetcode.com/problems/filter-elements-from-array/
+
+from typing import Any, Callable, List
+
+
+class Solution:
+    def filter(self, arr: List[Any], fn: Callable) -> List[Any]:
+        out = []
+        for i in range(len(arr)):
+            if fn(arr[i], i):
+                out.append(arr[i])
+        return out
+
+================================================================================
+# FOLDER 2635_apply_transform_over_each_element_in_array
+================================================================================
+# LeetCode 2635 - Apply Transform Over Each Element in Array
+# https://leetcode.com/problems/apply-transform-over-each-element-in-array/
+
+from typing import Any, Callable, List
+
+
+class Solution:
+    def map(self, arr: List[Any], fn: Callable) -> List[Any]:
+        out = [None] * len(arr)
+        for i in range(len(arr)):
+            out[i] = fn(arr[i], i)
+        return out
+
+================================================================================
+# FOLDER 2636_promise_pool
+================================================================================
+# LeetCode 2636 - Promise Pool
+# https://leetcode.com/problems/promise-pool/
+
+from typing import Callable, List
+
+
+class Solution:
+    def promisePool(self, functions: List[Callable], n: int = 1):
+        i = 0
+
+        def worker() -> None:
+            nonlocal i
+            while i < len(functions):
+                cur = i
+                i += 1
+                functions[cur]()
+
+        limit = min(n, len(functions))
+        for _ in range(limit):
+            worker()
+        return None
+
+================================================================================
+# FOLDER 2637_promise_time_limit
+================================================================================
+# LeetCode 2637 - Promise Time Limit
+# https://leetcode.com/problems/promise-time-limit/
+
+import time
+from typing import Any, Callable
+
+
+class Solution:
+    def timeLimit(self, fn: Callable, t: int) -> Callable:
+        def wrapped(*args: Any):
+            start = time.time()
+            res = fn(*args)
+            if (time.time() - start) * 1000 > t:
+                raise TimeoutError("Time Limit Exceeded")
+            return res
+
+        return wrapped
+
+================================================================================
+# FOLDER 2638_count_the_number_of_k_free_subsets
+================================================================================
+# LeetCode 2638 - Count the Number of K-Free Subsets
+# https://leetcode.com/problems/count-the-number-of-k-free-subsets/
+
+from typing import List
+
+
+class Solution:
+    def countTheNumOfKFreeSubsets(self, nums: List[int], k: int) -> int:
+        nums = sorted(nums)
+        groups = {}
+        for x in nums:
+            key = x % k
+            if key not in groups:
+                groups[key] = []
+            groups[key].append(x)
+        ans = 1
+        for g in groups.values():
+            prev_val = -1
+            prev_take = 0
+            prev_skip = 1
+            for v in g:
+                skip = prev_take + prev_skip
+                take = prev_skip if prev_val + k == v else prev_take + prev_skip
+                prev_take = take
+                prev_skip = skip
+                prev_val = v
+            ans *= prev_take + prev_skip
+        return ans
+
+================================================================================
+# FOLDER 2639_find_the_width_of_columns_of_a_grid
+================================================================================
+# LeetCode 2639 - Find the Width of Columns of a Grid
+# https://leetcode.com/problems/find-the-width-of-columns-of-a-grid/
+
+from typing import List
+
+
+class Solution:
+    def findColumnWidth(self, grid: List[List[int]]) -> List[int]:
+        n = len(grid[0])
+        ans = [0] * n
+
+        def width(x: int) -> int:
+            if x == 0:
+                return 1
+            w = 0
+            if x < 0:
+                w += 1
+                x = -x
+            while x > 0:
+                w += 1
+                x //= 10
+            return w
+
+        for row in grid:
+            for j in range(n):
+                ans[j] = max(ans[j], width(row[j]))
+        return ans
+
+================================================================================
+# FOLDER 2640_find_the_score_of_all_prefixes_of_an_array
+================================================================================
+# LeetCode 2640 - Find the Score of All Prefixes of an Array
+# https://leetcode.com/problems/find-the-score-of-all-prefixes-of-an-array/
+
+from typing import List
+
+
+class Solution:
+    def findPrefixScore(self, nums: List[int]) -> List[int]:
+        ans = [0] * len(nums)
+        mx = 0
+        s = 0
+        for i, x in enumerate(nums):
+            if x > mx:
+                mx = x
+            s += x + mx
+            ans[i] = s
+        return ans
+
+================================================================================
+# FOLDER 2641_cousins_in_binary_tree_ii
+================================================================================
+# LeetCode 2641 - Cousins in Binary Tree II
+# https://leetcode.com/problems/cousins-in-binary-tree-ii/
+
+from collections import deque
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def replaceValueInTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        if not root:
+            return None
+        root.val = 0
+        q = deque([root])
+        while q:
+            sz = len(q)
+            level_sum = 0
+            level = []
+            for _ in range(sz):
+                node = q.popleft()
+                level.append(node)
+                if node.left:
+                    level_sum += node.left.val
+                if node.right:
+                    level_sum += node.right.val
+            for node in level:
+                cousin = level_sum
+                if node.left:
+                    cousin -= node.left.val
+                if node.right:
+                    cousin -= node.right.val
+                if node.left:
+                    node.left.val = cousin
+                    q.append(node.left)
+                if node.right:
+                    node.right.val = cousin
+                    q.append(node.right)
+        return root
+
+================================================================================
+# FOLDER 2642_design_graph_with_shortest_path_calculator
+================================================================================
+# LeetCode 2642 - Design Graph With Shortest Path Calculator
+# https://leetcode.com/problems/design-graph-with-shortest-path-calculator/
+
+import heapq
+from typing import List
+
+
+class Graph:
+    def __init__(self, n: int, edges: List[List[int]]):
+        self.g = [[] for _ in range(n)]
+        for e in edges:
+            self.g[e[0]].append((e[1], e[2]))
+
+    def addEdge(self, edge: List[int]) -> None:
+        self.g[edge[0]].append((edge[1], edge[2]))
+
+    def shortestPath(self, node1: int, node2: int) -> int:
+        n = len(self.g)
+        dist = [1 << 30] * n
+        dist[node1] = 0
+        pq = [(0, node1)]
+        while pq:
+            d, u = heapq.heappop(pq)
+            if u == node2:
+                return d
+            if d > dist[u]:
+                continue
+            for v, w in self.g[u]:
+                nd = d + w
+                if nd < dist[v]:
+                    dist[v] = nd
+                    heapq.heappush(pq, (nd, v))
+        return -1
+
+================================================================================
+# FOLDER 2643_row_with_maximum_ones
+================================================================================
+# LeetCode 2643 - Row With Maximum Ones
+# https://leetcode.com/problems/row-with-maximum-ones/
+
+from typing import List
+
+
+class Solution:
+    def rowAndMaximumOnes(self, mat: List[List[int]]) -> List[int]:
+        best_row, best_cnt = 0, -1
+        for i, row in enumerate(mat):
+            cnt = sum(row)
+            if cnt > best_cnt:
+                best_cnt = cnt
+                best_row = i
+        return [best_row, best_cnt]
+
+================================================================================
+# FOLDER 2644_find_the_maximum_divisibility_score
+================================================================================
+# LeetCode 2644 - Find the Maximum Divisibility Score
+# https://leetcode.com/problems/find-the-maximum-divisibility-score/
+
+from typing import List
+
+
+class Solution:
+    def maxDivScore(self, nums: List[int], divisors: List[int]) -> int:
+        best, best_score = divisors[0], -1
+        for d in divisors:
+            score = 0
+            for x in nums:
+                if x % d == 0:
+                    score += 1
+            if score > best_score or (score == best_score and d < best):
+                best_score = score
+                best = d
+        return best
+
+================================================================================
+# FOLDER 2645_minimum_additions_to_make_valid_string
+================================================================================
+# LeetCode 2645 - Minimum Additions to Make Valid String
+# https://leetcode.com/problems/minimum-additions-to-make-valid-string/
+
+
+class Solution:
+    def addMinimum(self, word: str) -> int:
+        ans, expect, i, n = 0, 0, 0, len(word)
+        while i < n:
+            need = chr(97 + expect)
+            if word[i] == need:
+                i += 1
+            else:
+                ans += 1
+            expect = (expect + 1) % 3
+        ans += (3 - expect) % 3
+        return ans
+
+================================================================================
+# FOLDER 2646_minimize_the_total_price_of_the_trips
+================================================================================
+# LeetCode 2646 - Minimize the Total Price of the Trips
+# https://leetcode.com/problems/minimize-the-total-price-of-the-trips/
+
+from typing import List
+
+
+class Solution:
+    def minimumTotalPrice(self, n: int, edges: List[List[int]], price: List[int], trips: List[List[int]]) -> int:
+        g = [[] for _ in range(n)]
+        for a, b in edges:
+            g[a].append(b)
+            g[b].append(a)
+        cnt = [0] * n
+
+        def path(u: int, p: int, target: int) -> bool:
+            if u == target:
+                cnt[u] += 1
+                return True
+            for v in g[u]:
+                if v == p:
+                    continue
+                if path(v, u, target):
+                    cnt[u] += 1
+                    return True
+            return False
+
+        for a, b in trips:
+            path(a, -1, b)
+
+        def dfs(u: int, p: int):
+            full = price[u] * cnt[u]
+            half = full // 2
+            for v in g[u]:
+                if v == p:
+                    continue
+                child = dfs(v, u)
+                full += min(child[0], child[1])
+                half += child[0]
+            return (full, half)
+
+        res = dfs(0, -1)
+        return min(res[0], res[1])
+
+================================================================================
+# FOLDER 2647_color_the_triangle_red
+================================================================================
+# LeetCode 2647 - Color the Triangle Red
+# https://leetcode.com/problems/color-the-triangle-red/
+
+from typing import List
+
+
+class Solution:
+    def colorRed(self, n: int) -> List[List[int]]:
+        ans = []
+        for i in range(1, n + 1):
+            ans.append([i, 1])
+        for i in range(n % 2 + 2, n + 1, 2):
+            for j in range(2, 2 * (n - i) + 3):
+                ans.append([i, j])
+        return ans
+
+================================================================================
+# FOLDER 2648_generate_fibonacci_sequence
+================================================================================
+# LeetCode 2648 - Generate Fibonacci Sequence
+# https://leetcode.com/problems/generate-fibonacci-sequence/
+
+from typing import Generator, Iterator
+
+
+class Solution:
+    def fibGenerator(self) -> Iterator[int]:
+        def gen() -> Generator[int, None, None]:
+            a, b = 0, 1
+            while True:
+                yield a
+                a, b = b, a + b
+
+        return gen()
+
+================================================================================
+# FOLDER 2649_nested_array_generator
+================================================================================
+# LeetCode 2649 - Nested Array Generator
+# https://leetcode.com/problems/nested-array-generator/
+
+from typing import Any, Generator, List, Union
+
+
+class Solution:
+    def inorderTraversal(self, arr: List[Any]) -> Generator[Any, None, None]:
+        for x in arr:
+            if isinstance(x, list):
+                yield from self.inorderTraversal(x)
+            else:
+                yield x
+
+================================================================================
+# FOLDER 2650_design_cancellable_function
+================================================================================
+# LeetCode 2650 - Design Cancellable Function
+# https://leetcode.com/problems/design-cancellable-function/
+
+import asyncio
+from typing import Any, Callable, Generator, List, Tuple
+
+
+class Solution:
+    def cancellable(self, generator: Generator) -> List[Any]:
+        cancelled = False
+
+        def cancel() -> None:
+            nonlocal cancelled
+            cancelled = True
+
+        async def run() -> Any:
+            nonlocal cancelled
+            nxt = next(generator)
+            while True:
+                try:
+                    if asyncio.iscoroutine(nxt) or hasattr(nxt, "__await__"):
+                        value = await nxt
+                    else:
+                        value = nxt
+                    if cancelled:
+                        nxt = generator.throw(Exception("Cancelled"))
+                        continue
+                    nxt = generator.send(value)
+                except StopIteration as e:
+                    return e.value
+                except Exception as e:
+                    try:
+                        nxt = generator.throw(e)
+                    except StopIteration as se:
+                        return se.value
+
+        return [cancel, run()]
+
+================================================================================
+# FOLDER 2651_calculate_delayed_arrival_time
+================================================================================
+# LeetCode 2651 - Calculate Delayed Arrival Time
+# https://leetcode.com/problems/calculate-delayed-arrival-time/
+
+
+class Solution:
+    def findDelayedArrivalTime(self, arrivalTime: int, delayedTime: int) -> int:
+        return (arrivalTime + delayedTime) % 24
+
+================================================================================
+# FOLDER 2652_sum_multiples
+================================================================================
+# LeetCode 2652 - Sum Multiples
+# https://leetcode.com/problems/sum-multiples/
+
+
+class Solution:
+    def sumOfMultiples(self, n: int) -> int:
+        ans = 0
+        for i in range(1, n + 1):
+            if i % 3 == 0 or i % 5 == 0 or i % 7 == 0:
+                ans += i
+        return ans
+
+================================================================================
+# FOLDER 2653_sliding_subarray_beauty
+================================================================================
+# LeetCode 2653 - Sliding Subarray Beauty
+# https://leetcode.com/problems/sliding-subarray-beauty/
+
+from typing import List
+
+
+class Solution:
+    def getSubarrayBeauty(self, nums: List[int], k: int, x: int) -> List[int]:
+        freq = [0] * 101
+        ans = [0] * (len(nums) - k + 1)
+        for i, num in enumerate(nums):
+            freq[num + 50] += 1
+            if i >= k:
+                freq[nums[i - k] + 50] -= 1
+            if i >= k - 1:
+                need, val = x, 0
+                for j in range(50):
+                    need -= freq[j]
+                    if need <= 0:
+                        val = j - 50
+                        break
+                ans[i - k + 1] = val
+        return ans
+
+================================================================================
+# FOLDER 2654_minimum_number_of_operations_to_make_all_array_elements_equal_to_1
+================================================================================
+# LeetCode 2654 - Minimum Number of Operations to Make All Array Elements Equal to 1
+# https://leetcode.com/problems/minimum-number-of-operations-to-make-all-array-elements-equal-to-1/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        def gcd(a: int, b: int) -> int:
+            while b:
+                a, b = b, a % b
+            return a
+
+        n = len(nums)
+        ones = sum(1 for x in nums if x == 1)
+        if ones > 0:
+            return n - ones
+        best = n + 1
+        for i in range(n):
+            g = 0
+            for j in range(i, n):
+                g = gcd(g, nums[j])
+                if g == 1:
+                    best = min(best, j - i)
+                    break
+        if best == n + 1:
+            return -1
+        return best + n - 1
+
+================================================================================
+# FOLDER 2655_find_maximal_uncovered_ranges
+================================================================================
+# LeetCode 2655 - Find Maximal Uncovered Ranges
+# https://leetcode.com/problems/find-maximal-uncovered-ranges/
+
+from typing import List
+
+
+class Solution:
+    def findMaximalUncoveredRanges(self, n: int, ranges: List[List[int]]) -> List[List[int]]:
+        ranges = sorted(ranges, key=lambda r: r[0])
+        ans = []
+        cur = 0
+        for r in ranges:
+            if r[0] > cur:
+                ans.append([cur, r[0] - 1])
+            if r[1] + 1 > cur:
+                cur = r[1] + 1
+        if cur < n:
+            ans.append([cur, n - 1])
+        return ans
+
+================================================================================
+# FOLDER 2656_maximum_sum_with_exactly_k_elements
+================================================================================
+# LeetCode 2656 - Maximum Sum With Exactly K Elements
+# https://leetcode.com/problems/maximum-sum-with-exactly-k-elements/
+
+from typing import List
+
+
+class Solution:
+    def maximizeSum(self, nums: List[int], k: int) -> int:
+        mx = nums[0]
+        for x in nums:
+            if x > mx:
+                mx = x
+        return k * mx + k * (k - 1) // 2
+
+================================================================================
+# FOLDER 2657_find_the_prefix_common_array_of_two_arrays
+================================================================================
+# LeetCode 2657 - Find the Prefix Common Array of Two Arrays
+# https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
+
+from typing import List
+
+
+class Solution:
+    def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
+        n = len(A)
+        seen_a = [False] * (n + 1)
+        seen_b = [False] * (n + 1)
+        ans = [0] * n
+        common = 0
+        for i in range(n):
+            if seen_b[A[i]]:
+                common += 1
+            seen_a[A[i]] = True
+            if seen_a[B[i]]:
+                common += 1
+            seen_b[B[i]] = True
+            ans[i] = common
+        return ans
+
+================================================================================
+# FOLDER 2658_maximum_number_of_fish_in_a_grid
+================================================================================
+# LeetCode 2658 - Maximum Number of Fish in a Grid
+# https://leetcode.com/problems/maximum-number-of-fish-in-a-grid/
+
+from typing import List
+
+
+class Solution:
+    def findMaxFish(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+
+        def dfs(r: int, c: int) -> int:
+            if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == 0:
+                return 0
+            fish = grid[r][c]
+            grid[r][c] = 0
+            return fish + dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1)
+
+        best = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] > 0:
+                    best = max(best, dfs(i, j))
+        return best
+
+================================================================================
+# FOLDER 2659_make_array_empty
+================================================================================
+# LeetCode 2659 - Make Array Empty
+# https://leetcode.com/problems/make-array-empty/
+
+from typing import List
+
+
+class Solution:
+    def countOperationsToEmptyArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        idx = list(range(n))
+        idx.sort(key=lambda i: nums[i])
+        ans = n
+        for i in range(1, n):
+            if idx[i] < idx[i - 1]:
+                ans += n - i
+        return ans
+
+================================================================================
+# FOLDER 2660_determine_the_winner_of_a_bowling_game
+================================================================================
+# LeetCode 2660 - Determine the Winner of a Bowling Game
+# https://leetcode.com/problems/determine-the-winner-of-a-bowling-game/
+
+from typing import List
+
+
+class Solution:
+    def isWinner(self, player1: List[int], player2: List[int]) -> int:
+        def score(p: List[int]) -> int:
+            s = 0
+            for i, pins in enumerate(p):
+                mul = 1
+                if (i > 0 and p[i - 1] == 10) or (i > 1 and p[i - 2] == 10):
+                    mul = 2
+                s += mul * pins
+            return s
+
+        a, b = score(player1), score(player2)
+        if a > b:
+            return 1
+        if b > a:
+            return 2
+        return 0
+
+================================================================================
+# FOLDER 2661_first_completely_painted_row_or_column
+================================================================================
+# LeetCode 2661 - First Completely Painted Row or Column
+# https://leetcode.com/problems/first-completely-painted-row-or-column/
+
+from typing import List
+
+
+class Solution:
+    def firstCompleteIndex(self, arr: List[int], mat: List[List[int]]) -> int:
+        m, n = len(mat), len(mat[0])
+        pos_r = [0] * (m * n + 1)
+        pos_c = [0] * (m * n + 1)
+        for i in range(m):
+            for j in range(n):
+                pos_r[mat[i][j]] = i
+                pos_c[mat[i][j]] = j
+        row_cnt = [0] * m
+        col_cnt = [0] * n
+        for i, val in enumerate(arr):
+            r, c = pos_r[val], pos_c[val]
+            row_cnt[r] += 1
+            col_cnt[c] += 1
+            if row_cnt[r] == n or col_cnt[c] == m:
+                return i
+        return -1
+
+================================================================================
+# FOLDER 2662_minimum_cost_of_a_path_with_special_roads
+================================================================================
+# LeetCode 2662 - Minimum Cost of a Path With Special Roads
+# https://leetcode.com/problems/minimum-cost-of-a-path-with-special-roads/
+
+import heapq
+from typing import List
+
+
+class Solution:
+    def minimumCost(self, start: List[int], target: List[int], specialRoads: List[List[int]]) -> int:
+        points = [start, target]
+        for r in specialRoads:
+            points.append([r[0], r[1]])
+            points.append([r[2], r[3]])
+        N = len(points)
+
+        def man(a: List[int], b: List[int]) -> int:
+            return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+        g = [[] for _ in range(N)]
+        for i in range(N):
+            for j in range(N):
+                if i != j:
+                    g[i].append((j, man(points[i], points[j])))
+        for r in specialRoads:
+            u = v = -1
+            for i, p in enumerate(points):
+                if p[0] == r[0] and p[1] == r[1]:
+                    u = i
+                if p[0] == r[2] and p[1] == r[3]:
+                    v = i
+            if u >= 0 and v >= 0:
+                g[u].append((v, r[4]))
+        dist = [10**18] * N
+        dist[0] = 0
+        pq = [(0, 0)]
+        while pq:
+            cost, idx = heapq.heappop(pq)
+            if cost > dist[idx]:
+                continue
+            for to, w in g[idx]:
+                if cost + w < dist[to]:
+                    dist[to] = cost + w
+                    heapq.heappush(pq, (dist[to], to))
+        return dist[1]
+
+================================================================================
+# FOLDER 2663_lexicographically_smallest_beautiful_string
+================================================================================
+# LeetCode 2663 - Lexicographically Smallest Beautiful String
+# https://leetcode.com/problems/lexicographically-smallest-beautiful-string/
+
+
+class Solution:
+    def smallestBeautifulString(self, s: str, k: int) -> str:
+        n = len(s)
+        b = list(s)
+        for i in range(n - 1, -1, -1):
+            for code in range(ord(b[i]) + 1, 97 + k):
+                c = chr(code)
+                if (i > 0 and c == b[i - 1]) or (i > 1 and c == b[i - 2]):
+                    continue
+                b[i] = c
+                for j in range(i + 1, n):
+                    for nc in range(97, 97 + k):
+                        ch = chr(nc)
+                        if (j > 0 and ch == b[j - 1]) or (j > 1 and ch == b[j - 2]):
+                            continue
+                        b[j] = ch
+                        break
+                return "".join(b)
+        return ""
+
+================================================================================
+# FOLDER 2664_the_knights_tour
+================================================================================
+# LeetCode 2664 - The Knight's Tour
+# https://leetcode.com/problems/the-knights-tour/
+
+from typing import List
+
+
+class Solution:
+    def tourOfKnight(self, m: int, n: int, r: int, c: int) -> List[List[int]]:
+        dirs = [(1, 2), (1, -2), (-1, 2), (-1, -2), (2, 1), (2, -1), (-2, 1), (-2, -1)]
+        ans = [[-1] * n for _ in range(m)]
+
+        def dfs(x: int, y: int, step: int) -> bool:
+            ans[x][y] = step
+            if step == m * n - 1:
+                return True
+            for dx, dy in dirs:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < m and 0 <= ny < n and ans[nx][ny] == -1:
+                    if dfs(nx, ny, step + 1):
+                        return True
+            ans[x][y] = -1
+            return False
+
+        dfs(r, c, 0)
+        return ans
+
+================================================================================
+# FOLDER 2665_counter_ii
+================================================================================
+# LeetCode 2665 - Counter II
+# https://leetcode.com/problems/counter-ii/
+
+from typing import Callable, Dict
+
+
+class Solution:
+    def createCounter(self, init: int) -> Dict[str, Callable[[], int]]:
+        cur = init
+
+        def increment() -> int:
+            nonlocal cur
+            cur += 1
+            return cur
+
+        def decrement() -> int:
+            nonlocal cur
+            cur -= 1
+            return cur
+
+        def reset() -> int:
+            nonlocal cur
+            cur = init
+            return cur
+
+        return {"increment": increment, "decrement": decrement, "reset": reset}
+
+================================================================================
+# FOLDER 2666_allow_one_function_call
+================================================================================
+# LeetCode 2666 - Allow One Function Call
+# https://leetcode.com/problems/allow-one-function-call/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def once(self, fn: Callable) -> Callable:
+        called = False
+        res = None
+
+        def wrapper(*args: Any) -> Any:
+            nonlocal called, res
+            if called:
+                return None
+            called = True
+            res = fn(*args)
+            return res
+
+        return wrapper
+
+================================================================================
+# FOLDER 2667_create_hello_world_function
+================================================================================
+# LeetCode 2667 - Create Hello World Function
+# https://leetcode.com/problems/create-hello-world-function/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def createHelloWorld(self) -> Callable:
+        def hello(*args: Any) -> str:
+            return "Hello World"
+
+        return hello
+
+================================================================================
+# FOLDER 2670_find_the_distinct_difference_array
+================================================================================
+# LeetCode 2670 - Find the Distinct Difference Array
+# https://leetcode.com/problems/find-the-distinct-difference-array/
+
+from typing import List
+
+
+class Solution:
+    def distinctDifferenceArray(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        suf = [0] * (n + 1)
+        seen = set()
+        for i in range(n - 1, -1, -1):
+            seen.add(nums[i])
+            suf[i] = len(seen)
+        seen.clear()
+        ans = [0] * n
+        for i in range(n):
+            seen.add(nums[i])
+            ans[i] = len(seen) - suf[i + 1]
+        return ans
+
+================================================================================
+# FOLDER 2671_frequency_tracker
+================================================================================
+# LeetCode 2671 - Frequency Tracker
+# https://leetcode.com/problems/frequency-tracker/
+
+from collections import defaultdict
+
+
+class FrequencyTracker:
+    def __init__(self):
+        self.freq = defaultdict(int)
+        self.count = defaultdict(int)
+
+    def add(self, number: int) -> None:
+        old = self.freq[number]
+        if old > 0:
+            self.count[old] -= 1
+        self.freq[number] = old + 1
+        self.count[old + 1] += 1
+
+    def deleteOne(self, number: int) -> None:
+        old = self.freq[number]
+        if old == 0:
+            return
+        self.count[old] -= 1
+        self.freq[number] = old - 1
+        if old - 1 > 0:
+            self.count[old - 1] += 1
+
+    def hasFrequency(self, frequency: int) -> bool:
+        return self.count[frequency] > 0
+
+================================================================================
+# FOLDER 2672_number_of_adjacent_elements_with_the_same_color
+================================================================================
+# LeetCode 2672 - Number of Adjacent Elements With the Same Color
+# https://leetcode.com/problems/number-of-adjacent-elements-with-the-same-color/
+
+from typing import List
+
+
+class Solution:
+    def colorTheArray(self, n: int, queries: List[List[int]]) -> List[int]:
+        colors = [0] * n
+        ans = [0] * len(queries)
+        same = 0
+        for i, (idx, color) in enumerate(queries):
+            if colors[idx] != 0:
+                if idx > 0 and colors[idx] == colors[idx - 1]:
+                    same -= 1
+                if idx + 1 < n and colors[idx] == colors[idx + 1]:
+                    same -= 1
+            colors[idx] = color
+            if idx > 0 and colors[idx] == colors[idx - 1]:
+                same += 1
+            if idx + 1 < n and colors[idx] == colors[idx + 1]:
+                same += 1
+            ans[i] = same
+        return ans
+
+================================================================================
+# FOLDER 2673_make_costs_of_paths_equal_in_a_binary_tree
+================================================================================
+# LeetCode 2673 - Make Costs of Paths Equal in a Binary Tree
+# https://leetcode.com/problems/make-costs-of-paths-equal-in-a-binary-tree/
+
+from typing import List
+
+
+class Solution:
+    def minIncrements(self, n: int, cost: List[int]) -> int:
+        ans = 0
+        for i in range(n // 2 - 1, -1, -1):
+            l, r = 2 * i + 1, 2 * i + 2
+            ans += abs(cost[l] - cost[r])
+            cost[i] += max(cost[l], cost[r])
+        return ans
+
+================================================================================
+# FOLDER 2674_split_a_circular_linked_list
+================================================================================
+# LeetCode 2674 - Split a Circular Linked List
+# https://leetcode.com/problems/split-a-circular-linked-list/
+
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def splitCircularLinkedList(self, list: Optional[ListNode]) -> List[Optional[ListNode]]:
+        if not list:
+            return [None, None]
+        slow = list
+        fast = list
+        while fast.next is not list and fast.next.next is not list:
+            slow = slow.next
+            fast = fast.next.next
+        if fast.next.next is list:
+            fast = fast.next
+        head2 = slow.next
+        slow.next = list
+        fast.next = head2
+        return [list, head2]
+
+================================================================================
+# FOLDER 2675_array_of_objects_to_matrix
+================================================================================
+# LeetCode 2675 - Array of Objects to Matrix
+# https://leetcode.com/problems/array-of-objects-to-matrix/
+
+from typing import Any, Dict, List
+
+
+class Solution:
+    def jsonToMatrix(self, arr: List[Any]) -> List[List[Any]]:
+        def is_obj(x: Any) -> bool:
+            return isinstance(x, dict)
+
+        def flatten(obj: Any, prefix: str, out: Dict[str, Any]) -> None:
+            if not is_obj(obj) and not isinstance(obj, list):
+                out[prefix] = obj
+                return
+            if isinstance(obj, list):
+                if not obj:
+                    return
+                for i, item in enumerate(obj):
+                    flatten(item, prefix + "." + str(i) if prefix else str(i), out)
+                return
+            keys = list(obj.keys())
+            if not keys:
+                return
+            for k in keys:
+                flatten(obj[k], prefix + "." + str(k) if prefix else str(k), out)
+
+        maps = []
+        for o in arr:
+            m = {}
+            flatten(o, "", m)
+            maps.append(m)
+        key_set = set()
+        for m in maps:
+            key_set.update(m.keys())
+        keys = sorted(key_set)
+        mat = [keys]
+        for m in maps:
+            mat.append([m[k] if k in m else "" for k in keys])
+        return mat
+
+================================================================================
+# FOLDER 2676_throttle
+================================================================================
+# LeetCode 2676 - Throttle
+# https://leetcode.com/problems/throttle/
+
+import threading
+import time
+from typing import Any, Callable
+
+
+class Solution:
+    def throttle(self, fn: Callable, t: int) -> Callable:
+        last = float("-inf")
+        pending = None
+        timer = None
+        lock = threading.Lock()
+
+        def run(*args: Any) -> None:
+            nonlocal last
+            last = time.time() * 1000
+            fn(*args)
+
+        def wrapper(*args: Any) -> None:
+            nonlocal pending, timer
+            with lock:
+                now = time.time() * 1000
+                remaining = t - (now - last)
+                if remaining <= 0:
+                    if timer is not None:
+                        timer.cancel()
+                        timer = None
+                    run(*args)
+                else:
+                    pending = args
+                    if timer is None:
+                        def later() -> None:
+                            nonlocal timer, pending
+                            with lock:
+                                timer = None
+                                if pending is not None:
+                                    a = pending
+                                    pending = None
+                                    run(*a)
+
+                        timer = threading.Timer(remaining / 1000.0, later)
+                        timer.daemon = True
+                        timer.start()
+
+        return wrapper
+
+================================================================================
+# FOLDER 2677_chunk_array
+================================================================================
+# LeetCode 2677 - Chunk Array
+# https://leetcode.com/problems/chunk-array/
+
+from typing import Any, List
+
+
+class Solution:
+    def chunk(self, arr: List[Any], size: int) -> List[List[Any]]:
+        ans = []
+        for i in range(0, len(arr), size):
+            ans.append(arr[i:i + size])
+        return ans
+
+================================================================================
+# FOLDER 2678_number_of_senior_citizens
+================================================================================
+# LeetCode 2678 - Number of Senior Citizens
+# https://leetcode.com/problems/number-of-senior-citizens/
+
+from typing import List
+
+
+class Solution:
+    def countSeniors(self, details: List[str]) -> int:
+        ans = 0
+        for d in details:
+            age = (ord(d[11]) - 48) * 10 + (ord(d[12]) - 48)
+            if age > 60:
+                ans += 1
+        return ans
+
+================================================================================
+# FOLDER 2679_sum_in_a_matrix
+================================================================================
+# LeetCode 2679 - Sum in a Matrix
+# https://leetcode.com/problems/sum-in-a-matrix/
+
+from typing import List
+
+
+class Solution:
+    def matrixSum(self, nums: List[List[int]]) -> int:
+        for row in nums:
+            row.sort()
+        ans = 0
+        n = len(nums[0])
+        for j in range(n):
+            mx = 0
+            for row in nums:
+                mx = max(mx, row[j])
+            ans += mx
+        return ans
+
+================================================================================
+# FOLDER 2680_maximum_or
+================================================================================
+# LeetCode 2680 - Maximum OR
+# https://leetcode.com/problems/maximum-or/
+
+from typing import List
+
+
+class Solution:
+    def maximumOr(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        pref = [0] * (n + 1)
+        suf = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] | nums[i]
+        for i in range(n - 1, -1, -1):
+            suf[i] = suf[i + 1] | nums[i]
+        ans = 0
+        for i in range(n):
+            cur = pref[i] | (nums[i] * (2 ** k)) | suf[i + 1]
+            if cur > ans:
+                ans = cur
+        return ans
+
+================================================================================
+# FOLDER 2681_power_of_heroes
+================================================================================
+# LeetCode 2681 - Power of Heroes
+# https://leetcode.com/problems/power-of-heroes/
+
+from typing import List
+
+
+class Solution:
+    def sumOfPower(self, nums: List[int]) -> int:
+        MOD = 1000000007
+        nums = sorted(nums)
+        ans, s = 0, 0
+        for x in nums:
+            ans = (ans + ((s + x) % MOD) * x % MOD * x) % MOD
+            s = (s * 2 + x) % MOD
+        return ans
+
+================================================================================
+# FOLDER 2682_find_the_losers_of_the_circular_game
+================================================================================
+# LeetCode 2682 - Find the Losers of the Circular Game
+# https://leetcode.com/problems/find-the-losers-of-the-circular-game/
+
+from typing import List
+
+
+class Solution:
+    def circularGameLosers(self, n: int, k: int) -> List[int]:
+        seen = [False] * (n + 1)
+        cur, step = 1, 1
+        while not seen[cur]:
+            seen[cur] = True
+            cur = (cur - 1 + step * k) % n + 1
+            step += 1
+        return [i for i in range(1, n + 1) if not seen[i]]
+
+================================================================================
+# FOLDER 2683_neighboring_bitwise_xor
+================================================================================
+# LeetCode 2683 - Neighboring Bitwise XOR
+# https://leetcode.com/problems/neighboring-bitwise-xor/
+
+from typing import List
+
+
+class Solution:
+    def doesValidArrayExist(self, derived: List[int]) -> bool:
+        x = 0
+        for v in derived:
+            x ^= v
+        return x == 0
+
+================================================================================
+# FOLDER 2684_maximum_number_of_moves_in_a_grid
+================================================================================
+# LeetCode 2684 - Maximum Number of Moves in a Grid
+# https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/
+
+from typing import List
+
+
+class Solution:
+    def maxMoves(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        dp = [0] * m
+        for c in range(n - 2, -1, -1):
+            ndp = [0] * m
+            for r in range(m):
+                best = 0
+                for dr in (-1, 0, 1):
+                    nr = r + dr
+                    if 0 <= nr < m and grid[nr][c + 1] > grid[r][c]:
+                        best = max(best, 1 + dp[nr])
+                ndp[r] = best
+            dp = ndp
+        return max(dp)
+
+================================================================================
+# FOLDER 2685_count_the_number_of_complete_components
+================================================================================
+# LeetCode 2685 - Count the Number of Complete Components
+# https://leetcode.com/problems/count-the-number-of-complete-components/
+
+from typing import List
+
+
+class Solution:
+    def countCompleteComponents(self, n: int, edges: List[List[int]]) -> int:
+        g = [[] for _ in range(n)]
+        for a, b in edges:
+            g[a].append(b)
+            g[b].append(a)
+        vis = [False] * n
+        ans = 0
+
+        def dfs(u: int, nodes: List[int]) -> None:
+            vis[u] = True
+            nodes.append(u)
+            for v in g[u]:
+                if not vis[v]:
+                    dfs(v, nodes)
+
+        for i in range(n):
+            if vis[i]:
+                continue
+            nodes = []
+            dfs(i, nodes)
+            ecount = 0
+            for u in nodes:
+                ecount += len(g[u])
+            ecount //= 2
+            sz = len(nodes)
+            if ecount == sz * (sz - 1) // 2:
+                ans += 1
+        return ans
+
+================================================================================
+# FOLDER 2689_extract_kth_character_from_the_rope_tree
+================================================================================
+# LeetCode 2689 - Extract Kth Character From The Rope Tree
+# https://leetcode.com/problems/extract-kth-character-from-the-rope-tree/
+
+from typing import Optional
+
+
+class RopeTreeNode:
+    def __init__(self, len: int = 0, val: str = "", left=None, right=None):
+        self.len = len
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def getKthCharacter(self, root: Optional[RopeTreeNode], k: int) -> str:
+        def dfs(node: RopeTreeNode, kk: int) -> str:
+            if not node.left and not node.right:
+                return node.val
+            left_len = 0
+            if node.left:
+                left_len = node.left.len if node.left.len > 0 else 1
+            if kk <= left_len:
+                return dfs(node.left, kk)
+            return dfs(node.right, kk - left_len)
+
+        return dfs(root, k)
+
+================================================================================
+# FOLDER 2690_infinite_method_object
+================================================================================
+# LeetCode 2690 - Infinite Method Object
+# https://leetcode.com/problems/infinite-method-object/
+
+from typing import Any, Callable
+
+
+class _InfiniteObject:
+    def __getattr__(self, name: str) -> Callable[..., str]:
+        return lambda *args, **kwargs: "Hello World"
+
+
+class Solution:
+    def createInfiniteObject(self) -> Any:
+        return _InfiniteObject()
+
+================================================================================
+# FOLDER 2691_immutability_helper
+================================================================================
+# LeetCode 2691 - Immutability Helper
+# https://leetcode.com/problems/immutability-helper/
+
+from typing import Any, Callable, Dict, List, Union
+
+
+class ImmutableHelper:
+    def __init__(self, obj: Any):
+        self.obj = obj
+
+    def produce(self, mutator: Callable[[Any], None]) -> Any:
+        clones = {}
+
+        def is_obj(v: Any) -> bool:
+            return isinstance(v, (dict, list))
+
+        def get_clone(original: Any) -> Any:
+            oid = id(original)
+            if oid in clones:
+                return clones[oid]
+            if isinstance(original, list):
+                copy = original[:]
+            else:
+                copy = dict(original)
+            clones[oid] = copy
+            return copy
+
+        class _Proxy:
+            def __init__(self, node: Any, on_replace: Callable[[Any], None]):
+                object.__setattr__(self, "_node", node)
+                object.__setattr__(self, "_on_replace", on_replace)
+
+            def __getitem__(self, prop: Any) -> Any:
+                node = object.__getattribute__(self, "_node")
+                on_replace = object.__getattribute__(self, "_on_replace")
+                val = node[prop]
+                if is_obj(val):
+                    def child_replace(child_clone: Any, _prop=prop, _node=node, _on=on_replace) -> None:
+                        clone = get_clone(_node)
+                        clone[_prop] = child_clone
+                        _on(clone)
+                    return _Proxy(val, child_replace)
+                return val
+
+            def __setitem__(self, prop: Any, value: Any) -> None:
+                node = object.__getattribute__(self, "_node")
+                on_replace = object.__getattribute__(self, "_on_replace")
+                clone = get_clone(node)
+                clone[prop] = value
+                on_replace(clone)
+
+            def __delitem__(self, prop: Any) -> None:
+                node = object.__getattribute__(self, "_node")
+                on_replace = object.__getattribute__(self, "_on_replace")
+                clone = get_clone(node)
+                del clone[prop]
+                on_replace(clone)
+
+            def __getattr__(self, prop: str) -> Any:
+                node = object.__getattribute__(self, "_node")
+                if isinstance(node, dict) and prop in node:
+                    return self[prop]
+                raise AttributeError(prop)
+
+            def __setattr__(self, prop: str, value: Any) -> None:
+                if prop.startswith("_"):
+                    object.__setattr__(self, prop, value)
+                    return
+                self[prop] = value
+
+        root_result = [self.obj]
+
+        def on_root(clone: Any) -> None:
+            root_result[0] = clone
+
+        mutator(_Proxy(self.obj, on_root))
+        return root_result[0]
+
+
+class Solution:
+    def ImmutableHelper(self, obj: Any, mutators: Any = None) -> ImmutableHelper:
+        return ImmutableHelper(obj)
+
+================================================================================
+# FOLDER 2692_make_object_immutable
+================================================================================
+# LeetCode 2692 - Make Object Immutable
+# https://leetcode.com/problems/make-object-immutable/
+
+from typing import Any
+
+
+class _ImmutableList(list):
+    _MUTATORS = {"pop", "append", "extend", "insert", "remove", "clear", "sort", "reverse"}
+
+    def __setitem__(self, index: Any, value: Any) -> None:
+        raise Exception(f"Error Modifying Index: {index}")
+
+    def __delitem__(self, index: Any) -> None:
+        raise Exception(f"Error Modifying Index: {index}")
+
+    def __getattribute__(self, prop: str) -> Any:
+        if prop in _ImmutableList._MUTATORS:
+            def banned(*args: Any, **kwargs: Any) -> Any:
+                raise Exception(f"Error Calling Method: {prop}")
+            return banned
+        return object.__getattribute__(self, prop)
+
+
+class _ImmutableDict(dict):
+    def __setitem__(self, key: Any, value: Any) -> None:
+        raise Exception(f"Error Modifying: {key}")
+
+    def __delitem__(self, key: Any) -> None:
+        raise Exception(f"Error Modifying: {key}")
+
+
+class Solution:
+    def makeImmutable(self, obj: Any) -> Any:
+        def wrap(val: Any) -> Any:
+            if val is None or not isinstance(val, (dict, list)):
+                return val
+            if isinstance(val, list):
+                return _ImmutableList(wrap(x) for x in val)
+            return _ImmutableDict((k, wrap(v)) for k, v in val.items())
+
+        return wrap(obj)
+
+================================================================================
+# FOLDER 2693_call_function_with_custom_context
+================================================================================
+# LeetCode 2693 - Call Function with Custom Context
+# https://leetcode.com/problems/call-function-with-custom-context/
+
+from typing import Any, Callable
+
+
+class Solution:
+    def callPolyfill(self, fn: Callable, obj: Any, *args: Any) -> Any:
+        key = object()
+        if isinstance(obj, dict):
+            obj[key] = fn
+            res = obj[key](*args)
+            del obj[key]
+            return res
+        setattr(obj, "_call_polyfill_fn", fn)
+        res = getattr(obj, "_call_polyfill_fn")(*args)
+        delattr(obj, "_call_polyfill_fn")
+        return res
+
+================================================================================
+# FOLDER 2694_event_emitter
+================================================================================
+# LeetCode 2694 - Event Emitter
+# https://leetcode.com/problems/event-emitter/
+
+from typing import Any, Callable, Dict, List
+
+
+class EventEmitter:
+    def __init__(self):
+        self.handlers: Dict[str, List[Callable]] = {}
+
+    def subscribe(self, eventName: str, callback: Callable) -> Dict[str, Callable]:
+        if eventName not in self.handlers:
+            self.handlers[eventName] = []
+        lst = self.handlers[eventName]
+        lst.append(callback)
+
+        def unsubscribe() -> None:
+            if callback in lst:
+                lst.remove(callback)
+
+        return {"unsubscribe": unsubscribe}
+
+    def emit(self, eventName: str, args: List[Any] = None) -> List[Any]:
+        if args is None:
+            args = []
+        lst = self.handlers.get(eventName, [])
+        return [cb(*args) for cb in lst]
+
+
+class Solution:
+    def EventEmitter(self, actions: Any = None, values: Any = None) -> EventEmitter:
+        return EventEmitter()
+
+================================================================================
+# FOLDER 2695_array_wrapper
+================================================================================
+# LeetCode 2695 - Array Wrapper
+# https://leetcode.com/problems/array-wrapper/
+
+from typing import List
+
+
+class ArrayWrapper:
+    def __init__(self, nums: List[int]):
+        self.nums = nums
+
+    def valueOf(self) -> int:
+        s = 0
+        for x in self.nums:
+            s += x
+        return s
+
+    def __add__(self, other: "ArrayWrapper") -> int:
+        return self.valueOf() + other.valueOf()
+
+    def __int__(self) -> int:
+        return self.valueOf()
+
+    def toString(self) -> str:
+        return "[" + ",".join(str(x) for x in self.nums) + "]"
+
+    def __str__(self) -> str:
+        return self.toString()
+
+
+class Solution:
+    def ArrayWrapper(self, nums: List[int]) -> ArrayWrapper:
+        return ArrayWrapper(nums)
+
+================================================================================
+# FOLDER 2696_minimum_string_length_after_removing_substrings
+================================================================================
+# LeetCode 2696 - Minimum String Length After Removing Substrings
+# https://leetcode.com/problems/minimum-string-length-after-removing-substrings/
+
+
+class Solution:
+    def minLength(self, s: str) -> int:
+        st = []
+        for c in s:
+            last = st[-1] if st else None
+            if st and ((last == "A" and c == "B") or (last == "C" and c == "D")):
+                st.pop()
+            else:
+                st.append(c)
+        return len(st)
+
+================================================================================
+# FOLDER 2697_lexicographically_smallest_palindrome
+================================================================================
+# LeetCode 2697 - Lexicographically Smallest Palindrome
+# https://leetcode.com/problems/lexicographically-smallest-palindrome/
+
+
+class Solution:
+    def makeSmallestPalindrome(self, s: str) -> str:
+        arr = list(s)
+        n = len(arr)
+        for i in range(n // 2):
+            c = arr[i] if arr[i] < arr[n - 1 - i] else arr[n - 1 - i]
+            arr[i] = arr[n - 1 - i] = c
+        return "".join(arr)
+
+================================================================================
+# FOLDER 2698_find_the_punishment_number_of_an_integer
+================================================================================
+# LeetCode 2698 - Find the Punishment Number of an Integer
+# https://leetcode.com/problems/find-the-punishment-number-of-an-integer/
+
+
+class Solution:
+    def punishmentNumber(self, n: int) -> int:
+        def dfs(s: str, i: int, sm: int, target: int) -> bool:
+            if i == len(s):
+                return sm == target
+            cur = 0
+            for j in range(i, len(s)):
+                cur = cur * 10 + (ord(s[j]) - 48)
+                if sm + cur > target:
+                    break
+                if dfs(s, j + 1, sm + cur, target):
+                    return True
+            return False
+
+        ans = 0
+        for i in range(1, n + 1):
+            sq = i * i
+            if dfs(str(sq), 0, 0, i):
+                ans += sq
+        return ans
+
+================================================================================
+# FOLDER 2699_modify_graph_edge_weights
+================================================================================
+# LeetCode 2699 - Modify Graph Edge Weights
+# https://leetcode.com/problems/modify-graph-edge-weights/
+
+import heapq
+from typing import List
+
+
+class Solution:
+    def modifiedGraphEdges(self, n: int, edges: List[List[int]], source: int, destination: int, target: int) -> List[List[int]]:
+        INF = 2000000000
+
+        def dijkstra(ignore_neg: bool) -> List[int]:
+            dist = [INF] * n
+            dist[source] = 0
+            pq = [(0, source)]
+            while pq:
+                d, u = heapq.heappop(pq)
+                if d != dist[u]:
+                    continue
+                for e in edges:
+                    a, b, w = e[0], e[1], e[2]
+                    if a != u and b != u:
+                        continue
+                    to = b if a == u else a
+                    if w == -1:
+                        if ignore_neg:
+                            continue
+                        w = 1
+                    if d + w < dist[to]:
+                        dist[to] = d + w
+                        heapq.heappush(pq, (dist[to], to))
+            return dist
+
+        d = dijkstra(True)
+        if d[destination] < target:
+            return []
+        matched = d[destination] == target
+        for i in range(len(edges)):
+            if edges[i][2] != -1:
+                continue
+            if matched:
+                edges[i][2] = INF
+                continue
+            edges[i][2] = 1
+            d = dijkstra(False)
+            if d[destination] <= target:
+                edges[i][2] += target - d[destination]
+                matched = True
+        d = dijkstra(False)
+        if d[destination] != target:
+            return []
+        return edges
+
+================================================================================
+# FOLDER 2700_differences_between_two_objects
+================================================================================
+# LeetCode 2700 - Differences Between Two Objects
+# https://leetcode.com/problems/differences-between-two-objects/
+
+from typing import Any, Dict
+
+
+class Solution:
+    def objDiff(self, obj1: Any, obj2: Any) -> Any:
+        diff = {}
+        if isinstance(obj1, dict):
+            keys = obj1.keys()
+        else:
+            keys = range(len(obj1)) if isinstance(obj1, list) else []
+        for k in keys:
+            if isinstance(obj1, dict):
+                if k not in obj2:
+                    continue
+                v1, v2 = obj1[k], obj2[k]
+            else:
+                if not isinstance(obj2, list) or k >= len(obj2):
+                    continue
+                v1, v2 = obj1[k], obj2[k]
+            if isinstance(v1, dict) and isinstance(v2, dict):
+                child = self.objDiff(v1, v2)
+                if child:
+                    diff[k] = child
+            elif isinstance(v1, list) and isinstance(v2, list):
+                child = self.objDiff(v1, v2)
+                if child:
+                    diff[k] = child
+            elif v1 != v2:
+                diff[k] = [v1, v2]
+        return diff
+
+================================================================================
+# FOLDER 2702_minimum_operations_to_make_numbers_non_positive
+================================================================================
+# LeetCode 2702 - Minimum Operations to Make Numbers Non-positive
+# https://leetcode.com/problems/minimum-operations-to-make-numbers-non-positive/
+
+from typing import List
+import math
+
+
+class Solution:
+    def minOperations(self, nums: List[int], x: int, y: int) -> int:
+        lo, hi = 0, 0
+        for v in nums:
+            hi = max(hi, math.ceil(v / y), math.ceil(v / x))
+        hi += len(nums)
+
+        def ok(ops: int) -> bool:
+            extra = 0
+            for v in nums:
+                remain = v - ops * y
+                if remain > 0:
+                    extra += math.ceil(remain / (x - y))
+            return extra <= ops
+
+        while lo < hi:
+            mid = (lo + hi) // 2
+            if ok(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+================================================================================
+# FOLDER 2703_return_length_of_arguments_passed
+================================================================================
+# LeetCode 2703 - Return Length of Arguments Passed
+# https://leetcode.com/problems/return-length-of-arguments-passed/
+
+from typing import Any
+
+
+class Solution:
+    def argumentsLength(self, *args: Any) -> int:
+        return len(args)
+
+================================================================================
+# FOLDER 2704_to_be_or_not_to_be
+================================================================================
+# LeetCode 2704 - To Be Or Not To Be
+# https://leetcode.com/problems/to-be-or-not-to-be/
+
+from typing import Any, Callable, Dict
+
+
+class Solution:
+    def expect(self, val: Any) -> Dict[str, Callable[[Any], bool]]:
+        def toBe(other: Any) -> bool:
+            if val == other:
+                return True
+            raise Exception("Not Equal")
+
+        def notToBe(other: Any) -> bool:
+            if val != other:
+                return True
+            raise Exception("Equal")
+
+        return {"toBe": toBe, "notToBe": notToBe}
+
+================================================================================
+# FOLDER 2705_compact_object
+================================================================================
+# LeetCode 2705 - Compact Object
+# https://leetcode.com/problems/compact-object/
+
+from typing import Any
+
+
+class Solution:
+    def compactObject(self, obj: Any) -> Any:
+        if isinstance(obj, list):
+            out = []
+            for x in obj:
+                v = self.compactObject(x)
+                if v:
+                    out.append(v)
+            return out
+        if isinstance(obj, dict):
+            out = {}
+            for k, val in obj.items():
+                v = self.compactObject(val)
+                if v:
+                    out[k] = v
+            return out
+        return obj
+
+================================================================================
+# FOLDER 2706_buy_two_chocolates
+================================================================================
+# LeetCode 2706 - Buy Two Chocolates
+# https://leetcode.com/problems/buy-two-chocolates/
+
+from typing import List
+
+
+class Solution:
+    def buyChoco(self, prices: List[int], money: int) -> int:
+        prices = sorted(prices)
+        cost = prices[0] + prices[1]
+        return money - cost if cost <= money else money
+
+================================================================================
+# FOLDER 2707_extra_characters_in_a_string
+================================================================================
+# LeetCode 2707 - Extra Characters in a String
+# https://leetcode.com/problems/extra-characters-in-a-string/
+
+from typing import List
+
+
+class Solution:
+    def minExtraChar(self, s: str, dictionary: List[str]) -> int:
+        dct = set(dictionary)
+        n = len(s)
+        dp = [n] * (n + 1)
+        dp[0] = 0
+        for i in range(n):
+            dp[i + 1] = min(dp[i + 1], dp[i] + 1)
+            for j in range(i + 1, n + 1):
+                if s[i:j] in dct:
+                    dp[j] = min(dp[j], dp[i])
+        return dp[n]
+
+================================================================================
+# FOLDER 2708_maximum_strength_of_a_group
+================================================================================
+# LeetCode 2708 - Maximum Strength of a Group
+# https://leetcode.com/problems/maximum-strength-of-a-group/
+
+from typing import List
+
+
+class Solution:
+    def maxStrength(self, nums: List[int]) -> int:
+        nums = sorted(nums)
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+        prod, used, i = 1, False, 0
+        while i + 1 < n and nums[i] < 0 and nums[i + 1] < 0:
+            prod *= nums[i] * nums[i + 1]
+            used = True
+            i += 2
+        neg_left = i < n and nums[i] < 0
+        while i < n:
+            if nums[i] > 0:
+                prod *= nums[i]
+                used = True
+            i += 1
+        if not used:
+            if neg_left:
+                for x in nums:
+                    if x == 0:
+                        return 0
+                return nums[n - 1]
+            return 0
+        return prod
+
+================================================================================
+# FOLDER 2709_greatest_common_divisor_traversal
+================================================================================
+# LeetCode 2709 - Greatest Common Divisor Traversal
+# https://leetcode.com/problems/greatest-common-divisor-traversal/
+
+from typing import List
+
+
+class Solution:
+    def canTraverseAllPairs(self, nums: List[int]) -> bool:
+        n = len(nums)
+        if n == 1:
+            return True
+        mx = nums[0]
+        for x in nums:
+            if x > mx:
+                mx = x
+        parent = list(range(mx + 1))
+
+        def find(x: int) -> int:
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+
+        def unite(a: int, b: int) -> None:
+            ra, rb = find(a), find(b)
+            if ra != rb:
+                parent[ra] = rb
+
+        has = [False] * (mx + 1)
+        for x in nums:
+            if x == 1:
+                return False
+            has[x] = True
+        sieve = [0] * (mx + 1)
+        for i in range(2, mx + 1):
+            if sieve[i] == 0:
+                for j in range(i, mx + 1, i):
+                    if sieve[j] == 0:
+                        sieve[j] = i
+                    if has[j]:
+                        unite(i, j)
+        root = find(nums[0])
+        for x in nums:
+            if find(x) != root:
+                return False
+        return True
+
+================================================================================
+# FOLDER 2710_remove_trailing_zeros_from_a_string
+================================================================================
+# LeetCode 2710 - Remove Trailing Zeros From a String
+# https://leetcode.com/problems/remove-trailing-zeros-from-a-string/
+
+
+class Solution:
+    def removeTrailingZeros(self, num: str) -> str:
+        end = len(num)
+        while end > 0 and num[end - 1] == "0":
+            end -= 1
+        return num[:end]
+
+================================================================================
+# FOLDER 2711_difference_of_number_of_distinct_values_on_diagonals
+================================================================================
+# LeetCode 2711 - Difference of Number of Distinct Values on Diagonals
+# https://leetcode.com/problems/difference-of-number-of-distinct-values-on-diagonals/
+
+from typing import List
+
+
+class Solution:
+    def differenceOfDistinctValues(self, grid: List[List[int]]) -> List[List[int]]:
+        m, n = len(grid), len(grid[0])
+        ans = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                top, bot = set(), set()
+                r, c = i - 1, j - 1
+                while r >= 0 and c >= 0:
+                    top.add(grid[r][c])
+                    r -= 1
+                    c -= 1
+                r, c = i + 1, j + 1
+                while r < m and c < n:
+                    bot.add(grid[r][c])
+                    r += 1
+                    c += 1
+                ans[i][j] = abs(len(top) - len(bot))
+        return ans
+
+================================================================================
+# FOLDER 2712_minimum_cost_to_make_all_characters_equal
+================================================================================
+# LeetCode 2712 - Minimum Cost to Make All Characters Equal
+# https://leetcode.com/problems/minimum-cost-to-make-all-characters-equal/
+
+
+class Solution:
+    def minimumCost(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        for i in range(1, n):
+            if s[i] != s[i - 1]:
+                ans += min(i, n - i)
+        return ans
+
+================================================================================
+# FOLDER 2713_maximum_strictly_increasing_cells_in_a_matrix
+================================================================================
+# LeetCode 2713 - Maximum Strictly Increasing Cells in a Matrix
+# https://leetcode.com/problems/maximum-strictly-increasing-cells-in-a-matrix/
+
+from typing import List
+
+
+class Solution:
+    def maxIncreasingCells(self, mat: List[List[int]]) -> int:
+        m, n = len(mat), len(mat[0])
+        cells = []
+        for i in range(m):
+            for j in range(n):
+                cells.append((mat[i][j], i, j))
+        cells.sort()
+        row_max = [0] * m
+        col_max = [0] * n
+        dp = [[0] * n for _ in range(m)]
+        ans = 0
+        i = 0
+        while i < len(cells):
+            j = i
+            while j < len(cells) and cells[j][0] == cells[i][0]:
+                j += 1
+            buf = []
+            for k in range(i, j):
+                r, c = cells[k][1], cells[k][2]
+                best = max(row_max[r], col_max[c])
+                dp[r][c] = best + 1
+                ans = max(ans, dp[r][c])
+                buf.append((r, c, dp[r][c]))
+            for r, c, v in buf:
+                row_max[r] = max(row_max[r], v)
+                col_max[c] = max(col_max[c], v)
+            i = j
+        return ans
+
+================================================================================
+# FOLDER 2714_find_shortest_path_with_k_hops
+================================================================================
+# LeetCode 2714 - Find Shortest Path With K Hops
+# https://leetcode.com/problems/find-shortest-path-with-k-hops/
+
+import heapq
+from typing import List
+
+
+class Solution:
+    def shortestPathWithHops(self, n: int, edges: List[List[int]], s: int, d: int, k: int) -> int:
+        g = [[] for _ in range(n)]
+        for e in edges:
+            g[e[0]].append((e[1], e[2]))
+            g[e[1]].append((e[0], e[2]))
+        INF = 10**18
+        dist = [[INF] * (k + 1) for _ in range(n)]
+        dist[s][0] = 0
+        pq = [(0, s, 0)]
+        while pq:
+            cd, u, hops = heapq.heappop(pq)
+            if u == d:
+                return cd
+            if cd > dist[u][hops]:
+                continue
+            for to, w in g[u]:
+                if cd + w < dist[to][hops]:
+                    dist[to][hops] = cd + w
+                    heapq.heappush(pq, (dist[to][hops], to, hops))
+                if hops < k and cd < dist[to][hops + 1]:
+                    dist[to][hops + 1] = cd
+                    heapq.heappush(pq, (cd, to, hops + 1))
+        return -1
+
+================================================================================
+# FOLDER 2715_timeout_cancellation
+================================================================================
+# LeetCode 2715 - Timeout Cancellation
+# https://leetcode.com/problems/timeout-cancellation/
+
+import threading
+from typing import Any, Callable, List
+
+
+class Solution:
+    def cancellable(self, fn: Callable, args: List[Any], t: int) -> Callable[[], None]:
+        timer = threading.Timer(t / 1000.0, lambda: fn(*args))
+        timer.daemon = True
+        timer.start()
+
+        def cancel() -> None:
+            timer.cancel()
+
+        return cancel
+
+================================================================================
+# FOLDER 2716_minimize_string_length
+================================================================================
+# LeetCode 2716 - Minimize String Length
+# https://leetcode.com/problems/minimize-string-length/
+
+
+class Solution:
+    def minimizedStringLength(self, s: str) -> int:
+        return len(set(s))
+
+================================================================================
+# FOLDER 2717_semi_ordered_permutation
+================================================================================
+# LeetCode 2717 - Semi-Ordered Permutation
+# https://leetcode.com/problems/semi-ordered-permutation/
+
+from typing import List
+
+
+class Solution:
+    def semiOrderedPermutation(self, nums: List[int]) -> int:
+        n = len(nums)
+        p1 = pn = 0
+        for i, x in enumerate(nums):
+            if x == 1:
+                p1 = i
+            if x == n:
+                pn = i
+        ans = p1 + (n - 1 - pn)
+        if p1 > pn:
+            ans -= 1
+        return ans
+
+================================================================================
+# FOLDER 2718_sum_of_matrix_after_queries
+================================================================================
+# LeetCode 2718 - Sum of Matrix After Queries
+# https://leetcode.com/problems/sum-of-matrix-after-queries/
+
+from typing import List
+
+
+class Solution:
+    def matrixSumQueries(self, n: int, queries: List[List[int]]) -> int:
+        row_done = [False] * n
+        col_done = [False] * n
+        rows_left, cols_left = n, n
+        ans = 0
+        for i in range(len(queries) - 1, -1, -1):
+            typ, idx, val = queries[i]
+            if typ == 0:
+                if not row_done[idx]:
+                    ans += val * cols_left
+                    row_done[idx] = True
+                    rows_left -= 1
+            else:
+                if not col_done[idx]:
+                    ans += val * rows_left
+                    col_done[idx] = True
+                    cols_left -= 1
+        return ans
+
+================================================================================
+# FOLDER 2719_count_of_integers
+================================================================================
+# LeetCode 2719 - Count of Integers
+# https://leetcode.com/problems/count-of-integers/
+
+
+class Solution:
+    def count(self, num1: str, num2: str, min_sum: int, max_sum: int) -> int:
+        MOD = 1000000007
+
+        def dec(s: str) -> str:
+            arr = list(s)
+            i = len(arr) - 1
+            while i >= 0 and arr[i] == "0":
+                arr[i] = "9"
+                i -= 1
+            if i >= 0:
+                arr[i] = chr(ord(arr[i]) - 1)
+            j = 0
+            while j < len(arr) - 1 and arr[j] == "0":
+                j += 1
+            return "".join(arr[j:])
+
+        def dp(s: str) -> int:
+            memo = {}
+
+            def dfs(pos: int, sm: int, tight: bool) -> int:
+                if sm > max_sum:
+                    return 0
+                if pos == len(s):
+                    return 1 if sm >= min_sum else 0
+                key = (pos, sm, tight)
+                if key in memo:
+                    return memo[key]
+                up = ord(s[pos]) - 48 if tight else 9
+                res = 0
+                for d in range(up + 1):
+                    res = (res + dfs(pos + 1, sm + d, tight and d == up)) % MOD
+                memo[key] = res
+                return res
+
+            return dfs(0, 0, True)
+
+        return (dp(num2) - dp(dec(num1)) + MOD) % MOD
+
+================================================================================
+# FOLDER 2721_execute_asynchronous_functions_in_parallel
+================================================================================
+# LeetCode 2721 - Execute Asynchronous Functions in Parallel
+# https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/
+
+import asyncio
+from typing import Any, Callable, List
+
+
+class Solution:
+    def promiseAll(self, functions: List[Callable]) -> Any:
+        async def run() -> List[Any]:
+            n = len(functions)
+            if n == 0:
+                return []
+            ans = [None] * n
+            done = 0
+
+            async def one(i: int, fn: Callable) -> None:
+                nonlocal done
+                result = fn()
+                if asyncio.iscoroutine(result) or hasattr(result, "__await__"):
+                    ans[i] = await result
+                else:
+                    ans[i] = result
+                done += 1
+
+            await asyncio.gather(*(one(i, fn) for i, fn in enumerate(functions)))
+            return ans
+
+        return run()
+
+================================================================================
+# FOLDER 2722_join_two_arrays_by_id
+================================================================================
+# LeetCode 2722 - Join Two Arrays by ID
+# https://leetcode.com/problems/join-two-arrays-by-id/
+
+from typing import Any, Dict, List
+
+
+class Solution:
+    def join(self, arr1: List[Dict[str, Any]], arr2: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        by_id = {}
+        for obj in arr1:
+            by_id[obj["id"]] = dict(obj)
+        for obj in arr2:
+            if obj["id"] in by_id:
+                by_id[obj["id"]].update(obj)
+            else:
+                by_id[obj["id"]] = dict(obj)
+        return sorted(by_id.values(), key=lambda o: o["id"])
+
+================================================================================
+# FOLDER 2723_add_two_promises
+================================================================================
+# LeetCode 2723 - Add Two Promises
+# https://leetcode.com/problems/add-two-promises/
+
+import asyncio
+from typing import Any, Awaitable, Union
+
+
+class Solution:
+    async def addTwoPromises(self, promise1: Union[Awaitable, Any], promise2: Union[Awaitable, Any]) -> Any:
+        async def resolve(p: Any) -> Any:
+            if asyncio.iscoroutine(p) or hasattr(p, "__await__"):
+                return await p
+            return p
+
+        return (await resolve(promise1)) + (await resolve(promise2))
+
+================================================================================
+# FOLDER 2724_sort_by
+================================================================================
+# LeetCode 2724 - Sort By
+# https://leetcode.com/problems/sort-by/
+
+from typing import Any, Callable, List
+
+
+class Solution:
+    def sortBy(self, arr: List[Any], fn: Callable[[Any], Any]) -> List[Any]:
+        return sorted(arr, key=fn)
+
+================================================================================
+# FOLDER 2725_interval_cancellation
+================================================================================
+# LeetCode 2725 - Interval Cancellation
+# https://leetcode.com/problems/interval-cancellation/
+
+import threading
+from typing import Any, Callable, List
+
+
+class Solution:
+    def cancellable(self, fn: Callable, args: List[Any], t: int) -> Callable[[], None]:
+        cancelled = False
+
+        fn(*args)
+
+        def loop() -> None:
+            while not cancelled:
+                if cancelled:
+                    break
+                timer = threading.Event()
+                timer.wait(t / 1000.0)
+                if not cancelled:
+                    fn(*args)
+
+        thread = threading.Thread(target=loop, daemon=True)
+        thread.start()
+
+        def cancel() -> None:
+            nonlocal cancelled
+            cancelled = True
+
+        return cancel
+
+================================================================================
+# FOLDER 2726_calculator_with_method_chaining
+================================================================================
+# LeetCode 2726 - Calculator with Method Chaining
+# https://leetcode.com/problems/calculator-with-method-chaining/
+
+
+class Calculator:
+    def __init__(self, value: float):
+        self.val = value
+
+    def add(self, value: float) -> "Calculator":
+        self.val += value
+        return self
+
+    def subtract(self, value: float) -> "Calculator":
+        self.val -= value
+        return self
+
+    def multiply(self, value: float) -> "Calculator":
+        self.val *= value
+        return self
+
+    def divide(self, value: float) -> "Calculator":
+        if value == 0:
+            raise Exception("Division by zero is not allowed")
+        self.val /= value
+        return self
+
+    def power(self, value: float) -> "Calculator":
+        self.val = self.val ** value
+        return self
+
+    def getResult(self) -> float:
+        return self.val
+
+
+class Solution:
+    def Calculator(self, value: float) -> Calculator:
+        return Calculator(value)

@@ -1,7 +1,12 @@
-﻿# LeetCode 2853 - Highest Salaries Difference
-# https://leetcode.com/problems/highest-salaries-difference/
+# LeetCode 2853 - Highest Salaries Difference
+# https:# leetcode.com/problems/highest-salaries-difference/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT MAX(s) - MIN(s) AS salary_difference
+  FROM
+      (
+          SELECT MAX(salary) AS s
+          FROM Salaries
+          GROUP BY department
+      ) AS t
+SQL

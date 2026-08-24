@@ -1,7 +1,8 @@
-﻿# LeetCode 0584 - Find Customer Referee
-# https://leetcode.com/problems/find-customer-referee/
+# LeetCode 0584 - Find Customer Referee
+# https:# leetcode.com/problems/find-customer-referee/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT name
+  FROM Customer
+  WHERE referee_id != 2 OR referee_id IS NULL
+SQL

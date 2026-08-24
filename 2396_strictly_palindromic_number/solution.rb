@@ -1,7 +1,8 @@
-﻿# LeetCode 2396 - Strictly Palindromic Number
+# LeetCode 2396 - Strictly Palindromic Number
 # https://leetcode.com/problems/strictly-palindromic-number/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} n
+# @return {Boolean}
+def is_strictly_palindromic(n)
+  false
 end

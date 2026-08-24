@@ -1,0 +1,100 @@
+3395_subsequences_with_a_unique_middle_mode_i	Solution	subsequencesWithMiddleMode	['nums']	None
+3396_minimum_number_of_operations_to_make_elements_in_array_distinct	Solution	minimumOperations	['nums']	None
+3397_maximum_number_of_distinct_elements_after_operations	Solution	maxDistinctElements	['nums', 'k']	None
+3398_smallest_substring_with_identical_characters_i	Solution	minLength	['s', 'numOps']	None
+3399_smallest_substring_with_identical_characters_ii	Solution	minLength	['s', 'numOps']	None
+3400_maximum_number_of_matching_indices_after_right_shifts	Solution	maximumMatchingIndices	['nums1', 'nums2']	None
+3402_minimum_operations_to_make_columns_strictly_increasing	Solution	minimumOperations	['grid']	None
+3403_find_the_lexicographically_largest_string_from_the_box_i	Solution	answerString	['word', 'numFriends']	None
+3404_count_special_subsequences	Solution	numberOfSubsequences	['nums']	None
+3405_count_the_number_of_arrays_with_k_matching_adjacent_elements	Solution	countGoodArrays	['n', 'm', 'k']	None
+3406_find_the_lexicographically_largest_string_from_the_box_ii	Solution	solve	['word', 'numFriends']	None
+3407_substring_matching_pattern	Solution	hasMatch	['s', 'p']	None
+3408_design_task_manager	TaskManager	__init__	['tasks']	None
+3409_longest_subsequence_with_decreasing_adjacent_difference	Solution	longestSubsequence	['nums']	None
+3410_maximize_subarray_sum_after_removing_all_occurrences_of_one_element	Solution	maxSubarraySum	['nums']	None
+3411_maximum_subarray_with_equal_products	Solution	maxLength	['nums']	None
+3412_find_mirror_score_of_a_string	Solution	calculateScore	['s']	None
+3413_maximum_coins_from_k_consecutive_bags	Solution	maximumCoins	['coins', 'k']	None
+3414_maximum_score_of_non_overlapping_intervals	Solution	maximumWeight	['intervals']	{'return': 'integer[]'}
+3416_subsequences_with_a_unique_middle_mode_ii	Solution	solve	['nums']	None
+3417_zigzag_grid_traversal_with_skip	Solution	zigzagTraversal	['grid']	{'return': 'integer[]'}
+3418_maximum_amount_of_money_robot_can_earn	Solution	maximumAmount	['coins']	None
+3419_minimize_the_maximum_edge_weight_of_graph	Solution	minMaxWeight	['n', 'edges', 'threshold']	None
+3420_count_non_decreasing_subarrays_after_k_operations	Solution	countNonDecreasingSubarrays	['nums', 'k']	None
+3422_minimum_operations_to_make_subarray_elements_equal	Solution	minOperations	['nums', 'k']	None
+3423_maximum_difference_between_adjacent_elements_in_a_circular_array	Solution	maxAdjacentDistance	['nums']	None
+3424_minimum_cost_to_make_arrays_identical	Solution	minCost	['arr', 'brr', 'k']	None
+3425_longest_special_path	Solution	longestSpecialPath	['edges', 'nums']	{'return': 'integer[]'}
+3426_manhattan_distances_of_all_arrangements_of_pieces	Solution	distanceSum	['m', 'n', 'k']	None
+3427_sum_of_variable_length_subarrays	Solution	subarraySum	['nums']	None
+3428_maximum_and_minimum_sums_of_at_most_size_k_subsequences	Solution	minMaxSums	['nums', 'k']	None
+3429_paint_house_iv	Solution	minCost	['n', 'cost']	None
+3430_maximum_and_minimum_sums_of_at_most_size_k_subarrays	Solution	minMaxSubarraySum	['nums', 'k']	None
+3431_minimum_unlocked_indices_to_sort_nums	Solution	minUnlockedIndices	['nums', 'locked']	None
+3432_count_partitions_with_even_sum_difference	Solution	countPartitions	['nums']	None
+3433_count_mentions_per_user	Solution	countMentions	['numberOfUsers', 'events']	{'return': 'integer[]'}
+3434_maximum_frequency_after_subarray_operation	Solution	maxFrequency	['nums', 'k']	None
+3435_frequencies_of_shortest_supersequences	Solution	supersequences	['words']	{'return': 'integer[][]'}
+3437_permutations_iii	Solution	permute	['n']	None
+3438_find_valid_pair_of_adjacent_digits_in_string	Solution	findValidPair	['s']	None
+3439_reschedule_meetings_for_maximum_free_time_i	Solution	maxFreeTime	['eventTime', 'k', 'startTime', 'endTime']	None
+3440_reschedule_meetings_for_maximum_free_time_ii	Solution	maxFreeTime	['eventTime', 'startTime', 'endTime']	None
+3441_minimum_cost_good_caption	Solution	minCostGoodCaption	['caption']	None
+3442_maximum_difference_between_even_and_odd_frequency_i	Solution	maxDifference	['s']	None
+3443_maximum_manhattan_distance_after_k_changes	Solution	maxDistance	['s', 'k']	None
+3444_minimum_increments_for_target_multiples_in_an_array	Solution	minimumIncrements	['nums', 'target']	None
+3445_maximum_difference_between_even_and_odd_frequency_ii	Solution	maxDifference	['s', 'k']	None
+3446_sort_matrix_by_diagonals	Solution	sortMatrix	['grid']	{'return': 'integer[][]'}
+3447_assign_elements_to_groups_with_constraints	Solution	assignElements	['groups', 'elements']	{'return': 'integer[]'}
+3448_count_substrings_divisible_by_last_digit	Solution	countSubstrings	['s']	None
+3449_maximize_the_minimum_game_score	Solution	maxScore	['points', 'm']	None
+3450_maximum_students_on_a_single_bench	Solution	maxStudentsOnBench	['students']	None
+3452_sum_of_good_numbers	Solution	sumOfGoodNumbers	['nums', 'k']	None
+3453_separate_squares_i	Solution	separateSquares	['squares']	None
+3454_separate_squares_ii	Solution	separateSquares	['squares']	None
+3455_shortest_matching_substring	Solution	shortestMatchingSubstring	['s', 'p']	None
+3456_find_special_substring_of_length_k	Solution	hasSpecialSubstring	['s', 'k']	None
+3457_eat_pizzas	Solution	maxWeight	['pizzas']	None
+3458_select_k_disjoint_special_substrings	Solution	maxSubstringLength	['s', 'k']	None
+3459_length_of_longest_v_shaped_diagonal_segment	Solution	lenOfVDiagonal	['grid']	None
+3460_longest_common_prefix_after_at_most_one_removal	Solution	longestCommonPrefix	['s', 't']	None
+3461_check_if_digits_are_equal_in_string_after_operations_i	Solution	hasSameDigits	['s']	None
+3462_maximum_sum_with_at_most_k_elements	Solution	maxSum	['grid', 'limits', 'k']	None
+3463_check_if_digits_are_equal_in_string_after_operations_ii	Solution	hasSameDigits	['s']	None
+3464_maximize_the_distance_between_points_on_a_square	Solution	maxDistance	['side', 'points', 'k']	None
+3466_maximum_coin_collection	Solution	maxCoins	['lane1', 'lane2']	None
+3467_transform_array_by_parity	Solution	transformArray	['nums']	{'return': 'integer[]'}
+3468_find_the_number_of_copy_arrays	Solution	countArrays	['original', 'bounds']	None
+3469_find_minimum_cost_to_remove_array_elements	Solution	minCost	['nums']	None
+3470_permutations_iv	Solution	permute	['n', 'k']	{'return': 'integer[]'}
+3471_find_the_largest_almost_missing_integer	Solution	largestInteger	['nums', 'k']	None
+3472_longest_palindromic_subsequence_after_at_most_k_operations	Solution	longestPalindromicSubsequence	['s', 'k']	None
+3473_sum_of_k_subarrays_with_length_at_least_m	Solution	maxSum	['nums', 'k', 'm']	None
+3474_lexicographically_smallest_generated_string	Solution	generateString	['str1', 'str2']	None
+3476_maximize_profit_from_task_assignment	Solution	maxProfit	['workers', 'tasks']	None
+3477_fruits_into_baskets_ii	Solution	numOfUnplacedFruits	['fruits', 'baskets']	None
+3478_choose_k_elements_with_maximum_sum	Solution	findMaxSum	['nums1', 'nums2', 'k']	{'return': 'integer[]'}
+3479_fruits_into_baskets_iii	Solution	numOfUnplacedFruits	['fruits', 'baskets']	None
+3480_maximize_subarrays_after_removing_one_conflicting_pair	Solution	maxSubarrays	['n', 'conflictingPairs']	None
+3481_apply_substitutions	Solution	applySubstitutions	['replacements', 'text']	None
+3483_unique_3_digit_even_numbers	Solution	totalNumbers	['digits']	None
+3484_design_spreadsheet	Spreadsheet	__init__	['rows']	None
+3485_longest_common_prefix_of_k_strings_after_removal	Solution	longestCommonPrefix	['words', 'k']	{'return': 'integer[]'}
+3486_longest_special_path_ii	Solution	longestSpecialPath	['edges', 'nums']	{'return': 'integer[]'}
+3487_maximum_unique_subarray_sum_after_deletion	Solution	maxSum	['nums']	None
+3488_closest_equal_element_queries	Solution	solveQueries	['nums', 'queries']	{'return': 'integer[]'}
+3489_zero_array_transformation_iv	Solution	minZeroArray	['nums', 'queries']	None
+3490_count_beautiful_numbers	Solution	beautifulNumbers	['l', 'r']	None
+3491_phone_number_prefix	Solution	phonePrefix	['numbers']	None
+3492_maximum_containers_on_a_ship	Solution	maxContainers	['n', 'w', 'maxWeight']	None
+3493_properties_graph	Solution	numberOfComponents	['properties', 'k']	None
+3494_find_the_minimum_amount_of_time_to_brew_potions	Solution	minTime	['skill', 'mana']	None
+3495_minimum_operations_to_make_array_elements_zero	Solution	minOperations	['queries']	None
+3496_maximize_score_after_pair_deletions	Solution	maximizeScore	['nums']	None
+3498_reverse_degree_of_a_string	Solution	reverseDegree	['s']	None
+3499_maximize_active_section_with_trade_i	Solution	maxActiveSectionsAfterTrade	['s']	None
+3500_minimum_cost_to_divide_array_into_subarrays	Solution	minimumCost	['nums', 'cost', 'k']	None
+3501_maximize_active_section_with_trade_ii	Solution	maxActiveSectionsAfterTrade	['s', 'queries']	{'return': 'integer[]'}
+3502_minimum_cost_to_reach_every_position	Solution	minCosts	['cost']	{'return': 'integer[]'}
+3503_longest_palindrome_after_substring_concatenation_i	Solution	longestPalindrome	['s', 't']	None

@@ -1,0 +1,2976 @@
+================================================================================
+0980_unique_paths_iii
+CFG: {"class": "Solution", "method": "uniquePathsIII", "paramOrder": ["grid"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0980 - Unique Paths III
+# https://leetcode.com/problems/unique-paths-iii/
+
+class Solution:
+    def uniquePathsIII(self, grid: list[list[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        empty = 0
+        sr = sc = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] != -1:
+                    empty += 1
+                if grid[i][j] == 1:
+                    sr, sc = i, j
+        self.ans = 0
+
+        def dfs(r: int, c: int, remain: int) -> None:
+            if grid[r][c] == 2:
+                if remain == 1:
+                    self.ans += 1
+                return
+            temp = grid[r][c]
+            grid[r][c] = -1
+            for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+                if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] != -1:
+                    dfs(nr, nc, remain - 1)
+            grid[r][c] = temp
+
+        dfs(sr, sc, empty)
+        return self.ans
+
+
+================================================================================
+0981_time_based_key_value_store
+CFG: {"class": "TimeMap", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 0981 - Time Based Key-Value Store
+# https://leetcode.com/problems/time-based-key-value-store/
+
+from collections import defaultdict
+import bisect
+
+
+class TimeMap:
+    def __init__(self):
+        self.store: dict[str, list[tuple[int, str]]] = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.store[key].append((timestamp, value))
+
+    def get(self, key: str, timestamp: int) -> str:
+        arr = self.store.get(key, [])
+        i = bisect.bisect_right(arr, (timestamp, chr(127))) - 1
+        return arr[i][1] if i >= 0 else ""
+
+
+================================================================================
+0982_triples_with_bitwise_and_equal_to_zero
+CFG: {"class": "Solution", "method": "countTriplets", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0982 - Triples with Bitwise AND Equal To Zero
+# https://leetcode.com/problems/triples-with-bitwise-and-equal-to-zero/
+
+from collections import Counter
+
+
+class Solution:
+    def countTriplets(self, nums: list[int]) -> int:
+        cnt: Counter[int] = Counter()
+        for a in nums:
+            for b in nums:
+                cnt[a & b] += 1
+        ans = 0
+        for c in nums:
+            for ab, times in cnt.items():
+                if ab & c == 0:
+                    ans += times
+        return ans
+
+
+================================================================================
+0983_minimum_cost_for_tickets
+CFG: {"class": "Solution", "method": "mincostTickets", "paramOrder": ["days", "costs"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0983 - Minimum Cost For Tickets
+# https://leetcode.com/problems/minimum-cost-for-tickets/
+
+class Solution:
+    def mincostTickets(self, days: list[int], costs: list[int]) -> int:
+        dayset = set(days)
+        last = days[-1]
+        dp = [0] * (last + 1)
+        for d in range(1, last + 1):
+            if d not in dayset:
+                dp[d] = dp[d - 1]
+            else:
+                dp[d] = min(
+                    dp[d - 1] + costs[0],
+                    dp[max(0, d - 7)] + costs[1],
+                    dp[max(0, d - 30)] + costs[2],
+                )
+        return dp[last]
+
+
+================================================================================
+0984_string_without_aaa_or_bbb
+CFG: {"class": "Solution", "method": "strWithout3a3b", "paramOrder": ["a", "b"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0984 - String Without AAA or BBB
+# https://leetcode.com/problems/string-without-aaa-or-bbb/
+
+class Solution:
+    def strWithout3a3b(self, a: int, b: int) -> str:
+        ans: list[str] = []
+        while a or b:
+            if len(ans) >= 2 and ans[-1] == ans[-2]:
+                write_a = ans[-1] == "b"
+            else:
+                write_a = a >= b
+            if write_a:
+                ans.append("a")
+                a -= 1
+            else:
+                ans.append("b")
+                b -= 1
+        return "".join(ans)
+
+
+================================================================================
+0985_sum_of_even_numbers_after_queries
+CFG: {"class": "Solution", "method": "sumEvenAfterQueries", "paramOrder": ["nums", "queries"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0985 - Sum of Even Numbers After Queries
+# https://leetcode.com/problems/sum-of-even-numbers-after-queries/
+
+class Solution:
+    def sumEvenAfterQueries(self, nums: list[int], queries: list[list[int]]) -> list[int]:
+        even = sum(x for x in nums if x % 2 == 0)
+        ans = []
+        for val, i in queries:
+            if nums[i] % 2 == 0:
+                even -= nums[i]
+            nums[i] += val
+            if nums[i] % 2 == 0:
+                even += nums[i]
+            ans.append(even)
+        return ans
+
+
+================================================================================
+0986_interval_list_intersections
+CFG: {"class": "Solution", "method": "intervalIntersection", "paramOrder": ["firstList", "secondList"], "types": {"return": "integer[][]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0986 - Interval List Intersections
+# https://leetcode.com/problems/interval-list-intersections/
+
+class Solution:
+    def intervalIntersection(
+        self, firstList: list[list[int]], secondList: list[list[int]]
+    ) -> list[list[int]]:
+        i = j = 0
+        ans: list[list[int]] = []
+        while i < len(firstList) and j < len(secondList):
+            lo = max(firstList[i][0], secondList[j][0])
+            hi = min(firstList[i][1], secondList[j][1])
+            if lo <= hi:
+                ans.append([lo, hi])
+            if firstList[i][1] < secondList[j][1]:
+                i += 1
+            else:
+                j += 1
+        return ans
+
+
+================================================================================
+0987_vertical_order_traversal_of_a_binary_tree
+CFG: {"class": "Solution", "method": "verticalTraversal", "paramOrder": ["root"], "types": {"root": "treenode", "return": "integer[][]"}}
+# LeetCode 0987 - Vertical Order Traversal of a Binary Tree
+# https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+from collections import defaultdict
+
+
+class Solution:
+    def verticalTraversal(self, root: Optional[TreeNode]) -> list[list[int]]:
+        nodes: list[tuple[int, int, int]] = []
+
+        def dfs(node: Optional[TreeNode], row: int, col: int) -> None:
+            if not node:
+                return
+            nodes.append((col, row, node.val))
+            dfs(node.left, row + 1, col - 1)
+            dfs(node.right, row + 1, col + 1)
+
+        dfs(root, 0, 0)
+        nodes.sort()
+        ans: dict[int, list[int]] = defaultdict(list)
+        for col, _, val in nodes:
+            ans[col].append(val)
+        return [ans[c] for c in sorted(ans)]
+
+
+================================================================================
+0988_smallest_string_starting_from_leaf
+CFG: {"class": "Solution", "method": "smallestFromLeaf", "paramOrder": ["root"], "types": {"root": "treenode"}}
+# LeetCode 0988 - Smallest String Starting From Leaf
+# https://leetcode.com/problems/smallest-string-starting-from-leaf/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def smallestFromLeaf(self, root: Optional[TreeNode]) -> str:
+        self.best = "~"
+
+        def dfs(node: Optional[TreeNode], path: str) -> None:
+            if not node:
+                return
+            path = chr(ord("a") + node.val) + path
+            if not node.left and not node.right:
+                self.best = min(self.best, path)
+                return
+            dfs(node.left, path)
+            dfs(node.right, path)
+
+        dfs(root, "")
+        return self.best
+
+
+================================================================================
+0989_add_to_array_form_of_integer
+CFG: {"class": "Solution", "method": "addToArrayForm", "paramOrder": ["num", "k"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0989 - Add to Array-Form of Integer
+# https://leetcode.com/problems/add-to-array-form-of-integer/
+
+class Solution:
+    def addToArrayForm(self, num: list[int], k: int) -> list[int]:
+        i = len(num) - 1
+        while k or i >= 0:
+            if i >= 0:
+                k += num[i]
+                num[i] = k % 10
+                i -= 1
+            else:
+                num.insert(0, k % 10)
+            k //= 10
+        return num
+
+
+================================================================================
+0990_satisfiability_of_equality_equations
+CFG: {"class": "Solution", "method": "equationsPossible", "paramOrder": ["equations"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0990 - Satisfiability of Equality Equations
+# https://leetcode.com/problems/satisfiability-of-equality-equations/
+
+class Solution:
+    def equationsPossible(self, equations: list[str]) -> bool:
+        parent = list(range(26))
+
+        def find(x: int) -> int:
+            while parent[x] != x:
+                parent[x] = parent[parent[x]]
+                x = parent[x]
+            return x
+
+        for eq in equations:
+            if eq[1] == "=":
+                parent[find(ord(eq[0]) - 97)] = find(ord(eq[3]) - 97)
+        for eq in equations:
+            if eq[1] == "!" and find(ord(eq[0]) - 97) == find(ord(eq[3]) - 97):
+                return False
+        return True
+
+
+================================================================================
+0991_broken_calculator
+CFG: {"class": "Solution", "method": "brokenCalc", "paramOrder": ["startValue", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0991 - Broken Calculator
+# https://leetcode.com/problems/broken-calculator/
+
+class Solution:
+    def brokenCalc(self, startValue: int, target: int) -> int:
+        ans = 0
+        while target > startValue:
+            if target % 2:
+                target += 1
+            else:
+                target //= 2
+            ans += 1
+        return ans + startValue - target
+
+
+================================================================================
+0992_subarrays_with_k_different_integers
+CFG: {"class": "Solution", "method": "subarraysWithKDistinct", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0992 - Subarrays with K Different Integers
+# https://leetcode.com/problems/subarrays-with-k-different-integers/
+
+from collections import defaultdict
+
+
+class Solution:
+    def subarraysWithKDistinct(self, nums: list[int], k: int) -> int:
+        def at_most(m: int) -> int:
+            count: dict[int, int] = defaultdict(int)
+            left = ans = 0
+            for right, x in enumerate(nums):
+                count[x] += 1
+                while len(count) > m:
+                    count[nums[left]] -= 1
+                    if count[nums[left]] == 0:
+                        del count[nums[left]]
+                    left += 1
+                ans += right - left + 1
+            return ans
+
+        return at_most(k) - at_most(k - 1)
+
+
+================================================================================
+0993_cousins_in_binary_tree
+CFG: {"class": "Solution", "method": "isCousins", "paramOrder": ["root", "x", "y"], "types": {"root": "treenode"}}
+# LeetCode 0993 - Cousins in Binary Tree
+# https://leetcode.com/problems/cousins-in-binary-tree/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def isCousins(self, root: Optional[TreeNode], x: int, y: int) -> bool:
+        info: dict[int, tuple[int, Optional[TreeNode]]] = {}
+
+        def dfs(node: Optional[TreeNode], parent: Optional[TreeNode], depth: int) -> None:
+            if not node:
+                return
+            if node.val in (x, y):
+                info[node.val] = (depth, parent)
+            dfs(node.left, node, depth + 1)
+            dfs(node.right, node, depth + 1)
+
+        dfs(root, None, 0)
+        return info[x][0] == info[y][0] and info[x][1] is not info[y][1]
+
+
+================================================================================
+0994_rotting_oranges
+CFG: {"class": "Solution", "method": "orangesRotting", "paramOrder": ["grid"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0994 - Rotting Oranges
+# https://leetcode.com/problems/rotting-oranges/
+
+from collections import deque
+
+
+class Solution:
+    def orangesRotting(self, grid: list[list[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        queue: deque[tuple[int, int]] = deque()
+        fresh = 0
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 2:
+                    queue.append((i, j))
+                elif grid[i][j] == 1:
+                    fresh += 1
+        minutes = 0
+        while queue and fresh:
+            for _ in range(len(queue)):
+                r, c = queue.popleft()
+                for nr, nc in ((r + 1, c), (r - 1, c), (r, c + 1), (r, c - 1)):
+                    if 0 <= nr < m and 0 <= nc < n and grid[nr][nc] == 1:
+                        grid[nr][nc] = 2
+                        fresh -= 1
+                        queue.append((nr, nc))
+            minutes += 1
+        return minutes if fresh == 0 else -1
+
+
+================================================================================
+0995_minimum_number_of_k_consecutive_bit_flips
+CFG: {"class": "Solution", "method": "minKBitFlips", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0995 - Minimum Number of K Consecutive Bit Flips
+# https://leetcode.com/problems/minimum-number-of-k-consecutive-bit-flips/
+
+class Solution:
+    def minKBitFlips(self, nums: list[int], k: int) -> int:
+        n = len(nums)
+        flip = [0] * n
+        ans = flipped = 0
+        for i, bit in enumerate(nums):
+            if i >= k:
+                flipped ^= flip[i - k]
+            if bit == flipped:
+                if i + k > n:
+                    return -1
+                ans += 1
+                flipped ^= 1
+                flip[i] = 1
+        return ans
+
+
+================================================================================
+0996_number_of_squareful_arrays
+CFG: {"class": "Solution", "method": "numSquarefulPerms", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0996 - Number of Squareful Arrays
+# https://leetcode.com/problems/number-of-squareful-arrays/
+
+from collections import Counter
+from math import isqrt
+
+
+class Solution:
+    def numSquarefulPerms(self, nums: list[int]) -> int:
+        count = Counter(nums)
+        graph = {x: [] for x in count}
+        for a in count:
+            for b in count:
+                s = a + b
+                r = isqrt(s)
+                if r * r == s:
+                    graph[a].append(b)
+        self.ans = 0
+
+        def dfs(x: int, remain: int) -> None:
+            if remain == 0:
+                self.ans += 1
+                return
+            for y in graph[x]:
+                if count[y]:
+                    count[y] -= 1
+                    dfs(y, remain - 1)
+                    count[y] += 1
+
+        for x in count:
+            count[x] -= 1
+            dfs(x, len(nums) - 1)
+            count[x] += 1
+        return self.ans
+
+
+================================================================================
+0997_find_the_town_judge
+CFG: {"class": "Solution", "method": "findJudge", "paramOrder": ["n", "trust"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0997 - Find the Town Judge
+# https://leetcode.com/problems/find-the-town-judge/
+
+class Solution:
+    def findJudge(self, n: int, trust: list[list[int]]) -> int:
+        score = [0] * (n + 1)
+        for a, b in trust:
+            score[a] -= 1
+            score[b] += 1
+        for i in range(1, n + 1):
+            if score[i] == n - 1:
+                return i
+        return -1
+
+
+================================================================================
+0998_maximum_binary_tree_ii
+CFG: {"class": "Solution", "method": "insertIntoMaxTree", "paramOrder": ["root", "val"], "types": {"root": "treenode", "return": "treenode"}}
+# LeetCode 0998 - Maximum Binary Tree II
+# https://leetcode.com/problems/maximum-binary-tree-ii/
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val: int = 0, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def insertIntoMaxTree(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
+        if not root or val > root.val:
+            node = TreeNode(val)
+            node.left = root
+            return node
+        root.right = self.insertIntoMaxTree(root.right, val)
+        return root
+
+
+================================================================================
+0999_available_captures_for_rook
+CFG: {"class": "Solution", "method": "numRookCaptures", "paramOrder": ["board"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 0999 - Available Captures for Rook
+# https://leetcode.com/problems/available-captures-for-rook/
+
+class Solution:
+    def numRookCaptures(self, board: list[list[str]]) -> int:
+        m, n = len(board), len(board[0])
+        r = c = -1
+        for i in range(m):
+            for j in range(len(board[i])):
+                if board[i][j] == "R":
+                    r, c = i, j
+        if r < 0:
+            return 0
+        ans = 0
+        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            i, j = r + dr, c + dc
+            while 0 <= i < m and 0 <= j < len(board[i]):
+                if board[i][j] == "B":
+                    break
+                if board[i][j] == "p":
+                    ans += 1
+                    break
+                i += dr
+                j += dc
+        return ans
+
+
+================================================================================
+2000_reverse_prefix_of_word
+CFG: {"class": "Solution", "method": "reversePrefix", "paramOrder": ["word", "ch"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        i = word.find(ch)
+        if i < 0:
+            return word
+        return word[: i + 1][::-1] + word[i + 1 :]
+
+
+================================================================================
+2001_number_of_pairs_of_interchangeable_rectangles
+CFG: {"class": "Solution", "method": "interchangeableRectangles", "paramOrder": ["rectangles"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2001 - Number of Pairs of Interchangeable Rectangles
+# https://leetcode.com/problems/number-of-pairs-of-interchangeable-rectangles/
+
+from typing import List
+
+
+class Solution:
+    def interchangeableRectangles(self, rectangles: List[List[int]]) -> int:
+        def gcd(a: int, b: int) -> int:
+            while b:
+                a, b = b, a % b
+            return a
+
+        freq = {}
+        ans = 0
+        for w, h in rectangles:
+            g = gcd(w, h)
+            key = (w // g, h // g)
+            f = freq.get(key, 0)
+            ans += f
+            freq[key] = f + 1
+        return ans
+
+
+================================================================================
+2002_maximum_product_of_the_length_of_two_palindromic_subsequences
+CFG: {"class": "Solution", "method": "maxProduct", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2002 - Maximum Product of the Length of Two Palindromic Subsequences
+# https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/
+
+
+class Solution:
+    def maxProduct(self, s: str) -> int:
+        def pal_len(mask: int) -> int:
+            chars = []
+            for i, ch in enumerate(s):
+                if mask & (1 << i):
+                    chars.append(ch)
+            l, r = 0, len(chars) - 1
+            while l < r:
+                if chars[l] != chars[r]:
+                    return 0
+                l += 1
+                r -= 1
+            return len(chars)
+
+        n = len(s)
+        best = 0
+        total = 1 << n
+        for mask1 in range(1, total):
+            len1 = pal_len(mask1)
+            if len1 == 0:
+                continue
+            remain = (total - 1) ^ mask1
+            mask2 = remain
+            while mask2:
+                len2 = pal_len(mask2)
+                if len2 > 0 and len1 * len2 > best:
+                    best = len1 * len2
+                mask2 = (mask2 - 1) & remain
+        return best
+
+
+================================================================================
+2003_smallest_missing_genetic_value_in_each_subtree
+CFG: {"class": "Solution", "method": "smallestMissingValueSubtree", "paramOrder": ["parents", "nums"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2003 - Smallest Missing Genetic Value in Each Subtree
+# https://leetcode.com/problems/smallest-missing-genetic-value-in-each-subtree/
+
+from typing import List
+
+
+class Solution:
+    def smallestMissingValueSubtree(self, parents: List[int], nums: List[int]) -> List[int]:
+        n = len(parents)
+        children = [[] for _ in range(n)]
+        for i in range(1, n):
+            children[parents[i]].append(i)
+        ans = [1] * n
+        one = -1
+        for i, v in enumerate(nums):
+            if v == 1:
+                one = i
+                break
+        if one < 0:
+            return ans
+        seen = set()
+
+        def collect(u: int) -> None:
+            if nums[u] in seen:
+                return
+            seen.add(nums[u])
+            for v in children[u]:
+                collect(v)
+
+        miss, node, prev = 1, one, -1
+        while node != -1:
+            for v in children[node]:
+                if v != prev:
+                    collect(v)
+            seen.add(nums[node])
+            while miss in seen:
+                miss += 1
+            ans[node] = miss
+            prev = node
+            node = parents[node]
+        return ans
+
+
+================================================================================
+2005_subtree_removal_game_with_fibonacci_tree
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["n"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2005 - Subtree Removal Game with Fibonacci Tree
+# https://leetcode.com/problems/subtree-removal-game-with-fibonacci-tree/
+
+
+class Solution:
+    def findGameWinner(self, n: int) -> bool:
+        return n % 6 != 1
+
+
+================================================================================
+2006_count_number_of_pairs_with_absolute_difference_k
+CFG: {"class": "Solution", "method": "countKDifference", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2006 - Count Number of Pairs With Absolute Difference K
+# https://leetcode.com/problems/count-number-of-pairs-with-absolute-difference-k/
+
+from typing import List
+
+
+class Solution:
+    def countKDifference(self, nums: List[int], k: int) -> int:
+        freq = {}
+        ans = 0
+        for x in nums:
+            ans += freq.get(x - k, 0)
+            ans += freq.get(x + k, 0)
+            freq[x] = freq.get(x, 0) + 1
+        return ans
+
+
+================================================================================
+2007_find_original_array_from_doubled_array
+CFG: {"class": "Solution", "method": "findOriginalArray", "paramOrder": ["changed"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2007 - Find Original Array From Doubled Array
+# https://leetcode.com/problems/find-original-array-from-doubled-array/
+
+from typing import List
+
+
+class Solution:
+    def findOriginalArray(self, changed: List[int]) -> List[int]:
+        if len(changed) % 2 != 0:
+            return []
+        changed.sort()
+        freq = {}
+        for x in changed:
+            freq[x] = freq.get(x, 0) + 1
+        ans = []
+        for x in changed:
+            if freq.get(x, 0) == 0:
+                continue
+            freq[x] -= 1
+            if freq.get(2 * x, 0) == 0:
+                return []
+            freq[2 * x] -= 1
+            ans.append(x)
+        return ans
+
+
+================================================================================
+2008_maximum_earnings_from_taxi
+CFG: {"class": "Solution", "method": "maxTaxiEarnings", "paramOrder": ["n", "rides"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2008 - Maximum Earnings From Taxi
+# https://leetcode.com/problems/maximum-earnings-from-taxi/
+
+from typing import List
+
+
+class Solution:
+    def maxTaxiEarnings(self, n: int, rides: List[List[int]]) -> int:
+        rides.sort(key=lambda r: r[1])
+        m = len(rides)
+        ends = [r[1] for r in rides]
+        dp = [0] * (m + 1)
+        for i, (start, end, tip) in enumerate(rides):
+            earn = end - start + tip
+            lo, hi = 0, m
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if ends[mid] <= start:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            dp[i + 1] = max(dp[i], earn + dp[lo])
+        return dp[m]
+
+
+================================================================================
+2009_minimum_number_of_operations_to_make_array_continuous
+CFG: {"class": "Solution", "method": "minOperations", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2009 - Minimum Number of Operations to Make Array Continuous
+# https://leetcode.com/problems/minimum-number-of-operations-to-make-array-continuous/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        n = len(nums)
+        uniq = sorted(set(nums))
+        ans, j = n, 0
+        for i in range(len(uniq)):
+            while j < len(uniq) and uniq[j] - uniq[i] + 1 <= n:
+                j += 1
+            ans = min(ans, n - (j - i))
+        return ans
+
+
+================================================================================
+2011_final_value_of_variable_after_performing_operations
+CFG: {"class": "--X", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2011 - Final Value of Variable After Performing Operations
+# https://leetcode.com/problems/final-value-of-variable-after-performing-operations/
+
+from typing import List
+
+
+class Solution:
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        x = 0
+        for op in operations:
+            if op[1] == "+":
+                x += 1
+            else:
+                x -= 1
+        return x
+
+
+================================================================================
+2012_sum_of_beauty_in_the_array
+CFG: {"class": "Solution", "method": "sumOfBeauties", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2012 - Sum of Beauty in the Array
+# https://leetcode.com/problems/sum-of-beauty-in-the-array/
+
+from typing import List
+
+
+class Solution:
+    def sumOfBeauties(self, nums: List[int]) -> int:
+        n = len(nums)
+        prefix_max = [0] * n
+        suffix_min = [0] * n
+        prefix_max[0] = nums[0]
+        for i in range(1, n):
+            prefix_max[i] = max(prefix_max[i - 1], nums[i])
+        suffix_min[n - 1] = nums[n - 1]
+        for i in range(n - 2, -1, -1):
+            suffix_min[i] = min(suffix_min[i + 1], nums[i])
+        ans = 0
+        for i in range(1, n - 1):
+            if prefix_max[i - 1] < nums[i] < suffix_min[i + 1]:
+                ans += 2
+            elif nums[i - 1] < nums[i] < nums[i + 1]:
+                ans += 1
+        return ans
+
+
+================================================================================
+2013_detect_squares
+CFG: {"class": "DetectSquares", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2013 - Detect Squares
+# https://leetcode.com/problems/detect-squares/
+
+from typing import List
+
+
+class DetectSquares:
+    def __init__(self):
+        self.cnt = {}
+
+    def _key(self, x: int, y: int) -> str:
+        return f"{x},{y}"
+
+    def add(self, point: List[int]) -> None:
+        k = self._key(point[0], point[1])
+        self.cnt[k] = self.cnt.get(k, 0) + 1
+
+    def count(self, point: List[int]) -> int:
+        x, y = point[0], point[1]
+        ans = 0
+        for k, c in self.cnt.items():
+            px, py = map(int, k.split(","))
+            if px == x or py == y:
+                continue
+            if abs(px - x) != abs(py - y):
+                continue
+            c1 = self.cnt.get(self._key(px, y), 0)
+            c2 = self.cnt.get(self._key(x, py), 0)
+            ans += c * c1 * c2
+        return ans
+
+
+================================================================================
+2014_longest_subsequence_repeated_k_times
+CFG: {"class": "Solution", "method": "longestSubsequenceRepeatedK", "paramOrder": ["s", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2014 - Longest Subsequence Repeated k Times
+# https://leetcode.com/problems/longest-subsequence-repeated-k-times/
+
+from collections import deque
+
+
+class Solution:
+    def longestSubsequenceRepeatedK(self, s: str, k: int) -> str:
+        freq = [0] * 26
+        for c in s:
+            freq[ord(c) - 97] += 1
+        chars = "".join(chr(97 + c) for c in range(25, -1, -1) if freq[c] >= k)
+
+        def is_subseq(t: str) -> bool:
+            need = 0
+            times = 0
+            for ch in s:
+                if ch == t[need]:
+                    need += 1
+                    if need == len(t):
+                        times += 1
+                        if times == k:
+                            return True
+                        need = 0
+            return False
+
+        best = ""
+        q = deque([""])
+        while q:
+            cur = q.popleft()
+            for ch in chars:
+                nxt = cur + ch
+                if is_subseq(nxt):
+                    if len(nxt) > len(best) or (len(nxt) == len(best) and nxt > best):
+                        best = nxt
+                    q.append(nxt)
+        return best
+
+
+================================================================================
+2015_average_height_of_buildings_in_each_segment
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["buildings"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2015 - Average Height of Buildings in Each Segment
+# https://leetcode.com/problems/average-height-of-buildings-in-each-segment/
+
+from typing import List
+
+
+class Solution:
+    def averageHeightOfBuildings(self, buildings: List[List[int]]) -> List[List[int]]:
+        events = []
+        for left, right, h in buildings:
+            events.append((left, 1, h))
+            events.append((right, -1, h))
+        events.sort(key=lambda e: (e[0], e[1]))
+        ans = []
+        count = 0
+        total = 0
+        prev = events[0][0]
+        for pos, typ, h in events:
+            if pos != prev and count > 0:
+                avg = total // count
+                if ans and ans[-1][1] == prev and ans[-1][2] == avg:
+                    ans[-1][1] = pos
+                else:
+                    ans.append([prev, pos, avg])
+            count += typ
+            total += typ * h
+            prev = pos
+        return ans
+
+
+================================================================================
+2016_maximum_difference_between_increasing_elements
+CFG: {"class": "Solution", "method": "maximumDifference", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2016 - Maximum Difference Between Increasing Elements
+# https://leetcode.com/problems/maximum-difference-between-increasing-elements/
+
+from typing import List
+
+
+class Solution:
+    def maximumDifference(self, nums: List[int]) -> int:
+        ans = -1
+        mn = nums[0]
+        for i in range(1, len(nums)):
+            if nums[i] > mn:
+                ans = max(ans, nums[i] - mn)
+            else:
+                mn = nums[i]
+        return ans
+
+
+================================================================================
+2017_grid_game
+CFG: {"class": "Solution", "method": "gridGame", "paramOrder": ["grid"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2017 - Grid Game
+# https://leetcode.com/problems/grid-game/
+
+from typing import List
+
+
+class Solution:
+    def gridGame(self, grid: List[List[int]]) -> int:
+        n = len(grid[0])
+        top = sum(grid[0])
+        bottom = 0
+        ans = 10**18
+        for i in range(n):
+            top -= grid[0][i]
+            ans = min(ans, max(top, bottom))
+            bottom += grid[1][i]
+        return ans
+
+
+================================================================================
+2018_check_if_word_can_be_placed_in_crossword
+CFG: {"class": "Solution", "method": "placeWordInCrossword", "paramOrder": ["board", "word"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2018 - Check if Word Can Be Placed In Crossword
+# https://leetcode.com/problems/check-if-word-can-be-placed-in-crossword/
+
+from typing import List
+
+
+class Solution:
+    def placeWordInCrossword(self, board: List[List[str]], word: str) -> bool:
+        m, n, L = len(board), len(board[0]), len(word)
+
+        def match(cells: str) -> bool:
+            if len(cells) != L:
+                return False
+            ok1 = ok2 = True
+            for i in range(L):
+                if cells[i] != " " and cells[i] != word[i]:
+                    ok1 = False
+                if cells[i] != " " and cells[i] != word[L - 1 - i]:
+                    ok2 = False
+            return ok1 or ok2
+
+        for r in range(m):
+            c = 0
+            while c < n:
+                while c < n and board[r][c] == "#":
+                    c += 1
+                start = c
+                while c < n and board[r][c] != "#":
+                    c += 1
+                if c - start == L:
+                    sb = "".join(board[r][i] for i in range(start, c))
+                    if match(sb):
+                        return True
+        for c in range(n):
+            r = 0
+            while r < m:
+                while r < m and board[r][c] == "#":
+                    r += 1
+                start = r
+                while r < m and board[r][c] != "#":
+                    r += 1
+                if r - start == L:
+                    sb = "".join(board[start + i][c] for i in range(L))
+                    if match(sb):
+                        return True
+        return False
+
+
+================================================================================
+2019_the_score_of_students_solving_math_expression
+CFG: {"class": "Solution", "method": "scoreOfStudents", "paramOrder": ["s", "answers"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2019 - The Score of Students Solving Math Expression
+# https://leetcode.com/problems/the-score-of-students-solving-math-expression/
+
+from typing import List, Set
+
+
+class Solution:
+    def scoreOfStudents(self, s: str, answers: List[int]) -> int:
+        def eval_correct(expr: str) -> int:
+            nums, ops = [], []
+            for c in expr:
+                if "0" <= c <= "9":
+                    nums.append(ord(c) - 48)
+                else:
+                    ops.append(c)
+            new_nums = [nums[0]]
+            new_ops = []
+            for j, op in enumerate(ops):
+                if op == "*":
+                    new_nums[-1] *= nums[j + 1]
+                else:
+                    new_ops.append(op)
+                    new_nums.append(nums[j + 1])
+            res = new_nums[0]
+            for j in range(len(new_ops)):
+                res += new_nums[j + 1]
+            return res
+
+        n = len(s)
+        correct = eval_correct(s)
+        dp = [[None] * n for _ in range(n)]
+
+        def dfs(l: int, r: int) -> Set[int]:
+            if dp[l][r] is not None:
+                return dp[l][r]
+            res = set()
+            if l == r:
+                res.add(ord(s[l]) - 48)
+                dp[l][r] = res
+                return res
+            for i in range(l + 1, r, 2):
+                for a in dfs(l, i - 1):
+                    for b in dfs(i + 1, r):
+                        v = a + b if s[i] == "+" else a * b
+                        if v <= 1000:
+                            res.add(v)
+            dp[l][r] = res
+            return res
+
+        possible = dfs(0, n - 1)
+        ans = 0
+        for a in answers:
+            if a == correct:
+                ans += 5
+            elif a in possible:
+                ans += 2
+        return ans
+
+
+================================================================================
+2021_brightest_position_on_street
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["lights"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2021 - Brightest Position on Street
+# https://leetcode.com/problems/brightest-position-on-street/
+
+from typing import List
+
+
+class Solution:
+    def brightestPosition(self, lights: List[List[int]]) -> int:
+        events = []
+        for pos, r in lights:
+            events.append((pos - r, 1))
+            events.append((pos + r + 1, -1))
+        events.sort(key=lambda e: (e[0], -e[1]))
+        best = 0
+        cur = 0
+        ans = 0
+        for pos, d in events:
+            cur += d
+            if cur > best:
+                best = cur
+                ans = pos
+        return ans
+
+
+================================================================================
+2022_convert_1d_array_into_2d_array
+CFG: {"class": "Solution", "method": "construct2DArray", "paramOrder": ["original", "m", "n"], "types": {"return": "integer[][]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2022 - Convert 1D Array Into 2D Array
+# https://leetcode.com/problems/convert-1d-array-into-2d-array/
+
+from typing import List
+
+
+class Solution:
+    def construct2DArray(self, original: List[int], m: int, n: int) -> List[List[int]]:
+        if len(original) != m * n:
+            return []
+        ans = [[0] * n for _ in range(m)]
+        for i in range(m):
+            for j in range(n):
+                ans[i][j] = original[i * n + j]
+        return ans
+
+
+================================================================================
+2023_number_of_pairs_of_strings_with_concatenation_equal_to_target
+CFG: {"class": "Solution", "method": "numOfPairs", "paramOrder": ["nums", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2023 - Number of Pairs of Strings With Concatenation Equal to Target
+# https://leetcode.com/problems/number-of-pairs-of-strings-with-concatenation-equal-to-target/
+
+from typing import List
+
+
+class Solution:
+    def numOfPairs(self, nums: List[str], target: str) -> int:
+        ans = 0
+        for i in range(len(nums)):
+            for j in range(len(nums)):
+                if i != j and nums[i] + nums[j] == target:
+                    ans += 1
+        return ans
+
+
+================================================================================
+2024_maximize_the_confusion_of_an_exam
+CFG: {"class": "Solution", "method": "maxConsecutiveAnswers", "paramOrder": ["answerKey", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2024 - Maximize the Confusion of an Exam
+# https://leetcode.com/problems/maximize-the-confusion-of-an-exam/
+
+
+class Solution:
+    def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
+        def max_with(ch: str) -> int:
+            left = bad = best = 0
+            for right, c in enumerate(answerKey):
+                if c != ch:
+                    bad += 1
+                while bad > k:
+                    if answerKey[left] != ch:
+                        bad -= 1
+                    left += 1
+                best = max(best, right - left + 1)
+            return best
+
+        return max(max_with("T"), max_with("F"))
+
+
+================================================================================
+2025_maximum_number_of_ways_to_partition_an_array
+CFG: {"class": "Solution", "method": "waysToPartition", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2025 - Maximum Number of Ways to Partition an Array
+# https://leetcode.com/problems/maximum-number-of-ways-to-partition-an-array/
+
+from typing import List
+
+
+class Solution:
+    def waysToPartition(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        pref = [0] * n
+        pref[0] = nums[0]
+        for i in range(1, n):
+            pref[i] = pref[i - 1] + nums[i]
+        total = pref[n - 1]
+        right, left = {}, {}
+        for i in range(n - 1):
+            right[pref[i]] = right.get(pref[i], 0) + 1
+        ans = 0
+        if total % 2 == 0:
+            ans = right.get(total // 2, 0)
+        for i in range(n):
+            diff = k - nums[i]
+            new_total = total + diff
+            cur = 0
+            if new_total % 2 == 0:
+                half = new_total // 2
+                cur = left.get(half, 0) + right.get(half - diff, 0)
+            ans = max(ans, cur)
+            if i < n - 1:
+                left[pref[i]] = left.get(pref[i], 0) + 1
+                right[pref[i]] -= 1
+        return ans
+
+
+================================================================================
+2027_minimum_moves_to_convert_string
+CFG: {"class": "Solution", "method": "minimumMoves", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2027 - Minimum Moves to Convert String
+# https://leetcode.com/problems/minimum-moves-to-convert-string/
+
+
+class Solution:
+    def minimumMoves(self, s: str) -> int:
+        ans = 0
+        i = 0
+        while i < len(s):
+            if s[i] == "X":
+                ans += 1
+                i += 3
+            else:
+                i += 1
+        return ans
+
+
+================================================================================
+2028_find_missing_observations
+CFG: {"class": "Solution", "method": "missingRolls", "paramOrder": ["rolls", "mean", "n"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2028 - Find Missing Observations
+# https://leetcode.com/problems/find-missing-observations/
+
+from typing import List
+
+
+class Solution:
+    def missingRolls(self, rolls: List[int], mean: int, n: int) -> List[int]:
+        remain = mean * (len(rolls) + n) - sum(rolls)
+        if remain < n or remain > 6 * n:
+            return []
+        base_val, extra = divmod(remain, n)
+        return [base_val + (1 if i < extra else 0) for i in range(n)]
+
+
+================================================================================
+2029_stone_game_ix
+CFG: {"class": "Solution", "method": "stoneGameIX", "paramOrder": ["stones"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2029 - Stone Game IX
+# https://leetcode.com/problems/stone-game-ix/
+
+from typing import List
+
+
+class Solution:
+    def stoneGameIX(self, stones: List[int]) -> bool:
+        cnt = [0, 0, 0]
+        for s in stones:
+            cnt[s % 3] += 1
+        if cnt[0] % 2 == 0:
+            return cnt[1] > 0 and cnt[2] > 0
+        return abs(cnt[1] - cnt[2]) > 2
+
+
+================================================================================
+2030_smallest_k_length_subsequence_with_occurrences_of_a_letter
+CFG: {"class": "Solution", "method": "smallestSubsequence", "paramOrder": ["s", "k", "letter", "repetition"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2030 - Smallest K-Length Subsequence With Occurrences of a Letter
+# https://leetcode.com/problems/smallest-k-length-subsequence-with-occurrences-of-a-letter/
+
+
+class Solution:
+    def smallestSubsequence(self, s: str, k: int, letter: str, repetition: int) -> str:
+        n = len(s)
+        remain_letter = sum(1 for c in s if c == letter)
+        stack = []
+        in_stack_letter = 0
+        for i, ch in enumerate(s):
+            while stack and ch < stack[-1] and len(stack) + n - i > k:
+                top = stack[-1]
+                if top == letter:
+                    if in_stack_letter + remain_letter - 1 < repetition:
+                        break
+                    in_stack_letter -= 1
+                stack.pop()
+            if len(stack) < k:
+                if ch == letter:
+                    stack.append(ch)
+                    in_stack_letter += 1
+                elif k - len(stack) > repetition - in_stack_letter:
+                    stack.append(ch)
+            if ch == letter:
+                remain_letter -= 1
+        return "".join(stack)
+
+
+================================================================================
+2031_count_subarrays_with_more_ones_than_zeros
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2031 - Count Subarrays With More Ones Than Zeros
+# https://leetcode.com/problems/count-subarrays-with-more-ones-than-zeros/
+
+from typing import List
+
+
+class Fenwick:
+    def __init__(self, n: int):
+        self.bit = [0] * (n + 2)
+
+    def add(self, i: int, v: int) -> None:
+        while i < len(self.bit):
+            self.bit[i] += v
+            i += i & -i
+
+    def sum(self, i: int) -> int:
+        s = 0
+        while i > 0:
+            s += self.bit[i]
+            i -= i & -i
+        return s
+
+
+class Solution:
+    def subarraysWithMoreZerosThanOnes(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+        n = len(nums)
+        offset = n + 1
+        fw = Fenwick(2 * n + 5)
+        pref = 0
+        ans = 0
+        fw.add(offset, 1)
+        for x in nums:
+            pref += 1 if x == 1 else -1
+            idx = pref + offset
+            ans = (ans + fw.sum(idx - 1)) % MOD
+            fw.add(idx, 1)
+        return ans
+
+
+================================================================================
+2032_two_out_of_three
+CFG: {"class": "Solution", "method": "twoOutOfThree", "paramOrder": ["nums1", "nums2", "nums3"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2032 - Two Out of Three
+# https://leetcode.com/problems/two-out-of-three/
+
+from typing import List
+
+
+class Solution:
+    def twoOutOfThree(self, nums1: List[int], nums2: List[int], nums3: List[int]) -> List[int]:
+        s0, s1, s2 = set(nums1), set(nums2), set(nums3)
+        ans = []
+        for v in range(1, 101):
+            c = (v in s0) + (v in s1) + (v in s2)
+            if c >= 2:
+                ans.append(v)
+        return ans
+
+
+================================================================================
+2033_minimum_operations_to_make_a_uni_value_grid
+CFG: {"class": "Solution", "method": "minOperations", "paramOrder": ["grid", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2033 - Minimum Operations to Make a Uni-Value Grid
+# https://leetcode.com/problems/minimum-operations-to-make-a-uni-value-grid/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, grid: List[List[int]], x: int) -> int:
+        vals = []
+        bas = grid[0][0] % x
+        for row in grid:
+            for v in row:
+                if v % x != bas:
+                    return -1
+                vals.append(v)
+        vals.sort()
+        median = vals[len(vals) // 2]
+        return sum(abs(v - median) // x for v in vals)
+
+
+================================================================================
+2034_stock_price_fluctuation
+CFG: {"class": "StockPrice", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2034 - Stock Price Fluctuation
+# https://leetcode.com/problems/stock-price-fluctuation/
+
+import heapq
+
+
+class StockPrice:
+    def __init__(self):
+        self.latest_ts = 0
+        self.price_at = {}
+        self.max_heap = []
+        self.min_heap = []
+
+    def update(self, timestamp: int, price: int) -> None:
+        self.price_at[timestamp] = price
+        if timestamp >= self.latest_ts:
+            self.latest_ts = timestamp
+        heapq.heappush(self.max_heap, (-price, timestamp))
+        heapq.heappush(self.min_heap, (price, timestamp))
+
+    def current(self) -> int:
+        return self.price_at[self.latest_ts]
+
+    def maximum(self) -> int:
+        while True:
+            price, ts = self.max_heap[0]
+            price = -price
+            if self.price_at[ts] == price:
+                return price
+            heapq.heappop(self.max_heap)
+
+    def minimum(self) -> int:
+        while True:
+            price, ts = self.min_heap[0]
+            if self.price_at[ts] == price:
+                return price
+            heapq.heappop(self.min_heap)
+
+
+================================================================================
+2035_partition_array_into_two_arrays_to_minimize_sum_difference
+CFG: {"class": "Solution", "method": "minimumDifference", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2035 - Partition Array Into Two Arrays to Minimize Sum Difference
+# https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+
+from typing import List
+
+
+class Solution:
+    def minimumDifference(self, nums: List[int]) -> int:
+        n = len(nums) // 2
+        total = sum(nums)
+        left, right = nums[:n], nums[n:]
+
+        def sums_by_count(arr: List[int]) -> List[List[int]]:
+            m = len(arr)
+            res = [[] for _ in range(m + 1)]
+            for mask in range(1 << m):
+                s = c = 0
+                for i in range(m):
+                    if mask & (1 << i):
+                        s += arr[i]
+                        c += 1
+                res[c].append(s)
+            for v in res:
+                v.sort()
+            return res
+
+        L = sums_by_count(left)
+        R = sums_by_count(right)
+        ans = 10**18
+        for k in range(n + 1):
+            arr = R[n - k]
+            for s1 in L[k]:
+                need = total // 2 - s1
+                lo, hi = 0, len(arr)
+                while lo < hi:
+                    mid = (lo + hi) >> 1
+                    if arr[mid] < need:
+                        lo = mid + 1
+                    else:
+                        hi = mid
+                for j in (lo - 1, lo):
+                    if 0 <= j < len(arr):
+                        s2 = arr[j]
+                        ans = min(ans, abs(total - 2 * (s1 + s2)))
+        return ans
+
+
+================================================================================
+2036_maximum_alternating_subarray_sum
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2036 - Maximum Alternating Subarray Sum
+# https://leetcode.com/problems/maximum-alternating-subarray-sum/
+
+from typing import List
+
+
+class Solution:
+    def maximumAlternatingSubarraySum(self, nums: List[int]) -> int:
+        ans = -10**18
+        even = 0
+        for i, x in enumerate(nums):
+            if i % 2 == 0:
+                even += x
+            else:
+                even = max(0, even - x)
+            ans = max(ans, even)
+        odd = 0
+        for i in range(1, len(nums)):
+            x = nums[i]
+            if i % 2 == 1:
+                odd += x
+            else:
+                odd = max(0, odd - x)
+            ans = max(ans, odd)
+        return ans
+
+
+================================================================================
+2037_minimum_number_of_moves_to_seat_everyone
+CFG: {"class": "Solution", "method": "minMovesToSeat", "paramOrder": ["seats", "students"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2037 - Minimum Number of Moves to Seat Everyone
+# https://leetcode.com/problems/minimum-number-of-moves-to-seat-everyone/
+
+from typing import List
+
+
+class Solution:
+    def minMovesToSeat(self, seats: List[int], students: List[int]) -> int:
+        seats.sort()
+        students.sort()
+        return sum(abs(a - b) for a, b in zip(seats, students))
+
+
+================================================================================
+2038_remove_colored_pieces_if_both_neighbors_are_the_same_color
+CFG: {"class": "Solution", "method": "winnerOfGame", "paramOrder": ["colors"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2038 - Remove Colored Pieces if Both Neighbors are the Same Color
+# https://leetcode.com/problems/remove-colored-pieces-if-both-neighbors-are-the-same-color/
+
+
+class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        a = b = 0
+        for i in range(1, len(colors) - 1):
+            if colors[i - 1] == colors[i] == colors[i + 1]:
+                if colors[i] == "A":
+                    a += 1
+                else:
+                    b += 1
+        return a > b
+
+
+================================================================================
+2039_the_time_when_the_network_becomes_idle
+CFG: {"class": "Solution", "method": "networkBecomesIdle", "paramOrder": ["edges", "patience"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2039 - The Time When the Network Becomes Idle
+# https://leetcode.com/problems/the-time-when-the-network-becomes-idle/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def networkBecomesIdle(self, edges: List[List[int]], patience: List[int]) -> int:
+        n = len(patience)
+        g = [[] for _ in range(n)]
+        for u, v in edges:
+            g[u].append(v)
+            g[v].append(u)
+        dist = [-1] * n
+        q = deque([0])
+        dist[0] = 0
+        while q:
+            u = q.popleft()
+            for v in g[u]:
+                if dist[v] == -1:
+                    dist[v] = dist[u] + 1
+                    q.append(v)
+        ans = 0
+        for i in range(1, n):
+            rnd = dist[i] * 2
+            last_send = ((rnd - 1) // patience[i]) * patience[i]
+            ans = max(ans, last_send + rnd)
+        return ans + 1
+
+
+================================================================================
+2040_kth_smallest_product_of_two_sorted_arrays
+CFG: {"class": "Solution", "method": "kthSmallestProduct", "paramOrder": ["nums1", "nums2", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2040 - Kth Smallest Product of Two Sorted Arrays
+# https://leetcode.com/problems/kth-smallest-product-of-two-sorted-arrays/
+
+from typing import List
+
+
+class Solution:
+    def kthSmallestProduct(self, nums1: List[int], nums2: List[int], k: int) -> int:
+        def count_le(x: int) -> int:
+            cnt = 0
+            for a in nums1:
+                if a > 0:
+                    lo, hi = 0, len(nums2)
+                    while lo < hi:
+                        mid = (lo + hi) >> 1
+                        if a * nums2[mid] <= x:
+                            lo = mid + 1
+                        else:
+                            hi = mid
+                    cnt += lo
+                elif a < 0:
+                    lo, hi = 0, len(nums2)
+                    while lo < hi:
+                        mid = (lo + hi) >> 1
+                        if a * nums2[mid] <= x:
+                            hi = mid
+                        else:
+                            lo = mid + 1
+                    cnt += len(nums2) - lo
+                elif x >= 0:
+                    cnt += len(nums2)
+            return cnt
+
+        lo, hi = -10**10, 10**10
+        while lo < hi:
+            mid = lo + (hi - lo) // 2
+            if count_le(mid) >= k:
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+
+================================================================================
+2042_check_if_numbers_are_ascending_in_a_sentence
+CFG: {"class": "Solution", "method": "areNumbersAscending", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2042 - Check if Numbers Are Ascending in a Sentence
+# https://leetcode.com/problems/check-if-numbers-are-ascending-in-a-sentence/
+
+
+class Solution:
+    def areNumbersAscending(self, s: str) -> bool:
+        prev = -1
+        for tok in s.split(" "):
+            if not tok:
+                continue
+            if "0" <= tok[0] <= "9":
+                v = int(tok)
+                if v <= prev:
+                    return False
+                prev = v
+        return True
+
+
+================================================================================
+2043_simple_bank_system
+CFG: {"class": "Bank", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2043 - Simple Bank System
+# https://leetcode.com/problems/simple-bank-system/
+
+from typing import List
+
+
+class Bank:
+    def __init__(self, balance: List[int]):
+        self.bal = balance[:]
+
+    def valid(self, account: int) -> bool:
+        return 1 <= account <= len(self.bal)
+
+    def transfer(self, account1: int, account2: int, money: int) -> bool:
+        if not self.valid(account1) or not self.valid(account2) or self.bal[account1 - 1] < money:
+            return False
+        self.bal[account1 - 1] -= money
+        self.bal[account2 - 1] += money
+        return True
+
+    def deposit(self, account: int, money: int) -> bool:
+        if not self.valid(account):
+            return False
+        self.bal[account - 1] += money
+        return True
+
+    def withdraw(self, account: int, money: int) -> bool:
+        if not self.valid(account) or self.bal[account - 1] < money:
+            return False
+        self.bal[account - 1] -= money
+        return True
+
+
+================================================================================
+2044_count_number_of_maximum_bitwise_or_subsets
+CFG: {"class": "Solution", "method": "countMaxOrSubsets", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2044 - Count Number of Maximum Bitwise-OR Subsets
+# https://leetcode.com/problems/count-number-of-maximum-bitwise-or-subsets/
+
+from typing import List
+
+
+class Solution:
+    def countMaxOrSubsets(self, nums: List[int]) -> int:
+        max_or = 0
+        for x in nums:
+            max_or |= x
+        ans = 0
+
+        def dfs(i: int, cur: int) -> None:
+            nonlocal ans
+            if i == len(nums):
+                if cur == max_or:
+                    ans += 1
+                return
+            dfs(i + 1, cur)
+            dfs(i + 1, cur | nums[i])
+
+        dfs(0, 0)
+        return ans
+
+
+================================================================================
+2045_second_minimum_time_to_reach_destination
+CFG: {"class": "Solution", "method": "secondMinimum", "paramOrder": ["n", "edges", "time", "change"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2045 - Second Minimum Time to Reach Destination
+# https://leetcode.com/problems/second-minimum-time-to-reach-destination/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def secondMinimum(self, n: int, edges: List[List[int]], time: int, change: int) -> int:
+        g = [[] for _ in range(n + 1)]
+        for u, v in edges:
+            g[u].append(v)
+            g[v].append(u)
+        dist1 = [-1] * (n + 1)
+        dist2 = [-1] * (n + 1)
+        q = deque([(1, 0)])
+        dist1[1] = 0
+        while q:
+            u, d = q.popleft()
+            for v in g[u]:
+                nd = d + 1
+                if dist1[v] == -1:
+                    dist1[v] = nd
+                    q.append((v, nd))
+                elif dist2[v] == -1 and nd > dist1[v]:
+                    dist2[v] = nd
+                    q.append((v, nd))
+        steps = dist2[n]
+        ans = 0
+        for _ in range(steps):
+            if (ans // change) % 2 == 1:
+                ans += change - ans % change
+            ans += time
+        return ans
+
+
+================================================================================
+2046_sort_linked_list_already_sorted_using_absolute_values
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["head"], "types": {"head": "listnode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2046 - Sort Linked List Already Sorted Using Absolute Values
+# https://leetcode.com/problems/sort-linked-list-already-sorted-using-absolute-values/
+
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def sortLinkedList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        prev, cur = head, head.next
+        while cur:
+            if cur.val < 0:
+                prev.next = cur.next
+                cur.next = head
+                head = cur
+                cur = prev.next
+            else:
+                prev = cur
+                cur = cur.next
+        return head
+
+
+================================================================================
+2047_number_of_valid_words_in_a_sentence
+CFG: {"class": "Solution", "method": "countValidWords", "paramOrder": ["sentence"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2047 - Number of Valid Words in a Sentence
+# https://leetcode.com/problems/number-of-valid-words-in-a-sentence/
+
+
+class Solution:
+    def countValidWords(self, sentence: str) -> int:
+        def valid(w: str) -> bool:
+            if not w:
+                return False
+            hyphen = 0
+            for i, c in enumerate(w):
+                if "0" <= c <= "9":
+                    return False
+                if c == "-":
+                    hyphen += 1
+                    if hyphen > 1 or i == 0 or i == len(w) - 1:
+                        return False
+                    if not ("a" <= w[i - 1] <= "z" and "a" <= w[i + 1] <= "z"):
+                        return False
+                elif c in "!.,":
+                    if i != len(w) - 1:
+                        return False
+                elif not ("a" <= c <= "z"):
+                    return False
+            return True
+
+        return sum(1 for tok in sentence.split(" ") if valid(tok))
+
+
+================================================================================
+2048_next_greater_numerically_balanced_number
+CFG: {"class": "Solution", "method": "nextBeautifulNumber", "paramOrder": ["n"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2048 - Next Greater Numerically Balanced Number
+# https://leetcode.com/problems/next-greater-numerically-balanced-number/
+
+
+class Solution:
+    def nextBeautifulNumber(self, n: int) -> int:
+        def balanced(x: int) -> bool:
+            cnt = [0] * 10
+            while x > 0:
+                cnt[x % 10] += 1
+                x //= 10
+            for d in range(10):
+                if cnt[d] != 0 and cnt[d] != d:
+                    return False
+            return True
+
+        x = n + 1
+        while True:
+            if balanced(x):
+                return x
+            x += 1
+
+
+================================================================================
+2049_count_nodes_with_the_highest_score
+CFG: {"class": "Solution", "method": "countHighestScoreNodes", "paramOrder": ["parents"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2049 - Count Nodes With the Highest Score
+# https://leetcode.com/problems/count-nodes-with-the-highest-score/
+
+from typing import List
+
+
+class Solution:
+    def countHighestScoreNodes(self, parents: List[int]) -> int:
+        n = len(parents)
+        children = [[] for _ in range(n)]
+        for i in range(1, n):
+            children[parents[i]].append(i)
+        size = [0] * n
+
+        def dfs(u: int) -> int:
+            size[u] = 1
+            for v in children[u]:
+                size[u] += dfs(v)
+            return size[u]
+
+        dfs(0)
+        best = 0
+        ans = 0
+        for u in range(n):
+            score = 1
+            for v in children[u]:
+                score *= size[v]
+            up = n - size[u]
+            if up > 0:
+                score *= up
+            if score > best:
+                best = score
+                ans = 1
+            elif score == best:
+                ans += 1
+        return ans
+
+
+================================================================================
+2050_parallel_courses_iii
+CFG: {"class": "Solution", "method": "minimumTime", "paramOrder": ["n", "relations", "time"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2050 - Parallel Courses III
+# https://leetcode.com/problems/parallel-courses-iii/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def minimumTime(self, n: int, relations: List[List[int]], time: List[int]) -> int:
+        g = [[] for _ in range(n + 1)]
+        indeg = [0] * (n + 1)
+        dist = [0] * (n + 1)
+        for u, v in relations:
+            g[u].append(v)
+            indeg[v] += 1
+        q = deque()
+        for i in range(1, n + 1):
+            dist[i] = time[i - 1]
+            if indeg[i] == 0:
+                q.append(i)
+        while q:
+            u = q.popleft()
+            for v in g[u]:
+                dist[v] = max(dist[v], dist[u] + time[v - 1])
+                indeg[v] -= 1
+                if indeg[v] == 0:
+                    q.append(v)
+        return max(dist[1:])
+
+
+================================================================================
+2052_minimum_cost_to_separate_sentence_into_rows
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["sentence", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2052 - Minimum Cost to Separate Sentence Into Rows
+# https://leetcode.com/problems/minimum-cost-to-separate-sentence-into-rows/
+
+
+class Solution:
+    def minimumCost(self, sentence: str, k: int) -> int:
+        words = sentence.strip().split()
+        n = len(words)
+        INF = 10**18
+        dp = [INF] * (n + 1)
+        dp[n] = 0
+        for i in range(n - 1, -1, -1):
+            length = -1
+            for j in range(i, n):
+                length += 1 + len(words[j])
+                if length > k:
+                    break
+                cost = 0
+                if j < n - 1:
+                    extra = k - length
+                    cost = extra * extra
+                dp[i] = min(dp[i], cost + dp[j + 1])
+        return dp[0]
+
+
+================================================================================
+2053_kth_distinct_string_in_an_array
+CFG: {"class": "Solution", "method": "kthDistinct", "paramOrder": ["arr", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2053 - Kth Distinct String in an Array
+# https://leetcode.com/problems/kth-distinct-string-in-an-array/
+
+from typing import List
+
+
+class Solution:
+    def kthDistinct(self, arr: List[str], k: int) -> str:
+        freq = {}
+        for s in arr:
+            freq[s] = freq.get(s, 0) + 1
+        for s in arr:
+            if freq[s] == 1:
+                k -= 1
+                if k == 0:
+                    return s
+        return ""
+
+
+================================================================================
+2054_two_best_non_overlapping_events
+CFG: {"class": "Solution", "method": "maxTwoEvents", "paramOrder": ["events"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2054 - Two Best Non-Overlapping Events
+# https://leetcode.com/problems/two-best-non-overlapping-events/
+
+from typing import List
+
+
+class Solution:
+    def maxTwoEvents(self, events: List[List[int]]) -> int:
+        events.sort(key=lambda e: e[0])
+        n = len(events)
+        suffix = [0] * (n + 1)
+        for i in range(n - 1, -1, -1):
+            suffix[i] = max(suffix[i + 1], events[i][2])
+        ans = 0
+        for i in range(n):
+            ans = max(ans, events[i][2])
+            lo, hi = i + 1, n
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if events[mid][0] > events[i][1]:
+                    hi = mid
+                else:
+                    lo = mid + 1
+            if lo < n:
+                ans = max(ans, events[i][2] + suffix[lo])
+        return ans
+
+
+================================================================================
+2055_plates_between_candles
+CFG: {"class": "Solution", "method": "platesBetweenCandles", "paramOrder": ["s", "queries"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2055 - Plates Between Candles
+# https://leetcode.com/problems/plates-between-candles/
+
+from typing import List
+
+
+class Solution:
+    def platesBetweenCandles(self, s: str, queries: List[List[int]]) -> List[int]:
+        n = len(s)
+        pref = [0] * (n + 1)
+        left = [0] * n
+        right = [0] * n
+        last = -1
+        for i, ch in enumerate(s):
+            pref[i + 1] = pref[i] + (1 if ch == "*" else 0)
+            if ch == "|":
+                last = i
+            left[i] = last
+        last = -1
+        for i in range(n - 1, -1, -1):
+            if s[i] == "|":
+                last = i
+            right[i] = last
+        ans = [0] * len(queries)
+        for i, (ql, qr) in enumerate(queries):
+            l, r = right[ql], left[qr]
+            if l != -1 and r != -1 and l < r:
+                ans[i] = pref[r] - pref[l]
+        return ans
+
+
+================================================================================
+2056_number_of_valid_move_combinations_on_chessboard
+CFG: {"class": "Solution", "method": "countCombinations", "paramOrder": ["pieces", "positions"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2056 - Number of Valid Move Combinations On Chessboard
+# https://leetcode.com/problems/number-of-valid-move-combinations-on-chessboard/
+
+from typing import List
+
+
+class Solution:
+    def countCombinations(self, pieces: List[str], positions: List[List[int]]) -> int:
+        dirs = {
+            "rook": [(1, 0), (-1, 0), (0, 1), (0, -1)],
+            "bishop": [(1, 1), (1, -1), (-1, 1), (-1, -1)],
+            "queen": [(1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (1, -1), (-1, 1), (-1, -1)],
+        }
+        n = len(pieces)
+        all_moves = []
+        for i in range(n):
+            ms = [{"dr": 0, "dc": 0, "steps": 0}]
+            r, c = positions[i]
+            for dr, dc in dirs[pieces[i]]:
+                nr, nc, step = r + dr, c + dc, 1
+                while 1 <= nr <= 8 and 1 <= nc <= 8:
+                    ms.append({"dr": dr, "dc": dc, "steps": step})
+                    nr += dr
+                    nc += dc
+                    step += 1
+            all_moves.append(ms)
+        chosen = [None] * n
+        ans = 0
+
+        def ok_combo(end: int) -> bool:
+            max_t = max(chosen[i]["steps"] for i in range(end + 1))
+            for t in range(1, max_t + 1):
+                seen = set()
+                for i in range(end + 1):
+                    m = chosen[i]
+                    if m["steps"] == 0:
+                        pr, pc = positions[i]
+                    else:
+                        use = min(t, m["steps"])
+                        pr = positions[i][0] + m["dr"] * use
+                        pc = positions[i][1] + m["dc"] * use
+                    key = (pr << 32) ^ (pc & 0xFFFFFFFF)
+                    if key in seen:
+                        return False
+                    seen.add(key)
+            return True
+
+        def dfs(i: int) -> None:
+            nonlocal ans
+            if i == len(pieces):
+                ans += 1
+                return
+            for m in all_moves[i]:
+                chosen[i] = m
+                if ok_combo(i):
+                    dfs(i + 1)
+
+        dfs(0)
+        return ans
+
+
+================================================================================
+2057_smallest_index_with_equal_value
+CFG: {"class": "Solution", "method": "smallestEqual", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2057 - Smallest Index With Equal Value
+# https://leetcode.com/problems/smallest-index-with-equal-value/
+
+from typing import List
+
+
+class Solution:
+    def smallestEqual(self, nums: List[int]) -> int:
+        for i, v in enumerate(nums):
+            if i % 10 == v:
+                return i
+        return -1
+
+
+================================================================================
+2058_find_the_minimum_and_maximum_number_of_nodes_between_critical_points
+CFG: {"class": "ListNode", "method": "__init__", "paramOrder": ["val=0", "next=None"], "types": {"head": "listnode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2058 - Find the Minimum and Maximum Number of Nodes Between Critical Points
+# https://leetcode.com/problems/find-the-minimum-and-maximum-number-of-nodes-between-critical-points/
+
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def nodesBetweenCriticalPoints(self, head: Optional[ListNode]) -> List[int]:
+        crit = []
+        prev, cur, idx = head, head.next, 1
+        while cur and cur.next:
+            if (cur.val > prev.val and cur.val > cur.next.val) or (
+                cur.val < prev.val and cur.val < cur.next.val
+            ):
+                crit.append(idx)
+            prev = cur
+            cur = cur.next
+            idx += 1
+        if len(crit) < 2:
+            return [-1, -1]
+        mn = crit[1] - crit[0]
+        for i in range(2, len(crit)):
+            mn = min(mn, crit[i] - crit[i - 1])
+        return [mn, crit[-1] - crit[0]]
+
+
+================================================================================
+2059_minimum_operations_to_convert_number
+CFG: {"class": "Solution", "method": "minimumOperations", "paramOrder": ["nums", "start", "goal"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2059 - Minimum Operations to Convert Number
+# https://leetcode.com/problems/minimum-operations-to-convert-number/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def minimumOperations(self, nums: List[int], start: int, goal: int) -> int:
+        if start == goal:
+            return 0
+        vis = {start}
+        q = deque([start])
+        steps = 0
+        while q:
+            steps += 1
+            for _ in range(len(q)):
+                cur = q.popleft()
+                for x in nums:
+                    for nxt in (cur + x, cur - x, cur ^ x):
+                        if nxt == goal:
+                            return steps
+                        if 0 <= nxt <= 1000 and nxt not in vis:
+                            vis.add(nxt)
+                            q.append(nxt)
+        return -1
+
+
+================================================================================
+2060_check_if_an_original_string_exists_given_two_encoded_strings
+CFG: {"class": "Solution", "method": "possiblyEquals", "paramOrder": ["s1", "s2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2060 - Check if an Original String Exists Given Two Encoded Strings
+# https://leetcode.com/problems/check-if-an-original-string-exists-given-two-encoded-strings/
+
+
+class Solution:
+    def possiblyEquals(self, s1: str, s2: str) -> bool:
+        memo = {}
+
+        def is_digit(c: str) -> bool:
+            return "0" <= c <= "9"
+
+        def dfs(i: int, j: int, diff: int) -> bool:
+            key = (i, j, diff)
+            if key in memo:
+                return memo[key]
+            n, m = len(s1), len(s2)
+            if i == n and j == m:
+                memo[key] = diff == 0
+                return diff == 0
+            res = False
+            if diff == 0 and i < n and j < m and not is_digit(s1[i]) and not is_digit(s2[j]):
+                if s1[i] == s2[j]:
+                    res = dfs(i + 1, j + 1, 0)
+            elif diff > 0 and i < n and not is_digit(s1[i]):
+                res = dfs(i + 1, j, diff - 1)
+            elif diff < 0 and j < m and not is_digit(s2[j]):
+                res = dfs(i, j + 1, diff + 1)
+            if not res and i < n and is_digit(s1[i]):
+                val = 0
+                p = i
+                while p < n and is_digit(s1[p]):
+                    val = val * 10 + (ord(s1[p]) - 48)
+                    if dfs(p + 1, j, diff + val):
+                        res = True
+                        break
+                    p += 1
+            if not res and j < m and is_digit(s2[j]):
+                val = 0
+                p = j
+                while p < m and is_digit(s2[p]):
+                    val = val * 10 + (ord(s2[p]) - 48)
+                    if dfs(i, p + 1, diff - val):
+                        res = True
+                        break
+                    p += 1
+            memo[key] = res
+            return res
+
+        return dfs(0, 0, 0)
+
+
+================================================================================
+2061_number_of_spaces_cleaning_robot_cleaned
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["room"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2061 - Number of Spaces Cleaning Robot Cleaned
+# https://leetcode.com/problems/number-of-spaces-cleaning-robot-cleaned/
+
+from typing import List
+
+
+class Solution:
+    def numberOfCleanRooms(self, room: List[List[int]]) -> int:
+        m, n = len(room), len(room[0])
+        dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+        vis = set()
+        cleaned = {0}
+        r = c = d = 0
+        while True:
+            state = r * 10000 + c * 10 + d
+            if state in vis:
+                break
+            vis.add(state)
+            nr, nc = r + dirs[d][0], c + dirs[d][1]
+            if 0 <= nr < m and 0 <= nc < n and room[nr][nc] == 0:
+                r, c = nr, nc
+                cleaned.add((r << 32) ^ (c & 0xFFFFFFFF))
+            else:
+                d = (d + 1) % 4
+        return len(cleaned)
+
+
+================================================================================
+2062_count_vowel_substrings_of_a_string
+CFG: {"class": "Solution", "method": "countVowelSubstrings", "paramOrder": ["word"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2062 - Count Vowel Substrings of a String
+# https://leetcode.com/problems/count-vowel-substrings-of-a-string/
+
+
+class Solution:
+    def countVowelSubstrings(self, word: str) -> int:
+        vowels = set("aeiou")
+        ans = 0
+        n = len(word)
+        for i in range(n):
+            seen = set()
+            for j in range(i, n):
+                if word[j] not in vowels:
+                    break
+                seen.add(word[j])
+                if len(seen) == 5:
+                    ans += 1
+        return ans
+
+
+================================================================================
+2063_vowels_of_all_substrings
+CFG: {"class": "Solution", "method": "countVowels", "paramOrder": ["word"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2063 - Vowels of All Substrings
+# https://leetcode.com/problems/vowels-of-all-substrings/
+
+
+class Solution:
+    def countVowels(self, word: str) -> int:
+        vowels = set("aeiou")
+        n = len(word)
+        ans = 0
+        for i, c in enumerate(word):
+            if c in vowels:
+                ans += (i + 1) * (n - i)
+        return ans
+
+
+================================================================================
+2064_minimized_maximum_of_products_distributed_to_any_store
+CFG: {"class": "Solution", "method": "minimizedMaximum", "paramOrder": ["n", "quantities"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2064 - Minimized Maximum of Products Distributed to Any Store
+# https://leetcode.com/problems/minimized-maximum-of-products-distributed-to-any-store/
+
+from typing import List
+
+
+class Solution:
+    def minimizedMaximum(self, n: int, quantities: List[int]) -> int:
+        def can(x: int) -> bool:
+            need = 0
+            for q in quantities:
+                need += (q + x - 1) // x
+                if need > n:
+                    return False
+            return True
+
+        lo, hi = 1, max(quantities)
+        while lo < hi:
+            mid = (lo + hi) >> 1
+            if can(mid):
+                hi = mid
+            else:
+                lo = mid + 1
+        return lo
+
+
+================================================================================
+2065_maximum_path_quality_of_a_graph
+CFG: {"class": "Solution", "method": "maximalPathQuality", "paramOrder": ["values", "edges", "maxTime"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2065 - Maximum Path Quality of a Graph
+# https://leetcode.com/problems/maximum-path-quality-of-a-graph/
+
+from typing import List
+
+
+class Solution:
+    def maximalPathQuality(self, values: List[int], edges: List[List[int]], maxTime: int) -> int:
+        n = len(values)
+        g = [[] for _ in range(n)]
+        for u, v, t in edges:
+            g[u].append((v, t))
+            g[v].append((u, t))
+        ans = 0
+        vis = [0] * n
+
+        def dfs(u: int, time: int, quality: int) -> None:
+            nonlocal ans
+            if time > maxTime:
+                return
+            first = vis[u] == 0
+            if first:
+                quality += values[u]
+            vis[u] += 1
+            if u == 0:
+                ans = max(ans, quality)
+            for v, w in g[u]:
+                dfs(v, time + w, quality)
+            vis[u] -= 1
+
+        dfs(0, 0, 0)
+        return ans
+
+
+================================================================================
+2067_number_of_equal_count_substrings
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["s", "count"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2067 - Number of Equal Count Substrings
+# https://leetcode.com/problems/number-of-equal-count-substrings/
+
+
+class Solution:
+    def equalCountSubstrings(self, s: str, count: int) -> int:
+        ans = 0
+        n = len(s)
+        seen = [False] * 26
+        max_unique = 0
+        for c in s:
+            i = ord(c) - 97
+            if not seen[i]:
+                seen[i] = True
+                max_unique += 1
+        for u in range(1, max_unique + 1):
+            need_len = u * count
+            if need_len > n:
+                break
+            freq = [0] * 26
+            have = 0
+            for i in range(n):
+                c = ord(s[i]) - 97
+                freq[c] += 1
+                if freq[c] == count:
+                    have += 1
+                elif freq[c] == count + 1:
+                    have -= 1
+                if i >= need_len:
+                    p = ord(s[i - need_len]) - 97
+                    if freq[p] == count:
+                        have -= 1
+                    elif freq[p] == count + 1:
+                        have += 1
+                    freq[p] -= 1
+                if i + 1 >= need_len and have == u:
+                    ans += 1
+        return ans
+
+
+================================================================================
+2068_check_whether_two_strings_are_almost_equivalent
+CFG: {"class": "Solution", "method": "checkAlmostEquivalent", "paramOrder": ["word1", "word2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2068 - Check Whether Two Strings are Almost Equivalent
+# https://leetcode.com/problems/check-whether-two-strings-are-almost-equivalent/
+
+
+class Solution:
+    def checkAlmostEquivalent(self, word1: str, word2: str) -> bool:
+        freq = [0] * 26
+        for i in range(len(word1)):
+            freq[ord(word1[i]) - 97] += 1
+            freq[ord(word2[i]) - 97] -= 1
+        return all(-3 <= v <= 3 for v in freq)
+
+
+================================================================================
+2069_walking_robot_simulation_ii
+CFG: {"class": "Robot", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2069 - Walking Robot Simulation II
+# https://leetcode.com/problems/walking-robot-simulation-ii/
+
+from typing import List
+
+
+class Robot:
+    def __init__(self, width: int, height: int):
+        self.w = width
+        self.h = height
+        self.peri = 2 * (width + height) - 4
+        self.pos = 0
+        self.moved = False
+
+    def getPosDir(self):
+        p = self.pos
+        if p == 0:
+            if not self.moved:
+                return [0, 0, 0]
+            return [0, 0, 3]
+        if p <= self.w - 1:
+            return [p, 0, 0]
+        p -= self.w - 1
+        if p <= self.h - 1:
+            return [self.w - 1, p, 1]
+        p -= self.h - 1
+        if p <= self.w - 1:
+            return [self.w - 1 - p, self.h - 1, 2]
+        p -= self.w - 1
+        return [0, self.h - 1 - p, 3]
+
+    def step(self, num: int) -> None:
+        self.moved = True
+        self.pos = (self.pos + num) % self.peri
+
+    def getPos(self) -> List[int]:
+        pd = self.getPosDir()
+        return [pd[0], pd[1]]
+
+    def getDir(self) -> str:
+        names = ["East", "North", "West", "South"]
+        return names[self.getPosDir()[2]]
+
+
+================================================================================
+2070_most_beautiful_item_for_each_query
+CFG: {"class": "Solution", "method": "maximumBeauty", "paramOrder": ["items", "queries"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2070 - Most Beautiful Item for Each Query
+# https://leetcode.com/problems/most-beautiful-item-for-each-query/
+
+from typing import List
+
+
+class Solution:
+    def maximumBeauty(self, items: List[List[int]], queries: List[int]) -> List[int]:
+        items.sort(key=lambda it: it[0])
+        max_b = 0
+        for it in items:
+            max_b = max(max_b, it[1])
+            it[1] = max_b
+        ans = [0] * len(queries)
+        for i, q in enumerate(queries):
+            lo, hi = 0, len(items)
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if items[mid][0] <= q:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            ans[i] = 0 if lo == 0 else items[lo - 1][1]
+        return ans
+
+
+================================================================================
+2071_maximum_number_of_tasks_you_can_assign
+CFG: {"class": "Solution", "method": "maxTaskAssign", "paramOrder": ["tasks", "workers", "pills", "strength"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2071 - Maximum Number of Tasks You Can Assign
+# https://leetcode.com/problems/maximum-number-of-tasks-you-can-assign/
+
+from typing import List
+from collections import Counter
+
+
+class Solution:
+    def maxTaskAssign(self, tasks: List[int], workers: List[int], pills: int, strength: int) -> int:
+        tasks.sort()
+        workers.sort()
+
+        def remove(ws: Counter, x: int) -> None:
+            ws[x] -= 1
+            if ws[x] == 0:
+                del ws[x]
+
+        def can(k: int) -> bool:
+            if k == 0:
+                return True
+            ws = Counter(workers[len(workers) - k :])
+            p = pills
+            for i in range(k - 1, -1, -1):
+                task = tasks[i]
+                ks = sorted(ws.keys())
+                strongest = ks[-1]
+                if strongest >= task:
+                    remove(ws, strongest)
+                    continue
+                if p == 0:
+                    return False
+                need = task - strength
+                found = None
+                for key in ks:
+                    if key >= need:
+                        found = key
+                        break
+                if found is None:
+                    return False
+                remove(ws, found)
+                p -= 1
+            return True
+
+        lo, hi = 0, min(len(tasks), len(workers))
+        while lo < hi:
+            mid = (lo + hi + 1) >> 1
+            if can(mid):
+                lo = mid
+            else:
+                hi = mid - 1
+        return lo
+
+
+================================================================================
+2073_time_needed_to_buy_tickets
+CFG: {"class": "Solution", "method": "timeRequiredToBuy", "paramOrder": ["tickets", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2073 - Time Needed to Buy Tickets
+# https://leetcode.com/problems/time-needed-to-buy-tickets/
+
+from typing import List
+
+
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        ans = 0
+        for i, t in enumerate(tickets):
+            if i <= k:
+                ans += min(t, tickets[k])
+            else:
+                ans += min(t, tickets[k] - 1)
+        return ans
+
+
+================================================================================
+2074_reverse_nodes_in_even_length_groups
+CFG: {"class": "ListNode", "method": "__init__", "paramOrder": ["val=0", "next=None"], "types": {"head": "listnode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2074 - Reverse Nodes in Even Length Groups
+# https://leetcode.com/problems/reverse-nodes-in-even-length-groups/
+
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def reverseEvenLengthGroups(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        dummy = ListNode(0, head)
+        prev = dummy
+        group = 1
+        while prev.next:
+            cur = prev.next
+            cnt = 0
+            node = cur
+            while node and cnt < group:
+                node = node.next
+                cnt += 1
+            if cnt % 2 == 0:
+                rev_prev = node
+                p = cur
+                for _ in range(cnt):
+                    nxt = p.next
+                    p.next = rev_prev
+                    rev_prev = p
+                    p = nxt
+                prev.next = rev_prev
+                prev = cur
+            else:
+                for _ in range(cnt):
+                    prev = prev.next
+            group += 1
+        return dummy.next
+
+
+================================================================================
+2075_decode_the_slanted_ciphertext
+CFG: {"class": "Solution", "method": "decodeCiphertext", "paramOrder": ["encodedText", "rows"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2075 - Decode the Slanted Ciphertext
+# https://leetcode.com/problems/decode-the-slanted-ciphertext/
+
+
+class Solution:
+    def decodeCiphertext(self, encodedText: str, rows: int) -> str:
+        if rows == 1:
+            return encodedText
+        cols = len(encodedText) // rows
+        b = []
+        for c in range(cols):
+            for r in range(rows):
+                if c + r >= cols:
+                    break
+                b.append(encodedText[r * cols + c + r])
+        while b and b[-1] == " ":
+            b.pop()
+        return "".join(b)
+
+
+================================================================================
+2076_process_restricted_friend_requests
+CFG: {"class": "Solution", "method": "friendRequests", "paramOrder": ["n", "restrictions", "requests"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2076 - Process Restricted Friend Requests
+# https://leetcode.com/problems/process-restricted-friend-requests/
+
+from typing import List
+
+
+class Solution:
+    def friendRequests(
+        self, n: int, restrictions: List[List[int]], requests: List[List[int]]
+    ) -> List[bool]:
+        parent = list(range(n))
+
+        def find(x: int) -> int:
+            if parent[x] != x:
+                parent[x] = find(parent[x])
+            return parent[x]
+
+        def unite(a: int, b: int) -> None:
+            a, b = find(a), find(b)
+            if a != b:
+                parent[a] = b
+
+        ans = [False] * len(requests)
+        for i, (ru, rv) in enumerate(requests):
+            u, v = find(ru), find(rv)
+            ok = True
+            if u != v:
+                for x0, y0 in restrictions:
+                    x, y = find(x0), find(y0)
+                    if (x == u and y == v) or (x == v and y == u):
+                        ok = False
+                        break
+            ans[i] = ok
+            if ok:
+                unite(u, v)
+        return ans
+
+
+================================================================================
+2077_paths_in_maze_that_lead_to_same_room
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["n", "corridors"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2077 - Paths in Maze That Lead to Same Room
+# https://leetcode.com/problems/paths-in-maze-that-lead-to-same-room/
+
+from typing import List
+
+
+class Solution:
+    def numberOfPaths(self, n: int, corridors: List[List[int]]) -> int:
+        g = [set() for _ in range(n + 1)]
+        for a, b in corridors:
+            g[a].add(b)
+            g[b].add(a)
+        ans = 0
+        for a, b in corridors:
+            for c in g[a]:
+                if c in g[b]:
+                    ans += 1
+        return ans // 3
+
+
+================================================================================
+2078_two_furthest_houses_with_different_colors
+CFG: {"class": "Solution", "method": "maxDistance", "paramOrder": ["colors"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2078 - Two Furthest Houses With Different Colors
+# https://leetcode.com/problems/two-furthest-houses-with-different-colors/
+
+from typing import List
+
+
+class Solution:
+    def maxDistance(self, colors: List[int]) -> int:
+        n = len(colors)
+        ans = 0
+        for i, c in enumerate(colors):
+            if c != colors[0]:
+                ans = max(ans, i)
+            if c != colors[n - 1]:
+                ans = max(ans, n - 1 - i)
+        return ans
+
+
+================================================================================
+2079_watering_plants
+CFG: {"class": "Solution", "method": "wateringPlants", "paramOrder": ["plants", "capacity"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2079 - Watering Plants
+# https://leetcode.com/problems/watering-plants/
+
+from typing import List
+
+
+class Solution:
+    def wateringPlants(self, plants: List[int], capacity: int) -> int:
+        ans = 0
+        cur = capacity
+        for i, p in enumerate(plants):
+            if cur < p:
+                ans += i * 2
+                cur = capacity
+            cur -= p
+            ans += 1
+        return ans
+
+
+================================================================================
+2080_range_frequency_queries
+CFG: {"class": "RangeFreqQuery", "description": "Update method name and add cases to cases.json when implementing the solution.", "kind": "design", "runnable": true}
+# LeetCode 2080 - Range Frequency Queries
+# https://leetcode.com/problems/range-frequency-queries/
+
+from typing import List
+
+
+class RangeFreqQuery:
+    def __init__(self, arr: List[int]):
+        self.pos = {}
+        for i, v in enumerate(arr):
+            self.pos.setdefault(v, []).append(i)
+
+    def lower(self, p: List[int], x: int) -> int:
+        lo, hi = 0, len(p)
+        while lo < hi:
+            mid = (lo + hi) >> 1
+            if p[mid] < x:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
+    def upper(self, p: List[int], x: int) -> int:
+        lo, hi = 0, len(p)
+        while lo < hi:
+            mid = (lo + hi) >> 1
+            if p[mid] <= x:
+                lo = mid + 1
+            else:
+                hi = mid
+        return lo
+
+    def query(self, left: int, right: int, value: int) -> int:
+        p = self.pos.get(value)
+        if not p:
+            return 0
+        return self.upper(p, right) - self.lower(p, left)
+
+
+================================================================================
+2081_sum_of_k_mirror_numbers
+CFG: {"class": "Solution", "method": "kMirror", "paramOrder": ["k", "n"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2081 - Sum of k-Mirror Numbers
+# https://leetcode.com/problems/sum-of-k-mirror-numbers/
+
+
+class Solution:
+    def kMirror(self, k: int, n: int) -> int:
+        def is_pal_base(x: int, bas: int) -> bool:
+            digits = []
+            while x > 0:
+                digits.append(x % bas)
+                x //= bas
+            l, r = 0, len(digits) - 1
+            while l < r:
+                if digits[l] != digits[r]:
+                    return False
+                l += 1
+                r -= 1
+            return True
+
+        ans = 0
+        count = 0
+        length = 1
+        while count < n:
+            start = 1
+            for _ in range((length + 1) // 2 - 1):
+                start *= 10
+            end = start * 10
+            half = start
+            while half < end and count < n:
+                pal = half
+                if length % 2 == 0:
+                    x = half
+                    while x > 0:
+                        pal = pal * 10 + x % 10
+                        x //= 10
+                else:
+                    x = half // 10
+                    while x > 0:
+                        pal = pal * 10 + x % 10
+                        x //= 10
+                if is_pal_base(pal, k):
+                    ans += pal
+                    count += 1
+                half += 1
+            length += 1
+        return ans
+
+
+================================================================================
+2083_substrings_that_begin_and_end_with_the_same_letter
+CFG: {"class": "Solution", "method": "solve", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2083 - Substrings That Begin and End With the Same Letter
+# https://leetcode.com/problems/substrings-that-begin-and-end-with-the-same-letter/
+
+
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        freq = [0] * 26
+        ans = 0
+        for c in s:
+            i = ord(c) - 97
+            freq[i] += 1
+            ans += freq[i]
+        return ans
+
+
+================================================================================
+2085_count_common_words_with_one_occurrence
+CFG: {"class": "Solution", "method": "countWords", "paramOrder": ["words1", "words2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2085 - Count Common Words With One Occurrence
+# https://leetcode.com/problems/count-common-words-with-one-occurrence/
+
+from typing import List
+
+
+class Solution:
+    def countWords(self, words1: List[str], words2: List[str]) -> int:
+        f1, f2 = {}, {}
+        for w in words1:
+            f1[w] = f1.get(w, 0) + 1
+        for w in words2:
+            f2[w] = f2.get(w, 0) + 1
+        return sum(1 for k, v in f1.items() if v == 1 and f2.get(k, 0) == 1)
+
+
+================================================================================
+2086_minimum_number_of_food_buckets_to_feed_the_hamsters
+CFG: {"class": "Solution", "method": "minimumBuckets", "paramOrder": ["hamsters"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2086 - Minimum Number of Food Buckets to Feed the Hamsters
+# https://leetcode.com/problems/minimum-number-of-food-buckets-to-feed-the-hamsters/
+
+
+class Solution:
+    def minimumBuckets(self, hamsters: str) -> int:
+        b = list(hamsters)
+        ans = 0
+        for i in range(len(b)):
+            if b[i] != "H":
+                continue
+            if i > 0 and b[i - 1] == "B":
+                continue
+            if i + 1 < len(b) and b[i + 1] == ".":
+                b[i + 1] = "B"
+                ans += 1
+            elif i > 0 and b[i - 1] == ".":
+                b[i - 1] = "B"
+                ans += 1
+            else:
+                return -1
+        return ans
+
+
+================================================================================
+2087_minimum_cost_homecoming_of_a_robot_in_a_grid
+CFG: {"class": "Solution", "method": "minCost", "paramOrder": ["startPos", "homePos", "rowCosts", "colCosts"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2087 - Minimum Cost Homecoming of a Robot in a Grid
+# https://leetcode.com/problems/minimum-cost-homecoming-of-a-robot-in-a-grid/
+
+from typing import List
+
+
+class Solution:
+    def minCost(
+        self, startPos: List[int], homePos: List[int], rowCosts: List[int], colCosts: List[int]
+    ) -> int:
+        ans = 0
+        sr, sc = startPos
+        hr, hc = homePos
+        if sr < hr:
+            for r in range(sr + 1, hr + 1):
+                ans += rowCosts[r]
+        else:
+            for r in range(sr - 1, hr - 1, -1):
+                ans += rowCosts[r]
+        if sc < hc:
+            for c in range(sc + 1, hc + 1):
+                ans += colCosts[c]
+        else:
+            for c in range(sc - 1, hc - 1, -1):
+                ans += colCosts[c]
+        return ans
+
+
+================================================================================
+2088_count_fertile_pyramids_in_a_land
+CFG: {"class": "Solution", "method": "countPyramids", "paramOrder": ["grid"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2088 - Count Fertile Pyramids in a Land
+# https://leetcode.com/problems/count-fertile-pyramids-in-a-land/
+
+from typing import List
+
+
+class Solution:
+    def countPyramids(self, grid: List[List[int]]) -> int:
+        def count(g: List[List[int]]) -> int:
+            m, n = len(g), len(g[0])
+            dp = [row[:] for row in g]
+            ans = 0
+            for i in range(m - 2, -1, -1):
+                for j in range(1, n - 1):
+                    if g[i][j] == 1:
+                        dp[i][j] = 1 + min(dp[i + 1][j - 1], dp[i + 1][j], dp[i + 1][j + 1])
+                        ans += dp[i][j] - 1
+            return ans
+
+        return count(grid) + count(grid[::-1])
+
+
+================================================================================
+2089_find_target_indices_after_sorting_array
+CFG: {"class": "Solution", "method": "targetIndices", "paramOrder": ["nums", "target"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+# LeetCode 2089 - Find Target Indices After Sorting Array
+# https://leetcode.com/problems/find-target-indices-after-sorting-array/
+
+from typing import List
+
+
+class Solution:
+    def targetIndices(self, nums: List[int], target: int) -> List[int]:
+        less = eq = 0
+        for x in nums:
+            if x < target:
+                less += 1
+            elif x == target:
+                eq += 1
+        return [less + i for i in range(eq)]
+

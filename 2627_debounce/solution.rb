@@ -1,7 +1,13 @@
-﻿# LeetCode 2627 - Debounce
+# LeetCode 2627 - Debounce
 # https://leetcode.com/problems/debounce/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Proc} fn
+# @param {Integer} t
+# @return {Proc}
+def debounce(fn, t)
+  timer = { id: nil }
+  lambda do |*args|
+    timer[:id] = { args: args, t: t }
+    fn.call(*args)
+  end
 end

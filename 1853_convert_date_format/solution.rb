@@ -1,7 +1,7 @@
-﻿# LeetCode 1853 - Convert Date Format
-# https://leetcode.com/problems/convert-date-format/
+# LeetCode 1853 - Convert Date Format
+# https:# leetcode.com/problems/convert-date-format/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT DATE_FORMAT(day, '%W, %M %e, %Y') AS day
+  FROM Days
+SQL

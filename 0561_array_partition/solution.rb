@@ -1,7 +1,8 @@
 ﻿# LeetCode 0561 - Array Partition
 # https://leetcode.com/problems/array-partition/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @return {Integer}
+def array_pair_sum(nums)
+  nums.sort.each_slice(2).sum(&:first)
 end

@@ -1,7 +1,6 @@
-﻿# LeetCode 1683 - Invalid Tweets
+# LeetCode 1683 - Invalid Tweets
 # https://leetcode.com/problems/invalid-tweets/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT tweet_id FROM Tweets WHERE CHAR_LENGTH(content)>15
+SQL

@@ -1,7 +1,11 @@
-﻿# LeetCode 2796 - Repeat String
+# LeetCode 2796 - Repeat String
 # https://leetcode.com/problems/repeat-string/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} s
+# @param {Integer} times
+# @return {String}
+def replicate(s, times)
+  res = +""
+  times.times { res << s }
+  res
 end

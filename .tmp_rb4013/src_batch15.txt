@@ -1,0 +1,3042 @@
+========== 3171_find_subarray_with_bitwise_or_closest_to_k ==========
+# LeetCode 3171 - Find Subarray With Bitwise OR Closest to K
+# https://leetcode.com/problems/find-subarray-with-bitwise-or-closest-to-k/
+
+from typing import List
+
+
+def leading_zero_count(x: int) -> int:
+    if x == 0:
+        return 32
+    n = 0
+    for bit in range(31, -1, -1):
+        if ((x >> bit) & 1) != 0:
+            break
+        n += 1
+    return n
+
+
+class Solution:
+    def minimumDifference(self, nums: List[int], k: int) -> int:
+        mx = 0
+        for v in nums:
+            mx = max(mx, v)
+        m = 1 if mx == 0 else 32 - leading_zero_count(mx)
+        cnt = [0] * m
+        ans = 10**18
+        s = 0
+        i = 0
+        for j, x in enumerate(nums):
+            s |= x
+            ans = min(ans, abs(s - k))
+            for h in range(m):
+                if ((x >> h) & 1) != 0:
+                    cnt[h] += 1
+            while i < j and s > k:
+                y = nums[i]
+                for h in range(m):
+                    if ((y >> h) & 1) != 0:
+                        cnt[h] -= 1
+                        if cnt[h] == 0:
+                            s ^= 1 << h
+                ans = min(ans, abs(s - k))
+                i += 1
+        return ans
+
+========== 3173_bitwise_or_of_adjacent_elements ==========
+# LeetCode 3173 - Bitwise OR of Adjacent Elements
+# https://leetcode.com/problems/bitwise-or-of-adjacent-elements/
+
+from typing import List
+
+
+class Solution:
+    def orArray(self, nums: List[int]) -> List[int]:
+        ans = [0] * (len(nums) - 1)
+        for i in range(1, len(nums)):
+            ans[i - 1] = nums[i] | nums[i - 1]
+        return ans
+
+========== 3174_clear_digits ==========
+# LeetCode 3174 - Clear Digits
+# https://leetcode.com/problems/clear-digits/
+
+
+class Solution:
+    def clearDigits(self, s: str) -> str:
+        stk = []
+        for c in s:
+            if "0" <= c <= "9":
+                stk.pop()
+            else:
+                stk.append(c)
+        return "".join(stk)
+
+========== 3175_find_the_first_player_to_win_k_games_in_a_row ==========
+# LeetCode 3175 - Find The First Player to win K Games in a Row
+# https://leetcode.com/problems/find-the-first-player-to-win-k-games-in-a-row/
+
+from typing import List
+
+
+class Solution:
+    def findWinningPlayer(self, skills: List[int], k: int) -> int:
+        n = len(skills)
+        k = min(k, n - 1)
+        i = 0
+        cnt = 0
+        for j in range(1, n):
+            if skills[i] < skills[j]:
+                i = j
+                cnt = 1
+            else:
+                cnt += 1
+            if cnt == k:
+                break
+        return i
+
+========== 3176_find_the_maximum_length_of_a_good_subsequence_i ==========
+# LeetCode 3176 - Find the Maximum Length of a Good Subsequence I
+# https://leetcode.com/problems/find-the-maximum-length-of-a-good-subsequence-i/
+
+from typing import List
+
+
+class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[0] * (k + 1) for _ in range(n)]
+        ans = 0
+        for i in range(n):
+            for h in range(k + 1):
+                for j in range(i):
+                    if nums[i] == nums[j]:
+                        f[i][h] = max(f[i][h], f[j][h])
+                    elif h > 0:
+                        f[i][h] = max(f[i][h], f[j][h - 1])
+                f[i][h] += 1
+            ans = max(ans, f[i][k])
+        return ans
+
+========== 3177_find_the_maximum_length_of_a_good_subsequence_ii ==========
+# LeetCode 3177 - Find the Maximum Length of a Good Subsequence II
+# https://leetcode.com/problems/find-the-maximum-length-of-a-good-subsequence-ii/
+
+from typing import List
+
+
+class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        f = [[0] * (k + 1) for _ in range(n)]
+        mp = [{} for _ in range(k + 1)]
+        g = [[0, 0, 0] for _ in range(k + 1)]
+        ans = 0
+        for i in range(n):
+            for h in range(k + 1):
+                f[i][h] = mp[h].get(nums[i], 0)
+                if h > 0:
+                    if g[h - 1][0] != nums[i]:
+                        f[i][h] = max(f[i][h], g[h - 1][1])
+                    else:
+                        f[i][h] = max(f[i][h], g[h - 1][2])
+                f[i][h] += 1
+                mp[h][nums[i]] = max(mp[h].get(nums[i], 0), f[i][h])
+                if g[h][0] != nums[i]:
+                    if f[i][h] >= g[h][1]:
+                        g[h][2] = g[h][1]
+                        g[h][1] = f[i][h]
+                        g[h][0] = nums[i]
+                    elif f[i][h] > g[h][2]:
+                        g[h][2] = f[i][h]
+                elif f[i][h] > g[h][1]:
+                    g[h][1] = f[i][h]
+                ans = max(ans, f[i][h])
+        return ans
+
+========== 3178_find_the_child_who_has_the_ball_after_k_seconds ==========
+# LeetCode 3178 - Find the Child Who Has the Ball After K Seconds
+# https://leetcode.com/problems/find-the-child-who-has-the-ball-after-k-seconds/
+
+
+class Solution:
+    def numberOfChild(self, n: int, k: int) -> int:
+        mod = k % (n - 1)
+        k = k // (n - 1)
+        if k % 2 == 1:
+            return n - mod - 1
+        return mod
+
+========== 3179_find_the_n_th_value_after_k_seconds ==========
+# LeetCode 3179 - Find the N-th Value After K Seconds
+# https://leetcode.com/problems/find-the-n-th-value-after-k-seconds/
+
+
+class Solution:
+    def valueAfterKSeconds(self, n: int, k: int) -> int:
+        mod = 1000000007
+        a = [1] * n
+        while k > 0:
+            for i in range(1, n):
+                a[i] = (a[i] + a[i - 1]) % mod
+            k -= 1
+        return a[n - 1]
+
+========== 3180_maximum_total_reward_using_operations_i ==========
+# LeetCode 3180 - Maximum Total Reward Using Operations I
+# https://leetcode.com/problems/maximum-total-reward-using-operations-i/
+
+from typing import List
+
+
+class Solution:
+    def maxTotalReward(self, rewardValues: List[int]) -> int:
+        rewardValues.sort()
+        n = len(rewardValues)
+        f = [-1] * (rewardValues[n - 1] << 1)
+
+        def upper_bound(a: List[int], x: int) -> int:
+            lo, hi = 0, len(a)
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if a[mid] <= x:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            return lo
+
+        def dfs(x: int) -> int:
+            if f[x] != -1:
+                return f[x]
+            idx = upper_bound(rewardValues, x)
+            f[x] = 0
+            for it in range(idx, n):
+                f[x] = max(f[x], rewardValues[it] + dfs(x + rewardValues[it]))
+            return f[x]
+
+        return dfs(0)
+
+========== 3181_maximum_total_reward_using_operations_ii ==========
+# LeetCode 3181 - Maximum Total Reward Using Operations II
+# https://leetcode.com/problems/maximum-total-reward-using-operations-ii/
+
+from typing import List
+
+
+class Solution:
+    def maxTotalReward(self, rewardValues: List[int]) -> int:
+        rewardValues.sort()
+        uniq = 0
+        for i in range(len(rewardValues)):
+            if uniq == 0 or rewardValues[i] != rewardValues[uniq - 1]:
+                rewardValues[uniq] = rewardValues[i]
+                uniq += 1
+        f = 1
+        for i in range(uniq):
+            v = rewardValues[i]
+            mask = f & ((1 << v) - 1)
+            f = f | (mask << v)
+        for i in range(100000, -1, -1):
+            if (f >> i) & 1:
+                return i
+        return 0
+
+========== 3183_the_number_of_ways_to_make_the_sum ==========
+# LeetCode 3183 - The Number of Ways to Make the Sum
+# https://leetcode.com/problems/the-number-of-ways-to-make-the-sum/
+
+
+class Solution:
+    def numberOfWays(self, n: int) -> int:
+        mod = 1000000007
+        coins = [1, 2, 6]
+        f = [0] * (n + 1)
+        f[0] = 1
+        for x in coins:
+            for j in range(x, n + 1):
+                f[j] = (f[j] + f[j - x]) % mod
+        ans = f[n]
+        if n >= 4:
+            ans = (ans + f[n - 4]) % mod
+        if n >= 8:
+            ans = (ans + f[n - 8]) % mod
+        return ans
+
+========== 3184_count_pairs_that_form_a_complete_day_i ==========
+# LeetCode 3184 - Count Pairs That Form a Complete Day I
+# https://leetcode.com/problems/count-pairs-that-form-a-complete-day-i/
+
+from typing import List
+
+
+class Solution:
+    def countCompleteDayPairs(self, hours: List[int]) -> int:
+        cnt = [0] * 24
+        ans = 0
+        for x in hours:
+            ans += cnt[(24 - x % 24) % 24]
+            cnt[x % 24] += 1
+        return ans
+
+========== 3185_count_pairs_that_form_a_complete_day_ii ==========
+# LeetCode 3185 - Count Pairs That Form a Complete Day II
+# https://leetcode.com/problems/count-pairs-that-form-a-complete-day-ii/
+
+from typing import List
+
+
+class Solution:
+    def countCompleteDayPairs(self, hours: List[int]) -> int:
+        cnt = [0] * 24
+        ans = 0
+        for x in hours:
+            ans += cnt[(24 - x % 24) % 24]
+            cnt[x % 24] += 1
+        return ans
+
+========== 3186_maximum_total_damage_with_spell_casting ==========
+# LeetCode 3186 - Maximum Total Damage With Spell Casting
+# https://leetcode.com/problems/maximum-total-damage-with-spell-casting/
+
+from typing import List
+
+
+class Solution:
+    def maximumTotalDamage(self, power: List[int]) -> int:
+        n = len(power)
+        power.sort()
+        cnt = {}
+        nxt = [0] * n
+        f = [0] * n
+
+        def lower_bound(a: List[int], x: int) -> int:
+            lo, hi = 0, len(a)
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if a[mid] < x:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            return lo
+
+        for i in range(n):
+            cnt[power[i]] = cnt.get(power[i], 0) + 1
+            nxt[i] = lower_bound(power, power[i] + 3)
+
+        def dfs(i: int) -> int:
+            if i >= n:
+                return 0
+            if f[i] != 0:
+                return f[i]
+            a = dfs(i + cnt[power[i]])
+            b = power[i] * cnt[power[i]] + dfs(nxt[i])
+            f[i] = max(a, b)
+            return f[i]
+
+        return dfs(0)
+
+========== 3187_peaks_in_array ==========
+# LeetCode 3187 - Peaks in Array
+# https://leetcode.com/problems/peaks-in-array/
+
+from typing import List
+
+
+class BIT:
+    def __init__(self, n: int):
+        self.n = n
+        self.c = [0] * (n + 1)
+
+    def update(self, x: int, delta: int) -> None:
+        while x <= self.n:
+            self.c[x] += delta
+            x += x & -x
+
+    def query(self, x: int) -> int:
+        s = 0
+        while x > 0:
+            s += self.c[x]
+            x -= x & -x
+        return s
+
+
+class Solution:
+    def countOfPeaks(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        tree = BIT(n - 1)
+
+        def update_peak(i: int, val: int) -> None:
+            if i <= 0 or i >= n - 1:
+                return
+            if nums[i - 1] < nums[i] and nums[i] > nums[i + 1]:
+                tree.update(i, val)
+
+        for i in range(1, n - 1):
+            update_peak(i, 1)
+        ans = []
+        for q in queries:
+            if q[0] == 1:
+                l, r = q[1] + 1, q[2] - 1
+                t = 0
+                if l <= r:
+                    t = tree.query(r) - tree.query(l - 1)
+                ans.append(t)
+            else:
+                idx, val = q[1], q[2]
+                for i in range(idx - 1, idx + 2):
+                    update_peak(i, -1)
+                nums[idx] = val
+                for i in range(idx - 1, idx + 2):
+                    update_peak(i, 1)
+        return ans
+
+========== 3189_minimum_moves_to_get_a_peaceful_board ==========
+# LeetCode 3189 - Minimum Moves to Get a Peaceful Board
+# https://leetcode.com/problems/minimum-moves-to-get-a-peaceful-board/
+
+from typing import List
+
+
+class Solution:
+    def minMoves(self, rooks: List[List[int]]) -> int:
+        ans = 0
+        rooks.sort(key=lambda a: a[0])
+        for i in range(len(rooks)):
+            ans += abs(rooks[i][0] - i)
+        rooks.sort(key=lambda a: a[1])
+        for j in range(len(rooks)):
+            ans += abs(rooks[j][1] - j)
+        return ans
+
+========== 3190_find_minimum_operations_to_make_all_elements_divisible_by_three ==========
+# LeetCode 3190 - Find Minimum Operations to Make All Elements Divisible by Three
+# https://leetcode.com/problems/find-minimum-operations-to-make-all-elements-divisible-by-three/
+
+from typing import List
+
+
+class Solution:
+    def minimumOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for x in nums:
+            if x % 3 != 0:
+                ans += 1
+        return ans
+
+========== 3191_minimum_operations_to_make_binary_array_elements_equal_to_one_i ==========
+# LeetCode 3191 - Minimum Operations to Make Binary Array Elements Equal to One I
+# https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-i/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                if i + 2 >= len(nums):
+                    return -1
+                nums[i + 1] ^= 1
+                nums[i + 2] ^= 1
+                ans += 1
+        return ans
+
+========== 3192_minimum_operations_to_make_binary_array_elements_equal_to_one_ii ==========
+# LeetCode 3192 - Minimum Operations to Make Binary Array Elements Equal to One II
+# https://leetcode.com/problems/minimum-operations-to-make-binary-array-elements-equal-to-one-ii/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        ans = 0
+        v = 0
+        for raw in nums:
+            x = raw ^ v
+            if x == 0:
+                v ^= 1
+                ans += 1
+        return ans
+
+========== 3193_count_the_number_of_inversions ==========
+# LeetCode 3193 - Count the Number of Inversions
+# https://leetcode.com/problems/count-the-number-of-inversions/
+
+from typing import List
+
+
+class Solution:
+    def numberOfPermutations(self, n: int, requirements: List[List[int]]) -> int:
+        req = [-1] * n
+        for r in requirements:
+            req[r[0]] = r[1]
+        if req[0] > 0:
+            return 0
+        req[0] = 0
+        m = 0
+        for v in req:
+            m = max(m, v)
+        mod = 1000000007
+        f = [[0] * (m + 1) for _ in range(n)]
+        f[0][0] = 1
+        for i in range(1, n):
+            l, r = 0, m
+            if req[i] >= 0:
+                l = r = req[i]
+            for j in range(l, r + 1):
+                for k in range(min(i, j) + 1):
+                    f[i][j] = (f[i][j] + f[i - 1][j - k]) % mod
+        return f[n - 1][req[n - 1]]
+
+========== 3194_minimum_average_of_smallest_and_largest_elements ==========
+# LeetCode 3194 - Minimum Average of Smallest and Largest Elements
+# https://leetcode.com/problems/minimum-average-of-smallest-and-largest-elements/
+
+from typing import List
+
+
+class Solution:
+    def minimumAverage(self, nums: List[int]) -> float:
+        nums.sort()
+        n = len(nums)
+        ans = 1 << 30
+        for i in range(n // 2):
+            ans = min(ans, nums[i] + nums[n - i - 1])
+        return ans / 2.0
+
+========== 3195_find_the_minimum_area_to_cover_all_ones_i ==========
+# LeetCode 3195 - Find the Minimum Area to Cover All Ones I
+# https://leetcode.com/problems/find-the-minimum-area-to-cover-all-ones-i/
+
+from typing import List
+
+
+class Solution:
+    def minimumArea(self, grid: List[List[int]]) -> int:
+        x1, y1 = len(grid), len(grid[0])
+        x2, y2 = 0, 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == 1:
+                    x1 = min(x1, i)
+                    y1 = min(y1, j)
+                    x2 = max(x2, i)
+                    y2 = max(y2, j)
+        return (x2 - x1 + 1) * (y2 - y1 + 1)
+
+========== 3196_maximize_total_cost_of_alternating_subarrays ==========
+# LeetCode 3196 - Maximize Total Cost of Alternating Subarrays
+# https://leetcode.com/problems/maximize-total-cost-of-alternating-subarrays/
+
+from typing import List
+
+
+class Solution:
+    def maximumTotalCost(self, nums: List[int]) -> int:
+        NEG = -10**18
+        n = len(nums)
+        memo = [[NEG, NEG] for _ in range(n)]
+
+        def dfs(i: int, j: int) -> int:
+            if i >= n:
+                return 0
+            if memo[i][j] != NEG:
+                return memo[i][j]
+            res = nums[i] + dfs(i + 1, 1)
+            if j > 0:
+                res = max(res, -nums[i] + dfs(i + 1, 0))
+            memo[i][j] = res
+            return res
+
+        return dfs(0, 0)
+
+========== 3197_find_the_minimum_area_to_cover_all_ones_ii ==========
+# LeetCode 3197 - Find the Minimum Area to Cover All Ones II
+# https://leetcode.com/problems/find-the-minimum-area-to-cover-all-ones-ii/
+
+from typing import List
+
+
+class Solution:
+    def minimumSum(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        ans = m * n
+
+        def area(i1: int, j1: int, i2: int, j2: int) -> int:
+            inf = 10**18
+            x1 = y1 = inf
+            x2 = y2 = -inf
+            for i in range(i1, i2 + 1):
+                for j in range(j1, j2 + 1):
+                    if grid[i][j] == 1:
+                        x1 = min(x1, i)
+                        y1 = min(y1, j)
+                        x2 = max(x2, i)
+                        y2 = max(y2, j)
+            if x1 == inf:
+                return 0
+            return (x2 - x1 + 1) * (y2 - y1 + 1)
+
+        for i1 in range(m - 1):
+            for i2 in range(i1 + 1, m - 1):
+                ans = min(
+                    ans,
+                    area(0, 0, i1, n - 1)
+                    + area(i1 + 1, 0, i2, n - 1)
+                    + area(i2 + 1, 0, m - 1, n - 1),
+                )
+        for j1 in range(n - 1):
+            for j2 in range(j1 + 1, n - 1):
+                ans = min(
+                    ans,
+                    area(0, 0, m - 1, j1)
+                    + area(0, j1 + 1, m - 1, j2)
+                    + area(0, j2 + 1, m - 1, n - 1),
+                )
+        for i in range(m - 1):
+            for j in range(n - 1):
+                ans = min(ans, area(0, 0, i, j) + area(0, j + 1, i, n - 1) + area(i + 1, 0, m - 1, n - 1))
+                ans = min(ans, area(0, 0, i, n - 1) + area(i + 1, 0, m - 1, j) + area(i + 1, j + 1, m - 1, n - 1))
+                ans = min(ans, area(0, 0, i, j) + area(i + 1, 0, m - 1, j) + area(0, j + 1, m - 1, n - 1))
+                ans = min(ans, area(0, 0, m - 1, j) + area(0, j + 1, i, n - 1) + area(i + 1, j + 1, m - 1, n - 1))
+        return ans
+
+========== 3199_count_triplets_with_even_xor_set_bits_i ==========
+# LeetCode 3199 - Count Triplets with Even XOR Set Bits I
+# https://leetcode.com/problems/count-triplets-with-even-xor-set-bits-i/
+
+from typing import List
+
+
+class Solution:
+    def tripletCount(self, a: List[int], b: List[int], c: List[int]) -> int:
+        def bitCount(x: int) -> int:
+            n = 0
+            while x:
+                n += x & 1
+                x >>= 1
+            return n
+
+        cnt1, cnt2, cnt3 = [0, 0], [0, 0], [0, 0]
+        for x in a:
+            cnt1[bitCount(x) % 2] += 1
+        for x in b:
+            cnt2[bitCount(x) % 2] += 1
+        for x in c:
+            cnt3[bitCount(x) % 2] += 1
+        ans = 0
+        for i in range(2):
+            for j in range(2):
+                for k in range(2):
+                    if (i + j + k) % 2 == 0:
+                        ans += cnt1[i] * cnt2[j] * cnt3[k]
+        return ans
+
+========== 3200_maximum_height_of_a_triangle ==========
+# LeetCode 3200 - Maximum Height of a Triangle
+# https://leetcode.com/problems/maximum-height-of-a-triangle/
+
+class Solution:
+    def maxHeightOfTriangle(self, red: int, blue: int) -> int:
+        ans = 0
+        for k in range(2):
+            c = [red, blue]
+            i, j = 1, k
+            while i <= c[j]:
+                c[j] -= i
+                ans = max(ans, i)
+                i += 1
+                j ^= 1
+        return ans
+
+========== 3201_find_the_maximum_length_of_valid_subsequence_i ==========
+# LeetCode 3201 - Find the Maximum Length of Valid Subsequence I
+# https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-i/
+
+from typing import List
+
+
+class Solution:
+    def maximumLength(self, nums: List[int]) -> int:
+        k = 2
+        f = [[0] * k for _ in range(k)]
+        ans = 0
+        for raw in nums:
+            x = raw % k
+            for j in range(k):
+                y = (j - x + k) % k
+                f[x][y] = f[y][x] + 1
+                ans = max(ans, f[x][y])
+        return ans
+
+========== 3202_find_the_maximum_length_of_valid_subsequence_ii ==========
+# LeetCode 3202 - Find the Maximum Length of Valid Subsequence II
+# https://leetcode.com/problems/find-the-maximum-length-of-valid-subsequence-ii/
+
+from typing import List
+
+
+class Solution:
+    def maximumLength(self, nums: List[int], k: int) -> int:
+        f = [[0] * k for _ in range(k)]
+        ans = 0
+        for raw in nums:
+            x = raw % k
+            for j in range(k):
+                y = (j - x + k) % k
+                f[x][y] = f[y][x] + 1
+                ans = max(ans, f[x][y])
+        return ans
+
+========== 3203_find_minimum_diameter_after_merging_two_trees ==========
+# LeetCode 3203 - Find Minimum Diameter After Merging Two Trees
+# https://leetcode.com/problems/find-minimum-diameter-after-merging-two-trees/
+
+from typing import List
+
+
+class Solution:
+    def minimumDiameterAfterMerge(self, edges1: List[List[int]], edges2: List[List[int]]) -> int:
+        ans = 0
+        a = 0
+        g: List[List[int]] = []
+
+        def dfs(i: int, fa: int, t: int) -> None:
+            nonlocal ans, a
+            for j in g[i]:
+                if j != fa:
+                    dfs(j, i, t + 1)
+            if ans < t:
+                ans = t
+                a = i
+
+        def treeDiameter(edges: List[List[int]]) -> int:
+            nonlocal ans, a, g
+            n = len(edges) + 1
+            g = [[] for _ in range(n)]
+            for e in edges:
+                g[e[0]].append(e[1])
+                g[e[1]].append(e[0])
+            ans = 0
+            a = 0
+            dfs(0, -1, 0)
+            dfs(a, -1, 0)
+            return ans
+
+        d1 = treeDiameter(edges1)
+        d2 = treeDiameter(edges2)
+        return max(d1, d2, (d1 + 1) // 2 + (d2 + 1) // 2 + 1)
+
+========== 3205_maximum_array_hopping_score_i ==========
+# LeetCode 3205 - Maximum Array Hopping Score I
+# https://leetcode.com/problems/maximum-array-hopping-score-i/
+
+from typing import List
+
+
+class Solution:
+    def maxScore(self, nums: List[int]) -> int:
+        n = len(nums)
+        f = [0] * n
+
+        def dfs(i: int) -> int:
+            if f[i] > 0:
+                return f[i]
+            for j in range(i + 1, n):
+                f[i] = max(f[i], (j - i) * nums[j] + dfs(j))
+            return f[i]
+
+        return dfs(0)
+
+========== 3206_alternating_groups_i ==========
+# LeetCode 3206 - Alternating Groups I
+# https://leetcode.com/problems/alternating-groups-i/
+
+from typing import List
+
+
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int]) -> int:
+        k, n = 3, len(colors)
+        cnt, ans = 0, 0
+        for i in range(n * 2):
+            if i > 0 and colors[i % n] == colors[(i - 1) % n]:
+                cnt = 1
+            else:
+                cnt += 1
+            if i >= n and cnt >= k:
+                ans += 1
+        return ans
+
+========== 3207_maximum_points_after_enemy_battles ==========
+# LeetCode 3207 - Maximum Points After Enemy Battles
+# https://leetcode.com/problems/maximum-points-after-enemy-battles/
+
+from typing import List
+
+
+class Solution:
+    def maximumPoints(self, enemyEnergies: List[int], currentEnergy: int) -> int:
+        enemyEnergies.sort()
+        if currentEnergy < enemyEnergies[0]:
+            return 0
+        ans = 0
+        for i in range(len(enemyEnergies) - 1, -1, -1):
+            ans += currentEnergy // enemyEnergies[0]
+            currentEnergy %= enemyEnergies[0]
+            currentEnergy += enemyEnergies[i]
+        return ans
+
+========== 3208_alternating_groups_ii ==========
+# LeetCode 3208 - Alternating Groups II
+# https://leetcode.com/problems/alternating-groups-ii/
+
+from typing import List
+
+
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int], k: int) -> int:
+        n = len(colors)
+        cnt, ans = 0, 0
+        for i in range(n * 2):
+            if i > 0 and colors[i % n] == colors[(i - 1) % n]:
+                cnt = 1
+            else:
+                cnt += 1
+            if i >= n and cnt >= k:
+                ans += 1
+        return ans
+
+========== 3209_number_of_subarrays_with_and_value_of_k ==========
+# LeetCode 3209 - Number of Subarrays With AND Value of K
+# https://leetcode.com/problems/number-of-subarrays-with-and-value-of-k/
+
+from typing import Dict, List
+
+
+class Solution:
+    def countSubarrays(self, nums: List[int], k: int) -> int:
+        pre: Dict[int, int] = {}
+        ans = 0
+        for x in nums:
+            cur: Dict[int, int] = {}
+            for key, val in pre.items():
+                nk = x & key
+                cur[nk] = cur.get(nk, 0) + val
+            cur[x] = cur.get(x, 0) + 1
+            ans += cur.get(k, 0)
+            pre = cur
+        return ans
+
+========== 3210_find_the_encrypted_string ==========
+# LeetCode 3210 - Find the Encrypted String
+# https://leetcode.com/problems/find-the-encrypted-string/
+
+class Solution:
+    def getEncryptedString(self, s: str, k: int) -> str:
+        n = len(s)
+        out = []
+        for i in range(n):
+            out.append(s[(i + k) % n])
+        return "".join(out)
+
+========== 3211_generate_binary_strings_without_adjacent_zeros ==========
+# LeetCode 3211 - Generate Binary Strings Without Adjacent Zeros
+# https://leetcode.com/problems/generate-binary-strings-without-adjacent-zeros/
+
+from typing import List
+
+
+class Solution:
+    def validStrings(self, n: int) -> List[str]:
+        ans: List[str] = []
+        t: List[str] = []
+
+        def dfs(i: int) -> None:
+            if i >= n:
+                ans.append("".join(t))
+                return
+            for j in range(2):
+                if (j == 0 and (i == 0 or t[i - 1] == "1")) or j == 1:
+                    t.append(str(j))
+                    dfs(i + 1)
+                    t.pop()
+
+        dfs(0)
+        return ans
+
+========== 3212_count_submatrices_with_equal_frequency_of_x_and_y ==========
+# LeetCode 3212 - Count Submatrices With Equal Frequency of X and Y
+# https://leetcode.com/problems/count-submatrices-with-equal-frequency-of-x-and-y/
+
+from typing import List
+
+
+class Solution:
+    def numberOfSubmatrices(self, grid: List[List[str]]) -> int:
+        m, n = len(grid), len(grid[0])
+        s = [[[0, 0] for _ in range(n + 1)] for _ in range(m + 1)]
+        ans = 0
+        for i in range(1, m + 1):
+            for j in range(1, n + 1):
+                s[i][j][0] = s[i - 1][j][0] + s[i][j - 1][0] - s[i - 1][j - 1][0]
+                if grid[i - 1][j - 1] == "X":
+                    s[i][j][0] += 1
+                s[i][j][1] = s[i - 1][j][1] + s[i][j - 1][1] - s[i - 1][j - 1][1]
+                if grid[i - 1][j - 1] == "Y":
+                    s[i][j][1] += 1
+                if s[i][j][0] > 0 and s[i][j][0] == s[i][j][1]:
+                    ans += 1
+        return ans
+
+========== 3213_construct_string_with_minimum_cost ==========
+# LeetCode 3213 - Construct String with Minimum Cost
+# https://leetcode.com/problems/construct-string-with-minimum-cost/
+
+from typing import List
+
+
+class Solution:
+    def minimumCost(self, target: str, words: List[str], costs: List[int]) -> int:
+        bas, mod = 13331, 998244353
+        inf = 10**18
+        n = len(target)
+        p = [0] * (n + 1)
+        h = [0] * (n + 1)
+        p[0] = 1
+        h[0] = 0
+        for i in range(1, n + 1):
+            p[i] = (p[i - 1] * bas) % mod
+            h[i] = (h[i - 1] * bas + ord(target[i - 1])) % mod
+
+        def query(l: int, r: int) -> int:
+            return (h[r] - (h[l - 1] * p[r - l + 1]) % mod + mod) % mod
+
+        f = [inf] * (n + 1)
+        f[0] = 0
+        lengths = sorted({len(w) for w in words})
+        d = {}
+        for i in range(len(words)):
+            x = 0
+            for ch in words[i]:
+                x = (x * bas + ord(ch)) % mod
+            if x not in d or costs[i] < d[x]:
+                d[x] = costs[i]
+        for i in range(1, n + 1):
+            for j in lengths:
+                if j > i:
+                    break
+                x = query(i - j + 1, i)
+                if x in d:
+                    f[i] = min(f[i], f[i - j] + d[x])
+        return -1 if f[n] >= inf else f[n]
+
+========== 3215_count_triplets_with_even_xor_set_bits_ii ==========
+# LeetCode 3215 - Count Triplets with Even XOR Set Bits II
+# https://leetcode.com/problems/count-triplets-with-even-xor-set-bits-ii/
+
+from typing import List
+
+
+class Solution:
+    def tripletCount(self, a: List[int], b: List[int], c: List[int]) -> int:
+        def bitCount(x: int) -> int:
+            n = 0
+            while x:
+                n += x & 1
+                x >>= 1
+            return n
+
+        cnt1, cnt2, cnt3 = [0, 0], [0, 0], [0, 0]
+        for x in a:
+            cnt1[bitCount(x) % 2] += 1
+        for x in b:
+            cnt2[bitCount(x) % 2] += 1
+        for x in c:
+            cnt3[bitCount(x) % 2] += 1
+        ans = 0
+        for i in range(2):
+            for j in range(2):
+                for k in range(2):
+                    if (i + j + k) % 2 == 0:
+                        ans += cnt1[i] * cnt2[j] * cnt3[k]
+        return ans
+
+========== 3216_lexicographically_smallest_string_after_a_swap ==========
+# LeetCode 3216 - Lexicographically Smallest String After a Swap
+# https://leetcode.com/problems/lexicographically-smallest-string-after-a-swap/
+
+class Solution:
+    def getSmallestString(self, s: str) -> str:
+        arr = list(s)
+        n = len(arr)
+        for i in range(1, n):
+            a, b = arr[i - 1], arr[i]
+            if a > b and (ord(a) % 2) == (ord(b) % 2):
+                arr[i - 1], arr[i] = b, a
+                return "".join(arr)
+        return s
+
+========== 3217_delete_nodes_from_linked_list_present_in_array ==========
+# LeetCode 3217 - Delete Nodes From Linked List Present in Array
+# https://leetcode.com/problems/delete-nodes-from-linked-list-present-in-array/
+
+from typing import List, Optional
+
+
+class ListNode:
+    def __init__(self, val: int = 0, next: Optional["ListNode"] = None):
+        self.val = val
+        self.next = next
+
+
+class Solution:
+    def modifiedList(self, nums: List[int], head: Optional[ListNode]) -> Optional[ListNode]:
+        s = set(nums)
+        dummy = ListNode(0, head)
+        pre = dummy
+        while pre.next is not None:
+            if pre.next.val in s:
+                pre.next = pre.next.next
+            else:
+                pre = pre.next
+        return dummy.next
+
+========== 3218_minimum_cost_for_cutting_cake_i ==========
+# LeetCode 3218 - Minimum Cost for Cutting Cake I
+# https://leetcode.com/problems/minimum-cost-for-cutting-cake-i/
+
+from typing import List
+
+
+class Solution:
+    def minimumCost(self, m: int, n: int, horizontalCut: List[int], verticalCut: List[int]) -> int:
+        horizontalCut.sort(reverse=True)
+        verticalCut.sort(reverse=True)
+        i = j = 0
+        h = v = 1
+        ans = 0
+        while i < m - 1 or j < n - 1:
+            if j == n - 1 or (i < m - 1 and horizontalCut[i] > verticalCut[j]):
+                ans += horizontalCut[i] * v
+                h += 1
+                i += 1
+            else:
+                ans += verticalCut[j] * h
+                v += 1
+                j += 1
+        return ans
+
+========== 3219_minimum_cost_for_cutting_cake_ii ==========
+# LeetCode 3219 - Minimum Cost for Cutting Cake II
+# https://leetcode.com/problems/minimum-cost-for-cutting-cake-ii/
+
+from typing import List
+
+
+class Solution:
+    def minimumCost(self, m: int, n: int, horizontalCut: List[int], verticalCut: List[int]) -> int:
+        horizontalCut.sort(reverse=True)
+        verticalCut.sort(reverse=True)
+        i = j = 0
+        h = v = 1
+        ans = 0
+        while i < m - 1 or j < n - 1:
+            if j == n - 1 or (i < m - 1 and horizontalCut[i] > verticalCut[j]):
+                ans += horizontalCut[i] * v
+                h += 1
+                i += 1
+            else:
+                ans += verticalCut[j] * h
+                v += 1
+                j += 1
+        return ans
+
+========== 3221_maximum_array_hopping_score_ii ==========
+# LeetCode 3221 - Maximum Array Hopping Score II
+# https://leetcode.com/problems/maximum-array-hopping-score-ii/
+
+from typing import List
+
+
+class Solution:
+    def maxScore(self, nums: List[int]) -> int:
+        stk = []
+        for i in range(len(nums)):
+            while stk and nums[stk[-1]] <= nums[i]:
+                stk.pop()
+            stk.append(i)
+        ans, cur = 0, 0
+        for j in stk:
+            ans += (j - cur) * nums[j]
+            cur = j
+        return ans
+
+========== 3222_find_the_winning_player_in_coin_game ==========
+# LeetCode 3222 - Find the Winning Player in Coin Game
+# https://leetcode.com/problems/find-the-winning-player-in-coin-game/
+
+class Solution:
+    def winningPlayer(self, x: int, y: int) -> str:
+        k = min(x // 2, y // 8)
+        x -= 2 * k
+        y -= 8 * k
+        if x > 0 and y >= 4:
+            return "Alice"
+        return "Bob"
+
+========== 3223_minimum_length_of_string_after_operations ==========
+# LeetCode 3223 - Minimum Length of String After Operations
+# https://leetcode.com/problems/minimum-length-of-string-after-operations/
+
+class Solution:
+    def minimumLength(self, s: str) -> int:
+        cnt = [0] * 26
+        for ch in s:
+            cnt[ord(ch) - 97] += 1
+        ans = 0
+        for x in cnt:
+            if x > 0:
+                ans += 1 if (x & 1) != 0 else 2
+        return ans
+
+========== 3224_minimum_array_changes_to_make_differences_equal ==========
+# LeetCode 3224 - Minimum Array Changes to Make Differences Equal
+# https://leetcode.com/problems/minimum-array-changes-to-make-differences-equal/
+
+from typing import List
+
+
+class Solution:
+    def minChanges(self, nums: List[int], k: int) -> int:
+        d = [0] * (k + 2)
+        n = len(nums)
+        for i in range(n // 2):
+            x, y = nums[i], nums[n - 1 - i]
+            if x > y:
+                x, y = y, x
+            d[0] += 1
+            d[y - x] -= 1
+            d[y - x + 1] += 1
+            mx = max(y, k - x)
+            d[mx + 1] -= 1
+            d[mx + 1] += 2
+        ans, s = n, 0
+        for x in d:
+            s += x
+            ans = min(ans, s)
+        return ans
+
+========== 3225_maximum_score_from_grid_operations ==========
+# LeetCode 3225 - Maximum Score From Grid Operations
+# https://leetcode.com/problems/maximum-score-from-grid-operations/
+
+from typing import List
+
+
+class Solution:
+    def maximumScore(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        prefix = [[0] * (n + 1) for _ in range(n)]
+        for j in range(n):
+            for i in range(n):
+                prefix[j][i + 1] = prefix[j][i] + grid[i][j]
+        prevPick = [0] * (n + 1)
+        prevSkip = [0] * (n + 1)
+        for j in range(1, n):
+            currPick = [0] * (n + 1)
+            currSkip = [0] * (n + 1)
+            for curr in range(n + 1):
+                for prev in range(n + 1):
+                    if curr > prev:
+                        score = prefix[j - 1][curr] - prefix[j - 1][prev]
+                        currPick[curr] = max(currPick[curr], prevSkip[prev] + score)
+                        currSkip[curr] = max(currSkip[curr], prevSkip[prev] + score)
+                    else:
+                        score = prefix[j][prev] - prefix[j][curr]
+                        currPick[curr] = max(currPick[curr], prevPick[prev] + score)
+                        currSkip[curr] = max(currSkip[curr], prevPick[prev])
+            prevPick = currPick
+            prevSkip = currSkip
+        ans = float("-inf")
+        for v in prevPick:
+            ans = max(ans, v)
+        return int(ans)
+
+========== 3226_number_of_bit_changes_to_make_two_integers_equal ==========
+# LeetCode 3226 - Number of Bit Changes to Make Two Integers Equal
+# https://leetcode.com/problems/number-of-bit-changes-to-make-two-integers-equal/
+
+class Solution:
+    def minChanges(self, n: int, k: int) -> int:
+        if (n & k) != k:
+            return -1
+        x, c = n ^ k, 0
+        while x:
+            c += x & 1
+            x >>= 1
+        return c
+
+========== 3227_vowels_game_in_a_string ==========
+# LeetCode 3227 - Vowels Game in a String
+# https://leetcode.com/problems/vowels-game-in-a-string/
+
+class Solution:
+    def doesAliceWin(self, s: str) -> bool:
+        for c in s:
+            if c == "a" or c == "e" or c == "i" or c == "o" or c == "u":
+                return True
+        return False
+
+========== 3228_maximum_number_of_operations_to_move_ones_to_the_end ==========
+# LeetCode 3228 - Maximum Number of Operations to Move Ones to the End
+# https://leetcode.com/problems/maximum-number-of-operations-to-move-ones-to-the-end/
+
+class Solution:
+    def maxOperations(self, s: str) -> int:
+        ans, cnt = 0, 0
+        for i in range(len(s)):
+            if s[i] == "1":
+                cnt += 1
+            elif i > 0 and s[i - 1] == "1":
+                ans += cnt
+        return ans
+
+========== 3229_minimum_operations_to_make_array_equal_to_target ==========
+# LeetCode 3229 - Minimum Operations to Make Array Equal to Target
+# https://leetcode.com/problems/minimum-operations-to-make-array-equal-to-target/
+
+from typing import List
+
+
+class Solution:
+    def minimumOperations(self, nums: List[int], target: List[int]) -> int:
+        f = abs(target[0] - nums[0])
+        for i in range(1, len(target)):
+            x = target[i] - nums[i]
+            y = target[i - 1] - nums[i - 1]
+            if x * y > 0:
+                d = abs(x) - abs(y)
+                if d > 0:
+                    f += d
+            else:
+                f += abs(x)
+        return f
+
+========== 3231_minimum_number_of_increasing_subsequence_to_be_removed ==========
+# LeetCode 3231 - Minimum Number of Increasing Subsequence to Be Removed
+# https://leetcode.com/problems/minimum-number-of-increasing-subsequence-to-be-removed/
+
+from typing import List
+
+
+class Solution:
+    def minOperations(self, nums: List[int]) -> int:
+        g = []
+        for x in nums:
+            l, r = 0, len(g)
+            while l < r:
+                mid = (l + r) >> 1
+                if g[mid] < x:
+                    r = mid
+                else:
+                    l = mid + 1
+            if l == len(g):
+                g.append(x)
+            else:
+                g[l] = x
+        return len(g)
+
+========== 3232_find_if_digit_game_can_be_won ==========
+# LeetCode 3232 - Find if Digit Game Can Be Won
+# https://leetcode.com/problems/find-if-digit-game-can-be-won/
+
+from typing import List
+
+
+class Solution:
+    def canAliceWin(self, nums: List[int]) -> bool:
+        a = b = 0
+        for x in nums:
+            if x < 10:
+                a += x
+            else:
+                b += x
+        return a != b
+
+========== 3233_find_the_count_of_numbers_which_are_not_special ==========
+# LeetCode 3233 - Find the Count of Numbers Which Are Not Special
+# https://leetcode.com/problems/find-the-count-of-numbers-which-are-not-special/
+
+import math
+
+
+class Solution:
+    _primes = None
+
+    def nonSpecialCount(self, l: int, r: int) -> int:
+        M = 31623
+        if Solution._primes is None:
+            primes = [True] * (M + 1)
+            primes[0] = primes[1] = False
+            for i in range(2, M + 1):
+                if primes[i]:
+                    for j in range(i * 2, M + 1, i):
+                        primes[j] = False
+            Solution._primes = primes
+        primes = Solution._primes
+        lo = math.ceil(math.sqrt(l))
+        hi = math.floor(math.sqrt(r))
+        cnt = 0
+        for i in range(lo, hi + 1):
+            if primes[i]:
+                cnt += 1
+        return r - l + 1 - cnt
+
+========== 3234_count_the_number_of_substrings_with_dominant_ones ==========
+# LeetCode 3234 - Count the Number of Substrings With Dominant Ones
+# https://leetcode.com/problems/count-the-number-of-substrings-with-dominant-ones/
+
+class Solution:
+    def numberOfSubstrings(self, s: str) -> int:
+        n = len(s)
+        nxt = [0] * (n + 1)
+        nxt[n] = n
+        for i in range(n - 1, -1, -1):
+            nxt[i] = nxt[i + 1]
+            if s[i] == "0":
+                nxt[i] = i
+        ans = 0
+        for i in range(n):
+            cnt0 = 1 if s[i] == "0" else 0
+            j = i
+            while j < n and cnt0 * cnt0 <= n:
+                cnt1 = nxt[j + 1] - i - cnt0
+                if cnt1 >= cnt0 * cnt0:
+                    ans += min(nxt[j + 1] - j, cnt1 - cnt0 * cnt0 + 1)
+                j = nxt[j + 1]
+                cnt0 += 1
+        return ans
+
+========== 3235_check_if_the_rectangle_corner_is_reachable ==========
+# LeetCode 3235 - Check if the Rectangle Corner Is Reachable
+# https://leetcode.com/problems/check-if-the-rectangle-corner-is-reachable/
+
+from typing import List
+
+
+class Solution:
+    def canReachCorner(self, xCorner: int, yCorner: int, circles: List[List[int]]) -> bool:
+        n = len(circles)
+        vis = [False] * n
+
+        def inCircle(x: int, y: int, cx: int, cy: int, r: int) -> bool:
+            dx, dy = x - cx, y - cy
+            return dx * dx + dy * dy <= r * r
+
+        def crossLeftTop(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx) <= r and 0 <= cy <= yCorner
+            b = abs(cy - yCorner) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def crossRightBottom(cx: int, cy: int, r: int) -> bool:
+            a = abs(cx - xCorner) <= r and 0 <= cy <= yCorner
+            b = abs(cy) <= r and 0 <= cx <= xCorner
+            return a or b
+
+        def dfs(i: int) -> bool:
+            x1, y1, r1 = circles[i]
+            if crossRightBottom(x1, y1, r1):
+                return True
+            vis[i] = True
+            for j in range(n):
+                if vis[j]:
+                    continue
+                x2, y2, r2 = circles[j]
+                if (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) > (r1 + r2) * (r1 + r2):
+                    continue
+                if (
+                    x1 * r2 + x2 * r1 < (r1 + r2) * xCorner
+                    and y1 * r2 + y2 * r1 < (r1 + r2) * yCorner
+                    and dfs(j)
+                ):
+                    return True
+            return False
+
+        for i in range(n):
+            x, y, r = circles[i]
+            if inCircle(0, 0, x, y, r) or inCircle(xCorner, yCorner, x, y, r):
+                return False
+            if not vis[i] and crossLeftTop(x, y, r) and dfs(i):
+                return False
+        return True
+
+========== 3237_alt_and_tab_simulation ==========
+# LeetCode 3237 - Alt and Tab Simulation
+# https://leetcode.com/problems/alt-and-tab-simulation/
+
+from typing import List
+
+
+class Solution:
+    def simulationResult(self, windows: List[int], queries: List[int]) -> List[int]:
+        n = len(windows)
+        s = [False] * (n + 1)
+        ans = []
+        for i in range(len(queries) - 1, -1, -1):
+            q = queries[i]
+            if not s[q]:
+                s[q] = True
+                ans.append(q)
+        for w in windows:
+            if not s[w]:
+                ans.append(w)
+        return ans
+
+========== 3238_find_the_number_of_winning_players ==========
+# LeetCode 3238 - Find the Number of Winning Players
+# https://leetcode.com/problems/find-the-number-of-winning-players/
+
+from typing import List
+
+
+class Solution:
+    def winningPlayerCount(self, n: int, pick: List[List[int]]) -> int:
+        cnt = [[0] * 11 for _ in range(n)]
+        s = set()
+        for p in pick:
+            x, y = p[0], p[1]
+            cnt[x][y] += 1
+            if cnt[x][y] > x:
+                s.add(x)
+        return len(s)
+
+========== 3239_minimum_number_of_flips_to_make_binary_grid_palindromic_i ==========
+# LeetCode 3239 - Minimum Number of Flips to Make Binary Grid Palindromic I
+# https://leetcode.com/problems/minimum-number-of-flips-to-make-binary-grid-palindromic-i/
+
+from typing import List
+
+
+class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        cnt1 = cnt2 = 0
+        for row in grid:
+            for j in range(n // 2):
+                if row[j] != row[n - j - 1]:
+                    cnt1 += 1
+        for j in range(n):
+            for i in range(m // 2):
+                if grid[i][j] != grid[m - i - 1][j]:
+                    cnt2 += 1
+        return min(cnt1, cnt2)
+
+========== 3240_minimum_number_of_flips_to_make_binary_grid_palindromic_ii ==========
+# LeetCode 3240 - Minimum Number of Flips to Make Binary Grid Palindromic II
+# https://leetcode.com/problems/minimum-number-of-flips-to-make-binary-grid-palindromic-ii/
+
+from typing import List
+
+
+class Solution:
+    def minFlips(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        ans = 0
+        for i in range(m // 2):
+            for j in range(n // 2):
+                x, y = m - i - 1, n - j - 1
+                cnt1 = grid[i][j] + grid[x][j] + grid[i][y] + grid[x][y]
+                ans += min(cnt1, 4 - cnt1)
+        if m % 2 == 1 and n % 2 == 1:
+            ans += grid[m // 2][n // 2]
+        diff, ones = 0, 0
+        if m % 2 == 1:
+            for j in range(n // 2):
+                if grid[m // 2][j] == grid[m // 2][n - j - 1]:
+                    ones += grid[m // 2][j] * 2
+                else:
+                    diff += 1
+        if n % 2 == 1:
+            for i in range(m // 2):
+                if grid[i][n // 2] == grid[m - i - 1][n // 2]:
+                    ones += grid[i][n // 2] * 2
+                else:
+                    diff += 1
+        if ones % 4 == 0 or diff > 0:
+            ans += diff
+        else:
+            ans += 2
+        return ans
+
+========== 3241_time_taken_to_mark_all_nodes ==========
+# LeetCode 3241 - Time Taken to Mark All Nodes
+# https://leetcode.com/problems/time-taken-to-mark-all-nodes/
+
+from typing import List
+
+
+class Solution:
+    def timeTaken(self, edges: List[List[int]]) -> List[int]:
+        n = len(edges) + 1
+        ans = [0] * n
+        tree = [[] for _ in range(n)]
+        dp = [{"top1": {"node": 0, "time": 0}, "top2": {"node": 0, "time": 0}} for _ in range(n)]
+        for e in edges:
+            tree[e[0]].append(e[1])
+            tree[e[1]].append(e[0])
+
+        def getTime(u: int) -> int:
+            return 2 if u % 2 == 0 else 1
+
+        def dfs(u: int, prev: int) -> int:
+            t1 = {"node": 0, "time": 0}
+            t2 = {"node": 0, "time": 0}
+            for v in tree[u]:
+                if v == prev:
+                    continue
+                t = dfs(v, u) + getTime(v)
+                if t >= t1["time"]:
+                    t2 = t1
+                    t1 = {"node": v, "time": t}
+                elif t > t2["time"]:
+                    t2 = {"node": v, "time": t}
+            dp[u]["top1"] = t1
+            dp[u]["top2"] = t2
+            return t1["time"]
+
+        def reroot(u: int, prev: int, maxTime: int) -> None:
+            ans[u] = maxTime
+            if dp[u]["top1"]["time"] > ans[u]:
+                ans[u] = dp[u]["top1"]["time"]
+            for v in tree[u]:
+                if v == prev:
+                    continue
+                side = dp[u]["top1"]["time"]
+                if dp[u]["top1"]["node"] == v:
+                    side = dp[u]["top2"]["time"]
+                newMax = max(maxTime, side)
+                reroot(v, u, getTime(u) + newMax)
+
+        dfs(0, -1)
+        reroot(0, -1, 0)
+        return ans
+
+========== 3242_design_neighbor_sum_service ==========
+# LeetCode 3242 - Design Neighbor Sum Service
+# https://leetcode.com/problems/design-neighbor-sum-service/
+
+from typing import Dict, List, Tuple
+
+
+class NeighborSum:
+    def __init__(self, grid: List[List[int]]):
+        self.grid = grid
+        self.d: Dict[int, Tuple[int, int]] = {}
+        self.dirs = [
+            [-1, 0, 1, 0, -1],
+            [-1, 1, 1, -1, -1],
+        ]
+        for i in range(len(grid)):
+            for j in range(len(grid[i])):
+                self.d[grid[i][j]] = (i, j)
+
+    def cal(self, value: int, k: int) -> int:
+        p = self.d[value]
+        s = 0
+        for q in range(4):
+            x = p[0] + self.dirs[k][q]
+            y = p[1] + self.dirs[k][q + 1]
+            if 0 <= x < len(self.grid) and 0 <= y < len(self.grid[0]):
+                s += self.grid[x][y]
+        return s
+
+    def adjacentSum(self, value: int) -> int:
+        return self.cal(value, 0)
+
+    def diagonalSum(self, value: int) -> int:
+        return self.cal(value, 1)
+
+========== 3243_shortest_distance_after_road_addition_queries_i ==========
+# LeetCode 3243 - Shortest Distance After Road Addition Queries I
+# https://leetcode.com/problems/shortest-distance-after-road-addition-queries-i/
+
+from collections import deque
+from typing import List
+
+
+class Solution:
+    def shortestDistanceAfterQueries(self, n: int, queries: List[List[int]]) -> List[int]:
+        g = [[] for _ in range(n)]
+        for i in range(n - 1):
+            g[i].append(i + 1)
+
+        def bfs() -> int:
+            q = deque([0])
+            vis = [False] * n
+            vis[0] = True
+            d = 0
+            while True:
+                k = len(q)
+                while k > 0:
+                    u = q.popleft()
+                    if u == n - 1:
+                        return d
+                    for v in g[u]:
+                        if not vis[v]:
+                            vis[v] = True
+                            q.append(v)
+                    k -= 1
+                d += 1
+
+        ans = [0] * len(queries)
+        for i in range(len(queries)):
+            g[queries[i][0]].append(queries[i][1])
+            ans[i] = bfs()
+        return ans
+
+========== 3244_shortest_distance_after_road_addition_queries_ii ==========
+# LeetCode 3244 - Shortest Distance After Road Addition Queries II
+# https://leetcode.com/problems/shortest-distance-after-road-addition-queries-ii/
+
+from typing import List
+
+
+class Solution:
+    def shortestDistanceAfterQueries(self, n: int, queries: List[List[int]]) -> List[int]:
+        nxt = [i + 1 for i in range(n - 1)]
+        cnt = n - 1
+        ans = []
+        for q in queries:
+            u, v = q[0], q[1]
+            if nxt[u] > 0 and nxt[u] < v:
+                i = nxt[u]
+                while i < v:
+                    cnt -= 1
+                    ni = nxt[i]
+                    nxt[i] = 0
+                    i = ni
+                nxt[u] = v
+            ans.append(cnt)
+        return ans
+
+========== 3245_alternating_groups_iii ==========
+# LeetCode 3245 - Alternating Groups III
+# https://leetcode.com/problems/alternating-groups-iii/
+
+from typing import List, Set
+
+
+class SegTree:
+    def __init__(self, n_: int):
+        self.n = n_
+        self.treeIntervalCounts = [0] * (4 * n_)
+        self.treeIntervalLengths = [0] * (4 * n_)
+
+    def add(self, i: int, val: int) -> None:
+        self.addRec(0, 0, self.n - 1, i, val)
+
+    def addRec(self, treeIndex: int, lo: int, hi: int, i: int, val: int) -> None:
+        if lo == hi:
+            self.treeIntervalCounts[treeIndex] += val
+            self.treeIntervalLengths[treeIndex] = self.treeIntervalCounts[treeIndex] * i
+            return
+        mid = (lo + hi) >> 1
+        if i <= mid:
+            self.addRec(2 * treeIndex + 1, lo, mid, i, val)
+        else:
+            self.addRec(2 * treeIndex + 2, mid + 1, hi, i, val)
+        self.treeIntervalCounts[treeIndex] = (
+            self.treeIntervalCounts[2 * treeIndex + 1] + self.treeIntervalCounts[2 * treeIndex + 2]
+        )
+        self.treeIntervalLengths[treeIndex] = (
+            self.treeIntervalLengths[2 * treeIndex + 1] + self.treeIntervalLengths[2 * treeIndex + 2]
+        )
+
+    def queryIntervalCounts(self, i: int) -> int:
+        return self.query(self.treeIntervalCounts, 0, 0, self.n - 1, i, self.n - 1)
+
+    def queryIntervalLengths(self, i: int) -> int:
+        return self.query(self.treeIntervalLengths, 0, 0, self.n - 1, i, self.n - 1)
+
+    def query(self, tree: List[int], treeIndex: int, lo: int, hi: int, i: int, j: int) -> int:
+        if i <= lo and hi <= j:
+            return tree[treeIndex]
+        if j < lo or hi < i:
+            return 0
+        mid = (lo + hi) >> 1
+        return self.query(tree, treeIndex * 2 + 1, lo, mid, i, j) + self.query(
+            tree, treeIndex * 2 + 2, mid + 1, hi, i, j
+        )
+
+
+class Solution:
+    def numberOfAlternatingGroups(self, colors: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(colors)
+        ans = []
+        arr = [0] * (2 * n - 1)
+        for i in range(n):
+            arr[i] = colors[i]
+        for i in range(n - 1):
+            arr[n + i] = colors[i]
+
+        def pack(l: int, r: int) -> int:
+            return (l << 32) | (r & 0xFFFFFFFF)
+
+        def unpackL(v: int) -> int:
+            return v >> 32
+
+        def unpackR(v: int) -> int:
+            return v & 0xFFFFFFFF
+
+        tree = SegTree(2 * n - 1)
+        intervals: Set[int] = set()
+
+        def insert(l: int, r: int) -> None:
+            intervals.add(pack(l, r))
+            if l < n:
+                tree.add(r - l + 1, 1)
+
+        def remove(l: int, r: int) -> None:
+            intervals.discard(pack(l, r))
+            if l < n:
+                tree.add(r - l + 1, -1)
+
+        def findInterval(target: int) -> List[int]:
+            bestL, bestR = -1, -1
+            for k in intervals:
+                kl, kr = unpackL(k), unpackR(k)
+                if kl <= target <= kr and kl > bestL:
+                    bestL, bestR = kl, kr
+            return [bestL, bestR]
+
+        def getNum(sz: int) -> int:
+            numIntervals = tree.queryIntervalCounts(sz)
+            sumIntervals = tree.queryIntervalLengths(sz)
+            numAlternatingGroups = sumIntervals - numIntervals * sz + numIntervals
+            l, r = findInterval(n)
+            if l < 0 or l >= n or r - l + 1 < sz:
+                return numAlternatingGroups
+            if r >= n:
+                nonDuplicateGroups = n - l
+                numGroups = (r - l + 1) - sz + 1
+                extra = numGroups - nonDuplicateGroups
+                if extra > 0:
+                    numAlternatingGroups -= extra
+            return numAlternatingGroups
+
+        def update(index: int, color: int) -> None:
+            if arr[index] == color:
+                return
+            arr[index] = color
+            start, end = findInterval(index)
+            remove(start, end)
+            if start < index < end:
+                insert(start, index - 1)
+                insert(index, index)
+                insert(index + 1, end)
+                return
+            if start == index and index < end:
+                insert(start + 1, end)
+            if start < index and index == end:
+                insert(start, end - 1)
+            ns, ne = index, index
+            while True:
+                merged = False
+                for k in list(intervals):
+                    kl, kr = unpackL(k), unpackR(k)
+                    if kr + 1 == ns and arr[kr] != arr[ns]:
+                        remove(kl, kr)
+                        ns = kl
+                        merged = True
+                        break
+                if not merged:
+                    break
+            while True:
+                merged = False
+                for k in list(intervals):
+                    kl, kr = unpackL(k), unpackR(k)
+                    if kl == ne + 1 and arr[kl] != arr[ne]:
+                        remove(kl, kr)
+                        ne = kr
+                        merged = True
+                        break
+                if not merged:
+                    break
+            insert(ns, ne)
+
+        st = 0
+        for i in range(1, 2 * n - 1):
+            if arr[i] == arr[i - 1]:
+                insert(st, i - 1)
+                st = i
+        insert(st, 2 * n - 2)
+        for query in queries:
+            if query[0] == 1:
+                ans.append(getNum(query[1]))
+            else:
+                index, color = query[1], query[2]
+                if arr[index] != color:
+                    update(index, color)
+                    if index < n - 1:
+                        update(index + n, color)
+        return ans
+
+========== 3247_number_of_subsequences_with_odd_sum ==========
+# LeetCode 3247 - Number of Subsequences with Odd Sum
+# https://leetcode.com/problems/number-of-subsequences-with-odd-sum/
+
+from typing import List
+
+
+class Solution:
+    def subsequenceCount(self, nums: List[int]) -> int:
+        mod = 1000000007
+        f = [0, 0]
+        for x in nums:
+            g = [0, 0]
+            if x % 2 == 1:
+                g[0] = (f[0] + f[1]) % mod
+                g[1] = (f[0] + f[1] + 1) % mod
+            else:
+                g[0] = (f[0] + f[0] + 1) % mod
+                g[1] = (f[1] + f[1]) % mod
+            f = g
+        return f[1]
+
+========== 3248_snake_in_matrix ==========
+# LeetCode 3248 - Snake in Matrix
+# https://leetcode.com/problems/snake-in-matrix/
+
+from typing import List
+
+
+class Solution:
+    def finalPositionOfSnake(self, n: int, commands: List[str]) -> int:
+        x = y = 0
+        for c in commands:
+            if c[0] == "U":
+                x -= 1
+            elif c[0] == "D":
+                x += 1
+            elif c[0] == "L":
+                y -= 1
+            elif c[0] == "R":
+                y += 1
+        return x * n + y
+
+========== 3249_count_the_number_of_good_nodes ==========
+# LeetCode 3249 - Count the Number of Good Nodes
+# https://leetcode.com/problems/count-the-number-of-good-nodes/
+
+from typing import List
+
+
+class Solution:
+    def countGoodNodes(self, edges: List[List[int]]) -> int:
+        n = len(edges) + 1
+        g = [[] for _ in range(n)]
+        for e in edges:
+            g[e[0]].append(e[1])
+            g[e[1]].append(e[0])
+        ans = 0
+
+        def dfs(a: int, fa: int) -> int:
+            nonlocal ans
+            pre, cnt, ok = -1, 1, 1
+            for b in g[a]:
+                if b != fa:
+                    cur = dfs(b, a)
+                    cnt += cur
+                    if pre < 0:
+                        pre = cur
+                    elif pre != cur:
+                        ok = 0
+            ans += ok
+            return cnt
+
+        dfs(0, -1)
+        return ans
+
+========== 3250_find_the_count_of_monotonic_pairs_i ==========
+# LeetCode 3250 - Find the Count of Monotonic Pairs I
+# https://leetcode.com/problems/find-the-count-of-monotonic-pairs-i/
+
+from typing import List
+
+
+class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 1000000007
+        n = len(nums)
+        dp = [0] * 51
+        for a in range(nums[0] + 1):
+            dp[a] = 1
+        for i in range(1, n):
+            ndp = [0] * 51
+            pref = [0] * 52
+            for a in range(51):
+                pref[a + 1] = (pref[a] + dp[a]) % mod
+            for a2 in range(nums[i] + 1):
+                b2 = nums[i] - a2
+                maxA1 = a2
+                lim = nums[i - 1] - b2
+                if lim < maxA1:
+                    maxA1 = lim
+                if maxA1 < 0:
+                    continue
+                if maxA1 > 50:
+                    maxA1 = 50
+                ndp[a2] = pref[maxA1 + 1]
+            dp = ndp
+        ans = 0
+        for v in dp:
+            ans = (ans + v) % mod
+        return ans
+
+========== 3251_find_the_count_of_monotonic_pairs_ii ==========
+# LeetCode 3251 - Find the Count of Monotonic Pairs II
+# https://leetcode.com/problems/find-the-count-of-monotonic-pairs-ii/
+
+from typing import List
+
+
+class Solution:
+    def countOfPairs(self, nums: List[int]) -> int:
+        mod = 1000000007
+        n = len(nums)
+        maxV = 0
+        for v in nums:
+            maxV = max(maxV, v)
+        dp = [0] * (maxV + 1)
+        for a in range(nums[0] + 1):
+            dp[a] = 1
+        for i in range(1, n):
+            ndp = [0] * (maxV + 1)
+            pref = [0] * (maxV + 2)
+            for a in range(maxV + 1):
+                pref[a + 1] = (pref[a] + dp[a]) % mod
+            for a2 in range(nums[i] + 1):
+                b2 = nums[i] - a2
+                maxA1 = a2
+                lim = nums[i - 1] - b2
+                if lim < maxA1:
+                    maxA1 = lim
+                if maxA1 < 0:
+                    continue
+                if maxA1 > maxV:
+                    maxA1 = maxV
+                ndp[a2] = pref[maxA1 + 1]
+            dp = ndp
+        ans = 0
+        for v in dp:
+            ans = (ans + v) % mod
+        return ans
+
+========== 3253_construct_string_with_minimum_cost_easy ==========
+# LeetCode 3253 - Construct String with Minimum Cost (Easy)
+# https://leetcode.com/problems/construct-string-with-minimum-cost-easy/
+
+from typing import Dict, List
+
+
+class Solution:
+    def minimumCost(self, target: str, words: List[str], costs: List[int]) -> int:
+        inf = 10**18
+        n = len(target)
+        dp = [inf] * (n + 1)
+        dp[0] = 0
+        best: Dict[str, int] = {}
+        for i in range(len(words)):
+            old = best.get(words[i])
+            if old is None or costs[i] < old:
+                best[words[i]] = costs[i]
+        for i in range(n):
+            if dp[i] == inf:
+                continue
+            for w, c in best.items():
+                L = len(w)
+                if i + L <= n and target.startswith(w, i) and dp[i] + c < dp[i + L]:
+                    dp[i + L] = dp[i] + c
+        if dp[n] == inf:
+            return -1
+        return dp[n]
+
+========== 3254_find_the_power_of_k_size_subarrays_i ==========
+# LeetCode 3254 - Find the Power of K-Size Subarrays I
+# https://leetcode.com/problems/find-the-power-of-k-size-subarrays-i/
+
+from typing import List
+
+
+class Solution:
+    def resultsArray(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        ans = [0] * (n - k + 1)
+        for i in range(n - k + 1):
+            ok = True
+            for j in range(i + 1, i + k):
+                if nums[j] != nums[j - 1] + 1:
+                    ok = False
+                    break
+            ans[i] = nums[i + k - 1] if ok else -1
+        return ans
+
+========== 3255_find_the_power_of_k_size_subarrays_ii ==========
+# LeetCode 3255 - Find the Power of K-Size Subarrays II
+# https://leetcode.com/problems/find-the-power-of-k-size-subarrays-ii/
+
+from typing import List
+
+
+class Solution:
+    def resultsArray(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
+        ans = [0] * (n - k + 1)
+        if k == 1:
+            return nums[:]
+        streak = 1
+        for i in range(1, n):
+            if nums[i] == nums[i - 1] + 1:
+                streak += 1
+            else:
+                streak = 1
+            if i >= k - 1:
+                ans[i - k + 1] = nums[i] if streak >= k else -1
+        return ans
+
+========== 3256_maximum_value_sum_by_placing_three_rooks_i ==========
+# LeetCode 3256 - Maximum Value Sum by Placing Three Rooks I
+# https://leetcode.com/problems/maximum-value-sum-by-placing-three-rooks-i/
+
+from typing import List
+
+
+class Solution:
+    def maximumValueSum(self, board: List[List[int]]) -> int:
+        m, n = len(board), len(board[0])
+        tops = []
+        for i in range(m):
+            row = []
+            for j in range(n):
+                cur = {"v": board[i][j], "c": j}
+                placed = False
+                for t in range(len(row)):
+                    if cur["v"] > row[t]["v"]:
+                        row.insert(t, cur)
+                        placed = True
+                        break
+                if not placed:
+                    row.append(cur)
+                if len(row) > 3:
+                    row = row[:3]
+            tops.append(row)
+        ans = -(10**18)
+        for i in range(m):
+            for a in tops[i]:
+                for j in range(i + 1, m):
+                    for b in tops[j]:
+                        if a["c"] == b["c"]:
+                            continue
+                        for k in range(j + 1, m):
+                            for c in tops[k]:
+                                if c["c"] == a["c"] or c["c"] == b["c"]:
+                                    continue
+                                s = a["v"] + b["v"] + c["v"]
+                                if s > ans:
+                                    ans = s
+        return ans
+
+========== 3257_maximum_value_sum_by_placing_three_rooks_ii ==========
+# LeetCode 3257 - Maximum Value Sum by Placing Three Rooks II
+# https://leetcode.com/problems/maximum-value-sum-by-placing-three-rooks-ii/
+
+from typing import List
+
+
+class Solution:
+    def maximumValueSum(self, board: List[List[int]]) -> int:
+        m, n = len(board), len(board[0])
+        tops = []
+        for i in range(m):
+            row = []
+            for j in range(n):
+                cur = {"v": board[i][j], "c": j}
+                placed = False
+                for t in range(len(row)):
+                    if cur["v"] > row[t]["v"]:
+                        row.insert(t, cur)
+                        placed = True
+                        break
+                if not placed:
+                    row.append(cur)
+                if len(row) > 3:
+                    row = row[:3]
+            tops.append(row)
+        ans = -(10**18)
+        for i in range(m):
+            for a in tops[i]:
+                for j in range(i + 1, m):
+                    for b in tops[j]:
+                        if a["c"] == b["c"]:
+                            continue
+                        for k in range(j + 1, m):
+                            for c in tops[k]:
+                                if c["c"] == a["c"] or c["c"] == b["c"]:
+                                    continue
+                                s = a["v"] + b["v"] + c["v"]
+                                if s > ans:
+                                    ans = s
+        return ans
+
+========== 3258_count_substrings_that_satisfy_k_constraint_i ==========
+# LeetCode 3258 - Count Substrings That Satisfy K-Constraint I
+# https://leetcode.com/problems/count-substrings-that-satisfy-k-constraint-i/
+
+class Solution:
+    def countKConstraintSubstrings(self, s: str, k: int) -> int:
+        ans = 0
+        n = len(s)
+        for i in range(n):
+            z = o = 0
+            for j in range(i, n):
+                if s[j] == "0":
+                    z += 1
+                else:
+                    o += 1
+                if z <= k or o <= k:
+                    ans += 1
+                else:
+                    break
+        return ans
+
+========== 3259_maximum_energy_boost_from_two_drinks ==========
+# LeetCode 3259 - Maximum Energy Boost From Two Drinks
+# https://leetcode.com/problems/maximum-energy-boost-from-two-drinks/
+
+from typing import List
+
+
+class Solution:
+    def maxEnergyBoost(self, energyDrinkA: List[int], energyDrinkB: List[int]) -> int:
+        n = len(energyDrinkA)
+        dpA = [0] * n
+        dpB = [0] * n
+        dpA[0] = energyDrinkA[0]
+        dpB[0] = energyDrinkB[0]
+        if n == 1:
+            return max(dpA[0], dpB[0])
+        dpA[1] = energyDrinkA[1] + dpA[0]
+        dpB[1] = energyDrinkB[1] + dpB[0]
+        for i in range(2, n):
+            dpA[i] = energyDrinkA[i] + max(dpA[i - 1], dpB[i - 2])
+            dpB[i] = energyDrinkB[i] + max(dpB[i - 1], dpA[i - 2])
+        return max(dpA[n - 1], dpB[n - 1])
+
+========== 3260_find_the_largest_palindrome_divisible_by_k ==========
+# LeetCode 3260 - Find the Largest Palindrome Divisible by K
+# https://leetcode.com/problems/find-the-largest-palindrome-divisible-by-k/
+
+from typing import List
+
+
+class Solution:
+    def largestPalindrome(self, n: int, k: int) -> str:
+        def repeat(c: str, n: int) -> List[str]:
+            return [c] * n
+
+        digits = repeat("9", n)
+        half = (n + 1) // 2
+
+        def mod7(s: str) -> int:
+            r = 0
+            for i in range(len(s)):
+                r = (r * 10 + (ord(s[i]) - 48)) % 7
+            return r
+
+        def largestPal7(n: int) -> str:
+            halfLen = (n + 1) // 2
+            half = repeat("9", halfLen)
+            while True:
+                pal = [""] * n
+                for i in range(halfLen):
+                    pal[i] = half[i]
+                for i in range(n // 2):
+                    pal[n - 1 - i] = pal[i]
+                if mod7("".join(pal)) == 0:
+                    return "".join(pal)
+                idx = halfLen - 1
+                while idx >= 0 and half[idx] == "0":
+                    half[idx] = "9"
+                    idx -= 1
+                if idx < 0:
+                    break
+                half[idx] = chr(ord(half[idx]) - 1)
+            return ""
+
+        if k in (1, 3, 9):
+            return "".join(digits)
+        if k == 2:
+            digits[0] = digits[n - 1] = "8"
+            return "".join(digits)
+        if k == 4:
+            if n == 1:
+                return "8"
+            digits[0] = digits[1] = digits[n - 1] = digits[n - 2] = "8"
+            return "".join(digits)
+        if k == 5:
+            digits[0] = digits[n - 1] = "5"
+            return "".join(digits)
+        if k == 8:
+            if n <= 2:
+                return "".join(repeat("8", n))
+            digits[0] = digits[1] = digits[2] = "8"
+            digits[n - 1] = digits[n - 2] = digits[n - 3] = "8"
+            return "".join(digits)
+        if k == 6:
+            if n == 1:
+                return "6"
+            digits[0] = digits[n - 1] = "8"
+            ssum = 16 + 9 * (n - 2)
+            need = ssum % 3
+            if need != 0:
+                pos = half - 1
+                digits[pos] = chr(ord(digits[pos]) - need)
+                if n % 2 == 0 or pos != n - 1 - pos:
+                    digits[n - 1 - pos] = digits[pos]
+            return "".join(digits)
+        if k == 7:
+            return largestPal7(n)
+        return "".join(digits)
+
+========== 3261_count_substrings_that_satisfy_k_constraint_ii ==========
+# LeetCode 3261 - Count Substrings That Satisfy K-Constraint II
+# https://leetcode.com/problems/count-substrings-that-satisfy-k-constraint-ii/
+
+from typing import List
+
+
+class Solution:
+    def countKConstraintSubstrings(self, s: str, k: int, queries: List[List[int]]) -> List[int]:
+        n = len(s)
+        leftMost = [0] * n
+        z = o = L = 0
+        for R in range(n):
+            if s[R] == "0":
+                z += 1
+            else:
+                o += 1
+            while z > k and o > k:
+                if s[L] == "0":
+                    z -= 1
+                else:
+                    o -= 1
+                L += 1
+            leftMost[R] = L
+        pref = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] + (i - leftMost[i] + 1)
+        ans = [0] * len(queries)
+        for qi in range(len(queries)):
+            l, r = queries[qi][0], queries[qi][1]
+            lo, hi = l, r + 1
+            while lo < hi:
+                mid = (lo + hi) >> 1
+                if leftMost[mid] < l:
+                    lo = mid + 1
+                else:
+                    hi = mid
+            res = 0
+            if lo > l:
+                m = lo - l
+                res += m * (m + 1) // 2
+            if lo <= r:
+                res += pref[r + 1] - pref[lo]
+            ans[qi] = res
+        return ans
+
+========== 3263_convert_doubly_linked_list_to_array_i ==========
+# LeetCode 3263 - Convert Doubly Linked List to Array I
+# https://leetcode.com/problems/convert-doubly-linked-list-to-array-i/
+
+from typing import List, Optional
+
+
+class Node:
+    def __init__(self, val: int = 0, prev: Optional["Node"] = None, next: Optional["Node"] = None):
+        self.val = val
+        self.prev = prev
+        self.next = next
+
+
+class Solution:
+    def toArray(self, head: Optional[Node]) -> List[int]:
+        ans = []
+        while head is not None:
+            ans.append(head.val)
+            head = head.next
+        return ans
+
+========== 3264_final_array_state_after_k_multiplication_operations_i ==========
+# LeetCode 3264 - Final Array State After K Multiplication Operations I
+# https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-i/
+
+from typing import Any, Callable, List, Optional
+
+
+class MinHeap:
+    def __init__(self, cmp: Optional[Callable] = None):
+        self.a: List[Any] = []
+        self.cmp = cmp or (lambda x, y: x - y)
+
+    def _up(self, i: int) -> None:
+        a, cmp = self.a, self.cmp
+        while i > 0:
+            p = (i - 1) >> 1
+            if cmp(a[i], a[p]) >= 0:
+                break
+            a[i], a[p] = a[p], a[i]
+            i = p
+
+    def _down(self, i: int) -> None:
+        a, cmp, n = self.a, self.cmp, len(self.a)
+        while True:
+            s = i
+            l = i * 2 + 1
+            r = l + 1
+            if l < n and cmp(a[l], a[s]) < 0:
+                s = l
+            if r < n and cmp(a[r], a[s]) < 0:
+                s = r
+            if s == i:
+                break
+            a[i], a[s] = a[s], a[i]
+            i = s
+
+    def push(self, x: Any) -> None:
+        self.a.append(x)
+        self._up(len(self.a) - 1)
+
+    def pop(self) -> Any:
+        a = self.a
+        if not a:
+            return None
+        top = a[0]
+        last = a.pop()
+        if a:
+            a[0] = last
+            self._down(0)
+        return top
+
+    def peek(self) -> Any:
+        return self.a[0]
+
+    def size(self) -> int:
+        return len(self.a)
+
+
+
+class Solution:
+    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+        h = MinHeap(lambda a, b: a[0] - b[0] if a[0] != b[0] else a[1] - b[1])
+        for i in range(len(nums)):
+            h.push([nums[i], i])
+        for t in range(k):
+            cur = h.pop()
+            v, i = cur[0] * multiplier, cur[1]
+            nums[i] = v
+            h.push([v, i])
+        return nums
+
+========== 3265_count_almost_equal_pairs_i ==========
+# LeetCode 3265 - Count Almost Equal Pairs I
+# https://leetcode.com/problems/count-almost-equal-pairs-i/
+
+from typing import List
+
+
+class Solution:
+    def countPairs(self, nums: List[int]) -> int:
+        def sprintfNum(x: int) -> str:
+            return str(x)
+
+        def almostEqual(a: int, b: int) -> bool:
+            sa, sb = sprintfNum(a), sprintfNum(b)
+            while len(sa) < len(sb):
+                sa = "0" + sa
+            while len(sb) < len(sa):
+                sb = "0" + sb
+            diff = []
+            for i in range(len(sa)):
+                if sa[i] != sb[i]:
+                    diff.append(i)
+            if len(diff) == 0:
+                return True
+            if len(diff) != 2:
+                return False
+            i0, j = diff[0], diff[1]
+            return sa[i0] == sb[j] and sa[j] == sb[i0]
+
+        ans = 0
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if almostEqual(nums[i], nums[j]):
+                    ans += 1
+        return ans
+
+========== 3266_final_array_state_after_k_multiplication_operations_ii ==========
+# LeetCode 3266 - Final Array State After K Multiplication Operations II
+# https://leetcode.com/problems/final-array-state-after-k-multiplication-operations-ii/
+
+from typing import Any, Callable, List, Optional
+
+
+class MinHeap:
+    def __init__(self, cmp: Optional[Callable] = None):
+        self.a: List[Any] = []
+        self.cmp = cmp or (lambda x, y: x - y)
+
+    def _up(self, i: int) -> None:
+        a, cmp = self.a, self.cmp
+        while i > 0:
+            p = (i - 1) >> 1
+            if cmp(a[i], a[p]) >= 0:
+                break
+            a[i], a[p] = a[p], a[i]
+            i = p
+
+    def _down(self, i: int) -> None:
+        a, cmp, n = self.a, self.cmp, len(self.a)
+        while True:
+            s = i
+            l = i * 2 + 1
+            r = l + 1
+            if l < n and cmp(a[l], a[s]) < 0:
+                s = l
+            if r < n and cmp(a[r], a[s]) < 0:
+                s = r
+            if s == i:
+                break
+            a[i], a[s] = a[s], a[i]
+            i = s
+
+    def push(self, x: Any) -> None:
+        self.a.append(x)
+        self._up(len(self.a) - 1)
+
+    def pop(self) -> Any:
+        a = self.a
+        if not a:
+            return None
+        top = a[0]
+        last = a.pop()
+        if a:
+            a[0] = last
+            self._down(0)
+        return top
+
+    def peek(self) -> Any:
+        return self.a[0]
+
+    def size(self) -> int:
+        return len(self.a)
+
+
+
+class Solution:
+    def getFinalState(self, nums: List[int], k: int, multiplier: int) -> List[int]:
+        mod = 1000000007
+
+        def modPow(a: int, e: int, mod: int) -> int:
+            r = 1
+            a %= mod
+            while e > 0:
+                if e & 1:
+                    r = (r * a) % mod
+                a = (a * a) % mod
+                e >>= 1
+            return r
+
+        if multiplier == 1:
+            return nums
+        h = MinHeap(lambda a, b: a[0] - b[0] if a[0] != b[0] else a[1] - b[1])
+        maxV = 0
+        for i in range(len(nums)):
+            h.push([nums[i], i])
+            if nums[i] > maxV:
+                maxV = nums[i]
+        while k > 0 and h.size():
+            cur = h.pop()
+            v, i = cur[0], cur[1]
+            if v * multiplier > maxV and k >= len(nums):
+                h.push([v, i])
+                break
+            nv = v * multiplier
+            nums[i] = nv
+            if nv > maxV:
+                maxV = nv
+            h.push([nv, i])
+            k -= 1
+        if k > 0:
+            n = len(nums)
+            full, rem = k // n, k % n
+            powFull = modPow(multiplier, full, mod)
+            for i in range(n):
+                nums[i] = (nums[i] * powFull) % mod
+            hh = MinHeap(lambda a, b: a[0] - b[0] if a[0] != b[0] else a[1] - b[1])
+            for i in range(n):
+                hh.push([nums[i], i])
+            for t in range(rem):
+                cur = hh.pop()
+                v = (cur[0] * multiplier) % mod
+                i = cur[1]
+                nums[i] = v
+                hh.push([v, i])
+            for i in range(n):
+                nums[i] %= mod
+        else:
+            for i in range(len(nums)):
+                nums[i] %= mod
+        return nums
+
+========== 3267_count_almost_equal_pairs_ii ==========
+# LeetCode 3267 - Count Almost Equal Pairs II
+# https://leetcode.com/problems/count-almost-equal-pairs-ii/
+
+from typing import List
+
+
+class Solution:
+    def countPairs(self, nums: List[int]) -> int:
+        sa = sb = ""
+
+        def padNum(x: int) -> str:
+            return str(x)
+
+        def dfs(arr: List[str], start: int, left: int) -> bool:
+            if "".join(arr) == sb:
+                return True
+            if left == 0:
+                return False
+            for i in range(start, len(arr)):
+                if arr[i] == sb[i]:
+                    continue
+                for j in range(i + 1, len(arr)):
+                    if arr[j] == sb[i]:
+                        arr[i], arr[j] = arr[j], arr[i]
+                        if dfs(arr, i + 1, left - 1):
+                            return True
+                        arr[i], arr[j] = arr[j], arr[i]
+                return False
+            return "".join(arr) == sb
+
+        def almostEqual(a: int, b: int) -> bool:
+            nonlocal sa, sb
+            sa, sb = padNum(a), padNum(b)
+            while len(sa) < len(sb):
+                sa = "0" + sa
+            while len(sb) < len(sa):
+                sb = "0" + sb
+            if sa == sb:
+                return True
+            return dfs(list(sa), 0, 2)
+
+        ans = 0
+        for i in range(len(nums)):
+            for j in range(i + 1, len(nums)):
+                if almostEqual(nums[i], nums[j]):
+                    ans += 1
+        return ans
+
+========== 3269_constructing_two_increasing_arrays ==========
+# LeetCode 3269 - Constructing Two Increasing Arrays
+# https://leetcode.com/problems/constructing-two-increasing-arrays/
+
+from typing import List
+
+
+class Solution:
+    def minLargest(self, nums1: List[int], nums2: List[int]) -> int:
+        n, m = len(nums1), len(nums2)
+        inf = 1000000000
+        dp = [[inf] * (m + 1) for _ in range(n + 1)]
+        dp[0][0] = 0
+        for i in range(n + 1):
+            for j in range(m + 1):
+                if dp[i][j] == inf:
+                    continue
+                prev = dp[i][j]
+                if i < n:
+                    need = prev + 1
+                    if nums1[i] == 0:
+                        if need % 2 != 0:
+                            need += 1
+                    else:
+                        if need % 2 == 0:
+                            need += 1
+                    if need < dp[i + 1][j]:
+                        dp[i + 1][j] = need
+                if j < m:
+                    need = prev + 1
+                    if nums2[j] == 0:
+                        if need % 2 != 0:
+                            need += 1
+                    else:
+                        if need % 2 == 0:
+                            need += 1
+                    if need < dp[i][j + 1]:
+                        dp[i][j + 1] = need
+        return dp[n][m]
+
+========== 3270_find_the_key_of_the_numbers ==========
+# LeetCode 3270 - Find the Key of the Numbers
+# https://leetcode.com/problems/find-the-key-of-the-numbers/
+
+class Solution:
+    def generateKey(self, num1: int, num2: int, num3: int) -> int:
+        ans, mul = 0, 1
+        for t in range(4):
+            d = min(num1 % 10, num2 % 10, num3 % 10)
+            ans += d * mul
+            mul *= 10
+            num1 //= 10
+            num2 //= 10
+            num3 //= 10
+        return ans
+
+========== 3271_hash_divided_string ==========
+# LeetCode 3271 - Hash Divided String
+# https://leetcode.com/problems/hash-divided-string/
+
+class Solution:
+    def stringHash(self, s: str, k: int) -> str:
+        out = []
+        for i in range(0, len(s), k):
+            ssum = 0
+            for j in range(i, i + k):
+                ssum += ord(s[j]) - 97
+            out.append(chr(97 + ssum % 26))
+        return "".join(out)
+
+========== 3272_find_the_count_of_good_integers ==========
+# LeetCode 3272 - Find the Count of Good Integers
+# https://leetcode.com/problems/find-the-count-of-good-integers/
+
+class Solution:
+    def countGoodIntegers(self, n: int, k: int) -> int:
+        half = (n + 1) // 2
+        start = 1
+        for i in range(1, half):
+            start *= 10
+        end = start * 10
+        seen = set()
+        ans = 0
+        fact = [0] * (n + 1)
+        fact[0] = 1
+        for i in range(1, n + 1):
+            fact[i] = fact[i - 1] * i
+        for h in range(start, end):
+            s = str(h)
+            pal = s
+            revStart = len(s) - 1
+            if n % 2 == 1:
+                revStart -= 1
+            for i in range(revStart, -1, -1):
+                pal += s[i]
+            if int(pal) % k != 0:
+                continue
+            chars = "".join(sorted(pal))
+            if chars in seen:
+                continue
+            seen.add(chars)
+            cnt = [0] * 10
+            for c in chars:
+                cnt[ord(c) - 48] += 1
+            total = fact[n]
+            for c in cnt:
+                total //= fact[c]
+            if cnt[0] > 0:
+                bad = fact[n - 1]
+                cnt[0] -= 1
+                for c in cnt:
+                    bad //= fact[c]
+                cnt[0] += 1
+                total -= bad
+            ans += total
+        return ans
+
+========== 3273_minimum_amount_of_damage_dealt_to_bob ==========
+# LeetCode 3273 - Minimum Amount of Damage Dealt to Bob
+# https://leetcode.com/problems/minimum-amount-of-damage-dealt-to-bob/
+
+from functools import cmp_to_key
+from typing import List
+
+
+class Solution:
+    def minDamage(self, power: int, damage: List[int], health: List[int]) -> int:
+        n = len(damage)
+        arr = []
+        totalDmg = 0
+        for i in range(n):
+            hits = (health[i] + power - 1) // power
+            arr.append({"dmg": damage[i], "hits": hits})
+            totalDmg += damage[i]
+        arr.sort(key=cmp_to_key(lambda a, b: a["hits"] * b["dmg"] - b["hits"] * a["dmg"]))
+        ans, cur = 0, totalDmg
+        for e in arr:
+            ans += cur * e["hits"]
+            cur -= e["dmg"]
+        return ans
+
+========== 3274_check_if_two_chessboard_squares_have_the_same_color ==========
+# LeetCode 3274 - Check if Two Chessboard Squares Have the Same Color
+# https://leetcode.com/problems/check-if-two-chessboard-squares-have-the-same-color/
+
+class Solution:
+    def checkTwoChessboards(self, coordinate1: str, coordinate2: str) -> bool:
+        c1 = (ord(coordinate1[0]) - 97) + (ord(coordinate1[1]) - 49)
+        c2 = (ord(coordinate2[0]) - 97) + (ord(coordinate2[1]) - 49)
+        return c1 % 2 == c2 % 2
+
+========== 3275_k_th_nearest_obstacle_queries ==========
+# LeetCode 3275 - K-th Nearest Obstacle Queries
+# https://leetcode.com/problems/k-th-nearest-obstacle-queries/
+
+from typing import Any, Callable, List, Optional
+
+
+class MinHeap:
+    def __init__(self, cmp: Optional[Callable] = None):
+        self.a: List[Any] = []
+        self.cmp = cmp or (lambda x, y: x - y)
+
+    def _up(self, i: int) -> None:
+        a, cmp = self.a, self.cmp
+        while i > 0:
+            p = (i - 1) >> 1
+            if cmp(a[i], a[p]) >= 0:
+                break
+            a[i], a[p] = a[p], a[i]
+            i = p
+
+    def _down(self, i: int) -> None:
+        a, cmp, n = self.a, self.cmp, len(self.a)
+        while True:
+            s = i
+            l = i * 2 + 1
+            r = l + 1
+            if l < n and cmp(a[l], a[s]) < 0:
+                s = l
+            if r < n and cmp(a[r], a[s]) < 0:
+                s = r
+            if s == i:
+                break
+            a[i], a[s] = a[s], a[i]
+            i = s
+
+    def push(self, x: Any) -> None:
+        self.a.append(x)
+        self._up(len(self.a) - 1)
+
+    def pop(self) -> Any:
+        a = self.a
+        if not a:
+            return None
+        top = a[0]
+        last = a.pop()
+        if a:
+            a[0] = last
+            self._down(0)
+        return top
+
+    def peek(self) -> Any:
+        return self.a[0]
+
+    def size(self) -> int:
+        return len(self.a)
+
+
+
+class Solution:
+    def resultsArray(self, queries: List[List[int]], k: int) -> List[int]:
+        h = MinHeap(lambda a, b: b - a)
+        ans = [0] * len(queries)
+        for i in range(len(queries)):
+            d = abs(queries[i][0]) + abs(queries[i][1])
+            h.push(d)
+            if h.size() > k:
+                h.pop()
+            ans[i] = -1 if h.size() < k else h.peek()
+        return ans
+
+========== 3276_select_cells_in_grid_with_maximum_score ==========
+# LeetCode 3276 - Select Cells in Grid With Maximum Score
+# https://leetcode.com/problems/select-cells-in-grid-with-maximum-score/
+
+from typing import Dict, List
+
+
+class Solution:
+    def maxScore(self, grid: List[List[int]]) -> int:
+        m = len(grid)
+        vals: Dict[int, List[int]] = {}
+        for i in range(m):
+            seen = set()
+            for v in grid[i]:
+                if v not in seen:
+                    seen.add(v)
+                    if v not in vals:
+                        vals[v] = []
+                    vals[v].append(i)
+        arr = sorted(vals.keys(), reverse=True)
+        N = 1 << m
+        dp = [0] * N
+        for v in arr:
+            ndp = dp[:]
+            for r in vals[v]:
+                bit = 1 << r
+                for mask in range(N):
+                    if (mask & bit) != 0:
+                        continue
+                    cand = dp[mask] + v
+                    nmask = mask | bit
+                    if cand > ndp[nmask]:
+                        ndp[nmask] = cand
+            dp = ndp
+        ans = 0
+        for x in dp:
+            ans = max(ans, x)
+        return ans
+
+========== 3277_maximum_xor_score_subarray_queries ==========
+# LeetCode 3277 - Maximum XOR Score Subarray Queries
+# https://leetcode.com/problems/maximum-xor-score-subarray-queries/
+
+from typing import List
+
+
+class Solution:
+    def maximumSubarrayXor(self, nums: List[int], queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        f = [[0] * n for _ in range(n)]
+        for i in range(n):
+            f[i][i] = nums[i]
+        for length in range(2, n + 1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                f[i][j] = f[i][j - 1] ^ f[i + 1][j]
+        best = [[0] * n for _ in range(n)]
+        for i in range(n):
+            best[i][i] = f[i][i]
+        for length in range(2, n + 1):
+            for i in range(n - length + 1):
+                j = i + length - 1
+                best[i][j] = max(f[i][j], best[i][j - 1], best[i + 1][j])
+        ans = [0] * len(queries)
+        for i in range(len(queries)):
+            ans[i] = best[queries[i][0]][queries[i][1]]
+        return ans
+
+========== 3279_maximum_total_area_occupied_by_pistons ==========
+# LeetCode 3279 - Maximum Total Area Occupied by Pistons
+# https://leetcode.com/problems/maximum-total-area-occupied-by-pistons/
+
+from typing import List
+
+
+class Solution:
+    def maxArea(self, height: int, positions: List[int], directions: str) -> int:
+        n = len(positions)
+        pos = positions[:]
+        dirc = list(directions)
+        best = 0
+        for t in range(2 * height + 1):
+            s = 0
+            for i in range(n):
+                s += pos[i]
+            if s > best:
+                best = s
+            for i in range(n):
+                if dirc[i] == "U":
+                    if pos[i] == height:
+                        dirc[i] = "D"
+                        pos[i] -= 1
+                    else:
+                        pos[i] += 1
+                else:
+                    if pos[i] == 0:
+                        dirc[i] = "U"
+                        pos[i] += 1
+                    else:
+                        pos[i] -= 1
+        return best
+
+========== 3280_convert_date_to_binary ==========
+# LeetCode 3280 - Convert Date to Binary
+# https://leetcode.com/problems/convert-date-to-binary/
+
+class Solution:
+    def convertDateToBinary(self, date: str) -> str:
+        def toBinary(v: int) -> str:
+            if v == 0:
+                return "0"
+            s = ""
+            while v > 0:
+                s = str(v & 1) + s
+                v >>= 1
+            return s
+
+        parts = date.split("-")
+        y, m, d = int(parts[0]), int(parts[1]), int(parts[2])
+        return toBinary(y) + "-" + toBinary(m) + "-" + toBinary(d)
+
+========== 3281_maximize_score_of_numbers_in_ranges ==========
+# LeetCode 3281 - Maximize Score of Numbers in Ranges
+# https://leetcode.com/problems/maximize-score-of-numbers-in-ranges/
+
+from typing import List
+
+
+class Solution:
+    def maxPossibleScore(self, start: List[int], d: int) -> int:
+        start.sort()
+        n = len(start)
+
+        def ok(mid: int) -> bool:
+            prev = start[0]
+            for i in range(1, len(start)):
+                need = prev + mid
+                cur = start[i]
+                if need > cur + d:
+                    return False
+                prev = need if need > cur else cur
+            return True
+
+        lo, hi = 0, start[n - 1] + d - start[0] + 1
+        while lo < hi:
+            mid = (lo + hi + 1) // 2
+            if ok(mid):
+                lo = mid
+            else:
+                hi = mid - 1
+        return lo
+
+========== 3282_reach_end_of_array_with_max_score ==========
+# LeetCode 3282 - Reach End of Array With Max Score
+# https://leetcode.com/problems/reach-end-of-array-with-max-score/
+
+from typing import List
+
+
+class Solution:
+    def findMaximumScore(self, nums: List[int]) -> int:
+        ans, maxV = 0, 0
+        for i in range(len(nums) - 1):
+            if nums[i] > maxV:
+                maxV = nums[i]
+            ans += maxV
+        return ans
+
+========== 3283_maximum_number_of_moves_to_kill_all_pawns ==========
+# LeetCode 3283 - Maximum Number of Moves to Kill All Pawns
+# https://leetcode.com/problems/maximum-number-of-moves-to-kill-all-pawns/
+
+from collections import deque
+from typing import Dict, List
+
+
+class Solution:
+    def maxMoves(self, kx: int, ky: int, positions: List[List[int]]) -> int:
+        DIRS = [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]]
+
+        def knightDist(x: int, y: int, pts: List[List[int]]) -> List[int]:
+            np = len(pts)
+            ans = [-1] * np
+            vis = [[False] * 50 for _ in range(50)]
+            q = deque([[x, y, 0]])
+            vis[x][y] = True
+            need: Dict[int, List[int]] = {}
+            for i in range(np):
+                key = (pts[i][0] << 32) | (pts[i][1] & 0xFFFFFFFF)
+                if key not in need:
+                    need[key] = []
+                need[key].append(i)
+            found = 0
+            while q and found < np:
+                cur = q.popleft()
+                key = (cur[0] << 32) | (cur[1] & 0xFFFFFFFF)
+                idxs = need.get(key)
+                if idxs:
+                    for i in idxs:
+                        if ans[i] == -1:
+                            ans[i] = cur[2]
+                            found += 1
+                for d in DIRS:
+                    nx, ny = cur[0] + d[0], cur[1] + d[1]
+                    if nx < 0 or ny < 0 or nx >= 50 or ny >= 50 or vis[nx][ny]:
+                        continue
+                    vis[nx][ny] = True
+                    q.append([nx, ny, cur[2] + 1])
+            return ans
+
+        n = len(positions)
+        pts = [[0, 0] for _ in range(n + 1)]
+        pts[0][0], pts[0][1] = kx, ky
+        for i in range(n):
+            pts[i + 1][0] = positions[i][0]
+            pts[i + 1][1] = positions[i][1]
+        dist = []
+        for i in range(n + 1):
+            dist.append(knightDist(pts[i][0], pts[i][1], pts))
+        N = 1 << n
+        memo = [[-1] * (n + 1) for _ in range(N)]
+
+        def dfs(mask: int, cur: int, turn: int) -> int:
+            if mask == N - 1:
+                return 0
+            if memo[mask][cur] != -1:
+                return memo[mask][cur]
+            best = -(1 << 30) if turn == 0 else (1 << 30)
+            for i in range(n):
+                if (mask & (1 << i)) != 0:
+                    continue
+                d = dist[cur][i + 1]
+                v = d + dfs(mask | (1 << i), i + 1, 1 - turn)
+                if turn == 0:
+                    if v > best:
+                        best = v
+                elif v < best:
+                    best = v
+            memo[mask][cur] = best
+            return best
+
+        return dfs(0, 0, 0)
+
+========== 3284_sum_of_consecutive_subarrays ==========
+# LeetCode 3284 - Sum of Consecutive Subarrays
+# https://leetcode.com/problems/sum-of-consecutive-subarrays/
+
+from typing import List
+
+
+class Solution:
+    def rangeSum(self, nums: List[int]) -> int:
+        mod = 1000000007
+        n = len(nums)
+        ans = 0
+        i = 0
+        while i < n:
+            j = i
+            while j + 1 < n and (nums[j + 1] == nums[j] + 1 or nums[j + 1] == nums[j] - 1):
+                j += 1
+            for L in range(i, j + 1):
+                s = 0
+                for R in range(L, j + 1):
+                    s += nums[R]
+                    ans = (ans + s) % mod
+            i = j + 1
+        return ans
+

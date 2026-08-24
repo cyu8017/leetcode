@@ -111,37 +111,18 @@ def list_to_nary(values)
   return nil if values.nil? || values.empty?
 
   root = Struct.new(:val, :children).new(values[0], [])
-  parents = [root]
-  index = 1
-  index += 1 if index < values.length && values[index].nil?
-
-  while !parents.empty?
-    next_parents = []
-    parent_index = 0
-    index += 1 while index < values.length && values[index].nil?
-    while parent_index < parents.length && index < values.length
-      parent = parents[parent_index]
-      segment = []
-      while index < values.length && !values[index].nil?
-        segment << values[index]
-        index += 1
-      end
-      segment.each do |value|
-        child = Struct.new(:val, :children).new(value, [])
-        parent.children << child
-        next_parents << child
-      end
-      parent_index += 1
-      if index < values.length && values[index].nil?
-        index += 1
-        if index < values.length && values[index].nil?
-          index += 1
-          parent_index = parents.length
-          break
-        end
-      end
+  queue = [root]
+  # Format: [root, null, child-group, null, child-group, ...]
+  index = values.length > 1 ? 2 : 1
+  while !queue.empty? && index < values.length
+    node = queue.shift
+    while index < values.length && !values[index].nil?
+      child = Struct.new(:val, :children).new(values[index], [])
+      node.children << child
+      queue << child
+      index += 1
     end
-    parents = next_parents
+    index += 1
   end
   root
 end

@@ -1,0 +1,547 @@
+===== 2396_strictly_palindromic_number =====
+# LeetCode 2396 - Strictly Palindromic Number
+# https://leetcode.com/problems/strictly-palindromic-number/
+
+class Solution:
+    def isStrictlyPalindromic(self, n: int) -> bool:
+        return False
+
+===== 2397_maximum_rows_covered_by_columns =====
+# LeetCode 2397 - Maximum Rows Covered by Columns
+# https://leetcode.com/problems/maximum-rows-covered-by-columns/
+
+from typing import List
+
+
+class Solution:
+    def maximumRows(self, matrix: List[List[int]], numSelect: int) -> int:
+        m, n = len(matrix), len(matrix[0])
+        ans = 0
+
+        def dfs(col: int, chosen: int, mask: int) -> None:
+            nonlocal ans
+            if chosen == numSelect:
+                covered = 0
+                for i in range(m):
+                    ok = True
+                    for j in range(n):
+                        if matrix[i][j] == 1 and ((mask >> j) & 1) == 0:
+                            ok = False
+                            break
+                    if ok:
+                        covered += 1
+                ans = max(ans, covered)
+                return
+            if col == n:
+                return
+            dfs(col + 1, chosen + 1, mask | (1 << col))
+            dfs(col + 1, chosen, mask)
+
+        dfs(0, 0, 0)
+        return ans
+
+===== 2398_maximum_number_of_robots_within_budget =====
+# LeetCode 2398 - Maximum Number of Robots Within Budget
+# https://leetcode.com/problems/maximum-number-of-robots-within-budget/
+
+from typing import List
+
+
+class Solution:
+    def maximumRobots(self, chargeTimes: List[int], runningCosts: List[int], budget: int) -> int:
+        n = len(chargeTimes)
+        left = 0
+        s = 0
+        dq = []
+        ans = 0
+        for right in range(n):
+            while dq and chargeTimes[dq[-1]] <= chargeTimes[right]:
+                dq.pop()
+            dq.append(right)
+            s += runningCosts[right]
+            while left <= right and chargeTimes[dq[0]] + (right - left + 1) * s > budget:
+                if dq[0] == left:
+                    dq.pop(0)
+                s -= runningCosts[left]
+                left += 1
+            ans = max(ans, right - left + 1)
+        return ans
+
+===== 2399_check_distances_between_same_letters =====
+# LeetCode 2399 - Check Distances Between Same Letters
+# https://leetcode.com/problems/check-distances-between-same-letters/
+
+from typing import List
+
+
+class Solution:
+    def checkDistances(self, s: str, distance: List[int]) -> bool:
+        first = [-1] * 26
+        for i, ch in enumerate(s):
+            c = ord(ch) - 97
+            if first[c] == -1:
+                first[c] = i
+            elif i - first[c] - 1 != distance[c]:
+                return False
+        return True
+
+===== 2400_number_of_ways_to_reach_a_position_after_exactly_k_steps =====
+# LeetCode 2400 - Number of Ways to Reach a Position After Exactly k Steps
+# https://leetcode.com/problems/number-of-ways-to-reach-a-position-after-exactly-k-steps/
+
+class Solution:
+    def numberOfWays(self, startPos: int, endPos: int, k: int) -> int:
+        mod = 1000000007
+
+        def mod_pow(a: int, e: int) -> int:
+            res = 1
+            base = a % mod
+            while e > 0:
+                if e & 1:
+                    res = res * base % mod
+                base = base * base % mod
+                e >>= 1
+            return res
+
+        def comb(n: int, r: int) -> int:
+            if r < 0 or r > n:
+                return 0
+            num = den = 1
+            for i in range(r):
+                num = num * (n - i) % mod
+                den = den * (i + 1) % mod
+            return num * mod_pow(den, mod - 2) % mod
+
+        diff = abs(endPos - startPos)
+        if diff > k or (k - diff) % 2 != 0:
+            return 0
+        r = (k + diff) // 2
+        return comb(k, r)
+
+===== 2401_longest_nice_subarray =====
+# LeetCode 2401 - Longest Nice Subarray
+# https://leetcode.com/problems/longest-nice-subarray/
+
+from typing import List
+
+
+class Solution:
+    def longestNiceSubarray(self, nums: List[int]) -> int:
+        used = left = ans = 0
+        for right in range(len(nums)):
+            while (used & nums[right]) != 0:
+                used ^= nums[left]
+                left += 1
+            used |= nums[right]
+            ans = max(ans, right - left + 1)
+        return ans
+
+===== 2402_meeting_rooms_iii =====
+# LeetCode 2402 - Meeting Rooms III
+# https://leetcode.com/problems/meeting-rooms-iii/
+
+from typing import List
+
+
+class Solution:
+    def mostBooked(self, n: int, meetings: List[List[int]]) -> int:
+        meetings = sorted(meetings, key=lambda x: x[0])
+        free = []
+        busy = []
+
+        def push_free(x: int) -> None:
+            free.append(x)
+            i = len(free) - 1
+            while i > 0:
+                p = (i - 1) >> 1
+                if free[p] <= free[i]:
+                    break
+                free[p], free[i] = free[i], free[p]
+                i = p
+
+        def pop_free() -> int:
+            top = free[0]
+            last = free.pop()
+            if free:
+                free[0] = last
+                i = 0
+                while True:
+                    s = i
+                    l, r = i * 2 + 1, i * 2 + 2
+                    if l < len(free) and free[l] < free[s]:
+                        s = l
+                    if r < len(free) and free[r] < free[s]:
+                        s = r
+                    if s == i:
+                        break
+                    free[s], free[i] = free[i], free[s]
+                    i = s
+            return top
+
+        def cmp_busy(a, b) -> int:
+            if a[0] != b[0]:
+                return a[0] - b[0]
+            return a[1] - b[1]
+
+        def push_busy(x) -> None:
+            busy.append(x)
+            i = len(busy) - 1
+            while i > 0:
+                p = (i - 1) >> 1
+                if cmp_busy(busy[p], busy[i]) <= 0:
+                    break
+                busy[p], busy[i] = busy[i], busy[p]
+                i = p
+
+        def pop_busy():
+            top = busy[0]
+            last = busy.pop()
+            if busy:
+                busy[0] = last
+                i = 0
+                while True:
+                    s = i
+                    l, r = i * 2 + 1, i * 2 + 2
+                    if l < len(busy) and cmp_busy(busy[l], busy[s]) < 0:
+                        s = l
+                    if r < len(busy) and cmp_busy(busy[r], busy[s]) < 0:
+                        s = r
+                    if s == i:
+                        break
+                    busy[s], busy[i] = busy[i], busy[s]
+                    i = s
+            return top
+
+        for i in range(n):
+            push_free(i)
+        cnt = [0] * n
+        for start, end in meetings:
+            while busy and busy[0][0] <= start:
+                push_free(pop_busy()[1])
+            dur = end - start
+            if free:
+                room = pop_free()
+                begin = start
+            else:
+                top = pop_busy()
+                begin = top[0]
+                room = top[1]
+            push_busy([begin + dur, room])
+            cnt[room] += 1
+        ans = 0
+        for i in range(1, n):
+            if cnt[i] > cnt[ans]:
+                ans = i
+        return ans
+
+===== 2403_minimum_time_to_kill_all_monsters =====
+# LeetCode 2403 - Minimum Time to Kill All Monsters
+# https://leetcode.com/problems/minimum-time-to-kill-all-monsters/
+
+from typing import List
+
+
+class Solution:
+    def minimumTime(self, power: List[int]) -> int:
+        def bit_count(x: int) -> int:
+            c = 0
+            while x != 0:
+                c += x & 1
+                x >>= 1
+            return c
+
+        n = len(power)
+        N = 1 << n
+        dp = [10**18] * N
+        dp[0] = 0
+        for mask in range(N):
+            killed = bit_count(mask)
+            gain = killed + 1
+            for i in range(n):
+                if (mask & (1 << i)) != 0:
+                    continue
+                need = (power[i] + gain - 1) // gain
+                nm = mask | (1 << i)
+                dp[nm] = min(dp[nm], dp[mask] + need)
+        return dp[N - 1]
+
+===== 2404_most_frequent_even_element =====
+# LeetCode 2404 - Most Frequent Even Element
+# https://leetcode.com/problems/most-frequent-even-element/
+
+from typing import List
+
+
+class Solution:
+    def mostFrequentEven(self, nums: List[int]) -> int:
+        cnt = {}
+        ans = -1
+        best = 0
+        for x in nums:
+            if x % 2 != 0:
+                continue
+            c = cnt.get(x, 0) + 1
+            cnt[x] = c
+            if c > best or (c == best and (ans == -1 or x < ans)):
+                best = c
+                ans = x
+        return ans
+
+===== 2405_optimal_partition_of_string =====
+# LeetCode 2405 - Optimal Partition of String
+# https://leetcode.com/problems/optimal-partition-of-string/
+
+class Solution:
+    def partitionString(self, s: str) -> int:
+        ans = 1
+        seen = 0
+        for c in s:
+            bit = 1 << (ord(c) - 97)
+            if (seen & bit) != 0:
+                ans += 1
+                seen = 0
+            seen |= bit
+        return ans
+
+===== 2406_divide_intervals_into_minimum_number_of_groups =====
+# LeetCode 2406 - Divide Intervals Into Minimum Number of Groups
+# https://leetcode.com/problems/divide-intervals-into-minimum-number-of-groups/
+
+from typing import List
+
+
+class Solution:
+    def minGroups(self, intervals: List[List[int]]) -> int:
+        events = []
+        for it in intervals:
+            events.append((it[0], 1))
+            events.append((it[1] + 1, -1))
+        events.sort(key=lambda e: (e[0], e[1]))
+        cur = ans = 0
+        for _, d in events:
+            cur += d
+            ans = max(ans, cur)
+        return ans
+
+===== 2407_longest_increasing_subsequence_ii =====
+# LeetCode 2407 - Longest Increasing Subsequence II
+# https://leetcode.com/problems/longest-increasing-subsequence-ii/
+
+from typing import List
+
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int], k: int) -> int:
+        max_v = 0
+        for x in nums:
+            max_v = max(max_v, x)
+        tree = [0] * (4 * (max_v + 1))
+
+        def update(idx: int, l: int, r: int, pos: int, val: int) -> None:
+            if l == r:
+                tree[idx] = max(tree[idx], val)
+                return
+            mid = (l + r) >> 1
+            if pos <= mid:
+                update(idx * 2, l, mid, pos, val)
+            else:
+                update(idx * 2 + 1, mid + 1, r, pos, val)
+            tree[idx] = max(tree[idx * 2], tree[idx * 2 + 1])
+
+        def query(idx: int, l: int, r: int, ql: int, qr: int) -> int:
+            if qr < l or r < ql:
+                return 0
+            if ql <= l and r <= qr:
+                return tree[idx]
+            mid = (l + r) >> 1
+            return max(query(idx * 2, l, mid, ql, qr), query(idx * 2 + 1, mid + 1, r, ql, qr))
+
+        ans = 0
+        for x in nums:
+            lo = max(1, x - k)
+            best = 1
+            if lo <= x - 1:
+                best = query(1, 1, max_v, lo, x - 1) + 1
+            update(1, 1, max_v, x, best)
+            ans = max(ans, best)
+        return ans
+
+===== 2408_design_sql =====
+# LeetCode 2408 - Design SQL
+# https://leetcode.com/problems/design-sql/
+
+from typing import List
+
+
+class SQL:
+    def __init__(self, names: List[str], columns: List[int]):
+        self.tables = {}
+        self.nextID = {}
+        for name in names:
+            self.tables[name] = []
+            self.nextID[name] = 1
+
+    def ins(self, name: str, row: List[str]) -> bool:
+        if name not in self.tables:
+            return False
+        row_id = self.nextID[name]
+        self.nextID[name] = row_id + 1
+        full = [str(row_id)] + list(row)
+        self.tables[name].append(full)
+        return True
+
+    def rmv(self, name: str, rowId: int) -> None:
+        rows = self.tables[name]
+        for i in range(len(rows)):
+            if int(rows[i][0]) == rowId:
+                rows.pop(i)
+                return
+
+    def sel(self, name: str, rowId: int, columnId: int) -> str:
+        for r in self.tables[name]:
+            if int(r[0]) == rowId:
+                if columnId < 1 or columnId >= len(r):
+                    return "<null>"
+                return r[columnId]
+        return "<null>"
+
+    def exp(self, name: str) -> List[str]:
+        return [",".join(r) for r in self.tables[name]]
+
+===== 2409_count_days_spent_together =====
+# LeetCode 2409 - Count Days Spent Together
+# https://leetcode.com/problems/count-days-spent-together/
+
+class Solution:
+    def countDaysTogether(
+        self, arriveAlice: str, leaveAlice: str, arriveBob: str, leaveBob: str
+    ) -> int:
+        days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+        def to_day(s: str) -> int:
+            m = (ord(s[0]) - 48) * 10 + (ord(s[1]) - 48)
+            d = (ord(s[3]) - 48) * 10 + (ord(s[4]) - 48)
+            res = d
+            for i in range(m - 1):
+                res += days[i]
+            return res
+
+        a1, a2 = to_day(arriveAlice), to_day(leaveAlice)
+        b1, b2 = to_day(arriveBob), to_day(leaveBob)
+        start = max(a1, b1)
+        end = min(a2, b2)
+        if end < start:
+            return 0
+        return end - start + 1
+
+===== 2410_maximum_matching_of_players_with_trainers =====
+# LeetCode 2410 - Maximum Matching of Players With Trainers
+# https://leetcode.com/problems/maximum-matching-of-players-with-trainers/
+
+from typing import List
+
+
+class Solution:
+    def matchPlayersAndTrainers(self, players: List[int], trainers: List[int]) -> int:
+        players = sorted(players)
+        trainers = sorted(trainers)
+        i = j = ans = 0
+        while i < len(players) and j < len(trainers):
+            if players[i] <= trainers[j]:
+                ans += 1
+                i += 1
+                j += 1
+            else:
+                j += 1
+        return ans
+
+===== 2411_smallest_subarrays_with_maximum_bitwise_or =====
+# LeetCode 2411 - Smallest Subarrays With Maximum Bitwise OR
+# https://leetcode.com/problems/smallest-subarrays-with-maximum-bitwise-or/
+
+from typing import List
+
+
+class Solution:
+    def smallestSubarrays(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        ans = [0] * n
+        last = [-1] * 32
+        for i in range(n - 1, -1, -1):
+            for b in range(32):
+                if ((nums[i] >> b) & 1) != 0:
+                    last[b] = i
+            far = i
+            for b in range(32):
+                far = max(far, last[b])
+            ans[i] = far - i + 1
+        return ans
+
+===== 2412_minimum_money_required_before_transactions =====
+# LeetCode 2412 - Minimum Money Required Before Transactions
+# https://leetcode.com/problems/minimum-money-required-before-transactions/
+
+from typing import List
+
+
+class Solution:
+    def minimumMoney(self, transactions: List[List[int]]) -> int:
+        total_loss = max_cashback = max_cost = 0
+        for cost, cashback in transactions:
+            if cost > cashback:
+                total_loss += cost - cashback
+                max_cashback = max(max_cashback, cashback)
+            else:
+                max_cost = max(max_cost, cost)
+        return max(total_loss + max_cashback, total_loss + max_cost)
+
+===== 2413_smallest_even_multiple =====
+# LeetCode 2413 - Smallest Even Multiple
+# https://leetcode.com/problems/smallest-even-multiple/
+
+class Solution:
+    def smallestEvenMultiple(self, n: int) -> int:
+        return n if n % 2 == 0 else n * 2
+
+===== 2414_length_of_the_longest_alphabetical_continuous_substring =====
+# LeetCode 2414 - Length of the Longest Alphabetical Continuous Substring
+# https://leetcode.com/problems/length-of-the-longest-alphabetical-continuous-substring/
+
+class Solution:
+    def longestContinuousSubstring(self, s: str) -> int:
+        ans = cur = 1
+        for i in range(1, len(s)):
+            if ord(s[i]) == ord(s[i - 1]) + 1:
+                cur += 1
+                ans = max(ans, cur)
+            else:
+                cur = 1
+        return ans
+
+===== 2415_reverse_odd_levels_of_binary_tree =====
+# LeetCode 2415 - Reverse Odd Levels of Binary Tree
+# https://leetcode.com/problems/reverse-odd-levels-of-binary-tree/
+
+from typing import Optional
+
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def reverseOddLevels(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        def dfs(a, b, level: int) -> None:
+            if a is None or b is None:
+                return
+            if level % 2 == 1:
+                a.val, b.val = b.val, a.val
+            dfs(a.left, b.right, level + 1)
+            dfs(a.right, b.left, level + 1)
+
+        if root is not None:
+            dfs(root.left, root.right, 1)
+        return root

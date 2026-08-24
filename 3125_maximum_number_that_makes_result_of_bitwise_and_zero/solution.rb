@@ -1,7 +1,14 @@
-﻿# LeetCode 3125 - Maximum Number That Makes Result of Bitwise AND Zero
+# LeetCode 3125 - Maximum Number That Makes Result of Bitwise AND Zero
 # https://leetcode.com/problems/maximum-number-that-makes-result-of-bitwise-and-zero/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} n
+# @return {Integer}
+def max_number(n)
+  length = 0
+  x = n
+  while x > 0
+    length += 1
+    x >>= 1
+  end
+  (1 << (length - 1)) - 1
 end

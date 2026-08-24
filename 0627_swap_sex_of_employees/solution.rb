@@ -1,7 +1,7 @@
-﻿# LeetCode 0627 - Swap Sex of Employees
-# https://leetcode.com/problems/swap-sex-of-employees/
+# LeetCode 0627 - Swap Sex of Employees
+# https:# leetcode.com/problems/swap-sex-of-employees/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  UPDATE Salary
+  SET sex = CASE WHEN sex = 'm' THEN 'f' ELSE 'm' END
+SQL

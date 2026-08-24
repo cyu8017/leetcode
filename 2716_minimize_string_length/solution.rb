@@ -1,7 +1,8 @@
-﻿# LeetCode 2716 - Minimize String Length
+# LeetCode 2716 - Minimize String Length
 # https://leetcode.com/problems/minimize-string-length/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} s
+# @return {Integer}
+def minimized_string_length(s)
+  s.chars.uniq.length
 end

@@ -1,7 +1,9 @@
-﻿# LeetCode 0596 - Classes With at Least 5 Students
-# https://leetcode.com/problems/classes-with-at-least-5-students/
+# LeetCode 0596 - Classes With at Least 5 Students
+# https:# leetcode.com/problems/classes-with-at-least-5-students/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT class
+  FROM Courses
+  GROUP BY class
+  HAVING COUNT(student) >= 5
+SQL

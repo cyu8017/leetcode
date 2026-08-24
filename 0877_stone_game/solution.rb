@@ -1,7 +1,8 @@
-﻿# LeetCode 0877 - Stone Game
+# LeetCode 0877 - Stone Game
 # https://leetcode.com/problems/stone-game/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} piles
+# @return {Boolean}
+def stone_game(_piles)
+  true
 end

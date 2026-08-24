@@ -1,7 +1,9 @@
-﻿# LeetCode 3798 - Largest Even Number
+# LeetCode 3798 - Largest Even Number
 # https://leetcode.com/problems/largest-even-number/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {String} s
+# @return {String}
+def largest_even(s)
+  s = s[0...-1] while s.length > 0 && s[-1] == "1"
+  s
 end

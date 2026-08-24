@@ -1,7 +1,12 @@
-﻿# LeetCode 2619 - Array Prototype Last
+# LeetCode 2619 - Array Prototype Last
 # https://leetcode.com/problems/array-prototype-last/
 
-# @param {Object} input
+# @param {Object[]} nums
 # @return {Object}
-def solve(input)
+def last(nums)
+  return -1 if nums.empty?
+
+  nums[-1]
 end
+
+alias solve last

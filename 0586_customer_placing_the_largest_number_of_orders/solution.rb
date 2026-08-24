@@ -1,7 +1,10 @@
-﻿# LeetCode 0586 - Customer Placing the Largest Number of Orders
-# https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/
+# LeetCode 0586 - Customer Placing the Largest Number of Orders
+# https:# leetcode.com/problems/customer-placing-the-largest-number-of-orders/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT customer_number
+  FROM Orders
+  GROUP BY customer_number
+  ORDER BY COUNT(*) DESC
+  LIMIT 1
+SQL

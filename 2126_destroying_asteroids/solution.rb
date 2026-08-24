@@ -1,7 +1,15 @@
-﻿# LeetCode 2126 - Destroying Asteroids
+# LeetCode 2126 - Destroying Asteroids
 # https://leetcode.com/problems/destroying-asteroids/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} mass
+# @param {Integer[]} asteroids
+# @return {Boolean}
+def asteroids_destroyed(mass, asteroids)
+  cur = mass
+  asteroids.sort.each do |a|
+    return false if cur < a
+
+    cur += a
+  end
+  true
 end

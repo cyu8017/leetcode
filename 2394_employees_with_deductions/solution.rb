@@ -1,7 +1,18 @@
-﻿# LeetCode 2394 - Employees With Deductions
-# https://leetcode.com/problems/employees-with-deductions/
+# LeetCode 2394 - Employees With Deductions
+# https:# leetcode.com/problems/employees-with-deductions/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  WITH
+      T AS (
+          SELECT
+              employee_id,
+              SUM(ceiling(TIMESTAMPDIFF(second, in_time, out_time) / 60)) / 60 AS tot
+          FROM Logs
+          GROUP BY employee_id
+      )
+  SELECT employee_id
+  FROM
+      Employees
+      LEFT JOIN T USING (employee_id)
+  WHERE IFNULL(tot, 0) < needed_hours
+SQL

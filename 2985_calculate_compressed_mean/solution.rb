@@ -1,7 +1,11 @@
-﻿# LeetCode 2985 - Calculate Compressed Mean
-# https://leetcode.com/problems/calculate-compressed-mean/
+# LeetCode 2985 - Calculate Compressed Mean
+# https:# leetcode.com/problems/calculate-compressed-mean/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
-end
+QUERY = <<~SQL
+  SELECT
+      ROUND(
+          SUM(item_count * order_occurrences) / SUM(order_occurrences),
+          2
+      ) AS average_items_per_order
+  FROM Orders
+SQL

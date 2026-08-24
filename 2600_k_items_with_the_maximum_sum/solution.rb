@@ -1,7 +1,19 @@
-﻿# LeetCode 2600 - K Items With the Maximum Sum
+# LeetCode 2600 - K Items With the Maximum Sum
 # https://leetcode.com/problems/k-items-with-the-maximum-sum/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer} num_ones
+# @param {Integer} num_zeros
+# @param {Integer} num_neg_ones
+# @param {Integer} k
+# @return {Integer}
+def k_items_with_maximum_sum(num_ones, num_zeros, num_neg_ones, k)
+  ans = 0
+  take = [num_ones, k].min
+  ans += take
+  k -= take
+  take = [num_zeros, k].min
+  k -= take
+  take = [num_neg_ones, k].min
+  ans -= take
+  ans
 end

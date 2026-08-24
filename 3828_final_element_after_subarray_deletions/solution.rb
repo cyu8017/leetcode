@@ -1,7 +1,8 @@
-﻿# LeetCode 3828 - Final Element After Subarray Deletions
+# LeetCode 3828 - Final Element After Subarray Deletions
 # https://leetcode.com/problems/final-element-after-subarray-deletions/
 
-# @param {Object} input
-# @return {Object}
-def solve(input)
+# @param {Integer[]} nums
+# @return {Integer}
+def final_element(nums)
+  [nums[0], nums[-1]].max
 end
