@@ -1,6 +1,9 @@
-﻿// LeetCode 0779 - K-th Symbol in Grammar
+// LeetCode 0779 - K-th Symbol in Grammar
 // https://leetcode.com/problems/k-th-symbol-in-grammar/
 
-function solve(input: unknown): unknown {
-    return null;
+export function kthGrammar(n: number, k: number): number {
+    if (n === 1) return 0;
+    const mid = 1 << (n - 2);
+    if (k <= mid) return kthGrammar(n - 1, k);
+    return 1 - kthGrammar(n - 1, k - mid);
 }

@@ -1,6 +1,22 @@
-﻿// LeetCode 2477 - Minimum Fuel Cost to Report to the Capital
+// LeetCode 2477 - Minimum Fuel Cost to Report to the Capital
 // https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minimumFuelCost(roads: number[][], seats: number): number {
+    const n = roads.length + 1;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of roads) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    let ans = 0;
+    const dfs = (u, p) => {
+        let people = 1;
+        for (const v of g[u]) {
+            if (v !== p) people += dfs(v, u);
+        }
+        if (u !== 0) ans += Math.floor((people + seats - 1) / seats);
+        return people;
+    };
+    dfs(0, -1);
+    return ans;
 }

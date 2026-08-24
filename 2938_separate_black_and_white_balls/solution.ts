@@ -1,6 +1,11 @@
-﻿// LeetCode 2938 - Separate Black and White Balls
+// LeetCode 2938 - Separate Black and White Balls
 // https://leetcode.com/problems/separate-black-and-white-balls/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minimumSteps(s: any): any {
+    let ans = 0, zeros = 0;
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (s[i] === '0') zeros++;
+        else ans += zeros;
+    }
+    return ans;
 }

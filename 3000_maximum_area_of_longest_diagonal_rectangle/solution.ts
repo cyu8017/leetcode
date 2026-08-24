@@ -1,6 +1,17 @@
-﻿// LeetCode 3000 - Maximum Area of Longest Diagonal Rectangle
+// LeetCode 3000 - Maximum Area of Longest Diagonal Rectangle
 // https://leetcode.com/problems/maximum-area-of-longest-diagonal-rectangle/
 
-function solve(input: unknown): unknown {
-    return null;
+export function areaOfMaxDiagonal(dimensions: any): any {
+    let ans = 0, mx = 0;
+    for (const d of dimensions) {
+        const l = d[0], w = d[1];
+        const t = l * l + w * w;
+        if (mx < t) {
+            mx = t;
+            ans = l * w;
+        } else if (mx === t) {
+            ans = Math.max(ans, l * w);
+        }
+    }
+    return ans;
 }

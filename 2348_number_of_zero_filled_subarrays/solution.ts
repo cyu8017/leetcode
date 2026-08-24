@@ -1,6 +1,11 @@
-﻿// LeetCode 2348 - Number of Zero-Filled Subarrays
+// LeetCode 2348 - Number of Zero-Filled Subarrays
 // https://leetcode.com/problems/number-of-zero-filled-subarrays/
 
-function solve(input: unknown): unknown {
-    return null;
+export function zeroFilledSubarray(nums: number[]): number {
+    let ans = 0, streak = 0;
+    for (const x of nums) {
+        if (x === 0) { streak++; ans += streak; }
+        else streak = 0;
+    }
+    return ans;
 }

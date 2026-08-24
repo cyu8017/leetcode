@@ -1,6 +1,11 @@
-﻿// LeetCode 2315 - Count Asterisks
+// LeetCode 2315 - Count Asterisks
 // https://leetcode.com/problems/count-asterisks/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countAsterisks(s: string): number {
+    let ans = 0, inside = false;
+    for (const c of s) {
+        if (c === '|') inside = !inside;
+        else if (c === '*' && !inside) ans++;
+    }
+    return ans;
 }

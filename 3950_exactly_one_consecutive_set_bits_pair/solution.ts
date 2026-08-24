@@ -1,6 +1,16 @@
-﻿// LeetCode 3950 - Exactly One Consecutive Set Bits Pair
+// LeetCode 3950 - Exactly One Consecutive Set Bits Pair
 // https://leetcode.com/problems/exactly-one-consecutive-set-bits-pair/
 
-function solve(input: unknown): unknown {
-    return null;
+export function consecutiveSetBits(n: any): any {
+        let vis = false;
+        for (let pre = 0; n > 0; n >>= 1) {
+            let cur = n & 1;
+            if (pre == cur && cur == 1) {
+                if (vis) return false;
+                vis = true;
+            }
+            pre = cur;
+        }
+        return vis;
+    
 }

@@ -1,6 +1,13 @@
-﻿// LeetCode 3475 - DNA Pattern Recognition 
+// LeetCode 3475 - Dna Pattern Recognition
 // https://leetcode.com/problems/dna-pattern-recognition/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `SELECT
+    sample_id,
+    dna_sequence,
+    species,
+    dna_sequence LIKE 'ATG%' AS has_start,
+    dna_sequence REGEXP 'TAA$|TAG$|TGA$' AS has_stop,
+    dna_sequence LIKE '%ATAT%' AS has_atat,
+    dna_sequence REGEXP 'GGG+' AS has_ggg
+FROM Samples
+ORDER BY 1;`;

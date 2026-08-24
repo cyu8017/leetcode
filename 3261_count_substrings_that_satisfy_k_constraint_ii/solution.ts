@@ -1,6 +1,36 @@
-﻿// LeetCode 3261 - Count Substrings That Satisfy K-Constraint II
+// LeetCode 3261 - Count Substrings That Satisfy K-Constraint II
 // https://leetcode.com/problems/count-substrings-that-satisfy-k-constraint-ii/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countKConstraintSubstrings(s: any, k: any, queries: any): any {
+    const n = s.length;
+    const leftMost = new Array(n);
+    let z = 0, o = 0, L = 0;
+    for (let R = 0; R < n; R++) {
+        if (s[R] === '0') z++; else o++;
+        while (z > k && o > k) {
+            if (s[L] === '0') z--; else o--;
+            L++;
+        }
+        leftMost[R] = L;
+    }
+    const pref = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) pref[i + 1] = pref[i] + (i - leftMost[i] + 1);
+    const ans = new Array(queries.length);
+    for (let qi = 0; qi < queries.length; qi++) {
+        const l = queries[qi][0], r = queries[qi][1];
+        let lo = l, hi = r + 1;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (leftMost[mid] < l) lo = mid + 1;
+            else hi = mid;
+        }
+        let res = 0;
+        if (lo > l) {
+            const m = lo - l;
+            res += m * (m + 1) / 2;
+        }
+        if (lo <= r) res += pref[r + 1] - pref[lo];
+        ans[qi] = res;
+    }
+    return ans;
 }

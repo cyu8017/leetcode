@@ -1,6 +1,9 @@
-﻿// LeetCode 2649 - Nested Array Generator
+// LeetCode 2649 - Nested Array Generator
 // https://leetcode.com/problems/nested-array-generator/
 
-function solve(input: unknown): unknown {
-    return null;
+export function* inorderTraversal(arr: any[]): Generator<any> {
+    for (const x of arr) {
+        if (Array.isArray(x)) yield* inorderTraversal(x);
+        else yield x;
+    }
 }

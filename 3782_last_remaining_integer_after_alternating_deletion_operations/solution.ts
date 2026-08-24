@@ -1,6 +1,14 @@
-﻿// LeetCode 3782 - Last Remaining Integer After Alternating Deletion Operations
+// LeetCode 3782 - Last Remaining Integer After Alternating Deletion Operations
 // https://leetcode.com/problems/last-remaining-integer-after-alternating-deletion-operations/
 
-function solve(input: unknown): unknown {
-    return null;
+export function lastRemaining(n: any): any {
+    let first = 1, step = 2;
+    let left = true;
+    while (n > 1) {
+        if (!left && n % 2 === 0) first += step;
+        n = Math.floor((n + 1) / 2);
+        step *= 2;
+        left = !left;
+    }
+    return first;
 }

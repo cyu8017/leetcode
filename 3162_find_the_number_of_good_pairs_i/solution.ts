@@ -1,6 +1,10 @@
-﻿// LeetCode 3162 - Find the Number of Good Pairs I
+// LeetCode 3162 - Find the Number of Good Pairs I
 // https://leetcode.com/problems/find-the-number-of-good-pairs-i/
 
-function solve(input: unknown): unknown {
-    return null;
+export function numberOfPairs(nums1: number[], nums2: number[], k: number): number {
+    let ans = 0;
+    for (const x of nums1)
+        for (const y of nums2)
+            if (x % (y * k) === 0) ans++;
+    return ans;
 }

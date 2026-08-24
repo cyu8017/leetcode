@@ -1,6 +1,15 @@
-﻿// LeetCode 3137 - Minimum Number of Operations to Make Word K-Periodic
+// LeetCode 3137 - Minimum Number of Operations to Make Word K-Periodic
 // https://leetcode.com/problems/minimum-number-of-operations-to-make-word-k-periodic/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minimumOperationsToMakeKPeriodic(word: string, k: number): number {
+    const cnt = new Map();
+    const n = word.length;
+    let mx = 0;
+    for (let i = 0; i < n; i += k) {
+        const s = word.substring(i, i + k);
+        const v = (cnt.get(s) || 0) + 1;
+        cnt.set(s, v);
+        mx = Math.max(mx, v);
+    }
+    return Math.floor(n / k) - mx;
 }

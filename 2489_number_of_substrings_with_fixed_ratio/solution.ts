@@ -1,6 +1,16 @@
-﻿// LeetCode 2489 - Number of Substrings With Fixed Ratio
+// LeetCode 2489 - Number of Substrings With Fixed Ratio
 // https://leetcode.com/problems/number-of-substrings-with-fixed-ratio/
 
-function solve(input: unknown): unknown {
-    return null;
+export function fixedRatio(s: string, num1: number, num2: number): number {
+    const pref = new Map();
+    pref.set(0, 1);
+    let zeros = 0, ones = 0, ans = 0;
+    for (const c of s) {
+        if (c === '0') zeros++;
+        else ones++;
+        const key = zeros * num2 - ones * num1;
+        ans += pref.get(key) || 0;
+        pref.set(key, (pref.get(key) || 0) + 1);
+    }
+    return ans;
 }

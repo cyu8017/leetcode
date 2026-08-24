@@ -1,6 +1,38 @@
-﻿// LeetCode 3272 - Find the Count of Good Integers
+// LeetCode 3272 - Find the Count of Good Integers
 // https://leetcode.com/problems/find-the-count-of-good-integers/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countGoodIntegers(n: any, k: any): any {
+    const half = Math.floor((n + 1) / 2);
+    let start = 1;
+    for (let i = 1; i < half; i++) start *= 10;
+    const end = start * 10;
+    const seen = new Set();
+    let ans = 0;
+    const fact = new Array(n + 1);
+    fact[0] = 1;
+    for (let i = 1; i <= n; i++) fact[i] = fact[i - 1] * i;
+    for (let h = start; h < end; h++) {
+        const s = String(h);
+        let pal = s;
+        let revStart = s.length - 1;
+        if (n % 2 === 1) revStart--;
+        for (let i = revStart; i >= 0; i--) pal += s[i];
+        if (Number(pal) % k !== 0) continue;
+        const chars = pal.split('').sort().join('');
+        if (seen.has(chars)) continue;
+        seen.add(chars);
+        const cnt = new Array(10).fill(0);
+        for (const c of chars) cnt[c.charCodeAt(0) - 48]++;
+        let total = fact[n];
+        for (const c of cnt) total /= fact[c];
+        if (cnt[0] > 0) {
+            let bad = fact[n - 1];
+            cnt[0]--;
+            for (const c of cnt) bad /= fact[c];
+            cnt[0]++;
+            total -= bad;
+        }
+        ans += total;
+    }
+    return ans;
 }

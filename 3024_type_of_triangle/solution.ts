@@ -1,6 +1,10 @@
-﻿// LeetCode 3024 - Type of Triangle
+// LeetCode 3024 - Type of Triangle
 // https://leetcode.com/problems/type-of-triangle/
 
-function solve(input: unknown): unknown {
-    return null;
+export function triangleType(nums: any): any {
+    nums.sort((a, b) => a - b);
+    if (nums[0] + nums[1] <= nums[2]) return "none";
+    if (nums[0] === nums[2]) return "equilateral";
+    if (nums[0] === nums[1] || nums[1] === nums[2]) return "isosceles";
+    return "scalene";
 }

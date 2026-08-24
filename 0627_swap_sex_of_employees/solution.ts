@@ -1,6 +1,5 @@
-﻿// LeetCode 0627 - Swap Sex of Employees
+// LeetCode 0627 - Swap Sex Of Employees
 // https://leetcode.com/problems/swap-sex-of-employees/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `UPDATE Salary
+SET sex = CASE WHEN sex = 'm' THEN 'f' ELSE 'm' END`;

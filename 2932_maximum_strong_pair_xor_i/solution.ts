@@ -1,6 +1,15 @@
-﻿// LeetCode 2932 - Maximum Strong Pair XOR I
+// LeetCode 2932 - Maximum Strong Pair XOR I
 // https://leetcode.com/problems/maximum-strong-pair-xor-i/
 
-function solve(input: unknown): unknown {
-    return null;
+export function maximumStrongPairXor(nums: number[]): number {
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++)
+        for (let j = i; j < nums.length; j++) {
+            const x = nums[i], y = nums[j];
+            if (Math.abs(x - y) <= Math.min(x, y)) {
+                const xorr = x ^ y;
+                if (xorr > ans) ans = xorr;
+            }
+        }
+    return ans;
 }

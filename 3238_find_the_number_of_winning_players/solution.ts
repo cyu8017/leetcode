@@ -1,6 +1,13 @@
-﻿// LeetCode 3238 - Find the Number of Winning Players
+// LeetCode 3238 - Find the Number of Winning Players
 // https://leetcode.com/problems/find-the-number-of-winning-players/
 
-function solve(input: unknown): unknown {
-    return null;
+export function winningPlayerCount(n: any, pick: any): any {
+    const cnt = Array.from({length: n}, () => new Array(11).fill(0));
+    const s = new Set();
+    for (const p of pick) {
+        const x = p[0], y = p[1];
+        cnt[x][y]++;
+        if (cnt[x][y] > x) s.add(x);
+    }
+    return s.size;
 }

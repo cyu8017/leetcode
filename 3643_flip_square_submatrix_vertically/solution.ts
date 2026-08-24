@@ -1,6 +1,14 @@
-﻿// LeetCode 3643 - Flip Square Submatrix Vertically
+// LeetCode 3643 - Flip Square Submatrix Vertically
 // https://leetcode.com/problems/flip-square-submatrix-vertically/
 
-function solve(input: unknown): unknown {
-    return null;
+export function reverseSubmatrix(grid: any, x: any, y: any, k: any): any {
+    for (let i = x; i < x + Math.floor(k / 2); i++) {
+        const i2 = x + k - 1 - (i - x);
+        for (let j = y; j < y + k; j++) {
+            const tmp = grid[i][j];
+            grid[i][j] = grid[i2][j];
+            grid[i2][j] = tmp;
+        }
+    }
+    return grid;
 }

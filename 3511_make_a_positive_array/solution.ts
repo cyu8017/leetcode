@@ -1,6 +1,19 @@
-﻿// LeetCode 3511 - Make a Positive Array
+// LeetCode 3511 - Make a Positive Array
 // https://leetcode.com/problems/make-a-positive-array/
 
-function solve(input: unknown): unknown {
-    return null;
+export function makeArrayPositive(nums: any): any {
+    let ans = 0, l = -1;
+    let preMx = 0, s = 0;
+    for (let r = 0; r < nums.length; r++) {
+        s += nums[r];
+        if (r - l > 2 && s <= preMx) {
+            ans++;
+            l = r;
+            preMx = 0;
+            s = 0;
+        } else if (r - l >= 2) {
+            preMx = Math.max(preMx, s - nums[r] - nums[r - 1]);
+        }
+    }
+    return ans;
 }

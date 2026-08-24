@@ -1,6 +1,8 @@
-﻿// LeetCode 2725 - Interval Cancellation
+// LeetCode 2725 - Interval Cancellation
 // https://leetcode.com/problems/interval-cancellation/
 
-function solve(input: unknown): unknown {
-    return null;
+export function cancellable(fn: any, args: any, t: any): any {
+    fn(...args);
+    const id = setInterval(() => fn(...args), t);
+    return function() { clearInterval(id); };
 }

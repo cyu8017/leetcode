@@ -1,6 +1,8 @@
-﻿// LeetCode 2621 - Sleep
+// LeetCode 2621 - Sleep
 // https://leetcode.com/problems/sleep/
 
-function solve(input: unknown): unknown {
-    return null;
+export async function sleep(millis: any): any {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, millis);
+    });
 }

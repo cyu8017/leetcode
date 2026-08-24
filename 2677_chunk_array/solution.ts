@@ -1,6 +1,9 @@
-﻿// LeetCode 2677 - Chunk Array
+// LeetCode 2677 - Chunk Array
 // https://leetcode.com/problems/chunk-array/
 
-function solve(input: unknown): unknown {
-    return null;
+export function chunk(arr: any, size: any): any {
+    const ans = [];
+    for (let i = 0; i < arr.length; i += size)
+        ans.push(arr.slice(i, i + size));
+    return ans;
 }

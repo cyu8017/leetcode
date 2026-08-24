@@ -1,6 +1,15 @@
-﻿// LeetCode 2574 - Left and Right Sum Differences
+// LeetCode 2574 - Left and Right Sum Differences
 // https://leetcode.com/problems/left-and-right-sum-differences/
 
-function solve(input: unknown): unknown {
-    return null;
+export function leftRightDifference(nums: number[]): number[] {
+    let total = 0;
+    for (const x of nums) total += x;
+    const ans = new Array(nums.length);
+    let left = 0;
+    for (let i = 0; i < nums.length; ++i) {
+        const right = total - left - nums[i];
+        ans[i] = Math.abs(left - right);
+        left += nums[i];
+    }
+    return ans;
 }

@@ -1,6 +1,8 @@
-﻿// LeetCode 3190 - Find Minimum Operations to Make All Elements Divisible by Three
+// LeetCode 3190 - Find Minimum Operations to Make All Elements Divisible by Three
 // https://leetcode.com/problems/find-minimum-operations-to-make-all-elements-divisible-by-three/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minimumOperations(nums: any): any {
+    let ans = 0;
+    for (const x of nums) if (x % 3 !== 0) ans++;
+    return ans;
 }

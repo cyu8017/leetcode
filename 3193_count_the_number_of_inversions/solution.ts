@@ -1,6 +1,24 @@
-﻿// LeetCode 3193 - Count the Number of Inversions
+// LeetCode 3193 - Count the Number of Inversions
 // https://leetcode.com/problems/count-the-number-of-inversions/
 
-function solve(input: unknown): unknown {
-    return null;
+export function numberOfPermutations(n: any, requirements: any): any {
+    const req = new Array(n).fill(-1);
+    for (const r of requirements) req[r[0]] = r[1];
+    if (req[0] > 0) return 0;
+    req[0] = 0;
+    let m = 0;
+    for (const v of req) m = Math.max(m, v);
+    const mod = 1000000007;
+    const f = Array.from({length: n}, () => new Array(m + 1).fill(0));
+    f[0][0] = 1;
+    for (let i = 1; i < n; i++) {
+        let l = 0, r = m;
+        if (req[i] >= 0) l = r = req[i];
+        for (let j = l; j <= r; j++) {
+            for (let k = 0; k <= Math.min(i, j); k++) {
+                f[i][j] = (f[i][j] + f[i - 1][j - k]) % mod;
+            }
+        }
+    }
+    return f[n - 1][req[n - 1]];
 }

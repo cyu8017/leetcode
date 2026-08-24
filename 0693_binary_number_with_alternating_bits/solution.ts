@@ -1,6 +1,7 @@
-﻿// LeetCode 0693 - Binary Number with Alternating Bits
+// LeetCode 0693 - Binary Number with Alternating Bits
 // https://leetcode.com/problems/binary-number-with-alternating-bits/
 
-function solve(input: unknown): unknown {
-    return null;
+export function hasAlternatingBits(n: number): boolean {
+    const x = n ^ (n >>> 1);
+    return (x & (x + 1)) === 0;
 }

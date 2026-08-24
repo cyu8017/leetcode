@@ -1,3 +1,5 @@
-function solve(input: unknown): unknown {
-    return null;
-}
+// LeetCode 1303 - Find The Team Size
+// https://leetcode.com/problems/find-the-team-size/
+
+export const QUERY = `SELECT employee_id, COUNT(*) OVER (PARTITION BY team_id) AS team_size
+FROM Employee`;

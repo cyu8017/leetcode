@@ -1,6 +1,14 @@
-﻿// LeetCode 3207 - Maximum Points After Enemy Battles
+// LeetCode 3207 - Maximum Points After Enemy Battles
 // https://leetcode.com/problems/maximum-points-after-enemy-battles/
 
-function solve(input: unknown): unknown {
-    return null;
+export function maximumPoints(enemyEnergies: any, currentEnergy: any): any {
+    enemyEnergies.sort((a, b) => a - b);
+    if (currentEnergy < enemyEnergies[0]) return 0;
+    let ans = 0;
+    for (let i = enemyEnergies.length - 1; i >= 0; i--) {
+        ans += Math.floor(currentEnergy / enemyEnergies[0]);
+        currentEnergy %= enemyEnergies[0];
+        currentEnergy += enemyEnergies[i];
+    }
+    return ans;
 }

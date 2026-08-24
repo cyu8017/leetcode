@@ -1,6 +1,22 @@
-﻿// LeetCode 0676 - Implement Magic Dictionary
+// LeetCode 0676 - Implement Magic Dictionary
 // https://leetcode.com/problems/implement-magic-dictionary/
 
-function solve(input: unknown): unknown {
-    return null;
+export class MagicDictionary {
+    constructor() {
+    this.words = [];
+}
+    buildDict(dictionary: string[]): void {
+    this.words = dictionary;
+}
+    search(searchWord: string): boolean {
+    for (const word of this.words) {
+        if (word.length !== searchWord.length) continue;
+        let diff = 0;
+        for (let i = 0; i < word.length; ++i) {
+            if (word[i] !== searchWord[i]) ++diff;
+        }
+        if (diff === 1) return true;
+    }
+    return false;
+}
 }

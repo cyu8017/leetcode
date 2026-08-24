@@ -1,6 +1,10 @@
-﻿// LeetCode 2648 - Generate Fibonacci Sequence
+// LeetCode 2648 - Generate Fibonacci Sequence
 // https://leetcode.com/problems/generate-fibonacci-sequence/
 
-function solve(input: unknown): unknown {
-    return null;
+export function* fibGenerator(): Generator<number> {
+    let a = 0, b = 1;
+    while (true) {
+        yield a;
+        [a, b] = [b, a + b];
+    }
 }

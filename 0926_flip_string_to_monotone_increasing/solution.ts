@@ -1,6 +1,11 @@
-﻿// LeetCode 0926 - Flip String to Monotone Increasing
+// LeetCode 0926 - Flip String to Monotone Increasing
 // https://leetcode.com/problems/flip-string-to-monotone-increasing/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minFlipsMonoIncr(s: string): number {
+    let ones = 0, ans = 0;
+    for (const ch of s) {
+        if (ch === "1") ones++;
+        else ans = Math.min(ans + 1, ones);
+    }
+    return ans;
 }

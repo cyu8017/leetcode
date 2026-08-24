@@ -1,6 +1,6 @@
-﻿// LeetCode 3857 - Minimum Cost to Split into Ones
+// LeetCode 3857 - Minimum Cost To Split Into Ones
 // https://leetcode.com/problems/minimum-cost-to-split-into-ones/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minCost(n: any): any {
+    return n * (n - 1) / 2;
 }

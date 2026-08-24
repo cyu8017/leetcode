@@ -1,6 +1,10 @@
-﻿// LeetCode 2960 - Count Tested Devices After Test Operations
+// LeetCode 2960 - Count Tested Devices After Test Operations
 // https://leetcode.com/problems/count-tested-devices-after-test-operations/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countTestedDevices(batteryPercentages: any): any {
+    let ans = 0;
+    for (const b of batteryPercentages) {
+        if (b > ans) ans++;
+    }
+    return ans;
 }

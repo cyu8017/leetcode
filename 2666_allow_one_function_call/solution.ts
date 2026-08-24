@@ -1,6 +1,13 @@
-﻿// LeetCode 2666 - Allow One Function Call
+// LeetCode 2666 - Allow One Function Call
 // https://leetcode.com/problems/allow-one-function-call/
 
-function solve(input: unknown): unknown {
-    return null;
+export function once(fn: any): any {
+    let called = false;
+    let res;
+    return function(...args) {
+        if (called) return undefined;
+        called = true;
+        res = fn(...args);
+        return res;
+    };
 }

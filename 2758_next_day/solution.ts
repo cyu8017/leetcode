@@ -1,6 +1,11 @@
-﻿// LeetCode 2758 - Next Day
+// LeetCode 2758 - Next Day
 // https://leetcode.com/problems/next-day/
 
-function solve(input: unknown): unknown {
-    return null;
+export function nextDay(self: Date): string {
+    const d = new Date(self.valueOf());
+    d.setDate(d.getDate() + 1);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
 }

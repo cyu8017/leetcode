@@ -1,6 +1,9 @@
-﻿// LeetCode 0574 - Winning Candidate
+// LeetCode 0574 - Winning Candidate
 // https://leetcode.com/problems/winning-candidate/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `SELECT c.name
+FROM Candidate c
+JOIN Vote v ON c.id = v.candidateId
+GROUP BY c.id, c.name
+ORDER BY COUNT(*) DESC
+LIMIT 1`;

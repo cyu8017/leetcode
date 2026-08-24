@@ -1,6 +1,6 @@
-﻿// LeetCode 2235 - Add Two Integers
+// LeetCode 2235 - Add Two Integers
 // https://leetcode.com/problems/add-two-integers/
 
-function solve(input: unknown): unknown {
-    return null;
+export function sum(num1: number, num2: number): number {
+    return num1 + num2;
 }

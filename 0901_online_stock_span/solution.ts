@@ -1,6 +1,18 @@
-﻿// LeetCode 0901 - Online Stock Span
+// LeetCode 0901 - Online Stock Span
 // https://leetcode.com/problems/online-stock-span/
 
-function solve(input: unknown): unknown {
-    return null;
+export class StockSpanner {
+    constructor() {
+        this.stack = [];
+    }
+
+    next(price: any): any {
+        let span = 1;
+        while (this.stack.length && this.stack[this.stack.length - 1][0] <= price) {
+            span += this.stack[this.stack.length - 1][1];
+            this.stack.pop();
+        }
+        this.stack.push([price, span]);
+        return span;
+    }
 }

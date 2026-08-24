@@ -1,6 +1,22 @@
-﻿// LeetCode 3181 - Maximum Total Reward Using Operations II
+// LeetCode 3181 - Maximum Total Reward Using Operations II
 // https://leetcode.com/problems/maximum-total-reward-using-operations-ii/
 
-function solve(input: unknown): unknown {
-    return null;
+export function maxTotalReward(rewardValues: any): any {
+    rewardValues.sort((a, b) => a - b);
+    let uniq = 0;
+    for (let i = 0; i < rewardValues.length; i++) {
+        if (uniq === 0 || rewardValues[i] !== rewardValues[uniq - 1]) {
+            rewardValues[uniq++] = rewardValues[i];
+        }
+    }
+    let f = 1n;
+    for (let i = 0; i < uniq; i++) {
+        const v = rewardValues[i];
+        const mask = f & ((1n << BigInt(v)) - 1n);
+        f = f | (mask << BigInt(v));
+    }
+    for (let i = 100000; i >= 0; i--) {
+        if ((f >> BigInt(i)) & 1n) return i;
+    }
+    return 0;
 }

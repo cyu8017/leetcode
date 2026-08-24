@@ -1,6 +1,10 @@
-﻿// LeetCode 2803 - Factorial Generator
+// LeetCode 2803 - Factorial Generator
 // https://leetcode.com/problems/factorial-generator/
 
-function solve(input: unknown): unknown {
-    return null;
+export function* factorialGenerator(n: number): Generator<number> {
+    let cur = 1;
+    for (let i = 1; i <= n; i++) {
+        cur *= i;
+        yield cur;
+    }
 }

@@ -1,6 +1,8 @@
-﻿// LeetCode 1149 - Article Views II
+// LeetCode 1149 - Article Views Ii
 // https://leetcode.com/problems/article-views-ii/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `SELECT DISTINCT viewer_id AS id
+FROM Views
+GROUP BY viewer_id, view_date
+HAVING COUNT(DISTINCT article_id) > 1
+ORDER BY id`;

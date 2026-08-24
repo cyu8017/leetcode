@@ -1,6 +1,8 @@
-﻿// LeetCode 2620 - Counter
+// LeetCode 2620 - Counter
 // https://leetcode.com/problems/counter/
 
-function solve(input: unknown): unknown {
-    return null;
+export function createCounter(n: any): any {
+    return function() {
+        return n++;
+    };
 }

@@ -1,6 +1,16 @@
-﻿// LeetCode 2051 - The Category of Each Member in the Store
+// LeetCode 2051 - The Category Of Each Member In The Store
 // https://leetcode.com/problems/the-category-of-each-member-in-the-store/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `SELECT
+    m.member_id,
+    m.name,
+    CASE
+        WHEN COUNT(v.visit_id) = 0 THEN 'Bronze'
+        WHEN 100 * COUNT(p.charged_amount) / COUNT(v.visit_id) >= 80 THEN 'Diamond'
+        WHEN 100 * COUNT(p.charged_amount) / COUNT(v.visit_id) >= 50 THEN 'Gold'
+        ELSE 'Silver'
+    END AS category
+FROM Members AS m
+LEFT JOIN Visits AS v ON m.member_id = v.member_id
+LEFT JOIN Purchases AS p ON v.visit_id = p.visit_id
+GROUP BY m.member_id, m.name`;

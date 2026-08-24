@@ -1,6 +1,14 @@
-﻿// LeetCode 0634 - Find the Derangement of An Array
+// LeetCode 0634 - Find the Derangement of An Array
 // https://leetcode.com/problems/find-the-derangement-of-an-array/
 
-function solve(input: unknown): unknown {
-    return null;
+export function findDerangement(n: number): number {
+    const mod = 1000000007;
+    if (n === 1) return 0;
+    let prev2 = 0, prev1 = 1;
+    for (let size = 3; size <= n; ++size) {
+        const next = ((size - 1) * (prev1 + prev2)) % mod;
+        prev2 = prev1;
+        prev1 = next;
+    }
+    return prev1;
 }

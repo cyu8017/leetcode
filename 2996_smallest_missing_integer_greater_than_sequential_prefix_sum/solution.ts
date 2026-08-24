@@ -1,6 +1,12 @@
-﻿// LeetCode 2996 - Smallest Missing Integer Greater Than Sequential Prefix Sum
+// LeetCode 2996 - Smallest Missing Integer Greater Than Sequential Prefix Sum
 // https://leetcode.com/problems/smallest-missing-integer-greater-than-sequential-prefix-sum/
 
-function solve(input: unknown): unknown {
-    return null;
+export function missingInteger(nums: any): any {
+    let sum = nums[0];
+    for (let i = 1; i < nums.length && nums[i] === nums[i - 1] + 1; i++) {
+        sum += nums[i];
+    }
+    const seen = new Set(nums);
+    while (seen.has(sum)) sum++;
+    return sum;
 }

@@ -1,6 +1,8 @@
-﻿// LeetCode 3084 - Count Substrings Starting and Ending with Given Character
+// LeetCode 3084 - Count Substrings Starting and Ending with Given Character
 // https://leetcode.com/problems/count-substrings-starting-and-ending-with-given-character/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countSubstrings(s: string, c: string): number {
+    let cnt = 0;
+    for (let i = 0; i < s.length; i++) if (s[i] === c) cnt++;
+    return cnt * (cnt + 1) / 2;
 }

@@ -1,6 +1,13 @@
-﻿// LeetCode 0760 - Find Anagram Mappings
+// LeetCode 0760 - Find Anagram Mappings
 // https://leetcode.com/problems/find-anagram-mappings/
 
-function solve(input: unknown): unknown {
-    return null;
+export function anagramMappings(nums1: number[], nums2: number[]): number[] {
+    const positions = new Map();
+    for (let i = 0; i < nums2.length; i++) {
+        if (!positions.has(nums2[i])) positions.set(nums2[i], []);
+        positions.get(nums2[i]).push(i);
+    }
+    const result = new Array(nums1.length);
+    for (let i = 0; i < nums1.length; i++) result[i] = positions.get(nums1[i]).shift();
+    return result;
 }

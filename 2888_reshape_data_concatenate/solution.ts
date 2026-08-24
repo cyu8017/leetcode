@@ -1,6 +1,6 @@
-﻿// LeetCode 2888 - Reshape Data: Concatenate
+// LeetCode 2888 - Reshape Data: Concatenate
 // https://leetcode.com/problems/reshape-data-concatenate/
 
-function solve(input: unknown): unknown {
-    return null;
+export function concatenateTables(df1: any[], df2: any[]): any[] {
+    return df1.concat(df2);
 }

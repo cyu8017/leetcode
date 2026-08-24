@@ -1,6 +1,16 @@
-﻿// LeetCode 0667 - Beautiful Arrangement II
+// LeetCode 0667 - Beautiful Arrangement II
 // https://leetcode.com/problems/beautiful-arrangement-ii/
 
-function solve(input: unknown): unknown {
-    return null;
+export function constructArray(n: number, k: number): number[] {
+    const res = Array(n).fill(0);
+    let idx = 0;
+    for (let i = 1; i <= n - k; ++i) res[idx++] = i;
+    let left = n - k + 1, right = n;
+    let takeHigh = true;
+    while (left <= right) {
+        if (takeHigh) res[idx++] = right--;
+        else res[idx++] = left++;
+        takeHigh = !takeHigh;
+    }
+    return res;
 }

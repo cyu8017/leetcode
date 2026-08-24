@@ -1,6 +1,8 @@
-﻿// LeetCode 2480 - Form a Chemical Bond
+// LeetCode 2480 - Form A Chemical Bond
 // https://leetcode.com/problems/form-a-chemical-bond/
 
-function solve(input: unknown): unknown {
-    return null;
-}
+export const QUERY = `SELECT a.symbol AS metal, b.symbol AS nonmetal
+FROM
+    Elements AS a,
+    Elements AS b
+WHERE a.type = 'Metal' AND b.type = 'Nonmetal'`;

@@ -1,6 +1,28 @@
-﻿// LeetCode 3454 - Separate Squares II
+// LeetCode 3454 - Separate Squares II
 // https://leetcode.com/problems/separate-squares-ii/
 
-function solve(input: unknown): unknown {
-    return null;
+export function separateSquares(squares: any): any {
+    let total = 0;
+    for (const sq of squares) {
+        const l = sq[2];
+        total += l * l;
+    }
+    const areaBelow = (y) => {
+        let below = 0;
+        for (const sq of squares) {
+            const yi = sq[1], l = sq[2];
+            const top = yi + l;
+            if (y <= yi) continue;
+            else if (y >= top) below += l * l;
+            else below += l * (y - yi);
+        }
+        return below;
+    };
+    let lo = 0.0, hi = 2e9;
+    for (let it = 0; it < 60; it++) {
+        const mid = (lo + hi) / 2;
+        if (areaBelow(mid) * 2 < total) lo = mid;
+        else hi = mid;
+    }
+    return hi;
 }

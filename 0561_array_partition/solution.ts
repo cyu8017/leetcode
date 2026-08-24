@@ -1,6 +1,9 @@
-﻿// LeetCode 0561 - Array Partition
+// LeetCode 0561 - Array Partition
 // https://leetcode.com/problems/array-partition/
 
-function solve(input: unknown): unknown {
-    return null;
+export function arrayPairSum(nums: number[]): number {
+    nums.sort((a, b) => a - b);
+    let total = 0;
+    for (let i = 0; i < nums.length; i += 2) total += nums[i];
+    return total;
 }

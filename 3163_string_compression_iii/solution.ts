@@ -1,6 +1,19 @@
-﻿// LeetCode 3163 - String Compression III
+// LeetCode 3163 - String Compression III
 // https://leetcode.com/problems/string-compression-iii/
 
-function solve(input: unknown): unknown {
-    return null;
+export function compressedString(word: string): string {
+    let ans = '';
+    const n = word.length;
+    for (let i = 0; i < n; ) {
+        let j = i + 1;
+        while (j < n && word[j] === word[i]) j++;
+        let k = j - i;
+        while (k > 0) {
+            const x = Math.min(9, k);
+            ans += String(x) + word[i];
+            k -= x;
+        }
+        i = j;
+    }
+    return ans;
 }

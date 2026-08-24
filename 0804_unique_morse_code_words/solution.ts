@@ -1,6 +1,17 @@
-﻿// LeetCode 0804 - Unique Morse Code Words
+// LeetCode 0804 - Unique Morse Code Words
 // https://leetcode.com/problems/unique-morse-code-words/
 
-function solve(input: unknown): unknown {
-    return null;
+export function uniqueMorseRepresentations(words: string[]): number {
+    const codes = [
+        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---",
+        "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-",
+        "..-", "...-", ".--", "-..-", "-.--", "--.."
+    ];
+    const seen = new Set();
+    for (const word of words) {
+        let code = "";
+        for (const ch of word) code += codes[ch.charCodeAt(0) - 97];
+        seen.add(code);
+    }
+    return seen.size;
 }

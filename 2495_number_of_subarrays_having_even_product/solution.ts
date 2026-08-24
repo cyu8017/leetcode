@@ -1,6 +1,15 @@
-﻿// LeetCode 2495 - Number of Subarrays Having Even Product
+// LeetCode 2495 - Number of Subarrays Having Even Product
 // https://leetcode.com/problems/number-of-subarrays-having-even-product/
 
-function solve(input: unknown): unknown {
-    return null;
+export function evenProduct(nums: number[]): number {
+    const n = nums.length;
+    const total = n * (n + 1) / 2;
+    let oddLen = 0, odd = 0;
+    for (const x of nums) {
+        if (x % 2 === 1) {
+            odd++;
+            oddLen += odd;
+        } else odd = 0;
+    }
+    return total - oddLen;
 }

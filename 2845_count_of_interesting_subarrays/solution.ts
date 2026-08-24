@@ -1,6 +1,16 @@
-﻿// LeetCode 2845 - Count of Interesting Subarrays
+// LeetCode 2845 - Count of Interesting Subarrays
 // https://leetcode.com/problems/count-of-interesting-subarrays/
 
-function solve(input: unknown): unknown {
-    return null;
+export function countInterestingSubarrays(nums: number[], modulo: number, k: number): number {
+    const freq = new Map([[0, 1]]);
+    let ans = 0, pref = 0;
+    for (const v of nums) {
+        if (v % modulo === k) pref++;
+        let need = (pref - k) % modulo;
+        if (need < 0) need += modulo;
+        ans += freq.get(need) || 0;
+        const key = pref % modulo;
+        freq.set(key, (freq.get(key) || 0) + 1);
+    }
+    return ans;
 }

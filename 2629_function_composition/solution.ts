@@ -1,6 +1,9 @@
-﻿// LeetCode 2629 - Function Composition
+// LeetCode 2629 - Function Composition
 // https://leetcode.com/problems/function-composition/
 
-function solve(input: unknown): unknown {
-    return null;
+export function compose(functions: any): any {
+    return function(x) {
+        for (let i = functions.length - 1; i >= 0; i--) x = functions[i](x);
+        return x;
+    };
 }

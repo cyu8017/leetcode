@@ -1,6 +1,12 @@
-﻿// LeetCode 2216 - Minimum Deletions to Make Array Beautiful
+// LeetCode 2216 - Minimum Deletions to Make Array Beautiful
 // https://leetcode.com/problems/minimum-deletions-to-make-array-beautiful/
 
-function solve(input: unknown): unknown {
-    return null;
+export function minDeletion(nums: number[]): number {
+    let ans = 0, i = 0, n = nums.length;
+    while (i + 1 < n) {
+        if (nums[i] === nums[i + 1]) { ans++; i++; }
+        else i += 2;
+    }
+    if ((n - ans) % 2 !== 0) ans++;
+    return ans;
 }
