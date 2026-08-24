@@ -1,8 +1,0 @@
-"use strict";
-function largestNumber(cost, target) { const dp = Array(target + 1).fill(null); dp[0] = ""; for (let t = 1; t <= target; t++)
-    for (let d = 1; d <= 9; d++)
-        if (t >= cost[d - 1] && dp[t - cost[d - 1]] !== null) {
-            const s = String(d) + dp[t - cost[d - 1]];
-            if (dp[t] === null || s.length > dp[t].length || (s.length === dp[t].length && s > dp[t]))
-                dp[t] = s;
-        } return dp[target] || "0"; }

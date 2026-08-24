@@ -19,6 +19,8 @@ Cargo.lock
 # Scratch / one-off generation artifacts
 _c_gen/
 .tmp/
+.tmp_*/
+.test-build/
 
 # OS
 .DS_Store
