@@ -1,4 +1,5 @@
-﻿// LeetCode 0080 - Remove Duplicates from Sorted Array II
+<?php
+// LeetCode 0080 - Remove Duplicates from Sorted Array II
 // https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
 
 class Solution {

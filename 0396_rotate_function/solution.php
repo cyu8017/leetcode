@@ -1,4 +1,5 @@
-﻿// LeetCode 0396 - Rotate Function
+<?php
+// LeetCode 0396 - Rotate Function
 // https://leetcode.com/problems/rotate-function/
 
 class Solution {

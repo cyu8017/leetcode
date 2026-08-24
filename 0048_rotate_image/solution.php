@@ -1,4 +1,5 @@
-﻿// LeetCode 0048 - Rotate Image
+<?php
+// LeetCode 0048 - Rotate Image
 // https://leetcode.com/problems/rotate-image/
 
 class Solution {

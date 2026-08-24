@@ -1,4 +1,5 @@
-﻿// LeetCode 0278 - First Bad Version
+<?php
+// LeetCode 0278 - First Bad Version
 // https://leetcode.com/problems/first-bad-version/
 
 function isBadVersion($version) {

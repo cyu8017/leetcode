@@ -1,4 +1,5 @@
-﻿// LeetCode 0284 - Peeking Iterator
+<?php
+// LeetCode 0284 - Peeking Iterator
 // https://leetcode.com/problems/peeking-iterator/
 
 class ListIterator {

@@ -1,4 +1,5 @@
-﻿class TreeNode {
+<?php
+class TreeNode {
     public $val = 0;
     public $left = null;
     public $right = null;

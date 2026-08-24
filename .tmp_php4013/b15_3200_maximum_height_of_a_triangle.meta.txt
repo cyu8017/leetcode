@@ -1,0 +1,21 @@
+folder=3200_maximum_height_of_a_triangle
+class=Solution
+method=maxHeightOfTriangle
+params=['red', 'blue']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3200 - Maximum Height of a Triangle
+// https://leetcode.com/problems/maximum-height-of-a-triangle/
+
+var maxHeightOfTriangle = function(red, blue) {
+    let ans = 0;
+    for (let k = 0; k < 2; k++) {
+        const c = [red, blue];
+        for (let i = 1, j = k; i <= c[j]; i++, j ^= 1) {
+            c[j] -= i;
+            ans = Math.max(ans, i);
+        }
+    }
+    return ans;
+};

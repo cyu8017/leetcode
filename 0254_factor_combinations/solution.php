@@ -1,4 +1,5 @@
-﻿// LeetCode 0254 - Factor Combinations
+<?php
+// LeetCode 0254 - Factor Combinations
 // https://leetcode.com/problems/factor-combinations/
 
 class Solution {

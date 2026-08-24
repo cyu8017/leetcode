@@ -1,4 +1,5 @@
-﻿// LeetCode 0248 - Strobogrammatic Number III
+<?php
+// LeetCode 0248 - Strobogrammatic Number III
 // https://leetcode.com/problems/strobogrammatic-number-iii/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0038 - Count and Say
+<?php
+// LeetCode 0038 - Count and Say
 // https://leetcode.com/problems/count-and-say/
 
 class Solution {

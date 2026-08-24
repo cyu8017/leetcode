@@ -1,4 +1,5 @@
-﻿// LeetCode 0010 - Regular Expression Matching
+<?php
+// LeetCode 0010 - Regular Expression Matching
 // https://leetcode.com/problems/regular-expression-matching/
 
 class Solution {

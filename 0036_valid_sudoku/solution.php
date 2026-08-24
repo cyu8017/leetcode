@@ -1,4 +1,5 @@
-﻿// LeetCode 0036 - Valid Sudoku
+<?php
+// LeetCode 0036 - Valid Sudoku
 // https://leetcode.com/problems/valid-sudoku/
 
 class Solution {

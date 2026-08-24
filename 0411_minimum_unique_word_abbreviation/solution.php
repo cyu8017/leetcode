@@ -1,4 +1,5 @@
-﻿// LeetCode 0411 - Minimum Unique Word Abbreviation
+<?php
+// LeetCode 0411 - Minimum Unique Word Abbreviation
 // https://leetcode.com/problems/minimum-unique-word-abbreviation/
 
 class Solution {

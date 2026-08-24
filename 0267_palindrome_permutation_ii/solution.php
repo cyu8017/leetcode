@@ -1,4 +1,5 @@
-﻿// LeetCode 0267 - Palindrome Permutation II
+<?php
+// LeetCode 0267 - Palindrome Permutation II
 // https://leetcode.com/problems/palindrome-permutation-ii/
 
 class Solution {

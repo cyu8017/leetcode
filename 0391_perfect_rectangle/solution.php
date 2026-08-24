@@ -1,4 +1,5 @@
-﻿// LeetCode 0391 - Perfect Rectangle
+<?php
+// LeetCode 0391 - Perfect Rectangle
 // https://leetcode.com/problems/perfect-rectangle/
 
 class Solution {

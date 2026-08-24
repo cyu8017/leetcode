@@ -1,4 +1,5 @@
-﻿class Solution {
+<?php
+class Solution {
     function getRow($rowIndex) {
         $row = [1];
         for ($size = 1; $size <= $rowIndex; $size++) {

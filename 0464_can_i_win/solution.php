@@ -1,4 +1,5 @@
-﻿// LeetCode 0464 - Can I Win
+<?php
+// LeetCode 0464 - Can I Win
 // https://leetcode.com/problems/can-i-win/
 
 class Solution {

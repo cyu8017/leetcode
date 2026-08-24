@@ -1,3 +1,4 @@
+<?php
 // LeetCode 0089 - Gray Code
 // https://leetcode.com/problems/gray-code/
 

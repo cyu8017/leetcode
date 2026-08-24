@@ -1,4 +1,5 @@
-﻿// LeetCode 0386 - Lexicographical Numbers
+<?php
+// LeetCode 0386 - Lexicographical Numbers
 // https://leetcode.com/problems/lexicographical-numbers/
 
 class Solution {

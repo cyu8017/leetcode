@@ -1,4 +1,5 @@
-﻿// LeetCode 0310 - Minimum Height Trees
+<?php
+// LeetCode 0310 - Minimum Height Trees
 // https://leetcode.com/problems/minimum-height-trees/
 
 class Solution {

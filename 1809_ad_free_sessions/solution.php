@@ -1,4 +1,5 @@
-﻿// LeetCode 1809 - Ad-Free Sessions
+<?php
+// LeetCode 1809 - Ad-Free Sessions
 // https://leetcode.com/problems/ad-free-sessions/
 
 const QUERY = <<<'SQL'

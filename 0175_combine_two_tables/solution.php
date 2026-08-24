@@ -1,4 +1,5 @@
-﻿// LeetCode 0175 - Combine Two Tables
+<?php
+// LeetCode 0175 - Combine Two Tables
 // https://leetcode.com/problems/combine-two-tables/
 
 const QUERY = <<<'SQL'

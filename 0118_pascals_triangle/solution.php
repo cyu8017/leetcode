@@ -1,4 +1,5 @@
-﻿class Solution {
+<?php
+class Solution {
     function generate($numRows) {
         $result = [];
         for ($rowIndex = 0; $rowIndex < $numRows; $rowIndex++) {

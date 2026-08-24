@@ -1,4 +1,5 @@
-﻿// LeetCode 0307 - Range Sum Query - Mutable
+<?php
+// LeetCode 0307 - Range Sum Query - Mutable
 // https://leetcode.com/problems/range-sum-query-mutable/
 
 class NumArray {

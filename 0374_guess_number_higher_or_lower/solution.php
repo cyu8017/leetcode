@@ -1,4 +1,5 @@
-﻿// LeetCode 0374 - Guess Number Higher or Lower
+<?php
+// LeetCode 0374 - Guess Number Higher or Lower
 // https://leetcode.com/problems/guess-number-higher-or-lower/
 
 function guess($num) {

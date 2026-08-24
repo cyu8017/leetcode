@@ -1,4 +1,5 @@
-﻿// LeetCode 0085 - Maximal Rectangle
+<?php
+// LeetCode 0085 - Maximal Rectangle
 // https://leetcode.com/problems/maximal-rectangle/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0084 - Largest Rectangle in Histogram
+<?php
+// LeetCode 0084 - Largest Rectangle in Histogram
 // https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 class Solution {

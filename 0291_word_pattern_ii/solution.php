@@ -1,4 +1,5 @@
-﻿// LeetCode 0291 - Word Pattern II
+<?php
+// LeetCode 0291 - Word Pattern II
 // https://leetcode.com/problems/word-pattern-ii/
 
 class Solution {

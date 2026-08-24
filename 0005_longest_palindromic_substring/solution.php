@@ -1,4 +1,5 @@
-﻿// LeetCode 0005 - Longest Palindromic Substring
+<?php
+// LeetCode 0005 - Longest Palindromic Substring
 // https://leetcode.com/problems/longest-palindromic-substring/
 
 class Solution {

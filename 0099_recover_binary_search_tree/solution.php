@@ -1,4 +1,5 @@
-﻿// LeetCode 0099 - Recover Binary Search Tree
+<?php
+// LeetCode 0099 - Recover Binary Search Tree
 // https://leetcode.com/problems/recover-binary-search-tree/
 
 class TreeNode {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0409 - Longest Palindrome
+<?php
+// LeetCode 0409 - Longest Palindrome
 // https://leetcode.com/problems/longest-palindrome/
 
 class Solution {

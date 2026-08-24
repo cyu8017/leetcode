@@ -1,0 +1,3115 @@
+===== 2416_sum_of_prefix_scores_of_strings =====
+// LeetCode 2416 - Sum of Prefix Scores of Strings
+// https://leetcode.com/problems/sum-of-prefix-scores-of-strings/
+
+/**
+ * @param {string[]} words
+ * @return {number[]}
+ */
+var sumPrefixScores = function(words) {
+    const root = { child: Array(26).fill(null), cnt: 0 };
+    for (const w of words) {
+        let cur = root;
+        for (let i = 0; i < w.length; i++) {
+            const c = w.charCodeAt(i) - 97;
+            if (!cur.child[c]) cur.child[c] = { child: Array(26).fill(null), cnt: 0 };
+            cur = cur.child[c];
+            cur.cnt++;
+        }
+    }
+    const ans = Array(words.length);
+    for (let i = 0; i < words.length; i++) {
+        let cur = root, sum = 0;
+        const w = words[i];
+        for (let j = 0; j < w.length; j++) {
+            cur = cur.child[w.charCodeAt(j) - 97];
+            sum += cur.cnt;
+        }
+        ans[i] = sum;
+    }
+    return ans;
+};
+
+
+===== 2417_closest_fair_integer =====
+// LeetCode 2417 - Closest Fair Integer
+// https://leetcode.com/problems/closest-fair-integer/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var closestFair = function(n) {
+    for (let x = n; ; x++) {
+        const s = String(x);
+        if (s.length % 2 !== 0) {
+            let p = 1;
+            for (let i = 0; i < s.length; i++) p *= 10;
+            return closestFair(p);
+        }
+        let even = 0, odd = 0;
+        for (const c of s) {
+            if ((c.charCodeAt(0) - 48) % 2 === 0) even++;
+            else odd++;
+        }
+        if (even === odd) return x;
+    }
+};
+
+
+===== 2418_sort_the_people =====
+// LeetCode 2418 - Sort the People
+// https://leetcode.com/problems/sort-the-people/
+
+/**
+ * @param {string[]} names
+ * @param {number[]} heights
+ * @return {string[]}
+ */
+var sortPeople = function(names, heights) {
+    const n = names.length;
+    const idx = Array.from({ length: n }, (_, i) => i);
+    idx.sort((a, b) => heights[b] - heights[a]);
+    return idx.map((i) => names[i]);
+};
+
+
+===== 2419_longest_subarray_with_maximum_bitwise_and =====
+// LeetCode 2419 - Longest Subarray With Maximum Bitwise AND
+// https://leetcode.com/problems/longest-subarray-with-maximum-bitwise-and/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestSubarray = function(nums) {
+    let mx = nums[0];
+    for (const x of nums) if (x > mx) mx = x;
+    let ans = 0, cur = 0;
+    for (const x of nums) {
+        if (x === mx) {
+            cur++;
+            ans = Math.max(ans, cur);
+        } else cur = 0;
+    }
+    return ans;
+};
+
+
+===== 2420_find_all_good_indices =====
+// LeetCode 2420 - Find All Good Indices
+// https://leetcode.com/problems/find-all-good-indices/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var goodIndices = function(nums, k) {
+    const n = nums.length;
+    const dec = Array(n), inc = Array(n);
+    dec[0] = 1;
+    for (let i = 1; i < n; i++)
+        dec[i] = nums[i] <= nums[i - 1] ? dec[i - 1] + 1 : 1;
+    inc[n - 1] = 1;
+    for (let i = n - 2; i >= 0; i--)
+        inc[i] = nums[i] <= nums[i + 1] ? inc[i + 1] + 1 : 1;
+    const ans = [];
+    for (let i = k; i < n - k; i++) {
+        if (dec[i - 1] >= k && inc[i + 1] >= k) ans.push(i);
+    }
+    return ans;
+};
+
+
+===== 2421_number_of_good_paths =====
+// LeetCode 2421 - Number of Good Paths
+// https://leetcode.com/problems/number-of-good-paths/
+
+/**
+ * @param {number[]} vals
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var numberOfGoodPaths = function(vals, edges) {
+    const n = vals.length;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const parent = Array.from({ length: n }, (_, i) => i);
+    const size = Array(n).fill(1);
+    const find = (x) => {
+        if (parent[x] !== x) parent[x] = find(parent[x]);
+        return parent[x];
+    };
+    const nodes = Array.from({ length: n }, (_, i) => i);
+    nodes.sort((a, b) => vals[a] - vals[b]);
+    let ans = n;
+    for (let i = 0; i < n; ) {
+        let j = i;
+        while (j < n && vals[nodes[j]] === vals[nodes[i]]) j++;
+        for (let k = i; k < j; k++) {
+            const u = nodes[k];
+            for (const v of g[u]) {
+                if (vals[v] <= vals[u]) {
+                    const ru = find(u), rv = find(v);
+                    if (ru !== rv) {
+                        parent[ru] = rv;
+                        size[rv] += size[ru];
+                    }
+                }
+            }
+        }
+        const freq = new Map();
+        for (let k = i; k < j; k++) {
+            const r = find(nodes[k]);
+            freq.set(r, (freq.get(r) || 0) + 1);
+        }
+        for (const c of freq.values()) ans += (c * (c - 1)) / 2;
+        i = j;
+    }
+    return ans;
+};
+
+
+===== 2422_merge_operations_to_turn_array_into_a_palindrome =====
+// LeetCode 2422 - Merge Operations to Turn Array Into a Palindrome
+// https://leetcode.com/problems/merge-operations-to-turn-array-into-a-palindrome/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumOperations = function(nums) {
+    let l = 0, r = nums.length - 1;
+    let left = nums[l], right = nums[r];
+    let ans = 0;
+    while (l < r) {
+        if (left === right) {
+            l++;
+            r--;
+            if (l < r) {
+                left = nums[l];
+                right = nums[r];
+            }
+        } else if (left < right) {
+            l++;
+            left += nums[l];
+            ans++;
+        } else {
+            r--;
+            right += nums[r];
+            ans++;
+        }
+    }
+    return ans;
+};
+
+
+===== 2423_remove_letter_to_equalize_frequency =====
+// LeetCode 2423 - Remove Letter To Equalize Frequency
+// https://leetcode.com/problems/remove-letter-to-equalize-frequency/
+
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
+var equalFrequency = function(word) {
+    for (let skip = 0; skip < word.length; skip++) {
+        const cnt = Array(26).fill(0);
+        for (let i = 0; i < word.length; i++) {
+            if (i === skip) continue;
+            cnt[word.charCodeAt(i) - 97]++;
+        }
+        const freq = new Map();
+        for (const c of cnt) {
+            if (c > 0) freq.set(c, (freq.get(c) || 0) + 1);
+        }
+        if (freq.size === 1) return true;
+    }
+    return false;
+};
+
+
+===== 2424_longest_uploaded_prefix =====
+// LeetCode 2424 - Longest Uploaded Prefix
+// https://leetcode.com/problems/longest-uploaded-prefix/
+
+/**
+ * @param {number} n
+ */
+var LUPrefix = function(n) {
+    this.uploaded = Array(n + 2).fill(false);
+    this.prefixLen = 0;
+};
+
+/** 
+ * @param {number} video
+ * @return {void}
+ */
+LUPrefix.prototype.upload = function(video) {
+    this.uploaded[video] = true;
+    while (this.uploaded[this.prefixLen + 1]) this.prefixLen++;
+};
+
+/**
+ * @return {number}
+ */
+LUPrefix.prototype.longest = function() {
+    return this.prefixLen;
+};
+
+
+===== 2425_bitwise_xor_of_all_pairings =====
+// LeetCode 2425 - Bitwise XOR of All Pairings
+// https://leetcode.com/problems/bitwise-xor-of-all-pairings/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var xorAllNums = function(nums1, nums2) {
+    let ans = 0;
+    if (nums2.length % 2 === 1) for (const x of nums1) ans ^= x;
+    if (nums1.length % 2 === 1) for (const x of nums2) ans ^= x;
+    return ans;
+};
+
+
+===== 2426_number_of_pairs_satisfying_inequality =====
+// LeetCode 2426 - Number of Pairs Satisfying Inequality
+// https://leetcode.com/problems/number-of-pairs-satisfying-inequality/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @param {number} diff
+ * @return {number}
+ */
+var numberOfPairs = function(nums1, nums2, diff) {
+    const n = nums1.length;
+    const arr = Array(n);
+    const tmp = Array(n);
+    for (let i = 0; i < n; i++) arr[i] = nums1[i] - nums2[i];
+    const mergeCount = (l, r) => {
+        if (r - l <= 1) return 0;
+        const m = (l + r) >> 1;
+        let ans = mergeCount(l, m) + mergeCount(m, r);
+        let j = m;
+        for (let i = l; i < m; i++) {
+            while (j < r && arr[j] < arr[i] - diff) j++;
+            ans += r - j;
+        }
+        let p = l, q = m, i2 = l;
+        while (p < m && q < r) {
+            if (arr[p] <= arr[q]) tmp[i2++] = arr[p++];
+            else tmp[i2++] = arr[q++];
+        }
+        while (p < m) tmp[i2++] = arr[p++];
+        while (q < r) tmp[i2++] = arr[q++];
+        for (let t = l; t < r; t++) arr[t] = tmp[t];
+        return ans;
+    };
+    return mergeCount(0, n);
+};
+
+
+===== 2427_number_of_common_factors =====
+// LeetCode 2427 - Number of Common Factors
+// https://leetcode.com/problems/number-of-common-factors/
+
+/**
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+var commonFactors = function(a, b) {
+    const gcd = (x, y) => {
+        while (y !== 0) {
+            const t = x % y;
+            x = y;
+            y = t;
+        }
+        return x;
+    };
+    const g = gcd(a, b);
+    let ans = 0;
+    for (let i = 1; i * i <= g; i++) {
+        if (g % i === 0) {
+            ans++;
+            if (i * i !== g) ans++;
+        }
+    }
+    return ans;
+};
+
+
+===== 2428_maximum_sum_of_an_hourglass =====
+// LeetCode 2428 - Maximum Sum of an Hourglass
+// https://leetcode.com/problems/maximum-sum-of-an-hourglass/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maxSum = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let ans = -Infinity;
+    for (let i = 0; i + 2 < m; i++) {
+        for (let j = 0; j + 2 < n; j++) {
+            const s = grid[i][j] + grid[i][j + 1] + grid[i][j + 2]
+                + grid[i + 1][j + 1]
+                + grid[i + 2][j] + grid[i + 2][j + 1] + grid[i + 2][j + 2];
+            ans = Math.max(ans, s);
+        }
+    }
+    return ans;
+};
+
+
+===== 2429_minimize_xor =====
+// LeetCode 2429 - Minimize XOR
+// https://leetcode.com/problems/minimize-xor/
+
+/**
+ * @param {number} num1
+ * @param {number} num2
+ * @return {number}
+ */
+var minimizeXor = function(num1, num2) {
+    let bits = 0;
+    for (let x = num2; x !== 0; x &= x - 1) bits++;
+    let ans = 0;
+    for (let i = 31; i >= 0 && bits > 0; i--) {
+        if (((num1 >> i) & 1) !== 0) {
+            ans |= 1 << i;
+            bits--;
+        }
+    }
+    for (let i = 0; i < 32 && bits > 0; i++) {
+        if (((ans >> i) & 1) === 0) {
+            ans |= 1 << i;
+            bits--;
+        }
+    }
+    return ans >>> 0;
+};
+
+
+===== 2430_maximum_deletions_on_a_string =====
+// LeetCode 2430 - Maximum Deletions on a String
+// https://leetcode.com/problems/maximum-deletions-on-a-string/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var deleteString = function(s) {
+    const n = s.length;
+    const lcp = Array.from({ length: n + 1 }, () => Array(n + 1).fill(0));
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = n - 1; j >= 0; j--) {
+            if (s[i] === s[j]) lcp[i][j] = lcp[i + 1][j + 1] + 1;
+        }
+    }
+    const dp = Array(n);
+    for (let i = n - 1; i >= 0; i--) {
+        dp[i] = 1;
+        for (let len = 1; i + 2 * len <= n; len++) {
+            if (lcp[i][i + len] >= len) dp[i] = Math.max(dp[i], 1 + dp[i + len]);
+        }
+    }
+    return dp[0];
+};
+
+
+===== 2431_maximize_total_tastiness_of_purchased_fruits =====
+// LeetCode 2431 - Maximize Total Tastiness of Purchased Fruits
+// https://leetcode.com/problems/maximize-total-tastiness-of-purchased-fruits/
+
+/**
+ * @param {number[]} price
+ * @param {number[]} tastiness
+ * @param {number} maxAmount
+ * @param {number} maxCoupons
+ * @return {number}
+ */
+var maxTastiness = function(price, tastiness, maxAmount, maxCoupons) {
+    const n = price.length;
+    const NEG = Math.floor(-2147483647 / 2);
+    const dp = Array.from({ length: maxAmount + 1 }, () => Array(maxCoupons + 1).fill(NEG));
+    dp[0][0] = 0;
+    for (let i = 0; i < n; i++) {
+        const p = price[i], t = tastiness[i];
+        for (let a = maxAmount; a >= 0; a--) {
+            for (let c = maxCoupons; c >= 0; c--) {
+                if (dp[a][c] < 0) continue;
+                if (a + p <= maxAmount) dp[a + p][c] = Math.max(dp[a + p][c], dp[a][c] + t);
+                if (c + 1 <= maxCoupons && a + Math.floor(p / 2) <= maxAmount)
+                    dp[a + Math.floor(p / 2)][c + 1] = Math.max(dp[a + Math.floor(p / 2)][c + 1], dp[a][c] + t);
+            }
+        }
+    }
+    let ans = 0;
+    for (let a = 0; a <= maxAmount; a++)
+        for (let c = 0; c <= maxCoupons; c++)
+            ans = Math.max(ans, dp[a][c]);
+    return ans;
+};
+
+
+===== 2432_the_employee_that_worked_on_the_longest_task =====
+// LeetCode 2432 - The Employee That Worked on the Longest Task
+// https://leetcode.com/problems/the-employee-that-worked-on-the-longest-task/
+
+/**
+ * @param {number} n
+ * @param {number[][]} logs
+ * @return {number}
+ */
+var hardestWorker = function(n, logs) {
+    let ans = logs[0][0], best = logs[0][1], prev = 0;
+    for (const log of logs) {
+        const dur = log[1] - prev;
+        if (dur > best || (dur === best && log[0] < ans)) {
+            best = dur;
+            ans = log[0];
+        }
+        prev = log[1];
+    }
+    return ans;
+};
+
+
+===== 2433_find_the_original_array_of_prefix_xor =====
+// LeetCode 2433 - Find The Original Array of Prefix Xor
+// https://leetcode.com/problems/find-the-original-array-of-prefix-xor/
+
+/**
+ * @param {number[]} pref
+ * @return {number[]}
+ */
+var findArray = function(pref) {
+    const ans = Array(pref.length);
+    ans[0] = pref[0];
+    for (let i = 1; i < pref.length; i++) ans[i] = pref[i] ^ pref[i - 1];
+    return ans;
+};
+
+
+===== 2434_using_a_robot_to_print_the_lexicographically_smallest_string =====
+// LeetCode 2434 - Using a Robot to Print the Lexicographically Smallest String
+// https://leetcode.com/problems/using-a-robot-to-print-the-lexicographically-smallest-string/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var robotWithString = function(s) {
+    const n = s.length;
+    const minSuf = Array(n + 1);
+    minSuf[n] = String.fromCharCode('z'.charCodeAt(0) + 1);
+    for (let i = n - 1; i >= 0; i--)
+        minSuf[i] = s[i] < minSuf[i + 1] ? s[i] : minSuf[i + 1];
+    const stack = [];
+    const ans = [];
+    for (let i = 0; i < n; i++) {
+        stack.push(s[i]);
+        while (stack.length && stack[stack.length - 1] <= minSuf[i + 1])
+            ans.push(stack.pop());
+    }
+    while (stack.length) ans.push(stack.pop());
+    return ans.join('');
+};
+
+
+===== 2435_paths_in_matrix_whose_sum_is_divisible_by_k =====
+// LeetCode 2435 - Paths in Matrix Whose Sum Is Divisible by K
+// https://leetcode.com/problems/paths-in-matrix-whose-sum-is-divisible-by-k/
+
+/**
+ * @param {number[][]} grid
+ * @param {number} k
+ * @return {number}
+ */
+var numberOfPaths = function(grid, k) {
+    const mod = 1000000007;
+    const m = grid.length, n = grid[0].length;
+    const dp = Array.from({ length: m }, () => Array.from({ length: n }, () => Array(k).fill(0)));
+    dp[0][0][grid[0][0] % k] = 1;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            for (let r = 0; r < k; r++) {
+                if (dp[i][j][r] === 0) continue;
+                if (i + 1 < m) {
+                    const nr = (r + grid[i + 1][j]) % k;
+                    dp[i + 1][j][nr] = (dp[i + 1][j][nr] + dp[i][j][r]) % mod;
+                }
+                if (j + 1 < n) {
+                    const nr = (r + grid[i][j + 1]) % k;
+                    dp[i][j + 1][nr] = (dp[i][j + 1][nr] + dp[i][j][r]) % mod;
+                }
+            }
+        }
+    }
+    return dp[m - 1][n - 1][0];
+};
+
+
+===== 2436_minimum_split_into_subarrays_with_gcd_greater_than_one =====
+// LeetCode 2436 - Minimum Split Into Subarrays With GCD Greater Than One
+// https://leetcode.com/problems/minimum-split-into-subarrays-with-gcd-greater-than-one/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumSplits = function(nums) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    let ans = 1, g = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        const ng = gcd(g, nums[i]);
+        if (ng === 1) {
+            ans++;
+            g = nums[i];
+        } else g = ng;
+    }
+    return ans;
+};
+
+
+===== 2437_number_of_valid_clock_times =====
+// LeetCode 2437 - Number of Valid Clock Times
+// https://leetcode.com/problems/number-of-valid-clock-times/
+
+/**
+ * @param {string} time
+ * @return {number}
+ */
+var countTime = function(time) {
+    let ans = 0;
+    for (let h = 0; h < 24; h++) {
+        for (let m = 0; m < 60; m++) {
+            const h0 = String(Math.floor(h / 10)), h1 = String(h % 10);
+            const m0 = String(Math.floor(m / 10)), m1 = String(m % 10);
+            if (time[0] !== '?' && time[0] !== h0) continue;
+            if (time[1] !== '?' && time[1] !== h1) continue;
+            if (time[3] !== '?' && time[3] !== m0) continue;
+            if (time[4] !== '?' && time[4] !== m1) continue;
+            ans++;
+        }
+    }
+    return ans;
+};
+
+
+===== 2438_range_product_queries_of_powers =====
+// LeetCode 2438 - Range Product Queries of Powers
+// https://leetcode.com/problems/range-product-queries-of-powers/
+
+/**
+ * @param {number} n
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var productQueries = function(n, queries) {
+    const mod = 1000000007;
+    const powers = [];
+    for (let bit = 0; bit < 31; bit++) {
+        if (((n >> bit) & 1) !== 0) powers.push(1 << bit);
+    }
+    const ans = Array(queries.length);
+    for (let i = 0; i < queries.length; i++) {
+        let prod = 1;
+        for (let j = queries[i][0]; j <= queries[i][1]; j++)
+            prod = (prod * powers[j]) % mod;
+        ans[i] = prod;
+    }
+    return ans;
+};
+
+
+===== 2439_minimize_maximum_of_array =====
+// LeetCode 2439 - Minimize Maximum of Array
+// https://leetcode.com/problems/minimize-maximum-of-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimizeArrayValue = function(nums) {
+    let sum = 0, ans = 0;
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        const avg = Math.floor((sum + i) / (i + 1));
+        if (avg > ans) ans = avg;
+    }
+    return ans;
+};
+
+
+===== 2440_create_components_with_same_value =====
+// LeetCode 2440 - Create Components With Same Value
+// https://leetcode.com/problems/create-components-with-same-value/
+
+/**
+ * @param {number[]} nums
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var componentValue = function(nums, edges) {
+    const n = nums.length;
+    let total = 0;
+    for (const x of nums) total += x;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const dfs = (u, p, target) => {
+        let sum = nums[u];
+        for (const v of g[u]) {
+            if (v === p) continue;
+            const sub = dfs(v, u, target);
+            if (sub < 0) return -1;
+            sum += sub;
+        }
+        if (sum > target) return -1;
+        if (sum === target) return 0;
+        return sum;
+    };
+    for (let parts = n; parts >= 1; parts--) {
+        if (total % parts !== 0) continue;
+        const target = total / parts;
+        if (dfs(0, -1, target) === 0) return parts - 1;
+    }
+    return 0;
+};
+
+
+===== 2441_largest_positive_integer_that_exists_with_its_negative =====
+// LeetCode 2441 - Largest Positive Integer That Exists With Its Negative
+// https://leetcode.com/problems/largest-positive-integer-that-exists-with-its-negative/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findMaxK = function(nums) {
+    const seen = new Set();
+    let ans = -1;
+    for (const x of nums) {
+        seen.add(x);
+        if (x > 0 && seen.has(-x) && x > ans) ans = x;
+        if (x < 0 && seen.has(-x) && -x > ans) ans = -x;
+    }
+    return ans;
+};
+
+
+===== 2442_count_number_of_distinct_integers_after_reverse_operations =====
+// LeetCode 2442 - Count Number of Distinct Integers After Reverse Operations
+// https://leetcode.com/problems/count-number-of-distinct-integers-after-reverse-operations/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countDistinctIntegers = function(nums) {
+    const rev = (x) => {
+        let r = 0;
+        while (x > 0) {
+            r = r * 10 + x % 10;
+            x = Math.floor(x / 10);
+        }
+        return r;
+    };
+    const seen = new Set();
+    for (const x of nums) {
+        seen.add(x);
+        seen.add(rev(x));
+    }
+    return seen.size;
+};
+
+
+===== 2443_sum_of_number_and_its_reverse =====
+// LeetCode 2443 - Sum of Number and Its Reverse
+// https://leetcode.com/problems/sum-of-number-and-its-reverse/
+
+/**
+ * @param {number} num
+ * @return {boolean}
+ */
+var sumOfNumberAndReverse = function(num) {
+    const rev = (x) => {
+        let r = 0;
+        while (x > 0) {
+            r = r * 10 + x % 10;
+            x = Math.floor(x / 10);
+        }
+        return r;
+    };
+    for (let i = 0; i <= num; i++) {
+        if (i + rev(i) === num) return true;
+    }
+    return false;
+};
+
+
+===== 2444_count_subarrays_with_fixed_bounds =====
+// LeetCode 2444 - Count Subarrays With Fixed Bounds
+// https://leetcode.com/problems/count-subarrays-with-fixed-bounds/
+
+/**
+ * @param {number[]} nums
+ * @param {number} minK
+ * @param {number} maxK
+ * @return {number}
+ */
+var countSubarrays = function(nums, minK, maxK) {
+    let ans = 0, imin = -1, imax = -1, ibad = -1;
+    for (let i = 0; i < nums.length; i++) {
+        const x = nums[i];
+        if (x < minK || x > maxK) ibad = i;
+        if (x === minK) imin = i;
+        if (x === maxK) imax = i;
+        const bound = imin < imax ? imin : imax;
+        if (bound > ibad) ans += bound - ibad;
+    }
+    return ans;
+};
+
+
+===== 2445_number_of_nodes_with_value_one =====
+// LeetCode 2445 - Number of Nodes With Value One
+// https://leetcode.com/problems/number-of-nodes-with-value-one/
+
+/**
+ * @param {number} n
+ * @param {number[]} queries
+ * @return {number}
+ */
+var numberOfNodes = function(n, queries) {
+    const flip = Array(n + 1).fill(0);
+    const val = Array(n + 1).fill(0);
+    for (const q of queries) flip[q] ^= 1;
+    let ans = 0;
+    for (let i = 1; i <= n; i++) {
+        val[i] = flip[i];
+        if (i > 1) val[i] ^= val[Math.floor(i / 2)];
+        ans += val[i];
+    }
+    return ans;
+};
+
+
+===== 2446_determine_if_two_events_have_conflict =====
+// LeetCode 2446 - Determine if Two Events Have Conflict
+// https://leetcode.com/problems/determine-if-two-events-have-conflict/
+
+/**
+ * @param {string[]} event1
+ * @param {string[]} event2
+ * @return {boolean}
+ */
+var haveConflict = function(event1, event2) {
+    return event1[0] <= event2[1] && event2[0] <= event1[1];
+};
+
+
+===== 2447_number_of_subarrays_with_gcd_equal_to_k =====
+// LeetCode 2447 - Number of Subarrays With GCD Equal to K
+// https://leetcode.com/problems/number-of-subarrays-with-gcd-equal-to-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarrayGCD = function(nums, k) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        let g = 0;
+        for (let j = i; j < n; j++) {
+            g = gcd(g, nums[j]);
+            if (g < k) break;
+            if (g === k) ans++;
+        }
+    }
+    return ans;
+};
+
+
+===== 2448_minimum_cost_to_make_array_equal =====
+// LeetCode 2448 - Minimum Cost to Make Array Equal
+// https://leetcode.com/problems/minimum-cost-to-make-array-equal/
+
+/**
+ * @param {number[]} nums
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minCost = function(nums, cost) {
+    const n = nums.length;
+    const idx = Array.from({ length: n }, (_, i) => i);
+    idx.sort((a, b) => nums[a] - nums[b]);
+    let totalCost = 0;
+    for (const c of cost) totalCost += c;
+    let pref = 0, median = 0;
+    for (const i of idx) {
+        pref += cost[i];
+        if (pref * 2 >= totalCost) {
+            median = nums[i];
+            break;
+        }
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        let diff = nums[i] - median;
+        if (diff < 0) diff = -diff;
+        ans += diff * cost[i];
+    }
+    return ans;
+};
+
+
+===== 2449_minimum_number_of_operations_to_make_arrays_similar =====
+// LeetCode 2449 - Minimum Number of Operations to Make Arrays Similar
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-arrays-similar/
+
+/**
+ * @param {number[]} nums
+ * @param {number[]} target
+ * @return {number}
+ */
+var makeSimilar = function(nums, target) {
+    nums.sort((a, b) => a - b);
+    target.sort((a, b) => a - b);
+    const oddN = [], evenN = [], oddT = [], evenT = [];
+    for (const x of nums) (x % 2 === 0 ? evenN : oddN).push(x);
+    for (const x of target) (x % 2 === 0 ? evenT : oddT).push(x);
+    let ans = 0;
+    for (let i = 0; i < oddN.length; i++) {
+        const diff = oddN[i] - oddT[i];
+        if (diff > 0) ans += Math.floor(diff / 2);
+    }
+    for (let i = 0; i < evenN.length; i++) {
+        const diff = evenN[i] - evenT[i];
+        if (diff > 0) ans += Math.floor(diff / 2);
+    }
+    return ans;
+};
+
+
+===== 2450_number_of_distinct_binary_strings_after_applying_operations =====
+// LeetCode 2450 - Number of Distinct Binary Strings After Applying Operations
+// https://leetcode.com/problems/number-of-distinct-binary-strings-after-applying-operations/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var countDistinctStrings = function(s, k) {
+    const mod = 1000000007;
+    const n = s.length;
+    let ans = 1;
+    for (let i = 0; i < n - k + 1; i++) ans = (ans * 2) % mod;
+    return ans;
+};
+
+
+===== 2451_odd_string_difference =====
+// LeetCode 2451 - Odd String Difference
+// https://leetcode.com/problems/odd-string-difference/
+
+/**
+ * @param {string[]} words
+ * @return {string}
+ */
+var oddString = function(words) {
+    const diff = (w) => {
+        let b = '';
+        for (let i = 1; i < w.length; i++) {
+            const d = w.charCodeAt(i) - w.charCodeAt(i - 1);
+            b += String.fromCharCode(d + 128) + ',';
+        }
+        return b;
+    };
+    const d0 = diff(words[0]), d1 = diff(words[1]);
+    if (d0 === d1) {
+        for (let i = 2; i < words.length; i++) {
+            if (diff(words[i]) !== d0) return words[i];
+        }
+    }
+    if (diff(words[2]) === d0) return words[1];
+    return words[0];
+};
+
+
+===== 2452_words_within_two_edits_of_dictionary =====
+// LeetCode 2452 - Words Within Two Edits of Dictionary
+// https://leetcode.com/problems/words-within-two-edits-of-dictionary/
+
+/**
+ * @param {string[]} queries
+ * @param {string[]} dictionary
+ * @return {string[]}
+ */
+var twoEditWords = function(queries, dictionary) {
+    const ans = [];
+    for (const q of queries) {
+        let ok = false;
+        for (const d of dictionary) {
+            let diff = 0;
+            for (let i = 0; i < q.length; i++) {
+                if (q[i] !== d[i]) {
+                    if (++diff > 2) break;
+                }
+            }
+            if (diff <= 2) { ok = true; break; }
+        }
+        if (ok) ans.push(q);
+    }
+    return ans;
+};
+
+
+===== 2453_destroy_sequential_targets =====
+// LeetCode 2453 - Destroy Sequential Targets
+// https://leetcode.com/problems/destroy-sequential-targets/
+
+/**
+ * @param {number[]} nums
+ * @param {number} space
+ * @return {number}
+ */
+var destroyTargets = function(nums, space) {
+    const cnt = new Map();
+    for (const x of nums) {
+        const m = x % space;
+        cnt.set(m, (cnt.get(m) || 0) + 1);
+    }
+    let bestCnt = 0;
+    for (const c of cnt.values()) if (c > bestCnt) bestCnt = c;
+    let ans = 1000000000;
+    for (const [key, value] of cnt) {
+        if (value === bestCnt) {
+            for (const x of nums) {
+                if (x % space === key && x < ans) ans = x;
+            }
+        }
+    }
+    return ans;
+};
+
+
+===== 2454_next_greater_element_iv =====
+// LeetCode 2454 - Next Greater Element IV
+// https://leetcode.com/problems/next-greater-element-iv/
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var secondGreaterElement = function(nums) {
+    const n = nums.length;
+    const ans = Array(n).fill(-1);
+    const stack1 = [], stack2 = [];
+    for (let i = 0; i < n; i++) {
+        const x = nums[i];
+        while (stack2.length && nums[stack2[stack2.length - 1]] < x) {
+            ans[stack2.pop()] = x;
+        }
+        const tmp = [];
+        while (stack1.length && nums[stack1[stack1.length - 1]] < x) {
+            tmp.push(stack1.pop());
+        }
+        for (let j = tmp.length - 1; j >= 0; j--) stack2.push(tmp[j]);
+        stack1.push(i);
+    }
+    return ans;
+};
+
+
+===== 2455_average_value_of_even_numbers_that_are_divisible_by_three =====
+// LeetCode 2455 - Average Value of Even Numbers That Are Divisible by Three
+// https://leetcode.com/problems/average-value-of-even-numbers-that-are-divisible-by-three/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var averageValue = function(nums) {
+    let sum = 0, cnt = 0;
+    for (const x of nums) {
+        if (x % 6 === 0) {
+            sum += x;
+            cnt++;
+        }
+    }
+    return cnt === 0 ? 0 : Math.floor(sum / cnt);
+};
+
+
+===== 2456_most_popular_video_creator =====
+// LeetCode 2456 - Most Popular Video Creator
+// https://leetcode.com/problems/most-popular-video-creator/
+
+/**
+ * @param {string[]} creators
+ * @param {string[]} ids
+ * @param {number[]} views
+ * @return {string[][]}
+ */
+var mostPopularCreator = function(creators, ids, views) {
+    const mp = new Map();
+    let maxTotal = 0;
+    for (let i = 0; i < creators.length; i++) {
+        let info = mp.get(creators[i]);
+        if (!info) {
+            info = { total: views[i], bestID: ids[i], bestViews: views[i] };
+            mp.set(creators[i], info);
+        } else {
+            info.total += views[i];
+            if (views[i] > info.bestViews ||
+                (views[i] === info.bestViews && ids[i] < info.bestID)) {
+                info.bestViews = views[i];
+                info.bestID = ids[i];
+            }
+        }
+        maxTotal = Math.max(maxTotal, mp.get(creators[i]).total);
+    }
+    const ans = [];
+    for (const [creator, info] of mp) {
+        if (info.total === maxTotal) ans.push([creator, info.bestID]);
+    }
+    return ans;
+};
+
+
+===== 2457_minimum_addition_to_make_integer_beautiful =====
+// LeetCode 2457 - Minimum Addition to Make Integer Beautiful
+// https://leetcode.com/problems/minimum-addition-to-make-integer-beautiful/
+
+/**
+ * @param {number} n
+ * @param {number} target
+ * @return {number}
+ */
+var makeIntegerBeautiful = function(n, target) {
+    const digitSum = (x) => {
+        let s = 0;
+        while (x > 0) {
+            s += x % 10;
+            x = Math.floor(x / 10);
+        }
+        return s;
+    };
+    const orig = n;
+    let pow10 = 1;
+    while (digitSum(n) > target) {
+        n = Math.floor(n / 10) + 1;
+        pow10 *= 10;
+    }
+    return n * pow10 - orig;
+};
+
+
+===== 2458_height_of_binary_tree_after_subtree_removal_queries =====
+// LeetCode 2458 - Height of Binary Tree After Subtree Removal Queries
+// https://leetcode.com/problems/height-of-binary-tree-after-subtree-removal-queries/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var treeQueries = function(root, queries) {
+    const height = new Map(), level = new Map(), levelMax = new Map();
+    const dfs = (node, d) => {
+        if (!node) return -1;
+        level.set(node.val, d);
+        const h = 1 + Math.max(dfs(node.left, d + 1), dfs(node.right, d + 1));
+        height.set(node.val, h);
+        let arr = levelMax.get(d);
+        if (!arr) {
+            arr = [];
+            levelMax.set(d, arr);
+        }
+        if (!arr.length) arr.push(h);
+        else if (h >= arr[0]) {
+            if (arr.length === 1) arr.push(arr[0]);
+            else arr[1] = arr[0];
+            arr[0] = h;
+        } else if (arr.length === 1 || h > arr[1]) {
+            if (arr.length === 1) arr.push(h);
+            else arr[1] = h;
+        }
+        return h;
+    };
+    dfs(root, 0);
+    const ans = Array(queries.length);
+    for (let i = 0; i < queries.length; i++) {
+        const q = queries[i];
+        const d = level.get(q), h = height.get(q);
+        const top = levelMax.get(d);
+        if (top[0] === h) {
+            if (top.length > 1) ans[i] = d + top[1];
+            else ans[i] = d - 1;
+        } else {
+            ans[i] = d + top[0];
+        }
+    }
+    return ans;
+};
+
+
+===== 2459_sort_array_by_moving_items_to_empty_space =====
+// LeetCode 2459 - Sort Array By Moving Items to Empty Space
+// https://leetcode.com/problems/sort-array-by-moving-items-to-empty-space/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sortArray = function(nums) {
+    const solveOne = (startZero) => {
+        const n = nums.length;
+        const arr = nums.slice();
+        const pos = new Map();
+        for (let i = 0; i < n; i++) pos.set(arr[i], i);
+        let ops = 0;
+        while (true) {
+            const empty = pos.get(0);
+            const should = startZero ? empty : (empty === n - 1 ? 0 : empty + 1);
+            if (arr[empty] === should) {
+                let found = -1;
+                for (let i = 0; i < n; i++) {
+                    const want = startZero ? i : (i === n - 1 ? 0 : i + 1);
+                    if (arr[i] !== want) { found = i; break; }
+                }
+                if (found === -1) return ops;
+                const v = arr[found];
+                arr[empty] = arr[found];
+                arr[found] = 0;
+                pos.set(0, found);
+                pos.set(v, empty);
+                ops++;
+                continue;
+            }
+            const j = pos.get(should);
+            const vv = arr[j];
+            arr[empty] = arr[j];
+            arr[j] = 0;
+            pos.set(0, j);
+            pos.set(vv, empty);
+            ops++;
+        }
+    };
+    return Math.min(solveOne(true), solveOne(false));
+};
+
+
+===== 2460_apply_operations_to_an_array =====
+// LeetCode 2460 - Apply Operations to an Array
+// https://leetcode.com/problems/apply-operations-to-an-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var applyOperations = function(nums) {
+    const n = nums.length;
+    const a = nums.slice();
+    for (let i = 0; i + 1 < n; i++) {
+        if (a[i] === a[i + 1]) {
+            a[i] *= 2;
+            a[i + 1] = 0;
+        }
+    }
+    const ans = Array(n).fill(0);
+    let j = 0;
+    for (const x of a) if (x !== 0) ans[j++] = x;
+    return ans;
+};
+
+
+===== 2461_maximum_sum_of_distinct_subarrays_with_length_k =====
+// LeetCode 2461 - Maximum Sum of Distinct Subarrays With Length K
+// https://leetcode.com/problems/maximum-sum-of-distinct-subarrays-with-length-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maximumSubarraySum = function(nums, k) {
+    const cnt = new Map();
+    let sum = 0, ans = 0;
+    for (let i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        cnt.set(nums[i], (cnt.get(nums[i]) || 0) + 1);
+        if (i >= k) {
+            const y = nums[i - k];
+            sum -= y;
+            const c = cnt.get(y) - 1;
+            if (c === 0) cnt.delete(y);
+            else cnt.set(y, c);
+        }
+        if (i >= k - 1 && cnt.size === k && sum > ans) ans = sum;
+    }
+    return ans;
+};
+
+
+===== 2462_total_cost_to_hire_k_workers =====
+// LeetCode 2462 - Total Cost to Hire K Workers
+// https://leetcode.com/problems/total-cost-to-hire-k-workers/
+
+function MinHeap(cmp) {
+    this.a = [];
+    this.cmp = cmp || ((x, y) => x - y);
+}
+MinHeap.prototype._up = function(i) {
+    const a = this.a, cmp = this.cmp;
+    while (i > 0) {
+        const p = (i - 1) >> 1;
+        if (cmp(a[i], a[p]) >= 0) break;
+        [a[i], a[p]] = [a[p], a[i]];
+        i = p;
+    }
+};
+MinHeap.prototype._down = function(i) {
+    const a = this.a, cmp = this.cmp, n = a.length;
+    while (true) {
+        let s = i, l = i * 2 + 1, r = l + 1;
+        if (l < n && cmp(a[l], a[s]) < 0) s = l;
+        if (r < n && cmp(a[r], a[s]) < 0) s = r;
+        if (s === i) break;
+        [a[i], a[s]] = [a[s], a[i]];
+        i = s;
+    }
+};
+MinHeap.prototype.push = function(x) { this.a.push(x); this._up(this.a.length - 1); };
+MinHeap.prototype.pop = function() {
+    const a = this.a;
+    if (!a.length) return undefined;
+    const top = a[0], last = a.pop();
+    if (a.length) { a[0] = last; this._down(0); }
+    return top;
+};
+MinHeap.prototype.peek = function() { return this.a[0]; };
+MinHeap.prototype.size = function() { return this.a.length; };
+
+/**
+ * @param {number[]} costs
+ * @param {number} k
+ * @param {number} candidates
+ * @return {number}
+ */
+var totalCost = function(costs, k, candidates) {
+    const cmp = (a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1];
+    const leftH = new MinHeap(cmp), rightH = new MinHeap(cmp);
+    const n = costs.length;
+    let l = 0, r = n - 1;
+    while (l <= r && leftH.size() < candidates) {
+        leftH.push([costs[l], l]);
+        l++;
+    }
+    while (r >= l && rightH.size() < candidates) {
+        rightH.push([costs[r], r]);
+        r--;
+    }
+    let ans = 0;
+    for (let t = 0; t < k; t++) {
+        let useLeft = false;
+        if (leftH.size() && rightH.size()) {
+            const lt = leftH.peek(), rt = rightH.peek();
+            if (lt[0] < rt[0] || (lt[0] === rt[0] && lt[1] <= rt[1])) useLeft = true;
+        } else if (leftH.size()) {
+            useLeft = true;
+        }
+        if (useLeft) {
+            ans += leftH.pop()[0];
+            if (l <= r) {
+                leftH.push([costs[l], l]);
+                l++;
+            }
+        } else {
+            ans += rightH.pop()[0];
+            if (l <= r) {
+                rightH.push([costs[r], r]);
+                r--;
+            }
+        }
+    }
+    return ans;
+};
+
+
+===== 2463_minimum_total_distance_traveled =====
+// LeetCode 2463 - Minimum Total Distance Traveled
+// https://leetcode.com/problems/minimum-total-distance-traveled/
+
+/**
+ * @param {number[]} robot
+ * @param {number[][]} factory
+ * @return {number}
+ */
+var minimumTotalDistance = function(robot, factory) {
+    const robots = robot.slice().sort((a, b) => a - b);
+    factory = factory.slice().sort((a, b) => a[0] - b[0]);
+    const m = robots.length;
+    const pos = [];
+    for (const f of factory) {
+        for (let c = 0; c < f[1]; c++) pos.push(f[0]);
+    }
+    const n = pos.length;
+    const INF = Number.MAX_SAFE_INTEGER / 4;
+    const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(INF));
+    for (let j = 0; j <= n; j++) dp[0][j] = 0;
+    for (let i = 1; i <= m; i++) {
+        for (let j = i; j <= n; j++) {
+            dp[i][j] = dp[i][j - 1];
+            let diff = robots[i - 1] - pos[j - 1];
+            if (diff < 0) diff = -diff;
+            if (dp[i - 1][j - 1] + diff < dp[i][j]) dp[i][j] = dp[i - 1][j - 1] + diff;
+        }
+    }
+    return dp[m][n];
+};
+
+
+===== 2464_minimum_subarrays_in_a_valid_split =====
+// LeetCode 2464 - Minimum Subarrays in a Valid Split
+// https://leetcode.com/problems/minimum-subarrays-in-a-valid-split/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var validSubarraySplit = function(nums) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    const n = nums.length;
+    const INF = 1 << 30;
+    const dp = Array(n + 1).fill(INF);
+    dp[0] = 0;
+    for (let i = 0; i < n; i++) {
+        if (dp[i] >= INF) continue;
+        for (let j = i; j < n; j++) {
+            if (gcd(nums[i], nums[j]) > 1) {
+                if (dp[i] + 1 < dp[j + 1]) dp[j + 1] = dp[i] + 1;
+            }
+        }
+    }
+    return dp[n] >= INF ? -1 : dp[n];
+};
+
+
+===== 2465_number_of_distinct_averages =====
+// LeetCode 2465 - Number of Distinct Averages
+// https://leetcode.com/problems/number-of-distinct-averages/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var distinctAverages = function(nums) {
+    nums = nums.slice().sort((a, b) => a - b);
+    const seen = new Set();
+    let l = 0, r = nums.length - 1;
+    while (l < r) {
+        seen.add(nums[l] + nums[r]);
+        l++;
+        r--;
+    }
+    return seen.size;
+};
+
+
+===== 2466_count_ways_to_build_good_strings =====
+// LeetCode 2466 - Count Ways To Build Good Strings
+// https://leetcode.com/problems/count-ways-to-build-good-strings/
+
+/**
+ * @param {number} low
+ * @param {number} high
+ * @param {number} zero
+ * @param {number} one
+ * @return {number}
+ */
+var countGoodStrings = function(low, high, zero, one) {
+    const mod = 1000000007;
+    const dp = Array(high + 1).fill(0);
+    dp[0] = 1;
+    let ans = 0;
+    for (let i = 1; i <= high; i++) {
+        if (i >= zero) dp[i] = (dp[i] + dp[i - zero]) % mod;
+        if (i >= one) dp[i] = (dp[i] + dp[i - one]) % mod;
+        if (i >= low) ans = (ans + dp[i]) % mod;
+    }
+    return ans;
+};
+
+
+===== 2467_most_profitable_path_in_a_tree =====
+// LeetCode 2467 - Most Profitable Path in a Tree
+// https://leetcode.com/problems/most-profitable-path-in-a-tree/
+
+/**
+ * @param {number[][]} edges
+ * @param {number} bob
+ * @param {number[]} amount
+ * @return {number}
+ */
+var mostProfitablePath = function(edges, bob, amount) {
+    const n = amount.length;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const bobTime = Array(n).fill(n);
+    const findBob = (u, p, t) => {
+        if (u === 0) {
+            bobTime[u] = t;
+            return true;
+        }
+        for (const v of g[u]) {
+            if (v === p) continue;
+            if (findBob(v, u, t + 1)) {
+                bobTime[u] = t;
+                return true;
+            }
+        }
+        return false;
+    };
+    findBob(bob, -1, 0);
+    let ans = -Infinity;
+    const dfs = (u, p, t, income) => {
+        let cur = amount[u];
+        if (t > bobTime[u]) cur = 0;
+        else if (t === bobTime[u]) cur = Math.floor(cur / 2);
+        income += cur;
+        let isLeaf = true;
+        for (const v of g[u]) {
+            if (v !== p) {
+                isLeaf = false;
+                dfs(v, u, t + 1, income);
+            }
+        }
+        if (isLeaf && income > ans) ans = income;
+    };
+    dfs(0, -1, 0, 0);
+    return ans;
+};
+
+
+===== 2468_split_message_based_on_limit =====
+// LeetCode 2468 - Split Message Based on Limit
+// https://leetcode.com/problems/split-message-based-on-limit/
+
+/**
+ * @param {string} message
+ * @param {number} limit
+ * @return {string[]}
+ */
+var splitMessage = function(message, limit) {
+    const n = message.length;
+    for (let parts = 1; parts <= n; parts++) {
+        const sbDigits = String(parts).length;
+        let ok = true, idx = 0;
+        const res = [];
+        for (let i = 1; i <= parts; i++) {
+            const tail = 3 + String(i).length + sbDigits;
+            const cap = limit - tail;
+            if (cap <= 0 || idx >= n) { ok = false; break; }
+            let take = cap;
+            if (take > n - idx) take = n - idx;
+            res.push(message.substring(idx, idx + take) + '<' + i + '/' + parts + '>');
+            idx += take;
+        }
+        if (ok && idx === n) return res;
+    }
+    return [];
+};
+
+
+===== 2469_convert_the_temperature =====
+// LeetCode 2469 - Convert the Temperature
+// https://leetcode.com/problems/convert-the-temperature/
+
+/**
+ * @param {number} celsius
+ * @return {number[]}
+ */
+var convertTemperature = function(celsius) {
+    return [celsius + 273.15, celsius * 1.80 + 32.00];
+};
+
+
+===== 2470_number_of_subarrays_with_lcm_equal_to_k =====
+// LeetCode 2470 - Number of Subarrays With LCM Equal to K
+// https://leetcode.com/problems/number-of-subarrays-with-lcm-equal-to-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var subarrayLCM = function(nums, k) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        let cur = 1;
+        for (let j = i; j < n; j++) {
+            cur = Math.floor(cur / gcd(cur, nums[j])) * nums[j];
+            if (cur > k) break;
+            if (cur === k) ans++;
+        }
+    }
+    return ans;
+};
+
+
+===== 2471_minimum_number_of_operations_to_sort_a_binary_tree_by_level =====
+// LeetCode 2471 - Minimum Number of Operations to Sort a Binary Tree by Level
+// https://leetcode.com/problems/minimum-number-of-operations-to-sort-a-binary-tree-by-level/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var minimumOperations = function(root) {
+    if (!root) return 0;
+    let ans = 0;
+    const q = [root];
+    while (q.length) {
+        const sz = q.length;
+        const vals = Array(sz);
+        for (let i = 0; i < sz; i++) {
+            const node = q.shift();
+            vals[i] = node.val;
+            if (node.left) q.push(node.left);
+            if (node.right) q.push(node.right);
+        }
+        const sorted = vals.slice().sort((a, b) => a - b);
+        const pos = new Map();
+        for (let i = 0; i < sz; i++) pos.set(vals[i], i);
+        for (let i = 0; i < sz; i++) {
+            if (vals[i] !== sorted[i]) {
+                const j = pos.get(sorted[i]);
+                [vals[i], vals[j]] = [vals[j], vals[i]];
+                pos.set(vals[j], j);
+                pos.set(vals[i], i);
+                ans++;
+            }
+        }
+    }
+    return ans;
+};
+
+
+===== 2472_maximum_number_of_non_overlapping_palindrome_substrings =====
+// LeetCode 2472 - Maximum Number of Non-overlapping Palindrome Substrings
+// https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var maxPalindromes = function(s, k) {
+    const n = s.length;
+    const isPal = Array.from({ length: n }, () => Array(n).fill(false));
+    for (let i = 0; i < n; i++) isPal[i][i] = true;
+    for (let i = 0; i + 1 < n; i++) isPal[i][i + 1] = s[i] === s[i + 1];
+    for (let length = 3; length <= n; length++) {
+        for (let i = 0; i + length - 1 < n; i++) {
+            const j = i + length - 1;
+            isPal[i][j] = s[i] === s[j] && isPal[i + 1][j - 1];
+        }
+    }
+    const dp = Array(n + 1).fill(0);
+    for (let i = n - 1; i >= 0; i--) {
+        dp[i] = dp[i + 1];
+        for (let j = i + k - 1; j < n; j++) {
+            if (isPal[i][j] && 1 + dp[j + 1] > dp[i]) dp[i] = 1 + dp[j + 1];
+        }
+    }
+    return dp[0];
+};
+
+
+===== 2473_minimum_cost_to_buy_apples =====
+// LeetCode 2473 - Minimum Cost to Buy Apples
+// https://leetcode.com/problems/minimum-cost-to-buy-apples/
+
+function MinHeap(cmp) {
+    this.a = [];
+    this.cmp = cmp || ((x, y) => x - y);
+}
+MinHeap.prototype._up = function(i) {
+    const a = this.a, cmp = this.cmp;
+    while (i > 0) {
+        const p = (i - 1) >> 1;
+        if (cmp(a[i], a[p]) >= 0) break;
+        [a[i], a[p]] = [a[p], a[i]];
+        i = p;
+    }
+};
+MinHeap.prototype._down = function(i) {
+    const a = this.a, cmp = this.cmp, n = a.length;
+    while (true) {
+        let s = i, l = i * 2 + 1, r = l + 1;
+        if (l < n && cmp(a[l], a[s]) < 0) s = l;
+        if (r < n && cmp(a[r], a[s]) < 0) s = r;
+        if (s === i) break;
+        [a[i], a[s]] = [a[s], a[i]];
+        i = s;
+    }
+};
+MinHeap.prototype.push = function(x) { this.a.push(x); this._up(this.a.length - 1); };
+MinHeap.prototype.pop = function() {
+    const a = this.a;
+    if (!a.length) return undefined;
+    const top = a[0], last = a.pop();
+    if (a.length) { a[0] = last; this._down(0); }
+    return top;
+};
+MinHeap.prototype.peek = function() { return this.a[0]; };
+MinHeap.prototype.size = function() { return this.a.length; };
+
+/**
+ * @param {number} n
+ * @param {number[][]} roads
+ * @param {number[]} appleCost
+ * @param {number} k
+ * @return {number[]}
+ */
+var minCost = function(n, roads, appleCost, k) {
+    const g = Array.from({ length: n + 1 }, () => []);
+    for (const r of roads) {
+        g[r[0]].push([r[1], r[2]]);
+        g[r[1]].push([r[0], r[2]]);
+    }
+    const ans = Array(n);
+    const INF = Number.MAX_SAFE_INTEGER / 4;
+    for (let start = 1; start <= n; start++) {
+        const dist = Array(n + 1).fill(INF);
+        dist[start] = 0;
+        const pq = new MinHeap((a, b) => a[0] - b[0]);
+        pq.push([0, start]);
+        while (pq.size()) {
+            const [d, u] = pq.pop();
+            if (d !== dist[u]) continue;
+            for (const [v, w] of g[u]) {
+                const nd = d + w;
+                if (nd < dist[v]) {
+                    dist[v] = nd;
+                    pq.push([nd, v]);
+                }
+            }
+        }
+        let best = INF;
+        for (let city = 1; city <= n; city++) {
+            const cost = dist[city] * (k + 1) + appleCost[city - 1];
+            if (cost < best) best = cost;
+        }
+        ans[start - 1] = best;
+    }
+    return ans;
+};
+
+
+===== 2475_number_of_unequal_triplets_in_array =====
+// LeetCode 2475 - Number of Unequal Triplets in Array
+// https://leetcode.com/problems/number-of-unequal-triplets-in-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var unequalTriplets = function(nums) {
+    const cnt = new Map();
+    for (const x of nums) cnt.set(x, (cnt.get(x) || 0) + 1);
+    let ans = 0, left = 0;
+    const n = nums.length;
+    for (const c of cnt.values()) {
+        const right = n - left - c;
+        ans += left * c * right;
+        left += c;
+    }
+    return ans;
+};
+
+
+===== 2476_closest_nodes_queries_in_a_binary_search_tree =====
+// LeetCode 2476 - Closest Nodes Queries in a Binary Search Tree
+// https://leetcode.com/problems/closest-nodes-queries-in-a-binary-search-tree/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number[]} queries
+ * @return {number[][]}
+ */
+var closestNodes = function(root, queries) {
+    const vals = [];
+    const inorder = (node) => {
+        if (!node) return;
+        inorder(node.left);
+        vals.push(node.val);
+        inorder(node.right);
+    };
+    inorder(root);
+    const lowerBound = (q) => {
+        let lo = 0, hi = vals.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (vals[mid] < q) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    };
+    const ans = [];
+    for (const q of queries) {
+        const j = lowerBound(q);
+        const mx = j < vals.length ? vals[j] : -1;
+        let mn = -1;
+        if (j < vals.length && vals[j] === q) mn = q;
+        else if (j > 0) mn = vals[j - 1];
+        ans.push([mn, mx]);
+    }
+    return ans;
+};
+
+
+===== 2477_minimum_fuel_cost_to_report_to_the_capital =====
+// LeetCode 2477 - Minimum Fuel Cost to Report to the Capital
+// https://leetcode.com/problems/minimum-fuel-cost-to-report-to-the-capital/
+
+/**
+ * @param {number[][]} roads
+ * @param {number} seats
+ * @return {number}
+ */
+var minimumFuelCost = function(roads, seats) {
+    const n = roads.length + 1;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of roads) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    let ans = 0;
+    const dfs = (u, p) => {
+        let people = 1;
+        for (const v of g[u]) {
+            if (v !== p) people += dfs(v, u);
+        }
+        if (u !== 0) ans += Math.floor((people + seats - 1) / seats);
+        return people;
+    };
+    dfs(0, -1);
+    return ans;
+};
+
+
+===== 2478_number_of_beautiful_partitions =====
+// LeetCode 2478 - Number of Beautiful Partitions
+// https://leetcode.com/problems/number-of-beautiful-partitions/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @param {number} minLength
+ * @return {number}
+ */
+var beautifulPartitions = function(s, k, minLength) {
+    const mod = 1000000007;
+    const isPrime = (c) => c === '2' || c === '3' || c === '5' || c === '7';
+    const n = s.length;
+    if (!isPrime(s[0]) || isPrime(s[n - 1])) return 0;
+    const dp = Array.from({ length: k + 1 }, () => Array(n + 1).fill(0));
+    dp[0][0] = 1;
+    for (let p = 1; p <= k; p++) {
+        let pref = 0, j = 0;
+        for (let i = 1; i <= n; i++) {
+            while (j <= i - minLength) {
+                if (j === 0 || (isPrime(s[j]) && !isPrime(s[j - 1]))) {
+                    pref = (pref + dp[p - 1][j]) % mod;
+                }
+                j++;
+            }
+            if (!isPrime(s[i - 1])) dp[p][i] = pref;
+        }
+    }
+    return dp[k][n];
+};
+
+
+===== 2479_maximum_xor_of_two_non_overlapping_subtrees =====
+// LeetCode 2479 - Maximum XOR of Two Non-Overlapping Subtrees
+// https://leetcode.com/problems/maximum-xor-of-two-non-overlapping-subtrees/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number[]} values
+ * @return {number}
+ */
+var maxXor = function(n, edges, values) {
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const sum = Array(n).fill(0);
+    const dfsSum = (u, p) => {
+        let s = values[u];
+        for (const v of g[u]) if (v !== p) s += dfsSum(v, u);
+        return (sum[u] = s);
+    };
+    dfsSum(0, -1);
+    const root = { child: [null, null] };
+    const insert = (x) => {
+        let cur = root;
+        for (let b = 46; b >= 0; b--) {
+            const bit = Number((BigInt(x) >> BigInt(b)) & 1n);
+            if (!cur.child[bit]) cur.child[bit] = { child: [null, null] };
+            cur = cur.child[bit];
+        }
+    };
+    const query = (x) => {
+        let cur = root;
+        if (!cur.child[0] && !cur.child[1]) return 0;
+        let res = 0n;
+        for (let b = 46; b >= 0; b--) {
+            const bit = Number((BigInt(x) >> BigInt(b)) & 1n);
+            const want = bit ^ 1;
+            if (cur.child[want]) {
+                res |= 1n << BigInt(b);
+                cur = cur.child[want];
+            } else if (cur.child[bit]) {
+                cur = cur.child[bit];
+            } else {
+                return Number(res);
+            }
+        }
+        return Number(res);
+    };
+    let ans = 0;
+    const dfs = (u, p) => {
+        for (const v of g[u]) {
+            if (v === p) continue;
+            const xorv = query(sum[v]);
+            if (xorv > ans) ans = xorv;
+            dfs(v, u);
+            insert(sum[v]);
+        }
+    };
+    dfs(0, -1);
+    return ans;
+};
+
+
+===== 2481_minimum_cuts_to_divide_a_circle =====
+// LeetCode 2481 - Minimum Cuts to Divide a Circle
+// https://leetcode.com/problems/minimum-cuts-to-divide-a-circle/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var numberOfCuts = function(n) {
+    if (n === 1) return 0;
+    if (n % 2 === 0) return n / 2;
+    return n;
+};
+
+
+===== 2482_difference_between_ones_and_zeros_in_row_and_column =====
+// LeetCode 2482 - Difference Between Ones and Zeros in Row and Column
+// https://leetcode.com/problems/difference-between-ones-and-zeros-in-row-and-column/
+
+/**
+ * @param {number[][]} grid
+ * @return {number[][]}
+ */
+var onesMinusZeros = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    const row = Array(m).fill(0), col = Array(n).fill(0);
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            row[i] += grid[i][j];
+            col[j] += grid[i][j];
+        }
+    }
+    const ans = Array.from({ length: m }, () => Array(n));
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            ans[i][j] = row[i] + col[j] - (m - row[i]) - (n - col[j]);
+        }
+    }
+    return ans;
+};
+
+
+===== 2483_minimum_penalty_for_a_shop =====
+// LeetCode 2483 - Minimum Penalty for a Shop
+// https://leetcode.com/problems/minimum-penalty-for-a-shop/
+
+/**
+ * @param {string} customers
+ * @return {number}
+ */
+var bestClosingTime = function(customers) {
+    const n = customers.length;
+    let penalty = 0;
+    for (const c of customers) if (c === 'Y') penalty++;
+    let best = penalty, ans = 0;
+    for (let i = 0; i < n; i++) {
+        if (customers[i] === 'Y') penalty--;
+        else penalty++;
+        if (penalty < best) {
+            best = penalty;
+            ans = i + 1;
+        }
+    }
+    return ans;
+};
+
+
+===== 2484_count_palindromic_subsequences =====
+// LeetCode 2484 - Count Palindromic Subsequences
+// https://leetcode.com/problems/count-palindromic-subsequences/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countPalindromes = function(s) {
+    const mod = 1000000007;
+    const n = s.length;
+    const pref = Array.from({ length: n }, () => Array.from({ length: 10 }, () => Array(10).fill(0)));
+    const suf = Array.from({ length: n }, () => Array.from({ length: 10 }, () => Array(10).fill(0)));
+    const cnt = Array(10).fill(0);
+    for (let i = 0; i < n; i++) {
+        if (i > 0) {
+            for (let a = 0; a < 10; a++)
+                for (let b = 0; b < 10; b++) pref[i][a][b] = pref[i - 1][a][b];
+        }
+        const d = s.charCodeAt(i) - 48;
+        for (let a = 0; a < 10; a++) pref[i][a][d] += cnt[a];
+        cnt[d]++;
+    }
+    cnt.fill(0);
+    for (let i = n - 1; i >= 0; i--) {
+        if (i + 1 < n) {
+            for (let a = 0; a < 10; a++)
+                for (let b = 0; b < 10; b++) suf[i][a][b] = suf[i + 1][a][b];
+        }
+        const d = s.charCodeAt(i) - 48;
+        for (let a = 0; a < 10; a++) suf[i][a][d] += cnt[a];
+        cnt[d]++;
+    }
+    let ans = 0;
+    for (let i = 2; i < n - 2; i++) {
+        for (let a = 0; a < 10; a++) {
+            for (let b = 0; b < 10; b++) {
+                ans = (ans + pref[i - 1][a][b] * suf[i + 1][a][b]) % mod;
+            }
+        }
+    }
+    return ans;
+};
+
+
+===== 2485_find_the_pivot_integer =====
+// LeetCode 2485 - Find the Pivot Integer
+// https://leetcode.com/problems/find-the-pivot-integer/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var pivotInteger = function(n) {
+    const total = n * (n + 1) / 2;
+    let sum = 0;
+    for (let x = 1; x <= n; x++) {
+        sum += x;
+        if (sum === total - sum + x) return x;
+    }
+    return -1;
+};
+
+
+===== 2486_append_characters_to_string_to_make_subsequence =====
+// LeetCode 2486 - Append Characters to String to Make Subsequence
+// https://leetcode.com/problems/append-characters-to-string-to-make-subsequence/
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {number}
+ */
+var appendCharacters = function(s, t) {
+    let j = 0;
+    for (let i = 0; i < s.length && j < t.length; i++) {
+        if (s[i] === t[j]) j++;
+    }
+    return t.length - j;
+};
+
+
+===== 2487_remove_nodes_from_linked_list =====
+// LeetCode 2487 - Remove Nodes From Linked List
+// https://leetcode.com/problems/remove-nodes-from-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var removeNodes = function(head) {
+    const rev = (node) => {
+        let prev = null;
+        while (node) {
+            const nxt = node.next;
+            node.next = prev;
+            prev = node;
+            node = nxt;
+        }
+        return prev;
+    };
+    head = rev(head);
+    let mx = 0;
+    const dummy = new ListNode(0, head);
+    let prev = dummy;
+    while (prev.next) {
+        if (prev.next.val >= mx) {
+            mx = prev.next.val;
+            prev = prev.next;
+        } else {
+            prev.next = prev.next.next;
+        }
+    }
+    return rev(dummy.next);
+};
+
+
+===== 2488_count_subarrays_with_median_k =====
+// LeetCode 2488 - Count Subarrays With Median K
+// https://leetcode.com/problems/count-subarrays-with-median-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var countSubarrays = function(nums, k) {
+    let pos = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === k) { pos = i; break; }
+    }
+    const bal = new Map();
+    bal.set(0, 1);
+    let cur = 0;
+    for (let i = pos - 1; i >= 0; i--) {
+        cur += nums[i] < k ? -1 : 1;
+        bal.set(cur, (bal.get(cur) || 0) + 1);
+    }
+    let ans = (bal.get(0) || 0) + (bal.get(1) || 0);
+    cur = 0;
+    for (let i = pos + 1; i < nums.length; i++) {
+        cur += nums[i] < k ? -1 : 1;
+        ans += (bal.get(-cur) || 0) + (bal.get(1 - cur) || 0);
+    }
+    return ans;
+};
+
+
+===== 2489_number_of_substrings_with_fixed_ratio =====
+// LeetCode 2489 - Number of Substrings With Fixed Ratio
+// https://leetcode.com/problems/number-of-substrings-with-fixed-ratio/
+
+/**
+ * @param {string} s
+ * @param {number} num1
+ * @param {number} num2
+ * @return {number}
+ */
+var fixedRatio = function(s, num1, num2) {
+    const pref = new Map();
+    pref.set(0, 1);
+    let zeros = 0, ones = 0, ans = 0;
+    for (const c of s) {
+        if (c === '0') zeros++;
+        else ones++;
+        const key = zeros * num2 - ones * num1;
+        ans += pref.get(key) || 0;
+        pref.set(key, (pref.get(key) || 0) + 1);
+    }
+    return ans;
+};
+
+
+===== 2490_circular_sentence =====
+// LeetCode 2490 - Circular Sentence
+// https://leetcode.com/problems/circular-sentence/
+
+/**
+ * @param {string} sentence
+ * @return {boolean}
+ */
+var isCircularSentence = function(sentence) {
+    const n = sentence.length;
+    if (sentence[0] !== sentence[n - 1]) return false;
+    for (let i = 0; i < n; i++) {
+        if (sentence[i] === ' ' && sentence[i - 1] !== sentence[i + 1]) return false;
+    }
+    return true;
+};
+
+
+===== 2491_divide_players_into_teams_of_equal_skill =====
+// LeetCode 2491 - Divide Players Into Teams of Equal Skill
+// https://leetcode.com/problems/divide-players-into-teams-of-equal-skill/
+
+/**
+ * @param {number[]} skill
+ * @return {number}
+ */
+var dividePlayers = function(skill) {
+    skill = skill.slice().sort((a, b) => a - b);
+    const n = skill.length;
+    const target = skill[0] + skill[n - 1];
+    let chem = 0;
+    for (let i = 0; i < n / 2; i++) {
+        if (skill[i] + skill[n - 1 - i] !== target) return -1;
+        chem += skill[i] * skill[n - 1 - i];
+    }
+    return chem;
+};
+
+
+===== 2492_minimum_score_of_a_path_between_two_cities =====
+// LeetCode 2492 - Minimum Score of a Path Between Two Cities
+// https://leetcode.com/problems/minimum-score-of-a-path-between-two-cities/
+
+/**
+ * @param {number} n
+ * @param {number[][]} roads
+ * @return {number}
+ */
+var minScore = function(n, roads) {
+    const g = Array.from({ length: n + 1 }, () => []);
+    for (const r of roads) {
+        g[r[0]].push([r[1], r[2]]);
+        g[r[1]].push([r[0], r[2]]);
+    }
+    const vis = Array(n + 1).fill(false);
+    let ans = 1 << 30;
+    const q = [1];
+    vis[1] = true;
+    while (q.length) {
+        const u = q.shift();
+        for (const [v, w] of g[u]) {
+            if (w < ans) ans = w;
+            if (!vis[v]) {
+                vis[v] = true;
+                q.push(v);
+            }
+        }
+    }
+    return ans;
+};
+
+
+===== 2493_divide_nodes_into_the_maximum_number_of_groups =====
+// LeetCode 2493 - Divide Nodes Into the Maximum Number of Groups
+// https://leetcode.com/problems/divide-nodes-into-the-maximum-number-of-groups/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number}
+ */
+var magnificentSets = function(n, edges) {
+    const g = Array.from({ length: n + 1 }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    const bfsDepth = (start) => {
+        const dist = Array(n + 1).fill(-1);
+        const q = [start];
+        dist[start] = 1;
+        let best = 1;
+        while (q.length) {
+            const u = q.shift();
+            if (dist[u] > best) best = dist[u];
+            for (const v of g[u]) {
+                if (dist[v] === -1) {
+                    dist[v] = dist[u] + 1;
+                    q.push(v);
+                }
+            }
+        }
+        return best;
+    };
+    const color = Array(n + 1).fill(-1);
+    const components = [];
+    for (let i = 1; i <= n; i++) {
+        if (color[i] !== -1) continue;
+        const comp = [];
+        const q = [i];
+        color[i] = 0;
+        let bipartite = true;
+        while (q.length) {
+            const u = q.shift();
+            comp.push(u);
+            for (const v of g[u]) {
+                if (color[v] === -1) {
+                    color[v] = color[u] ^ 1;
+                    q.push(v);
+                } else if (color[v] === color[u]) {
+                    bipartite = false;
+                }
+            }
+        }
+        if (!bipartite) return -1;
+        components.push(comp);
+    }
+    let ans = 0;
+    for (const comp of components) {
+        let best = 0;
+        for (const u of comp) best = Math.max(best, bfsDepth(u));
+        ans += best;
+    }
+    return ans;
+};
+
+
+===== 2495_number_of_subarrays_having_even_product =====
+// LeetCode 2495 - Number of Subarrays Having Even Product
+// https://leetcode.com/problems/number-of-subarrays-having-even-product/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var evenProduct = function(nums) {
+    const n = nums.length;
+    const total = n * (n + 1) / 2;
+    let oddLen = 0, odd = 0;
+    for (const x of nums) {
+        if (x % 2 === 1) {
+            odd++;
+            oddLen += odd;
+        } else odd = 0;
+    }
+    return total - oddLen;
+};
+
+
+===== 2496_maximum_value_of_a_string_in_an_array =====
+// LeetCode 2496 - Maximum Value of a String in an Array
+// https://leetcode.com/problems/maximum-value-of-a-string-in-an-array/
+
+/**
+ * @param {string[]} strs
+ * @return {number}
+ */
+var maximumValue = function(strs) {
+    let ans = 0;
+    for (const s of strs) {
+        let allDigit = true, val = 0;
+        for (const c of s) {
+            if (c < '0' || c > '9') { allDigit = false; break; }
+            val = val * 10 + (c.charCodeAt(0) - 48);
+        }
+        if (!allDigit) val = s.length;
+        if (val > ans) ans = val;
+    }
+    return ans;
+};
+
+
+===== 2497_maximum_star_sum_of_a_graph =====
+// LeetCode 2497 - Maximum Star Sum of a Graph
+// https://leetcode.com/problems/maximum-star-sum-of-a-graph/
+
+/**
+ * @param {number[]} vals
+ * @param {number[][]} edges
+ * @param {number} k
+ * @return {number}
+ */
+var maxStarSum = function(vals, edges, k) {
+    const n = vals.length;
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        g[a].push(b);
+        g[b].push(a);
+    }
+    let ans = vals[0];
+    for (let i = 0; i < n; i++) {
+        const neigh = [];
+        for (const v of g[i]) {
+            if (vals[v] > 0) neigh.push(vals[v]);
+        }
+        neigh.sort((a, b) => b - a);
+        let sum = vals[i];
+        for (let j = 0; j < neigh.length && j < k; j++) sum += neigh[j];
+        if (sum > ans) ans = sum;
+    }
+    return ans;
+};
+
+
+===== 2498_frog_jump_ii =====
+// LeetCode 2498 - Frog Jump II
+// https://leetcode.com/problems/frog-jump-ii/
+
+/**
+ * @param {number[]} stones
+ * @return {number}
+ */
+var maxJump = function(stones) {
+    let ans = stones[1] - stones[0];
+    for (let i = 2; i < stones.length; i++) {
+        const diff = stones[i] - stones[i - 2];
+        if (diff > ans) ans = diff;
+    }
+    return ans;
+};
+
+
+===== 2499_minimum_total_cost_to_make_arrays_unequal =====
+// LeetCode 2499 - Minimum Total Cost to Make Arrays Unequal
+// https://leetcode.com/problems/minimum-total-cost-to-make-arrays-unequal/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var minimumTotalCost = function(nums1, nums2) {
+    const n = nums1.length;
+    const freq = new Map();
+    let ans = 0, same = 0;
+    for (let i = 0; i < n; i++) {
+        if (nums1[i] === nums2[i]) {
+            same++;
+            freq.set(nums1[i], (freq.get(nums1[i]) || 0) + 1);
+            ans += i;
+        }
+    }
+    let maxFreq = 0, maxVal = 0;
+    for (const [key, value] of freq) {
+        if (value > maxFreq) {
+            maxFreq = value;
+            maxVal = key;
+        }
+    }
+    let need = maxFreq * 2 - same;
+    if (need <= 0) return ans;
+    for (let i = 0; i < n && need > 0; i++) {
+        if (nums1[i] !== nums2[i] && nums1[i] !== maxVal && nums2[i] !== maxVal) {
+            ans += i;
+            need--;
+        }
+    }
+    return need > 0 ? -1 : ans;
+};
+
+
+===== 2500_delete_greatest_value_in_each_row =====
+// LeetCode 2500 - Delete Greatest Value in Each Row
+// https://leetcode.com/problems/delete-greatest-value-in-each-row/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var deleteGreatestValue = function(grid) {
+    for (const row of grid) row.sort((a, b) => a - b);
+    let ans = 0;
+    const n = grid[0].length;
+    for (let c = 0; c < n; c++) {
+        let mx = 0;
+        for (const row of grid) if (row[c] > mx) mx = row[c];
+        ans += mx;
+    }
+    return ans;
+};
+
+
+===== 2501_longest_square_streak_in_an_array =====
+// LeetCode 2501 - Longest Square Streak in an Array
+// https://leetcode.com/problems/longest-square-streak-in-an-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestSquareStreak = function(nums) {
+    const set = new Set(nums.map(Number));
+    let best = -1;
+    for (const x of nums) {
+        if (!set.has(x)) continue;
+        let length = 0;
+        let cur = x;
+        while (set.has(cur)) {
+            length++;
+            set.delete(cur);
+            if (cur > 100000) break;
+            cur = cur * cur;
+        }
+        if (length >= 2 && length > best) best = length;
+    }
+    return best;
+};
+
+
+===== 2502_design_memory_allocator =====
+// LeetCode 2502 - Design Memory Allocator
+// https://leetcode.com/problems/design-memory-allocator/
+
+/**
+ * @param {number} n
+ */
+var Allocator = function(n) {
+    this.mem = Array(n).fill(0);
+};
+
+/** 
+ * @param {number} size 
+ * @param {number} mID
+ * @return {number}
+ */
+Allocator.prototype.allocate = function(size, mID) {
+    let freeCnt = 0;
+    for (let i = 0; i < this.mem.length; i++) {
+        if (this.mem[i] === 0) {
+            freeCnt++;
+            if (freeCnt === size) {
+                const start = i - size + 1;
+                for (let j = start; j <= i; j++) this.mem[j] = mID;
+                return start;
+            }
+        } else freeCnt = 0;
+    }
+    return -1;
+};
+
+/** 
+ * @param {number} mID
+ * @return {number}
+ */
+Allocator.prototype.freeMemory = function(mID) {
+    let cnt = 0;
+    for (let i = 0; i < this.mem.length; i++) {
+        if (this.mem[i] === mID) {
+            this.mem[i] = 0;
+            cnt++;
+        }
+    }
+    return cnt;
+};
+
+
+===== 2503_maximum_number_of_points_from_grid_queries =====
+// LeetCode 2503 - Maximum Number of Points From Grid Queries
+// https://leetcode.com/problems/maximum-number-of-points-from-grid-queries/
+
+function MinHeap(cmp) {
+    this.a = [];
+    this.cmp = cmp || ((x, y) => x - y);
+}
+MinHeap.prototype._up = function(i) {
+    const a = this.a, cmp = this.cmp;
+    while (i > 0) {
+        const p = (i - 1) >> 1;
+        if (cmp(a[i], a[p]) >= 0) break;
+        [a[i], a[p]] = [a[p], a[i]];
+        i = p;
+    }
+};
+MinHeap.prototype._down = function(i) {
+    const a = this.a, cmp = this.cmp, n = a.length;
+    while (true) {
+        let s = i, l = i * 2 + 1, r = l + 1;
+        if (l < n && cmp(a[l], a[s]) < 0) s = l;
+        if (r < n && cmp(a[r], a[s]) < 0) s = r;
+        if (s === i) break;
+        [a[i], a[s]] = [a[s], a[i]];
+        i = s;
+    }
+};
+MinHeap.prototype.push = function(x) { this.a.push(x); this._up(this.a.length - 1); };
+MinHeap.prototype.pop = function() {
+    const a = this.a;
+    if (!a.length) return undefined;
+    const top = a[0], last = a.pop();
+    if (a.length) { a[0] = last; this._down(0); }
+    return top;
+};
+MinHeap.prototype.peek = function() { return this.a[0]; };
+MinHeap.prototype.size = function() { return this.a.length; };
+
+/**
+ * @param {number[][]} grid
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var maxPoints = function(grid, queries) {
+    const m = grid.length, n = grid[0].length;
+    const order = Array.from({ length: queries.length }, (_, i) => i);
+    order.sort((a, b) => queries[a] - queries[b]);
+    const ans = Array(queries.length);
+    const visited = Array.from({ length: m }, () => Array(n).fill(false));
+    const pq = new MinHeap((a, b) => a[0] - b[0]);
+    pq.push([grid[0][0], 0, 0]);
+    visited[0][0] = true;
+    let points = 0;
+    const dirs = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    for (const qi of order) {
+        const q = queries[qi];
+        while (pq.size() && pq.peek()[0] < q) {
+            const [, r, c] = pq.pop();
+            points++;
+            for (const [dr, dc] of dirs) {
+                const nr = r + dr, nc = c + dc;
+                if (nr >= 0 && nr < m && nc >= 0 && nc < n && !visited[nr][nc]) {
+                    visited[nr][nc] = true;
+                    pq.push([grid[nr][nc], nr, nc]);
+                }
+            }
+        }
+        ans[qi] = points;
+    }
+    return ans;
+};
+
+
+===== 2505_bitwise_or_of_all_subsequence_sums =====
+// LeetCode 2505 - Bitwise OR of All Subsequence Sums
+// https://leetcode.com/problems/bitwise-or-of-all-subsequence-sums/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var subsequenceSumOr = function(nums) {
+    let ans = 0, prefix = 0;
+    for (const x of nums) {
+        prefix += x;
+        ans |= x | prefix;
+    }
+    return ans;
+};
+
+
+===== 2506_count_pairs_of_similar_strings =====
+// LeetCode 2506 - Count Pairs Of Similar Strings
+// https://leetcode.com/problems/count-pairs-of-similar-strings/
+
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var similarPairs = function(words) {
+    const freq = new Map();
+    let ans = 0;
+    for (const w of words) {
+        let mask = 0;
+        for (let i = 0; i < w.length; i++) mask |= 1 << (w.charCodeAt(i) - 97);
+        ans += freq.get(mask) || 0;
+        freq.set(mask, (freq.get(mask) || 0) + 1);
+    }
+    return ans;
+};
+
+
+===== 2507_smallest_value_after_replacing_with_sum_of_prime_factors =====
+// LeetCode 2507 - Smallest Value After Replacing With Sum of Prime Factors
+// https://leetcode.com/problems/smallest-value-after-replacing-with-sum-of-prime-factors/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var smallestValue = function(n) {
+    const sumPrimeFactors = (x) => {
+        let s = 0;
+        for (let i = 2; i * i <= x; i++) {
+            while (x % i === 0) {
+                s += i;
+                x = Math.floor(x / i);
+            }
+        }
+        if (x > 1) s += x;
+        return s;
+    };
+    while (true) {
+        const s = sumPrimeFactors(n);
+        if (s === n) return n;
+        n = s;
+    }
+};
+
+
+===== 2508_add_edges_to_make_degrees_of_all_nodes_even =====
+// LeetCode 2508 - Add Edges to Make Degrees of All Nodes Even
+// https://leetcode.com/problems/add-edges-to-make-degrees-of-all-nodes-even/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {boolean}
+ */
+var isPossible = function(n, edges) {
+    const deg = Array(n + 1).fill(0);
+    const adj = Array.from({ length: n + 1 }, () => new Set());
+    for (const e of edges) {
+        const u = e[0], v = e[1];
+        deg[u]++;
+        deg[v]++;
+        adj[u].add(v);
+        adj[v].add(u);
+    }
+    const odd = [];
+    for (let i = 1; i <= n; i++) if (deg[i] % 2 === 1) odd.push(i);
+    if (!odd.length) return true;
+    if (odd.length === 2) {
+        const a = odd[0], b = odd[1];
+        if (!adj[a].has(b)) return true;
+        for (let i = 1; i <= n; i++) {
+            if (i !== a && i !== b && !adj[a].has(i) && !adj[b].has(i)) return true;
+        }
+        return false;
+    }
+    if (odd.length === 4) {
+        const [a, b, c, d] = odd;
+        return (!adj[a].has(b) && !adj[c].has(d)) ||
+               (!adj[a].has(c) && !adj[b].has(d)) ||
+               (!adj[a].has(d) && !adj[b].has(c));
+    }
+    return false;
+};
+
+
+===== 2509_cycle_length_queries_in_a_tree =====
+// LeetCode 2509 - Cycle Length Queries in a Tree
+// https://leetcode.com/problems/cycle-length-queries-in-a-tree/
+
+/**
+ * @param {number} n
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var cycleLengthQueries = function(n, queries) {
+    const ans = Array(queries.length);
+    for (let i = 0; i < queries.length; i++) {
+        let a = queries[i][0], b = queries[i][1], steps = 0;
+        while (a !== b) {
+            if (a > b) a = Math.floor(a / 2);
+            else b = Math.floor(b / 2);
+            steps++;
+        }
+        ans[i] = steps + 1;
+    }
+    return ans;
+};
+
+
+===== 2510_check_if_there_is_a_path_with_equal_number_of_0s_and_1s =====
+// LeetCode 2510 - Check if There is a Path With Equal Number of 0's And 1's
+// https://leetcode.com/problems/check-if-there-is-a-path-with-equal-number-of-0s-and-1s/
+
+/**
+ * @param {number[][]} grid
+ * @return {boolean}
+ */
+var isThereAPath = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    if ((m + n - 1) % 2 !== 0) return false;
+    const target = Math.floor((m + n - 1) / 2);
+    const memo = new Map();
+    const key = (r, c, bal) => (BigInt(r) << 40n) | (BigInt(c) << 20n) | BigInt(bal & 0xfffff);
+    const dfs = (r, c, bal) => {
+        if (r >= m || c >= n) return false;
+        bal += grid[r][c];
+        if (bal > target || bal + (m - 1 - r) + (n - 1 - c) < target) return false;
+        if (r === m - 1 && c === n - 1) return bal === target;
+        const k = key(r, c, bal).toString();
+        if (memo.has(k)) return memo.get(k);
+        const ok = dfs(r + 1, c, bal) || dfs(r, c + 1, bal);
+        memo.set(k, ok);
+        return ok;
+    };
+    return dfs(0, 0, 0);
+};
+
+
+===== 2511_maximum_enemy_forts_that_can_be_captured =====
+// LeetCode 2511 - Maximum Enemy Forts That Can Be Captured
+// https://leetcode.com/problems/maximum-enemy-forts-that-can-be-captured/
+
+/**
+ * @param {number[]} forts
+ * @return {number}
+ */
+var captureForts = function(forts) {
+    let ans = 0, prev = -1;
+    for (let i = 0; i < forts.length; i++) {
+        if (forts[i] !== 0) {
+            if (prev >= 0 && forts[prev] === -forts[i]) {
+                if (i - prev - 1 > ans) ans = i - prev - 1;
+            }
+            prev = i;
+        }
+    }
+    return ans;
+};
+
+
+===== 2512_reward_top_k_students =====
+// LeetCode 2512 - Reward Top K Students
+// https://leetcode.com/problems/reward-top-k-students/
+
+/**
+ * @param {string[]} positive_feedback
+ * @param {string[]} negative_feedback
+ * @param {string[]} report
+ * @param {number[]} student_id
+ * @param {number} k
+ * @return {number[]}
+ */
+var topStudents = function(positive_feedback, negative_feedback, report, student_id, k) {
+    const pos = new Set(positive_feedback);
+    const neg = new Set(negative_feedback);
+    const arr = Array(report.length);
+    for (let i = 0; i < report.length; i++) {
+        let score = 0;
+        for (const w of report[i].split(' ')) {
+            if (!w) continue;
+            if (pos.has(w)) score += 3;
+            else if (neg.has(w)) score--;
+        }
+        arr[i] = [student_id[i], score];
+    }
+    arr.sort((a, b) => a[1] !== b[1] ? b[1] - a[1] : a[0] - b[0]);
+    const ans = Array(k);
+    for (let i = 0; i < k; i++) ans[i] = arr[i][0];
+    return ans;
+};
+
+
+===== 2513_minimize_the_maximum_of_two_arrays =====
+// LeetCode 2513 - Minimize the Maximum of Two Arrays
+// https://leetcode.com/problems/minimize-the-maximum-of-two-arrays/
+
+/**
+ * @param {number} divisor1
+ * @param {number} divisor2
+ * @param {number} uniqueCnt1
+ * @param {number} uniqueCnt2
+ * @return {number}
+ */
+var minimizeSet = function(divisor1, divisor2, uniqueCnt1, uniqueCnt2) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    const lcm = Math.floor(divisor1 / gcd(divisor1, divisor2)) * divisor2;
+    const ok = (x) => {
+        const a = x - Math.floor(x / divisor1);
+        const b = x - Math.floor(x / divisor2);
+        const both = x - Math.floor(x / lcm);
+        return a >= uniqueCnt1 && b >= uniqueCnt2 && both >= uniqueCnt1 + uniqueCnt2;
+    };
+    let lo = 1, hi = 2 ** 62;
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (ok(mid)) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+};
+
+
+===== 2514_count_anagrams =====
+// LeetCode 2514 - Count Anagrams
+// https://leetcode.com/problems/count-anagrams/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countAnagrams = function(s) {
+    const MOD = 1000000007;
+    const modPow = (a, e) => {
+        let res = 1;
+        a %= MOD;
+        while (e > 0) {
+            if (e & 1) res = res * a % MOD;
+            a = a * a % MOD;
+            e >>= 1;
+        }
+        return res;
+    };
+    const words = s.trim() === '' ? [] : s.trim().split(/\s+/);
+    let maxN = 0;
+    for (const w of words) if (w.length > maxN) maxN = w.length;
+    const fact = Array(maxN + 1), invFact = Array(maxN + 1);
+    fact[0] = 1;
+    for (let i = 1; i <= maxN; i++) fact[i] = fact[i - 1] * i % MOD;
+    invFact[maxN] = modPow(fact[maxN], MOD - 2);
+    for (let i = maxN; i > 0; i--) invFact[i - 1] = invFact[i] * i % MOD;
+    let ans = 1;
+    for (const word of words) {
+        const cnt = Array(26).fill(0);
+        for (let i = 0; i < word.length; i++) cnt[word.charCodeAt(i) - 97]++;
+        let cur = fact[word.length];
+        for (const c of cnt) cur = cur * invFact[c] % MOD;
+        ans = ans * cur % MOD;
+    }
+    return ans;
+};
+
+
+===== 2515_shortest_distance_to_target_string_in_a_circular_array =====
+// LeetCode 2515 - Shortest Distance to Target String in a Circular Array
+// https://leetcode.com/problems/shortest-distance-to-target-string-in-a-circular-array/
+
+/**
+ * @param {string[]} words
+ * @param {string} target
+ * @param {number} startIndex
+ * @return {number}
+ */
+var closestTarget = function(words, target, startIndex) {
+    const n = words.length;
+    let best = -1;
+    for (let i = 0; i < n; i++) {
+        if (words[i] === target) {
+            let d = i - startIndex;
+            if (d < 0) d = -d;
+            if (n - d < d) d = n - d;
+            if (best < 0 || d < best) best = d;
+        }
+    }
+    return best;
+};
+
+
+===== 2516_take_k_of_each_character_from_left_and_right =====
+// LeetCode 2516 - Take K of Each Character From Left and Right
+// https://leetcode.com/problems/take-k-of-each-character-from-left-and-right/
+
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var takeCharacters = function(s, k) {
+    const n = s.length;
+    const cnt = [0, 0, 0];
+    for (const c of s) cnt[c.charCodeAt(0) - 97]++;
+    if (cnt[0] < k || cnt[1] < k || cnt[2] < k) return -1;
+    const need = [cnt[0] - k, cnt[1] - k, cnt[2] - k];
+    const window = [0, 0, 0];
+    let left = 0, maxMid = 0;
+    for (let right = 0; right < n; right++) {
+        window[s.charCodeAt(right) - 97]++;
+        while (window[0] > need[0] || window[1] > need[1] || window[2] > need[2]) {
+            window[s.charCodeAt(left) - 97]--;
+            left++;
+        }
+        if (right - left + 1 > maxMid) maxMid = right - left + 1;
+    }
+    return n - maxMid;
+};
+
+
+===== 2517_maximum_tastiness_of_candy_basket =====
+// LeetCode 2517 - Maximum Tastiness of Candy Basket
+// https://leetcode.com/problems/maximum-tastiness-of-candy-basket/
+
+/**
+ * @param {number[]} price
+ * @param {number} k
+ * @return {number}
+ */
+var maximumTastiness = function(price, k) {
+    price = price.slice().sort((a, b) => a - b);
+    const ok = (d) => {
+        let cnt = 1, last = price[0];
+        for (let i = 1; i < price.length; i++) {
+            if (price[i] - last >= d) {
+                cnt++;
+                last = price[i];
+                if (cnt >= k) return true;
+            }
+        }
+        return false;
+    };
+    let lo = 0, hi = price[price.length - 1] - price[0];
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi + 1) / 2);
+        if (ok(mid)) lo = mid;
+        else hi = mid - 1;
+    }
+    return lo;
+};
+
+
+===== 2518_number_of_great_partitions =====
+// LeetCode 2518 - Number of Great Partitions
+// https://leetcode.com/problems/number-of-great-partitions/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var countPartitions = function(nums, k) {
+    const MOD = 1000000007;
+    let sum = 0;
+    for (const x of nums) sum += x;
+    if (sum < 2 * k) return 0;
+    const dp = Array(k).fill(0);
+    dp[0] = 1;
+    for (const x of nums) {
+        for (let s = k - 1; s >= x; s--)
+            dp[s] = (dp[s] + dp[s - x]) % MOD;
+    }
+    let bad = 0;
+    for (const v of dp) bad = (bad + v) % MOD;
+    let total = 1;
+    for (let i = 0; i < nums.length; i++) total = total * 2 % MOD;
+    return (total - 2 * bad % MOD + MOD) % MOD;
+};
+
+
+===== 2519_count_the_number_of_k_big_indices =====
+// LeetCode 2519 - Count the Number of K-Big Indices
+// https://leetcode.com/problems/count-the-number-of-k-big-indices/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var kBigIndices = function(nums, k) {
+    const Fenwick = function(n) {
+        this.bit = Array(n + 2).fill(0);
+    };
+    Fenwick.prototype.add = function(i, v) {
+        for (; i < this.bit.length; i += i & -i) this.bit[i] += v;
+    };
+    Fenwick.prototype.sum = function(i) {
+        let s = 0;
+        for (; i > 0; i -= i & -i) s += this.bit[i];
+        return s;
+    };
+    const n = nums.length;
+    const uniq = nums.slice().sort((a, b) => a - b);
+    let m = 0;
+    for (let i = 0; i < uniq.length; i++) {
+        if (i === 0 || uniq[i] !== uniq[i - 1]) uniq[m++] = uniq[i];
+    }
+    const rank = new Map();
+    for (let i = 0; i < m; i++) rank.set(uniq[i], i + 1);
+    const left = Array(n), right = Array(n);
+    let ft = new Fenwick(m);
+    for (let i = 0; i < n; i++) {
+        const r = rank.get(nums[i]);
+        left[i] = ft.sum(r - 1);
+        ft.add(r, 1);
+    }
+    ft = new Fenwick(m);
+    for (let i = n - 1; i >= 0; i--) {
+        const r = rank.get(nums[i]);
+        right[i] = ft.sum(r - 1);
+        ft.add(r, 1);
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        if (left[i] >= k && right[i] >= k) ans++;
+    }
+    return ans;
+};
+

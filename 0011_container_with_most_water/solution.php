@@ -1,4 +1,5 @@
-﻿// LeetCode 0011 - Container With Most Water
+<?php
+// LeetCode 0011 - Container With Most Water
 // https://leetcode.com/problems/container-with-most-water/
 
 class Solution {

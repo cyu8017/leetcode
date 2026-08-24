@@ -1,4 +1,5 @@
-﻿// LeetCode 0282 - Expression Add Operators
+<?php
+// LeetCode 0282 - Expression Add Operators
 // https://leetcode.com/problems/expression-add-operators/
 
 class Solution {

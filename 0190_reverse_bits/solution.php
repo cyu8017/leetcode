@@ -1,4 +1,5 @@
-﻿// LeetCode 0190 - Reverse Bits
+<?php
+// LeetCode 0190 - Reverse Bits
 // https://leetcode.com/problems/reverse-bits/
 
 class Solution {

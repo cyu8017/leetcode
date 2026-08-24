@@ -1,4 +1,5 @@
-﻿// LeetCode 0263 - Ugly Number
+<?php
+// LeetCode 0263 - Ugly Number
 // https://leetcode.com/problems/ugly-number/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0007 - Reverse Integer
+<?php
+// LeetCode 0007 - Reverse Integer
 // https://leetcode.com/problems/reverse-integer/
 
 class Solution {

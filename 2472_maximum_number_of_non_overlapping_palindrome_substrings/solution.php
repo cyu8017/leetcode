@@ -1,7 +1,27 @@
-﻿// LeetCode 2472 - Maximum Number of Non-overlapping Palindrome Substrings
+<?php
+// LeetCode 2472 - Maximum Number of Non-overlapping Palindrome Substrings
 // https://leetcode.com/problems/maximum-number-of-non-overlapping-palindrome-substrings/
 
 class Solution {
-    function solve() {
+    function maxPalindromes($s, $k) {
+        $n = strlen($s);
+        $isPal = [];
+        for ($i = 0; $i < $n; $i++) $isPal[] = array_fill(0, $n, false);
+        for ($i = 0; $i < $n; $i++) $isPal[$i][$i] = true;
+        for ($i = 0; $i + 1 < $n; $i++) $isPal[$i][$i + 1] = $s[$i] === $s[$i + 1];
+        for ($length = 3; $length <= $n; $length++) {
+            for ($i = 0; $i + $length - 1 < $n; $i++) {
+                $j = $i + $length - 1;
+                $isPal[$i][$j] = $s[$i] === $s[$j] && $isPal[$i + 1][$j - 1];
+            }
+        }
+        $dp = array_fill(0, $n + 1, 0);
+        for ($i = $n - 1; $i >= 0; $i--) {
+            $dp[$i] = $dp[$i + 1];
+            for ($j = $i + $k - 1; $j < $n; $j++) {
+                if ($isPal[$i][$j] && 1 + $dp[$j + 1] > $dp[$i]) $dp[$i] = 1 + $dp[$j + 1];
+            }
+        }
+        return $dp[0];
     }
 }

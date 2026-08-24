@@ -1,4 +1,5 @@
-﻿// LeetCode 0348 - Design Tic-Tac-Toe
+<?php
+// LeetCode 0348 - Design Tic-Tac-Toe
 // https://leetcode.com/problems/design-tic-tac-toe/
 
 class TicTacToe {

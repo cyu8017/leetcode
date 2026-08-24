@@ -1,4 +1,5 @@
-﻿// LeetCode 0320 - Generalized Abbreviation
+<?php
+// LeetCode 0320 - Generalized Abbreviation
 // https://leetcode.com/problems/generalized-abbreviation/
 
 class Solution {

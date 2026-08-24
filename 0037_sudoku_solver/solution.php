@@ -1,4 +1,5 @@
-﻿// LeetCode 0037 - Sudoku Solver
+<?php
+// LeetCode 0037 - Sudoku Solver
 // https://leetcode.com/problems/sudoku-solver/
 
 class Solution {

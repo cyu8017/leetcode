@@ -1,4 +1,5 @@
-﻿// LeetCode 0103 - Binary Tree Zigzag Level Order Traversal
+<?php
+// LeetCode 0103 - Binary Tree Zigzag Level Order Traversal
 // https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
 
 class TreeNode {

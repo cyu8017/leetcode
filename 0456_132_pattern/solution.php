@@ -1,4 +1,5 @@
-﻿// LeetCode 0456 - 132 Pattern
+<?php
+// LeetCode 0456 - 132 Pattern
 // https://leetcode.com/problems/132-pattern/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0060 - Permutation Sequence
+<?php
+// LeetCode 0060 - Permutation Sequence
 // https://leetcode.com/problems/permutation-sequence/
 
 class Solution {

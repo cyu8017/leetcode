@@ -1,4 +1,5 @@
-﻿// LeetCode 0009 - Palindrome Number
+<?php
+// LeetCode 0009 - Palindrome Number
 // https://leetcode.com/problems/palindrome-number/
 
 class Solution {

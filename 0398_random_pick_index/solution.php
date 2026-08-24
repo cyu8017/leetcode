@@ -1,4 +1,5 @@
-﻿// LeetCode 0398 - Random Pick Index
+<?php
+// LeetCode 0398 - Random Pick Index
 // https://leetcode.com/problems/random-pick-index/
 
 class Solution {

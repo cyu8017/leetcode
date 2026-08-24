@@ -1,4 +1,5 @@
-﻿// LeetCode 0349 - Intersection of Two Arrays
+<?php
+// LeetCode 0349 - Intersection of Two Arrays
 // https://leetcode.com/problems/intersection-of-two-arrays/
 
 class Solution {

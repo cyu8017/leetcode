@@ -1,0 +1,721 @@
+
+================================================================================
+FOLDER 3951_minimum_energy_to_maintain_brightness
+================================================================================
+// LeetCode 3951 - Minimum Energy To Maintain Brightness
+// https://leetcode.com/problems/minimum-energy-to-maintain-brightness/
+
+var minEnergy = function(n, brightness, intervals) {
+    intervals.sort((a, b) => a[0] - b[0]);
+    const merged = [];
+    merged.push([intervals[0][0], intervals[0][1]]);
+    for (let i = 1; i < intervals.length; i++) {
+        const x = intervals[i];
+        const last = merged[merged.length - 1];
+        if (last[1] < x[0]) merged.push([x[0], x[1]]);
+        else if (x[1] > last[1]) last[1] = x[1];
+    }
+    let ans = 0;
+    for (const interval of merged) {
+        const m = interval[1] - interval[0] + 1;
+        ans += Math.floor((brightness + 2) / 3) * m;
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3954_sum_of_compatible_numbers_in_range_i
+================================================================================
+// LeetCode 3954 - Sum Of Compatible Numbers In Range I
+// https://leetcode.com/problems/sum-of-compatible-numbers-in-range-i/
+var sumOfGoodIntegers = function(n, k) {
+        let start = Math.max(1, n - k);
+        let end = n + k;
+        let ans = 0;
+        for (let x = start; x <= end; x++) {
+            if ((n & x) == 0) ans += x;
+        }
+        return ans;
+    
+};
+
+================================================================================
+FOLDER 3956_maximum_sum_of_m_non_overlapping_subarrays_i
+================================================================================
+// LeetCode 3956 - Maximum Sum of M Non-Overlapping Subarrays I
+// https://leetcode.com/problems/maximum-sum-of-m-non-overlapping-subarrays-i/
+
+var maxSum = function(nums, m, l, r) {
+    const n = nums.length;
+    const prefix = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) prefix[i + 1] = prefix[i] + nums[i];
+    let dp = new Array(n + 1).fill(0);
+    let bestSelected = -(2 ** 62);
+    for (let count = 1; count <= m; count++) {
+        const next = dp.slice();
+        const deque = [];
+        for (let end = 1; end <= n; end++) {
+            const addIndex = end - l;
+            if (addIndex >= 0) {
+                const value = dp[addIndex] - prefix[addIndex];
+                while (deque.length > 0) {
+                    const last = deque[deque.length - 1];
+                    if (dp[last] - prefix[last] > value) break;
+                    deque.pop();
+                }
+                deque.push(addIndex);
+            }
+            const minIndex = end - r;
+            while (deque.length > 0 && deque[0] < minIndex) deque.shift();
+            if (deque.length > 0) {
+                const candidate = prefix[end] + dp[deque[0]] - prefix[deque[0]];
+                if (candidate > next[end]) next[end] = candidate;
+                if (candidate > bestSelected) bestSelected = candidate;
+            }
+            if (next[end - 1] > next[end]) next[end] = next[end - 1];
+        }
+        dp = next;
+    }
+    return bestSelected;
+};
+
+================================================================================
+FOLDER 3961_maximize_sum_of_device_ratings
+================================================================================
+// LeetCode 3961 - Maximize Sum Of Device Ratings
+// https://leetcode.com/problems/maximize-sum-of-device-ratings/
+var maxRatings = function(units) {
+        let n = units[0].length;
+        if (n == 1) {
+            let ans = 0;
+            for (const x of units) ans += x[0];
+            return ans;
+        }
+        let answer = 0;
+        let mn = 2147483647, mn2 = 2147483647;
+        for (const x of units) {
+            x.sort((a,b)=>a-b);
+            answer += x[1];
+            mn2 = Math.min(mn2, x[1]);
+            mn = Math.min(mn, x[0]);
+        }
+        return answer - (mn2 - mn);
+    
+};
+
+================================================================================
+FOLDER 3962_maximum_subarray_sum_after_at_most_k_swaps
+================================================================================
+// LeetCode 3962 - Maximum Subarray Sum After at Most K Swaps
+// https://leetcode.com/problems/maximum-subarray-sum-after-at-most-k-swaps/
+var maxSubarraySum = function(nums, k) {
+        let n = nums.length;
+        unique = nums.slice();
+        unique.sort((a,b)=>a-b);
+        let u = 0;
+        for (let i = 0; i < unique.length; i++) {
+            if (u == 0 || unique[i] != unique[u - 1]) unique[u++] = unique[i];
+        }
+        unique = unique.slice(0, u);
+        let rank = new Array(n).fill(0);
+        let globalCount = new Array(unique.length + 1).fill(0);
+        let globalSum = new Array(unique.length + 1).fill(0);
+        for (let i = 0; i < n; i++) {
+            rank[i] = lowerBound(unique, nums[i]) + 1;
+            add(globalCount, globalSum, rank[i], 1);
+        }
+        let answer = -(1 << 60);
+        for (let left = 0; left < n; left++) {
+            let insideCount = new Array(unique.length + 1).fill(0);
+            let insideSum = new Array(unique.length + 1).fill(0);
+            let outsideCount = globalCount.slice();
+            let outsideSum = globalSum.slice();
+            let subarraySum = 0;
+            for (let right = left; right < n; right++) {
+                add(outsideCount, outsideSum, rank[right], -1);
+                add(insideCount, insideSum, rank[right], 1);
+                subarraySum += nums[right];
+                let insideSize = right - left + 1;
+                let outsideSize = n - insideSize;
+                let limit = Math.min(k, Math.min(insideSize, outsideSize));
+                let low = 0, high = limit;
+                while (low < high) {
+                    let mid = (low + high + 1) / 2;
+                    let insideValue = unique[kth(insideCount, mid) - 1];
+                    let outsideOrder = outsideSize - mid + 1;
+                    let outsideValue = unique[kth(outsideCount, outsideOrder) - 1];
+                    if (outsideValue > insideValue) low = mid;
+                    else high = mid - 1;
+                }
+                let swaps = low;
+                let gain = 0;
+                if (swaps > 0) {
+                    let smallInside = sumSmallest(insideCount, insideSum, swaps);
+                    let totalOutside = querySum(outsideSum, unique.length);
+                    let largeOutside = totalOutside - sumSmallest(outsideCount, outsideSum, outsideSize - swaps);
+                    gain = largeOutside - smallInside;
+                }
+                answer = Math.max(answer, subarraySum + gain);
+            }
+        }
+        return answer;
+    
+};
+var add = function(count, sum, index, delta) {
+        let value = unique[index - 1];
+        for (; index < count.length; index += index & -index) {
+            count[index] += delta;
+            sum[index] += delta * value;
+        }
+    
+};
+var queryCount = function(bit, index) {
+        let result = 0;
+        for (; index > 0; index -= index & -index) result += bit[index];
+        return result;
+    
+};
+var querySum = function(bit, index) {
+        let result = 0;
+        for (; index > 0; index -= index & -index) result += bit[index];
+        return result;
+    
+};
+var kth = function(bit, order) {
+        let index = 0, step = 1;
+        while ((step << 1) < bit.length) step <<= 1;
+        for (; step > 0; step >>= 1) {
+            let next = index + step;
+            if (next < bit.length && bit[next] < order) {
+                index = next;
+                order -= bit[next];
+            }
+        }
+        return index + 1;
+    
+};
+var sumSmallest = function(count, sum, amount) {
+        if (amount <= 0) return 0;
+        let index = kth(count, amount);
+        let countBefore = queryCount(count, index - 1);
+        let sumBefore = querySum(sum, index - 1);
+        return sumBefore + (amount - countBefore) * unique[index - 1];
+    
+};
+var lowerBound = function(a, x) {
+        let lo = 0, hi = a.length;
+        while (lo < hi) {
+            let mid = (lo + hi) >>> 1;
+            if (a[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    
+};
+
+================================================================================
+FOLDER 3971_maximum_total_value
+================================================================================
+// LeetCode 3971 - Maximum Total Value
+// https://leetcode.com/problems/maximum-total-value/
+var maximumTotalValue = function(value, decay, m) {
+        let mod = 1000000007;
+        if (countAtLeast(value, decay, 1) <= m) {
+            let sum = 0;
+            for (let i = 0; i < value.length; i++) {
+                let terms = (value[i] - 1) / decay[i] + 1;
+                sum = (sum + terms * value[i] - decay[i] * terms * (terms - 1) / 2) % mod;
+            }
+            return sum;
+        }
+        let high = 0;
+        for (const v of value) if (v > high) high = v;
+        let low = 1;
+        while (low < high) {
+            let mid = (low + high + 1) / 2;
+            if (countAtLeast(value, decay, mid) >= m) low = mid;
+            else high = mid - 1;
+        }
+        let threshold = low;
+        let count = 0, sum = 0;
+        for (let i = 0; i < value.length; i++) {
+            if (value[i] < threshold) continue;
+            let terms = (value[i] - threshold) / decay[i] + 1;
+            count += terms;
+            sum = (sum + (terms * value[i] - decay[i] * terms * (terms - 1) / 2) % mod) % mod;
+        }
+        sum = (sum - ((count - m) % mod) * (threshold % mod)) % mod;
+        if (sum < 0) sum += mod;
+        return sum;
+    
+};
+var countAtLeast = function(value, decay, threshold) {
+        let count = 0;
+        for (let i = 0; i < value.length; i++) {
+            if (value[i] >= threshold) count += (value[i] - threshold) / decay[i] + 1;
+        }
+        return count;
+    
+};
+
+================================================================================
+FOLDER 3974_maximum_total_sum_of_k_selected_elements
+================================================================================
+// LeetCode 3974 - Maximum Total Sum Of K Selected Elements
+// https://leetcode.com/problems/maximum-total-sum-of-k-selected-elements/
+var maxSum = function(nums, k, mul) {
+        nums.sort((a,b)=>a-b);
+        let n = nums.length;
+        let ans = 0;
+        for (let i = n - 1; i >= n - k; i--) {
+            let m = Math.max(1, mul);
+            ans += nums[i] * m;
+            mul--;
+        }
+        return ans;
+    
+};
+
+================================================================================
+FOLDER 3975_filter_occupied_intervals
+================================================================================
+// LeetCode 3975 - Filter Occupied Intervals
+// https://leetcode.com/problems/filter-occupied-intervals/
+
+var filterOccupiedIntervals = function(occupiedIntervals, freeStart, freeEnd) {
+    occupiedIntervals.sort((a, b) => a[0] - b[0]);
+    const busy = [];
+    busy.push([occupiedIntervals[0][0], occupiedIntervals[0][1]]);
+    for (let i = 1; i < occupiedIntervals.length; i++) {
+        const cur = occupiedIntervals[i];
+        const last = busy[busy.length - 1];
+        if (last[1] + 1 < cur[0]) busy.push([cur[0], cur[1]]);
+        else if (cur[1] > last[1]) last[1] = cur[1];
+    }
+    const ans = [];
+    for (const it of busy) {
+        const s = it[0], e = it[1];
+        if (e < freeStart || s > freeEnd) ans.push([s, e]);
+        else {
+            if (s < freeStart) ans.push([s, freeStart - 1]);
+            if (e > freeEnd) ans.push([freeEnd + 1, e]);
+        }
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3977_minimum_time_to_reach_target_with_limited_power
+================================================================================
+// LeetCode 3977 - Minimum Time to Reach Target With Limited Power
+// https://leetcode.com/problems/minimum-time-to-reach-target-with-limited-power/
+
+var minTimeMaxPower = function(n, edges, power, cost, source, target) {
+    const INF = 2 ** 62;
+    const g = Array.from({length: n}, () => []);
+    for (const e of edges) g[e[0]].push([e[1], e[2]]);
+    const dist = Array.from({length: n}, () => new Array(power + 1).fill(INF));
+    const pq = [[0, -power, source]];
+    dist[source][power] = 0;
+    while (pq.length) {
+        pq.sort((a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]);
+        const cur = pq.shift();
+        let d = cur[0], p = -cur[1], u = cur[2];
+        if (u === target) return [d, p];
+        if (d > dist[u][p] || p < cost[u]) continue;
+        p -= cost[u];
+        for (const e of g[u]) {
+            const v = e[0], t = e[1];
+            const nd = d + t;
+            if (nd < dist[v][p]) {
+                dist[v][p] = nd;
+                pq.push([nd, -p, v]);
+            }
+        }
+    }
+    return [-1, -1];
+};
+
+================================================================================
+FOLDER 3981_count_distinct_ways_to_form_target_from_two_strings
+================================================================================
+// LeetCode 3981 - Count Distinct Ways to Form Target from Two Strings
+// https://leetcode.com/problems/count-distinct-ways-to-form-target-from-two-strings/
+var countWays = function(word1, word2, target) {
+        let mod = 1000000007;
+        let n1 = word1.length, n2 = word2.length;
+        let size = (n1 + 1) * (n2 + 1) * 4;
+        let dp = new Array(size).fill(0), next = new Array(size).fill(0);
+        dp[index(0, 0, 0, n2)] = 1;
+        for (let ti = 0; ti < target.length; ti++) {
+            let ch = target[ti];
+            next.fill(0);
+            for (let j = 0; j <= n2; j++) {
+                let prefix = new Array(4).fill(0);
+                for (let a = 0; a < n1; a++) {
+                    for (let mask = 0; mask < 4; mask++) {
+                        prefix[mask] += dp[index(a, j, mask, n2)];
+                        if (prefix[mask] >= mod) prefix[mask] -= mod;
+                    }
+                    if (word1[a] == ch) {
+                        for (let mask = 0; mask < 4; mask++) {
+                            let at = index(a + 1, j, mask | 1, n2);
+                            next[at] += prefix[mask];
+                            if (next[at] >= mod) next[at] -= mod;
+                        }
+                    }
+                }
+            }
+            for (let i = 0; i <= n1; i++) {
+                let prefix = new Array(4).fill(0);
+                for (let b = 0; b < n2; b++) {
+                    for (let mask = 0; mask < 4; mask++) {
+                        prefix[mask] += dp[index(i, b, mask, n2)];
+                        if (prefix[mask] >= mod) prefix[mask] -= mod;
+                    }
+                    if (word2[b] == ch) {
+                        for (let mask = 0; mask < 4; mask++) {
+                            let at = index(i, b + 1, mask | 2, n2);
+                            next[at] += prefix[mask];
+                            if (next[at] >= mod) next[at] -= mod;
+                        }
+                    }
+                }
+            }
+            let tmp = dp; dp = next; next = tmp;
+        }
+        let answer = 0;
+        for (let i = 0; i <= n1; i++) {
+            for (let j = 0; j <= n2; j++) {
+                answer += dp[index(i, j, 3, n2)];
+                if (answer >= mod) answer -= mod;
+            }
+        }
+        return answer;
+    
+};
+var index = function(i, j, mask, n2) {
+        return ((i * (n2 + 1) + j) * 4) + mask;
+    
+};
+
+================================================================================
+FOLDER 3987_minimum_total_cost_to_process_all_elements
+================================================================================
+// LeetCode 3987 - Minimum Total Cost to Process All Elements
+// https://leetcode.com/problems/minimum-total-cost-to-process-all-elements/
+var minimumCost = function(nums, k) {
+        let mod = 1000000007;
+        let cnt = 0;
+        let cur = k;
+        for (const x0 of nums) {
+            let x = x0;
+            let diff = x - cur;
+            if (diff > 0) {
+                let m = (diff + k - 1) / k;
+                cur += m * k;
+                cnt += m;
+            }
+            cur -= x;
+        }
+        cnt %= mod;
+        return ((cnt + 1) * cnt / 2 % mod);
+    
+};
+
+================================================================================
+FOLDER 3989_maximum_consistent_columns_in_a_grid
+================================================================================
+// LeetCode 3989 - Maximum Consistent Columns in a Grid
+// https://leetcode.com/problems/maximum-consistent-columns-in-a-grid/
+var maxConsistentColumns = function(grid, limit) {
+        let m = grid.length;
+        let n = grid[0].length;
+        let dp = new Array(n).fill(0);
+        let ans = 1;
+        for (let j = 0; j < n; j++) {
+            dp[j] = 1;
+            for (let i = 0; i < j; i++) {
+                if (dp[i] + 1 <= dp[j]) continue;
+                let ok = true;
+                for (let r = 0; r < m; r++) {
+                    let d = Math.abs(grid[r][j] - grid[r][i]);
+                    if (d > limit) { ok = false; break; }
+                }
+                if (ok) dp[j] = dp[i] + 1;
+            }
+            if (dp[j] > ans) ans = dp[j];
+        }
+        return ans;
+    
+};
+
+================================================================================
+FOLDER 3992_rearrange_string_to_avoid_character_pair
+================================================================================
+// LeetCode 3992 - Rearrange String to Avoid Character Pair
+// https://leetcode.com/problems/rearrange-string-to-avoid-character-pair/
+var rearrangeString = function(s, x, y) {
+        let arr = s.split('');
+        let i = 0;
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] == y) {
+                let tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+                i++;
+            }
+        }
+        return new String(arr);
+    
+};
+
+================================================================================
+FOLDER 3994_minimum_adjacent_swaps_to_partition_array
+================================================================================
+// LeetCode 3994 - Minimum Adjacent Swaps to Partition Array
+// https://leetcode.com/problems/minimum-adjacent-swaps-to-partition-array/
+var minAdjacentSwaps = function(nums, a, b) {
+        let MOD = 1000000007;
+        let result = 0, cnt1 = 0, cnt2 = 0;
+        for (const x of nums) {
+            if (x < a) {
+                result = (result + cnt1 + cnt2) % MOD;
+            } else if (x <= b) {
+                ++cnt1;
+                result = (result + cnt2) % MOD;
+            } else {
+                ++cnt2;
+            }
+        }
+        return result;
+    
+};
+
+================================================================================
+FOLDER 3998_transform_binary_string_using_subsequence_sort
+================================================================================
+// LeetCode 3998 - Transform Binary String Using Subsequence Sort
+// https://leetcode.com/problems/transform-binary-string-using-subsequence-sort/
+var transformStr = function(s, strs) {
+        let n = s.length;
+        let prefix = new Array(n + 1).fill(0);
+        for (let i = 0; i < n; i++) prefix[i + 1] = prefix[i] + (s[i] == '1' ? 1 : 0);
+        let result = new Array(strs.length).fill(false);
+        for (let i = 0; i < strs.length; i++) {
+            let left = 0, right = 0;
+            let ok = true;
+            for (let j = 0; j < n; j++) {
+                left += (strs[i][j] == '1' ? 1 : 0);
+                let add = (strs[i][j] != '0' ? 1 : 0);
+                right = right + add;
+                if (right > prefix[j + 1]) right = prefix[j + 1];
+                if (left > right) {
+                    ok = false;
+                    break;
+                }
+            }
+            result[i] = ok && left <= prefix[n] && prefix[n] <= right;
+        }
+        return result;
+    
+};
+
+================================================================================
+FOLDER 4001_aggregate_two_time_series
+================================================================================
+// LeetCode 4001 - Aggregate Two Time Series
+// https://leetcode.com/problems/aggregate-two-time-series/
+
+var aggregateTimeSeries = function(series1, series2) {
+    const m = series1.length, n = series2.length;
+    let i = 0, j = 0;
+    const ans = [];
+    while (i < m && j < n) {
+        const t1 = series1[i][0], v1 = series1[i][1];
+        const t2 = series2[j][0], v2 = series2[j][1];
+        if (t1 === t2) {
+            ans.push([t1, v1 + v2]);
+            i++;
+            j++;
+        } else if (t1 < t2) {
+            ans.push([t1, v1 + v2]);
+            i++;
+        } else {
+            ans.push([t2, v1 + v2]);
+            j++;
+        }
+    }
+    while (i < m) {
+        ans.push([series1[i][0], series1[i][1]]);
+        i++;
+    }
+    while (j < n) {
+        ans.push([series2[j][0], series2[j][1]]);
+        j++;
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 4004_minimum_moves_to_balance_circular_array_ii
+================================================================================
+// LeetCode 4004 - Minimum Moves to Balance Circular Array II
+// https://leetcode.com/problems/minimum-moves-to-balance-circular-array-ii/
+
+const INF = 1000000000;
+
+function Edge(to, cap, cost, rev) {
+    this.to = to; this.cap = cap; this.cost = cost; this.rev = rev;
+}
+
+function MinCostMaxFlow(n_) {
+    this.n = n_;
+    this.graph = Array.from({length: n_}, () => []);
+}
+MinCostMaxFlow.prototype.addEdge = function(u, v, cap, cost) {
+    this.graph[u].push(new Edge(v, cap, cost, this.graph[v].length));
+    this.graph[v].push(new Edge(u, 0, -cost, this.graph[u].length - 1));
+};
+MinCostMaxFlow.prototype.minCostFlow = function(source, sink, maxFlow) {
+    let totalCost = 0;
+    let currentFlow = 0;
+    const n = this.n;
+    const graph = this.graph;
+    while (currentFlow < maxFlow) {
+        const dist = new Array(n).fill(INF);
+        const parentNode = new Array(n).fill(-1);
+        const parentEdge = new Array(n).fill(-1);
+        const inQueue = new Array(n).fill(false);
+        const q = [];
+        q.push(source);
+        dist[source] = 0;
+        inQueue[source] = true;
+        while (q.length > 0) {
+            const u = q.shift();
+            inQueue[u] = false;
+            for (let i = 0; i < graph[u].length; i++) {
+                const e = graph[u][i];
+                if (e.cap > 0 && dist[e.to] > dist[u] + e.cost) {
+                    dist[e.to] = dist[u] + e.cost;
+                    parentNode[e.to] = u;
+                    parentEdge[e.to] = i;
+                    if (!inQueue[e.to]) {
+                        inQueue[e.to] = true;
+                        q.push(e.to);
+                    }
+                }
+            }
+        }
+        if (dist[sink] === INF) return -1;
+        let pushFlow = maxFlow - currentFlow;
+        for (let cur = sink; cur !== source; cur = parentNode[cur]) {
+            const e = graph[parentNode[cur]][parentEdge[cur]];
+            if (e.cap < pushFlow) pushFlow = e.cap;
+        }
+        for (let cur = sink; cur !== source; cur = parentNode[cur]) {
+            const p = parentNode[cur];
+            const idx = parentEdge[cur];
+            const rev = graph[p][idx].rev;
+            graph[p][idx].cap -= pushFlow;
+            graph[cur][rev].cap += pushFlow;
+        }
+        currentFlow += pushFlow;
+        totalCost += pushFlow * dist[sink];
+    }
+    return totalCost;
+};
+
+var minMoves = function(balance) {
+    let totalBalance = 0, totalDeficit = 0;
+    for (const x of balance) {
+        totalBalance += x;
+        if (x < 0) totalDeficit += -x;
+    }
+    if (totalBalance < 0) return -1;
+    if (totalDeficit === 0) return 0;
+    const n = balance.length;
+    const source = n, sink = n + 1;
+    const mcmf = new MinCostMaxFlow(n + 2);
+    for (let i = 0; i < n; i++) {
+        const x = balance[i];
+        if (x > 0) mcmf.addEdge(source, i, x, 0);
+        else if (x < 0) mcmf.addEdge(i, sink, -x, 0);
+        mcmf.addEdge(i, (i + 1) % n, INF, 1);
+        mcmf.addEdge(i, (i - 1 + n) % n, INF, 1);
+    }
+    return mcmf.minCostFlow(source, sink, totalDeficit);
+};
+
+================================================================================
+FOLDER 4011_count_subarrays_with_even_odd_ratio_i
+================================================================================
+// LeetCode 4011 - Count Subarrays With Even Odd Ratio I
+// https://leetcode.com/problems/count-subarrays-with-even-odd-ratio-i/
+var countRatioSubarrays = function(nums, a, b) {
+        let n = nums.length;
+        let ans = 0;
+        for (let i = 0; i < n; i++) {
+            let y = 0;
+            for (let j = i; j < n; j++) {
+                y += nums[j] % 2;
+                let x = j - i + 1 - y;
+                if (y > 0 && x * b <= y * a) ans++;
+            }
+        }
+        return ans;
+    
+};
+
+================================================================================
+FOLDER 4013_count_subarrays_with_even_odd_ratio_ii
+================================================================================
+// LeetCode 4013 - Count Subarrays With Even Odd Ratio II
+// https://leetcode.com/problems/count-subarrays-with-even-odd-ratio-ii/
+
+var countRatioSubarrays = function(nums, a, b) {
+    const n = nums.length;
+    const s = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) {
+        if (nums[i] % 2 === 1) s[i + 1] = s[i] + a;
+        else s[i + 1] = s[i] - b;
+    }
+    let st = s.slice();
+    st.sort((x, y) => x - y);
+    let uniq = 0;
+    for (let i = 0; i < st.length; i++) {
+        if (uniq === 0 || st[i] !== st[uniq - 1]) st[uniq++] = st[i];
+    }
+    st = st.slice(0, uniq);
+    const bit = new BIT(st.length + 1);
+    let ans = 0;
+    for (const v of s) {
+        const x = lowerBound(st, v) + 1;
+        ans += bit.query(x);
+        bit.update(x, 1);
+    }
+    return ans;
+};
+
+function lowerBound(a, x) {
+    let lo = 0, hi = a.length;
+    while (lo < hi) {
+        const mid = (lo + hi) >>> 1;
+        if (a[mid] < x) lo = mid + 1;
+        else hi = mid;
+    }
+    return lo;
+}
+
+function BIT(n) {
+    this.n = n;
+    this.c = new Array(n + 1).fill(0);
+}
+BIT.prototype.update = function(x, delta) {
+    for (; x <= this.n; x += x & -x) this.c[x] += delta;
+};
+BIT.prototype.query = function(x) {
+    let sum = 0;
+    for (; x > 0; x -= x & -x) sum += this.c[x];
+    return sum;
+};

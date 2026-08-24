@@ -1,4 +1,5 @@
-﻿// LeetCode 0022 - Generate Parentheses
+<?php
+// LeetCode 0022 - Generate Parentheses
 // https://leetcode.com/problems/generate-parentheses/
 
 class Solution {

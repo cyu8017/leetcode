@@ -1,4 +1,5 @@
-﻿// LeetCode 0416 - Partition Equal Subset Sum
+<?php
+// LeetCode 0416 - Partition Equal Subset Sum
 // https://leetcode.com/problems/partition-equal-subset-sum/
 
 class Solution {

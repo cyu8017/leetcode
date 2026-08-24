@@ -1,4 +1,5 @@
-﻿// LeetCode 0359 - Logger Rate Limiter
+<?php
+// LeetCode 0359 - Logger Rate Limiter
 // https://leetcode.com/problems/logger-rate-limiter/
 
 class Logger {

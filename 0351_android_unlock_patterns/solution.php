@@ -1,4 +1,5 @@
-﻿// LeetCode 0351 - Android Unlock Patterns
+<?php
+// LeetCode 0351 - Android Unlock Patterns
 // https://leetcode.com/problems/android-unlock-patterns/
 
 class Solution {

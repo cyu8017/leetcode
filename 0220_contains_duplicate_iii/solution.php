@@ -1,4 +1,5 @@
-﻿// LeetCode 0220 - Contains Duplicate III
+<?php
+// LeetCode 0220 - Contains Duplicate III
 // https://leetcode.com/problems/contains-duplicate-iii/
 
 class Solution {

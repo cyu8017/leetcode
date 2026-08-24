@@ -1,4 +1,5 @@
-﻿// LeetCode 0280 - Wiggle Sort
+<?php
+// LeetCode 0280 - Wiggle Sort
 // https://leetcode.com/problems/wiggle-sort/
 
 class Solution {

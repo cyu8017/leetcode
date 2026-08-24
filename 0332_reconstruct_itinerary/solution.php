@@ -1,4 +1,5 @@
-﻿// LeetCode 0332 - Reconstruct Itinerary
+<?php
+// LeetCode 0332 - Reconstruct Itinerary
 // https://leetcode.com/problems/reconstruct-itinerary/
 
 class Solution {

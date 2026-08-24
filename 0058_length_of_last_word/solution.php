@@ -1,4 +1,5 @@
-﻿// LeetCode 0058 - Length of Last Word
+<?php
+// LeetCode 0058 - Length of Last Word
 // https://leetcode.com/problems/length-of-last-word/
 
 class Solution {

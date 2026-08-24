@@ -1,4 +1,5 @@
-﻿// LeetCode 0375 - Guess Number Higher or Lower II
+<?php
+// LeetCode 0375 - Guess Number Higher or Lower II
 // https://leetcode.com/problems/guess-number-higher-or-lower-ii/
 
 class Solution {

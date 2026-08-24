@@ -1,4 +1,5 @@
-﻿// LeetCode 0469 - Convex Polygon
+<?php
+// LeetCode 0469 - Convex Polygon
 // https://leetcode.com/problems/convex-polygon/
 
 class Solution {

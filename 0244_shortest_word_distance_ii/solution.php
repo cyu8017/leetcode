@@ -1,4 +1,5 @@
-﻿// LeetCode 0244 - Shortest Word Distance II
+<?php
+// LeetCode 0244 - Shortest Word Distance II
 // https://leetcode.com/problems/shortest-word-distance-ii/
 
 class WordDistance {

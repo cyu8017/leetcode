@@ -1,4 +1,5 @@
-﻿// LeetCode 0286 - Walls and Gates
+<?php
+// LeetCode 0286 - Walls and Gates
 // https://leetcode.com/problems/walls-and-gates/
 
 class Solution {

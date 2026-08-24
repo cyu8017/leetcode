@@ -1,4 +1,5 @@
-﻿// LeetCode 0046 - Permutations
+<?php
+// LeetCode 0046 - Permutations
 // https://leetcode.com/problems/permutations/
 
 class Solution {

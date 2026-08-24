@@ -1,4 +1,5 @@
-﻿// LeetCode 0422 - Valid Word Square
+<?php
+// LeetCode 0422 - Valid Word Square
 // https://leetcode.com/problems/valid-word-square/
 
 class Solution {

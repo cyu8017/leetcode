@@ -1,7 +1,15 @@
-﻿// LeetCode 2631 - Group By
+<?php
+// LeetCode 2631 - Group By
 // https://leetcode.com/problems/group-by/
 
 class Solution {
-    function solve() {
+    function groupBy($array, $fn) {
+        $out = [];
+        foreach ($array as $x) {
+            $k = $fn($x);
+            if (!isset($out[$k])) $out[$k] = [];
+            $out[$k][] = $x;
+        }
+        return $out;
     }
 }

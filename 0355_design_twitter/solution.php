@@ -1,4 +1,5 @@
-﻿// LeetCode 0355 - Design Twitter
+<?php
+// LeetCode 0355 - Design Twitter
 // https://leetcode.com/problems/design-twitter/
 
 class Twitter {

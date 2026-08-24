@@ -1,4 +1,5 @@
-﻿class Solution {
+<?php
+class Solution {
     function numDistinct($s, $t) {
         $dp = array_fill(0, strlen($t) + 1, 0);
         $dp[0] = 1;

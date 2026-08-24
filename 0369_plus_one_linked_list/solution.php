@@ -1,4 +1,5 @@
-﻿// LeetCode 0369 - Plus One Linked List
+<?php
+// LeetCode 0369 - Plus One Linked List
 // https://leetcode.com/problems/plus-one-linked-list/
 
 class ListNode {

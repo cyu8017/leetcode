@@ -1,4 +1,5 @@
-﻿// LeetCode 0174 - Dungeon Game
+<?php
+// LeetCode 0174 - Dungeon Game
 // https://leetcode.com/problems/dungeon-game/
 
 class Solution {

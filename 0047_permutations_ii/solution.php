@@ -1,4 +1,5 @@
-﻿// LeetCode 0047 - Permutations II
+<?php
+// LeetCode 0047 - Permutations II
 // https://leetcode.com/problems/permutations-ii/
 
 class Solution {

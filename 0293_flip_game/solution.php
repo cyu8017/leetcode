@@ -1,4 +1,5 @@
-﻿// LeetCode 0293 - Flip Game
+<?php
+// LeetCode 0293 - Flip Game
 // https://leetcode.com/problems/flip-game/
 
 class Solution {

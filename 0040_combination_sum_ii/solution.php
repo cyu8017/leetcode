@@ -1,4 +1,5 @@
-﻿// LeetCode 0040 - Combination Sum II
+<?php
+// LeetCode 0040 - Combination Sum II
 // https://leetcode.com/problems/combination-sum-ii/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0279 - Perfect Squares
+<?php
+// LeetCode 0279 - Perfect Squares
 // https://leetcode.com/problems/perfect-squares/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0270 - Closest Binary Search Tree Value
+<?php
+// LeetCode 0270 - Closest Binary Search Tree Value
 // https://leetcode.com/problems/closest-binary-search-tree-value/
 
 class TreeNode {

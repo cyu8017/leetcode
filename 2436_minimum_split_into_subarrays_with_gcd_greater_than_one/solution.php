@@ -1,7 +1,26 @@
-﻿// LeetCode 2436 - Minimum Split Into Subarrays With GCD Greater Than One
+<?php
+// LeetCode 2436 - Minimum Split Into Subarrays With GCD Greater Than One
 // https://leetcode.com/problems/minimum-split-into-subarrays-with-gcd-greater-than-one/
 
 class Solution {
-    function solve() {
+    function minimumSplits($nums) {
+        $gcd = function ($a, $b) {
+            while ($b !== 0) {
+                $t = $a % $b;
+                $a = $b;
+                $b = $t;
+            }
+            return $a;
+        };
+        $ans = 1;
+        $g = $nums[0];
+        for ($i = 1; $i < count($nums); $i++) {
+            $ng = $gcd($g, $nums[$i]);
+            if ($ng === 1) {
+                $ans++;
+                $g = $nums[$i];
+            } else $g = $ng;
+        }
+        return $ans;
     }
 }

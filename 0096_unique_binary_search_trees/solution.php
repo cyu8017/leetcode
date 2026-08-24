@@ -1,3 +1,4 @@
+<?php
 // LeetCode 0096 - Unique Binary Search Trees
 // https://leetcode.com/problems/unique-binary-search-trees/
 

@@ -1,4 +1,5 @@
-﻿// LeetCode 0176 - Second Highest Salary
+<?php
+// LeetCode 0176 - Second Highest Salary
 // https://leetcode.com/problems/second-highest-salary/
 
 const QUERY = <<<'SQL'

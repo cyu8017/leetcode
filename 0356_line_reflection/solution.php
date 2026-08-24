@@ -1,4 +1,5 @@
-﻿// LeetCode 0356 - Line Reflection
+<?php
+// LeetCode 0356 - Line Reflection
 // https://leetcode.com/problems/line-reflection/
 
 class Solution {

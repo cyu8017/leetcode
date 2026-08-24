@@ -1,4 +1,5 @@
-﻿// LeetCode 0208 - Implement Trie (Prefix Tree)
+<?php
+// LeetCode 0208 - Implement Trie (Prefix Tree)
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 
 class TrieNode {

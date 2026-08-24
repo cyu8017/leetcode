@@ -1,4 +1,5 @@
-﻿// LeetCode 0093 - Restore IP Addresses
+<?php
+// LeetCode 0093 - Restore IP Addresses
 // https://leetcode.com/problems/restore-ip-addresses/
 
 class Solution {

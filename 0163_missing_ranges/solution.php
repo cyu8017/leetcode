@@ -1,4 +1,5 @@
-﻿// LeetCode 0163 - Missing Ranges
+<?php
+// LeetCode 0163 - Missing Ranges
 // https://leetcode.com/problems/missing-ranges/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0295 - Find Median from Data Stream
+<?php
+// LeetCode 0295 - Find Median from Data Stream
 // https://leetcode.com/problems/find-median-from-data-stream/
 
 class MedianFinder {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0170 - Two Sum III - Data structure design
+<?php
+// LeetCode 0170 - Two Sum III - Data structure design
 // https://leetcode.com/problems/two-sum-iii-data-structure-design/
 
 class TwoSum {

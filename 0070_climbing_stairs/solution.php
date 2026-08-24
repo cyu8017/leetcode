@@ -1,4 +1,5 @@
-﻿// LeetCode 0070 - Climbing Stairs
+<?php
+// LeetCode 0070 - Climbing Stairs
 // https://leetcode.com/problems/climbing-stairs/
 
 class Solution {

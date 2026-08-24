@@ -1,4 +1,5 @@
-﻿// LeetCode 0180 - Consecutive Numbers
+<?php
+// LeetCode 0180 - Consecutive Numbers
 // https://leetcode.com/problems/consecutive-numbers/
 
 const QUERY = <<<'SQL'

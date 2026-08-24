@@ -1,4 +1,5 @@
-﻿// LeetCode 0006 - Zigzag Conversion
+<?php
+// LeetCode 0006 - Zigzag Conversion
 // https://leetcode.com/problems/zigzag-conversion/
 
 class Solution {

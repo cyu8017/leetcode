@@ -1,0 +1,809 @@
+================================================================================
+FOLDER 3229_minimum_operations_to_make_array_equal_to_target
+CONFIG class=Solution method=minimumOperations params=['nums', 'target'] kind=None
+----------------------------------------
+// LeetCode 3229 - Minimum Operations to Make Array Equal to Target
+// https://leetcode.com/problems/minimum-operations-to-make-array-equal-to-target/
+
+var minimumOperations = function(nums, target) {
+    let f = Math.abs(target[0] - nums[0]);
+    for (let i = 1; i < target.length; i++) {
+        const x = target[i] - nums[i];
+        const y = target[i - 1] - nums[i - 1];
+        if (x * y > 0) {
+            const d = Math.abs(x) - Math.abs(y);
+            if (d > 0) f += d;
+        } else {
+            f += Math.abs(x);
+        }
+    }
+    return f;
+};
+
+================================================================================
+FOLDER 3231_minimum_number_of_increasing_subsequence_to_be_removed
+CONFIG class=Solution method=solve params=['nums'] kind=None
+----------------------------------------
+// LeetCode 3231 - Minimum Number of Increasing Subsequence to Be Removed
+// https://leetcode.com/problems/minimum-number-of-increasing-subsequence-to-be-removed/
+
+var minOperations = function(nums) {
+    const g = [];
+    for (const x of nums) {
+        let l = 0, r = g.length;
+        while (l < r) {
+            const mid = (l + r) >> 1;
+            if (g[mid] < x) r = mid;
+            else l = mid + 1;
+        }
+        if (l === g.length) g.push(x);
+        else g[l] = x;
+    }
+    return g.length;
+};
+
+================================================================================
+FOLDER 3232_find_if_digit_game_can_be_won
+CONFIG class=Solution method=canAliceWin params=['nums'] kind=None
+----------------------------------------
+// LeetCode 3232 - Find if Digit Game Can Be Won
+// https://leetcode.com/problems/find-if-digit-game-can-be-won/
+
+var canAliceWin = function(nums) {
+    let a = 0, b = 0;
+    for (const x of nums) {
+        if (x < 10) a += x;
+        else b += x;
+    }
+    return a !== b;
+};
+
+================================================================================
+FOLDER 3233_find_the_count_of_numbers_which_are_not_special
+CONFIG class=Solution method=nonSpecialCount params=['l', 'r'] kind=None
+----------------------------------------
+// LeetCode 3233 - Find the Count of Numbers Which Are Not Special
+// https://leetcode.com/problems/find-the-count-of-numbers-which-are-not-special/
+
+var nonSpecialCount = function(l, r) {
+    const M = 31623;
+    if (!nonSpecialCount._primes) {
+        const primes = new Array(M + 1).fill(true);
+        primes[0] = primes[1] = false;
+        for (let i = 2; i <= M; i++) {
+            if (primes[i]) {
+                for (let j = i * 2; j <= M; j += i) primes[j] = false;
+            }
+        }
+        nonSpecialCount._primes = primes;
+    }
+    const primes = nonSpecialCount._primes;
+    const lo = Math.ceil(Math.sqrt(l));
+    const hi = Math.floor(Math.sqrt(r));
+    let cnt = 0;
+    for (let i = lo; i <= hi; i++) if (primes[i]) cnt++;
+    return r - l + 1 - cnt;
+};
+
+================================================================================
+FOLDER 3234_count_the_number_of_substrings_with_dominant_ones
+CONFIG class=Solution method=numberOfSubstrings params=['s'] kind=None
+----------------------------------------
+// LeetCode 3234 - Count the Number of Substrings With Dominant Ones
+// https://leetcode.com/problems/count-the-number-of-substrings-with-dominant-ones/
+
+var numberOfSubstrings = function(s) {
+    const n = s.length;
+    const nxt = new Array(n + 1);
+    nxt[n] = n;
+    for (let i = n - 1; i >= 0; i--) {
+        nxt[i] = nxt[i + 1];
+        if (s[i] === '0') nxt[i] = i;
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        let cnt0 = s[i] === '0' ? 1 : 0;
+        let j = i;
+        while (j < n && cnt0 * cnt0 <= n) {
+            const cnt1 = nxt[j + 1] - i - cnt0;
+            if (cnt1 >= cnt0 * cnt0) {
+                ans += Math.min(nxt[j + 1] - j, cnt1 - cnt0 * cnt0 + 1);
+            }
+            j = nxt[j + 1];
+            cnt0++;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3235_check_if_the_rectangle_corner_is_reachable
+CONFIG class=Solution method=canReachCorner params=['xCorner', 'yCorner', 'circles'] kind=None
+----------------------------------------
+// LeetCode 3235 - Check if the Rectangle Corner Is Reachable
+// https://leetcode.com/problems/check-if-the-rectangle-corner-is-reachable/
+
+var canReachCorner = function(xCorner, yCorner, circles) {
+    const n = circles.length;
+    const vis = new Array(n).fill(false);
+    const inCircle = (x, y, cx, cy, r) => {
+        const dx = x - cx, dy = y - cy;
+        return dx * dx + dy * dy <= r * r;
+    };
+    const crossLeftTop = (cx, cy, r) => {
+        const a = Math.abs(cx) <= r && cy >= 0 && cy <= yCorner;
+        const b = Math.abs(cy - yCorner) <= r && cx >= 0 && cx <= xCorner;
+        return a || b;
+    };
+    const crossRightBottom = (cx, cy, r) => {
+        const a = Math.abs(cx - xCorner) <= r && cy >= 0 && cy <= yCorner;
+        const b = Math.abs(cy) <= r && cx >= 0 && cx <= xCorner;
+        return a || b;
+    };
+    const dfs = (i) => {
+        const [x1, y1, r1] = circles[i];
+        if (crossRightBottom(x1, y1, r1)) return true;
+        vis[i] = true;
+        for (let j = 0; j < n; j++) {
+            if (vis[j]) continue;
+            const [x2, y2, r2] = circles[j];
+            if ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) > (r1 + r2) * (r1 + r2)) continue;
+            if (x1 * r2 + x2 * r1 < (r1 + r2) * xCorner
+                && y1 * r2 + y2 * r1 < (r1 + r2) * yCorner
+                && dfs(j)) return true;
+        }
+        return false;
+    };
+    for (let i = 0; i < n; i++) {
+        const [x, y, r] = circles[i];
+        if (inCircle(0, 0, x, y, r) || inCircle(xCorner, yCorner, x, y, r)) return false;
+        if (!vis[i] && crossLeftTop(x, y, r) && dfs(i)) return false;
+    }
+    return true;
+};
+
+================================================================================
+FOLDER 3237_alt_and_tab_simulation
+CONFIG class=Solution method=solve params=['windows', 'queries'] kind=None
+----------------------------------------
+// LeetCode 3237 - Alt and Tab Simulation
+// https://leetcode.com/problems/alt-and-tab-simulation/
+
+var simulationResult = function(windows, queries) {
+    const n = windows.length;
+    const s = new Array(n + 1).fill(false);
+    const ans = [];
+    for (let i = queries.length - 1; i >= 0; i--) {
+        const q = queries[i];
+        if (!s[q]) { s[q] = true; ans.push(q); }
+    }
+    for (const w of windows) if (!s[w]) ans.push(w);
+    return ans;
+};
+
+================================================================================
+FOLDER 3238_find_the_number_of_winning_players
+CONFIG class=Solution method=winningPlayerCount params=['n', 'pick'] kind=None
+----------------------------------------
+// LeetCode 3238 - Find the Number of Winning Players
+// https://leetcode.com/problems/find-the-number-of-winning-players/
+
+var winningPlayerCount = function(n, pick) {
+    const cnt = Array.from({length: n}, () => new Array(11).fill(0));
+    const s = new Set();
+    for (const p of pick) {
+        const x = p[0], y = p[1];
+        cnt[x][y]++;
+        if (cnt[x][y] > x) s.add(x);
+    }
+    return s.size;
+};
+
+================================================================================
+FOLDER 3239_minimum_number_of_flips_to_make_binary_grid_palindromic_i
+CONFIG class=Solution method=minFlips params=['grid'] kind=None
+----------------------------------------
+// LeetCode 3239 - Minimum Number of Flips to Make Binary Grid Palindromic I
+// https://leetcode.com/problems/minimum-number-of-flips-to-make-binary-grid-palindromic-i/
+
+var minFlips = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let cnt1 = 0, cnt2 = 0;
+    for (const row of grid) {
+        for (let j = 0; j < n / 2; j++) if (row[j] !== row[n - j - 1]) cnt1++;
+    }
+    for (let j = 0; j < n; j++) {
+        for (let i = 0; i < m / 2; i++) if (grid[i][j] !== grid[m - i - 1][j]) cnt2++;
+    }
+    return Math.min(cnt1, cnt2);
+};
+
+================================================================================
+FOLDER 3240_minimum_number_of_flips_to_make_binary_grid_palindromic_ii
+CONFIG class=Solution method=minFlips params=['grid'] kind=None
+----------------------------------------
+// LeetCode 3240 - Minimum Number of Flips to Make Binary Grid Palindromic II
+// https://leetcode.com/problems/minimum-number-of-flips-to-make-binary-grid-palindromic-ii/
+
+var minFlips = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let ans = 0;
+    for (let i = 0; i < Math.floor(m / 2); i++) {
+        for (let j = 0; j < Math.floor(n / 2); j++) {
+            const x = m - i - 1, y = n - j - 1;
+            const cnt1 = grid[i][j] + grid[x][j] + grid[i][y] + grid[x][y];
+            ans += Math.min(cnt1, 4 - cnt1);
+        }
+    }
+    if (m % 2 === 1 && n % 2 === 1) ans += grid[Math.floor(m / 2)][Math.floor(n / 2)];
+    let diff = 0, ones = 0;
+    if (m % 2 === 1) {
+        for (let j = 0; j < Math.floor(n / 2); j++) {
+            if (grid[Math.floor(m / 2)][j] === grid[Math.floor(m / 2)][n - j - 1]) ones += grid[Math.floor(m / 2)][j] * 2;
+            else diff += 1;
+        }
+    }
+    if (n % 2 === 1) {
+        for (let i = 0; i < Math.floor(m / 2); i++) {
+            if (grid[i][Math.floor(n / 2)] === grid[m - i - 1][Math.floor(n / 2)]) ones += grid[i][Math.floor(n / 2)] * 2;
+            else diff += 1;
+        }
+    }
+    if (ones % 4 === 0 || diff > 0) ans += diff;
+    else ans += 2;
+    return ans;
+};
+
+================================================================================
+FOLDER 3241_time_taken_to_mark_all_nodes
+CONFIG class=Solution method=timeTaken params=['edges'] kind=None
+----------------------------------------
+// LeetCode 3241 - Time Taken to Mark All Nodes
+// https://leetcode.com/problems/time-taken-to-mark-all-nodes/
+
+var timeTaken = function(edges) {
+    const n = edges.length + 1;
+    const ans = new Array(n).fill(0);
+    const tree = Array.from({length: n}, () => []);
+    const dp = Array.from({length: n}, () => ({ top1: {node: 0, time: 0}, top2: {node: 0, time: 0} }));
+    for (const e of edges) { tree[e[0]].push(e[1]); tree[e[1]].push(e[0]); }
+    const getTime = (u) => u % 2 === 0 ? 2 : 1;
+    const dfs = (u, prev) => {
+        let t1 = {node: 0, time: 0}, t2 = {node: 0, time: 0};
+        for (const v of tree[u]) {
+            if (v === prev) continue;
+            const t = dfs(v, u) + getTime(v);
+            if (t >= t1.time) { t2 = t1; t1 = {node: v, time: t}; }
+            else if (t > t2.time) t2 = {node: v, time: t};
+        }
+        dp[u].top1 = t1; dp[u].top2 = t2;
+        return t1.time;
+    };
+    const reroot = (u, prev, maxTime) => {
+        ans[u] = maxTime;
+        if (dp[u].top1.time > ans[u]) ans[u] = dp[u].top1.time;
+        for (const v of tree[u]) {
+            if (v === prev) continue;
+            let side = dp[u].top1.time;
+            if (dp[u].top1.node === v) side = dp[u].top2.time;
+            const newMax = Math.max(maxTime, side);
+            reroot(v, u, getTime(u) + newMax);
+        }
+    };
+    dfs(0, -1);
+    reroot(0, -1, 0);
+    return ans;
+};
+
+================================================================================
+FOLDER 3242_design_neighbor_sum_service
+CONFIG class=NeighborSum method=None params=None kind=None
+----------------------------------------
+// LeetCode 3242 - Design Neighbor Sum Service
+// https://leetcode.com/problems/design-neighbor-sum-service/
+
+var NeighborSum = function(grid) {
+    this.grid = grid;
+    this.d = new Map();
+    this.dirs = [
+        [-1, 0, 1, 0, -1],
+        [-1, 1, 1, -1, -1]
+    ];
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[i].length; j++) {
+            this.d.set(grid[i][j], [i, j]);
+        }
+    }
+};
+NeighborSum.prototype.cal = function(value, k) {
+    const p = this.d.get(value);
+    let s = 0;
+    for (let q = 0; q < 4; q++) {
+        const x = p[0] + this.dirs[k][q], y = p[1] + this.dirs[k][q + 1];
+        if (x >= 0 && x < this.grid.length && y >= 0 && y < this.grid[0].length) s += this.grid[x][y];
+    }
+    return s;
+};
+NeighborSum.prototype.adjacentSum = function(value) { return this.cal(value, 0); };
+NeighborSum.prototype.diagonalSum = function(value) { return this.cal(value, 1); };
+
+================================================================================
+FOLDER 3243_shortest_distance_after_road_addition_queries_i
+CONFIG class=Solution method=shortestDistanceAfterQueries params=['n', 'queries'] kind=None
+----------------------------------------
+// LeetCode 3243 - Shortest Distance After Road Addition Queries I
+// https://leetcode.com/problems/shortest-distance-after-road-addition-queries-i/
+
+var shortestDistanceAfterQueries = function(n, queries) {
+    const g = Array.from({length: n}, () => []);
+    for (let i = 0; i < n - 1; i++) g[i].push(i + 1);
+    const bfs = () => {
+        const q = [0];
+        const vis = new Array(n).fill(false);
+        vis[0] = true;
+        for (let d = 0; ; d++) {
+            let k = q.length;
+            while (k-- > 0) {
+                const u = q.shift();
+                if (u === n - 1) return d;
+                for (const v of g[u]) {
+                    if (!vis[v]) { vis[v] = true; q.push(v); }
+                }
+            }
+        }
+    };
+    const ans = new Array(queries.length);
+    for (let i = 0; i < queries.length; i++) {
+        g[queries[i][0]].push(queries[i][1]);
+        ans[i] = bfs();
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3244_shortest_distance_after_road_addition_queries_ii
+CONFIG class=Solution method=shortestDistanceAfterQueries params=['n', 'queries'] kind=None
+----------------------------------------
+// LeetCode 3244 - Shortest Distance After Road Addition Queries II
+// https://leetcode.com/problems/shortest-distance-after-road-addition-queries-ii/
+
+var shortestDistanceAfterQueries = function(n, queries) {
+    const nxt = new Array(n - 1);
+    for (let i = 0; i < n - 1; i++) nxt[i] = i + 1;
+    let cnt = n - 1;
+    const ans = [];
+    for (const q of queries) {
+        const u = q[0], v = q[1];
+        if (nxt[u] > 0 && nxt[u] < v) {
+            let i = nxt[u];
+            while (i < v) {
+                cnt--;
+                const ni = nxt[i];
+                nxt[i] = 0;
+                i = ni;
+            }
+            nxt[u] = v;
+        }
+        ans.push(cnt);
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3245_alternating_groups_iii
+CONFIG class=Solution method=numberOfAlternatingGroups params=['colors', 'queries'] kind=None
+----------------------------------------
+// LeetCode 3245 - Alternating Groups III
+// https://leetcode.com/problems/alternating-groups-iii/
+
+var numberOfAlternatingGroups = function(colors, queries) {
+    const n = colors.length;
+    const ans = [];
+    const arr = new Array(2 * n - 1);
+    for (let i = 0; i < n; i++) arr[i] = colors[i];
+    for (let i = 0; i < n - 1; i++) arr[n + i] = colors[i];
+    function SegTree(n_) {
+        this.n = n_;
+        this.treeIntervalCounts = new Array(4 * n_).fill(0);
+        this.treeIntervalLengths = new Array(4 * n_).fill(0);
+    }
+    SegTree.prototype.add = function(i, val) { this.addRec(0, 0, this.n - 1, i, val); };
+    SegTree.prototype.addRec = function(treeIndex, lo, hi, i, val) {
+        if (lo === hi) {
+            this.treeIntervalCounts[treeIndex] += val;
+            this.treeIntervalLengths[treeIndex] = this.treeIntervalCounts[treeIndex] * i;
+            return;
+        }
+        const mid = (lo + hi) >> 1;
+        if (i <= mid) this.addRec(2 * treeIndex + 1, lo, mid, i, val);
+        else this.addRec(2 * treeIndex + 2, mid + 1, hi, i, val);
+        this.treeIntervalCounts[treeIndex] = this.treeIntervalCounts[2 * treeIndex + 1] + this.treeIntervalCounts[2 * treeIndex + 2];
+        this.treeIntervalLengths[treeIndex] = this.treeIntervalLengths[2 * treeIndex + 1] + this.treeIntervalLengths[2 * treeIndex + 2];
+    };
+    SegTree.prototype.queryIntervalCounts = function(i) { return this.query(this.treeIntervalCounts, 0, 0, this.n - 1, i, this.n - 1); };
+    SegTree.prototype.queryIntervalLengths = function(i) { return this.query(this.treeIntervalLengths, 0, 0, this.n - 1, i, this.n - 1); };
+    SegTree.prototype.query = function(tree, treeIndex, lo, hi, i, j) {
+        if (i <= lo && hi <= j) return tree[treeIndex];
+        if (j < lo || hi < i) return 0;
+        const mid = (lo + hi) >> 1;
+        return this.query(tree, treeIndex * 2 + 1, lo, mid, i, j) + this.query(tree, treeIndex * 2 + 2, mid + 1, hi, i, j);
+    };
+    const pack = (l, r) => (BigInt(l) << 32n) | BigInt(r >>> 0);
+    const unpackL = (v) => Number(v >> 32n);
+    const unpackR = (v) => Number(v & 0xffffffffn);
+    const tree = new SegTree(2 * n - 1);
+    const intervals = new Set();
+    const insert = (l, r) => {
+        intervals.add(pack(l, r));
+        if (l < n) tree.add(r - l + 1, 1);
+    };
+    const remove = (l, r) => {
+        intervals.delete(pack(l, r));
+        if (l < n) tree.add(r - l + 1, -1);
+    };
+    const findInterval = (target) => {
+        let bestL = -1, bestR = -1;
+        for (const k of intervals) {
+            const kl = unpackL(k), kr = unpackR(k);
+            if (kl <= target && target <= kr && kl > bestL) { bestL = kl; bestR = kr; }
+        }
+        return [bestL, bestR];
+    };
+    const getNum = (sz) => {
+        const numIntervals = tree.queryIntervalCounts(sz);
+        const sumIntervals = tree.queryIntervalLengths(sz);
+        let numAlternatingGroups = sumIntervals - numIntervals * sz + numIntervals;
+        const [l, r] = findInterval(n);
+        if (l < 0 || l >= n || r - l + 1 < sz) return numAlternatingGroups;
+        if (r >= n) {
+            const nonDuplicateGroups = n - l;
+            const numGroups = (r - l + 1) - sz + 1;
+            const extra = numGroups - nonDuplicateGroups;
+            if (extra > 0) numAlternatingGroups -= extra;
+        }
+        return numAlternatingGroups;
+    };
+    const update = (index, color) => {
+        if (arr[index] === color) return;
+        arr[index] = color;
+        let [start, end] = findInterval(index);
+        remove(start, end);
+        if (start < index && index < end) {
+            insert(start, index - 1);
+            insert(index, index);
+            insert(index + 1, end);
+            return;
+        }
+        if (start === index && index < end) insert(start + 1, end);
+        if (start < index && index === end) insert(start, end - 1);
+        let ns = index, ne = index;
+        for (;;) {
+            let merged = false;
+            for (const k of [...intervals]) {
+                const kl = unpackL(k), kr = unpackR(k);
+                if (kr + 1 === ns && arr[kr] !== arr[ns]) {
+                    remove(kl, kr); ns = kl; merged = true; break;
+                }
+            }
+            if (!merged) break;
+        }
+        for (;;) {
+            let merged = false;
+            for (const k of [...intervals]) {
+                const kl = unpackL(k), kr = unpackR(k);
+                if (kl === ne + 1 && arr[kl] !== arr[ne]) {
+                    remove(kl, kr); ne = kr; merged = true; break;
+                }
+            }
+            if (!merged) break;
+        }
+        insert(ns, ne);
+    };
+    let st = 0;
+    for (let i = 1; i < 2 * n - 1; i++) {
+        if (arr[i] === arr[i - 1]) { insert(st, i - 1); st = i; }
+    }
+    insert(st, 2 * n - 2);
+    for (const query of queries) {
+        if (query[0] === 1) ans.push(getNum(query[1]));
+        else {
+            const index = query[1], color = query[2];
+            if (arr[index] !== color) {
+                update(index, color);
+                if (index < n - 1) update(index + n, color);
+            }
+        }
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3247_number_of_subsequences_with_odd_sum
+CONFIG class=Solution method=solve params=['nums'] kind=None
+----------------------------------------
+// LeetCode 3247 - Number of Subsequences with Odd Sum
+// https://leetcode.com/problems/number-of-subsequences-with-odd-sum/
+
+var subsequenceCount = function(nums) {
+    const mod = 1000000007;
+    let f = [0, 0];
+    for (const x of nums) {
+        const g = [0, 0];
+        if (x % 2 === 1) {
+            g[0] = (f[0] + f[1]) % mod;
+            g[1] = (f[0] + f[1] + 1) % mod;
+        } else {
+            g[0] = (f[0] + f[0] + 1) % mod;
+            g[1] = (f[1] + f[1]) % mod;
+        }
+        f = g;
+    }
+    return f[1];
+};
+
+================================================================================
+FOLDER 3248_snake_in_matrix
+CONFIG class=Solution method=finalPositionOfSnake params=['n', 'commands'] kind=None
+----------------------------------------
+// LeetCode 3248 - Snake in Matrix
+// https://leetcode.com/problems/snake-in-matrix/
+
+var finalPositionOfSnake = function(n, commands) {
+    let x = 0, y = 0;
+    for (const c of commands) {
+        if (c[0] === 'U') x--;
+        else if (c[0] === 'D') x++;
+        else if (c[0] === 'L') y--;
+        else if (c[0] === 'R') y++;
+    }
+    return x * n + y;
+};
+
+================================================================================
+FOLDER 3249_count_the_number_of_good_nodes
+CONFIG class=Solution method=countGoodNodes params=['edges'] kind=None
+----------------------------------------
+// LeetCode 3249 - Count the Number of Good Nodes
+// https://leetcode.com/problems/count-the-number-of-good-nodes/
+
+var countGoodNodes = function(edges) {
+    const n = edges.length + 1;
+    const g = Array.from({length: n}, () => []);
+    for (const e of edges) { g[e[0]].push(e[1]); g[e[1]].push(e[0]); }
+    let ans = 0;
+    const dfs = (a, fa) => {
+        let pre = -1, cnt = 1, ok = 1;
+        for (const b of g[a]) {
+            if (b !== fa) {
+                const cur = dfs(b, a);
+                cnt += cur;
+                if (pre < 0) pre = cur;
+                else if (pre !== cur) ok = 0;
+            }
+        }
+        ans += ok;
+        return cnt;
+    };
+    dfs(0, -1);
+    return ans;
+};
+
+================================================================================
+FOLDER 3250_find_the_count_of_monotonic_pairs_i
+CONFIG class=Solution method=countOfPairs params=['nums'] kind=None
+----------------------------------------
+// LeetCode 3250 - Find the Count of Monotonic Pairs I
+// https://leetcode.com/problems/find-the-count-of-monotonic-pairs-i/
+
+var countOfPairs = function(nums) {
+    const mod = 1000000007;
+    const n = nums.length;
+    let dp = new Array(51).fill(0);
+    for (let a = 0; a <= nums[0]; a++) dp[a] = 1;
+    for (let i = 1; i < n; i++) {
+        const ndp = new Array(51).fill(0);
+        const pref = new Array(52).fill(0);
+        for (let a = 0; a <= 50; a++) pref[a + 1] = (pref[a] + dp[a]) % mod;
+        for (let a2 = 0; a2 <= nums[i]; a2++) {
+            const b2 = nums[i] - a2;
+            let maxA1 = a2;
+            const lim = nums[i - 1] - b2;
+            if (lim < maxA1) maxA1 = lim;
+            if (maxA1 < 0) continue;
+            if (maxA1 > 50) maxA1 = 50;
+            ndp[a2] = pref[maxA1 + 1];
+        }
+        dp = ndp;
+    }
+    let ans = 0;
+    for (const v of dp) ans = (ans + v) % mod;
+    return ans;
+};
+
+================================================================================
+FOLDER 3251_find_the_count_of_monotonic_pairs_ii
+CONFIG class=Solution method=countOfPairs params=['nums'] kind=None
+----------------------------------------
+// LeetCode 3251 - Find the Count of Monotonic Pairs II
+// https://leetcode.com/problems/find-the-count-of-monotonic-pairs-ii/
+
+var countOfPairs = function(nums) {
+    const mod = 1000000007;
+    const n = nums.length;
+    let maxV = 0;
+    for (const v of nums) maxV = Math.max(maxV, v);
+    let dp = new Array(maxV + 1).fill(0);
+    for (let a = 0; a <= nums[0]; a++) dp[a] = 1;
+    for (let i = 1; i < n; i++) {
+        const ndp = new Array(maxV + 1).fill(0);
+        const pref = new Array(maxV + 2).fill(0);
+        for (let a = 0; a <= maxV; a++) pref[a + 1] = (pref[a] + dp[a]) % mod;
+        for (let a2 = 0; a2 <= nums[i]; a2++) {
+            const b2 = nums[i] - a2;
+            let maxA1 = a2;
+            const lim = nums[i - 1] - b2;
+            if (lim < maxA1) maxA1 = lim;
+            if (maxA1 < 0) continue;
+            if (maxA1 > maxV) maxA1 = maxV;
+            ndp[a2] = pref[maxA1 + 1];
+        }
+        dp = ndp;
+    }
+    let ans = 0;
+    for (const v of dp) ans = (ans + v) % mod;
+    return ans;
+};
+
+================================================================================
+FOLDER 3253_construct_string_with_minimum_cost_easy
+CONFIG class=Solution method=minimumCost params=['target', 'words', 'costs'] kind=None
+----------------------------------------
+// LeetCode 3253 - Construct String with Minimum Cost (Easy)
+// https://leetcode.com/problems/construct-string-with-minimum-cost-easy/
+
+var minimumCost = function(target, words, costs) {
+    const inf = 1e18;
+    const n = target.length;
+    const dp = new Array(n + 1).fill(inf);
+    dp[0] = 0;
+    const best = new Map();
+    for (let i = 0; i < words.length; i++) {
+        const old = best.get(words[i]);
+        if (old === undefined || costs[i] < old) best.set(words[i], costs[i]);
+    }
+    for (let i = 0; i < n; i++) {
+        if (dp[i] === inf) continue;
+        for (const [w, c] of best) {
+            const L = w.length;
+            if (i + L <= n && target.startsWith(w, i) && dp[i] + c < dp[i + L]) dp[i + L] = dp[i] + c;
+        }
+    }
+    if (dp[n] === inf) return -1;
+    return dp[n];
+};
+
+================================================================================
+FOLDER 3254_find_the_power_of_k_size_subarrays_i
+CONFIG class=Solution method=resultsArray params=['nums', 'k'] kind=None
+----------------------------------------
+// LeetCode 3254 - Find the Power of K-Size Subarrays I
+// https://leetcode.com/problems/find-the-power-of-k-size-subarrays-i/
+
+var resultsArray = function(nums, k) {
+    const n = nums.length;
+    const ans = new Array(n - k + 1);
+    for (let i = 0; i <= n - k; i++) {
+        let ok = true;
+        for (let j = i + 1; j < i + k; j++) {
+            if (nums[j] !== nums[j - 1] + 1) { ok = false; break; }
+        }
+        ans[i] = ok ? nums[i + k - 1] : -1;
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3255_find_the_power_of_k_size_subarrays_ii
+CONFIG class=Solution method=resultsArray params=['nums', 'k'] kind=None
+----------------------------------------
+// LeetCode 3255 - Find the Power of K-Size Subarrays II
+// https://leetcode.com/problems/find-the-power-of-k-size-subarrays-ii/
+
+var resultsArray = function(nums, k) {
+    const n = nums.length;
+    const ans = new Array(n - k + 1);
+    if (k === 1) return nums.slice();
+    let streak = 1;
+    for (let i = 1; i < n; i++) {
+        if (nums[i] === nums[i - 1] + 1) streak++;
+        else streak = 1;
+        if (i >= k - 1) ans[i - k + 1] = streak >= k ? nums[i] : -1;
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3256_maximum_value_sum_by_placing_three_rooks_i
+CONFIG class=Solution method=maximumValueSum params=['board'] kind=None
+----------------------------------------
+// LeetCode 3256 - Maximum Value Sum by Placing Three Rooks I
+// https://leetcode.com/problems/maximum-value-sum-by-placing-three-rooks-i/
+
+var maximumValueSum = function(board) {
+    const m = board.length, n = board[0].length;
+    const tops = [];
+    for (let i = 0; i < m; i++) {
+        const row = [];
+        for (let j = 0; j < n; j++) {
+            const cur = {v: board[i][j], c: j};
+            let placed = false;
+            for (let t = 0; t < row.length; t++) {
+                if (cur.v > row[t].v) { row.splice(t, 0, cur); placed = true; break; }
+            }
+            if (!placed) row.push(cur);
+            if (row.length > 3) row.length = 3;
+        }
+        tops.push(row);
+    }
+    let ans = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < m; i++) {
+        for (const a of tops[i]) {
+            for (let j = i + 1; j < m; j++) {
+                for (const b of tops[j]) {
+                    if (a.c === b.c) continue;
+                    for (let k = j + 1; k < m; k++) {
+                        for (const c of tops[k]) {
+                            if (c.c === a.c || c.c === b.c) continue;
+                            const s = a.v + b.v + c.v;
+                            if (s > ans) ans = s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return ans;
+};
+
+================================================================================
+FOLDER 3257_maximum_value_sum_by_placing_three_rooks_ii
+CONFIG class=Solution method=maximumValueSum params=['board'] kind=None
+----------------------------------------
+// LeetCode 3257 - Maximum Value Sum by Placing Three Rooks II
+// https://leetcode.com/problems/maximum-value-sum-by-placing-three-rooks-ii/
+
+var maximumValueSum = function(board) {
+    const m = board.length, n = board[0].length;
+    const tops = [];
+    for (let i = 0; i < m; i++) {
+        const row = [];
+        for (let j = 0; j < n; j++) {
+            const cur = {v: board[i][j], c: j};
+            let placed = false;
+            for (let t = 0; t < row.length; t++) {
+                if (cur.v > row[t].v) { row.splice(t, 0, cur); placed = true; break; }
+            }
+            if (!placed) row.push(cur);
+            if (row.length > 3) row.length = 3;
+        }
+        tops.push(row);
+    }
+    let ans = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < m; i++) {
+        for (const a of tops[i]) {
+            for (let j = i + 1; j < m; j++) {
+                for (const b of tops[j]) {
+                    if (a.c === b.c) continue;
+                    for (let k = j + 1; k < m; k++) {
+                        for (const c of tops[k]) {
+                            if (c.c === a.c || c.c === b.c) continue;
+                            const s = a.v + b.v + c.v;
+                            if (s > ans) ans = s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return ans;
+};

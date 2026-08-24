@@ -1,0 +1,18 @@
+folder=3189_minimum_moves_to_get_a_peaceful_board
+class=Solution
+method=solve
+params=['rooks']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3189 - Minimum Moves to Get a Peaceful Board
+// https://leetcode.com/problems/minimum-moves-to-get-a-peaceful-board/
+
+var minMoves = function(rooks) {
+    let ans = 0;
+    rooks.sort((a, b) => a[0] - b[0]);
+    for (let i = 0; i < rooks.length; i++) ans += Math.abs(rooks[i][0] - i);
+    rooks.sort((a, b) => a[1] - b[1]);
+    for (let j = 0; j < rooks.length; j++) ans += Math.abs(rooks[j][1] - j);
+    return ans;
+};

@@ -1,4 +1,5 @@
-﻿// LeetCode 0092 - Reverse Linked List II
+<?php
+// LeetCode 0092 - Reverse Linked List II
 // https://leetcode.com/problems/reverse-linked-list-ii/
 
 class ListNode {

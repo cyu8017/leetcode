@@ -1,4 +1,5 @@
-﻿// LeetCode 0063 - Unique Paths II
+<?php
+// LeetCode 0063 - Unique Paths II
 // https://leetcode.com/problems/unique-paths-ii/
 
 class Solution {

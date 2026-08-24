@@ -1,4 +1,5 @@
-﻿// LeetCode 0039 - Combination Sum
+<?php
+// LeetCode 0039 - Combination Sum
 // https://leetcode.com/problems/combination-sum/
 
 class Solution {

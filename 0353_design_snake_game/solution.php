@@ -1,4 +1,5 @@
-﻿// LeetCode 0353 - Design Snake Game
+<?php
+// LeetCode 0353 - Design Snake Game
 // https://leetcode.com/problems/design-snake-game/
 
 class SnakeGame {

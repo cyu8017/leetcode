@@ -1,0 +1,25 @@
+folder=3209_number_of_subarrays_with_and_value_of_k
+class=Solution
+method=countSubarrays
+params=['nums', 'k']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3209 - Number of Subarrays With AND Value of K
+// https://leetcode.com/problems/number-of-subarrays-with-and-value-of-k/
+
+var countSubarrays = function(nums, k) {
+    let pre = new Map();
+    let ans = 0;
+    for (const x of nums) {
+        const cur = new Map();
+        for (const [key, val] of pre) {
+            const nk = x & key;
+            cur.set(nk, (cur.get(nk) || 0) + val);
+        }
+        cur.set(x, (cur.get(x) || 0) + 1);
+        ans += cur.get(k) || 0;
+        pre = cur;
+    }
+    return ans;
+};

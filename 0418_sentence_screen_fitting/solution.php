@@ -1,4 +1,5 @@
-﻿// LeetCode 0418 - Sentence Screen Fitting
+<?php
+// LeetCode 0418 - Sentence Screen Fitting
 // https://leetcode.com/problems/sentence-screen-fitting/
 
 class Solution {

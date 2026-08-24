@@ -1,4 +1,5 @@
-﻿// LeetCode 0178 - Rank Scores
+<?php
+// LeetCode 0178 - Rank Scores
 // https://leetcode.com/problems/rank-scores/
 
 const QUERY = <<<'SQL'

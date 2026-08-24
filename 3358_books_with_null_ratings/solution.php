@@ -1,7 +1,10 @@
-﻿// LeetCode 3358 - Books with NULL Ratings
+<?php
+// LeetCode 3358 - Books with NULL Ratings
 // https://leetcode.com/problems/books-with-null-ratings/
 
-class Solution {
-    function solve() {
-    }
-}
+const QUERY = <<<'SQL'
+SELECT book_id, title, author, published_year
+FROM books
+WHERE rating IS NULL
+ORDER BY 1;
+SQL;

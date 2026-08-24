@@ -1,4 +1,5 @@
-﻿// LeetCode 0259 - 3Sum Smaller
+<?php
+// LeetCode 0259 - 3Sum Smaller
 // https://leetcode.com/problems/3sum-smaller/
 
 class Solution {

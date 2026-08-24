@@ -1,4 +1,5 @@
-﻿// LeetCode 0344 - Reverse String
+<?php
+// LeetCode 0344 - Reverse String
 // https://leetcode.com/problems/reverse-string/
 
 class Solution {

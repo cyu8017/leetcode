@@ -1,4 +1,5 @@
-﻿// LeetCode 0243 - Shortest Word Distance
+<?php
+// LeetCode 0243 - Shortest Word Distance
 // https://leetcode.com/problems/shortest-word-distance/
 
 class Solution {

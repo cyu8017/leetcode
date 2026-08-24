@@ -1,0 +1,3186 @@
+
+================================================================================
+# 0680_valid_palindrome_ii  (26 lines)
+================================================================================
+// LeetCode 0680 - Valid Palindrome II
+// https://leetcode.com/problems/valid-palindrome-ii/
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var validPalindrome = function(s) {
+    const isPalindrome = (left, right) => {
+        while (left < right) {
+            if (s[left] !== s[right]) return false;
+            left++;
+            right--;
+        }
+        return true;
+    };
+    let left = 0, right = s.length - 1;
+    while (left < right) {
+        if (s[left] !== s[right]) {
+            return isPalindrome(left + 1, right) || isPalindrome(left, right - 1);
+        }
+        left++;
+        right--;
+    }
+    return true;
+};
+
+================================================================================
+# 0681_next_closest_time  (23 lines)
+================================================================================
+// LeetCode 0681 - Next Closest Time
+// https://leetcode.com/problems/next-closest-time/
+
+/**
+ * @param {string} time
+ * @return {string}
+ */
+var nextClosestTime = function(time) {
+    const digits = new Set([time[0], time[1], time[3], time[4]]);
+    const start = parseInt(time.substring(0, 2), 10) * 60 + parseInt(time.substring(3, 5), 10);
+    for (let delta = 1; delta <= 24 * 60; delta++) {
+        const mins = (start + delta) % (24 * 60);
+        const hh = Math.floor(mins / 60), mm = mins % 60;
+        const c0 = String(Math.floor(hh / 10));
+        const c1 = String(hh % 10);
+        const c2 = String(Math.floor(mm / 10));
+        const c3 = String(mm % 10);
+        if (digits.has(c0) && digits.has(c1) && digits.has(c2) && digits.has(c3)) {
+            return c0 + c1 + ':' + c2 + c3;
+        }
+    }
+    return time;
+};
+
+================================================================================
+# 0682_baseball_game  (19 lines)
+================================================================================
+// LeetCode 0682 - Baseball Game
+// https://leetcode.com/problems/baseball-game/
+
+/**
+ * @param {string[]} operations
+ * @return {number}
+ */
+var calPoints = function(operations) {
+    const stack = [];
+    for (const op of operations) {
+        if (op === 'C') stack.pop();
+        else if (op === 'D') stack.push(stack[stack.length - 1] * 2);
+        else if (op === '+') stack.push(stack[stack.length - 1] + stack[stack.length - 2]);
+        else stack.push(parseInt(op, 10));
+    }
+    let total = 0;
+    for (const value of stack) total += value;
+    return total;
+};
+
+================================================================================
+# 0683_k_empty_slots  (25 lines)
+================================================================================
+// LeetCode 0683 - K Empty Slots
+// https://leetcode.com/problems/k-empty-slots/
+
+/**
+ * @param {number[]} bulbs
+ * @param {number} k
+ * @return {number}
+ */
+var kEmptySlots = function(bulbs, k) {
+    const n = bulbs.length;
+    const days = new Array(n).fill(0);
+    for (let day = 1; day <= n; day++) days[bulbs[day - 1] - 1] = day;
+    let ans = Infinity;
+    let i = 0;
+    while (i < n - k - 1) {
+        const left = i, right = i + k + 1;
+        let j = left + 1;
+        while (j < right && days[j] > days[left] && days[j] > days[right]) j++;
+        if (j === right) {
+            ans = Math.min(ans, Math.max(days[left], days[right]));
+            i++;
+        } else i = j;
+    }
+    return ans === Infinity ? -1 : ans;
+};
+
+================================================================================
+# 0684_redundant_connection  (24 lines)
+================================================================================
+// LeetCode 0684 - Redundant Connection
+// https://leetcode.com/problems/redundant-connection/
+
+/**
+ * @param {number[][]} edges
+ * @return {number[]}
+ */
+var findRedundantConnection = function(edges) {
+    const find = (parent, x) => {
+        while (parent[x] !== x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    };
+    const parent = Array.from({length: edges.length + 1}, (_, i) => i);
+    for (const edge of edges) {
+        const u = edge[0], v = edge[1];
+        const pu = find(parent, u), pv = find(parent, v);
+        if (pu === pv) return [u, v];
+        parent[pu] = pv;
+    }
+    return [];
+};
+
+================================================================================
+# 0685_redundant_connection_ii  (37 lines)
+================================================================================
+// LeetCode 0685 - Redundant Connection II
+// https://leetcode.com/problems/redundant-connection-ii/
+
+/**
+ * @param {number[][]} edges
+ * @return {number[]}
+ */
+var findRedundantDirectedConnection = function(edges) {
+    const find = (uf, x) => {
+        while (uf[x] !== x) {
+            uf[x] = uf[uf[x]];
+            x = uf[x];
+        }
+        return x;
+    };
+    const n = edges.length;
+    const parent = new Array(n + 1).fill(0);
+    let cand1 = null, cand2 = null;
+    for (let i = 0; i < n; i++) {
+        const u = edges[i][0], v = edges[i][1];
+        if (parent[v] === 0) parent[v] = u;
+        else {
+            cand1 = [parent[v], v];
+            cand2 = [u, v];
+            edges[i] = [-1, -1];
+            break;
+        }
+    }
+    const uf = Array.from({length: n + 1}, (_, i) => i);
+    for (const edge of edges) {
+        if (edge[0] < 0) continue;
+        const pu = find(uf, edge[0]), pv = find(uf, edge[1]);
+        if (pu === pv) return cand1 !== null ? cand1 : [edge[0], edge[1]];
+        uf[pu] = pv;
+    }
+    return cand2;
+};
+
+================================================================================
+# 0686_repeated_string_match  (17 lines)
+================================================================================
+// LeetCode 0686 - Repeated String Match
+// https://leetcode.com/problems/repeated-string-match/
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @return {number}
+ */
+var repeatedStringMatch = function(a, b) {
+    const repeats = Math.floor((b.length + a.length - 1) / a.length);
+    let built = '';
+    for (let i = 0; i < repeats; i++) built += a;
+    if (built.includes(b)) return repeats;
+    built += a;
+    if (built.includes(b)) return repeats + 1;
+    return -1;
+};
+
+================================================================================
+# 0687_longest_univalue_path  (21 lines)
+================================================================================
+// LeetCode 0687 - Longest Univalue Path
+// https://leetcode.com/problems/longest-univalue-path/
+
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var longestUnivaluePath = function(root) {
+    let best = 0;
+    const dfs = (node) => {
+        if (node === null) return 0;
+        const left = dfs(node.left);
+        const right = dfs(node.right);
+        const leftPath = node.left !== null && node.left.val === node.val ? left + 1 : 0;
+        const rightPath = node.right !== null && node.right.val === node.val ? right + 1 : 0;
+        best = Math.max(best, leftPath + rightPath);
+        return Math.max(leftPath, rightPath);
+    };
+    dfs(root);
+    return best;
+};
+
+================================================================================
+# 0688_knight_probability_in_chessboard  (33 lines)
+================================================================================
+// LeetCode 0688 - Knight Probability in Chessboard
+// https://leetcode.com/problems/knight-probability-in-chessboard/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @param {number} row
+ * @param {number} column
+ * @return {number}
+ */
+var knightProbability = function(n, k, row, column) {
+    const moves = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+    let dp = Array.from({length: n}, () => new Array(n).fill(0.0));
+    dp[row][column] = 1.0;
+    for (let step = 0; step < k; step++) {
+        const nxt = Array.from({length: n}, () => new Array(n).fill(0.0));
+        for (let r = 0; r < n; r++) {
+            for (let c = 0; c < n; c++) {
+                if (dp[r][c] === 0.0) continue;
+                for (const move of moves) {
+                    const nr = r + move[0], nc = c + move[1];
+                    if (nr >= 0 && nr < n && nc >= 0 && nc < n) nxt[nr][nc] += dp[r][c] / 8.0;
+                }
+            }
+        }
+        dp = nxt;
+    }
+    let total = 0.0;
+    for (let r = 0; r < n; r++)
+        for (let c = 0; c < n; c++)
+            total += dp[r][c];
+    return total;
+};
+
+================================================================================
+# 0689_maximum_sum_of_3_non_overlapping_subarrays  (42 lines)
+================================================================================
+// LeetCode 0689 - Maximum Sum of 3 Non-Overlapping Subarrays
+// https://leetcode.com/problems/maximum-sum-of-3-non-overlapping-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number[]}
+ */
+var maxSumOfThreeSubarrays = function(nums, k) {
+    const n = nums.length, windows = n - k + 1;
+    const sums = new Array(windows).fill(0);
+    let total = 0;
+    for (let i = 0; i < k; i++) total += nums[i];
+    sums[0] = total;
+    for (let i = 1; i < windows; i++) {
+        total += nums[i + k - 1] - nums[i - 1];
+        sums[i] = total;
+    }
+    const left = new Array(windows).fill(0);
+    let best = 0;
+    for (let i = 0; i < windows; i++) {
+        if (sums[i] > sums[best]) best = i;
+        left[i] = best;
+    }
+    const right = new Array(windows).fill(0);
+    best = windows - 1;
+    for (let i = windows - 1; i >= 0; i--) {
+        if (sums[i] >= sums[best]) best = i;
+        right[i] = best;
+    }
+    let answer = [0, 0, 0];
+    let bestTotal = -1;
+    for (let mid = k; mid < windows - k; mid++) {
+        const l = left[mid - k], r = right[mid + k];
+        const cur = sums[l] + sums[mid] + sums[r];
+        if (cur > bestTotal) {
+            bestTotal = cur;
+            answer = [l, mid, r];
+        }
+    }
+    return answer;
+};
+
+================================================================================
+# 0690_employee_importance  (19 lines)
+================================================================================
+// LeetCode 0690 - Employee Importance
+// https://leetcode.com/problems/employee-importance/
+
+/**
+ * @param {Employee[]} employees
+ * @param {number} id
+ * @return {number}
+ */
+var getImportance = function(employees, id) {
+    const table = new Map();
+    for (const emp of employees) table.set(emp.id, emp);
+    const dfs = (eid) => {
+        const emp = table.get(eid);
+        let total = emp.importance;
+        for (const sub of emp.subordinates) total += dfs(sub);
+        return total;
+    };
+    return dfs(id);
+};
+
+================================================================================
+# 0691_stickers_to_spell_word  (49 lines)
+================================================================================
+// LeetCode 0691 - Stickers to Spell Word
+// https://leetcode.com/problems/stickers-to-spell-word/
+
+/**
+ * @param {string[]} stickers
+ * @param {string} target
+ * @return {number}
+ */
+var minStickers = function(stickers, target) {
+    const need = new Array(26).fill(0);
+    for (const ch of target) need[ch.charCodeAt(0) - 97]++;
+    const chars = [];
+    for (let i = 0; i < 26; i++) if (need[i] > 0) chars.push(String.fromCharCode(97 + i));
+    const sticks = [];
+    for (const sticker of stickers) {
+        const counts = new Array(26).fill(0);
+        for (const ch of sticker) counts[ch.charCodeAt(0) - 97]++;
+        let useful = false;
+        for (const ch of chars) if (counts[ch.charCodeAt(0) - 97] > 0) { useful = true; break; }
+        if (useful) sticks.push(counts);
+    }
+    const memo = new Map();
+    const key = (state) => state.join(',');
+    const dfs = (state) => {
+        const k = key(state);
+        if (memo.has(k)) return memo.get(k);
+        let i = 0;
+        while (i < state.length && state[i] === 0) i++;
+        if (i === state.length) {
+            memo.set(k, 0);
+            return 0;
+        }
+        const first = chars[i];
+        let best = 1e9;
+        for (const stick of sticks) {
+            if (stick[first.charCodeAt(0) - 97] === 0) continue;
+            const nxt = state.slice();
+            for (let j = 0; j < chars.length; j++) {
+                nxt[j] = Math.max(0, nxt[j] - stick[chars[j].charCodeAt(0) - 97]);
+            }
+            best = Math.min(best, 1 + dfs(nxt));
+        }
+        memo.set(k, best);
+        return best;
+    };
+    const state = chars.map((ch) => need[ch.charCodeAt(0) - 97]);
+    const result = dfs(state);
+    return result >= 1e9 ? -1 : result;
+};
+
+================================================================================
+# 0692_top_k_frequent_words  (19 lines)
+================================================================================
+// LeetCode 0692 - Top K Frequent Words
+// https://leetcode.com/problems/top-k-frequent-words/
+
+/**
+ * @param {string[]} words
+ * @param {number} k
+ * @return {string[]}
+ */
+var topKFrequent = function(words, k) {
+    const counts = new Map();
+    for (const word of words) counts.set(word, (counts.get(word) || 0) + 1);
+    const ordered = Array.from(counts.keys());
+    ordered.sort((a, b) => {
+        const ca = counts.get(a), cb = counts.get(b);
+        if (ca !== cb) return cb - ca;
+        return a < b ? -1 : a > b ? 1 : 0;
+    });
+    return ordered.slice(0, k);
+};
+
+================================================================================
+# 0693_binary_number_with_alternating_bits  (11 lines)
+================================================================================
+// LeetCode 0693 - Binary Number with Alternating Bits
+// https://leetcode.com/problems/binary-number-with-alternating-bits/
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var hasAlternatingBits = function(n) {
+    const x = n ^ (n >>> 1);
+    return (x & (x + 1)) === 0;
+};
+
+================================================================================
+# 0694_number_of_distinct_islands  (30 lines)
+================================================================================
+// LeetCode 0694 - Number of Distinct Islands
+// https://leetcode.com/problems/number-of-distinct-islands/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var numDistinctIslands = function(grid) {
+    if (grid === null || grid.length === 0) return 0;
+    const dfs = (r, c, br, bc, path) => {
+        if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || grid[r][c] === 0) return;
+        grid[r][c] = 0;
+        path.push((r - br) + ',' + (c - bc));
+        dfs(r + 1, c, br, bc, path);
+        dfs(r - 1, c, br, bc, path);
+        dfs(r, c + 1, br, bc, path);
+        dfs(r, c - 1, br, bc, path);
+    };
+    const shapes = new Set();
+    for (let i = 0; i < grid.length; i++) {
+        for (let j = 0; j < grid[0].length; j++) {
+            if (grid[i][j] === 1) {
+                const path = [];
+                dfs(i, j, i, j, path);
+                shapes.add(path.join(';'));
+            }
+        }
+    }
+    return shapes.size;
+};
+
+================================================================================
+# 0695_max_area_of_island  (19 lines)
+================================================================================
+// LeetCode 0695 - Max Area of Island
+// https://leetcode.com/problems/max-area-of-island/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maxAreaOfIsland = function(grid) {
+    const dfs = (r, c) => {
+        if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || grid[r][c] === 0) return 0;
+        grid[r][c] = 0;
+        return 1 + dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1);
+    };
+    let best = 0;
+    for (let i = 0; i < grid.length; i++)
+        for (let j = 0; j < grid[0].length; j++)
+            best = Math.max(best, dfs(i, j));
+    return best;
+};
+
+================================================================================
+# 0696_count_binary_substrings  (19 lines)
+================================================================================
+// LeetCode 0696 - Count Binary Substrings
+// https://leetcode.com/problems/count-binary-substrings/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countBinarySubstrings = function(s) {
+    let prev = 0, cur = 1, ans = 0;
+    for (let i = 1; i < s.length; i++) {
+        if (s[i] === s[i - 1]) cur++;
+        else {
+            ans += Math.min(prev, cur);
+            prev = cur;
+            cur = 1;
+        }
+    }
+    return ans + Math.min(prev, cur);
+};
+
+================================================================================
+# 0697_degree_of_an_array  (22 lines)
+================================================================================
+// LeetCode 0697 - Degree of an Array
+// https://leetcode.com/problems/degree-of-an-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findShortestSubArray = function(nums) {
+    const first = new Map(), last = new Map(), count = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        if (!first.has(nums[i])) first.set(nums[i], i);
+        last.set(nums[i], i);
+        count.set(nums[i], (count.get(nums[i]) || 0) + 1);
+    }
+    let degree = 0;
+    for (const freq of count.values()) degree = Math.max(degree, freq);
+    let best = Infinity;
+    for (const [key, value] of count) {
+        if (value === degree) best = Math.min(best, last.get(key) - first.get(key) + 1);
+    }
+    return best;
+};
+
+================================================================================
+# 0698_partition_to_k_equal_sum_subsets  (29 lines)
+================================================================================
+// LeetCode 0698 - Partition to K Equal Sum Subsets
+// https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var canPartitionKSubsets = function(nums, k) {
+    let total = 0;
+    for (const x of nums) total += x;
+    if (total % k !== 0) return false;
+    const target = Math.floor(total / k);
+    const arr = nums.slice().sort((a, b) => a - b).reverse();
+    if (arr[0] > target) return false;
+    const buckets = new Array(k).fill(0);
+    const dfs = (index) => {
+        if (index === arr.length) return true;
+        for (let i = 0; i < buckets.length; i++) {
+            if (buckets[i] + arr[index] > target) continue;
+            buckets[i] += arr[index];
+            if (dfs(index + 1)) return true;
+            buckets[i] -= arr[index];
+            if (buckets[i] === 0) break;
+        }
+        return false;
+    };
+    return dfs(0);
+};
+
+================================================================================
+# 0699_falling_squares  (24 lines)
+================================================================================
+// LeetCode 0699 - Falling Squares
+// https://leetcode.com/problems/falling-squares/
+
+/**
+ * @param {number[][]} positions
+ * @return {number[]}
+ */
+var fallingSquares = function(positions) {
+    const intervals = [];
+    const answer = [];
+    let maxHeight = 0;
+    for (const pos of positions) {
+        const left = pos[0], side = pos[1], right = left + side;
+        let bas = 0;
+        for (const it of intervals) {
+            if (it[1] > left && it[0] < right) bas = Math.max(bas, it[2]);
+        }
+        const height = bas + side;
+        intervals.push([left, right, height]);
+        maxHeight = Math.max(maxHeight, height);
+        answer.push(maxHeight);
+    }
+    return answer;
+};
+
+================================================================================
+# 0700_search_in_a_binary_search_tree  (14 lines)
+================================================================================
+// LeetCode 0700 - Search in a Binary Search Tree
+// https://leetcode.com/problems/search-in-a-binary-search-tree/
+
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+var searchBST = function(root, val) {
+    while (root !== null && root.val !== val) {
+        root = val < root.val ? root.left : root.right;
+    }
+    return root;
+};
+
+================================================================================
+# 0701_insert_into_a_binary_search_tree  (22 lines)
+================================================================================
+// LeetCode 0701 - Insert into a Binary Search Tree
+// https://leetcode.com/problems/insert-into-a-binary-search-tree/
+
+/**
+ * @param {TreeNode} root
+ * @param {number} val
+ * @return {TreeNode}
+ */
+var insertIntoBST = function(root, val) {
+    if (root === null) return new TreeNode(val);
+    let node = root;
+    while (true) {
+        if (val < node.val) {
+            if (node.left === null) { node.left = new TreeNode(val); break; }
+            node = node.left;
+        } else {
+            if (node.right === null) { node.right = new TreeNode(val); break; }
+            node = node.right;
+        }
+    }
+    return root;
+};
+
+================================================================================
+# 0702_search_in_a_sorted_array_of_unknown_size  (31 lines)
+================================================================================
+// LeetCode 0702 - Search in a Sorted Array of Unknown Size
+// https://leetcode.com/problems/search-in-a-sorted-array-of-unknown-size/
+
+/**
+ * @param {ArrayReader} reader
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(reader, target) {
+    // Local harness may pass secret array; wrap if needed
+    if (Array.isArray(reader)) {
+        const secret = reader;
+        reader = {
+            get(index) {
+                if (index < 0 || index >= secret.length) return 2147483647;
+                return secret[index];
+            }
+        };
+    }
+    let right = 1;
+    while (reader.get(right) < target) right <<= 1;
+    let left = right >> 1;
+    while (left <= right) {
+        const mid = left + Math.floor((right - left) / 2);
+        const value = reader.get(mid);
+        if (value === target) return mid;
+        if (value > target) right = mid - 1;
+        else left = mid + 1;
+    }
+    return -1;
+};
+
+================================================================================
+# 0703_kth_largest_element_in_a_stream  (25 lines)
+================================================================================
+// LeetCode 0703 - Kth Largest Element in a Stream
+// https://leetcode.com/problems/kth-largest-element-in-a-stream/
+
+class KthLargest {
+    /**
+     * @param {number} k
+     * @param {number[]} nums
+     */
+    constructor(k, nums) {
+        this.k = k;
+        this.heap = [];
+        for (const num of nums) this.add(num);
+    }
+
+    /**
+     * @param {number} val
+     * @return {number}
+     */
+    add(val) {
+        this.heap.push(val);
+        this.heap.sort((a, b) => a - b);
+        if (this.heap.length > this.k) this.heap.shift();
+        return this.heap[0];
+    }
+}
+
+================================================================================
+# 0704_binary_search  (18 lines)
+================================================================================
+// LeetCode 0704 - Binary Search
+// https://leetcode.com/problems/binary-search/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var search = function(nums, target) {
+    let left = 0, right = nums.length - 1;
+    while (left <= right) {
+        const mid = left + Math.floor((right - left) / 2);
+        if (nums[mid] === target) return mid;
+        if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+};
+
+================================================================================
+# 0705_design_hashset  (26 lines)
+================================================================================
+// LeetCode 0705 - Design HashSet
+// https://leetcode.com/problems/design-hashset/
+
+class MyHashSet {
+    constructor() {
+        this.data = new Set();
+    }
+
+    /**
+     * @param {number} key
+     * @return {void}
+     */
+    add(key) { this.data.add(key); }
+
+    /**
+     * @param {number} key
+     * @return {void}
+     */
+    remove(key) { this.data.delete(key); }
+
+    /**
+     * @param {number} key
+     * @return {boolean}
+     */
+    contains(key) { return this.data.has(key); }
+}
+
+================================================================================
+# 0706_design_hashmap  (27 lines)
+================================================================================
+// LeetCode 0706 - Design HashMap
+// https://leetcode.com/problems/design-hashmap/
+
+class MyHashMap {
+    constructor() {
+        this.data = new Map();
+    }
+
+    /**
+     * @param {number} key
+     * @param {number} value
+     * @return {void}
+     */
+    put(key, value) { this.data.set(key, value); }
+
+    /**
+     * @param {number} key
+     * @return {number}
+     */
+    get(key) { return this.data.has(key) ? this.data.get(key) : -1; }
+
+    /**
+     * @param {number} key
+     * @return {void}
+     */
+    remove(key) { this.data.delete(key); }
+}
+
+================================================================================
+# 0707_design_linked_list  (58 lines)
+================================================================================
+// LeetCode 0707 - Design Linked List
+// https://leetcode.com/problems/design-linked-list/
+
+class MyLinkedList {
+    constructor() {
+        this.dummy = { val: 0, next: null };
+        this.size = 0;
+    }
+
+    /**
+     * @param {number} index
+     * @return {number}
+     */
+    get(index) {
+        if (index < 0 || index >= this.size) return -1;
+        let node = this.dummy.next;
+        for (let i = 0; i < index; i++) node = node.next;
+        return node.val;
+    }
+
+    /**
+     * @param {number} val
+     * @return {void}
+     */
+    addAtHead(val) { this.addAtIndex(0, val); }
+
+    /**
+     * @param {number} val
+     * @return {void}
+     */
+    addAtTail(val) { this.addAtIndex(this.size, val); }
+
+    /**
+     * @param {number} index
+     * @param {number} val
+     * @return {void}
+     */
+    addAtIndex(index, val) {
+        if (index < 0 || index > this.size) return;
+        let prev = this.dummy;
+        for (let i = 0; i < index; i++) prev = prev.next;
+        const node = { val, next: prev.next };
+        prev.next = node;
+        this.size++;
+    }
+
+    /**
+     * @param {number} index
+     * @return {void}
+     */
+    deleteAtIndex(index) {
+        if (index < 0 || index >= this.size) return;
+        let prev = this.dummy;
+        for (let i = 0; i < index; i++) prev = prev.next;
+        prev.next = prev.next.next;
+        this.size--;
+    }
+}
+
+================================================================================
+# 0708_insert_into_a_sorted_circular_linked_list  (29 lines)
+================================================================================
+// LeetCode 0708 - Insert into a Sorted Circular Linked List
+// https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
+
+/**
+ * @param {Node} head
+ * @param {number} insertVal
+ * @return {Node}
+ */
+var insert = function(head, insertVal) {
+    const node = new Node(insertVal);
+    if (head === null) {
+        node.next = node;
+        return node;
+    }
+    let cur = head;
+    while (cur.next !== null && cur.next !== head) cur = cur.next;
+    cur.next = head;
+    let prev = head, curr = head.next;
+    while (true) {
+        if (prev.val <= insertVal && insertVal <= curr.val) break;
+        if (prev.val > curr.val && (insertVal >= prev.val || insertVal <= curr.val)) break;
+        prev = curr;
+        curr = curr.next;
+        if (prev === head) break;
+    }
+    prev.next = node;
+    node.next = curr;
+    return head;
+};
+
+================================================================================
+# 0709_to_lower_case  (15 lines)
+================================================================================
+// LeetCode 0709 - To Lower Case
+// https://leetcode.com/problems/to-lower-case/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var toLowerCase = function(s) {
+    const chars = s.split('');
+    for (let i = 0; i < chars.length; i++) {
+        const code = chars[i].charCodeAt(0);
+        if (code >= 65 && code <= 90) chars[i] = String.fromCharCode(code + 32);
+    }
+    return chars.join('');
+};
+
+================================================================================
+# 0710_random_pick_with_blacklist  (29 lines)
+================================================================================
+// LeetCode 0710 - Random Pick with Blacklist
+// https://leetcode.com/problems/random-pick-with-blacklist/
+
+class Solution {
+    /**
+     * @param {number} n
+     * @param {number[]} blacklist
+     */
+    constructor(n, blacklist) {
+        this.size = n - blacklist.length;
+        this.mapping = new Map();
+        const black = new Set(blacklist);
+        let white = this.size;
+        for (const b of blacklist) {
+            if (b < this.size) {
+                while (black.has(white)) white++;
+                this.mapping.set(b, white++);
+            }
+        }
+    }
+
+    /**
+     * @return {number}
+     */
+    pick() {
+        const index = Math.floor(Math.random() * this.size);
+        return this.mapping.has(index) ? this.mapping.get(index) : index;
+    }
+}
+
+================================================================================
+# 0711_number_of_distinct_islands_ii  (58 lines)
+================================================================================
+// LeetCode 0711 - Number of Distinct Islands II
+// https://leetcode.com/problems/number-of-distinct-islands-ii/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var numDistinctIslands2 = function(grid) {
+    if (grid === null || grid.length === 0) return 0;
+    const m = grid.length, n = grid[0].length;
+    const dfs = (r, c, cells) => {
+        if (r < 0 || r >= m || c < 0 || c >= n || grid[r][c] === 0) return;
+        grid[r][c] = 0;
+        cells.push([r, c]);
+        dfs(r + 1, c, cells);
+        dfs(r - 1, c, cells);
+        dfs(r, c + 1, cells);
+        dfs(r, c - 1, cells);
+    };
+    const canonical = (cells) => {
+        const signs = [
+            [1, 1, 0], [1, -1, 0], [-1, 1, 0], [-1, -1, 0],
+            [1, 1, 1], [1, -1, 1], [-1, 1, 1], [-1, -1, 1]
+        ];
+        let best = null;
+        for (const s of signs) {
+            const pts = [];
+            for (const p of cells) {
+                const x = p[0], y = p[1];
+                let nx, ny;
+                if (s[2] === 0) { nx = s[0] * x; ny = s[1] * y; }
+                else { nx = s[0] * y; ny = s[1] * x; }
+                pts.push([nx, ny]);
+            }
+            let minX = Infinity, minY = Infinity;
+            for (const p of pts) {
+                minX = Math.min(minX, p[0]);
+                minY = Math.min(minY, p[1]);
+            }
+            for (const p of pts) { p[0] -= minX; p[1] -= minY; }
+            pts.sort((a, b) => a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1]);
+            const key = pts.map((p) => p[0] + ',' + p[1]).join(';');
+            if (best === null || key < best) best = key;
+        }
+        return best;
+    };
+    const shapes = new Set();
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                const cells = [];
+                dfs(i, j, cells);
+                shapes.add(canonical(cells));
+            }
+        }
+    }
+    return shapes.size;
+};
+
+================================================================================
+# 0712_minimum_ascii_delete_sum_for_two_strings  (21 lines)
+================================================================================
+// LeetCode 0712 - Minimum ASCII Delete Sum for Two Strings
+// https://leetcode.com/problems/minimum-ascii-delete-sum-for-two-strings/
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {number}
+ */
+var minimumDeleteSum = function(s1, s2) {
+    const m = s1.length, n = s2.length;
+    const dp = Array.from({length: m + 1}, () => new Array(n + 1).fill(0));
+    for (let i = 1; i <= m; i++) dp[i][0] = dp[i - 1][0] + s1.charCodeAt(i - 1);
+    for (let j = 1; j <= n; j++) dp[0][j] = dp[0][j - 1] + s2.charCodeAt(j - 1);
+    for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+            if (s1[i - 1] === s2[j - 1]) dp[i][j] = dp[i - 1][j - 1];
+            else dp[i][j] = Math.min(dp[i - 1][j] + s1.charCodeAt(i - 1), dp[i][j - 1] + s2.charCodeAt(j - 1));
+        }
+    }
+    return dp[m][n];
+};
+
+================================================================================
+# 0713_subarray_product_less_than_k  (18 lines)
+================================================================================
+// LeetCode 0713 - Subarray Product Less Than K
+// https://leetcode.com/problems/subarray-product-less-than-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var numSubarrayProductLessThanK = function(nums, k) {
+    if (k <= 1) return 0;
+    let product = 1, left = 0, ans = 0;
+    for (let right = 0; right < nums.length; right++) {
+        product *= nums[right];
+        while (product >= k) product = Math.floor(product / nums[left++]);
+        ans += right - left + 1;
+    }
+    return ans;
+};
+
+================================================================================
+# 0714_best_time_to_buy_and_sell_stock_with_transaction_fee  (17 lines)
+================================================================================
+// LeetCode 0714 - Best Time to Buy and Sell Stock with Transaction Fee
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
+
+/**
+ * @param {number[]} prices
+ * @param {number} fee
+ * @return {number}
+ */
+var maxProfit = function(prices, fee) {
+    let hold = -prices[0], cash = 0;
+    for (let i = 1; i < prices.length; i++) {
+        const price = prices[i];
+        hold = Math.max(hold, cash - price);
+        cash = Math.max(cash, hold + price - fee);
+    }
+    return cash;
+};
+
+================================================================================
+# 0715_range_module  (62 lines)
+================================================================================
+// LeetCode 0715 - Range Module
+// https://leetcode.com/problems/range-module/
+
+class RangeModule {
+    constructor() {
+        this.intervals = [];
+    }
+
+    /**
+     * @param {number} left
+     * @param {number} right
+     * @return {void}
+     */
+    addRange(left, right) {
+        const next = [];
+        let placed = false;
+        for (const iv of this.intervals) {
+            const start = iv[0], end = iv[1];
+            if (end < left) next.push([start, end]);
+            else if (right < start) {
+                if (!placed) { next.push([left, right]); placed = true; }
+                next.push([start, end]);
+            } else {
+                left = Math.min(left, start);
+                right = Math.max(right, end);
+            }
+        }
+        if (!placed) next.push([left, right]);
+        this.intervals = next;
+    }
+
+    /**
+     * @param {number} left
+     * @param {number} right
+     * @return {boolean}
+     */
+    queryRange(left, right) {
+        for (const iv of this.intervals) {
+            if (iv[0] <= left && right <= iv[1]) return true;
+            if (iv[1] >= right) break;
+        }
+        return false;
+    }
+
+    /**
+     * @param {number} left
+     * @param {number} right
+     * @return {void}
+     */
+    removeRange(left, right) {
+        const next = [];
+        for (const iv of this.intervals) {
+            const start = iv[0], end = iv[1];
+            if (end <= left || right <= start) next.push([start, end]);
+            else {
+                if (start < left) next.push([start, left]);
+                if (right < end) next.push([right, end]);
+            }
+        }
+        this.intervals = next;
+    }
+}
+
+================================================================================
+# 0716_max_stack  (48 lines)
+================================================================================
+// LeetCode 0716 - Max Stack
+// https://leetcode.com/problems/max-stack/
+
+class MaxStack {
+    constructor() {
+        this.stack = [];
+        this.maxes = [];
+    }
+
+    /**
+     * @param {number} x
+     * @return {void}
+     */
+    push(x) {
+        this.stack.push(x);
+        this.maxes.push(this.maxes.length === 0 ? x : Math.max(x, this.maxes[this.maxes.length - 1]));
+    }
+
+    /**
+     * @return {number}
+     */
+    pop() {
+        this.maxes.pop();
+        return this.stack.pop();
+    }
+
+    /**
+     * @return {number}
+     */
+    top() { return this.stack[this.stack.length - 1]; }
+
+    /**
+     * @return {number}
+     */
+    peekMax() { return this.maxes[this.maxes.length - 1]; }
+
+    /**
+     * @return {number}
+     */
+    popMax() {
+        const maxVal = this.peekMax();
+        const buffer = [];
+        while (this.top() !== maxVal) buffer.push(this.pop());
+        this.pop();
+        for (let i = buffer.length - 1; i >= 0; i--) this.push(buffer[i]);
+        return maxVal;
+    }
+}
+
+================================================================================
+# 0717_1_bit_and_2_bit_characters  (13 lines)
+================================================================================
+// LeetCode 0717 - 1-bit and 2-bit Characters
+// https://leetcode.com/problems/1-bit-and-2-bit-characters/
+
+/**
+ * @param {number[]} bits
+ * @return {boolean}
+ */
+var isOneBitCharacter = function(bits) {
+    let i = 0;
+    const n = bits.length;
+    while (i < n - 1) i += bits[i] === 1 ? 2 : 1;
+    return i === n - 1;
+};
+
+================================================================================
+# 0718_maximum_length_of_repeated_subarray  (24 lines)
+================================================================================
+// LeetCode 0718 - Maximum Length of Repeated Subarray
+// https://leetcode.com/problems/maximum-length-of-repeated-subarray/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findLength = function(nums1, nums2) {
+    const m = nums1.length, n = nums2.length;
+    let best = 0;
+    let dp = new Array(n + 1).fill(0);
+    for (let i = 1; i <= m; i++) {
+        const next = new Array(n + 1).fill(0);
+        for (let j = 1; j <= n; j++) {
+            if (nums1[i - 1] === nums2[j - 1]) {
+                next[j] = dp[j - 1] + 1;
+                best = Math.max(best, next[j]);
+            }
+        }
+        dp = next;
+    }
+    return best;
+};
+
+================================================================================
+# 0719_find_k_th_smallest_pair_distance  (26 lines)
+================================================================================
+// LeetCode 0719 - Find K-th Smallest Pair Distance
+// https://leetcode.com/problems/find-k-th-smallest-pair-distance/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var smallestDistancePair = function(nums, k) {
+    nums = nums.slice().sort((a, b) => a - b);
+    const countPairs = (distance) => {
+        let count = 0, left = 0;
+        for (let right = 0; right < nums.length; right++) {
+            while (nums[right] - nums[left] > distance) left++;
+            count += right - left;
+        }
+        return count;
+    };
+    let lo = 0, hi = nums[nums.length - 1] - nums[0];
+    while (lo < hi) {
+        const mid = lo + Math.floor((hi - lo) / 2);
+        if (countPairs(mid) >= k) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+};
+
+================================================================================
+# 0720_longest_word_in_dictionary  (19 lines)
+================================================================================
+// LeetCode 0720 - Longest Word in Dictionary
+// https://leetcode.com/problems/longest-word-in-dictionary/
+
+/**
+ * @param {string[]} words
+ * @return {string}
+ */
+var longestWord = function(words) {
+    words = words.slice().sort();
+    const built = new Set(['']);
+    let best = '';
+    for (const word of words) {
+        if (built.has(word.substring(0, word.length - 1))) {
+            built.add(word);
+            if (word.length > best.length) best = word;
+        }
+    }
+    return best;
+};
+
+================================================================================
+# 0721_accounts_merge  (41 lines)
+================================================================================
+// LeetCode 0721 - Accounts Merge
+// https://leetcode.com/problems/accounts-merge/
+
+/**
+ * @param {string[][]} accounts
+ * @return {string[][]}
+ */
+var accountsMerge = function(accounts) {
+    const parent = new Map();
+    const find = (x) => {
+        if (!parent.has(x)) parent.set(x, x);
+        while (parent.get(x) !== x) {
+            parent.set(x, parent.get(parent.get(x)));
+            x = parent.get(x);
+        }
+        return x;
+    };
+    const unite = (a, b) => { parent.set(find(a), find(b)); };
+    const emailName = new Map();
+    for (const account of accounts) {
+        const name = account[0], first = account[1];
+        for (let i = 1; i < account.length; i++) {
+            const email = account[i];
+            if (!parent.has(email)) parent.set(email, email);
+            emailName.set(email, name);
+            unite(first, email);
+        }
+    }
+    const groups = new Map();
+    for (const email of parent.keys()) {
+        const root = find(email);
+        if (!groups.has(root)) groups.set(root, []);
+        groups.get(root).push(email);
+    }
+    const result = [];
+    for (const emails of groups.values()) {
+        emails.sort();
+        result.push([emailName.get(emails[0]), ...emails]);
+    }
+    return result;
+};
+
+================================================================================
+# 0722_remove_comments  (32 lines)
+================================================================================
+// LeetCode 0722 - Remove Comments
+// https://leetcode.com/problems/remove-comments/
+
+/**
+ * @param {string[]} source
+ * @return {string[]}
+ */
+var removeComments = function(source) {
+    const result = [];
+    let buffer = '';
+    let inBlock = false;
+    for (const line of source) {
+        let i = 0;
+        while (i < line.length) {
+            if (inBlock) {
+                if (i + 1 < line.length && line[i] === '*' && line[i + 1] === '/') {
+                    inBlock = false;
+                    i += 2;
+                } else i++;
+            } else if (i + 1 < line.length && line[i] === '/' && line[i + 1] === '*') {
+                inBlock = true;
+                i += 2;
+            } else if (i + 1 < line.length && line[i] === '/' && line[i + 1] === '/') break;
+            else buffer += line[i++];
+        }
+        if (!inBlock && buffer.length > 0) {
+            result.push(buffer);
+            buffer = '';
+        }
+    }
+    return result;
+};
+
+================================================================================
+# 0723_candy_crush  (40 lines)
+================================================================================
+// LeetCode 0723 - Candy Crush
+// https://leetcode.com/problems/candy-crush/
+
+/**
+ * @param {number[][]} board
+ * @return {number[][]}
+ */
+var candyCrush = function(board) {
+    const m = board.length, n = board[0].length;
+    let stable = false;
+    while (!stable) {
+        stable = true;
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n - 2; j++) {
+                const value = Math.abs(board[i][j]);
+                if (value !== 0 && value === Math.abs(board[i][j + 1]) && value === Math.abs(board[i][j + 2])) {
+                    board[i][j] = board[i][j + 1] = board[i][j + 2] = -value;
+                    stable = false;
+                }
+            }
+        }
+        for (let j = 0; j < n; j++) {
+            for (let i = 0; i < m - 2; i++) {
+                const value = Math.abs(board[i][j]);
+                if (value !== 0 && value === Math.abs(board[i + 1][j]) && value === Math.abs(board[i + 2][j])) {
+                    board[i][j] = board[i + 1][j] = board[i + 2][j] = -value;
+                    stable = false;
+                }
+            }
+        }
+        for (let j = 0; j < n; j++) {
+            let write = m - 1;
+            for (let i = m - 1; i >= 0; i--) {
+                if (board[i][j] > 0) board[write--][j] = board[i][j];
+            }
+            for (let i = write; i >= 0; i--) board[i][j] = 0;
+        }
+    }
+    return board;
+};
+
+================================================================================
+# 0724_find_pivot_index  (17 lines)
+================================================================================
+// LeetCode 0724 - Find Pivot Index
+// https://leetcode.com/problems/find-pivot-index/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var pivotIndex = function(nums) {
+    let total = 0;
+    for (const x of nums) total += x;
+    let left = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (left === total - left - nums[i]) return i;
+        left += nums[i];
+    }
+    return -1;
+};
+
+================================================================================
+# 0725_split_linked_list_in_parts  (26 lines)
+================================================================================
+// LeetCode 0725 - Split Linked List in Parts
+// https://leetcode.com/problems/split-linked-list-in-parts/
+
+/**
+ * @param {ListNode} head
+ * @param {number} k
+ * @return {ListNode[]}
+ */
+var splitListToParts = function(head, k) {
+    let length = 0;
+    for (let node = head; node !== null; node = node.next) length++;
+    const partSize = Math.floor(length / k), extra = length % k;
+    const result = new Array(k).fill(null);
+    let current = head;
+    for (let i = 0; i < k; i++) {
+        result[i] = current;
+        const size = partSize + (i < extra ? 1 : 0);
+        for (let j = 0; j < size - 1 && current !== null; j++) current = current.next;
+        if (current !== null) {
+            const nxt = current.next;
+            current.next = null;
+            current = nxt;
+        }
+    }
+    return result;
+};
+
+================================================================================
+# 0726_number_of_atoms  (45 lines)
+================================================================================
+// LeetCode 0726 - Number of Atoms
+// https://leetcode.com/problems/number-of-atoms/
+
+/**
+ * @param {string} formula
+ * @return {string}
+ */
+var countOfAtoms = function(formula) {
+    const st = [new Map()];
+    let i = 0;
+    const n = formula.length;
+    while (i < n) {
+        if (formula[i] === '(') {
+            st.push(new Map());
+            i++;
+        } else if (formula[i] === ')') {
+            i++;
+            const start = i;
+            while (i < n && formula[i] >= '0' && formula[i] <= '9') i++;
+            const mult = start < i ? parseInt(formula.substring(start, i), 10) : 1;
+            const top = st.pop();
+            const peek = st[st.length - 1];
+            for (const [key, value] of top) {
+                peek.set(key, (peek.get(key) || 0) + value * mult);
+            }
+        } else {
+            let start = i++;
+            while (i < n && formula[i] >= 'a' && formula[i] <= 'z') i++;
+            const atom = formula.substring(start, i);
+            start = i;
+            while (i < n && formula[i] >= '0' && formula[i] <= '9') i++;
+            const count = start < i ? parseInt(formula.substring(start, i), 10) : 1;
+            const peek = st[st.length - 1];
+            peek.set(atom, (peek.get(atom) || 0) + count);
+        }
+    }
+    const peek = st[st.length - 1];
+    const keys = Array.from(peek.keys()).sort();
+    let result = '';
+    for (const key of keys) {
+        result += key;
+        if (peek.get(key) > 1) result += peek.get(key);
+    }
+    return result;
+};
+
+================================================================================
+# 0727_minimum_window_subsequence  (32 lines)
+================================================================================
+// LeetCode 0727 - Minimum Window Subsequence
+// https://leetcode.com/problems/minimum-window-subsequence/
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {string}
+ */
+var minWindow = function(s1, s2) {
+    const m = s1.length, n = s2.length;
+    let best = '';
+    let i = 0;
+    while (i < m) {
+        let j = 0, k = i;
+        while (k < m && j < n) {
+            if (s1[k] === s2[j]) j++;
+            k++;
+        }
+        if (j < n) break;
+        const end = k - 1;
+        j = n - 1;
+        k = end;
+        while (j >= 0) {
+            if (s1[k] === s2[j]) j--;
+            k--;
+        }
+        const start = k + 1;
+        if (best.length === 0 || end - start + 1 < best.length) best = s1.substring(start, end + 1);
+        i = start + 1;
+    }
+    return best;
+};
+
+================================================================================
+# 0728_self_dividing_numbers  (22 lines)
+================================================================================
+// LeetCode 0728 - Self Dividing Numbers
+// https://leetcode.com/problems/self-dividing-numbers/
+
+/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+var selfDividingNumbers = function(left, right) {
+    const isSelfDividing = (num) => {
+        let x = num;
+        while (x > 0) {
+            const digit = x % 10;
+            if (digit === 0 || num % digit !== 0) return false;
+            x = Math.floor(x / 10);
+        }
+        return true;
+    };
+    const result = [];
+    for (let num = left; num <= right; num++) if (isSelfDividing(num)) result.push(num);
+    return result;
+};
+
+================================================================================
+# 0729_my_calendar_i  (21 lines)
+================================================================================
+// LeetCode 0729 - My Calendar I
+// https://leetcode.com/problems/my-calendar-i/
+
+class MyCalendar {
+    constructor() {
+        this.bookings = [];
+    }
+
+    /**
+     * @param {number} startTime
+     * @param {number} endTime
+     * @return {boolean}
+     */
+    book(startTime, endTime) {
+        for (const b of this.bookings) {
+            if (b[0] < endTime && startTime < b[1]) return false;
+        }
+        this.bookings.push([startTime, endTime]);
+        return true;
+    }
+}
+
+================================================================================
+# 0730_count_different_palindromic_subsequences  (29 lines)
+================================================================================
+// LeetCode 0730 - Count Different Palindromic Subsequences
+// https://leetcode.com/problems/count-different-palindromic-subsequences/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var countPalindromicSubsequences = function(s) {
+    const mod = 1000000007;
+    const n = s.length;
+    const dp = Array.from({length: n}, () => new Array(n).fill(0));
+    for (let i = 0; i < n; i++) dp[i][i] = 1;
+    for (let length = 2; length <= n; length++) {
+        for (let i = 0; i <= n - length; i++) {
+            const j = i + length - 1;
+            if (s[i] !== s[j]) dp[i][j] = dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1];
+            else {
+                let left = i + 1, right = j - 1;
+                while (left <= right && s[left] !== s[i]) left++;
+                while (left <= right && s[right] !== s[i]) right--;
+                if (left > right) dp[i][j] = dp[i + 1][j - 1] * 2 + 2;
+                else if (left === right) dp[i][j] = dp[i + 1][j - 1] * 2 + 1;
+                else dp[i][j] = dp[i + 1][j - 1] * 2 - dp[left + 1][right - 1];
+            }
+            dp[i][j] = ((dp[i][j] % mod) + mod) % mod;
+        }
+    }
+    return dp[0][n - 1];
+};
+
+================================================================================
+# 0731_my_calendar_ii  (27 lines)
+================================================================================
+// LeetCode 0731 - My Calendar II
+// https://leetcode.com/problems/my-calendar-ii/
+
+class MyCalendarTwo {
+    constructor() {
+        this.booked = [];
+        this.overlaps = [];
+    }
+
+    /**
+     * @param {number} startTime
+     * @param {number} endTime
+     * @return {boolean}
+     */
+    book(startTime, endTime) {
+        for (const o of this.overlaps) {
+            if (o[0] < endTime && startTime < o[1]) return false;
+        }
+        for (const b of this.booked) {
+            if (b[0] < endTime && startTime < b[1]) {
+                this.overlaps.push([Math.max(b[0], startTime), Math.min(b[1], endTime)]);
+            }
+        }
+        this.booked.push([startTime, endTime]);
+        return true;
+    }
+}
+
+================================================================================
+# 0732_my_calendar_iii  (25 lines)
+================================================================================
+// LeetCode 0732 - My Calendar III
+// https://leetcode.com/problems/my-calendar-iii/
+
+class MyCalendarThree {
+    constructor() {
+        this.delta = new Map();
+    }
+
+    /**
+     * @param {number} startTime
+     * @param {number} endTime
+     * @return {number}
+     */
+    book(startTime, endTime) {
+        this.delta.set(startTime, (this.delta.get(startTime) || 0) + 1);
+        this.delta.set(endTime, (this.delta.get(endTime) || 0) - 1);
+        let current = 0, best = 0;
+        const keys = Array.from(this.delta.keys()).sort((a, b) => a - b);
+        for (const key of keys) {
+            current += this.delta.get(key);
+            best = Math.max(best, current);
+        }
+        return best;
+    }
+}
+
+================================================================================
+# 0733_flood_fill  (24 lines)
+================================================================================
+// LeetCode 0733 - Flood Fill
+// https://leetcode.com/problems/flood-fill/
+
+/**
+ * @param {number[][]} image
+ * @param {number} sr
+ * @param {number} sc
+ * @param {number} color
+ * @return {number[][]}
+ */
+var floodFill = function(image, sr, sc, color) {
+    const original = image[sr][sc];
+    if (original === color) return image;
+    const dfs = (r, c) => {
+        if (r < 0 || r >= image.length || c < 0 || c >= image[0].length || image[r][c] !== original) return;
+        image[r][c] = color;
+        dfs(r + 1, c);
+        dfs(r - 1, c);
+        dfs(r, c + 1);
+        dfs(r, c - 1);
+    };
+    dfs(sr, sc);
+    return image;
+};
+
+================================================================================
+# 0734_sentence_similarity  (21 lines)
+================================================================================
+// LeetCode 0734 - Sentence Similarity
+// https://leetcode.com/problems/sentence-similarity/
+
+/**
+ * @param {string[]} sentence1
+ * @param {string[]} sentence2
+ * @param {string[][]} similarPairs
+ * @return {boolean}
+ */
+var areSentencesSimilar = function(sentence1, sentence2, similarPairs) {
+    if (sentence1.length !== sentence2.length) return false;
+    const pairs = new Set();
+    for (const pair of similarPairs) {
+        pairs.add(pair[0] + '#' + pair[1]);
+        pairs.add(pair[1] + '#' + pair[0]);
+    }
+    for (let i = 0; i < sentence1.length; i++) {
+        if (sentence1[i] !== sentence2[i] && !pairs.has(sentence1[i] + '#' + sentence2[i])) return false;
+    }
+    return true;
+};
+
+================================================================================
+# 0735_asteroid_collision  (20 lines)
+================================================================================
+// LeetCode 0735 - Asteroid Collision
+// https://leetcode.com/problems/asteroid-collision/
+
+/**
+ * @param {number[]} asteroids
+ * @return {number[]}
+ */
+var asteroidCollision = function(asteroids) {
+    const stack = [];
+    for (const asteroid of asteroids) {
+        let alive = true;
+        while (alive && stack.length > 0 && asteroid < 0 && stack[stack.length - 1] > 0) {
+            if (stack[stack.length - 1] < -asteroid) { stack.pop(); continue; }
+            if (stack[stack.length - 1] === -asteroid) stack.pop();
+            alive = false;
+        }
+        if (alive) stack.push(asteroid);
+    }
+    return stack;
+};
+
+================================================================================
+# 0736_parse_lisp_expression  (60 lines)
+================================================================================
+// LeetCode 0736 - Parse Lisp Expression
+// https://leetcode.com/problems/parse-lisp-expression/
+
+/**
+ * @param {string} expression
+ * @return {number}
+ */
+var evaluate = function(expression) {
+    const tokens = [];
+    let cur = '';
+    for (const ch of expression) {
+        if (ch === '(' || ch === ')') {
+            if (cur.length > 0) { tokens.push(cur); cur = ''; }
+            tokens.push(ch);
+        } else if (/\s/.test(ch)) {
+            if (cur.length > 0) { tokens.push(cur); cur = ''; }
+        } else cur += ch;
+    }
+    if (cur.length > 0) tokens.push(cur);
+    let pos = 0;
+    const parse = (env) => {
+        const token = tokens[pos];
+        if (token !== '(') {
+            pos++;
+            if ((token[0] >= '0' && token[0] <= '9') || (token[0] === '-' && token.length > 1))
+                return parseInt(token, 10);
+            for (let i = env.length - 1; i >= 0; i--) {
+                if (env[i].has(token)) return env[i].get(token);
+            }
+            return 0;
+        }
+        pos++;
+        const op = tokens[pos++];
+        if (op === 'let') {
+            env.push(new Map());
+            while (tokens[pos] !== ')') {
+                if (tokens[pos] === '(' || tokens[pos + 1] === ')') {
+                    const value = parse(env);
+                    pos++;
+                    env.pop();
+                    return value;
+                }
+                const v = tokens[pos++];
+                env[env.length - 1].set(v, parse(env));
+            }
+        }
+        if (op === 'add') {
+            const left = parse(env), right = parse(env);
+            pos++;
+            return left + right;
+        }
+        if (op === 'mult') {
+            const left = parse(env), right = parse(env);
+            pos++;
+            return left * right;
+        }
+        return 0;
+    };
+    return parse([]);
+};
+
+================================================================================
+# 0737_sentence_similarity_ii  (27 lines)
+================================================================================
+// LeetCode 0737 - Sentence Similarity II
+// https://leetcode.com/problems/sentence-similarity-ii/
+
+/**
+ * @param {string[]} sentence1
+ * @param {string[]} sentence2
+ * @param {string[][]} similarPairs
+ * @return {boolean}
+ */
+var areSentencesSimilarTwo = function(sentence1, sentence2, similarPairs) {
+    if (sentence1.length !== sentence2.length) return false;
+    const parent = new Map();
+    const find = (x) => {
+        if (!parent.has(x)) parent.set(x, x);
+        while (parent.get(x) !== x) {
+            parent.set(x, parent.get(parent.get(x)));
+            x = parent.get(x);
+        }
+        return x;
+    };
+    const unite = (a, b) => { parent.set(find(a), find(b)); };
+    for (const pair of similarPairs) unite(pair[0], pair[1]);
+    for (let i = 0; i < sentence1.length; i++) {
+        if (find(sentence1[i]) !== find(sentence2[i])) return false;
+    }
+    return true;
+};
+
+================================================================================
+# 0738_monotone_increasing_digits  (19 lines)
+================================================================================
+// LeetCode 0738 - Monotone Increasing Digits
+// https://leetcode.com/problems/monotone-increasing-digits/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var monotoneIncreasingDigits = function(n) {
+    const digits = String(n).split('');
+    let mark = digits.length;
+    for (let i = digits.length - 1; i > 0; i--) {
+        if (digits[i] < digits[i - 1]) {
+            digits[i - 1] = String.fromCharCode(digits[i - 1].charCodeAt(0) - 1);
+            mark = i;
+        }
+    }
+    for (let i = mark; i < digits.length; i++) digits[i] = '9';
+    return parseInt(digits.join(''), 10);
+};
+
+================================================================================
+# 0739_daily_temperatures  (19 lines)
+================================================================================
+// LeetCode 0739 - Daily Temperatures
+// https://leetcode.com/problems/daily-temperatures/
+
+/**
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
+var dailyTemperatures = function(temperatures) {
+    const answer = new Array(temperatures.length).fill(0);
+    const stack = [];
+    for (let i = 0; i < temperatures.length; i++) {
+        while (stack.length > 0 && temperatures[stack[stack.length - 1]] < temperatures[i]) {
+            const prev = stack.pop();
+            answer[prev] = i - prev;
+        }
+        stack.push(i);
+    }
+    return answer;
+};
+
+================================================================================
+# 0740_delete_and_earn  (22 lines)
+================================================================================
+// LeetCode 0740 - Delete and Earn
+// https://leetcode.com/problems/delete-and-earn/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var deleteAndEarn = function(nums) {
+    if (nums.length === 0) return 0;
+    let maxNum = 0;
+    for (const num of nums) maxNum = Math.max(maxNum, num);
+    const points = new Array(maxNum + 1).fill(0);
+    for (const num of nums) points[num] += num;
+    let take = 0, skip = 0;
+    for (const value of points) {
+        const newTake = skip + value;
+        const newSkip = Math.max(skip, take);
+        take = newTake;
+        skip = newSkip;
+    }
+    return Math.max(take, skip);
+};
+
+================================================================================
+# 0741_cherry_pickup  (29 lines)
+================================================================================
+// LeetCode 0741 - Cherry Pickup
+// https://leetcode.com/problems/cherry-pickup/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var cherryPickup = function(grid) {
+    const n = grid.length;
+    const memo = Array.from({length: n}, () =>
+        Array.from({length: n}, () => new Array(n).fill(-Infinity))
+    );
+    const dp = (r1, c1, c2) => {
+        const r2 = r1 + c1 - c2;
+        if (r1 >= n || c1 >= n || r2 >= n || c2 >= n || grid[r1][c1] === -1 || grid[r2][c2] === -1)
+            return -1000000000;
+        if (r1 === n - 1 && c1 === n - 1) return grid[r1][c1];
+        if (memo[r1][c1][c2] !== -Infinity) return memo[r1][c1][c2];
+        let cherries = grid[r1][c1];
+        if (r1 !== r2 || c1 !== c2) cherries += grid[r2][c2];
+        cherries += Math.max(
+            Math.max(dp(r1 + 1, c1, c2), dp(r1, c1 + 1, c2)),
+            Math.max(dp(r1 + 1, c1, c2 + 1), dp(r1, c1 + 1, c2 + 1))
+        );
+        memo[r1][c1][c2] = cherries;
+        return cherries;
+    };
+    return Math.max(0, dp(0, 0, 0));
+};
+
+================================================================================
+# 0742_closest_leaf_in_a_binary_tree  (39 lines)
+================================================================================
+// LeetCode 0742 - Closest Leaf in a Binary Tree
+// https://leetcode.com/problems/closest-leaf-in-a-binary-tree/
+
+/**
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+var findClosestLeaf = function(root, k) {
+    const graph = new Map();
+    const leaves = new Set();
+    const build = (node, parent) => {
+        if (node === null) return;
+        if (!graph.has(node.val)) graph.set(node.val, []);
+        if (parent !== null) {
+            if (!graph.has(parent.val)) graph.set(parent.val, []);
+            graph.get(node.val).push(parent.val);
+            graph.get(parent.val).push(node.val);
+        }
+        if (node.left === null && node.right === null) leaves.add(node.val);
+        build(node.right, node);
+        build(node.left, node);
+    };
+    build(root, null);
+    const q = [k];
+    const seen = new Set([k]);
+    while (q.length > 0) {
+        const value = q.shift();
+        if (leaves.has(value)) return value;
+        if (!graph.has(value)) continue;
+        for (const neighbor of graph.get(value)) {
+            if (!seen.has(neighbor)) {
+                seen.add(neighbor);
+                q.push(neighbor);
+            }
+        }
+    }
+    return -1;
+};
+
+================================================================================
+# 0743_network_delay_time  (32 lines)
+================================================================================
+// LeetCode 0743 - Network Delay Time
+// https://leetcode.com/problems/network-delay-time/
+
+/**
+ * @param {number[][]} times
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var networkDelayTime = function(times, n, k) {
+    const graph = Array.from({length: n + 1}, () => []);
+    for (const edge of times) graph[edge[0]].push([edge[1], edge[2]]);
+    const INF = Math.floor(Infinity / 4);
+    const dist = new Array(n + 1).fill(INF);
+    dist[k] = 0;
+    const heap = [[0, k]];
+    while (heap.length > 0) {
+        heap.sort((a, b) => a[0] - b[0]);
+        const [d, node] = heap.shift();
+        if (d > dist[node]) continue;
+        for (const e of graph[node]) {
+            const nd = d + e[1];
+            if (nd < dist[e[0]]) {
+                dist[e[0]] = nd;
+                heap.push([nd, e[0]]);
+            }
+        }
+    }
+    let ans = 0;
+    for (let i = 1; i <= n; i++) ans = Math.max(ans, dist[i]);
+    return ans === INF ? -1 : ans;
+};
+
+================================================================================
+# 0744_find_smallest_letter_greater_than_target  (17 lines)
+================================================================================
+// LeetCode 0744 - Find Smallest Letter Greater Than Target
+// https://leetcode.com/problems/find-smallest-letter-greater-than-target/
+
+/**
+ * @param {character[]} letters
+ * @param {character} target
+ * @return {character}
+ */
+var nextGreatestLetter = function(letters, target) {
+    let left = 0, right = letters.length;
+    while (left < right) {
+        const mid = left + Math.floor((right - left) / 2);
+        if (letters[mid] <= target) left = mid + 1;
+        else right = mid;
+    }
+    return letters[left % letters.length];
+};
+
+================================================================================
+# 0745_prefix_and_suffix_search  (30 lines)
+================================================================================
+// LeetCode 0745 - Prefix and Suffix Search
+// https://leetcode.com/problems/prefix-and-suffix-search/
+
+class WordFilter {
+    /**
+     * @param {string[]} words
+     */
+    constructor(words) {
+        this.lookup = new Map();
+        for (let index = 0; index < words.length; index++) {
+            const word = words[index];
+            const size = word.length;
+            for (let i = 0; i <= size; i++) {
+                for (let j = 0; j <= size; j++) {
+                    this.lookup.set(word.substring(0, i) + '#' + word.substring(j), index);
+                }
+            }
+        }
+    }
+
+    /**
+     * @param {string} pref
+     * @param {string} suff
+     * @return {number}
+     */
+    f(pref, suff) {
+        const key = pref + '#' + suff;
+        return this.lookup.has(key) ? this.lookup.get(key) : -1;
+    }
+}
+
+================================================================================
+# 0746_min_cost_climbing_stairs  (16 lines)
+================================================================================
+// LeetCode 0746 - Min Cost Climbing Stairs
+// https://leetcode.com/problems/min-cost-climbing-stairs/
+
+/**
+ * @param {number[]} cost
+ * @return {number}
+ */
+var minCostClimbingStairs = function(cost) {
+    let a = 0, b = 0;
+    for (let i = cost.length - 1; i >= 0; i--) {
+        const nextA = cost[i] + Math.min(a, b);
+        b = a;
+        a = nextA;
+    }
+    return Math.min(a, b);
+};
+
+================================================================================
+# 0747_largest_number_at_least_twice_of_others  (15 lines)
+================================================================================
+// LeetCode 0747 - Largest Number At Least Twice of Others
+// https://leetcode.com/problems/largest-number-at-least-twice-of-others/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var dominantIndex = function(nums) {
+    let first = -1, second = -1, index = -1;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > first) { second = first; first = nums[i]; index = i; }
+        else if (nums[i] > second) second = nums[i];
+    }
+    return first >= 2 * second ? index : -1;
+};
+
+================================================================================
+# 0748_shortest_completing_word  (24 lines)
+================================================================================
+// LeetCode 0748 - Shortest Completing Word
+// https://leetcode.com/problems/shortest-completing-word/
+
+/**
+ * @param {string} licensePlate
+ * @param {string[]} words
+ * @return {string}
+ */
+var shortestCompletingWord = function(licensePlate, words) {
+    const need = new Array(26).fill(0);
+    for (const ch of licensePlate) {
+        const lower = ch.toLowerCase();
+        if (lower >= 'a' && lower <= 'z') need[lower.charCodeAt(0) - 97]++;
+    }
+    let best = '';
+    for (const word of words) {
+        const counts = new Array(26).fill(0);
+        for (const ch of word) counts[ch.charCodeAt(0) - 97]++;
+        let ok = true;
+        for (let i = 0; i < 26; i++) if (counts[i] < need[i]) { ok = false; break; }
+        if (ok && (best.length === 0 || word.length < best.length)) best = word;
+    }
+    return best;
+};
+
+================================================================================
+# 0749_contain_virus  (71 lines)
+================================================================================
+// LeetCode 0749 - Contain Virus
+// https://leetcode.com/problems/contain-virus/
+
+/**
+ * @param {number[][]} isInfected
+ * @return {number}
+ */
+var containVirus = function(isInfected) {
+    const m = isInfected.length, n = isInfected[0].length;
+    let walls = 0;
+    const pack = (r, c) => (r * 1e6) + c;
+    const unpack = (key) => [Math.floor(key / 1e6), key % 1e6];
+    while (true) {
+        const seen = new Set();
+        const regions = [];
+        const frontiers = [];
+        const perimeters = [];
+        for (let i = 0; i < m; i++) {
+            for (let j = 0; j < n; j++) {
+                const key = pack(i, j);
+                if (isInfected[i][j] === 1 && !seen.has(key)) {
+                    const stack = [[i, j]];
+                    seen.add(key);
+                    const region = new Set();
+                    const frontier = new Set();
+                    let perimeter = 0;
+                    const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+                    while (stack.length > 0) {
+                        const [r, c] = stack.pop();
+                        region.add(pack(r, c));
+                        for (const d of dirs) {
+                            const nr = r + d[0], nc = c + d[1];
+                            if (nr < 0 || nr >= m || nc < 0 || nc >= n) continue;
+                            const nk = pack(nr, nc);
+                            if (isInfected[nr][nc] === 1) {
+                                if (!seen.has(nk)) {
+                                    seen.add(nk);
+                                    stack.push([nr, nc]);
+                                }
+                            } else if (isInfected[nr][nc] === 0) {
+                                frontier.add(nk);
+                                perimeter++;
+                            }
+                        }
+                    }
+                    regions.push(region);
+                    frontiers.push(frontier);
+                    perimeters.push(perimeter);
+                }
+            }
+        }
+        if (regions.length === 0) break;
+        let quarantine = 0;
+        for (let i = 1; i < regions.length; i++)
+            if (frontiers[i].size > frontiers[quarantine].size) quarantine = i;
+        if (frontiers[quarantine].size === 0) break;
+        walls += perimeters[quarantine];
+        for (const cell of regions[quarantine]) {
+            const [r, c] = unpack(cell);
+            isInfected[r][c] = -1;
+        }
+        for (let index = 0; index < frontiers.length; index++) {
+            if (index === quarantine) continue;
+            for (const cell of frontiers[index]) {
+                const [r, c] = unpack(cell);
+                isInfected[r][c] = 1;
+            }
+        }
+    }
+    return walls;
+};
+
+================================================================================
+# 0750_number_of_corner_rectangles  (19 lines)
+================================================================================
+// LeetCode 0750 - Number Of Corner Rectangles
+// https://leetcode.com/problems/number-of-corner-rectangles/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var countCornerRectangles = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let ans = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = i + 1; j < m; j++) {
+            let count = 0;
+            for (let c = 0; c < n; c++) if (grid[i][c] === 1 && grid[j][c] === 1) count++;
+            ans += count * (count - 1) / 2;
+        }
+    }
+    return ans;
+};
+
+================================================================================
+# 0751_ip_to_cidr  (44 lines)
+================================================================================
+// LeetCode 0751 - IP to CIDR
+// https://leetcode.com/problems/ip-to-cidr/
+
+/**
+ * @param {string} ip
+ * @param {number} n
+ * @return {string[]}
+ */
+var ipToCIDR = function(ip, n) {
+    const ipToInt = (value) => {
+        let result = 0;
+        for (const part of value.split('.')) result = result * 256 + parseInt(part, 10);
+        return result;
+    };
+    const intToIp = (value) => {
+        return [
+            Math.floor(value / 16777216) % 256,
+            Math.floor(value / 65536) % 256,
+            Math.floor(value / 256) % 256,
+            value % 256
+        ].join('.');
+    };
+    const bitLength = (value) => {
+        let len = 0;
+        while (value > 0) { value = Math.floor(value / 2); len++; }
+        return len;
+    };
+    let start = ipToInt(ip);
+    const answer = [];
+    while (n > 0) {
+        let lowbit = start === 0 ? Math.pow(2, 32) : (start & -start);
+        // Convert signed 32-bit & result to unsigned
+        if (start !== 0) {
+            lowbit = start & -start;
+            lowbit = lowbit >>> 0;
+        }
+        while (lowbit > n) lowbit = Math.floor(lowbit / 2);
+        const mask = 32 - (bitLength(lowbit) - 1);
+        answer.push(intToIp(start) + '/' + mask);
+        start += lowbit;
+        n -= lowbit;
+    }
+    return answer;
+};
+
+================================================================================
+# 0752_open_the_lock  (35 lines)
+================================================================================
+// LeetCode 0752 - Open the Lock
+// https://leetcode.com/problems/open-the-lock/
+
+/**
+ * @param {string[]} deadends
+ * @param {string} target
+ * @return {number}
+ */
+var openLock = function(deadends, target) {
+    const dead = new Set(deadends);
+    if (dead.has('0000')) return -1;
+    const q = ['0000'];
+    const stepsQ = [0];
+    const seen = new Set(['0000']);
+    while (q.length > 0) {
+        const state = q.shift();
+        const steps = stepsQ.shift();
+        if (state === target) return steps;
+        const chars = state.split('');
+        for (let i = 0; i < 4; i++) {
+            const digit = chars[i].charCodeAt(0) - 48;
+            for (const delta of [-1, 1]) {
+                chars[i] = String((digit + delta + 10) % 10);
+                const nxt = chars.join('');
+                chars[i] = String(digit);
+                if (!seen.has(nxt) && !dead.has(nxt)) {
+                    seen.add(nxt);
+                    q.push(nxt);
+                    stepsQ.push(steps + 1);
+                }
+            }
+        }
+    }
+    return -1;
+};
+
+================================================================================
+# 0753_cracking_the_safe  (27 lines)
+================================================================================
+// LeetCode 0753 - Cracking the Safe
+// https://leetcode.com/problems/cracking-the-safe/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {string}
+ */
+var crackSafe = function(n, k) {
+    const seen = new Set();
+    const path = [];
+    let start = '';
+    for (let i = 0; i < n - 1; i++) start += '0';
+    const dfs = (node) => {
+        for (let d = 0; d < k; d++) {
+            const digit = String(d);
+            const edge = node + digit;
+            if (!seen.has(edge)) {
+                seen.add(edge);
+                dfs(edge.substring(1));
+                path.push(digit);
+            }
+        }
+    };
+    dfs(start);
+    return path.join('') + start;
+};
+
+================================================================================
+# 0754_reach_a_number  (16 lines)
+================================================================================
+// LeetCode 0754 - Reach a Number
+// https://leetcode.com/problems/reach-a-number/
+
+/**
+ * @param {number} target
+ * @return {number}
+ */
+var reachNumber = function(target) {
+    target = Math.abs(target);
+    let steps = 0, total = 0;
+    while (total < target || (total - target) % 2 !== 0) {
+        steps++;
+        total += steps;
+    }
+    return steps;
+};
+
+================================================================================
+# 0755_pour_water  (26 lines)
+================================================================================
+// LeetCode 0755 - Pour Water
+// https://leetcode.com/problems/pour-water/
+
+/**
+ * @param {number[]} heights
+ * @param {number} volume
+ * @param {number} k
+ * @return {number[]}
+ */
+var pourWater = function(heights, volume, k) {
+    for (let v = 0; v < volume; v++) {
+        let index = k;
+        for (let i = k - 1; i >= 0; i--) {
+            if (heights[i] > heights[index]) break;
+            if (heights[i] < heights[index]) index = i;
+        }
+        if (index !== k) { heights[index]++; continue; }
+        index = k;
+        for (let i = k + 1; i < heights.length; i++) {
+            if (heights[i] > heights[index]) break;
+            if (heights[i] < heights[index]) index = i;
+        }
+        heights[index]++;
+    }
+    return heights;
+};
+
+================================================================================
+# 0756_pyramid_transition_matrix  (41 lines)
+================================================================================
+// LeetCode 0756 - Pyramid Transition Matrix
+// https://leetcode.com/problems/pyramid-transition-matrix/
+
+/**
+ * @param {string} bottom
+ * @param {string[]} allowed
+ * @return {boolean}
+ */
+var pyramidTransition = function(bottom, allowed) {
+    const transitions = new Map();
+    const memo = new Map();
+    for (const triple of allowed) {
+        const key = triple.substring(0, 2);
+        if (!transitions.has(key)) transitions.set(key, []);
+        transitions.get(key).push(triple[2]);
+    }
+    const build = (index, options, path) => {
+        if (index === options.length) return dfs(path);
+        for (const ch of options[index]) {
+            if (build(index + 1, options, path + ch)) return true;
+        }
+        return false;
+    };
+    const dfs = (row) => {
+        if (row.length === 1) return true;
+        if (memo.has(row)) return memo.get(row);
+        const options = [];
+        for (let i = 0; i + 1 < row.length; i++) {
+            const key = row.substring(i, i + 2);
+            if (!transitions.has(key)) {
+                memo.set(row, false);
+                return false;
+            }
+            options.push(transitions.get(key));
+        }
+        const ok = build(0, options, '');
+        memo.set(row, ok);
+        return ok;
+    };
+    return dfs(bottom);
+};
+
+================================================================================
+# 0757_set_intersection_size_at_least_two  (18 lines)
+================================================================================
+// LeetCode 0757 - Set Intersection Size At Least Two
+// https://leetcode.com/problems/set-intersection-size-at-least-two/
+
+/**
+ * @param {number[][]} intervals
+ * @return {number}
+ */
+var intersectionSizeTwo = function(intervals) {
+    intervals = intervals.slice().sort((a, b) => a[1] !== b[1] ? a[1] - b[1] : a[0] - b[0]);
+    let size = 0, first = -1, second = -1;
+    for (const interval of intervals) {
+        const left = interval[0], right = interval[1];
+        if (left <= first) continue;
+        if (left <= second) { size++; first = second; second = right; }
+        else { size += 2; first = right - 1; second = right; }
+    }
+    return size;
+};
+
+================================================================================
+# 0758_bold_words_in_string  (29 lines)
+================================================================================
+// LeetCode 0758 - Bold Words in String
+// https://leetcode.com/problems/bold-words-in-string/
+
+/**
+ * @param {string[]} words
+ * @param {string} s
+ * @return {string}
+ */
+var boldWords = function(words, s) {
+    const n = s.length;
+    const bold = new Array(n).fill(false);
+    for (const word of words) {
+        let start = s.indexOf(word);
+        while (start >= 0) {
+            for (let i = start; i < start + word.length; i++) bold[i] = true;
+            start = s.indexOf(word, start + 1);
+        }
+    }
+    let parts = '';
+    let i2 = 0;
+    while (i2 < n) {
+        if (bold[i2]) {
+            parts += '**';
+            while (i2 < n && bold[i2]) parts += s[i2++];
+            parts += '**';
+        } else parts += s[i2++];
+    }
+    return parts;
+};
+
+================================================================================
+# 0759_employee_free_time  (23 lines)
+================================================================================
+// LeetCode 0759 - Employee Free Time
+// https://leetcode.com/problems/employee-free-time/
+
+/**
+ * @param {number[][][]} schedule
+ * @return {number[][]}
+ */
+var employeeFreeTime = function(schedule) {
+    const intervals = [];
+    for (const employee of schedule)
+        for (const item of employee)
+            intervals.push([item[0], item[1]]);
+    intervals.sort((a, b) => a[0] - b[0]);
+    const merged = [];
+    for (const iv of intervals) {
+        if (merged.length === 0 || merged[merged.length - 1][1] < iv[0]) merged.push(iv);
+        else merged[merged.length - 1][1] = Math.max(merged[merged.length - 1][1], iv[1]);
+    }
+    const result = [];
+    for (let i = 1; i < merged.length; i++)
+        result.push([merged[i - 1][1], merged[i][0]]);
+    return result;
+};
+
+================================================================================
+# 0760_find_anagram_mappings  (18 lines)
+================================================================================
+// LeetCode 0760 - Find Anagram Mappings
+// https://leetcode.com/problems/find-anagram-mappings/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var anagramMappings = function(nums1, nums2) {
+    const positions = new Map();
+    for (let i = 0; i < nums2.length; i++) {
+        if (!positions.has(nums2[i])) positions.set(nums2[i], []);
+        positions.get(nums2[i]).push(i);
+    }
+    const result = new Array(nums1.length);
+    for (let i = 0; i < nums1.length; i++) result[i] = positions.get(nums1[i]).shift();
+    return result;
+};
+
+================================================================================
+# 0761_special_binary_string  (20 lines)
+================================================================================
+// LeetCode 0761 - Special Binary String
+// https://leetcode.com/problems/special-binary-string/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var makeLargestSpecial = function(s) {
+    const parts = [];
+    let balance = 0, start = 0;
+    for (let i = 0; i < s.length; i++) {
+        balance += s[i] === '1' ? 1 : -1;
+        if (balance === 0) {
+            parts.push('1' + makeLargestSpecial(s.substring(start + 1, i)) + '0');
+            start = i + 1;
+        }
+    }
+    parts.sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+    return parts.join('');
+};
+
+================================================================================
+# 0762_prime_number_of_set_bits_in_binary_representation  (18 lines)
+================================================================================
+// LeetCode 0762 - Prime Number of Set Bits in Binary Representation
+// https://leetcode.com/problems/prime-number-of-set-bits-in-binary-representation/
+
+/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number}
+ */
+var countPrimeSetBits = function(left, right) {
+    const primes = new Set([2, 3, 5, 7, 11, 13, 17, 19]);
+    let ans = 0;
+    for (let num = left; num <= right; num++) {
+        let bits = 0, x = num;
+        while (x > 0) { bits += x & 1; x >>>= 1; }
+        if (primes.has(bits)) ans++;
+    }
+    return ans;
+};
+
+================================================================================
+# 0763_partition_labels  (21 lines)
+================================================================================
+// LeetCode 0763 - Partition Labels
+// https://leetcode.com/problems/partition-labels/
+
+/**
+ * @param {string} s
+ * @return {number[]}
+ */
+var partitionLabels = function(s) {
+    const last = new Array(26).fill(0);
+    for (let i = 0; i < s.length; i++) last[s.charCodeAt(i) - 97] = i;
+    let start = 0, end = 0;
+    const answer = [];
+    for (let i = 0; i < s.length; i++) {
+        end = Math.max(end, last[s.charCodeAt(i) - 97]);
+        if (i === end) {
+            answer.push(end - start + 1);
+            start = i + 1;
+        }
+    }
+    return answer;
+};
+
+================================================================================
+# 0764_largest_plus_sign  (40 lines)
+================================================================================
+// LeetCode 0764 - Largest Plus Sign
+// https://leetcode.com/problems/largest-plus-sign/
+
+/**
+ * @param {number} n
+ * @param {number[][]} mines
+ * @return {number}
+ */
+var orderOfLargestPlusSign = function(n, mines) {
+    const banned = new Set();
+    for (const mine of mines) banned.add(mine[0] * n + mine[1]);
+    const arms = Array.from({length: n}, () => new Array(n).fill(0));
+    let best = 0;
+    for (let r = 0; r < n; r++) {
+        let count = 0;
+        for (let c = 0; c < n; c++) {
+            count = banned.has(r * n + c) ? 0 : count + 1;
+            arms[r][c] = count;
+        }
+        count = 0;
+        for (let c = n - 1; c >= 0; c--) {
+            count = banned.has(r * n + c) ? 0 : count + 1;
+            arms[r][c] = Math.min(arms[r][c], count);
+        }
+    }
+    for (let c = 0; c < n; c++) {
+        let count = 0;
+        for (let r = 0; r < n; r++) {
+            count = banned.has(r * n + c) ? 0 : count + 1;
+            arms[r][c] = Math.min(arms[r][c], count);
+        }
+        count = 0;
+        for (let r = n - 1; r >= 0; r--) {
+            count = banned.has(r * n + c) ? 0 : count + 1;
+            arms[r][c] = Math.min(arms[r][c], count);
+            best = Math.max(best, arms[r][c]);
+        }
+    }
+    return best;
+};
+
+================================================================================
+# 0765_couples_holding_hands  (23 lines)
+================================================================================
+// LeetCode 0765 - Couples Holding Hands
+// https://leetcode.com/problems/couples-holding-hands/
+
+/**
+ * @param {number[]} row
+ * @return {number}
+ */
+var minSwapsCouples = function(row) {
+    const pos = new Map();
+    for (let i = 0; i < row.length; i++) pos.set(row[i], i);
+    let swaps = 0;
+    for (let i = 0; i < row.length; i += 2) {
+        const partner = row[i] ^ 1;
+        if (row[i + 1] === partner) continue;
+        const j = pos.get(partner);
+        pos.set(row[i + 1], j);
+        row[j] = row[i + 1];
+        row[i + 1] = partner;
+        pos.set(partner, i + 1);
+        swaps++;
+    }
+    return swaps;
+};
+
+================================================================================
+# 0766_toeplitz_matrix  (15 lines)
+================================================================================
+// LeetCode 0766 - Toeplitz Matrix
+// https://leetcode.com/problems/toeplitz-matrix/
+
+/**
+ * @param {number[][]} matrix
+ * @return {boolean}
+ */
+var isToeplitzMatrix = function(matrix) {
+    for (let r = 1; r < matrix.length; r++) {
+        for (let c = 1; c < matrix[0].length; c++) {
+            if (matrix[r][c] !== matrix[r - 1][c - 1]) return false;
+        }
+    }
+    return true;
+};
+
+================================================================================
+# 0767_reorganize_string  (29 lines)
+================================================================================
+// LeetCode 0767 - Reorganize String
+// https://leetcode.com/problems/reorganize-string/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var reorganizeString = function(s) {
+    const freq = new Array(26).fill(0);
+    for (const ch of s) freq[ch.charCodeAt(0) - 97]++;
+    const heap = [];
+    for (let i = 0; i < 26; i++) {
+        if (freq[i] > 0) heap.push([freq[i], i]);
+    }
+    heap.sort((a, b) => b[0] - a[0]);
+    if (heap.length > 0 && heap[0][0] > Math.floor((s.length + 1) / 2)) return '';
+    let result = '';
+    while (heap.length >= 2) {
+        heap.sort((a, b) => b[0] - a[0]);
+        const x = heap.shift();
+        const y = heap.shift();
+        result += String.fromCharCode(97 + x[1]);
+        result += String.fromCharCode(97 + y[1]);
+        if (--x[0] > 0) heap.push(x);
+        if (--y[0] > 0) heap.push(y);
+    }
+    if (heap.length > 0) result += String.fromCharCode(97 + heap[0][1]);
+    return result;
+};
+
+================================================================================
+# 0768_max_chunks_to_make_sorted_ii  (18 lines)
+================================================================================
+// LeetCode 0768 - Max Chunks To Make Sorted II
+// https://leetcode.com/problems/max-chunks-to-make-sorted-ii/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var maxChunksToSorted = function(arr) {
+    const n = arr.length;
+    const maxLeft = new Array(n), minRight = new Array(n);
+    maxLeft[0] = arr[0];
+    for (let i = 1; i < n; i++) maxLeft[i] = Math.max(maxLeft[i - 1], arr[i]);
+    minRight[n - 1] = arr[n - 1];
+    for (let i = n - 2; i >= 0; i--) minRight[i] = Math.min(minRight[i + 1], arr[i]);
+    let chunks = 1;
+    for (let i = 0; i < n - 1; i++) if (maxLeft[i] <= minRight[i + 1]) chunks++;
+    return chunks;
+};
+
+================================================================================
+# 0769_max_chunks_to_make_sorted  (15 lines)
+================================================================================
+// LeetCode 0769 - Max Chunks To Make Sorted
+// https://leetcode.com/problems/max-chunks-to-make-sorted/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var maxChunksToSorted = function(arr) {
+    let chunks = 0, maxSoFar = 0;
+    for (let i = 0; i < arr.length; i++) {
+        maxSoFar = Math.max(maxSoFar, arr[i]);
+        if (maxSoFar === i) chunks++;
+    }
+    return chunks;
+};
+
+================================================================================
+# 0770_basic_calculator_iv  (120 lines)
+================================================================================
+// LeetCode 0770 - Basic Calculator IV
+// https://leetcode.com/problems/basic-calculator-iv/
+
+/**
+ * @param {string} expression
+ * @param {string[]} evalvars
+ * @param {number[]} evalints
+ * @return {string[]}
+ */
+var basicCalculatorIV = function(expression, evalvars, evalints) {
+    const values = new Map();
+    for (let i = 0; i < evalvars.length; i++) values.set(evalvars[i], evalints[i]);
+    const tokens = [];
+    let cur = '';
+    for (const ch of expression) {
+        if (ch === '(' || ch === ')') {
+            if (cur.length > 0) { tokens.push(cur); cur = ''; }
+            tokens.push(ch);
+        } else if (/\s/.test(ch)) {
+            if (cur.length > 0) { tokens.push(cur); cur = ''; }
+        } else cur += ch;
+    }
+    if (cur.length > 0) tokens.push(cur);
+    let pos = 0;
+
+    const keyOf = (items) => items.join('\0');
+    const itemsOf = (key) => (key === '' ? [] : key.split('\0'));
+
+    const clean = (poly) => {
+        for (const [k, v] of [...poly.entries()]) if (v === 0) poly.delete(k);
+        return poly;
+    };
+
+    const add = (left, right) => {
+        const result = new Map(left);
+        for (const [k, v] of right) result.set(k, (result.get(k) || 0) + v);
+        return clean(result);
+    };
+
+    const negate = (poly) => {
+        const result = new Map();
+        for (const [k, v] of poly) result.set(k, -v);
+        return result;
+    };
+
+    const mul = (left, right) => {
+        const result = new Map();
+        for (const [lk, lv] of left) {
+            for (const [rk, rv] of right) {
+                const keyList = itemsOf(lk).concat(itemsOf(rk)).sort();
+                const key = keyOf(keyList);
+                result.set(key, (result.get(key) || 0) + lv * rv);
+            }
+        }
+        return clean(result);
+    };
+
+    const atom = (token) => {
+        const poly = new Map();
+        if (/[a-zA-Z]/.test(token[0])) {
+            if (values.has(token)) poly.set('', values.get(token));
+            else poly.set(keyOf([token]), 1);
+        } else poly.set('', parseInt(token, 10));
+        return clean(poly);
+    };
+
+    const parseFactor = () => {
+        if (tokens[pos] === '(') {
+            pos++;
+            const poly = parseExpr();
+            pos++;
+            return poly;
+        }
+        return atom(tokens[pos++]);
+    };
+
+    const parseTerm = () => {
+        let poly = parseFactor();
+        while (pos < tokens.length && tokens[pos] === '*') {
+            pos++;
+            poly = mul(poly, parseFactor());
+        }
+        return poly;
+    };
+
+    const parseExpr = () => {
+        let poly = parseTerm();
+        while (pos < tokens.length && (tokens[pos] === '+' || tokens[pos] === '-')) {
+            const op = tokens[pos++];
+            const right = parseTerm();
+            poly = add(poly, op === '+' ? right : negate(right));
+        }
+        return poly;
+    };
+
+    const compareLists = (a, b) => {
+        const n = Math.min(a.length, b.length);
+        for (let i = 0; i < n; i++) {
+            if (a[i] < b[i]) return -1;
+            if (a[i] > b[i]) return 1;
+        }
+        return a.length - b.length;
+    };
+
+    const poly = parseExpr();
+    const keys = Array.from(poly.entries());
+    keys.sort((a, b) => {
+        const ai = itemsOf(a[0]), bi = itemsOf(b[0]);
+        if (ai.length !== bi.length) return bi.length - ai.length;
+        return compareLists(ai, bi);
+    });
+    const answer = [];
+    for (const [k, v] of keys) {
+        if (v === 0) continue;
+        const items = itemsOf(k);
+        if (items.length === 0) answer.push(String(v));
+        else answer.push(String(v) + '*' + items.join('*'));
+    }
+    return answer;
+};
+
+================================================================================
+# 0771_jewels_and_stones  (14 lines)
+================================================================================
+// LeetCode 0771 - Jewels and Stones
+// https://leetcode.com/problems/jewels-and-stones/
+
+/**
+ * @param {string} jewels
+ * @param {string} stones
+ * @return {number}
+ */
+var numJewelsInStones = function(jewels, stones) {
+    const jewelSet = new Set(jewels);
+    let count = 0;
+    for (const stone of stones) if (jewelSet.has(stone)) count++;
+    return count;
+};
+
+================================================================================
+# 0772_basic_calculator_iii  (48 lines)
+================================================================================
+// LeetCode 0772 - Basic Calculator III
+// https://leetcode.com/problems/basic-calculator-iii/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function(s) {
+    let expr = '';
+    for (const ch of s) if (!/\s/.test(ch)) expr += ch;
+    let i = 0;
+    const parse = () => {
+        const stack = [];
+        let num = 0;
+        let sign = '+';
+        while (i < expr.length) {
+            const ch = expr[i];
+            if (ch >= '0' && ch <= '9') num = num * 10 + (ch.charCodeAt(0) - 48);
+            else if (ch === '(') {
+                i++;
+                num = parse();
+            }
+            if ((!(ch >= '0' && ch <= '9') && ch !== '(') || i === expr.length - 1) {
+                if (ch === '+' || ch === '-' || ch === '*' || ch === '/' || ch === ')' || i === expr.length - 1) {
+                    if (sign === '+') stack.push(num);
+                    else if (sign === '-') stack.push(-num);
+                    else if (sign === '*') stack[stack.length - 1] *= num;
+                    else if (sign === '/') {
+                        const top = stack.pop();
+                        stack.push(Math.trunc(top / num));
+                    }
+                    if (ch === ')') {
+                        let sum = 0;
+                        for (const v of stack) sum += v;
+                        return sum;
+                    }
+                    sign = ch;
+                    num = 0;
+                }
+            }
+            i++;
+        }
+        let total = 0;
+        for (const v of stack) total += v;
+        return total;
+    };
+    return parse();
+};
+
+================================================================================
+# 0773_sliding_puzzle  (35 lines)
+================================================================================
+// LeetCode 0773 - Sliding Puzzle
+// https://leetcode.com/problems/sliding-puzzle/
+
+/**
+ * @param {number[][]} board
+ * @return {number}
+ */
+var slidingPuzzle = function(board) {
+    let start = '';
+    for (const row of board) for (const cell of row) start += cell;
+    const target = '123450';
+    const neighbors = [[1, 3], [0, 2, 4], [1, 5], [0, 4], [1, 3, 5], [2, 4]];
+    const q = [start];
+    const stepsQ = [0];
+    const seen = new Set([start]);
+    while (q.length > 0) {
+        const state = q.shift();
+        const steps = stepsQ.shift();
+        if (state === target) return steps;
+        const zero = state.indexOf('0');
+        for (const nei of neighbors[zero]) {
+            const nxt = state.split('');
+            const tmp = nxt[zero];
+            nxt[zero] = nxt[nei];
+            nxt[nei] = tmp;
+            const ns = nxt.join('');
+            if (!seen.has(ns)) {
+                seen.add(ns);
+                q.push(ns);
+                stepsQ.push(steps + 1);
+            }
+        }
+    }
+    return -1;
+};
+
+================================================================================
+# 0774_minimize_max_distance_to_gas_station  (23 lines)
+================================================================================
+// LeetCode 0774 - Minimize Max Distance to Gas Station
+// https://leetcode.com/problems/minimize-max-distance-to-gas-station/
+
+/**
+ * @param {number[]} stations
+ * @param {number} k
+ * @return {number}
+ */
+var minmaxGasDist = function(stations, k) {
+    const can = (dist) => {
+        let needed = 0;
+        for (let i = 1; i < stations.length; i++)
+            needed += Math.floor((stations[i] - stations[i - 1]) / dist);
+        return needed <= k;
+    };
+    let lo = 0.0, hi = stations[stations.length - 1] - stations[0];
+    while (hi - lo > 1e-6) {
+        const mid = (lo + hi) / 2.0;
+        if (can(mid)) hi = mid;
+        else lo = mid;
+    }
+    return hi;
+};
+
+================================================================================
+# 0775_global_and_local_inversions  (13 lines)
+================================================================================
+// LeetCode 0775 - Global and Local Inversions
+// https://leetcode.com/problems/global-and-local-inversions/
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isIdealPermutation = function(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        if (Math.abs(nums[i] - i) > 1) return false;
+    }
+    return true;
+};
+
+================================================================================
+# 0776_split_bst  (19 lines)
+================================================================================
+// LeetCode 0776 - Split BST
+// https://leetcode.com/problems/split-bst/
+
+/**
+ * @param {TreeNode} root
+ * @param {number} target
+ * @return {TreeNode[]}
+ */
+var splitBST = function(root, target) {
+    if (root === null) return [null, null];
+    if (root.val <= target) {
+        const parts = splitBST(root.right, target);
+        root.right = parts[0];
+        return [root, parts[1]];
+    }
+    const leftParts = splitBST(root.left, target);
+    root.left = leftParts[1];
+    return [leftParts[0], root];
+};
+
+================================================================================
+# 0777_swap_adjacent_in_lr_string  (27 lines)
+================================================================================
+// LeetCode 0777 - Swap Adjacent in LR String
+// https://leetcode.com/problems/swap-adjacent-in-lr-string/
+
+/**
+ * @param {string} start
+ * @param {string} result
+ * @return {boolean}
+ */
+var canTransform = function(start, result) {
+    let a = '', b = '';
+    for (const ch of start) if (ch !== 'X') a += ch;
+    for (const ch of result) if (ch !== 'X') b += ch;
+    if (a !== b) return false;
+    let i = 0, j = 0;
+    const n = start.length;
+    while (i < n && j < n) {
+        while (i < n && start[i] === 'X') i++;
+        while (j < n && result[j] === 'X') j++;
+        if (i === n || j === n) break;
+        if (start[i] !== result[j]) return false;
+        if (start[i] === 'L' && i < j) return false;
+        if (start[i] === 'R' && i > j) return false;
+        i++;
+        j++;
+    }
+    return true;
+};
+
+================================================================================
+# 0778_swim_in_rising_water  (28 lines)
+================================================================================
+// LeetCode 0778 - Swim in Rising Water
+// https://leetcode.com/problems/swim-in-rising-water/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var swimInWater = function(grid) {
+    const n = grid.length;
+    const heap = [[grid[0][0], 0, 0]];
+    const seen = Array.from({length: n}, () => new Array(n).fill(false));
+    seen[0][0] = true;
+    const dirs = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+    while (heap.length > 0) {
+        heap.sort((a, b) => a[0] - b[0]);
+        const [time, r, c] = heap.shift();
+        if (r === n - 1 && c === n - 1) return time;
+        for (const d of dirs) {
+            const nr = r + d[0], nc = c + d[1];
+            if (nr >= 0 && nr < n && nc >= 0 && nc < n && !seen[nr][nc]) {
+                seen[nr][nc] = true;
+                const nt = Math.max(time, grid[nr][nc]);
+                heap.push([nt, nr, nc]);
+            }
+        }
+    }
+    return -1;
+};
+
+================================================================================
+# 0779_k_th_symbol_in_grammar  (14 lines)
+================================================================================
+// LeetCode 0779 - K-th Symbol in Grammar
+// https://leetcode.com/problems/k-th-symbol-in-grammar/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var kthGrammar = function(n, k) {
+    if (n === 1) return 0;
+    const mid = 1 << (n - 2);
+    if (k <= mid) return kthGrammar(n - 1, k);
+    return 1 - kthGrammar(n - 1, k - mid);
+};

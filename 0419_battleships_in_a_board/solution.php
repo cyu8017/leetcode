@@ -1,4 +1,5 @@
-﻿// LeetCode 0419 - Battleships in a Board
+<?php
+// LeetCode 0419 - Battleships in a Board
 // https://leetcode.com/problems/battleships-in-a-board/
 
 class Solution {

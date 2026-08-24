@@ -1,0 +1,27 @@
+folder=3199_count_triplets_with_even_xor_set_bits_i
+class=Solution
+method=solve
+params=['a', 'b', 'c']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3199 - Count Triplets with Even XOR Set Bits I
+// https://leetcode.com/problems/count-triplets-with-even-xor-set-bits-i/
+
+var tripletCount = function(a, b, c) {
+    const bitCount = (x) => {
+        let n = 0;
+        while (x) { n += x & 1; x >>>= 1; }
+        return n;
+    };
+    const cnt1 = [0, 0], cnt2 = [0, 0], cnt3 = [0, 0];
+    for (const x of a) cnt1[bitCount(x) % 2]++;
+    for (const x of b) cnt2[bitCount(x) % 2]++;
+    for (const x of c) cnt3[bitCount(x) % 2]++;
+    let ans = 0;
+    for (let i = 0; i < 2; i++)
+        for (let j = 0; j < 2; j++)
+            for (let k = 0; k < 2; k++)
+                if ((i + j + k) % 2 === 0) ans += cnt1[i] * cnt2[j] * cnt3[k];
+    return ans;
+};

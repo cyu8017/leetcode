@@ -1,4 +1,5 @@
-﻿// LeetCode 0031 - Next Permutation
+<?php
+// LeetCode 0031 - Next Permutation
 // https://leetcode.com/problems/next-permutation/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0014 - Longest Common Prefix
+<?php
+// LeetCode 0014 - Longest Common Prefix
 // https://leetcode.com/problems/longest-common-prefix/
 
 class Solution {

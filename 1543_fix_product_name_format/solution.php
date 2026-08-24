@@ -1,7 +1,12 @@
-﻿// LeetCode 1543 - Fix Product Name Format
+<?php
+// LeetCode 1543 - Fix Product Name Format
 // https://leetcode.com/problems/fix-product-name-format/
 
-class Solution {
-    function solve() {
-    }
-}
+const QUERY = <<<'SQL'
+SELECT LOWER(TRIM(product_name)) AS product_name,
+       DATE_FORMAT(sale_date, '%Y-%m') AS sale_date,
+       COUNT(*) AS total
+FROM Sales
+GROUP BY LOWER(TRIM(product_name)), DATE_FORMAT(sale_date, '%Y-%m')
+ORDER BY product_name, sale_date
+SQL;

@@ -1,7 +1,21 @@
-﻿// LeetCode 3010 - Divide an Array Into Subarrays With Minimum Cost I
+<?php
+// LeetCode 3010 - Divide an Array Into Subarrays With Minimum Cost I
 // https://leetcode.com/problems/divide-an-array-into-subarrays-with-minimum-cost-i/
 
 class Solution {
-    function solve() {
+    function minimumCost($nums) {
+        $a = $nums[0];
+        $b = 100;
+        $c = 100;
+        for ($i = 1; $i < count($nums); $i++) {
+            $x = $nums[$i];
+            if ($x < $b) {
+                $c = $b;
+                $b = $x;
+            } else if ($x < $c) {
+                $c = $x;
+            }
+        }
+        return $a + $b + $c;
     }
 }

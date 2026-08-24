@@ -1,4 +1,5 @@
-﻿// LeetCode 0181 - Employees Earning More Than Their Managers
+<?php
+// LeetCode 0181 - Employees Earning More Than Their Managers
 // https://leetcode.com/problems/employees-earning-more-than-their-managers/
 
 const QUERY = <<<'SQL'

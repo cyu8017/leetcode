@@ -1,4 +1,5 @@
-﻿// LeetCode 0376 - Wiggle Subsequence
+<?php
+// LeetCode 0376 - Wiggle Subsequence
 // https://leetcode.com/problems/wiggle-subsequence/
 
 class Solution {

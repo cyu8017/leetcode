@@ -1,7 +1,26 @@
-﻿// LeetCode 3252 - Premier League Table Ranking II
+<?php
+// LeetCode 3252 - Premier League Table Ranking II
 // https://leetcode.com/problems/premier-league-table-ranking-ii/
 
-class Solution {
-    function solve() {
-    }
-}
+const QUERY = <<<'SQL'
+WITH
+    T AS (
+        SELECT
+            team_name,
+            wins * 3 + draws AS points,
+            RANK() OVER (ORDER BY wins * 3 + draws DESC) AS position,
+            COUNT(1) OVER () AS total_teams
+        FROM TeamStats
+    )
+SELECT
+    team_name,
+    points,
+    position,
+    CASE
+        WHEN position <= CEIL(total_teams / 3.0) THEN 'Tier 1'
+        WHEN position <= CEIL(2 * total_teams / 3.0) THEN 'Tier 2'
+        ELSE 'Tier 3'
+    END tier
+FROM T
+ORDER BY 2 DESC, 1;
+SQL;

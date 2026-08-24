@@ -1,4 +1,5 @@
-﻿// LeetCode 0262 - Trips and Users
+<?php
+// LeetCode 0262 - Trips and Users
 // https://leetcode.com/problems/trips-and-users/
 
 const QUERY = <<<'SQL'

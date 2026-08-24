@@ -1,4 +1,5 @@
-﻿// LeetCode 0156 - Binary Tree Upside Down
+<?php
+// LeetCode 0156 - Binary Tree Upside Down
 // https://leetcode.com/problems/binary-tree-upside-down/
 
 class TreeNode {

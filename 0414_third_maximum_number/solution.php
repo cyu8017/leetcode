@@ -1,4 +1,5 @@
-﻿// LeetCode 0414 - Third Maximum Number
+<?php
+// LeetCode 0414 - Third Maximum Number
 // https://leetcode.com/problems/third-maximum-number/
 
 class Solution {

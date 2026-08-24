@@ -1,4 +1,5 @@
-﻿// LeetCode 0078 - Subsets
+<?php
+// LeetCode 0078 - Subsets
 // https://leetcode.com/problems/subsets/
 
 class Solution {

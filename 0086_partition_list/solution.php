@@ -1,4 +1,5 @@
-﻿// LeetCode 0086 - Partition List
+<?php
+// LeetCode 0086 - Partition List
 // https://leetcode.com/problems/partition-list/
 
 class ListNode {

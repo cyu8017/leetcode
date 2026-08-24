@@ -1,4 +1,5 @@
-﻿// LeetCode 0274 - H-Index
+<?php
+// LeetCode 0274 - H-Index
 // https://leetcode.com/problems/h-index/
 
 class Solution {

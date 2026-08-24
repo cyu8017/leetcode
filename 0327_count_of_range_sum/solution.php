@@ -1,4 +1,5 @@
-﻿// LeetCode 0327 - Count of Range Sum
+<?php
+// LeetCode 0327 - Count of Range Sum
 // https://leetcode.com/problems/count-of-range-sum/
 
 class Solution {

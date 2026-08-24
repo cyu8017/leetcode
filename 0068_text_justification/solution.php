@@ -1,4 +1,5 @@
-﻿// LeetCode 0068 - Text Justification
+<?php
+// LeetCode 0068 - Text Justification
 // https://leetcode.com/problems/text-justification/
 
 class Solution {

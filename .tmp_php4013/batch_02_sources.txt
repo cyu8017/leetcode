@@ -1,0 +1,3556 @@
+================================================================================
+FOLDER 0780_reaching_points
+TITLE 
+URL // https://leetcode.com/problems/reaching-points/
+METHOD reachingPoints CLASS Solution KIND algo
+PARAMS ['sx', 'sy', 'tx', 'ty']
+----------------------------------------
+// LeetCode 0780 - Reaching Points
+// https://leetcode.com/problems/reaching-points/
+
+/**
+ * @param {number} sx
+ * @param {number} sy
+ * @param {number} tx
+ * @param {number} ty
+ * @return {boolean}
+ */
+var reachingPoints = function(sx, sy, tx, ty) {
+    while (tx >= sx && ty >= sy) {
+        if (tx === sx && ty === sy) return true;
+        if (tx === ty) break;
+        if (tx > ty) {
+            if (ty > sy) tx %= ty;
+            else return (tx - sx) % ty === 0;
+        } else {
+            if (tx > sx) ty %= tx;
+            else return (ty - sy) % tx === 0;
+        }
+    }
+    return tx === sx && ty === sy;
+};
+
+
+================================================================================
+FOLDER 0781_rabbits_in_forest
+TITLE 
+URL // https://leetcode.com/problems/rabbits-in-forest/
+METHOD numRabbits CLASS Solution KIND algo
+PARAMS ['answers']
+----------------------------------------
+// LeetCode 0781 - Rabbits in Forest
+// https://leetcode.com/problems/rabbits-in-forest/
+
+/**
+ * @param {number[]} answers
+ * @return {number}
+ */
+var numRabbits = function(answers) {
+    const counts = new Map();
+    for (const answer of answers) counts.set(answer, (counts.get(answer) || 0) + 1);
+    let total = 0;
+    for (const [key, value] of counts) {
+        const group = key + 1;
+        const groups = Math.floor((value + group - 1) / group);
+        total += groups * group;
+    }
+    return total;
+};
+
+
+================================================================================
+FOLDER 0782_transform_to_chessboard
+TITLE 
+URL // https://leetcode.com/problems/transform-to-chessboard/
+METHOD movesToChessboard CLASS Solution KIND algo
+PARAMS ['board']
+----------------------------------------
+// LeetCode 0782 - Transform to Chessboard
+// https://leetcode.com/problems/transform-to-chessboard/
+
+/**
+ * @param {number[][]} board
+ * @return {number}
+ */
+var movesToChessboard = function(board) {
+    const n = board.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if ((board[0][0] ^ board[i][0] ^ board[0][j] ^ board[i][j]) !== 0) return -1;
+        }
+    }
+    let rowSum = 0, colSum = 0;
+    for (let i = 0; i < n; i++) {
+        rowSum += board[0][i];
+        colSum += board[i][0];
+    }
+    if (rowSum < (n >> 1) || rowSum > ((n + 1) >> 1)) return -1;
+    if (colSum < (n >> 1) || colSum > ((n + 1) >> 1)) return -1;
+    let rowSwap = 0, colSwap = 0;
+    for (let i = 0; i < n; i++) {
+        if (board[0][i] !== i % 2) rowSwap++;
+        if (board[i][0] !== i % 2) colSwap++;
+    }
+    if (n % 2 === 1) {
+        if (rowSwap % 2 === 1) rowSwap = n - rowSwap;
+        if (colSwap % 2 === 1) colSwap = n - colSwap;
+    } else {
+        rowSwap = Math.min(rowSwap, n - rowSwap);
+        colSwap = Math.min(colSwap, n - colSwap);
+    }
+    return (rowSwap + colSwap) >> 1;
+};
+
+
+================================================================================
+FOLDER 0783_minimum_distance_between_bst_nodes
+TITLE 
+URL // https://leetcode.com/problems/minimum-distance-between-bst-nodes/
+METHOD minDiffInBST CLASS Solution KIND algo
+PARAMS ['root']
+----------------------------------------
+// LeetCode 0783 - Minimum Distance Between BST Nodes
+// https://leetcode.com/problems/minimum-distance-between-bst-nodes/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var minDiffInBST = function(root) {
+    let hasPrev = false, prev = 0, best = Number.MAX_SAFE_INTEGER;
+    const inorder = (node) => {
+        if (!node) return;
+        inorder(node.left);
+        if (hasPrev) best = Math.min(best, node.val - prev);
+        prev = node.val;
+        hasPrev = true;
+        inorder(node.right);
+    };
+    inorder(root);
+    return best;
+};
+
+
+================================================================================
+FOLDER 0784_letter_case_permutation
+TITLE 
+URL // https://leetcode.com/problems/letter-case-permutation/
+METHOD letterCasePermutation CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0784 - Letter Case Permutation
+// https://leetcode.com/problems/letter-case-permutation/
+
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var letterCasePermutation = function(s) {
+    let result = [""];
+    for (const ch of s) {
+        const next = [];
+        if (/[a-zA-Z]/.test(ch)) {
+            const lower = ch.toLowerCase();
+            const upper = ch.toUpperCase();
+            for (const prefix of result) {
+                next.push(prefix + lower);
+                next.push(prefix + upper);
+            }
+        } else {
+            for (const prefix of result) next.push(prefix + ch);
+        }
+        result = next;
+    }
+    return result;
+};
+
+
+================================================================================
+FOLDER 0785_is_graph_bipartite
+TITLE 
+URL // https://leetcode.com/problems/is-graph-bipartite/
+METHOD isBipartite CLASS Solution KIND algo
+PARAMS ['graph']
+----------------------------------------
+// LeetCode 0785 - Is Graph Bipartite?
+// https://leetcode.com/problems/is-graph-bipartite/
+
+/**
+ * @param {number[][]} graph
+ * @return {boolean}
+ */
+var isBipartite = function(graph) {
+    const color = new Array(graph.length).fill(-1);
+    const dfs = (node, c) => {
+        color[node] = c;
+        for (const nei of graph[node]) {
+            if (color[nei] === -1) {
+                if (!dfs(nei, c ^ 1)) return false;
+            } else if (color[nei] === c) {
+                return false;
+            }
+        }
+        return true;
+    };
+    for (let node = 0; node < graph.length; node++) {
+        if (color[node] === -1 && !dfs(node, 0)) return false;
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 0786_k_th_smallest_prime_fraction
+TITLE 
+URL // https://leetcode.com/problems/k-th-smallest-prime-fraction/
+METHOD kthSmallestPrimeFraction CLASS Solution KIND algo
+PARAMS ['arr', 'k']
+----------------------------------------
+// LeetCode 0786 - K-th Smallest Prime Fraction
+// https://leetcode.com/problems/k-th-smallest-prime-fraction/
+
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number[]}
+ */
+var kthSmallestPrimeFraction = function(arr, k) {
+    const n = arr.length;
+    const heap = [];
+    const push = (i, j) => {
+        heap.push([i, j]);
+        let idx = heap.length - 1;
+        while (idx > 0) {
+            const p = (idx - 1) >> 1;
+            if (arr[heap[idx][0]] / arr[heap[idx][1]] >= arr[heap[p][0]] / arr[heap[p][1]]) break;
+            [heap[idx], heap[p]] = [heap[p], heap[idx]];
+            idx = p;
+        }
+    };
+    const pop = () => {
+        const top = heap[0];
+        const last = heap.pop();
+        if (heap.length) {
+            heap[0] = last;
+            let idx = 0;
+            while (true) {
+                let smallest = idx;
+                const l = idx * 2 + 1, r = idx * 2 + 2;
+                if (l < heap.length && arr[heap[l][0]] / arr[heap[l][1]] < arr[heap[smallest][0]] / arr[heap[smallest][1]]) smallest = l;
+                if (r < heap.length && arr[heap[r][0]] / arr[heap[r][1]] < arr[heap[smallest][0]] / arr[heap[smallest][1]]) smallest = r;
+                if (smallest === idx) break;
+                [heap[idx], heap[smallest]] = [heap[smallest], heap[idx]];
+                idx = smallest;
+            }
+        }
+        return top;
+    };
+    for (let i = 0; i < n - 1; i++) push(i, n - 1);
+    for (let t = 0; t < k - 1; t++) {
+        const [i, j] = pop();
+        if (j - 1 > i) push(i, j - 1);
+    }
+    const [i, j] = pop();
+    return [arr[i], arr[j]];
+};
+
+
+================================================================================
+FOLDER 0787_cheapest_flights_within_k_stops
+TITLE 
+URL // https://leetcode.com/problems/cheapest-flights-within-k-stops/
+METHOD findCheapestPrice CLASS Solution KIND algo
+PARAMS ['n', 'flights', 'src', 'dst', 'k']
+----------------------------------------
+// LeetCode 0787 - Cheapest Flights Within K Stops
+// https://leetcode.com/problems/cheapest-flights-within-k-stops/
+
+/**
+ * @param {number} n
+ * @param {number[][]} flights
+ * @param {number} src
+ * @param {number} dst
+ * @param {number} k
+ * @return {number}
+ */
+var findCheapestPrice = function(n, flights, src, dst, k) {
+    const INF = Math.floor(Number.MAX_SAFE_INTEGER / 4);
+    let dist = new Array(n).fill(INF);
+    dist[src] = 0;
+    for (let i = 0; i <= k; i++) {
+        const nxt = dist.slice();
+        for (const [u, v, price] of flights) {
+            if (dist[u] !== INF && dist[u] + price < nxt[v]) {
+                nxt[v] = dist[u] + price;
+            }
+        }
+        dist = nxt;
+    }
+    return dist[dst] === INF ? -1 : dist[dst];
+};
+
+
+================================================================================
+FOLDER 0788_rotated_digits
+TITLE 
+URL // https://leetcode.com/problems/rotated-digits/
+METHOD rotatedDigits CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0788 - Rotated Digits
+// https://leetcode.com/problems/rotated-digits/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var rotatedDigits = function(n) {
+    let count = 0;
+    for (let num = 1; num <= n; num++) {
+        const s = String(num);
+        let ok = true, changed = false;
+        for (const ch of s) {
+            if (ch === '3' || ch === '4' || ch === '7') { ok = false; break; }
+            if (ch === '2' || ch === '5' || ch === '6' || ch === '9') changed = true;
+        }
+        if (ok && changed) count++;
+    }
+    return count;
+};
+
+
+================================================================================
+FOLDER 0789_escape_the_ghosts
+TITLE 
+URL // https://leetcode.com/problems/escape-the-ghosts/
+METHOD escapeGhosts CLASS Solution KIND algo
+PARAMS ['ghosts', 'target']
+----------------------------------------
+// LeetCode 0789 - Escape The Ghosts
+// https://leetcode.com/problems/escape-the-ghosts/
+
+/**
+ * @param {number[][]} ghosts
+ * @param {number[]} target
+ * @return {boolean}
+ */
+var escapeGhosts = function(ghosts, target) {
+    const targetDist = Math.abs(target[0]) + Math.abs(target[1]);
+    for (const ghost of ghosts) {
+        if (Math.abs(ghost[0] - target[0]) + Math.abs(ghost[1] - target[1]) <= targetDist) {
+            return false;
+        }
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 0790_domino_and_tromino_tiling
+TITLE 
+URL // https://leetcode.com/problems/domino-and-tromino-tiling/
+METHOD numTilings CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0790 - Domino and Tromino Tiling
+// https://leetcode.com/problems/domino-and-tromino-tiling/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var numTilings = function(n) {
+    const MOD = 1000000007;
+    if (n === 1) return 1;
+    if (n === 2) return 2;
+    const dp = new Array(n + 1).fill(0);
+    dp[1] = 1;
+    dp[2] = 2;
+    dp[3] = 5;
+    for (let i = 4; i <= n; i++) dp[i] = (2 * dp[i - 1] + dp[i - 3]) % MOD;
+    return dp[n];
+};
+
+
+================================================================================
+FOLDER 0791_custom_sort_string
+TITLE 
+URL // https://leetcode.com/problems/custom-sort-string/
+METHOD customSortString CLASS Solution KIND algo
+PARAMS ['order', 's']
+----------------------------------------
+// LeetCode 0791 - Custom Sort String
+// https://leetcode.com/problems/custom-sort-string/
+
+/**
+ * @param {string} order
+ * @param {string} s
+ * @return {string}
+ */
+var customSortString = function(order, s) {
+    const count = new Array(26).fill(0);
+    for (const ch of s) count[ch.charCodeAt(0) - 97]++;
+    let sb = "";
+    for (const ch of order) {
+        const idx = ch.charCodeAt(0) - 97;
+        while (count[idx]-- > 0) sb += ch;
+    }
+    for (let i = 0; i < 26; i++) {
+        while (count[i]-- > 0) sb += String.fromCharCode(97 + i);
+    }
+    return sb;
+};
+
+
+================================================================================
+FOLDER 0792_number_of_matching_subsequences
+TITLE 
+URL // https://leetcode.com/problems/number-of-matching-subsequences/
+METHOD numMatchingSubseq CLASS Solution KIND algo
+PARAMS ['s', 'words']
+----------------------------------------
+// LeetCode 0792 - Number of Matching Subsequences
+// https://leetcode.com/problems/number-of-matching-subsequences/
+
+/**
+ * @param {string} s
+ * @param {string[]} words
+ * @return {number}
+ */
+var numMatchingSubseq = function(s, words) {
+    const waiting = Array.from({ length: 26 }, () => []);
+    for (let i = 0; i < words.length; i++) {
+        const w = words[i];
+        waiting[w.charCodeAt(0) - 97].push([i, 0]);
+    }
+    let ans = 0;
+    for (const ch of s) {
+        const cur = waiting[ch.charCodeAt(0) - 97];
+        waiting[ch.charCodeAt(0) - 97] = [];
+        for (const [wi, idx0] of cur) {
+            const idx = idx0 + 1;
+            if (idx === words[wi].length) ans++;
+            else waiting[words[wi].charCodeAt(idx) - 97].push([wi, idx]);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0793_preimage_size_of_factorial_zeroes_function
+TITLE 
+URL // https://leetcode.com/problems/preimage-size-of-factorial-zeroes-function/
+METHOD preimageSizeFZF CLASS Solution KIND algo
+PARAMS ['k']
+----------------------------------------
+// LeetCode 0793 - Preimage Size of Factorial Zeroes Function
+// https://leetcode.com/problems/preimage-size-of-factorial-zeroes-function/
+
+/**
+ * @param {number} k
+ * @return {number}
+ */
+var preimageSizeFZF = function(k) {
+    const zeros = (n) => {
+        let z = 0;
+        while (n > 0) {
+            n = Math.floor(n / 5);
+            z += n;
+        }
+        return z;
+    };
+    const firstGe = (target) => {
+        let lo = 0, hi = 5 * target + 5;
+        while (lo < hi) {
+            const mid = Math.floor((lo + hi) / 2);
+            if (zeros(mid) >= target) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    };
+    return firstGe(k + 1) - firstGe(k);
+};
+
+
+================================================================================
+FOLDER 0794_valid_tic_tac_toe_state
+TITLE 
+URL // https://leetcode.com/problems/valid-tic-tac-toe-state/
+METHOD validTicTacToe CLASS Solution KIND algo
+PARAMS ['board']
+----------------------------------------
+// LeetCode 0794 - Valid Tic-Tac-Toe State
+// https://leetcode.com/problems/valid-tic-tac-toe-state/
+
+/**
+ * @param {string[]} board
+ * @return {boolean}
+ */
+var validTicTacToe = function(board) {
+    let x = 0, o = 0;
+    for (const row of board) {
+        for (const ch of row) {
+            if (ch === 'X') x++;
+            else if (ch === 'O') o++;
+        }
+    }
+    if (o > x || x - o > 1) return false;
+    const win = (player) => {
+        for (let i = 0; i < 3; i++) {
+            if (board[i][0] === player && board[i][1] === player && board[i][2] === player) return true;
+            if (board[0][i] === player && board[1][i] === player && board[2][i] === player) return true;
+        }
+        if (board[0][0] === player && board[1][1] === player && board[2][2] === player) return true;
+        if (board[0][2] === player && board[1][1] === player && board[2][0] === player) return true;
+        return false;
+    };
+    const xWin = win('X');
+    const oWin = win('O');
+    if (xWin && oWin) return false;
+    if (xWin && x !== o + 1) return false;
+    if (oWin && x !== o) return false;
+    return true;
+};
+
+
+================================================================================
+FOLDER 0795_number_of_subarrays_with_bounded_maximum
+TITLE 
+URL // https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
+METHOD numSubarrayBoundedMax CLASS Solution KIND algo
+PARAMS ['nums', 'left', 'right']
+----------------------------------------
+// LeetCode 0795 - Number of Subarrays with Bounded Maximum
+// https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/
+
+/**
+ * @param {number[]} nums
+ * @param {number} left
+ * @param {number} right
+ * @return {number}
+ */
+var numSubarrayBoundedMax = function(nums, left, right) {
+    const countAtMost = (bound) => {
+        let ans = 0, cur = 0;
+        for (const num of nums) {
+            if (num <= bound) {
+                cur++;
+                ans += cur;
+            } else {
+                cur = 0;
+            }
+        }
+        return ans;
+    };
+    return countAtMost(right) - countAtMost(left - 1);
+};
+
+
+================================================================================
+FOLDER 0796_rotate_string
+TITLE 
+URL // https://leetcode.com/problems/rotate-string/
+METHOD rotateString CLASS Solution KIND algo
+PARAMS ['s', 'goal']
+----------------------------------------
+// LeetCode 0796 - Rotate String
+// https://leetcode.com/problems/rotate-string/
+
+/**
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
+ */
+var rotateString = function(s, goal) {
+    return s.length === goal.length && (s + s).includes(goal);
+};
+
+
+================================================================================
+FOLDER 0797_all_paths_from_source_to_target
+TITLE 
+URL // https://leetcode.com/problems/all-paths-from-source-to-target/
+METHOD allPathsSourceTarget CLASS Solution KIND algo
+PARAMS ['graph']
+----------------------------------------
+// LeetCode 0797 - All Paths From Source to Target
+// https://leetcode.com/problems/all-paths-from-source-to-target/
+
+/**
+ * @param {number[][]} graph
+ * @return {number[][]}
+ */
+var allPathsSourceTarget = function(graph) {
+    const target = graph.length - 1;
+    const answer = [];
+    const path = [0];
+    const dfs = (node) => {
+        if (node === target) {
+            answer.push(path.slice());
+            return;
+        }
+        for (const nei of graph[node]) {
+            path.push(nei);
+            dfs(nei);
+            path.pop();
+        }
+    };
+    dfs(0);
+    return answer;
+};
+
+
+================================================================================
+FOLDER 0798_smallest_rotation_with_highest_score
+TITLE 
+URL // https://leetcode.com/problems/smallest-rotation-with-highest-score/
+METHOD bestRotation CLASS Solution KIND algo
+PARAMS ['nums']
+----------------------------------------
+// LeetCode 0798 - Smallest Rotation with Highest Score
+// https://leetcode.com/problems/smallest-rotation-with-highest-score/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var bestRotation = function(nums) {
+    const n = nums.length;
+    const change = new Array(n).fill(1);
+    for (let i = 0; i < n; i++) change[(i - nums[i] + 1 + n) % n] -= 1;
+    for (let i = 1; i < n; i++) change[i] += change[i - 1];
+    let best = 0;
+    for (let i = 1; i < n; i++) if (change[i] > change[best]) best = i;
+    return best;
+};
+
+
+================================================================================
+FOLDER 0799_champagne_tower
+TITLE 
+URL // https://leetcode.com/problems/champagne-tower/
+METHOD champagneTower CLASS Solution KIND algo
+PARAMS ['poured', 'query_row', 'query_glass']
+----------------------------------------
+// LeetCode 0799 - Champagne Tower
+// https://leetcode.com/problems/champagne-tower/
+
+/**
+ * @param {number} poured
+ * @param {number} query_row
+ * @param {number} query_glass
+ * @return {number}
+ */
+var champagneTower = function(poured, query_row, query_glass) {
+    let row = [poured];
+    for (let r = 0; r < query_row; r++) {
+        const nextRow = new Array(r + 2).fill(0);
+        for (let i = 0; i < row.length; i++) {
+            const overflow = (row[i] - 1.0) / 2.0;
+            if (overflow > 0) {
+                nextRow[i] += overflow;
+                nextRow[i + 1] += overflow;
+            }
+        }
+        row = nextRow;
+    }
+    return Math.min(1.0, row[query_glass]);
+};
+
+
+================================================================================
+FOLDER 0800_similar_rgb_color
+TITLE 
+URL // https://leetcode.com/problems/similar-rgb-color/
+METHOD similarRGB CLASS Solution KIND algo
+PARAMS ['color']
+----------------------------------------
+// LeetCode 0800 - Similar RGB Color
+// https://leetcode.com/problems/similar-rgb-color/
+
+/**
+ * @param {string} color
+ * @return {string}
+ */
+var similarRGB = function(color) {
+    const closest = (component) => {
+        const value = parseInt(component, 16);
+        const rounded = Math.floor((value + 8) / 17);
+        const hex = rounded.toString(16);
+        return hex + hex;
+    };
+    return "#" + closest(color.substring(1, 3)) + closest(color.substring(3, 5)) + closest(color.substring(5, 7));
+};
+
+
+================================================================================
+FOLDER 0801_minimum_swaps_to_make_sequences_increasing
+TITLE 
+URL // https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
+METHOD minSwap CLASS Solution KIND algo
+PARAMS ['nums1', 'nums2']
+----------------------------------------
+// LeetCode 0801 - Minimum Swaps To Make Sequences Increasing
+// https://leetcode.com/problems/minimum-swaps-to-make-sequences-increasing/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var minSwap = function(nums1, nums2) {
+    const n = nums1.length;
+    const swap = new Array(n).fill(n);
+    const keep = new Array(n).fill(n);
+    swap[0] = 1;
+    keep[0] = 0;
+    for (let i = 1; i < n; i++) {
+        if (nums1[i] > nums1[i - 1] && nums2[i] > nums2[i - 1]) {
+            keep[i] = keep[i - 1];
+            swap[i] = swap[i - 1] + 1;
+        }
+        if (nums1[i] > nums2[i - 1] && nums2[i] > nums1[i - 1]) {
+            keep[i] = Math.min(keep[i], swap[i - 1]);
+            swap[i] = Math.min(swap[i], keep[i - 1] + 1);
+        }
+    }
+    return Math.min(swap[n - 1], keep[n - 1]);
+};
+
+
+================================================================================
+FOLDER 0802_find_eventual_safe_states
+TITLE 
+URL // https://leetcode.com/problems/find-eventual-safe-states/
+METHOD eventualSafeNodes CLASS Solution KIND algo
+PARAMS ['graph']
+----------------------------------------
+// LeetCode 0802 - Find Eventual Safe States
+// https://leetcode.com/problems/find-eventual-safe-states/
+
+/**
+ * @param {number[][]} graph
+ * @return {number[]}
+ */
+var eventualSafeNodes = function(graph) {
+    const n = graph.length;
+    const color = new Array(n).fill(0);
+    const dfs = (node) => {
+        if (color[node] !== 0) return color[node] === 2;
+        color[node] = 1;
+        for (const nei of graph[node]) {
+            if (!dfs(nei)) return false;
+        }
+        color[node] = 2;
+        return true;
+    };
+    const ans = [];
+    for (let i = 0; i < n; i++) if (dfs(i)) ans.push(i);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0803_bricks_falling_when_hit
+TITLE 
+URL // https://leetcode.com/problems/bricks-falling-when-hit/
+METHOD hitBricks CLASS Solution KIND algo
+PARAMS ['grid', 'hits']
+----------------------------------------
+// LeetCode 0803 - Bricks Falling When Hit
+// https://leetcode.com/problems/bricks-falling-when-hit/
+
+/**
+ * @param {number[][]} grid
+ * @param {number[][]} hits
+ * @return {number[]}
+ */
+var hitBricks = function(grid, hits) {
+    const m = grid.length, n = grid[0].length;
+    const roof = m * n;
+    const parent = new Array(roof + 1);
+    const size = new Array(roof + 1);
+    for (let i = 0; i <= roof; i++) {
+        parent[i] = i;
+        size[i] = 1;
+    }
+    const find = (x) => {
+        while (parent[x] !== x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    };
+    const unite = (a, b) => {
+        let ra = find(a), rb = find(b);
+        if (ra === rb) return;
+        parent[ra] = rb;
+        size[rb] += size[ra];
+    };
+    const idx = (r, c) => r * n + c;
+    const status = grid.map(row => row.slice());
+    for (const [hr, hc] of hits) status[hr][hc] = 0;
+    const dr = [-1, 1, 0, 0], dc = [0, 0, -1, 1];
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            if (status[r][c] === 0) continue;
+            if (r === 0) unite(idx(r, c), roof);
+            for (let k = 0; k < 4; k++) {
+                const nr = r + dr[k], nc = c + dc[k];
+                if (nr >= 0 && nr < m && nc >= 0 && nc < n && status[nr][nc] === 1) {
+                    unite(idx(r, c), idx(nr, nc));
+                }
+            }
+        }
+    }
+    const answer = new Array(hits.length).fill(0);
+    for (let i = hits.length - 1; i >= 0; i--) {
+        const r = hits[i][0], c = hits[i][1];
+        if (grid[r][c] === 0) continue;
+        const prev = size[find(roof)];
+        status[r][c] = 1;
+        if (r === 0) unite(idx(r, c), roof);
+        for (let k = 0; k < 4; k++) {
+            const nr = r + dr[k], nc = c + dc[k];
+            if (nr >= 0 && nr < m && nc >= 0 && nc < n && status[nr][nc] === 1) {
+                unite(idx(r, c), idx(nr, nc));
+            }
+        }
+        const curr = size[find(roof)];
+        answer[i] = Math.max(0, curr - prev - 1);
+    }
+    return answer;
+};
+
+
+================================================================================
+FOLDER 0804_unique_morse_code_words
+TITLE 
+URL // https://leetcode.com/problems/unique-morse-code-words/
+METHOD uniqueMorseRepresentations CLASS Solution KIND algo
+PARAMS ['words']
+----------------------------------------
+// LeetCode 0804 - Unique Morse Code Words
+// https://leetcode.com/problems/unique-morse-code-words/
+
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var uniqueMorseRepresentations = function(words) {
+    const codes = [
+        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---",
+        "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-",
+        "..-", "...-", ".--", "-..-", "-.--", "--.."
+    ];
+    const seen = new Set();
+    for (const word of words) {
+        let code = "";
+        for (const ch of word) code += codes[ch.charCodeAt(0) - 97];
+        seen.add(code);
+    }
+    return seen.size;
+};
+
+
+================================================================================
+FOLDER 0805_split_array_with_same_average
+TITLE 
+URL // https://leetcode.com/problems/split-array-with-same-average/
+METHOD splitArraySameAverage CLASS Solution KIND algo
+PARAMS ['nums']
+----------------------------------------
+// LeetCode 0805 - Split Array With Same Average
+// https://leetcode.com/problems/split-array-with-same-average/
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var splitArraySameAverage = function(nums) {
+    const n = nums.length;
+    let total = 0;
+    for (const x of nums) total += x;
+    nums.sort((a, b) => a - b);
+    const memo = new Set();
+    const find = (target, count, index) => {
+        if (count === 0) return target === 0;
+        if (index === n || count + index > n || target < 0) return false;
+        const key = (target * 1048576) + (count * 1024) + index;
+        if (memo.has(key)) return false;
+        if (find(target - nums[index], count - 1, index + 1) || find(target, count, index + 1)) {
+            return true;
+        }
+        memo.add(key);
+        return false;
+    };
+    for (let size = 1; size < n; size++) {
+        if ((total * size) % n === 0 && find(Math.floor(total * size / n), size, 0)) return true;
+    }
+    return false;
+};
+
+
+================================================================================
+FOLDER 0806_number_of_lines_to_write_string
+TITLE 
+URL // https://leetcode.com/problems/number-of-lines-to-write-string/
+METHOD numberOfLines CLASS Solution KIND algo
+PARAMS ['widths', 's']
+----------------------------------------
+// LeetCode 0806 - Number of Lines To Write String
+// https://leetcode.com/problems/number-of-lines-to-write-string/
+
+/**
+ * @param {number[]} widths
+ * @param {string} s
+ * @return {number[]}
+ */
+var numberOfLines = function(widths, s) {
+    let lines = 1, width = 0;
+    for (const ch of s) {
+        const w = widths[ch.charCodeAt(0) - 97];
+        if (width + w > 100) {
+            lines++;
+            width = w;
+        } else {
+            width += w;
+        }
+    }
+    return [lines, width];
+};
+
+
+================================================================================
+FOLDER 0807_max_increase_to_keep_city_skyline
+TITLE 
+URL // https://leetcode.com/problems/max-increase-to-keep-city-skyline/
+METHOD maxIncreaseKeepingSkyline CLASS Solution KIND algo
+PARAMS ['grid']
+----------------------------------------
+// LeetCode 0807 - Max Increase to Keep City Skyline
+// https://leetcode.com/problems/max-increase-to-keep-city-skyline/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maxIncreaseKeepingSkyline = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    const rowMax = new Array(m).fill(0);
+    const colMax = new Array(n).fill(0);
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            rowMax[r] = Math.max(rowMax[r], grid[r][c]);
+            colMax[c] = Math.max(colMax[c], grid[r][c]);
+        }
+    }
+    let ans = 0;
+    for (let r = 0; r < m; r++) {
+        for (let c = 0; c < n; c++) {
+            ans += Math.min(rowMax[r], colMax[c]) - grid[r][c];
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0808_soup_servings
+TITLE 
+URL // https://leetcode.com/problems/soup-servings/
+METHOD soupServings CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0808 - Soup Servings
+// https://leetcode.com/problems/soup-servings/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var soupServings = function(n) {
+    if (n >= 4800) return 1.0;
+    const units = Math.floor((n + 24) / 25);
+    const memo = new Map();
+    const dp = (a, b) => {
+        if (a <= 0 && b <= 0) return 0.5;
+        if (a <= 0) return 1.0;
+        if (b <= 0) return 0.0;
+        const key = (a << 16) | b;
+        if (memo.has(key)) return memo.get(key);
+        const val = 0.25 * (dp(a - 4, b) + dp(a - 3, b - 1) + dp(a - 2, b - 2) + dp(a - 1, b - 3));
+        memo.set(key, val);
+        return val;
+    };
+    return dp(units, units);
+};
+
+
+================================================================================
+FOLDER 0809_expressive_words
+TITLE 
+URL // https://leetcode.com/problems/expressive-words/
+METHOD expressiveWords CLASS Solution KIND algo
+PARAMS ['s', 'words']
+----------------------------------------
+// LeetCode 0809 - Expressive Words
+// https://leetcode.com/problems/expressive-words/
+
+/**
+ * @param {string} s
+ * @param {string[]} words
+ * @return {number}
+ */
+var expressiveWords = function(s, words) {
+    const groups = (text) => {
+        const result = [];
+        let i = 0, n = text.length;
+        while (i < n) {
+            let j = i;
+            while (j < n && text[j] === text[i]) j++;
+            result.push([text.charCodeAt(i), j - i]);
+            i = j;
+        }
+        return result;
+    };
+    const target = groups(s);
+    let ans = 0;
+    for (const word of words) {
+        const source = groups(word);
+        if (source.length !== target.length) continue;
+        let ok = true;
+        for (let i = 0; i < source.length; i++) {
+            if (source[i][0] !== target[i][0]) { ok = false; break; }
+            const c1 = source[i][1], c2 = target[i][1];
+            if (c1 > c2 || (c1 !== c2 && c2 < 3)) { ok = false; break; }
+        }
+        if (ok) ans++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0810_chalkboard_xor_game
+TITLE 
+URL // https://leetcode.com/problems/chalkboard-xor-game/
+METHOD xorGame CLASS Solution KIND algo
+PARAMS ['nums']
+----------------------------------------
+// LeetCode 0810 - Chalkboard XOR Game
+// https://leetcode.com/problems/chalkboard-xor-game/
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var xorGame = function(nums) {
+    let x = 0;
+    for (const num of nums) x ^= num;
+    return x === 0 || nums.length % 2 === 0;
+};
+
+
+================================================================================
+FOLDER 0811_subdomain_visit_count
+TITLE 
+URL // https://leetcode.com/problems/subdomain-visit-count/
+METHOD subdomainVisits CLASS Solution KIND algo
+PARAMS ['cpdomains']
+----------------------------------------
+// LeetCode 0811 - Subdomain Visit Count
+// https://leetcode.com/problems/subdomain-visit-count/
+
+/**
+ * @param {string[]} cpdomains
+ * @return {string[]}
+ */
+var subdomainVisits = function(cpdomains) {
+    const counts = new Map();
+    for (const item of cpdomains) {
+        const space = item.indexOf(' ');
+        const count = parseInt(item.substring(0, space), 10);
+        let domain = item.substring(space + 1);
+        while (true) {
+            counts.set(domain, (counts.get(domain) || 0) + count);
+            const dot = domain.indexOf('.');
+            if (dot < 0) break;
+            domain = domain.substring(dot + 1);
+        }
+    }
+    const ans = [];
+    for (const [key, value] of counts) ans.push(value + " " + key);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0812_largest_triangle_area
+TITLE 
+URL // https://leetcode.com/problems/largest-triangle-area/
+METHOD largestTriangleArea CLASS Solution KIND algo
+PARAMS ['points']
+----------------------------------------
+// LeetCode 0812 - Largest Triangle Area
+// https://leetcode.com/problems/largest-triangle-area/
+
+/**
+ * @param {number[][]} points
+ * @return {number}
+ */
+var largestTriangleArea = function(points) {
+    let best = 0.0;
+    const n = points.length;
+    for (let i = 0; i < n; i++) {
+        const [x1, y1] = points[i];
+        for (let j = i + 1; j < n; j++) {
+            const [x2, y2] = points[j];
+            for (let k = j + 1; k < n; k++) {
+                const [x3, y3] = points[k];
+                const area = Math.abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0;
+                best = Math.max(best, area);
+            }
+        }
+    }
+    return best;
+};
+
+
+================================================================================
+FOLDER 0813_largest_sum_of_averages
+TITLE 
+URL // https://leetcode.com/problems/largest-sum-of-averages/
+METHOD largestSumOfAverages CLASS Solution KIND algo
+PARAMS ['nums', 'k']
+----------------------------------------
+// LeetCode 0813 - Largest Sum of Averages
+// https://leetcode.com/problems/largest-sum-of-averages/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var largestSumOfAverages = function(nums, k) {
+    const n = nums.length;
+    const prefix = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) prefix[i + 1] = prefix[i] + nums[i];
+    let dp = new Array(n).fill(0);
+    for (let i = 0; i < n; i++) dp[i] = (prefix[i + 1] - prefix[0]) / (i + 1);
+    for (let groups = 2; groups <= k; groups++) {
+        const nxt = new Array(n).fill(0);
+        for (let i = groups - 1; i < n; i++) {
+            let best = 0.0;
+            for (let j = groups - 2; j < i; j++) {
+                best = Math.max(best, dp[j] + (prefix[i + 1] - prefix[j + 1]) / (i - j));
+            }
+            nxt[i] = best;
+        }
+        dp = nxt;
+    }
+    return dp[n - 1];
+};
+
+
+================================================================================
+FOLDER 0814_binary_tree_pruning
+TITLE 
+URL // https://leetcode.com/problems/binary-tree-pruning/
+METHOD pruneTree CLASS Solution KIND algo
+PARAMS ['root']
+----------------------------------------
+// LeetCode 0814 - Binary Tree Pruning
+// https://leetcode.com/problems/binary-tree-pruning/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var pruneTree = function(root) {
+    if (!root) return null;
+    root.left = pruneTree(root.left);
+    root.right = pruneTree(root.right);
+    if (root.val === 0 && !root.left && !root.right) return null;
+    return root;
+};
+
+
+================================================================================
+FOLDER 0815_bus_routes
+TITLE 
+URL // https://leetcode.com/problems/bus-routes/
+METHOD numBusesToDestination CLASS Solution KIND algo
+PARAMS ['routes', 'source', 'target']
+----------------------------------------
+// LeetCode 0815 - Bus Routes
+// https://leetcode.com/problems/bus-routes/
+
+/**
+ * @param {number[][]} routes
+ * @param {number} source
+ * @param {number} target
+ * @return {number}
+ */
+var numBusesToDestination = function(routes, source, target) {
+    if (source === target) return 0;
+    const stopToBuses = new Map();
+    for (let bus = 0; bus < routes.length; bus++) {
+        for (const stop of routes[bus]) {
+            if (!stopToBuses.has(stop)) stopToBuses.set(stop, []);
+            stopToBuses.get(stop).push(bus);
+        }
+    }
+    const queue = [[source, 0]];
+    const seenStops = new Set([source]);
+    const seenBuses = new Set();
+    while (queue.length) {
+        const [stop, busesTaken] = queue.shift();
+        for (const bus of (stopToBuses.get(stop) || [])) {
+            if (seenBuses.has(bus)) continue;
+            seenBuses.add(bus);
+            for (const nxt of routes[bus]) {
+                if (nxt === target) return busesTaken + 1;
+                if (!seenStops.has(nxt)) {
+                    seenStops.add(nxt);
+                    queue.push([nxt, busesTaken + 1]);
+                }
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 0816_ambiguous_coordinates
+TITLE 
+URL // https://leetcode.com/problems/ambiguous-coordinates/
+METHOD ambiguousCoordinates CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0816 - Ambiguous Coordinates
+// https://leetcode.com/problems/ambiguous-coordinates/
+
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
+var ambiguousCoordinates = function(s) {
+    const digits = s.substring(1, s.length - 1);
+    const candidates = (frag) => {
+        const options = [];
+        if (!frag.length || (frag.length > 1 && frag[0] === '0' && frag[frag.length - 1] === '0')) return options;
+        if (frag[0] === '0' && frag.length > 1) {
+            if (frag[frag.length - 1] !== '0') options.push("0." + frag.substring(1));
+            return options;
+        }
+        options.push(frag);
+        if (frag[frag.length - 1] === '0') return options;
+        for (let i = 1; i < frag.length; i++) {
+            options.push(frag.substring(0, i) + "." + frag.substring(i));
+        }
+        return options;
+    };
+    const answer = [];
+    for (let i = 1; i < digits.length; i++) {
+        for (const left of candidates(digits.substring(0, i))) {
+            for (const right of candidates(digits.substring(i))) {
+                answer.push("(" + left + ", " + right + ")");
+            }
+        }
+    }
+    return answer;
+};
+
+
+================================================================================
+FOLDER 0817_linked_list_components
+TITLE 
+URL // https://leetcode.com/problems/linked-list-components/
+METHOD numComponents CLASS Solution KIND algo
+PARAMS ['head', 'nums']
+----------------------------------------
+// LeetCode 0817 - Linked List Components
+// https://leetcode.com/problems/linked-list-components/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numComponents = function(head, nums) {
+    const present = new Set(nums);
+    let count = 0, connected = false;
+    while (head) {
+        if (present.has(head.val)) {
+            if (!connected) {
+                count++;
+                connected = true;
+            }
+        } else {
+            connected = false;
+        }
+        head = head.next;
+    }
+    return count;
+};
+
+
+================================================================================
+FOLDER 0818_race_car
+TITLE 
+URL // https://leetcode.com/problems/race-car/
+METHOD racecar CLASS Solution KIND algo
+PARAMS ['target']
+----------------------------------------
+// LeetCode 0818 - Race Car
+// https://leetcode.com/problems/race-car/
+
+/**
+ * @param {number} target
+ * @return {number}
+ */
+var racecar = function(target) {
+    const key = (pos, speed) => (pos * 1048576) ^ (speed & 0xfffff);
+    const queue = [[0, 1, 0]];
+    const seen = new Set([key(0, 1)]);
+    while (queue.length) {
+        const [pos, speed, steps] = queue.shift();
+        if (pos === target) return steps;
+        const nxtPos = pos + speed, nxtSpeed = speed * 2;
+        if (!seen.has(key(nxtPos, nxtSpeed)) && Math.abs(nxtPos) < target * 2) {
+            seen.add(key(nxtPos, nxtSpeed));
+            queue.push([nxtPos, nxtSpeed, steps + 1]);
+        }
+        const revSpeed = speed > 0 ? -1 : 1;
+        if (!seen.has(key(pos, revSpeed))) {
+            seen.add(key(pos, revSpeed));
+            queue.push([pos, revSpeed, steps + 1]);
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 0819_most_common_word
+TITLE 
+URL // https://leetcode.com/problems/most-common-word/
+METHOD mostCommonWord CLASS Solution KIND algo
+PARAMS ['paragraph', 'banned']
+----------------------------------------
+// LeetCode 0819 - Most Common Word
+// https://leetcode.com/problems/most-common-word/
+
+/**
+ * @param {string} paragraph
+ * @param {string[]} banned
+ * @return {string}
+ */
+var mostCommonWord = function(paragraph, banned) {
+    const bannedSet = new Set(banned);
+    const counts = new Map();
+    let word = "";
+    let best = "", bestCount = 0;
+    for (let i = 0; i <= paragraph.length; i++) {
+        const ch = i < paragraph.length ? paragraph[i] : ' ';
+        if (/[a-zA-Z]/.test(ch)) {
+            word += ch.toLowerCase();
+        } else if (word.length > 0) {
+            const w = word;
+            word = "";
+            if (!bannedSet.has(w)) {
+                const c = (counts.get(w) || 0) + 1;
+                counts.set(w, c);
+                if (c > bestCount) {
+                    bestCount = c;
+                    best = w;
+                }
+            }
+        }
+    }
+    return best;
+};
+
+
+================================================================================
+FOLDER 0820_short_encoding_of_words
+TITLE 
+URL // https://leetcode.com/problems/short-encoding-of-words/
+METHOD minimumLengthEncoding CLASS Solution KIND algo
+PARAMS ['words']
+----------------------------------------
+// LeetCode 0820 - Short Encoding of Words
+// https://leetcode.com/problems/short-encoding-of-words/
+
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var minimumLengthEncoding = function(words) {
+    const good = new Set(words);
+    for (const word of words) {
+        for (let i = 1; i < word.length; i++) good.delete(word.substring(i));
+    }
+    let ans = 0;
+    for (const word of good) ans += word.length + 1;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0821_shortest_distance_to_a_character
+TITLE 
+URL // https://leetcode.com/problems/shortest-distance-to-a-character/
+METHOD shortestToChar CLASS Solution KIND algo
+PARAMS ['s', 'c']
+----------------------------------------
+// LeetCode 0821 - Shortest Distance to a Character
+// https://leetcode.com/problems/shortest-distance-to-a-character/
+
+/**
+ * @param {string} s
+ * @param {character} c
+ * @return {number[]}
+ */
+var shortestToChar = function(s, c) {
+    const n = s.length;
+    const ans = new Array(n);
+    let prev = -n;
+    for (let i = 0; i < n; i++) {
+        if (s[i] === c) prev = i;
+        ans[i] = i - prev;
+    }
+    prev = 2 * n;
+    for (let i = n - 1; i >= 0; i--) {
+        if (s[i] === c) prev = i;
+        ans[i] = Math.min(ans[i], prev - i);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0822_card_flipping_game
+TITLE 
+URL // https://leetcode.com/problems/card-flipping-game/
+METHOD flipgame CLASS Solution KIND algo
+PARAMS ['fronts', 'backs']
+----------------------------------------
+// LeetCode 0822 - Card Flipping Game
+// https://leetcode.com/problems/card-flipping-game/
+
+/**
+ * @param {number[]} fronts
+ * @param {number[]} backs
+ * @return {number}
+ */
+var flipgame = function(fronts, backs) {
+    const same = new Set();
+    for (let i = 0; i < fronts.length; i++) {
+        if (fronts[i] === backs[i]) same.add(fronts[i]);
+    }
+    let best = Number.MAX_SAFE_INTEGER;
+    for (const x of fronts) if (!same.has(x)) best = Math.min(best, x);
+    for (const x of backs) if (!same.has(x)) best = Math.min(best, x);
+    return best === Number.MAX_SAFE_INTEGER ? 0 : best;
+};
+
+
+================================================================================
+FOLDER 0823_binary_trees_with_factors
+TITLE 
+URL // https://leetcode.com/problems/binary-trees-with-factors/
+METHOD numFactoredBinaryTrees CLASS Solution KIND algo
+PARAMS ['arr']
+----------------------------------------
+// LeetCode 0823 - Binary Trees With Factors
+// https://leetcode.com/problems/binary-trees-with-factors/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var numFactoredBinaryTrees = function(arr) {
+    const MOD = 1000000007;
+    arr.sort((a, b) => a - b);
+    const index = new Map();
+    for (let i = 0; i < arr.length; i++) index.set(arr[i], i);
+    const dp = new Array(arr.length).fill(1);
+    let ans = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < i; j++) {
+            if (arr[i] % arr[j] === 0) {
+                const right = Math.floor(arr[i] / arr[j]);
+                if (index.has(right)) {
+                    dp[i] = (dp[i] + dp[j] * dp[index.get(right)]) % MOD;
+                }
+            }
+        }
+        ans = (ans + dp[i]) % MOD;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0824_goat_latin
+TITLE 
+URL // https://leetcode.com/problems/goat-latin/
+METHOD toGoatLatin CLASS Solution KIND algo
+PARAMS ['sentence']
+----------------------------------------
+// LeetCode 0824 - Goat Latin
+// https://leetcode.com/problems/goat-latin/
+
+/**
+ * @param {string} sentence
+ * @return {string}
+ */
+var toGoatLatin = function(sentence) {
+    const vowels = new Set(['a','e','i','o','u','A','E','I','O','U']);
+    const words = sentence.split(' ');
+    const result = [];
+    for (let i = 0; i < words.length; i++) {
+        let w = words[i];
+        if (vowels.has(w[0])) w = w + "ma";
+        else w = w.substring(1) + w[0] + "ma";
+        w += "a".repeat(i + 1);
+        result.push(w);
+    }
+    return result.join(' ');
+};
+
+
+================================================================================
+FOLDER 0825_friends_of_appropriate_ages
+TITLE 
+URL // https://leetcode.com/problems/friends-of-appropriate-ages/
+METHOD numFriendRequests CLASS Solution KIND algo
+PARAMS ['ages']
+----------------------------------------
+// LeetCode 0825 - Friends Of Appropriate Ages
+// https://leetcode.com/problems/friends-of-appropriate-ages/
+
+/**
+ * @param {number[]} ages
+ * @return {number}
+ */
+var numFriendRequests = function(ages) {
+    const count = new Array(121).fill(0);
+    for (const age of ages) count[age]++;
+    let ans = 0;
+    for (let a = 1; a <= 120; a++) {
+        if (!count[a]) continue;
+        for (let b = 1; b <= 120; b++) {
+            if (!count[b]) continue;
+            if (b <= 0.5 * a + 7) continue;
+            if (b > a) continue;
+            if (b > 100 && a < 100) continue;
+            ans += count[a] * count[b];
+            if (a === b) ans -= count[a];
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0826_most_profit_assigning_work
+TITLE 
+URL // https://leetcode.com/problems/most-profit-assigning-work/
+METHOD maxProfitAssignment CLASS Solution KIND algo
+PARAMS ['difficulty', 'profit', 'worker']
+----------------------------------------
+// LeetCode 0826 - Most Profit Assigning Work
+// https://leetcode.com/problems/most-profit-assigning-work/
+
+/**
+ * @param {number[]} difficulty
+ * @param {number[]} profit
+ * @param {number[]} worker
+ * @return {number}
+ */
+var maxProfitAssignment = function(difficulty, profit, worker) {
+    const jobs = difficulty.map((d, i) => [d, profit[i]]);
+    jobs.sort((a, b) => a[0] - b[0]);
+    worker.sort((a, b) => a - b);
+    let ans = 0, best = 0, i = 0;
+    for (const ability of worker) {
+        while (i < jobs.length && jobs[i][0] <= ability) {
+            best = Math.max(best, jobs[i][1]);
+            i++;
+        }
+        ans += best;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0827_making_a_large_island
+TITLE 
+URL // https://leetcode.com/problems/making-a-large-island/
+METHOD largestIsland CLASS Solution KIND algo
+PARAMS ['grid']
+----------------------------------------
+// LeetCode 0827 - Making A Large Island
+// https://leetcode.com/problems/making-a-large-island/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var largestIsland = function(grid) {
+    const n = grid.length;
+    const sizes = new Map([[0, 0]]);
+    let islandId = 2;
+    const dfs = (r, c, iid) => {
+        if (r < 0 || r >= n || c < 0 || c >= n || grid[r][c] !== 1) return 0;
+        grid[r][c] = iid;
+        return 1 + dfs(r + 1, c, iid) + dfs(r - 1, c, iid) + dfs(r, c + 1, iid) + dfs(r, c - 1, iid);
+    };
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] === 1) {
+                sizes.set(islandId, dfs(i, j, islandId));
+                islandId++;
+            }
+        }
+    }
+    let ans = 0;
+    for (const v of sizes.values()) ans = Math.max(ans, v);
+    const dr = [1, -1, 0, 0], dc = [0, 0, 1, -1];
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (grid[i][j] !== 0) continue;
+            const seen = new Set();
+            let total = 1;
+            for (let k = 0; k < 4; k++) {
+                const ni = i + dr[k], nj = j + dc[k];
+                if (ni >= 0 && ni < n && nj >= 0 && nj < n) {
+                    const iid = grid[ni][nj];
+                    if (iid > 1 && !seen.has(iid)) {
+                        seen.add(iid);
+                        total += sizes.get(iid);
+                    }
+                }
+            }
+            ans = Math.max(ans, total);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0828_count_unique_characters_of_all_substrings_of_a_given_string
+TITLE 
+URL // https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
+METHOD uniqueLetterString CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0828 - Count Unique Characters of All Substrings of a Given String
+// https://leetcode.com/problems/count-unique-characters-of-all-substrings-of-a-given-string/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var uniqueLetterString = function(s) {
+    const n = s.length;
+    const last = new Map();
+    for (const ch of s) {
+        if (!last.has(ch)) last.set(ch, [-1]);
+    }
+    for (let i = 0; i < n; i++) last.get(s[i]).push(i);
+    for (const indices of last.values()) indices.push(n);
+    let ans = 0;
+    for (const indices of last.values()) {
+        for (let k = 1; k + 1 < indices.length; k++) {
+            ans += (indices[k] - indices[k - 1]) * (indices[k + 1] - indices[k]);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0829_consecutive_numbers_sum
+TITLE 
+URL // https://leetcode.com/problems/consecutive-numbers-sum/
+METHOD consecutiveNumbersSum CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0829 - Consecutive Numbers Sum
+// https://leetcode.com/problems/consecutive-numbers-sum/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var consecutiveNumbersSum = function(n) {
+    let ans = 0;
+    for (let k = 1; k * (k - 1) / 2 < n; k++) {
+        if ((n - k * (k - 1) / 2) % k === 0) ans++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0830_positions_of_large_groups
+TITLE 
+URL // https://leetcode.com/problems/positions-of-large-groups/
+METHOD largeGroupPositions CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0830 - Positions of Large Groups
+// https://leetcode.com/problems/positions-of-large-groups/
+
+/**
+ * @param {string} s
+ * @return {number[][]}
+ */
+var largeGroupPositions = function(s) {
+    const ans = [];
+    const n = s.length;
+    let i = 0;
+    while (i < n) {
+        let j = i;
+        while (j < n && s[j] === s[i]) j++;
+        if (j - i >= 3) ans.push([i, j - 1]);
+        i = j;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0831_masking_personal_information
+TITLE 
+URL // https://leetcode.com/problems/masking-personal-information/
+METHOD maskPII CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0831 - Masking Personal Information
+// https://leetcode.com/problems/masking-personal-information/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var maskPII = function(s) {
+    let at = s.indexOf('@');
+    if (at >= 0) {
+        s = s.toLowerCase();
+        at = s.indexOf('@');
+        const name = s.substring(0, at);
+        const domain = s.substring(at + 1);
+        return name[0] + "*****" + name[name.length - 1] + "@" + domain;
+    }
+    let digits = "";
+    for (const ch of s) if (/\d/.test(ch)) digits += ch;
+    const local = digits.substring(digits.length - 4);
+    const country = digits.length - 10;
+    if (country === 0) return "***-***-" + local;
+    return "+" + "*".repeat(country) + "-***-***-" + local;
+};
+
+
+================================================================================
+FOLDER 0832_flipping_an_image
+TITLE 
+URL // https://leetcode.com/problems/flipping-an-image/
+METHOD flipAndInvertImage CLASS Solution KIND algo
+PARAMS ['image']
+----------------------------------------
+// LeetCode 0832 - Flipping an Image
+// https://leetcode.com/problems/flipping-an-image/
+
+/**
+ * @param {number[][]} image
+ * @return {number[][]}
+ */
+var flipAndInvertImage = function(image) {
+    for (const row of image) {
+        for (let i = 0, j = row.length - 1; i <= j; i++, j--) {
+            const a = 1 - row[i], b = 1 - row[j];
+            row[i] = b;
+            row[j] = a;
+        }
+    }
+    return image;
+};
+
+
+================================================================================
+FOLDER 0833_find_and_replace_in_string
+TITLE 
+URL // https://leetcode.com/problems/find-and-replace-in-string/
+METHOD findReplaceString CLASS Solution KIND algo
+PARAMS ['s', 'indices', 'sources', 'targets']
+----------------------------------------
+// LeetCode 0833 - Find And Replace in String
+// https://leetcode.com/problems/find-and-replace-in-string/
+
+/**
+ * @param {string} s
+ * @param {number[]} indices
+ * @param {string[]} sources
+ * @param {string[]} targets
+ * @return {string}
+ */
+var findReplaceString = function(s, indices, sources, targets) {
+    const replaceLen = new Map();
+    const replaceStr = new Map();
+    for (let k = 0; k < indices.length; k++) {
+        const i = indices[k];
+        if (s.startsWith(sources[k], i)) {
+            replaceLen.set(i, sources[k].length);
+            replaceStr.set(i, targets[k]);
+        }
+    }
+    let out = "";
+    let i = 0;
+    const n = s.length;
+    while (i < n) {
+        if (replaceStr.has(i)) {
+            out += replaceStr.get(i);
+            i += replaceLen.get(i);
+        } else {
+            out += s[i];
+            i++;
+        }
+    }
+    return out;
+};
+
+
+================================================================================
+FOLDER 0834_sum_of_distances_in_tree
+TITLE 
+URL // https://leetcode.com/problems/sum-of-distances-in-tree/
+METHOD sumOfDistancesInTree CLASS Solution KIND algo
+PARAMS ['n', 'edges']
+----------------------------------------
+// LeetCode 0834 - Sum of Distances in Tree
+// https://leetcode.com/problems/sum-of-distances-in-tree/
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @return {number[]}
+ */
+var sumOfDistancesInTree = function(n, edges) {
+    const graph = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) {
+        graph[a].push(b);
+        graph[b].push(a);
+    }
+    const count = new Array(n).fill(1);
+    const ans = new Array(n).fill(0);
+    const post = (node, parent) => {
+        for (const child of graph[node]) {
+            if (child === parent) continue;
+            post(child, node);
+            count[node] += count[child];
+            ans[node] += ans[child] + count[child];
+        }
+    };
+    const reroot = (node, parent) => {
+        for (const child of graph[node]) {
+            if (child === parent) continue;
+            ans[child] = ans[node] - count[child] + (n - count[child]);
+            reroot(child, node);
+        }
+    };
+    post(0, -1);
+    reroot(0, -1);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0835_image_overlap
+TITLE 
+URL // https://leetcode.com/problems/image-overlap/
+METHOD largestOverlap CLASS Solution KIND algo
+PARAMS ['img1', 'img2']
+----------------------------------------
+// LeetCode 0835 - Image Overlap
+// https://leetcode.com/problems/image-overlap/
+
+/**
+ * @param {number[][]} img1
+ * @param {number[][]} img2
+ * @return {number}
+ */
+var largestOverlap = function(img1, img2) {
+    const n = img1.length;
+    const ones1 = [], ones2 = [];
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+            if (img1[i][j] === 1) ones1.push([i, j]);
+            if (img2[i][j] === 1) ones2.push([i, j]);
+        }
+    }
+    if (!ones1.length || !ones2.length) return 0;
+    const shifts = new Map();
+    let best = 0;
+    for (const [a0, a1] of ones1) {
+        for (const [b0, b1] of ones2) {
+            const key = ((a0 - b0 + n) << 16) | (a1 - b1 + n);
+            const v = (shifts.get(key) || 0) + 1;
+            shifts.set(key, v);
+            best = Math.max(best, v);
+        }
+    }
+    return best;
+};
+
+
+================================================================================
+FOLDER 0836_rectangle_overlap
+TITLE 
+URL // https://leetcode.com/problems/rectangle-overlap/
+METHOD isRectangleOverlap CLASS Solution KIND algo
+PARAMS ['rec1', 'rec2']
+----------------------------------------
+// LeetCode 0836 - Rectangle Overlap
+// https://leetcode.com/problems/rectangle-overlap/
+
+/**
+ * @param {number[]} rec1
+ * @param {number[]} rec2
+ * @return {boolean}
+ */
+var isRectangleOverlap = function(rec1, rec2) {
+    return !(rec1[2] <= rec2[0] || rec1[0] >= rec2[2] || rec1[3] <= rec2[1] || rec1[1] >= rec2[3]);
+};
+
+
+================================================================================
+FOLDER 0837_new_21_game
+TITLE 
+URL // https://leetcode.com/problems/new-21-game/
+METHOD new21Game CLASS Solution KIND algo
+PARAMS ['n', 'k', 'maxPts']
+----------------------------------------
+// LeetCode 0837 - New 21 Game
+// https://leetcode.com/problems/new-21-game/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @param {number} maxPts
+ * @return {number}
+ */
+var new21Game = function(n, k, maxPts) {
+    if (k === 0 || n >= k - 1 + maxPts) return 1.0;
+    const dp = new Array(n + 1).fill(0);
+    dp[0] = 1.0;
+    let window = 1.0, ans = 0.0;
+    for (let i = 1; i <= n; i++) {
+        dp[i] = window / maxPts;
+        if (i < k) window += dp[i];
+        else ans += dp[i];
+        if (i - maxPts >= 0 && i - maxPts < k) window -= dp[i - maxPts];
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0838_push_dominoes
+TITLE 
+URL // https://leetcode.com/problems/push-dominoes/
+METHOD pushDominoes CLASS Solution KIND algo
+PARAMS ['dominoes']
+----------------------------------------
+// LeetCode 0838 - Push Dominoes
+// https://leetcode.com/problems/push-dominoes/
+
+/**
+ * @param {string} dominoes
+ * @return {string}
+ */
+var pushDominoes = function(dominoes) {
+    const arr = dominoes.split('');
+    const n = arr.length;
+    const force = new Array(n).fill(0);
+    let f = 0;
+    for (let i = 0; i < n; i++) {
+        if (arr[i] === 'R') f = n;
+        else if (arr[i] === 'L') f = 0;
+        else f = Math.max(f - 1, 0);
+        force[i] += f;
+    }
+    f = 0;
+    for (let i = n - 1; i >= 0; i--) {
+        if (arr[i] === 'L') f = n;
+        else if (arr[i] === 'R') f = 0;
+        else f = Math.max(f - 1, 0);
+        force[i] -= f;
+    }
+    for (let i = 0; i < n; i++) {
+        if (force[i] > 0) arr[i] = 'R';
+        else if (force[i] < 0) arr[i] = 'L';
+        else arr[i] = '.';
+    }
+    return arr.join('');
+};
+
+
+================================================================================
+FOLDER 0839_similar_string_groups
+TITLE 
+URL // https://leetcode.com/problems/similar-string-groups/
+METHOD numSimilarGroups CLASS Solution KIND algo
+PARAMS ['strs']
+----------------------------------------
+// LeetCode 0839 - Similar String Groups
+// https://leetcode.com/problems/similar-string-groups/
+
+/**
+ * @param {string[]} strs
+ * @return {number}
+ */
+var numSimilarGroups = function(strs) {
+    const n = strs.length;
+    const parent = Array.from({ length: n }, (_, i) => i);
+    const find = (x) => {
+        while (parent[x] !== x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    };
+    const similar = (a, b) => {
+        let d0 = -1, d1 = -1, diffs = 0;
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] !== b[i]) {
+                diffs++;
+                if (diffs > 2) return false;
+                if (d0 < 0) d0 = i;
+                else d1 = i;
+            }
+        }
+        return diffs === 0 || (diffs === 2 && a[d0] === b[d1] && a[d1] === b[d0]);
+    };
+    let groups = n;
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if (similar(strs[i], strs[j])) {
+                const pi = find(i), pj = find(j);
+                if (pi !== pj) {
+                    parent[pi] = pj;
+                    groups--;
+                }
+            }
+        }
+    }
+    return groups;
+};
+
+
+================================================================================
+FOLDER 0840_magic_squares_in_grid
+TITLE 
+URL // https://leetcode.com/problems/magic-squares-in-grid/
+METHOD numMagicSquaresInside CLASS Solution KIND algo
+PARAMS ['grid']
+----------------------------------------
+// LeetCode 0840 - Magic Squares In Grid
+// https://leetcode.com/problems/magic-squares-in-grid/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var numMagicSquaresInside = function(grid) {
+    const rows = grid.length, cols = grid[0].length;
+    if (rows < 3 || cols < 3) return 0;
+    const magic = (r, c) => {
+        const vals = [];
+        for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) vals.push(grid[r + i][c + j]);
+        vals.sort((a, b) => a - b);
+        for (let i = 0; i < 9; i++) if (vals[i] !== i + 1) return false;
+        return grid[r][c] + grid[r][c + 1] + grid[r][c + 2] === 15
+            && grid[r + 1][c] + grid[r + 1][c + 1] + grid[r + 1][c + 2] === 15
+            && grid[r + 2][c] + grid[r + 2][c + 1] + grid[r + 2][c + 2] === 15
+            && grid[r][c] + grid[r + 1][c] + grid[r + 2][c] === 15
+            && grid[r][c + 1] + grid[r + 1][c + 1] + grid[r + 2][c + 1] === 15
+            && grid[r][c + 2] + grid[r + 1][c + 2] + grid[r + 2][c + 2] === 15
+            && grid[r][c] + grid[r + 1][c + 1] + grid[r + 2][c + 2] === 15
+            && grid[r][c + 2] + grid[r + 1][c + 1] + grid[r + 2][c] === 15;
+    };
+    let ans = 0;
+    for (let i = 0; i < rows - 2; i++) {
+        for (let j = 0; j < cols - 2; j++) {
+            if (magic(i, j)) ans++;
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0841_keys_and_rooms
+TITLE 
+URL // https://leetcode.com/problems/keys-and-rooms/
+METHOD canVisitAllRooms CLASS Solution KIND algo
+PARAMS ['rooms']
+----------------------------------------
+// LeetCode 0841 - Keys and Rooms
+// https://leetcode.com/problems/keys-and-rooms/
+
+/**
+ * @param {number[][]} rooms
+ * @return {boolean}
+ */
+var canVisitAllRooms = function(rooms) {
+    const seen = new Set([0]);
+    const stack = [0];
+    while (stack.length) {
+        const room = stack.pop();
+        for (const key of rooms[room]) {
+            if (!seen.has(key)) {
+                seen.add(key);
+                stack.push(key);
+            }
+        }
+    }
+    return seen.size === rooms.length;
+};
+
+
+================================================================================
+FOLDER 0842_split_array_into_fibonacci_sequence
+TITLE 
+URL // https://leetcode.com/problems/split-array-into-fibonacci-sequence/
+METHOD splitIntoFibonacci CLASS Solution KIND algo
+PARAMS ['num']
+----------------------------------------
+// LeetCode 0842 - Split Array into Fibonacci Sequence
+// https://leetcode.com/problems/split-array-into-fibonacci-sequence/
+
+/**
+ * @param {string} num
+ * @return {number[]}
+ */
+var splitIntoFibonacci = function(num) {
+    const path = [];
+    const dfs = (start) => {
+        const n = num.length;
+        if (start === n) return path.length >= 3;
+        let val = 0;
+        for (let end = start; end < n; end++) {
+            if (num[start] === '0' && end > start) break;
+            val = val * 10 + (num.charCodeAt(end) - 48);
+            if (val > 2147483647) break;
+            if (path.length >= 2) {
+                const total = path[path.length - 1] + path[path.length - 2];
+                if (val < total) continue;
+                if (val > total) break;
+            }
+            path.push(val);
+            if (dfs(end + 1)) return true;
+            path.pop();
+        }
+        return false;
+    };
+    dfs(0);
+    return path;
+};
+
+
+================================================================================
+FOLDER 0843_guess_the_word
+TITLE 
+URL // https://leetcode.com/problems/guess-the-word/
+METHOD findSecretWord CLASS Solution KIND algo
+PARAMS ['words', 'master']
+----------------------------------------
+// LeetCode 0843 - Guess the Word
+// https://leetcode.com/problems/guess-the-word/
+
+/**
+ * // This is the Master's API interface.
+ * // You should not implement it, or speculate about its implementation
+ * function Master() {
+ *
+ *     @param {string} word
+ *     @return {integer}
+ *     this.guess = function(word) {
+ *         ...
+ *     };
+ * };
+ */
+/**
+ * @param {string[]} words
+ * @param {Master} master
+ * @return {void}
+ */
+var findSecretWord = function(words, master) {
+    const match = (a, b) => {
+        let m = 0;
+        for (let i = 0; i < a.length; i++) if (a[i] === b[i]) m++;
+        return m;
+    };
+    let candidates = words.slice();
+    while (candidates.length) {
+        let best = candidates[0];
+        let bestWorst = candidates.length + 1;
+        for (const w of candidates) {
+            const buckets = new Array(7).fill(0);
+            for (const c of candidates) buckets[match(w, c)]++;
+            let worst = 0;
+            for (const b of buckets) worst = Math.max(worst, b);
+            if (worst < bestWorst) {
+                bestWorst = worst;
+                best = w;
+            }
+        }
+        const score = master.guess(best);
+        if (score === 6) return;
+        candidates = candidates.filter(c => match(c, best) === score);
+    }
+};
+
+
+================================================================================
+FOLDER 0844_backspace_string_compare
+TITLE 
+URL // https://leetcode.com/problems/backspace-string-compare/
+METHOD backspaceCompare CLASS Solution KIND algo
+PARAMS ['s', 't']
+----------------------------------------
+// LeetCode 0844 - Backspace String Compare
+// https://leetcode.com/problems/backspace-string-compare/
+
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var backspaceCompare = function(s, t) {
+    const build = (text) => {
+        const stack = [];
+        for (const ch of text) {
+            if (ch === '#') {
+                if (stack.length) stack.pop();
+            } else {
+                stack.push(ch);
+            }
+        }
+        return stack.join('');
+    };
+    return build(s) === build(t);
+};
+
+
+================================================================================
+FOLDER 0845_longest_mountain_in_array
+TITLE 
+URL // https://leetcode.com/problems/longest-mountain-in-array/
+METHOD longestMountain CLASS Solution KIND algo
+PARAMS ['arr']
+----------------------------------------
+// LeetCode 0845 - Longest Mountain in Array
+// https://leetcode.com/problems/longest-mountain-in-array/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var longestMountain = function(arr) {
+    const n = arr.length;
+    let ans = 0, i = 0;
+    while (i < n) {
+        let j = i;
+        if (j + 1 < n && arr[j] < arr[j + 1]) {
+            while (j + 1 < n && arr[j] < arr[j + 1]) j++;
+            if (j + 1 < n && arr[j] > arr[j + 1]) {
+                while (j + 1 < n && arr[j] > arr[j + 1]) j++;
+                ans = Math.max(ans, j - i + 1);
+                i = j;
+                continue;
+            }
+        }
+        i++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0846_hand_of_straights
+TITLE 
+URL // https://leetcode.com/problems/hand-of-straights/
+METHOD isNStraightHand CLASS Solution KIND algo
+PARAMS ['hand', 'groupSize']
+----------------------------------------
+// LeetCode 0846 - Hand of Straights
+// https://leetcode.com/problems/hand-of-straights/
+
+/**
+ * @param {number[]} hand
+ * @param {number} groupSize
+ * @return {boolean}
+ */
+var isNStraightHand = function(hand, groupSize) {
+    if (hand.length % groupSize !== 0) return false;
+    const count = new Map();
+    for (const x of hand) count.set(x, (count.get(x) || 0) + 1);
+    const keys = [...count.keys()].sort((a, b) => a - b);
+    for (const start of keys) {
+        const need = count.get(start) || 0;
+        if (need === 0) continue;
+        for (let x = start; x < start + groupSize; x++) {
+            const c = count.get(x) || 0;
+            if (c < need) return false;
+            count.set(x, c - need);
+        }
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 0847_shortest_path_visiting_all_nodes
+TITLE 
+URL // https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+METHOD shortestPathLength CLASS Solution KIND algo
+PARAMS ['graph']
+----------------------------------------
+// LeetCode 0847 - Shortest Path Visiting All Nodes
+// https://leetcode.com/problems/shortest-path-visiting-all-nodes/
+
+/**
+ * @param {number[][]} graph
+ * @return {number}
+ */
+var shortestPathLength = function(graph) {
+    const n = graph.length;
+    const target = (1 << n) - 1;
+    const queue = [];
+    const seen = new Set();
+    for (let i = 0; i < n; i++) {
+        queue.push([i, 1 << i, 0]);
+        seen.add((i << 20) | (1 << i));
+    }
+    while (queue.length) {
+        const [node, mask, dist] = queue.shift();
+        if (mask === target) return dist;
+        for (const nxt of graph[node]) {
+            const nmask = mask | (1 << nxt);
+            const state = (nxt << 20) | nmask;
+            if (!seen.has(state)) {
+                seen.add(state);
+                queue.push([nxt, nmask, dist + 1]);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 0848_shifting_letters
+TITLE 
+URL // https://leetcode.com/problems/shifting-letters/
+METHOD shiftingLetters CLASS Solution KIND algo
+PARAMS ['s', 'shifts']
+----------------------------------------
+// LeetCode 0848 - Shifting Letters
+// https://leetcode.com/problems/shifting-letters/
+
+/**
+ * @param {string} s
+ * @param {number[]} shifts
+ * @return {string}
+ */
+var shiftingLetters = function(s, shifts) {
+    const arr = s.split('');
+    let total = 0;
+    for (let i = arr.length - 1; i >= 0; i--) {
+        total = (total + shifts[i]) % 26;
+        arr[i] = String.fromCharCode((arr[i].charCodeAt(0) - 97 + total) % 26 + 97);
+    }
+    return arr.join('');
+};
+
+
+================================================================================
+FOLDER 0849_maximize_distance_to_closest_person
+TITLE 
+URL // https://leetcode.com/problems/maximize-distance-to-closest-person/
+METHOD maxDistToClosest CLASS Solution KIND algo
+PARAMS ['seats']
+----------------------------------------
+// LeetCode 0849 - Maximize Distance to Closest Person
+// https://leetcode.com/problems/maximize-distance-to-closest-person/
+
+/**
+ * @param {number[]} seats
+ * @return {number}
+ */
+var maxDistToClosest = function(seats) {
+    const n = seats.length;
+    let prev = -1, ans = 0;
+    for (let i = 0; i < n; i++) {
+        if (seats[i] === 1) {
+            if (prev === -1) ans = i;
+            else ans = Math.max(ans, Math.floor((i - prev) / 2));
+            prev = i;
+        }
+    }
+    return Math.max(ans, n - 1 - prev);
+};
+
+
+================================================================================
+FOLDER 0850_rectangle_area_ii
+TITLE 
+URL // https://leetcode.com/problems/rectangle-area-ii/
+METHOD rectangleArea CLASS Solution KIND algo
+PARAMS ['rectangles']
+----------------------------------------
+// LeetCode 0850 - Rectangle Area II
+// https://leetcode.com/problems/rectangle-area-ii/
+
+/**
+ * @param {number[][]} rectangles
+ * @return {number}
+ */
+var rectangleArea = function(rectangles) {
+    const MOD = 1000000007;
+    const events = [];
+    for (const r of rectangles) {
+        events.push([r[0], 1, r[1], r[3]]);
+        events.push([r[2], -1, r[1], r[3]]);
+    }
+    events.sort((a, b) => a[0] - b[0]);
+    const coveredLength = (active) => {
+        if (!active.length) return 0;
+        const sorted = active.slice().sort((a, b) => a[0] - b[0]);
+        let total = 0, curStart = sorted[0][0], curEnd = sorted[0][1];
+        for (let i = 1; i < sorted.length; i++) {
+            const [start, end] = sorted[i];
+            if (start > curEnd) {
+                total += curEnd - curStart;
+                curStart = start;
+                curEnd = end;
+            } else {
+                curEnd = Math.max(curEnd, end);
+            }
+        }
+        total += curEnd - curStart;
+        return total;
+    };
+    const active = [];
+    let area = 0;
+    let prevX = events[0][0];
+    for (const [x, typ, y1, y2] of events) {
+        area += coveredLength(active) * (x - prevX);
+        if (typ === 1) active.push([y1, y2]);
+        else {
+            for (let i = 0; i < active.length; i++) {
+                if (active[i][0] === y1 && active[i][1] === y2) {
+                    active.splice(i, 1);
+                    break;
+                }
+            }
+        }
+        prevX = x;
+    }
+    return area % MOD;
+};
+
+
+================================================================================
+FOLDER 0851_loud_and_rich
+TITLE 
+URL // https://leetcode.com/problems/loud-and-rich/
+METHOD loudAndRich CLASS Solution KIND algo
+PARAMS ['richer', 'quiet']
+----------------------------------------
+// LeetCode 0851 - Loud and Rich
+// https://leetcode.com/problems/loud-and-rich/
+
+/**
+ * @param {number[][]} richer
+ * @param {number[]} quiet
+ * @return {number[]}
+ */
+var loudAndRich = function(richer, quiet) {
+    const n = quiet.length;
+    const graph = Array.from({ length: n }, () => []);
+    for (const [a, b] of richer) graph[b].push(a);
+    const ans = new Array(n).fill(-1);
+    const dfs = (person) => {
+        if (ans[person] !== -1) return ans[person];
+        let best = person;
+        for (const richerPerson of graph[person]) {
+            const cand = dfs(richerPerson);
+            if (quiet[cand] < quiet[best]) best = cand;
+        }
+        ans[person] = best;
+        return best;
+    };
+    for (let i = 0; i < n; i++) dfs(i);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0852_peak_index_in_a_mountain_array
+TITLE 
+URL // https://leetcode.com/problems/peak-index-in-a-mountain-array/
+METHOD peakIndexInMountainArray CLASS Solution KIND algo
+PARAMS ['arr']
+----------------------------------------
+// LeetCode 0852 - Peak Index in a Mountain Array
+// https://leetcode.com/problems/peak-index-in-a-mountain-array/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var peakIndexInMountainArray = function(arr) {
+    let lo = 0, hi = arr.length - 1;
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (arr[mid] < arr[mid + 1]) lo = mid + 1;
+        else hi = mid;
+    }
+    return lo;
+};
+
+
+================================================================================
+FOLDER 0853_car_fleet
+TITLE 
+URL // https://leetcode.com/problems/car-fleet/
+METHOD carFleet CLASS Solution KIND algo
+PARAMS ['target', 'position', 'speed']
+----------------------------------------
+// LeetCode 0853 - Car Fleet
+// https://leetcode.com/problems/car-fleet/
+
+/**
+ * @param {number} target
+ * @param {number[]} position
+ * @param {number[]} speed
+ * @return {number}
+ */
+var carFleet = function(target, position, speed) {
+    const n = position.length;
+    const cars = [];
+    for (let i = 0; i < n; i++) cars.push([position[i], speed[i]]);
+    cars.sort((a, b) => b[0] - a[0]);
+    let fleets = 0, maxTime = 0;
+    for (const [pos, spd] of cars) {
+        const time = (target - pos) / spd;
+        if (time > maxTime) {
+            fleets++;
+            maxTime = time;
+        }
+    }
+    return fleets;
+};
+
+
+================================================================================
+FOLDER 0854_k_similar_strings
+TITLE 
+URL // https://leetcode.com/problems/k-similar-strings/
+METHOD kSimilarity CLASS Solution KIND algo
+PARAMS ['s1', 's2']
+----------------------------------------
+// LeetCode 0854 - K-Similar Strings
+// https://leetcode.com/problems/k-similar-strings/
+
+/**
+ * @param {string} s1
+ * @param {string} s2
+ * @return {number}
+ */
+var kSimilarity = function(s1, s2) {
+    if (s1 === s2) return 0;
+    const neighbors = (s) => {
+        const arr = s.split('');
+        let i = 0;
+        while (arr[i] === s2[i]) i++;
+        const res = [];
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] === s2[i] && arr[j] !== s2[j]) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+                res.push(arr.join(''));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+        return res;
+    };
+    const queue = [s1];
+    const dist = new Map([[s1, 0]]);
+    while (queue.length) {
+        const cur = queue.shift();
+        const d = dist.get(cur);
+        for (const nxt of neighbors(cur)) {
+            if (nxt === s2) return d + 1;
+            if (!dist.has(nxt)) {
+                dist.set(nxt, d + 1);
+                queue.push(nxt);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 0855_exam_room
+TITLE 
+URL // https://leetcode.com/problems/exam-room/
+METHOD None CLASS ExamRoom KIND algo
+PARAMS None
+----------------------------------------
+// LeetCode 0855 - Exam Room
+// https://leetcode.com/problems/exam-room/
+
+/**
+ * @param {number} n
+ */
+var ExamRoom = function(n) {
+    this.n = n;
+    this.seats = [];
+};
+
+/**
+ * @return {number}
+ */
+ExamRoom.prototype.seat = function() {
+    if (!this.seats.length) {
+        this.seats.push(0);
+        return 0;
+    }
+    let bestSeat = 0;
+    let bestDist = this.seats[0];
+    let prev = this.seats[0];
+    for (const cur of this.seats) {
+        if (cur === prev) continue;
+        const dist = Math.floor((cur - prev) / 2);
+        if (dist > bestDist) {
+            bestDist = dist;
+            bestSeat = prev + dist;
+        }
+        prev = cur;
+    }
+    if (this.n - 1 - this.seats[this.seats.length - 1] > bestDist) bestSeat = this.n - 1;
+    this.seats.push(bestSeat);
+    this.seats.sort((a, b) => a - b);
+    return bestSeat;
+};
+
+/**
+ * @param {number} p
+ * @return {void}
+ */
+ExamRoom.prototype.leave = function(p) {
+    const idx = this.seats.indexOf(p);
+    if (idx >= 0) this.seats.splice(idx, 1);
+};
+
+
+================================================================================
+FOLDER 0856_score_of_parentheses
+TITLE 
+URL // https://leetcode.com/problems/score-of-parentheses/
+METHOD scoreOfParentheses CLASS Solution KIND algo
+PARAMS ['s']
+----------------------------------------
+// LeetCode 0856 - Score of Parentheses
+// https://leetcode.com/problems/score-of-parentheses/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var scoreOfParentheses = function(s) {
+    const stack = [0];
+    for (const ch of s) {
+        if (ch === '(') stack.push(0);
+        else {
+            const val = stack.pop();
+            stack.push(stack.pop() + Math.max(2 * val, 1));
+        }
+    }
+    return stack[stack.length - 1];
+};
+
+
+================================================================================
+FOLDER 0857_minimum_cost_to_hire_k_workers
+TITLE 
+URL // https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
+METHOD mincostToHireWorkers CLASS Solution KIND algo
+PARAMS ['quality', 'wage', 'k']
+----------------------------------------
+// LeetCode 0857 - Minimum Cost to Hire K Workers
+// https://leetcode.com/problems/minimum-cost-to-hire-k-workers/
+
+/**
+ * @param {number[]} quality
+ * @param {number[]} wage
+ * @param {number} k
+ * @return {number}
+ */
+var mincostToHireWorkers = function(quality, wage, k) {
+    const n = quality.length;
+    const workers = [];
+    for (let i = 0; i < n; i++) workers.push([wage[i] / quality[i], quality[i]]);
+    workers.sort((a, b) => a[0] - b[0]);
+    const heap = [];
+    const push = (q) => {
+        heap.push(q);
+        let i = heap.length - 1;
+        while (i > 0) {
+            const p = (i - 1) >> 1;
+            if (heap[i] <= heap[p]) break;
+            [heap[i], heap[p]] = [heap[p], heap[i]];
+            i = p;
+        }
+    };
+    const pop = () => {
+        const top = heap[0];
+        const last = heap.pop();
+        if (heap.length) {
+            heap[0] = last;
+            let i = 0;
+            while (true) {
+                let largest = i;
+                const l = i * 2 + 1, r = i * 2 + 2;
+                if (l < heap.length && heap[l] > heap[largest]) largest = l;
+                if (r < heap.length && heap[r] > heap[largest]) largest = r;
+                if (largest === i) break;
+                [heap[i], heap[largest]] = [heap[largest], heap[i]];
+                i = largest;
+            }
+        }
+        return top;
+    };
+    let totalQ = 0, ans = Number.POSITIVE_INFINITY;
+    for (const [ratio, q] of workers) {
+        push(q);
+        totalQ += q;
+        if (heap.length > k) totalQ -= pop();
+        if (heap.length === k) ans = Math.min(ans, totalQ * ratio);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0858_mirror_reflection
+TITLE 
+URL // https://leetcode.com/problems/mirror-reflection/
+METHOD mirrorReflection CLASS Solution KIND algo
+PARAMS ['p', 'q']
+----------------------------------------
+// LeetCode 0858 - Mirror Reflection
+// https://leetcode.com/problems/mirror-reflection/
+
+/**
+ * @param {number} p
+ * @param {number} q
+ * @return {number}
+ */
+var mirrorReflection = function(p, q) {
+    const gcd = (a, b) => {
+        while (b !== 0) {
+            const t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    };
+    const g = gcd(p, q);
+    p /= g;
+    q /= g;
+    if (p % 2 === 0) return 2;
+    if (q % 2 === 0) return 0;
+    return 1;
+};
+
+
+================================================================================
+FOLDER 0859_buddy_strings
+TITLE 
+URL // https://leetcode.com/problems/buddy-strings/
+METHOD buddyStrings CLASS Solution KIND algo
+PARAMS ['s', 'goal']
+----------------------------------------
+// LeetCode 0859 - Buddy Strings
+// https://leetcode.com/problems/buddy-strings/
+
+/**
+ * @param {string} s
+ * @param {string} goal
+ * @return {boolean}
+ */
+var buddyStrings = function(s, goal) {
+    if (s.length !== goal.length) return false;
+    if (s === goal) {
+        const set = new Set();
+        for (const ch of s) {
+            if (set.has(ch)) return true;
+            set.add(ch);
+        }
+        return false;
+    }
+    const diffs = [];
+    for (let i = 0; i < s.length; i++) {
+        if (s[i] !== goal[i]) diffs.push([s[i], goal[i]]);
+    }
+    return diffs.length === 2 && diffs[0][0] === diffs[1][1] && diffs[0][1] === diffs[1][0];
+};
+
+
+================================================================================
+FOLDER 0860_lemonade_change
+TITLE 
+URL // https://leetcode.com/problems/lemonade-change/
+METHOD lemonadeChange CLASS Solution KIND algo
+PARAMS ['bills']
+----------------------------------------
+// LeetCode 0860 - Lemonade Change
+// https://leetcode.com/problems/lemonade-change/
+
+/**
+ * @param {number[]} bills
+ * @return {boolean}
+ */
+var lemonadeChange = function(bills) {
+    let fives = 0, tens = 0;
+    for (const bill of bills) {
+        if (bill === 5) fives++;
+        else if (bill === 10) {
+            if (fives === 0) return false;
+            fives--;
+            tens++;
+        } else {
+            if (tens > 0 && fives > 0) { tens--; fives--; }
+            else if (fives >= 3) fives -= 3;
+            else return false;
+        }
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 0861_score_after_flipping_matrix
+TITLE 
+URL // https://leetcode.com/problems/score-after-flipping-matrix/
+METHOD matrixScore CLASS Solution KIND algo
+PARAMS ['grid']
+----------------------------------------
+// LeetCode 0861 - Score After Flipping Matrix
+// https://leetcode.com/problems/score-after-flipping-matrix/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var matrixScore = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    for (const row of grid) {
+        if (row[0] === 0) {
+            for (let j = 0; j < n; j++) row[j] ^= 1;
+        }
+    }
+    let ans = m * (1 << (n - 1));
+    for (let j = 1; j < n; j++) {
+        let ones = 0;
+        for (let i = 0; i < m; i++) ones += grid[i][j];
+        ans += Math.max(ones, m - ones) * (1 << (n - 1 - j));
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0862_shortest_subarray_with_sum_at_least_k
+TITLE 
+URL // https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/
+METHOD shortestSubarray CLASS Solution KIND algo
+PARAMS ['nums', 'k']
+----------------------------------------
+// LeetCode 0862 - Shortest Subarray with Sum at Least K
+// https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var shortestSubarray = function(nums, k) {
+    const n = nums.length;
+    const prefix = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) prefix[i + 1] = prefix[i] + nums[i];
+    const dq = [];
+    let ans = n + 1;
+    for (let i = 0; i <= n; i++) {
+        while (dq.length && prefix[i] - prefix[dq[0]] >= k) {
+            ans = Math.min(ans, i - dq.shift());
+        }
+        while (dq.length && prefix[i] <= prefix[dq[dq.length - 1]]) dq.pop();
+        dq.push(i);
+    }
+    return ans <= n ? ans : -1;
+};
+
+
+================================================================================
+FOLDER 0863_all_nodes_distance_k_in_binary_tree
+TITLE 
+URL // https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+METHOD distanceK CLASS Solution KIND algo
+PARAMS ['root', 'target', 'k']
+----------------------------------------
+// LeetCode 0863 - All Nodes Distance K in Binary Tree
+// https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {TreeNode} target
+ * @param {number} k
+ * @return {number[]}
+ */
+var distanceK = function(root, target, k) {
+    const graph = new Map();
+    const add = (a, b) => {
+        if (!graph.has(a)) graph.set(a, []);
+        graph.get(a).push(b);
+    };
+    const build = (node, parent) => {
+        if (!node) return;
+        if (parent) {
+            add(node, parent);
+            add(parent, node);
+        }
+        build(node.left, node);
+        build(node.right, node);
+    };
+    build(root, null);
+    const queue = [target];
+    const seen = new Set([target]);
+    let dist = 0;
+    while (queue.length) {
+        if (dist === k) return queue.map(node => node.val);
+        const size = queue.length;
+        for (let i = 0; i < size; i++) {
+            const node = queue.shift();
+            for (const nei of (graph.get(node) || [])) {
+                if (!seen.has(nei)) {
+                    seen.add(nei);
+                    queue.push(nei);
+                }
+            }
+        }
+        dist++;
+    }
+    return [];
+};
+
+
+================================================================================
+FOLDER 0864_shortest_path_to_get_all_keys
+TITLE 
+URL // https://leetcode.com/problems/shortest-path-to-get-all-keys/
+METHOD shortestPathAllKeys CLASS Solution KIND algo
+PARAMS ['grid']
+----------------------------------------
+// LeetCode 0864 - Shortest Path to Get All Keys
+// https://leetcode.com/problems/shortest-path-to-get-all-keys/
+
+/**
+ * @param {string[]} grid
+ * @return {number}
+ */
+var shortestPathAllKeys = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let allKeys = 0, sr = 0, sc = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            const ch = grid[i][j];
+            if (ch === '@') { sr = i; sc = j; }
+            else if (ch >= 'a' && ch <= 'f') allKeys |= 1 << (ch.charCodeAt(0) - 97);
+        }
+    }
+    const encode = (r, c, mask) => (r << 20) | (c << 10) | mask;
+    const queue = [[sr, sc, 0, 0]];
+    const seen = new Set([encode(sr, sc, 0)]);
+    const dr = [1, -1, 0, 0], dc = [0, 0, 1, -1];
+    while (queue.length) {
+        const [r, c, mask, dist] = queue.shift();
+        if (mask === allKeys) return dist;
+        for (let k = 0; k < 4; k++) {
+            const nr = r + dr[k], nc = c + dc[k];
+            if (nr < 0 || nr >= m || nc < 0 || nc >= n || grid[nr][nc] === '#') continue;
+            const cell = grid[nr][nc];
+            let nmask = mask;
+            if (cell >= 'a' && cell <= 'f') nmask |= 1 << (cell.charCodeAt(0) - 97);
+            if (cell >= 'A' && cell <= 'F' && (mask & (1 << (cell.charCodeAt(0) - 65))) === 0) continue;
+            const key = encode(nr, nc, nmask);
+            if (!seen.has(key)) {
+                seen.add(key);
+                queue.push([nr, nc, nmask, dist + 1]);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 0865_smallest_subtree_with_all_the_deepest_nodes
+TITLE 
+URL // https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
+METHOD subtreeWithAllDeepest CLASS Solution KIND algo
+PARAMS ['root']
+----------------------------------------
+// LeetCode 0865 - Smallest Subtree with all the Deepest Nodes
+// https://leetcode.com/problems/smallest-subtree-with-all-the-deepest-nodes/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {TreeNode}
+ */
+var subtreeWithAllDeepest = function(root) {
+    const dfs = (node) => {
+        if (!node) return { depth: 0, node: null };
+        const left = dfs(node.left);
+        const right = dfs(node.right);
+        if (left.depth > right.depth) return { depth: left.depth + 1, node: left.node };
+        if (right.depth > left.depth) return { depth: right.depth + 1, node: right.node };
+        return { depth: left.depth + 1, node: node };
+    };
+    return dfs(root).node;
+};
+
+
+================================================================================
+FOLDER 0866_prime_palindrome
+TITLE 
+URL // https://leetcode.com/problems/prime-palindrome/
+METHOD primePalindrome CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0866 - Prime Palindrome
+// https://leetcode.com/problems/prime-palindrome/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var primePalindrome = function(n) {
+    if (n <= 2) return 2;
+    if (n <= 3) return 3;
+    if (n <= 5) return 5;
+    if (n <= 7) return 7;
+    if (n <= 11) return 11;
+    const isPrime = (x) => {
+        if (x < 2) return false;
+        if (x % 2 === 0) return x === 2;
+        for (let d = 3; d * d <= x; d += 2) if (x % d === 0) return false;
+        return true;
+    };
+    for (let length = 1; length <= 5; length++) {
+        const start = Math.pow(10, length - 1);
+        const end = Math.pow(10, length);
+        for (let root = start; root < end; root++) {
+            const s = String(root);
+            let pal = s;
+            for (let i = s.length - 2; i >= 0; i--) pal += s[i];
+            const val = parseInt(pal, 10);
+            if (val >= n && isPrime(val)) return val;
+        }
+    }
+    return 0;
+};
+
+
+================================================================================
+FOLDER 0867_transpose_matrix
+TITLE 
+URL // https://leetcode.com/problems/transpose-matrix/
+METHOD transpose CLASS Solution KIND algo
+PARAMS ['matrix']
+----------------------------------------
+// LeetCode 0867 - Transpose Matrix
+// https://leetcode.com/problems/transpose-matrix/
+
+/**
+ * @param {number[][]} matrix
+ * @return {number[][]}
+ */
+var transpose = function(matrix) {
+    const m = matrix.length, n = matrix[0].length;
+    const ans = Array.from({ length: n }, () => new Array(m));
+    for (let i = 0; i < m; i++) for (let j = 0; j < n; j++) ans[j][i] = matrix[i][j];
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0868_binary_gap
+TITLE 
+URL // https://leetcode.com/problems/binary-gap/
+METHOD binaryGap CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0868 - Binary Gap
+// https://leetcode.com/problems/binary-gap/
+
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var binaryGap = function(n) {
+    let last = -1, ans = 0, bit = 0;
+    while (n !== 0) {
+        if ((n & 1) === 1) {
+            if (last !== -1) ans = Math.max(ans, bit - last);
+            last = bit;
+        }
+        n >>= 1;
+        bit++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0869_reordered_power_of_2
+TITLE 
+URL // https://leetcode.com/problems/reordered-power-of-2/
+METHOD reorderedPowerOf2 CLASS Solution KIND algo
+PARAMS ['n']
+----------------------------------------
+// LeetCode 0869 - Reordered Power of 2
+// https://leetcode.com/problems/reordered-power-of-2/
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var reorderedPowerOf2 = function(n) {
+    const sig = (x) => String(x).split('').sort().join('');
+    const target = sig(n);
+    for (let i = 0; i < 31; i++) if (sig(1 << i) === target) return true;
+    return false;
+};
+
+
+================================================================================
+FOLDER 0870_advantage_shuffle
+TITLE 
+URL // https://leetcode.com/problems/advantage-shuffle/
+METHOD advantageCount CLASS Solution KIND algo
+PARAMS ['nums1', 'nums2']
+----------------------------------------
+// LeetCode 0870 - Advantage Shuffle
+// https://leetcode.com/problems/advantage-shuffle/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+var advantageCount = function(nums1, nums2) {
+    const sorted1 = nums1.slice().sort((a, b) => a - b);
+    const dq = sorted1;
+    let lo = 0, hi = dq.length - 1;
+    const ans = new Array(nums1.length);
+    const indexed = nums2.map((v, i) => [v, i]).sort((a, b) => b[0] - a[0]);
+    for (const [val, i] of indexed) {
+        if (dq[hi] > val) ans[i] = dq[hi--];
+        else ans[i] = dq[lo++];
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0871_minimum_number_of_refueling_stops
+TITLE 
+URL // https://leetcode.com/problems/minimum-number-of-refueling-stops/
+METHOD minRefuelStops CLASS Solution KIND algo
+PARAMS ['target', 'startFuel', 'stations']
+----------------------------------------
+// LeetCode 0871 - Minimum Number of Refueling Stops
+// https://leetcode.com/problems/minimum-number-of-refueling-stops/
+
+/**
+ * @param {number} target
+ * @param {number} startFuel
+ * @param {number[][]} stations
+ * @return {number}
+ */
+var minRefuelStops = function(target, startFuel, stations) {
+    const pq = [];
+    const push = (gas) => {
+        pq.push(gas);
+        let i = pq.length - 1;
+        while (i > 0) {
+            const p = (i - 1) >> 1;
+            if (pq[i] <= pq[p]) break;
+            [pq[i], pq[p]] = [pq[p], pq[i]];
+            i = p;
+        }
+    };
+    const pop = () => {
+        const top = pq[0];
+        const last = pq.pop();
+        if (pq.length) {
+            pq[0] = last;
+            let i = 0;
+            while (true) {
+                let largest = i;
+                const l = i * 2 + 1, r = i * 2 + 2;
+                if (l < pq.length && pq[l] > pq[largest]) largest = l;
+                if (r < pq.length && pq[r] > pq[largest]) largest = r;
+                if (largest === i) break;
+                [pq[i], pq[largest]] = [pq[largest], pq[i]];
+                i = largest;
+            }
+        }
+        return top;
+    };
+    const all = stations.concat([[target, 0]]);
+    let ans = 0, prev = 0, fuel = startFuel;
+    for (const [pos, gas] of all) {
+        fuel -= pos - prev;
+        while (pq.length && fuel < 0) {
+            fuel += pop();
+            ans++;
+        }
+        if (fuel < 0) return -1;
+        push(gas);
+        prev = pos;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 0872_leaf_similar_trees
+TITLE 
+URL // https://leetcode.com/problems/leaf-similar-trees/
+METHOD leafSimilar CLASS Solution KIND algo
+PARAMS ['root1', 'root2']
+----------------------------------------
+// LeetCode 0872 - Leaf-Similar Trees
+// https://leetcode.com/problems/leaf-similar-trees/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root1
+ * @param {TreeNode} root2
+ * @return {boolean}
+ */
+var leafSimilar = function(root1, root2) {
+    const leaves = (node) => {
+        const result = [];
+        const dfs = (cur) => {
+            if (!cur) return;
+            if (!cur.left && !cur.right) {
+                result.push(cur.val);
+                return;
+            }
+            dfs(cur.left);
+            dfs(cur.right);
+        };
+        dfs(node);
+        return result;
+    };
+    const a = leaves(root1), b = leaves(root2);
+    if (a.length !== b.length) return false;
+    for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
+    return true;
+};
+
+
+================================================================================
+FOLDER 0873_length_of_longest_fibonacci_subsequence
+TITLE 
+URL // https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/
+METHOD lenLongestFibSubseq CLASS Solution KIND algo
+PARAMS ['arr']
+----------------------------------------
+// LeetCode 0873 - Length of Longest Fibonacci Subsequence
+// https://leetcode.com/problems/length-of-longest-fibonacci-subsequence/
+
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+var lenLongestFibSubseq = function(arr) {
+    const n = arr.length;
+    const index = new Map();
+    for (let i = 0; i < n; i++) index.set(arr[i], i);
+    const dp = Array.from({ length: n }, () => new Array(n).fill(2));
+    let ans = 0;
+    for (let j = 0; j < n; j++) {
+        for (let i = 0; i < j; i++) {
+            const k = index.get(arr[j] - arr[i]);
+            if (k !== undefined && k < i) {
+                dp[i][j] = dp[k][i] + 1;
+                ans = Math.max(ans, dp[i][j]);
+            }
+        }
+    }
+    return ans >= 3 ? ans : 0;
+};
+
+
+================================================================================
+FOLDER 0874_walking_robot_simulation
+TITLE 
+URL // https://leetcode.com/problems/walking-robot-simulation/
+METHOD robotSim CLASS Solution KIND algo
+PARAMS ['commands', 'obstacles']
+----------------------------------------
+// LeetCode 0874 - Walking Robot Simulation
+// https://leetcode.com/problems/walking-robot-simulation/
+
+/**
+ * @param {number[]} commands
+ * @param {number[][]} obstacles
+ * @return {number}
+ */
+var robotSim = function(commands, obstacles) {
+    const encode = (x, y) => ((x + 30000) << 20) | (y + 30000);
+    const blocked = new Set();
+    for (const [ox, oy] of obstacles) blocked.add(encode(ox, oy));
+    const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    let x = 0, y = 0, d = 0, best = 0;
+    for (const cmd of commands) {
+        if (cmd === -1) d = (d + 1) % 4;
+        else if (cmd === -2) d = (d + 3) % 4;
+        else {
+            const [dx, dy] = dirs[d];
+            for (let step = 0; step < cmd; step++) {
+                const nx = x + dx, ny = y + dy;
+                if (blocked.has(encode(nx, ny))) break;
+                x = nx;
+                y = ny;
+            }
+            best = Math.max(best, x * x + y * y);
+        }
+    }
+    return best;
+};
+
+
+================================================================================
+FOLDER 0875_koko_eating_bananas
+TITLE 
+URL // https://leetcode.com/problems/koko-eating-bananas/
+METHOD minEatingSpeed CLASS Solution KIND algo
+PARAMS ['piles', 'h']
+----------------------------------------
+// LeetCode 0875 - Koko Eating Bananas
+// https://leetcode.com/problems/koko-eating-bananas/
+
+/**
+ * @param {number[]} piles
+ * @param {number} h
+ * @return {number}
+ */
+var minEatingSpeed = function(piles, h) {
+    let lo = 1, hi = 0;
+    for (const p of piles) hi = Math.max(hi, p);
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        let hours = 0;
+        for (const p of piles) hours += Math.floor((p + mid - 1) / mid);
+        if (hours <= h) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+};
+
+
+================================================================================
+FOLDER 0876_middle_of_the_linked_list
+TITLE 
+URL // https://leetcode.com/problems/middle-of-the-linked-list/
+METHOD middleNode CLASS Solution KIND algo
+PARAMS ['head']
+----------------------------------------
+// LeetCode 0876 - Middle of the Linked List
+// https://leetcode.com/problems/middle-of-the-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var middleNode = function(head) {
+    let slow = head, fast = head;
+    while (fast && fast.next) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    return slow;
+};
+
+
+================================================================================
+FOLDER 0877_stone_game
+TITLE 
+URL // https://leetcode.com/problems/stone-game/
+METHOD stoneGame CLASS Solution KIND algo
+PARAMS ['piles']
+----------------------------------------
+// LeetCode 0877 - Stone Game
+// https://leetcode.com/problems/stone-game/
+
+/**
+ * @param {number[]} piles
+ * @return {boolean}
+ */
+var stoneGame = function(piles) {
+    return true;
+};
+
+
+================================================================================
+FOLDER 0878_nth_magical_number
+TITLE 
+URL // https://leetcode.com/problems/nth-magical-number/
+METHOD nthMagicalNumber CLASS Solution KIND algo
+PARAMS ['n', 'a', 'b']
+----------------------------------------
+// LeetCode 0878 - Nth Magical Number
+// https://leetcode.com/problems/nth-magical-number/
+
+/**
+ * @param {number} n
+ * @param {number} a
+ * @param {number} b
+ * @return {number}
+ */
+var nthMagicalNumber = function(n, a, b) {
+    const MOD = 1000000007;
+    const gcd = (x, y) => {
+        while (y !== 0) {
+            const t = x % y;
+            x = y;
+            y = t;
+        }
+        return x;
+    };
+    const lcm = Math.floor(a / gcd(a, b)) * b;
+    let lo = 1, hi = n * Math.min(a, b);
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (Math.floor(mid / a) + Math.floor(mid / b) - Math.floor(mid / lcm) >= n) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo % MOD;
+};
+
+
+================================================================================
+FOLDER 0879_profitable_schemes
+TITLE 
+URL // https://leetcode.com/problems/profitable-schemes/
+METHOD profitableSchemes CLASS Solution KIND algo
+PARAMS ['n', 'minProfit', 'group', 'profit']
+----------------------------------------
+// LeetCode 0879 - Profitable Schemes
+// https://leetcode.com/problems/profitable-schemes/
+
+/**
+ * @param {number} n
+ * @param {number} minProfit
+ * @param {number[]} group
+ * @param {number[]} profit
+ * @return {number}
+ */
+var profitableSchemes = function(n, minProfit, group, profit) {
+    const MOD = 1000000007;
+    const dp = Array.from({ length: n + 1 }, () => new Array(minProfit + 1).fill(0));
+    dp[0][0] = 1;
+    for (let i = 0; i < group.length; i++) {
+        const members = group[i], p = profit[i];
+        for (let people = n; people >= members; people--) {
+            for (let prof = minProfit; prof >= 0; prof--) {
+                const np = Math.min(minProfit, prof + p);
+                dp[people][np] = (dp[people][np] + dp[people - members][prof]) % MOD;
+            }
+        }
+    }
+    let ans = 0;
+    for (let people = 0; people <= n; people++) ans = (ans + dp[people][minProfit]) % MOD;
+    return ans;
+};
+

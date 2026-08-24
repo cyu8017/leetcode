@@ -1,4 +1,5 @@
-﻿// LeetCode 0394 - Decode String
+<?php
+// LeetCode 0394 - Decode String
 // https://leetcode.com/problems/decode-string/
 
 class Solution {

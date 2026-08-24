@@ -1,4 +1,5 @@
-﻿// LeetCode 0003 - Longest Substring Without Repeating Characters
+<?php
+// LeetCode 0003 - Longest Substring Without Repeating Characters
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0128 - Longest Consecutive Sequence
+<?php
+// LeetCode 0128 - Longest Consecutive Sequence
 // https://leetcode.com/problems/longest-consecutive-sequence/
 
 class Solution {

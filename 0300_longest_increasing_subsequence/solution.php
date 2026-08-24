@@ -1,4 +1,5 @@
-﻿// LeetCode 0300 - Longest Increasing Subsequence
+<?php
+// LeetCode 0300 - Longest Increasing Subsequence
 // https://leetcode.com/problems/longest-increasing-subsequence/
 
 class Solution {

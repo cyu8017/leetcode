@@ -1,4 +1,5 @@
-﻿// LeetCode 0177 - Nth Highest Salary
+<?php
+// LeetCode 0177 - Nth Highest Salary
 // https://leetcode.com/problems/nth-highest-salary/
 
 const QUERY = <<<'SQL'

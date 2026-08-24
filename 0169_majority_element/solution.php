@@ -1,4 +1,5 @@
-﻿// LeetCode 0169 - Majority Element
+<?php
+// LeetCode 0169 - Majority Element
 // https://leetcode.com/problems/majority-element/
 
 class Solution {

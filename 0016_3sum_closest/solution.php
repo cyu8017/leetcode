@@ -1,4 +1,5 @@
-﻿// LeetCode 0016 - 3Sum Closest
+<?php
+// LeetCode 0016 - 3Sum Closest
 // https://leetcode.com/problems/3sum-closest/
 
 class Solution {

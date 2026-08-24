@@ -1,4 +1,5 @@
-﻿// LeetCode 0049 - Group Anagrams
+<?php
+// LeetCode 0049 - Group Anagrams
 // https://leetcode.com/problems/group-anagrams/
 
 class Solution {

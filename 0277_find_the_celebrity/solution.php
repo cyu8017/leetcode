@@ -1,4 +1,5 @@
-﻿// LeetCode 0277 - Find the Celebrity
+<?php
+// LeetCode 0277 - Find the Celebrity
 // https://leetcode.com/problems/find-the-celebrity/
 
 class Solution {

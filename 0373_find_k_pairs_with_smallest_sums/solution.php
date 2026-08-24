@@ -1,4 +1,5 @@
-﻿// LeetCode 0373 - Find K Pairs with Smallest Sums
+<?php
+// LeetCode 0373 - Find K Pairs with Smallest Sums
 // https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
 
 class Solution {

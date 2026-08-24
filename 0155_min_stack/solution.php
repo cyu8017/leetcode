@@ -1,4 +1,5 @@
-﻿// LeetCode 0155 - Min Stack
+<?php
+// LeetCode 0155 - Min Stack
 // https://leetcode.com/problems/min-stack/
 
 class MinStack {

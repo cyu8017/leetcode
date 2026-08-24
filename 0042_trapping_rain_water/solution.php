@@ -1,4 +1,5 @@
-﻿// LeetCode 0042 - Trapping Rain Water
+<?php
+// LeetCode 0042 - Trapping Rain Water
 // https://leetcode.com/problems/trapping-rain-water/
 
 class Solution {

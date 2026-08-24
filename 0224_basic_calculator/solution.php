@@ -1,4 +1,5 @@
-﻿// LeetCode 0224 - Basic Calculator
+<?php
+// LeetCode 0224 - Basic Calculator
 // https://leetcode.com/problems/basic-calculator/
 
 class Solution {

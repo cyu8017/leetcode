@@ -1,4 +1,5 @@
-﻿// LeetCode 0035 - Search Insert Position
+<?php
+// LeetCode 0035 - Search Insert Position
 // https://leetcode.com/problems/search-insert-position/
 
 class Solution {

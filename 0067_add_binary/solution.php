@@ -1,4 +1,5 @@
-﻿// LeetCode 0067 - Add Binary
+<?php
+// LeetCode 0067 - Add Binary
 // https://leetcode.com/problems/add-binary/
 
 class Solution {

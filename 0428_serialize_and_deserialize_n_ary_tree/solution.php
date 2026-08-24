@@ -1,4 +1,5 @@
-﻿// LeetCode 0428 - Serialize and Deserialize N-ary Tree
+<?php
+// LeetCode 0428 - Serialize and Deserialize N-ary Tree
 // https://leetcode.com/problems/serialize-and-deserialize-n-ary-tree/
 
 class Node {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0401 - Binary Watch
+<?php
+// LeetCode 0401 - Binary Watch
 // https://leetcode.com/problems/binary-watch/
 
 class Solution {

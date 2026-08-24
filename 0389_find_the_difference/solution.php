@@ -1,4 +1,5 @@
-﻿// LeetCode 0389 - Find the Difference
+<?php
+// LeetCode 0389 - Find the Difference
 // https://leetcode.com/problems/find-the-difference/
 
 class Solution {

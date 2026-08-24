@@ -1,4 +1,5 @@
-﻿// LeetCode 0316 - Remove Duplicate Letters
+<?php
+// LeetCode 0316 - Remove Duplicate Letters
 // https://leetcode.com/problems/remove-duplicate-letters/
 
 class Solution {

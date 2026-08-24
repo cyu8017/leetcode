@@ -1,4 +1,5 @@
-﻿// LeetCode 0377 - Combination Sum IV
+<?php
+// LeetCode 0377 - Combination Sum IV
 // https://leetcode.com/problems/combination-sum-iv/
 
 class Solution {

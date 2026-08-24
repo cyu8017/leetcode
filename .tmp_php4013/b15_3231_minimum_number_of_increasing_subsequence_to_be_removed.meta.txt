@@ -1,0 +1,24 @@
+folder=3231_minimum_number_of_increasing_subsequence_to_be_removed
+class=Solution
+method=solve
+params=['nums']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3231 - Minimum Number of Increasing Subsequence to Be Removed
+// https://leetcode.com/problems/minimum-number-of-increasing-subsequence-to-be-removed/
+
+var minOperations = function(nums) {
+    const g = [];
+    for (const x of nums) {
+        let l = 0, r = g.length;
+        while (l < r) {
+            const mid = (l + r) >> 1;
+            if (g[mid] < x) r = mid;
+            else l = mid + 1;
+        }
+        if (l === g.length) g.push(x);
+        else g[l] = x;
+    }
+    return g.length;
+};

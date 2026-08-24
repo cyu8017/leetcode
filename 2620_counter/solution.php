@@ -1,7 +1,11 @@
-﻿// LeetCode 2620 - Counter
+<?php
+// LeetCode 2620 - Counter
 // https://leetcode.com/problems/counter/
 
 class Solution {
-    function solve() {
+    function createCounter($n) {
+        return function() use (&$n) {
+            return $n++;
+        };
     }
 }

@@ -1,0 +1,3250 @@
+
+================================================================================
+FOLDER 00: 2727_is_object_empty
+method=isEmpty class=Solution kind=
+config={"class": "Solution", "method": "isEmpty", "paramOrder": ["obj"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"obj": {"x": 5, "y": 42}}, "expected": false}, {"args": {"obj": {}}, "expected": true}, {"args": {"obj": [null, false, 0]}, "expected": false}]}
+--- JS ---
+// LeetCode 2727 - Is Object Empty
+// https://leetcode.com/problems/is-object-empty/
+
+/**
+ * @param {Object|Array} obj
+ * @return {boolean}
+ */
+var isEmpty = function(obj) {
+    if (Array.isArray(obj)) return obj.length === 0;
+    return Object.keys(obj).length === 0;
+};
+
+
+================================================================================
+FOLDER 01: 2728_count_houses_in_a_circular_street
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["street", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"street": [0, 0, 0, 0], "k": 10}, "expected": 4}, {"args": {"street": [1, 0, 1, 1, 0], "k": 5}, "expected": 5}]}
+--- JS ---
+// LeetCode 2728 - Count Houses in a Circular Street
+// https://leetcode.com/problems/count-houses-in-a-circular-street/
+
+/**
+ * @param {Street} street
+ * @param {number} k
+ * @return {number}
+ */
+var houseCount = function(street, k) {
+    for (let i = 0; i < k; i++) {
+        street.closeDoor();
+        street.moveRight();
+    }
+    let ans = 0;
+    for (;;) {
+        ans++;
+        street.openDoor();
+        street.moveRight();
+        if (street.isDoorOpen()) break;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 02: 2729_check_if_the_number_is_fascinating
+method=isFascinating class=Solution kind=
+config={"class": "Solution", "method": "isFascinating", "paramOrder": ["n"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 192}, "expected": true}, {"args": {"n": 100}, "expected": false}]}
+--- JS ---
+// LeetCode 2729 - Check if The Number is Fascinating
+// https://leetcode.com/problems/check-if-the-number-is-fascinating/
+
+/**
+ * @param {number} n
+ * @return {boolean}
+ */
+var isFascinating = function(n) {
+    const s = String(n) + String(2 * n) + String(3 * n);
+    if (s.length !== 9) return false;
+    const cnt = Array(10).fill(0);
+    for (const c of s) cnt[c.charCodeAt(0) - 48]++;
+    if (cnt[0] !== 0) return false;
+    for (let i = 1; i <= 9; i++) if (cnt[i] !== 1) return false;
+    return true;
+};
+
+
+================================================================================
+FOLDER 03: 2730_find_the_longest_semi_repetitive_substring
+method=longestSemiRepetitiveSubstring class=Solution kind=
+config={"class": "Solution", "method": "longestSemiRepetitiveSubstring", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "52233"}, "expected": 4}, {"args": {"s": "5494"}, "expected": 4}, {"args": {"s": "1111111"}, "expected": 2}]}
+--- JS ---
+// LeetCode 2730 - Find the Longest Semi-Repetitive Substring
+// https://leetcode.com/problems/find-the-longest-semi-repetitive-substring/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var longestSemiRepetitiveSubstring = function(s) {
+    let ans = 0, left = 0, lastPair = -1;
+    for (let right = 0; right < s.length; right++) {
+        if (right > 0 && s[right] === s[right - 1]) {
+            if (lastPair >= left) left = lastPair + 1;
+            lastPair = right - 1;
+        }
+        ans = Math.max(ans, right - left + 1);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 04: 2731_movement_of_robots
+method=sumDistance class=Solution kind=
+config={"class": "Solution", "method": "sumDistance", "paramOrder": ["nums", "s", "d"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [-2, 0, 2], "s": "RLL", "d": 3}, "expected": 8}, {"args": {"nums": [1, 0], "s": "RL", "d": 2}, "expected": 5}]}
+--- JS ---
+// LeetCode 2731 - Movement of Robots
+// https://leetcode.com/problems/movement-of-robots/
+
+/**
+ * @param {number[]} nums
+ * @param {string} s
+ * @param {number} d
+ * @return {number}
+ */
+var sumDistance = function(nums, s, d) {
+    const MOD = 1000000007;
+    const n = nums.length;
+    const pos = new Array(n);
+    for (let i = 0; i < n; i++) pos[i] = nums[i] + (s[i] === 'R' ? d : -d);
+    pos.sort((a, b) => a - b);
+    let ans = 0, pref = 0;
+    for (let i = 0; i < n; i++) {
+        ans = (ans + ((pos[i] * i - pref) % MOD + MOD) % MOD) % MOD;
+        pref += pos[i];
+    }
+    return (ans % MOD + MOD) % MOD;
+};
+
+
+================================================================================
+FOLDER 05: 2732_find_a_good_subset_of_the_matrix
+method=goodSubsetofBinaryMatrix class=Solution kind=
+config={"class": "Solution", "method": "goodSubsetofBinaryMatrix", "paramOrder": ["grid"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"grid": [[0, 1, 1, 0], [0, 0, 0, 1], [1, 1, 1, 1]]}, "expected": [0, 1]}, {"args": {"grid": [[0]]}, "expected": [0]}, {"args": {"grid": [[1, 1, 1], [1, 1, 1]]}, "expected": []}]}
+--- JS ---
+// LeetCode 2732 - Find a Good Subset of the Matrix
+// https://leetcode.com/problems/find-a-good-subset-of-the-matrix/
+
+/**
+ * @param {number[][]} grid
+ * @return {number[]}
+ */
+var goodSubsetofBinaryMatrix = function(grid) {
+    const n = grid[0].length;
+    const first = new Map();
+    for (let i = 0; i < grid.length; i++) {
+        let mask = 0;
+        for (let j = 0; j < n; j++) if (grid[i][j] === 1) mask |= 1 << j;
+        if (mask === 0) return [i];
+        for (const [pm, idx] of first) {
+            if ((pm & mask) === 0) {
+                return idx < i ? [idx, i] : [i, idx];
+            }
+        }
+        if (!first.has(mask)) first.set(mask, i);
+    }
+    return [];
+};
+
+
+================================================================================
+FOLDER 06: 2733_neither_minimum_nor_maximum
+method=findNonMinOrMax class=Solution kind=
+config={"class": "Solution", "method": "findNonMinOrMax", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [3, 2, 1, 4]}, "expected": 2}, {"args": {"nums": [1, 2]}, "expected": -1}, {"args": {"nums": [2, 1, 3]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2733 - Neither Minimum nor Maximum
+// https://leetcode.com/problems/neither-minimum-nor-maximum/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findNonMinOrMax = function(nums) {
+    if (nums.length < 3) return -1;
+    const a = nums[0], b = nums[1], c = nums[2];
+    return a + b + c - Math.max(a, b, c) - Math.min(a, b, c);
+};
+
+
+================================================================================
+FOLDER 07: 2734_lexicographically_smallest_string_after_substring_operation
+method=smallestString class=Solution kind=
+config={"class": "Solution", "method": "smallestString", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "cbabc"}, "expected": "baabc"}, {"args": {"s": "aa"}, "expected": "az"}, {"args": {"s": "acbbc"}, "expected": "abaab"}, {"args": {"s": "leetcode"}, "expected": "kddsbncd"}]}
+--- JS ---
+// LeetCode 2734 - Lexicographically Smallest String After Substring Operation
+// https://leetcode.com/problems/lexicographically-smallest-string-after-substring-operation/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var smallestString = function(s) {
+    const arr = s.split('');
+    const n = arr.length;
+    let i = 0;
+    while (i < n && arr[i] === 'a') i++;
+    if (i === n) {
+        arr[n - 1] = 'z';
+        return arr.join('');
+    }
+    while (i < n && arr[i] !== 'a') {
+        arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
+        i++;
+    }
+    return arr.join('');
+};
+
+
+================================================================================
+FOLDER 08: 2735_collecting_chocolates
+method=minCost class=Solution kind=
+config={"class": "Solution", "method": "minCost", "paramOrder": ["nums", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [20, 1, 15], "x": 5}, "expected": 13}, {"args": {"nums": [1, 2, 3], "x": 4}, "expected": 6}]}
+--- JS ---
+// LeetCode 2735 - Collecting Chocolates
+// https://leetcode.com/problems/collecting-chocolates/
+
+/**
+ * @param {number[]} nums
+ * @param {number} x
+ * @return {number}
+ */
+var minCost = function(nums, x) {
+    const n = nums.length;
+    const best = nums.slice();
+    let ans = 0;
+    for (const v of nums) ans += v;
+    for (let rot = 1; rot < n; rot++) {
+        let cur = rot * x;
+        for (let i = 0; i < n; i++) {
+            best[i] = Math.min(best[i], nums[(i + rot) % n]);
+            cur += best[i];
+        }
+        ans = Math.min(ans, cur);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 09: 2736_maximum_sum_queries
+method=maximumSumQueries class=Solution kind=
+config={"class": "Solution", "method": "maximumSumQueries", "paramOrder": ["nums1", "nums2", "queries"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums1": [4, 3, 1, 2], "nums2": [2, 4, 9, 5], "queries": [[4, 1], [1, 3], [2, 5]]}, "expected": [6, 10, 7]}, {"args": {"nums1": [3, 2, 5], "nums2": [2, 3, 4], "queries": [[4, 4], [3, 2], [1, 1]]}, "expected": [9, 9, 9]}, {"args": {"nums1": [2, 1], "nums2": [2, 3], "queries": [[3, 3]]}, "expected": [-1]}]}
+--- JS ---
+// LeetCode 2736 - Maximum Sum Queries
+// https://leetcode.com/problems/maximum-sum-queries/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var maximumSumQueries = function(nums1, nums2, queries) {
+    const n = nums1.length;
+    const pts = Array.from({length: n}, (_, i) => [nums1[i], nums2[i], nums1[i] + nums2[i]]);
+    pts.sort((a, b) => b[0] - a[0]);
+    const qs = queries.map((q, i) => [q[0], q[1], i]);
+    qs.sort((a, b) => b[0] - a[0]);
+    const ys = [...nums2, ...queries.map(q => q[1])].sort((a, b) => a - b);
+    const uniq = [];
+    for (const y of ys) if (!uniq.length || uniq[uniq.length - 1] !== y) uniq.push(y);
+    const m = uniq.length;
+    const bit = Array(m + 2).fill(-1);
+    const rank = (y) => {
+        let lo = 0, hi = m;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (uniq[mid] < y) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo + 1;
+    };
+    const update = (i, v) => {
+        for (; i <= m; i += i & -i) bit[i] = Math.max(bit[i], v);
+    };
+    const query = (i) => {
+        let best = -1;
+        for (; i > 0; i -= i & -i) best = Math.max(best, bit[i]);
+        return best;
+    };
+    const ans = Array(queries.length);
+    let j = 0;
+    for (const q of qs) {
+        while (j < n && pts[j][0] >= q[0]) {
+            update(m - rank(pts[j][1]) + 1, pts[j][2]);
+            j++;
+        }
+        ans[q[2]] = query(m - rank(q[1]) + 1);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 10: 2737_find_the_closest_marked_node
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["n", "edges", "s", "marked"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 4, "edges": [[0, 1, 1], [1, 2, 3], [2, 3, 2], [0, 3, 4]], "s": 0, "marked": [2, 3]}, "expected": 4}, {"args": {"n": 5, "edges": [[0, 1, 2], [0, 2, 4], [1, 3, 1], [2, 3, 3], [3, 4, 2]], "s": 1, "marked": [0, 4]}, "expected": 3}, {"args": {"n": 4, "edges": [[0, 1, 1], [1, 2, 3], [2, 3, 2]], "s": 3, "marked": [0, 1]}, "expected": -1}]}
+--- JS ---
+// LeetCode 2737 - Find the Closest Marked Node
+// https://leetcode.com/problems/find-the-closest-marked-node/
+
+function MinHeap(cmp) {
+    this.a = [];
+    this.cmp = cmp || ((x, y) => x - y);
+}
+MinHeap.prototype._up = function(i) {
+    const a = this.a, cmp = this.cmp;
+    while (i > 0) {
+        const p = (i - 1) >> 1;
+        if (cmp(a[i], a[p]) >= 0) break;
+        [a[i], a[p]] = [a[p], a[i]];
+        i = p;
+    }
+};
+MinHeap.prototype._down = function(i) {
+    const a = this.a, cmp = this.cmp, n = a.length;
+    while (true) {
+        let s = i, l = i * 2 + 1, r = l + 1;
+        if (l < n && cmp(a[l], a[s]) < 0) s = l;
+        if (r < n && cmp(a[r], a[s]) < 0) s = r;
+        if (s === i) break;
+        [a[i], a[s]] = [a[s], a[i]];
+        i = s;
+    }
+};
+MinHeap.prototype.push = function(x) { this.a.push(x); this._up(this.a.length - 1); };
+MinHeap.prototype.pop = function() {
+    const a = this.a;
+    if (!a.length) return undefined;
+    const top = a[0], last = a.pop();
+    if (a.length) { a[0] = last; this._down(0); }
+    return top;
+};
+MinHeap.prototype.peek = function() { return this.a[0]; };
+MinHeap.prototype.size = function() { return this.a.length; };
+
+
+/**
+ * @param {number} n
+ * @param {number[][]} edges
+ * @param {number} s
+ * @param {number[]} marked
+ * @return {number}
+ */
+var minimumDistance = function(n, edges, s, marked) {
+    const g = Array.from({length: n}, () => []);
+    for (const [u, v, w] of edges) g[u].push([v, w]);
+    const mark = new Set(marked);
+    const dist = Array(n).fill(Math.floor(Number.MAX_SAFE_INTEGER / 4));
+    dist[s] = 0;
+    const pq = new MinHeap((a, b) => a[0] - b[0]);
+    pq.push([0, s]);
+    while (pq.size()) {
+        const [d, u] = pq.pop();
+        if (mark.has(u)) return d;
+        if (d > dist[u]) continue;
+        for (const [v, w] of g[u]) {
+            if (d + w < dist[v]) {
+                dist[v] = d + w;
+                pq.push([dist[v], v]);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 11: 2739_total_distance_traveled
+method=distanceTraveled class=Solution kind=
+config={"class": "Solution", "method": "distanceTraveled", "paramOrder": ["mainTank", "additionalTank"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"mainTank": 5, "additionalTank": 10}, "expected": 60}, {"args": {"mainTank": 1, "additionalTank": 2}, "expected": 10}]}
+--- JS ---
+// LeetCode 2739 - Total Distance Traveled
+// https://leetcode.com/problems/total-distance-traveled/
+
+/**
+ * @param {number} mainTank
+ * @param {number} additionalTank
+ * @return {number}
+ */
+var distanceTraveled = function(mainTank, additionalTank) {
+    let ans = 0;
+    while (mainTank > 0) {
+        if (mainTank >= 5) {
+            ans += 50;
+            mainTank -= 5;
+            if (additionalTank > 0) {
+                additionalTank--;
+                mainTank++;
+            }
+        } else {
+            ans += mainTank * 10;
+            mainTank = 0;
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 12: 2740_find_the_value_of_the_partition
+method=findValueOfPartition class=Solution kind=
+config={"class": "Solution", "method": "findValueOfPartition", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 3, 2, 4]}, "expected": 1}, {"args": {"nums": [100, 1, 10]}, "expected": 9}]}
+--- JS ---
+// LeetCode 2740 - Find the Value of the Partition
+// https://leetcode.com/problems/find-the-value-of-the-partition/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findValueOfPartition = function(nums) {
+    nums.sort((a, b) => a - b);
+    let ans = Number.MAX_SAFE_INTEGER;
+    for (let i = 1; i < nums.length; i++) ans = Math.min(ans, nums[i] - nums[i - 1]);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 13: 2741_special_permutations
+method=specialPerm class=Solution kind=
+config={"class": "Solution", "method": "specialPerm", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 3, 6]}, "expected": 2}, {"args": {"nums": [1, 4, 3]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2741 - Special Permutations
+// https://leetcode.com/problems/special-permutations/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var specialPerm = function(nums) {
+    const MOD = 1000000007;
+    const n = nums.length;
+    const memo = Array.from({length: 1 << n}, () => Array(n).fill(-1));
+    const dfs = (mask, last) => {
+        if (mask === (1 << n) - 1) return 1;
+        if (memo[mask][last] !== -1) return memo[mask][last];
+        let res = 0;
+        for (let i = 0; i < n; i++) {
+            if (mask & (1 << i)) continue;
+            if (nums[i] % nums[last] === 0 || nums[last] % nums[i] === 0)
+                res = (res + dfs(mask | (1 << i), i)) % MOD;
+        }
+        return memo[mask][last] = res;
+    };
+    let ans = 0;
+    for (let i = 0; i < n; i++) ans = (ans + dfs(1 << i, i)) % MOD;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 14: 2742_painting_the_walls
+method=paintWalls class=Solution kind=
+config={"class": "Solution", "method": "paintWalls", "paramOrder": ["cost", "time"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"cost": [1, 2, 3, 2], "time": [1, 2, 3, 2]}, "expected": 3}, {"args": {"cost": [2, 3, 4, 2], "time": [1, 1, 1, 1]}, "expected": 4}]}
+--- JS ---
+// LeetCode 2742 - Painting the Walls
+// https://leetcode.com/problems/painting-the-walls/
+
+/**
+ * @param {number[]} cost
+ * @param {number[]} time
+ * @return {number}
+ */
+var paintWalls = function(cost, time) {
+    const n = cost.length;
+    const INF = Number.MAX_SAFE_INTEGER / 4;
+    const dp = Array(n + 1).fill(INF);
+    dp[0] = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = n; j >= 0; j--) {
+            const nj = Math.min(n, j + time[i] + 1);
+            if (dp[j] + cost[i] < dp[nj]) dp[nj] = dp[j] + cost[i];
+        }
+    }
+    return dp[n];
+};
+
+
+================================================================================
+FOLDER 15: 2743_count_substrings_without_repeating_character
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "abcd"}, "expected": 10}, {"args": {"s": "ooo"}, "expected": 3}, {"args": {"s": "abab"}, "expected": 7}]}
+--- JS ---
+// LeetCode 2743 - Count Substrings Without Repeating Character
+// https://leetcode.com/problems/count-substrings-without-repeating-character/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var numberOfSpecialSubstrings = function(s) {
+    const n = s.length;
+    let ans = 0, left = 0;
+    const cnt = Array(26).fill(0);
+    for (let i = 0; i < n; i++) {
+        const c = s.charCodeAt(i) - 97;
+        cnt[c]++;
+        while (cnt[c] > 1) {
+            cnt[s.charCodeAt(left) - 97]--;
+            left++;
+        }
+        ans += i - left + 1;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 16: 2744_find_maximum_number_of_string_pairs
+method=maximumNumberOfStringPairs class=Solution kind=
+config={"class": "Solution", "method": "maximumNumberOfStringPairs", "paramOrder": ["words"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"words": ["cd", "ac", "dc", "ca", "zz"]}, "expected": 2}, {"args": {"words": ["ab", "ba", "cc"]}, "expected": 1}, {"args": {"words": ["aa", "ab"]}, "expected": 0}]}
+--- JS ---
+// LeetCode 2744 - Find Maximum Number of String Pairs
+// https://leetcode.com/problems/find-maximum-number-of-string-pairs/
+
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var maximumNumberOfStringPairs = function(words) {
+    const freq = new Map();
+    let ans = 0;
+    for (const w of words) {
+        const rev = w.split('').reverse().join('');
+        const c = freq.get(rev) || 0;
+        if (c > 0) {
+            ans++;
+            freq.set(rev, c - 1);
+        } else {
+            freq.set(w, (freq.get(w) || 0) + 1);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 17: 2745_construct_the_longest_new_string
+method=longestString class=Solution kind=
+config={"class": "Solution", "method": "longestString", "paramOrder": ["x", "y", "z"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"x": 2, "y": 5, "z": 1}, "expected": 12}, {"args": {"x": 3, "y": 2, "z": 2}, "expected": 14}]}
+--- JS ---
+// LeetCode 2745 - Construct the Longest New String
+// https://leetcode.com/problems/construct-the-longest-new-string/
+
+/**
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @return {number}
+ */
+var longestString = function(x, y, z) {
+    if (x < y) return (2 * x + 1 + z) * 2;
+    if (y < x) return (2 * y + 1 + z) * 2;
+    return (x + y + z) * 2;
+};
+
+
+================================================================================
+FOLDER 18: 2746_decremental_string_concatenation
+method=minimizeConcatenatedLength class=Solution kind=
+config={"class": "Solution", "method": "minimizeConcatenatedLength", "paramOrder": ["words"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"words": ["aa", "ab", "bc"]}, "expected": 4}, {"args": {"words": ["ab", "b"]}, "expected": 2}, {"args": {"words": ["aaa", "c", "aba"]}, "expected": 6}]}
+--- JS ---
+// LeetCode 2746 - Decremental String Concatenation
+// https://leetcode.com/problems/decremental-string-concatenation/
+
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var minimizeConcatenatedLength = function(words) {
+    const n = words.length;
+    const memo = new Map();
+    const w0 = words[0];
+    const dfs = (i, first, last) => {
+        if (i === n) return 0;
+        const key = i + ',' + first + ',' + last;
+        if (memo.has(key)) return memo.get(key);
+        const w = words[i];
+        const wf = w[0], wl = w[w.length - 1];
+        const add1 = w.length - (last === wf ? 1 : 0);
+        const add2 = w.length - (wl === first ? 1 : 0);
+        const a = add1 + dfs(i + 1, first, wl);
+        const b = add2 + dfs(i + 1, wf, last);
+        const ans = Math.min(a, b);
+        memo.set(key, ans);
+        return ans;
+    };
+    return w0.length + dfs(1, w0[0], w0[w0.length - 1]);
+};
+
+
+================================================================================
+FOLDER 19: 2747_count_zero_request_servers
+method=countServers class=Solution kind=
+config={"class": "Solution", "method": "countServers", "paramOrder": ["n", "logs", "x", "queries"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 3, "logs": [[1, 3], [2, 6], [1, 5]], "x": 5, "queries": [10, 11]}, "expected": [1, 2]}, {"args": {"n": 3, "logs": [[2, 4], [2, 1], [1, 2], [3, 1]], "x": 2, "queries": [3, 4]}, "expected": [0, 1]}]}
+--- JS ---
+// LeetCode 2747 - Count Zero Request Servers
+// https://leetcode.com/problems/count-zero-request-servers/
+
+/**
+ * @param {number} n
+ * @param {number[][]} logs
+ * @param {number} x
+ * @param {number[]} queries
+ * @return {number[]}
+ */
+var countServers = function(n, logs, x, queries) {
+    logs.sort((a, b) => a[1] - b[1]);
+    const qs = queries.map((t, i) => [t, i]).sort((a, b) => a[0] - b[0]);
+    const ans = Array(queries.length);
+    const cnt = new Map();
+    let active = 0, l = 0, r = 0;
+    for (const [t, qi] of qs) {
+        while (r < logs.length && logs[r][1] <= t) {
+            const id = logs[r][0];
+            const c = cnt.get(id) || 0;
+            if (c === 0) active++;
+            cnt.set(id, c + 1);
+            r++;
+        }
+        while (l < r && logs[l][1] < t - x) {
+            const id = logs[l][0];
+            const c = cnt.get(id) - 1;
+            cnt.set(id, c);
+            if (c === 0) active--;
+            l++;
+        }
+        ans[qi] = n - active;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 20: 2748_number_of_beautiful_pairs
+method=countBeautifulPairs class=Solution kind=
+config={"class": "Solution", "method": "countBeautifulPairs", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 5, 1, 4]}, "expected": 5}, {"args": {"nums": [11, 21, 12]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2748 - Number of Beautiful Pairs
+// https://leetcode.com/problems/number-of-beautiful-pairs/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countBeautifulPairs = function(nums) {
+    const gcd = (a, b) => {
+        while (b) { const t = a % b; a = b; b = t; }
+        return a;
+    };
+    const firstDigit = (x) => {
+        while (x >= 10) x = Math.floor(x / 10);
+        return x;
+    };
+    let ans = 0;
+    const freq = Array(10).fill(0);
+    for (const x of nums) {
+        const last = x % 10;
+        for (let d = 1; d <= 9; d++)
+            if (freq[d] > 0 && gcd(d, last) === 1) ans += freq[d];
+        freq[firstDigit(x)]++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 21: 2749_minimum_operations_to_make_the_integer_zero
+method=makeTheIntegerZero class=Solution kind=
+config={"class": "Solution", "method": "makeTheIntegerZero", "paramOrder": ["num1", "num2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"num1": 3, "num2": -2}, "expected": 3}, {"args": {"num1": 5, "num2": 7}, "expected": -1}]}
+--- JS ---
+// LeetCode 2749 - Minimum Operations to Make the Integer Zero
+// https://leetcode.com/problems/minimum-operations-to-make-the-integer-zero/
+
+/**
+ * @param {number} num1
+ * @param {number} num2
+ * @return {number}
+ */
+var makeTheIntegerZero = function(num1, num2) {
+    const popcount = (x) => {
+        let c = 0n;
+        let v = BigInt(x);
+        while (v > 0n) {
+            c += v & 1n;
+            v >>= 1n;
+        }
+        return Number(c);
+    };
+    for (let k = 1; k <= 60; k++) {
+        const rem = BigInt(num1) - BigInt(k) * BigInt(num2);
+        if (rem < BigInt(k)) continue;
+        if (popcount(rem) <= k) return k;
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 22: 2750_ways_to_split_array_into_good_subarrays
+method=numberOfGoodSubarraySplits class=Solution kind=
+config={"class": "Solution", "method": "numberOfGoodSubarraySplits", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [0, 1, 0, 0, 1]}, "expected": 3}, {"args": {"nums": [0, 1, 0]}, "expected": 1}]}
+--- JS ---
+// LeetCode 2750 - Ways to Split Array Into Good Subarrays
+// https://leetcode.com/problems/ways-to-split-array-into-good-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var numberOfGoodSubarraySplits = function(nums) {
+    const MOD = 1000000007;
+    const ones = [];
+    for (let i = 0; i < nums.length; i++) if (nums[i] === 1) ones.push(i);
+    if (!ones.length) return 0;
+    let ans = 1;
+    for (let i = 1; i < ones.length; i++)
+        ans = ans * (ones[i] - ones[i - 1]) % MOD;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 23: 2751_robot_collisions
+method=survivedRobotsHealths class=Solution kind=
+config={"class": "Solution", "method": "survivedRobotsHealths", "paramOrder": ["positions", "healths", "directions"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"positions": [5, 4, 3, 2, 1], "healths": [2, 17, 9, 15, 10], "directions": "RRRRR"}, "expected": [2, 17, 9, 15, 10]}, {"args": {"positions": [3, 5, 2, 6], "healths": [10, 10, 15, 12], "directions": "RLRL"}, "expected": [14]}, {"args": {"positions": [1, 2, 5, 6], "healths": [10, 10, 11, 11], "directions": "RLRL"}, "expected": []}]}
+--- JS ---
+// LeetCode 2751 - Robot Collisions
+// https://leetcode.com/problems/robot-collisions/
+
+/**
+ * @param {number[]} positions
+ * @param {number[]} healths
+ * @param {string} directions
+ * @return {number[]}
+ */
+var survivedRobotsHealths = function(positions, healths, directions) {
+    const n = positions.length;
+    const idx = Array.from({length: n}, (_, i) => i);
+    idx.sort((a, b) => positions[a] - positions[b]);
+    const stack = [];
+    for (const i of idx) {
+        const cur = [i, healths[i], directions[i]];
+        while (stack.length && stack[stack.length - 1][2] === 'R' && cur[2] === 'L') {
+            const top = stack[stack.length - 1];
+            if (top[1] === cur[1]) {
+                stack.pop();
+                cur[1] = 0;
+                break;
+            } else if (top[1] > cur[1]) {
+                top[1]--;
+                cur[1] = 0;
+                break;
+            } else {
+                cur[1]--;
+                stack.pop();
+            }
+        }
+        if (cur[1] > 0) stack.push(cur);
+    }
+    const alive = new Map();
+    for (const [i, h] of stack) alive.set(i, h);
+    const ans = [];
+    for (let i = 0; i < n; i++) if (alive.has(i)) ans.push(alive.get(i));
+    return ans;
+};
+
+
+================================================================================
+FOLDER 24: 2753_count_houses_in_a_circular_street_ii
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["street", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"street": [1, 1, 1, 1], "k": 10}, "expected": 4}, {"args": {"street": [1, 0, 1, 1, 0], "k": 5}, "expected": 5}]}
+--- JS ---
+// LeetCode 2753 - Count Houses in a Circular Street II
+// https://leetcode.com/problems/count-houses-in-a-circular-street-ii/
+
+/**
+ * @param {Street} street
+ * @param {number} k
+ * @return {number}
+ */
+var houseCount = function(street, k) {
+    while (!street.isDoorOpen()) street.moveRight();
+    street.closeDoor();
+    street.moveRight();
+    let ans = 1;
+    for (let i = 1; i < k; i++) {
+        if (street.isDoorOpen()) {
+            street.closeDoor();
+            ans = 0;
+        }
+        ans++;
+        street.moveRight();
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 25: 2754_bind_function_to_context
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["fn"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"fn": "function f(multiplier) { return this.x * multiplier; } obj = {\"x\": 10} inputs = [5]"}, "expected": 50}, {"args": {"fn": "function speak() { return \"My name is \" + this.name; } obj = {\"name\": \"Kathy\"} inputs = []"}, "expected": "My name is Kathy"}]}
+--- JS ---
+// LeetCode 2754 - Bind Function to Context
+// https://leetcode.com/problems/bind-function-to-context/
+
+/**
+ * @param {Object} obj
+ * @return {Function}
+ */
+Function.prototype.bindPolyfill = function(obj) {
+    const fn = this;
+    return function(...args) {
+        return fn.apply(obj, args);
+    };
+};
+
+
+================================================================================
+FOLDER 26: 2755_deep_merge_of_two_objects
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["obj1", "obj2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"obj1": {"a": 1, "c": 3}, "obj2": {"a": 2, "b": 2}}, "expected": {"a": 2, "c": 3, "b": 2}}, {"args": {"obj1": [{}, 2, 3], "obj2": [[], 5]}, "expected": [[], 5, 3]}, {"args": {"obj1": {"a": 1, "b": {"c": [1, [2, 7], 5], "d": 2}}, "obj2": {"a": 1, "b": {"c": [6, [6], [9]], "e": 3}}}, "expected": {"a": 1, "b": {"c": [6, [6, 7], [9]], "d": 2, "e": 3}}}, {"args": {"obj1": true, "ob
+--- JS ---
+// LeetCode 2755 - Deep Merge of Two Objects
+// https://leetcode.com/problems/deep-merge-of-two-objects/
+
+/**
+ * @param {any} obj1
+ * @param {any} obj2
+ * @return {any}
+ */
+var deepMerge = function(obj1, obj2) {
+    const isObj = (x) => x !== null && typeof x === 'object' && !Array.isArray(x);
+    const isArr = Array.isArray;
+    if (isObj(obj1) && isObj(obj2)) {
+        const res = {...obj1};
+        for (const k of Object.keys(obj2)) {
+            if (k in res) res[k] = deepMerge(res[k], obj2[k]);
+            else res[k] = obj2[k];
+        }
+        return res;
+    }
+    if (isArr(obj1) && isArr(obj2)) {
+        const n = Math.max(obj1.length, obj2.length);
+        const res = new Array(n);
+        for (let i = 0; i < n; i++) {
+            if (i >= obj1.length) res[i] = obj2[i];
+            else if (i >= obj2.length) res[i] = obj1[i];
+            else res[i] = deepMerge(obj1[i], obj2[i]);
+        }
+        return res;
+    }
+    return obj2;
+};
+
+
+================================================================================
+FOLDER 27: 2756_query_batching
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["queryMultiple"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"queryMultiple": "async function(keys) { return keys.map(key => key + '!'); } t = 100 calls = [ {\"key\": \"a\", \"time\": 10}, {\"key\": \"b\", \"time\": 20}, {\"key\": \"c\", \"time\": 30} ]"}, "expected": [{"resolved": "a!", "time": 10}, {"resolved": "b!", "time": 110}, {"resolved": "c!", "time": 110}]}, {"args": {"queryMultiple": "async function(keys) { await new Promise(r
+--- JS ---
+// LeetCode 2756 - Query Batching
+// https://leetcode.com/problems/query-batching/
+
+/**
+ * @param {Function} queryMultiple
+ * @param {number} t
+ */
+class QueryBatcher {
+    constructor(queryMultiple, t) {
+        this.queryMultiple = queryMultiple;
+        this.t = t;
+        this.pending = [];
+        this.busyUntil = 0;
+        this.timer = null;
+    }
+
+    /**
+     * @param {string} key
+     * @returns {Promise<string>}
+     */
+    async getValue(key) {
+        return new Promise((resolve) => {
+            const now = Date.now();
+            this.pending.push({key, resolve});
+            if (now >= this.busyUntil) {
+                this.flush();
+            } else if (!this.timer) {
+                this.timer = setTimeout(() => {
+                    this.timer = null;
+                    this.flush();
+                }, this.busyUntil - now);
+            }
+        });
+    }
+
+    flush() {
+        if (!this.pending.length) return;
+        const batch = this.pending;
+        this.pending = [];
+        if (this.timer) {
+            clearTimeout(this.timer);
+            this.timer = null;
+        }
+        this.busyUntil = Date.now() + this.t;
+        const keys = batch.map((b) => b.key);
+        this.queryMultiple(keys).then((values) => {
+            for (let i = 0; i < batch.length; i++) batch[i].resolve(values[i]);
+        });
+    }
+}
+
+
+================================================================================
+FOLDER 28: 2757_generate_circular_array_values
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["arr", "steps", "startIndex"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"arr": [1, 2, 3, 4, 5], "steps": [1, 2, 6], "startIndex": 0}, "expected": [1, 2, 4, 5]}, {"args": {"arr": [10, 11, 12, 13, 14, 15], "steps": [1, 4, 0, -1, -3], "startIndex": 1}, "expected": [11, 12, 10, 10, 15, 12]}, {"args": {"arr": [2, 4, 6, 7, 8, 10], "steps": [-4, 5, -3, 10], "startIndex": 3}, "expected": [7, 10, 8, 4, 10]}]}
+--- JS ---
+// LeetCode 2757 - Generate Circular Array Values
+// https://leetcode.com/problems/generate-circular-array-values/
+
+/**
+ * @param {Array} arr
+ * @param {number} startIndex
+ * @yields {number}
+ */
+var cycleGenerator = function*(arr, startIndex) {
+    let i = startIndex;
+    let jump = yield arr[i];
+    while (true) {
+        const n = arr.length;
+        i = ((i + (jump || 0)) % n + n) % n;
+        jump = yield arr[i];
+    }
+};
+
+
+================================================================================
+FOLDER 29: 2758_next_day
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["date"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"date": "2014-06-20"}, "expected": "2014-06-21"}, {"args": {"date": "2017-10-31"}, "expected": "2017-11-01"}]}
+--- JS ---
+// LeetCode 2758 - Next Day
+// https://leetcode.com/problems/next-day/
+
+/**
+ * @return {string}
+ */
+Date.prototype.nextDay = function() {
+    const d = new Date(this.valueOf());
+    d.setDate(d.getDate() + 1);
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+};
+
+
+================================================================================
+FOLDER 30: 2759_convert_json_string_to_object
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["str"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"str": "{\"a\":2,\"b\":[1,2,3]}"}, "expected": {"a": 2, "b": [1, 2, 3]}}, {"args": {"str": "true"}, "expected": true}, {"args": {"str": "[1,5,\"false\",{\"a\":2}]"}, "expected": [1, 5, "false", {"a": 2}]}]}
+--- JS ---
+// LeetCode 2759 - Convert JSON String to Object
+// https://leetcode.com/problems/convert-json-string-to-object/
+
+/**
+ * @param {string} str
+ * @return {any}
+ */
+var jsonParse = function(str) {
+    let i = 0;
+    const parse = () => {
+        if (str[i] === '"') {
+            i++;
+            let s = '';
+            while (str[i] !== '"') s += str[i++];
+            i++;
+            return s;
+        }
+        if (str[i] === 't') { i += 4; return true; }
+        if (str[i] === 'f') { i += 5; return false; }
+        if (str[i] === 'n') { i += 4; return null; }
+        if (str[i] === '[') {
+            i++;
+            const arr = [];
+            if (str[i] === ']') { i++; return arr; }
+            while (true) {
+                arr.push(parse());
+                if (str[i] === ',') { i++; continue; }
+                i++; // ]
+                return arr;
+            }
+        }
+        if (str[i] === '{') {
+            i++;
+            const obj = {};
+            if (str[i] === '}') { i++; return obj; }
+            while (true) {
+                const key = parse();
+                i++; // :
+                obj[key] = parse();
+                if (str[i] === ',') { i++; continue; }
+                i++; // }
+                return obj;
+            }
+        }
+        let start = i;
+        if (str[i] === '-') i++;
+        while (i < str.length && ((str[i] >= '0' && str[i] <= '9') || str[i] === '.')) i++;
+        return Number(str.slice(start, i));
+    };
+    return parse();
+};
+
+
+================================================================================
+FOLDER 31: 2760_longest_even_odd_subarray_with_threshold
+method=longestAlternatingSubarray class=Solution kind=
+config={"class": "Solution", "method": "longestAlternatingSubarray", "paramOrder": ["nums", "threshold"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [3, 2, 5, 4], "threshold": 5}, "expected": 3}, {"args": {"nums": [1, 2], "threshold": 2}, "expected": 1}, {"args": {"nums": [2, 3, 4, 5], "threshold": 4}, "expected": 3}]}
+--- JS ---
+// LeetCode 2760 - Longest Even Odd Subarray With Threshold
+// https://leetcode.com/problems/longest-even-odd-subarray-with-threshold/
+
+/**
+ * @param {number[]} nums
+ * @param {number} threshold
+ * @return {number}
+ */
+var longestAlternatingSubarray = function(nums, threshold) {
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        if (nums[i] % 2 !== 0 || nums[i] > threshold) continue;
+        let j = i;
+        while (j + 1 < n && nums[j + 1] <= threshold && nums[j + 1] % 2 !== nums[j] % 2) j++;
+        ans = Math.max(ans, j - i + 1);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 32: 2761_prime_pairs_with_target_sum
+method=findPrimePairs class=Solution kind=
+config={"class": "Solution", "method": "findPrimePairs", "paramOrder": ["n"], "types": {"return": "integer[][]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 10}, "expected": [[3, 7], [5, 5]]}, {"args": {"n": 2}, "expected": []}]}
+--- JS ---
+// LeetCode 2761 - Prime Pairs With Target Sum
+// https://leetcode.com/problems/prime-pairs-with-target-sum/
+
+/**
+ * @param {number} n
+ * @return {number[][]}
+ */
+var findPrimePairs = function(n) {
+    const isPrime = Array(n + 1).fill(true);
+    isPrime[0] = isPrime[1] = false;
+    for (let i = 2; i * i <= n; i++) {
+        if (isPrime[i]) {
+            for (let j = i * i; j <= n; j += i) isPrime[j] = false;
+        }
+    }
+    const ans = [];
+    for (let x = 2; x <= n / 2; x++) {
+        const y = n - x;
+        if (isPrime[x] && isPrime[y]) ans.push([x, y]);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 33: 2762_continuous_subarrays
+method=continuousSubarrays class=Solution kind=
+config={"class": "Solution", "method": "continuousSubarrays", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [5, 4, 2, 4]}, "expected": 8}, {"args": {"nums": [1, 2, 3]}, "expected": 6}]}
+--- JS ---
+// LeetCode 2762 - Continuous Subarrays
+// https://leetcode.com/problems/continuous-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var continuousSubarrays = function(nums) {
+    let ans = 0, left = 0;
+    const minQ = [], maxQ = [];
+    for (let right = 0; right < nums.length; right++) {
+        while (minQ.length && nums[minQ[minQ.length - 1]] > nums[right]) minQ.pop();
+        while (maxQ.length && nums[maxQ[maxQ.length - 1]] < nums[right]) maxQ.pop();
+        minQ.push(right);
+        maxQ.push(right);
+        while (nums[maxQ[0]] - nums[minQ[0]] > 2) {
+            left++;
+            if (minQ[0] < left) minQ.shift();
+            if (maxQ[0] < left) maxQ.shift();
+        }
+        ans += right - left + 1;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 34: 2763_sum_of_imbalance_numbers_of_all_subarrays
+method=sumImbalanceNumbers class=Solution kind=
+config={"class": "Solution", "method": "sumImbalanceNumbers", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 3, 1, 4]}, "expected": 3}, {"args": {"nums": [1, 3, 3, 3, 5]}, "expected": 8}]}
+--- JS ---
+// LeetCode 2763 - Sum of Imbalance Numbers of All Subarrays
+// https://leetcode.com/problems/sum-of-imbalance-numbers-of-all-subarrays/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sumImbalanceNumbers = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        const seen = new Set();
+        const sorted = [];
+        let imbalance = 0;
+        const ceilIdx = (x) => {
+            let lo = 0, hi = sorted.length;
+            while (lo < hi) {
+                const mid = (lo + hi) >> 1;
+                if (sorted[mid] < x) lo = mid + 1;
+                else hi = mid;
+            }
+            return lo;
+        };
+        for (let j = i; j < n; j++) {
+            const x = nums[j];
+            if (!seen.has(x)) {
+                seen.add(x);
+                const idx = ceilIdx(x);
+                const next = idx < sorted.length ? sorted[idx] : null;
+                const prev = idx > 0 ? sorted[idx - 1] : null;
+                if (prev !== null && x - prev !== 1) imbalance++;
+                if (next !== null && next - x !== 1) imbalance++;
+                if (prev !== null && next !== null && next - prev > 1) imbalance--;
+                sorted.splice(idx, 0, x);
+            }
+            ans += imbalance;
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 35: 2764_is_array_a_preorder_of_some_binary_tree
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["nodes"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nodes": [[0, -1], [1, 0], [2, 0], [3, 2], [4, 2]]}, "expected": true}, {"args": {"nodes": [[0, -1], [1, 0], [2, 0], [3, 1], [4, 1]]}, "expected": false}]}
+--- JS ---
+// LeetCode 2764 - Is Array a Preorder of Some Binary Tree
+// https://leetcode.com/problems/is-array-a-preorder-of-some-binary-tree/
+
+/**
+ * @param {number[][]} nodes
+ * @return {boolean}
+ */
+var isPreorder = function(nodes) {
+    if (!nodes.length) return true;
+    const stack = [nodes[0][0]];
+    for (let i = 1; i < nodes.length; i++) {
+        const id = nodes[i][0], parent = nodes[i][1];
+        while (stack.length && stack[stack.length - 1] !== parent) stack.pop();
+        if (!stack.length) return false;
+        stack.push(id);
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 36: 2765_longest_alternating_subarray
+method=alternatingSubarray class=Solution kind=
+config={"class": "Solution", "method": "alternatingSubarray", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 3, 4, 3, 4]}, "expected": 4}, {"args": {"nums": [4, 5, 6]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2765 - Longest Alternating Subarray
+// https://leetcode.com/problems/longest-alternating-subarray/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var alternatingSubarray = function(nums) {
+    let ans = -1;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            const expect = ((j - i) % 2 === 0) ? -1 : 1;
+            if (nums[j] - nums[j - 1] !== expect) break;
+            if (nums[i + 1] - nums[i] !== 1) break;
+            ans = Math.max(ans, j - i + 1);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 37: 2766_relocate_marbles
+method=relocateMarbles class=Solution kind=
+config={"class": "Solution", "method": "relocateMarbles", "paramOrder": ["nums", "moveFrom", "moveTo"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 6, 7, 8], "moveFrom": [1, 7, 2], "moveTo": [2, 9, 5]}, "expected": [5, 6, 8, 9]}, {"args": {"nums": [1, 1, 3, 3], "moveFrom": [1, 3], "moveTo": [2, 2]}, "expected": [2]}]}
+--- JS ---
+// LeetCode 2766 - Relocate Marbles
+// https://leetcode.com/problems/relocate-marbles/
+
+/**
+ * @param {number[]} nums
+ * @param {number[]} moveFrom
+ * @param {number[]} moveTo
+ * @return {number[]}
+ */
+var relocateMarbles = function(nums, moveFrom, moveTo) {
+    const pos = new Set(nums);
+    for (let i = 0; i < moveFrom.length; i++) {
+        pos.delete(moveFrom[i]);
+        pos.add(moveTo[i]);
+    }
+    return [...pos].sort((a, b) => a - b);
+};
+
+
+================================================================================
+FOLDER 38: 2767_partition_string_into_minimum_beautiful_substrings
+method=minimumBeautifulSubstrings class=Solution kind=
+config={"class": "Solution", "method": "minimumBeautifulSubstrings", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "1011"}, "expected": 2}, {"args": {"s": "111"}, "expected": 3}, {"args": {"s": "0"}, "expected": -1}]}
+--- JS ---
+// LeetCode 2767 - Partition String Into Minimum Beautiful Substrings
+// https://leetcode.com/problems/partition-string-into-minimum-beautiful-substrings/
+
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minimumBeautifulSubstrings = function(s) {
+    const n = s.length;
+    const pow5 = new Set();
+    for (let x = 1n; ; x *= 5n) {
+        const b = x.toString(2);
+        if (b.length > n) break;
+        pow5.add(b);
+    }
+    const INF = 1e9;
+    const dp = Array(n + 1).fill(INF);
+    dp[0] = 0;
+    for (let i = 0; i < n; i++) {
+        if (dp[i] === INF || s[i] === '0') continue;
+        for (let j = i + 1; j <= n; j++) {
+            if (pow5.has(s.slice(i, j))) dp[j] = Math.min(dp[j], dp[i] + 1);
+        }
+    }
+    return dp[n] === INF ? -1 : dp[n];
+};
+
+
+================================================================================
+FOLDER 39: 2768_number_of_black_blocks
+method=countBlackBlocks class=Solution kind=
+config={"class": "Solution", "method": "countBlackBlocks", "paramOrder": ["m", "n", "coordinates"], "types": {"return": "integer[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"m": 3, "n": 3, "coordinates": [[0, 0]]}, "expected": [3, 1, 0, 0, 0]}, {"args": {"m": 3, "n": 3, "coordinates": [[0, 0], [1, 1], [0, 2]]}, "expected": [0, 2, 2, 0, 0]}]}
+--- JS ---
+// LeetCode 2768 - Number of Black Blocks
+// https://leetcode.com/problems/number-of-black-blocks/
+
+/**
+ * @param {number} m
+ * @param {number} n
+ * @param {number[][]} coordinates
+ * @return {number[]}
+ */
+var countBlackBlocks = function(m, n, coordinates) {
+    const cnt = new Map();
+    for (const [x, y] of coordinates) {
+        for (let i = x - 1; i <= x; i++) {
+            for (let j = y - 1; j <= y; j++) {
+                if (i >= 0 && j >= 0 && i < m - 1 && j < n - 1) {
+                    const key = i + ',' + j;
+                    cnt.set(key, (cnt.get(key) || 0) + 1);
+                }
+            }
+        }
+    }
+    const ans = [BigInt(m - 1) * BigInt(n - 1), 0n, 0n, 0n, 0n];
+    // LeetCode expects number[]; use Number for typical constraints
+    const out = Array(5).fill(0);
+    out[0] = (m - 1) * (n - 1);
+    for (const v of cnt.values()) {
+        out[v]++;
+        out[0]--;
+    }
+    return out;
+};
+
+
+================================================================================
+FOLDER 40: 2769_find_the_maximum_achievable_number
+method=theMaximumAchievableX class=Solution kind=
+config={"class": "Solution", "method": "theMaximumAchievableX", "paramOrder": ["num", "t"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"num": 4, "t": 1}, "expected": 6}, {"args": {"num": 3, "t": 2}, "expected": 7}]}
+--- JS ---
+// LeetCode 2769 - Find the Maximum Achievable Number
+// https://leetcode.com/problems/find-the-maximum-achievable-number/
+
+/**
+ * @param {number} num
+ * @param {number} t
+ * @return {number}
+ */
+var theMaximumAchievableX = function(num, t) {
+    return num + 2 * t;
+};
+
+
+================================================================================
+FOLDER 41: 2770_maximum_number_of_jumps_to_reach_the_last_index
+method=maximumJumps class=Solution kind=
+config={"class": "Solution", "method": "maximumJumps", "paramOrder": ["nums", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 3, 6, 4, 1, 2], "target": 2}, "expected": 3}, {"args": {"nums": [1, 3, 6, 4, 1, 2], "target": 3}, "expected": 5}, {"args": {"nums": [1, 3, 6, 4, 1, 2], "target": 0}, "expected": -1}]}
+--- JS ---
+// LeetCode 2770 - Maximum Number of Jumps to Reach the Last Index
+// https://leetcode.com/problems/maximum-number-of-jumps-to-reach-the-last-index/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var maximumJumps = function(nums, target) {
+    const n = nums.length;
+    const dp = Array(n).fill(-1);
+    dp[0] = 0;
+    for (let i = 0; i < n; i++) {
+        if (dp[i] < 0) continue;
+        for (let j = i + 1; j < n; j++) {
+            if (Math.abs(nums[j] - nums[i]) <= target)
+                dp[j] = Math.max(dp[j], dp[i] + 1);
+        }
+    }
+    return dp[n - 1];
+};
+
+
+================================================================================
+FOLDER 42: 2771_longest_non_decreasing_subarray_from_two_arrays
+method=maxNonDecreasingLength class=Solution kind=
+config={"class": "Solution", "method": "maxNonDecreasingLength", "paramOrder": ["nums1", "nums2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums1": [2, 3, 1], "nums2": [1, 2, 1]}, "expected": 2}, {"args": {"nums1": [1, 3, 2, 1], "nums2": [2, 2, 3, 4]}, "expected": 4}, {"args": {"nums1": [1, 1], "nums2": [2, 2]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2771 - Longest Non-decreasing Subarray From Two Arrays
+// https://leetcode.com/problems/longest-non-decreasing-subarray-from-two-arrays/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var maxNonDecreasingLength = function(nums1, nums2) {
+    const n = nums1.length;
+    let dp1 = 1, dp2 = 1, ans = 1;
+    for (let i = 1; i < n; i++) {
+        let nd1 = 1, nd2 = 1;
+        if (nums1[i] >= nums1[i - 1]) nd1 = Math.max(nd1, dp1 + 1);
+        if (nums1[i] >= nums2[i - 1]) nd1 = Math.max(nd1, dp2 + 1);
+        if (nums2[i] >= nums1[i - 1]) nd2 = Math.max(nd2, dp1 + 1);
+        if (nums2[i] >= nums2[i - 1]) nd2 = Math.max(nd2, dp2 + 1);
+        dp1 = nd1;
+        dp2 = nd2;
+        ans = Math.max(ans, dp1, dp2);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 43: 2772_apply_operations_to_make_all_array_elements_equal_to_zero
+method=checkArray class=Solution kind=
+config={"class": "Solution", "method": "checkArray", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 2, 3, 1, 1, 0], "k": 3}, "expected": true}, {"args": {"nums": [1, 3, 1, 1], "k": 2}, "expected": false}]}
+--- JS ---
+// LeetCode 2772 - Apply Operations to Make All Array Elements Equal to Zero
+// https://leetcode.com/problems/apply-operations-to-make-all-array-elements-equal-to-zero/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var checkArray = function(nums, k) {
+    const n = nums.length;
+    const diff = Array(n + 1).fill(0);
+    let cur = 0;
+    for (let i = 0; i < n; i++) {
+        cur += diff[i];
+        const need = nums[i] - cur;
+        if (need < 0) return false;
+        if (need > 0) {
+            if (i + k > n) return false;
+            cur += need;
+            diff[i + k] -= need;
+        }
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 44: 2773_height_of_special_binary_tree
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["root"], "types": {"root": "treenode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"root": [1, 2, 3, null, null, 4, 5]}, "expected": 2}, {"args": {"root": [1, 2]}, "expected": 1}, {"args": {"root": [1, 2, 3, null, null, 4, null, 5, 6]}, "expected": 3}]}
+--- JS ---
+// LeetCode 2773 - Height of Special Binary Tree
+// https://leetcode.com/problems/height-of-special-binary-tree/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @return {number}
+ */
+var heightOfTree = function(root) {
+    if (!root) return -1;
+    const dfs = (node) => {
+        if (!node) return -1;
+        if (node.left && node.left.right === node) return dfs(node.right) + 1;
+        if (node.right && node.right.left === node) return dfs(node.left) + 1;
+        return Math.max(dfs(node.left), dfs(node.right)) + 1;
+    };
+    return dfs(root);
+};
+
+
+================================================================================
+FOLDER 45: 2774_array_upper_bound
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["nums", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [3, 4, 5], "target": 5}, "expected": 2}, {"args": {"nums": [1, 4, 5], "target": 2}, "expected": -1}, {"args": {"nums": [3, 4, 6, 6, 6, 6, 7], "target": 6}, "expected": 5}]}
+--- JS ---
+// LeetCode 2774 - Array Upper Bound
+// https://leetcode.com/problems/array-upper-bound/
+
+/**
+ * @param {number} target
+ * @return {number}
+ */
+Array.prototype.upperBound = function(target) {
+    let lo = 0, hi = this.length;
+    while (lo < hi) {
+        const mid = (lo + hi) >> 1;
+        if (this[mid] <= target) lo = mid + 1;
+        else hi = mid;
+    }
+    if (lo === 0 || this[lo - 1] !== target) return -1;
+    return lo - 1;
+};
+
+
+================================================================================
+FOLDER 46: 2775_undefined_to_null
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["obj"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"obj": "{\"a\": undefined, \"b\": 3}"}, "expected": {"a": null, "b": 3}}, {"args": {"obj": "{\"a\": undefined, \"b\": [\"a\", undefined]}"}, "expected": {"a": null, "b": ["a", null]}}]}
+--- JS ---
+// LeetCode 2775 - Undefined to Null
+// https://leetcode.com/problems/undefined-to-null/
+
+/**
+ * @param {any} obj
+ * @return {any}
+ */
+var undefinedToNull = function(obj) {
+    if (obj === undefined) return null;
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) {
+        for (let i = 0; i < obj.length; i++) obj[i] = undefinedToNull(obj[i]);
+        return obj;
+    }
+    for (const k of Object.keys(obj)) obj[k] = undefinedToNull(obj[k]);
+    return obj;
+};
+
+
+================================================================================
+FOLDER 47: 2776_convert_callback_based_function_to_promise_based_function
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["fn"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"fn": "(callback, a, b, c) => { callback(a * b * c); } args = [1, 2, 3]"}, "expected": {"resolved": 6}}, {"args": {"fn": "(callback, a, b, c) => { callback(a * b * c, \"Promise Rejected\"); } args = [4, 5, 6]"}, "expected": {"rejected": "Promise Rejected"}}]}
+--- JS ---
+// LeetCode 2776 - Convert Callback Based Function to Promise Based Function
+// https://leetcode.com/problems/convert-callback-based-function-to-promise-based-function/
+
+/**
+ * @param {Function} fn
+ * @return {Function}
+ */
+var promisify = function(fn) {
+    return function(...args) {
+        return new Promise((resolve, reject) => {
+            fn((err, result) => {
+                if (err) reject(err);
+                else resolve(result);
+            }, ...args);
+        });
+    };
+};
+
+
+================================================================================
+FOLDER 48: 2777_date_range_generator
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["start", "end", "step"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"start": "2023-04-01", "end": "2023-04-04", "step": 1}, "expected": ["2023-04-01", "2023-04-02", "2023-04-03", "2023-04-04"]}, {"args": {"start": "2023-04-10", "end": "2023-04-20", "step": 3}, "expected": ["2023-04-10", "2023-04-13", "2023-04-16", "2023-04-19"]}, {"args": {"start": "2023-04-10", "end": "2023-04-10", "step": 1}, "expected": ["2023-04-10"]}]}
+--- JS ---
+// LeetCode 2777 - Date Range Generator
+// https://leetcode.com/problems/date-range-generator/
+
+/**
+ * @param {string} start
+ * @param {string} end
+ * @param {number} step
+ * @yields {string}
+ */
+var dateRangeGenerator = function*(start, end, step) {
+    let cur = new Date(start + 'T00:00:00');
+    const last = new Date(end + 'T00:00:00');
+    while (cur <= last) {
+        const y = cur.getFullYear();
+        const m = String(cur.getMonth() + 1).padStart(2, '0');
+        const d = String(cur.getDate()).padStart(2, '0');
+        yield `${y}-${m}-${d}`;
+        cur.setDate(cur.getDate() + step);
+    }
+};
+
+
+================================================================================
+FOLDER 49: 2778_sum_of_squares_of_special_elements
+method=sumOfSquares class=Solution kind=
+config={"class": "Solution", "method": "sumOfSquares", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 2, 3, 4]}, "expected": 21}, {"args": {"nums": [2, 7, 1, 19, 18, 3]}, "expected": 63}]}
+--- JS ---
+// LeetCode 2778 - Sum of Squares of Special Elements
+// https://leetcode.com/problems/sum-of-squares-of-special-elements/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var sumOfSquares = function(nums) {
+    const n = nums.length;
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        if (n % (i + 1) === 0) ans += nums[i] * nums[i];
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 50: 2779_maximum_beauty_of_an_array_after_applying_operation
+method=maximumBeauty class=Solution kind=
+config={"class": "Solution", "method": "maximumBeauty", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [4, 6, 1, 2], "k": 2}, "expected": 3}, {"args": {"nums": [1, 1, 1, 1], "k": 10}, "expected": 4}]}
+--- JS ---
+// LeetCode 2779 - Maximum Beauty of an Array After Applying Operation
+// https://leetcode.com/problems/maximum-beauty-of-an-array-after-applying-operation/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maximumBeauty = function(nums, k) {
+    nums.sort((a, b) => a - b);
+    let ans = 0, left = 0;
+    for (let right = 0; right < nums.length; right++) {
+        while (nums[right] - nums[left] > 2 * k) left++;
+        ans = Math.max(ans, right - left + 1);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 51: 2780_minimum_index_of_a_valid_split
+method=minimumIndex class=Solution kind=
+config={"class": "Solution", "method": "minimumIndex", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 2, 2, 2]}, "expected": 2}, {"args": {"nums": [2, 1, 3, 1, 1, 1, 7, 1, 2, 1]}, "expected": 4}, {"args": {"nums": [3, 3, 3, 3, 7, 2, 2]}, "expected": -1}]}
+--- JS ---
+// LeetCode 2780 - Minimum Index of a Valid Split
+// https://leetcode.com/problems/minimum-index-of-a-valid-split/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumIndex = function(nums) {
+    const freq = new Map();
+    let dom = 0, best = 0;
+    for (const v of nums) {
+        const c = (freq.get(v) || 0) + 1;
+        freq.set(v, c);
+        if (c > best) { best = c; dom = v; }
+    }
+    let left = 0;
+    const n = nums.length;
+    for (let i = 0; i < n - 1; i++) {
+        if (nums[i] === dom) left++;
+        const right = best - left;
+        if (left * 2 > i + 1 && right * 2 > n - i - 1) return i;
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 52: 2781_length_of_the_longest_valid_substring
+method=longestValidSubstring class=Solution kind=
+config={"class": "Solution", "method": "longestValidSubstring", "paramOrder": ["word", "forbidden"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"word": "cbaaaabc", "forbidden": ["aaa", "cb"]}, "expected": 4}, {"args": {"word": "leetcode", "forbidden": ["de", "le", "e"]}, "expected": 4}]}
+--- JS ---
+// LeetCode 2781 - Length of the Longest Valid Substring
+// https://leetcode.com/problems/length-of-the-longest-valid-substring/
+
+/**
+ * @param {string} word
+ * @param {string[]} forbidden
+ * @return {number}
+ */
+var longestValidSubstring = function(word, forbidden) {
+    const forbid = new Set(forbidden);
+    let maxLen = 0;
+    for (const f of forbidden) maxLen = Math.max(maxLen, f.length);
+    let ans = 0, right = word.length - 1;
+    for (let left = word.length - 1; left >= 0; left--) {
+        for (let k = left; k <= right && k - left + 1 <= maxLen; k++) {
+            if (forbid.has(word.slice(left, k + 1))) {
+                right = k - 1;
+                break;
+            }
+        }
+        ans = Math.max(ans, right - left + 1);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 53: 2782_number_of_unique_categories
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["n", "categoryHandler"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 6, "categoryHandler": [1, 1, 2, 2, 3, 3]}, "expected": 3}, {"args": {"n": 5, "categoryHandler": [1, 2, 3, 4, 5]}, "expected": 5}, {"args": {"n": 3, "categoryHandler": [1, 1, 1]}, "expected": 1}]}
+--- JS ---
+// LeetCode 2782 - Number of Unique Categories
+// https://leetcode.com/problems/number-of-unique-categories/
+
+/**
+ * @param {number} n
+ * @param {CategoryHandler} categoryHandler
+ * @return {number}
+ */
+var numberOfCategories = function(n, categoryHandler) {
+    const parent = Array.from({length: n}, (_, i) => i);
+    const find = (x) => {
+        while (parent[x] !== x) {
+            parent[x] = parent[parent[x]];
+            x = parent[x];
+        }
+        return x;
+    };
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j < n; j++) {
+            if (categoryHandler.haveSameCategory(i, j)) {
+                const a = find(i), b = find(j);
+                if (a !== b) parent[a] = b;
+            }
+        }
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) if (find(i) === i) ans++;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 54: 2784_check_if_array_is_good
+method=isGood class=Solution kind=
+config={"class": "Solution", "method": "isGood", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 1, 3]}, "expected": false}, {"args": {"nums": [1, 3, 3, 2]}, "expected": true}, {"args": {"nums": [1, 1]}, "expected": true}, {"args": {"nums": [3, 4, 4, 1, 2, 1]}, "expected": false}]}
+--- JS ---
+// LeetCode 2784 - Check if Array is Good
+// https://leetcode.com/problems/check-if-array-is-good/
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isGood = function(nums) {
+    const n = nums.length - 1;
+    if (n < 1) return false;
+    const freq = Array(n + 1).fill(0);
+    for (const v of nums) {
+        if (v < 1 || v > n) return false;
+        freq[v]++;
+    }
+    for (let i = 1; i < n; i++) if (freq[i] !== 1) return false;
+    return freq[n] === 2;
+};
+
+
+================================================================================
+FOLDER 55: 2785_sort_vowels_in_a_string
+method=sortVowels class=Solution kind=
+config={"class": "Solution", "method": "sortVowels", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "lEetcOde"}, "expected": "lEOtcede"}, {"args": {"s": "lYmpH"}, "expected": "lYmpH"}]}
+--- JS ---
+// LeetCode 2785 - Sort Vowels in a String
+// https://leetcode.com/problems/sort-vowels-in-a-string/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var sortVowels = function(s) {
+    const isVowel = (c) => 'aeiouAEIOU'.includes(c);
+    const vowels = [];
+    for (const c of s) if (isVowel(c)) vowels.push(c);
+    vowels.sort();
+    const arr = s.split('');
+    let vi = 0;
+    for (let i = 0; i < arr.length; i++) if (isVowel(arr[i])) arr[i] = vowels[vi++];
+    return arr.join('');
+};
+
+
+================================================================================
+FOLDER 56: 2786_visit_array_positions_to_maximize_score
+method=maxScore class=Solution kind=
+config={"class": "Solution", "method": "maxScore", "paramOrder": ["nums", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 3, 6, 1, 9, 2], "x": 5}, "expected": 13}, {"args": {"nums": [2, 4, 6, 8], "x": 3}, "expected": 20}]}
+--- JS ---
+// LeetCode 2786 - Visit Array Positions to Maximize Score
+// https://leetcode.com/problems/visit-array-positions-to-maximize-score/
+
+/**
+ * @param {number[]} nums
+ * @param {number} x
+ * @return {number}
+ */
+var maxScore = function(nums, x) {
+    const NEG = -1e18;
+    let even = nums[0], odd = nums[0];
+    if (nums[0] % 2 === 0) odd = NEG;
+    else even = NEG;
+    for (let i = 1; i < nums.length; i++) {
+        const v = nums[i];
+        if (nums[i] % 2 === 0) even = Math.max(even + v, odd + v - x);
+        else odd = Math.max(odd + v, even + v - x);
+    }
+    return Math.max(even, odd);
+};
+
+
+================================================================================
+FOLDER 57: 2787_ways_to_express_an_integer_as_sum_of_powers
+method=numberOfWays class=Solution kind=
+config={"class": "Solution", "method": "numberOfWays", "paramOrder": ["n", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 10, "x": 2}, "expected": 1}, {"args": {"n": 4, "x": 1}, "expected": 2}]}
+--- JS ---
+// LeetCode 2787 - Ways to Express an Integer as Sum of Powers
+// https://leetcode.com/problems/ways-to-express-an-integer-as-sum-of-powers/
+
+/**
+ * @param {number} n
+ * @param {number} x
+ * @return {number}
+ */
+var numberOfWays = function(n, x) {
+    const MOD = 1000000007;
+    const powers = [];
+    for (let i = 1; ; i++) {
+        let p = 1;
+        for (let j = 0; j < x; j++) {
+            p *= i;
+            if (p > n) break;
+        }
+        if (p > n) break;
+        powers.push(p);
+    }
+    const dp = Array(n + 1).fill(0);
+    dp[0] = 1;
+    for (const p of powers) {
+        for (let s = n; s >= p; s--) dp[s] = (dp[s] + dp[s - p]) % MOD;
+    }
+    return dp[n];
+};
+
+
+================================================================================
+FOLDER 58: 2788_split_strings_by_separator
+method=splitWordsBySeparator class=Solution kind=
+config={"class": "Solution", "method": "splitWordsBySeparator", "paramOrder": ["words", "separator"], "types": {"return": "string[]"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"words": ["one.two.three", "four.five", "six"], "separator": "."}, "expected": ["one", "two", "three", "four", "five", "six"]}, {"args": {"words": ["$easy$", "$problem$"], "separator": "$"}, "expected": ["easy", "problem"]}, {"args": {"words": ["|||"], "separator": "|"}, "expected": []}]}
+--- JS ---
+// LeetCode 2788 - Split Strings by Separator
+// https://leetcode.com/problems/split-strings-by-separator/
+
+/**
+ * @param {string[]} words
+ * @param {character} separator
+ * @return {string[]}
+ */
+var splitWordsBySeparator = function(words, separator) {
+    const ans = [];
+    for (const w of words) {
+        let start = 0;
+        for (let i = 0; i <= w.length; i++) {
+            if (i === w.length || w[i] === separator) {
+                if (i > start) ans.push(w.slice(start, i));
+                start = i + 1;
+            }
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 59: 2789_largest_element_in_an_array_after_merge_operations
+method=maxArrayValue class=Solution kind=
+config={"class": "Solution", "method": "maxArrayValue", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 3, 7, 9, 3]}, "expected": 21}, {"args": {"nums": [5, 3, 3]}, "expected": 11}]}
+--- JS ---
+// LeetCode 2789 - Largest Element in an Array after Merge Operations
+// https://leetcode.com/problems/largest-element-in-an-array-after-merge-operations/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxArrayValue = function(nums) {
+    const n = nums.length;
+    let cur = nums[n - 1], ans = cur;
+    for (let i = n - 2; i >= 0; i--) {
+        if (nums[i] <= cur) cur += nums[i];
+        else cur = nums[i];
+        ans = Math.max(ans, cur);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 60: 2790_maximum_number_of_groups_with_increasing_length
+method=maxIncreasingGroups class=Solution kind=
+config={"class": "Solution", "method": "maxIncreasingGroups", "paramOrder": ["usageLimits"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"usageLimits": [1, 2, 5]}, "expected": 3}, {"args": {"usageLimits": [2, 1, 2]}, "expected": 2}, {"args": {"usageLimits": [1, 1]}, "expected": 1}]}
+--- JS ---
+// LeetCode 2790 - Maximum Number of Groups With Increasing Length
+// https://leetcode.com/problems/maximum-number-of-groups-with-increasing-length/
+
+/**
+ * @param {number[]} usageLimits
+ * @return {number}
+ */
+var maxIncreasingGroups = function(usageLimits) {
+    const arr = usageLimits.slice().sort((a, b) => a - b);
+    let ans = 0, sum = 0;
+    for (const v of arr) {
+        sum += v;
+        const need = (ans + 1) * (ans + 2) / 2;
+        if (sum >= need) ans++;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 61: 2791_count_paths_that_can_form_a_palindrome_in_a_tree
+method=countPalindromePaths class=Solution kind=
+config={"class": "Solution", "method": "countPalindromePaths", "paramOrder": ["parent", "s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"parent": [-1, 0, 0, 1, 1, 2], "s": "acaabc"}, "expected": 8}, {"args": {"parent": [-1, 0, 0, 0, 0], "s": "aaaaa"}, "expected": 10}]}
+--- JS ---
+// LeetCode 2791 - Count Paths That Can Form a Palindrome in a Tree
+// https://leetcode.com/problems/count-paths-that-can-form-a-palindrome-in-a-tree/
+
+/**
+ * @param {number[]} parent
+ * @param {string} s
+ * @return {number}
+ */
+var countPalindromePaths = function(parent, s) {
+    const n = parent.length;
+    const g = Array.from({length: n}, () => []);
+    for (let i = 1; i < n; i++) g[parent[i]].push(i);
+    const freq = new Map([[0, 1]]);
+    let ans = 0;
+    const dfs = (u, mask) => {
+        for (const v of g[u]) {
+            const nm = mask ^ (1 << (s.charCodeAt(v) - 97));
+            ans += freq.get(nm) || 0;
+            for (let b = 0; b < 26; b++) ans += freq.get(nm ^ (1 << b)) || 0;
+            freq.set(nm, (freq.get(nm) || 0) + 1);
+            dfs(v, nm);
+        }
+    };
+    dfs(0, 0);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 62: 2792_count_nodes_that_are_great_enough
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["root", "k"], "types": {"root": "treenode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"root": [7, 6, 5, 4, 3, 2, 1], "k": 2}, "expected": 3}, {"args": {"root": [1, 2, 3], "k": 1}, "expected": 0}, {"args": {"root": [3, 2, 2], "k": 2}, "expected": 1}]}
+--- JS ---
+// LeetCode 2792 - Count Nodes That Are Great Enough
+// https://leetcode.com/problems/count-nodes-that-are-great-enough/
+
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/**
+ * @param {TreeNode} root
+ * @param {number} k
+ * @return {number}
+ */
+var countGreatEnoughNodes = function(root, k) {
+    let ans = 0;
+    const dfs = (node) => {
+        if (!node) return [];
+        const vals = [node.val, ...dfs(node.left), ...dfs(node.right)];
+        let smaller = 0;
+        for (const v of vals) if (v < node.val) smaller++;
+        if (smaller >= k) ans++;
+        return vals;
+    };
+    dfs(root);
+    return ans;
+};
+
+
+================================================================================
+FOLDER 63: 2794_create_object_from_two_arrays
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["keysArr", "valuesArr"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"keysArr": ["a", "b", "c"], "valuesArr": [1, 2, 3]}, "expected": {"a": 1, "b": 2, "c": 3}}, {"args": {"keysArr": ["1", 1, false], "valuesArr": [4, 5, 6]}, "expected": {"1": 4, "false": 6}}, {"args": {"keysArr": [], "valuesArr": []}, "expected": {}}]}
+--- JS ---
+// LeetCode 2794 - Create Object from Two Arrays
+// https://leetcode.com/problems/create-object-from-two-arrays/
+
+/**
+ * @param {Array} keysArr
+ * @param {Array} valuesArr
+ * @return {Object}
+ */
+var createObject = function(keysArr, valuesArr) {
+    const output = {};
+    const n = Math.min(keysArr.length, valuesArr.length);
+    for (let i = 0; i < n; i++) {
+        if (!(keysArr[i] in output)) output[keysArr[i]] = valuesArr[i];
+    }
+    return output;
+};
+
+
+================================================================================
+FOLDER 64: 2795_parallel_execution_of_promises_for_individual_results_retrieval
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["functions"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"functions": "[ () => new Promise(resolve => setTimeout(() => resolve(15), 100)) ] **"}, "expected": "**{\"t\":100,\"values\":[{\"status\":\"fulfilled\",\"value\":15}]}"}, {"args": {"functions": "[ () => new Promise(resolve => setTimeout(() => resolve(20), 100)), () => new Promise(resolve => setTimeout(() => resolve(15), 100)) ] **"}, "expected": "**{"}, {"args": {"functions":
+--- JS ---
+// LeetCode 2795 - Parallel Execution of Promises for Individual Results Retrieval
+// https://leetcode.com/problems/parallel-execution-of-promises-for-individual-results-retrieval/
+
+/**
+ * @param {Array<Function>} functions
+ * @return {Promise<Array>}
+ */
+var promiseAllSettled = function(functions) {
+    return Promise.all(functions.map((fn) =>
+        Promise.resolve().then(fn).then(
+            (value) => ({status: 'fulfilled', value}),
+            (reason) => ({status: 'rejected', reason})
+        )
+    ));
+};
+
+
+================================================================================
+FOLDER 65: 2796_repeat_string
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["str", "times"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"str": "hello", "times": 2}, "expected": "hellohello"}, {"args": {"str": "code", "times": 3}, "expected": "codecodecode"}, {"args": {"str": "js", "times": 1}, "expected": "js"}]}
+--- JS ---
+// LeetCode 2796 - Repeat String
+// https://leetcode.com/problems/repeat-string/
+
+/**
+ * @param {number} times
+ * @return {string}
+ */
+String.prototype.replicate = function(times) {
+    let res = '';
+    for (let i = 0; i < times; i++) res += this;
+    return res;
+};
+
+
+================================================================================
+FOLDER 66: 2797_partial_function_with_placeholders
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["fn", "args", "restArgs"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"fn": "(...args) => args", "args": [2, 4, 6], "restArgs": [8, 10]}, "expected": [2, 4, 6, 8, 10]}, {"args": {"fn": "(...args) => args", "args": [1, 2, "_", 4, "_", 6], "restArgs": [3, 5]}, "expected": [1, 2, 3, 4, 5, 6]}, {"args": {"fn": "(a, b, c) => b + a - c", "args": ["_", 5], "restArgs": [5, 20]}, "expected": -10}]}
+--- JS ---
+// LeetCode 2797 - Partial Function with Placeholders
+// https://leetcode.com/problems/partial-function-with-placeholders/
+
+/**
+ * @param {Function} fn
+ * @param {Array} args
+ * @return {Function}
+ */
+var partial = function(fn, args) {
+    return function(...restArgs) {
+        const full = [];
+        let ri = 0;
+        for (const a of args) {
+            if (a === '_') {
+                if (ri < restArgs.length) full.push(restArgs[ri++]);
+            } else {
+                full.push(a);
+            }
+        }
+        while (ri < restArgs.length) full.push(restArgs[ri++]);
+        return fn(...full);
+    };
+};
+
+
+================================================================================
+FOLDER 67: 2798_number_of_employees_who_met_the_target
+method=numberOfEmployeesWhoMetTarget class=Solution kind=
+config={"class": "Solution", "method": "numberOfEmployeesWhoMetTarget", "paramOrder": ["hours", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"hours": [0, 1, 2, 3, 4], "target": 2}, "expected": 3}, {"args": {"hours": [5, 1, 4, 2, 2], "target": 6}, "expected": 0}]}
+--- JS ---
+// LeetCode 2798 - Number of Employees Who Met the Target
+// https://leetcode.com/problems/number-of-employees-who-met-the-target/
+
+/**
+ * @param {number[]} hours
+ * @param {number} target
+ * @return {number}
+ */
+var numberOfEmployeesWhoMetTarget = function(hours, target) {
+    let ans = 0;
+    for (const h of hours) if (h >= target) ans++;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 68: 2799_count_complete_subarrays_in_an_array
+method=countCompleteSubarrays class=Solution kind=
+config={"class": "Solution", "method": "countCompleteSubarrays", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 3, 1, 2, 2]}, "expected": 4}, {"args": {"nums": [5, 5, 5, 5]}, "expected": 10}]}
+--- JS ---
+// LeetCode 2799 - Count Complete Subarrays in an Array
+// https://leetcode.com/problems/count-complete-subarrays-in-an-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countCompleteSubarrays = function(nums) {
+    const need = new Set(nums).size;
+    let ans = 0;
+    const n = nums.length;
+    for (let i = 0; i < n; i++) {
+        const seen = new Set();
+        for (let j = i; j < n; j++) {
+            seen.add(nums[j]);
+            if (seen.size === need) {
+                ans += n - j;
+                break;
+            }
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 69: 2800_shortest_string_that_contains_three_strings
+method=minimumString class=Solution kind=
+config={"class": "Solution", "method": "minimumString", "paramOrder": ["a", "b", "c"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"a": "abc", "b": "bca", "c": "aaa"}, "expected": "aaabca"}, {"args": {"a": "ab", "b": "ba", "c": "aba"}, "expected": "aba"}]}
+--- JS ---
+// LeetCode 2800 - Shortest String That Contains Three Strings
+// https://leetcode.com/problems/shortest-string-that-contains-three-strings/
+
+/**
+ * @param {string} a
+ * @param {string} b
+ * @param {string} c
+ * @return {string}
+ */
+var minimumString = function(a, b, c) {
+    const merge = (x, y) => {
+        if (x.includes(y)) return x;
+        let best = x + y;
+        const n = Math.min(x.length, y.length);
+        for (let i = n; i > 0; i--) {
+            if (x.slice(-i) === y.slice(0, i)) {
+                const cand = x + y.slice(i);
+                if (cand.length < best.length || (cand.length === best.length && cand < best)) best = cand;
+                break;
+            }
+        }
+        return best;
+    };
+    const perms = [[a,b,c],[a,c,b],[b,a,c],[b,c,a],[c,a,b],[c,b,a]];
+    let ans = '';
+    for (const p of perms) {
+        const cur = merge(merge(p[0], p[1]), p[2]);
+        if (!ans || cur.length < ans.length || (cur.length === ans.length && cur < ans)) ans = cur;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 70: 2801_count_stepping_numbers_in_range
+method=countSteppingNumbers class=Solution kind=
+config={"class": "Solution", "method": "countSteppingNumbers", "paramOrder": ["low", "high"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"low": "1", "high": "11"}, "expected": 10}, {"args": {"low": "90", "high": "101"}, "expected": 2}]}
+--- JS ---
+// LeetCode 2801 - Count Stepping Numbers in Range
+// https://leetcode.com/problems/count-stepping-numbers-in-range/
+
+/**
+ * @param {string} low
+ * @param {string} high
+ * @return {number}
+ */
+var countSteppingNumbers = function(low, high) {
+    const MOD = 1000000007;
+    const dec = (s) => {
+        const arr = s.split('');
+        let i = arr.length - 1;
+        while (i >= 0 && arr[i] === '0') {
+            arr[i] = '9';
+            i--;
+        }
+        if (i >= 0) arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
+        let j = 0;
+        while (j < arr.length - 1 && arr[j] === '0') j++;
+        return arr.slice(j).join('');
+    };
+    const countTo = (s) => {
+        const memo = Array.from({length: 85}, () =>
+            Array.from({length: 2}, () =>
+                Array.from({length: 11}, () => Array(2).fill(-1))));
+        const dfs = (pos, tight, last, started) => {
+            if (pos === s.length) return started;
+            if (memo[pos][tight][last + 1][started] !== -1) return memo[pos][tight][last + 1][started];
+            const up = tight ? s.charCodeAt(pos) - 48 : 9;
+            let ans = 0;
+            for (let d = 0; d <= up; d++) {
+                const nt = tight && d === up ? 1 : 0;
+                if (!started) {
+                    if (d === 0) ans += dfs(pos + 1, nt, -1, 0);
+                    else ans += dfs(pos + 1, nt, d, 1);
+                } else if (Math.abs(d - last) === 1) {
+                    ans += dfs(pos + 1, nt, d, 1);
+                }
+            }
+            return memo[pos][tight][last + 1][started] = ans % MOD;
+        };
+        return dfs(0, 1, -1, 0);
+    };
+    let ans = (countTo(high) - countTo(dec(low))) % MOD;
+    if (ans < 0) ans += MOD;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 71: 2802_find_the_k_th_lucky_number
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"k": 4}, "expected": "47"}, {"args": {"k": 10}, "expected": "477"}, {"args": {"k": 1000}, "expected": "777747447"}]}
+--- JS ---
+// LeetCode 2802 - Find The K-th Lucky Number
+// https://leetcode.com/problems/find-the-k-th-lucky-number/
+
+/**
+ * @param {number} k
+ * @return {string}
+ */
+var kthLuckyNumber = function(k) {
+    k++;
+    let bits = '';
+    while (k > 1) {
+        if (k % 2 === 0) bits = '4' + bits;
+        else bits = '7' + bits;
+        k = Math.floor(k / 2);
+    }
+    return bits;
+};
+
+
+================================================================================
+FOLDER 72: 2803_factorial_generator
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["n"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 5}, "expected": [1, 2, 6, 24, 120]}, {"args": {"n": 2}, "expected": [1, 2]}, {"args": {"n": 0}, "expected": [1]}]}
+--- JS ---
+// LeetCode 2803 - Factorial Generator
+// https://leetcode.com/problems/factorial-generator/
+
+/**
+ * @param {number} n
+ * @yields {number}
+ */
+var factorialGenerator = function*(n) {
+    let cur = 1;
+    for (let i = 1; i <= n; i++) {
+        cur *= i;
+        yield cur;
+    }
+};
+
+
+================================================================================
+FOLDER 73: 2804_array_prototype_foreach
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["arr", "callback", "context"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"arr": [1, 2, 3], "callback": "(val, i, arr) => arr[i] = val * 2", "context": {"context": true}}, "expected": [2, 4, 6]}, {"args": {"arr": [true, true, false, false], "callback": "(val, i, arr) => arr[i] = this", "context": {"context": false}}, "expected": [{"context": false}, {"context": false}, {"context": false}, {"context": false}]}, {"args": {"arr": [true, true, false, fa
+--- JS ---
+// LeetCode 2804 - Array Prototype ForEach
+// https://leetcode.com/problems/array-prototype-foreach/
+
+/**
+ * @param {Function} callback
+ * @param {Object} context
+ * @return {void}
+ */
+Array.prototype.forEach = function(callback, context) {
+    for (let i = 0; i < this.length; i++) {
+        callback.call(context, this[i], i, this);
+    }
+};
+
+
+================================================================================
+FOLDER 74: 2805_custom_interval
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["delay", "period", "cancelTime"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"delay": 50, "period": 20, "cancelTime": 225}, "expected": [50, 120, 210]}, {"args": {"delay": 20, "period": 20, "cancelTime": 150}, "expected": [20, 60, 120]}, {"args": {"delay": 100, "period": 200, "cancelTime": 500}, "expected": [100, 400]}]}
+--- JS ---
+// LeetCode 2805 - Custom Interval
+// https://leetcode.com/problems/custom-interval/
+
+/**
+ * @param {Function} fn
+ * @param {number} delay
+ * @param {number} period
+ * @return {number}
+ */
+var customInterval = function(fn, delay, period) {
+    let count = 0;
+    let cancelled = false;
+    const id = customInterval._nextId = (customInterval._nextId || 1) + 1;
+    if (!customInterval._timers) customInterval._timers = new Map();
+    const schedule = () => {
+        const t = setTimeout(() => {
+            if (cancelled) return;
+            fn();
+            count++;
+            schedule();
+        }, delay + period * count);
+        customInterval._timers.set(id, t);
+    };
+    schedule();
+    customInterval._cancelled = customInterval._cancelled || new Map();
+    customInterval._cancelled.set(id, () => {
+        cancelled = true;
+        const t = customInterval._timers.get(id);
+        if (t) clearTimeout(t);
+    });
+    return id;
+};
+
+/**
+ * @param {number} id
+ * @return {void}
+ */
+var customClearInterval = function(id) {
+    const cancel = customInterval._cancelled && customInterval._cancelled.get(id);
+    if (cancel) cancel();
+};
+
+
+================================================================================
+FOLDER 75: 2806_account_balance_after_rounded_purchase
+method=accountBalanceAfterPurchase class=Solution kind=
+config={"class": "Solution", "method": "accountBalanceAfterPurchase", "paramOrder": ["purchaseAmount"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"purchaseAmount": 9}, "expected": 90}, {"args": {"purchaseAmount": 15}, "expected": 80}, {"args": {"purchaseAmount": 10}, "expected": 90}]}
+--- JS ---
+// LeetCode 2806 - Account Balance After Rounded Purchase
+// https://leetcode.com/problems/account-balance-after-rounded-purchase/
+
+/**
+ * @param {number} purchaseAmount
+ * @return {number}
+ */
+var accountBalanceAfterPurchase = function(purchaseAmount) {
+    const r = Math.floor((purchaseAmount + 5) / 10) * 10;
+    return 100 - r;
+};
+
+
+================================================================================
+FOLDER 76: 2807_insert_greatest_common_divisors_in_linked_list
+method=__init__ class=ListNode kind=
+config={"class": "ListNode", "method": "__init__", "paramOrder": ["val=0", "next=None"], "types": {"head": "listnode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"head": [18, 6, 10, 3]}, "expected": [18, 6, 6, 2, 10, 1, 3]}, {"args": {"head": [7]}, "expected": [7]}]}
+--- JS ---
+// LeetCode 2807 - Insert Greatest Common Divisors in Linked List
+// https://leetcode.com/problems/insert-greatest-common-divisors-in-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var insertGreatestCommonDivisors = function(head) {
+    const gcd = (a, b) => {
+        while (b) { const t = a % b; a = b; b = t; }
+        return a;
+    };
+    let cur = head;
+    while (cur && cur.next) {
+        const g = gcd(cur.val, cur.next.val);
+        const node = new ListNode(g, cur.next);
+        cur.next = node;
+        cur = node.next;
+    }
+    return head;
+};
+
+
+================================================================================
+FOLDER 77: 2808_minimum_seconds_to_equalize_a_circular_array
+method=minimumSeconds class=Solution kind=
+config={"class": "Solution", "method": "minimumSeconds", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 2, 1, 2]}, "expected": 1}, {"args": {"nums": [2, 1, 3, 3, 2]}, "expected": 2}, {"args": {"nums": [5, 5, 5, 5]}, "expected": 0}]}
+--- JS ---
+// LeetCode 2808 - Minimum Seconds to Equalize a Circular Array
+// https://leetcode.com/problems/minimum-seconds-to-equalize-a-circular-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumSeconds = function(nums) {
+    const n = nums.length;
+    const pos = new Map();
+    for (let i = 0; i < n; i++) {
+        if (!pos.has(nums[i])) pos.set(nums[i], []);
+        pos.get(nums[i]).push(i);
+    }
+    let ans = n;
+    for (const p of pos.values()) {
+        let maxGap = 0;
+        for (let i = 0; i < p.length; i++) {
+            const gap = (i + 1 < p.length) ? p[i + 1] - p[i] : p[0] + n - p[i];
+            maxGap = Math.max(maxGap, Math.floor(gap / 2));
+        }
+        ans = Math.min(ans, maxGap);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 78: 2809_minimum_time_to_make_array_sum_at_most_x
+method=minimumTime class=Solution kind=
+config={"class": "Solution", "method": "minimumTime", "paramOrder": ["nums1", "nums2", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums1": [1, 2, 3], "nums2": [1, 2, 3], "x": 4}, "expected": 3}, {"args": {"nums1": [1, 2, 3], "nums2": [3, 3, 3], "x": 4}, "expected": -1}]}
+--- JS ---
+// LeetCode 2809 - Minimum Time to Make Array Sum At Most x
+// https://leetcode.com/problems/minimum-time-to-make-array-sum-at-most-x/
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @param {number} x
+ * @return {number}
+ */
+var minimumTime = function(nums1, nums2, x) {
+    const n = nums1.length;
+    const arr = Array.from({length: n}, (_, i) => [nums1[i], nums2[i]]);
+    let sum1 = 0, sum2 = 0;
+    for (let i = 0; i < n; i++) {
+        sum1 += nums1[i];
+        sum2 += nums2[i];
+    }
+    arr.sort((a, b) => a[1] - b[1]);
+    const dp = Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) {
+        for (let j = i + 1; j >= 1; j--) {
+            dp[j] = Math.max(dp[j], dp[j - 1] + arr[i][0] + j * arr[i][1]);
+        }
+    }
+    for (let t = 0; t <= n; t++) {
+        if (sum1 + sum2 * t - dp[t] <= x) return t;
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 79: 2810_faulty_keyboard
+method=finalString class=Solution kind=
+config={"class": "Solution", "method": "finalString", "paramOrder": ["s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"s": "string"}, "expected": "rtsng"}, {"args": {"s": "poiinter"}, "expected": "ponter"}]}
+--- JS ---
+// LeetCode 2810 - Faulty Keyboard
+// https://leetcode.com/problems/faulty-keyboard/
+
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var finalString = function(s) {
+    let b = '';
+    for (const c of s) {
+        if (c === 'i') b = b.split('').reverse().join('');
+        else b += c;
+    }
+    return b;
+};
+
+
+================================================================================
+FOLDER 80: 2811_check_if_it_is_possible_to_split_array
+method=canSplitArray class=Solution kind=
+config={"class": "Solution", "method": "canSplitArray", "paramOrder": ["nums", "m"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 2, 1], "m": 4}, "expected": true}, {"args": {"nums": [2, 1, 3], "m": 5}, "expected": false}, {"args": {"nums": [2, 3, 3, 2, 3], "m": 6}, "expected": true}]}
+--- JS ---
+// LeetCode 2811 - Check if it is Possible to Split Array
+// https://leetcode.com/problems/check-if-it-is-possible-to-split-array/
+
+/**
+ * @param {number[]} nums
+ * @param {number} m
+ * @return {boolean}
+ */
+var canSplitArray = function(nums, m) {
+    const n = nums.length;
+    if (n <= 2) return true;
+    for (let i = 0; i + 1 < n; i++) {
+        if (nums[i] + nums[i + 1] >= m) return true;
+    }
+    return false;
+};
+
+
+================================================================================
+FOLDER 81: 2812_find_the_safest_path_in_a_grid
+method=maximumSafenessFactor class=Solution kind=
+config={"class": "Solution", "method": "maximumSafenessFactor", "paramOrder": ["grid"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"grid": [[1, 0, 0], [0, 0, 0], [0, 0, 1]]}, "expected": 0}, {"args": {"grid": [[0, 0, 1], [0, 0, 0], [0, 0, 0]]}, "expected": 2}, {"args": {"grid": [[0, 0, 0, 1], [0, 0, 0, 0], [0, 0, 0, 0], [1, 0, 0, 0]]}, "expected": 2}]}
+--- JS ---
+// LeetCode 2812 - Find the Safest Path in a Grid
+// https://leetcode.com/problems/find-the-safest-path-in-a-grid/
+
+/**
+ * @param {number[][]} grid
+ * @return {number}
+ */
+var maximumSafenessFactor = function(grid) {
+    const n = grid.length;
+    const dist = Array.from({length: n}, () => Array(n).fill(-1));
+    const q = [];
+    for (let i = 0; i < n; i++)
+        for (let j = 0; j < n; j++)
+            if (grid[i][j] === 1) {
+                dist[i][j] = 0;
+                q.push([i, j]);
+            }
+    const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+    for (let h = 0; h < q.length; h++) {
+        const [x, y] = q[h];
+        for (const [dx, dy] of dirs) {
+            const ni = x + dx, nj = y + dy;
+            if (ni >= 0 && nj >= 0 && ni < n && nj < n && dist[ni][nj] === -1) {
+                dist[ni][nj] = dist[x][y] + 1;
+                q.push([ni, nj]);
+            }
+        }
+    }
+    const ok = (sf) => {
+        if (dist[0][0] < sf) return false;
+        const seen = Array.from({length: n}, () => Array(n).fill(false));
+        const st = [[0, 0]];
+        seen[0][0] = true;
+        while (st.length) {
+            const [x, y] = st.pop();
+            if (x === n - 1 && y === n - 1) return true;
+            for (const [dx, dy] of dirs) {
+                const ni = x + dx, nj = y + dy;
+                if (ni >= 0 && nj >= 0 && ni < n && nj < n && !seen[ni][nj] && dist[ni][nj] >= sf) {
+                    seen[ni][nj] = true;
+                    st.push([ni, nj]);
+                }
+            }
+        }
+        return false;
+    };
+    let lo = 0, hi = n * n, ans = 0;
+    while (lo <= hi) {
+        const mid = (lo + hi) >> 1;
+        if (ok(mid)) { ans = mid; lo = mid + 1; }
+        else hi = mid - 1;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 82: 2813_maximum_elegance_of_a_k_length_subsequence
+method=findMaximumElegance class=Solution kind=
+config={"class": "Solution", "method": "findMaximumElegance", "paramOrder": ["items", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"items": [[3, 2], [5, 1], [10, 1]], "k": 2}, "expected": 17}, {"args": {"items": [[3, 1], [3, 1], [2, 2], [5, 3]], "k": 3}, "expected": 19}, {"args": {"items": [[1, 1], [2, 1], [3, 1]], "k": 3}, "expected": 7}]}
+--- JS ---
+// LeetCode 2813 - Maximum Elegance of a K-Length Subsequence
+// https://leetcode.com/problems/maximum-elegance-of-a-k-length-subsequence/
+
+/**
+ * @param {number[][]} items
+ * @param {number} k
+ * @return {number}
+ */
+var findMaximumElegance = function(items, k) {
+    items.sort((a, b) => b[0] - a[0]);
+    const seen = new Set();
+    let total = 0;
+    const dup = [];
+    for (let i = 0; i < k; i++) {
+        total += items[i][0];
+        const c = items[i][1];
+        if (seen.has(c)) dup.push(items[i][0]);
+        else seen.add(c);
+    }
+    let ans = total + seen.size * seen.size;
+    for (let i = k; i < items.length; i++) {
+        const c = items[i][1];
+        if (seen.has(c) || !dup.length) continue;
+        total += items[i][0] - dup.pop();
+        seen.add(c);
+        ans = Math.max(ans, total + seen.size * seen.size);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 83: 2814_minimum_time_takes_to_reach_destination_without_drowning
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["land"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"land": [["D", ".", "*"], [".", ".", "."], [".", "S", "."]]}, "expected": 3}, {"args": {"land": [["D", "X", "*"], [".", ".", "."], [".", ".", "S"]]}, "expected": -1}, {"args": {"land": [["D", ".", ".", ".", "*", "."], [".", "X", ".", "X", ".", "."], [".", ".", ".", ".", "S", "."]]}, "expected": 6}]}
+--- JS ---
+// LeetCode 2814 - Minimum Time Takes to Reach Destination Without Drowning
+// https://leetcode.com/problems/minimum-time-takes-to-reach-destination-without-drowning/
+
+/**
+ * @param {string[][]} land
+ * @return {number}
+ */
+var minimumSeconds = function(land) {
+    const m = land.length, n = land[0].length;
+    const INF = 1e9;
+    const water = Array.from({length: m}, () => Array(n).fill(INF));
+    const wq = [];
+    let sx = 0, sy = 0, dx = 0, dy = 0;
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            const cell = land[i][j];
+            if (cell === '*') {
+                water[i][j] = 0;
+                wq.push([i, j]);
+            } else if (cell === 'S') { sx = i; sy = j; }
+            else if (cell === 'D') { dx = i; dy = j; }
+        }
+    }
+    const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+    for (let h = 0; h < wq.length; h++) {
+        const [x, y] = wq[h];
+        for (const [ddx, ddy] of dirs) {
+            const ni = x + ddx, nj = y + ddy;
+            if (ni < 0 || nj < 0 || ni >= m || nj >= n) continue;
+            const cell = land[ni][nj];
+            if (cell === 'X' || cell === 'D') continue;
+            if (water[ni][nj] > water[x][y] + 1) {
+                water[ni][nj] = water[x][y] + 1;
+                wq.push([ni, nj]);
+            }
+        }
+    }
+    const dist = Array.from({length: m}, () => Array(n).fill(-1));
+    const q = [[sx, sy]];
+    dist[sx][sy] = 0;
+    for (let h = 0; h < q.length; h++) {
+        const [x, y] = q[h];
+        if (x === dx && y === dy) return dist[x][y];
+        for (const [ddx, ddy] of dirs) {
+            const ni = x + ddx, nj = y + ddy;
+            if (ni < 0 || nj < 0 || ni >= m || nj >= n || dist[ni][nj] !== -1) continue;
+            if (land[ni][nj] === 'X') continue;
+            const nd = dist[x][y] + 1;
+            if (land[ni][nj] !== 'D' && nd >= water[ni][nj]) continue;
+            dist[ni][nj] = nd;
+            q.push([ni, nj]);
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+FOLDER 84: 2815_max_pair_sum_in_an_array
+method=maxSum class=Solution kind=
+config={"class": "Solution", "method": "maxSum", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [112, 131, 411]}, "expected": -1}, {"args": {"nums": [2536, 1613, 3366, 162]}, "expected": 5902}, {"args": {"nums": [51, 71, 17, 24, 42]}, "expected": 88}]}
+--- JS ---
+// LeetCode 2815 - Max Pair Sum in an Array
+// https://leetcode.com/problems/max-pair-sum-in-an-array/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var maxSum = function(nums) {
+    const best = new Map();
+    let ans = -1;
+    for (const v of nums) {
+        let x = v, md = 0;
+        while (x > 0) { md = Math.max(md, x % 10); x = Math.floor(x / 10); }
+        if (best.has(md)) {
+            ans = Math.max(ans, best.get(md) + v);
+            best.set(md, Math.max(best.get(md), v));
+        } else best.set(md, v);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 85: 2816_double_a_number_represented_as_a_linked_list
+method=__init__ class=ListNode kind=
+config={"class": "ListNode", "method": "__init__", "paramOrder": ["val=0", "next=None"], "types": {"head": "listnode"}, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"head": [1, 8, 9]}, "expected": [3, 7, 8]}, {"args": {"head": [9, 9, 9]}, "expected": [1, 9, 9, 8]}]}
+--- JS ---
+// LeetCode 2816 - Double a Number Represented as a Linked List
+// https://leetcode.com/problems/double-a-number-represented-as-a-linked-list/
+
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var doubleIt = function(head) {
+    const rev = (node) => {
+        let prev = null;
+        while (node) {
+            const nxt = node.next;
+            node.next = prev;
+            prev = node;
+            node = nxt;
+        }
+        return prev;
+    };
+    head = rev(head);
+    let carry = 0, cur = head, prev = null;
+    while (cur) {
+        const val = cur.val * 2 + carry;
+        cur.val = val % 10;
+        carry = Math.floor(val / 10);
+        prev = cur;
+        cur = cur.next;
+    }
+    if (carry > 0) prev.next = new ListNode(carry);
+    return rev(head);
+};
+
+
+================================================================================
+FOLDER 86: 2817_minimum_absolute_difference_between_elements_with_constraint
+method=minAbsoluteDifference class=Solution kind=
+config={"class": "Solution", "method": "minAbsoluteDifference", "paramOrder": ["nums", "x"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [4, 3, 2, 4], "x": 2}, "expected": 0}, {"args": {"nums": [5, 3, 2, 10, 15], "x": 1}, "expected": 1}, {"args": {"nums": [1, 2, 3, 4], "x": 3}, "expected": 3}]}
+--- JS ---
+// LeetCode 2817 - Minimum Absolute Difference Between Elements With Constraint
+// https://leetcode.com/problems/minimum-absolute-difference-between-elements-with-constraint/
+
+/**
+ * @param {number[]} nums
+ * @param {number} x
+ * @return {number}
+ */
+var minAbsoluteDifference = function(nums, x) {
+    if (x === 0) {
+        let ans0 = Number.MAX_SAFE_INTEGER;
+        for (let i = 1; i < nums.length; i++)
+            ans0 = Math.min(ans0, Math.abs(nums[i] - nums[i - 1]));
+        return ans0;
+    }
+    let ans = Number.MAX_SAFE_INTEGER;
+    const arr = [];
+    const insert = (v) => {
+        let lo = 0, hi = arr.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (arr[mid] < v) lo = mid + 1;
+            else hi = mid;
+        }
+        arr.splice(lo, 0, v);
+    };
+    const lowerBound = (v) => {
+        let lo = 0, hi = arr.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (arr[mid] < v) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    };
+    for (let i = x; i < nums.length; i++) {
+        insert(nums[i - x]);
+        const cur = nums[i];
+        const idx = lowerBound(cur);
+        if (idx < arr.length) ans = Math.min(ans, arr[idx] - cur);
+        if (idx > 0) ans = Math.min(ans, cur - arr[idx - 1]);
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 87: 2818_apply_operations_to_maximize_score
+method=maximumScore class=Solution kind=
+config={"class": "Solution", "method": "maximumScore", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [8, 3, 9, 3, 8], "k": 2}, "expected": 81}, {"args": {"nums": [19, 12, 14, 6, 10, 18], "k": 3}, "expected": 4788}]}
+--- JS ---
+// LeetCode 2818 - Apply Operations to Maximize Score
+// https://leetcode.com/problems/apply-operations-to-maximize-score/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maximumScore = function(nums, k) {
+    const MOD = 1000000007n;
+    const n = nums.length;
+    let maxV = 0;
+    for (const v of nums) maxV = Math.max(maxV, v);
+    const spf = Array(maxV + 1).fill(0);
+    for (let i = 2; i <= maxV; i++) {
+        if (spf[i] === 0) {
+            for (let j = i; j <= maxV; j += i) if (spf[j] === 0) spf[j] = i;
+        }
+    }
+    const primeScore = (x) => {
+        const seen = new Set();
+        while (x > 1) {
+            const p = spf[x];
+            seen.add(p);
+            while (x % p === 0) x = Math.floor(x / p);
+        }
+        return seen.size;
+    };
+    const score = nums.map(primeScore);
+    const left = Array(n), right = Array(n);
+    const st = [];
+    for (let i = 0; i < n; i++) {
+        while (st.length && score[st[st.length - 1]] < score[i]) st.pop();
+        left[i] = st.length ? st[st.length - 1] : -1;
+        st.push(i);
+    }
+    st.length = 0;
+    for (let i = n - 1; i >= 0; i--) {
+        while (st.length && score[st[st.length - 1]] <= score[i]) st.pop();
+        right[i] = st.length ? st[st.length - 1] : n;
+        st.push(i);
+    }
+    const arr = Array.from({length: n}, (_, i) => [nums[i], (i - left[i]) * (right[i] - i)]);
+    arr.sort((a, b) => b[0] - a[0]);
+    const modPow = (a, b) => {
+        let res = 1n, base = BigInt(a) % MOD, exp = BigInt(b);
+        while (exp > 0n) {
+            if (exp & 1n) res = res * base % MOD;
+            base = base * base % MOD;
+            exp >>= 1n;
+        }
+        return res;
+    };
+    let ans = 1n;
+    let remain = BigInt(k);
+    for (const [val, cnt] of arr) {
+        if (remain <= 0n) break;
+        const use = cnt < remain ? BigInt(cnt) : remain;
+        ans = ans * modPow(val, use) % MOD;
+        remain -= use;
+    }
+    return Number(ans);
+};
+
+
+================================================================================
+FOLDER 88: 2819_minimum_relative_loss_after_buying_chocolates
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["prices", "queries"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"prices": [1, 9, 22, 10, 19], "queries": [[18, 4], [5, 2]]}, "expected": [34, -21]}, {"args": {"prices": [1, 5, 4, 3, 7, 11, 9], "queries": [[5, 4], [5, 7], [7, 3], [4, 5]]}, "expected": [4, 16, 7, 1]}, {"args": {"prices": [5, 6, 7], "queries": [[10, 1], [5, 3], [3, 3]]}, "expected": [5, 12, 0]}]}
+--- JS ---
+// LeetCode 2819 - Minimum Relative Loss After Buying Chocolates
+// https://leetcode.com/problems/minimum-relative-loss-after-buying-chocolates/
+
+/**
+ * @param {number[]} prices
+ * @param {number[][]} queries
+ * @return {number[]}
+ */
+var minimumRelativeLosses = function(prices, queries) {
+    prices.sort((a, b) => a - b);
+    const n = prices.length;
+    const ans = Array(queries.length);
+    for (let qi = 0; qi < queries.length; qi++) {
+        const kk = queries[qi][0], m = queries[qi][1];
+        const losses = Array(n);
+        for (let i = 0; i < n; i++) {
+            if (prices[i] <= kk) losses[i] = prices[i];
+            else losses[i] = 2 * kk - prices[i];
+        }
+        losses.sort((a, b) => a - b);
+        let sum = 0;
+        for (let i = 0; i < m; i++) sum += losses[i];
+        ans[qi] = sum;
+    }
+    return ans;
+};
+
+
+================================================================================
+FOLDER 89: 2821_delay_the_resolution_of_each_promise
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["functions", "ms"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"functions": "[ () => new Promise((resolve) => setTimeout(resolve, 30)) ]", "ms": 50}, "expected": [80]}, {"args": {"functions": "[ () => new Promise((resolve) => setTimeout(resolve, 50)), () => new Promise((resolve) => setTimeout(resolve, 80)) ]", "ms": 70}, "expected": [120, 150]}, {"args": {"functions": "[ () => new Promise((resolve, reject) => setTimeout(reject, 20)), () =
+--- JS ---
+// LeetCode 2821 - Delay the Resolution of Each Promise
+// https://leetcode.com/problems/delay-the-resolution-of-each-promise/
+
+/**
+ * @param {Array<Function>} functions
+ * @param {number} ms
+ * @return {Array<Function>}
+ */
+var delayAll = function(functions, ms) {
+    return functions.map((fn) => {
+        return async function() {
+            try {
+                const result = await fn();
+                await new Promise((r) => setTimeout(r, ms));
+                return result;
+            } catch (err) {
+                await new Promise((r) => setTimeout(r, ms));
+                throw err;
+            }
+        };
+    });
+};
+
+
+================================================================================
+FOLDER 90: 2822_inversion_of_object
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["obj"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"obj": {"a": "1", "b": "2", "c": "3", "d": "4"}}, "expected": "invertedObj = {\"1\": \"a\", \"2\": \"b\", \"3\": \"c\", \"4\": \"d\"}"}, {"args": {"obj": {"a": "1", "b": "2", "c": "2", "d": "4"}}, "expected": "invertedObj = {\"1\": \"a\", \"2\": [\"b\", \"c\"], \"4\": \"d\"}"}, {"args": {"obj": ["1", "2", "3", "4"]}, "expected": "invertedObj = {\"1\": \"0\", \"2\": \"1\", \"3\
+--- JS ---
+// LeetCode 2822 - Inversion of Object
+// https://leetcode.com/problems/inversion-of-object/
+
+/**
+ * @param {Object|Array} obj
+ * @return {Object}
+ */
+var invertObject = function(obj) {
+    const inverted = {};
+    for (const key of Object.keys(obj)) {
+        const val = obj[key];
+        if (val in inverted) {
+            if (!Array.isArray(inverted[val])) inverted[val] = [inverted[val]];
+            inverted[val].push(key);
+        } else {
+            inverted[val] = key;
+        }
+    }
+    return inverted;
+};
+
+
+================================================================================
+FOLDER 91: 2823_deep_object_filter
+method=solve class=Solution kind=
+config={"class": "Solution", "method": "solve", "paramOrder": ["obj", "fn"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"obj": [-5, -4, -3, -2, -1, 0, 1], "fn": "(x) => x > 0"}, "expected": [1]}, {"args": {"obj": {"a": 1, "b": "2", "c": 3, "d": "4", "e": 5, "f": 6, "g": {"a": 1}}, "fn": "(x) => typeof x === \"string\""}, "expected": {"b": "2", "d": "4"}}, {"args": {"obj": [-1, [-1, -1, 5, -1, 10], -1, [-1], [-5]], "fn": "(x) => x > 0"}, "expected": [[5, 10]]}, {"args": {"obj": [[[[5]]]], "fn": 
+--- JS ---
+// LeetCode 2823 - Deep Object Filter
+// https://leetcode.com/problems/deep-object-filter/
+
+/**
+ * @param {any} obj
+ * @param {Function} fn
+ * @return {any}
+ */
+var deepFilter = function(obj, fn) {
+    if (typeof obj !== 'object' || obj === null) {
+        return fn(obj) ? obj : undefined;
+    }
+    if (Array.isArray(obj)) {
+        const res = [];
+        for (const v of obj) {
+            const f = deepFilter(v, fn);
+            if (f !== undefined) res.push(f);
+        }
+        return res.length ? res : undefined;
+    }
+    const res = {};
+    for (const k of Object.keys(obj)) {
+        const f = deepFilter(obj[k], fn);
+        if (f !== undefined) res[k] = f;
+    }
+    return Object.keys(res).length ? res : undefined;
+};
+
+
+================================================================================
+FOLDER 92: 2824_count_pairs_whose_sum_is_less_than_target
+method=countPairs class=Solution kind=
+config={"class": "Solution", "method": "countPairs", "paramOrder": ["nums", "target"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [-1, 1, 2, 3, 1], "target": 2}, "expected": 3}, {"args": {"nums": [-6, 2, 5, -2, -7, -1, 3], "target": -2}, "expected": 10}]}
+--- JS ---
+// LeetCode 2824 - Count Pairs Whose Sum is Less than Target
+// https://leetcode.com/problems/count-pairs-whose-sum-is-less-than-target/
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var countPairs = function(nums, target) {
+    let ans = 0;
+    for (let i = 0; i < nums.length; i++)
+        for (let j = i + 1; j < nums.length; j++)
+            if (nums[i] + nums[j] < target) ans++;
+    return ans;
+};
+
+
+================================================================================
+FOLDER 93: 2825_make_string_a_subsequence_using_cyclic_increments
+method=canMakeSubsequence class=Solution kind=
+config={"class": "Solution", "method": "canMakeSubsequence", "paramOrder": ["str1", "str2"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"str1": "abc", "str2": "ad"}, "expected": true}, {"args": {"str1": "zc", "str2": "ad"}, "expected": true}, {"args": {"str1": "ab", "str2": "d"}, "expected": false}]}
+--- JS ---
+// LeetCode 2825 - Make String a Subsequence Using Cyclic Increments
+// https://leetcode.com/problems/make-string-a-subsequence-using-cyclic-increments/
+
+/**
+ * @param {string} str1
+ * @param {string} str2
+ * @return {boolean}
+ */
+var canMakeSubsequence = function(str1, str2) {
+    let j = 0;
+    for (let i = 0; i < str1.length && j < str2.length; i++) {
+        const a = str1.charCodeAt(i) - 97;
+        const b = str2.charCodeAt(j) - 97;
+        if (a === b || (a + 1) % 26 === b) j++;
+    }
+    return j === str2.length;
+};
+
+
+================================================================================
+FOLDER 94: 2826_sorting_three_groups
+method=minimumOperations class=Solution kind=
+config={"class": "Solution", "method": "minimumOperations", "paramOrder": ["nums"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [2, 1, 3, 2, 1]}, "expected": 3}, {"args": {"nums": [1, 3, 2, 1, 3, 3]}, "expected": 2}, {"args": {"nums": [2, 2, 2, 2, 3, 3]}, "expected": 0}]}
+--- JS ---
+// LeetCode 2826 - Sorting Three Groups
+// https://leetcode.com/problems/sorting-three-groups/
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var minimumOperations = function(nums) {
+    const n = nums.length;
+    const INF = 1e9;
+    const dp = Array.from({length: n + 1}, () => Array(4).fill(INF));
+    dp[0][1] = dp[0][2] = dp[0][3] = 0;
+    for (let i = 1; i <= n; i++) {
+        const v = nums[i - 1];
+        for (let g = 1; g <= 3; g++) {
+            const cost = v !== g ? 1 : 0;
+            for (let prev = 1; prev <= g; prev++)
+                dp[i][g] = Math.min(dp[i][g], dp[i - 1][prev] + cost);
+        }
+    }
+    return Math.min(dp[n][1], dp[n][2], dp[n][3]);
+};
+
+
+================================================================================
+FOLDER 95: 2827_number_of_beautiful_integers_in_the_range
+method=numberOfBeautifulIntegers class=Solution kind=
+config={"class": "Solution", "method": "numberOfBeautifulIntegers", "paramOrder": ["low", "high", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"low": 10, "high": 20, "k": 3}, "expected": 2}, {"args": {"low": 1, "high": 10, "k": 1}, "expected": 1}, {"args": {"low": 5, "high": 5, "k": 2}, "expected": 0}]}
+--- JS ---
+// LeetCode 2827 - Number of Beautiful Integers in the Range
+// https://leetcode.com/problems/number-of-beautiful-integers-in-the-range/
+
+/**
+ * @param {number} low
+ * @param {number} high
+ * @param {number} k
+ * @return {number}
+ */
+var numberOfBeautifulIntegers = function(low, high, k) {
+    const count = (n) => {
+        if (n < 0) return 0;
+        const s = String(n);
+        const memo = Array.from({length: 12}, () =>
+            Array.from({length: 45}, () =>
+                Array.from({length: 22}, () =>
+                    Array.from({length: 2}, () => Array(2).fill(-1)))));
+        const dfs = (pos, diff, mod, tight, started) => {
+            if (pos === s.length) return (started && diff === 0 && mod === 0) ? 1 : 0;
+            if (memo[pos][diff + 20][mod][tight][started] !== -1)
+                return memo[pos][diff + 20][mod][tight][started];
+            const up = tight ? s.charCodeAt(pos) - 48 : 9;
+            let ans = 0;
+            for (let digit = 0; digit <= up; digit++) {
+                const nt = tight && digit === up ? 1 : 0;
+                if (!started) {
+                    if (digit === 0) ans += dfs(pos + 1, diff, mod, nt, 0);
+                    else {
+                        const nd = diff + (digit % 2 === 0 ? 1 : -1);
+                        ans += dfs(pos + 1, nd, digit % k, nt, 1);
+                    }
+                } else {
+                    const nd = diff + (digit % 2 === 0 ? 1 : -1);
+                    ans += dfs(pos + 1, nd, (mod * 10 + digit) % k, nt, 1);
+                }
+            }
+            return memo[pos][diff + 20][mod][tight][started] = ans;
+        };
+        return dfs(0, 0, 0, 1, 0);
+    };
+    return count(high) - count(low - 1);
+};
+
+
+================================================================================
+FOLDER 96: 2828_check_if_a_string_is_an_acronym_of_words
+method=isAcronym class=Solution kind=
+config={"class": "Solution", "method": "isAcronym", "paramOrder": ["words", "s"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"words": ["alice", "bob", "charlie"], "s": "abc"}, "expected": true}, {"args": {"words": ["an", "apple"], "s": "a"}, "expected": false}, {"args": {"words": ["never", "gonna", "give", "up", "on", "you"], "s": "ngguoy"}, "expected": true}]}
+--- JS ---
+// LeetCode 2828 - Check if a String Is an Acronym of Words
+// https://leetcode.com/problems/check-if-a-string-is-an-acronym-of-words/
+
+/**
+ * @param {string[]} words
+ * @param {string} s
+ * @return {boolean}
+ */
+var isAcronym = function(words, s) {
+    if (words.length !== s.length) return false;
+    for (let i = 0; i < words.length; i++) {
+        const w = words[i];
+        if (!w.length || w[0] !== s[i]) return false;
+    }
+    return true;
+};
+
+
+================================================================================
+FOLDER 97: 2829_determine_the_minimum_sum_of_a_k_avoiding_array
+method=minimumSum class=Solution kind=
+config={"class": "Solution", "method": "minimumSum", "paramOrder": ["n", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 5, "k": 4}, "expected": 18}, {"args": {"n": 2, "k": 6}, "expected": 3}]}
+--- JS ---
+// LeetCode 2829 - Determine the Minimum Sum of a k-avoiding Array
+// https://leetcode.com/problems/determine-the-minimum-sum-of-a-k-avoiding-array/
+
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var minimumSum = function(n, k) {
+    const used = new Set();
+    let sum = 0, x = 1;
+    while (used.size < n) {
+        if (!used.has(k - x)) {
+            used.add(x);
+            sum += x;
+        }
+        x++;
+    }
+    return sum;
+};
+
+
+================================================================================
+FOLDER 98: 2830_maximize_the_profit_as_the_salesman
+method=maximizeTheProfit class=Solution kind=
+config={"class": "Solution", "method": "maximizeTheProfit", "paramOrder": ["n", "offers"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"n": 5, "offers": [[0, 0, 1], [0, 2, 2], [1, 3, 2]]}, "expected": 3}, {"args": {"n": 5, "offers": [[0, 0, 1], [0, 2, 10], [1, 3, 2]]}, "expected": 10}]}
+--- JS ---
+// LeetCode 2830 - Maximize the Profit as the Salesman
+// https://leetcode.com/problems/maximize-the-profit-as-the-salesman/
+
+/**
+ * @param {number} n
+ * @param {number[][]} offers
+ * @return {number}
+ */
+var maximizeTheProfit = function(n, offers) {
+    const byEnd = Array.from({length: n}, () => []);
+    for (const o of offers) byEnd[o[1]].push(o);
+    const dp = Array(n + 1).fill(0);
+    for (let end = 0; end < n; end++) {
+        dp[end + 1] = dp[end];
+        for (const o of byEnd[end])
+            dp[end + 1] = Math.max(dp[end + 1], dp[o[0]] + o[2]);
+    }
+    return dp[n];
+};
+
+
+================================================================================
+FOLDER 99: 2831_find_the_longest_equal_subarray
+method=longestEqualSubarray class=Solution kind=
+config={"class": "Solution", "method": "longestEqualSubarray", "paramOrder": ["nums", "k"], "types": null, "description": "Update method name and add cases to cases.json when implementing the solution."}
+cases_head={"cases": [{"args": {"nums": [1, 3, 2, 3, 1, 3], "k": 3}, "expected": 3}, {"args": {"nums": [1, 1, 2, 2, 1, 1], "k": 2}, "expected": 4}]}
+--- JS ---
+// LeetCode 2831 - Find the Longest Equal Subarray
+// https://leetcode.com/problems/find-the-longest-equal-subarray/
+
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var longestEqualSubarray = function(nums, k) {
+    const pos = new Map();
+    for (let i = 0; i < nums.length; i++) {
+        if (!pos.has(nums[i])) pos.set(nums[i], []);
+        pos.get(nums[i]).push(i);
+    }
+    let ans = 0;
+    for (const p of pos.values()) {
+        let left = 0;
+        for (let right = 0; right < p.length; right++) {
+            while (p[right] - p[left] - (right - left) > k) left++;
+            ans = Math.max(ans, right - left + 1);
+        }
+    }
+    return ans;
+};
+

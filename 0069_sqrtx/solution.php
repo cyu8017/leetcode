@@ -1,4 +1,5 @@
-﻿// LeetCode 0069 - Sqrt(x)
+<?php
+// LeetCode 0069 - Sqrt(x)
 // https://leetcode.com/problems/sqrtx/
 
 class Solution {

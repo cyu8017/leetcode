@@ -1,4 +1,5 @@
-﻿// LeetCode 0075 - Sort Colors
+<?php
+// LeetCode 0075 - Sort Colors
 // https://leetcode.com/problems/sort-colors/
 
 class Solution {

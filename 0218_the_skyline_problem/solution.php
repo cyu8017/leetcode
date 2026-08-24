@@ -1,4 +1,5 @@
-﻿// LeetCode 0218 - The Skyline Problem
+<?php
+// LeetCode 0218 - The Skyline Problem
 // https://leetcode.com/problems/the-skyline-problem/
 
 class Solution {

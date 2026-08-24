@@ -1,4 +1,5 @@
-﻿// LeetCode 0461 - Hamming Distance
+<?php
+// LeetCode 0461 - Hamming Distance
 // https://leetcode.com/problems/hamming-distance/
 
 class Solution {

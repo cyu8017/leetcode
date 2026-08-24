@@ -1,4 +1,5 @@
-﻿// LeetCode 0203 - Remove Linked List Elements
+<?php
+// LeetCode 0203 - Remove Linked List Elements
 // https://leetcode.com/problems/remove-linked-list-elements/
 
 class ListNode {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0273 - Integer to English Words
+<?php
+// LeetCode 0273 - Integer to English Words
 // https://leetcode.com/problems/integer-to-english-words/
 
 class Solution {

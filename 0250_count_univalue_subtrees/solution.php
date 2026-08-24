@@ -1,4 +1,5 @@
-﻿// LeetCode 0250 - Count Univalue Subtrees
+<?php
+// LeetCode 0250 - Count Univalue Subtrees
 // https://leetcode.com/problems/count-univalue-subtrees/
 
 class TreeNode {

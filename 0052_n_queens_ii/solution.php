@@ -1,4 +1,5 @@
-﻿// LeetCode 0052 - N-Queens II
+<?php
+// LeetCode 0052 - N-Queens II
 // https://leetcode.com/problems/n-queens-ii/
 
 class Solution {

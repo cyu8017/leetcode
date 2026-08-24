@@ -1,4 +1,5 @@
-﻿// LeetCode 0020 - Valid Parentheses
+<?php
+// LeetCode 0020 - Valid Parentheses
 // https://leetcode.com/problems/valid-parentheses/
 
 class Solution {

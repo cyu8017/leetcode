@@ -1,7 +1,23 @@
-﻿// LeetCode 2609 - Find the Longest Balanced Substring of a Binary String
+<?php
+// LeetCode 2609 - Find the Longest Balanced Substring of a Binary String
 // https://leetcode.com/problems/find-the-longest-balanced-substring-of-a-binary-string/
 
 class Solution {
-    function solve() {
+    function findTheLongestBalancedSubstring($s) {
+        $ans = 0;
+        $zeros = 0;
+        $ones = 0;
+        $n = strlen($s);
+        for ($i = 0; $i < $n; $i++) {
+            if ($s[$i] === '0') {
+                if ($ones > 0) $zeros = $ones = 0;
+                $zeros++;
+            } else {
+                $ones++;
+                $cur = min($ones, $zeros);
+                if (2 * $cur > $ans) $ans = 2 * $cur;
+            }
+        }
+        return $ans;
     }
 }

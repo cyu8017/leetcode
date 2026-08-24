@@ -1,4 +1,5 @@
-﻿// LeetCode 0225 - Implement Stack using Queues
+<?php
+// LeetCode 0225 - Implement Stack using Queues
 // https://leetcode.com/problems/implement-stack-using-queues/
 
 class MyStack {

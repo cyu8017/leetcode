@@ -1,4 +1,5 @@
-﻿// LeetCode 0222 - Count Complete Tree Nodes
+<?php
+// LeetCode 0222 - Count Complete Tree Nodes
 // https://leetcode.com/problems/count-complete-tree-nodes/
 
 class TreeNode {

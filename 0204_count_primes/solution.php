@@ -1,4 +1,5 @@
-﻿// LeetCode 0204 - Count Primes
+<?php
+// LeetCode 0204 - Count Primes
 // https://leetcode.com/problems/count-primes/
 
 class Solution {

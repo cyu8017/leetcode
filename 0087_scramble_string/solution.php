@@ -1,3 +1,4 @@
+<?php
 // LeetCode 0087 - Scramble String
 // https://leetcode.com/problems/scramble-string/
 

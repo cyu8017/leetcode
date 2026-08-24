@@ -1,4 +1,5 @@
-﻿// LeetCode 0412 - Fizz Buzz
+<?php
+// LeetCode 0412 - Fizz Buzz
 // https://leetcode.com/problems/fizz-buzz/
 
 class Solution {

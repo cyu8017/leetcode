@@ -1,4 +1,5 @@
-﻿// LeetCode 0425 - Word Squares
+<?php
+// LeetCode 0425 - Word Squares
 // https://leetcode.com/problems/word-squares/
 
 class Solution {

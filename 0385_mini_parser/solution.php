@@ -1,4 +1,5 @@
-﻿// LeetCode 0385 - Mini Parser
+<?php
+// LeetCode 0385 - Mini Parser
 // https://leetcode.com/problems/mini-parser/
 
 class NestedInteger {

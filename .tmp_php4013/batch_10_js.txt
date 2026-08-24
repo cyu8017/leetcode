@@ -1,0 +1,2328 @@
+
+================================================================================
+# 2620_counter  (solution.js)
+================================================================================
+// LeetCode 2620 - Counter
+// https://leetcode.com/problems/counter/
+
+var createCounter = function(n) {
+    return function() {
+        return n++;
+    };
+};
+
+
+================================================================================
+# 2621_sleep  (solution.js)
+================================================================================
+// LeetCode 2621 - Sleep
+// https://leetcode.com/problems/sleep/
+
+var sleep = async function(millis) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, millis);
+    });
+};
+
+
+================================================================================
+# 2622_cache_with_time_limit  (solution.js)
+================================================================================
+// LeetCode 2622 - Cache With Time Limit
+// https://leetcode.com/problems/cache-with-time-limit/
+
+var TimeLimitedCache = function() {
+    this.data = new Map();
+};
+
+TimeLimitedCache.prototype.set = function(key, value, duration) {
+    const now = Date.now();
+    const e = this.data.get(key);
+    const alive = e !== undefined && e.expire > now;
+    this.data.set(key, { value: value, expire: now + duration });
+    return alive;
+};
+
+TimeLimitedCache.prototype.get = function(key) {
+    const now = Date.now();
+    const e = this.data.get(key);
+    if (e === undefined || e.expire <= now) return -1;
+    return e.value;
+};
+
+TimeLimitedCache.prototype.count = function() {
+    const now = Date.now();
+    let cnt = 0;
+    for (const [k, e] of this.data) {
+        if (e.expire > now) cnt++;
+        else this.data.delete(k);
+    }
+    return cnt;
+};
+
+
+================================================================================
+# 2623_memoize  (solution.js)
+================================================================================
+// LeetCode 2623 - Memoize
+// https://leetcode.com/problems/memoize/
+
+var memoize = function(fn) {
+    const cache = new Map();
+    return function(x) {
+        if (cache.has(x)) return cache.get(x);
+        const r = fn(x);
+        cache.set(x, r);
+        return r;
+    };
+};
+
+
+================================================================================
+# 2624_snail_traversal  (solution.js)
+================================================================================
+// LeetCode 2624 - Snail Traversal
+// https://leetcode.com/problems/snail-traversal/
+
+Array.prototype.snail = function(rowsCount, colsCount) {
+    if (rowsCount * colsCount !== this.length) return [];
+    const ans = Array.from({ length: rowsCount }, () => new Array(colsCount));
+    let idx = 0;
+    for (let c = 0; c < colsCount; c++) {
+        if (c % 2 === 0) {
+            for (let r = 0; r < rowsCount; r++) ans[r][c] = this[idx++];
+        } else {
+            for (let r = rowsCount - 1; r >= 0; r--) ans[r][c] = this[idx++];
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2625_flatten_deeply_nested_array  (solution.js)
+================================================================================
+// LeetCode 2625 - Flatten Deeply Nested Array
+// https://leetcode.com/problems/flatten-deeply-nested-array/
+
+var flat = function(arr, n) {
+    const res = [];
+    const dfs = (a, depth) => {
+        for (const x of a) {
+            if (Array.isArray(x) && depth < n) dfs(x, depth + 1);
+            else res.push(x);
+        }
+    };
+    dfs(arr, 0);
+    return res;
+};
+
+
+================================================================================
+# 2626_array_reduce_transformation  (solution.js)
+================================================================================
+// LeetCode 2626 - Array Reduce Transformation
+// https://leetcode.com/problems/array-reduce-transformation/
+
+var reduce = function(nums, fn, init) {
+    let acc = init;
+    for (const x of nums) acc = fn(acc, x);
+    return acc;
+};
+
+
+================================================================================
+# 2627_debounce  (solution.js)
+================================================================================
+// LeetCode 2627 - Debounce
+// https://leetcode.com/problems/debounce/
+
+var debounce = function(fn, t) {
+    let timer = null;
+    return function(...args) {
+        if (timer !== null) clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), t);
+    };
+};
+
+
+================================================================================
+# 2628_json_deep_equal  (solution.js)
+================================================================================
+// LeetCode 2628 - JSON Deep Equal
+// https://leetcode.com/problems/json-deep-equal/
+
+var areDeeplyEqual = function(o1, o2) {
+    if (o1 === o2) return true;
+    if (typeof o1 !== typeof o2) return false;
+    if (o1 === null || o2 === null) return false;
+    if (typeof o1 !== "object") return false;
+    const a1 = Array.isArray(o1), a2 = Array.isArray(o2);
+    if (a1 !== a2) return false;
+    if (a1) {
+        if (o1.length !== o2.length) return false;
+        for (let i = 0; i < o1.length; i++) if (!areDeeplyEqual(o1[i], o2[i])) return false;
+        return true;
+    }
+    const k1 = Object.keys(o1), k2 = Object.keys(o2);
+    if (k1.length !== k2.length) return false;
+    for (const k of k1) if (!areDeeplyEqual(o1[k], o2[k])) return false;
+    return true;
+};
+
+
+================================================================================
+# 2629_function_composition  (solution.js)
+================================================================================
+// LeetCode 2629 - Function Composition
+// https://leetcode.com/problems/function-composition/
+
+var compose = function(functions) {
+    return function(x) {
+        for (let i = functions.length - 1; i >= 0; i--) x = functions[i](x);
+        return x;
+    };
+};
+
+
+================================================================================
+# 2630_memoize_ii  (solution.js)
+================================================================================
+// LeetCode 2630 - Memoize II
+// https://leetcode.com/problems/memoize-ii/
+
+var memoize = function(fn) {
+    const root = new Map();
+    const RES = Symbol("res");
+    return function(...args) {
+        let node = root;
+        for (const a of args) {
+            if (!node.has(a)) node.set(a, new Map());
+            node = node.get(a);
+        }
+        if (node.has(RES)) return node.get(RES);
+        const v = fn(...args);
+        node.set(RES, v);
+        return v;
+    };
+};
+
+
+================================================================================
+# 2631_group_by  (solution.js)
+================================================================================
+// LeetCode 2631 - Group By
+// https://leetcode.com/problems/group-by/
+
+Array.prototype.groupBy = function(fn) {
+    const out = {};
+    for (const x of this) {
+        const k = fn(x);
+        if (!out[k]) out[k] = [];
+        out[k].push(x);
+    }
+    return out;
+};
+
+
+================================================================================
+# 2632_curry  (solution.js)
+================================================================================
+// LeetCode 2632 - Curry
+// https://leetcode.com/problems/curry/
+
+var curry = function(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) return fn(...args);
+        return function(...next) {
+            return curried(...args, ...next);
+        };
+    };
+};
+
+
+================================================================================
+# 2633_convert_object_to_json_string  (solution.js)
+================================================================================
+// LeetCode 2633 - Convert Object to JSON String
+// https://leetcode.com/problems/convert-object-to-json-string/
+
+var jsonStringify = function(object) {
+    if (object === null) return "null";
+    const t = typeof object;
+    if (t === "string") return '"' + object + '"';
+    if (t === "number" || t === "boolean") return String(object);
+    if (Array.isArray(object)) {
+        return "[" + object.map(jsonStringify).join(",") + "]";
+    }
+    const keys = Object.keys(object);
+    return "{" + keys.map(k => '"' + k + '":' + jsonStringify(object[k])).join(",") + "}";
+};
+
+
+================================================================================
+# 2634_filter_elements_from_array  (solution.js)
+================================================================================
+// LeetCode 2634 - Filter Elements from Array
+// https://leetcode.com/problems/filter-elements-from-array/
+
+var filter = function(arr, fn) {
+    const out = [];
+    for (let i = 0; i < arr.length; i++) if (fn(arr[i], i)) out.push(arr[i]);
+    return out;
+};
+
+
+================================================================================
+# 2635_apply_transform_over_each_element_in_array  (solution.js)
+================================================================================
+// LeetCode 2635 - Apply Transform Over Each Element in Array
+// https://leetcode.com/problems/apply-transform-over-each-element-in-array/
+
+var map = function(arr, fn) {
+    const out = new Array(arr.length);
+    for (let i = 0; i < arr.length; i++) out[i] = fn(arr[i], i);
+    return out;
+};
+
+
+================================================================================
+# 2636_promise_pool  (solution.js)
+================================================================================
+// LeetCode 2636 - Promise Pool
+// https://leetcode.com/problems/promise-pool/
+
+var promisePool = async function(functions, n) {
+    let i = 0;
+    const worker = async () => {
+        while (i < functions.length) {
+            const cur = i++;
+            await functions[cur]();
+        }
+    };
+    const workers = [];
+    for (let k = 0; k < Math.min(n, functions.length); k++) workers.push(worker());
+    await Promise.all(workers);
+};
+
+
+================================================================================
+# 2637_promise_time_limit  (solution.js)
+================================================================================
+// LeetCode 2637 - Promise Time Limit
+// https://leetcode.com/problems/promise-time-limit/
+
+var timeLimit = function(fn, t) {
+    return async function(...args) {
+        return await Promise.race([
+            fn(...args),
+            new Promise((_, reject) => setTimeout(() => reject("Time Limit Exceeded"), t)),
+        ]);
+    };
+};
+
+
+================================================================================
+# 2638_count_the_number_of_k_free_subsets  (solution.js)
+================================================================================
+// LeetCode 2638 - Count the Number of K-Free Subsets
+// https://leetcode.com/problems/count-the-number-of-k-free-subsets/
+
+var countTheNumOfKFreeSubsets = function(nums, k) {
+    nums = nums.slice().sort((a, b) => a - b);
+    const groups = new Map();
+    for (const x of nums) {
+        const key = x % k;
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(x);
+    }
+    let ans = 1;
+    for (const g of groups.values()) {
+        let prevVal = -1, prevTake = 0, prevSkip = 1;
+        for (const v of g) {
+            const skip = prevTake + prevSkip;
+            const take = prevVal + k === v ? prevSkip : prevTake + prevSkip;
+            prevTake = take;
+            prevSkip = skip;
+            prevVal = v;
+        }
+        ans *= prevTake + prevSkip;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2639_find_the_width_of_columns_of_a_grid  (solution.js)
+================================================================================
+// LeetCode 2639 - Find the Width of Columns of a Grid
+// https://leetcode.com/problems/find-the-width-of-columns-of-a-grid/
+
+var findColumnWidth = function(grid) {
+    const n = grid[0].length;
+    const ans = new Array(n).fill(0);
+    const width = (x) => {
+        if (x === 0) return 1;
+        let w = 0;
+        if (x < 0) { w++; x = -x; }
+        while (x > 0) { w++; x = Math.floor(x / 10); }
+        return w;
+    };
+    for (const row of grid) {
+        for (let j = 0; j < n; j++) ans[j] = Math.max(ans[j], width(row[j]));
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2640_find_the_score_of_all_prefixes_of_an_array  (solution.js)
+================================================================================
+// LeetCode 2640 - Find the Score of All Prefixes of an Array
+// https://leetcode.com/problems/find-the-score-of-all-prefixes-of-an-array/
+
+var findPrefixScore = function(nums) {
+    const ans = new Array(nums.length);
+    let mx = 0, sum = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > mx) mx = nums[i];
+        sum += nums[i] + mx;
+        ans[i] = sum;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2641_cousins_in_binary_tree_ii  (solution.js)
+================================================================================
+// LeetCode 2641 - Cousins in Binary Tree II
+// https://leetcode.com/problems/cousins-in-binary-tree-ii/
+
+var replaceValueInTree = function(root) {
+    if (!root) return null;
+    root.val = 0;
+    const q = [root];
+    while (q.length) {
+        const sz = q.length;
+        let levelSum = 0;
+        const level = [];
+        for (let i = 0; i < sz; i++) {
+            const node = q.shift();
+            level.push(node);
+            if (node.left) levelSum += node.left.val;
+            if (node.right) levelSum += node.right.val;
+        }
+        for (const node of level) {
+            let cousin = levelSum;
+            if (node.left) cousin -= node.left.val;
+            if (node.right) cousin -= node.right.val;
+            if (node.left) { node.left.val = cousin; q.push(node.left); }
+            if (node.right) { node.right.val = cousin; q.push(node.right); }
+        }
+    }
+    return root;
+};
+
+
+================================================================================
+# 2642_design_graph_with_shortest_path_calculator  (solution.js)
+================================================================================
+// LeetCode 2642 - Design Graph With Shortest Path Calculator
+// https://leetcode.com/problems/design-graph-with-shortest-path-calculator/
+
+var Graph = function(n, edges) {
+    this.g = Array.from({ length: n }, () => []);
+    for (const e of edges) this.g[e[0]].push([e[1], e[2]]);
+};
+
+Graph.prototype.addEdge = function(edge) {
+    this.g[edge[0]].push([edge[1], edge[2]]);
+};
+
+Graph.prototype.shortestPath = function(node1, node2) {
+    const n = this.g.length;
+    const dist = new Array(n).fill(1 << 30);
+    dist[node1] = 0;
+    const pq = [[node1, 0]];
+    const push = (u, d) => {
+        pq.push([u, d]);
+        let i = pq.length - 1;
+        while (i > 0) {
+            const p = (i - 1) >> 1;
+            if (pq[p][1] <= pq[i][1]) break;
+            [pq[p], pq[i]] = [pq[i], pq[p]];
+            i = p;
+        }
+    };
+    const pop = () => {
+        const top = pq[0];
+        const last = pq.pop();
+        if (pq.length) {
+            pq[0] = last;
+            let i = 0;
+            while (true) {
+                let s = i, l = i * 2 + 1, r = l + 1;
+                if (l < pq.length && pq[l][1] < pq[s][1]) s = l;
+                if (r < pq.length && pq[r][1] < pq[s][1]) s = r;
+                if (s === i) break;
+                [pq[s], pq[i]] = [pq[i], pq[s]];
+                i = s;
+            }
+        }
+        return top;
+    };
+    while (pq.length) {
+        const [u, d] = pop();
+        if (u === node2) return d;
+        if (d > dist[u]) continue;
+        for (const [v, w] of this.g[u]) {
+            const nd = d + w;
+            if (nd < dist[v]) {
+                dist[v] = nd;
+                push(v, nd);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+# 2643_row_with_maximum_ones  (solution.js)
+================================================================================
+// LeetCode 2643 - Row With Maximum Ones
+// https://leetcode.com/problems/row-with-maximum-ones/
+
+var rowAndMaximumOnes = function(mat) {
+    let bestRow = 0, bestCnt = -1;
+    for (let i = 0; i < mat.length; i++) {
+        let cnt = 0;
+        for (const v of mat[i]) cnt += v;
+        if (cnt > bestCnt) { bestCnt = cnt; bestRow = i; }
+    }
+    return [bestRow, bestCnt];
+};
+
+
+================================================================================
+# 2644_find_the_maximum_divisibility_score  (solution.js)
+================================================================================
+// LeetCode 2644 - Find the Maximum Divisibility Score
+// https://leetcode.com/problems/find-the-maximum-divisibility-score/
+
+var maxDivScore = function(nums, divisors) {
+    let best = divisors[0], bestScore = -1;
+    for (const d of divisors) {
+        let score = 0;
+        for (const x of nums) if (x % d === 0) score++;
+        if (score > bestScore || (score === bestScore && d < best)) {
+            bestScore = score;
+            best = d;
+        }
+    }
+    return best;
+};
+
+
+================================================================================
+# 2645_minimum_additions_to_make_valid_string  (solution.js)
+================================================================================
+// LeetCode 2645 - Minimum Additions to Make Valid String
+// https://leetcode.com/problems/minimum-additions-to-make-valid-string/
+
+var addMinimum = function(word) {
+    let ans = 0, expect = 0, i = 0, n = word.length;
+    while (i < n) {
+        const need = String.fromCharCode(97 + expect);
+        if (word[i] === need) i++;
+        else ans++;
+        expect = (expect + 1) % 3;
+    }
+    ans += (3 - expect) % 3;
+    return ans;
+};
+
+
+================================================================================
+# 2646_minimize_the_total_price_of_the_trips  (solution.js)
+================================================================================
+// LeetCode 2646 - Minimize the Total Price of the Trips
+// https://leetcode.com/problems/minimize-the-total-price-of-the-trips/
+
+var minimumTotalPrice = function(n, edges, price, trips) {
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) { g[a].push(b); g[b].push(a); }
+    const cnt = new Array(n).fill(0);
+    const path = (u, p, target) => {
+        if (u === target) { cnt[u]++; return true; }
+        for (const v of g[u]) {
+            if (v === p) continue;
+            if (path(v, u, target)) { cnt[u]++; return true; }
+        }
+        return false;
+    };
+    for (const [a, b] of trips) path(a, -1, b);
+    const dfs = (u, p) => {
+        let full = price[u] * cnt[u], half = Math.floor(full / 2);
+        for (const v of g[u]) {
+            if (v === p) continue;
+            const child = dfs(v, u);
+            full += Math.min(child[0], child[1]);
+            half += child[0];
+        }
+        return [full, half];
+    };
+    const res = dfs(0, -1);
+    return Math.min(res[0], res[1]);
+};
+
+
+================================================================================
+# 2647_color_the_triangle_red  (solution.js)
+================================================================================
+// LeetCode 2647 - Color the Triangle Red
+// https://leetcode.com/problems/color-the-triangle-red/
+
+var colorRed = function(n) {
+    const ans = [];
+    for (let i = 1; i <= n; i++) ans.push([i, 1]);
+    for (let i = n % 2 + 2; i <= n; i += 2)
+        for (let j = 2; j <= 2 * (n - i) + 2; j++)
+            ans.push([i, j]);
+    return ans;
+};
+
+
+================================================================================
+# 2648_generate_fibonacci_sequence  (solution.js)
+================================================================================
+// LeetCode 2648 - Generate Fibonacci Sequence
+// https://leetcode.com/problems/generate-fibonacci-sequence/
+
+var fibGenerator = function*() {
+    let a = 0, b = 1;
+    while (true) {
+        yield a;
+        [a, b] = [b, a + b];
+    }
+};
+
+
+================================================================================
+# 2649_nested_array_generator  (solution.js)
+================================================================================
+// LeetCode 2649 - Nested Array Generator
+// https://leetcode.com/problems/nested-array-generator/
+
+var inorderTraversal = function*(arr) {
+    for (const x of arr) {
+        if (Array.isArray(x)) yield* inorderTraversal(x);
+        else yield x;
+    }
+};
+
+
+================================================================================
+# 2650_design_cancellable_function  (solution.js)
+================================================================================
+// LeetCode 2650 - Design Cancellable Function
+// https://leetcode.com/problems/design-cancellable-function/
+
+var cancellable = function(generator) {
+    let cancelled = false;
+    const cancel = () => { cancelled = true; };
+    const promise = (async () => {
+        let next = generator.next();
+        while (!next.done) {
+            try {
+                const value = await next.value;
+                if (cancelled) {
+                    next = generator.throw("Cancelled");
+                    continue;
+                }
+                next = generator.next(value);
+            } catch (e) {
+                next = generator.throw(e);
+            }
+        }
+        return next.value;
+    })();
+    return [cancel, promise];
+};
+
+
+================================================================================
+# 2651_calculate_delayed_arrival_time  (solution.js)
+================================================================================
+// LeetCode 2651 - Calculate Delayed Arrival Time
+// https://leetcode.com/problems/calculate-delayed-arrival-time/
+
+var findDelayedArrivalTime = function(arrivalTime, delayedTime) {
+    return (arrivalTime + delayedTime) % 24;
+};
+
+
+================================================================================
+# 2652_sum_multiples  (solution.js)
+================================================================================
+// LeetCode 2652 - Sum Multiples
+// https://leetcode.com/problems/sum-multiples/
+
+var sumOfMultiples = function(n) {
+    let ans = 0;
+    for (let i = 1; i <= n; i++)
+        if (i % 3 === 0 || i % 5 === 0 || i % 7 === 0) ans += i;
+    return ans;
+};
+
+
+================================================================================
+# 2653_sliding_subarray_beauty  (solution.js)
+================================================================================
+// LeetCode 2653 - Sliding Subarray Beauty
+// https://leetcode.com/problems/sliding-subarray-beauty/
+
+var getSubarrayBeauty = function(nums, k, x) {
+    const freq = new Array(101).fill(0);
+    const ans = new Array(nums.length - k + 1);
+    for (let i = 0; i < nums.length; i++) {
+        freq[nums[i] + 50]++;
+        if (i >= k) freq[nums[i - k] + 50]--;
+        if (i >= k - 1) {
+            let need = x, val = 0;
+            for (let j = 0; j < 50; j++) {
+                need -= freq[j];
+                if (need <= 0) { val = j - 50; break; }
+            }
+            ans[i - k + 1] = val;
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2654_minimum_number_of_operations_to_make_all_array_elements_equal_to_1  (solution.js)
+================================================================================
+// LeetCode 2654 - Minimum Number of Operations to Make All Array Elements Equal to 1
+// https://leetcode.com/problems/minimum-number-of-operations-to-make-all-array-elements-equal-to-1/
+
+var minOperations = function(nums) {
+    const gcd = (a, b) => { while (b) { const t = a % b; a = b; b = t; } return a; };
+    const n = nums.length;
+    let ones = 0;
+    for (const x of nums) if (x === 1) ones++;
+    if (ones > 0) return n - ones;
+    let best = n + 1;
+    for (let i = 0; i < n; i++) {
+        let g = 0;
+        for (let j = i; j < n; j++) {
+            g = gcd(g, nums[j]);
+            if (g === 1) { best = Math.min(best, j - i); break; }
+        }
+    }
+    if (best === n + 1) return -1;
+    return best + n - 1;
+};
+
+
+================================================================================
+# 2655_find_maximal_uncovered_ranges  (solution.js)
+================================================================================
+// LeetCode 2655 - Find Maximal Uncovered Ranges
+// https://leetcode.com/problems/find-maximal-uncovered-ranges/
+
+var findMaximalUncoveredRanges = function(n, ranges) {
+    ranges = ranges.slice().sort((a, b) => a[0] - b[0]);
+    const ans = [];
+    let cur = 0;
+    for (const r of ranges) {
+        if (r[0] > cur) ans.push([cur, r[0] - 1]);
+        if (r[1] + 1 > cur) cur = r[1] + 1;
+    }
+    if (cur < n) ans.push([cur, n - 1]);
+    return ans;
+};
+
+
+================================================================================
+# 2656_maximum_sum_with_exactly_k_elements  (solution.js)
+================================================================================
+// LeetCode 2656 - Maximum Sum With Exactly K Elements
+// https://leetcode.com/problems/maximum-sum-with-exactly-k-elements/
+
+var maximizeSum = function(nums, k) {
+    let mx = nums[0];
+    for (const x of nums) if (x > mx) mx = x;
+    return k * mx + k * (k - 1) / 2;
+};
+
+
+================================================================================
+# 2657_find_the_prefix_common_array_of_two_arrays  (solution.js)
+================================================================================
+// LeetCode 2657 - Find the Prefix Common Array of Two Arrays
+// https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/
+
+var findThePrefixCommonArray = function(A, B) {
+    const n = A.length;
+    const seenA = new Array(n + 1).fill(false);
+    const seenB = new Array(n + 1).fill(false);
+    const ans = new Array(n);
+    let common = 0;
+    for (let i = 0; i < n; i++) {
+        if (seenB[A[i]]) common++;
+        seenA[A[i]] = true;
+        if (seenA[B[i]]) common++;
+        seenB[B[i]] = true;
+        ans[i] = common;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2658_maximum_number_of_fish_in_a_grid  (solution.js)
+================================================================================
+// LeetCode 2658 - Maximum Number of Fish in a Grid
+// https://leetcode.com/problems/maximum-number-of-fish-in-a-grid/
+
+var findMaxFish = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    const dfs = (r, c) => {
+        if (r < 0 || r >= m || c < 0 || c >= n || grid[r][c] === 0) return 0;
+        const fish = grid[r][c];
+        grid[r][c] = 0;
+        return fish + dfs(r + 1, c) + dfs(r - 1, c) + dfs(r, c + 1) + dfs(r, c - 1);
+    };
+    let best = 0;
+    for (let i = 0; i < m; i++)
+        for (let j = 0; j < n; j++)
+            if (grid[i][j] > 0) best = Math.max(best, dfs(i, j));
+    return best;
+};
+
+
+================================================================================
+# 2659_make_array_empty  (solution.js)
+================================================================================
+// LeetCode 2659 - Make Array Empty
+// https://leetcode.com/problems/make-array-empty/
+
+var countOperationsToEmptyArray = function(nums) {
+    const n = nums.length;
+    const idx = Array.from({ length: n }, (_, i) => i);
+    idx.sort((a, b) => nums[a] - nums[b]);
+    let ans = n;
+    for (let i = 1; i < n; i++)
+        if (idx[i] < idx[i - 1]) ans += n - i;
+    return ans;
+};
+
+
+================================================================================
+# 2660_determine_the_winner_of_a_bowling_game  (solution.js)
+================================================================================
+// LeetCode 2660 - Determine the Winner of a Bowling Game
+// https://leetcode.com/problems/determine-the-winner-of-a-bowling-game/
+
+var isWinner = function(player1, player2) {
+    const score = (p) => {
+        let s = 0;
+        for (let i = 0; i < p.length; i++) {
+            let mul = 1;
+            if ((i > 0 && p[i - 1] === 10) || (i > 1 && p[i - 2] === 10)) mul = 2;
+            s += mul * p[i];
+        }
+        return s;
+    };
+    const a = score(player1), b = score(player2);
+    if (a > b) return 1;
+    if (b > a) return 2;
+    return 0;
+};
+
+
+================================================================================
+# 2661_first_completely_painted_row_or_column  (solution.js)
+================================================================================
+// LeetCode 2661 - First Completely Painted Row or Column
+// https://leetcode.com/problems/first-completely-painted-row-or-column/
+
+var firstCompleteIndex = function(arr, mat) {
+    const m = mat.length, n = mat[0].length;
+    const posR = new Array(m * n + 1), posC = new Array(m * n + 1);
+    for (let i = 0; i < m; i++)
+        for (let j = 0; j < n; j++) {
+            posR[mat[i][j]] = i;
+            posC[mat[i][j]] = j;
+        }
+    const rowCnt = new Array(m).fill(0), colCnt = new Array(n).fill(0);
+    for (let i = 0; i < arr.length; i++) {
+        const r = posR[arr[i]], c = posC[arr[i]];
+        rowCnt[r]++;
+        colCnt[c]++;
+        if (rowCnt[r] === n || colCnt[c] === m) return i;
+    }
+    return -1;
+};
+
+
+================================================================================
+# 2662_minimum_cost_of_a_path_with_special_roads  (solution.js)
+================================================================================
+// LeetCode 2662 - Minimum Cost of a Path With Special Roads
+// https://leetcode.com/problems/minimum-cost-of-a-path-with-special-roads/
+
+var minimumCost = function(start, target, specialRoads) {
+    const points = [start, target];
+    for (const r of specialRoads) {
+        points.push([r[0], r[1]]);
+        points.push([r[2], r[3]]);
+    }
+    const N = points.length;
+    const man = (a, b) => Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
+    const g = Array.from({ length: N }, () => []);
+    for (let i = 0; i < N; i++)
+        for (let j = 0; j < N; j++)
+            if (i !== j) g[i].push([j, man(points[i], points[j])]);
+    for (const r of specialRoads) {
+        let u = -1, v = -1;
+        for (let i = 0; i < N; i++) {
+            const p = points[i];
+            if (p[0] === r[0] && p[1] === r[1]) u = i;
+            if (p[0] === r[2] && p[1] === r[3]) v = i;
+        }
+        if (u >= 0 && v >= 0) g[u].push([v, r[4]]);
+    }
+    const dist = new Array(N).fill(Number.MAX_SAFE_INTEGER / 4);
+    dist[0] = 0;
+    const pq = [[0, 0]];
+    const push = (u, d) => {
+        pq.push([u, d]);
+        let i = pq.length - 1;
+        while (i > 0) {
+            const p = (i - 1) >> 1;
+            if (pq[p][1] <= pq[i][1]) break;
+            [pq[p], pq[i]] = [pq[i], pq[p]];
+            i = p;
+        }
+    };
+    const pop = () => {
+        const top = pq[0];
+        const last = pq.pop();
+        if (pq.length) {
+            pq[0] = last;
+            let i = 0;
+            while (true) {
+                let s = i, l = i * 2 + 1, r = l + 1;
+                if (l < pq.length && pq[l][1] < pq[s][1]) s = l;
+                if (r < pq.length && pq[r][1] < pq[s][1]) s = r;
+                if (s === i) break;
+                [pq[s], pq[i]] = [pq[i], pq[s]];
+                i = s;
+            }
+        }
+        return top;
+    };
+    while (pq.length) {
+        const [id, cost] = pop();
+        if (cost > dist[id]) continue;
+        for (const [to, w] of g[id]) {
+            if (cost + w < dist[to]) {
+                dist[to] = cost + w;
+                push(to, dist[to]);
+            }
+        }
+    }
+    return dist[1];
+};
+
+
+================================================================================
+# 2663_lexicographically_smallest_beautiful_string  (solution.js)
+================================================================================
+// LeetCode 2663 - Lexicographically Smallest Beautiful String
+// https://leetcode.com/problems/lexicographically-smallest-beautiful-string/
+
+var smallestBeautifulString = function(s, k) {
+    const n = s.length;
+    const b = s.split("");
+    for (let i = n - 1; i >= 0; i--) {
+        for (let code = b[i].charCodeAt(0) + 1; code < 97 + k; code++) {
+            const c = String.fromCharCode(code);
+            if ((i > 0 && c === b[i - 1]) || (i > 1 && c === b[i - 2])) continue;
+            b[i] = c;
+            for (let j = i + 1; j < n; j++) {
+                for (let nc = 97; nc < 97 + k; nc++) {
+                    const ch = String.fromCharCode(nc);
+                    if ((j > 0 && ch === b[j - 1]) || (j > 1 && ch === b[j - 2])) continue;
+                    b[j] = ch;
+                    break;
+                }
+            }
+            return b.join("");
+        }
+    }
+    return "";
+};
+
+
+================================================================================
+# 2664_the_knights_tour  (solution.js)
+================================================================================
+// LeetCode 2664 - The Knight's Tour
+// https://leetcode.com/problems/the-knights-tour/
+
+var tourOfKnight = function(m, n, r, c) {
+    const DIRS = [[1,2],[1,-2],[-1,2],[-1,-2],[2,1],[2,-1],[-2,1],[-2,-1]];
+    const ans = Array.from({ length: m }, () => new Array(n).fill(-1));
+    const dfs = (x, y, step) => {
+        ans[x][y] = step;
+        if (step === m * n - 1) return true;
+        for (const [dx, dy] of DIRS) {
+            const nx = x + dx, ny = y + dy;
+            if (nx >= 0 && nx < m && ny >= 0 && ny < n && ans[nx][ny] === -1)
+                if (dfs(nx, ny, step + 1)) return true;
+        }
+        ans[x][y] = -1;
+        return false;
+    };
+    dfs(r, c, 0);
+    return ans;
+};
+
+
+================================================================================
+# 2665_counter_ii  (solution.js)
+================================================================================
+// LeetCode 2665 - Counter II
+// https://leetcode.com/problems/counter-ii/
+
+var createCounter = function(init) {
+    let cur = init;
+    return {
+        increment: function() { return ++cur; },
+        decrement: function() { return --cur; },
+        reset: function() { cur = init; return cur; },
+    };
+};
+
+
+================================================================================
+# 2666_allow_one_function_call  (solution.js)
+================================================================================
+// LeetCode 2666 - Allow One Function Call
+// https://leetcode.com/problems/allow-one-function-call/
+
+var once = function(fn) {
+    let called = false;
+    let res;
+    return function(...args) {
+        if (called) return undefined;
+        called = true;
+        res = fn(...args);
+        return res;
+    };
+};
+
+
+================================================================================
+# 2667_create_hello_world_function  (solution.js)
+================================================================================
+// LeetCode 2667 - Create Hello World Function
+// https://leetcode.com/problems/create-hello-world-function/
+
+var createHelloWorld = function() {
+    return function(...args) {
+        return "Hello World";
+    };
+};
+
+
+================================================================================
+# 2670_find_the_distinct_difference_array  (solution.js)
+================================================================================
+// LeetCode 2670 - Find the Distinct Difference Array
+// https://leetcode.com/problems/find-the-distinct-difference-array/
+
+var distinctDifferenceArray = function(nums) {
+    const n = nums.length;
+    const suf = new Array(n + 1).fill(0);
+    const seen = new Set();
+    for (let i = n - 1; i >= 0; i--) {
+        seen.add(nums[i]);
+        suf[i] = seen.size;
+    }
+    seen.clear();
+    const ans = new Array(n);
+    for (let i = 0; i < n; i++) {
+        seen.add(nums[i]);
+        ans[i] = seen.size - suf[i + 1];
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2671_frequency_tracker  (solution.js)
+================================================================================
+// LeetCode 2671 - Frequency Tracker
+// https://leetcode.com/problems/frequency-tracker/
+
+var FrequencyTracker = function() {
+    this.freq = new Map();
+    this.count = new Map();
+};
+
+FrequencyTracker.prototype.add = function(number) {
+    const old = this.freq.get(number) || 0;
+    if (old > 0) this.count.set(old, (this.count.get(old) || 0) - 1);
+    this.freq.set(number, old + 1);
+    this.count.set(old + 1, (this.count.get(old + 1) || 0) + 1);
+};
+
+FrequencyTracker.prototype.deleteOne = function(number) {
+    const old = this.freq.get(number) || 0;
+    if (old === 0) return;
+    this.count.set(old, (this.count.get(old) || 0) - 1);
+    this.freq.set(number, old - 1);
+    if (old - 1 > 0) this.count.set(old - 1, (this.count.get(old - 1) || 0) + 1);
+};
+
+FrequencyTracker.prototype.hasFrequency = function(frequency) {
+    return (this.count.get(frequency) || 0) > 0;
+};
+
+
+================================================================================
+# 2672_number_of_adjacent_elements_with_the_same_color  (solution.js)
+================================================================================
+// LeetCode 2672 - Number of Adjacent Elements With the Same Color
+// https://leetcode.com/problems/number-of-adjacent-elements-with-the-same-color/
+
+var colorTheArray = function(n, queries) {
+    const colors = new Array(n).fill(0);
+    const ans = new Array(queries.length);
+    let same = 0;
+    for (let i = 0; i < queries.length; i++) {
+        const idx = queries[i][0], color = queries[i][1];
+        if (colors[idx] !== 0) {
+            if (idx > 0 && colors[idx] === colors[idx - 1]) same--;
+            if (idx + 1 < n && colors[idx] === colors[idx + 1]) same--;
+        }
+        colors[idx] = color;
+        if (idx > 0 && colors[idx] === colors[idx - 1]) same++;
+        if (idx + 1 < n && colors[idx] === colors[idx + 1]) same++;
+        ans[i] = same;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2673_make_costs_of_paths_equal_in_a_binary_tree  (solution.js)
+================================================================================
+// LeetCode 2673 - Make Costs of Paths Equal in a Binary Tree
+// https://leetcode.com/problems/make-costs-of-paths-equal-in-a-binary-tree/
+
+var minIncrements = function(n, cost) {
+    let ans = 0;
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        const l = 2 * i + 1, r = 2 * i + 2;
+        ans += Math.abs(cost[l] - cost[r]);
+        cost[i] += Math.max(cost[l], cost[r]);
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2674_split_a_circular_linked_list  (solution.js)
+================================================================================
+// LeetCode 2674 - Split a Circular Linked List
+// https://leetcode.com/problems/split-a-circular-linked-list/
+
+var splitCircularLinkedList = function(list) {
+    if (!list) return [null, null];
+    let slow = list, fast = list;
+    while (fast.next !== list && fast.next.next !== list) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    if (fast.next.next === list) fast = fast.next;
+    const head2 = slow.next;
+    slow.next = list;
+    fast.next = head2;
+    return [list, head2];
+};
+
+
+================================================================================
+# 2675_array_of_objects_to_matrix  (solution.js)
+================================================================================
+// LeetCode 2675 - Array of Objects to Matrix
+// https://leetcode.com/problems/array-of-objects-to-matrix/
+
+var jsonToMatrix = function(arr) {
+    const isObj = (x) => x !== null && typeof x === "object" && !Array.isArray(x);
+    const flatten = (obj, prefix, out) => {
+        if (!isObj(obj) && !Array.isArray(obj)) {
+            out[prefix] = obj;
+            return;
+        }
+        if (Array.isArray(obj)) {
+            if (!obj.length) return;
+            for (let i = 0; i < obj.length; i++)
+                flatten(obj[i], prefix ? prefix + "." + i : String(i), out);
+            return;
+        }
+        const keys = Object.keys(obj);
+        if (!keys.length) return;
+        for (const k of keys)
+            flatten(obj[k], prefix ? prefix + "." + k : k, out);
+    };
+    const maps = arr.map((o) => {
+        const m = {};
+        flatten(o, "", m);
+        return m;
+    });
+    const keySet = new Set();
+    for (const m of maps) for (const k of Object.keys(m)) keySet.add(k);
+    const keys = [...keySet].sort();
+    const mat = [keys];
+    for (const m of maps) mat.push(keys.map((k) => (k in m ? m[k] : "")));
+    return mat;
+};
+
+
+================================================================================
+# 2676_throttle  (solution.js)
+================================================================================
+// LeetCode 2676 - Throttle
+// https://leetcode.com/problems/throttle/
+
+var throttle = function(fn, t) {
+    let last = -Infinity;
+    let pending = null;
+    let timer = null;
+    const run = (...args) => {
+        last = Date.now();
+        fn(...args);
+    };
+    return function(...args) {
+        const now = Date.now();
+        const remaining = t - (now - last);
+        if (remaining <= 0) {
+            if (timer) { clearTimeout(timer); timer = null; }
+            run(...args);
+        } else {
+            pending = args;
+            if (!timer) {
+                timer = setTimeout(() => {
+                    timer = null;
+                    if (pending) {
+                        const a = pending;
+                        pending = null;
+                        run(...a);
+                    }
+                }, remaining);
+            }
+        }
+    };
+};
+
+
+================================================================================
+# 2677_chunk_array  (solution.js)
+================================================================================
+// LeetCode 2677 - Chunk Array
+// https://leetcode.com/problems/chunk-array/
+
+var chunk = function(arr, size) {
+    const ans = [];
+    for (let i = 0; i < arr.length; i += size)
+        ans.push(arr.slice(i, i + size));
+    return ans;
+};
+
+
+================================================================================
+# 2678_number_of_senior_citizens  (solution.js)
+================================================================================
+// LeetCode 2678 - Number of Senior Citizens
+// https://leetcode.com/problems/number-of-senior-citizens/
+
+var countSeniors = function(details) {
+    let ans = 0;
+    for (const d of details) {
+        const age = (d.charCodeAt(11) - 48) * 10 + (d.charCodeAt(12) - 48);
+        if (age > 60) ans++;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2679_sum_in_a_matrix  (solution.js)
+================================================================================
+// LeetCode 2679 - Sum in a Matrix
+// https://leetcode.com/problems/sum-in-a-matrix/
+
+var matrixSum = function(nums) {
+    for (const row of nums) row.sort((a, b) => a - b);
+    let ans = 0;
+    const n = nums[0].length;
+    for (let j = 0; j < n; j++) {
+        let mx = 0;
+        for (const row of nums) mx = Math.max(mx, row[j]);
+        ans += mx;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2680_maximum_or  (solution.js)
+================================================================================
+// LeetCode 2680 - Maximum OR
+// https://leetcode.com/problems/maximum-or/
+
+var maximumOr = function(nums, k) {
+    const n = nums.length;
+    const pref = new Array(n + 1).fill(0);
+    const suf = new Array(n + 1).fill(0);
+    for (let i = 0; i < n; i++) pref[i + 1] = pref[i] | nums[i];
+    for (let i = n - 1; i >= 0; i--) suf[i] = suf[i + 1] | nums[i];
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        const cur = pref[i] | (nums[i] * (2 ** k)) | suf[i + 1];
+        if (cur > ans) ans = cur;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2681_power_of_heroes  (solution.js)
+================================================================================
+// LeetCode 2681 - Power of Heroes
+// https://leetcode.com/problems/power-of-heroes/
+
+var sumOfPower = function(nums) {
+    const MOD = 1000000007;
+    nums = nums.slice().sort((a, b) => a - b);
+    let ans = 0, s = 0;
+    for (const x of nums) {
+        ans = (ans + ((s + x) % MOD) * x % MOD * x) % MOD;
+        s = (s * 2 + x) % MOD;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2682_find_the_losers_of_the_circular_game  (solution.js)
+================================================================================
+// LeetCode 2682 - Find the Losers of the Circular Game
+// https://leetcode.com/problems/find-the-losers-of-the-circular-game/
+
+var circularGameLosers = function(n, k) {
+    const seen = new Array(n + 1).fill(false);
+    let cur = 1, step = 1;
+    while (!seen[cur]) {
+        seen[cur] = true;
+        cur = (cur - 1 + step * k) % n + 1;
+        step++;
+    }
+    const ans = [];
+    for (let i = 1; i <= n; i++) if (!seen[i]) ans.push(i);
+    return ans;
+};
+
+
+================================================================================
+# 2683_neighboring_bitwise_xor  (solution.js)
+================================================================================
+// LeetCode 2683 - Neighboring Bitwise XOR
+// https://leetcode.com/problems/neighboring-bitwise-xor/
+
+var doesValidArrayExist = function(derived) {
+    let x = 0;
+    for (const v of derived) x ^= v;
+    return x === 0;
+};
+
+
+================================================================================
+# 2684_maximum_number_of_moves_in_a_grid  (solution.js)
+================================================================================
+// LeetCode 2684 - Maximum Number of Moves in a Grid
+// https://leetcode.com/problems/maximum-number-of-moves-in-a-grid/
+
+var maxMoves = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    let dp = new Array(m).fill(0);
+    for (let c = n - 2; c >= 0; c--) {
+        const ndp = new Array(m).fill(0);
+        for (let r = 0; r < m; r++) {
+            let best = 0;
+            for (let dr = -1; dr <= 1; dr++) {
+                const nr = r + dr;
+                if (nr >= 0 && nr < m && grid[nr][c + 1] > grid[r][c])
+                    best = Math.max(best, 1 + dp[nr]);
+            }
+            ndp[r] = best;
+        }
+        dp = ndp;
+    }
+    return Math.max(...dp);
+};
+
+
+================================================================================
+# 2685_count_the_number_of_complete_components  (solution.js)
+================================================================================
+// LeetCode 2685 - Count the Number of Complete Components
+// https://leetcode.com/problems/count-the-number-of-complete-components/
+
+var countCompleteComponents = function(n, edges) {
+    const g = Array.from({ length: n }, () => []);
+    for (const [a, b] of edges) { g[a].push(b); g[b].push(a); }
+    const vis = new Array(n).fill(false);
+    let ans = 0;
+    const dfs = (u, nodes) => {
+        vis[u] = true;
+        nodes.push(u);
+        for (const v of g[u]) if (!vis[v]) dfs(v, nodes);
+    };
+    for (let i = 0; i < n; i++) {
+        if (vis[i]) continue;
+        const nodes = [];
+        dfs(i, nodes);
+        let ecount = 0;
+        for (const u of nodes) ecount += g[u].length;
+        ecount = Math.floor(ecount / 2);
+        const sz = nodes.length;
+        if (ecount === sz * (sz - 1) / 2) ans++;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2689_extract_kth_character_from_the_rope_tree  (solution.js)
+================================================================================
+// LeetCode 2689 - Extract Kth Character From The Rope Tree
+// https://leetcode.com/problems/extract-kth-character-from-the-rope-tree/
+
+var getKthCharacter = function(root, k) {
+    const dfs = (node, kk) => {
+        if (!node.left && !node.right) return node.val;
+        let leftLen = 0;
+        if (node.left) leftLen = node.left.len > 0 ? node.left.len : 1;
+        if (kk <= leftLen) return dfs(node.left, kk);
+        return dfs(node.right, kk - leftLen);
+    };
+    return dfs(root, k);
+};
+
+
+================================================================================
+# 2690_infinite_method_object  (solution.js)
+================================================================================
+// LeetCode 2690 - Infinite Method Object
+// https://leetcode.com/problems/infinite-method-object/
+
+var createInfiniteObject = function() {
+    return new Proxy({}, {
+        get: () => () => "Hello World",
+    });
+};
+
+
+================================================================================
+# 2691_immutability_helper  (solution.js)
+================================================================================
+// LeetCode 2691 - Immutability Helper
+// https://leetcode.com/problems/immutability-helper/
+
+var ImmutableHelper = function(obj) {
+    this.obj = obj;
+};
+
+ImmutableHelper.prototype.produce = function(mutator) {
+    const clones = new Map();
+    const isObj = (v) => v !== null && typeof v === "object";
+
+    const getClone = (original) => {
+        if (clones.has(original)) return clones.get(original);
+        const copy = Array.isArray(original) ? original.slice() : Object.assign({}, original);
+        clones.set(original, copy);
+        return copy;
+    };
+
+    const proxyFor = (node, onReplace) => new Proxy(node, {
+        get(t, prop) {
+            const val = t[prop];
+            if (isObj(val)) {
+                return proxyFor(val, (childClone) => {
+                    const clone = getClone(t);
+                    clone[prop] = childClone;
+                    onReplace(clone);
+                });
+            }
+            return typeof val === "function" ? val.bind(t) : val;
+        },
+        set(t, prop, value) {
+            const clone = getClone(t);
+            clone[prop] = value;
+            onReplace(clone);
+            return true;
+        },
+        deleteProperty(t, prop) {
+            const clone = getClone(t);
+            delete clone[prop];
+            onReplace(clone);
+            return true;
+        },
+    });
+
+    let rootResult = this.obj;
+    mutator(proxyFor(this.obj, (clone) => { rootResult = clone; }));
+    return rootResult;
+};
+
+
+================================================================================
+# 2692_make_object_immutable  (solution.js)
+================================================================================
+// LeetCode 2692 - Make Object Immutable
+// https://leetcode.com/problems/make-object-immutable/
+
+var makeImmutable = function(obj) {
+    const wrap = (val) => {
+        if (val === null || typeof val !== "object") return val;
+        if (Array.isArray(val)) {
+            return new Proxy(val, {
+                set(target, prop) {
+                    throw `Error Modifying Index: ${String(prop)}`;
+                },
+                get(target, prop) {
+                    if (["pop", "push", "shift", "unshift", "splice", "sort", "reverse"].includes(prop)) {
+                        return () => { throw `Error Calling Method: ${prop}`; };
+                    }
+                    const v = target[prop];
+                    return typeof v === "function" ? v.bind(target) : wrap(v);
+                },
+            });
+        }
+        return new Proxy(val, {
+            set(target, prop) {
+                throw `Error Modifying: ${String(prop)}`;
+            },
+            get(target, prop) {
+                const v = target[prop];
+                return typeof v === "function" ? v.bind(target) : wrap(v);
+            },
+        });
+    };
+    return wrap(obj);
+};
+
+
+================================================================================
+# 2693_call_function_with_custom_context  (solution.js)
+================================================================================
+// LeetCode 2693 - Call Function with Custom Context
+// https://leetcode.com/problems/call-function-with-custom-context/
+
+Function.prototype.callPolyfill = function(obj, ...args) {
+    const key = Symbol();
+    obj[key] = this;
+    const res = obj[key](...args);
+    delete obj[key];
+    return res;
+};
+
+
+================================================================================
+# 2694_event_emitter  (solution.js)
+================================================================================
+// LeetCode 2694 - Event Emitter
+// https://leetcode.com/problems/event-emitter/
+
+var EventEmitter = function() {
+    this.handlers = new Map();
+};
+
+EventEmitter.prototype.subscribe = function(eventName, callback) {
+    if (!this.handlers.has(eventName)) this.handlers.set(eventName, []);
+    const list = this.handlers.get(eventName);
+    list.push(callback);
+    return {
+        unsubscribe: () => {
+            const idx = list.indexOf(callback);
+            if (idx >= 0) list.splice(idx, 1);
+        },
+    };
+};
+
+EventEmitter.prototype.emit = function(eventName, args = []) {
+    const list = this.handlers.get(eventName) || [];
+    return list.map((cb) => cb(...args));
+};
+
+
+================================================================================
+# 2695_array_wrapper  (solution.js)
+================================================================================
+// LeetCode 2695 - Array Wrapper
+// https://leetcode.com/problems/array-wrapper/
+
+var ArrayWrapper = function(nums) {
+    this.nums = nums;
+};
+
+ArrayWrapper.prototype.valueOf = function() {
+    let s = 0;
+    for (const x of this.nums) s += x;
+    return s;
+};
+
+ArrayWrapper.prototype.toString = function() {
+    return "[" + this.nums.join(",") + "]";
+};
+
+
+================================================================================
+# 2696_minimum_string_length_after_removing_substrings  (solution.js)
+================================================================================
+// LeetCode 2696 - Minimum String Length After Removing Substrings
+// https://leetcode.com/problems/minimum-string-length-after-removing-substrings/
+
+var minLength = function(s) {
+    const st = [];
+    for (const c of s) {
+        const last = st[st.length - 1];
+        if (st.length && ((last === "A" && c === "B") || (last === "C" && c === "D")))
+            st.pop();
+        else st.push(c);
+    }
+    return st.length;
+};
+
+
+================================================================================
+# 2697_lexicographically_smallest_palindrome  (solution.js)
+================================================================================
+// LeetCode 2697 - Lexicographically Smallest Palindrome
+// https://leetcode.com/problems/lexicographically-smallest-palindrome/
+
+var makeSmallestPalindrome = function(s) {
+    const arr = s.split("");
+    const n = arr.length;
+    for (let i = 0; i < n / 2; i++) {
+        const c = arr[i] < arr[n - 1 - i] ? arr[i] : arr[n - 1 - i];
+        arr[i] = arr[n - 1 - i] = c;
+    }
+    return arr.join("");
+};
+
+
+================================================================================
+# 2698_find_the_punishment_number_of_an_integer  (solution.js)
+================================================================================
+// LeetCode 2698 - Find the Punishment Number of an Integer
+// https://leetcode.com/problems/find-the-punishment-number-of-an-integer/
+
+var punishmentNumber = function(n) {
+    const dfs = (s, i, sum, target) => {
+        if (i === s.length) return sum === target;
+        let cur = 0;
+        for (let j = i; j < s.length; j++) {
+            cur = cur * 10 + (s.charCodeAt(j) - 48);
+            if (sum + cur > target) break;
+            if (dfs(s, j + 1, sum + cur, target)) return true;
+        }
+        return false;
+    };
+    let ans = 0;
+    for (let i = 1; i <= n; i++) {
+        const sq = i * i;
+        if (dfs(String(sq), 0, 0, i)) ans += sq;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2699_modify_graph_edge_weights  (solution.js)
+================================================================================
+// LeetCode 2699 - Modify Graph Edge Weights
+// https://leetcode.com/problems/modify-graph-edge-weights/
+
+var modifiedGraphEdges = function(n, edges, source, destination, target) {
+    const INF = 2000000000;
+    const dijkstra = (ignoreNeg) => {
+        const dist = new Array(n).fill(INF);
+        dist[source] = 0;
+        const pq = [[source, 0]];
+        const push = (u, d) => {
+            pq.push([u, d]);
+            let i = pq.length - 1;
+            while (i > 0) {
+                const p = (i - 1) >> 1;
+                if (pq[p][1] <= pq[i][1]) break;
+                [pq[p], pq[i]] = [pq[i], pq[p]];
+                i = p;
+            }
+        };
+        const pop = () => {
+            const top = pq[0];
+            const last = pq.pop();
+            if (pq.length) {
+                pq[0] = last;
+                let i = 0;
+                while (true) {
+                    let s = i, l = i * 2 + 1, r = l + 1;
+                    if (l < pq.length && pq[l][1] < pq[s][1]) s = l;
+                    if (r < pq.length && pq[r][1] < pq[s][1]) s = r;
+                    if (s === i) break;
+                    [pq[s], pq[i]] = [pq[i], pq[s]];
+                    i = s;
+                }
+            }
+            return top;
+        };
+        while (pq.length) {
+            const [u, d] = pop();
+            if (d !== dist[u]) continue;
+            for (const e of edges) {
+                let a = e[0], b = e[1], w = e[2];
+                if (a !== u && b !== u) continue;
+                const to = a === u ? b : a;
+                if (w === -1) {
+                    if (ignoreNeg) continue;
+                    w = 1;
+                }
+                if (d + w < dist[to]) {
+                    dist[to] = d + w;
+                    push(to, dist[to]);
+                }
+            }
+        }
+        return dist;
+    };
+    let d = dijkstra(true);
+    if (d[destination] < target) return [];
+    let matched = d[destination] === target;
+    for (let i = 0; i < edges.length; i++) {
+        if (edges[i][2] !== -1) continue;
+        if (matched) {
+            edges[i][2] = INF;
+            continue;
+        }
+        edges[i][2] = 1;
+        d = dijkstra(false);
+        if (d[destination] <= target) {
+            edges[i][2] += target - d[destination];
+            matched = true;
+        }
+    }
+    d = dijkstra(false);
+    if (d[destination] !== target) return [];
+    return edges;
+};
+
+
+================================================================================
+# 2700_differences_between_two_objects  (solution.js)
+================================================================================
+// LeetCode 2700 - Differences Between Two Objects
+// https://leetcode.com/problems/differences-between-two-objects/
+
+var objDiff = function(obj1, obj2) {
+    const diff = {};
+    for (const k of Object.keys(obj1)) {
+        if (!(k in obj2)) continue;
+        const v1 = obj1[k], v2 = obj2[k];
+        if (typeof v1 === "object" && v1 && typeof v2 === "object" && v2 && !Array.isArray(v1) && !Array.isArray(v2)) {
+            const child = objDiff(v1, v2);
+            if (Object.keys(child).length) diff[k] = child;
+        } else if (Array.isArray(v1) && Array.isArray(v2)) {
+            const child = objDiff(v1, v2);
+            if (Object.keys(child).length) diff[k] = child;
+        } else if (v1 !== v2) {
+            diff[k] = [v1, v2];
+        }
+    }
+    return diff;
+};
+
+
+================================================================================
+# 2702_minimum_operations_to_make_numbers_non_positive  (solution.js)
+================================================================================
+// LeetCode 2702 - Minimum Operations to Make Numbers Non-positive
+// https://leetcode.com/problems/minimum-operations-to-make-numbers-non-positive/
+
+var minOperations = function(nums, x, y) {
+    let lo = 0, hi = 0;
+    for (const v of nums) {
+        hi = Math.max(hi, Math.ceil(v / y));
+        hi = Math.max(hi, Math.ceil(v / x));
+    }
+    hi += nums.length;
+    const ok = (ops) => {
+        let extra = 0;
+        for (const v of nums) {
+            const remain = v - ops * y;
+            if (remain > 0) extra += Math.ceil(remain / (x - y));
+        }
+        return extra <= ops;
+    };
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (ok(mid)) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+};
+
+
+================================================================================
+# 2703_return_length_of_arguments_passed  (solution.js)
+================================================================================
+// LeetCode 2703 - Return Length of Arguments Passed
+// https://leetcode.com/problems/return-length-of-arguments-passed/
+
+var argumentsLength = function(...args) {
+    return args.length;
+};
+
+
+================================================================================
+# 2704_to_be_or_not_to_be  (solution.js)
+================================================================================
+// LeetCode 2704 - To Be Or Not To Be
+// https://leetcode.com/problems/to-be-or-not-to-be/
+
+var expect = function(val) {
+    return {
+        toBe: function(other) {
+            if (val === other) return true;
+            throw new Error("Not Equal");
+        },
+        notToBe: function(other) {
+            if (val !== other) return true;
+            throw new Error("Equal");
+        },
+    };
+};
+
+
+================================================================================
+# 2705_compact_object  (solution.js)
+================================================================================
+// LeetCode 2705 - Compact Object
+// https://leetcode.com/problems/compact-object/
+
+var compactObject = function(obj) {
+    if (Array.isArray(obj)) {
+        const out = [];
+        for (const x of obj) {
+            const v = compactObject(x);
+            if (v) out.push(v);
+        }
+        return out;
+    }
+    if (obj !== null && typeof obj === "object") {
+        const out = {};
+        for (const k of Object.keys(obj)) {
+            const v = compactObject(obj[k]);
+            if (v) out[k] = v;
+        }
+        return out;
+    }
+    return obj;
+};
+
+
+================================================================================
+# 2706_buy_two_chocolates  (solution.js)
+================================================================================
+// LeetCode 2706 - Buy Two Chocolates
+// https://leetcode.com/problems/buy-two-chocolates/
+
+var buyChoco = function(prices, money) {
+    prices = prices.slice().sort((a, b) => a - b);
+    const cost = prices[0] + prices[1];
+    return cost <= money ? money - cost : money;
+};
+
+
+================================================================================
+# 2707_extra_characters_in_a_string  (solution.js)
+================================================================================
+// LeetCode 2707 - Extra Characters in a String
+// https://leetcode.com/problems/extra-characters-in-a-string/
+
+var minExtraChar = function(s, dictionary) {
+    const dict = new Set(dictionary);
+    const n = s.length;
+    const dp = new Array(n + 1).fill(n);
+    dp[0] = 0;
+    for (let i = 0; i < n; i++) {
+        dp[i + 1] = Math.min(dp[i + 1], dp[i] + 1);
+        for (let j = i + 1; j <= n; j++) {
+            if (dict.has(s.slice(i, j))) dp[j] = Math.min(dp[j], dp[i]);
+        }
+    }
+    return dp[n];
+};
+
+
+================================================================================
+# 2708_maximum_strength_of_a_group  (solution.js)
+================================================================================
+// LeetCode 2708 - Maximum Strength of a Group
+// https://leetcode.com/problems/maximum-strength-of-a-group/
+
+var maxStrength = function(nums) {
+    nums = nums.slice().sort((a, b) => a - b);
+    const n = nums.length;
+    if (n === 1) return nums[0];
+    let prod = 1, used = false, i = 0;
+    while (i + 1 < n && nums[i] < 0 && nums[i + 1] < 0) {
+        prod *= nums[i] * nums[i + 1];
+        used = true;
+        i += 2;
+    }
+    const negLeft = i < n && nums[i] < 0;
+    for (; i < n; i++) {
+        if (nums[i] > 0) {
+            prod *= nums[i];
+            used = true;
+        }
+    }
+    if (!used) {
+        if (negLeft) {
+            for (const x of nums) if (x === 0) return 0;
+            return nums[n - 1];
+        }
+        return 0;
+    }
+    return prod;
+};
+
+
+================================================================================
+# 2709_greatest_common_divisor_traversal  (solution.js)
+================================================================================
+// LeetCode 2709 - Greatest Common Divisor Traversal
+// https://leetcode.com/problems/greatest-common-divisor-traversal/
+
+var canTraverseAllPairs = function(nums) {
+    const n = nums.length;
+    if (n === 1) return true;
+    let mx = nums[0];
+    for (const x of nums) if (x > mx) mx = x;
+    const parent = Array.from({ length: mx + 1 }, (_, i) => i);
+    const find = (x) => {
+        if (parent[x] !== x) parent[x] = find(parent[x]);
+        return parent[x];
+    };
+    const unite = (a, b) => {
+        const ra = find(a), rb = find(b);
+        if (ra !== rb) parent[ra] = rb;
+    };
+    const has = new Array(mx + 1).fill(false);
+    for (const x of nums) {
+        if (x === 1) return false;
+        has[x] = true;
+    }
+    const sieve = new Array(mx + 1).fill(0);
+    for (let i = 2; i <= mx; i++) {
+        if (sieve[i] === 0) {
+            for (let j = i; j <= mx; j += i) {
+                if (sieve[j] === 0) sieve[j] = i;
+                if (has[j]) unite(i, j);
+            }
+        }
+    }
+    const root = find(nums[0]);
+    for (const x of nums) if (find(x) !== root) return false;
+    return true;
+};
+
+
+================================================================================
+# 2710_remove_trailing_zeros_from_a_string  (solution.js)
+================================================================================
+// LeetCode 2710 - Remove Trailing Zeros From a String
+// https://leetcode.com/problems/remove-trailing-zeros-from-a-string/
+
+var removeTrailingZeros = function(num) {
+    let end = num.length;
+    while (end > 0 && num[end - 1] === "0") end--;
+    return num.slice(0, end);
+};
+
+
+================================================================================
+# 2711_difference_of_number_of_distinct_values_on_diagonals  (solution.js)
+================================================================================
+// LeetCode 2711 - Difference of Number of Distinct Values on Diagonals
+// https://leetcode.com/problems/difference-of-number-of-distinct-values-on-diagonals/
+
+var differenceOfDistinctValues = function(grid) {
+    const m = grid.length, n = grid[0].length;
+    const ans = Array.from({ length: m }, () => new Array(n));
+    for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+            const top = new Set(), bot = new Set();
+            for (let r = i - 1, c = j - 1; r >= 0 && c >= 0; r--, c--) top.add(grid[r][c]);
+            for (let r = i + 1, c = j + 1; r < m && c < n; r++, c++) bot.add(grid[r][c]);
+            ans[i][j] = Math.abs(top.size - bot.size);
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2712_minimum_cost_to_make_all_characters_equal  (solution.js)
+================================================================================
+// LeetCode 2712 - Minimum Cost to Make All Characters Equal
+// https://leetcode.com/problems/minimum-cost-to-make-all-characters-equal/
+
+var minimumCost = function(s) {
+    const n = s.length;
+    let ans = 0;
+    for (let i = 1; i < n; i++) {
+        if (s[i] !== s[i - 1]) ans += Math.min(i, n - i);
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2713_maximum_strictly_increasing_cells_in_a_matrix  (solution.js)
+================================================================================
+// LeetCode 2713 - Maximum Strictly Increasing Cells in a Matrix
+// https://leetcode.com/problems/maximum-strictly-increasing-cells-in-a-matrix/
+
+var maxIncreasingCells = function(mat) {
+    const m = mat.length, n = mat[0].length;
+    const cells = [];
+    for (let i = 0; i < m; i++)
+        for (let j = 0; j < n; j++)
+            cells.push([mat[i][j], i, j]);
+    cells.sort((a, b) => a[0] - b[0]);
+    const rowMax = new Array(m).fill(0), colMax = new Array(n).fill(0);
+    const dp = Array.from({ length: m }, () => new Array(n).fill(0));
+    let ans = 0;
+    for (let i = 0; i < cells.length; ) {
+        let j = i;
+        while (j < cells.length && cells[j][0] === cells[i][0]) j++;
+        const buf = [];
+        for (let k = i; k < j; k++) {
+            const r = cells[k][1], c = cells[k][2];
+            const best = Math.max(rowMax[r], colMax[c]);
+            dp[r][c] = best + 1;
+            ans = Math.max(ans, dp[r][c]);
+            buf.push([r, c, dp[r][c]]);
+        }
+        for (const [r, c, v] of buf) {
+            rowMax[r] = Math.max(rowMax[r], v);
+            colMax[c] = Math.max(colMax[c], v);
+        }
+        i = j;
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2714_find_shortest_path_with_k_hops  (solution.js)
+================================================================================
+// LeetCode 2714 - Find Shortest Path With K Hops
+// https://leetcode.com/problems/find-shortest-path-with-k-hops/
+
+var shortestPathWithHops = function(n, edges, s, d, k) {
+    const g = Array.from({ length: n }, () => []);
+    for (const e of edges) {
+        g[e[0]].push([e[1], e[2]]);
+        g[e[1]].push([e[0], e[2]]);
+    }
+    const dist = Array.from({ length: n }, () => new Array(k + 1).fill(Number.MAX_SAFE_INTEGER / 4));
+    dist[s][0] = 0;
+    const pq = [[s, 0, 0]];
+    const push = (u, hops, cost) => {
+        pq.push([u, hops, cost]);
+        let i = pq.length - 1;
+        while (i > 0) {
+            const p = (i - 1) >> 1;
+            if (pq[p][2] <= pq[i][2]) break;
+            [pq[p], pq[i]] = [pq[i], pq[p]];
+            i = p;
+        }
+    };
+    const pop = () => {
+        const top = pq[0];
+        const last = pq.pop();
+        if (pq.length) {
+            pq[0] = last;
+            let i = 0;
+            while (true) {
+                let s2 = i, l = i * 2 + 1, r = l + 1;
+                if (l < pq.length && pq[l][2] < pq[s2][2]) s2 = l;
+                if (r < pq.length && pq[r][2] < pq[s2][2]) s2 = r;
+                if (s2 === i) break;
+                [pq[s2], pq[i]] = [pq[i], pq[s2]];
+                i = s2;
+            }
+        }
+        return top;
+    };
+    while (pq.length) {
+        const [u, hops, cd] = pop();
+        if (u === d) return cd;
+        if (cd > dist[u][hops]) continue;
+        for (const [to, w] of g[u]) {
+            if (cd + w < dist[to][hops]) {
+                dist[to][hops] = cd + w;
+                push(to, hops, dist[to][hops]);
+            }
+            if (hops < k && cd < dist[to][hops + 1]) {
+                dist[to][hops + 1] = cd;
+                push(to, hops + 1, cd);
+            }
+        }
+    }
+    return -1;
+};
+
+
+================================================================================
+# 2715_timeout_cancellation  (solution.js)
+================================================================================
+// LeetCode 2715 - Timeout Cancellation
+// https://leetcode.com/problems/timeout-cancellation/
+
+var cancellable = function(fn, args, t) {
+    const timer = setTimeout(() => fn(...args), t);
+    return function() { clearTimeout(timer); };
+};
+
+
+================================================================================
+# 2716_minimize_string_length  (solution.js)
+================================================================================
+// LeetCode 2716 - Minimize String Length
+// https://leetcode.com/problems/minimize-string-length/
+
+var minimizedStringLength = function(s) {
+    return new Set(s).size;
+};
+
+
+================================================================================
+# 2717_semi_ordered_permutation  (solution.js)
+================================================================================
+// LeetCode 2717 - Semi-Ordered Permutation
+// https://leetcode.com/problems/semi-ordered-permutation/
+
+var semiOrderedPermutation = function(nums) {
+    const n = nums.length;
+    let p1 = 0, pn = 0;
+    for (let i = 0; i < n; i++) {
+        if (nums[i] === 1) p1 = i;
+        if (nums[i] === n) pn = i;
+    }
+    let ans = p1 + (n - 1 - pn);
+    if (p1 > pn) ans--;
+    return ans;
+};
+
+
+================================================================================
+# 2718_sum_of_matrix_after_queries  (solution.js)
+================================================================================
+// LeetCode 2718 - Sum of Matrix After Queries
+// https://leetcode.com/problems/sum-of-matrix-after-queries/
+
+var matrixSumQueries = function(n, queries) {
+    const rowDone = new Array(n).fill(false);
+    const colDone = new Array(n).fill(false);
+    let rowsLeft = n, colsLeft = n;
+    let ans = 0;
+    for (let i = queries.length - 1; i >= 0; i--) {
+        const type = queries[i][0], idx = queries[i][1], val = queries[i][2];
+        if (type === 0) {
+            if (!rowDone[idx]) {
+                ans += val * colsLeft;
+                rowDone[idx] = true;
+                rowsLeft--;
+            }
+        } else {
+            if (!colDone[idx]) {
+                ans += val * rowsLeft;
+                colDone[idx] = true;
+                colsLeft--;
+            }
+        }
+    }
+    return ans;
+};
+
+
+================================================================================
+# 2719_count_of_integers  (solution.js)
+================================================================================
+// LeetCode 2719 - Count of Integers
+// https://leetcode.com/problems/count-of-integers/
+
+var count = function(num1, num2, min_sum, max_sum) {
+    const MOD = 1000000007;
+    const dec = (s) => {
+        const arr = s.split("");
+        let i = arr.length - 1;
+        while (i >= 0 && arr[i] === "0") { arr[i] = "9"; i--; }
+        if (i >= 0) arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
+        let j = 0;
+        while (j < arr.length - 1 && arr[j] === "0") j++;
+        return arr.slice(j).join("");
+    };
+    const dp = (s) => {
+        const memo = new Map();
+        const dfs = (pos, sum, tight) => {
+            if (sum > max_sum) return 0;
+            if (pos === s.length) return sum >= min_sum ? 1 : 0;
+            const key = pos + "," + sum + "," + (tight ? 1 : 0);
+            if (memo.has(key)) return memo.get(key);
+            const up = tight ? s.charCodeAt(pos) - 48 : 9;
+            let res = 0;
+            for (let d = 0; d <= up; d++)
+                res = (res + dfs(pos + 1, sum + d, tight && d === up)) % MOD;
+            memo.set(key, res);
+            return res;
+        };
+        return dfs(0, 0, true);
+    };
+    return (dp(num2) - dp(dec(num1)) + MOD) % MOD;
+};
+
+
+================================================================================
+# 2721_execute_asynchronous_functions_in_parallel  (solution.js)
+================================================================================
+// LeetCode 2721 - Execute Asynchronous Functions in Parallel
+// https://leetcode.com/problems/execute-asynchronous-functions-in-parallel/
+
+var promiseAll = function(functions) {
+    return new Promise((resolve, reject) => {
+        const n = functions.length;
+        if (n === 0) { resolve([]); return; }
+        const ans = new Array(n);
+        let done = 0;
+        functions.forEach((fn, i) => {
+            fn().then((v) => {
+                ans[i] = v;
+                done++;
+                if (done === n) resolve(ans);
+            }).catch(reject);
+        });
+    });
+};
+
+
+================================================================================
+# 2722_join_two_arrays_by_id  (solution.js)
+================================================================================
+// LeetCode 2722 - Join Two Arrays by ID
+// https://leetcode.com/problems/join-two-arrays-by-id/
+
+var join = function(arr1, arr2) {
+    const byId = new Map();
+    for (const obj of arr1) byId.set(obj.id, { ...obj });
+    for (const obj of arr2) {
+        if (byId.has(obj.id)) Object.assign(byId.get(obj.id), obj);
+        else byId.set(obj.id, { ...obj });
+    }
+    return [...byId.values()].sort((a, b) => a.id - b.id);
+};
+
+
+================================================================================
+# 2723_add_two_promises  (solution.js)
+================================================================================
+// LeetCode 2723 - Add Two Promises
+// https://leetcode.com/problems/add-two-promises/
+
+var addTwoPromises = async function(promise1, promise2) {
+    return (await promise1) + (await promise2);
+};
+
+
+================================================================================
+# 2724_sort_by  (solution.js)
+================================================================================
+// LeetCode 2724 - Sort By
+// https://leetcode.com/problems/sort-by/
+
+var sortBy = function(arr, fn) {
+    return arr.slice().sort((a, b) => fn(a) - fn(b));
+};
+
+
+================================================================================
+# 2725_interval_cancellation  (solution.js)
+================================================================================
+// LeetCode 2725 - Interval Cancellation
+// https://leetcode.com/problems/interval-cancellation/
+
+var cancellable = function(fn, args, t) {
+    fn(...args);
+    const id = setInterval(() => fn(...args), t);
+    return function() { clearInterval(id); };
+};
+
+
+================================================================================
+# 2726_calculator_with_method_chaining  (solution.js)
+================================================================================
+// LeetCode 2726 - Calculator with Method Chaining
+// https://leetcode.com/problems/calculator-with-method-chaining/
+
+class Calculator {
+    constructor(value) {
+        this.val = value;
+    }
+    add(value) {
+        this.val += value;
+        return this;
+    }
+    subtract(value) {
+        this.val -= value;
+        return this;
+    }
+    multiply(value) {
+        this.val *= value;
+        return this;
+    }
+    divide(value) {
+        if (value === 0) throw new Error("Division by zero is not allowed");
+        this.val /= value;
+        return this;
+    }
+    power(value) {
+        this.val = Math.pow(this.val, value);
+        return this;
+    }
+    getResult() {
+        return this.val;
+    }
+}

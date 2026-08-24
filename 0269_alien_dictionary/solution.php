@@ -1,4 +1,5 @@
-﻿// LeetCode 0269 - Alien Dictionary
+<?php
+// LeetCode 0269 - Alien Dictionary
 // https://leetcode.com/problems/alien-dictionary/
 
 class Solution {

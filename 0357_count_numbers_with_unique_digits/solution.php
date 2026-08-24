@@ -1,4 +1,5 @@
-﻿// LeetCode 0357 - Count Numbers with Unique Digits
+<?php
+// LeetCode 0357 - Count Numbers with Unique Digits
 // https://leetcode.com/problems/count-numbers-with-unique-digits/
 
 class Solution {

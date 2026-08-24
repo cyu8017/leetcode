@@ -1,4 +1,5 @@
-﻿// LeetCode 0159 - Longest Substring with At Most Two Distinct Characters
+<?php
+// LeetCode 0159 - Longest Substring with At Most Two Distinct Characters
 // https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0305 - Number of Islands II
+<?php
+// LeetCode 0305 - Number of Islands II
 // https://leetcode.com/problems/number-of-islands-ii/
 
 class Solution {

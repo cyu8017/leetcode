@@ -1,4 +1,5 @@
-﻿// LeetCode 0326 - Power of Three
+<?php
+// LeetCode 0326 - Power of Three
 // https://leetcode.com/problems/power-of-three/
 
 class Solution {

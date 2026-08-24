@@ -1,4 +1,5 @@
-﻿// LeetCode 0415 - Add Strings
+<?php
+// LeetCode 0415 - Add Strings
 // https://leetcode.com/problems/add-strings/
 
 class Solution {

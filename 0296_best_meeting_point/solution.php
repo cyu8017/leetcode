@@ -1,4 +1,5 @@
-﻿// LeetCode 0296 - Best Meeting Point
+<?php
+// LeetCode 0296 - Best Meeting Point
 // https://leetcode.com/problems/best-meeting-point/
 
 class Solution {

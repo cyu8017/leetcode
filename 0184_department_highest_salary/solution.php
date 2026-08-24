@@ -1,4 +1,5 @@
-﻿// LeetCode 0184 - Department Highest Salary
+<?php
+// LeetCode 0184 - Department Highest Salary
 // https://leetcode.com/problems/department-highest-salary/
 
 const QUERY = <<<'SQL'

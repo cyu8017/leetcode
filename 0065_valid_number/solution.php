@@ -1,4 +1,5 @@
-﻿// LeetCode 0065 - Valid Number
+<?php
+// LeetCode 0065 - Valid Number
 // https://leetcode.com/problems/valid-number/
 
 class Solution {

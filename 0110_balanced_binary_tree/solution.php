@@ -1,4 +1,5 @@
-﻿// LeetCode 0110 - Balanced Binary Tree
+<?php
+// LeetCode 0110 - Balanced Binary Tree
 // https://leetcode.com/problems/balanced-binary-tree/
 
 class TreeNode {

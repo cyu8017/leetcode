@@ -1,4 +1,5 @@
-﻿// LeetCode 0043 - Multiply Strings
+<?php
+// LeetCode 0043 - Multiply Strings
 // https://leetcode.com/problems/multiply-strings/
 
 class Solution {

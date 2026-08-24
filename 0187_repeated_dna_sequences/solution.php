@@ -1,4 +1,5 @@
-﻿// LeetCode 0187 - Repeated DNA Sequences
+<?php
+// LeetCode 0187 - Repeated DNA Sequences
 // https://leetcode.com/problems/repeated-dna-sequences/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0054 - Spiral Matrix
+<?php
+// LeetCode 0054 - Spiral Matrix
 // https://leetcode.com/problems/spiral-matrix/
 
 class Solution {

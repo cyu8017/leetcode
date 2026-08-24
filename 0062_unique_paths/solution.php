@@ -1,4 +1,5 @@
-﻿// LeetCode 0062 - Unique Paths
+<?php
+// LeetCode 0062 - Unique Paths
 // https://leetcode.com/problems/unique-paths/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0041 - First Missing Positive
+<?php
+// LeetCode 0041 - First Missing Positive
 // https://leetcode.com/problems/first-missing-positive/
 
 class Solution {

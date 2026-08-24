@@ -1,4 +1,5 @@
-﻿// LeetCode 0098 - Validate Binary Search Tree
+<?php
+// LeetCode 0098 - Validate Binary Search Tree
 // https://leetcode.com/problems/validate-binary-search-tree/
 
 class TreeNode {

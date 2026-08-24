@@ -1,4 +1,5 @@
-﻿// LeetCode 0164 - Maximum Gap
+<?php
+// LeetCode 0164 - Maximum Gap
 // https://leetcode.com/problems/maximum-gap/
 
 class Solution {

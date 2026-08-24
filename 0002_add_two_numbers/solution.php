@@ -1,3 +1,4 @@
+<?php
 // LeetCode 0002 - Add Two Numbers
 // https://leetcode.com/problems/add-two-numbers/
 

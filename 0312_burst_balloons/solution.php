@@ -1,4 +1,5 @@
-﻿// LeetCode 0312 - Burst Balloons
+<?php
+// LeetCode 0312 - Burst Balloons
 // https://leetcode.com/problems/burst-balloons/
 
 class Solution {

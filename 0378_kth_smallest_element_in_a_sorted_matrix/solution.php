@@ -1,4 +1,5 @@
-﻿// LeetCode 0378 - Kth Smallest Element in a Sorted Matrix
+<?php
+// LeetCode 0378 - Kth Smallest Element in a Sorted Matrix
 // https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 
 class Solution {

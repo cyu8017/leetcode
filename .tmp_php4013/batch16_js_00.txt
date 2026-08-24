@@ -1,0 +1,692 @@
+
+===== 3286_find_a_safe_walk_through_a_grid =====
+// LeetCode 3286 - Find a Safe Walk Through a Grid
+// https://leetcode.com/problems/find-a-safe-walk-through-a-grid/
+
+var findSafeWalk = function(grid, health) {
+    const m = grid.length, n = grid[0].length;
+    const vis = Array.from({length: m}, () => new Array(n).fill(-1));
+    let qh = health - grid[0][0];
+    if (qh <= 0) return false;
+    const q = [[0, 0, qh]];
+    vis[0][0] = qh;
+    const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    while (q.length) {
+        const cur = q.shift();
+        if (cur[0] === m - 1 && cur[1] === n - 1) return true;
+        for (const d of dirs) {
+            const nr = cur[0] + d[0], nc = cur[1] + d[1];
+            if (nr < 0 || nc < 0 || nr >= m || nc >= n) continue;
+            const nh = cur[2] - grid[nr][nc];
+            if (nh <= 0) continue;
+            if (nh > vis[nr][nc]) {
+                vis[nr][nc] = nh;
+                q.push([nr, nc, nh]);
+            }
+        }
+    }
+    return false;
+};
+
+===== 3287_find_the_maximum_sequence_value_of_array =====
+// LeetCode 3287 - Find the Maximum Sequence Value of Array
+// https://leetcode.com/problems/find-the-maximum-sequence-value-of-array/
+
+var maxValue = function(nums, k) {
+    const n = nums.length;
+    const MAX = 128;
+    const left = Array.from({length: n + 1}, () =>
+        Array.from({length: k + 1}, () => new Array(MAX).fill(false)));
+    left[0][0][0] = true;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j <= k; j++) {
+            for (let v = 0; v < MAX; v++) {
+                if (!left[i][j][v]) continue;
+                left[i + 1][j][v] = true;
+                if (j < k) left[i + 1][j + 1][v | nums[i]] = true;
+            }
+        }
+    }
+    const right = Array.from({length: n + 1}, () =>
+        Array.from({length: k + 1}, () => new Array(MAX).fill(false)));
+    right[n][0][0] = true;
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = 0; j <= k; j++) {
+            for (let v = 0; v < MAX; v++) {
+                if (!right[i + 1][j][v]) continue;
+                right[i][j][v] = true;
+                if (j < k) right[i][j + 1][v | nums[i]] = true;
+            }
+        }
+    }
+    let ans = 0;
+    for (let mid = k; mid + k <= n; mid++) {
+        for (let a = 0; a < MAX; a++) {
+            if (!left[mid][k][a]) continue;
+            for (let b = 0; b < MAX; b++) {
+                if (right[mid][k][b] && (a ^ b) > ans) ans = a ^ b;
+            }
+        }
+    }
+    return ans;
+};
+
+===== 3288_length_of_the_longest_increasing_path =====
+// LeetCode 3288 - Length of the Longest Increasing Path
+// https://leetcode.com/problems/length-of-the-longest-increasing-path/
+
+function lis(a) {
+    const tails = [];
+    for (const x of a) {
+        let lo = 0, hi = tails.length;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (tails[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        if (lo === tails.length) tails.push(x);
+        else tails[lo] = x;
+    }
+    return tails.length;
+}
+var maxPathLength = function(coordinates, k) {
+    const n = coordinates.length;
+    const arr = Array.from({length: n}, (_, i) => [coordinates[i][0], coordinates[i][1], i]);
+    arr.sort((a, b) => a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]);
+    const kx = coordinates[k][0], ky = coordinates[k][1];
+    const left = [], right = [];
+    for (const p of arr) {
+        if (p[0] < kx && p[1] < ky) left.push(p[1]);
+        if (p[0] > kx && p[1] > ky) right.push(p[1]);
+    }
+    return lis(left) + 1 + lis(right);
+};
+
+===== 3289_the_two_sneaky_numbers_of_digitville =====
+// LeetCode 3289 - The Two Sneaky Numbers of Digitville
+// https://leetcode.com/problems/the-two-sneaky-numbers-of-digitville/
+
+var getSneakyNumbers = function(nums) {
+    const seen = new Set();
+    const ans = [];
+    for (const x of nums) {
+        if (seen.has(x)) ans.push(x);
+        else seen.add(x);
+    }
+    return ans;
+};
+
+===== 3290_maximum_multiplication_score =====
+// LeetCode 3290 - Maximum Multiplication Score
+// https://leetcode.com/problems/maximum-multiplication-score/
+
+var maxScore = function(a, b) {
+    const neg = -(1n << 62n);
+    const dp = [0n, neg, neg, neg, neg];
+    for (const x of b) {
+        for (let k = 4; k >= 1; k--) {
+            if (dp[k - 1] === neg) continue;
+            const v = dp[k - 1] + BigInt(a[k - 1]) * BigInt(x);
+            if (v > dp[k]) dp[k] = v;
+        }
+    }
+    return Number(dp[4]);
+};
+
+===== 3291_minimum_number_of_valid_strings_to_form_target_i =====
+// LeetCode 3291 - Minimum Number of Valid Strings to Form Target I
+// https://leetcode.com/problems/minimum-number-of-valid-strings-to-form-target-i/
+
+var minValidStrings = function(words, target) {
+    const n = target.length;
+    const inf = 1000000000;
+    const dp = new Array(n + 1).fill(inf);
+    dp[0] = 0;
+    const root = { next: new Array(26).fill(null) };
+    for (const w of words) {
+        let cur = root;
+        for (const c of w) {
+            const ci = c.charCodeAt(0) - 97;
+            if (!cur.next[ci]) cur.next[ci] = { next: new Array(26).fill(null) };
+            cur = cur.next[ci];
+        }
+    }
+    for (let i = 0; i < n; i++) {
+        if (dp[i] === inf) continue;
+        let cur = root;
+        for (let j = i; j < n; j++) {
+            const ci = target.charCodeAt(j) - 97;
+            if (!cur.next[ci]) break;
+            cur = cur.next[ci];
+            if (dp[i] + 1 < dp[j + 1]) dp[j + 1] = dp[i] + 1;
+        }
+    }
+    return dp[n] === inf ? -1 : dp[n];
+};
+
+===== 3292_minimum_number_of_valid_strings_to_form_target_ii =====
+// LeetCode 3292 - Minimum Number of Valid Strings to Form Target II
+// https://leetcode.com/problems/minimum-number-of-valid-strings-to-form-target-ii/
+
+var minValidStrings = function(words, target) {
+    const n = target.length;
+    const inf = 1000000000;
+    const dp = new Array(n + 1).fill(inf);
+    dp[0] = 0;
+    const root = { next: new Array(26).fill(null) };
+    for (const w of words) {
+        let cur = root;
+        for (const c of w) {
+            const ci = c.charCodeAt(0) - 97;
+            if (!cur.next[ci]) cur.next[ci] = { next: new Array(26).fill(null) };
+            cur = cur.next[ci];
+        }
+    }
+    for (let i = 0; i < n; i++) {
+        if (dp[i] === inf) continue;
+        let cur = root;
+        for (let j = i; j < n; j++) {
+            const ci = target.charCodeAt(j) - 97;
+            if (!cur.next[ci]) break;
+            cur = cur.next[ci];
+            if (dp[i] + 1 < dp[j + 1]) dp[j + 1] = dp[i] + 1;
+        }
+    }
+    return dp[n] === inf ? -1 : dp[n];
+};
+
+===== 3294_convert_doubly_linked_list_to_array_ii =====
+// LeetCode 3294 - Convert Doubly Linked List to Array II
+// https://leetcode.com/problems/convert-doubly-linked-list-to-array-ii/
+
+/**
+ * // Definition for a Node.
+ * function Node(val, prev, next) {
+ *    this.val = val;
+ *    this.prev = prev;
+ *    this.next = next;
+ * };
+ */
+var toArray = function(node) {
+    while (node !== null && node.prev !== null) node = node.prev;
+    const ans = [];
+    while (node !== null) {
+        ans.push(node.val);
+        node = node.next;
+    }
+    return ans;
+};
+
+===== 3295_report_spam_message =====
+// LeetCode 3295 - Report Spam Message
+// https://leetcode.com/problems/report-spam-message/
+
+var reportSpam = function(message, bannedWords) {
+    const ban = new Set(bannedWords);
+    let cnt = 0;
+    for (const w of message) {
+        if (ban.has(w)) {
+            cnt++;
+            if (cnt >= 2) return true;
+        }
+    }
+    return false;
+};
+
+===== 3296_minimum_number_of_seconds_to_make_mountain_height_zero =====
+// LeetCode 3296 - Minimum Number of Seconds to Make Mountain Height Zero
+// https://leetcode.com/problems/minimum-number-of-seconds-to-make-mountain-height-zero/
+
+function ok(t, mountainHeight, workerTimes) {
+    let total = 0;
+    for (const w of workerTimes) {
+        let l = 0, h = mountainHeight;
+        while (l < h) {
+            const mid = Math.floor((l + h + 1) / 2);
+            if (w * mid * (mid + 1) / 2 <= t) l = mid;
+            else h = mid - 1;
+        }
+        total += l;
+        if (total >= mountainHeight) return true;
+    }
+    return total >= mountainHeight;
+}
+var minNumberOfSeconds = function(mountainHeight, workerTimes) {
+    let lo = 0, hi = 1e18;
+    while (lo < hi) {
+        const mid = Math.floor((lo + hi) / 2);
+        if (ok(mid, mountainHeight, workerTimes)) hi = mid;
+        else lo = mid + 1;
+    }
+    return lo;
+};
+
+===== 3297_count_substrings_that_can_be_rearranged_to_contain_a_string_i =====
+// LeetCode 3297 - Count Substrings That Can Be Rearranged to Contain a String I
+// https://leetcode.com/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-i/
+
+var validSubstringCount = function(word1, word2) {
+    const need = new Array(26).fill(0);
+    let required = 0;
+    for (const c of word2) {
+        const i = c.charCodeAt(0) - 97;
+        if (need[i] === 0) required++;
+        need[i]++;
+    }
+    const have = new Array(26).fill(0);
+    let formed = 0, ans = 0, l = 0;
+    for (let r = 0; r < word1.length; r++) {
+        const c = word1.charCodeAt(r) - 97;
+        have[c]++;
+        if (have[c] === need[c] && need[c] > 0) formed++;
+        while (formed === required && l <= r) {
+            ans += word1.length - r;
+            const c2 = word1.charCodeAt(l) - 97;
+            if (have[c2] === need[c2] && need[c2] > 0) formed--;
+            have[c2]--;
+            l++;
+        }
+    }
+    return ans;
+};
+
+===== 3298_count_substrings_that_can_be_rearranged_to_contain_a_string_ii =====
+// LeetCode 3298 - Count Substrings That Can Be Rearranged to Contain a String II
+// https://leetcode.com/problems/count-substrings-that-can-be-rearranged-to-contain-a-string-ii/
+
+var validSubstringCount = function(word1, word2) {
+    const need = new Array(26).fill(0);
+    let required = 0;
+    for (const c of word2) {
+        const i = c.charCodeAt(0) - 97;
+        if (need[i] === 0) required++;
+        need[i]++;
+    }
+    const have = new Array(26).fill(0);
+    let formed = 0, ans = 0, l = 0;
+    for (let r = 0; r < word1.length; r++) {
+        const c = word1.charCodeAt(r) - 97;
+        have[c]++;
+        if (have[c] === need[c] && need[c] > 0) formed++;
+        while (formed === required && l <= r) {
+            ans += word1.length - r;
+            const c2 = word1.charCodeAt(l) - 97;
+            if (have[c2] === need[c2] && need[c2] > 0) formed--;
+            have[c2]--;
+            l++;
+        }
+    }
+    return ans;
+};
+
+===== 3299_sum_of_consecutive_subsequences =====
+// LeetCode 3299 - Sum of Consecutive Subsequences
+// https://leetcode.com/problems/sum-of-consecutive-subsequences/
+
+var rangeSum = function(nums) {
+    const mod = 1000000007;
+    const cnt = new Map();
+    const sum = new Map();
+    let ans = 0;
+    for (const x of nums) {
+        const cL = cnt.get(x - 1) || 0, sL = sum.get(x - 1) || 0;
+        const cR = cnt.get(x + 1) || 0, sR = sum.get(x + 1) || 0;
+        let c = (1 + cL + cR) % mod;
+        let s = (x + sL + (cL * x % mod) + sR + (cR * x % mod)) % mod;
+        if (cL > 0 && cR > 0) {
+            c = (c + (cL * cR % mod)) % mod;
+            s = (s + (sL * cR % mod) + (sR * cL % mod) + (cL * cR % mod * x % mod)) % mod;
+        }
+        cnt.set(x, ((cnt.get(x) || 0) + c) % mod);
+        sum.set(x, ((sum.get(x) || 0) + s) % mod);
+        ans = (ans + s) % mod;
+    }
+    return ans;
+};
+
+===== 3300_minimum_element_after_replacement_with_digit_sum =====
+// LeetCode 3300 - Minimum Element After Replacement With Digit Sum
+// https://leetcode.com/problems/minimum-element-after-replacement-with-digit-sum/
+
+var minElement = function(nums) {
+    let ans = 1000000000;
+    for (let num of nums) {
+        let x = num, s = 0;
+        while (x > 0) { s += x % 10; x = Math.floor(x / 10); }
+        if (s < ans) ans = s;
+    }
+    return ans;
+};
+
+===== 3301_maximize_the_total_height_of_unique_towers =====
+// LeetCode 3301 - Maximize the Total Height of Unique Towers
+// https://leetcode.com/problems/maximize-the-total-height-of-unique-towers/
+
+var maximumTotalSum = function(maximumHeight) {
+    maximumHeight.sort((a, b) => b - a);
+    let ans = 0;
+    let prev = 1e18;
+    for (const h of maximumHeight) {
+        let cur = h;
+        if (cur >= prev) cur = prev - 1;
+        if (cur <= 0) return -1;
+        ans += cur;
+        prev = cur;
+    }
+    return ans;
+};
+
+===== 3302_find_the_lexicographically_smallest_valid_sequence =====
+// LeetCode 3302 - Find the Lexicographically Smallest Valid Sequence
+// https://leetcode.com/problems/find-the-lexicographically-smallest-valid-sequence/
+
+function canFinish(w1, w2, i, j, usedSkip, right) {
+    const m = w2.length;
+    if (j >= m) return true;
+    if (!usedSkip) {
+        if (right[j] >= i) return true;
+        if (j + 1 <= m && right[j + 1] > i) return true;
+        if (right[j] > i) return true;
+        return false;
+    }
+    return right[j] >= i;
+}
+var validSequence = function(word1, word2) {
+    const n = word1.length, m = word2.length;
+    const right = new Array(m + 1);
+    right[m] = n;
+    let j = m - 1;
+    for (let i = n - 1; i >= 0 && j >= 0; i--) {
+        if (word1[i] === word2[j]) {
+            right[j] = i;
+            j--;
+        }
+    }
+    for (; j >= 0; j--) right[j] = -1;
+    const ans = new Array(m);
+    let usedSkip = false;
+    let i = 0;
+    for (j = 0; j < m; j++) {
+        let found = false;
+        while (i < n) {
+            if (word1[i] === word2[j]) {
+                if (canFinish(word1, word2, i + 1, j + 1, usedSkip, right)) {
+                    ans[j] = i;
+                    i++;
+                    found = true;
+                    break;
+                }
+            } else if (!usedSkip) {
+                if (canFinish(word1, word2, i + 1, j + 1, true, right)) {
+                    ans[j] = i;
+                    i++;
+                    usedSkip = true;
+                    found = true;
+                    break;
+                }
+            }
+            i++;
+        }
+        if (!found) return [];
+    }
+    return ans;
+};
+
+===== 3303_find_the_occurrence_of_first_almost_equal_substring =====
+// LeetCode 3303 - Find the Occurrence of First Almost Equal Substring
+// https://leetcode.com/problems/find-the-occurrence-of-first-almost-equal-substring/
+
+var minStartingIndex = function(s, pattern) {
+    const n = s.length, m = pattern.length;
+    for (let i = 0; i + m <= n; i++) {
+        let diff = 0;
+        for (let j = 0; j < m; j++) {
+            if (s[i + j] !== pattern[j]) {
+                diff++;
+                if (diff > 1) break;
+            }
+        }
+        if (diff <= 1) return i;
+    }
+    return -1;
+};
+
+===== 3304_find_the_k_th_character_in_string_game_i =====
+// LeetCode 3304 - Find the K-th Character in String Game I
+// https://leetcode.com/problems/find-the-k-th-character-in-string-game-i/
+
+var kthCharacter = function(k) {
+    let s = 'a';
+    while (s.length < k) {
+        const n = s.length;
+        let add = '';
+        for (let i = 0; i < n; i++) {
+            add += String.fromCharCode(97 + ((s.charCodeAt(i) - 97 + 1) % 26));
+        }
+        s += add;
+    }
+    return s[k - 1];
+};
+
+===== 3305_count_of_substrings_containing_every_vowel_and_k_consonants_i =====
+// LeetCode 3305 - Count of Substrings Containing Every Vowel and K Consonants I
+// https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-i/
+
+function isVowel(c) {
+    return c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
+}
+function atLeast(word, k) {
+    const cnt = new Map();
+    let cons = 0, l = 0, ans = 0;
+    for (let r = 0; r < word.length; r++) {
+        const c = word[r];
+        if (isVowel(c)) cnt.set(c, (cnt.get(c) || 0) + 1);
+        else cons++;
+        while (cnt.size === 5 && cons >= k) {
+            ans += word.length - r;
+            const c2 = word[l];
+            if (isVowel(c2)) {
+                const nv = cnt.get(c2) - 1;
+                if (nv === 0) cnt.delete(c2);
+                else cnt.set(c2, nv);
+            } else cons--;
+            l++;
+        }
+    }
+    return ans;
+}
+var countOfSubstrings = function(word, k) {
+    return atLeast(word, k) - atLeast(word, k + 1);
+};
+
+===== 3306_count_of_substrings_containing_every_vowel_and_k_consonants_ii =====
+// LeetCode 3306 - Count of Substrings Containing Every Vowel and K Consonants II
+// https://leetcode.com/problems/count-of-substrings-containing-every-vowel-and-k-consonants-ii/
+
+function isVowel(c) {
+    return c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u';
+}
+function atLeast(word, k) {
+    const cnt = new Map();
+    let cons = 0, l = 0, ans = 0;
+    for (let r = 0; r < word.length; r++) {
+        const c = word[r];
+        if (isVowel(c)) cnt.set(c, (cnt.get(c) || 0) + 1);
+        else cons++;
+        while (cnt.size === 5 && cons >= k) {
+            ans += word.length - r;
+            const c2 = word[l];
+            if (isVowel(c2)) {
+                const nv = cnt.get(c2) - 1;
+                if (nv === 0) cnt.delete(c2);
+                else cnt.set(c2, nv);
+            } else cons--;
+            l++;
+        }
+    }
+    return ans;
+}
+var countOfSubstrings = function(word, k) {
+    return atLeast(word, k) - atLeast(word, k + 1);
+};
+
+===== 3307_find_the_k_th_character_in_string_game_ii =====
+// LeetCode 3307 - Find the K-th Character in String Game II
+// https://leetcode.com/problems/find-the-k-th-character-in-string-game-ii/
+
+var kthCharacter = function(k, operations) {
+    let shift = 0;
+    const ops = operations.slice();
+    while (ops.length) {
+        const op = ops.pop();
+        const half = 1n << BigInt(ops.length);
+        if (BigInt(k) > half) {
+            k = Number(BigInt(k) - half);
+            if (op === 1) shift++;
+        }
+    }
+    return String.fromCharCode(97 + (shift % 26));
+};
+
+===== 3309_maximum_possible_number_by_binary_concatenation =====
+// LeetCode 3309 - Maximum Possible Number by Binary Concatenation
+// https://leetcode.com/problems/maximum-possible-number-by-binary-concatenation/
+
+function toBin(x) {
+    if (x === 0) return '0';
+    let s = '';
+    while (x > 0) {
+        s = String(x & 1) + s;
+        x >>= 1;
+    }
+    return s;
+}
+function perm(i, idx, bs, ans) {
+    if (i === 3) {
+        const s = bs[idx[0]] + bs[idx[1]] + bs[idx[2]];
+        let v = 0;
+        for (const c of s) v = v * 2 + (c.charCodeAt(0) - 48);
+        if (v > ans[0]) ans[0] = v;
+        return;
+    }
+    for (let j = i; j < 3; j++) {
+        let t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+        perm(i + 1, idx, bs, ans);
+        t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+    }
+}
+var maxGoodNumber = function(nums) {
+    const bs = [toBin(nums[0]), toBin(nums[1]), toBin(nums[2])];
+    const idx = [0, 1, 2];
+    const ans = [0];
+    perm(0, idx, bs, ans);
+    return ans[0];
+};
+
+===== 3310_remove_methods_from_project =====
+// LeetCode 3310 - Remove Methods From Project
+// https://leetcode.com/problems/remove-methods-from-project/
+
+var remainingMethods = function(n, k, invocations) {
+    const g = Array.from({length: n}, () => []);
+    for (const e of invocations) g[e[0]].push(e[1]);
+    const sus = new Array(n).fill(false);
+    const dfs = (u) => {
+        if (sus[u]) return;
+        sus[u] = true;
+        for (const v of g[u]) dfs(v);
+    };
+    dfs(k);
+    for (const e of invocations) {
+        if (!sus[e[0]] && sus[e[1]]) {
+            const ans = [];
+            for (let i = 0; i < n; i++) ans.push(i);
+            return ans;
+        }
+    }
+    const ans = [];
+    for (let i = 0; i < n; i++) if (!sus[i]) ans.push(i);
+    return ans;
+};
+
+===== 3311_construct_2d_grid_matching_graph_layout =====
+// LeetCode 3311 - Construct 2D Grid Matching Graph Layout
+// https://leetcode.com/problems/construct-2d-grid-matching-graph-layout/
+
+var constructGridLayout = function(n, edges) {
+    const g = Array.from({length: n}, () => []);
+    for (const e of edges) {
+        g[e[0]].push(e[1]);
+        g[e[1]].push(e[0]);
+    }
+    const deg = new Array(n);
+    for (let i = 0; i < n; i++) deg[i] = g[i].length;
+    let start = 0;
+    for (let i = 0; i < n; i++) {
+        if (deg[i] === 1) { start = i; break; }
+        if (deg[i] === 2) start = i;
+    }
+    const vis = new Array(n).fill(false);
+    const row = [];
+    let cur = start, prev = -1;
+    for (;;) {
+        row.push(cur);
+        vis[cur] = true;
+        let next = -1;
+        for (const v of g[cur]) {
+            if (v !== prev && !vis[v] && deg[v] <= 3) {
+                next = v;
+                if (deg[v] < 4) break;
+            }
+        }
+        if (next === -1) break;
+        prev = cur;
+        cur = next;
+    }
+    let width = row.length;
+    let height = width !== 0 ? Math.floor(n / width) : n;
+    if (width === 0 || width * height !== n) {
+        for (let w = 1; w <= n; w++) {
+            if (n % w === 0) { width = w; height = Math.floor(n / w); break; }
+        }
+    }
+    const grid = Array.from({length: height}, () => new Array(width));
+    for (let i = 0; i < n; i++) grid[Math.floor(i / width)][i % width] = i;
+    return grid;
+};
+
+===== 3312_sorted_gcd_pair_queries =====
+// LeetCode 3312 - Sorted GCD Pair Queries
+// https://leetcode.com/problems/sorted-gcd-pair-queries/
+
+var gcdValues = function(nums, queries) {
+    let maxV = 0;
+    for (const x of nums) if (x > maxV) maxV = x;
+    const cnt = new Array(maxV + 1).fill(0);
+    for (const x of nums) cnt[x]++;
+    const divCnt = new Array(maxV + 1).fill(0);
+    for (let g = 1; g <= maxV; g++) {
+        let c = 0;
+        for (let m = g; m <= maxV; m += g) c += cnt[m];
+        divCnt[g] = c * (c - 1) / 2;
+    }
+    const exact = new Array(maxV + 1).fill(0);
+    for (let g = maxV; g >= 1; g--) {
+        exact[g] = divCnt[g];
+        for (let m = 2 * g; m <= maxV; m += g) exact[g] -= exact[m];
+    }
+    const pref = new Array(maxV + 1).fill(0);
+    for (let g = 1; g <= maxV; g++) pref[g] = pref[g - 1] + exact[g];
+    const ans = new Array(queries.length);
+    for (let i = 0; i < queries.length; i++) {
+        const q = queries[i];
+        let lo = 1, hi = maxV;
+        while (lo < hi) {
+            const mid = (lo + hi) >> 1;
+            if (pref[mid] > q) hi = mid;
+            else lo = mid + 1;
+        }
+        ans[i] = lo;
+    }
+    return ans;
+};

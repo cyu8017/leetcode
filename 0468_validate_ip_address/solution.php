@@ -1,4 +1,5 @@
-﻿// LeetCode 0468 - Validate IP Address
+<?php
+// LeetCode 0468 - Validate IP Address
 // https://leetcode.com/problems/validate-ip-address/
 
 class Solution {

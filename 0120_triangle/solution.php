@@ -1,4 +1,5 @@
-﻿class Solution {
+<?php
+class Solution {
     function minimumTotal($triangle) {
         $dp = $triangle[count($triangle) - 1];
         for ($rowIndex = count($triangle) - 2; $rowIndex >= 0; $rowIndex--) {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0413 - Arithmetic Slices
+<?php
+// LeetCode 0413 - Arithmetic Slices
 // https://leetcode.com/problems/arithmetic-slices/
 
 class Solution {

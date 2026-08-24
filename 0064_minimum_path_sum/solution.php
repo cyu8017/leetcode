@@ -1,4 +1,5 @@
-﻿// LeetCode 0064 - Minimum Path Sum
+<?php
+// LeetCode 0064 - Minimum Path Sum
 // https://leetcode.com/problems/minimum-path-sum/
 
 class Solution {

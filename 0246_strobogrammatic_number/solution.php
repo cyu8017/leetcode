@@ -1,4 +1,5 @@
-﻿// LeetCode 0246 - Strobogrammatic Number
+<?php
+// LeetCode 0246 - Strobogrammatic Number
 // https://leetcode.com/problems/strobogrammatic-number/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0271 - Encode and Decode Strings
+<?php
+// LeetCode 0271 - Encode and Decode Strings
 // https://leetcode.com/problems/encode-and-decode-strings/
 
 class Codec {

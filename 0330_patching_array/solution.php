@@ -1,4 +1,5 @@
-﻿// LeetCode 0330 - Patching Array
+<?php
+// LeetCode 0330 - Patching Array
 // https://leetcode.com/problems/patching-array/
 
 class Solution {

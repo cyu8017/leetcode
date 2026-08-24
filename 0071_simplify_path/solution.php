@@ -1,4 +1,5 @@
-﻿// LeetCode 0071 - Simplify Path
+<?php
+// LeetCode 0071 - Simplify Path
 // https://leetcode.com/problems/simplify-path/
 
 class Solution {

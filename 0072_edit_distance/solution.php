@@ -1,4 +1,5 @@
-﻿// LeetCode 0072 - Edit Distance
+<?php
+// LeetCode 0072 - Edit Distance
 // https://leetcode.com/problems/edit-distance/
 
 class Solution {

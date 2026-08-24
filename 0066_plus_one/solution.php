@@ -1,4 +1,5 @@
-﻿// LeetCode 0066 - Plus One
+<?php
+// LeetCode 0066 - Plus One
 // https://leetcode.com/problems/plus-one/
 
 class Solution {

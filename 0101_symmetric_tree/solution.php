@@ -1,4 +1,5 @@
-﻿// LeetCode 0101 - Symmetric Tree
+<?php
+// LeetCode 0101 - Symmetric Tree
 // https://leetcode.com/problems/symmetric-tree/
 
 class TreeNode {

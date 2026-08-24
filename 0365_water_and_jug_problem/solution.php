@@ -1,4 +1,5 @@
-﻿// LeetCode 0365 - Water and Jug Problem
+<?php
+// LeetCode 0365 - Water and Jug Problem
 // https://leetcode.com/problems/water-and-jug-problem/
 
 class Solution {

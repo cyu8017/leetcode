@@ -1,4 +1,5 @@
-﻿// LeetCode 0207 - Course Schedule
+<?php
+// LeetCode 0207 - Course Schedule
 // https://leetcode.com/problems/course-schedule/
 
 class Solution {

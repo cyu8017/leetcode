@@ -1,4 +1,5 @@
-﻿// LeetCode 0408 - Valid Word Abbreviation
+<?php
+// LeetCode 0408 - Valid Word Abbreviation
 // https://leetcode.com/problems/valid-word-abbreviation/
 
 class Solution {

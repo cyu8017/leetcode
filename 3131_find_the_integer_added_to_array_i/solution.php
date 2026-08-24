@@ -1,7 +1,9 @@
-﻿// LeetCode 3131 - Find the Integer Added to Array I
+<?php
+// LeetCode 3131 - Find the Integer Added to Array I
 // https://leetcode.com/problems/find-the-integer-added-to-array-i/
 
 class Solution {
-    function solve() {
+    function addedInteger($nums1, $nums2) {
+        return min($nums2) - min($nums1);
     }
 }

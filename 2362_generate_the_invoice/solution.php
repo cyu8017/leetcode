@@ -1,7 +1,22 @@
-﻿// LeetCode 2362 - Generate the Invoice
+<?php
+// LeetCode 2362 - Generate the Invoice
 // https://leetcode.com/problems/generate-the-invoice/
 
-class Solution {
-    function solve() {
-    }
-}
+const QUERY = <<<'SQL'
+WITH P AS (
+    SELECT *
+    FROM Purchases
+    JOIN Products USING (product_id)
+),
+T AS (
+    SELECT invoice_id, SUM(price * quantity) AS amount
+    FROM P
+    GROUP BY invoice_id
+    ORDER BY amount DESC, invoice_id
+    LIMIT 1
+)
+SELECT product_id, quantity, (quantity * price) AS price
+FROM P
+JOIN T USING (invoice_id)
+ORDER BY product_id
+SQL;

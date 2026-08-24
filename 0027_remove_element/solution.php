@@ -1,4 +1,5 @@
-﻿// LeetCode 0027 - Remove Element
+<?php
+// LeetCode 0027 - Remove Element
 // https://leetcode.com/problems/remove-element/
 
 class Solution {

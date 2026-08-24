@@ -1,4 +1,5 @@
-﻿// LeetCode 0258 - Add Digits
+<?php
+// LeetCode 0258 - Add Digits
 // https://leetcode.com/problems/add-digits/
 
 class Solution {

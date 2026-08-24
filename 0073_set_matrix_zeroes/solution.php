@@ -1,4 +1,5 @@
-﻿// LeetCode 0073 - Set Matrix Zeroes
+<?php
+// LeetCode 0073 - Set Matrix Zeroes
 // https://leetcode.com/problems/set-matrix-zeroes/
 
 class Solution {

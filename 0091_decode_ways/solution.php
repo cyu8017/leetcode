@@ -1,4 +1,5 @@
-﻿// LeetCode 0091 - Decode Ways
+<?php
+// LeetCode 0091 - Decode Ways
 // https://leetcode.com/problems/decode-ways/
 
 class Solution {

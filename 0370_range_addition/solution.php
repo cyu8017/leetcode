@@ -1,4 +1,5 @@
-﻿// LeetCode 0370 - Range Addition
+<?php
+// LeetCode 0370 - Range Addition
 // https://leetcode.com/problems/range-addition/
 
 class Solution {

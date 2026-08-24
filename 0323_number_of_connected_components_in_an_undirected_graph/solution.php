@@ -1,4 +1,5 @@
-﻿// LeetCode 0323 - Number of Connected Components in an Undirected Graph
+<?php
+// LeetCode 0323 - Number of Connected Components in an Undirected Graph
 // https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 
 class Solution {

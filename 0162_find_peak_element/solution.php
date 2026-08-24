@@ -1,4 +1,5 @@
-﻿// LeetCode 0162 - Find Peak Element
+<?php
+// LeetCode 0162 - Find Peak Element
 // https://leetcode.com/problems/find-peak-element/
 
 class Solution {

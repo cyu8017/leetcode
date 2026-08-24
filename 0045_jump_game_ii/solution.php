@@ -1,4 +1,5 @@
-﻿// LeetCode 0045 - Jump Game II
+<?php
+// LeetCode 0045 - Jump Game II
 // https://leetcode.com/problems/jump-game-ii/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0324 - Wiggle Sort II
+<?php
+// LeetCode 0324 - Wiggle Sort II
 // https://leetcode.com/problems/wiggle-sort-ii/
 
 class Solution {

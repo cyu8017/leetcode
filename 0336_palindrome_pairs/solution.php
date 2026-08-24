@@ -1,4 +1,5 @@
-﻿// LeetCode 0336 - Palindrome Pairs
+<?php
+// LeetCode 0336 - Palindrome Pairs
 // https://leetcode.com/problems/palindrome-pairs/
 
 class Solution {

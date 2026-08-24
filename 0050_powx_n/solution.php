@@ -1,4 +1,5 @@
-﻿// LeetCode 0050 - Pow(x, n)
+<?php
+// LeetCode 0050 - Pow(x, n)
 // https://leetcode.com/problems/powx-n/
 
 class Solution {

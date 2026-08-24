@@ -1,4 +1,5 @@
-﻿// LeetCode 0127 - Word Ladder
+<?php
+// LeetCode 0127 - Word Ladder
 // https://leetcode.com/problems/word-ladder/
 
 class Solution {

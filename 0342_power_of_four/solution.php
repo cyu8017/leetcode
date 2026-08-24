@@ -1,4 +1,5 @@
-﻿// LeetCode 0342 - Power of Four
+<?php
+// LeetCode 0342 - Power of Four
 // https://leetcode.com/problems/power-of-four/
 
 class Solution {

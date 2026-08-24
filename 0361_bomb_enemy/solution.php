@@ -1,4 +1,5 @@
-﻿// LeetCode 0361 - Bomb Enemy
+<?php
+// LeetCode 0361 - Bomb Enemy
 // https://leetcode.com/problems/bomb-enemy/
 
 class Solution {

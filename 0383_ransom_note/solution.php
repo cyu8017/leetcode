@@ -1,4 +1,5 @@
-﻿// LeetCode 0383 - Ransom Note
+<?php
+// LeetCode 0383 - Ransom Note
 // https://leetcode.com/problems/ransom-note/
 
 class Solution {

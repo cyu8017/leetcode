@@ -1,4 +1,5 @@
-﻿// LeetCode 0216 - Combination Sum III
+<?php
+// LeetCode 0216 - Combination Sum III
 // https://leetcode.com/problems/combination-sum-iii/
 
 class Solution {

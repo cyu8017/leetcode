@@ -1,4 +1,5 @@
-﻿// LeetCode 0362 - Design Hit Counter
+<?php
+// LeetCode 0362 - Design Hit Counter
 // https://leetcode.com/problems/design-hit-counter/
 
 class HitCounter {

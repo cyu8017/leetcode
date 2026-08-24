@@ -1,4 +1,5 @@
-﻿// LeetCode 0338 - Counting Bits
+<?php
+// LeetCode 0338 - Counting Bits
 // https://leetcode.com/problems/counting-bits/
 
 class Solution {

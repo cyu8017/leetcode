@@ -1,4 +1,5 @@
-﻿// LeetCode 0044 - Wildcard Matching
+<?php
+// LeetCode 0044 - Wildcard Matching
 // https://leetcode.com/problems/wildcard-matching/
 
 class Solution {

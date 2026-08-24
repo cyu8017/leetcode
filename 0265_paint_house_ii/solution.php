@@ -1,4 +1,5 @@
-﻿// LeetCode 0265 - Paint House II
+<?php
+// LeetCode 0265 - Paint House II
 // https://leetcode.com/problems/paint-house-ii/
 
 class Solution {

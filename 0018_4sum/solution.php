@@ -1,4 +1,5 @@
-﻿// LeetCode 0018 - 4Sum
+<?php
+// LeetCode 0018 - 4Sum
 // https://leetcode.com/problems/4sum/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0053 - Maximum Subarray
+<?php
+// LeetCode 0053 - Maximum Subarray
 // https://leetcode.com/problems/maximum-subarray/
 
 class Solution {

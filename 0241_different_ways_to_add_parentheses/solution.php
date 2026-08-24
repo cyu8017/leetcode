@@ -1,4 +1,5 @@
-﻿// LeetCode 0241 - Different Ways to Add Parentheses
+<?php
+// LeetCode 0241 - Different Ways to Add Parentheses
 // https://leetcode.com/problems/different-ways-to-add-parentheses/
 
 class Solution {

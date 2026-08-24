@@ -1,4 +1,5 @@
-﻿// LeetCode 0097 - Interleaving String
+<?php
+// LeetCode 0097 - Interleaving String
 // https://leetcode.com/problems/interleaving-string/
 
 class Solution {

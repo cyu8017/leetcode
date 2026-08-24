@@ -1,4 +1,5 @@
-﻿// LeetCode 0100 - Same Tree
+<?php
+// LeetCode 0100 - Same Tree
 // https://leetcode.com/problems/same-tree/
 
 class TreeNode {

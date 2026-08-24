@@ -1,4 +1,5 @@
-﻿// LeetCode 0447 - Number of Boomerangs
+<?php
+// LeetCode 0447 - Number of Boomerangs
 // https://leetcode.com/problems/number-of-boomerangs/
 
 class Solution {

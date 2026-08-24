@@ -1,4 +1,5 @@
-﻿// LeetCode 0077 - Combinations
+<?php
+// LeetCode 0077 - Combinations
 // https://leetcode.com/problems/combinations/
 
 class Solution {

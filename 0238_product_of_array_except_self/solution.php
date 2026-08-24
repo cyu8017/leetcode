@@ -1,4 +1,5 @@
-﻿// LeetCode 0238 - Product of Array Except Self
+<?php
+// LeetCode 0238 - Product of Array Except Self
 // https://leetcode.com/problems/product-of-array-except-self/
 
 class Solution {

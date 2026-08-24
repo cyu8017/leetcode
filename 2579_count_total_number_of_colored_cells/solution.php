@@ -1,7 +1,9 @@
-﻿// LeetCode 2579 - Count Total Number of Colored Cells
+<?php
+// LeetCode 2579 - Count Total Number of Colored Cells
 // https://leetcode.com/problems/count-total-number-of-colored-cells/
 
 class Solution {
-    function solve() {
+    function coloredCells($n) {
+        return 1 + 2 * $n * ($n - 1);
     }
 }

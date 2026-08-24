@@ -1,4 +1,5 @@
-﻿// LeetCode 0123 - Best Time to Buy and Sell Stock III
+<?php
+// LeetCode 0123 - Best Time to Buy and Sell Stock III
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 
 class Solution {

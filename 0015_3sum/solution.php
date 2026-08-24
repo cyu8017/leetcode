@@ -1,4 +1,5 @@
-﻿// LeetCode 0015 - 3Sum
+<?php
+// LeetCode 0015 - 3Sum
 // https://leetcode.com/problems/3sum/
 
 class Solution {

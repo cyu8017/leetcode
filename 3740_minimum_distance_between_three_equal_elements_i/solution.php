@@ -1,7 +1,23 @@
-﻿// LeetCode 3740 - Minimum Distance Between Three Equal Elements I
+<?php
+// LeetCode 3740 - Minimum Distance Between Three Equal Elements I
 // https://leetcode.com/problems/minimum-distance-between-three-equal-elements-i/
 
 class Solution {
-    function solve() {
+    function minimumDistance($nums) {
+        $g = [];
+        $n = count($nums);
+        for ($i = 0; $i < $n; $i++) {
+            if (!isset($g[$nums[$i]])) $g[$nums[$i]] = [];
+            $g[$nums[$i]][] = $i;
+        }
+        $inf = 1 << 30;
+        $ans = $inf;
+        foreach ($g as $ls) {
+            $m = count($ls);
+            for ($h = 0; $h < $m - 2; $h++) {
+                $ans = min($ans, ($ls[$h + 2] - $ls[$h]) * 2);
+            }
+        }
+        return $ans === $inf ? -1 : $ans;
     }
 }

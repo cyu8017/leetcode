@@ -1,4 +1,5 @@
-﻿// LeetCode 0281 - Zigzag Iterator
+<?php
+// LeetCode 0281 - Zigzag Iterator
 // https://leetcode.com/problems/zigzag-iterator/
 
 class ZigzagIterator {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0343 - Integer Break
+<?php
+// LeetCode 0343 - Integer Break
 // https://leetcode.com/problems/integer-break/
 
 class Solution {

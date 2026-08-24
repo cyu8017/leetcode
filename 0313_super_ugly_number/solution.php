@@ -1,4 +1,5 @@
-﻿// LeetCode 0313 - Super Ugly Number
+<?php
+// LeetCode 0313 - Super Ugly Number
 // https://leetcode.com/problems/super-ugly-number/
 
 class Solution {

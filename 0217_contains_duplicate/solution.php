@@ -1,4 +1,5 @@
-﻿// LeetCode 0217 - Contains Duplicate
+<?php
+// LeetCode 0217 - Contains Duplicate
 // https://leetcode.com/problems/contains-duplicate/
 
 class Solution {

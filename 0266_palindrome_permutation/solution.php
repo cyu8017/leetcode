@@ -1,4 +1,5 @@
-﻿// LeetCode 0266 - Palindrome Permutation
+<?php
+// LeetCode 0266 - Palindrome Permutation
 // https://leetcode.com/problems/palindrome-permutation/
 
 class Solution {

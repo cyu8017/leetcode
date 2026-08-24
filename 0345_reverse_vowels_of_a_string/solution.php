@@ -1,4 +1,5 @@
-﻿// LeetCode 0345 - Reverse Vowels of a String
+<?php
+// LeetCode 0345 - Reverse Vowels of a String
 // https://leetcode.com/problems/reverse-vowels-of-a-string/
 
 class Solution {

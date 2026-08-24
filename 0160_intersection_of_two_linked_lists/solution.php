@@ -1,4 +1,5 @@
-﻿// LeetCode 0160 - Intersection of Two Linked Lists
+<?php
+// LeetCode 0160 - Intersection of Two Linked Lists
 // https://leetcode.com/problems/intersection-of-two-linked-lists/
 
 class ListNode {

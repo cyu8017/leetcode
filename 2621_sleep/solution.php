@@ -1,7 +1,10 @@
-﻿// LeetCode 2621 - Sleep
+<?php
+// LeetCode 2621 - Sleep
 // https://leetcode.com/problems/sleep/
 
 class Solution {
-    function solve() {
+    function sleep($millis) {
+        usleep((int)($millis * 1000));
+        return null;
     }
 }

@@ -1,4 +1,5 @@
-﻿// LeetCode 0004 - Median of Two Sorted Arrays
+<?php
+// LeetCode 0004 - Median of Two Sorted Arrays
 // https://leetcode.com/problems/median-of-two-sorted-arrays/
 
 class Solution {

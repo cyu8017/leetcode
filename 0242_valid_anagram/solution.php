@@ -1,4 +1,5 @@
-﻿// LeetCode 0242 - Valid Anagram
+<?php
+// LeetCode 0242 - Valid Anagram
 // https://leetcode.com/problems/valid-anagram/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0334 - Increasing Triplet Subsequence
+<?php
+// LeetCode 0334 - Increasing Triplet Subsequence
 // https://leetcode.com/problems/increasing-triplet-subsequence/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0152 - Maximum Product Subarray
+<?php
+// LeetCode 0152 - Maximum Product Subarray
 // https://leetcode.com/problems/maximum-product-subarray/
 
 class Solution {

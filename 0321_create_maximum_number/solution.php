@@ -1,4 +1,5 @@
-﻿// LeetCode 0321 - Create Maximum Number
+<?php
+// LeetCode 0321 - Create Maximum Number
 // https://leetcode.com/problems/create-maximum-number/
 
 class Solution {

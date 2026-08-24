@@ -1,4 +1,5 @@
-﻿// LeetCode 0252 - Meeting Rooms
+<?php
+// LeetCode 0252 - Meeting Rooms
 // https://leetcode.com/problems/meeting-rooms/
 
 class Solution {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0402 - Remove K Digits
+<?php
+// LeetCode 0402 - Remove K Digits
 // https://leetcode.com/problems/remove-k-digits/
 
 class Solution {

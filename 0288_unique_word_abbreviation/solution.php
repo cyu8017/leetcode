@@ -1,4 +1,5 @@
-﻿// LeetCode 0288 - Unique Word Abbreviation
+<?php
+// LeetCode 0288 - Unique Word Abbreviation
 // https://leetcode.com/problems/unique-word-abbreviation/
 
 class ValidWordAbbr {

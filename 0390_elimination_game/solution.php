@@ -1,4 +1,5 @@
-﻿// LeetCode 0390 - Elimination Game
+<?php
+// LeetCode 0390 - Elimination Game
 // https://leetcode.com/problems/elimination-game/
 
 class Solution {

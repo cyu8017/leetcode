@@ -1,3 +1,4 @@
+<?php
 // LeetCode 0001 - Two Sum
 // https://leetcode.com/problems/two-sum/
 

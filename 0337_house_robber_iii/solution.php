@@ -1,4 +1,5 @@
-﻿// LeetCode 0337 - House Robber III
+<?php
+// LeetCode 0337 - House Robber III
 // https://leetcode.com/problems/house-robber-iii/
 
 class TreeNode {

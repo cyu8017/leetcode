@@ -1,4 +1,5 @@
-﻿// LeetCode 0221 - Maximal Square
+<?php
+// LeetCode 0221 - Maximal Square
 // https://leetcode.com/problems/maximal-square/
 
 class Solution {

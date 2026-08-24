@@ -1,4 +1,5 @@
-﻿// LeetCode 0008 - String to Integer (atoi)
+<?php
+// LeetCode 0008 - String to Integer (atoi)
 // https://leetcode.com/problems/string-to-integer-atoi/
 
 class Solution {

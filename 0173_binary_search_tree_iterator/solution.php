@@ -1,4 +1,5 @@
-﻿// LeetCode 0173 - Binary Search Tree Iterator
+<?php
+// LeetCode 0173 - Binary Search Tree Iterator
 // https://leetcode.com/problems/binary-search-tree-iterator/
 
 class TreeNode {

@@ -1,4 +1,5 @@
-﻿// LeetCode 0057 - Insert Interval
+<?php
+// LeetCode 0057 - Insert Interval
 // https://leetcode.com/problems/insert-interval/
 
 class Solution {

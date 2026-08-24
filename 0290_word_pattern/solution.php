@@ -1,4 +1,5 @@
-﻿// LeetCode 0290 - Word Pattern
+<?php
+// LeetCode 0290 - Word Pattern
 // https://leetcode.com/problems/word-pattern/
 
 class Solution {

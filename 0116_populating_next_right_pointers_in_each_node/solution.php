@@ -1,4 +1,5 @@
-﻿class Node {
+<?php
+class Node {
     public $val = 0;
     public $left = null;
     public $right = null;

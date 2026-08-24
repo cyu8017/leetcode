@@ -1,0 +1,22 @@
+folder=3254_find_the_power_of_k_size_subarrays_i
+class=Solution
+method=resultsArray
+params=['nums', 'k']
+kind=None
+source=solution.js
+---SOURCE---
+// LeetCode 3254 - Find the Power of K-Size Subarrays I
+// https://leetcode.com/problems/find-the-power-of-k-size-subarrays-i/
+
+var resultsArray = function(nums, k) {
+    const n = nums.length;
+    const ans = new Array(n - k + 1);
+    for (let i = 0; i <= n - k; i++) {
+        let ok = true;
+        for (let j = i + 1; j < i + k; j++) {
+            if (nums[j] !== nums[j - 1] + 1) { ok = false; break; }
+        }
+        ans[i] = ok ? nums[i + k - 1] : -1;
+    }
+    return ans;
+};
