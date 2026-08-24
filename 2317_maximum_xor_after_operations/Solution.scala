@@ -1,6 +1,10 @@
-﻿// LeetCode 2317 - Maximum XOR After Operations 
+// LeetCode 2317 - Maximum XOR After Operations
 // https://leetcode.com/problems/maximum-xor-after-operations/
 
 object Solution {
-  def solve(): Unit = {}
+  def maximumXOR(nums: Array[Int]): Int = {
+    var ans = 0
+    nums.foreach(x => ans |= x)
+    ans
+  }
 }

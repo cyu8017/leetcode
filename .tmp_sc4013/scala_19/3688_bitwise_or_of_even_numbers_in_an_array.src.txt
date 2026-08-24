@@ -1,0 +1,24 @@
+FOLDER: 3688_bitwise_or_of_even_numbers_in_an_array
+TITLE: 3688. Bitwise OR of Even Numbers in an Array
+URL: - **LeetCode:** [https://leetcode.com/problems/bitwise-or-of-even-numbers-in-an-array/](https://leetcode.com/problems/bitwise-or-of-even-numbers-in-an-array/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3688 - Bitwise OR of Even Numbers in an Array
+// https://leetcode.com/problems/bitwise-or-of-even-numbers-in-an-array/
+
+class Solution {
+    public int evenNumberBitwiseORs(int[] nums) {
+        int ans = 0;
+        for (int x : nums) if (x % 2 == 0) ans |= x;
+        return ans;
+    }
+}

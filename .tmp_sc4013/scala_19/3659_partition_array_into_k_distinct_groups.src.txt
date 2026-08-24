@@ -1,0 +1,31 @@
+FOLDER: 3659_partition_array_into_k_distinct_groups
+TITLE: 3659. Partition Array Into K-Distinct Groups
+URL: - **LeetCode:** [https://leetcode.com/problems/partition-array-into-k-distinct-groups/](https://leetcode.com/problems/partition-array-into-k-distinct-groups/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3659 - Partition Array Into K-Distinct Groups
+// https://leetcode.com/problems/partition-array-into-k-distinct-groups/
+
+class Solution {
+    public boolean partitionArray(int[] nums, int k) {
+        int n = nums.length;
+        if (n % k != 0) return false;
+        int m = n / k;
+        int mx = 0;
+        for (int x : nums) mx = Math.max(mx, x);
+        int[] cnt = new int[mx + 1];
+        for (int x : nums)
+            if (++cnt[x] > m) return false;
+        return true;
+    }
+}

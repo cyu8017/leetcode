@@ -1,6 +1,6 @@
-﻿// LeetCode 2759 - Convert JSON String to Object
+// LeetCode 2759 - Convert JSON String to Object
 // https://leetcode.com/problems/convert-json-string-to-object/
 
 object Solution {
-  def solve(): Unit = {}
+  def jsonParse(str: String): String = str
 }

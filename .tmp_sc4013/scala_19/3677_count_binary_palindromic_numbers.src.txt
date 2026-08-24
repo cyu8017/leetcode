@@ -1,0 +1,43 @@
+FOLDER: 3677_count_binary_palindromic_numbers
+TITLE: 3677. Count Binary Palindromic Numbers
+URL: - **LeetCode:** [https://leetcode.com/problems/count-binary-palindromic-numbers/](https://leetcode.com/problems/count-binary-palindromic-numbers/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3677 - Count Binary Palindromic Numbers
+// https://leetcode.com/problems/count-binary-palindromic-numbers/
+
+class Solution {
+    public int countBinaryPalindromes(long n) {
+        if (n == 0) return 1;
+        int ans = 1;
+        StringBuilder sb = new StringBuilder();
+        for (long x = n; x > 0; x >>= 1) sb.append((char) ('0' + (x & 1)));
+        String s = sb.reverse().toString();
+        int L = s.length();
+        for (int len = 1; len < L; len++) {
+            int half = (len + 1) / 2;
+            ans += 1 << (half - 1);
+        }
+        int half = (L + 1) / 2;
+        String prefix = s.substring(0, half);
+        int start = 1 << (half - 1);
+        long prefVal = 0;
+        for (char c : prefix.toCharArray()) prefVal = (prefVal << 1) | (c - '0');
+        ans += (int) prefVal - start;
+        StringBuilder pal = new StringBuilder(prefix);
+        for (int i = half - 1 - (L % 2); i >= 0; i--) pal.append(prefix.charAt(i));
+        long pval = 0;
+        for (char c : pal.toString().toCharArray()) pval = (pval << 1) | (c - '0');
+        if (pval <= n) ans++;
+        return ans;
+    }
+}

@@ -1,0 +1,35 @@
+FOLDER: 3633_earliest_finish_time_for_land_and_water_rides_i
+TITLE: 3633. Earliest Finish Time for Land and Water Rides I
+URL: - **LeetCode:** [https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-i/](https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-i/)
+CONFIG: {
+  "class": "Solution",
+  "method": "earliestFinishTime",
+  "paramOrder": [
+    "landStartTime",
+    "landDuration",
+    "waterStartTime",
+    "waterDuration"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3633 - Earliest Finish Time for Land and Water Rides I
+// https://leetcode.com/problems/earliest-finish-time-for-land-and-water-rides-i/
+
+class Solution {
+    private int calc(int[] a1, int[] t1, int[] a2, int[] t2) {
+        int minEnd = Integer.MAX_VALUE;
+        for (int i = 0; i < a1.length; i++) minEnd = Math.min(minEnd, a1[i] + t1[i]);
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < a2.length; i++) ans = Math.min(ans, Math.max(minEnd, a2[i]) + t2[i]);
+        return ans;
+    }
+
+    public int earliestFinishTime(int[] landStartTime, int[] landDuration, int[] waterStartTime, int[] waterDuration) {
+        return Math.min(
+            calc(landStartTime, landDuration, waterStartTime, waterDuration),
+            calc(waterStartTime, waterDuration, landStartTime, landDuration));
+    }
+}

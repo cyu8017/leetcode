@@ -1,0 +1,3605 @@
+
+================================================================================
+FOLDER: 3719_longest_balanced_subarray_i
+================================================================================
+// LeetCode 3719 - Longest Balanced Subarray I
+// https://leetcode.com/problems/longest-balanced-subarray-i/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int longestBalanced(int[] nums) {
+        int n = nums.length, ans = 0;
+        for (int i = 0; i < n; i++) {
+            var vis = new HashSet<Integer>();
+            int[] cnt = new int[2];
+            for (int j = i; j < n; j++) {
+                if (!vis.contains(nums[j])) {
+                    vis.add(nums[j]);
+                    cnt[nums[j] & 1]++;
+                }
+                if (cnt[0] == cnt[1]) ans = Math.max(ans, j - i + 1);
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3720_lexicographically_smallest_permutation_greater_than_target
+================================================================================
+// LeetCode 3720 - Lexicographically Smallest Permutation Greater Than Target
+// https://leetcode.com/problems/lexicographically_smallest_permutation_greater_than_target/
+
+class Solution {
+    private int[] cnt;
+    private char[] ans;
+    private String target;
+    private int n;
+
+    public String lexGreaterPermutation(String s, String target) {
+        cnt = new int[26];
+        for (char c : s.toCharArray()) cnt[c - 'a']++;
+        n = s.length();
+        this.target = target;
+        ans = new char[n];
+        if (dfs(0, false)) return new String(ans);
+        return "";
+    }
+
+    private boolean dfs(int pos, boolean greater) {
+        if (pos == n) return greater;
+        int start = greater ? 0 : (target.charAt(pos) - 'a');
+        for (int c = start; c < 26; c++) {
+            if (cnt[c] == 0) continue;
+            cnt[c]--;
+            ans[pos] = (char) ('a' + c);
+            boolean ng = greater || c > (target.charAt(pos) - 'a');
+            if (dfs(pos + 1, ng)) return true;
+            cnt[c]++;
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+FOLDER: 3721_longest_balanced_subarray_ii
+================================================================================
+// LeetCode 3721 - Longest Balanced Subarray Ii
+// https://leetcode.com/problems/longest_balanced_subarray_ii/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    static class Node {
+        int l, r, mn, mx, lazy;
+    }
+
+    static class SegmentTree {
+        Node[] tr;
+
+        SegmentTree(int n) {
+            tr = new Node[n << 2];
+            for (int i = 0; i < tr.length; i++) tr[i] = new Node();
+            build(1, 0, n);
+        }
+
+        void build(int u, int l, int r) {
+            tr[u].l = l; tr[u].r = r; tr[u].mn = 0; tr[u].mx = 0; tr[u].lazy = 0;
+            if (l == r) return;
+            int mid = (l + r) >> 1;
+            build(u << 1, l, mid);
+            build(u << 1 | 1, mid + 1, r);
+        }
+
+        void apply(int u, int v) {
+            tr[u].mn += v;
+            tr[u].mx += v;
+            tr[u].lazy += v;
+        }
+
+        void pushup(int u) {
+            tr[u].mn = Math.min(tr[u << 1].mn, tr[u << 1 | 1].mn);
+            tr[u].mx = Math.max(tr[u << 1].mx, tr[u << 1 | 1].mx);
+        }
+
+        void pushdown(int u) {
+            if (tr[u].lazy != 0) {
+                int v = tr[u].lazy;
+                apply(u << 1, v);
+                apply(u << 1 | 1, v);
+                tr[u].lazy = 0;
+            }
+        }
+
+        void modify(int u, int l, int r, int v) {
+            if (tr[u].l >= l && tr[u].r <= r) {
+                apply(u, v);
+                return;
+            }
+            pushdown(u);
+            int mid = (tr[u].l + tr[u].r) >> 1;
+            if (l <= mid) modify(u << 1, l, r, v);
+            if (r > mid) modify(u << 1 | 1, l, r, v);
+            pushup(u);
+        }
+
+        int query(int u, int target) {
+            if (tr[u].l == tr[u].r) return tr[u].l;
+            pushdown(u);
+            int left = u << 1, right = u << 1 | 1;
+            if (tr[left].mn <= target && target <= tr[left].mx) return query(left, target);
+            return query(right, target);
+        }
+    }
+
+    public int longestBalanced(int[] nums) {
+        int n = nums.length;
+        SegmentTree st = new SegmentTree(n);
+        Map<Integer, Integer> last = new HashMap<>();
+        int now = 0, ans = 0;
+        for (int i = 1; i <= n; i++) {
+            int x = nums[i - 1];
+            int det = (x & 1) != 0 ? 1 : -1;
+            if (last.containsKey(x)) {
+                st.modify(1, last.get(x), n, -det);
+                now -= det;
+            }
+            last.put(x, i);
+            st.modify(1, i, n, det);
+            now += det;
+            int pos = st.query(1, now);
+            ans = Math.max(ans, i - pos);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3722_lexicographically_smallest_string_after_reverse
+================================================================================
+// LeetCode 3722 - Lexicographically Smallest String After Reverse
+// https://leetcode.com/problems/lexicographically-smallest-string-after-reverse/
+
+class Solution {
+    public String lexSmallest(String s) {
+        String ans = s;
+        int n = s.length();
+        for (int k = 1; k <= n; k++) {
+            char[] a1 = s.toCharArray();
+            reverse(a1, 0, 0 + k);
+            String t1 = new String(a1);
+            char[] a2 = s.toCharArray();
+            reverse(a2, n - k, n - k + k);
+            String t2 = new String(a2);
+            if (t1.compareTo(ans) < 0) ans = t1;
+            if (t2.compareTo(ans) < 0) ans = t2;
+        }
+        return ans;
+    }
+
+    private void reverse(char[] a) { reverse(a, 0, a.length); }
+    private void reverse(char[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            char t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    private void reverse(int[] a) { reverse(a, 0, a.length); }
+    private void reverse(int[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+}
+
+
+================================================================================
+FOLDER: 3723_maximize_sum_of_squares_of_digits
+================================================================================
+// LeetCode 3723 - Maximize Sum Of Squares Of Digits
+// https://leetcode.com/problems/maximize_sum_of_squares_of_digits/
+
+class Solution {
+    public String maxSumOfSquares(int num, int sum) {
+        if (num * 9 < sum) return "";
+        int k = sum / 9, s = sum % 9;
+        StringBuilder ans = new StringBuilder();
+        for (int i = 0; i < k; i++) ans.append('9');
+        if (s > 0) ans.append((char) ('0' + s));
+        while (ans.length() < num) ans.append('0');
+        return ans.toString();
+    }
+}
+
+
+================================================================================
+FOLDER: 3724_minimum_operations_to_transform_array
+================================================================================
+// LeetCode 3724 - Minimum Operations to Transform Array
+// https://leetcode.com/problems/minimum-operations-to-transform-array/
+
+class Solution {
+    public long minOperations(int[] nums1, int[] nums2) {
+        long ans = 1;
+        int n = nums1.length;
+        boolean ok = false;
+        int d = 1 << 30;
+        for (int i = 0; i < n; i++) {
+            int x = Math.max(nums1[i], nums2[i]);
+            int y = Math.min(nums1[i], nums2[i]);
+            ans += x - y;
+            d = Math.min(d, Math.min(Math.abs(x - nums2[n]), Math.abs(y - nums2[n])));
+            if (nums2[n] >= y && nums2[n] <= x) ok = true;
+        }
+        if (!ok) ans += d;
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3725_count_ways_to_choose_coprime_integers_from_rows
+================================================================================
+// LeetCode 3725 - Count Ways To Choose Coprime Integers From Rows
+// https://leetcode.com/problems/count_ways_to_choose_coprime_integers_from_rows/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int countCoprime(int[][] mat) {
+        final int MOD = 1_000_000_007;
+        int m = mat.length;
+        Map<Integer, Integer> dp = new HashMap<>();
+        for (int v : mat[0]) dp.merge(v, 1, Integer::sum);
+        for (int i = 1; i < m; i++) {
+            Map<Integer, Integer> ndp = new HashMap<>();
+            for (int v : mat[i]) {
+                for (Map.Entry<Integer, Integer> e : dp.entrySet()) {
+                    int ng = gcd(e.getKey(), v);
+                    ndp.merge(ng, e.getValue(), (a, b) -> (a + b) % MOD);
+                }
+            }
+            dp = ndp;
+        }
+        return dp.getOrDefault(1, 0);
+    }
+
+    private int gcd(int a, int b) {
+        while (b != 0) {
+            int t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    }
+}
+
+
+================================================================================
+FOLDER: 3726_remove_zeros_in_decimal_representation
+================================================================================
+// LeetCode 3726 - Remove Zeros in Decimal Representation
+// https://leetcode.com/problems/remove-zeros-in-decimal-representation/
+
+class Solution {
+    public long removeZeros(long n) {
+        long ans = 0, k = 1;
+        while (n > 0) {
+            long x = n % 10;
+            if (x > 0) {
+                ans = k * x + ans;
+                k *= 10;
+            }
+            n /= 10;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3727_maximum_alternating_sum_of_squares
+================================================================================
+// LeetCode 3727 - Maximum Alternating Sum of Squares
+// https://leetcode.com/problems/maximum-alternating-sum-of-squares/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maxAlternatingSum(int[] nums) {
+        for (int i = 0; i < nums.length; i++) nums[i] *= nums[i];
+        Arrays.sort(nums);
+        int m = nums.length / 2;
+        long ans = 0;
+        for (int i = 0; i < m; i++) ans -= nums[i];
+        for (int i = m; i < nums.length; i++) ans += nums[i];
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3728_stable_subarrays_with_equal_boundary_and_interior_sum
+================================================================================
+// LeetCode 3728 - Stable Subarrays With Equal Boundary And Interior Sum
+// https://leetcode.com/problems/stable_subarrays_with_equal_boundary_and_interior_sum/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long countStableSubarrays(int[] capacity) {
+        int n = capacity.length;
+        long[] s = new long[n + 1];
+        for (int i = 1; i <= n; i++) s[i] = s[i - 1] + capacity[i - 1];
+        Map<String, Integer> cnt = new HashMap<>();
+        long ans = 0;
+        for (int r = 2; r < n; r++) {
+            int l = r - 2;
+            String keyL = capacity[l] + "#" + (capacity[l] + s[l + 1]);
+            cnt.merge(keyL, 1, Integer::sum);
+            String keyR = capacity[r] + "#" + s[r];
+            ans += cnt.getOrDefault(keyR, 0);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3729_count_distinct_subarrays_divisible_by_k_in_sorted_array
+================================================================================
+// LeetCode 3729 - Count Distinct Subarrays Divisible By K In Sorted Array
+// https://leetcode.com/problems/count_distinct_subarrays_divisible_by_k_in_sorted_array/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long numGoodSubarrays(int[] nums, int k) {
+        long ans = 0;
+        int s = 0;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        cnt.put(0, 1);
+        for (int x : nums) {
+            s = (s + x) % k;
+            ans += cnt.getOrDefault(s, 0);
+            cnt.merge(s, 1, Integer::sum);
+        }
+        int n = nums.length;
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && nums[j] == nums[i]) j++;
+            int m = j - i;
+            for (int h = 1; h <= m; h++) {
+                if (1L * nums[i] * h % k == 0) ans -= (m - h);
+            }
+            i = j;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3730_maximum_calories_burnt_from_jumps
+================================================================================
+// LeetCode 3730 - Maximum Calories Burnt from Jumps
+// https://leetcode.com/problems/maximum-calories-burnt-from-jumps/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maxCaloriesBurnt(int[] heights) {
+        Arrays.sort(heights);
+        long ans = 0;
+        int pre = 0, l = 0, r = heights.length - 1;
+        while (l < r) {
+            long d1 = heights[r] - pre;
+            ans += d1 * d1;
+            long d2 = heights[l] - heights[r];
+            ans += d2 * d2;
+            pre = heights[l];
+            l++;
+            r--;
+        }
+        long d = heights[r] - pre;
+        ans += d * d;
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3731_find_missing_elements
+================================================================================
+// LeetCode 3731 - Find Missing Elements
+// https://leetcode.com/problems/find-missing-elements/
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    public int[] findMissingElements(int[] nums) {
+        int mn = 100, mx = 0;
+        var s = new HashSet<Integer>();
+        for (int x : nums) {
+            mn = Math.min(mn, x);
+            mx = Math.max(mx, x);
+            s.add(x);
+        }
+        var ans = new ArrayList<Integer>();
+        for (int x = mn + 1; x < mx; x++) {
+            if (!s.contains(x)) ans.add(x);
+        }
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+
+================================================================================
+FOLDER: 3732_maximum_product_of_three_elements_after_one_replacement
+================================================================================
+// LeetCode 3732 - Maximum Product of Three Elements After One Replacement
+// https://leetcode.com/problems/maximum-product-of-three-elements-after-one-replacement/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maxProduct(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        long a = nums[0], b = nums[1], c = nums[n - 2], d = nums[n - 1];
+        final long x = 100000;
+        return Math.max(Math.max(a * b * x, c * d * x), -a * d * x);
+    }
+}
+
+
+================================================================================
+FOLDER: 3733_minimum_time_to_complete_all_deliveries
+================================================================================
+// LeetCode 3733 - Minimum Time To Complete All Deliveries
+// https://leetcode.com/problems/minimum_time_to_complete_all_deliveries/
+
+class Solution {
+    public long minimumTime(int[] d, int[] r) {
+        long lo = 1, hi = (long) 8e18;
+        while (lo < hi) {
+            long mid = lo + (hi - lo) / 2;
+            if (ok(mid, d, r)) hi = mid;
+            else lo = mid + 1;
+        }
+        return lo;
+    }
+
+    private boolean ok(long T, int[] d, int[] r) {
+        long w0 = T - T / r[0];
+        long w1 = T - T / r[1];
+        return w0 + w1 >= (long) d[0] + d[1];
+    }
+}
+
+
+================================================================================
+FOLDER: 3734_lexicographically_smallest_palindromic_permutation_greater_than_target
+================================================================================
+// LeetCode 3734 - Lexicographically Smallest Palindromic Permutation Greater Than Target
+// https://leetcode.com/problems/lexicographically_smallest_palindromic_permutation_greater_than_target/
+
+class Solution {
+    private int[] half;
+    private char[] left;
+    private String target;
+    private int halfLen, mid;
+
+    public String lexPalindromicPermutation(String s, String target) {
+        int[] cnt = new int[26];
+        for (char c : s.toCharArray()) cnt[c - 'a']++;
+        int odd = 0;
+        mid = -1;
+        for (int i = 0; i < 26; i++) {
+            if (cnt[i] % 2 == 1) { odd++; mid = i; }
+        }
+        if (odd > 1) return "";
+        half = new int[26];
+        for (int i = 0; i < 26; i++) half[i] = cnt[i] / 2;
+        int n = s.length();
+        halfLen = n / 2;
+        this.target = target;
+        left = new char[halfLen];
+        if (!dfs(0, false)) return "";
+        StringBuilder res = new StringBuilder();
+        res.append(left);
+        if (mid >= 0) res.append((char) ('a' + mid));
+        for (int i = halfLen - 1; i >= 0; i--) res.append(left[i]);
+        String out = res.toString();
+        if (out.compareTo(target) <= 0) return "";
+        return out;
+    }
+
+    private boolean dfs(int pos, boolean greater) {
+        if (pos == halfLen) {
+            if (mid >= 0) {
+                if (greater) return true;
+                return (char) ('a' + mid) > target.charAt(halfLen);
+            }
+            return greater;
+        }
+        int start = greater ? 0 : (target.charAt(pos) - 'a');
+        for (int c = start; c < 26; c++) {
+            if (half[c] == 0) continue;
+            half[c]--;
+            left[pos] = (char) ('a' + c);
+            if (dfs(pos + 1, greater || c > (target.charAt(pos) - 'a'))) return true;
+            half[c]++;
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+FOLDER: 3735_lexicographically_smallest_string_after_reverse_ii
+================================================================================
+// LeetCode 3735 - Lexicographically Smallest String After Reverse II
+// https://leetcode.com/problems/lexicographically-smallest-string-after-reverse-ii/
+
+class Solution {
+    public String lexSmallest(String s) {
+        int n = s.length();
+        String best = s;
+        for (int i = 1; i <= n; i++) {
+            char[] t = s.toCharArray();
+            reverse(t, 0, 0 + i);
+            String ts = new String(t);
+            if (ts.compareTo(best) < 0) best = ts;
+        }
+        for (int i = 0; i < n; i++) {
+            char[] t = s.toCharArray();
+            reverse(t, i, i + n - i);
+            String ts = new String(t);
+            if (ts.compareTo(best) < 0) best = ts;
+        }
+        return best;
+    }
+
+    private void reverse(char[] a) { reverse(a, 0, a.length); }
+    private void reverse(char[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            char t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    private void reverse(int[] a) { reverse(a, 0, a.length); }
+    private void reverse(int[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+}
+
+
+================================================================================
+FOLDER: 3736_minimum_moves_to_equal_array_elements_iii
+================================================================================
+// LeetCode 3736 - Minimum Moves to Equal Array Elements III
+// https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int mx = 0, s = 0;
+        for (int x : nums) {
+            mx = Math.max(mx, x);
+            s += x;
+        }
+        return mx * nums.length - s;
+    }
+}
+
+
+================================================================================
+FOLDER: 3737_count_subarrays_with_majority_element_i
+================================================================================
+// LeetCode 3737 - Count Subarrays With Majority Element I
+// https://leetcode.com/problems/count-subarrays-with-majority-element-i/
+
+class Solution {
+    public int countMajoritySubarrays(int[] nums, int target) {
+        int n = nums.length, ans = 0;
+        for (int i = 0; i < n; i++) {
+            int cnt = 0;
+            for (int j = i; j < n; j++) {
+                if (nums[j] == target) cnt++;
+                if (cnt * 2 > j - i + 1) ans++;
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3738_longest_non_decreasing_subarray_after_replacing_at_most_one_element
+================================================================================
+// LeetCode 3738 - Longest Non-Decreasing Subarray After Replacing at Most One Element
+// https://leetcode.com/problems/longest-non-decreasing-subarray-after-replacing-at-most-one-element/
+
+class Solution {
+    public int longestSubarray(int[] nums) {
+        int n = nums.length;
+        int[] left = new int[n], right = new int[n];
+        for (int i = 0; i < n; i++) { left[i] = 1; right[i] = 1; }
+        for (int i = 1; i < n; i++) {
+            if (nums[i] >= nums[i - 1]) left[i] = left[i - 1] + 1;
+        }
+        for (int i = n - 2; i >= 0; i--) {
+            if (nums[i] <= nums[i + 1]) right[i] = right[i + 1] + 1;
+        }
+        int ans = 0;
+        for (int v : left) ans = Math.max(ans, v);
+        for (int i = 0; i < n; i++) {
+            int a = i > 0 ? left[i - 1] : 0;
+            int b = i + 1 < n ? right[i + 1] : 0;
+            if (i > 0 && i + 1 < n && nums[i - 1] > nums[i + 1]) {
+                ans = Math.max(ans, Math.max(a + 1, b + 1));
+            } else {
+                ans = Math.max(ans, a + b + 1);
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3739_count_subarrays_with_majority_element_ii
+================================================================================
+// LeetCode 3739 - Count Subarrays With Majority Element II
+// https://leetcode.com/problems/count-subarrays-with-majority-element-ii/
+
+class Solution {
+    class BIT {
+        int n;
+        int[] c;
+        public BIT(int n_) {
+            n = n_;
+            c = new int[n_ + 1];
+        }
+        public void update(int x, int delta) {
+            for (; x <= n; x += x & -x) c[x] += delta;
+        }
+        public int query(int x) {
+            int s = 0;
+            for (; x > 0; x -= x & -x) s += c[x];
+            return s;
+        }
+    }
+
+    public long countMajoritySubarrays(int[] nums, int target) {
+        int n = nums.length;
+        var tree = new BIT(2 * n + 1);
+        int s = n + 1;
+        tree.update(s, 1);
+        long ans = 0;
+        for (int x : nums) {
+            if (x == target) s++;
+            else s--;
+            ans += tree.query(s - 1);
+            tree.update(s, 1);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3740_minimum_distance_between_three_equal_elements_i
+================================================================================
+// LeetCode 3740 - Minimum Distance Between Three Equal Elements I
+// https://leetcode.com/problems/minimum_distance_between_three_equal_elements_i/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public int minimumDistance(int[] nums) {
+        Map<Integer, List<Integer>> g = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            g.computeIfAbsent(nums[i], k -> new ArrayList<>()).add(i);
+        }
+        int inf = 1 << 30;
+        int ans = inf;
+        for (List<Integer> ls : g.values()) {
+            int m = ls.size();
+            for (int h = 0; h < m - 2; h++) {
+                ans = Math.min(ans, (ls.get(h + 2) - ls.get(h)) * 2);
+            }
+        }
+        return ans == inf ? -1 : ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3741_minimum_distance_between_three_equal_elements_ii
+================================================================================
+// LeetCode 3741 - Minimum Distance Between Three Equal Elements Ii
+// https://leetcode.com/problems/minimum_distance_between_three_equal_elements_ii/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public int minimumDistance(int[] nums) {
+        Map<Integer, List<Integer>> g = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            g.computeIfAbsent(nums[i], k -> new ArrayList<>()).add(i);
+        }
+        int inf = 1 << 30;
+        int ans = inf;
+        for (List<Integer> ls : g.values()) {
+            int m = ls.size();
+            for (int h = 0; h < m - 2; h++) {
+                ans = Math.min(ans, (ls.get(h + 2) - ls.get(h)) * 2);
+            }
+        }
+        return ans == inf ? -1 : ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3742_maximum_path_score_in_a_grid
+================================================================================
+// LeetCode 3742 - Maximum Path Score In A Grid
+// https://leetcode.com/problems/maximum_path_score_in_a_grid/
+
+class Solution {
+    private int[][] grid;
+    private int[][][] f;
+    private int m, n;
+    private static final int INF = 1 << 30;
+
+    public int maxPathScore(int[][] grid, int k) {
+        this.grid = grid;
+        m = grid.length;
+        n = grid[0].length;
+        f = new int[m][n][k + 1];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                for (int t = 0; t <= k; t++)
+                    f[i][j][t] = -1;
+        int ans = dfs(m - 1, n - 1, k);
+        return ans < 0 ? -1 : ans;
+    }
+
+    private int dfs(int i, int j, int kk) {
+        if (i < 0 || j < 0 || kk < 0) return -INF;
+        if (i == 0 && j == 0) return 0;
+        if (f[i][j][kk] != -1) return f[i][j][kk];
+        int res = grid[i][j];
+        int nk = kk;
+        if (grid[i][j] != 0) nk--;
+        int a = dfs(i - 1, j, nk);
+        int b = dfs(i, j - 1, nk);
+        res += Math.max(a, b);
+        return f[i][j][kk] = res;
+    }
+}
+
+
+================================================================================
+FOLDER: 3743_maximize_cyclic_partition_score
+================================================================================
+// LeetCode 3743 - Maximize Cyclic Partition Score
+// https://leetcode.com/problems/maximize_cyclic_partition_score/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maximumScore(int[] nums, int k) {
+        int n = nums.length;
+        int[] a = new int[n * 2];
+        System.arraycopy(nums, 0, a, 0, n);
+        System.arraycopy(nums, 0, a, n, n);
+        if (k > n) k = n;
+        long best = 0;
+        final long NEG = -(1L << 60);
+        for (int start = 0; start < n; start++) {
+            int[] seg = Arrays.copyOfRange(a, start, start + n);
+            long[][] dp = new long[n + 1][k + 1];
+            for (int i = 0; i <= n; i++) Arrays.fill(dp[i], NEG);
+            dp[0][0] = 0;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= k && j <= i; j++) {
+                    long mx = NEG;
+                    for (int t = i; t >= j; t--) {
+                        if (seg[t - 1] > mx) mx = seg[t - 1];
+                        if (dp[t - 1][j - 1] > NEG) {
+                            long cand = dp[t - 1][j - 1] + mx;
+                            if (cand > dp[i][j]) dp[i][j] = cand;
+                        }
+                    }
+                }
+            }
+            if (dp[n][k] > best) best = dp[n][k];
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+FOLDER: 3744_find_kth_character_in_expanded_string
+================================================================================
+// LeetCode 3744 - Find Kth Character in Expanded String
+// https://leetcode.com/problems/find-kth-character-in-expanded-string/
+
+class Solution {
+    public char kthCharacter(String s, long k) {
+        String[] words = s.trim().split("\s+");
+        for (String w : words) {
+            long m = (1 + (long)w.length()) * (long)w.length() / 2;
+            if (k == m) return ' ';
+            if (k > m) {
+                k -= m + 1;
+            } else {
+                long cur = 0;
+                for (int i = 0; ; i++) {
+                    cur += i + 1;
+                    if (k < cur) return w.charAt(i);
+                }
+            }
+        }
+        return ' ';
+    }
+}
+
+
+================================================================================
+FOLDER: 3745_maximize_expression_of_three_elements
+================================================================================
+// LeetCode 3745 - Maximize Expression of Three Elements
+// https://leetcode.com/problems/maximize-expression-of-three-elements/
+
+class Solution {
+    public int maximizeExpressionOfThree(int[] nums) {
+        final int inf = 1 << 30;
+        int a = -inf, b = -inf, c = inf;
+        for (int x : nums) {
+            if (x < c) c = x;
+            if (x >= a) { b = a; a = x; }
+            else if (x > b) b = x;
+        }
+        return a + b - c;
+    }
+}
+
+
+================================================================================
+FOLDER: 3746_minimum_string_length_after_balanced_removals
+================================================================================
+// LeetCode 3746 - Minimum String Length After Balanced Removals
+// https://leetcode.com/problems/minimum-string-length-after-balanced-removals/
+
+class Solution {
+    public int minLengthAfterRemovals(String s) {
+        int a = 0;
+        for (char c : s.toCharArray()) if (c == 'a') a++;
+        int b = s.length() - a;
+        return Math.abs(a - b);
+    }
+}
+
+
+================================================================================
+FOLDER: 3747_count_distinct_integers_after_removing_zeros
+================================================================================
+// LeetCode 3747 - Count Distinct Integers After Removing Zeros
+// https://leetcode.com/problems/count_distinct_integers_after_removing_zeros/
+
+class Solution {
+    private String s;
+    private int m;
+    private long[][][][] f;
+
+    public long countDistinct(long n) {
+        s = Long.toString(n);
+        m = s.length();
+        f = new long[20][2][2][2];
+        for (int i = 0; i < 20; i++)
+            for (int j = 0; j < 2; j++)
+                for (int k = 0; k < 2; k++)
+                    for (int t = 0; t < 2; t++)
+                        f[i][j][k][t] = -1;
+        return dfs(0, 0, 1, 1);
+    }
+
+    private long dfs(int i, int zero, int lead, int limit) {
+        if (i == m) return (zero == 0 && lead == 0) ? 1 : 0;
+        if (limit == 0 && f[i][zero][lead][limit] != -1) return f[i][zero][lead][limit];
+        int up = limit == 1 ? s.charAt(i) - '0' : 9;
+        long ans = 0;
+        for (int d = 0; d <= up; d++) {
+            int nxtZero = zero;
+            if (d == 0 && lead == 0) nxtZero = 1;
+            int nxtLead = (lead == 1 && d == 0) ? 1 : 0;
+            int nxtLimit = (limit == 1 && d == up) ? 1 : 0;
+            ans += dfs(i + 1, nxtZero, nxtLead, nxtLimit);
+        }
+        if (limit == 0) f[i][zero][lead][limit] = ans;
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3748_count_stable_subarrays
+================================================================================
+// LeetCode 3748 - Count Stable Subarrays
+// https://leetcode.com/problems/count_stable_subarrays/
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Solution {
+    public long[] countStableSubarrays(int[] nums, int[][] queries) {
+        int n = nums.length;
+        List<Integer> seg = new ArrayList<>();
+        List<Long> s = new ArrayList<>();
+        s.add(0L);
+        int l = 0;
+        for (int r = 0; r < n; r++) {
+            if (r == n - 1 || nums[r] > nums[r + 1]) {
+                seg.add(l);
+                long k = r - l + 1;
+                s.add(s.get(s.size() - 1) + k * (k + 1) / 2);
+                l = r + 1;
+            }
+        }
+        long[] ans = new long[queries.length];
+        for (int idx = 0; idx < queries.length; idx++) {
+            int left = queries[idx][0], right = queries[idx][1];
+            int i = lowerBound(seg, left + 1);
+            int j = lowerBound(seg, right + 1) - 1;
+            if (i > j) {
+                long k = right - left + 1;
+                ans[idx] = k * (k + 1) / 2;
+            } else {
+                long a = seg.get(i) - left;
+                long b = right - seg.get(j) + 1;
+                ans[idx] = a * (a + 1) / 2 + s.get(j) - s.get(i) + b * (b + 1) / 2;
+            }
+        }
+        return ans;
+    }
+
+    private int lowerBound(List<Integer> a, int x) {
+        int lo = 0, hi = a.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a.get(mid) < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+FOLDER: 3749_evaluate_valid_expressions
+================================================================================
+// LeetCode 3749 - Evaluate Valid Expressions
+// https://leetcode.com/problems/evaluate_valid_expressions/
+
+class Solution {
+    private String expression;
+
+    public long evaluateExpression(String expression) {
+        this.expression = expression;
+        return parse(0)[0];
+    }
+
+    // returns {value, nextIndex}
+    private long[] parse(int i) {
+        char ch = expression.charAt(i);
+        if (Character.isDigit(ch) || ch == '-') {
+            int j = i;
+            if (expression.charAt(j) == '-') j++;
+            while (j < expression.length() && Character.isDigit(expression.charAt(j))) j++;
+            return new long[]{Long.parseLong(expression.substring(i, j)), j};
+        }
+        int j = i;
+        while (expression.charAt(j) != '(') j++;
+        String op = expression.substring(i, j);
+        j++;
+        long[] p1 = parse(j);
+        j = (int) p1[1] + 1;
+        long[] p2 = parse(j);
+        j = (int) p2[1] + 1;
+        long res = 0;
+        if (op.equals("add")) res = p1[0] + p2[0];
+        else if (op.equals("sub")) res = p1[0] - p2[0];
+        else if (op.equals("mul")) res = p1[0] * p2[0];
+        else if (op.equals("div")) res = p1[0] / p2[0];
+        return new long[]{res, j};
+    }
+}
+
+
+================================================================================
+FOLDER: 3750_minimum_number_of_flips_to_reverse_binary_string
+================================================================================
+// LeetCode 3750 - Minimum Number Of Flips To Reverse Binary String
+// https://leetcode.com/problems/minimum-number-of-flips-to-reverse-binary-string/
+
+class Solution {
+    public int minimumFlips(int n) {
+        String s;
+        long x = n;
+        if (x == 0) s = "0";
+        else {
+            var sb = new StringBuilder();
+            while (x > 0) {
+                sb.append((char)('0' + (x & 1)));
+                x >>= 1;
+            }
+            char[] arr = sb.toString().toCharArray();
+            reverse(arr);
+            s = new String(arr);
+        }
+        int m = s.length(), cnt = 0;
+        for (int i = 0; i < m / 2; i++) {
+            if (s.charAt(i) != s.charAt(m - i - 1)) cnt++;
+        }
+        return cnt * 2;
+    }
+
+    private void reverse(char[] a) { reverse(a, 0, a.length); }
+    private void reverse(char[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            char t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    private void reverse(int[] a) { reverse(a, 0, a.length); }
+    private void reverse(int[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+}
+
+
+================================================================================
+FOLDER: 3751_total_waviness_of_numbers_in_range_i
+================================================================================
+// LeetCode 3751 - Total Waviness Of Numbers In Range I
+// https://leetcode.com/problems/total-waviness-of-numbers-in-range-i/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    int F(int x) {
+        var nums = new ArrayList<Integer>();
+        while (x > 0) {
+            nums.add(x % 10);
+            x /= 10;
+        }
+        int m = nums.size();
+        if (m < 3) return 0;
+        int s = 0;
+        for (int i = 1; i < m - 1; i++) {
+            if ((nums.get(i) > nums.get(i - 1) && nums.get(i) > nums.get(i + 1)) ||
+                (nums.get(i) < nums.get(i - 1) && nums.get(i) < nums.get(i + 1))) s++;
+        }
+        return s;
+    }
+
+    public int totalWaviness(int num1, int num2) {
+        int ans = 0;
+        for (int x = num1; x <= num2; x++) ans += F(x);
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3752_lexicographically_smallest_negated_permutation_that_sums_to_target
+================================================================================
+// LeetCode 3752 - Lexicographically Smallest Negated Permutation that Sums to Target
+// https://leetcode.com/problems/lexicographically-smallest-negated-permutation-that-sums-to-target/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] lexicographicallySmallest(int n, long target) {
+        long total = 1L * n * (n + 1) / 2;
+        if (target < -total || target > total || (total - target) % 2 != 0) return new int[0];
+        long remaining = (total - target) / 2;
+        boolean[] negative = new boolean[n + 1];
+        for (int value = n; value >= 1; value--) {
+            if (value <= remaining) {
+                negative[value] = true;
+                remaining -= value;
+            }
+        }
+        var answer = new ArrayList<Integer>();
+        for (int value = n; value >= 1; value--) {
+            if (negative[value]) answer.add(-value);
+        }
+        for (int value = 1; value <= n; value++) {
+            if (!negative[value]) answer.add(value);
+        }
+        return answer.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+
+================================================================================
+FOLDER: 3753_total_waviness_of_numbers_in_range_ii
+================================================================================
+// LeetCode 3753 - Total Waviness Of Numbers In Range Ii
+// https://leetcode.com/problems/total_waviness_of_numbers_in_range_ii/
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    static class Result {
+        long count, sum;
+        Result() {}
+        Result(long c, long s) { count = c; sum = s; }
+    }
+
+    private long wavinessUpTo(long limit) {
+        if (limit < 0) return 0;
+        List<Integer> digits = new ArrayList<>();
+        if (limit == 0) digits.add(0);
+        else {
+            for (long value = limit; value > 0; value /= 10) digits.add((int) (value % 10));
+            Collections.reverse(digits);
+        }
+        Map<String, Result> memo = new HashMap<>();
+        return dfs(0, 10, 10, false, true, digits, memo).sum;
+    }
+
+    private Result dfs(int position, int secondLast, int last, boolean started, boolean tight,
+                       List<Integer> digits, Map<String, Result> memo) {
+        if (position == digits.size()) return new Result(1, 0);
+        String key = position + "," + secondLast + "," + last + "," + started;
+        if (!tight && memo.containsKey(key)) return memo.get(key);
+        int upper = tight ? digits.get(position) : 9;
+        Result result = new Result();
+        for (int digit = 0; digit <= upper; digit++) {
+            boolean nextTight = tight && digit == upper;
+            int nextSecondLast = secondLast, nextLast = last;
+            boolean nextStarted = started || digit != 0;
+            long add = 0;
+            if (!nextStarted) {
+                nextSecondLast = nextLast = 10;
+            } else if (!started) {
+                nextSecondLast = 10;
+                nextLast = digit;
+            } else {
+                if (secondLast != 10 &&
+                    ((last > secondLast && last > digit) || (last < secondLast && last < digit))) {
+                    add = 1;
+                }
+                nextSecondLast = last;
+                nextLast = digit;
+            }
+            Result child = dfs(position + 1, nextSecondLast, nextLast, nextStarted, nextTight, digits, memo);
+            result.count += child.count;
+            result.sum += child.sum + add * child.count;
+        }
+        if (!tight) memo.put(key, result);
+        return result;
+    }
+
+    public long totalWaviness(long a, long b) {
+        return wavinessUpTo(b) - wavinessUpTo(a - 1);
+    }
+}
+
+
+================================================================================
+FOLDER: 3754_concatenate_non_zero_digits_and_multiply_by_sum_i
+================================================================================
+// LeetCode 3754 - Concatenate Non Zero Digits And Multiply By Sum I
+// https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i/
+
+class Solution {
+    public long sumAndMultiply(int n) {
+        int p = 1, x = 0, s = 0;
+        while (n > 0) {
+            int v = n % 10;
+            if (v != 0) {
+                s += v;
+                x += p * v;
+                p *= 10;
+            }
+            n /= 10;
+        }
+        return 1L * x * s;
+    }
+}
+
+
+================================================================================
+FOLDER: 3755_find_maximum_balanced_xor_subarray_length
+================================================================================
+// LeetCode 3755 - Find Maximum Balanced Xor Subarray Length
+// https://leetcode.com/problems/find_maximum_balanced_xor_subarray_length/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int maxBalancedSubarray(int[] nums) {
+        Map<Long, Integer> d = new HashMap<>();
+        int a = 0, b = nums.length, ans = 0;
+        d.put((long) b, -1);
+        for (int i = 0; i < nums.length; i++) {
+            a ^= nums[i];
+            if (nums[i] % 2 == 0) b++;
+            else b--;
+            long key = ((long) a << 32) | (b & 0xffffffffL);
+            if (d.containsKey(key)) ans = Math.max(ans, i - d.get(key));
+            else d.put(key, i);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3756_concatenate_non_zero_digits_and_multiply_by_sum_ii
+================================================================================
+// LeetCode 3756 - Concatenate Non Zero Digits And Multiply By Sum Ii
+// https://leetcode.com/problems/concatenate_non_zero_digits_and_multiply_by_sum_ii/
+
+class Solution {
+    private static final int MX = 100001;
+    private static final long MOD = 1_000_000_007;
+    private static final long[] PW = new long[MX];
+    static {
+        PW[0] = 1;
+        for (int i = 1; i < MX; i++) PW[i] = PW[i - 1] * 10 % MOD;
+    }
+
+    public int[] sumAndMultiply(String s, int[][] queries) {
+        int n = s.length();
+        int[] sumD = new int[n + 1], cntN0 = new int[n + 1];
+        long[] p = new long[n + 1];
+        for (int i = 1; i <= n; i++) {
+            long d = s.charAt(i - 1) - '0';
+            sumD[i] = sumD[i - 1] + (int) d;
+            cntN0[i] = cntN0[i - 1];
+            if (d > 0) {
+                cntN0[i]++;
+                p[i] = (p[i - 1] * 10 + d) % MOD;
+            } else p[i] = p[i - 1];
+        }
+        int[] ans = new int[queries.length];
+        for (int i = 0; i < queries.length; i++) {
+            int l = queries[i][0], r = queries[i][1];
+            int n0 = cntN0[r + 1] - cntN0[l];
+            long sd = sumD[r + 1] - sumD[l];
+            long x = (p[r + 1] - p[l] * PW[n0] % MOD + MOD) % MOD;
+            ans[i] = (int) (x * sd % MOD);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3757_number_of_effective_subsequences
+================================================================================
+// LeetCode 3757 - Number of Effective Subsequences
+// https://leetcode.com/problems/number-of-effective-subsequences/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    static int PopCount(int x) {
+        int c = 0;
+        while (x != 0) { c += x & 1; x >>= 1; }
+        return c;
+    }
+
+    public int countEffectiveSubsequences(int[] nums) {
+        final int mod = 1000000007;
+        int all = 0;
+        for (int x : nums) all |= x;
+        var bits = new ArrayList<Integer>();
+        for (int b = 0; b < 20; b++) if (((all >> b) & 1) != 0) bits.add(b);
+        int m = bits.size();
+        int[] freq = new int[1 << m];
+        for (int x : nums) {
+            int mask = 0;
+            for (int i = 0; i < m; i++) if (((x >> bits.get(i)) & 1) != 0) mask |= 1 << i;
+            freq[mask]++;
+        }
+        int[] disjoint = freq.clone();
+        for (int b = 0; b < m; b++) {
+            for (int mask = 0; mask < (1 << m); mask++) {
+                if (((mask >> b) & 1) != 0) disjoint[mask] += disjoint[mask ^ (1 << b)];
+            }
+        }
+        int[] pow2 = new int[nums.length + 1];
+        pow2[0] = 1;
+        for (int i = 1; i <= nums.length; i++) pow2[i] = pow2[i - 1] * 2 % mod;
+        int ans = 0, full = (1 << m) - 1;
+        for (int s = 1; s <= full; s++) {
+            int ways = pow2[disjoint[full ^ s]];
+            int bc = PopCount(s);
+            if ((bc & 1) != 0) {
+                ans += ways;
+                if (ans >= mod) ans -= mod;
+            } else {
+                ans -= ways;
+                if (ans < 0) ans += mod;
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3758_convert_number_words_to_digits
+================================================================================
+// LeetCode 3758 - Convert Number Words To Digits
+// https://leetcode.com/problems/convert_number_words_to_digits/
+
+class Solution {
+    public String convertNumber(String s) {
+        String[] d = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        int n = s.length();
+        StringBuilder ans = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 10; j++) {
+                int m = d[j].length();
+                if (i + m <= n && s.substring(i, i + m).equals(d[j])) {
+                    ans.append((char) ('0' + j));
+                    i += m - 1;
+                    break;
+                }
+            }
+        }
+        return ans.toString();
+    }
+}
+
+
+================================================================================
+FOLDER: 3759_count_elements_with_at_least_k_greater_values
+================================================================================
+// LeetCode 3759 - Count Elements With At Least K Greater Values
+// https://leetcode.com/problems/count-elements-with-at-least-k-greater-values/
+
+import java.util.Arrays;
+
+class Solution {
+    public int countElements(int[] nums, int k) {
+        int n = nums.length;
+        if (k == 0) return n;
+        Arrays.sort(nums);
+        int ans = 0;
+        for (int i = 0; i < n - k; i++) {
+            if (nums[n - k] > nums[i]) ans++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3760_maximum_substrings_with_distinct_start
+================================================================================
+// LeetCode 3760 - Maximum Substrings With Distinct Start
+// https://leetcode.com/problems/maximum-substrings-with-distinct-start/
+
+class Solution {
+    public int maxDistinct(String s) {
+        int[] cnt = new int[26];
+        int ans = 0;
+        for (char c : s.toCharArray()) {
+            cnt[c - 'a']++;
+            if (cnt[c - 'a'] == 1) ans++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3761_minimum_absolute_distance_between_mirror_pairs
+================================================================================
+// LeetCode 3761 - Minimum Absolute Distance Between Mirror Pairs
+// https://leetcode.com/problems/minimum_absolute_distance_between_mirror_pairs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minMirrorPairDistance(int[] nums) {
+        int n = nums.length;
+        Map<Integer, Integer> pos = new HashMap<>();
+        int ans = n + 1;
+        for (int i = 0; i < n; i++) {
+            if (pos.containsKey(nums[i])) ans = Math.min(ans, i - pos.get(nums[i]));
+            pos.put(reverse(nums[i]), i);
+        }
+        return ans > n ? -1 : ans;
+    }
+
+    private int reverse(int x) {
+        int y = 0;
+        for (; x > 0; x /= 10) y = y * 10 + x % 10;
+        return y;
+    }
+}
+
+
+================================================================================
+FOLDER: 3762_minimum_operations_to_equalize_subarrays
+================================================================================
+// LeetCode 3762 - Minimum Operations To Equalize Subarrays
+// https://leetcode.com/problems/minimum_operations_to_equalize_subarrays/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    static class Node {
+        int left, right, count;
+        long sum;
+        Node() {}
+        Node(Node o) {
+            left = o.left; right = o.right; count = o.count; sum = o.sum;
+        }
+    }
+
+    private List<Node> nodes;
+
+    public long[] minOperations(int[] nums, int k, int[][] queries) {
+        int n = nums.length;
+        int[] quotient = new int[n], remainder = new int[n], values = new int[n];
+        for (int i = 0; i < n; i++) {
+            quotient[i] = nums[i] / k;
+            remainder[i] = nums[i] % k;
+            values[i] = quotient[i];
+        }
+        Arrays.sort(values);
+        int vu = 1;
+        for (int i = 1; i < n; i++) if (values[i] != values[vu - 1]) values[vu++] = values[i];
+        values = Arrays.copyOf(values, vu);
+
+        nodes = new ArrayList<>();
+        nodes.add(new Node());
+        int[] roots = new int[n + 1];
+        int umax = values.length - 1;
+        for (int i = 0; i < n; i++) {
+            int position = lowerBound(values, quotient[i]);
+            roots[i + 1] = update(roots[i], 0, umax, position, quotient[i]);
+        }
+
+        int[] logv = new int[n + 1];
+        for (int i = 2; i <= n; i++) logv[i] = logv[i / 2] + 1;
+        int levels = logv[n] + 1;
+        int[][] minTable = new int[levels][];
+        int[][] maxTable = new int[levels][];
+        minTable[0] = remainder.clone();
+        maxTable[0] = remainder.clone();
+        for (int level = 1; level < levels; level++) {
+            int length = n - (1 << level) + 1;
+            minTable[level] = new int[length];
+            maxTable[level] = new int[length];
+            int half = 1 << (level - 1);
+            for (int i = 0; i < length; i++) {
+                minTable[level][i] = Math.min(minTable[level - 1][i], minTable[level - 1][i + half]);
+                maxTable[level][i] = Math.max(maxTable[level - 1][i], maxTable[level - 1][i + half]);
+            }
+        }
+
+        long[] answer = new long[queries.length];
+        for (int qi = 0; qi < queries.length; qi++) {
+            int left = queries[qi][0], right = queries[qi][1];
+            int length = right - left + 1;
+            int level = logv[length];
+            int offset = right - (1 << level) + 1;
+            int minR = Math.min(minTable[level][left], minTable[level][offset]);
+            int maxR = Math.max(maxTable[level][left], maxTable[level][offset]);
+            if (minR != maxR) {
+                answer[qi] = -1;
+                continue;
+            }
+            int medianIndex = kth(roots[right + 1], roots[left], 0, umax, (length + 1) / 2);
+            int median = values[medianIndex];
+            long[] stats = prefixStats(roots[right + 1], roots[left], 0, umax, medianIndex);
+            int leftCount = (int) stats[0];
+            long leftSum = stats[1];
+            long totalSum = nodes.get(roots[right + 1]).sum - nodes.get(roots[left]).sum;
+            answer[qi] = 1L * median * leftCount - leftSum + (totalSum - leftSum) - 1L * median * (length - leftCount);
+        }
+        return answer;
+    }
+
+    private int update(int previous, int lo, int hi, int position, int value) {
+        int current = nodes.size();
+        nodes.add(new Node(nodes.get(previous)));
+        nodes.get(current).count++;
+        nodes.get(current).sum += value;
+        if (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (position <= mid) nodes.get(current).left = update(nodes.get(previous).left, lo, mid, position, value);
+            else nodes.get(current).right = update(nodes.get(previous).right, mid + 1, hi, position, value);
+        }
+        return current;
+    }
+
+    private int kth(int rightRoot, int leftRoot, int lo, int hi, int rank) {
+        if (lo == hi) return lo;
+        int leftCount = nodes.get(nodes.get(rightRoot).left).count - nodes.get(nodes.get(leftRoot).left).count;
+        int mid = (lo + hi) / 2;
+        if (rank <= leftCount) return kth(nodes.get(rightRoot).left, nodes.get(leftRoot).left, lo, mid, rank);
+        return kth(nodes.get(rightRoot).right, nodes.get(leftRoot).right, mid + 1, hi, rank - leftCount);
+    }
+
+    private long[] prefixStats(int rightRoot, int leftRoot, int lo, int hi, int end) {
+        if (end < lo) return new long[]{0, 0};
+        if (hi <= end) return new long[]{
+            nodes.get(rightRoot).count - nodes.get(leftRoot).count,
+            nodes.get(rightRoot).sum - nodes.get(leftRoot).sum
+        };
+        int mid = (lo + hi) / 2;
+        long[] left = prefixStats(nodes.get(rightRoot).left, nodes.get(leftRoot).left, lo, mid, end);
+        long count = left[0], sum = left[1];
+        if (end > mid) {
+            long[] right = prefixStats(nodes.get(rightRoot).right, nodes.get(leftRoot).right, mid + 1, hi, end);
+            count += right[0];
+            sum += right[1];
+        }
+        return new long[]{count, sum};
+    }
+
+    private int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+FOLDER: 3763_maximum_total_sum_with_threshold_constraints
+================================================================================
+// LeetCode 3763 - Maximum Total Sum With Threshold Constraints
+// https://leetcode.com/problems/maximum_total_sum_with_threshold_constraints/
+
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+class Solution {
+    public long maxSum(int[] nums, int[] threshold) {
+        int n = nums.length;
+        Integer[] idx = new Integer[n];
+        for (int i = 0; i < n; i++) idx[i] = i;
+        Arrays.sort(idx, (a, b) -> Integer.compare(threshold[a], threshold[b]));
+        PriorityQueue<Integer> tree = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+        long ans = 0;
+        int i = 0;
+        for (int step = 1; ; step++) {
+            while (i < n && threshold[idx[i]] <= step) {
+                tree.offer(nums[idx[i]]);
+                i++;
+            }
+            if (tree.isEmpty()) break;
+            ans += tree.poll();
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3765_complete_prime_number
+================================================================================
+// LeetCode 3765 - Complete Prime Number
+// https://leetcode.com/problems/complete_prime_number/
+
+class Solution {
+    private boolean isPrime(int x) {
+        if (x < 2) return false;
+        for (int i = 2; i * i <= x; i++) if (x % i == 0) return false;
+        return true;
+    }
+
+    public boolean completePrime(int num) {
+        String s = Integer.toString(num);
+        int x = 0;
+        for (char c : s.toCharArray()) {
+            x = x * 10 + (c - '0');
+            if (!isPrime(x)) return false;
+        }
+        x = 0;
+        int p = 1;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            x = p * (s.charAt(i) - '0') + x;
+            p *= 10;
+            if (!isPrime(x)) return false;
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+FOLDER: 3766_minimum_operations_to_make_binary_palindrome
+================================================================================
+// LeetCode 3766 - Minimum Operations To Make Binary Palindrome
+// https://leetcode.com/problems/minimum_operations_to_make_binary_palindrome/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private static final List<Integer> PALS = new ArrayList<>();
+    static {
+        int N = 1 << 14;
+        for (int i = 0; i < N; i++) {
+            StringBuilder sb = new StringBuilder();
+            int x = i;
+            if (x == 0) sb.append('0');
+            else {
+                while (x > 0) {
+                    sb.append((char) ('0' + (x & 1)));
+                    x >>= 1;
+                }
+                sb.reverse();
+            }
+            if (isPalindrome(sb)) PALS.add(i);
+        }
+    }
+
+    private static boolean isPalindrome(StringBuilder s) {
+        int m = s.length();
+        for (int i = 0; i < m / 2; i++) if (s.charAt(i) != s.charAt(m - 1 - i)) return false;
+        return true;
+    }
+
+    public int[] minOperations(int[] nums) {
+        int[] ans = new int[nums.length];
+        for (int k = 0; k < nums.length; k++) {
+            int x = nums[k];
+            int it = lowerBound(x);
+            int t = Integer.MAX_VALUE;
+            if (it < PALS.size()) t = PALS.get(it) - x;
+            if (it > 0) t = Math.min(t, x - PALS.get(it - 1));
+            ans[k] = t;
+        }
+        return ans;
+    }
+
+    private int lowerBound(int x) {
+        int lo = 0, hi = PALS.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (PALS.get(mid) < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+FOLDER: 3767_maximize_points_after_choosing_k_tasks
+================================================================================
+// LeetCode 3767 - Maximize Points After Choosing K Tasks
+// https://leetcode.com/problems/maximize_points_after_choosing_k_tasks/
+
+import java.util.Arrays;
+
+class Solution {
+    public long maxPoints(int[] technique1, int[] technique2, int k) {
+        int n = technique1.length;
+        Integer[] idx = new Integer[n];
+        for (int i = 0; i < n; i++) idx[i] = i;
+        Arrays.sort(idx, (i, j) -> Integer.compare(
+            technique1[j] - technique2[j], technique1[i] - technique2[i]));
+        long ans = 0;
+        for (int x : technique2) ans += x;
+        for (int i = 0; i < k; i++) {
+            int index = idx[i];
+            ans -= technique2[index];
+            ans += technique1[index];
+        }
+        for (int i = k; i < n; i++) {
+            int index = idx[i];
+            if (technique1[index] >= technique2[index]) {
+                ans -= technique2[index];
+                ans += technique1[index];
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3768_minimum_inversion_count_in_subarrays_of_fixed_length
+================================================================================
+// LeetCode 3768 - Minimum Inversion Count In Subarrays Of Fixed Length
+// https://leetcode.com/problems/minimum_inversion_count_in_subarrays_of_fixed_length/
+
+import java.util.Arrays;
+
+class Solution {
+    private int[] bit;
+
+    public long minInversionCount(int[] nums, int k) {
+        int[] vals = nums.clone();
+        Arrays.sort(vals);
+        int u = unique(vals);
+        vals = Arrays.copyOf(vals, u);
+        bit = new int[vals.length + 1];
+        int[] rank = new int[nums.length];
+        long inv = 0;
+        for (int i = 0; i < nums.length; i++) {
+            rank[i] = lowerBound(vals, nums[i]) + 1;
+            if (i < k) {
+                inv += i - sum(rank[i]);
+                add(rank[i], 1);
+            }
+        }
+        long best = inv;
+        for (int r = k; r < nums.length; r++) {
+            int left = rank[r - k];
+            inv -= sum(left - 1);
+            add(left, -1);
+            inv += k - 1 - sum(rank[r]);
+            add(rank[r], 1);
+            if (inv < best) best = inv;
+        }
+        return best;
+    }
+
+    private void add(int i, int delta) {
+        for (; i < bit.length; i += i & -i) bit[i] += delta;
+    }
+
+    private int sum(int i) {
+        int res = 0;
+        for (; i > 0; i -= i & -i) res += bit[i];
+        return res;
+    }
+
+    private int unique(int[] a) {
+        int n = 0;
+        for (int i = 0; i < a.length; i++) {
+            if (n == 0 || a[i] != a[n - 1]) a[n++] = a[i];
+        }
+        return n;
+    }
+
+    private int lowerBound(int[] a, int x) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+================================================================================
+FOLDER: 3769_sort_integers_by_binary_reflection
+================================================================================
+// LeetCode 3769 - Sort Integers By Binary Reflection
+// https://leetcode.com/problems/sort_integers_by_binary_reflection/
+
+import java.util.Arrays;
+
+class Solution {
+    public int[] sortByReflection(int[] nums) {
+        Integer[] arr = new Integer[nums.length];
+        for (int i = 0; i < nums.length; i++) arr[i] = nums[i];
+        Arrays.sort(arr, (a, b) -> {
+            int fa = f(a), fb = f(b);
+            if (fa != fb) return Integer.compare(fa, fb);
+            return Integer.compare(a, b);
+        });
+        for (int i = 0; i < nums.length; i++) nums[i] = arr[i];
+        return nums;
+    }
+
+    private int f(int x) {
+        int y = 0;
+        while (x != 0) {
+            y = (y << 1) | (x & 1);
+            x >>= 1;
+        }
+        return y;
+    }
+}
+
+
+================================================================================
+FOLDER: 3770_largest_prime_from_consecutive_prime_sum
+================================================================================
+// LeetCode 3770 - Largest Prime From Consecutive Prime Sum
+// https://leetcode.com/problems/largest_prime_from_consecutive_prime_sum/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private static final int MX = 500000;
+    private static final List<Integer> S = new ArrayList<>();
+    static {
+        boolean[] isPrime = new boolean[MX + 1];
+        ArraysFill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+        List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= MX; i++) {
+            if (isPrime[i]) {
+                primes.add(i);
+                if ((long) i * i <= MX) {
+                    for (int j = i * i; j <= MX; j += i) isPrime[j] = false;
+                }
+            }
+        }
+        S.add(0);
+        int t = 0;
+        for (int x : primes) {
+            t += x;
+            if (t > MX) break;
+            if (isPrime[t]) S.add(t);
+        }
+    }
+
+    private static void ArraysFill(boolean[] a, boolean v) {
+        for (int i = 0; i < a.length; i++) a[i] = v;
+    }
+
+    public int largestPrime(int n) {
+        int lo = 0, hi = S.size();
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (S.get(mid) <= n) lo = mid + 1;
+            else hi = mid;
+        }
+        return S.get(lo - 1);
+    }
+}
+
+
+================================================================================
+FOLDER: 3771_total_score_of_dungeon_runs
+================================================================================
+// LeetCode 3771 - Total Score of Dungeon Runs
+// https://leetcode.com/problems/total-score-of-dungeon-runs/
+
+class Solution {
+    public long totalScore(int hp, int[] damage, int[] requirement) {
+        int n = damage.length;
+        long[] prefix = new long[n + 1];
+        for (int i = 0; i < n; i++) prefix[i + 1] = prefix[i] + damage[i];
+        long answer = 1L * n * (n + 1) / 2;
+        for (int j = 1; j <= n; j++) {
+            long threshold = prefix[j] + (requirement[j - 1] - hp);
+            int lo = 0, hi = j;
+            while (lo < hi) {
+                int mid = (lo + hi) / 2;
+                if (prefix[mid] < threshold) lo = mid + 1;
+                else hi = mid;
+            }
+            answer -= lo;
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+FOLDER: 3772_maximum_subgraph_score_in_a_tree
+================================================================================
+// LeetCode 3772 - Maximum Subgraph Score In A Tree
+// https://leetcode.com/problems/maximum_subgraph_score_in_a_tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] maxSubgraphScore(int n, int[][] edges, int[] good) {
+        List<Integer>[] g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] parent = new int[n];
+        java.util.Arrays.fill(parent, -2);
+        parent[0] = -1;
+        List<Integer> order = new ArrayList<>();
+        order.add(0);
+        for (int i = 0; i < order.size(); i++) {
+            int u = order.get(i);
+            for (int v : g[u]) {
+                if (parent[v] == -2) {
+                    parent[v] = u;
+                    order.add(v);
+                }
+            }
+        }
+        int[] down = new int[n];
+        for (int i = n - 1; i >= 0; i--) {
+            int u = order.get(i);
+            down[u] = 2 * good[u] - 1;
+            for (int v : g[u]) {
+                if (parent[v] == u && down[v] > 0) down[u] += down[v];
+            }
+        }
+        int[] ans = down.clone();
+        for (int u : order) {
+            for (int v : g[u]) {
+                if (parent[v] == u) {
+                    int outside = ans[u];
+                    if (down[v] > 0) outside -= down[v];
+                    ans[v] = down[v];
+                    if (outside > 0) ans[v] += outside;
+                }
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3773_maximum_number_of_equal_length_runs
+================================================================================
+// LeetCode 3773 - Maximum Number Of Equal Length Runs
+// https://leetcode.com/problems/maximum-number-of-equal-length-runs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int maxSameLengthRuns(String s) {
+        var cnt = new HashMap<Integer, Integer>();
+        int n = s.length(), ans = 0;
+        for (int i = 0; i < n; ) {
+            int j = i + 1;
+            while (j < n && s.charAt(j) == s.charAt(i)) j++;
+            int m = j - i;
+            if (!cnt.containsKey(m)) cnt.put(m, 0);
+            cnt.merge(m, 1, Integer::sum);
+            ans = Math.max(ans, cnt.get(m));
+            i = j;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3774_absolute_difference_between_maximum_and_minimum_k_elements
+================================================================================
+// LeetCode 3774 - Absolute Difference Between Maximum And Minimum K Elements
+// https://leetcode.com/problems/absolute-difference-between-maximum-and-minimum-k-elements/
+
+import java.util.Arrays;
+
+class Solution {
+    public int absDifference(int[] nums, int k) {
+        Arrays.sort(nums);
+        int ans = 0, n = nums.length;
+        for (int i = 0; i < k; i++) ans += nums[n - i - 1] - nums[i];
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3775_reverse_words_with_same_vowel_count
+================================================================================
+// LeetCode 3775 - Reverse Words With Same Vowel Count
+// https://leetcode.com/problems/reverse_words_with_same_vowel_count/
+
+class Solution {
+    private int calc(String w) {
+        int cnt = 0;
+        for (char c : w.toCharArray()) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') cnt++;
+        }
+        return cnt;
+    }
+
+    public String reverseWords(String s) {
+        String[] words = s.trim().split("\\s+");
+        int cnt = calc(words[0]);
+        StringBuilder ans = new StringBuilder();
+        ans.append(words[0]);
+        for (int i = 1; i < words.length; i++) {
+            String w = words[i];
+            if (calc(w) == cnt) w = new StringBuilder(w).reverse().toString();
+            ans.append(' ').append(w);
+        }
+        return ans.toString();
+    }
+}
+
+
+================================================================================
+FOLDER: 3776_minimum_moves_to_balance_circular_array
+================================================================================
+// LeetCode 3776 - Minimum Moves To Balance Circular Array
+// https://leetcode.com/problems/minimum-moves-to-balance-circular-array/
+
+class Solution {
+    public long minMoves(int[] balance) {
+        long sum = 0;
+        for (int b : balance) sum += b;
+        if (sum < 0) return -1;
+
+        int n = balance.length;
+        int mn = balance[0], idx = 0;
+        for (int i = 1; i < n; i++) {
+            if (balance[i] < mn) {
+                mn = balance[i];
+                idx = i;
+            }
+        }
+        if (mn >= 0) return 0;
+
+        int need = -mn;
+        long ans = 0;
+        for (int j = 1; j < n; j++) {
+            int a = balance[(idx - j + n) % n];
+            int b = balance[(idx + j) % n];
+            int c1 = Math.min(a, need);
+            need -= c1;
+            ans += (long)c1 * j;
+            int c2 = Math.min(b, need);
+            need -= c2;
+            ans += (long)c2 * j;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3777_minimum_deletions_to_make_alternating_substring
+================================================================================
+// LeetCode 3777 - Minimum Deletions To Make Alternating Substring
+// https://leetcode.com/problems/minimum-deletions-to-make-alternating-substring/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    class BIT {
+        int n;
+        int[] c;
+        public BIT(int n_) { n = n_; c = new int[n_ + 1]; }
+        public void update(int x, int delta) {
+            for (; x <= n; x += x & -x) c[x] += delta;
+        }
+        public int query(int x) {
+            int s = 0;
+            for (; x > 0; x -= x & -x) s += c[x];
+            return s;
+        }
+    }
+
+    public int[] minDeletions(String s, int[][] queries) {
+        int n = s.length();
+        int[] nums = new int[n];
+        var bit = new BIT(n);
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i) == s.charAt(i - 1)) {
+                nums[i] = 1;
+                bit.update(i + 1, 1);
+            }
+        }
+        var ans = new ArrayList<Integer>();
+        for (var q : queries) {
+            if (q[0] == 1) {
+                int j = q[1];
+                int delta = (nums[j] ^ 1) - nums[j];
+                nums[j] ^= 1;
+                bit.update(j + 1, delta);
+                if (j + 1 < n) {
+                    delta = (nums[j + 1] ^ 1) - nums[j + 1];
+                    nums[j + 1] ^= 1;
+                    bit.update(j + 2, delta);
+                }
+            } else {
+                int l = q[1], r = q[2];
+                ans.add(bit.query(r + 1) - bit.query(l + 1));
+            }
+        }
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+
+================================================================================
+FOLDER: 3778_minimum_distance_excluding_one_maximum_weighted_edge
+================================================================================
+// LeetCode 3778 - Minimum Distance Excluding One Maximum Weighted Edge
+// https://leetcode.com/problems/minimum_distance_excluding_one_maximum_weighted_edge/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Solution {
+    public long minCostExcludingMax(int n, int[][] edges) {
+        List<int[]>[] g = newList(n);
+        for (int[] e : edges) {
+            int u = e[0], v = e[1], w = e[2];
+            g[u].add(new int[]{v, w});
+            g[v].add(new int[]{u, w});
+        }
+        final long INF = (long) 4e18;
+        long[][] dist = new long[n][2];
+        for (int i = 0; i < n; i++) Arrays.fill(dist[i], INF);
+        dist[0][0] = 0;
+        PriorityQueue<long[]> pq = new PriorityQueue<>((a, b) -> Long.compare(a[0], b[0]));
+        pq.offer(new long[]{0, 0, 0}); // cost, u, used
+        while (!pq.isEmpty()) {
+            long[] cur = pq.poll();
+            long c = cur[0];
+            int u = (int) cur[1], used = (int) cur[2];
+            if (c > dist[u][used]) continue;
+            if (u == n - 1 && used == 1) return c;
+            for (int[] e : g[u]) {
+                int v = e[0], w = e[1];
+                long nxt = c + w;
+                if (nxt < dist[v][used]) {
+                    dist[v][used] = nxt;
+                    pq.offer(new long[]{nxt, v, used});
+                }
+                if (used == 0) {
+                    nxt = c;
+                    if (nxt < dist[v][1]) {
+                        dist[v][1] = nxt;
+                        pq.offer(new long[]{nxt, v, 1});
+                    }
+                }
+            }
+        }
+        return dist[n - 1][1];
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<int[]>[] newList(int n) {
+        List<int[]>[] g = (List<int[]>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3779_minimum_number_of_operations_to_have_distinct_elements
+================================================================================
+// LeetCode 3779 - Minimum Number Of Operations To Have Distinct Elements
+// https://leetcode.com/problems/minimum-number-of-operations-to-have-distinct-elements/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int minOperations(int[] nums) {
+        var st = new HashSet<Integer>();
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (st.contains(nums[i])) return i / 3 + 1;
+            st.add(nums[i]);
+        }
+        return 0;
+    }
+}
+
+
+================================================================================
+FOLDER: 3780_maximum_sum_of_three_numbers_divisible_by_three
+================================================================================
+// LeetCode 3780 - Maximum Sum Of Three Numbers Divisible By Three
+// https://leetcode.com/problems/maximum_sum_of_three_numbers_divisible_by_three/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public int maximumSum(int[] nums) {
+        Arrays.sort(nums);
+        List<Integer>[] g = newList(3);
+        for (int x : nums) g[x % 3].add(x);
+        int ans = 0;
+        for (int a = 0; a < 3; a++) {
+            if (!g[a].isEmpty()) {
+                int x = g[a].remove(g[a].size() - 1);
+                for (int b = 0; b < 3; b++) {
+                    if (!g[b].isEmpty()) {
+                        int y = g[b].remove(g[b].size() - 1);
+                        int c = (3 - (a + b) % 3) % 3;
+                        if (!g[c].isEmpty()) {
+                            int z = g[c].get(g[c].size() - 1);
+                            ans = Math.max(ans, x + y + z);
+                        }
+                        g[b].add(y);
+                    }
+                }
+                g[a].add(x);
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3781_maximum_score_after_binary_swaps
+================================================================================
+// LeetCode 3781 - Maximum Score After Binary Swaps
+// https://leetcode.com/problems/maximum_score_after_binary_swaps/
+
+import java.util.PriorityQueue;
+
+class Solution {
+    public long maximumScore(int[] nums, String s) {
+        long ans = 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+        for (int i = 0; i < nums.length; i++) {
+            pq.offer(nums[i]);
+            if (s.charAt(i) == '1') {
+                ans += pq.poll();
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3782_last_remaining_integer_after_alternating_deletion_operations
+================================================================================
+// LeetCode 3782 - Last Remaining Integer After Alternating Deletion Operations
+// https://leetcode.com/problems/last-remaining-integer-after-alternating-deletion-operations/
+
+class Solution {
+    public long lastRemaining(long n) {
+        long first = 1, step = 2;
+        boolean left = true;
+        while (n > 1) {
+            if (!left && n % 2 == 0) first += step;
+            n = (n + 1) / 2;
+            step *= 2;
+            left = !left;
+        }
+        return first;
+    }
+}
+
+
+================================================================================
+FOLDER: 3783_mirror_distance_of_an_integer
+================================================================================
+// LeetCode 3783 - Mirror Distance Of An Integer
+// https://leetcode.com/problems/mirror_distance_of_an_integer/
+
+class Solution {
+    public int mirrorDistance(int n) {
+        return Math.abs(n - reverse(n));
+    }
+
+    private int reverse(int x) {
+        int y = 0;
+        for (; x > 0; x /= 10) y = y * 10 + x % 10;
+        return y;
+    }
+}
+
+
+================================================================================
+FOLDER: 3784_minimum_deletion_cost_to_make_all_characters_equal
+================================================================================
+// LeetCode 3784 - Minimum Deletion Cost To Make All Characters Equal
+// https://leetcode.com/problems/minimum_deletion_cost_to_make_all_characters_equal/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long minCost(String s, int[] cost) {
+        long tot = 0;
+        Map<Character, Long> g = new HashMap<>();
+        for (int i = 0; i < cost.length; i++) {
+            tot += cost[i];
+            g.merge(s.charAt(i), (long) cost[i], Long::sum);
+        }
+        long ans = tot;
+        for (long x : g.values()) ans = Math.min(ans, tot - x);
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3785_minimum_swaps_to_avoid_forbidden_values
+================================================================================
+// LeetCode 3785 - Minimum Swaps to Avoid Forbidden Values
+// https://leetcode.com/problems/minimum-swaps-to-avoid-forbidden-values/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minSwaps(int[] nums, int[] forbidden) {
+        int n = nums.length;
+        var freq = new HashMap<Integer, Integer>();
+        for (int x : nums) {
+            if (!freq.containsKey(x)) freq.put(x, 0);
+            freq.merge(x, 1, Integer::sum);
+        }
+        for (int x : forbidden) {
+            if (!freq.containsKey(x)) freq.put(x, 0);
+            freq.merge(x, 1, Integer::sum);
+        }
+        for (var c : freq.values()) {
+            if (c > n) return -1;
+        }
+        var bad = new HashMap<Integer, Integer>();
+        int total = 0, largest = 0;
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == forbidden[i]) {
+                if (!bad.containsKey(nums[i])) bad.put(nums[i], 0);
+                bad.merge(nums[i], 1, Integer::sum);
+                total++;
+                if (bad.get(nums[i]) > largest) largest = bad.get(nums[i]);
+            }
+        }
+        if ((total + 1) / 2 > largest) return (total + 1) / 2;
+        return largest;
+    }
+}
+
+
+================================================================================
+FOLDER: 3786_total_sum_of_interaction_cost_in_tree_groups
+================================================================================
+// LeetCode 3786 - Total Sum Of Interaction Cost In Tree Groups
+// https://leetcode.com/problems/total_sum_of_interaction_cost_in_tree_groups/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public long interactionCost(int n, int[][] edges, int[] group) {
+        List<Integer>[] g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] total = new int[21];
+        for (int x : group) total[x]++;
+        int[] parent = new int[n];
+        java.util.Arrays.fill(parent, -2);
+        parent[0] = -1;
+        List<Integer> order = new ArrayList<>();
+        order.add(0);
+        for (int i = 0; i < order.size(); i++) {
+            int u = order.get(i);
+            for (int v : g[u]) {
+                if (parent[v] == -2) {
+                    parent[v] = u;
+                    order.add(v);
+                }
+            }
+        }
+        int[][] count = new int[n][21];
+        long ans = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            int u = order.get(i);
+            count[u][group[u]]++;
+            for (int v : g[u]) {
+                if (parent[v] != u) continue;
+                for (int c = 1; c <= 20; c++) {
+                    int x = count[v][c];
+                    ans += (long) x * (total[c] - x);
+                    count[u][c] += x;
+                }
+            }
+        }
+        return ans;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3787_find_diameter_endpoints_of_a_tree
+================================================================================
+// LeetCode 3787 - Find Diameter Endpoints Of A Tree
+// https://leetcode.com/problems/find_diameter_endpoints_of_a_tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private List<Integer>[] g;
+    private int n;
+
+    public String findSpecialNodes(int n, int[][] edges) {
+        this.n = n;
+        g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] r0 = bfs(0);
+        int a = r0[0];
+        int[] r1 = bfs(a);
+        int b = r1[0];
+        int[] dist1 = java.util.Arrays.copyOfRange(r1, 1, n + 1);
+        int[] r2 = bfs(b);
+        int[] dist2 = java.util.Arrays.copyOfRange(r2, 1, n + 1);
+        int d = dist1[b];
+        char[] ans = new char[n];
+        java.util.Arrays.fill(ans, '0');
+        for (int i = 0; i < n; i++) {
+            if (dist1[i] == d || dist2[i] == d) ans[i] = '1';
+        }
+        return new String(ans);
+    }
+
+    // returns [far, dist0, dist1, ...]
+    private int[] bfs(int start) {
+        int[] dist = new int[n];
+        java.util.Arrays.fill(dist, -1);
+        dist[start] = 0;
+        List<Integer> q = new ArrayList<>();
+        q.add(start);
+        int far = start;
+        for (int head = 0; head < q.size(); head++) {
+            int u = q.get(head);
+            if (dist[u] > dist[far]) far = u;
+            for (int v : g[u]) {
+                if (dist[v] == -1) {
+                    dist[v] = dist[u] + 1;
+                    q.add(v);
+                }
+            }
+        }
+        int[] out = new int[n + 1];
+        out[0] = far;
+        System.arraycopy(dist, 0, out, 1, n);
+        return out;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3788_maximum_score_of_a_split
+================================================================================
+// LeetCode 3788 - Maximum Score Of A Split
+// https://leetcode.com/problems/maximum-score-of-a-split/
+
+class Solution {
+    public long maximumScore(int[] nums) {
+        int n = nums.length;
+        long[] suf = new long[n];
+        suf[n - 1] = nums[n - 1];
+        for (int i = n - 2; i >= 0; i--) suf[i] = Math.min(nums[i], suf[i + 1]);
+        long pre = 0;
+        long ans = Long.MIN_VALUE;
+        for (int i = 0; i < n - 1; i++) {
+            pre += nums[i];
+            ans = Math.max(ans, pre - suf[i + 1]);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3789_minimum_cost_to_acquire_required_items
+================================================================================
+// LeetCode 3789 - Minimum Cost To Acquire Required Items
+// https://leetcode.com/problems/minimum-cost-to-acquire-required-items/
+
+class Solution {
+    public long minimumCost(int cost1, int cost2, int costBoth, int need1, int need2) {
+        long a = (long)need1 * cost1 + (long)need2 * cost2;
+        long b = (long)costBoth * Math.max(need1, need2);
+        int mn = Math.min(need1, need2);
+        long c = (long)costBoth * mn + (long)(need1 - mn) * cost1 + (long)(need2 - mn) * cost2;
+        return Math.min(a, Math.min(b, c));
+    }
+}
+
+
+================================================================================
+FOLDER: 3790_smallest_all_ones_multiple
+================================================================================
+// LeetCode 3790 - Smallest All Ones Multiple
+// https://leetcode.com/problems/smallest-all-ones-multiple/
+
+class Solution {
+    public int minAllOneMultiple(int k) {
+        if ((k & 1) == 0) return -1;
+        int x = 1 % k;
+        int ans = 1;
+        for (int i = 0; i < k; i++) {
+            x = (x * 10 + 1) % k;
+            ans++;
+            if (x == 0) return ans;
+        }
+        return -1;
+    }
+}
+
+
+================================================================================
+FOLDER: 3791_number_of_balanced_integers_in_a_range
+================================================================================
+// LeetCode 3791 - Number Of Balanced Integers In A Range
+// https://leetcode.com/problems/number_of_balanced_integers_in_a_range/
+
+import java.util.Arrays;
+
+class Solution {
+    private static final int BASE = 90;
+    private String num;
+    private long[][] f = new long[20][181];
+
+    private long dfs(int pos, int diff, boolean lim) {
+        if (pos >= num.length()) return diff == 0 ? 1 : 0;
+        if (!lim && f[pos][diff + BASE] != -1) return f[pos][diff + BASE];
+        int up = lim ? num.charAt(pos) - '0' : 9;
+        long res = 0;
+        for (int i = 0; i <= up; i++) {
+            if (pos % 2 == 0) res += dfs(pos + 1, diff + i, lim && i == up);
+            else res += dfs(pos + 1, diff - i, lim && i == up);
+        }
+        if (!lim) f[pos][diff + BASE] = res;
+        return res;
+    }
+
+    public long countBalanced(long low, long high) {
+        if (high < 11) return 0;
+        if (low < 11) low = 11;
+        num = Long.toString(low - 1);
+        for (long[] row : f) Arrays.fill(row, -1);
+        long a = dfs(0, 0, true);
+        num = Long.toString(high);
+        for (long[] row : f) Arrays.fill(row, -1);
+        long b = dfs(0, 0, true);
+        return b - a;
+    }
+}
+
+
+================================================================================
+FOLDER: 3792_sum_of_increasing_product_blocks
+================================================================================
+// LeetCode 3792 - Sum Of Increasing Product Blocks
+// https://leetcode.com/problems/sum-of-increasing-product-blocks/
+
+class Solution {
+    public int sumOfBlocks(int n) {
+        final int MOD = 1000000007;
+        int ans = 0, k = 1;
+        for (int i = 1; i <= n; i++) {
+            int x = 1;
+            for (int j = k; j < k + i; j++) x = (int)((long)x * j % MOD);
+            ans = (ans + x) % MOD;
+            k += i;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3794_reverse_string_prefix
+================================================================================
+// LeetCode 3794 - Reverse String Prefix
+// https://leetcode.com/problems/reverse-string-prefix/
+
+class Solution {
+    public String reversePrefix(String s, int k) {
+        char[] arr = s.toCharArray();
+        reverse(arr, 0, 0 + k);
+        return new String(arr);
+    }
+
+    private void reverse(char[] a) { reverse(a, 0, a.length); }
+    private void reverse(char[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            char t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+    private void reverse(int[] a) { reverse(a, 0, a.length); }
+    private void reverse(int[] a, int l, int r) {
+        for (int i = l, j = r - 1; i < j; i++, j--) {
+            int t = a[i]; a[i] = a[j]; a[j] = t;
+        }
+    }
+}
+
+
+================================================================================
+FOLDER: 3795_minimum_subarray_length_with_distinct_sum_at_least_k
+================================================================================
+// LeetCode 3795 - Minimum Subarray Length With Distinct Sum At Least K
+// https://leetcode.com/problems/minimum_subarray_length_with_distinct_sum_at_least_k/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int minLength(int[] nums, int k) {
+        int n = nums.length;
+        int ans = n + 1, l = 0;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        long s = 0;
+        for (int r = 0; r < n; r++) {
+            int c = cnt.merge(nums[r], 1, Integer::sum);
+            if (c == 1) s += nums[r];
+            while (s >= k) {
+                if (r - l + 1 < ans) ans = r - l + 1;
+                int left = nums[l];
+                int nc = cnt.merge(left, -1, Integer::sum);
+                if (nc == 0) {
+                    cnt.remove(left);
+                    s -= left;
+                }
+                l++;
+            }
+        }
+        return ans > n ? -1 : ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3796_find_maximum_value_in_a_constrained_sequence
+================================================================================
+// LeetCode 3796 - Find Maximum Value in a Constrained Sequence
+// https://leetcode.com/problems/find-maximum-value-in-a-constrained-sequence/
+
+class Solution {
+    public int maxValue(int n, int[][] restrictions, int[] diff) {
+        final int INF = Integer.MAX_VALUE / 4;
+        int[] bound = new int[n];
+        for (int i = 0; i < n; i++) bound[i] = INF;
+        bound[0] = 0;
+        for (var r : restrictions) bound[r[0]] = r[1];
+        for (int i = 1; i < n; i++) bound[i] = Math.min(bound[i], bound[i - 1] + diff[i - 1]);
+        for (int i = n - 2; i >= 0; i--) bound[i] = Math.min(bound[i], bound[i + 1] + diff[i]);
+        int ans = bound[0];
+        for (int i = 1; i < n; i++) ans = Math.max(ans, bound[i]);
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3797_count_routes_to_climb_a_rectangular_grid
+================================================================================
+// LeetCode 3797 - Count Routes To Climb A Rectangular Grid
+// https://leetcode.com/problems/count_routes_to_climb_a_rectangular_grid/
+
+class Solution {
+    public int countRoutes(String[] grid, int d) {
+        final int MOD = 1_000_000_007;
+        int n = grid.length, m = grid[0].length();
+        int upRadius = 0;
+        while ((upRadius + 1) * (upRadius + 1) + 1 <= d * d) upRadius++;
+        int[] arrived = new int[m];
+        for (int c = 0; c < m; c++) {
+            if (grid[n - 1].charAt(c) == '.') arrived[c] = 1;
+        }
+        for (int r = n - 1; r >= 0; r--) {
+            int[] pref = new int[m + 1];
+            for (int i = 0; i < m; i++) pref[i + 1] = (pref[i] + arrived[i]) % MOD;
+            int[] horizontal = new int[m];
+            for (int c = 0; c < m; c++) {
+                if (grid[r].charAt(c) == '#') continue;
+                int l = Math.max(0, c - d), rr = Math.min(m - 1, c + d);
+                horizontal[c] = (pref[rr + 1] - pref[l] - arrived[c]) % MOD;
+                if (horizontal[c] < 0) horizontal[c] += MOD;
+            }
+            if (r == 0) {
+                int ans = 0;
+                for (int c = 0; c < m; c++) ans = (ans + arrived[c] + horizontal[c]) % MOD;
+                return ans;
+            }
+            int[] pref2 = new int[m + 1];
+            for (int c = 0; c < m; c++) pref2[c + 1] = (pref2[c] + arrived[c] + horizontal[c]) % MOD;
+            int[] next = new int[m];
+            for (int c = 0; c < m; c++) {
+                if (grid[r - 1].charAt(c) == '#') continue;
+                int l = Math.max(0, c - upRadius), rr = Math.min(m - 1, c + upRadius);
+                next[c] = pref2[rr + 1] - pref2[l];
+                if (next[c] < 0) next[c] += MOD;
+            }
+            arrived = next;
+        }
+        return 0;
+    }
+}
+
+
+================================================================================
+FOLDER: 3798_largest_even_number
+================================================================================
+// LeetCode 3798 - Largest Even Number
+// https://leetcode.com/problems/largest-even-number/
+
+class Solution {
+    public String largestEven(String s) {
+        while (s.length() > 0 && s.charAt(s.length() - 1) == '1') s = s.substring(0, s.length() - 1);
+        return s;
+    }
+}
+
+
+================================================================================
+FOLDER: 3799_word_squares_ii
+================================================================================
+// LeetCode 3799 - Word Squares Ii
+// https://leetcode.com/problems/word-squares-ii/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public List<List<String>> wordSquares(String[] words) {
+        Arrays.sort(words);
+        int n = words.length;
+        var ans = new ArrayList<List<String>>();
+        for (int i = 0; i < n; i++) {
+            String top = words[i];
+            for (int j = 0; j < n; j++) {
+                if (j == i) continue;
+                String left = words[j];
+                for (int k = 0; k < n; k++) {
+                    if (k == j || k == i) continue;
+                    String right = words[k];
+                    for (int h = 0; h < n; h++) {
+                        if (h == k || h == j || h == i) continue;
+                        String bottom = words[h];
+                        if (top.charAt(0) == left.charAt(0) && top.charAt(3) == right.charAt(0) &&
+                            bottom.charAt(0) == left.charAt(3) && bottom.charAt(3) == right.charAt(3)) {
+                            ans.add(new ArrayList<String>(java.util.Arrays.asList(top, left, right, bottom)));
+                        }
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3800_minimum_cost_to_make_two_binary_strings_equal
+================================================================================
+// LeetCode 3800 - Minimum Cost To Make Two Binary Strings Equal
+// https://leetcode.com/problems/minimum-cost-to-make-two-binary-strings-equal/
+
+class Solution {
+    public long minimumCost(String s, String t, int flipCost, int swapCost, int crossCost) {
+        long[] diff = new long[2];
+        int n = s.length();
+        for (int i = 0; i < n; i++) {
+            if (s.charAt(i) != t.charAt(i)) diff[s.charAt(i) - '0']++;
+        }
+        long ans = (diff[0] + diff[1]) * flipCost;
+        long mx = Math.max(diff[0], diff[1]);
+        long mn = Math.min(diff[0], diff[1]);
+        ans = Math.min(ans, mn * swapCost + (mx - mn) * flipCost);
+        long avg = (mx + mn) / 2;
+        ans = Math.min(ans, (avg - mn) * crossCost + avg * swapCost + (mx + mn - avg * 2) * flipCost);
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3801_minimum_cost_to_merge_sorted_lists
+================================================================================
+// LeetCode 3801 - Minimum Cost To Merge Sorted Lists
+// https://leetcode.com/problems/minimum_cost_to_merge_sorted_lists/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public long minMergeCost(int[][] lists) {
+        int m = lists.length;
+        int totalMasks = 1 << m;
+        List<Integer>[] merged = newList(totalMasks);
+        int[] length = new int[totalMasks], median = new int[totalMasks];
+        for (int mask = 1; mask < totalMasks; mask++) {
+            int bit = mask & -mask;
+            int index = Integer.numberOfTrailingZeros(bit);
+            List<Integer> previous = merged[mask ^ bit];
+            int[] current = lists[index];
+            List<Integer> out = new ArrayList<>(previous.size() + current.length);
+            int i = 0, j = 0;
+            while (i < previous.size() || j < current.length) {
+                if (j == current.length || (i < previous.size() && previous.get(i) <= current[j])) {
+                    out.add(previous.get(i++));
+                } else {
+                    out.add(current[j++]);
+                }
+            }
+            merged[mask] = out;
+            length[mask] = out.size();
+            median[mask] = out.get((out.size() - 1) / 2);
+        }
+        final long INF = 1L << 62;
+        long[] dp = new long[totalMasks];
+        for (int mask = 1; mask < totalMasks; mask++) {
+            if ((mask & (mask - 1)) == 0) continue;
+            dp[mask] = INF;
+            int firstBit = mask & -mask;
+            for (int left = (mask - 1) & mask; left > 0; left = (left - 1) & mask) {
+                if ((left & firstBit) == 0) continue;
+                int right = mask ^ left;
+                if (right == 0) continue;
+                int diff = median[left] - median[right];
+                if (diff < 0) diff = -diff;
+                long candidate = dp[left] + dp[right] + length[mask] + diff;
+                if (candidate < dp[mask]) dp[mask] = candidate;
+            }
+        }
+        return dp[totalMasks - 1];
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3802_number_of_ways_to_paint_sheets
+================================================================================
+// LeetCode 3802 - Number Of Ways To Paint Sheets
+// https://leetcode.com/problems/number_of_ways_to_paint_sheets/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public int numberOfWays(int n, int[] limit) {
+        final long MOD = 1_000_000_007;
+        Arrays.sort(limit);
+        List<Integer> points = new ArrayList<>();
+        points.add(1);
+        points.add(n);
+        for (int x : limit) {
+            if (x + 1 > 1 && x + 1 < n) points.add(x + 1);
+            if (n - x > 1 && n - x < n) points.add(n - x);
+        }
+        points.sort(null);
+        int u = 0;
+        for (int i = 0; i < points.size(); i++) {
+            if (u == 0 || !points.get(i).equals(points.get(u - 1))) {
+                points.set(u++, points.get(i));
+            }
+        }
+        points = points.subList(0, u);
+        long ans = 0;
+        for (int i = 0; i + 1 < points.size(); i++) {
+            int x = points.get(i);
+            long a = countGE(limit, x), b = countGE(limit, n - x);
+            long same = countGE(limit, Math.max(x, n - x));
+            long ways = (a * b - same) % MOD;
+            long length = points.get(i + 1) - x;
+            ans = (ans + ways * length) % MOD;
+        }
+        if (ans < 0) ans += MOD;
+        return (int) ans;
+    }
+
+    private long countGE(int[] limit, int x) {
+        int lo = 0, hi = limit.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (limit[mid] < x) lo = mid + 1;
+            else hi = mid;
+        }
+        return limit.length - lo;
+    }
+}
+
+
+================================================================================
+FOLDER: 3803_count_residue_prefixes
+================================================================================
+// LeetCode 3803 - Count Residue Prefixes
+// https://leetcode.com/problems/count-residue-prefixes/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int residuePrefixes(String s) {
+        var st = new HashSet<Character>();
+        int ans = 0;
+        for (int i = 0; i < s.length(); i++) {
+            st.add(s.charAt(i));
+            if (st.size() == (i + 1) % 3) ans++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3804_number_of_centered_subarrays
+================================================================================
+// LeetCode 3804 - Number Of Centered Subarrays
+// https://leetcode.com/problems/number-of-centered-subarrays/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int centeredSubarrays(int[] nums) {
+        int n = nums.length, ans = 0;
+        for (int i = 0; i < n; i++) {
+            var st = new HashSet<Integer>();
+            int s = 0;
+            for (int j = i; j < n; j++) {
+                s += nums[j];
+                st.add(nums[j]);
+                if (st.contains(s)) ans++;
+            }
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3805_count_caesar_cipher_pairs
+================================================================================
+// LeetCode 3805 - Count Caesar Cipher Pairs
+// https://leetcode.com/problems/count-caesar-cipher-pairs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public long countPairs(String[] words) {
+        var cnt = new HashMap<String, Integer>();
+        for (String word : words) {
+            char[] s = word.toCharArray();
+            int k = 'z' - s[0];
+            for (int i = 1; i < s.length; i++) {
+                s[i] = (char)('a' + (s[i] - 'a' + k) % 26);
+            }
+            s[0] = 'z';
+            String key = new String(s);
+            if (!cnt.containsKey(key)) cnt.put(key, 0);
+            cnt.merge(key, 1, Integer::sum);
+        }
+        long ans = 0;
+        for (var v : cnt.values()) ans += (long)v * (v - 1) / 2;
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3806_maximum_bitwise_and_after_increment_operations
+================================================================================
+// LeetCode 3806 - Maximum Bitwise And After Increment Operations
+// https://leetcode.com/problems/maximum-bitwise-and-after-increment-operations/
+
+import java.util.Arrays;
+
+class Solution {
+    static int BitLen(int x) {
+        if (x == 0) return 0;
+        int n = 0;
+        while (x > 0) { n++; x >>= 1; }
+        return n;
+    }
+
+    public int maximumAND(int[] nums, int k, int m) {
+        int mxVal = nums[0];
+        for (int v : nums) if (v > mxVal) mxVal = v;
+        mxVal += k;
+        int mx = BitLen((int)mxVal);
+        int ans = 0;
+        int[] cost = new int[nums.length];
+        for (int bit = mx - 1; bit >= 0; bit--) {
+            int target = ans | (1 << bit);
+            for (int i = 0; i < nums.length; i++) {
+                int x = nums[i];
+                int j = BitLen((int)(target & ~x));
+                int mask = (1 << j) - 1;
+                cost[i] = (target & mask) - (x & mask);
+            }
+            Arrays.sort(cost);
+            int sum = 0;
+            for (int i = 0; i < m; i++) sum += cost[i];
+            if (sum <= k) ans = target;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3807_minimum_cost_to_repair_edges_to_traverse_a_graph
+================================================================================
+// LeetCode 3807 - Minimum Cost To Repair Edges To Traverse A Graph
+// https://leetcode.com/problems/minimum_cost_to_repair_edges_to_traverse_a_graph/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    private int[][] edges;
+    private int n, k;
+
+    public int minCost(int n, int[][] edges, int k) {
+        this.n = n;
+        this.k = k;
+        this.edges = edges;
+        Arrays.sort(edges, (a, b) -> Integer.compare(a[2], b[2]));
+        int m = edges.length;
+        if (m == 0) return -1;
+        int l = 0, r = m - 1;
+        while (l < r) {
+            int mid = (l + r) >> 1;
+            if (check(mid)) r = mid;
+            else l = mid + 1;
+        }
+        if (check(l)) return edges[l][2];
+        return -1;
+    }
+
+    private boolean check(int idx) {
+        List<Integer>[] g = newList(n);
+        for (int i = 0; i <= idx; i++) {
+            g[edges[i][0]].add(edges[i][1]);
+            g[edges[i][1]].add(edges[i][0]);
+        }
+        List<Integer> q = new ArrayList<>();
+        q.add(0);
+        boolean[] vis = new boolean[n];
+        vis[0] = true;
+        int dist = 0;
+        while (!q.isEmpty()) {
+            List<Integer> nq = new ArrayList<>();
+            for (int u : q) {
+                if (u == n - 1) return dist <= k;
+                for (int v : g[u]) {
+                    if (!vis[v]) {
+                        vis[v] = true;
+                        nq.add(v);
+                    }
+                }
+            }
+            q = nq;
+            dist++;
+        }
+        return false;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3809_best_reachable_tower
+================================================================================
+// LeetCode 3809 - Best Reachable Tower
+// https://leetcode.com/problems/best-reachable-tower/
+
+class Solution {
+    public int[] bestTower(int[][] towers, int[] center, int radius) {
+        int cx = center[0], cy = center[1];
+        int idx = -1;
+        for (int i = 0; i < towers.length; i++) {
+            int x = towers[i][0], y = towers[i][1], q = towers[i][2];
+            int dist = Math.abs(x - cx) + Math.abs(y - cy);
+            if (dist > radius) continue;
+            if (idx == -1 || towers[idx][2] < q ||
+                (towers[idx][2] == q &&
+                 (x < towers[idx][0] || (x == towers[idx][0] && y < towers[idx][1])))) {
+                idx = i;
+            }
+        }
+        if (idx == -1) return new int[] { -1, -1 };
+        return new int[] { towers[idx][0], towers[idx][1] };
+    }
+}
+
+
+================================================================================
+FOLDER: 3810_minimum_operations_to_reach_target_array
+================================================================================
+// LeetCode 3810 - Minimum Operations To Reach Target Array
+// https://leetcode.com/problems/minimum-operations-to-reach-target-array/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int minOperations(int[] nums, int[] target) {
+        var s = new HashSet<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != target[i]) s.add(nums[i]);
+        }
+        return s.size();
+    }
+}
+
+
+================================================================================
+FOLDER: 3811_number_of_alternating_xor_partitions
+================================================================================
+// LeetCode 3811 - Number Of Alternating Xor Partitions
+// https://leetcode.com/problems/number_of_alternating_xor_partitions/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int alternatingXOR(int[] nums, int target1, int target2) {
+        final int MOD = 1_000_000_007;
+        Map<Integer, Integer> cnt1 = new HashMap<>();
+        Map<Integer, Integer> cnt2 = new HashMap<>();
+        cnt2.put(0, 1);
+        int pre = 0, ans = 0;
+        for (int x : nums) {
+            pre ^= x;
+            int a = cnt2.getOrDefault(pre ^ target1, 0);
+            int b = cnt1.getOrDefault(pre ^ target2, 0);
+            ans = (a + b) % MOD;
+            cnt1.merge(pre, a, (x1, y1) -> (x1 + y1) % MOD);
+            cnt2.merge(pre, b, (x1, y1) -> (x1 + y1) % MOD);
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3812_minimum_edge_toggles_on_a_tree
+================================================================================
+// LeetCode 3812 - Minimum Edge Toggles On A Tree
+// https://leetcode.com/problems/minimum_edge_toggles_on_a_tree/
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class Solution {
+    private List<int[]>[] g;
+    private String start, target;
+    private List<Integer> ans;
+
+    public int[] minimumFlips(int n, int[][] edges, String start, String target) {
+        this.start = start;
+        this.target = target;
+        g = newList(n);
+        for (int i = 0; i < n - 1; i++) {
+            int a = edges[i][0], b = edges[i][1];
+            g[a].add(new int[]{b, i});
+            g[b].add(new int[]{a, i});
+        }
+        ans = new ArrayList<>();
+        if (dfs(0, -1)) return new int[]{-1};
+        Collections.sort(ans);
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+
+    private boolean dfs(int a, int fa) {
+        boolean rev = start.charAt(a) != target.charAt(a);
+        for (int[] e : g[a]) {
+            int b = e[0], i = e[1];
+            if (b != fa && dfs(b, a)) {
+                ans.add(i);
+                rev = !rev;
+            }
+        }
+        return rev;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<int[]>[] newList(int n) {
+        List<int[]>[] g = (List<int[]>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3813_vowel_consonant_score
+================================================================================
+// LeetCode 3813 - Vowel Consonant Score
+// https://leetcode.com/problems/vowel-consonant-score/
+
+class Solution {
+    public int vowelConsonantScore(String s) {
+        int v = 0, c = 0;
+        for (char ch : s.toCharArray()) {
+            if (Character.isLetter(ch)) {
+                c++;
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') v++;
+            }
+        }
+        c -= v;
+        if (c == 0) return 0;
+        return v / c;
+    }
+}
+
+
+================================================================================
+FOLDER: 3814_maximum_capacity_within_budget
+================================================================================
+// LeetCode 3814 - Maximum Capacity Within Budget
+// https://leetcode.com/problems/maximum_capacity_within_budget/
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int maxCapacity(int[] costs, int[] capacity, int budget) {
+        List<int[]> arr = new ArrayList<>();
+        for (int k = 0; k < costs.length; k++) {
+            if (costs[k] < budget) arr.add(new int[]{costs[k], capacity[k]});
+        }
+        if (arr.isEmpty()) return 0;
+        arr.sort(Comparator.comparingInt(a -> a[0]));
+        int m = arr.size();
+        boolean[] alive = new boolean[m];
+        java.util.Arrays.fill(alive, true);
+        PriorityQueue<int[]> h = new PriorityQueue<>((a, b) -> {
+            if (a[0] != b[0]) return Integer.compare(b[0], a[0]);
+            return Integer.compare(b[1], a[1]);
+        });
+        for (int i = 0; i < m; i++) h.offer(new int[]{arr.get(i)[1], i});
+        while (!h.isEmpty() && !alive[h.peek()[1]]) h.poll();
+        int ans = h.peek()[0];
+        int i = 0, j = m - 1;
+        while (i < j) {
+            alive[i] = false;
+            while (i < j && arr.get(i)[0] + arr.get(j)[0] >= budget) {
+                alive[j] = false;
+                j--;
+            }
+            while (!h.isEmpty() && !alive[h.peek()[1]]) h.poll();
+            if (!h.isEmpty()) ans = Math.max(ans, arr.get(i)[1] + h.peek()[0]);
+            i++;
+        }
+        return ans;
+    }
+}
+
+
+================================================================================
+FOLDER: 3815_design_auction_system
+================================================================================
+// LeetCode 3815 - Design Auction System
+// https://leetcode.com/problems/design_auction_system/
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
+
+class AuctionSystem {
+    private static class Bid {
+        int amount, userId;
+        Bid(int amount, int userId) {
+            this.amount = amount;
+            this.userId = userId;
+        }
+    }
+
+    private final Map<Integer, Map<Integer, Integer>> bids = new HashMap<>();
+    private final Map<Integer, PriorityQueue<Bid>> heaps = new HashMap<>();
+
+    public AuctionSystem() {}
+
+    public void addBid(int userId, int itemId, int bidAmount) {
+        bids.computeIfAbsent(itemId, k -> new HashMap<>()).put(userId, bidAmount);
+        heaps.computeIfAbsent(itemId, k -> new PriorityQueue<>((a, b) -> {
+            if (a.amount != b.amount) return Integer.compare(b.amount, a.amount);
+            return Integer.compare(b.userId, a.userId);
+        })).offer(new Bid(bidAmount, userId));
+    }
+
+    public void updateBid(int userId, int itemId, int newAmount) {
+        addBid(userId, itemId, newAmount);
+    }
+
+    public void removeBid(int userId, int itemId) {
+        Map<Integer, Integer> m = bids.get(itemId);
+        if (m != null) m.remove(userId);
+    }
+
+    public int getHighestBidder(int itemId) {
+        PriorityQueue<Bid> h = heaps.get(itemId);
+        if (h == null) return -1;
+        Map<Integer, Integer> m = bids.getOrDefault(itemId, Map.of());
+        while (!h.isEmpty()) {
+            Bid top = h.peek();
+            Integer cur = m.get(top.userId);
+            if (cur != null && cur == top.amount) return top.userId;
+            h.poll();
+        }
+        return -1;
+    }
+}
+
+
+================================================================================
+FOLDER: 3816_lexicographically_smallest_string_after_deleting_duplicate_characters
+================================================================================
+// LeetCode 3816 - Lexicographically Smallest String After Deleting Duplicate Characters
+// https://leetcode.com/problems/lexicographically_smallest_string_after_deleting_duplicate_characters/
+
+class Solution {
+    public String lexSmallestAfterDeletion(String s) {
+        int[] cnt = new int[26];
+        for (char c : s.toCharArray()) cnt[c - 'a']++;
+        StringBuilder stk = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            while (stk.length() > 0 && stk.charAt(stk.length() - 1) > c
+                    && cnt[stk.charAt(stk.length() - 1) - 'a'] > 1) {
+                cnt[stk.charAt(stk.length() - 1) - 'a']--;
+                stk.deleteCharAt(stk.length() - 1);
+            }
+            stk.append(c);
+        }
+        while (cnt[stk.charAt(stk.length() - 1) - 'a'] > 1) {
+            cnt[stk.charAt(stk.length() - 1) - 'a']--;
+            stk.deleteCharAt(stk.length() - 1);
+        }
+        return stk.toString();
+    }
+}
+
+
+================================================================================
+FOLDER: 3817_good_indices_in_a_digit_string
+================================================================================
+// LeetCode 3817 - Good Indices In A Digit String
+// https://leetcode.com/problems/good-indices-in-a-digit-string/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] goodIndices(String s) {
+        var ans = new ArrayList<Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            String t = String.valueOf(i);
+            int k = t.length();
+            if (i + 1 - k >= 0 && s.substring(i + 1 - k, k) == t) ans.add(i);
+        }
+        return ans.stream().mapToInt(Integer::intValue).toArray();
+    }
+}
+
+
+================================================================================
+FOLDER: 3818_minimum_prefix_removal_to_make_array_strictly_increasing
+================================================================================
+// LeetCode 3818 - Minimum Prefix Removal To Make Array Strictly Increasing
+// https://leetcode.com/problems/minimum-prefix-removal-to-make-array-strictly-increasing/
+
+class Solution {
+    public int minimumPrefixLength(int[] nums) {
+        for (int i = nums.length - 1; i > 0; i--) {
+            if (nums[i - 1] >= nums[i]) return i;
+        }
+        return 0;
+    }
+}
+
+
+================================================================================
+FOLDER: 3819_rotate_non_negative_elements
+================================================================================
+// LeetCode 3819 - Rotate Non Negative Elements
+// https://leetcode.com/problems/rotate_non_negative_elements/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int[] rotateElements(int[] nums, int k) {
+        List<Integer> t = new ArrayList<>();
+        for (int x : nums) if (x >= 0) t.add(x);
+        int m = t.size();
+        if (m == 0) return nums;
+        int[] d = new int[m];
+        for (int i = 0; i < m; i++) d[((i - k) % m + m) % m] = t.get(i);
+        int j = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= 0) nums[i] = d[j++];
+        }
+        return nums;
+    }
+}
+
+
+================================================================================
+FOLDER: 3820_pythagorean_distance_nodes_in_a_tree
+================================================================================
+// LeetCode 3820 - Pythagorean Distance Nodes In A Tree
+// https://leetcode.com/problems/pythagorean_distance_nodes_in_a_tree/
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Queue;
+
+class Solution {
+    private List<Integer>[] g;
+    private int n;
+
+    public int specialNodes(int n, int[][] edges, int x, int y, int z) {
+        this.n = n;
+        g = newList(n);
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+        int[] d1 = bfs(x), d2 = bfs(y), d3 = bfs(z);
+        int ans = 0;
+        for (int i = 0; i < n; i++) {
+            int[] a = {d1[i], d2[i], d3[i]};
+            Arrays.sort(a);
+            long x0 = a[0], x1 = a[1], x2 = a[2];
+            if (x0 * x0 + x1 * x1 == x2 * x2) ans++;
+        }
+        return ans;
+    }
+
+    private int[] bfs(int start) {
+        int[] dist = new int[n];
+        Arrays.fill(dist, 1_000_000_000);
+        Queue<Integer> q = new ArrayDeque<>();
+        dist[start] = 0;
+        q.offer(start);
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v : g[u]) {
+                if (dist[v] > dist[u] + 1) {
+                    dist[v] = dist[u] + 1;
+                    q.offer(v);
+                }
+            }
+        }
+        return dist;
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Integer>[] newList(int n) {
+        List<Integer>[] g = (List<Integer>[]) new List[n];
+        for (int i = 0; i < n; i++) g[i] = new ArrayList<>();
+        return g;
+    }
+}
+
+
+================================================================================
+FOLDER: 3821_find_nth_smallest_integer_with_k_one_bits
+================================================================================
+// LeetCode 3821 - Find Nth Smallest Integer With K One Bits
+// https://leetcode.com/problems/find_nth_smallest_integer_with_k_one_bits/
+
+class Solution {
+    private static final int MX = 50;
+    private static final long[][] C = new long[MX][MX + 1];
+    static {
+        for (int i = 0; i < MX; i++) {
+            C[i][0] = 1;
+            for (int j = 1; j <= i; j++) C[i][j] = C[i - 1][j - 1] + C[i - 1][j];
+        }
+    }
+
+    public long nthSmallest(long n, int k) {
+        long ans = 0;
+        for (int i = 49; i >= 0; i--) {
+            if (n > C[i][k]) {
+                n -= C[i][k];
+                ans |= 1L << i;
+                k--;
+                if (k == 0) break;
+            }
+        }
+        return ans;
+    }
+}

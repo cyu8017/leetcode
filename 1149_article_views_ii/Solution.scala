@@ -1,6 +1,11 @@
-﻿// LeetCode 1149 - Article Views II
+// LeetCode 1149 - Article Views II
 // https://leetcode.com/problems/article-views-ii/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT DISTINCT viewer_id AS id
+FROM Views
+GROUP BY viewer_id, view_date
+HAVING COUNT(DISTINCT article_id) > 1
+ORDER BY id
+"""
 }

@@ -1,6 +1,9 @@
-﻿// LeetCode 2619 - Array Prototype Last
+// LeetCode 2619 - Array Prototype Last
 // https://leetcode.com/problems/array-prototype-last/
 
 object Solution {
-  def solve(): Unit = {}
+  def last(nums: Array[Int]): Int = {
+    if (nums == null || nums.isEmpty) -1
+    else nums(nums.length - 1)
+  }
 }

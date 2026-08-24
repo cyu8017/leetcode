@@ -1,0 +1,73 @@
+FOLDER: 3661_maximum_walls_destroyed_by_robots
+TITLE: 3661. Maximum Walls Destroyed by Robots
+URL: - **LeetCode:** [https://leetcode.com/problems/maximum-walls-destroyed-by-robots/](https://leetcode.com/problems/maximum-walls-destroyed-by-robots/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "robots",
+    "distance",
+    "walls"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3661 - Maximum Walls Destroyed by Robots
+// https://leetcode.com/problems/maximum-walls-destroyed-by-robots/
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    private int[][] arr;
+    private int[] walls;
+    private Map<Long, Integer> memo;
+
+    private int lowerBound(int[] a, int target) {
+        int lo = 0, hi = a.length;
+        while (lo < hi) {
+            int mid = (lo + hi) / 2;
+            if (a[mid] < target) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo;
+    }
+
+    private int dfs(int i, int j) {
+        if (i < 0) return 0;
+        long key = (((long) i) << 1) | j;
+        if (memo.containsKey(key)) return memo.get(key);
+        int left = arr[i][0] - arr[i][1];
+        if (i > 0) left = Math.max(left, arr[i - 1][0] + 1);
+        int l = lowerBound(walls, left);
+        int r = lowerBound(walls, arr[i][0] + 1);
+        int ans = dfs(i - 1, 0) + (r - l);
+        int right = arr[i][0] + arr[i][1];
+        if (i + 1 < arr.length) {
+            if (j == 0) right = Math.min(right, arr[i + 1][0] - arr[i + 1][1] - 1);
+            else right = Math.min(right, arr[i + 1][0] - 1);
+        }
+        l = lowerBound(walls, arr[i][0]);
+        r = lowerBound(walls, right + 1);
+        ans = Math.max(ans, dfs(i - 1, 1) + (r - l));
+        memo.put(key, ans);
+        return ans;
+    }
+
+    public int maxWalls(int[] robots, int[] distance, int[] walls) {
+        int n = robots.length;
+        arr = new int[n][2];
+        for (int i = 0; i < n; i++) {
+            arr[i][0] = robots[i];
+            arr[i][1] = distance[i];
+        }
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(walls);
+        this.walls = walls;
+        memo = new HashMap<>();
+        return dfs(n - 1, 1);
+    }
+}

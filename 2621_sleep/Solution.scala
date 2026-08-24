@@ -1,6 +1,8 @@
-﻿// LeetCode 2621 - Sleep
+// LeetCode 2621 - Sleep
 // https://leetcode.com/problems/sleep/
 
 object Solution {
-  def solve(): Unit = {}
+  def sleep(millis: Int): Unit = {
+    Thread.sleep(millis.toLong)
+  }
 }

@@ -1,6 +1,21 @@
-﻿// LeetCode 2944 - Minimum Number of Coins for Fruits
+// LeetCode 2944 - Minimum Number of Coins for Fruits
 // https://leetcode.com/problems/minimum-number-of-coins-for-fruits/
 
 object Solution {
-  def solve(): Unit = {}
+  def minimumCoins(prices: Array[Int]): Int = {
+    val n = prices.length
+    val dp = Array.fill(n + 1)(1 << 30)
+    dp(0) = 0
+    var i = 1
+    while (i <= n) {
+      var j = i
+      while (j <= n && j <= i + i) {
+        val cand = dp(i - 1) + prices(i - 1)
+        if (cand < dp(j)) dp(j) = cand
+        j += 1
+      }
+      i += 1
+    }
+    dp(n)
+  }
 }

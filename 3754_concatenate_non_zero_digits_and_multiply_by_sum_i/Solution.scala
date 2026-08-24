@@ -1,6 +1,21 @@
-﻿// LeetCode 3754 - Concatenate Non-Zero Digits and Multiply by Sum I
+// LeetCode 3754 - Concatenate Non Zero Digits And Multiply By Sum I
 // https://leetcode.com/problems/concatenate-non-zero-digits-and-multiply-by-sum-i/
 
 object Solution {
-  def solve(): Unit = {}
+  def sumAndMultiply(n0: Int): Long = {
+    var n = n0
+    var p = 1
+    var x = 0
+    var s = 0
+    while (n > 0) {
+      val v = n % 10
+      if (v != 0) {
+        s += v
+        x += p * v
+        p *= 10
+      }
+      n /= 10
+    }
+    1L * x * s
+  }
 }

@@ -1,0 +1,31 @@
+FOLDER: 3663_find_the_least_frequent_digit
+TITLE: 3663. Find The Least Frequent Digit
+URL: - **LeetCode:** [https://leetcode.com/problems/find-the-least-frequent-digit/](https://leetcode.com/problems/find-the-least-frequent-digit/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "n"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3663 - Find The Least Frequent Digit
+// https://leetcode.com/problems/find-the-least-frequent-digit/
+
+class Solution {
+    public int getLeastFrequentDigit(int n) {
+        int[] cnt = new int[10];
+        int ans = 0, f = 1 << 30;
+        for (; n > 0; n /= 10) cnt[n % 10]++;
+        for (int x = 0; x < 10; x++) {
+            if (cnt[x] > 0 && cnt[x] < f) {
+                f = cnt[x];
+                ans = x;
+            }
+        }
+        return ans;
+    }
+}

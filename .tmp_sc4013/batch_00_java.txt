@@ -1,0 +1,3910 @@
+================================================================================
+0551_student_attendance_record_i
+================================================================================
+// LeetCode 0551 - Student Attendance Record I
+// https://leetcode.com/problems/student-attendance-record-i/
+
+class Solution {
+    public boolean checkRecord(String s) {
+        int absents = 0;
+        int lateStreak = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (ch == 'A') {
+                ++absents;
+                if (absents >= 2) {
+                    return false;
+                }
+                lateStreak = 0;
+            } else if (ch == 'L') {
+                ++lateStreak;
+                if (lateStreak >= 3) {
+                    return false;
+                }
+            } else {
+                lateStreak = 0;
+            }
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+0552_student_attendance_record_ii
+================================================================================
+// LeetCode 0552 - Student Attendance Record II
+// https://leetcode.com/problems/student-attendance-record-ii/
+
+class Solution {
+    public int checkRecord(int n) {
+        final int MOD = 1000000007;
+        long[][] dp = new long[][] {{1, 0, 0}, {0, 0, 0}};
+
+        for (int day = 0; day < n; ++day) {
+            long[][] nxt = new long[2][3];
+            for (int absences = 0; absences < 2; ++absences) {
+                for (int lates = 0; lates < 3; ++lates) {
+                    long ways = dp[absences][lates];
+                    if (ways == 0) {
+                        continue;
+                    }
+                    nxt[absences][0] = (nxt[absences][0] + ways) % MOD;
+                    if (absences == 0) {
+                        nxt[1][0] = (nxt[1][0] + ways) % MOD;
+                    }
+                    if (lates < 2) {
+                        nxt[absences][lates + 1] = (nxt[absences][lates + 1] + ways) % MOD;
+                    }
+                }
+            }
+            dp = nxt;
+        }
+
+        long total = 0;
+        for (int absences = 0; absences < 2; ++absences) {
+            for (int lates = 0; lates < 3; ++lates) {
+                total = (total + dp[absences][lates]) % MOD;
+            }
+        }
+        return (int) total;
+    }
+}
+
+
+================================================================================
+0553_optimal_division
+================================================================================
+// LeetCode 0553 - Optimal Division
+// https://leetcode.com/problems/optimal-division/
+
+class Solution {
+    public String optimalDivision(int[] nums) {
+        if (nums.length == 1) {
+            return String.valueOf(nums[0]);
+        }
+        if (nums.length == 2) {
+            return nums[0] + "/" + nums[1];
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append(nums[0]).append("/(");
+        for (int i = 1; i < nums.length; ++i) {
+            if (i > 1) {
+                result.append('/');
+            }
+            result.append(nums[i]);
+        }
+        result.append(')');
+        return result.toString();
+    }
+}
+
+
+================================================================================
+0554_brick_wall
+================================================================================
+// LeetCode 0554 - Brick Wall
+// https://leetcode.com/problems/brick-wall/
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public int leastBricks(List<List<Integer>> wall) {
+        Map<Integer, Integer> edges = new HashMap<>();
+        int best = 0;
+        for (List<Integer> row : wall) {
+            int width = 0;
+            for (int i = 0; i + 1 < row.size(); ++i) {
+                width += row.get(i);
+                int count = edges.getOrDefault(width, 0) + 1;
+                edges.put(width, count);
+                best = Math.max(best, count);
+            }
+        }
+        return wall.size() - best;
+    }
+}
+
+
+================================================================================
+0555_split_concatenated_strings
+================================================================================
+// LeetCode 0555 - Split Concatenated Strings
+// https://leetcode.com/problems/split-concatenated-strings/
+
+class Solution {
+    public String splitLoopedString(String[] strs) {
+        String[] bestForms = new String[strs.length];
+        for (int i = 0; i < strs.length; ++i) {
+            String s = strs[i];
+            String rev = new StringBuilder(s).reverse().toString();
+            bestForms[i] = s.compareTo(rev) >= 0 ? s : rev;
+        }
+
+        String answer = "";
+        for (int i = 0; i < strs.length; ++i) {
+            StringBuilder midBuilder = new StringBuilder();
+            for (int j = i + 1; j < strs.length; ++j) {
+                midBuilder.append(bestForms[j]);
+            }
+            for (int j = 0; j < i; ++j) {
+                midBuilder.append(bestForms[j]);
+            }
+            String mid = midBuilder.toString();
+
+            String original = strs[i];
+            String reversed = new StringBuilder(original).reverse().toString();
+            String[] candidates = {original, reversed};
+
+            for (String candidate : candidates) {
+                for (int cut = 0; cut < candidate.length(); ++cut) {
+                    String formed = candidate.substring(cut) + mid + candidate.substring(0, cut);
+                    if (formed.compareTo(answer) > 0) {
+                        answer = formed;
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+0556_next_greater_element_iii
+================================================================================
+// LeetCode 0556 - Next Greater Element III
+// https://leetcode.com/problems/next-greater-element-iii/
+
+class Solution {
+    public int nextGreaterElement(int n) {
+        char[] digits = String.valueOf(n).toCharArray();
+        int i = digits.length - 2;
+        while (i >= 0 && digits[i] >= digits[i + 1]) {
+            --i;
+        }
+        if (i < 0) {
+            return -1;
+        }
+
+        int j = digits.length - 1;
+        while (digits[j] <= digits[i]) {
+            --j;
+        }
+        char tmp = digits[i];
+        digits[i] = digits[j];
+        digits[j] = tmp;
+
+        reverse(digits, i + 1, digits.length - 1);
+
+        long value = 0;
+        for (char ch : digits) {
+            value = value * 10 + (ch - '0');
+        }
+        if (value > Integer.MAX_VALUE) {
+            return -1;
+        }
+        return (int) value;
+    }
+
+    private void reverse(char[] digits, int left, int right) {
+        while (left < right) {
+            char tmp = digits[left];
+            digits[left] = digits[right];
+            digits[right] = tmp;
+            ++left;
+            --right;
+        }
+    }
+}
+
+
+================================================================================
+0557_reverse_words_in_a_string_iii
+================================================================================
+// LeetCode 0557 - Reverse Words in a String III
+// https://leetcode.com/problems/reverse-words-in-a-string-iii/
+
+class Solution {
+    public String reverseWords(String s) {
+        char[] chars = s.toCharArray();
+        int n = chars.length;
+        int start = 0;
+        for (int i = 0; i <= n; ++i) {
+            if (i == n || chars[i] == ' ') {
+                reverse(chars, start, i - 1);
+                start = i + 1;
+            }
+        }
+        return new String(chars);
+    }
+
+    private void reverse(char[] chars, int left, int right) {
+        while (left < right) {
+            char tmp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = tmp;
+            ++left;
+            --right;
+        }
+    }
+}
+
+
+================================================================================
+0558_logical_or_of_two_binary_grids_represented_as_quad_trees
+================================================================================
+// LeetCode 0558 - Logical OR of Two Binary Grids Represented as Quad-Trees
+// https://leetcode.com/problems/logical-or-of-two-binary-grids-represented-as-quad-trees/
+
+class Node {
+    public boolean val;
+    public boolean isLeaf;
+    public Node topLeft;
+    public Node topRight;
+    public Node bottomLeft;
+    public Node bottomRight;
+
+    public Node() {
+        this.val = false;
+        this.isLeaf = false;
+        this.topLeft = null;
+        this.topRight = null;
+        this.bottomLeft = null;
+        this.bottomRight = null;
+    }
+
+    public Node(boolean val, boolean isLeaf) {
+        this.val = val;
+        this.isLeaf = isLeaf;
+        this.topLeft = null;
+        this.topRight = null;
+        this.bottomLeft = null;
+        this.bottomRight = null;
+    }
+
+    public Node(boolean val, boolean isLeaf, Node topLeft, Node topRight, Node bottomLeft, Node bottomRight) {
+        this.val = val;
+        this.isLeaf = isLeaf;
+        this.topLeft = topLeft;
+        this.topRight = topRight;
+        this.bottomLeft = bottomLeft;
+        this.bottomRight = bottomRight;
+    }
+}
+
+class Solution {
+    public Node intersect(Node quadTree1, Node quadTree2) {
+        if (quadTree1.isLeaf) {
+            return quadTree1.val ? quadTree1 : quadTree2;
+        }
+        if (quadTree2.isLeaf) {
+            return quadTree2.val ? quadTree2 : quadTree1;
+        }
+
+        Node topLeft = intersect(quadTree1.topLeft, quadTree2.topLeft);
+        Node topRight = intersect(quadTree1.topRight, quadTree2.topRight);
+        Node bottomLeft = intersect(quadTree1.bottomLeft, quadTree2.bottomLeft);
+        Node bottomRight = intersect(quadTree1.bottomRight, quadTree2.bottomRight);
+
+        if (topLeft.isLeaf && topRight.isLeaf && bottomLeft.isLeaf && bottomRight.isLeaf
+                && topLeft.val == topRight.val && topRight.val == bottomLeft.val
+                && bottomLeft.val == bottomRight.val) {
+            return new Node(topLeft.val, true);
+        }
+        return new Node(false, false, topLeft, topRight, bottomLeft, bottomRight);
+    }
+}
+
+
+================================================================================
+0559_maximum_depth_of_n_ary_tree
+================================================================================
+// LeetCode 0559 - Maximum Depth of N-ary Tree
+// https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
+
+import java.util.List;
+
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int val) {
+        this.val = val;
+    }
+
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
+    }
+}
+
+class Solution {
+    public int maxDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.children == null || root.children.isEmpty()) {
+            return 1;
+        }
+        int best = 0;
+        for (Node child : root.children) {
+            best = Math.max(best, maxDepth(child));
+        }
+        return best + 1;
+    }
+}
+
+
+================================================================================
+0560_subarray_sum_equals_k
+================================================================================
+// LeetCode 0560 - Subarray Sum Equals K
+// https://leetcode.com/problems/subarray-sum-equals-k/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        Map<Integer, Integer> counts = new HashMap<>();
+        counts.put(0, 1);
+        int prefix = 0;
+        int answer = 0;
+        for (int num : nums) {
+            prefix += num;
+            answer += counts.getOrDefault(prefix - k, 0);
+            counts.put(prefix, counts.getOrDefault(prefix, 0) + 1);
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+0561_array_partition
+================================================================================
+// LeetCode 0561 - Array Partition
+// https://leetcode.com/problems/array-partition/
+
+import java.util.Arrays;
+
+class Solution {
+    public int arrayPairSum(int[] nums) {
+        Arrays.sort(nums);
+        int total = 0;
+        for (int i = 0; i < nums.length; i += 2) {
+            total += nums[i];
+        }
+        return total;
+    }
+}
+
+
+================================================================================
+0562_longest_line_of_consecutive_one_in_matrix
+================================================================================
+// LeetCode 0562 - Longest Line of Consecutive One in Matrix
+// https://leetcode.com/problems/longest-line-of-consecutive-one-in-matrix/
+
+class Solution {
+    public int longestLine(int[][] mat) {
+        if (mat.length == 0 || mat[0].length == 0) {
+            return 0;
+        }
+
+        int rows = mat.length;
+        int cols = mat[0].length;
+        int[][][] dp = new int[rows][cols][4];
+        int best = 0;
+
+        for (int r = 0; r < rows; ++r) {
+            for (int c = 0; c < cols; ++c) {
+                if (mat[r][c] == 0) {
+                    continue;
+                }
+                dp[r][c][0] = (c > 0 ? dp[r][c - 1][0] : 0) + 1;
+                dp[r][c][1] = (r > 0 ? dp[r - 1][c][1] : 0) + 1;
+                dp[r][c][2] = (r > 0 && c > 0 ? dp[r - 1][c - 1][2] : 0) + 1;
+                dp[r][c][3] = (r > 0 && c + 1 < cols ? dp[r - 1][c + 1][3] : 0) + 1;
+                for (int d = 0; d < 4; ++d) {
+                    best = Math.max(best, dp[r][c][d]);
+                }
+            }
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0563_binary_tree_tilt
+================================================================================
+// LeetCode 0563 - Binary Tree Tilt
+// https://leetcode.com/problems/binary-tree-tilt/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private int total;
+
+    public int findTilt(TreeNode root) {
+        total = 0;
+        subtreeSum(root);
+        return total;
+    }
+
+    private int subtreeSum(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int left = subtreeSum(node.left);
+        int right = subtreeSum(node.right);
+        total += Math.abs(left - right);
+        return node.val + left + right;
+    }
+}
+
+
+================================================================================
+0564_find_the_closest_palindrome
+================================================================================
+// LeetCode 0564 - Find the Closest Palindrome
+// https://leetcode.com/problems/find-the-closest-palindrome/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public String nearestPalindromic(String n) {
+        int length = n.length();
+        long number = Long.parseLong(n);
+        List<Long> candidates = new ArrayList<>();
+        candidates.add(pow10(length - 1) - 1);
+        candidates.add(pow10(length) + 1);
+
+        long prefix = Long.parseLong(n.substring(0, (length + 1) / 2));
+        for (long half = prefix - 1; half <= prefix + 1; ++half) {
+            candidates.add(makePalindrome(half, length));
+        }
+
+        long best = -1;
+        long bestDiff = Long.MAX_VALUE;
+        for (long candidate : candidates) {
+            if (candidate == number) {
+                continue;
+            }
+            long diff = Math.abs(candidate - number);
+            if (diff < bestDiff || (diff == bestDiff && candidate < best)) {
+                best = candidate;
+                bestDiff = diff;
+            }
+        }
+        return String.valueOf(best);
+    }
+
+    private long makePalindrome(long half, int length) {
+        String text = String.valueOf(half);
+        StringBuilder pal = new StringBuilder(text);
+        if (length % 2 == 0) {
+            for (int i = text.length() - 1; i >= 0; --i) {
+                pal.append(text.charAt(i));
+            }
+        } else {
+            for (int i = text.length() - 2; i >= 0; --i) {
+                pal.append(text.charAt(i));
+            }
+        }
+        return Long.parseLong(pal.toString());
+    }
+
+    private long pow10(int exp) {
+        long value = 1;
+        for (int i = 0; i < exp; ++i) {
+            value *= 10;
+        }
+        return value;
+    }
+}
+
+
+================================================================================
+0565_array_nesting
+================================================================================
+// LeetCode 0565 - Array Nesting
+// https://leetcode.com/problems/array-nesting/
+
+class Solution {
+    public int arrayNesting(int[] nums) {
+        int best = 0;
+        for (int i = 0; i < nums.length; ++i) {
+            if (nums[i] < 0) {
+                continue;
+            }
+            int length = 0;
+            int j = i;
+            while (nums[j] >= 0) {
+                int nxt = nums[j];
+                nums[j] = -1;
+                j = nxt;
+                ++length;
+            }
+            best = Math.max(best, length);
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0566_reshape_the_matrix
+================================================================================
+// LeetCode 0566 - Reshape the Matrix
+// https://leetcode.com/problems/reshape-the-matrix/
+
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int rows = mat.length;
+        int cols = mat[0].length;
+        if (rows * cols != r * c) {
+            return mat;
+        }
+
+        int[][] result = new int[r][c];
+        int index = 0;
+        for (int i = 0; i < r; ++i) {
+            for (int j = 0; j < c; ++j) {
+                result[i][j] = mat[index / cols][index % cols];
+                ++index;
+            }
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0567_permutation_in_string
+================================================================================
+// LeetCode 0567 - Permutation in String
+// https://leetcode.com/problems/permutation-in-string/
+
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        int n1 = s1.length();
+        int n2 = s2.length();
+        if (n1 > n2) {
+            return false;
+        }
+
+        int[] need = new int[26];
+        int[] window = new int[26];
+        for (int i = 0; i < n1; ++i) {
+            ++need[s1.charAt(i) - 'a'];
+            ++window[s2.charAt(i) - 'a'];
+        }
+
+        int matches = 0;
+        for (int i = 0; i < 26; ++i) {
+            if (need[i] == window[i]) {
+                ++matches;
+            }
+        }
+        if (matches == 26) {
+            return true;
+        }
+
+        for (int right = n1; right < n2; ++right) {
+            int add = s2.charAt(right) - 'a';
+            int remove = s2.charAt(right - n1) - 'a';
+
+            if (window[add] == need[add]) {
+                --matches;
+            }
+            ++window[add];
+            if (window[add] == need[add]) {
+                ++matches;
+            }
+
+            if (window[remove] == need[remove]) {
+                --matches;
+            }
+            --window[remove];
+            if (window[remove] == need[remove]) {
+                ++matches;
+            }
+
+            if (matches == 26) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+0568_maximum_vacation_days
+================================================================================
+// LeetCode 0568 - Maximum Vacation Days
+// https://leetcode.com/problems/maximum-vacation-days/
+
+class Solution {
+    public int maxVacationDays(int[][] flights, int[][] days) {
+        int cities = flights.length;
+        int weeks = days[0].length;
+        final int NEG = -1000000000;
+
+        int[] dp = new int[cities];
+        for (int i = 0; i < cities; ++i) {
+            dp[i] = NEG;
+        }
+        dp[0] = 0;
+
+        for (int week = 0; week < weeks; ++week) {
+            int[] nxt = new int[cities];
+            for (int i = 0; i < cities; ++i) {
+                nxt[i] = NEG;
+            }
+            for (int city = 0; city < cities; ++city) {
+                if (dp[city] == NEG) {
+                    continue;
+                }
+                for (int dest = 0; dest < cities; ++dest) {
+                    if (dest == city || flights[city][dest] == 1) {
+                        nxt[dest] = Math.max(nxt[dest], dp[city] + days[dest][week]);
+                    }
+                }
+            }
+            dp = nxt;
+        }
+
+        int best = NEG;
+        for (int v : dp) {
+            best = Math.max(best, v);
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0572_subtree_of_another_tree
+================================================================================
+// LeetCode 0572 - Subtree of Another Tree
+// https://leetcode.com/problems/subtree-of-another-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        if (root == null) {
+            return false;
+        }
+        return same(root, subRoot) || isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
+
+    private boolean same(TreeNode a, TreeNode b) {
+        if (a == null || b == null) {
+            return a == b;
+        }
+        return a.val == b.val && same(a.left, b.left) && same(a.right, b.right);
+    }
+}
+
+
+================================================================================
+0573_squirrel_simulation
+================================================================================
+// LeetCode 0573 - Squirrel Simulation
+// https://leetcode.com/problems/squirrel-simulation/
+
+class Solution {
+    public int minDistance(int height, int width, int[] tree, int[] squirrel, int[][] nuts) {
+        int total = 0;
+        int bestSave = Integer.MIN_VALUE;
+        for (int[] nut : nuts) {
+            int treeDist = dist(tree, nut);
+            int squirrelDist = dist(squirrel, nut);
+            total += 2 * treeDist;
+            int save = treeDist - squirrelDist;
+            if (save > bestSave) {
+                bestSave = save;
+            }
+        }
+        return total - bestSave;
+    }
+
+    private int dist(int[] a, int[] b) {
+        return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
+    }
+}
+
+
+================================================================================
+0575_distribute_candies
+================================================================================
+// LeetCode 0575 - Distribute Candies
+// https://leetcode.com/problems/distribute-candies/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        Set<Integer> unique = new HashSet<>();
+        for (int candy : candyType) {
+            unique.add(candy);
+        }
+        return Math.min(unique.size(), candyType.length / 2);
+    }
+}
+
+
+================================================================================
+0576_out_of_boundary_paths
+================================================================================
+// LeetCode 0576 - Out of Boundary Paths
+// https://leetcode.com/problems/out-of-boundary-paths/
+
+class Solution {
+    public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
+        final int MOD = 1000000007;
+        int[][] dp = new int[m][n];
+        dp[startRow][startColumn] = 1;
+        int result = 0;
+        int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+        for (int move = 0; move < maxMove; ++move) {
+            int[][] nxt = new int[m][n];
+            for (int row = 0; row < m; ++row) {
+                for (int col = 0; col < n; ++col) {
+                    int ways = dp[row][col];
+                    if (ways == 0) {
+                        continue;
+                    }
+                    for (int[] dir : dirs) {
+                        int nr = row + dir[0];
+                        int nc = col + dir[1];
+                        if (nr >= 0 && nr < m && nc >= 0 && nc < n) {
+                            nxt[nr][nc] = (nxt[nr][nc] + ways) % MOD;
+                        } else {
+                            result = (result + ways) % MOD;
+                        }
+                    }
+                }
+            }
+            dp = nxt;
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0581_shortest_unsorted_continuous_subarray
+================================================================================
+// LeetCode 0581 - Shortest Unsorted Continuous Subarray
+// https://leetcode.com/problems/shortest-unsorted-continuous-subarray/
+
+class Solution {
+    public int findUnsortedSubarray(int[] nums) {
+        int n = nums.length;
+        int left = -1;
+        int right = -2;
+        int maxSeen = nums[0];
+        int minSeen = nums[n - 1];
+        for (int i = 0; i < n; ++i) {
+            maxSeen = Math.max(maxSeen, nums[i]);
+            if (nums[i] < maxSeen) {
+                right = i;
+            }
+            int j = n - 1 - i;
+            minSeen = Math.min(minSeen, nums[j]);
+            if (nums[j] > minSeen) {
+                left = j;
+            }
+        }
+        return right - left + 1;
+    }
+}
+
+
+================================================================================
+0582_kill_process
+================================================================================
+// LeetCode 0582 - Kill Process
+// https://leetcode.com/problems/kill-process/
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+
+class Solution {
+    public List<Integer> killProcess(List<Integer> pid, List<Integer> ppid, int kill) {
+        Map<Integer, List<Integer>> children = new HashMap<>();
+        for (int i = 0; i < pid.size(); ++i) {
+            children.computeIfAbsent(ppid.get(i), k -> new ArrayList<>()).add(pid.get(i));
+        }
+
+        List<Integer> result = new ArrayList<>();
+        Queue<Integer> queue = new ArrayDeque<>();
+        queue.offer(kill);
+        while (!queue.isEmpty()) {
+            int process = queue.poll();
+            result.add(process);
+            List<Integer> kids = children.get(process);
+            if (kids != null) {
+                for (int child : kids) {
+                    queue.offer(child);
+                }
+            }
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0583_delete_operation_for_two_strings
+================================================================================
+// LeetCode 0583 - Delete Operation for Two Strings
+// https://leetcode.com/problems/delete-operation-for-two-strings/
+
+class Solution {
+    public int minDistance(String word1, String word2) {
+        int m = word1.length();
+        int n = word2.length();
+        int[] prev = new int[n + 1];
+        int[] curr = new int[n + 1];
+
+        for (int i = 1; i <= m; ++i) {
+            for (int j = 1; j <= n; ++j) {
+                if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+                    curr[j] = prev[j - 1] + 1;
+                } else {
+                    curr[j] = Math.max(prev[j], curr[j - 1]);
+                }
+            }
+            int[] tmp = prev;
+            prev = curr;
+            curr = tmp;
+            for (int j = 0; j <= n; ++j) {
+                curr[j] = 0;
+            }
+        }
+        return m + n - 2 * prev[n];
+    }
+}
+
+
+================================================================================
+0587_erect_the_fence
+================================================================================
+// LeetCode 0587 - Erect the Fence
+// https://leetcode.com/problems/erect-the-fence/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    public int[][] outerTrees(int[][] trees) {
+        int[][] points = Arrays.copyOf(trees, trees.length);
+        Arrays.sort(points, (a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0]) : Integer.compare(a[1], b[1]));
+        if (points.length <= 1) {
+            return points;
+        }
+
+        List<int[]> lower = build(points);
+        int[][] reversed = new int[points.length][];
+        for (int i = 0; i < points.length; ++i) {
+            reversed[i] = points[points.length - 1 - i];
+        }
+        List<int[]> upper = build(reversed);
+
+        Set<String> seen = new HashSet<>();
+        List<int[]> unique = new ArrayList<>();
+        for (int i = 0; i + 1 < lower.size(); ++i) {
+            addUnique(unique, seen, lower.get(i));
+        }
+        for (int i = 0; i + 1 < upper.size(); ++i) {
+            addUnique(unique, seen, upper.get(i));
+        }
+        return unique.toArray(new int[0][]);
+    }
+
+    private List<int[]> build(int[][] ordered) {
+        List<int[]> hull = new ArrayList<>();
+        for (int[] point : ordered) {
+            while (hull.size() >= 2 && cross(hull.get(hull.size() - 2), hull.get(hull.size() - 1), point) < 0) {
+                hull.remove(hull.size() - 1);
+            }
+            hull.add(point);
+        }
+        return hull;
+    }
+
+    private long cross(int[] o, int[] a, int[] b) {
+        return 1L * (a[0] - o[0]) * (b[1] - o[1]) - 1L * (a[1] - o[1]) * (b[0] - o[0]);
+    }
+
+    private void addUnique(List<int[]> unique, Set<String> seen, int[] point) {
+        String key = point[0] + "," + point[1];
+        if (seen.add(key)) {
+            unique.add(point);
+        }
+    }
+}
+
+
+================================================================================
+0588_design_in_memory_file_system
+================================================================================
+// LeetCode 0588 - Design In-Memory File System
+// https://leetcode.com/problems/design-in-memory-file-system/
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+class FileSystem {
+    private static class Node {
+        boolean isFile = false;
+        String content = "";
+        TreeMap<String, Node> children = new TreeMap<>();
+    }
+
+    private final Node root;
+
+    public FileSystem() {
+        root = new Node();
+    }
+
+    public List<String> ls(String path) {
+        if (path.equals("/")) {
+            return new ArrayList<>(root.children.keySet());
+        }
+
+        List<String> parts = split(path);
+        Node node = root;
+        for (String part : parts) {
+            node = node.children.get(part);
+        }
+
+        if (node.isFile) {
+            List<String> only = new ArrayList<>();
+            only.add(parts.get(parts.size() - 1));
+            return only;
+        }
+        return new ArrayList<>(node.children.keySet());
+    }
+
+    public void mkdir(String path) {
+        Node node = root;
+        for (String part : split(path)) {
+            node.children.putIfAbsent(part, new Node());
+            node = node.children.get(part);
+        }
+    }
+
+    public void addContentToFile(String filePath, String content) {
+        List<String> parts = split(filePath);
+        Node node = root;
+        for (int i = 0; i + 1 < parts.size(); ++i) {
+            node.children.putIfAbsent(parts.get(i), new Node());
+            node = node.children.get(parts.get(i));
+        }
+        String name = parts.get(parts.size() - 1);
+        node.children.putIfAbsent(name, new Node());
+        Node file = node.children.get(name);
+        file.isFile = true;
+        file.content += content;
+    }
+
+    public String readContentFromFile(String filePath) {
+        Node node = root;
+        for (String part : split(filePath)) {
+            node = node.children.get(part);
+        }
+        return node.content;
+    }
+
+    private List<String> split(String path) {
+        List<String> parts = new ArrayList<>();
+        for (String part : path.split("/")) {
+            if (!part.isEmpty()) {
+                parts.add(part);
+            }
+        }
+        return parts;
+    }
+}
+
+
+================================================================================
+0589_n_ary_tree_preorder_traversal
+================================================================================
+// LeetCode 0589 - N-ary Tree Preorder Traversal
+// https://leetcode.com/problems/n-ary-tree-preorder-traversal/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int val) {
+        this.val = val;
+    }
+
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
+    }
+}
+
+class Solution {
+    public List<Integer> preorder(Node root) {
+        List<Integer> result = new ArrayList<>();
+        dfs(root, result);
+        return result;
+    }
+
+    private void dfs(Node node, List<Integer> result) {
+        if (node == null) {
+            return;
+        }
+        result.add(node.val);
+        if (node.children != null) {
+            for (Node child : node.children) {
+                dfs(child, result);
+            }
+        }
+    }
+}
+
+
+================================================================================
+0590_n_ary_tree_postorder_traversal
+================================================================================
+// LeetCode 0590 - N-ary Tree Postorder Traversal
+// https://leetcode.com/problems/n-ary-tree-postorder-traversal/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int val) {
+        this.val = val;
+    }
+
+    public Node(int val, List<Node> children) {
+        this.val = val;
+        this.children = children;
+    }
+}
+
+class Solution {
+    public List<Integer> postorder(Node root) {
+        List<Integer> result = new ArrayList<>();
+        dfs(root, result);
+        return result;
+    }
+
+    private void dfs(Node node, List<Integer> result) {
+        if (node == null) {
+            return;
+        }
+        if (node.children != null) {
+            for (Node child : node.children) {
+                dfs(child, result);
+            }
+        }
+        result.add(node.val);
+    }
+}
+
+
+================================================================================
+0591_tag_validator
+================================================================================
+// LeetCode 0591 - Tag Validator
+// https://leetcode.com/problems/tag-validator/
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+class Solution {
+    public boolean isValid(String code) {
+        Deque<String> stack = new ArrayDeque<>();
+        int i = 0;
+        int n = code.length();
+
+        while (i < n) {
+            if (code.startsWith("<![CDATA[", i)) {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                int j = code.indexOf("]]>", i + 9);
+                if (j < 0) {
+                    return false;
+                }
+                i = j + 3;
+            } else if (code.startsWith("</", i)) {
+                int j = code.indexOf('>', i + 2);
+                if (j < 0) {
+                    return false;
+                }
+                String tag = code.substring(i + 2, j);
+                if (stack.isEmpty() || !stack.peek().equals(tag)) {
+                    return false;
+                }
+                stack.pop();
+                i = j + 1;
+                if (stack.isEmpty() && i < n) {
+                    return false;
+                }
+            } else if (code.charAt(i) == '<') {
+                int j = code.indexOf('>', i + 1);
+                if (j < 0) {
+                    return false;
+                }
+                String tag = code.substring(i + 1, j);
+                if (tag.isEmpty() || tag.length() > 9) {
+                    return false;
+                }
+                for (int k = 0; k < tag.length(); ++k) {
+                    char ch = tag.charAt(k);
+                    if (ch < 'A' || ch > 'Z') {
+                        return false;
+                    }
+                }
+                stack.push(tag);
+                i = j + 1;
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                ++i;
+            }
+        }
+        return stack.isEmpty();
+    }
+}
+
+
+================================================================================
+0592_fraction_addition_and_subtraction
+================================================================================
+// LeetCode 0592 - Fraction Addition and Subtraction
+// https://leetcode.com/problems/fraction-addition-and-subtraction/
+
+class Solution {
+    public String fractionAddition(String expression) {
+        long numerator = 0;
+        long denominator = 1;
+        int i = 0;
+        int len = expression.length();
+
+        while (i < len) {
+            int sign = 1;
+            if (expression.charAt(i) == '+' || expression.charAt(i) == '-') {
+                if (expression.charAt(i) == '-') {
+                    sign = -1;
+                }
+                ++i;
+            }
+            long a = 0;
+            while (i < len && expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                a = a * 10 + (expression.charAt(i) - '0');
+                ++i;
+            }
+            a *= sign;
+            ++i; // skip '/'
+            long b = 0;
+            while (i < len && expression.charAt(i) >= '0' && expression.charAt(i) <= '9') {
+                b = b * 10 + (expression.charAt(i) - '0');
+                ++i;
+            }
+
+            numerator = numerator * b + a * denominator;
+            denominator *= b;
+            long g = gcd(Math.abs(numerator), Math.abs(denominator));
+            numerator /= g;
+            denominator /= g;
+        }
+
+        return numerator + "/" + denominator;
+    }
+
+    private long gcd(long a, long b) {
+        while (b != 0) {
+            long t = a % b;
+            a = b;
+            b = t;
+        }
+        return a;
+    }
+}
+
+
+================================================================================
+0593_valid_square
+================================================================================
+// LeetCode 0593 - Valid Square
+// https://leetcode.com/problems/valid-square/
+
+import java.util.Arrays;
+
+class Solution {
+    public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
+        int[][] points = {p1, p2, p3, p4};
+        int[] distances = new int[6];
+        int idx = 0;
+        for (int i = 0; i < 4; ++i) {
+            for (int j = i + 1; j < 4; ++j) {
+                distances[idx++] = distSq(points[i], points[j]);
+            }
+        }
+        Arrays.sort(distances);
+        return distances[0] > 0 && distances[0] == distances[1] && distances[1] == distances[2]
+                && distances[2] == distances[3] && distances[4] == distances[5]
+                && distances[4] == 2 * distances[0];
+    }
+
+    private int distSq(int[] a, int[] b) {
+        int dx = a[0] - b[0];
+        int dy = a[1] - b[1];
+        return dx * dx + dy * dy;
+    }
+}
+
+
+================================================================================
+0594_longest_harmonious_subsequence
+================================================================================
+// LeetCode 0594 - Longest Harmonious Subsequence
+// https://leetcode.com/problems/longest-harmonious-subsequence/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public int findLHS(int[] nums) {
+        Map<Integer, Integer> counts = new HashMap<>();
+        for (int num : nums) {
+            counts.put(num, counts.getOrDefault(num, 0) + 1);
+        }
+        int best = 0;
+        for (Map.Entry<Integer, Integer> entry : counts.entrySet()) {
+            Integer next = counts.get(entry.getKey() + 1);
+            if (next != null) {
+                best = Math.max(best, entry.getValue() + next);
+            }
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0598_range_addition_ii
+================================================================================
+// LeetCode 0598 - Range Addition II
+// https://leetcode.com/problems/range-addition-ii/
+
+class Solution {
+    public int maxCount(int m, int n, int[][] ops) {
+        for (int[] op : ops) {
+            m = Math.min(m, op[0]);
+            n = Math.min(n, op[1]);
+        }
+        return m * n;
+    }
+}
+
+
+================================================================================
+0599_minimum_index_sum_of_two_lists
+================================================================================
+// LeetCode 0599 - Minimum Index Sum of Two Lists
+// https://leetcode.com/problems/minimum-index-sum-of-two-lists/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public String[] findRestaurant(String[] list1, String[] list2) {
+        Map<String, Integer> index1 = new HashMap<>();
+        for (int i = 0; i < list1.length; ++i) {
+            index1.put(list1[i], i);
+        }
+
+        int best = Integer.MAX_VALUE;
+        List<String> answer = new ArrayList<>();
+        for (int j = 0; j < list2.length; ++j) {
+            Integer i = index1.get(list2[j]);
+            if (i == null) {
+                continue;
+            }
+            int total = i + j;
+            if (total < best) {
+                best = total;
+                answer.clear();
+                answer.add(list2[j]);
+            } else if (total == best) {
+                answer.add(list2[j]);
+            }
+        }
+        return answer.toArray(new String[0]);
+    }
+}
+
+
+================================================================================
+0600_non_negative_integers_without_consecutive_ones
+================================================================================
+// LeetCode 0600 - Non-negative Integers without Consecutive Ones
+// https://leetcode.com/problems/non-negative-integers-without-consecutive-ones/
+
+class Solution {
+    public int findIntegers(int n) {
+        int[] fib = new int[32];
+        fib[0] = 1;
+        fib[1] = 2;
+        for (int i = 2; i < 32; ++i) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+
+        int answer = 0;
+        int prevBit = 0;
+        for (int bit = 30; bit >= 0; --bit) {
+            if ((n & (1 << bit)) != 0) {
+                answer += fib[bit];
+                if (prevBit == 1) {
+                    return answer;
+                }
+                prevBit = 1;
+            } else {
+                prevBit = 0;
+            }
+        }
+        return answer + 1;
+    }
+}
+
+
+================================================================================
+0604_design_compressed_string_iterator
+================================================================================
+// LeetCode 0604 - Design Compressed String Iterator
+// https://leetcode.com/problems/design-compressed-string-iterator/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class StringIterator {
+    private final List<Character> chars = new ArrayList<>();
+    private final List<Integer> counts = new ArrayList<>();
+    private int index = 0;
+
+    public StringIterator(String compressedString) {
+        int n = compressedString.length();
+        int i = 0;
+        while (i < n) {
+            char ch = compressedString.charAt(i++);
+            int j = i;
+            while (j < n && compressedString.charAt(j) >= '0' && compressedString.charAt(j) <= '9') {
+                ++j;
+            }
+            chars.add(ch);
+            counts.add(Integer.parseInt(compressedString.substring(i, j)));
+            i = j;
+        }
+    }
+
+    public char next() {
+        if (!hasNext()) {
+            return ' ';
+        }
+        char ch = chars.get(index);
+        counts.set(index, counts.get(index) - 1);
+        if (counts.get(index) == 0) {
+            ++index;
+        }
+        return ch;
+    }
+
+    public boolean hasNext() {
+        return index < chars.size();
+    }
+}
+
+
+================================================================================
+0605_can_place_flowers
+================================================================================
+// LeetCode 0605 - Can Place Flowers
+// https://leetcode.com/problems/can-place-flowers/
+
+class Solution {
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+        if (n == 0) {
+            return true;
+        }
+        for (int i = 0; i < flowerbed.length; ++i) {
+            if (flowerbed[i] == 1) {
+                continue;
+            }
+            boolean leftEmpty = i == 0 || flowerbed[i - 1] == 0;
+            boolean rightEmpty = i == flowerbed.length - 1 || flowerbed[i + 1] == 0;
+            if (leftEmpty && rightEmpty) {
+                flowerbed[i] = 1;
+                --n;
+                if (n == 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+0606_construct_string_from_binary_tree
+================================================================================
+// LeetCode 0606 - Construct String from Binary Tree
+// https://leetcode.com/problems/construct-string-from-binary-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public String tree2str(TreeNode root) {
+        if (root == null) {
+            return "";
+        }
+        String result = String.valueOf(root.val);
+        if (root.left != null || root.right != null) {
+            result += "(" + tree2str(root.left) + ")";
+        }
+        if (root.right != null) {
+            result += "(" + tree2str(root.right) + ")";
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0609_find_duplicate_file_in_system
+================================================================================
+// LeetCode 0609 - Find Duplicate File in System
+// https://leetcode.com/problems/find-duplicate-file-in-system/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public List<List<String>> findDuplicate(String[] paths) {
+        Map<String, List<String>> contentToPaths = new HashMap<>();
+        for (String entry : paths) {
+            String[] tokens = entry.split(" ");
+            String directory = tokens[0];
+            for (int i = 1; i < tokens.length; ++i) {
+                String fileInfo = tokens[i];
+                int open = fileInfo.indexOf('(');
+                String name = fileInfo.substring(0, open);
+                String content = fileInfo.substring(open + 1, fileInfo.length() - 1);
+                contentToPaths.computeIfAbsent(content, k -> new ArrayList<>()).add(directory + "/" + name);
+            }
+        }
+        List<List<String>> result = new ArrayList<>();
+        for (List<String> group : contentToPaths.values()) {
+            if (group.size() > 1) {
+                result.add(group);
+            }
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0611_valid_triangle_number
+================================================================================
+// LeetCode 0611 - Valid Triangle Number
+// https://leetcode.com/problems/valid-triangle-number/
+
+import java.util.Arrays;
+
+class Solution {
+    public int triangleNumber(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        int count = 0;
+        for (int k = n - 1; k >= 2; --k) {
+            int left = 0;
+            int right = k - 1;
+            while (left < right) {
+                if (nums[left] + nums[right] > nums[k]) {
+                    count += right - left;
+                    --right;
+                } else {
+                    ++left;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+
+================================================================================
+0616_add_bold_tag_in_string
+================================================================================
+// LeetCode 0616 - Add Bold Tag in String
+// https://leetcode.com/problems/add-bold-tag-in-string/
+
+class Solution {
+    public String addBoldTag(String s, String[] words) {
+        int n = s.length();
+        boolean[] bold = new boolean[n];
+        for (String word : words) {
+            int start = s.indexOf(word);
+            while (start >= 0) {
+                for (int i = start; i < start + word.length(); ++i) {
+                    bold[i] = true;
+                }
+                start = s.indexOf(word, start + 1);
+            }
+        }
+        StringBuilder parts = new StringBuilder();
+        int i = 0;
+        while (i < n) {
+            if (bold[i]) {
+                parts.append("<b>");
+                while (i < n && bold[i]) {
+                    parts.append(s.charAt(i++));
+                }
+                parts.append("</b>");
+            } else {
+                parts.append(s.charAt(i++));
+            }
+        }
+        return parts.toString();
+    }
+}
+
+
+================================================================================
+0617_merge_two_binary_trees
+================================================================================
+// LeetCode 0617 - Merge Two Binary Trees
+// https://leetcode.com/problems/merge-two-binary-trees/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public TreeNode mergeTrees(TreeNode root1, TreeNode root2) {
+        if (root1 == null) {
+            return root2;
+        }
+        if (root2 == null) {
+            return root1;
+        }
+        root1.val += root2.val;
+        root1.left = mergeTrees(root1.left, root2.left);
+        root1.right = mergeTrees(root1.right, root2.right);
+        return root1;
+    }
+}
+
+
+================================================================================
+0621_task_scheduler
+================================================================================
+// LeetCode 0621 - Task Scheduler
+// https://leetcode.com/problems/task-scheduler/
+
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] counts = new int[26];
+        for (char task : tasks) {
+            ++counts[task - 'A'];
+        }
+        int maxFreq = 0;
+        for (int count : counts) {
+            maxFreq = Math.max(maxFreq, count);
+        }
+        int maxCount = 0;
+        for (int count : counts) {
+            if (count == maxFreq) {
+                ++maxCount;
+            }
+        }
+        return Math.max(tasks.length, (maxFreq - 1) * (n + 1) + maxCount);
+    }
+}
+
+
+================================================================================
+0622_design_circular_queue
+================================================================================
+// LeetCode 0622 - Design Circular Queue
+// https://leetcode.com/problems/design-circular-queue/
+
+class MyCircularQueue {
+    private final int[] data;
+    private final int capacity;
+    private int head = 0;
+    private int size = 0;
+
+    public MyCircularQueue(int k) {
+        data = new int[k];
+        capacity = k;
+    }
+
+    public boolean enQueue(int value) {
+        if (isFull()) {
+            return false;
+        }
+        data[(head + size) % capacity] = value;
+        ++size;
+        return true;
+    }
+
+    public boolean deQueue() {
+        if (isEmpty()) {
+            return false;
+        }
+        head = (head + 1) % capacity;
+        --size;
+        return true;
+    }
+
+    public int Front() {
+        return isEmpty() ? -1 : data[head];
+    }
+
+    public int Rear() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return data[(head + size - 1) % capacity];
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == capacity;
+    }
+}
+
+
+================================================================================
+0623_add_one_row_to_tree
+================================================================================
+// LeetCode 0623 - Add One Row to Tree
+// https://leetcode.com/problems/add-one-row-to-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private int val;
+    private int depth;
+
+    public TreeNode addOneRow(TreeNode root, int val, int depth) {
+        if (depth == 1) {
+            return new TreeNode(val, root, null);
+        }
+        this.val = val;
+        this.depth = depth;
+        dfs(root, 1);
+        return root;
+    }
+
+    private void dfs(TreeNode node, int current) {
+        if (node == null) {
+            return;
+        }
+        if (current == depth - 1) {
+            node.left = new TreeNode(val, node.left, null);
+            node.right = new TreeNode(val, null, node.right);
+            return;
+        }
+        dfs(node.left, current + 1);
+        dfs(node.right, current + 1);
+    }
+}
+
+
+================================================================================
+0624_maximum_distance_in_arrays
+================================================================================
+// LeetCode 0624 - Maximum Distance in Arrays
+// https://leetcode.com/problems/maximum-distance-in-arrays/
+
+import java.util.List;
+
+class Solution {
+    public int maxDistance(List<List<Integer>> arrays) {
+        int minVal = arrays.get(0).get(0);
+        int maxVal = arrays.get(0).get(arrays.get(0).size() - 1);
+        int best = 0;
+        for (int i = 1; i < arrays.size(); ++i) {
+            List<Integer> arr = arrays.get(i);
+            int first = arr.get(0);
+            int last = arr.get(arr.size() - 1);
+            best = Math.max(best, Math.max(Math.abs(last - minVal), Math.abs(maxVal - first)));
+            minVal = Math.min(minVal, first);
+            maxVal = Math.max(maxVal, last);
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0625_minimum_factorization
+================================================================================
+// LeetCode 0625 - Minimum Factorization
+// https://leetcode.com/problems/minimum-factorization/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public int smallestFactorization(int num) {
+        if (num < 10) {
+            return num;
+        }
+        List<Integer> digits = new ArrayList<>();
+        for (int digit = 9; digit >= 2; --digit) {
+            while (num % digit == 0) {
+                digits.add(digit);
+                num /= digit;
+            }
+        }
+        if (num != 1) {
+            return 0;
+        }
+        long result = 0;
+        for (int i = digits.size() - 1; i >= 0; --i) {
+            result = result * 10 + digits.get(i);
+            if (result > Integer.MAX_VALUE) {
+                return 0;
+            }
+        }
+        return (int) result;
+    }
+}
+
+
+================================================================================
+0628_maximum_product_of_three_numbers
+================================================================================
+// LeetCode 0628 - Maximum Product of Three Numbers
+// https://leetcode.com/problems/maximum-product-of-three-numbers/
+
+import java.util.Arrays;
+
+class Solution {
+    public int maximumProduct(int[] nums) {
+        Arrays.sort(nums);
+        int n = nums.length;
+        return Math.max(nums[n - 1] * nums[n - 2] * nums[n - 3], nums[0] * nums[1] * nums[n - 1]);
+    }
+}
+
+
+================================================================================
+0629_k_inverse_pairs_array
+================================================================================
+// LeetCode 0629 - K Inverse Pairs Array
+// https://leetcode.com/problems/k-inverse-pairs-array/
+
+class Solution {
+    public int kInversePairs(int n, int k) {
+        final int mod = 1000000007;
+        int[] dp = new int[k + 1];
+        dp[0] = 1;
+        for (int size = 1; size <= n; ++size) {
+            int[] nxt = new int[k + 1];
+            long prefix = 0;
+            for (int pairs = 0; pairs <= k; ++pairs) {
+                prefix = (prefix + dp[pairs]) % mod;
+                if (pairs >= size) {
+                    prefix = (prefix - dp[pairs - size] + mod) % mod;
+                }
+                nxt[pairs] = (int) prefix;
+            }
+            dp = nxt;
+        }
+        return dp[k];
+    }
+}
+
+
+================================================================================
+0630_course_schedule_iii
+================================================================================
+// LeetCode 0630 - Course Schedule III
+// https://leetcode.com/problems/course-schedule-iii/
+
+import java.util.Arrays;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int scheduleCourse(int[][] courses) {
+        Arrays.sort(courses, (a, b) -> Integer.compare(a[1], b[1]));
+        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> Integer.compare(b, a));
+        int time = 0;
+        for (int[] course : courses) {
+            int duration = course[0];
+            int lastDay = course[1];
+            if (time + duration <= lastDay) {
+                heap.offer(duration);
+                time += duration;
+            } else if (!heap.isEmpty() && heap.peek() > duration) {
+                time += duration - heap.poll();
+                heap.offer(duration);
+            }
+        }
+        return heap.size();
+    }
+}
+
+
+================================================================================
+0631_design_excel_sum_formula
+================================================================================
+// LeetCode 0631 - Design Excel Sum Formula
+// https://leetcode.com/problems/design-excel-sum-formula/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Excel {
+    private final int[][] values;
+    private final Map<Long, List<int[]>> formulas = new HashMap<>();
+
+    public Excel(int height, char width) {
+        values = new int[height + 1][width - 'A' + 1];
+    }
+
+    public void set(int row, char column, int val) {
+        int col = column - 'A';
+        formulas.remove(key(row, col));
+        values[row][col] = val;
+    }
+
+    public int get(int row, char column) {
+        return eval(row, column - 'A');
+    }
+
+    public int sum(int row, char column, String[] numbers) {
+        int col = column - 'A';
+        List<int[]> cells = new ArrayList<>();
+        for (String token : numbers) {
+            int colon = token.indexOf(':');
+            if (colon >= 0) {
+                int[] p1 = parse(token.substring(0, colon));
+                int[] p2 = parse(token.substring(colon + 1));
+                for (int r = p1[0]; r <= p2[0]; ++r) {
+                    for (int c = p1[1]; c <= p2[1]; ++c) {
+                        cells.add(new int[] {r, c});
+                    }
+                }
+            } else {
+                cells.add(parse(token));
+            }
+        }
+        formulas.put(key(row, col), cells);
+        return eval(row, col);
+    }
+
+    private int[] parse(String cell) {
+        return new int[] {Integer.parseInt(cell.substring(1)), cell.charAt(0) - 'A'};
+    }
+
+    private int eval(int row, int col) {
+        List<int[]> formula = formulas.get(key(row, col));
+        if (formula != null) {
+            int total = 0;
+            for (int[] cell : formula) {
+                total += eval(cell[0], cell[1]);
+            }
+            return total;
+        }
+        return values[row][col];
+    }
+
+    private long key(int row, int col) {
+        return (((long) row) << 32) | (col & 0xffffffffL);
+    }
+}
+
+
+================================================================================
+0632_smallest_range_covering_elements_from_k_lists
+================================================================================
+// LeetCode 0632 - Smallest Range Covering Elements from K Lists
+// https://leetcode.com/problems/smallest-range-covering-elements-from-k-lists/
+
+import java.util.List;
+import java.util.PriorityQueue;
+
+class Solution {
+    public int[] smallestRange(List<List<Integer>> nums) {
+        PriorityQueue<int[]> heap = new PriorityQueue<>((a, b) -> Integer.compare(a[0], b[0]));
+        int currentMax = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.size(); ++i) {
+            int val = nums.get(i).get(0);
+            heap.offer(new int[] {val, i, 0});
+            currentMax = Math.max(currentMax, val);
+        }
+        int bestLeft = heap.peek()[0];
+        int bestRight = currentMax;
+        while (true) {
+            int[] top = heap.poll();
+            int value = top[0];
+            int listIndex = top[1];
+            int index = top[2];
+            if (currentMax - value < bestRight - bestLeft) {
+                bestLeft = value;
+                bestRight = currentMax;
+            }
+            if (index + 1 == nums.get(listIndex).size()) {
+                break;
+            }
+            int nxt = nums.get(listIndex).get(index + 1);
+            heap.offer(new int[] {nxt, listIndex, index + 1});
+            currentMax = Math.max(currentMax, nxt);
+        }
+        return new int[] {bestLeft, bestRight};
+    }
+}
+
+
+================================================================================
+0633_sum_of_square_numbers
+================================================================================
+// LeetCode 0633 - Sum of Square Numbers
+// https://leetcode.com/problems/sum-of-square-numbers/
+
+class Solution {
+    public boolean judgeSquareSum(int c) {
+        long left = 0;
+        long right = (long) Math.sqrt(c);
+        while (left <= right) {
+            long total = left * left + right * right;
+            if (total == c) {
+                return true;
+            }
+            if (total < c) {
+                ++left;
+            } else {
+                --right;
+            }
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+0634_find_the_derangement_of_an_array
+================================================================================
+// LeetCode 0634 - Find the Derangement of An Array
+// https://leetcode.com/problems/find-the-derangement-of-an-array/
+
+class Solution {
+    public int findDerangement(int n) {
+        final int mod = 1000000007;
+        if (n == 1) {
+            return 0;
+        }
+        long prev2 = 0;
+        long prev1 = 1;
+        for (int size = 3; size <= n; ++size) {
+            long next = (size - 1) * (prev1 + prev2) % mod;
+            prev2 = prev1;
+            prev1 = next;
+        }
+        return (int) prev1;
+    }
+}
+
+
+================================================================================
+0635_design_log_storage_system
+================================================================================
+// LeetCode 0635 - Design Log Storage System
+// https://leetcode.com/problems/design-log-storage-system/
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class LogSystem {
+    private final List<int[]> ids = new ArrayList<>();
+    private final List<String> timestamps = new ArrayList<>();
+    private final Map<String, Integer> granularityIndex = new HashMap<>();
+
+    public LogSystem() {
+        granularityIndex.put("Year", 4);
+        granularityIndex.put("Month", 7);
+        granularityIndex.put("Day", 10);
+        granularityIndex.put("Hour", 13);
+        granularityIndex.put("Minute", 16);
+        granularityIndex.put("Second", 19);
+    }
+
+    public void put(int id, String timestamp) {
+        ids.add(new int[] {id});
+        timestamps.add(timestamp);
+    }
+
+    public List<Integer> retrieve(String start, String end, String granularity) {
+        int index = granularityIndex.get(granularity);
+        String startKey = start.substring(0, index);
+        String endKey = end.substring(0, index);
+        List<String[]> matched = new ArrayList<>();
+        for (int i = 0; i < timestamps.size(); ++i) {
+            String timestamp = timestamps.get(i);
+            String key = timestamp.substring(0, index);
+            if (startKey.compareTo(key) <= 0 && key.compareTo(endKey) <= 0) {
+                matched.add(new String[] {timestamp, String.valueOf(ids.get(i)[0])});
+            }
+        }
+        Collections.sort(matched, (a, b) -> a[0].compareTo(b[0]));
+        List<Integer> result = new ArrayList<>();
+        for (String[] item : matched) {
+            result.add(Integer.parseInt(item[1]));
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0636_exclusive_time_of_functions
+================================================================================
+// LeetCode 0636 - Exclusive Time of Functions
+// https://leetcode.com/problems/exclusive-time-of-functions/
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.List;
+
+class Solution {
+    public int[] exclusiveTime(int n, List<String> logs) {
+        int[] result = new int[n];
+        Deque<Integer> stack = new ArrayDeque<>();
+        int prevTime = 0;
+        for (String log : logs) {
+            String[] parts = log.split(":");
+            int funcId = Integer.parseInt(parts[0]);
+            String event = parts[1];
+            int time = Integer.parseInt(parts[2]);
+            if (event.equals("start")) {
+                if (!stack.isEmpty()) {
+                    result[stack.peek()] += time - prevTime;
+                }
+                stack.push(funcId);
+                prevTime = time;
+            } else {
+                result[stack.pop()] += time - prevTime + 1;
+                prevTime = time + 1;
+            }
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0637_average_of_levels_in_binary_tree
+================================================================================
+// LeetCode 0637 - Average of Levels in Binary Tree
+// https://leetcode.com/problems/average-of-levels-in-binary-tree/
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            long total = 0;
+            for (int i = 0; i < count; ++i) {
+                TreeNode node = queue.poll();
+                total += node.val;
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            result.add((double) total / count);
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0638_shopping_offers
+================================================================================
+// LeetCode 0638 - Shopping Offers
+// https://leetcode.com/problems/shopping-offers/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    private List<Integer> price;
+    private List<List<Integer>> special;
+    private final Map<List<Integer>, Integer> memo = new HashMap<>();
+
+    public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
+        this.price = price;
+        this.special = special;
+        memo.clear();
+        return dfs(new ArrayList<>(needs));
+    }
+
+    private int dfs(List<Integer> state) {
+        Integer cached = memo.get(state);
+        if (cached != null) {
+            return cached;
+        }
+        int cost = 0;
+        for (int i = 0; i < price.size(); ++i) {
+            cost += state.get(i) * price.get(i);
+        }
+        for (List<Integer> offer : special) {
+            List<Integer> nxt = new ArrayList<>(state);
+            boolean valid = true;
+            for (int i = 0; i < price.size(); ++i) {
+                if (nxt.get(i) < offer.get(i)) {
+                    valid = false;
+                    break;
+                }
+                nxt.set(i, nxt.get(i) - offer.get(i));
+            }
+            if (valid) {
+                cost = Math.min(cost, offer.get(price.size()) + dfs(nxt));
+            }
+        }
+        memo.put(state, cost);
+        return cost;
+    }
+}
+
+
+================================================================================
+0639_decode_ways_ii
+================================================================================
+// LeetCode 0639 - Decode Ways II
+// https://leetcode.com/problems/decode-ways-ii/
+
+class Solution {
+    public int numDecodings(String s) {
+        final int mod = 1000000007;
+        long prev2 = 1;
+        long prev1 = one(s.charAt(0));
+        for (int i = 1; i < s.length(); ++i) {
+            long cur = (one(s.charAt(i)) * prev1 + two(s.charAt(i - 1), s.charAt(i)) * prev2) % mod;
+            prev2 = prev1;
+            prev1 = cur;
+        }
+        return (int) prev1;
+    }
+
+    private int one(char ch) {
+        if (ch == '*') {
+            return 9;
+        }
+        if (ch == '0') {
+            return 0;
+        }
+        return 1;
+    }
+
+    private int two(char a, char b) {
+        if (a == '*' && b == '*') {
+            return 15;
+        }
+        if (a == '*') {
+            return b <= '6' ? 2 : 1;
+        }
+        if (b == '*') {
+            if (a == '1') {
+                return 9;
+            }
+            if (a == '2') {
+                return 6;
+            }
+            return 0;
+        }
+        int value = (a - '0') * 10 + (b - '0');
+        return value >= 10 && value <= 26 ? 1 : 0;
+    }
+}
+
+
+================================================================================
+0640_solve_the_equation
+================================================================================
+// LeetCode 0640 - Solve the Equation
+// https://leetcode.com/problems/solve-the-equation/
+
+class Solution {
+    public String solveEquation(String equation) {
+        int eq = equation.indexOf('=');
+        int[] left = parse(equation.substring(0, eq));
+        int[] right = parse(equation.substring(eq + 1));
+        int coef = left[0] - right[0];
+        int constant = right[1] - left[1];
+        if (coef == 0) {
+            return constant == 0 ? "Infinite solutions" : "No solution";
+        }
+        return "x=" + (constant / coef);
+    }
+
+    private int[] parse(String expr) {
+        int coef = 0;
+        int constant = 0;
+        int n = expr.length();
+        int i = 0;
+        while (i < n) {
+            int sign = 1;
+            if (expr.charAt(i) == '+' || expr.charAt(i) == '-') {
+                sign = expr.charAt(i) == '-' ? -1 : 1;
+                ++i;
+            }
+            int value = 0;
+            boolean hasDigit = false;
+            while (i < n && Character.isDigit(expr.charAt(i))) {
+                hasDigit = true;
+                value = value * 10 + (expr.charAt(i) - '0');
+                ++i;
+            }
+            if (i < n && expr.charAt(i) == 'x') {
+                coef += sign * (hasDigit ? value : 1);
+                ++i;
+            } else {
+                constant += sign * value;
+            }
+        }
+        return new int[] {coef, constant};
+    }
+}
+
+
+================================================================================
+0641_design_circular_deque
+================================================================================
+// LeetCode 0641 - Design Circular Deque
+// https://leetcode.com/problems/design-circular-deque/
+
+class MyCircularDeque {
+    private final int[] data;
+    private final int capacity;
+    private int front = 0;
+    private int size = 0;
+
+    public MyCircularDeque(int k) {
+        data = new int[k];
+        capacity = k;
+    }
+
+    public boolean insertFront(int value) {
+        if (isFull()) {
+            return false;
+        }
+        front = (front - 1 + capacity) % capacity;
+        data[front] = value;
+        ++size;
+        return true;
+    }
+
+    public boolean insertLast(int value) {
+        if (isFull()) {
+            return false;
+        }
+        data[(front + size) % capacity] = value;
+        ++size;
+        return true;
+    }
+
+    public boolean deleteFront() {
+        if (isEmpty()) {
+            return false;
+        }
+        front = (front + 1) % capacity;
+        --size;
+        return true;
+    }
+
+    public boolean deleteLast() {
+        if (isEmpty()) {
+            return false;
+        }
+        --size;
+        return true;
+    }
+
+    public int getFront() {
+        return isEmpty() ? -1 : data[front];
+    }
+
+    public int getRear() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return data[(front + size - 1) % capacity];
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == capacity;
+    }
+}
+
+
+================================================================================
+0642_design_search_autocomplete_system
+================================================================================
+// LeetCode 0642 - Design Search Autocomplete System
+// https://leetcode.com/problems/design-search-autocomplete-system/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class AutocompleteSystem {
+    private final Map<String, Integer> counts = new HashMap<>();
+    private final StringBuilder current = new StringBuilder();
+
+    public AutocompleteSystem(String[] sentences, int[] times) {
+        for (int i = 0; i < sentences.length; ++i) {
+            counts.put(sentences[i], counts.getOrDefault(sentences[i], 0) + times[i]);
+        }
+    }
+
+    public List<String> input(char c) {
+        if (c == '#') {
+            String sentence = current.toString();
+            counts.put(sentence, counts.getOrDefault(sentence, 0) + 1);
+            current.setLength(0);
+            return new ArrayList<>();
+        }
+        current.append(c);
+        String prefix = current.toString();
+        List<String> matches = new ArrayList<>();
+        for (String sentence : counts.keySet()) {
+            if (sentence.startsWith(prefix)) {
+                matches.add(sentence);
+            }
+        }
+        matches.sort((a, b) -> {
+            int ca = counts.get(a);
+            int cb = counts.get(b);
+            if (ca != cb) {
+                return Integer.compare(cb, ca);
+            }
+            return a.compareTo(b);
+        });
+        if (matches.size() > 3) {
+            return matches.subList(0, 3);
+        }
+        return matches;
+    }
+}
+
+
+================================================================================
+0643_maximum_average_subarray_i
+================================================================================
+// LeetCode 0643 - Maximum Average Subarray I
+// https://leetcode.com/problems/maximum-average-subarray-i/
+
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        long window = 0;
+        for (int i = 0; i < k; ++i) {
+            window += nums[i];
+        }
+        long best = window;
+        for (int i = k; i < nums.length; ++i) {
+            window += nums[i] - nums[i - k];
+            best = Math.max(best, window);
+        }
+        return (double) best / k;
+    }
+}
+
+
+================================================================================
+0644_maximum_average_subarray_ii
+================================================================================
+// LeetCode 0644 - Maximum Average Subarray II
+// https://leetcode.com/problems/maximum-average-subarray-ii/
+
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        double left = nums[0];
+        double right = nums[0];
+        for (int num : nums) {
+            left = Math.min(left, num);
+            right = Math.max(right, num);
+        }
+        for (int i = 0; i < 80; ++i) {
+            double mid = (left + right) / 2.0;
+            if (canReach(nums, k, mid)) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    private boolean canReach(int[] nums, int k, double mid) {
+        double prefix = 0.0;
+        for (int i = 0; i < k; ++i) {
+            prefix += nums[i] - mid;
+        }
+        if (prefix >= 0) {
+            return true;
+        }
+        double prev = 0.0;
+        double minPrev = 0.0;
+        for (int i = k; i < nums.length; ++i) {
+            prefix += nums[i] - mid;
+            prev += nums[i - k] - mid;
+            minPrev = Math.min(minPrev, prev);
+            if (prefix - minPrev >= 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+0645_set_mismatch
+================================================================================
+// LeetCode 0645 - Set Mismatch
+// https://leetcode.com/problems/set-mismatch/
+
+class Solution {
+    public int[] findErrorNums(int[] nums) {
+        int n = nums.length;
+        int[] seen = new int[n + 1];
+        int duplicate = -1;
+        int missing = -1;
+        for (int value : nums) {
+            ++seen[value];
+        }
+        for (int value = 1; value <= n; ++value) {
+            if (seen[value] == 2) {
+                duplicate = value;
+            } else if (seen[value] == 0) {
+                missing = value;
+            }
+        }
+        return new int[] {duplicate, missing};
+    }
+}
+
+
+================================================================================
+0646_maximum_length_of_pair_chain
+================================================================================
+// LeetCode 0646 - Maximum Length of Pair Chain
+// https://leetcode.com/problems/maximum-length-of-pair-chain/
+
+import java.util.Arrays;
+
+class Solution {
+    public int findLongestChain(int[][] pairs) {
+        Arrays.sort(pairs, (a, b) -> Integer.compare(a[1], b[1]));
+        int length = 0;
+        int currentEnd = Integer.MIN_VALUE;
+        for (int[] pair : pairs) {
+            if (pair[0] > currentEnd) {
+                ++length;
+                currentEnd = pair[1];
+            }
+        }
+        return length;
+    }
+}
+
+
+================================================================================
+0647_palindromic_substrings
+================================================================================
+// LeetCode 0647 - Palindromic Substrings
+// https://leetcode.com/problems/palindromic-substrings/
+
+class Solution {
+    public int countSubstrings(String s) {
+        int total = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            total += expand(s, i, i);
+            total += expand(s, i, i + 1);
+        }
+        return total;
+    }
+
+    private int expand(String s, int left, int right) {
+        int count = 0;
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            ++count;
+            --left;
+            ++right;
+        }
+        return count;
+    }
+}
+
+
+================================================================================
+0648_replace_words
+================================================================================
+// LeetCode 0648 - Replace Words
+// https://leetcode.com/problems/replace-words/
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    public String replaceWords(List<String> dictionary, String sentence) {
+        Set<String> roots = new HashSet<>(dictionary);
+        String[] words = sentence.split(" ");
+        StringBuilder result = new StringBuilder();
+        for (int w = 0; w < words.length; ++w) {
+            String word = words[w];
+            String replacement = word;
+            for (int i = 1; i <= word.length(); ++i) {
+                String prefix = word.substring(0, i);
+                if (roots.contains(prefix)) {
+                    replacement = prefix;
+                    break;
+                }
+            }
+            if (w > 0) {
+                result.append(' ');
+            }
+            result.append(replacement);
+        }
+        return result.toString();
+    }
+}
+
+
+================================================================================
+0649_dota2_senate
+================================================================================
+// LeetCode 0649 - Dota2 Senate
+// https://leetcode.com/problems/dota2-senate/
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+class Solution {
+    public String predictPartyVictory(String senate) {
+        Queue<Integer> radiant = new ArrayDeque<>();
+        Queue<Integer> dire = new ArrayDeque<>();
+        int n = senate.length();
+        for (int i = 0; i < n; ++i) {
+            if (senate.charAt(i) == 'R') {
+                radiant.offer(i);
+            } else {
+                dire.offer(i);
+            }
+        }
+        while (!radiant.isEmpty() && !dire.isEmpty()) {
+            int r = radiant.poll();
+            int d = dire.poll();
+            if (r < d) {
+                radiant.offer(r + n);
+            } else {
+                dire.offer(d + n);
+            }
+        }
+        return radiant.isEmpty() ? "Dire" : "Radiant";
+    }
+}
+
+
+================================================================================
+0650_2_keys_keyboard
+================================================================================
+// LeetCode 0650 - 2 Keys Keyboard
+// https://leetcode.com/problems/2-keys-keyboard/
+
+class Solution {
+    public int minSteps(int n) {
+        int steps = 0;
+        int factor = 2;
+        while (factor * factor <= n) {
+            while (n % factor == 0) {
+                steps += factor;
+                n /= factor;
+            }
+            ++factor;
+        }
+        if (n > 1) {
+            steps += n;
+        }
+        return steps;
+    }
+}
+
+
+================================================================================
+0651_4_keys_keyboard
+================================================================================
+// LeetCode 0651 - 4 Keys Keyboard
+// https://leetcode.com/problems/4-keys-keyboard/
+
+class Solution {
+    public int maxA(int n) {
+        int[] dp = new int[n + 1];
+        for (int i = 0; i <= n; ++i) {
+            dp[i] = i;
+        }
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < i - 2; ++j) {
+                dp[i] = Math.max(dp[i], dp[j] * (i - j - 1));
+            }
+        }
+        return dp[n];
+    }
+}
+
+
+================================================================================
+0652_find_duplicate_subtrees
+================================================================================
+// LeetCode 0652 - Find Duplicate Subtrees
+// https://leetcode.com/problems/find-duplicate-subtrees/
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private final Map<String, Integer> counts = new HashMap<>();
+    private final List<TreeNode> result = new ArrayList<>();
+
+    public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+        counts.clear();
+        result.clear();
+        serialize(root);
+        return result;
+    }
+
+    private String serialize(TreeNode node) {
+        if (node == null) {
+            return "#";
+        }
+        String key = node.val + "," + serialize(node.left) + "," + serialize(node.right);
+        int count = counts.getOrDefault(key, 0) + 1;
+        counts.put(key, count);
+        if (count == 2) {
+            result.add(node);
+        }
+        return key;
+    }
+}
+
+
+================================================================================
+0653_two_sum_iv_input_is_a_bst
+================================================================================
+// LeetCode 0653 - Two Sum IV - Input is a BST
+// https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private final Set<Integer> seen = new HashSet<>();
+    private int k;
+
+    public boolean findTarget(TreeNode root, int k) {
+        seen.clear();
+        this.k = k;
+        return dfs(root);
+    }
+
+    private boolean dfs(TreeNode node) {
+        if (node == null) {
+            return false;
+        }
+        if (seen.contains(k - node.val)) {
+            return true;
+        }
+        seen.add(node.val);
+        return dfs(node.left) || dfs(node.right);
+    }
+}
+
+
+================================================================================
+0654_maximum_binary_tree
+================================================================================
+// LeetCode 0654 - Maximum Binary Tree
+// https://leetcode.com/problems/maximum-binary-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private int[] nums;
+
+    public TreeNode constructMaximumBinaryTree(int[] nums) {
+        this.nums = nums;
+        return build(0, nums.length - 1);
+    }
+
+    private TreeNode build(int left, int right) {
+        if (left > right) {
+            return null;
+        }
+        int mid = left;
+        for (int i = left; i <= right; ++i) {
+            if (nums[i] > nums[mid]) {
+                mid = i;
+            }
+        }
+        return new TreeNode(nums[mid], build(left, mid - 1), build(mid + 1, right));
+    }
+}
+
+
+================================================================================
+0655_print_binary_tree
+================================================================================
+// LeetCode 0655 - Print Binary Tree
+// https://leetcode.com/problems/print-binary-tree/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public List<List<String>> printTree(TreeNode root) {
+        int h = height(root);
+        int rows = h + 1;
+        int cols = (1 << (h + 1)) - 1;
+        List<List<String>> res = new ArrayList<>();
+        for (int i = 0; i < rows; ++i) {
+            List<String> row = new ArrayList<>();
+            for (int j = 0; j < cols; ++j) {
+                row.add("");
+            }
+            res.add(row);
+        }
+        place(root, 0, (cols - 1) / 2, h, res);
+        return res;
+    }
+
+    private int height(TreeNode node) {
+        if (node == null) {
+            return -1;
+        }
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
+    private void place(TreeNode node, int r, int c, int h, List<List<String>> res) {
+        if (node == null) {
+            return;
+        }
+        res.get(r).set(c, String.valueOf(node.val));
+        if (r == h) {
+            return;
+        }
+        int offset = 1 << (h - r - 1);
+        place(node.left, r + 1, c - offset, h, res);
+        place(node.right, r + 1, c + offset, h, res);
+    }
+}
+
+
+================================================================================
+0656_coin_path
+================================================================================
+// LeetCode 0656 - Coin Path
+// https://leetcode.com/problems/coin-path/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+class Solution {
+    public List<Integer> cheapestJump(int[] coins, int maxJump) {
+        int n = coins.length;
+        if (coins[n - 1] == -1) {
+            return Collections.emptyList();
+        }
+        long inf = Long.MAX_VALUE / 4;
+        long[] cost = new long[n];
+        Arrays.fill(cost, inf);
+        int[] nxt = new int[n];
+        Arrays.fill(nxt, -1);
+        cost[n - 1] = coins[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            if (coins[i] == -1) {
+                continue;
+            }
+            for (int jump = 1; jump <= maxJump; ++jump) {
+                int j = i + jump;
+                if (j >= n) {
+                    break;
+                }
+                if (cost[j] == inf) {
+                    continue;
+                }
+                long candidate = coins[i] + cost[j];
+                if (candidate < cost[i] || (candidate == cost[i] && (nxt[i] == -1 || j < nxt[i]))) {
+                    cost[i] = candidate;
+                    nxt[i] = j;
+                }
+            }
+        }
+        if (cost[0] == inf) {
+            return Collections.emptyList();
+        }
+        List<Integer> path = new ArrayList<>();
+        path.add(1);
+        int i = 0;
+        while (i != n - 1) {
+            i = nxt[i];
+            path.add(i + 1);
+        }
+        return path;
+    }
+}
+
+
+================================================================================
+0657_robot_return_to_origin
+================================================================================
+// LeetCode 0657 - Robot Return to Origin
+// https://leetcode.com/problems/robot-return-to-origin/
+
+class Solution {
+    public boolean judgeCircle(String moves) {
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < moves.length(); ++i) {
+            char move = moves.charAt(i);
+            if (move == 'U') {
+                ++y;
+            } else if (move == 'D') {
+                --y;
+            } else if (move == 'L') {
+                --x;
+            } else if (move == 'R') {
+                ++x;
+            }
+        }
+        return x == 0 && y == 0;
+    }
+}
+
+
+================================================================================
+0658_find_k_closest_elements
+================================================================================
+// LeetCode 0658 - Find K Closest Elements
+// https://leetcode.com/problems/find-k-closest-elements/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int left = 0;
+        int right = arr.length - k;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (x - arr[mid] > arr[mid + k] - x) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        List<Integer> result = new ArrayList<>();
+        for (int i = left; i < left + k; ++i) {
+            result.add(arr[i]);
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0659_split_array_into_consecutive_subsequences
+================================================================================
+// LeetCode 0659 - Split Array into Consecutive Subsequences
+// https://leetcode.com/problems/split-array-into-consecutive-subsequences/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    public boolean isPossible(int[] nums) {
+        Map<Integer, Integer> freq = new HashMap<>();
+        Map<Integer, Integer> tails = new HashMap<>();
+        for (int num : nums) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+        }
+        for (int num : nums) {
+            if (freq.getOrDefault(num, 0) == 0) {
+                continue;
+            }
+            freq.put(num, freq.get(num) - 1);
+            if (tails.getOrDefault(num - 1, 0) > 0) {
+                tails.put(num - 1, tails.get(num - 1) - 1);
+                tails.put(num, tails.getOrDefault(num, 0) + 1);
+            } else if (freq.getOrDefault(num + 1, 0) > 0 && freq.getOrDefault(num + 2, 0) > 0) {
+                freq.put(num + 1, freq.get(num + 1) - 1);
+                freq.put(num + 2, freq.get(num + 2) - 1);
+                tails.put(num + 2, tails.getOrDefault(num + 2, 0) + 1);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+0660_remove_9
+================================================================================
+// LeetCode 0660 - Remove 9
+// https://leetcode.com/problems/remove-9/
+
+class Solution {
+    public int newInteger(int n) {
+        int result = 0;
+        int base = 1;
+        while (n > 0) {
+            result += (n % 9) * base;
+            n /= 9;
+            base *= 10;
+        }
+        return result;
+    }
+}
+
+
+================================================================================
+0661_image_smoother
+================================================================================
+// LeetCode 0661 - Image Smoother
+// https://leetcode.com/problems/image-smoother/
+
+class Solution {
+    public int[][] imageSmoother(int[][] img) {
+        int m = img.length;
+        int n = img[0].length;
+        int[][] out = new int[m][n];
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                int total = 0;
+                int count = 0;
+                for (int di = -1; di <= 1; ++di) {
+                    for (int dj = -1; dj <= 1; ++dj) {
+                        int ni = i + di;
+                        int nj = j + dj;
+                        if (ni >= 0 && ni < m && nj >= 0 && nj < n) {
+                            total += img[ni][nj];
+                            ++count;
+                        }
+                    }
+                }
+                out[i][j] = total / count;
+            }
+        }
+        return out;
+    }
+}
+
+
+================================================================================
+0662_maximum_width_of_binary_tree
+================================================================================
+// LeetCode 0662 - Maximum Width of Binary Tree
+// https://leetcode.com/problems/maximum-width-of-binary-tree/
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public int widthOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        Queue<Object[]> queue = new ArrayDeque<>();
+        queue.offer(new Object[] {root, 0L});
+        int best = 0;
+        while (!queue.isEmpty()) {
+            long left = (Long) queue.peek()[1];
+            int size = queue.size();
+            for (int i = 0; i < size; ++i) {
+                Object[] cur = queue.poll();
+                TreeNode node = (TreeNode) cur[0];
+                long idx = (Long) cur[1];
+                best = Math.max(best, (int) (idx - left + 1));
+                if (node.left != null) {
+                    queue.offer(new Object[] {node.left, idx * 2});
+                }
+                if (node.right != null) {
+                    queue.offer(new Object[] {node.right, idx * 2 + 1});
+                }
+            }
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0663_equal_tree_partition
+================================================================================
+// LeetCode 0663 - Equal Tree Partition
+// https://leetcode.com/problems/equal-tree-partition/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private final List<Integer> subtreeSums = new ArrayList<>();
+
+    public boolean checkEqualTree(TreeNode root) {
+        subtreeSums.clear();
+        int total = dfs(root);
+        if (!subtreeSums.isEmpty()) {
+            subtreeSums.remove(subtreeSums.size() - 1);
+        }
+        if (total % 2 != 0) {
+            return false;
+        }
+        int half = total / 2;
+        for (int sum : subtreeSums) {
+            if (sum == half) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private int dfs(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int total = node.val + dfs(node.left) + dfs(node.right);
+        subtreeSums.add(total);
+        return total;
+    }
+}
+
+
+================================================================================
+0664_strange_printer
+================================================================================
+// LeetCode 0664 - Strange Printer
+// https://leetcode.com/problems/strange-printer/
+
+class Solution {
+    public int strangePrinter(String s) {
+        int n = s.length();
+        if (n == 0) {
+            return 0;
+        }
+        int[][] dp = new int[n][n];
+        for (int i = n - 1; i >= 0; --i) {
+            dp[i][i] = 1;
+            for (int j = i + 1; j < n; ++j) {
+                dp[i][j] = dp[i + 1][j] + 1;
+                for (int k = i + 1; k <= j; ++k) {
+                    if (s.charAt(k) == s.charAt(i)) {
+                        dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + (k + 1 <= j ? dp[k + 1][j] : 0));
+                    }
+                }
+            }
+        }
+        return dp[0][n - 1];
+    }
+}
+
+
+================================================================================
+0665_non_decreasing_array
+================================================================================
+// LeetCode 0665 - Non-decreasing Array
+// https://leetcode.com/problems/non-decreasing-array/
+
+class Solution {
+    public boolean checkPossibility(int[] nums) {
+        boolean changed = false;
+        for (int i = 1; i < nums.length; ++i) {
+            if (nums[i] >= nums[i - 1]) {
+                continue;
+            }
+            if (changed) {
+                return false;
+            }
+            changed = true;
+            if (i >= 2 && nums[i] < nums[i - 2]) {
+                nums[i] = nums[i - 1];
+            } else {
+                nums[i - 1] = nums[i];
+            }
+        }
+        return true;
+    }
+}
+
+
+================================================================================
+0666_path_sum_iv
+================================================================================
+// LeetCode 0666 - Path Sum IV
+// https://leetcode.com/problems/path-sum-iv/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class Solution {
+    private final Map<Long, Integer> tree = new HashMap<>();
+    private int total;
+
+    public int pathSum(int[] nums) {
+        tree.clear();
+        total = 0;
+        for (int num : nums) {
+            tree.put(key(num / 100, (num / 10) % 10), num % 10);
+        }
+        dfs(1, 1, 0);
+        return total;
+    }
+
+    private void dfs(int depth, int pos, int path) {
+        Long k = key(depth, pos);
+        if (!tree.containsKey(k)) {
+            return;
+        }
+        path += tree.get(k);
+        Long left = key(depth + 1, pos * 2 - 1);
+        Long right = key(depth + 1, pos * 2);
+        if (!tree.containsKey(left) && !tree.containsKey(right)) {
+            total += path;
+            return;
+        }
+        dfs(depth + 1, pos * 2 - 1, path);
+        dfs(depth + 1, pos * 2, path);
+    }
+
+    private long key(int depth, int pos) {
+        return (((long) depth) << 32) | (pos & 0xffffffffL);
+    }
+}
+
+
+================================================================================
+0667_beautiful_arrangement_ii
+================================================================================
+// LeetCode 0667 - Beautiful Arrangement II
+// https://leetcode.com/problems/beautiful-arrangement-ii/
+
+class Solution {
+    public int[] constructArray(int n, int k) {
+        int[] res = new int[n];
+        int idx = 0;
+        for (int i = 1; i <= n - k; ++i) {
+            res[idx++] = i;
+        }
+        int left = n - k + 1;
+        int right = n;
+        boolean takeHigh = true;
+        while (left <= right) {
+            if (takeHigh) {
+                res[idx++] = right--;
+            } else {
+                res[idx++] = left++;
+            }
+            takeHigh = !takeHigh;
+        }
+        return res;
+    }
+}
+
+
+================================================================================
+0668_kth_smallest_number_in_multiplication_table
+================================================================================
+// LeetCode 0668 - Kth Smallest Number in Multiplication Table
+// https://leetcode.com/problems/kth-smallest-number-in-multiplication-table/
+
+class Solution {
+    public int findKthNumber(int m, int n, int k) {
+        int lo = 1;
+        int hi = m * n;
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (countLe(m, n, mid) >= k) {
+                hi = mid;
+            } else {
+                lo = mid + 1;
+            }
+        }
+        return lo;
+    }
+
+    private int countLe(int m, int n, int x) {
+        int count = 0;
+        for (int row = 1; row <= m; ++row) {
+            count += Math.min(x / row, n);
+        }
+        return count;
+    }
+}
+
+
+================================================================================
+0669_trim_a_binary_search_tree
+================================================================================
+// LeetCode 0669 - Trim a Binary Search Tree
+// https://leetcode.com/problems/trim-a-binary-search-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    public TreeNode trimBST(TreeNode root, int low, int high) {
+        if (root == null) {
+            return null;
+        }
+        if (root.val < low) {
+            return trimBST(root.right, low, high);
+        }
+        if (root.val > high) {
+            return trimBST(root.left, low, high);
+        }
+        root.left = trimBST(root.left, low, high);
+        root.right = trimBST(root.right, low, high);
+        return root;
+    }
+}
+
+
+================================================================================
+0670_maximum_swap
+================================================================================
+// LeetCode 0670 - Maximum Swap
+// https://leetcode.com/problems/maximum-swap/
+
+class Solution {
+    public int maximumSwap(int num) {
+        char[] digits = String.valueOf(num).toCharArray();
+        int[] last = new int[10];
+        for (int i = 0; i < 10; ++i) {
+            last[i] = -1;
+        }
+        for (int i = 0; i < digits.length; ++i) {
+            last[digits[i] - '0'] = i;
+        }
+        for (int i = 0; i < digits.length; ++i) {
+            for (int candidate = 9; candidate > digits[i] - '0'; --candidate) {
+                if (last[candidate] > i) {
+                    char tmp = digits[i];
+                    digits[i] = digits[last[candidate]];
+                    digits[last[candidate]] = tmp;
+                    return Integer.parseInt(new String(digits));
+                }
+            }
+        }
+        return num;
+    }
+}
+
+
+================================================================================
+0671_second_minimum_node_in_a_binary_tree
+================================================================================
+// LeetCode 0671 - Second Minimum Node In a Binary Tree
+// https://leetcode.com/problems/second-minimum-node-in-a-binary-tree/
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class Solution {
+    private int ans = -1;
+    private int rootVal;
+
+    public int findSecondMinimumValue(TreeNode root) {
+        if (root == null) {
+            return -1;
+        }
+        ans = -1;
+        rootVal = root.val;
+        dfs(root);
+        return ans;
+    }
+
+    private void dfs(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        if (node.val > rootVal) {
+            if (ans == -1 || node.val < ans) {
+                ans = node.val;
+            }
+            return;
+        }
+        dfs(node.left);
+        dfs(node.right);
+    }
+}
+
+
+================================================================================
+0672_bulb_switcher_ii
+================================================================================
+// LeetCode 0672 - Bulb Switcher II
+// https://leetcode.com/problems/bulb-switcher-ii/
+
+class Solution {
+    public int flipLights(int n, int presses) {
+        n = Math.min(n, 3);
+        if (presses == 0) {
+            return 1;
+        }
+        int[] onePress = {2, 3, 4};
+        int[] twoPress = {2, 4, 7};
+        int[] manyPress = {2, 4, 8};
+        if (presses == 1) {
+            return onePress[n - 1];
+        }
+        if (presses == 2) {
+            return twoPress[n - 1];
+        }
+        return manyPress[n - 1];
+    }
+}
+
+
+================================================================================
+0673_number_of_longest_increasing_subsequence
+================================================================================
+// LeetCode 0673 - Number of Longest Increasing Subsequence
+// https://leetcode.com/problems/number-of-longest-increasing-subsequence/
+
+class Solution {
+    public int findNumberOfLIS(int[] nums) {
+        int n = nums.length;
+        int[] lengths = new int[n];
+        int[] counts = new int[n];
+        for (int i = 0; i < n; ++i) {
+            lengths[i] = 1;
+            counts[i] = 1;
+        }
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < i; ++j) {
+                if (nums[j] >= nums[i]) {
+                    continue;
+                }
+                if (lengths[j] + 1 > lengths[i]) {
+                    lengths[i] = lengths[j] + 1;
+                    counts[i] = counts[j];
+                } else if (lengths[j] + 1 == lengths[i]) {
+                    counts[i] += counts[j];
+                }
+            }
+        }
+        int longest = 0;
+        for (int length : lengths) {
+            longest = Math.max(longest, length);
+        }
+        int answer = 0;
+        for (int i = 0; i < n; ++i) {
+            if (lengths[i] == longest) {
+                answer += counts[i];
+            }
+        }
+        return answer;
+    }
+}
+
+
+================================================================================
+0674_longest_continuous_increasing_subsequence
+================================================================================
+// LeetCode 0674 - Longest Continuous Increasing Subsequence
+// https://leetcode.com/problems/longest-continuous-increasing-subsequence/
+
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        int best = 1;
+        int cur = 1;
+        for (int i = 1; i < nums.length; ++i) {
+            if (nums[i] > nums[i - 1]) {
+                ++cur;
+                best = Math.max(best, cur);
+            } else {
+                cur = 1;
+            }
+        }
+        return best;
+    }
+}
+
+
+================================================================================
+0675_cut_off_trees_for_golf_event
+================================================================================
+// LeetCode 0675 - Cut Off Trees for Golf Event
+// https://leetcode.com/problems/cut-off-trees-for-golf-event/
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Queue;
+
+class Solution {
+    public int cutOffTree(List<List<Integer>> forest) {
+        List<int[]> trees = new ArrayList<>();
+        for (int i = 0; i < forest.size(); ++i) {
+            for (int j = 0; j < forest.get(0).size(); ++j) {
+                if (forest.get(i).get(j) > 1) {
+                    trees.add(new int[] {forest.get(i).get(j), i, j});
+                }
+            }
+        }
+        Collections.sort(trees, (a, b) -> Integer.compare(a[0], b[0]));
+        int sr = 0;
+        int sc = 0;
+        int steps = 0;
+        for (int[] tree : trees) {
+            int dist = bfs(forest, sr, sc, tree[1], tree[2]);
+            if (dist < 0) {
+                return -1;
+            }
+            steps += dist;
+            sr = tree[1];
+            sc = tree[2];
+        }
+        return steps;
+    }
+
+    private int bfs(List<List<Integer>> forest, int sr, int sc, int tr, int tc) {
+        if (sr == tr && sc == tc) {
+            return 0;
+        }
+        int m = forest.size();
+        int n = forest.get(0).size();
+        boolean[][] seen = new boolean[m][n];
+        Queue<int[]> queue = new ArrayDeque<>();
+        queue.offer(new int[] {sr, sc, 0});
+        seen[sr][sc] = true;
+        int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        while (!queue.isEmpty()) {
+            int[] cur = queue.poll();
+            int r = cur[0];
+            int c = cur[1];
+            int dist = cur[2];
+            for (int[] dir : dirs) {
+                int nr = r + dir[0];
+                int nc = c + dir[1];
+                if (nr < 0 || nr >= m || nc < 0 || nc >= n || seen[nr][nc] || forest.get(nr).get(nc) == 0) {
+                    continue;
+                }
+                if (nr == tr && nc == tc) {
+                    return dist + 1;
+                }
+                seen[nr][nc] = true;
+                queue.offer(new int[] {nr, nc, dist + 1});
+            }
+        }
+        return -1;
+    }
+}
+
+
+================================================================================
+0676_implement_magic_dictionary
+================================================================================
+// LeetCode 0676 - Implement Magic Dictionary
+// https://leetcode.com/problems/implement-magic-dictionary/
+
+class MagicDictionary {
+    private String[] words = new String[0];
+
+    public MagicDictionary() {}
+
+    public void buildDict(String[] dictionary) {
+        words = dictionary;
+    }
+
+    public boolean search(String searchWord) {
+        for (String word : words) {
+            if (word.length() != searchWord.length()) {
+                continue;
+            }
+            int diff = 0;
+            for (int i = 0; i < word.length(); ++i) {
+                if (word.charAt(i) != searchWord.charAt(i)) {
+                    ++diff;
+                }
+            }
+            if (diff == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+
+================================================================================
+0677_map_sum_pairs
+================================================================================
+// LeetCode 0677 - Map Sum Pairs
+// https://leetcode.com/problems/map-sum-pairs/
+
+import java.util.HashMap;
+import java.util.Map;
+
+class MapSum {
+    private final Map<String, Integer> values = new HashMap<>();
+    private final Map<String, Integer> prefixSums = new HashMap<>();
+
+    public MapSum() {}
+
+    public void insert(String key, int val) {
+        int delta = val - values.getOrDefault(key, 0);
+        values.put(key, val);
+        for (int i = 1; i <= key.length(); ++i) {
+            String prefix = key.substring(0, i);
+            prefixSums.put(prefix, prefixSums.getOrDefault(prefix, 0) + delta);
+        }
+    }
+
+    public int sum(String prefix) {
+        return prefixSums.getOrDefault(prefix, 0);
+    }
+}
+
+
+================================================================================
+0678_valid_parenthesis_string
+================================================================================
+// LeetCode 0678 - Valid Parenthesis String
+// https://leetcode.com/problems/valid-parenthesis-string/
+
+class Solution {
+    public boolean checkValidString(String s) {
+        int lo = 0;
+        int hi = 0;
+        for (int i = 0; i < s.length(); ++i) {
+            char ch = s.charAt(i);
+            if (ch == '(') {
+                ++lo;
+                ++hi;
+            } else if (ch == ')') {
+                lo = Math.max(lo - 1, 0);
+                --hi;
+                if (hi < 0) {
+                    return false;
+                }
+            } else {
+                lo = Math.max(lo - 1, 0);
+                ++hi;
+            }
+        }
+        return lo == 0;
+    }
+}
+
+
+================================================================================
+0679_24_game
+================================================================================
+// LeetCode 0679 - 24 Game
+// https://leetcode.com/problems/24-game/
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
+    private static final double EPS = 1e-6;
+
+    public boolean judgePoint24(int[] cards) {
+        List<Double> nums = new ArrayList<>();
+        for (int card : cards) {
+            nums.add((double) card);
+        }
+        return dfs(nums);
+    }
+
+    private boolean dfs(List<Double> nums) {
+        if (nums.size() == 1) {
+            return Math.abs(nums.get(0) - 24.0) < EPS;
+        }
+        for (int i = 0; i < nums.size(); ++i) {
+            for (int j = 0; j < nums.size(); ++j) {
+                if (i == j) {
+                    continue;
+                }
+                List<Double> rest = new ArrayList<>();
+                for (int k = 0; k < nums.size(); ++k) {
+                    if (k != i && k != j) {
+                        rest.add(nums.get(k));
+                    }
+                }
+                double a = nums.get(i);
+                double b = nums.get(j);
+                List<Double> candidates = new ArrayList<>();
+                candidates.add(a + b);
+                candidates.add(a - b);
+                candidates.add(a * b);
+                if (Math.abs(b) > EPS) {
+                    candidates.add(a / b);
+                }
+                for (double value : candidates) {
+                    rest.add(value);
+                    if (dfs(rest)) {
+                        return true;
+                    }
+                    rest.remove(rest.size() - 1);
+                }
+            }
+        }
+        return false;
+    }
+}
+

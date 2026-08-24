@@ -1,0 +1,81 @@
+FOLDER: 3690_split_and_merge_array_transformation
+TITLE: 3690. Split and Merge Array Transformation
+URL: - **LeetCode:** [https://leetcode.com/problems/split-and-merge-array-transformation/](https://leetcode.com/problems/split-and-merge-array-transformation/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums1",
+    "nums2"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3690 - Split and Merge Array Transformation
+// https://leetcode.com/problems/split-and-merge-array-transformation/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+class Solution {
+    private int n;
+
+    private int[] toArr(List<Integer> nums) {
+        int[] t = new int[6];
+        for (int i = 0; i < n; i++) t[i] = nums.get(i);
+        return t;
+    }
+
+    private String key(int[] a) {
+        return Arrays.toString(a);
+    }
+
+    public int minSplitMerge(int[] nums1, int[] nums2) {
+        n = nums1.length;
+        List<Integer> startL = new ArrayList<>();
+        List<Integer> targetL = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            startL.add(nums1[i]);
+            targetL.add(nums2[i]);
+        }
+        int[] start = toArr(startL);
+        int[] target = toArr(targetL);
+        Set<String> vis = new HashSet<>();
+        vis.add(key(start));
+        List<int[]> q = new ArrayList<>();
+        q.add(start);
+        for (int ans = 0; ; ans++) {
+            List<int[]> nq = new ArrayList<>();
+            for (int[] cur : q) {
+                if (Arrays.equals(cur, target)) return ans;
+                for (int l = 0; l < n; l++) {
+                    for (int r = l; r < n; r++) {
+                        List<Integer> remain = new ArrayList<>();
+                        List<Integer> sub = new ArrayList<>();
+                        for (int i = 0; i < l; i++) remain.add(cur[i]);
+                        for (int i = r + 1; i < n; i++) remain.add(cur[i]);
+                        for (int i = l; i <= r; i++) sub.add(cur[i]);
+                        for (int pos = 0; pos <= remain.size(); pos++) {
+                            List<Integer> nxtSlice = new ArrayList<>();
+                            nxtSlice.addAll(remain.subList(0, pos));
+                            nxtSlice.addAll(sub);
+                            nxtSlice.addAll(remain.subList(pos, remain.size()));
+                            int[] nxt = toArr(nxtSlice);
+                            String k = key(nxt);
+                            if (!vis.contains(k)) {
+                                vis.add(k);
+                                nq.add(nxt);
+                            }
+                        }
+                    }
+                }
+            }
+            q = nq;
+        }
+    }
+}

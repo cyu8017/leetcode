@@ -1,6 +1,15 @@
-﻿// LeetCode 0610 - Triangle Judgement
+// LeetCode 0610 - Triangle Judgement
 // https://leetcode.com/problems/triangle-judgement/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT
+    x,
+    y,
+    z,
+    CASE
+        WHEN x + y > z AND x + z > y AND y + z > x THEN 'Yes'
+        ELSE 'No'
+    END AS triangle
+FROM Triangle
+"""
 }

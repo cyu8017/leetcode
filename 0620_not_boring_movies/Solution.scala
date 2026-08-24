@@ -1,6 +1,10 @@
-﻿// LeetCode 0620 - Not Boring Movies
+// LeetCode 0620 - Not Boring Movies
 // https://leetcode.com/problems/not-boring-movies/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT *
+FROM Cinema
+WHERE MOD(id, 2) = 1 AND description != 'boring'
+ORDER BY rating DESC
+"""
 }

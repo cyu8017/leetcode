@@ -1,6 +1,10 @@
-﻿// LeetCode 3204 - Bitwise User Permissions Analysis
-// https://leetcode.com/problems/bitwise-user-permissions-analysis/
+// LeetCode 3204 - Bitwise User Permissions Analysis
+// https:// leetcode.com/problems/bitwise-user-permissions-analysis/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT
+    BIT_AND(permissions) AS common_perms,
+    BIT_OR(permissions) AS any_perms
+FROM user_permissions;
+"""
 }

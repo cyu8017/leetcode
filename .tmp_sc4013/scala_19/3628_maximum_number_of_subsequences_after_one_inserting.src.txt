@@ -1,0 +1,42 @@
+FOLDER: 3628_maximum_number_of_subsequences_after_one_inserting
+TITLE: 3628. Maximum Number of Subsequences After One Inserting
+URL: - **LeetCode:** [https://leetcode.com/problems/maximum-number-of-subsequences-after-one-inserting/](https://leetcode.com/problems/maximum-number-of-subsequences-after-one-inserting/)
+CONFIG: {
+  "class": "Solution",
+  "method": "numOfSubsequences",
+  "paramOrder": [
+    "s"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3628 - Maximum Number of Subsequences After One Inserting
+// https://leetcode.com/problems/maximum-number-of-subsequences-after-one-inserting/
+
+class Solution {
+    private long calc(String s, String t) {
+        long cnt = 0, a = 0;
+        for (char c : s.toCharArray()) {
+            if (c == t.charAt(1)) cnt += a;
+            if (c == t.charAt(0)) a++;
+        }
+        return cnt;
+    }
+
+    public long numOfSubsequences(String s) {
+        long l = 0, r = 0;
+        for (char c : s.toCharArray())
+            if (c == 'T') r++;
+        long ans = 0, mx = 0;
+        for (char c : s.toCharArray()) {
+            if (c == 'T') r--;
+            if (c == 'C') ans += l * r;
+            if (c == 'L') l++;
+            mx = Math.max(mx, l * r);
+        }
+        mx = Math.max(mx, Math.max(calc(s, "LC"), calc(s, "CT")));
+        return ans + mx;
+    }
+}

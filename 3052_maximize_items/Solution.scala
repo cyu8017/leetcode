@@ -1,6 +1,27 @@
-﻿// LeetCode 3052 - Maximize Items
-// https://leetcode.com/problems/maximize-items/
+// LeetCode 3052 - Maximize Items
+// https:// leetcode.com/problems/maximize-items/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """WITH
+    T AS (
+        SELECT SUM(square_footage) AS s
+        FROM Inventory
+        WHERE item_type = 'prime_eligible'
+    )
+SELECT
+    'prime_eligible' AS item_type,
+    COUNT(1) * FLOOR(500000 / s) AS item_count
+FROM
+    Inventory
+    JOIN T
+WHERE item_type = 'prime_eligible'
+UNION ALL
+SELECT
+    'not_prime',
+    IFNULL(COUNT(1) * FLOOR(IF(s = 0, 500000, 500000 % s) / SUM(square_footage)), 0)
+FROM
+    Inventory
+    JOIN T
+WHERE item_type = 'not_prime';
+"""
 }

@@ -1,6 +1,11 @@
-﻿// LeetCode 2480 - Form a Chemical Bond
-// https://leetcode.com/problems/form-a-chemical-bond/
+// LeetCode 2480 - Form a Chemical Bond
+// https:// leetcode.com/problems/form-a-chemical-bond/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """SELECT a.symbol AS metal, b.symbol AS nonmetal
+FROM
+    Elements AS a,
+    Elements AS b
+WHERE a.type = 'Metal' AND b.type = 'Nonmetal'
+"""
 }

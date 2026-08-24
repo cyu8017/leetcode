@@ -1,0 +1,44 @@
+FOLDER: 3655_xor_after_range_multiplication_queries_ii
+TITLE: 3655. XOR After Range Multiplication Queries II
+URL: - **LeetCode:** [https://leetcode.com/problems/xor-after-range-multiplication-queries-ii/](https://leetcode.com/problems/xor-after-range-multiplication-queries-ii/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "queries"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3655 - XOR After Range Multiplication Queries II
+// https://leetcode.com/problems/xor-after-range-multiplication-queries-ii/
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution {
+    public int xorAfterQueries(int[] nums, int[][] queries) {
+        final int MOD = 1_000_000_007;
+        int n = nums.length;
+        Map<Integer, List<int[]>> byK = new HashMap<>();
+        for (int[] q : queries)
+            byK.computeIfAbsent(q[2], x -> new ArrayList<>()).add(new int[] {q[0], q[1], q[2], q[3]});
+        int[] res = nums.clone();
+        for (Map.Entry<Integer, List<int[]>> e : byK.entrySet()) {
+            int[] fac = new int[n];
+            Arrays.fill(fac, 1);
+            for (int[] u : e.getValue())
+                for (int i = u[0]; i <= u[1]; i += u[2]) fac[i] = (int) (1L * fac[i] * u[3] % MOD);
+            for (int i = 0; i < n; i++) res[i] = (int) (1L * res[i] * fac[i] % MOD);
+        }
+        int ans = 0;
+        for (int v : res) ans ^= v;
+        return ans;
+    }
+}

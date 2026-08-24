@@ -1,0 +1,31 @@
+FOLDER: 3718_smallest_missing_multiple_of_k
+TITLE: 3718. Smallest Missing Multiple of K
+URL: - **LeetCode:** [https://leetcode.com/problems/smallest-missing-multiple-of-k/](https://leetcode.com/problems/smallest-missing-multiple-of-k/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "nums",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3718 - Smallest Missing Multiple of K
+// https://leetcode.com/problems/smallest-missing-multiple-of-k/
+
+import java.util.HashSet;
+import java.util.Set;
+
+class Solution {
+    public int missingMultiple(int[] nums, int k) {
+        Set<Integer> s = new HashSet<>();
+        for (int x : nums) s.add(x);
+        for (int i = 1; ; i++) {
+            int x = k * i;
+            if (!s.contains(x)) return x;
+        }
+    }
+}

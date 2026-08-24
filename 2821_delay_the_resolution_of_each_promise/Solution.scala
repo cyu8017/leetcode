@@ -1,6 +1,6 @@
-﻿// LeetCode 2821 - Delay the Resolution of Each Promise
+// LeetCode 2821 - Delay the Resolution of Each Promise
 // https://leetcode.com/problems/delay-the-resolution-of-each-promise/
 
 object Solution {
-  def solve(): Unit = {}
+  def delayAll(functions: List[() => Int], ms: Int): List[() => Int] = functions
 }

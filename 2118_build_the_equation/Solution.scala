@@ -1,6 +1,27 @@
-﻿// LeetCode 2118 - Build the Equation
-// https://leetcode.com/problems/build-the-equation/
+// LeetCode 2118 - Build the Equation
+// https:// leetcode.com/problems/build-the-equation/
 
 object Solution {
-  def solve(): Unit = {}
+  final val QUERY: String = """WITH
+    T AS (
+        SELECT
+            power,
+            CASE power
+                WHEN 0 THEN IF(factor > 0, CONCAT('+', factor), factor)
+                WHEN 1 THEN CONCAT(
+                    IF(factor > 0, CONCAT('+', factor), factor),
+                    'X'
+                )
+                ELSE CONCAT(
+                    IF(factor > 0, CONCAT('+', factor), factor),
+                    'X^',
+                    power
+                )
+            END AS it
+        FROM Terms
+    )
+SELECT
+    CONCAT(GROUP_CONCAT(it ORDER BY power DESC SEPARATOR ""), '=0') AS equation
+FROM T
+"""
 }

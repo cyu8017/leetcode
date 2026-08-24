@@ -1,0 +1,35 @@
+FOLDER: 3693_climbing_stairs_ii
+TITLE: 3693. Climbing Stairs II
+URL: - **LeetCode:** [https://leetcode.com/problems/climbing-stairs-ii/](https://leetcode.com/problems/climbing-stairs-ii/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "n",
+    "costs"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3693 - Climbing Stairs II
+// https://leetcode.com/problems/climbing-stairs-ii/
+
+import java.util.Arrays;
+
+class Solution {
+    public int climbStairs(int n, int[] costs) {
+        int inf = (int)1e9;
+        int[] f = new int[n + 1];
+        Arrays.fill(f, inf);
+        f[0] = 0;
+        for (int i = 1; i <= n; i++) {
+            int x = costs[i - 1];
+            for (int j = Math.max(0, i - 3); j < i; j++) {
+                f[i] = Math.min(f[i], f[j] + x + (i - j) * (i - j));
+            }
+        }
+        return f[n];
+    }
+}

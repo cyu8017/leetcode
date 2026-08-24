@@ -1,0 +1,56 @@
+FOLDER: 3666_minimum_operations_to_equalize_binary_string
+TITLE: 3666. Minimum Operations to Equalize Binary String
+URL: - **LeetCode:** [https://leetcode.com/problems/minimum-operations-to-equalize-binary-string/](https://leetcode.com/problems/minimum-operations-to-equalize-binary-string/)
+CONFIG: {
+  "class": "Solution",
+  "method": "solve",
+  "paramOrder": [
+    "s",
+    "k"
+  ],
+  "types": null,
+  "description": "Update method name and add cases to cases.json when implementing the solution."
+}
+SOURCE: Solution.java
+================================================================================
+// LeetCode 3666 - Minimum Operations to Equalize Binary String
+// https://leetcode.com/problems/minimum-operations-to-equalize-binary-string/
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
+
+class Solution {
+    public int minOperations(String s, int k) {
+        int n = s.length();
+        @SuppressWarnings("unchecked")
+        TreeSet<Integer>[] ts = new TreeSet[2];
+        ts[0] = new TreeSet<>();
+        ts[1] = new TreeSet<>();
+        for (int i = 0; i <= n; i++) ts[i % 2].add(i);
+        int cnt0 = 0;
+        for (char c : s.toCharArray()) if (c == '0') cnt0++;
+        ts[cnt0 % 2].remove(cnt0);
+        List<Integer> q = new ArrayList<>();
+        q.add(cnt0);
+        int ans = 0;
+        while (!q.isEmpty()) {
+            List<Integer> nq = new ArrayList<>();
+            for (int cur : q) {
+                if (cur == 0) return ans;
+                int l = cur + k - 2 * Math.min(cur, k);
+                int r = cur + k - 2 * Math.max(k - n + cur, 0);
+                TreeSet<Integer> t = ts[l % 2];
+                Integer it = t.ceiling(l);
+                while (it != null && it <= r) {
+                    nq.add(it);
+                    t.remove(it);
+                    it = t.ceiling(l);
+                }
+            }
+            q = nq;
+            ans++;
+        }
+        return -1;
+    }
+}
